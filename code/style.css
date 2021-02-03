@@ -1,0 +1,233 @@
+/* Global css variables used for colors */
+:root {
+  --primary: #a259ff;
+  --secondary: #b0a6ff;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 10px 0;
+  color: white;
+}
+
+.question-section {
+  width: 30%;
+  min-height: 100vh;
+  background-color: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  padding: 5vw;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+select {
+  display: block;
+  border: none;
+  font-size: 22px;
+  font-family: 'Montserrat';
+  color: var(--secondary);
+  width: 100%;
+  margin: 24px 0;
+}
+
+.guess-who-icon {
+  width: 126px;
+}
+
+.board-wrapper {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-board {
+  width: 90%;
+  max-width: 882px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+/****** CARD ******/
+.card {
+  width: 135px;
+  height: 165px;
+  overflow: hidden;
+  border: 3px solid var(--secondary);
+  border-radius: 4px;
+  margin: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card p {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.card .guess {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  height: inherit;
+}
+
+.card:hover {
+  background-color: var(--secondary);
+}
+
+.card:hover img,
+.card:hover p {
+  display: none;
+}
+
+/* The div with the guess class is only shown on hover */
+.card:hover .guess {
+  display: flex;
+}
+
+.guess span {
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  width: 90%;
+}
+
+/****** BUTTONS ******/
+button {
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  padding: 17px 27px;
+  cursor: pointer;
+}
+
+.small {
+  padding: 8px 16px;
+}
+
+.outlined-button {
+  background-color: transparent;
+  color: var(--primary);
+  align-self: flex-end;
+}
+
+.filled-button,
+.outlined-button:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.filled-button:hover {
+  background-color: white;
+  border-color: white;
+  color: var(--primary);
+}
+
+/****** WIN OR LOSE SECTION ******/
+.win-or-lose-wrapper {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+}
+
+.win-or-lose {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  text-align: center;
+}
+
+.win-or-lose img {
+  align-self: flex-start;
+  margin-left: 15%;
+}
+
+.win-or-lose h1 {
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .question-section {
+    width: 100%;
+    min-height: 0;
+  }
+  button {
+    padding: 8px 16px;
+  }
+  h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .guess-who-icon {
+    width: 51px;
+  }
+
+  .board-wrapper {
+    width: 100%;
+  }
+
+  .game-board {
+    width: 100%;
+    max-width: 750px;
+  }
+
+  .card {
+    width: 113px;
+    position: relative;
+  }
+
+  .card .guess {
+    display: flex;
+    top: 0;
+    position: absolute;
+    justify-content: flex-end;
+  }
+
+  .card .guess span {
+    display: none;
+  }
+
+  .card .guess .filled-button {
+    padding: 6px 11px;
+    margin-bottom: 1px;
+    background: white;
+    color: var(--primary);
+    border: none;
+  }
+}

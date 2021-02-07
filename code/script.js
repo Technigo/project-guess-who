@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -246,40 +247,61 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  let randomElement = Math.random() * charactersInPlay.length //för ett randomiserat tal skalat till längden på arrayen obs blir decimaltal (float) därför kör vi math.floor sedan
+  let randomElementInt = Math.floor(randomElement); //för avrundning till heltal
+  secret = charactersInPlay[randomElementInt]; //Nu tilldelar vi secret person genom att plocka ut randomiserade personen från arrayen
+  //secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  //raka parenteser talar om att vi plockar ut ett randomiserat element på den randomiserade positionen
 }
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  charactersInPlay = CHARACTERS;
+  generateBoard();
+  // What else should happen when we start the game? 
+  setSecret();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  console.log(secret);
+  const category = questions.options[questions.selectedIndex].parentNode.label;
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
+  const property = questions.options[questions.selectedIndex].label;
+console.log(property);
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: property,
       // 👆 add the value from the input here
       category: category,
     }
   } else if (category === 'eye color') {
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value: property,
+      // 👆 add the value from the input here
+      category: category,
     // Set this up your self
+    }
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: property,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
+    currentQuestion = {
+    attribute: property,
+      value: true,
+      // 👆 add the value from the input here
+      category: category,
     // Set this up your self (should be same structure as above)
+    }
   }
 }
 
@@ -340,4 +362,5 @@ const checkMyGuess = (suspect) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start);
+findOutButton.addEventListener('click', selectQuestion);

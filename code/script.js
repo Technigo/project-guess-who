@@ -252,8 +252,11 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
+  generateBoard();
+  setSecret();
+  console.log(secret);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -271,6 +274,11 @@ const selectQuestion = () => {
     }
   } else if (category === 'eye color') {
     // Set this up your self
+    currentQuestion = {
+      attribute : 'eyeColor',
+      //value: ,
+      category: category,
+    }
   } else if (category === 'accessories') {
     currentQuestion = {
       //attribute: ,
@@ -279,6 +287,11 @@ const selectQuestion = () => {
       category: category,
     }
   } else if (category === 'other') {
+    currentQuestion = {
+      attribute: 'other',
+      //value: , 
+      category: category,
+    }
     // Set this up your self (should be same structure as above)
   }
 }
@@ -338,6 +351,8 @@ const checkMyGuess = (suspect) => {
 
 // Invokes the start function when website is loaded
 start()
+
+
 
 // All the event listeners
 restartButton.addEventListener('click', start)

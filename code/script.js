@@ -12,6 +12,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: true,
     smoker: false,
+    cat: true,
+    dog: false
   },
   {
     name: 'Jack',
@@ -21,6 +23,8 @@ const CHARACTERS = [{
     glasses: false,
     hat: true,
     smoker: false,
+    cat: false,
+    dog: false,
   },
   {
     name: 'Jacques',
@@ -30,6 +34,8 @@ const CHARACTERS = [{
     glasses: false,
     hat: true,
     smoker: true,
+    cat: false,
+    dog: true
   },
   {
     name: 'Jai',
@@ -39,6 +45,8 @@ const CHARACTERS = [{
     glasses: false,
     hat: false,
     smoker: false,
+    cat: false,
+    dog: false
   },
   {
     name: 'Jake',
@@ -48,6 +56,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: false,
     smoker: false,
+    cat: false,
+    dog: false
   },
   {
     name: 'James',
@@ -57,6 +67,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: false,
     smoker: false,
+    cat: false,
+    dog: false
   },
   {
     name: 'Jana',
@@ -66,6 +78,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: false,
     smoker: false,
+    cat: true,
+    dog: false
   },
   {
     name: 'Jane',
@@ -75,6 +89,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: false,
     smoker: false,
+    cat: false,
+    dog: false
   },
   {
     name: 'Jaqueline',
@@ -84,8 +100,9 @@ const CHARACTERS = [{
     glasses: true,
     hat: false,
     smoker: false,
+    cat: false,
+    dog: false
   },
-
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
@@ -94,6 +111,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: false,
     smoker: true,
+    cat: false,
+    dog: true
   },
   {
     name: 'Jean',
@@ -103,6 +122,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: true,
     smoker: true,
+    cat: false,
+    dog: false
   },
   {
     name: 'Jeane',
@@ -112,6 +133,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: false,
     smoker: false,
+    cat: true,
+    dog: true
   },
   {
     name: 'Jed',
@@ -121,6 +144,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: true,
     smoker: true,
+    cat: false,
+    dog: false
   },
   {
     name: 'Jenni',
@@ -130,6 +155,8 @@ const CHARACTERS = [{
     glasses: false,
     hat: true,
     smoker: false,
+    cat: true,
+    dog: false
   },
   {
     name: 'Jeri',
@@ -139,6 +166,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: false,
     smoker: false,
+    cat: false,
+    dog: false
   },
   {
     name: 'Jerry',
@@ -148,6 +177,8 @@ const CHARACTERS = [{
     glasses: false,
     hat: true,
     smoker: false,
+    cat: false,
+    dog: true
   },
   {
     name: 'Jess',
@@ -157,6 +188,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: false,
     smoker: false,
+    cat: false,
+    dog: false
   },
   {
     name: 'Jocelyn',
@@ -166,6 +199,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: false,
     smoker: false,
+    cat: false,
+    dog: false
   },
   {
     name: 'Jon',
@@ -175,6 +210,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: false,
     smoker: false,
+    cat: false,
+    dog: false
   },
   {
     name: 'Jordan',
@@ -184,6 +221,8 @@ const CHARACTERS = [{
     glasses: true,
     hat: true,
     smoker: false,
+    cat: false,
+    dog: true
   },
   {
     name: 'Josephine',
@@ -193,6 +232,8 @@ const CHARACTERS = [{
     glasses: false,
     hat: false,
     smoker: false,
+    cat: true,
+    dog: false
   },
   {
     name: 'Josh',
@@ -202,6 +243,8 @@ const CHARACTERS = [{
     glasses: false,
     hat: false,
     smoker: false,
+    cat: false,
+    dog: false
   },
   {
     name: 'Jude',
@@ -211,6 +254,8 @@ const CHARACTERS = [{
     glasses: false,
     hat: false,
     smoker: false,
+    cat: false,
+    dog: false
   },
   {
     name: 'Julie',
@@ -220,11 +265,14 @@ const CHARACTERS = [{
     glasses: true,
     hat: true,
     smoker: false,
+    cat: true,
+    dog: true,
   },
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion, charactersInPlay, startTime, endTime, questionsAsked = 0,
+  totalSeconds = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -241,12 +289,30 @@ const generateBoard = () => {
       </div>
     `
   })
+  const counter = document.getElementById("counter")
+  counter.innerHTML = `Questions asked: ${questionsAsked}`
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
+
+//timer showing the passing seconds in the game
+const timer = (x) => {
+  if (x === 'restart') {
+    totalSeconds = 0;
+  }
+  totalSeconds++
+  let minute = Math.floor(totalSeconds / 60);
+  let seconds = totalSeconds - (minute * 60);
+  if (minute < 10)
+    minute = "0" + minute;
+  if (seconds < 10)
+    seconds = "0" + seconds;
+  document.getElementById("timer").innerHTML = minute + ":" + seconds;
+}
+
 
 // This function to start (and restart) the game
 const start = () => {
@@ -256,11 +322,19 @@ const start = () => {
   generateBoard()
   //sets the secret character
   setSecret()
+  totalSeconds = 0;
+  timer('restart')
+  setInterval(timer, 1000)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (handleOption) => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  questionsAsked++
+  if (questionsAsked === 1) {
+    startTime = performance.now()
+  }
+  console.log(questionsAsked)
   //value is set to the option playes selects
   if (isEqual(category, 'hair color')) {
     currentQuestion = {
@@ -268,7 +342,6 @@ const selectQuestion = (handleOption) => {
       value: handleOption,
       category: category,
     };
-    console.log(currentQuestion)
   } else if (isEqual(category, 'eye color')) {
     currentQuestion = {
       attribute: 'eyeColor',
@@ -276,7 +349,6 @@ const selectQuestion = (handleOption) => {
       category: category,
     };
     //here the value is set to true and the player option is used in a switch to keep track of different accessories/other
-    console.log(currentQuestion);
   } else if (isEqual(category, 'accessories')) {
     switch (handleOption) {
       case 'glasses':
@@ -294,16 +366,30 @@ const selectQuestion = (handleOption) => {
         };
         break;
     }
-    console.log(currentQuestion);
-  } else if (isEqual(category, 'other')) {
+  } else if (isEqual(category, 'animals')) {
     switch (handleOption) {
-      case 'smoker':
+      case 'cat':
         currentQuestion = {
-          attribute: 'smoker',
+          attribute: 'cat',
           value: true,
-          category: 'other',
-        };
+          category: category,
+        }
+        break;
+      case 'dog':
+        currentQuestion = {
+          attribute: 'dog',
+          value: true,
+          category: category,
+        }
+        break;
     }
+  } else {
+    currentQuestion = {
+      attribute: 'smoker',
+      value: true,
+      category: 'other',
+    };
+
   }
   //on click stopPropergate is run
   const findOut = document.getElementById('filter')
@@ -332,7 +418,6 @@ const checkQuestion = (currentQ) => {
       if (isEqual(userValue, secret.hairColor)) {
         keep = true
       } else {
-        console.log('haircolor false')
         keep = false
       }
       break;
@@ -345,8 +430,20 @@ const checkQuestion = (currentQ) => {
       break;
     case 'accessories':
       if (isEqual(userValue, secret.glasses) && currentQ.attribute === 'glasses') {
+        console.log('glasses')
         keep = true;
       } else if (isEqual(userValue, secret.hat) && currentQ.attribute === 'hat') {
+        console.log('hat')
+        keep = true;
+      } else {
+        console.log('not glass/hat')
+        keep = false;
+      }
+      break;
+    case 'animals':
+      if (isEqual(userValue, secret.cat) && currentQ.attribute === 'cat') {
+        keep = true;
+      } else if (isEqual(userValue, secret.dog) && currentQ.attribute === 'dog') {
         keep = true;
       } else {
         keep = false;
@@ -366,58 +463,76 @@ const checkQuestion = (currentQ) => {
   filterCharacters(currentQ, keep)
 }
 
-
 // Filters the characters if keep is true/false (depending on option chosen of player) and alerts the response. Then uses array.filter to return an array of characters based on that
 const filterCharacters = (currentQ, keep) => {
-
-  if (isEqual(currentQ.category, 'accessories')) {
-    if (isEqual(keep, true)) {
-      alert(
-        `Yes, the person wears ${currentQ.attribute}! Keep all that wears ${currentQ.attribute}`
-      )
-      charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
-    } else {
-      alert(
-        `No, the person doesn't wear ${currentQ.attribute}! Remove all that wears ${currentQ.attribute}`
-      )
-      charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
+  if (isEqual(keep, true)) {
+    switch (currentQ.category) {
+      case 'accessories':
+        alert(
+          `Yes, the person wears ${currentQ.attribute}! Keep all that wears ${currentQ.attribute}`
+        )
+        charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
+        break;
+      case 'hair color':
+        alert(
+          `Yes, the person has ${currentQ.value} hair! Keep all that have ${currentQ.value} hair`
+        )
+        charactersInPlay = charactersInPlay.filter((person => person.hairColor === currentQ.value))
+        break;
+      case 'eye color':
+        alert(
+          `Yes, the person has ${currentQ.value} eyes! Keep all that have ${currentQ.value} eyes`
+        )
+        charactersInPlay = charactersInPlay.filter((person => person.eyeColor === currentQ.value))
+        break;
+      case 'animals':
+        alert(
+          `Yes, the person is a ${currentQ.attribute} owner! Keep all the ${currentQ.attribute} owners`
+        )
+        charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
+        break;
+      case 'other':
+        alert(
+          `Yes, the person is a ${currentQ.attribute}! Keep all the ${currentQ.attribute}'s`
+        )
+        charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
+        break;
     }
-  } else if (isEqual(currentQ.category, 'hair color')) {
-    if (isEqual(keep, true)) {
-      alert(
-        `Yes, the person has ${currentQ.value} hair! Keep all that have ${currentQ.value} hair`
-      )
-      charactersInPlay = charactersInPlay.filter((person => person.hairColor === currentQ.value))
-    } else {
-      alert(
-        `No, the person doesn't have ${currentQ.value} hair! Remove all that have ${currentQ.value} hair`
-      )
-      charactersInPlay = charactersInPlay.filter((person => person.hairColor !== currentQ.value))
-    }
-  } else if (isEqual(currentQ.category, 'eye color')) {
-    if (isEqual(keep, true)) {
-      alert(
-        `Yes, the person has ${currentQ.value} eyes! Keep all that have ${currentQ.value} eyes`
-      )
-      charactersInPlay = charactersInPlay.filter((person => person.eyeColor === currentQ.value))
-    } else {
-      alert(
-        `No, the person doesn't have ${currentQ.value} eyes! Remove all that have ${currentQ.value} eyes`
-      )
-      charactersInPlay = charactersInPlay.filter((person => person.eyeColor !== currentQ.value))
-    }
-  } else if (isEqual(keep, true)) {
-    alert(
-      `Yes, the person is a ${currentQ.attribute}! Keep all the ${currentQ.attribute}'s`
-    )
-    charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
   } else {
-    alert(
-      `No, the person isn't a ${currentQ.attribute}! Remove all that are ${currentQ.attribute}'s`
-    )
-    charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
-  }
+    switch (currentQ.category) {
+      case 'accessories':
+        alert(
+          `No, the person doesn't wear ${currentQ.attribute}! Remove all that wears ${currentQ.attribute}`
+        )
+        charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
+        break;
+      case 'hair color':
+        alert(
+          `No, the person doesn't have ${currentQ.value} hair! Remove all that have ${currentQ.value} hair`
+        )
+        charactersInPlay = charactersInPlay.filter((person => person.hairColor !== currentQ.value))
+        break;
+      case 'eye color':
+        alert(
+          `No, the person doesn't have ${currentQ.value} eyes! Remove all that have ${currentQ.value} eyes`
+        )
+        charactersInPlay = charactersInPlay.filter((person => person.eyeColor !== currentQ.value))
+        break;
+      case 'animals':
+        alert(
+          `No, the person isn't a ${currentQ.attribute} owner! Remove all that are ${currentQ.attribute} owners.`
+        )
+        charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
+        break;
+      case 'other':
+        alert(
+          `No, the person isn't a ${currentQ.attribute}! Remove all that are ${currentQ.attribute}'s`
+        )
+        charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
+        break;
+    }
 
+  }
   //generates a new board depending on the filtered array
   generateBoard(charactersInPlay)
 }
@@ -433,20 +548,22 @@ const guess = (suspect) => {
       NO
     </button>
   `
-  document.getElementById("yes-btn").addEventListener('click', () => {
+  const yesBtn = document.getElementById("yes-btn")
+  yesBtn.addEventListener('click', () => {
     checkMyGuess(suspect)
   })
-  document.getElementById("no-btn").addEventListener('click', () => {
+  const noBtn = document.getElementById("no-btn")
+  noBtn.addEventListener('click', () => {
     generateBoard(charactersInPlay)
   })
 }
 
-// If you confirm, this function is invoked
+// If you confirm, this function is invoked which says if you won or lose
 const checkMyGuess = (suspect) => {
-  board.innerHTML = ''
   let winOrLose = document.getElementById('winOrLose')
+  //shows winOrLose section
   winOrLose.style.display = 'block'
-  if (isEqual(suspect, secret)) {
+  if (isEqual(suspect, secret.name)) {
     winOrLose.innerHTML = `
       <div class="win-or-lose">
         <img
@@ -456,13 +573,12 @@ const checkMyGuess = (suspect) => {
         <h1 id="winOrLoseText">
           Yes, ${suspect} was the secret character! Well done!
         </h1>
+        <h1> Your total time was ${Math.round((totalSeconds/60)*100)/100} minutes for this round</h1>
         <button id="playAgain" class="filled-button">
           PLAY AGAIN
         </button>
       </div>
     `
-    const playAgain = document.getElementById("playAgain")
-    playAgain.addEventListener('click', start)
   } else {
     winOrLose.innerHTML = `
       <div class="win-or-lose">
@@ -471,18 +587,23 @@ const checkMyGuess = (suspect) => {
           src="images/guess-who-bubble.png"
           alt="Guess Who"/>
         <h1 id="winOrLoseText">
-          Sorry, ${suspect} was the not the secret character! Better luck next time.
+          Sorry, ${suspect} was the not the secret character, but ${secret.name}! Better luck next time.
         </h1>
+        <h1> Your total time was ${Math.round((totalSeconds/60)*100)/100} minutes for this round</h1>
         <button id="playAgain" class="filled-button">
           PLAY AGAIN
         </button>
       </div>
     `
-    const playAgain = document.getElementById("playAgain")
-    playAgain.addEventListener('click', () => {
-      start();
-    })
   }
+
+  questionsAsked = 0;
+  //play again? click and winOrLose section will be hidden and start() will run
+  const playAgain = document.getElementById("playAgain")
+  playAgain.addEventListener('click', () => {
+    winOrLose.style.display = 'none'
+    start()
+  })
 }
 
 // Invokes the start function when website is loaded

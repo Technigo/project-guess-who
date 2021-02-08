@@ -40,6 +40,14 @@ select {
   margin: 24px 0;
 }
 
+.counter {
+  margin: 20px 0;
+  padding: 20px 0;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+}
+
 .guess-who-icon {
   width: 126px;
 }

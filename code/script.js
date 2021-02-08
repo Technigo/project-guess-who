@@ -299,7 +299,6 @@ const checkQuestion = () => {
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  const keep = currentQuestion.value === charactersInPlay;
   filterCharacters(keep);
 }
 

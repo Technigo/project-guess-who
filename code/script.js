@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -361,15 +363,31 @@ const filterCharacters = (keep) => {
 const guess = (suspect) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  let choice = confirm(`Do you want to guess ${suspect}?`);
+  if (choice) {
+    // If the player wants to guess, invoke the checkMyGuess function.
+    checkMyGuess(suspect);
+  } 
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
+   if (suspect === secret.name) {
+    alert(`You Win! The secret person was ${secret.name}`);
+  }
+  else {
+    alert(`Game Over - the secret person was ${secret.name}`);
+  }
+  winOrLose.style.display = "block";
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+}
+//a function to hide the win or lose section when play again is chosen
+const something = () => {
+  winOrLose.style.display = "none";
+  start();
 }
 
 // Invokes the start function when website is loaded
@@ -379,3 +397,4 @@ start()
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
+playAgain.addEventListener('click', something);

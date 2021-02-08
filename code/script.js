@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -254,6 +255,9 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard();
+  setSecret();
+  console.log(`Secret person: ${secret.name}`);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -341,3 +345,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+
+findOutButton.addEventListener('click', checkQuestion)

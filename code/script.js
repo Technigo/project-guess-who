@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter') //find out button
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -253,6 +254,7 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  generateBoard() //shows all the cards for the persons. 
   // What else should happen when we start the game?
 }
 

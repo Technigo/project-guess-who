@@ -293,39 +293,72 @@ const selectQuestion = () => {
       attribute: value,
       value: true,
       category: category,
-          // Set this up your self (should be same structure as above)
+      // Set this up your self (should be same structure as above)
     }
   }
+  console.log(value)
+  findOutBtn.addEventListener('click', checkQuestion(currentQuestion, category, value))
 }
 
+// const validateResponse = (currentQuestion, secret) => {
+//  return currentQuestion === secret
+//}
+
 // This function should be invoked when you click on 'Find Out'.
-const checkQuestion = () => {
+const checkQuestion = (currentQuestion, category, value) => {
+  // const keep = validateResponse(currentQuestion, secret)
+  const keep = currentQuestion === secret
+
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  console.log(keep, category)
+  filterCharacters(keep, category, value)
 }
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
+const filterCharacters = (keep, group, attribute) => {
   // Show the correct alert message for different categories
   if (group === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the character wears ${attribute}! Keep all characters that wears ${attribute}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the character doesn't wear ${attribute}! Remove all characters that wears ${attribute}.`
       )
     }
   } else if (group === 'other') {
-    // Similar to the one above
-  } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
-    } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
-    }
+      if (keep) {
+        alert(
+          `Yes, the character ${attribute}! Keep all characters that ${attribute}.`
+        )
+      } else {
+        alert(
+          `No, the character doesn't ${attribute}! Remove all characters that ${attribute}.`
+        )
+      }
+  } else if (group === 'hairColor') {
+      if (keep) {
+        alert(
+          `Yes, the character has ${attribute}! Keep all characters that has ${attribute}.`
+        )
+      } else {
+        alert(
+          `No, the character doesn't have ${attribute}! Remove all characters that has ${attribute}.`
+        )
+      } 
+  } else if (group === 'eyeColor') {
+      if (keep) {
+        alert(
+          `Yes, the character has ${attribute}! Keep all characters that has ${attribute}.`
+        )
+      } else {
+        alert(
+          `No, the character doesn't have ${attribute}! Remove all characters that has ${attribute}.`
+        )
+      }
   }
 
   // filter to keep or remove based on the keep variable.
@@ -357,3 +390,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
+// findOutBtn.addEventListener('click', checkQuestion)

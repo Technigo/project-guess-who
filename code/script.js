@@ -271,7 +271,7 @@ const selectQuestion = () => {
       // value: ,
       // 👆 add the value from the input here
       category: category,
-    }
+    } // Checka ifall du kan lägga till flera här dvs samtliga hair
   } else if (category === 'eye color') {
     // Set this up your self
   } else if (category === 'accessories') {
@@ -344,7 +344,7 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOutButton.addEventListener('click', selectQuestion)
+findOutButton.addEventListener('click', selectQuestion) // Kolla rad 290 const checkQuestion = () => {
 
 
 /*form.addEventListener('submit', (event) => {

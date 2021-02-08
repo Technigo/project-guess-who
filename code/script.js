@@ -410,7 +410,5 @@ findOutButton.addEventListener("click", (currentQuestion) => {
 })
 
 playAgainButton.addEventListener("click", () => {
-  console.log("replay")
-  
-  start
+  location.reload()
 })

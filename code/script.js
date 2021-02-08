@@ -270,6 +270,22 @@ const CHARACTERS = [{
   },
 ]
 
+const sentences = [{
+    accessories: `Yes, the person wears ${currentQ.attribute}! Keep all that wears ${currentQ.attribute}`,
+    hairColor: `Yes, the person has ${currentQ.value} hair! Keep all that have ${currentQ.value} hair`,
+    eyeColor: `Yes, the person has ${currentQ.value} eyes! Keep all that have ${currentQ.value} eyes`,
+    animals: `Yes, the person is a ${currentQ.attribute} owner! Keep all the ${currentQ.attribute} owners`,
+    other: `Yes, the person is a ${currentQ.attribute}! Keep all the ${currentQ.attribute}'s`,
+  },
+  {
+    accessories: `No, the person doesn't wear ${currentQ.attribute}! Remove all that wears ${currentQ.attribute}`,
+    hairColor: `No, the person doesn't have ${currentQ.value} hair! Remove all that have ${currentQ.value} hair`,
+    eyeColor: `No, the person don't have ${currentQ.value} eyes! Remove all that have ${currentQ.value} eyes`,
+    animals: `No, the person isn't a ${currentQ.attribute} owner! Remove all the ${currentQ.attribute} owners`,
+    other: `No, the person isn't a ${currentQ.attribute}! Remove all the ${currentQ.attribute}'s`,
+  }
+]
+
 // Global variables
 let secret, currentQuestion, charactersInPlay, startTime, endTime, questionsAsked = 0,
   totalSeconds = 0;
@@ -468,70 +484,49 @@ const filterCharacters = (currentQ, keep) => {
   if (isEqual(keep, true)) {
     switch (currentQ.category) {
       case 'accessories':
-        alert(
-          `Yes, the person wears ${currentQ.attribute}! Keep all that wears ${currentQ.attribute}`
-        )
+        alert(sentences[1].accessories)
         charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
         break;
       case 'hair color':
-        alert(
-          `Yes, the person has ${currentQ.value} hair! Keep all that have ${currentQ.value} hair`
-        )
+        alert(sentences[1].hairColor)
         charactersInPlay = charactersInPlay.filter((person => person.hairColor === currentQ.value))
         break;
       case 'eye color':
-        alert(
-          `Yes, the person has ${currentQ.value} eyes! Keep all that have ${currentQ.value} eyes`
-        )
+        alert(sentences[1].eyeColor)
         charactersInPlay = charactersInPlay.filter((person => person.eyeColor === currentQ.value))
         break;
       case 'animals':
-        alert(
-          `Yes, the person is a ${currentQ.attribute} owner! Keep all the ${currentQ.attribute} owners`
-        )
+        alert(sentences[1].animals)
         charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
         break;
       case 'other':
-        alert(
-          `Yes, the person is a ${currentQ.attribute}! Keep all the ${currentQ.attribute}'s`
-        )
+        alert(sentences[1].other)
         charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
         break;
     }
   } else {
     switch (currentQ.category) {
       case 'accessories':
-        alert(
-          `No, the person doesn't wear ${currentQ.attribute}! Remove all that wears ${currentQ.attribute}`
-        )
+        alert(sentences[2].accessories)
         charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
         break;
       case 'hair color':
-        alert(
-          `No, the person doesn't have ${currentQ.value} hair! Remove all that have ${currentQ.value} hair`
-        )
+        alert(sentences[2].hairColor)
         charactersInPlay = charactersInPlay.filter((person => person.hairColor !== currentQ.value))
         break;
       case 'eye color':
-        alert(
-          `No, the person doesn't have ${currentQ.value} eyes! Remove all that have ${currentQ.value} eyes`
-        )
+        alert(sentences[2].eyeColor)
         charactersInPlay = charactersInPlay.filter((person => person.eyeColor !== currentQ.value))
         break;
       case 'animals':
-        alert(
-          `No, the person isn't a ${currentQ.attribute} owner! Remove all that are ${currentQ.attribute} owners.`
-        )
+        alert(sentences[2].animals)
         charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
         break;
       case 'other':
-        alert(
-          `No, the person isn't a ${currentQ.attribute}! Remove all that are ${currentQ.attribute}'s`
-        )
+        alert(sentences[2].other)
         charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
         break;
     }
-
   }
   //generates a new board depending on the filtered array
   generateBoard(charactersInPlay)

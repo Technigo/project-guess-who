@@ -1,7 +1,11 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const board = document.getElementById("board");
+const questions = document.getElementById("questions");
+const restartButton = document.getElementById("restart");
+const findOutButton = document.getElementById("filter");
+const winOrLose = document.getElementById("winOrLose");
+const winOrLoseText = document.getElementById("winOrLoseText");
+const playAgainButton = document.getElementById("playAgain");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -222,7 +226,7 @@ const CHARACTERS = [
     hat: true,
     smoker: false,
   },
-]
+];
 
 // Global variables
 let secret, currentQuestion, charactersInPlay
@@ -247,40 +251,61 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret)
 }
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  // What else should happen when we start the game? - we should make the board visible
+  setTimeout(generateBoard, 1000)
+  // When we start the game the secret person should be selected
+  setSecret()
 }
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  console.log(category)
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
+  const actualValue = questions.value
+  console.log(actualValue)
 
+  // Here we have an object assigned to global variable currentQuestion depending on the category selected
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: actualValue,
       // 👆 add the value from the input here
       category: category,
     }
   } else if (category === 'eye color') {
     // Set this up your self
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value: actualValue,
+      category: category,
+    }
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: actualValue,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
     // Set this up your self (should be same structure as above)
+    currentQuestion = {
+      attribute: actualValue,
+      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
+      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      category: category,
+    }
   }
+  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out'.
@@ -340,4 +365,7 @@ const checkMyGuess = (suspect) => {
 start()
 
 // All the event listeners
+// Event listener which occurs when the user clicks on the restart button
 restartButton.addEventListener('click', start)
+// Event listener which occurs when the user selects something in the drop down list
+questions.addEventListener("change", () => selectQuestion())

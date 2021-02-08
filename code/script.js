@@ -17,6 +17,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    ageImg: 20,
+    age: 'under 30',
   },
   {
     name: 'Jack',
@@ -26,6 +28,8 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    ageImg: 55,
+    age: 'over 45',
   },
   {
     name: 'Jacques',
@@ -35,6 +39,8 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: true,
+    ageImg: 65,
+    age: 'over 45',
   },
   {
     name: 'Jai',
@@ -44,6 +50,8 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    ageImg: 24,
+    age: 'under 30',
   },
   {
     name: 'Jake',
@@ -53,6 +61,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    ageImg: 32,
+    age: '30-45',
   },
   {
     name: 'James',
@@ -62,6 +72,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    ageImg: 23,
+    age: 'under 30',
   },
   {
     name: 'Jana',
@@ -71,6 +83,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    ageImg: 35,
+    age: '30-45',
   },
   {
     name: 'Jane',
@@ -80,6 +94,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    ageImg: 28,
+    age: 'under 30',
   },
   {
     name: 'Jaqueline',
@@ -89,8 +105,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    ageImg: 66,
+    age: 'over 45',
   },
-
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
@@ -99,6 +116,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: true,
+    ageImg: 31,
+    age: '30-45',
   },
   {
     name: 'Jean',
@@ -108,6 +127,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
+    ageImg: 27,
+    age: 'under 30',
   },
   {
     name: 'Jeane',
@@ -117,6 +138,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    ageImg: 30,
+    age: 'under 30',
   },
   {
     name: 'Jed',
@@ -126,6 +149,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
+    ageImg: 42,
+    age: '30-45',
   },
   {
     name: 'Jenni',
@@ -135,6 +160,8 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    ageImg: 33,
+    age: '30-45',
   },
   {
     name: 'Jeri',
@@ -144,6 +171,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    ageImg: 37,
+    age: '30-45',
   },
   {
     name: 'Jerry',
@@ -153,6 +182,8 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    ageImg: 18,
+    age: 'under 30',
   },
   {
     name: 'Jess',
@@ -162,6 +193,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    ageImg: 30,
+    age: 'under 30',
   },
   {
     name: 'Jocelyn',
@@ -171,6 +204,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    ageImg: 39,
+    age: '30-45',
   },
   {
     name: 'Jon',
@@ -180,6 +215,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    ageImg: 43,
+    age: '30-45',
   },
   {
     name: 'Jordan',
@@ -189,6 +226,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    ageImg: 19,
+    age: 'under 30',
   },
   {
     name: 'Josephine',
@@ -198,6 +237,8 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    ageImg: 69,
+    age: 'over 45',
   },
   {
     name: 'Josh',
@@ -207,6 +248,8 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    ageImg: 35,
+    age: '30-45',
   },
   {
     name: 'Jude',
@@ -216,6 +259,8 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    ageImg: 44,
+    age: '30-45',
   },
   {
     name: 'Julie',
@@ -225,6 +270,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    ageImg: 18,
+    age: 'under 30',
   },
 ];
 
@@ -238,6 +285,7 @@ const generateBoard = () => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
+        <p class="age">${person.ageImg} years old</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
@@ -250,7 +298,7 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
 // This function to start (and restart) the game
@@ -260,6 +308,8 @@ const start = () => {
   // What else should happen when we start the game?
   setSecret();
   setTimeout(generateBoard, 1000);
+  board.style.display = "flex";
+  winOrLose.style.display = "none";
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -272,14 +322,14 @@ const selectQuestion = () => {
 
   if (category === 'hair color') {
     currentQuestion = {
-      attribute: 'hair color',
+      attribute: 'hairColor',
       value: value,
       category: category,
     }
   } else if (category === 'eye color') {
     // Set this up your self
     currentQuestion = {
-      attribute: 'eye color',
+      attribute: 'eyeColor',
       value: value,
       category: category,
     }
@@ -297,12 +347,20 @@ const selectQuestion = () => {
       value: true,
       category: category,
     }
+  } else if (category === 'age') {
+    // Set this up your self (should be same structure as above)
+    currentQuestion = {
+      attribute: 'age',
+      value: value,
+      category: category,
+    }
   }
-}
+};
+
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-
+  const keep = currentQuestion.value === secret[currentQuestion.attribute];
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -312,69 +370,85 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+
+  const { attribute, category, value } = currentQuestion;
+
+  if (category === 'hair color') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person has ${value} hair! Keep all the people with ${value} hair!`
       );
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
-      );
-    }
-  } else if (category === 'other') {
-      if (keep) {
-        alert(
-          `Yes, the person is ${attribute}! Keep all the ${attribute}`
-      );
-    } else {
-      alert(
-        `No, the person is not ${attribute}! Remove all the ${attribute}`
-      );
-    }
-  } else if (category === 'hair color') {
-    if (keep) {
-      alert(
-        `Yes, the person has ${attribute} hair! Keep all the people with ${attribute} hair!`
-      );
-    } else {
-      alert(`No, the person has not ${attribute} hair! Remove all the people with ${attribute} hair!`
+        `No, the person doesn't have ${value} hair! Remove all the people with ${value} hair!`
       );
     }
   } else if (category === 'eye color') {
       if (keep) {
         alert(
-          `Yes, the person has ${attribute} eyes! Keep all the people with ${attribute} eyes!`
+          `Yes, the person has ${value} eyes! Keep all the people with ${attribute} eyes!`
         );
       } else {
         alert(
-          `No, the person has not ${attribute} eyes! Remove all the people with ${attribute} eyes!`
+          `No, the person doesn't have ${value} eyes! Remove all the people with ${value} eyes!`
         );
       }
+  } else if (category === 'accessories') {
+      if (keep) {
+        alert(
+          `Yes, the person wears ${attribute}! Keep everyone that wears ${attribute}!`
+        );
+      } else {
+        alert(
+          `No, the person doesn't wear ${attribute}! Remove everyone that wears ${attribute}!`
+        );
+      }
+  } else if (category === 'other') {
+      if (keep) {
+        alert(
+          `Yes, the person is ${attribute}! Keep all the ${attribute}!`
+        );
+      } else {
+        alert(
+          `No, the person is not ${attribute}! Remove all the ${attribute}!`
+        );
+      }
+  } else if (category === 'age') {
+    if (keep) {
+      alert(
+        `Yes, the person is ${value} years old! Keep all the people that is ${value} years old!`
+      );
+    } else {
+      alert(
+        `No, the person is not ${value} years old! Remove all the people that is ${value} years old!`
+      );
+    }
   }
 
   // Filtering out people
-
+  
   if (keep) {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value);
   } else {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value);
   }
+  generateBoard();
 };
 
   // Invoke a function to redraw the board with the remaining people.
-
+  
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   const playerGuess = confirm(`Do you want to guess on ${suspect}?`)
 
   if (playerGuess) {
-  setTimeout(checkMyGuess(suspect), 1000);
+  checkMyGuess(suspect);
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-}};
+  }
+};
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
@@ -382,22 +456,23 @@ const checkMyGuess = (suspect) => {
     winOrLoseText.innerHTML = `
       YAY, you win! You guessed on ${suspect} and that was correct!`;
   } else {
-    winOrLoseText = `
-      NO, you lose! You guessed on ${suspect} and that was wrong! The right answer was ${secret.name}`;
+    winOrLoseText.innerHTML = `
+      NO, you lose! You guessed on ${suspect} and that was wrong! The right answer was ${secret.name}!`;
   }
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-  winOrLose.style.display = "flex;"
   board.style.display = "none";
+  winOrLose.style.display = "flex";
 };
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
 restartButton.addEventListener('click', start);
+questions.addEventListener('change', () => selectQuestion());
 findOutButton.addEventListener('click', checkQuestion);
 playAgain.addEventListener('click', start);
 

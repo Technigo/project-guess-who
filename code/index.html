@@ -21,8 +21,9 @@
       />
 
       <h1>Does the person have</h1>
-
+      
       <select id="questions">
+        <option disabled selected>choose question</option>
         <optgroup label="hair color">
           <option value="brown">brown hair</option>
           <option value="yellow">yellow hair</option>
@@ -49,7 +50,13 @@
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
         </optgroup>
+        <optgroup label="age">
+          <option value="under 30">under 30</option>
+          <option value="30-45">30-45</option>
+          <option value="over 45">over 45</option>
+        </optgroup>
       </select>
+    
 
       <button id="filter" class="filled-button">FIND OUT</button>
     </aside>
@@ -69,6 +76,8 @@
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
+
+
     <script src="script.js"></script>
   </body>
 </html>

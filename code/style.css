@@ -80,6 +80,11 @@ select {
   font-weight: 700;
 }
 
+.card .age {
+  font-size: 12px;
+  margin-top: 0;
+}
+
 .card .guess {
   display: none;
   flex-direction: column;

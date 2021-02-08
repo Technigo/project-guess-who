@@ -254,6 +254,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  setSecret();
+  setTimeout(generateBoard, 1000);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -265,21 +267,30 @@ const selectQuestion = () => {
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
-      // 👆 add the value from the input here
+      value: value,
       category: category,
     }
   } else if (category === 'eye color') {
     // Set this up your self
+    currentQuestion = {
+      attribute: 'eye color',
+      value: value,
+      category: category,
+    }
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: value,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
     // Set this up your self (should be same structure as above)
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    }
   }
 }
 
@@ -288,6 +299,8 @@ const checkQuestion = () => {
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  const keep = currentQuestion.value === charactersInPlay;
+  filterCharacters(keep);
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -304,14 +317,36 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (group === 'other') {
-    // Similar to the one above
-  } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      if (keep) {
+        alert(
+          `Yes, the person is ${attribute}! Keep all the ${attribute}`
+      )
     } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert(
+        `No, the person is not ${attribute}! Remove all the ${attribute}`
+      )
     }
+  } else if (group === 'hair color') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${attribute}! Keep all the people with ${attribute}`
+      )
+    } else {
+      alert(`No, the person has not ${attribute}! Remove all the people with ${attribute}`
+      )
+    }
+  } else if (group === 'eye color') {
+      if (keep) {
+        alert(
+          `Yes, the person has ${attribute}! Keep all the people with ${attribute}!`
+        )
+      } else {
+        alert(
+          `No, the person has not ${attribute}! Remove all the people with ${attribute}!`
+        )
+      }
   }
+  };
 
   // filter to keep or remove based on the keep variable.
   /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
@@ -319,7 +354,7 @@ const filterCharacters = (keep) => {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
 
   // Invoke a function to redraw the board with the remaining people.
-}
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
@@ -340,4 +375,6 @@ const checkMyGuess = (suspect) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start);
+
+

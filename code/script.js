@@ -4,8 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
 // Array with all the characters, as objects
-const CHARACTERS = [
-  {
+const CHARACTERS = [{
     name: 'Jabala',
     img: 'images/jabala.svg',
     hairColor: 'hidden',
@@ -253,72 +252,168 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  generateBoard()
+  setSecret()
+  console.log('secret set')
 }
 
 // setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = () => {
+const selectQuestion = (handleOption) => {
+  console.log("loopS")
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-
-  if (category === 'hair color') {
+  if (isEqual(category, 'hair color')) {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
-      // 👆 add the value from the input here
+      value: handleOption,
       category: category,
-    }
-  } else if (category === 'eye color') {
-    // Set this up your self
-  } else if (category === 'accessories') {
+    };
+    console.log(currentQuestion)
+  } else if (isEqual(category, 'eye color')) {
     currentQuestion = {
-      //attribute: ,
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      attribute: 'eyeColor',
+      value: handleOption,
       category: category,
+    };
+    console.log(currentQuestion);
+  } else if (isEqual(category, 'accessories')) {
+    switch (handleOption) {
+      case 'glasses':
+        currentQuestion = {
+          attribute: 'glasses',
+          value: true,
+          category: category,
+        };
+        break;
+      case 'hat':
+        currentQuestion = {
+          attribute: 'hat',
+          value: true,
+          category: category,
+        };
+        break;
     }
-  } else if (category === 'other') {
-    // Set this up your self (should be same structure as above)
+    console.log(currentQuestion);
+  } else if (isEqual(category, 'other')) {
+    switch (handleOption) {
+      case 'smoker':
+        currentQuestion = {
+          attribute: 'smoker',
+          value: true,
+          category: 'other',
+        };
+    }
+    console.log(currentQuestion);
   }
+  const findOut = document.getElementById('filter')
+  findOut.addEventListener('click', stopPropergate);
+  console.log('click')
+}
+
+const stopPropergate = (event) => {
+  event.stopImmediatePropagation();
+  checkQuestion(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out'.
-const checkQuestion = () => {
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+const checkQuestion = (currentQ) => {
+  let keep;
+  let userValue = currentQ.value;
+
+  switch (currentQ.category) {
+    case 'hair color':
+      if (isEqual(userValue, secret.hairColor)) {
+        console.log('haircolor true')
+        console.log(currentQ)
+        keep = true
+      } else {
+        console.log('haircolor false')
+        keep = false
+      }
+      break;
+    case 'eye color':
+      if (isEqual(userValue, secret.eyeColor)) {
+        keep = true;
+      } else {
+        keep = false
+      }
+      break;
+    case 'accessories':
+      if (isEqual(userValue, secret.glasses) && currentQ.attribute === 'glasses') {
+        keep = true;
+      } else if (isEqual(userValue, secret.hat) && currentQ.attribute === 'hat') {
+        keep = true;
+      } else {
+        keep = false;
+      }
+      break;
+    case 'other':
+      if (isEqual(userValue, secret.smoker)) {
+        keep = true;
+        console.log('yes smoke')
+      } else {
+        keep = false;
+        console.log('no smoke')
+      }
+      break;
+  }
+  filterCharacters(currentQ, keep)
+}
+
+const isEqual = (a, b) => {
+  return a === b;
 }
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
-  // Show the correct alert message for different categories
-  if (group === 'accessories') {
-    if (keep) {
+const filterCharacters = (currentQ, keep) => {
+
+  if (isEqual(currentQ.category, 'accessories')) {
+    if (isEqual(keep, true)) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person wears ${currentQ.attribute}! Keep all that wears ${currentQ.attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the person doesn't wear ${currentQ.attribute}! Remove all that wears ${currentQ.attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
     }
-  } else if (group === 'other') {
-    // Similar to the one above
+  } else if (isEqual(currentQ.category, 'hair color')) {
+    if (isEqual(keep, true)) {
+      alert(
+        `Yes, the person has ${currentQ.value} hair! Keep all that have ${currentQ.value} hair`
+      )
+      charactersInPlay = charactersInPlay.filter((person => person.hairColor === currentQ.value))
+    } else {
+      alert(
+        `No, the person doesn't have ${currentQ.value} hair! Remove all that have ${currentQ.value} hair`
+      )
+      charactersInPlay = charactersInPlay.filter((person => person.hairColor !== currentQ.value))
+    }
+  } else if (isEqual(currentQ.category, 'eye color')) {
+    if (isEqual(keep, true)) {
+      alert(
+        `Yes, the person has ${currentQ.value} eyes! Keep all that have ${currentQ.value} eyes`
+      )
+      charactersInPlay = charactersInPlay.filter((person => person.eyeColor === currentQ.value))
+    } else {
+      alert(
+        `No, the person doesn't have ${currentQ.value} eyes! Remove all that have ${currentQ.value} eyes`
+      )
+      charactersInPlay = charactersInPlay.filter((person => person.eyeColor !== currentQ.value))
+    }
+  } else if (isEqual(keep, true)) {
+    alert(
+      `Yes, the person is a ${currentQ.attribute}! Keep all the ${currentQ.attribute}'s`
+    )
+    charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
   } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
-    } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
-    }
+    alert(
+      `No, the person isn't a ${currentQ.attribute}! Remove all that are ${currentQ.attribute}'s`
+    )
+    charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
   }
-
-  // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
-
-  // Invoke a function to redraw the board with the remaining people.
+generateBoard(charactersInPlay)
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -341,3 +436,7 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+
+questions.addEventListener('change', () => {
+  selectQuestion(questions.value)
+})

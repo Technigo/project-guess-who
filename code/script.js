@@ -265,17 +265,23 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   // This variable stores what option group (category) the question belongs to.
+
   // We also need a variable that stores the actual value of the question we've selected.
+  let optionValue = questions.value;
+  console.log(optionValue);
 
   if (category === "hair color") {
     currentQuestion = {
       attribute: "hairColor",
-      // value: ,
+      value: optionValue,
       // 👆 add the value from the input here
       category: category,
     };
   } else if (category === "eye color") {
-    // Set this up your self
+    currentQuestion = {
+      attribute: "eyeColor",
+      value: optionValue,
+    };
   } else if (category === "accessories") {
     currentQuestion = {
       //attribute: ,

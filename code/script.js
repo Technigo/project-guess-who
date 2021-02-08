@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter') // Jag la till denna nu när jag håller på med Step Three men vet ej om den stämmer
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -254,6 +255,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard() // Jag la till denna i Step One
+  setSecret() // Jag la till denna i Step Two
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -341,3 +344,14 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOutButton.addEventListener('click', selectQuestion)
+
+
+/*form.addEventListener('submit', (event) => {
+  event.preventDefault(); // Preventing default 
+  const sender = "user";
+  const newInput = document.getElementById('name-input').value
+  globalName = newInput;
+  form.innerHTML = "";
+  showMessage(newInput, sender);
+  nextQuestion(newInput); */

@@ -229,7 +229,7 @@ const CHARACTERS = [
 ];
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion, charactersInPlay, actualValue
 
 // Draw the game board
 const generateBoard = () => {
@@ -271,7 +271,7 @@ const selectQuestion = () => {
   console.log(category)
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  const actualValue = questions.value
+  actualValue = questions.value
   console.log(actualValue)
 
   // Here we have an object assigned to global variable currentQuestion depending on the category selected
@@ -309,10 +309,32 @@ const selectQuestion = () => {
 }
 
 // This function should be invoked when you click on 'Find Out'.
+// This function compares the properties of secret character with the properties chosen by user and returns true if matching, otherwise - false.
 const checkQuestion = () => {
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
+  let keep;
+
+  if(currentQuestion.category === "hair color" && currentQuestion.value === secret.hairColor){
+    keep = true
+    console.log(keep)
+  } else if (currentQuestion.category === "eye color" && currentQuestion.value === secret.eyeColor) {
+    keep = true
+    console.log(keep)
+  } else if (currentQuestion.category === "accessories" && currentQuestion.attribute === "glasses" && currentQuestion.value === secret.glasses) {
+    keep = true
+    console.log(keep)
+  } else if (currentQuestion.category === "accessories" && currentQuestion.attribute === "hat" && currentQuestion.value === secret.hat) {
+    keep = true
+    console.log(keep)
+  } else if (currentQuestion.category === "other" && currentQuestion.value === secret.smoker) {
+    keep = true
+    console.log(keep)
+  } 
+  else {
+    keep = false
+    console.log(keep)
+  }
   // Then invoke filterCharacters
+  filterCharacters(keep);
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -369,3 +391,5 @@ start()
 restartButton.addEventListener('click', start)
 // Event listener which occurs when the user selects something in the drop down list
 questions.addEventListener("change", () => selectQuestion())
+// Event listener which occurs when the user clicks on the find out button
+findOutButton.addEventListener('click', checkQuestion)

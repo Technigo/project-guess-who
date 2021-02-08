@@ -164,7 +164,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  max-width: 100vw;
   text-align: center;
 }
 

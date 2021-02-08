@@ -252,15 +252,16 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  //generates gameboard
   generateBoard()
+  //sets the secret character
   setSecret()
-  console.log('secret set')
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (handleOption) => {
-  console.log("loopS")
   const category = questions.options[questions.selectedIndex].parentNode.label
+  //value is set to the option playes selects
   if (isEqual(category, 'hair color')) {
     currentQuestion = {
       attribute: 'hairColor',
@@ -274,6 +275,7 @@ const selectQuestion = (handleOption) => {
       value: handleOption,
       category: category,
     };
+    //here the value is set to true and the player option is used in a switch to keep track of different accessories/other
     console.log(currentQuestion);
   } else if (isEqual(category, 'accessories')) {
     switch (handleOption) {
@@ -302,19 +304,25 @@ const selectQuestion = (handleOption) => {
           category: 'other',
         };
     }
-    console.log(currentQuestion);
   }
+  //on click stopPropergate is run
   const findOut = document.getElementById('filter')
   findOut.addEventListener('click', stopPropergate);
   console.log('click')
 }
 
+//function used in if statements
+const isEqual = (a, b) => {
+  return a === b;
+}
+
+//the stored data for the current quess is passed as an argument to chechQuestion and repetition of the exact same function on click is hindered
 const stopPropergate = (event) => {
   event.stopImmediatePropagation();
   checkQuestion(currentQuestion)
 }
 
-// This function should be invoked when you click on 'Find Out'.
+//This function is innvoked when you click FindOut. It compares the secret characters properties with the players options and sets "keep" to true if matching, otherwise false
 const checkQuestion = (currentQ) => {
   let keep;
   let userValue = currentQ.value;
@@ -322,8 +330,6 @@ const checkQuestion = (currentQ) => {
   switch (currentQ.category) {
     case 'hair color':
       if (isEqual(userValue, secret.hairColor)) {
-        console.log('haircolor true')
-        console.log(currentQ)
         keep = true
       } else {
         console.log('haircolor false')
@@ -356,14 +362,12 @@ const checkQuestion = (currentQ) => {
       }
       break;
   }
+  //passes the properties of the current question and right/wrong option to the filter function
   filterCharacters(currentQ, keep)
 }
 
-const isEqual = (a, b) => {
-  return a === b;
-}
 
-// It'll filter the characters array and redraw the game board.
+// Filters the characters if keep is true/false (depending on option chosen of player) and alerts the response. Then uses array.filter to return an array of characters based on that
 const filterCharacters = (currentQ, keep) => {
 
   if (isEqual(currentQ.category, 'accessories')) {
@@ -413,22 +417,72 @@ const filterCharacters = (currentQ, keep) => {
     )
     charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
   }
-generateBoard(charactersInPlay)
+
+  //generates a new board depending on the filtered array
+  generateBoard(charactersInPlay)
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// when the player clicks guess they need to confirm with yes or no. On yes checkMyGuess is invoked, on no the gameboard is showed again
 const guess = (suspect) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  board.innerHTML = `
+    Are you sure you want to guess on ${suspect}? 
+    <button id="yes-btn" class="filled-button">
+      YES
+    </button> 
+    <button id="no-btn" class="filled-button">
+      NO
+    </button>
+  `
+  document.getElementById("yes-btn").addEventListener('click', () => {
+    checkMyGuess(suspect)
+  })
+  document.getElementById("no-btn").addEventListener('click', () => {
+    generateBoard(charactersInPlay)
+  })
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
-  // 1. Check if the suspect is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  board.innerHTML = ''
+  let winOrLose = document.getElementById('winOrLose')
+  winOrLose.style.display = 'block'
+  if (isEqual(suspect, secret)) {
+    winOrLose.innerHTML = `
+      <div class="win-or-lose">
+        <img
+          class="guess-who-icon"
+          src="images/guess-who-bubble.png"
+          alt="Guess Who"/>
+        <h1 id="winOrLoseText">
+          Yes, ${suspect} was the secret character! Well done!
+        </h1>
+        <button id="playAgain" class="filled-button">
+          PLAY AGAIN
+        </button>
+      </div>
+    `
+    const playAgain = document.getElementById("playAgain")
+    playAgain.addEventListener('click', start)
+  } else {
+    winOrLose.innerHTML = `
+      <div class="win-or-lose">
+        <img
+          class="guess-who-icon"
+          src="images/guess-who-bubble.png"
+          alt="Guess Who"/>
+        <h1 id="winOrLoseText">
+          Sorry, ${suspect} was the not the secret character! Better luck next time.
+        </h1>
+        <button id="playAgain" class="filled-button">
+          PLAY AGAIN
+        </button>
+      </div>
+    `
+    const playAgain = document.getElementById("playAgain")
+    playAgain.addEventListener('click', () => {
+      start();
+    })
+  }
 }
 
 // Invokes the start function when website is loaded

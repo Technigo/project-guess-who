@@ -254,6 +254,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  setSecret()
+  generateBoard()  
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -275,7 +277,7 @@ const selectQuestion = () => {
     currentQuestion = {
       //attribute: ,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      value: true, // we're asking if this person wears a hat for example, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
@@ -340,4 +342,5 @@ const checkMyGuess = (suspect) => {
 start()
 
 // All the event listeners
+playAgainButton.addEventListener('click', start)
 restartButton.addEventListener('click', start)

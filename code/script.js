@@ -247,6 +247,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  //console.log(secret)
 }
 
 // This function to start (and restart) the game
@@ -255,6 +256,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard();
+  setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown

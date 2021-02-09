@@ -226,7 +226,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion, charactersInPlay, keep
 
 // Draw the game board
 const generateBoard = () => {
@@ -301,12 +301,19 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-  console.log("is the button working?")
   selectQuestion()
-  console.log(currentQuestion)
+  //console.log(currentQuestion)
+  if (currentQuestion["value"] === secret[currentQuestion["attribute"]]) {
+    console.log(true)
+    let keep = true
+  } else {
+    console.log(false)
+    let keep = false
+  }
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+ // filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.

@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterBtn = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -244,6 +245,7 @@ const generateBoard = () => {
   })
 }
 
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -253,41 +255,67 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  setSecret();
+  generateBoard();
   // What else should happen when we start the game?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  const category = questions.options[questions.selectedIndex].parentNode.label;
+  const selectedElementValue = questions.options[questions.selectedIndex].value;
+
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: selectedElementValue,
       // 👆 add the value from the input here
       category: category,
     }
   } else if (category === 'eye color') {
     // Set this up your self
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value: selectedElementValue,
+      // 👆 add the value from the input here
+      category: category,
+    }
+    // 👆 add the value from the input here
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: selectedElementValue,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
     // Set this up your self (should be same structure as above)
+    currentQuestion = {
+      attribute: selectedElementValue,
+      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
+      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      category: category,
+    }
   }
 }
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+  
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+
+  console.log(currentQuestion);
+
+  const secretValue = secret[currentQuestion.attribute];
+  if (secretValue === currentQuestion.value) {
+    filterCharacters(true);
+    } else {
+    filterCharacters(false);
+  }
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -308,8 +336,14 @@ const filterCharacters = (keep) => {
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      alert(
+        `Yes, the person has ${attribute}! Keep all that has ${attribute}`
+      )
     } else {
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert(
+        `No, the person doesn't have ${attribute}! Remove all that has ${attribute}`
+      )
     }
   }
 
@@ -337,7 +371,9 @@ const checkMyGuess = (suspect) => {
 }
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start);
+questions.addEventListener('change', selectQuestion);
+filterBtn.addEventListener('click', checkQuestion);

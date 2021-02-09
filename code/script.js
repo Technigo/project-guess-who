@@ -299,10 +299,12 @@ const generateBoard = () => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
+        <div class='card-img'>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+        </div>
         </div>
       </div>
     `
@@ -328,7 +330,7 @@ const timer = (x) => {
     minute = "0" + minute;
   if (seconds < 10)
     seconds = "0" + seconds;
-  document.getElementById("timer").innerHTML = minute + ":" + seconds;
+  document.getElementById("timer").innerHTML =`Time passed: ${minute}:${seconds}`;
 }
 
 // This function to start (and restart) the game
@@ -498,7 +500,6 @@ const checkQuestion = (currentQ) => {
 
 // Filters the characters on properties of keep(depending on option chosen of player) and alerts the response. Then uses array.filter to return an array of characters based on that
 const filterCharacters = (keep) => {
-
   let userValue = keep.value
 
   switch (keep.category) {
@@ -567,13 +568,15 @@ const filterCharacters = (keep) => {
 // when the player clicks guess they need to confirm with yes or no. On yes checkMyGuess is invoked, on no the gameboard is showed again
 const guess = (suspect) => {
   board.innerHTML = `
-    Are you sure you want to guess on ${suspect}? 
-    <button id="yes-btn" class="filled-button">
-      YES
-    </button> 
-    <button id="no-btn" class="filled-button">
-      NO
-    </button>
+    <div class="guess-confirmation">
+      Are you sure you want to guess on ${suspect}? 
+      <button id="yes-btn" class="filled-button">
+        YES
+      </button> 
+      <button id="no-btn" class="filled-button">
+        NO
+      </button>
+    </div>
   `
   const yesBtn = document.getElementById("yes-btn")
   yesBtn.addEventListener('click', () => {
@@ -595,7 +598,7 @@ const checkMyGuess = (suspect) => {
       <div class="win-or-lose">
         <img
           class="guess-who-icon"
-          src="images/guess-who-bubble.png"
+          src="images/print.png"
           alt="Guess Who"/>
         <h1 id="winOrLoseText">
           Yes, ${suspect} was the secret character! Well done!
@@ -611,7 +614,7 @@ const checkMyGuess = (suspect) => {
       <div class="win-or-lose">
         <img
           class="guess-who-icon"
-          src="images/guess-who-bubble.png"
+          src="images/print.png"
           alt="Guess Who"/>
         <h1 id="winOrLoseText">
           Sorry, ${suspect} was the not the secret character, but ${secret.name}! Better luck next time.

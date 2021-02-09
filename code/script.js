@@ -257,7 +257,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard()
   setSecret()
-  console.log(secret)
+  console.log('secret: ', secret)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -296,8 +296,8 @@ const selectQuestion = () => {
       // Set this up your self (should be same structure as above)
     }
   }
-  console.log(value)
-  findOutBtn.addEventListener('click', checkQuestion(currentQuestion, category, value))
+  console.log('value: ', value)
+  //findOutBtn.addEventListener('click', checkQuestion(currentQuestion)
 }
 
 // const validateResponse = (currentQuestion, secret) => {
@@ -305,19 +305,29 @@ const selectQuestion = () => {
 //}
 
 // This function should be invoked when you click on 'Find Out'.
-const checkQuestion = (currentQuestion, category, value) => {
-  // const keep = validateResponse(currentQuestion, secret)
-  const keep = currentQuestion === secret
+const checkQuestion = () => {
+  console.log('currentQuestion: ', currentQuestion)
+  //const keep = validateResponse(currentQuestion, secret)
+  //const keep = (currentQuestion, secret) => {
+  //  const currValue = Object.keys(currentQuestion).value
+  //  const secValue = Object.keys(secret).value
 
+  //  if (currValue == secValue) {
+  //    return currentQuestion === secret
+  //  } else {
+  //    return false
+  //  }
+  //}
+  console.log(keep)
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  console.log(keep, category)
-  filterCharacters(keep, category, value)
+  //console.log(keep)
+  filterCharacters(keep, currentQuestion)
 }
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep, group, attribute) => {
+const filterCharacters = (keep, currentQuestion) => {
   // Show the correct alert message for different categories
   if (group === 'accessories') {
     if (keep) {
@@ -339,24 +349,24 @@ const filterCharacters = (keep, group, attribute) => {
           `No, the character doesn't ${attribute}! Remove all characters that ${attribute}.`
         )
       }
-  } else if (group === 'hairColor') {
+  } else if (group === 'hair color') {
       if (keep) {
         alert(
-          `Yes, the character has ${attribute}! Keep all characters that has ${attribute}.`
+          `Yes, the character has ${attribute} hair! Keep all characters that has ${attribute} hair.`
         )
       } else {
         alert(
-          `No, the character doesn't have ${attribute}! Remove all characters that has ${attribute}.`
+          `No, the character doesn't have ${attribute} hair! Remove all characters that has ${attribute} hair.`
         )
       } 
-  } else if (group === 'eyeColor') {
+  } else if (group === 'eye color') {
       if (keep) {
         alert(
-          `Yes, the character has ${attribute}! Keep all characters that has ${attribute}.`
+          `Yes, the character has ${attribute} eyes! Keep all characters that has ${attribute} eyes.`
         )
       } else {
         alert(
-          `No, the character doesn't have ${attribute}! Remove all characters that has ${attribute}.`
+          `No, the character doesn't have ${attribute} eyes! Remove all characters that has ${attribute} eyes.`
         )
       }
   }
@@ -390,4 +400,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
-// findOutBtn.addEventListener('click', checkQuestion)
+findOutBtn.addEventListener('click', checkQuestion)

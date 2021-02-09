@@ -53,30 +53,35 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value;
+  const text = questions.options[questions.selectedIndex].innerText;
 
   if (category === "hair color") {
     currentQuestion = {
       attribute: "hairColor",
       value: value,
       category: category,
+      text: text,
     };
   } else if (category === "eye color") {
     currentQuestion = {
       attribute: "eyeColor",
       value: value,
       category: category,
+      text: text,
     };
   } else if (category === "accessories") {
     currentQuestion = {
       attribute: value,
       value: true,
       category: category,
+      text: text,
     };
   } else if (category === "other") {
     currentQuestion = {
       attribute: value,
       value: true,
       category: category,
+      text: text,
     };
   }
   // DEBUG: remove on submission
@@ -100,21 +105,15 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
-  // if (group === "accessories") {
-  //   if (keep) {
-  //     alert(`Yes, the person wears ${attribute}! Keep all that wears ${attribute}`);
-  //   } else {
-  //     alert(`No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`);
-  //   }
-  // } else if (group === "other") {
-  //   // Similar to the one above
-  // } else {
-  //   if (keep) {
-  //     // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
-  //   } else {
-  //     // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
-  //   }
-  // }
+  if (keep) {
+    alert(
+      `Yes, the person has ${currentQuestion.text}! Keep all that has ${currentQuestion.text}.`
+    );
+  } else {
+    alert(
+      `No, the person doesn't have ${currentQuestion.text}! Remove all that have ${currentQuestion.text}`
+    );
+  }
   // filter to keep or remove based on the keep variable.
   /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or 

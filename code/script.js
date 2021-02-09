@@ -6,20 +6,21 @@ const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hairColor: 'hidden',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: true,
+    name: 'Sarah Lynn',
+    img: 'images/Sarah_Lynn.png',
+    hairColor: 'brown',
+    eyeColor: 'blue',
+    glasses: false,
+    hat: false,
     smoker: false,
   },
   {
     name: 'Jack',
-    img: 'images/jack.svg',
+    img: 'images/princess.jpg',
     hairColor: 'hidden',
     eyeColor: 'blue',
     glasses: false,
@@ -330,7 +331,7 @@ const filterCharacters = (keep) => {
   /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or 
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
-
+  generateBoard()
   // Invoke a function to redraw the board with the remaining people.
 }
 

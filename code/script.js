@@ -244,8 +244,6 @@ const generateBoard = () => {
   })
 }
 
-//Load game board on page load 
-window.onload = () => generateBoard();
 
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -258,6 +256,7 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  restartButton.onclick = () => generateBoard();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -342,6 +341,8 @@ const checkMyGuess = (suspect) => {
 
 // Invokes the start function when website is loaded
 start()
+
+
 
 // All the event listeners
 restartButton.addEventListener('click', start)

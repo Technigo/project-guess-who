@@ -13,6 +13,9 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jack",
@@ -22,6 +25,9 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    hat: true,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jacques",
@@ -31,6 +37,9 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: true,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jai",
@@ -40,6 +49,9 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jake",
@@ -49,6 +61,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "James",
@@ -58,6 +73,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jana",
@@ -67,6 +85,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jane",
@@ -76,6 +97,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jaqueline",
@@ -85,6 +109,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: true,
+    earring: true,
   },
 
   {
@@ -95,6 +122,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: true,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jean",
@@ -104,6 +134,9 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jeane",
@@ -113,6 +146,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jed",
@@ -122,6 +158,9 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jenni",
@@ -131,6 +170,9 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jeri",
@@ -140,6 +182,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jerry",
@@ -149,6 +194,9 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jess",
@@ -158,6 +206,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jocelyn",
@@ -167,6 +218,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: true,
   },
   {
     name: "Jon",
@@ -176,6 +230,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jordan",
@@ -185,6 +242,9 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Josephine",
@@ -194,6 +254,9 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: true,
   },
   {
     name: "Josh",
@@ -203,6 +266,9 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Jude",
@@ -212,6 +278,9 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
   {
     name: "Julie",
@@ -221,6 +290,9 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    hat: false,
+    necklace: false,
+    earring: false,
   },
 ];
 
@@ -281,15 +353,21 @@ const selectQuestion = () => {
     currentQuestion = {
       attribute: "eyeColor",
       value: optionValue,
+      category: category,
     };
   } else if (category === "accessories") {
     currentQuestion = {
-      //attribute: ,
+      attribute: optionValue,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     };
   } else if (category === "other") {
+    currentQuestion = {
+      attribute: optionValue,
+      value: true,
+      category: category,
+    };
     // Set this up your self (should be same structure as above)
   }
 };

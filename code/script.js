@@ -7,6 +7,8 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const btnFindOut = document.getElementById("filter");
+const winOrLose = document.getElementById("winOrLose");
+const endStateText = document.getElementById("winOrLoseText");
 
 // Global variables
 let secret, currentQuestion, charactersInPlay;
@@ -120,9 +122,9 @@ const filterCharacters = (keep) => {
       (character) => character[currentQuestion.attribute] !== currentQuestion.value
     );
   }
+  generateBoard();
   // DEBUG: remove on submission
   console.log("Filtered characters: ", charactersInPlay);
-  generateBoard();
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -135,12 +137,18 @@ const guess = (suspect) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
-  // DEBUG: remove on submission
-  console.log("Player wants to guess", suspect);
   // 1. Check if the suspect is the same as the secret person's name
+  const winState = suspect === secret.name ? true : false;
   // 2. Set a Message to show in the win or lose section accordingly
+  if (winState) {
+    endStateText.innerText = "YES! That is correct";
+  } else {
+    endStateText.innerText = "NO! That is wrong";
+  }
   // 3. Show the win or lose section
+  winOrLose.style.display = "block";
   // 4. Hide the game board
+  board.style.display = "none";
 };
 
 // Invokes the start function when website is loaded

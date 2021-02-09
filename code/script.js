@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const check = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [{
@@ -259,6 +260,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   setSecret()
   generateBoard()
+  console.log(secret.name)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -273,12 +275,14 @@ const selectQuestion = (selected) => {
       value: selected,
       category: category,
     }
+    console.log(currentQuestion)
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
       value: selected,
       category: category,
     }
+    console.log(currentQuestion)
   } else if (category === 'accessories') {
     switch (selected) { // switch med hat och glasses
       case 'hat':
@@ -296,23 +300,35 @@ const selectQuestion = (selected) => {
         };
         break;
     }
-  } else(category === 'other')
+    console.log(currentQuestion)
+  } else (category === 'other')
+  switch (selected) {
+    case 'smoker':
   currentQuestion = {
     attribute: 'smoker',
     value: true,
-    category: category,
+    category: 'other',
   }
+  console.log(currentQuestion)
 }
-
+}
 // stämmer det här??
 
 
 // This function should be invoked when you click on 'Find Out'.
+// har gjort funktionen utifrån hur Bellsibub gjorde den
 const checkQuestion = () => {
+  const secretValue = secret[currentQuestion.attribute]
+  if (secretValue === currentQuestion.value) {
+    filterCharacters(true)
+  } else {
+    filterCharacters(false)
+  }
+}
+
 // vad fan ska jag göra här?
 // ska den ta och jämföra selectQuestion med secret?
-filterCharacters()
-}
+
 // Compare the currentQuestion with the secret person.
 // See if we should keep or remove people based on that
 // Then invoke filterCharacters
@@ -379,11 +395,10 @@ restartButton.addEventListener('click', start)
 //lagt till eventListener till questions som är sektionen i HTML med alla frågor
 //tar med sig värdet som man väljer så när man sätter -ngt- som parameter i selectQuestions-
 //funktionen och sedan använder den parametern som value så hamnar värdet där
-questions.addEventListener('change', () => {
+/*questions.addEventListener('change', () => {
+  selectQuestion(questions.value)
+})*/
+
+check.addEventListener('click', () => {
   selectQuestion(questions.value)
 })
-
-const check = document.getElementById('filter')
-check.addEventListener('click', () => {
-  selectQuestion(question.value)
-});

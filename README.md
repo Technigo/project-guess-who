@@ -9,4 +9,4 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-The project can be viewed in: 
+The project can be viewed in: https://focused-morse-2b25ed.netlify.app/

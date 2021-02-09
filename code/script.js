@@ -10,6 +10,7 @@ const playButton = document.getElementById('lets-play-button');
 const gameContainer = document.getElementById('game-container');
 const howToPlay = document.getElementById('how-to-play-question');
 const howToPlayCard = document.getElementById('how-to-play-answer');
+const input = document.getElementById('input');
 let questionNumber = document.getElementById('questionNum');
 
 // Array with all the characters, as objects
@@ -317,6 +318,7 @@ const start = () => {
   setTimeout(generateBoard, 1000);
   board.style.display = "flex";
   winOrLose.style.display = "none";
+  input.value = '';
 };
 
 
@@ -466,10 +468,10 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     winOrLoseText.innerHTML = `
-      YAY, you win! You guessed on ${suspect} and that was correct and you did it in only ${questionNumber} questions!`;
+      Congratulations, ${input.value}! You win! You guessed on ${suspect} and that was correct and you did it in only ${questionNumber} questions!`;
   } else {
     winOrLoseText.innerHTML = `
-      NO, you lose! You guessed on ${suspect} and that was wrong and you did it in ${questionNumber} questions! The right answer was ${secret.name}!`;
+      I'm sorry, ${input.value}! You lose! You guessed on ${suspect} and that was wrong and you did it in ${questionNumber} questions! The right answer was ${secret.name}!`;
   }
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly

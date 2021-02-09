@@ -14,7 +14,7 @@ body {
 
 .header {
   background-color: var(--secondary);
-  height: 100vh;
+  height: 70vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -27,7 +27,7 @@ body {
   border-radius: 30px 30px 30px 0px;
   position: absolute;
   top:15px;
-  left: 40px;
+  left: 70px;
   cursor: pointer;
 
 }
@@ -43,7 +43,7 @@ body {
   background-color: white;
   display: none;
   top: 10px;
-  left: 40px;
+  left: 70px;
   z-index: 1;
   border-radius: 30px 30px 30px 0px;
   padding-left: 20px;
@@ -59,7 +59,7 @@ body {
   left: -60px;
   margin: 20px 0px 0px 20px;
   opacity: 0.8;
-  transform: rotate(70deg);
+  transform: rotate(65deg);
 }
 
 .card-header p {
@@ -71,9 +71,26 @@ body {
 .h1 {
   font-size: 150px;
   font-weight: 800;
-  margin-bottom: 60px;
+  margin-bottom: 10px;
   text-shadow: 2px 2px var(--primary);
   color: white;
+}
+
+.input-button {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 200px; 
+  font-size: 26px;
+  height: 70px;
+  margin-right: 10px;
+  font-family: "Patrick Hand", sans-serif;
+  padding: 0px 0px 0px 10px;
+  background-color: #ebe9fc;
+  border: 4px solid var(--primary);
+  outline: none;
 }
 
 .lets-play-button {
@@ -81,15 +98,16 @@ body {
   align-items: center;
   justify-content: center;
   border: 4px solid var(--primary);
+  padding: 0;
   width: 250px;
-  height: 80px;
-  background-color: var(--secondary);
+  height: 78px;
+  background-color: var(--primary);
   cursor: pointer;
   outline: none;
 }
 
 .lets-play-button:hover {
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
 .h2 {
@@ -299,8 +317,35 @@ button {
     flex-direction: column;
   }
 
+  .header-img {
+    height: 140px;
+    width: 120px;
+  }
+
+  .input {
+    width: 150px;
+    height: 50px;
+    font-size: 22px;
+  }
+
+  .lets-play-button {
+    width: 150px;
+    height: 58px;
+  }
+
+  .h2 {
+    font-size: 34px;
+  }
+
   .h1 {
     font-size: 80px;
+    margin-bottom: 30px;
+  }
+
+  .question-container-left-side {
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: center;
   }
 
   .question-section {
@@ -308,12 +353,18 @@ button {
     min-height: 0;
     flex-direction: column;
   }
+
+  .filled-button {
+    width: 200px;
+    margin-top: 10px;
+  }
+
+  .questionNumber {
+    margin: 0;
+  }
+
   button {
     padding: 8px 16px;
-  }
-  h1 {
-    font-size: 24px;
-    line-height: 30px;
   }
 
   .guess-who-icon {
@@ -330,24 +381,20 @@ button {
   }
 
   .card {
-    width: 113px;
+    width: 110px;
     position: relative;
   }
 
   .card .guess {
-    display: flex;
     top: 0;
     position: absolute;
     justify-content: flex-end;
   }
 
-  .card .guess span {
-    display: none;
-  }
-
   .card .guess .filled-button {
-    padding: 6px 11px;
-    margin-bottom: 1px;
+    padding: 6px;
+    width: 80px;
+    margin-bottom: 10px;
     background: white;
     color: var(--primary);
     border: none;

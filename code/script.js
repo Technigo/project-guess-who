@@ -5,286 +5,260 @@ const restartButton = document.getElementById('restart')
 
 // Array with all the characters, as objects
 const CHARACTERS = [{
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hairColor: 'hidden',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: true,
-    smoker: false,
-    cat: true,
-    dog: false
+    name: 'Rufus',
+    img: './images/rufus.svg',
+    furColor: 'beige',
+    furPattern: 'patchy',
+    animal: 'dog',
+    bad: true,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hairColor: 'hidden',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    smoker: false,
-    cat: false,
-    dog: false,
+    name: 'Sandy',
+    img: './images/sandy.svg',
+    furColor: 'yellow',
+    furPattern: 'patchy',
+    animal: 'cat',
+    bad: false,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hairColor: 'grey',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    smoker: true,
-    cat: false,
-    dog: true
+    name: 'Tony',
+    img: './images/tony.svg',
+    furColor: 'brown',
+    furPattern: 'patchy',
+    animal: 'dog',
+    bad: true,
+    collar: true,
+    bling: false,
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: false,
-    hat: false,
-    smoker: false,
-    cat: false,
-    dog: false
+    name: 'Bernie',
+    img: './images/bernie.svg',
+    furColor: 'black',
+    furPattern: 'plain',
+    animal: 'sheep',
+    bad: true,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hairColor: 'yellow',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
-    cat: false,
-    dog: false
+    name: 'Lucifer',
+    img: './images/lucifer.svg',
+    furColor: 'black',
+    furPattern: 'patchy',
+    animal: 'cat',
+    bad: true,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
-    cat: false,
-    dog: false
+    name: 'Lady',
+    img: './images/lady.svg',
+    furColor: 'fantasy',
+    furPattern: 'stripey',
+    animal: 'cat',
+    bad: false,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hairColor: 'black',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    smoker: false,
-    cat: true,
-    dog: false
+    name: 'Silly',
+    img: './images/silly.svg',
+    furColor: 'brown',
+    furPattern: 'plain',
+    animal: 'mouse',
+    bad: false,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hairColor: 'yellow',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    smoker: false,
-    cat: false,
-    dog: false
+    name: 'Gordon',
+    img: './images/gordon.svg',
+    furColor: 'fantasy',
+    furPattern: 'patchy',
+    animal: 'dog',
+    bad: false,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
-    cat: false,
-    dog: false
+    name: 'Simba',
+    img: './images/simba.svg',
+    furColor: 'yellow',
+    furPattern: 'spotty',
+    animal: 'cat',
+    bad: false,
+    collar: false
   },
   {
     name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hairColor: 'purple',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    smoker: true,
-    cat: false,
-    dog: true
+    img: './images/jazebelle.svg',
+    furColor: 'fantasy',
+    furPattern: 'plain',
+    animal: 'cat',
+    bad: false,
+    collar: false,
+    other: true
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hairColor: 'brown',
-    eyeColor: 'blue',
-    glasses: true,
-    hat: true,
-    smoker: true,
-    cat: false,
-    dog: false
+    name: 'Rocky',
+    img: './images/rocky.svg',
+    furColor: 'white',
+    furPattern: 'spotty',
+    animal: 'dog',
+    bad: false,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
-    cat: true,
-    dog: true
+    name: 'Bob',
+    img: './images/bob.svg',
+    furColor: 'brown',
+    furPattern: 'plain',
+    animal: 'dog',
+    bad: false,
+    collar: false,
+    other: true
   },
   {
     name: 'Jed',
-    img: 'images/jed.svg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: true,
-    smoker: true,
-    cat: false,
-    dog: false
+    img: './images/jed.svg',
+    furColor: 'beige',
+    furPattern: 'plain',
+    animal: 'dog',
+    bad: false,
+    collar: false,
+    bling: false,
   },
   {
     name: 'Jenni',
-    img: 'images/jenni.svg',
-    hairColor: 'white',
-    eyeColor: 'hidden',
-    glasses: false,
-    hat: true,
-    smoker: false,
-    cat: true,
-    dog: false
+    img: './images/jenni.svg',
+    furColor: 'white',
+    furPattern: 'patchy',
+    animal: 'dog',
+    bad: false,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
-    cat: false,
-    dog: false
+    name: 'Lars',
+    img: './images/lars.svg',
+    furColor: 'beige',
+    furPattern: 'plain',
+    animal: 'dog',
+    bad: false,
+    collar: true,
+    bling: false,
   },
   {
     name: 'Jerry',
-    img: 'images/jerry.svg',
-    hairColor: 'hidden',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    smoker: false,
-    cat: false,
-    dog: true
+    img: './images/jerry.svg',
+    furColor: 'brown',
+    furPattern: 'plain',
+    animal: 'dog',
+    bad: true,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hairColor: 'black',
-    eyeColor: 'blue',
-    glasses: true,
-    hat: false,
-    smoker: false,
-    cat: false,
-    dog: false
+    name: 'Pip',
+    img: './images/pip.svg',
+    furColor: 'white',
+    furPattern: 'plain',
+    animal: 'mouse',
+    bad: false,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: true,
-    hat: false,
-    smoker: false,
-    cat: false,
-    dog: false
+    name: 'Rawr',
+    img: './images/rawr.svg',
+    furColor: 'orange',
+    furPattern: 'stripey',
+    animal: 'cat',
+    bad: true,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
-    cat: false,
-    dog: false
+    name: 'Maggie',
+    img: './images/maggie.svg',
+    furColor: 'black',
+    furPattern: 'spotty',
+    animal: 'cat',
+    bad: true,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hairColor: 'yellow',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: true,
-    smoker: false,
-    cat: false,
-    dog: true
+    name: 'Sofie',
+    img: './images/sofie.svg',
+    furColor: 'orange',
+    furPattern: 'plain',
+    animal: 'cat',
+    bad: false,
+    collar: false,
+    bling: false,
   },
   {
     name: 'Josephine',
-    img: 'images/josephine.svg',
-    hairColor: 'grey',
-    eyeColor: 'brown',
-    glasses: false,
-    hat: false,
-    smoker: false,
-    cat: true,
-    dog: false
+    img: './images/josephine.svg',
+    furColor: 'beige',
+    furPattern: 'plain',
+    animal: 'dog',
+    bad: true,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hairColor: 'yellow',
-    eyeColor: 'green',
-    glasses: false,
-    hat: false,
-    smoker: false,
-    cat: false,
-    dog: false
+    name: 'Kahn',
+    img: './images/kahn.svg',
+    furColor: 'yellow',
+    furPattern: 'spotty',
+    animal: 'cat',
+    bad: false,
+    collar: false
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hairColor: 'black',
-    eyeColor: 'green',
-    glasses: false,
-    hat: false,
-    smoker: false,
-    cat: false,
-    dog: false
+    name: 'Missy',
+    img: './images/missy.svg',
+    furColor: 'brown',
+    furPattern: 'plain',
+    animal: 'cat',
+    bad: false,
+    collar: false,
+    bling: false,
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: true,
-    hat: true,
-    smoker: false,
-    cat: true,
-    dog: true,
+    name: 'Scratch',
+    img: './images/scratch.svg',
+    furColor: 'white',
+    furPattern: 'plain',
+    animal: 'cat',
+    bad: true,
+    collar: true,
+    bling: false,
   },
 ]
 
 
 //array of sentences as answer depending on what question the  player chooses
 const sentences = [{
-    accessories: `Yes, the person wears x! Keep all that wears x`,
-    hairColor: `Yes, the person has x hair! Keep all that have x hair`,
-    eyeColor: `Yes, the person has x eyes! Keep all that have x eyes`,
-    animals: `Yes, the person is a x owner! Keep all the x owners`,
-    other: `Yes, the person is a x! Keep all the x's`,
+    furColor: `Yes, the animal is x! Keep all x animals.`,
+    furPattern: `Yes, the animal has x fur! Keep all animals that have x fur.`,
+    animal: `Yes, it is a x! Keep all animals that are a x.`,
+    accessories: `Yes, the animal wears x! Keep all the x wearers.`,
+    behaviour: `Yes, it is a x boy/girl! Keep all the x ones.`,
   },
   {
-    accessories: `No, the person doesn't wear x! Remove all that wears x`,
-    hairColor: `No, the person doesn't have x hair! Remove all that have x hair`,
-    eyeColor: `No, the person don't have x eyes! Remove all that have x eyes`,
-    animals: `No, the person isn't a x owner! Remove all the x owners`,
-    other: `No, the person isn't a x! Remove all the x's`,
+    furColor: `No, the animal is not x. Remove all x animals!`,
+    furPattern: `No, the animal don't got x fur. Remove all animals that have x fur!`,
+    animal: `No, it's not a x. Remove all animals that are a x!`,
+    accessories: `No, the animal doesn't wear x. Remove all the x wearers!`,
+    behaviour: `No, it is not a x boy/girl. Remove all the x ones!`,
   }
 ]
 
@@ -298,12 +272,18 @@ const generateBoard = () => {
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
+        <div class="card-inner">
+        <div class="card-front">
         <p>${person.name}</p>
         <div class='card-img'>
         <img src=${person.img} alt=${person.name}>
+        </div>
+        </div>
+        <div class="card-back">
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          </div>
         </div>
         </div>
       </div>
@@ -330,8 +310,10 @@ const timer = (x) => {
     minute = "0" + minute;
   if (seconds < 10)
     seconds = "0" + seconds;
-  document.getElementById("timer").innerHTML =`Time passed: ${minute}:${seconds}`;
+  document.getElementById("timer").innerHTML = `Time passed: ${minute}:${seconds}`;
 }
+
+let setTimer = setInterval(timer, 1000)
 
 // This function to start (and restart) the game
 const start = () => {
@@ -343,77 +325,60 @@ const start = () => {
   setSecret()
   totalSeconds = 0;
   timer('restart')
-  setInterval(timer, 1000)
+  setTimer
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (handleOption) => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   questionsAsked++
-  if (questionsAsked === 1) {
-    startTime = performance.now()
-  }
-  console.log(questionsAsked)
   //value is set to the option playes selects
-  if (isEqual(category, 'hair color')) {
+  if (isEqual(category, 'fur color')) {
     currentQuestion = {
-      attribute: 'hairColor',
+      attribute: 'furColor',
       value: handleOption,
       category: category,
     };
-  } else if (isEqual(category, 'eye color')) {
+  } else if (isEqual(category, 'fur pattern')) {
     currentQuestion = {
-      attribute: 'eyeColor',
+      attribute: 'furPattern',
+      value: handleOption,
+      category: category,
+    }
+  } else if (isEqual(category, 'animal')) {
+    currentQuestion = {
+      attribute: 'animal',
       value: handleOption,
       category: category,
     };
     //here the value is set to true and the player option is used in a switch to keep track of different accessories/other
-  } else if (isEqual(category, 'accessories')) {
+  } else if (isEqual(category, 'acessories')) {
     switch (handleOption) {
-      case 'glasses':
+      case 'collar':
         currentQuestion = {
-          attribute: 'glasses',
+          attribute: 'collar',
           value: true,
           category: category,
         };
         break;
-      case 'hat':
+      case 'bling':
         currentQuestion = {
-          attribute: 'hat',
+          attribute: 'bling',
           value: true,
           category: category,
         };
-        break;
-    }
-  } else if (isEqual(category, 'animals')) {
-    switch (handleOption) {
-      case 'cat':
-        currentQuestion = {
-          attribute: 'cat',
-          value: true,
-          category: category,
-        }
-        break;
-      case 'dog':
-        currentQuestion = {
-          attribute: 'dog',
-          value: true,
-          category: category,
-        }
         break;
     }
   } else {
     currentQuestion = {
-      attribute: 'smoker',
+      attribute: 'bad',
       value: true,
-      category: 'other',
-    };
-
-  }
+      category: category,
+    }
+  };
   //on click stopPropergate is run
   const findOut = document.getElementById('filter')
   findOut.addEventListener('click', stopPropergate);
-  console.log('click')
 }
 
 //function used in if statements
@@ -430,37 +395,43 @@ const stopPropergate = (event) => {
 //This function is innvoked when you click FindOut. It compares the secret characters properties with the players options and answer with a sentence
 //passes the properties of the current question and right/wrong option to the filter function
 const checkQuestion = (currentQ) => {
-
   let userValue = currentQ.value
-  let userAttr= currentQ.attribute
+  let userAttr = currentQ.attribute
 
   switch (currentQ.category) {
-    case 'hair color':
-      if (isEqual(userValue, secret.hairColor)) {
+    case 'fur color':
+      if (isEqual(userValue, secret.furColor)) {
         //in the sentences a placeholder (x) is changed for the local current specific attribute/value
-        alert((sentences[0].hairColor).replaceAll(`x`, `${userValue}`))
+        alert((sentences[0].furColor).replaceAll(`x`, `${userValue}`))
       } else {
-        alert((sentences[1].hairColor).replaceAll(`x`, `${userValue}`))
+        alert((sentences[1].furColor).replaceAll(`x`, `${userValue}`))
       }
       break;
-    case 'eye color':
-      if (isEqual(userValue, secret.eyeColor)) {
-        alert((sentences[0].eyeColor).replaceAll(`x`, `${userValue}`))
+    case 'fur pattern':
+      if (isEqual(userValue, secret.furPattern)) {
+        alert((sentences[0].furPattern).replaceAll(`x`, `${userValue}`))
       } else {
-        alert((sentences[1].eyeColor).replaceAll(`x`, `${userValue}`))
+        alert((sentences[1].furPattern).replaceAll(`x`, `${userValue}`))
+      }
+      break;
+    case 'animal':
+      if (isEqual(userValue, secret.animal)) {
+        alert((sentences[0].animal).replaceAll(`x`, `${userValue}`))
+      } else {
+        alert((sentences[1].animal).replaceAll(`x`, `${userValue}`))
       }
       break;
     case 'accessories':
       switch (userAttr) {
-        case 'glasses':
-          if (isEqual(userValue, secret.glasses)) {
+        case 'collar':
+          if (isEqual(userValue, secret.collar)) {
             alert((sentences[0].accessories).replaceAll(`x`, `${userAttr}`))
           } else {
             alert((sentences[1].accessories).replaceAll(`x`, `${userAttr}`))
           }
           break;
-        case 'hat':
-          if (isEqual(userValue, secret.hat)) {
+        case 'bling':
+          if (isEqual(userValue, secret.bling)) {
             alert((sentences[0].accessories).replaceAll(`x`, `${userAttr}`))
           } else {
             alert((sentences[1].accessories).replaceAll(`x`, `${userAttr}`))
@@ -468,98 +439,66 @@ const checkQuestion = (currentQ) => {
           break;
       }
       break;
-    case 'animals':
-      switch (userAttr) {
-        case 'dog':
-          if (isEqual(userValue, secret.dog)) {
-            alert((sentences[0].animals).replaceAll(`x`, `${userAttr}`))
-          } else {
-            alert((sentences[1].animals).replaceAll(`x`, `${userAttr}`))
-          }
-          break;
-        case 'cat':
-          if (isEqual(userValue, secret.cat)) {
-            alert((sentences[0].animals).replaceAll(`x`, `${userAttr}`))
-          } else {
-            alert((sentences[1].animals).replaceAll(`x`, `${userAttr}`))
-          }
-          break;
-      }
-      break;
-    case 'other':
-      if (isEqual(userValue, secret.smoker)) {
-        alert((sentences[0].other).replaceAll(`x`, `${userAttr}`))
+    default:
+      if (isEqual(userValue, secret.behaviour)) {
+        alert((sentences[0].behaviour).replaceAll(`x`, `${userAttr}`))
       } else {
-        alert((sentences[1].other).replaceAll(`x`, `${userAttr}`))
+        alert((sentences[1].behaviour).replaceAll(`x`, `${userAttr}`))
       }
-      break;
   }
   filterCharacters(currentQ)
 }
-
 
 // Filters the characters on properties of keep(depending on option chosen of player) and alerts the response. Then uses array.filter to return an array of characters based on that
 const filterCharacters = (keep) => {
   let userValue = keep.value
 
   switch (keep.category) {
-    case 'hair color':
-      if (isEqual(userValue, secret.hairColor)) {
-        charactersInPlay = charactersInPlay.filter(char => char.hairColor === userValue)
+    case 'fur color':
+      if (isEqual(userValue, secret.furColor)) {
+        charactersInPlay = charactersInPlay.filter(char => char.furColor === userValue)
       } else {
-        charactersInPlay = charactersInPlay.filter(char => char.hairColor !== userValue)
+        charactersInPlay = charactersInPlay.filter(char => char.furColor !== userValue)
       }
       break;
-    case 'eye color':
-      if (isEqual(userValue, secret.eyeColor)) {
-        charactersInPlay = charactersInPlay.filter(char => char.eyeColor === userValue)
+    case 'fur pattern':
+      if (isEqual(userValue, secret.furPattern)) {
+        charactersInPlay = charactersInPlay.filter(char => char.furPattern === userValue)
       } else {
-        charactersInPlay = charactersInPlay.filter(char => char.eyeColor !== userValue)
+        charactersInPlay = charactersInPlay.filter(char => char.furPattern !== userValue)
+      }
+      break;
+    case 'animal':
+      if (isEqual(userValue, secret.animal)) {
+        charactersInPlay = charactersInPlay.filter(char => char.animal === userValue)
+      } else {
+        charactersInPlay = charactersInPlay.filter(char => char.animal !== userValue)
       }
       break;
     case 'accessories':
       switch (keep.attribute) {
-        case 'glasses':
-          if (isEqual(userValue, secret.glasses)) {
-            charactersInPlay = charactersInPlay.filter(char => char.glasses === userValue)
+        case 'collar':
+          if (isEqual(userValue, secret.collar)) {
+            charactersInPlay = charactersInPlay.filter(char => char.collar === userValue)
           } else {
-            charactersInPlay = charactersInPlay.filter(char => char.glasses !== userValue)
+            charactersInPlay = charactersInPlay.filter(char => char.collar !== userValue)
           }
           break;
-        case 'hat':
-          if (isEqual(userValue, secret.hat)) {
-            charactersInPlay = charactersInPlay.filter(char => char.hat === userValue)
+        case 'bling':
+          if (isEqual(userValue, secret.bling)) {
+            charactersInPlay = charactersInPlay.filter(char => char.bling === userValue)
           } else {
-            charactersInPlay = charactersInPlay.filter(char => char.hat !== userValue)
-          }
-          break;
-      }
-      break;
-    case 'animals':
-      switch (keep.attribute) {
-        case 'cat':
-          if (isEqual(userValue, secret.cat)) {
-            charactersInPlay = charactersInPlay.filter(char => char.cat === userValue)
-          } else {
-            charactersInPlay = charactersInPlay.filter(char => char.cat !== userValue)
-          }
-          break;
-        case 'dog':
-          if (isEqual(userValue, secret.dog)) {
-            charactersInPlay = charactersInPlay.filter(char => char.dog === userValue)
-          } else {
-            charactersInPlay = charactersInPlay.filter(char => char.dog !== userValue)
+            charactersInPlay = charactersInPlay.filter(char => char.bling !== userValue)
           }
           break;
       }
       break;
-    case 'other':
-      if (isEqual(userValue, secret.smoker)) {
-        charactersInPlay = charactersInPlay.filter(char => char.smoker === userValue)
+      default:
+      if (isEqual(userValue, secret.bad)) {
+        charactersInPlay = charactersInPlay.filter(char => char.bad === userValue)
       } else {
-        charactersInPlay = charactersInPlay.filter(char => char.smoker !== userValue)
+        charactersInPlay = charactersInPlay.filter(char => char.bad !== userValue)
       }
-      break;
   }
   //generates a new board depending on the filtered array
   generateBoard(charactersInPlay)
@@ -603,6 +542,14 @@ const checkMyGuess = (suspect) => {
         <h1 id="winOrLoseText">
           Yes, ${suspect} was the secret character! Well done!
         </h1>
+        <div class="card-img-wrap">
+          <div>
+            <div class='card-img'>
+            <img src=${secret.img} 
+            alt=${secret.name} 
+          />
+          </div>
+        </div>
         <h1> Your total time was ${Math.round((totalSeconds/60)*100)/100} minutes for this round</h1>
         <button id="playAgain" class="filled-button">
           PLAY AGAIN
@@ -619,6 +566,14 @@ const checkMyGuess = (suspect) => {
         <h1 id="winOrLoseText">
           Sorry, ${suspect} was the not the secret character, but ${secret.name}! Better luck next time.
         </h1>
+        <div class="card-img-wrap">
+          <div class='card-img'>
+            <img 
+            src=${secret.img} 
+            alt=${secret.name} 
+            />
+          </div>
+        </div>
         <h1> Your total time was ${Math.round((totalSeconds/60)*100)/100} minutes for this round</h1>
         <button id="playAgain" class="filled-button">
           PLAY AGAIN

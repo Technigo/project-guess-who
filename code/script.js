@@ -276,7 +276,7 @@ const selectQuestion = () => {
     currentQuestion = {
       attribute: 'hairColor',
       value: value, // Eftersom vi har flera values så betyder det att vi ska ha endast en som sparar oavsett vilket värde vi tar
-      category: category, // Här är du kl 19:22
+      category: category, 
     }// Checka ifall du kan lägga till flera här dvs samtliga hair
   } else if (category === 'eye color') {
     // Set this up your self
@@ -302,46 +302,23 @@ const selectQuestion = () => {
 }
 }
 
-/*
-const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-
-  if (category === 'hair color') {
-    currentQuestion = {
-      attribute: 'hairColor',
-      // value: ,
-      // 👆 add the value from the input here
-      category: category,
-    } // Checka ifall du kan lägga till flera här dvs samtliga hair
-  } else if (category === 'eye color') {
-    // Set this up your self
-  } else if (category === 'accessories') {
-    currentQuestion = {
-      //attribute: ,
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
-      category: category,
-    }
-  } else if (category === 'other') {
-    // Set this up your self (should be same structure as above)
-  }
-}
-*/
-
-
-// Step 4 kan innehålla en filter eller remove alla b som vi gjorde på uppgiften/Practice 
-
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-  const keep = currentQuestion === secret
+  
+  const secretValue = secret[currentQuestion.attribute]
+  if(secretValue === currentQuestion.value) {
+    filterCharacters(true,currentQuestion.category)
+  } else {
+    filterCharacters(false,currentQuestion.category)
+  }
+  
+  /*const keep = currentQuestion === secret
   console.log(keep)
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  filterCharacters(keep)
+  filterCharacters(keep) */
 
 }
 
@@ -356,28 +333,43 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      alert(
+        `Yes, the person bllaaa ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
+      )
     } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert(
+        `No, the person doesnnnnnnnn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
+      )
+    }
+  } else if (category === 'eye color') {
+    if (keep) {
+      alert (`Yes, the person has ${currentQuestion.value} eyess2222222! Keep all that have ${currentQuestion.value} eyes`)
+    } else /*if (keep === false)*/ {
+      alert (`No, the person doesn't have ${currentQuestion.value} eyes! Remove all that have ${currentQuestion.value} eyes`)
+    }
+  } else if (category === 'hair color') {
+    if (keep) {
+      alert (`Yes, the person has ${currentQuestion.value} hair! Keep all that have ${currentQuestion.value} hair`)
+    } else {
+      alert (`No, the person doesn't have ${currentQuestion.value} hair! Remove all that have ${currentQuestion.value} hair`)
     }
   }
 
+
   // filter to keep or remove based on the keep variable.
 if (keep) {
-  charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+  charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
 } else {
-  charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+  charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
 }
   
 

@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #ff815a;
+  --secondary: #ffca5a;
 }
 
 body {
@@ -26,7 +26,7 @@ h1 {
   display: flex;
   flex-direction: column;
   padding: 5vw;
-  align-items: flex-start;
+  align-items: flex-end;
   box-sizing: border-box;
 }
 
@@ -41,7 +41,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 150px;
 }
 
 .board-wrapper {
@@ -113,37 +113,46 @@ select {
 }
 
 /****** BUTTONS ******/
-button {
-  border: 2px solid var(--primary);
+button, .buttonRestart {
+  border: var(--primary);
+  background-color: var(--primary);
   border-radius: 50px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
-  padding: 17px 27px;
+  padding: 17px 20px;
   cursor: pointer;
+  color: white;
 }
+
+.buttonRestart {
+  margin-bottom: 60px;
+}
+
 
 .small {
   padding: 8px 16px;
 }
 
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
-}
-
-.filled-button,
-.outlined-button:hover {
+/*.outlined-button {
   background-color: var(--primary);
+  color: var(--secondary);
+  align-self: center;
+  margin-bottom: 40px;
+}*/
+
+button:hover, .buttonRestart:hover {
+  /*border: #ffb38c;*/
+  background-color: #ffb38c;
   color: white;
+ 
 }
 
-.filled-button:hover {
+/*.filled-button:hover {
   background-color: white;
   border-color: white;
   color: var(--primary);
-}
+}*/
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -156,7 +165,8 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  height: 150vh;
+  background-color: #ffca5a;
 }
 
 .win-or-lose {
@@ -164,14 +174,18 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  max-width: 100vw;
   text-align: center;
+  background-color: #ffca5a;
 }
 
 .win-or-lose img {
   align-self: flex-start;
+  margin-top: 2%;
   margin-left: 15%;
 }
+
+
 
 .win-or-lose h1 {
   margin-bottom: 32px;

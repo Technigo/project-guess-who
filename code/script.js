@@ -267,11 +267,11 @@ const selectQuestion = () => {
       category: category,
     }
   } else if (category === 'eye color') {
-      currentQuestion = {
-        attribute: 'eyeColor',
-        value: selectedValue,
-        category: category,
-      }
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value: selectedValue,
+      category: category,
+    }
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: selectedValue,   // this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
@@ -289,9 +289,14 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  let keep
+  if (currentQuestion.value === secret[currentQuestion.attribute]) {      // Compare the currentQuestion with the secret person.
+    keep = true       // See if we should keep or remove people based on that
+  } else {
+    keep = false
+  }
+
+  filterCharacters(keep)      // Then invoke filterCharacters
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -300,36 +305,50 @@ const filterCharacters = (keep) => {
   if (group === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}.`
       )
     }
   } else if (group === 'other') {
-    // Similar to the one above
+    if (keep) {         // Similar to the one above
+      alert(
+        `Yes, the person is a ${attribute}! Keep all who's a ${attribute}.`
+      )
+    } else {
+      alert(
+        `No, the person is not a ${attribute}! Remove all who's a ${attribute}.`
+      )
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
-    } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert(          // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+        `Yes, the person has ${attribute}! Keep all persons with ${attribute}.`
+      )
+    } else {          // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert(
+        `No, the person doesn't have ${attribute}! Remove all persons with ${attribute}.`
+      )
     }
   }
 
   // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+  charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
-
-  // Invoke a function to redraw the board with the remaining people.
+  charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+  generateBoard()   // Invoke a function to redraw the board with the remaining people.
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  // const suspectInput = 
+  const confirmGuess = confirm('Are you sure you want to make a guess?')        // remember the confirm() ?
+  if (confirmGuess == true) {
+    checkMyGuess()     // If the player wants to guess, invoke the checkMyGuess function.
+  } 
 }
 
 // If you confirm, this function is invoked

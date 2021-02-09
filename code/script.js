@@ -6,9 +6,7 @@ const filter = document.getElementById('filter')
 const restartButton = document.getElementById('restart')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
-const playAgain = document.getElementById('playAgain')
-//const category = questions.options[questions.selectedIndex]
-//const value = option.value[option.selectedIndex]
+const playAgain = document.getElementById('play-again')
 
 
 // Array with all the characters, as objects
@@ -255,6 +253,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log("secret", secret)
 }
 
 // This function to start (and restart) the game
@@ -265,24 +264,25 @@ const start = () => {
 }
 
 // setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = (value) => {
-  //const value = option.value[option.selectedIndex].parentNode.label
+const selectQuestion = () => {
+  console.log(`Eventlister working`)
   const category = questions.options[questions.selectedIndex].parentNode.label
+  const optionValue = questions.options[questions.selectedIndex].value
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: value,
+      value: optionValue,
       category: category,
     }
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
-      value: value,
+      value: optionValue,
       category: category,
     }
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: 'glasses' | 'hat',
+      attribute: optionValue,
       value: true, 
       category: category,
     }
@@ -293,72 +293,59 @@ const selectQuestion = (value) => {
       category: category,
     }
   }
+  console.log(`Category: ${category}, attribute: ${currentQuestion.attribute}, value: ${optionValue}`)
 }
 
 // This function should be invoked when you click on 'Find Out'.
-// const checkQuestion = secret.find((element) => {
-//   if (element === currentQuestion.value) {
-//     filterCharacters(keep)
-//   } else {
-//     filterCharacters()
-//   }
-// })
-
 const checkQuestion = () => {
-  
+  selectQuestion()
+  const secretValue = secret[currentQuestion.attribute]
+  console.log(secretValue)
+  console.log(currentQuestion.value)
+  if (secretValue === currentQuestion.value) {
+    console.log(true)
+    filterCharacters(true)
+  } else {
+    console.log(false)
+    filterCharacters(false)
+  }
 }
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  if (selectQuestion.category === 'accessories') {
+  const group = currentQuestion.category
+  const value = currentQuestion.value
+  const attribute = currentQuestion.attribute
+  let message = ""
+  if (group === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person['glasses' | 'hat'] === selectQuestion.value)
+      message = `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
     } else {
-      alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person['glasses' | 'hat'] !== selectQuestion.value)
+      message = `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
     }
-  } else if (selectQuestion.category === 'hair color') {
+  } else if (group === 'hair color') {
       if (keep) {
-        alert(
-          `Yes, the person has ${attribute} hair! Keep all persons with ${attribute} hair`
-        )
-        charactersInPlay = charactersInPlay.filter((person) => person['hairColor'] === value)
+        message = `Yes, the person has ${value} hair! Keep all persons with ${value} hair`
       } else {
-        alert(
-          `No, the person doesn't have ${attribute} hair! Remove all persons with ${attribute} hair`
-        )
-        charactersInPlay = charactersInPlay.filter((person) => person['hairColor'] !== selectQuestion.value)
+        message = `No, the person doesn't have ${value} hair! Remove all persons with ${value} hair`
       }
-  } else if (selectQuestion.category === 'eye color') {
+  } else if (group === 'eye color') {
       if (keep) {
-        alert(
-          `Yes, the person has ${attribute} eyes! Keep all persons with ${attribute} eyes`
-        )
-        charactersInPlay = charactersInPlay.filter((person) => person['eyeColor'] === selectQuestion.value)
+        message = `Yes, the person has ${value} eyes! Keep all persons with ${value} eyes`
       } else {
-        alert(
-          `No, the person does not have ${attribute} eyes! Remove all persons with ${attribute} eyes`
-        )
-        charactersInPlay = charactersInPlay.filter((person) => person['eyeColor'] !== selectQuestion.value)
+        message = `No, the person does not have ${value} eyes! Remove all persons with ${value} eyes`
       }
-  } else if (selectQuestion.category === 'other') {
+  } else if (group === 'other') {
     if (keep) {
-      alert(
-        `Yes, this person has a smoking habit! Keep all persons with a smoking habit`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person['smoking'] === selectQuestion.value)
+      message = `Yes, this person has a smoking habit! Keep all persons with a smoking habit`
     } else {
-      alert(
-        `No this person does not have a smoking habit! Remove all persons with a smoking habit`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person['smoking'] !== selectQuestion.value)
+      message = `No this person does not have a smoking habit! Remove all persons with a smoking habit`
     }
   }
+  alert(message)
+  charactersInPlay = charactersInPlay.filter((person) => keep? person[attribute] === value:person[attribute] !== value)
+
   generateBoard()
 }
 
@@ -383,11 +370,8 @@ const checkMyGuess = (myGuess) => {
     ${myGuess} is wrong, game over!
     `
   }
-  // 3. Show the win or lose section
   board.innerHTML = ''
   winOrLose.classList.add("show")
-  // 4. Hide the game board
-
 }
 
 // Invokes the start function when website is loaded
@@ -396,4 +380,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 filter.addEventListener('click', checkQuestion)
-playAgain.addEventListener('click', start)
+playAgain.addEventListener('click', () => {winOrLose.classList.remove("show"); start()})

@@ -7,6 +7,8 @@ const playAgainButton = document.getElementById("playAgain")
 
 //
 const findOutButton = document.getElementById("filter")
+
+
 //
 
 const winOrLoseWrapper = document.getElementById('winOrLose')
@@ -262,7 +264,6 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
   generateBoard()
   setSecret()
 }
@@ -271,41 +272,37 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
-
-  //
+  const value = questions.options[questions.selectedIndex].value
+  
   
   // We also need a variable that stores the actual value of the question we've selected.
+  let attribute
+  
 
   if (category === 'hair color') {
+    
     currentQuestion = {
       attribute: 'hairColor',
-      // *
-      value: attribute.value,
-
-      // 👆 add the value from the input here
-      category: category,
-      
+      value: value,
+      category: category
     }
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: "eyeColor",
-      value: eyeColor.value,
+      value: value,
       category: category,
     }
     // Set this up your self
   } else if (category === 'accessories') {
     currentQuestion = {
-
-      //
-      attribute: "hat",
-      attribute: "glasses",
+      attribute: value,      
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
     currentQuestion = {
-      attribute: "smoker",
+      attribute: value,
       value: true,
       category: category,
     }
@@ -314,16 +311,31 @@ const selectQuestion = () => {
 }
 
 // This function should be invoked when you click on 'Find Out'.
-const checkQuestion = () => {
+const checkQuestion = (currentQuestion) => {
+  let keep
+  console.log("checking")
 
   //
-  if (currentQuestion === secret) {
-    console.log("match")
+  if (currentQuestion.attribute === "hairColor" && currentQuestion.value === secret.hair.Color) {
+    keep = true
+  } 
+  else if (currentQuestion.attribute === "eyeColor" && currentQuestion.value === secret.eye.Color) {
+    keep = true
   }
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  console.log("no match")
+  else if (currentQuestion.attribute === "glasses" && currentQuestion.value === secret.glasses) {
+    keep = true
+  }
+  else if (currentQuestion.attribute === "hat" && currentQuestion.value === secret.hat) {
+    keep = true
+  }
+  else if (currentQuestion.attribute === "smoker" && currentQuestion.value === secret.smoker) {
+    keep = true
+  } else {
+    keep = false
+  }  
+
+  filterCharacters(keep)
+  
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -359,17 +371,11 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
-
-
   // store the interaction from the player in a variable.
   confirm("Are you sure?")
-
-  // remember the confirm() ?
   checkMyGuess(suspect)
-  // If the player wants to guess, invoke the checkMyGuess function.
 }
 
-// If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   if (secret.name === suspect) {
     board.style.display = "none";
@@ -400,14 +406,18 @@ start()
 
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', () => {
+  location.reload()
+})
 
 
 //
-findOutButton.addEventListener("click", (currentQuestion) => {
+findOutButton.addEventListener("change", (currentQuestion) => {
   checkQuestion()
-  
 })
+
+
+
 
 playAgainButton.addEventListener("click", () => {
   location.reload()

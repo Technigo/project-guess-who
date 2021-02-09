@@ -7,6 +7,8 @@ const restartButton = document.getElementById('restart')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgain = document.getElementById('play-again')
+const feedback = document.getElementById('feedback')
+const feedbackSection = document.getElementById('feedback-section')
 
 
 // Array with all the characters, as objects
@@ -320,33 +322,38 @@ const filterCharacters = (keep) => {
   let message = ""
   if (group === 'accessories') {
     if (keep) {
-      message = `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+      message = `<strong>Yes</strong>,<br> the person wears ${attribute}! <br> Kept all that wears ${attribute}.`
     } else {
-      message = `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+      message = `strong>No, the person doesn't wear ${attribute}! <br> Removed all that wears ${attribute}...`
     }
   } else if (group === 'hair color') {
       if (keep) {
-        message = `Yes, the person has ${value} hair! Keep all persons with ${value} hair`
+        message = `<strong>Yes</strong>,<br> the person has ${value} hair! <br> Kept all persons with ${value} hair.`
       } else {
-        message = `No, the person doesn't have ${value} hair! Remove all persons with ${value} hair`
+        message = `<strong>No</strong>,<br> the person doesn't have ${value} hair! <br> Removed all persons with ${value} hair...`
       }
   } else if (group === 'eye color') {
       if (keep) {
-        message = `Yes, the person has ${value} eyes! Keep all persons with ${value} eyes`
+        message = `<strong>Yes</strong>,<br> the person has ${value} eyes! <br> Kept all persons with ${value} eyes.`
       } else {
-        message = `No, the person does not have ${value} eyes! Remove all persons with ${value} eyes`
+        message = `<strong>No</strong>,<br> the person does not have ${value} eyes! <br> Removed all persons with ${value} eyes...`
       }
   } else if (group === 'other') {
     if (keep) {
-      message = `Yes, this person has a smoking habit! Keep all persons with a smoking habit`
+      message = `<strong>Yes</strong>,<br> this person has a smoking habit! <br> Kept all persons with a smoking habit.`
     } else {
-      message = `No this person does not have a smoking habit! Remove all persons with a smoking habit`
+      message = `<strong>No</strong>,<br> this person does not have a smoking habit! <br> Removed all persons with a smoking habit...`
     }
   }
-  alert(message)
+  //alert(message)
+  feedbackMessage(message)
   charactersInPlay = charactersInPlay.filter((person) => keep? person[attribute] === value:person[attribute] !== value)
-
   generateBoard()
+}
+
+const feedbackMessage = (message) => {
+  feedbackSection.classList.add("visible")
+  feedback.innerHTML = `${message}`
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -378,6 +385,6 @@ const checkMyGuess = (myGuess) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', () => {feedbackSection.classList.remove("visible"); start()})
 filter.addEventListener('click', checkQuestion)
 playAgain.addEventListener('click', () => {winOrLose.classList.remove("show"); start()})

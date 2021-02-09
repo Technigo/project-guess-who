@@ -2,7 +2,10 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
+const filterButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -264,6 +267,7 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
 
+const value = questions.value
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
@@ -282,14 +286,21 @@ const selectQuestion = () => {
     }
   } else if (category === 'other') {
     // Set this up your self (should be same structure as above)
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    }
   }
 }
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+  const keep = currentQuestion.value === secret[currentQuestion.attribute]
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  
 }
 
 // It'll filter the characters array and redraw the game board.

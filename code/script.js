@@ -51,8 +51,8 @@ const start = () => {
 const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label;
-  const value = questions.options[questions.selectedIndex].value;
   // We also need a variable that stores the actual value of the question we've selected.
+  const value = questions.options[questions.selectedIndex].value;
 
   if (category === "hair color") {
     currentQuestion = {
@@ -79,42 +79,46 @@ const selectQuestion = () => {
       category: category,
     };
   }
-
   // DEBUG: remove on submission
   console.log("Question: ", currentQuestion);
+  // After the currentQuestion is set we call checkQuestion
+  checkQuestion();
 };
 
-// This function should be invoked when you click on 'Find Out'.
+// Compare the currentQuestion with the secret person.
+// See if we should keep or remove people based on that
+// Then invoke filterCharacters
 const checkQuestion = () => {
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  const secretValue = secret[currentQuestion.attribute];
+  if (secretValue === currentQuestion.value) {
+    filterCharacters(true);
+  } else {
+    filterCharacters(false);
+  }
 };
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
-  if (group === "accessories") {
-    if (keep) {
-      alert(`Yes, the person wears ${attribute}! Keep all that wears ${attribute}`);
-    } else {
-      alert(`No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`);
-    }
-  } else if (group === "other") {
-    // Similar to the one above
-  } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
-    } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
-    }
-  }
-
+  // if (group === "accessories") {
+  //   if (keep) {
+  //     alert(`Yes, the person wears ${attribute}! Keep all that wears ${attribute}`);
+  //   } else {
+  //     alert(`No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`);
+  //   }
+  // } else if (group === "other") {
+  //   // Similar to the one above
+  // } else {
+  //   if (keep) {
+  //     // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+  //   } else {
+  //     // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+  //   }
+  // }
   // filter to keep or remove based on the keep variable.
   /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or 
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
-
   // Invoke a function to redraw the board with the remaining people.
 };
 

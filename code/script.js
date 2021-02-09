@@ -103,22 +103,26 @@ const checkQuestion = () => {
 };
 
 // It'll filter the characters array and redraw the game board.
+// Show the correct alert message for different categories
 const filterCharacters = (keep) => {
-  // Show the correct alert message for different categories
   if (keep) {
     alert(
       `Yes, the person has ${currentQuestion.text}! Keep all that has ${currentQuestion.text}.`
+    );
+    charactersInPlay = charactersInPlay.filter(
+      (character) => character[currentQuestion.attribute] === currentQuestion.value
     );
   } else {
     alert(
       `No, the person doesn't have ${currentQuestion.text}! Remove all that have ${currentQuestion.text}`
     );
+    charactersInPlay = charactersInPlay.filter(
+      (character) => character[currentQuestion.attribute] !== currentQuestion.value
+    );
   }
-  // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
-  // Invoke a function to redraw the board with the remaining people.
+  // DEBUG: remove on submission
+  console.log("Filtered characters: ", charactersInPlay);
+  generateBoard();
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

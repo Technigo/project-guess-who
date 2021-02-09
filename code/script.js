@@ -270,19 +270,21 @@ const CHARACTERS = [{
   },
 ]
 
+
+//array of sentences as answer depending on what question the  player chooses
 const sentences = [{
-    accessories: `Yes, the person wears ${currentQ.attribute}! Keep all that wears ${currentQ.attribute}`,
-    hairColor: `Yes, the person has ${currentQ.value} hair! Keep all that have ${currentQ.value} hair`,
-    eyeColor: `Yes, the person has ${currentQ.value} eyes! Keep all that have ${currentQ.value} eyes`,
-    animals: `Yes, the person is a ${currentQ.attribute} owner! Keep all the ${currentQ.attribute} owners`,
-    other: `Yes, the person is a ${currentQ.attribute}! Keep all the ${currentQ.attribute}'s`,
+    accessories: `Yes, the person wears x! Keep all that wears x`,
+    hairColor: `Yes, the person has x hair! Keep all that have x hair`,
+    eyeColor: `Yes, the person has x eyes! Keep all that have x eyes`,
+    animals: `Yes, the person is a x owner! Keep all the x owners`,
+    other: `Yes, the person is a x! Keep all the x's`,
   },
   {
-    accessories: `No, the person doesn't wear ${currentQ.attribute}! Remove all that wears ${currentQ.attribute}`,
-    hairColor: `No, the person doesn't have ${currentQ.value} hair! Remove all that have ${currentQ.value} hair`,
-    eyeColor: `No, the person don't have ${currentQ.value} eyes! Remove all that have ${currentQ.value} eyes`,
-    animals: `No, the person isn't a ${currentQ.attribute} owner! Remove all the ${currentQ.attribute} owners`,
-    other: `No, the person isn't a ${currentQ.attribute}! Remove all the ${currentQ.attribute}'s`,
+    accessories: `No, the person doesn't wear x! Remove all that wears x`,
+    hairColor: `No, the person doesn't have x hair! Remove all that have x hair`,
+    eyeColor: `No, the person don't have x eyes! Remove all that have x eyes`,
+    animals: `No, the person isn't a x owner! Remove all the x owners`,
+    other: `No, the person isn't a x! Remove all the x's`,
   }
 ]
 
@@ -328,7 +330,6 @@ const timer = (x) => {
     seconds = "0" + seconds;
   document.getElementById("timer").innerHTML = minute + ":" + seconds;
 }
-
 
 // This function to start (and restart) the game
 const start = () => {
@@ -426,34 +427,25 @@ const stopPropergate = (event) => {
 
 //This function is innvoked when you click FindOut. It compares the secret characters properties with the players options and sets "keep" to true if matching, otherwise false
 const checkQuestion = (currentQ) => {
-  let keep;
+  let keep = false;
   let userValue = currentQ.value;
 
   switch (currentQ.category) {
     case 'hair color':
       if (isEqual(userValue, secret.hairColor)) {
-        keep = true
-      } else {
-        keep = false
+        keep = true;
       }
       break;
     case 'eye color':
       if (isEqual(userValue, secret.eyeColor)) {
         keep = true;
-      } else {
-        keep = false
       }
       break;
     case 'accessories':
       if (isEqual(userValue, secret.glasses) && currentQ.attribute === 'glasses') {
-        console.log('glasses')
         keep = true;
       } else if (isEqual(userValue, secret.hat) && currentQ.attribute === 'hat') {
-        console.log('hat')
         keep = true;
-      } else {
-        console.log('not glass/hat')
-        keep = false;
       }
       break;
     case 'animals':
@@ -461,19 +453,13 @@ const checkQuestion = (currentQ) => {
         keep = true;
       } else if (isEqual(userValue, secret.dog) && currentQ.attribute === 'dog') {
         keep = true;
-      } else {
-        keep = false;
       }
       break;
     case 'other':
       if (isEqual(userValue, secret.smoker)) {
         keep = true;
-        console.log('yes smoke')
-      } else {
-        keep = false;
-        console.log('no smoke')
-      }
-      break;
+      } else
+        break;
   }
   //passes the properties of the current question and right/wrong option to the filter function
   filterCharacters(currentQ, keep)
@@ -481,55 +467,72 @@ const checkQuestion = (currentQ) => {
 
 // Filters the characters if keep is true/false (depending on option chosen of player) and alerts the response. Then uses array.filter to return an array of characters based on that
 const filterCharacters = (currentQ, keep) => {
-  if (isEqual(keep, true)) {
-    switch (currentQ.category) {
-      case 'accessories':
-        alert(sentences[1].accessories)
-        charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
-        break;
-      case 'hair color':
-        alert(sentences[1].hairColor)
-        charactersInPlay = charactersInPlay.filter((person => person.hairColor === currentQ.value))
-        break;
-      case 'eye color':
-        alert(sentences[1].eyeColor)
-        charactersInPlay = charactersInPlay.filter((person => person.eyeColor === currentQ.value))
-        break;
-      case 'animals':
-        alert(sentences[1].animals)
-        charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
-        break;
-      case 'other':
-        alert(sentences[1].other)
-        charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
-        break;
-    }
-  } else {
-    switch (currentQ.category) {
-      case 'accessories':
-        alert(sentences[2].accessories)
-        charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
-        break;
-      case 'hair color':
-        alert(sentences[2].hairColor)
-        charactersInPlay = charactersInPlay.filter((person => person.hairColor !== currentQ.value))
-        break;
-      case 'eye color':
-        alert(sentences[2].eyeColor)
-        charactersInPlay = charactersInPlay.filter((person => person.eyeColor !== currentQ.value))
-        break;
-      case 'animals':
-        alert(sentences[2].animals)
-        charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
-        break;
-      case 'other':
-        alert(sentences[2].other)
-        charactersInPlay = charactersInPlay.filter((person => person[currentQ.attribute] === keep))
-        break;
-    }
+  switch (currentQ.category) {
+    case 'hair color':
+      if (isEqual(keep, true)) {
+        //in the sentences a placeholder (x) is changed for the local current specific attribute/value
+        alert((sentences[0].hairColor).replaceAll(`x`, `${currentQ.value}`))
+      } else {
+        alert((sentences[1].hairColor).replaceAll(`x`, `${currentQ.value}`))
+      }
+      filter(currentQ.value, keep, 'hairColor')
+      break;
+    case 'eye color':
+      if (isEqual(keep, true)) {
+        alert((sentences[0].eyeColor).replaceAll(`x`, `${currentQ.value}`))
+      } else {
+        alert((sentences[1].eyeColor).replaceAll(`x`, `${currentQ.value}`))
+      }
+      filter(currentQ.value, keep, 'eyeColor')
+      break;
+    case 'accessories':
+      if (isEqual(keep, true)) {
+        alert((sentences[0].accessories).replaceAll(`x`, `${currentQ.attribute}`))
+      } else {
+        alert((sentences[1].accessories).replaceAll(`x`, `${currentQ.attribute}`))
+      }
+      filter(currentQ.attribute, keep)
+      break;
+    case 'animals':
+      if (isEqual(keep, true)) {
+        alert((sentences[0].animals).replaceAll(`x`, `${currentQ.attribute}`))
+      } else {
+        alert((sentences[1].animals).replaceAll(`x`, `${currentQ.attribute}`))
+      }
+      filter(currentQ.attribute, keep)
+      break;
+    case 'other':
+      if (isEqual(keep, true)) {
+        alert((sentences[0].other).replaceAll(`x`, `${currentQ.attribute}`))
+      } else {
+        alert((sentences[1].other).replaceAll(`x`, `${currentQ.attribute}`))
+      }
+      filter(currentQ.attribute, keep)
+      break;
   }
   //generates a new board depending on the filtered array
   generateBoard(charactersInPlay)
+}
+
+//function for filtering
+const filter = (x, keep, cat) => {
+  if (isEqual(keep, true)) {
+    if (cat === 'hairColor') {
+      charactersInPlay = charactersInPlay.filter(person => person.hairColor === x)
+    } else if (cat === 'eyeColor') {
+      charactersInPlay = charactersInPlay.filter(person => person.eyeColor === x)
+    } else {
+      charactersInPlay = charactersInPlay.filter(person => person[x] === keep)
+    }
+  } else {
+    if (cat === 'hairColor') {
+      charactersInPlay = charactersInPlay.filter(person => person.hairColor !== x)
+    } else if ( cat === 'eyeColor') {
+      charactersInPlay = charactersInPlay.filter(person => person.eyeColor !== x)
+    } else {
+      charactersInPlay = charactersInPlay.filter(person => person[x] === keep)
+    }
+  }
 }
 
 // when the player clicks guess they need to confirm with yes or no. On yes checkMyGuess is invoked, on no the gameboard is showed again

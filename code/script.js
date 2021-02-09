@@ -248,9 +248,10 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret)
 }
 
-console.log(setSecret)
+
 
 
 // This function to start (and restart) the game
@@ -347,9 +348,12 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
-  const {group, attribute, value} = currentQuestion
+  const attribute = currentQuestion.attribute
+  const value = currentQuestion.value
+  const category = currentQuestion.category
+  //const {group, attribute, value} = currentQuestion
 
-  if (group === 'accessories') {
+  if (category === 'accessories') {
     if (keep) {
       alert(
         `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
@@ -359,7 +363,7 @@ const filterCharacters = (keep) => {
         `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
       )
     }
-  } else if (group === 'other') {
+  } else if (category === 'other') {
     // Similar to the one above
   } else {
     if (keep) {

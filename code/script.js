@@ -272,15 +272,20 @@ const value = questions.value
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: value,
       // 👆 add the value from the input here
       category: category,
     }
   } else if (category === 'eye color') {
     // Set this up your self
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value: value,
+      category: category,
+    }
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+    attribute: value,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for example, so always true in the question.
       category: category,
@@ -298,15 +303,16 @@ const value = questions.value
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
   const keep = currentQuestion.value === secret[currentQuestion.attribute]
+  filterCharacters(keep)
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  
+  // Then invoke filterCharacters 
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
+const {attribute, category, value} =currentQuestion
   if (group === 'accessories') {
     if (keep) {
       alert(

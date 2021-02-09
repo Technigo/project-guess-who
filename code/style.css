@@ -13,7 +13,7 @@ body {
 }
 
 .header {
-  background-color: blue;
+  background-color: var(--secondary);
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -33,7 +33,7 @@ body {
 }
 
 .card-header:hover {
-  background-color: red;
+  background-color: var(--primary);
 }
 
 .how-to-play-card {
@@ -72,22 +72,24 @@ body {
   font-size: 150px;
   font-weight: 800;
   margin-bottom: 60px;
+  text-shadow: 2px 2px var(--primary);
+  color: white;
 }
 
 .lets-play-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 4px solid red;
+  border: 4px solid var(--primary);
   width: 250px;
   height: 80px;
-  background-color: blue;
+  background-color: var(--secondary);
   cursor: pointer;
   outline: none;
 }
 
 .lets-play-button:hover {
-  background-color: red;
+  background-color: var(--primary);
 }
 
 .h2 {
@@ -95,26 +97,24 @@ body {
   color: white; 
 }
 
+/* Ask question container */
 
-h1 {
-  font-size: 42px;
-  font-weight: 500;
-  line-height: 48px;
-  margin: 10px 0;
-  color: white;
-}
-
-.game-container {
+.question-container {
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
   width: 100%;
 }
 
+.question-container-left-side {
+  display: flex;
+  justify-content: space-around;
+}
+
 .question-section {
   width: 91.4%;
   padding: 20px;
-  background-color: blue;
+  background-color: var(--secondary);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -124,17 +124,33 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
-  width: 30%;
+  font-size: 26px;
+  font-family: 'Patrick Hand';
+  color: var(--primary);
+  width: 350px;
   padding-left: 10px;
-  
+  margin: 0px 20px 0px 20px;
+}
+
+.questionNumber {
+  margin-left: 20px;
+}
+
+.questionNumber p {
+  font-size: 20px;
+  color: white;
+}
+
+.question-container-right-side {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .guess-who-icon {
   width: 126px;
 }
+
+/* Section with the characters */ 
 
 .board-wrapper {
   width: 100%;
@@ -150,7 +166,7 @@ select {
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  background-color: blue;
+  background-color: var(--secondary);
   padding: 10px;
 }
 
@@ -159,7 +175,7 @@ select {
   width: 150px;
   height: 180px;
   overflow: hidden;
-  border: 3px solid rgb(19, 19, 185);
+  box-shadow: 2px 2px var(--primary);
   border-radius: 4px;
   background-color: white;
   margin: 3px;
@@ -191,7 +207,7 @@ select {
 }
 
 .card:hover {
-  background-color: red;
+  background-color: var(--primary);
 }
 
 .card:hover img,
@@ -213,14 +229,15 @@ select {
 }
 
 /****** BUTTONS ******/
+
 button {
   border: 2px solid white;
-  border-radius: 50px;
-  font-size: 16px;
-  font-family: 'Montserrat';
+  font-size: 22px;
+  font-family: 'Patrick Hand', sans-serif;
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  outline: none;
 }
 
 .small {
@@ -229,20 +246,20 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: red;
+  color: var(--primary);
   align-self: flex-end;
 }
 
 .filled-button,
 .outlined-button:hover {
-  background-color: red;
+  background-color: var(--primary);
   color: white;
 }
 
 .filled-button:hover {
-  background-color: white;
+  background-color: var(--secondary);
   border-color: white;
-  color: red;
+  color: white;
 }
 
 /****** WIN OR LOSE SECTION ******/

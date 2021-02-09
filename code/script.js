@@ -9,7 +9,8 @@ const playAgain = document.getElementById('playAgain');
 const playButton = document.getElementById('lets-play-button');
 const gameContainer = document.getElementById('game-container');
 const howToPlay = document.getElementById('how-to-play-question');
-const howToPlayCard = document.getElementById('how-to-play-answer')
+const howToPlayCard = document.getElementById('how-to-play-answer');
+let questionNumber = document.getElementById('questionNum');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -281,6 +282,7 @@ const CHARACTERS = [
 
 // Global variables
 let secret, currentQuestion, charactersInPlay;
+questionNumber = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -305,6 +307,7 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -315,6 +318,8 @@ const start = () => {
   board.style.display = "flex";
   winOrLose.style.display = "none";
 };
+
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -437,6 +442,9 @@ const filterCharacters = (keep) => {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value);
   }
   generateBoard();
+  questionNumber ++;
+  questionNum.innerHTML = `<div><p>QUESTION ${questionNumber}</p></div>`
+  
 };
 
   // Invoke a function to redraw the board with the remaining people.
@@ -458,15 +466,16 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     winOrLoseText.innerHTML = `
-      YAY, you win! You guessed on ${suspect} and that was correct!`;
+      YAY, you win! You guessed on ${suspect} and that was correct and you did it in only ${questionNumber} questions!`;
   } else {
     winOrLoseText.innerHTML = `
-      NO, you lose! You guessed on ${suspect} and that was wrong! The right answer was ${secret.name}!`;
+      NO, you lose! You guessed on ${suspect} and that was wrong and you did it in ${questionNumber} questions! The right answer was ${secret.name}!`;
   }
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  
   board.style.display = "none";
   winOrLose.style.display = "flex";
 };

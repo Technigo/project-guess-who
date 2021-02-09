@@ -1,0 +1,54 @@
+body {
+  flex-direction: column;
+}
+
+.question-section {
+  width: 100%;
+  min-height: 0;
+}
+
+.button {
+  padding: 8px 16px;
+}
+
+.title {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.icon {
+  width: 51px;
+}
+
+.board-wrapper {
+  width: 100%;
+}
+
+.game-board {
+  width: 100%;
+  max-width: 750px;
+}
+
+.card {
+  width: 113px;
+  position: relative;
+}
+
+.card .guess {
+  display: flex;
+  top: 0;
+  position: absolute;
+  justify-content: flex-end;
+}
+
+.guess__text {
+  display: none;
+}
+
+.card .guess .button__filled {
+  padding: 6px 11px;
+  margin-bottom: 1px;
+  background: white;
+  color: var(--primary);
+  border: none;
+}

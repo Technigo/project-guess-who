@@ -1,0 +1,28 @@
+.button {
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  padding: 17px 27px;
+  cursor: pointer;
+}
+
+.button__outlined {
+  background-color: transparent;
+  color: var(--primary);
+  align-self: flex-end;
+}
+
+.button__filled,
+.button__outlined:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.button__filled:hover {
+  background-color: white;
+  border-color: white;
+  color: var(--primary);
+}
+
+.button__filled--small {
+  padding: 8px 16px;
+}

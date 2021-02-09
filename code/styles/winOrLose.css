@@ -1,0 +1,29 @@
+.win-or-lose__wrapper {
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+}
+
+.win-or-lose {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  text-align: center;
+}
+
+.win-or-lose .icon {
+  align-self: flex-start;
+  margin-left: 15%;
+}
+
+.win-or-lose .title {
+  margin-bottom: 32px;
+}

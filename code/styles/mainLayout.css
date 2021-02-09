@@ -1,0 +1,41 @@
+/* Global css variables used for colors */
+:root {
+  --primary: #a259ff;
+  --secondary: #b0a6ff;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.question-section {
+  width: 30%;
+  min-height: 100vh;
+  background-color: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  padding: 5vw;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.board-wrapper {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-board {
+  width: 90%;
+  max-width: 882px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.hidden {
+  display: none;
+}

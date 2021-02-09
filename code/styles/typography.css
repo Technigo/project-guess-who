@@ -1,0 +1,16 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 10px 0;
+  color: white;
+}
+
+.button {
+  font-size: 16px;
+  font-weight: bold;
+}

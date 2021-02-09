@@ -15,16 +15,15 @@ let secret, currentQuestion, charactersInPlay;
 
 // Draw the game board
 const generateBoard = () => {
-  board.style.display = "flex";
   board.innerHTML = "";
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <p class="card__name">${person.name}</p>
+        <img class="card__image" src=${person.img} alt=${person.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" id="guess" data-name="${person.name}">Guess</button>
+          <span class="guess__text">Guess on ${person.name}?</span>
+          <button class="button button__filled button__filled--small" id="guess" data-name="${person.name}">Guess</button>
         </div>
       </div>
     `;
@@ -47,7 +46,7 @@ const setSecret = () => {
 const start = () => {
   console.log("START");
   charactersInPlay = CHARACTERS;
-  winOrLose.style.display = "none";
+  winOrLose.classList.toggle("hidden");
   generateBoard();
   setSecret();
 };
@@ -149,9 +148,7 @@ const checkMyGuess = (suspect) => {
     endStateText.innerText = "NO! That is wrong";
   }
   // 3. Show the win or lose section
-  winOrLose.style.display = "block";
-  // 4. Hide the game board
-  board.style.display = "none";
+  winOrLose.classList.toggle("hidden");
 };
 
 // Invokes the start function when website is loaded

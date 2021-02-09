@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #03241f;
+  --secondary: #0a7c69;
 }
 
 body {
@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: rgba(248, 248, 248, 0.479);
 }
 
 h1 {
@@ -28,6 +29,7 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  border-right: solid rgb(0, 0, 0);
 }
 
 select {
@@ -46,6 +48,16 @@ select {
   color: white;
   font-weight: 500;
   font-size: 18px;
+}
+
+.timer {
+  padding: 10px;
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.493);
+  border-radius: 20px;
+  text-align:center;
+  font-weight: 500;
+  color: #467fc9;
 }
 
 .guess-who-icon {
@@ -79,6 +91,8 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background: rgb(158, 238, 201);
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.603);
 }
 
 .card p {

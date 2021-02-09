@@ -282,7 +282,7 @@ console.log(property);
       // 👆 add the value from the input here
       category: category,
     }
-    console.log(currentQuestion.attribute);
+    
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
@@ -307,6 +307,7 @@ console.log(property);
     // Set this up your self (should be same structure as above)
     }
   }
+  console.log(currentQuestion.attribute);
 }
 
 // This function should be invoked when you click on 'Find Out'.
@@ -328,7 +329,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
-   
+   console.log(`test ${currentQuestion.category}`);
   if (currentQuestion.attribute === 'hairColor') {
     if (keep) {
       alert(
@@ -338,7 +339,45 @@ const filterCharacters = (keep) => {
       alert(
         `No, the person doesn't have ${currentQuestion.value} hair! Remove all that has ${currentQuestion.value} hair`
       )
-    }/*
+    } 
+  } else if (currentQuestion.attribute === 'eyeColor') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${currentQuestion.value} eyes! Keep all that has ${currentQuestion.value} eyes`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${currentQuestion.value} eyes! Remove all that has ${currentQuestion.value} eyes`
+      )
+    }
+  } else if (currentQuestion.category === 'accessories') {
+      if (keep) {
+        alert(
+          `Yes, the person has ${currentQuestion.attribute}! Keep all that has ${currentQuestion.attribute}`
+        )
+      } else {
+        alert(
+          `No, the person doesn't have ${currentQuestion.attribute}! Remove all that has ${currentQuestion.attribute}`
+        )
+      }
+    }
+     else if (currentQuestion.category === 'other') {
+      if (keep) {
+        alert(
+          `Yes, the person is a ${currentQuestion.attribute}! Keep all that are a ${currentQuestion.attribute}`
+        )
+      } else {
+        alert(
+          `No, the person isn't a ${currentQuestion.attribute}! Remove all that are a ${currentQuestion.attribute}`
+          )
+        }
+      }
+        
+    
+    
+    
+    
+    /*
   } else if ( === 'other') {
     // Similar to the one above
   } else {
@@ -347,7 +386,7 @@ const filterCharacters = (keep) => {
     } else {
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
     }*/
-  }
+  
 
   // filter to keep or remove based on the keep variable.
   if (keep) { 

@@ -244,6 +244,10 @@ const generateBoard = () => {
   })
 }
 
+//Load game board on page load 
+window.onload = () => generateBoard();
+
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]

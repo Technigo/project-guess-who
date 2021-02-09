@@ -250,6 +250,9 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+console.log(setSecret)
+
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -257,9 +260,48 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard() // Jag la till denna i Step One
   setSecret() // Jag la till denna i Step Two
+  
 }
 
 // setting the currentQuestion object when you select something in the dropdown
+const selectQuestion = () => {
+  const category = questions.options[questions.selectedIndex].parentNode.label
+  // This variable stores what option group (category) the question belongs to.
+  // We also need a variable that stores the actual value of the question we've selected.
+  //---const value = questions.options[questions.selectedIndex].label  // Jag la till den med hänvisning från Mette
+  const value = questions.value
+
+  if (category === 'hair color') {
+    currentQuestion = {
+      attribute: 'hairColor',
+      value: value, // Eftersom vi har flera values så betyder det att vi ska ha endast en som sparar oavsett vilket värde vi tar
+      category: category, // Här är du kl 19:22
+    }// Checka ifall du kan lägga till flera här dvs samtliga hair
+  } else if (category === 'eye color') {
+    // Set this up your self
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value: value,
+      category: category,
+    }
+  } else if (category === 'accessories') {
+    currentQuestion = {
+      attribute: value,
+      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
+      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      category: category,
+    }
+  } else if (category === 'other') {
+    currentQuestion = {
+      attribute: value,
+      value: true, 
+      category: category,
+    // Set this up your self (should be same structure as above)
+  }
+}
+}
+
+/*
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
@@ -285,17 +327,28 @@ const selectQuestion = () => {
     // Set this up your self (should be same structure as above)
   }
 }
+*/
+
+
+// Step 4 kan innehålla en filter eller remove alla b som vi gjorde på uppgiften/Practice 
+
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+  const keep = currentQuestion === secret
+  console.log(keep)
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  filterCharacters(keep)
+
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
+  const {group, attribute, value} = currentQuestion
+
   if (group === 'accessories') {
     if (keep) {
       alert(
@@ -317,11 +370,19 @@ const filterCharacters = (keep) => {
   }
 
   // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+if (keep) {
+  charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+} else {
+  charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+}
+  
+
+/*charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or 
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -344,14 +405,7 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOutButton.addEventListener('click', selectQuestion) // Kolla rad 290 const checkQuestion = () => {
+findOutButton.addEventListener('click', checkQuestion) // Kolla rad 290 const checkQuestion = () => {
+questions.addEventListener('change', () => 
+  selectQuestion())
 
-
-/*form.addEventListener('submit', (event) => {
-  event.preventDefault(); // Preventing default 
-  const sender = "user";
-  const newInput = document.getElementById('name-input').value
-  globalName = newInput;
-  form.innerHTML = "";
-  showMessage(newInput, sender);
-  nextQuestion(newInput); */

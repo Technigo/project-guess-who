@@ -2,6 +2,10 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filledButton = document.getElementById('filter')
+const winOrLooseWrapper = document.getElementById('winOrLose')
+const playAgainButton = document.getElementById('playAgain')
+//the only one I did not put as a DOM selector now was <h1 line 59 HTML "winOrLoseText" 
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -252,7 +256,7 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+    charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
 }
 
@@ -337,7 +341,13 @@ const checkMyGuess = (suspect) => {
 }
 
 // Invokes the start function when website is loaded
-start()
+start() //what or if should I pass an argument in here? 
+
+//I added restart function ---> should go higher up and check the syntax*
+const restart = () => {
+  document.location.href = "";
+};
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+playAgainButton.addEventListener('click', restart) //can do a set timeout här! 

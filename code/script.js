@@ -301,6 +301,7 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
+
   // What else should happen when we start the game?
 
   setSecret(); //The game will generate a secret charatcer at the very start
@@ -316,6 +317,7 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value of the question we've selected.
   let optionValue = questions.value;
   console.log(optionValue);
+  console.log(category);
 
   if (category === "hair color") {
     currentQuestion = {
@@ -365,42 +367,73 @@ const checkQuestion = () => {
   console.log(secret);
 
   let secretValue = secret[currentQuestion.attribute];
+  console.log(secretValue);
   if (secretValue === currentQuestion.value) {
     console.log("match - true");
+    filterCharacters(true, currentQuestion.category);
   } else {
     console.log("no match - false");
+    filterCharacters(false, currentQuestion.category);
   }
 };
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
+const filterCharacters = (keep, group) => {
+  console.log(group);
+  console.log(currentQuestion.value);
   // Show the correct alert message for different categories
-  if (group === "accessories") {
+  if (group === "hair color") {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person has ${currentQuestion.value} hair! Keep all that has ${currentQuestion.value} hair`
+      );
+      charactersInPlay = charactersInPlay.filter((character) => {
+        return character.hairColor === currentQuestion.value;
+      });
+      console.log(charactersInPlay);
+      generateBoard();
+    } else {
+      alert(
+        `No, the person doesn't have ${currentQuestion.value} hair! Remove everyone with ${currentQuestion.value} hair`
+      );
+      charactersInPlay = charactersInPlay.filter((character) => {
+        return character.hairColor !== currentQuestion.value;
+      });
+      console.log(charactersInPlay);
+      generateBoard();
+    }
+  } else if (group === "eye color") {
+    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person has ${currentQuestion.value}! Keep all that has ${currentQuestion.value}`
       );
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the person doesn't have ${currentQuestion.value}! Remove all that wears ${currentQuestion.value}`
+      );
+    }
+  } else if (group === "accessories") {
+    if (keep) {
+      alert(
+        `Yes, the person has ${currentQuestion.value}! Keep all that has ${currentQuestion.value}`
+      );
+    } else {
+      alert(
+        `No, the person doesn't have ${currentQuestion.value}! Remove all that wears ${currentQuestion.value}`
       );
     }
   } else if (group === "other") {
-    // Similar to the one above
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      alert(
+        `Yes, the person has ${currentQuestion.value}! Keep all that has ${currentQuestion.value}`
+      );
     } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert(
+        `No, the person doesn't have ${currentQuestion.value}! Remove all that wears ${currentQuestion.value}`
+      );
     }
-  }
-
-  // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
-
-  // Invoke a function to redraw the board with the remaining people.
+  };
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -419,6 +452,9 @@ const checkMyGuess = (suspect) => {
   // 4. Hide the game board
   if (suspect === secret.name) {
     console.log(`${secret.name} is the correct guess. You win!`);
+    /* board.style = "display: none;" */
+    board.classList.add("game-board-hidden");
+
   } else {
     console.log(`${suspect} is the incorrect guess. You lose!`);
   }

@@ -59,6 +59,10 @@ select {
   align-content: center;
 }
 
+.game-board-hidden {
+  display: none;
+}
+
 /****** CARD ******/
 .card {
   width: 135px;

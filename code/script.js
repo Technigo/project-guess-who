@@ -21,7 +21,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button small" id="guess" data-name="${person.name}">Guess</button>
         </div>
       </div>
     `;
@@ -127,13 +127,16 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  const makeGuess = confirm(`Are you sure you want to guess ${suspect}?`);
+  if (makeGuess) {
+    checkMyGuess(suspect);
+  }
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
+  // DEBUG: remove on submission
+  console.log("Player wants to guess", suspect);
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -146,3 +149,9 @@ start();
 // All the event listeners
 restartButton.addEventListener("click", start);
 btnFindOut.addEventListener("click", selectQuestion);
+board.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.id === "guess") {
+    guess(target.dataset.name);
+  }
+});

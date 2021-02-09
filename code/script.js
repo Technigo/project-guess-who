@@ -6,9 +6,7 @@ import { getRandomNumber as random } from "./scripts/helperFunctions.js";
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
-
-// Array with all the characters, as objects
-// const CHARACTERS = [];
+const btnFindOut = document.getElementById("filter");
 
 // Global variables
 let secret, currentQuestion, charactersInPlay;
@@ -51,29 +49,39 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label;
   // This variable stores what option group (category) the question belongs to.
+  const category = questions.options[questions.selectedIndex].parentNode.label;
+  const value = questions.options[questions.selectedIndex].value;
   // We also need a variable that stores the actual value of the question we've selected.
 
   if (category === "hair color") {
     currentQuestion = {
       attribute: "hairColor",
-      // value: ,
-      // 👆 add the value from the input here
+      value: value,
       category: category,
     };
   } else if (category === "eye color") {
-    // Set this up your self
+    currentQuestion = {
+      attribute: "eyeColor",
+      value: value,
+      category: category,
+    };
   } else if (category === "accessories") {
     currentQuestion = {
-      //attribute: ,
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      attribute: value,
+      value: true,
       category: category,
     };
   } else if (category === "other") {
-    // Set this up your self (should be same structure as above)
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    };
   }
+
+  // DEBUG: remove on submission
+  console.log("Question: ", currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out'.
@@ -130,3 +138,4 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+btnFindOut.addEventListener("click", selectQuestion);

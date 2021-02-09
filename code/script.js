@@ -342,7 +342,7 @@ const filterCharacters = (keep) => {
           (person) => person[attribute] === value);
       } else {
         alert(
-          `No, the person isn't a ${attribute}! Remove all that are not ${attribute}s.`
+          `No, the person isn't a ${attribute}! Remove all that are ${attribute}s.`
         );
         charactersInPlay = charactersInPlay.filter(
           (person) => person[attribute] !== value);
@@ -422,6 +422,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-questions.addEventListener('change', () => selectQuestion(questions.value))
+questions.addEventListener('change', () => selectQuestion()) //questions.value add?
 filterBtn.addEventListener('click', checkQuestion)
 playAgainBtn.addEventListener('click', start)

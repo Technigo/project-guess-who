@@ -247,12 +247,16 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log("secret person selected") // i added this here
 }
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  console.log("Guess who!")  // i added this here
+  generateBoard()  // i added this here
+  setSecret()      // i added this here
   // What else should happen when we start the game?
 }
 
@@ -260,6 +264,7 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
+  const value = questions.options[questions.selectedIndex].parentNode.label.value // i added this here
   // We also need a variable that stores the actual value of the question we've selected.
 
   if (category === 'hair color') {
@@ -288,6 +293,7 @@ const checkQuestion = () => {
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  questions
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -338,6 +344,8 @@ const checkMyGuess = (suspect) => {
 
 // Invokes the start function when website is loaded
 start()
+
+
 
 // All the event listeners
 restartButton.addEventListener('click', start)

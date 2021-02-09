@@ -3,66 +3,84 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
+    <title>Guess Who?</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   </head>
   <body>
-    <aside class="question-section">
-      <button id="restart" class="outlined-button">RESTART</button>
-
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
-
-      <h1>Does the person have</h1>
+    <header class="header">
+      <div class="how-to-play-card" id="how-to-play-answer">The main goal is to find the right person. Ask the right questions to get to eventually guess which one is the secret person!</div>
+      <div class="card-header" id="how-to-play-question">
+        <p>How to play?</p>
+      </div>
+      <img src="images/jack.svg" class="header-img"/>
       
-      <select id="questions">
-        <option disabled selected>choose question</option>
-        <optgroup label="hair color">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <option value="hidden">hidden hair</option>
-          <option value="grey">grey hair</option>
-          <option value="black">black hair</option>
-          <option value="orange">orange hair</option>
-          <option value="purple">purple hair</option>
-          <option value="white">white hair</option>
-          <!-- Add the rest of hair colors as options  -->
-        </optgroup>
-        <optgroup label="eye color">
-          <option value="hidden">hidden eyes</option>
-          <option value="green">green eyes</option>
-          <option value="brown">brown eyes</option>
-          <option value="blue">blue eyes</option>
-          <!-- Add the rest of eye colors as options  -->
-        </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <option value="hat">hat</option>
-          <!-- Add the other accessory option here. (hat)  -->
-        </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
-        </optgroup>
-        <optgroup label="age">
-          <option value="under 30">under 30</option>
-          <option value="30-45">30-45</option>
-          <option value="over 45">over 45</option>
-        </optgroup>
-      </select>
+      <h1 class="h1">Guess Who?</h1>
+      <button class="lets-play-button" id="lets-play-button">
+        <h2 class="h2">let's play</h2>
+      </button>
+    </header>
     
-
-      <button id="filter" class="filled-button">FIND OUT</button>
-    </aside>
 
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
+    </section>
+
+    <section class="game-container">
+      <div class="question-section">
+        <button id="restart" class="outlined-button">RESTART</button>
+  
+        <!--<img
+          class="guess-who-icon"
+          src="images/guess-who-bubble.png"
+          alt="Guess Who"
+        /> -->
+        
+        <h1>Does the person have</h1>
+        
+        <select id="questions">
+          <option disabled selected>choose question</option>
+          <optgroup label="hair color">
+            <option value="brown">brown hair</option>
+            <option value="yellow">yellow hair</option>
+            <option value="hidden">hidden hair</option>
+            <option value="grey">grey hair</option>
+            <option value="black">black hair</option>
+            <option value="orange">orange hair</option>
+            <option value="purple">purple hair</option>
+            <option value="white">white hair</option>
+            <!-- Add the rest of hair colors as options  -->
+          </optgroup>
+          <optgroup label="eye color">
+            <option value="hidden">hidden eyes</option>
+            <option value="green">green eyes</option>
+            <option value="brown">brown eyes</option>
+            <option value="blue">blue eyes</option>
+            <!-- Add the rest of eye colors as options  -->
+          </optgroup>
+          <optgroup label="accessories">
+            <option value="glasses">glasses</option>
+            <option value="hat">hat</option>
+            <!-- Add the other accessory option here. (hat)  -->
+          </optgroup>
+          <optgroup label="other">
+            <option value="smoker">a smoking habit</option>
+          </optgroup>
+          <optgroup label="age">
+            <option value="under 30">under 30</option>
+            <option value="30-45">30-45</option>
+            <option value="over 45">over 45</option>
+          </optgroup>
+        </select>
+      
+  
+        <button id="filter" class="filled-button">FIND OUT</button>
+      </div>
     </section>
 
     <section id="winOrLose" class="win-or-lose-wrapper">
@@ -76,6 +94,7 @@
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
+    
 
 
     <script src="script.js"></script>

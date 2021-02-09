@@ -6,6 +6,10 @@ const findOutButton = document.getElementById('filter');
 const winOrLose = document.getElementById('winOrLose');
 const winOrLoseText = document.getElementById('winOrLoseText');
 const playAgain = document.getElementById('playAgain');
+const playButton = document.getElementById('lets-play-button');
+const gameContainer = document.getElementById('game-container');
+const howToPlay = document.getElementById('how-to-play-question');
+const howToPlayCard = document.getElementById('how-to-play-answer')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -471,9 +475,23 @@ const checkMyGuess = (suspect) => {
 start();
 
 // All the event listeners
+
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', () => selectQuestion());
 findOutButton.addEventListener('click', checkQuestion);
 playAgain.addEventListener('click', start);
+
+playButton.addEventListener('click', () => {
+  board.scrollIntoView({behavior: 'smooth'});
+});
+
+howToPlay.addEventListener('click', () => {
+  howToPlayCard.style.display = "flex";
+});
+
+howToPlayCard.addEventListener('click', () => {
+  howToPlayCard.style.display = "none";
+})
+
 
 

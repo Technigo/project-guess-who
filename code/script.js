@@ -4,8 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
 // Array with all the characters, as objects
-const CHARACTERS = [
-  {
+const CHARACTERS = [{
     name: 'Jabala',
     img: 'images/jabala.svg',
     hairColor: 'hidden',
@@ -227,7 +226,11 @@ const CHARACTERS = [
 // Global variables
 let secret, currentQuestion, charactersInPlay
 
+
 // Draw the game board
+// we're looking at the characters array and looping through that array,
+//creating one 'card' for each person in that array. We're adding that as the innerHTML
+//of the element with the id board
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -237,7 +240,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button small" id='guess-who' onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
@@ -252,46 +255,71 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
+  // variabeln charactersInPlay får värdet CHARACTERS som är arrayen med alla personer
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  setSecret()
+  generateBoard()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = () => {
+const selectQuestion = (selected) => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-
+  // har lagt in parametern selected som ska ta med sig värdet från när man väljer i selectQuestion
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
-      // 👆 add the value from the input here
+      value: selected,
       category: category,
     }
   } else if (category === 'eye color') {
-    // Set this up your self
-  } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      attribute: 'eyeColor',
+      value: selected,
       category: category,
     }
-  } else if (category === 'other') {
-    // Set this up your self (should be same structure as above)
+  } else if (category === 'accessories') {
+    switch (selected) { // switch med hat och glasses
+      case 'hat':
+        currentQuestion = {
+          attribute: 'hat',
+          value: true,
+          category: category,
+        };
+        break;
+      case 'glasses':
+        currentQuestion = {
+          attribute: 'glasses',
+          value: true,
+          category: category,
+        };
+        break;
+    }
+  } else(category === 'other')
+  currentQuestion = {
+    attribute: 'smoker',
+    value: true,
+    category: category,
   }
 }
 
+// stämmer det här??
+
+
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+// vad fan ska jag göra här?
+// ska den ta och jämföra selectQuestion med secret?
+filterCharacters()
 }
+// Compare the currentQuestion with the secret person.
+// See if we should keep or remove people based on that
+// Then invoke filterCharacters
+
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
+const filterCharacters = (group) => {
   // Show the correct alert message for different categories
   if (group === 'accessories') {
     if (keep) {
@@ -304,6 +332,12 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (group === 'other') {
+    //lägger till if else statements
+    if (keep) {
+      alert(
+        `Yes, the person is `
+      )
+    }
     // Similar to the one above
   } else {
     if (keep) {
@@ -341,3 +375,15 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+
+//lagt till eventListener till questions som är sektionen i HTML med alla frågor
+//tar med sig värdet som man väljer så när man sätter -ngt- som parameter i selectQuestions-
+//funktionen och sedan använder den parametern som value så hamnar värdet där
+questions.addEventListener('change', () => {
+  selectQuestion(questions.value)
+})
+
+const check = document.getElementById('filter')
+check.addEventListener('click', () => {
+  selectQuestion(question.value)
+});

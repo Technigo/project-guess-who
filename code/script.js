@@ -385,7 +385,7 @@ const filterCharacters = (keep, group) => {
   if (group === "hair color") {
     if (keep) {
       alert(
-        `Yes, the person has ${currentQuestion.value} hair! Keep all that has ${currentQuestion.value} hair`
+        `Yes, the person has ${currentQuestion.value} hair! Keep all that has ${currentQuestion.value} hair.`
       );
       charactersInPlay = charactersInPlay.filter((character) => {
         return character.hairColor === currentQuestion.value;
@@ -399,28 +399,35 @@ const filterCharacters = (keep, group) => {
       charactersInPlay = charactersInPlay.filter((character) => {
         return character.hairColor !== currentQuestion.value;
       });
-      console.log(charactersInPlay);
       generateBoard();
     }
   } else if (group === "eye color") {
     // Similar to the one above
     if (keep) {
       alert(
-        `Yes, the person has ${currentQuestion.value}! Keep all that has ${currentQuestion.value}`
+        `Yes, the person has ${currentQuestion.value} eyes! Keep all that has ${currentQuestion.value} eyes.`
       );
+      charactersInPlay = charactersInPlay.filter((character) => {
+        return character.eyeColor === currentQuestion.value;
+      });
+      generateBoard();
     } else {
       alert(
-        `No, the person doesn't have ${currentQuestion.value}! Remove all that wears ${currentQuestion.value}`
+        `No, the person doesn't have ${currentQuestion.value} eye! Remove everyone with ${currentQuestion.value} eyes.`
       );
+      charactersInPlay = charactersInPlay.filter((character) => {
+        return character.eyeColor !== currentQuestion.value;
+      });
+      generateBoard();
     }
   } else if (group === "accessories") {
     if (keep) {
       alert(
-        `Yes, the person has ${currentQuestion.value}! Keep all that has ${currentQuestion.value}`
+        `You asked for ${currentQuestion.value}! Keep the ${currentQuestion.value}`
       );
     } else {
       alert(
-        `No, the person doesn't have ${currentQuestion.value}! Remove all that wears ${currentQuestion.value}`
+        `Sadly you asked for ${currentQuestion.value} but it's not a match.! Remove the${currentQuestion.value}`
       );
     }
   } else if (group === "other") {

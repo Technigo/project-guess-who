@@ -16,7 +16,7 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: #F50478;
 }
 
 .question-section {
@@ -42,6 +42,10 @@ select {
 
 .guess-who-icon {
   width: 126px;
+}
+
+.bojack-logo {
+  width: 300px;
 }
 
 .board-wrapper {
@@ -231,3 +235,15 @@ button {
     border: none;
   }
 }
+  .footer {
+    position: absolute;
+    justify-content: flex-end;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #F50478;
+    color: whitesmoke;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;   
+  }

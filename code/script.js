@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -87,7 +87,6 @@ const CHARACTERS = [
     hat: false,
     smoker: false,
   },
-
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
@@ -266,7 +265,7 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-
+  
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
@@ -275,10 +274,11 @@ const selectQuestion = () => {
       category: category,
     }
   } else if (category === 'eye color') {
-      attribute: 'eye color',
+      attribute: 'eyeColor',
     // Set this up your self
   } else if (category === 'accessories') {
     currentQuestion = {
+      attribute: 'glasses' 
       //attribute: ,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
@@ -287,13 +287,41 @@ const selectQuestion = () => {
   } else if (category === 'other') {
     // Set this up your self (should be same structure as above)
   }
+  generateBoard() //? here aswell
 }
+
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+  
+  let keep
+  if (currentQuestion.attribute === 'hairColor' && currentQuestion.value === secret.hairColor) {
+    keep = true
+    console.log('haircolor')
+  }
+  else if (currentQuestion.attribute === 'eyeColor' && currentQuestion.value === secret.eyeColor) {
+    keep = true 
+    console.log('eyecolor')
+  }
+  else if (currentQuestion.attribute === 'glasses' && currentQuestion.value === secret.glasses) {
+    keep = true
+    console.log('glasses')
+  }
+  else if (currentQuestion.attribute === 'hat' && currentQuestion.value === secret.hat) {
+    keep = true
+    console.log('hat')
+  }
+  else if (currentQuestion.attribute === 'smoker' && currentQuestion.value === secret.smoker) {
+    keep = true
+    console.log('smoker')
+  }
+  else {
+    keep = false 
+  }
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -347,3 +375,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOutButton.addEventListener('click', checkQuestion) //?? 

@@ -399,6 +399,18 @@ const guess = (suspect) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
+  if (suspect === secret.person) {
+    winOrLoseText.innerHTML = `
+    Yes you are correct! The secret person is ${suspect}! Well played. Want to play another round? Press restart 👇!
+    `;
+  } else {
+    winOrLoseText.innerHTML = `
+      No sorry, ${suspect} is not the person we are looking for! Press restart if you want to 
+      play again 👇.
+    `
+  }
+  winOrLose.style.display = 'block';
+  board.style.display = 'none';
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

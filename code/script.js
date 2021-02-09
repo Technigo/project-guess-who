@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -225,7 +226,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion, charactersInPlay 
 
 // Draw the game board
 const generateBoard = () => {
@@ -242,6 +243,7 @@ const generateBoard = () => {
       </div>
     `
   })
+  
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -251,8 +253,11 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+   // Here we're setting charactersInPlay array to be all the characters to start with
+  charactersInPlay = CHARACTERS;
+   
+  setSecret()
+  generateBoard()
   // What else should happen when we start the game?
 }
 
@@ -265,11 +270,12 @@ const selectQuestion = () => {
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+       // value: ,
       // 👆 add the value from the input here
       category: category,
     }
   } else if (category === 'eye color') {
+      attribute: 'eye color',
     // Set this up your self
   } else if (category === 'accessories') {
     currentQuestion = {

@@ -13,7 +13,6 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -25,7 +24,6 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
-    hat: true,
     necklace: false,
     earring: false,
   },
@@ -37,7 +35,6 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: true,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -49,7 +46,6 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -61,7 +57,6 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -73,7 +68,6 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -85,7 +79,6 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -97,7 +90,6 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -109,7 +101,6 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: true,
     earring: true,
   },
@@ -122,7 +113,6 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: true,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -134,7 +124,6 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -146,7 +135,6 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -158,7 +146,6 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -170,7 +157,6 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -182,7 +168,6 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -194,7 +179,6 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -206,7 +190,6 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -218,7 +201,6 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: true,
   },
@@ -230,7 +212,6 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -242,7 +223,6 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -254,7 +234,6 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: true,
   },
@@ -266,7 +245,6 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -278,7 +256,6 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -290,7 +267,6 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
-    hat: false,
     necklace: false,
     earring: false,
   },
@@ -349,12 +325,14 @@ const selectQuestion = () => {
       // 👆 add the value from the input here
       category: category,
     };
+    checkQuestion();
   } else if (category === "eye color") {
     currentQuestion = {
       attribute: "eyeColor",
       value: optionValue,
       category: category,
     };
+    checkQuestion();
   } else if (category === "accessories") {
     currentQuestion = {
       attribute: optionValue,
@@ -362,12 +340,14 @@ const selectQuestion = () => {
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     };
+    checkQuestion();
   } else if (category === "other") {
     currentQuestion = {
       attribute: optionValue,
       value: true,
       category: category,
     };
+    checkQuestion();
     // Set this up your self (should be same structure as above)
   }
 };
@@ -377,7 +357,19 @@ const checkQuestion = () => {
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  console.log(`You clicked the find out button`);
+  console.log(`Current question object`);
+  console.log(currentQuestion);
+  console.log("");
+  console.log("");
+  console.log("");
+  console.log(`Secret Person object:`);
+  console.log(secret);
+
+  if (currentQuestion.value === secret.hairColor) {
+    console.log("question match the secret person");
+  } else {
+    console.log(`Question value don't match secret person value`);
+  }
 };
 
 // It'll filter the characters array and redraw the game board.

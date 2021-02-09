@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterBtn = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -254,6 +255,9 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard()
+  setSecret()
+  console.log(secret);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -261,33 +265,55 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
+  const optionValue = questions.value;
+
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: optionValue,
       // 👆 add the value from the input here
       category: category,
     }
   } else if (category === 'eye color') {
+    currentQuestion = {
+    attribute: 'eyeColor',
+    value: optionValue,
+    // 👆 add the value from the input here
+    category: category,
     // Set this up your self
+    }
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: optionValue,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      value: true, // we're asking if this person wears a hat for example, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
     // Set this up your self (should be same structure as above)
+    currentQuestion = {
+      attribute: optionValue,
+      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
+      value: true, // we're asking if this person wears a hat for example, so always true in the question.
+      category: category,
   }
+}
+  console.log(optionValue);
 }
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  const secretValue = secret[currentQuestion.attribute];
+  if (secretValue === currentQuestion.value) {
+      console.log('it works');
+  } else {
+      console.log(`not included`)
+  }
+
+  // Compare the currentQuestion (object) with the secret person (object). Is there a match between the question selected(category) and what property value the secret has is respective category? In that case filter. 
+  // See if we should keep or remove people based on that (true or false)
+  // Then invoke filterCharacters. 
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -330,6 +356,8 @@ const guess = (suspect) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
+  // jämför de två objecten för att se om de är likadana
+  //tex just compare if the names are identical? gives true or false
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -338,6 +366,7 @@ const checkMyGuess = (suspect) => {
 
 // Invokes the start function when website is loaded
 start()
-
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+filterBtn.addEventListener('click', checkQuestion)

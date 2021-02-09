@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -247,16 +248,15 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log("secret person selected") // i added this here
+  console.log('secret person selected') // i added this here
 }
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  console.log("Guess who!")  // i added this here
+  console.log('Guess who!')  // i added this here
   generateBoard()  // i added this here
-  setSecret()      // i added this here
   // What else should happen when we start the game?
 }
 
@@ -270,22 +270,32 @@ const selectQuestion = () => {
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: value,
       // 👆 add the value from the input here
       category: category,
     }
   } else if (category === 'eye color') {
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value: value,
+      category: category,
+    }
     // Set this up your self
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: value,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
+    currentQuestion = {
+      value: true,
+      category: category,
+    }
     // Set this up your self (should be same structure as above)
   }
+  console.log('selected') // i added this here
 }
 
 // This function should be invoked when you click on 'Find Out'.
@@ -293,7 +303,6 @@ const checkQuestion = () => {
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  questions
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -344,8 +353,17 @@ const checkMyGuess = (suspect) => {
 
 // Invokes the start function when website is loaded
 start()
-
+setSecret()   // i added this here
 
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+
+questions.addEventListener('change', (event) => {
+  selectQuestion()
+}) // i added this here
+
+findOutButton.addEventListener('click', (event) => {
+  console.log('cliked')
+  checkQuestion()
+})

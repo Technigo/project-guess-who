@@ -5,16 +5,17 @@ import { getRandomNumber as random } from "./scripts/helperFunctions.js";
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
-const restartButton = document.getElementById("restart");
 const btnFindOut = document.getElementById("filter");
 const winOrLose = document.getElementById("winOrLose");
 const endStateText = document.getElementById("winOrLoseText");
+const restartButton = document.getElementById("playAgain");
 
 // Global variables
 let secret, currentQuestion, charactersInPlay;
 
 // Draw the game board
 const generateBoard = () => {
+  board.style.display = "flex";
   board.innerHTML = "";
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
@@ -44,7 +45,9 @@ const setSecret = () => {
  * 3. call the set secret function to set a random character as the secret
  */
 const start = () => {
+  console.log("START");
   charactersInPlay = CHARACTERS;
+  winOrLose.style.display = "none";
   generateBoard();
   setSecret();
 };

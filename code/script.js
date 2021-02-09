@@ -316,27 +316,35 @@ const {attribute, category, value} =currentQuestion
   if (group === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the character wears ${attribute}! Keep all that wears ${attribute}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the character doesn't wear ${attribute}! Remove all that wears ${attribute}`
       )
     }
-  } else if (group === 'other') {
+  } else if (group === 'hair color') {
+    if (keep) {
+      alert(`Yes, the character has ${value} hair! Keeping all the characters with ${value} hair `)
     // Similar to the one above
   } else {
+    alert(`No, the character doesn't have ${value} hair! Removing characters with ${value} hair.`)
+  }
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      
     } else {
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
     }
   }
 
   // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
+  if (keep) {
+    //right guess
+  charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+  } else {
+    //wrong guess
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) 
+  }
   generateBoard()
   // Invoke a function to redraw the board with the remaining people.
 }
@@ -362,3 +370,6 @@ start()
 // All the event listeners
 playAgainButton.addEventListener('click', start)
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', () => selectQuestion())
+filterButton.addEventListener('click', checkQuestion)
+

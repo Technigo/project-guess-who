@@ -4,8 +4,7 @@ const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
 // Array with all the characters, as objects
-const CHARACTERS = [
-  {
+const CHARACTERS = [{
     name: "Jabala",
     img: "images/jabala.svg",
     hairColor: "hidden",
@@ -79,7 +78,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    necklace: false,
+    necklace: true,
     earring: false,
   },
   {

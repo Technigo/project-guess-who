@@ -302,42 +302,45 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
-  if (group === 'accessories') {
+  if (currentQuestion.category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}.`
+        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}.`
+        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}.`
       )
     }
-  } else if (group === 'other') {
+  } else if (currentQuestion.category === 'other') {
     if (keep) {         // Similar to the one above
       alert(
-        `Yes, the person is a ${attribute}! Keep all who's a ${attribute}.`
+        `Yes, the person is a ${currentQuestion.attribute}! Keep all who's a ${currentQuestion.attribute}.`
       )
     } else {
       alert(
-        `No, the person is not a ${attribute}! Remove all who's a ${attribute}.`
+        `No, the person is not a ${currentQuestion.attribute}! Remove all who's a ${currentQuestion.attribute}.`
       )
     }
   } else {
     if (keep) {
       alert(          // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
-        `Yes, the person has ${attribute}! Keep all persons with ${attribute}.`
+        `Yes, the person has ${currentQuestion.value} hair! Keep all persons with ${currentQuestion.value} hair.`
       )
     } else {          // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
       alert(
-        `No, the person doesn't have ${attribute}! Remove all persons with ${attribute}.`
+        `No, the person doesn't have ${currentQuestion.value} hair! Remove all persons with ${currentQuestion.value} hair.`
       )
     }
   }
 
   // filter to keep or remove based on the keep variable.
-  charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-  charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+  if (keep) {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === secret[currentQuestion.attribute])
+  } else {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== secret[currentQuestion.attribute])
+  }
+
   generateBoard()   // Invoke a function to redraw the board with the remaining people.
 }
 

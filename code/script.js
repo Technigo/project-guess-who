@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
+const findOutBtn = document.getElementById('filter')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -247,44 +247,58 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+
 }
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  generateBoard()
+  setSecret()
+  // Here we're setting charactersInPlay array to be all the characters to start with
   // What else should happen when we start the game?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  const selectedOption = questions.value
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: selectedOption,
       // 👆 add the value from the input here
       category: category,
     }
-  } else if (category === 'eye color') {
-    // Set this up your self
+  } else if (category === 'eye color') {    
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value: selectedOption,
+      category: category,
+    }
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: selectedOption,      
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
-    // Set this up your self (should be same structure as above)
+    currentQuestion = {
+      attribute: 'smoker',
+      value: true,
+      category: category,
+    }
   }
 }
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+  if (currentQuestion.value === secret.hairColor ) {
+    console.log('Hej') 
+  } else { console.log('tja')}
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -341,3 +355,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOutBtn.addEventListener('click',checkQuestion)

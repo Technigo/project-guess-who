@@ -158,7 +158,9 @@ button {
   right: 0;
   height: 100vh;
 }
-
+.shown {
+  display: block;
+}
 .win-or-lose {
   display: flex;
   flex-direction: column;

@@ -1,8 +1,9 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const restartBtn = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
+const playAgainBtn = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -334,10 +335,10 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
-  const confirmGuess = confirm()
+  const confirmGuess = confirm(`Are you sure you want to make a guess on ${suspect}?`)
 
   if (confirmGuess) {
-    checkQuestion(suspect)
+    checkMyGuess(suspect)
   } else {
     generateBoard()
   }
@@ -349,15 +350,15 @@ const guess = (suspect) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   // 1. Check if the suspect is the same as the secret person's name
-  const correctGuess = secret[suspect.name] === suspect.name
+  const correctGuess = secret.name === suspect
   // 2. Set a Message to show in the win or lose section accordingly
   if (correctGuess) {
     document.getElementById('winOrLoseText').innerHTML = `
-    The secret character is in fact ${suspect.name}. You win! 🎉💃
+    The secret character is in fact ${suspect}. You win! 🎉💃
     `
   } else {
     document.getElementById('winOrLoseText').innerHTML = `
-    Sorry, the secret character is ${secret[suspect.name]}.. You lose! 😬
+    Sorry, the secret character is ${secret.name}.. You lose! 😬
     `
   }
   // 3. Show the win or lose section
@@ -370,6 +371,7 @@ const checkMyGuess = (suspect) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartBtn.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutBtn.addEventListener('click', checkQuestion)
+playAgainBtn.addEventListener('click', function(){location.reload()})

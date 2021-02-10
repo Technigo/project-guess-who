@@ -299,7 +299,7 @@ const selectQuestion = () => {
     }
     // Set this up your self (should be same structure as above)
   }
-  console.log(optValue)
+  
 }
 
 // This function should be invoked when you click on 'Find Out'.
@@ -324,49 +324,70 @@ const filterCharacters = (keep) => {
   if (group === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
     }
   } else if (group === 'other') {
     if (keep) {
       alert(
-        `Yes, the person has ${attribute}! Keep all that has ${attribute}`
+        `Yes, the person is a ${currentQuestion.attribute}! Keep all persons that is a ${currentQuestion.attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     } else {
       alert(
-        `No, the person doesn't have ${attribute}! Remove all that have ${attribute}`
+        `No, the person is not a ${currentQuestion.attribute}! Remove all persons that is a ${currentQuestion.attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
     }
     // Similar to the one above
-  } else {
+  } else if (group === 'hair color') {
     if (keep) {
       alert(
-        `Yes, the person has ${attribute} hair! Keep all that has ${attribute} hair`
+        `Yes, the person has ${currentQuestion.value} hair! Keep all that has ${currentQuestion.value} hair`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
     } else {
       alert(
-        `No, the person doesn't have ${attribute} hair! Remove all persons with ${attribute} hair`
+        `No, the person doesn't have ${currentQuestion.value} hair! Remove all persons with ${currentQuestion.value} hair`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value) 
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
     }
-  }
+  } else if (group === 'eye color') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${currentQuestion.value} eyes! Keep all that has ${currentQuestion.value} eyes`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
+      
+    } else {
+      alert(
+        `No, the person doesn't have ${currentQuestion.value} eyes! Remove all persons with ${currentQuestion.value} eyes`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
+
+    }
+  } 
+  generateBoard()
+}
+
 
   // filter to keep or remove based on the keep variable.
   /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or 
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
 
-     //FRÅN SIRI TIPS.. 
-    //const attribute = currentQuestion.value
-    //charactersInPlay = charactersInPlay.filter((person) => person['hairColor'] === attribute)
+
 
   // Invoke a function to redraw the board with the remaining people.
-}
+  
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {

@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
+
+
 // Array with all the characters, as objects
 const CHARACTERS = [{
     name: 'Rufus',
@@ -269,10 +271,12 @@ let secret, currentQuestion, charactersInPlay, startTime, endTime, questionsAske
 
 // Draw the game board
 const generateBoard = () => {
-  board.innerHTML = ''
+  board.innerHTML = `<audio id="card-sound" src="./audio/card-flip.mp3">
+  </audio>`
+  
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card">
+      <div id='card' class="card">
         <div class="card-inner">
           <div class="card-front">
             <p>${person.name}</p>
@@ -285,15 +289,23 @@ const generateBoard = () => {
               <span>
                 Guess on ${person.name}?
               </span>
-              <button class="filled-button small" onclick="guess('${person.name}')">
+              <button id ="guess-btn" class="filled-button small" onclick="guess('${person.name}')">
                 Guess
               </button>
             </div>
           </div>
         </div>
       </div>
+    
     `
   })
+
+  const audio = document.getElementById('card-sound')
+  const card = document.querySelectorAll('.card')
+  //sound on hover when cards are flipped
+  card.forEach(card => card.addEventListener('mouseover', () => audio.play()))
+     
+ 
   //displays how many questions a player asked
   const counter = document.getElementById("counter")
   counter.innerHTML = `Questions asked: ${questionsAsked}`
@@ -502,8 +514,10 @@ const checkMyGuess = (suspect) => {
 // Invokes the start function when website is loaded
 start()
 
-// All the event listeners
+
+
 restartButton.addEventListener('click', start)
+
 
 questions.addEventListener('change', () => {
   selectQuestion(questions.value)

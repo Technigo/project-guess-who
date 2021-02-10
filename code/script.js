@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -278,19 +279,24 @@ const selectQuestion = () => {
       value: categoryValue, 
       category: category,
     // Set this up your self
-
+    }  
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: 'glasses', 'hat',
+      attribute: 'glasses', 
+      attribute: 'hat',
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
+    currentQuestion = {
+      attribute: 'smoker', 
+      value: true,
+      category: category,
     // Set this up your self (should be same structure as above)
+    }
   }
 }
-
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
   // Compare the currentQuestion with the secret person.
@@ -350,3 +356,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)

@@ -3,6 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -257,7 +260,10 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard();
-  setSecret()
+  setSecret();
+  board.style.display = "flex";
+  winOrLose.style.display = "none";
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -358,26 +364,33 @@ const filterCharacters = (keep) => {
     }
   }
   generateBoard()
-  
-
-    //charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] ===)
-  // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or x§
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
-
-  // Invoke a function to redraw the board with the remaining people.
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
+  let confirmation = confirm("Are you sure you want to make a guess?");
+  if (confirmation === true) {
+    checkMyGuess(suspect)
+  }
+};
+
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-}
+
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
+  if (suspect === secret.name) {
+    winOrLoseText.innerHTML = "You won!!! Congrats!"
+    winOrLose.style.display = "block";
+  } else {
+    winOrLose.style.display = "block";
+    winOrLoseText.innerHTML = "Game over... Better luck next time."
+  }
+
+  board.style.display = "none"
+
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -390,3 +403,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 filterButton.addEventListener('click',checkQuestion)
+//playAgainButton.addEventListener('click',start)

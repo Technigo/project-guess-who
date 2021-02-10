@@ -244,6 +244,9 @@ const generateBoard = () => {
   })
 }
 
+//Trying to see all diffenrent values
+
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]

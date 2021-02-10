@@ -186,6 +186,7 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  border: 2px solid red;
 }
 
 .win-or-lose img {

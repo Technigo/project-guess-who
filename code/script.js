@@ -275,7 +275,7 @@ const CHARACTERS = [{
 ];
 
 // Global variables
-let secret, currentQuestion, charactersInPlay, numberOfGuesses;
+let secret, currentQuestion, charactersInPlay, numberOfGuesses, startTime, endTime, timeDiff, timeInSeconds;
 
 // Draw the game board
 const generateBoard = () => {
@@ -297,7 +297,7 @@ const generateBoard = () => {
 const generateSecretPerson = () => {
 
   showEndScreen.innerHTML = `
-      <center><h1 class="win-or-lose-h1">Congrats <br> You took ${numberOfGuesses} guesses. <br> The secret person is: </h1>
+      <center><h1 class="win-or-lose-h1">Congrats! <br> The round lasted for ${timeInSeconds} seconds and you took ${numberOfGuesses} guesses. <br> The secret person is: </h1>
       <div class="card-Secret-Person">
         <p>${secret.name}</p>
         <img src=${secret.img} alt=${secret.name}></center>
@@ -320,6 +320,7 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   numberOfGuesses = 0;
 
+  startTime = new Date();
   // What else should happen when we start the game?
 
   setSecret(); //The game will generate a secret charatcer at the very start
@@ -440,6 +441,10 @@ const checkMyGuess = (suspect) => {
 
   if (confirmWindow) {
     if (suspect === secret.name) {
+      endTime = new Date();
+      timeDiff = endTime - startTime;
+      timeDiff /= 1000;
+      timeInSeconds = Math.round(timeDiff);
       console.log(`${secret.name} is the correct guess. You win!`);
 
       /* board.style = "display: none;" */

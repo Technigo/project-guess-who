@@ -233,7 +233,7 @@ const CHARACTERS = [
 
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion, charactersInPlay, keep
 
 // Draw the game board
 const generateBoard = () => {
@@ -274,59 +274,57 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.options[questions.selectedIndex].value;
-  const text = questions.options[questions.selectedIndex].innerText;
+  //const text = questions.options[questions.selectedIndex].innerText;
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: value,
-      category: category,
+      value,
+      category
     }
   } else if (category === 'eye color') {
       currentQuestion = {
         attribute: 'eyeColor',
-        value: value,
-        category: category,
+        value,
+        category
       }
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: 'glasses' | 'hat',
+      attribute: 'accessories',
       value: true, 
-      category: category,
+      category
     } 
   } else if (category === 'other') {
     currentQuestion = {
       attribute: 'smoker',
       value: true, 
-      category: category,
+      category 
     }
   }
+    return currentQuestion
 };
-  ////////////checkQuestion(currentQuestion);//DO I NEED TEXT WITHIN()?
+  
 
 // This function should be invoked when you click on 'Find Out'.
-
-//VET INTE RIKTIGT VAD SOM HÄNDER HÄR
-const checkQuestion = (currentQuestion) => {//DO I NEED TEXT WITHIN()?
-  //FIRTS TRY
-  //let keep;
-  //let userValue = currentQuestion.value;
-  //const keep = (currentQuestion.value === secret[currentQuestion.attribute])//////////////
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   
-  //filterCharacters(keep)
 
+const checkQuestion = () => {
+
+  selectQuestion()
   const secretValue = secret[currentQuestion.attribute]
   if (secretValue === currentQuestion.value) {
     filterCharacters(true);
   } else {
     filterCharacters(false);
   }
+  filterCharacters(keep)
 };
+
 
 
 // It'll filter the characters array and redraw the game board.
@@ -337,24 +335,24 @@ const filterCharacters = (keep) => {//DO I NEED CURRENTQUESTION HERE?
   if (currentQuestion.category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${currentQuestion.value}! Keep all that wears ${currentQuestion.value}`
+        `Yes, the person wears that! Keep all that wears it`
       );
     } else {
       alert(
-        `No, the person doesn't wear ${currentQuestion.value}! Remove all that wears ${currentQuestion.value}`
+        `No, the person doesn't wear it! Remove all that wears it`
       );
     }
   } else if (currentQuestion.category === 'hair color') {
     if (keep) {
       alert(
-        `Yes, the person have ${currentQuestion.value}! Keep all that who have ${currentQuestion.value}`
+        `Yes, the person have ${currentQuestion.value} hair! Keep all that who have ${currentQuestion.value}`
       );
     } else {
       alert(
-        `No, the person doesn't have ${currentQuestion.value}! Remove all that have ${currentQuestion.value}`
+        `No, the person doesn't have ${currentQuestion.value} hair! Remove all that have ${currentQuestion.value}`
       );
     }
-  } else if (currentQuestion.category === 'eyeColor') {
+  } else if (currentQuestion.category === 'eye color') {
     if (keep) {
       alert(
         `Yes, the person have ${currentQuestion.value} eyes! Keep all have ${currentQuestion.value}`
@@ -367,11 +365,11 @@ const filterCharacters = (keep) => {//DO I NEED CURRENTQUESTION HERE?
   } else if (currentQuestion.category === 'other') {
       if (keep){
         alert(
-          `Yes, the person have ${currentQuestion.value}, but only at parties. Keep all that are ${currentQuestion.value}`
+          `Yes, the person have ${currentQuestion.attribute}, but only at parties. Keep all that are ${currentQuestion.attribute}`
           );
       } else {
         alert(
-          `No, the person is not a ${currentQuestion.value}! Remove all that are ${currentQuestion.value}`
+          `No, the person is not a ${currentQuestion.attribute}! Remove all that are ${currentQuestion.attribute}`
         );
       } 
   }

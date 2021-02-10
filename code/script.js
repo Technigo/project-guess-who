@@ -1,11 +1,12 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
-const filterButton = document.getElementById('filter')
-const winOrLooseBoard = document.getElementById('winOrLose')
-const winOrLooseText = document.getElementById('winOrLoseText')
-const playAgainButton = document.getElementById('playAgain')
+const board = document.getElementById('board');
+const questions = document.getElementById('questions');
+const restartButton = document.getElementById('restart');
+const filterButton = document.getElementById('filter');
+const winOrLooseBoard = document.getElementById('winOrLose');
+const winOrLooseText = document.getElementById('winOrLoseText');
+const playAgainButton = document.getElementById('playAgain');
+const round = document.getElementById('rounds-number')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -226,12 +227,13 @@ const CHARACTERS = [
     hat: true,
     smoker: false,
   },
-]
+];
 
 // Global variables
 let secret;
-let currentQuestion = undefined;
-let charactersInPlay = "";
+let currentQuestion;
+let charactersInPlay;
+let roundNumber = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -255,15 +257,16 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
+// This function starts (and restarts) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-  generateBoard() // - I added this myself
-  setSecret() // - I added this myself
+  //updateRoundTracker(0);
+  roundNumber = 0;
+  charactersInPlay = CHARACTERS;
+  generateBoard();
+  setSecret();
 }
 
+//This function creates an object currentQuestion from a drop down selector
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const valueOfTheQuestion = questions.value;
@@ -292,13 +295,13 @@ const selectQuestion = () => {
       category: category,
     }
   }
-  return currentQuestion
+  return currentQuestion;
 }
-// This function should be invoked when you click on 'Find Out'.
-// Compare the currentQuestion with the secret person.
-// See if we should keep or remove people based on that
-// Then invoke filterCharacters
+//  This function compares properties' values of secret object and currentQuestion object. 
+//It is invoked when player clicks on 'Find Out' button.
 const checkQuestion = () => {
+  roundNumber ++;
+  round.innerText = `${roundNumber}`;
   const secretValue = secret[currentQuestion.attribute];
   if (secretValue === currentQuestion.value) {
     filterCharacters(true, currentQuestion.category)
@@ -306,45 +309,44 @@ const checkQuestion = () => {
     filterCharacters(false, currentQuestion.category)
   }
 }
-
-// It'll filter the characters array and redraw the game board.
+//This function filters the characters based on the value of their choice.
+//It also alerts the player of whether their choice was right/wrong
 const filterCharacters = (keep, group) => {
-  // Show the correct alert message for different categories
   if (group === 'accessories') {
     if (keep) {
       alert(
         `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}!`
-      )
+      );
     } else {
       alert(
         `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}!`
-      )
+      );
     }
   } else if (group === 'hair color') {
     if (keep) {
       alert(
         `Yes, the person has ${currentQuestion.value} hair! Keep all that have ${currentQuestion.value} hair!`
-      )
+      );
     } else {
       alert(
         `No, the person does not have ${currentQuestion.value} hair! Remove all that have ${currentQuestion.value} hair!`
-      )
+      );
     }
   } else if (group === 'other') {
     if (keep) {
       alert(
         `Yes, the person is a ${currentQuestion.attribute}! Keep all that are ${currentQuestion.attribute}s!`
-      )
+      );
     } else {
       alert(
         `No, the person is not a ${currentQuestion.attribute}! Remove all that are not ${currentQuestion.attribute}s!`
-      )
+      );
     }
   } else {
     if (keep) {
       alert(
         `"Yes, the person has ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes"`
-      )
+      );
     } else {
       alert(
         `No, the person doesnt have ${currentQuestion.value} eyes! Remove all persons with ${currentQuestion.value} eyes"`
@@ -358,8 +360,7 @@ const filterCharacters = (keep, group) => {
 }
 
 
-
-// when clicking guess, the player first have to confirm that they want to make a guess.
+//Guess function allows the player to check the guess and secret person
 const guess = (suspect) => {
   console.log(suspect);
   const userGuess = suspect;
@@ -367,16 +368,18 @@ const guess = (suspect) => {
     checkMyGuess(userGuess);
   }
 }
-
+//This function removes the board and shows win/loose text
 const showWinSection = () => {
   winOrLooseBoard.classList.add('shown');
   board.innerHTML = '';
 }
-
+//This function invokes showWinSection function and shows the message depending on whether the guess was correct
 const checkMyGuess = (userGuess) => {
   showWinSection()
   if (userGuess === secret.name) {
-    winOrLooseText.innerText = `Congratulations! It is ${userGuess}!`;
+    winOrLooseText.innerText = 
+    `Congratulations! It is ${userGuess}! 
+    You won in ${roundNumber} rounds!`;
   } else {
     winOrLooseText.innerText = `Sorry, it is not ${userGuess} try again!`
   }
@@ -389,4 +392,6 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
-playAgainButton.addEventListener('click', () => location.reload())
+playAgainButton.addEventListener('click', () =>{
+  location.reload();
+})

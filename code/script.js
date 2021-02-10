@@ -261,14 +261,16 @@ const generateBoard = () => {
   board.innerHTML = ''
   for (let person of charactersInPlay) {
     board.innerHTML += `
-      <div class="card">
-        <p>${person.name}</p>
+    <div class="card">
+      <div class="card-inner">
+        <p>${person.name.toUpperCase()}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
+    </div>
     `
   }
 }

@@ -7,6 +7,7 @@ const winOrLose = document.querySelector("#winOrLose")
 const playAgain = document.querySelector("#playAgain")
 const winOrLoseText = document.querySelector("#winOrLoseText")
 const totalGuesses = document.querySelector("#totalGuesses")
+const time = document.querySelector("#time")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -254,7 +255,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion, charactersInPlay, numberOfGuesses, timePassed
 
 // Draws the game board
 const generateBoard = () => {
@@ -280,13 +281,15 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// Starts the game
+// Starts the game, resets guess counter + timer
 const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
   numberOfGuesses = 0
   totalGuesses.innerText = 0
+  timePassed = 0
+  timePassed.innerText = 0
 }
 
 // Sets currentQuestion object when the user chooses a value
@@ -324,7 +327,6 @@ const selectQuestion = () => {
   }
 }
 
-let numberOfGuesses = 0
 
 // When clicking the find out button, this function compares the selected value to the secret person
 const checkQuestion = () => {
@@ -385,7 +387,7 @@ const checkMyGuess = (suspect) => {
   winOrLose.style.display = "flex"
   board.style.display = "none"
   if (suspect === secret.name) {
-    winOrLoseText.innerText = `You won! It took you ${numberOfGuesses} guesses to find out that the secret person was ${secret.name}. Congratulations!`
+    winOrLoseText.innerText = `You won! It took you ${numberOfGuesses} guesses and ${timePassed} seconds to find out that the secret person was ${secret.name}. Congratulations!`
   } else {
     winOrLoseText.innerText = `You lost. The secret person was ${secret.name}. Total number of guesses: ${numberOfGuesses}. Wanna try again?`
   }
@@ -397,6 +399,12 @@ const restart = () => {
   board.style.display = "flex"
   start()
 }
+
+// Sets the timer
+setInterval(() => {
+  timePassed++
+  time.innerText = timePassed
+}, 1000)
 
 // Invokes the start function when website is loaded
 start()

@@ -233,8 +233,17 @@ let currentQuestion = {
   category: ""
 }
 
-//let secret = 
-//let currentQuestion = 
+let secret = {
+    name: '',
+    img: '',
+    hairColor: '',
+    eyeColor: '',
+    glasses: false,
+    hat: false,
+    smoker: false}
+
+let keep = false;
+
 //let person = CHARACTERS.
 
 // Draw the game board
@@ -315,17 +324,65 @@ const selectQuestion = () => {
     }
   }
 
+//For testing
   console.log(currentQuestion);
+  console.log(currentQuestion.value);
+ 
 }
 
 
 // This function should be invoked when you click on 'Find Out'.
-//const checkQuestion = () => {
-//  if (currentQuestion === ) {
-    // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-//}
+const checkQuestion = () => {
+if (currentQuestion.attribute === "hairColor") {
+    if (currentQuestion.value === secret.hairColor) {
+      return keep = true;
+      filterCharacters();
+
+      //Compare the currentQuestion with the secret person.
+    //See if we should keep or remove people based on that
+    //Then invoke filterCharacters
+  } else {
+    return keep = false;
+    filterCharacters();
+  }
+}
+if (currentQuestion.attribute === "eyeColor") {
+  if (currentQuestion.value === secret.eyeColor) {
+    return keep = true;
+    filterCharacters();
+  } else {
+    return keep = false;
+    filterCharacters();
+  }
+}
+if (currentQuestion.attribute === "glasses") {
+  if (currentQuestion.value === secret.glasses) {
+    return keep = true;
+    filterCharacters();
+  } else {
+    return keep = false;
+    filterCharacters();
+  }
+}
+if (currentQuestion.attribute === "hat") {
+  if (currentQuestion.value === secret.hat) {
+    return keep = true;
+    filterCharacters();
+  } else {
+    return keep = false;
+    filterCharacters();
+  }
+}
+if (currentQuestion.attribute === "smoker") {
+  if (currentQuestion.value === secret.smoker) {
+    return keep = true;
+    filterCharacters();
+  } else {
+    return keep = false;
+    filterCharacters();
+  }
+}
+}
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -379,5 +436,5 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion );
-//findOutButton.addEventListener('click', checkQuestion);
+findOutButton.addEventListener('click', checkQuestion);
 

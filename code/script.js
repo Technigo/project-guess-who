@@ -3,7 +3,6 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
-const restartButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -363,6 +362,7 @@ const filterCharacters = (keep) => {
     }
   }
 
+  generateBoard();
   // filter to keep or remove based on the keep variable.
     // charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     // // or 
@@ -376,6 +376,11 @@ const guess = (suspect) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  const userGuess = confirm(`Are you sure you want to guess ${suspect}`);
+  if (userGuess === suspect) {
+    checkMyGuess();
+  }
+
 }
 
 // If you confirm, this function is invoked
@@ -393,4 +398,4 @@ start();
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 filterBtn.addEventListener('click', checkQuestion);
-restartButton.addEventListener('click' start);
+

@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const winOrLosePage = document.getElementById('winOrLose')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -258,6 +259,8 @@ const start = () => {
   charactersInPlay = CHARACTERS
   setSecret();
   generateBoard();
+  winOrLosePage.classList.toggle("hidden");
+  console.log("hello")
   // What else should happen when we start the game?
 }
 
@@ -309,7 +312,25 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
 
-  console.log(currentQuestion);
+  // const checkQuestion = () => {
+  //   let keep
+  //   if (currentQuestion.attribute === "hairColor" && currentQuestion.value === secret.hairColor) {
+  //     keep = true
+  //   } else if (currentQuestion.attribute === "eyeColor" && currentQuestion.value === secret.eyeColor) {
+  //     keep = true
+  //   } else if (currentQuestion.attribute === "glasses" && currentQuestion.value === secret.glasses) {
+  //     keep = true
+  //   } else if (currentQuestion.attribute === "hat" && currentQuestion.value === secret.hat) {
+  //     keep = true
+  //   } else if (currentQuestion.attribute === "smoker" && currentQuestion.value === secret.smoker) {
+  //     keep = true
+  //   } else {
+  //     keep = false
+  //   }
+  //   filterCharacters(keep)
+  // }
+
+  // console.log(currentQuestion);
 
   const secretValue = secret[currentQuestion.attribute];
   if (secretValue === currentQuestion.value) {
@@ -322,6 +343,9 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
+  // Store it in a variable as: const filteredBoard =  CHARACTERS.filter(
+
+  // )
   if (group === 'accessories') {
     if (keep) {
       alert(
@@ -363,7 +387,7 @@ const filterCharacters = (keep) => {
     }
   }
 
-  generateBoard();
+  generateBoard(charactersInPlay);
   // filter to keep or remove based on the keep variable.
     // charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     // // or 
@@ -385,20 +409,31 @@ const guess = (suspect) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
-  // 1. Check if the suspect is the same as the secret person's name
-  if (suspect === setSecret.name) {
+    // 1. Check if the suspect is the same as the secret person's name
+    if (suspect === setSecret.name) {
+      winOrLoseText.innerText = "WOOP WOOP, that is correct!"
+      let winOrLose = document.getElementById("winOrLose")   
+      winOrLose.style.display = "block" 
+    } else {
+      winOrLoseText.innerText = "NOOOOO, that's wrong!"
+      let winOrLose = document.getElementById("winOrLose")   
+      winOrLose.style.display = "block" 
+    }
     
-  }
+    const playAgain = document.getElementById("playAgain")
+      playAgain.addEventListener("click", () => {
+      winOrLose.style.display = "none"
+    });
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-}
+  }
 
-// Invokes the start function when website is loaded
+// Invokes the start function when website is loaded´
 start();
 
+console.log(restartButton);
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 filterBtn.addEventListener('click', checkQuestion);
-

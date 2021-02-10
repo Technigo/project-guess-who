@@ -267,20 +267,31 @@ const selectQuestion = () => {
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: true,
       // 👆 add the value from the input here
       category: category,
     }
   } else if (category === 'eye color') {
     // Set this up your self
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value: true,
+      category: category, //NOEMI: what does this do?
+    }
+
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: 'accessories',
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
+    currentQuestion = {
+      attribute= 'other',
+      value: true,
+      category: category,
+    }
     // Set this up your self (should be same structure as above)
   }
 }

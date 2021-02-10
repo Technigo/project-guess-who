@@ -2,7 +2,8 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const findOutButton =document.getElementById('filter')
+const findOutButton = document.getElementById('filter')
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -247,6 +248,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret)
 }
 
 // This function to start (and restart) the game
@@ -307,7 +309,7 @@ const checkQuestion = () => {
       {
       filterCharacters(true); 
       console.log('this is true')
-      } else if (currentQuestion.value !== [currentQuestion.attribute])
+      } else if (currentQuestion.value !== secret[currentQuestion.attribute])
       {
       filterCharacters(false); 
       console.log('this is not true')
@@ -377,7 +379,7 @@ const filterCharacters = (shouldKeep) => {
           )
       } else { 
         charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-        alert (`NO, the person does not have ${value} ! Keep all that has ${value}`
+        alert (`NO, the person does not have ${value} ! Remove all that has ${value}`
         )
       }
     }
@@ -395,17 +397,30 @@ const filterCharacters = (shouldKeep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   // store the interaction from the player in a variable.
-  // remember the confirm() ?
+ const makeGuess = confirm(`Do you want to guess?`)
+ if (makeGuess == true){
+  checkMyGuess(suspect)
+ } else if (makeGuess == false) {
+  alert(`you have cancelled`)
+ }
   // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
-  // 1. Check if the suspect is the same as the secret person's name
+  // 1. Check if the suspect is the same as the secret person's name. 
+  //To access the name of the secret person we do this by accessing the object through secret.name 
+  //console.log(secret.name)
+  //console.log(suspect)
+  if (suspect == secret.name) {
+    console.log('you are correct')
+  } else
+    console.log("you are wrong")
   // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  // 3. Show the win or lose section use display.block
+  // 4. Hide the game board. display none 
 }
+
 
 // Invokes the start function when website is loaded
 start()

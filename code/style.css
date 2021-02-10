@@ -147,7 +147,7 @@ button {
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
-  display: none;
+  display: block;
   align-items: center;
   justify-content: center;
   background: var(--secondary);

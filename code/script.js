@@ -1,247 +1,246 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
-
-
+const board = document.getElementById("board")
+const questions = document.getElementById("questions")
+const restartButton = document.getElementById("restart")
+const userName = document.getElementById("name-input")
 
 // Array with all the characters, as objects
 const CHARACTERS = [{
-    name: 'Rufus',
-    img: './images/rufus.svg',
-    furColor: 'beige',
-    furPattern: 'patchy',
-    animal: 'dog',
+    name: "Rufus",
+    img: "./images/rufus.svg",
+    furColor: "beige",
+    furPattern: "patchy",
+    animal: "dog",
     bad: true,
     collar: false,
     bling: false,
   },
   {
-    name: 'Sandy',
-    img: './images/sandy.svg',
-    furColor: 'yellow',
-    furPattern: 'patchy',
-    animal: 'cat',
+    name: "Sandy",
+    img: "./images/sandy.svg",
+    furColor: "yellow",
+    furPattern: "patchy",
+    animal: "cat",
     bad: false,
     collar: false,
     bling: false,
   },
   {
-    name: 'Tony',
-    img: './images/tony.svg',
-    furColor: 'brown',
-    furPattern: 'patchy',
-    animal: 'dog',
+    name: "Tony",
+    img: "./images/tony.svg",
+    furColor: "brown",
+    furPattern: "patchy",
+    animal: "dog",
     bad: true,
     collar: true,
     bling: false,
   },
   {
-    name: 'Bernie',
-    img: './images/bernie.svg',
-    furColor: 'black',
-    furPattern: 'plain',
-    animal: 'sheep',
+    name: "Bernie",
+    img: "./images/bernie.svg",
+    furColor: "black",
+    furPattern: "plain",
+    animal: "sheep",
     bad: true,
     collar: false,
     bling: false,
   },
   {
-    name: 'Lucifer',
-    img: './images/lucifer.svg',
-    furColor: 'black',
-    furPattern: 'patchy',
-    animal: 'cat',
+    name: "Lucifer",
+    img: "./images/lucifer.svg",
+    furColor: "black",
+    furPattern: "patchy",
+    animal: "cat",
     bad: true,
     collar: false,
     bling: false,
   },
   {
-    name: 'Lady',
-    img: './images/lady.svg',
-    furColor: 'fantasy',
-    furPattern: 'stripey',
-    animal: 'cat',
+    name: "Lady",
+    img: "./images/lady.svg",
+    furColor: "fantasy",
+    furPattern: "stripey",
+    animal: "cat",
     bad: false,
     collar: false,
     bling: false,
   },
   {
-    name: 'Silly',
-    img: './images/silly.svg',
-    furColor: 'brown',
-    furPattern: 'plain',
-    animal: 'mouse',
+    name: "Silly",
+    img: "./images/silly.svg",
+    furColor: "brown",
+    furPattern: "plain",
+    animal: "mouse",
     bad: false,
     collar: false,
     bling: false,
   },
   {
-    name: 'Gordon',
-    img: './images/gordon.svg',
-    furColor: 'fantasy',
-    furPattern: 'patchy',
-    animal: 'dog',
+    name: "Gordon",
+    img: "./images/gordon.svg",
+    furColor: "fantasy",
+    furPattern: "patchy",
+    animal: "dog",
     bad: false,
     collar: false,
     bling: false,
   },
   {
-    name: 'Simba',
-    img: './images/simba.svg',
-    furColor: 'yellow',
-    furPattern: 'spotty',
-    animal: 'cat',
+    name: "Simba",
+    img: "./images/simba.svg",
+    furColor: "yellow",
+    furPattern: "spotty",
+    animal: "cat",
     bad: false,
     collar: false,
     bling: false,
   },
   {
-    name: 'Jazebelle',
-    img: './images/jazebelle.svg',
-    furColor: 'fantasy',
-    furPattern: 'plain',
-    animal: 'cat',
+    name: "Jazebelle",
+    img: "./images/jazebelle.svg",
+    furColor: "fantasy",
+    furPattern: "plain",
+    animal: "cat",
     bad: false,
     collar: false,
     bling: true
   },
   {
-    name: 'Rocky',
-    img: './images/rocky.svg',
-    furColor: 'white',
-    furPattern: 'spotty',
-    animal: 'dog',
+    name: "Rocky",
+    img: "./images/rocky.svg",
+    furColor: "white",
+    furPattern: "spotty",
+    animal: "dog",
     bad: false,
     collar: false,
     bling: false,
   },
   {
-    name: 'Bob',
-    img: './images/bob.svg',
-    furColor: 'brown',
-    furPattern: 'plain',
-    animal: 'dog',
+    name: "Bob",
+    img: "./images/bob.svg",
+    furColor: "brown",
+    furPattern: "plain",
+    animal: "dog",
     bad: false,
     collar: false,
     bling: true
   },
   {
-    name: 'Jed',
-    img: './images/jed.svg',
-    furColor: 'beige',
-    furPattern: 'plain',
-    animal: 'dog',
+    name: "Jed",
+    img: "./images/jed.svg",
+    furColor: "beige",
+    furPattern: "plain",
+    animal: "dog",
     bad: false,
     collar: false,
     bling: false,
   },
   {
-    name: 'Jenni',
-    img: './images/jenni.svg',
-    furColor: 'white',
-    furPattern: 'patchy',
-    animal: 'dog',
+    name: "Jenni",
+    img: "./images/jenni.svg",
+    furColor: "white",
+    furPattern: "patchy",
+    animal: "dog",
     bad: false,
     collar: false,
     bling: false,
   },
   {
-    name: 'Lars',
-    img: './images/lars.svg',
-    furColor: 'beige',
-    furPattern: 'plain',
-    animal: 'dog',
+    name: "Lars",
+    img: "./images/lars.svg",
+    furColor: "beige",
+    furPattern: "plain",
+    animal: "dog",
     bad: false,
     collar: true,
     bling: false,
   },
   {
-    name: 'Jerry',
-    img: './images/jerry.svg',
-    furColor: 'brown',
-    furPattern: 'plain',
-    animal: 'dog',
+    name: "Jerry",
+    img: "./images/jerry.svg",
+    furColor: "brown",
+    furPattern: "plain",
+    animal: "dog",
     bad: true,
     collar: false,
     bling: false,
   },
   {
-    name: 'Pip',
-    img: './images/pip.svg',
-    furColor: 'white',
-    furPattern: 'plain',
-    animal: 'mouse',
+    name: "Pip",
+    img: "./images/pip.svg",
+    furColor: "white",
+    furPattern: "plain",
+    animal: "mouse",
     bad: false,
     collar: false,
     bling: false,
   },
   {
-    name: 'Rawr',
-    img: './images/rawr.svg',
-    furColor: 'orange',
-    furPattern: 'stripey',
-    animal: 'cat',
+    name: "Rawr",
+    img: "./images/rawr.svg",
+    furColor: "orange",
+    furPattern: "stripey",
+    animal: "cat",
     bad: true,
     collar: false,
     bling: false,
   },
   {
-    name: 'Maggie',
-    img: './images/maggie.svg',
-    furColor: 'black',
-    furPattern: 'spotty',
-    animal: 'cat',
+    name: "Maggie",
+    img: "./images/maggie.svg",
+    furColor: "black",
+    furPattern: "spotty",
+    animal: "cat",
     bad: true,
     collar: false,
     bling: false,
   },
   {
-    name: 'Sofie',
-    img: './images/sofie.svg',
-    furColor: 'orange',
-    furPattern: 'plain',
-    animal: 'cat',
+    name: "Sofie",
+    img: "./images/sofie.svg",
+    furColor: "orange",
+    furPattern: "plain",
+    animal: "cat",
     bad: false,
     collar: false,
     bling: false,
   },
   {
-    name: 'Josephine',
-    img: './images/josephine.svg',
-    furColor: 'beige',
-    furPattern: 'plain',
-    animal: 'dog',
+    name: "Josephine",
+    img: "./images/josephine.svg",
+    furColor: "beige",
+    furPattern: "plain",
+    animal: "dog",
     bad: true,
     collar: false,
     bling: false,
   },
   {
-    name: 'Kahn',
-    img: './images/kahn.svg',
-    furColor: 'yellow',
-    furPattern: 'spotty',
-    animal: 'cat',
+    name: "Kahn",
+    img: "./images/kahn.svg",
+    furColor: "yellow",
+    furPattern: "spotty",
+    animal: "cat",
     bad: false,
     collar: false,
     bling: false
   },
   {
-    name: 'Missy',
-    img: './images/missy.svg',
-    furColor: 'brown',
-    furPattern: 'plain',
-    animal: 'cat',
+    name: "Missy",
+    img: "./images/missy.svg",
+    furColor: "brown",
+    furPattern: "plain",
+    animal: "cat",
     bad: false,
     collar: false,
     bling: false,
   },
   {
-    name: 'Scratch',
-    img: './images/scratch.svg',
-    furColor: 'white',
-    furPattern: 'plain',
-    animal: 'cat',
+    name: "Scratch",
+    img: "./images/scratch.svg",
+    furColor: "white",
+    furPattern: "plain",
+    animal: "cat",
     bad: true,
     collar: true,
     bling: false,
@@ -258,16 +257,16 @@ const sentences = [{
   },
   {
     furColor: `No, the animal is not x. Remove all x animals!`,
-    furPattern: `No, the animal don't got x fur. Remove all animals that have x fur!`,
-    animal: `No, it's not a x. Remove all animals that are a x!`,
-    accessories: `No, the animal doesn't wear x. Remove all the x wearers!`,
+    furPattern: `No, the animal don"t got x fur. Remove all animals that have x fur!`,
+    animal: `No, it"s not a x. Remove all animals that are a x!`,
+    accessories: `No, the animal doesn"t wear x. Remove all the x wearers!`,
     behaviour: `No, it is not a x boy/girl. Remove all the x ones!`,
   }
 ]
 
 // Global variables
 let secret, currentQuestion, charactersInPlay, startTime, endTime, questionsAsked = 0,
-  totalSeconds = 0;
+  totalSeconds = 0, player
 
 // Draw the game board
 const generateBoard = () => {
@@ -276,11 +275,11 @@ const generateBoard = () => {
   
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div id='card' class="card">
+      <div id="card" class="card">
         <div class="card-inner">
           <div class="card-front">
             <p>${person.name}</p>
-            <div class='card-img'>
+            <div class="card-img">
               <img src=${person.img} alt=${person.name} />
             </div>
           </div>
@@ -296,18 +295,17 @@ const generateBoard = () => {
           </div>
         </div>
       </div>
-    
     `
   })
-
-  const audio = document.getElementById('card-sound')
-  const card = document.querySelectorAll('.card')
-  //sound on hover when cards are flipped
-  card.forEach(card => card.addEventListener('mouseover', () => audio.play()))
-     
- 
-  //displays how many questions a player asked
   const counter = document.getElementById("counter")
+  const audio = document.getElementById("card-sound")
+  const card = document.querySelectorAll(".card-front")
+  
+  //sound on hover when cards are flipped
+  card.forEach(card => card.addEventListener("mouseenter", () => audio.play()))
+  card.forEach(card => card.addEventListener("mouseout", () => audio.play()))
+     
+  //displays how many questions a player asked
   counter.innerHTML = `Questions asked: ${questionsAsked}`
 }
 
@@ -318,7 +316,7 @@ const setSecret = () => {
 
 //timer showing the passing seconds in the game
 const timer = (x) => {
-  if (x === 'restart') {
+  if (x === "restart") {
     totalSeconds = 0;
   }
   totalSeconds++
@@ -332,56 +330,69 @@ const timer = (x) => {
   }
   document.getElementById("timer").innerHTML = `Time passed: ${minute}:${seconds}`;
 }
-let setTimer = setInterval(timer, 1000)
 
 // This function to start (and restart) the game
 // sets the gameboard, all the characters in play, secret character and timer
 const start = () => {
+  const qSection = document.getElementById("question-section");
   charactersInPlay = CHARACTERS
+  qSection.innerHTML += `<form id="form" class="form">
+  <label for="name-input">
+  Insert your name:</label>
+  <input id="name-input" name="name-input" type="text"/>
+  <button id="name-Btn" class="filled-button" type="submit">Let's play!</submit>
+  </form>`
+  const nameBtn = document.getElementById("name-Btn");
+  const form = document.getElementById("form");
+  form.style.display="flex";
+ 
+  nameBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    form.style.display = "none";
+    player = userName.value;
+  })
   generateBoard()
   setSecret()
   totalSeconds = 0;
-  timer('restart')
-  setTimer
+  timer("restart")
+  setInterval(timer, 1000)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (handleOption) => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  const findOut = document.getElementById("filter")
   questionsAsked++
-  //value is set to the option playes selects
   switch (category) {
-    case 'fur color':
+    case "fur color":
       currentQuestion = {
-        attribute: 'furColor',
-        value: handleOption,
+        attribute: "furColor",
+        value: handleOption, //value is set to the option playes selects
         category: category,
       };
       break;
-    case 'fur pattern':
+    case "fur pattern":
       currentQuestion = {
-        attribute: 'furPattern',
+        attribute: "furPattern",
         value: handleOption,
         category: category,
       }
       break;
-    case 'animal':
+    case "animal":
       currentQuestion = {
-        attribute: 'animal',
+        attribute: "animal",
         value: handleOption,
         category: category,
       }
       break
     default:
-       //attribute is set to the option playes selects
       currentQuestion = {
-        attribute: handleOption,
+        attribute: handleOption, //attribute is set to the option playes selects
         value: true,
         category: category,
       };
   };
-  const findOut = document.getElementById('filter')
-  findOut.addEventListener('click', stopPropergate);
+  findOut.addEventListener("click", stopPropergate);
 }
 
 //the stored data for the current quess is passed as an argument to checkQuestion 
@@ -393,27 +404,25 @@ const stopPropergate = (event) => {
 
 //This function is innvoked when you click FindOut. It compares the secret characters properties with the players options and answer with a sentence
 const checkQuestion = (currentQ) => {
-  let userValue = currentQ.value,
-    userAttr = currentQ.attribute,
-    userCat = currentQ.category
+  let userValue = currentQ.value
+  let userAttr = currentQ.attribute
+  let userCat = currentQ.category
 
   //using set up sentences from an array
-  if (userCat === 'accessories' || userCat === 'behaviour') {
+  if (userCat === "accessories" || userCat === "behaviour") {
     if (userValue === secret[userAttr]) {
-      alert(sentences[0][userCat].replaceAll('x', userAttr))
+      alert(sentences[0][userCat].replaceAll("x", userAttr))
     } else {
-      alert(sentences[1][userCat].replaceAll('x', userAttr))
+      alert(sentences[1][userCat].replaceAll("x", userAttr))
     }
   } else {
     if (userValue === secret[userAttr]) {
-      alert(sentences[0][userAttr].replaceAll('x', userValue))
+      alert(sentences[0][userAttr].replaceAll("x", userValue))
     } else {
-      alert(sentences[1][userAttr].replaceAll('x', userValue))
+      alert(sentences[1][userAttr].replaceAll("x", userValue))
     }
   }
-  
-  //passes parameters to a filter function
-  filterCharacters(userValue, userAttr)
+  filterCharacters(userValue, userAttr)//passes parameters to a filter function
 }
 
 
@@ -442,20 +451,20 @@ const guess = (suspect) => {
     </div>
   `
   const yesBtn = document.getElementById("yes-btn")
-  yesBtn.addEventListener('click', () => {
+  const noBtn = document.getElementById("no-btn")
+  yesBtn.addEventListener("click", () => {
     checkMyGuess(suspect)
   })
-  const noBtn = document.getElementById("no-btn")
-  noBtn.addEventListener('click', () => {
+  noBtn.addEventListener("click", () => {
     generateBoard(charactersInPlay)
   })
 }
 
 // If you confirm, this function is invoked which says if you won or lose
 const checkMyGuess = (suspect) => {
-  let winOrLose = document.getElementById('winOrLose')
-  //shows winOrLose section
-  winOrLose.style.display = 'block'
+  let winOrLose = document.getElementById("winOrLose")
+  winOrLose.style.display = "block" //shows winOrLose section
+
   if (suspect === secret.name) {
     winOrLose.innerHTML = `
       <div class="win-or-lose">
@@ -467,7 +476,7 @@ const checkMyGuess = (suspect) => {
           Yes, ${suspect} was the secret character! Well done!
         </h1>
         <div class="card-img-wrap">
-          <div class='card-img'>
+          <div class="card-img">
             <img src=${secret.img} 
             alt=${secret.name}/>
           </div>
@@ -489,7 +498,7 @@ const checkMyGuess = (suspect) => {
           Sorry, ${suspect} was the not the secret character, but ${secret.name}! Better luck next time.
         </h1>
         <div class="card-img-wrap">
-          <div class='card-img'>
+          <div class="card-img">
             <img 
             src=${secret.img} 
             alt=${secret.name}/>
@@ -505,8 +514,8 @@ const checkMyGuess = (suspect) => {
   questionsAsked = 0;
   //play again? click and winOrLose section will be hidden and start() will run
   const playAgain = document.getElementById("playAgain")
-  playAgain.addEventListener('click', () => {
-    winOrLose.style.display = 'none'
+  playAgain.addEventListener("click", () => {
+    winOrLose.style.display = "none"
     start()
   })
 }
@@ -514,11 +523,8 @@ const checkMyGuess = (suspect) => {
 // Invokes the start function when website is loaded
 start()
 
+restartButton.addEventListener("click", start)
 
-
-restartButton.addEventListener('click', start)
-
-
-questions.addEventListener('change', () => {
+questions.addEventListener("change", () => {
   selectQuestion(questions.value)
 })

@@ -80,7 +80,7 @@ select {
   position: absolute;
   align-items: center;
   width: 100%;
-  margin-top: 100px;
+  padding-top: 100px;
   height: 100vh;
   flex-direction: column;
   color: white;
@@ -292,6 +292,14 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+.right {
+  color: rgb(11, 221, 11);
+}
+
+.wrong {
+color: rgb(187, 0, 0);
 }
 
 .summary {

@@ -225,7 +225,9 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+//let secret = 
+//let currentQuestion = 
+//let person = CHARACTERS.
 
 // Draw the game board
 const generateBoard = () => {
@@ -244,7 +246,6 @@ const generateBoard = () => {
   })
 }
 
-//Trying to see all diffenrent values
 
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -255,7 +256,8 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS;
+  generateBoard();
   // What else should happen when we start the game?
 }
 

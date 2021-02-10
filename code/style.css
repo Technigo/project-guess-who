@@ -131,78 +131,6 @@ body {
   color: white; 
 }
 
-/* ASK QUESTION CONTAINER */
-
-.question-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 50px;
-  width: 100%;
-}
-
-.question-container-left-side {
-  display: flex;
-  justify-content: space-around;
-}
-
-/* Player icon and input name container */
-
-.player-name-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 50px;
-  color: var(--primary);
-}
-.fas {
-  font-size: 46px;
-}
-
-.player-name {
-  font-size: 20px;
-  margin-top: -20px;
-  
-}
-
-.question-section {
-  width: 91.1%;
-  padding: 20px;
-  background-color: var(--secondary);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
-
-select {
-  display: block;
-  border: none;
-  font-size: 26px;
-  font-family: 'Patrick Hand';
-  color: var(--primary);
-  width: 350px;
-  padding-left: 10px;
-  margin: 0px 20px 0px 20px;
-}
-
-.questionNumber {
-  margin-left: 20px;
-}
-
-.questionNumber p {
-  font-size: 20px;
-  color: white;
-}
-
-.question-container-right-side {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.guess-who-icon {
-  width: 126px;
-}
-
 /* Section with the characters */ 
 
 .board-wrapper {
@@ -230,6 +158,7 @@ select {
   height: 180px;
   overflow: hidden;
   box-shadow: 2px 2px var(--primary);
+  border: 1px solid var(--primary);
   border-radius: 4px;
   background-color: white;
   margin: 3px;
@@ -281,6 +210,78 @@ select {
   font-weight: 600;
   margin-bottom: 8px;
   width: 90%;
+}
+
+/* ASK QUESTION CONTAINER */
+
+.question-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.question-container-left-side {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Player icon and input name container */
+
+.player-name-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50px;
+  color: var(--primary);
+}
+
+.fas {
+  font-size: 46px;
+}
+
+.player-name {
+  font-size: 20px;
+  margin-top: -20px;
+}
+
+.question-section {
+  width: 91.1%;
+  padding: 20px;
+  background-color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+select {
+  display: block;
+  border: none;
+  font-size: 26px;
+  font-family: 'Patrick Hand';
+  color: var(--primary);
+  width: 350px;
+  padding-left: 10px;
+  margin: 0px 20px 0px 20px;
+}
+
+.questionNumber {
+  margin-left: 20px;
+}
+
+.questionNumber p {
+  font-size: 20px;
+  color: white;
+}
+
+.question-container-right-side {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.guess-who-icon {
+  width: 126px;
 }
 
 /****** BUTTONS ******/
@@ -398,6 +399,10 @@ button {
     flex-direction: column;
     margin-bottom: 20px;
     align-items: center;
+  }
+
+  .player-name-box {
+    margin-bottom: 30px;
   }
 
   .question-section {

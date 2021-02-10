@@ -14,13 +14,21 @@
     <script src="https://kit.fontawesome.com/37c653cfef.js" crossorigin="anonymous"></script>
   </head>
   <body>
+
+    <!-- Header -->
+
     <header class="header">
-      <div class="how-to-play-card" id="how-to-play-answer">The main goal is to find the right person. Ask the right questions to get to eventually guess which one is the secret person!</div>
+
+    <!-- Top left side of header with How to play information and image -->
+
       <div class="card-header" id="how-to-play-question">
         <p>How to play?</p>
       </div>
+      <div class="how-to-play-card" id="how-to-play-answer">The main goal is to find the right person. Ask the right questions to get to eventually guess which one is the secret person!</div>
       <img src="images/jenni.svg" class="header-img"/>
       
+    <!-- Center section of header with title, input name and button -->
+
       <h1 class="h1">Guess Who?</h1>
       <div class="input-button">
         <input class="input" id="input" type="text" name="name" placeholder="enter your name">
@@ -31,25 +39,27 @@
     </header>
     
 
+    <!-- Game board section with all the cards -->
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
     </section>
 
+
+    <!-- Question section underneath game board -->
+
     <section class="question-container">
       <div class="question-section">
-  
-        <!--<img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        /> -->
         
+    
+    <!-- Player name with icon -->
       <div class="question-container-left-side">
         <div class="player-name-box">
         <i class="fas fa-user"></i>
         <div class="player-name" id="player-name"></div>
         </div>
         
+    <!--Question select-->
+
         <select id="questions">
           <option disabled selected>Does the person have..?</option>
           <optgroup label="hair color">
@@ -61,19 +71,16 @@
             <option value="orange">orange hair</option>
             <option value="purple">purple hair</option>
             <option value="white">white hair</option>
-            <!-- Add the rest of hair colors as options  -->
           </optgroup>
           <optgroup label="eye color">
             <option value="hidden">hidden eyes</option>
             <option value="green">green eyes</option>
             <option value="brown">brown eyes</option>
             <option value="blue">blue eyes</option>
-            <!-- Add the rest of eye colors as options  -->
           </optgroup>
           <optgroup label="accessories">
             <option value="glasses">glasses</option>
             <option value="hat">hat</option>
-            <!-- Add the other accessory option here. (hat)  -->
           </optgroup>
           <optgroup label="other">
             <option value="smoker">a smoking habit</option>
@@ -96,6 +103,8 @@
     </div>
     </section>
 
+  <!-- Win or Lose section -->
+
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
         <img
@@ -108,6 +117,9 @@
       </div>
     </section>
     
+  
+  <!-- Footer -->
+  
     <footer class="footer">created by jessika hage</footer>
 
     <script src="script.js"></script>

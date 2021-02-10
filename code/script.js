@@ -11,10 +11,11 @@ const gameContainer = document.getElementById('game-container');
 const howToPlay = document.getElementById('how-to-play-question');
 const howToPlayCard = document.getElementById('how-to-play-answer');
 const input = document.getElementById('input');
-let questionNumber = document.getElementById('questionNum');
 const playerName = document.getElementById('player-name');
+let questionNumber = document.getElementById('questionNum');
 
 // Array with all the characters, as objects
+
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -375,7 +376,7 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   filterCharacters(keep);
-}
+};
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -485,6 +486,7 @@ const checkMyGuess = (suspect) => {
 // Invokes the start function when website is loaded
 start();
 
+
 // All the event listeners
 
 restartButton.addEventListener('click', start);
@@ -495,7 +497,6 @@ playAgain.addEventListener('click', start);
 playButton.addEventListener('click', () => {
   board.scrollIntoView({behavior: 'smooth'});
   playerName.innerHTML = `<p>${input.value}</p>`
-  input.value = '';
 });
 
 howToPlay.addEventListener('click', () => {
@@ -504,7 +505,7 @@ howToPlay.addEventListener('click', () => {
 
 howToPlayCard.addEventListener('click', () => {
   howToPlayCard.style.display = "none";
-})
+});
 
 
 

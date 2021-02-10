@@ -15,7 +15,7 @@ const CHARACTERS = [{
     hat: true,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jack",
@@ -26,7 +26,7 @@ const CHARACTERS = [{
     hat: true,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jacques",
@@ -37,7 +37,7 @@ const CHARACTERS = [{
     hat: true,
     smoker: true,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jai",
@@ -48,7 +48,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jake",
@@ -59,7 +59,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "James",
@@ -70,7 +70,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jana",
@@ -81,7 +81,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: true,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jane",
@@ -92,7 +92,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: false,
-    earring: false,
+    earringss: false,
   },
   {
     name: "Jaqueline",
@@ -103,7 +103,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: true,
-    earring: true,
+    earrings: true,
   },
 
   {
@@ -115,7 +115,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: true,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jean",
@@ -126,7 +126,7 @@ const CHARACTERS = [{
     hat: true,
     smoker: true,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jeane",
@@ -137,7 +137,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jed",
@@ -148,7 +148,7 @@ const CHARACTERS = [{
     hat: true,
     smoker: true,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jenni",
@@ -159,7 +159,7 @@ const CHARACTERS = [{
     hat: true,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jeri",
@@ -170,7 +170,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jerry",
@@ -181,7 +181,7 @@ const CHARACTERS = [{
     hat: true,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jess",
@@ -192,7 +192,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jocelyn",
@@ -203,7 +203,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: false,
-    earring: true,
+    earrings: true,
   },
   {
     name: "Jon",
@@ -214,7 +214,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jordan",
@@ -225,7 +225,7 @@ const CHARACTERS = [{
     hat: true,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Josephine",
@@ -236,7 +236,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: false,
-    earring: true,
+    earrings: true,
   },
   {
     name: "Josh",
@@ -247,7 +247,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Jude",
@@ -258,7 +258,7 @@ const CHARACTERS = [{
     hat: false,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
   {
     name: "Julie",
@@ -269,7 +269,7 @@ const CHARACTERS = [{
     hat: true,
     smoker: false,
     necklace: false,
-    earring: false,
+    earrings: false,
   },
 ];
 
@@ -375,76 +375,50 @@ const checkQuestion = () => {
   // Then invoke filterCharacters
   let secretValue = secret[currentQuestion.attribute];
   if (secretValue === currentQuestion.value) {
-    console.log("match - true");
     filterCharacters(true, currentQuestion.category);
   } else {
-    console.log("no match - false");
     filterCharacters(false, currentQuestion.category);
   }
 };
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep, group) => {
+const filterCharacters = (keep, category) => {
   // Show the correct alert message for different categories
-  if (group === "hair color") {
+  if (category === 'hair color') {
     if (keep) {
-      alert(
-        `Yes, the person has ${currentQuestion.value} hair! Keep all that has ${currentQuestion.value} hair.`
-      );
-      charactersInPlay = charactersInPlay.filter((character) => {
-        return character.hairColor === currentQuestion.value;
-      });
-      generateBoard();
+      alert(`Yes, the secret person has ${currentQuestion.value} hair! The game will now remove everyone that doesn't have ${currentQuestion.value} hair!`);
     } else {
-      alert(
-        `No, the person doesn't have ${currentQuestion.value} hair! Remove everyone with ${currentQuestion.value} hair`
-      );
-      charactersInPlay = charactersInPlay.filter((character) => {
-        return character.hairColor !== currentQuestion.value;
-      });
-      generateBoard();
+      alert(`No, the secreet person does not have ${currentQuestion.value} hair! The game will now remove everyone that has ${currentQuestion.value} hair!`);
     }
-  } else if (group === "eye color") {
-    // Similar to the one above
+  } else if (category === 'eye color') {
     if (keep) {
-      alert(
-        `Yes, the person has ${currentQuestion.value} eyes! Keep all that has ${currentQuestion.value} eyes.`
-      );
-      charactersInPlay = charactersInPlay.filter((character) => {
-        return character.eyeColor === currentQuestion.value;
-      });
-      generateBoard();
+      alert(`Yes, the secret person has ${currentQuestion.value} eyes! The game will now remove everyone that doesn't have ${currentQuestion.value} eyes!`);
     } else {
-      alert(
-        `No, the person doesn't have ${currentQuestion.value} eye! Remove everyone with ${currentQuestion.value} eyes.`
-      );
-      charactersInPlay = charactersInPlay.filter((character) => {
-        return character.eyeColor !== currentQuestion.value;
-      });
-      generateBoard();
+      alert(`No, the secreet person does not have ${currentQuestion.value} eyes! The game will now remove everyone that has ${currentQuestion.value} eyes!`);
     }
-  } else if (group === "accessories") {
+  } else if (category === 'accessories') {
     if (keep) {
-      alert(
-        `You asked for ${currentQuestion.value}! Keep the ${currentQuestion.value}`
-      );
+      alert(`Yes, the secret person is wearing ${currentQuestion.attribute}! The game will now remove everyone without ${currentQuestion.attribute}!`);
     } else {
-      alert(
-        `Sadly you asked for ${currentQuestion.value} but it's not a match.! Remove the${currentQuestion.value}`
-      );
+      alert(`No, the secret person isn't wearing ${currentQuestion.attribute}! The game will now remove everyone who's wearing ${currentQuestion.attribute}!`);
     }
-  } else if (group === "other") {
+  } else if (category === 'other') {
     if (keep) {
-      alert(
-        `Yes, the person has ${currentQuestion.value}! Keep all that has ${currentQuestion.value}`
-      );
+      alert(`Yes, the secret person is a ${currentQuestion.attribute}, The game will now remove every who isn't a ${currentQuestion.attribute}.`);
     } else {
-      alert(
-        `No, the person doesn't have ${currentQuestion.value}! Remove all that wears ${currentQuestion.value}`
-      );
+      alert(`No, the secret person is not a ${currentQuestion.attribute}, The game will now remove eveyrone who is a ${currentQuestion.attribute}!`);
     }
-  };
-};
+  }
+  // filter to keep or remove based on the keep variable.
+  if (keep) {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
+  } else {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
+  }
+  // Invoke a function to redraw the board with the remaining people.
+  generateBoard();
+}
+
 
 const restartGame = () => {
   winOrlose.style = "display: none;"

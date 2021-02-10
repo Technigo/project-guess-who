@@ -1,5 +1,7 @@
 import { CHARACTERS } from "./scripts/characters.js";
 
+//TEST
+
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')

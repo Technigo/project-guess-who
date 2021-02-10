@@ -1,0 +1,34 @@
+/* Styles and alignment for gameboard and its alert element */
+
+.game-board {
+  position: relative;
+  width: 90%;
+  max-width: 882px;
+}
+
+.game-board,
+.alert {
+}
+
+.game-board__cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.alert {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  color: white;
+  background-color: var(--secondaryOverlay);
+}
+
+.alert > * {
+  width: 50%;
+}

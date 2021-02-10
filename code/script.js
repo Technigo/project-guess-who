@@ -9,6 +9,7 @@ const btnFindOut = document.getElementById("filter");
 const winOrLose = document.getElementById("winOrLose");
 const endStateText = document.getElementById("winOrLoseText");
 const restartButton = document.getElementById("playAgain");
+const alert = document.getElementById("alert");
 
 // Global variables
 let secret, currentQuestion, charactersInPlay;
@@ -44,7 +45,6 @@ const setSecret = () => {
  * 3. call the set secret function to set a random character as the secret
  */
 const start = () => {
-  console.log("START");
   charactersInPlay = CHARACTERS;
   winOrLose.classList.toggle("hidden");
   generateBoard();
@@ -109,24 +109,22 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 // Show the correct alert message for different categories
 const filterCharacters = (keep) => {
+  alert.classList.toggle("hidden");
   if (keep) {
-    alert(
-      `Yes, the person has ${currentQuestion.text}! Keep all that has ${currentQuestion.text}.`
-    );
+    alert.children.item(
+      0
+    ).innerText = `Yes, the person has ${currentQuestion.text}! Keep all that has ${currentQuestion.text}.`;
     charactersInPlay = charactersInPlay.filter(
       (character) => character[currentQuestion.attribute] === currentQuestion.value
     );
   } else {
-    alert(
-      `No, the person doesn't have ${currentQuestion.text}! Remove all that have ${currentQuestion.text}`
-    );
+    alert.children.item(
+      0
+    ).innerText = `No, the person doesn't have ${currentQuestion.text}! Remove all that have ${currentQuestion.text}`;
     charactersInPlay = charactersInPlay.filter(
       (character) => character[currentQuestion.attribute] !== currentQuestion.value
     );
   }
-  generateBoard();
-  // DEBUG: remove on submission
-  console.log("Filtered characters: ", charactersInPlay);
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -161,5 +159,12 @@ board.addEventListener("click", (event) => {
   const target = event.target;
   if (target.id === "guess") {
     guess(target.dataset.name);
+  }
+});
+alert.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.id === "confirm") {
+    alert.classList.toggle("hidden");
+    generateBoard();
   }
 });

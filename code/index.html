@@ -52,7 +52,13 @@
     </aside>
 
     <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
+      <main class="game-board">
+        <div class="alert hidden" id="alert">
+          <p class="alert__text"></p>
+          <button class="button button__filled" id="confirm">OK</button>
+        </div>
+        <div class="game-board__cards" id="board"></div>
+      </main>
     </section>
 
     <section id="winOrLose" class="win-or-lose__wrapper">

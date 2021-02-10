@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+//just a comment to see if it works
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -11,7 +12,7 @@ const CHARACTERS = [
     hairColor: 'hidden',
     eyeColor: 'hidden',
     glasses: true,
-    hat: true,
+    hat: false,
     smoker: false,
   },
   {

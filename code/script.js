@@ -287,18 +287,21 @@ const generateBoard = () => {
           <span>Guess on ${person.name}?</span>
           <button id="guessButton" class="filled-button small" onclick="checkMyGuess('${person.name}')">Guess</button>
         </div>
-      </div>
+        </div>
     `;
   });
 };
 
 const generateSecretPerson = () => {
-  winOrlose.innerHTML = "";
+  winOrlose.innerHTML += "";
   winOrlose.innerHTML += `
+      <center><h1 class="win-or-lose-h1">Congrats <br> Your guess was right <br> The secret person is: </h1>
       <div class="card-Secret-Person">
         <p>${secret.name}</p>
-        <img src=${secret.img} alt=${secret.name}>
+        <img src=${secret.img} alt=${secret.name}></center>
     `;
+  const playAgainButton = document.getElementById("playAgain");
+  playAgainButton.addEventListener("click", restartGame);
 };
 
 
@@ -328,8 +331,6 @@ const selectQuestion = () => {
 
   // We also need a variable that stores the actual value of the question we've selected.
   let optionValue = questions.value;
-  console.log(optionValue);
-  console.log(category);
 
   if (category === "hair color") {
     currentQuestion = {
@@ -370,16 +371,7 @@ const checkQuestion = () => {
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  console.log(`Current question object`);
-  console.log(currentQuestion);
-  console.log("");
-  console.log("");
-  console.log("");
-  console.log(`Secret Person object:`);
-  console.log(secret);
-
   let secretValue = secret[currentQuestion.attribute];
-  console.log(secretValue);
   if (secretValue === currentQuestion.value) {
     console.log("match - true");
     filterCharacters(true, currentQuestion.category);
@@ -391,8 +383,6 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep, group) => {
-  console.log(group);
-  console.log(currentQuestion.value);
   // Show the correct alert message for different categories
   if (group === "hair color") {
     if (keep) {
@@ -402,7 +392,6 @@ const filterCharacters = (keep, group) => {
       charactersInPlay = charactersInPlay.filter((character) => {
         return character.hairColor === currentQuestion.value;
       });
-      console.log(charactersInPlay);
       generateBoard();
     } else {
       alert(
@@ -455,12 +444,11 @@ const filterCharacters = (keep, group) => {
   };
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (suspect) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-};
+const restartGame = () => {
+  winOrlose.style = "display: none;"
+  board.style = "display: flex;"
+  start();
+}
 
 // If you confirm, this function is invoked
 // suspect is = person.name
@@ -479,7 +467,8 @@ const checkMyGuess = (suspect) => {
     winOrlose.style = "display: block;"
     generateSecretPerson();
   } else {
-    console.log(`${suspect} is the incorrect guess. You lose!`);
+    alert("Sorry. Your guess was wrong. The game will now restart.");
+    restartGame();
   }
 };
 
@@ -487,5 +476,5 @@ const checkMyGuess = (suspect) => {
 start();
 
 // All the event listeners
-restartButton.addEventListener("click", start);
+restartButton.addEventListener("click", restartGame);
 findOutButton.addEventListener("click", selectQuestion);

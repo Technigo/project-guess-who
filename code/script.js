@@ -3,6 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const winOrLose = document.getElementById('winOrLose')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -251,6 +254,8 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  winOrLose.style.display = 'none'        //Hide the winOrLose section on restart      
+  board.style.display = 'flex'            //On restart, show the board again
   charactersInPlay = CHARACTERS       // Here we're setting charactersInPlay array to be all the characters to start with
   generateBoard()     // What else should happen when we start the game?
   setSecret()
@@ -345,20 +350,19 @@ const filterCharacters = (keep) => {
   }
 
   // filter to keep or remove based on the keep variable.
-  const propertyInPerson = currentQuestion.attribute
-  if (keep) {
-    charactersInPlay = charactersInPlay.filter((person) => person[propertyInPerson] === currentQuestion.value)
-  } else {
-    charactersInPlay = charactersInPlay.filter((person) => person[propertyInPerson] !== currentQuestion.value)
-  }
+
+    if (keep) {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)  //find the property in person (object)
+    } else {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)  // a string, which is passed into the square bracket below to access property from object
+    }
 
   generateBoard()   // Invoke a function to redraw the board with the remaining people.
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
-  // const suspectInput = suspect.value     // store the interaction from the player in a variable.
-  const confirmGuess = confirm('Are you sure you want to make a guess?')        // remember the confirm() ?
+  const confirmGuess = confirm(`Are you sure you want to make a guess on ${suspect}?`)        // store the interaction from the player in a variable + remember the confirm() ?
   if (confirmGuess == true) {
     checkMyGuess(suspect)     // If the player wants to guess, invoke the checkMyGuess function.
   } 
@@ -366,10 +370,14 @@ const guess = (suspect) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
-  // 1. Check if the suspect is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  if (suspect === secret.name) {                                                 // 1. Check if the suspect is the same as the secret person's name
+    winOrLoseText.innerHTML = `You guessed on ${suspect} which is correct!`           // 2. Set a Message to show in the win or lose section accordingly
+  } else {
+    winOrLoseText.innerHTML = `You guessed on ${suspect} which isn't correct! It was ${secret.name}!`
+  }
+  
+  winOrLose.style.display = 'flex'      // 3. Show the win or lose section
+  board.style.display = 'none'          // 4. Hide the game board
 }
 
 // Invokes the start function when website is loaded
@@ -377,5 +385,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+playAgain.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)

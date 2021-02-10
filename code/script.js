@@ -4,6 +4,7 @@ const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
 const winOrlose = document.getElementById("winOrLose");
+const secretDebugg = document.getElementById("secret-debugg");
 // Array with all the characters, as objects
 const CHARACTERS = [{
     name: "Jabala",
@@ -321,6 +322,7 @@ const start = () => {
 
   setSecret(); //The game will generate a secret charatcer at the very start
   console.log(`Secret Person: ${secret.name}`); // Log the secret person to console for debugging.
+  secretDebugg.innerHTML = `Secret Person: ${secret.name}`;
   generateBoard(); // The game will render all the characters onto the board.
 };
 

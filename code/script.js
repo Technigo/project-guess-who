@@ -225,7 +225,8 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion, charactersInPlay, category
+
 
 
 // Draw the game board
@@ -263,86 +264,139 @@ const start = () => {
 
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const value = questions.options[questions.selectedIndex].value
+  const userInput = questions.options[questions.selectedIndex].value
   
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: value,      
-      category: category
+      value: userInput,      
+      category: category,
+      text: `${userInput} hair` 
     }
   } else if (category === 'eye color') {    
     currentQuestion = {
       attribute: 'eyeColor',
-      value: value,
-      category: category
+      value: userInput,
+      category: category,
+      text: `${userInput} eyes`
     }
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: value,      
+      attribute: userInput,      
       value: true, 
-      category: category
+      category: category,
+      text: userInput
     }
   } else if (category === 'other') {
     currentQuestion = {
-      attribute: value, /* Jag vill inte ha smoker här? */
+      attribute: userInput, 
       value: true,
-      category: category
+      category: category,
+      text: 'a smoking habit'
     }
-  }
+  }  
 }
 
-
+// dessa är samma så retunerar den true annars false så om keep är sann så ska det hända annars det, men även kategorin måste in. kan jag hitta den i window? options? kolla börjar på lektion
 const checkQuestion = () => {
-  //const secretAttribute = currentQuestion[attribute]
-  const keep = currentQuestion.value === secret[currentQuestion.attribute]
-  console.log(keep)
-  
-  /*if (currentQuestion.value === secretAttribute) {
-    keep = true;   
+  let keep
+  if (currentQuestion.attribute === 'hairColor' && currentQuestion.value === secret.hairColor) {
+    keep = true
+  } else if (currentQuestion.attribute === 'eyeColor' && currentQuestion.value === secret.eyeColor){
+    keep = true
+  }else if (currentQuestion.attribute === 'glasses' && currentQuestion.value === secret.glasses){
+    keep = true
+  }else if (currentQuestion.attribute === 'hat' && currentQuestion.value === secret.hat){
+    keep = true
+  }else if (currentQuestion.attribute === 'smoker' && currentQuestion.value === secret.smoker){
+    keep = true
+  } else {
+    keep = false
   }
-  else {
-    keep = false;
-}*/
+console.log(keep)
+filterCharacters(keep)
 }
+
+
+
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
 
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
-  // Show the correct alert message for different categories
-  if (group === 'accessories') {
-    if (keep) {
-      alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
-      )
-    } else {
-      alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
-      )
-    }
-  } else if (group === 'other') {
-    // Similar to the one above
+// Show the correct alert message for different categories
+
+const filterCharacters = (keep) => { 
+  if (keep) { 
+    alert(
+      `Yes the person has ${currentQuestion.text}, keeping all persons with ${currentQuestion.text} `
+    )    
   } else {
+  alert(
+      `No the person dosen´t have ${currentQuestion.text}, removing all persons with ${currentQuestion.text}`
+  )
+  }
+}
+  
+/*  
+if (category === 'accessories') {
+  if (keep) {    
+    alert(
+        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        )
+      } else {
+        alert(
+        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        )
+      }
+  } else if (category === 'other') {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      alert(
+        `Yes, the person is a ${attribute}! Keep everyone who is a  ${attribute}`
+      )    
     } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert(
+      `No, the person isn´t ${attribute}! Remove everyone that is a ${attribute}`
+      )
     }
   }
+    else if (category === 'hair color'){
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} hair! Keep all persons with ${value} hair`
+        )
+    } else {
+      alert(
+      `NO, the person doesnt have ${value} hair! Remove all persons with ${value} hair`
+      )
+    }
+  }
+    else if (category === 'eye color'){
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} eyes! Keep all persons with ${value} eyes`
+        )
+    } else {
+      alert(
+        `NO, the person doesnt have ${value} eyes! Remove all persons with ${value} eyes`
+        )
+      }
+      
+    }*/
 
+  
+  
   // filter to keep or remove based on the keep variable.
   /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or 
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
 
-  // Invoke a function to redraw the board with the remaining people.
-}
-
-// when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (suspect) => {
+    // Invoke a function to redraw the board with the remaining people.
+    
+    
+    // when clicking guess, the player first have to confirm that they want to make a guess.
+    const guess = (suspect) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -356,10 +410,34 @@ const checkMyGuess = (suspect) => {
   // 4. Hide the game board
 }
 
-// Invokes the start function when website is loaded
 start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
 findOutBtn.addEventListener('click',checkQuestion)
+//Every time I change option in dropdown i trigger selectQuestion() to update currentQuestion
 questions.addEventListener('change',selectQuestion)
+
+
+
+/*ska den ligga i knappen?
+charactersInPlayFilterd = charactersInPlay.filter(character =>{
+  if (character[currentQuestion.attribute] === questions.value) {
+    return true
+  }
+  else {
+    return false
+  }
+  
+} ) 
+const filterCharacters = () => {
+  charactersInPlayFilterd = charactersInPlayFilterd.filter(character => {
+    if (secret[currentQuestion.attribute] === currentQuestion.value) {
+      return character[currentQuestion] === currentQuestion.value;
+    } else {
+      return character[currentQuestion.attribute] !== currentQuestion.value
+    }
+    
+  })
+  console.log(charactersInPlayFilterd)
+  */

@@ -425,7 +425,7 @@ const filterCharacters = (keep, category) => {
 
 const restartGame = () => {
   winOrlose.style = "display: none;"
-  board.style = "display: flex;"
+  board.classList.remove("game-board-hidden");
   start();
 }
 

@@ -251,14 +251,12 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret)
+  //console.log(secret)
 }
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
   generateBoard();
   setSecret();
   board.style.display = "flex";
@@ -270,14 +268,11 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const optionValue = questions.options[questions.selectedIndex].value
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
       value: optionValue,
-      // 👆 add the value from the input here
       category: category
     }
   } else if (category === 'eye color') {
@@ -286,16 +281,13 @@ const selectQuestion = () => {
         value: optionValue,
         category: category
       }
-    // Set this up your self
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: optionValue,
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      value: true,
       category: category
     }
   } else if (category === 'other') {
-    // Set this up your self (should be same structure as above)
     currentQuestion = {
       attribute: 'smoker',
       value: true,
@@ -308,57 +300,50 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
   selectQuestion()
-  //console.log(currentQuestion)
   if (currentQuestion["value"] === secret[currentQuestion["attribute"]]) {
-    console.log(true);
     keep = true;
-    console.log(keep)
   } else {
-    console.log(false);
     keep = false;
   }
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+
   filterCharacters(keep)
 }
 
-// It'll filter the characters array and redraw the game board.
+// This will filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  // Show the correct alert message for different categories
   if (currentQuestion.category === 'accessories') {
     if (keep === true) {
       alert(
-        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}.`
+        `Yes, the person wears ${currentQuestion.attribute}!`
         )
         charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
     } else {
       alert(
-        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}.`
+        `No, the person doesn't wear ${currentQuestion.attribute}!`
       )
       charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
     }
   } else if (currentQuestion.category === 'other') {
       if (keep === true) {
         alert(
-          `Yes, the person is a ${currentQuestion.attribute}! Keep all who are ${currentQuestion.attribute}s.`
+          `Yes, the person is a ${currentQuestion.attribute}!`
           )
           charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
       } else {
         alert(
-          `No, the person isn't a ${currentQuestion.attribute}! Remove all who are ${currentQuestion.attribute}s.`
+          `No, the person isn't a ${currentQuestion.attribute}!`
         )
         charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
       }
   } else {
     if (keep === true) {
       alert(
-        `Yes, the person has ${currentQuestion.value} ${currentQuestion.category}! Keep all persons with ${currentQuestion.value} ${currentQuestion.category}.`
+        `Yes, the person has ${currentQuestion.value} ${currentQuestion.category}!`
       )
       charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
     } else {
       alert(
-        `No, the person doesn't have ${currentQuestion.value} ${currentQuestion.category}! Remove all persons with ${currentQuestion.value} ${currentQuestion.category}.`
+        `No, the person doesn't have ${currentQuestion.value} ${currentQuestion.category}!`
       )
       charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
     }
@@ -374,12 +359,6 @@ const guess = (suspect) => {
   }
 };
 
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-
-
-// If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     winOrLoseText.innerHTML = "You won!!! Congrats!"
@@ -390,11 +369,6 @@ const checkMyGuess = (suspect) => {
   }
 
   board.style.display = "none"
-
-  // 1. Check if the suspect is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 }
 
 // Invokes the start function when website is loaded
@@ -403,4 +377,3 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 filterButton.addEventListener('click',checkQuestion)
-//playAgainButton.addEventListener('click',start)

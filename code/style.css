@@ -1,9 +1,20 @@
 /* Global css variables used for colors */
 :root {
+  --primary: 
+ #2e364c;
+  --secondary: #9cb5ff;
+}
+/*
   --primary: #a259ff;
   --secondary: #b0a6ff;
-}
 
+--primary: 
+#9cb5ff;
+--secondary: #b59cff;
+
+  --primary: 
+ #2e364c;
+  --secondary: #9cb5ff;*/
 body {
   display: flex;
   flex-direction: column;
@@ -12,6 +23,7 @@ body {
   font-family: 'Patrick Hand', sans-serif;
 }
 
+/* Header */
 .header {
   background-color: var(--secondary);
   height: 70vh;
@@ -22,6 +34,8 @@ body {
   align-items: center;
 }
 
+/* How to play section with image and click */
+
 .card-header {
   background-color: white;
   border-radius: 30px 30px 30px 0px;
@@ -29,11 +43,11 @@ body {
   top:15px;
   left: 70px;
   cursor: pointer;
-
 }
 
 .card-header:hover {
   background-color: var(--primary);
+  color: white;
 }
 
 .how-to-play-card {
@@ -67,6 +81,8 @@ body {
   font-size: 26px;
   margin: 12px;
 }
+
+/* Header middle section with h1, input player name and button */
 
 .h1 {
   font-size: 150px;
@@ -107,7 +123,7 @@ body {
 }
 
 .lets-play-button:hover {
-  background-color: var(--secondary);
+  background-color: var(--second);
 }
 
 .h2 {
@@ -115,7 +131,7 @@ body {
   color: white; 
 }
 
-/* Ask question container */
+/* ASK QUESTION CONTAINER */
 
 .question-container {
   display: flex;
@@ -129,8 +145,27 @@ body {
   justify-content: space-around;
 }
 
+/* Player icon and input name container */
+
+.player-name-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50px;
+  color: var(--primary);
+}
+.fas {
+  font-size: 46px;
+}
+
+.player-name {
+  font-size: 20px;
+  margin-top: -20px;
+  
+}
+
 .question-section {
-  width: 91.4%;
+  width: 91.1%;
   padding: 20px;
   background-color: var(--secondary);
   display: flex;
@@ -189,6 +224,7 @@ select {
 }
 
 /****** CARD ******/
+
 .card {
   width: 150px;
   height: 180px;
@@ -234,6 +270,7 @@ select {
 }
 
 /* The div with the guess class is only shown on hover */
+
 .card:hover .guess {
   display: flex;
 }
@@ -280,7 +317,20 @@ button {
   color: white;
 }
 
+/* Footer */
+
+.footer {
+  display: flex;
+  align-items: center;
+  background-color: var(--secondary);
+  height: 50px;
+  color: var(--primary);
+  font-size: 22px;
+  padding-left: 10px;
+}
+
 /****** WIN OR LOSE SECTION ******/
+
 .win-or-lose-wrapper {
   display: none;
   align-items: center;
@@ -311,6 +361,8 @@ button {
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
+
+/* Media queris */
 
 @media (max-width: 768px) {
   body {

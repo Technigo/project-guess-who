@@ -12,6 +12,7 @@ const howToPlay = document.getElementById('how-to-play-question');
 const howToPlayCard = document.getElementById('how-to-play-answer');
 const input = document.getElementById('input');
 let questionNumber = document.getElementById('questionNum');
+const playerName = document.getElementById('player-name');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -321,8 +322,6 @@ const start = () => {
   input.value = '';
 };
 
-
-
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
@@ -334,36 +333,36 @@ const selectQuestion = () => {
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: value,
-      category: category,
+      value,
+      category,
     }
   } else if (category === 'eye color') {
     // Set this up your self
     currentQuestion = {
       attribute: 'eyeColor',
-      value: value,
-      category: category,
+      value,
+      category,
     }
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: value,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
-      category: category,
+      category,
     }
   } else if (category === 'other') {
     // Set this up your self (should be same structure as above)
     currentQuestion = {
       attribute: value,
       value: true,
-      category: category,
+      category,
     }
   } else if (category === 'age') {
     // Set this up your self (should be same structure as above)
     currentQuestion = {
       attribute: 'age',
-      value: value,
-      category: category,
+      value,
+      category,
     }
   }
 };
@@ -477,7 +476,8 @@ const checkMyGuess = (suspect) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-  
+  questionNumber = 0;
+  questionNum.innerHTML = '';
   board.style.display = "none";
   winOrLose.style.display = "flex";
 };
@@ -488,12 +488,14 @@ start();
 // All the event listeners
 
 restartButton.addEventListener('click', start);
-questions.addEventListener('change', () => selectQuestion());
+questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
 playAgain.addEventListener('click', start);
 
 playButton.addEventListener('click', () => {
   board.scrollIntoView({behavior: 'smooth'});
+  playerName.innerHTML = `<p>${input.value}</p>`
+  input.value = '';
 });
 
 howToPlay.addEventListener('click', () => {

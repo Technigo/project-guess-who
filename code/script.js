@@ -4,6 +4,7 @@ const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
 const winOrlose = document.getElementById("winOrLose");
+const showEndScreen = document.getElementById("showEndScreen");
 const secretDebugg = document.getElementById("secret-debugg");
 // Array with all the characters, as objects
 const CHARACTERS = [{
@@ -274,7 +275,7 @@ const CHARACTERS = [{
 ];
 
 // Global variables
-let secret, currentQuestion, charactersInPlay;
+let secret, currentQuestion, charactersInPlay, numberOfGuesses;
 
 // Draw the game board
 const generateBoard = () => {
@@ -294,9 +295,9 @@ const generateBoard = () => {
 };
 
 const generateSecretPerson = () => {
-  winOrlose.innerHTML += "";
-  winOrlose.innerHTML += `
-      <center><h1 class="win-or-lose-h1">Congrats <br> Your guess was right <br> The secret person is: </h1>
+
+  showEndScreen.innerHTML = `
+      <center><h1 class="win-or-lose-h1">Congrats <br> You took ${numberOfGuesses} guesses. <br> The secret person is: </h1>
       <div class="card-Secret-Person">
         <p>${secret.name}</p>
         <img src=${secret.img} alt=${secret.name}></center>
@@ -317,6 +318,7 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
+  numberOfGuesses = 0;
 
   // What else should happen when we start the game?
 
@@ -328,6 +330,7 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
+  numberOfGuesses++;
   const category = questions.options[questions.selectedIndex].parentNode.label;
   // This variable stores what option group (category) the question belongs to.
 

@@ -325,94 +325,59 @@ const selectQuestion = (selected) => {
     if (secretValue === currentQuestion.value) {
       keep = true;
       console.log('true')
-      //filterCharacters(true, currentQuestion.value);
+      filterCharacters(true, currentQuestion.attribute);
     } else {
       keep = false
       console.log('false')
-      //filterCharacters(false, currentQuestion.attribute);
-    } filterCharacters()
+      filterCharacters(false, currentQuestion.attribute);
+    }
   }
-  // Har kommenterat bort det här sättet för det över funkar
-      /*switch (category) {
-        case (currentQuestion.value === secret.hairColor):
-          keep = true;
-          break;
-        case (currentQuestion.value !== secret.hairColor):
-          keep = false;
-      }
-      switch (category) {
-        case (currentQuestion.value === secret.eyeColor):
-          keep = true;
-          break;
-        case (currentQuestion.value !== secret.eyeColor):
-          keep = false;
-          break;
-      }
-      switch (category) {
-        case (currentQuestion.value === secret.hat):
-          keep = true;
-          break;
-        case (currentQuestion.value !== secret.hat):
-          keep = false;
-          break;
-      }
-      switch (category) {
-        case (currentQuestion.value === secret.glasses):
-          keep = true;
-          break;
-        case (currentQuestion.value !== secret.glasses):
-          keep = false;
-          break;
-      }
-      switch (category) {
-        case (currentQuestion.value === secret.smoker):
-          keep = true;
-          break;
-        case (currentQuestion.value !== secret.smoker):
-          keep = false;
-          break;
-      }*/
-      
-   // }
 
-    // WHAT TO DOOOOOOOOOOOO???
     // It'll filter the characters array and redraw the game board.
-    const filterCharacters = (category) => {
+    const filterCharacters = (keep, group) => {
       // Show the correct alert message for different categories
-      if (category === 'accessories') {
+      if (group === 'glasses') {
         if (keep) {
           alert(
-            `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`)
+            `Yes, the person wears glasses! Keep all that wears glasses.`)
         } else {
             alert(
-            `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`)
+            `No, the person doesn't wear glasses! Remove all that wears glasses.`)
+          }
+      } else if (group === 'hat') {
+        if (keep) {
+          alert(
+            `Yes, the person wears a hat! Keep all that wears a hat.`)
+        } else {
+            alert(
+            `No, the person doesn't wear a hat! Remove all that wears a hat.`)
         }
-      } else if (category === 'other') {
+      } else if (group === 'smoker') {
           if (keep) {
             alert(
-              `Yes, the person is a ${attribute}! Keep all that is a ${attribute}`)
+              `Yes, the person is a smoker! Keep all that are smokers.`)
           } else {
               alert(
-                `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`)
+                `No, the person isn't a smoker! Remove all that are smokers.`)
           }
-      } else if (category === 'hair color') {
+      } else if (group === 'hairColor') {
         if (keep) {
           alert(
-            `Yes, the person has ${attribute}! Keep all that have ${attribute}`)
+            `Yes, the person has ${currentQuestion.value} hair! Keep all that have ${currentQuestion.value} hair.`)
         } else {
           alert(
-            `No, the person doesn't have ${attribute}! Remove all that have ${attribute}`)
+            `No, the person doesn't have ${currentQuestion.value} hair! Remove all that have ${currentQuestion.value} hair.`)
         }
-      } else if (category === 'eye color') {
+      } else if (group === 'eyeColor') {
         if (keep) {
           alert(
-            `Yes, the person has ${attribute}! Keep all that have ${attribute}`)
+            `Yes, the person has ${currentQuestion.value} eyes! Keep all that have ${currentQuestion.value} eyes.`)
         } else {
           alert(
-            `No, the person doesn't have ${attribute}! Remove all that have ${attribute}`)
+            `No, the person doesn't have ${currentQuestion.value} eyes! Remove all that have ${currentQuestion.value} eyes.`)
         }
       }
-        generateBoard() //lagt till detta
+       // generateBoard()
       }
   
   

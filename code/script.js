@@ -332,11 +332,26 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (group === 'other') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${attribute}! Keep all that has ${attribute}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${attribute}! Remove all that have ${attribute}`
+      )
+    }
     // Similar to the one above
   } else {
     if (keep) {
+      alert(
+        `Yes, the person has ${attribute} hair! Keep all that has ${attribute} hair`
+      )
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
     } else {
+      alert(
+        `No, the person doesn't have ${attribute} hair! Remove all persons with ${attribute} hair`
+      )
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
     }
   }

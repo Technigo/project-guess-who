@@ -377,15 +377,17 @@ const guess = (suspect) => {
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
   const userGuess = confirm(`Are you sure you want to guess ${suspect}`);
-  if (userGuess === suspect) {
+  if (userGuess) {
     checkMyGuess();
   }
-
-}
+};
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   // 1. Check if the suspect is the same as the secret person's name
+  if (suspect === setSecret) {
+    
+  }
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board

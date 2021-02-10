@@ -12,9 +12,9 @@ const CHARACTERS = [
   {
     name: 'Jabala',
     img: 'images/jabala.svg',
-    hairColor: 'brown',
-    eyeColor: 'blue',
-    glasses: false,
+    hairColor: 'hidden',
+    eyeColor: 'brown',
+    glasses: true,
     hat: false,
     smoker: false,
   },
@@ -320,7 +320,7 @@ const {attribute, category, value} = currentQuestion
       )
     } else {
       alert(
-        `No, the character doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `Nope, the character doesn't wear ${attribute}! Remove all that wears ${attribute}`
       )
     }
   } else if (category === 'hair color') {
@@ -328,7 +328,7 @@ const {attribute, category, value} = currentQuestion
       alert(`Yes, the character has ${value} hair! Keeping all the characters with ${value} hair. `)
     // Similar to the one above
   } else {
-    alert(`No, the character doesn't have ${value} hair! Removing characters with ${value} hair.`)
+    alert(`Nope, the character doesn't have ${value} hair! Removing characters with ${value} hair.`)
     }
   } else if (category === 'eye color') {
   if (keep)   {
@@ -380,7 +380,7 @@ const checkMyGuess = (suspect) => {
 }
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 
 // All the event listeners

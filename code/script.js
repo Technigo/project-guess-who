@@ -86,7 +86,6 @@ const CHARACTERS = [
     hat: false,
     smoker: false,
   },
-
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
@@ -254,6 +253,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard()
+  setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -261,19 +262,26 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-
+  const categoryValue = questions.options[questions.selectedIndex].value
+  
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
+      value: categoryValue, 
+      category: category,
       // value: ,
       // 👆 add the value from the input here
-      category: category,
     }
   } else if (category === 'eye color') {
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value: categoryValue, 
+      category: category,
     // Set this up your self
+
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: 'glasses', 'hat',
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
@@ -341,3 +349,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)

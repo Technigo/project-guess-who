@@ -44,10 +44,6 @@ select {
   width: 126px;
 }
 
-.bojack-logo {
-  width: 300px;
-}
-
 .board-wrapper {
   width: 70%;
   display: flex;

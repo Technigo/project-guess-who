@@ -10,8 +10,8 @@ const playAgainButton = document.getElementById('playAgain')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Sarah Lynn',
-    img: 'images/Sarah_Lynn.png',
+    name: 'Jabala',
+    img: 'images/jabala.svg',
     hairColor: 'brown',
     eyeColor: 'blue',
     glasses: false,
@@ -20,7 +20,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jack',
-    img: 'images/princess.jpg',
+    img: 'images/jack.svg',
     hairColor: 'hidden',
     eyeColor: 'blue',
     glasses: false,
@@ -312,8 +312,8 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
-const {attribute, category, value} =currentQuestion
-  if (group === 'accessories') {
+const {attribute, category, value} = currentQuestion
+  if (category === 'accessories') {
     if (keep) {
       alert(
         `Yes, the character wears ${attribute}! Keep all that wears ${attribute}`
@@ -323,16 +323,19 @@ const {attribute, category, value} =currentQuestion
         `No, the character doesn't wear ${attribute}! Remove all that wears ${attribute}`
       )
     }
-  } else if (group === 'hair color') {
+  } else if (category === 'hair color') {
     if (keep) {
-      alert(`Yes, the character has ${value} hair! Keeping all the characters with ${value} hair `)
+      alert(`Yes, the character has ${value} hair! Keeping all the characters with ${value} hair. `)
     // Similar to the one above
   } else {
     alert(`No, the character doesn't have ${value} hair! Removing characters with ${value} hair.`)
-  }
-    if (keep) {
-      
-    } else {
+    }
+  } else if (category === 'eye color') {
+  if (keep)   {
+      alert ( `Super! the character has ${value} eyes! Let's keep all the characters with ${value} eyes.`)
+
+   } else {
+     alert(`Nope! The character does not have ${value} eyes removing all characters with ${value} eyes.`)
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
     }
   }
@@ -352,6 +355,10 @@ const {attribute, category, value} =currentQuestion
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   // store the interaction from the player in a variable.
+  const userConfirms = confirm(`Are you sure you want to guess on ${suspect}`)
+  if (userConfirms) {
+    checkMyGuess(suspect)
+  }
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 }
@@ -359,13 +366,22 @@ const guess = (suspect) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   // 1. Check if the suspect is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
+  if (suspect === secret.name) {
+// 2. Set a Message to show in the win or lose section accordingly
+   winOrLoseText.innerHTML = `You thought it was ${suspect} and you were right!`
+  } else {
+    winOrLoseText.innerHTML = `Sorry, it's not ${suspect}. It was ${secret.name}`
+  }
+  
   // 3. Show the win or lose section
+  winOrLose.style.display = 'flex'
   // 4. Hide the game board
+  board.style.display = 'none'
 }
 
 // Invokes the start function when website is loaded
 start()
+
 
 // All the event listeners
 playAgainButton.addEventListener('click', start)

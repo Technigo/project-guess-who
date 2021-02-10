@@ -290,12 +290,18 @@ const selectQuestion = () => {
         value,
         category
       }
-  } else if (category === 'accessories') {
+  } else if (category === 'hat') {
     currentQuestion = {
-      attribute: 'accessories',
+      attribute: 'hat',
       value: true, 
       category
     } 
+  } else if (category === 'glasses') {
+    currentQuestion = {
+      attribute: 'glasses',
+      value: true, 
+      category
+    }  
   } else if (category === 'other') {
     currentQuestion = {
       attribute: 'smoker',
@@ -304,6 +310,7 @@ const selectQuestion = () => {
     }
   }
     return currentQuestion
+
 };
   
 
@@ -326,22 +333,24 @@ const checkQuestion = () => {
 };
 
 
+/////WHY DO IT NOT FILTER OUT GLASSES AND HATS NOW?
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
 
   
   // Show the correct alert message for different categories
-  if (currentQuestion.category === 'accessories') {
+  if (currentQuestion.category === 'glasses') {
     if (keep) {
       alert(
-        `Yes, the person wears that! Keep all that wears it`
+        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
       );
     } else {
       alert(
-        `No, the person doesn't wear it! Remove all that wears it`
+        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
       );
-    }
+    }  
   } else if (currentQuestion.category === 'hair color') {
     if (keep) {
       alert(
@@ -350,6 +359,16 @@ const filterCharacters = (keep) => {
     } else {
       alert(
         `No, the person doesn't have ${currentQuestion.value} hair! Remove all that have ${currentQuestion.value}`
+      );
+    }
+    } else if (currentQuestion.category === 'hat') {
+    if (keep) {
+      alert(
+        `Yes, the person wear ${currentQuestion.attribute}! Keep all that who have a ${currentQuestion.attribute}`
+      );
+    } else {
+      alert(
+        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that have a ${currentQuestion.attribute}`
       );
     }
   } else if (currentQuestion.category === 'eye color') {
@@ -373,22 +392,7 @@ const filterCharacters = (keep) => {
         );
       } 
   }
-  // //TRY 2
-  //     if (keep) {
-  //   alert(
-  //     `Yes, the person has ${currentQuestion.text}! Keep all that has ${currentQuestion.text}.`
-  //   );
-  //   charactersInPlay = charactersInPlay.filter(
-  //     (character) => character[currentQuestion.attribute] === currentQuestion.value
-  //   );
-  // } else {
-  //   alert(
-  //     `No, the person doesn't have ${currentQuestion.text}! Remove all that have ${currentQuestion.text}`
-  //   );
-  //   charactersInPlay = charactersInPlay.filter(
-  //     (character) => character[currentQuestion.attribute] !== currentQuestion.value
-  //   );
-  // }
+
 
   // Invoke a function to redraw the board with the remaining people.
   if (keep) {
@@ -404,9 +408,10 @@ const guess = (suspect) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-    const playerWantstoPlay = confirm(`So you're guessing on ${suspect}?`)
-    if (playerWantstoPlay) {
+    let confirmation = confirm(`So you're guessing on ${suspect}?`);
+    if (confirmation === true) {
     checkMyGuess(suspect)
+
 }
 
 // If you confirm, this function is invoked

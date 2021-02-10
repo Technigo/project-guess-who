@@ -292,6 +292,17 @@ const generateBoard = () => {
   });
 };
 
+const generateSecretPerson = () => {
+  winOrlose.innerHTML = "";
+  winOrlose.innerHTML += `
+      <div class="card-Secret-Person">
+        <p>${secret.name}</p>
+        <img src=${secret.img} alt=${secret.name}>
+    `;
+};
+
+
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret =
@@ -458,13 +469,15 @@ const checkMyGuess = (suspect) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+
+  alert("Are you sure you want to make your guess?");
   if (suspect === secret.name) {
     console.log(`${secret.name} is the correct guess. You win!`);
 
     /* board.style = "display: none;" */
     board.classList.add("game-board-hidden");
     winOrlose.style = "display: block;"
-
+    generateSecretPerson();
   } else {
     console.log(`${suspect} is the incorrect guess. You lose!`);
   }

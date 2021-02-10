@@ -77,6 +77,22 @@ select {
   justify-content: space-between;
 }
 
+.card-Secret-Person {
+  width: 135px;
+  height: 165px;
+  overflow: hidden;
+  border: 3px solid white;
+  border-radius: 4px;
+  margin: 3px;
+}
+
+.card-Secret-Person p {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
 .card p {
   text-align: center;
   margin-bottom: 0;

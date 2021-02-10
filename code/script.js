@@ -1,4 +1,4 @@
-// All the DOM selectors stored as short variables
+// All the DOM selectors stored as short variables //
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");

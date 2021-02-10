@@ -288,7 +288,7 @@ const selectQuestion = () => {
     }
   } else if (category === 'other') {
     currentQuestion = {
-      attribute= 'other',
+      attribute: 'other',
       value: true,
       category: category,
     }

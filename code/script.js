@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -385,7 +386,7 @@ const guess = (suspect) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   // 1. Check if the suspect is the same as the secret person's name
-  if (suspect === setSecret) {
+  if (suspect === setSecret.name) {
     
   }
   // 2. Set a Message to show in the win or lose section accordingly

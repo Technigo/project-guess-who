@@ -91,7 +91,8 @@ const CHARACTERS = [{
     furPattern: 'spotty',
     animal: 'cat',
     bad: false,
-    collar: false
+    collar: false,
+    bling: false,
   },
   {
     name: 'Jazebelle',
@@ -101,7 +102,7 @@ const CHARACTERS = [{
     animal: 'cat',
     bad: false,
     collar: false,
-    other: true
+    bling: true
   },
   {
     name: 'Rocky',
@@ -121,7 +122,7 @@ const CHARACTERS = [{
     animal: 'dog',
     bad: false,
     collar: false,
-    other: true
+    bling: true
   },
   {
     name: 'Jed',
@@ -220,7 +221,8 @@ const CHARACTERS = [{
     furPattern: 'spotty',
     animal: 'cat',
     bad: false,
-    collar: false
+    collar: false,
+    bling: false
   },
   {
     name: 'Missy',
@@ -272,22 +274,27 @@ const generateBoard = () => {
     board.innerHTML += `
       <div class="card">
         <div class="card-inner">
-        <div class="card-front">
-        <p>${person.name}</p>
-        <div class='card-img'>
-        <img src=${person.img} alt=${person.name}>
-        </div>
-        </div>
-        <div class="card-back">
-        <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <div class="card-front">
+            <p>${person.name}</p>
+            <div class='card-img'>
+              <img src=${person.img} alt=${person.name} />
+            </div>
           </div>
-        </div>
+          <div class="card-back">
+            <div class="guess">
+              <span>
+                Guess on ${person.name}?
+              </span>
+              <button class="filled-button small" onclick="guess('${person.name}')">
+                Guess
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     `
   })
+  //displays how many questions a player asked
   const counter = document.getElementById("counter")
   counter.innerHTML = `Questions asked: ${questionsAsked}`
 }
@@ -305,22 +312,21 @@ const timer = (x) => {
   totalSeconds++
   let minute = Math.floor(totalSeconds / 60);
   let seconds = totalSeconds - (minute * 60);
-  if (minute < 10)
+  if (minute < 10){
     minute = "0" + minute;
-  if (seconds < 10)
+  }
+  if (seconds < 10){
     seconds = "0" + seconds;
+  }
   document.getElementById("timer").innerHTML = `Time passed: ${minute}:${seconds}`;
 }
-
 let setTimer = setInterval(timer, 1000)
 
 // This function to start (and restart) the game
+// sets the gameboard, all the characters in play, secret character and timer
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  //generates gameboard
   generateBoard()
-  //sets the secret character
   setSecret()
   totalSeconds = 0;
   timer('restart')
@@ -355,23 +361,19 @@ const selectQuestion = (handleOption) => {
       }
       break
     default:
+       //attribute is set to the option playes selects
       currentQuestion = {
         attribute: handleOption,
         value: true,
         category: category,
       };
   };
-  //on click stopPropergate is run
   const findOut = document.getElementById('filter')
   findOut.addEventListener('click', stopPropergate);
 }
 
-//function used in if statements
-const isEqual = (a, b) => {
-  return a === b;
-}
-
-//the stored data for the current quess is passed as an argument to chechQuestion and repetition of the exact same function on click is hindered
+//the stored data for the current quess is passed as an argument to checkQuestion 
+//repetition of the exact same function on click is hindered
 const stopPropergate = (event) => {
   event.stopImmediatePropagation();
   checkQuestion(currentQuestion)
@@ -379,16 +381,16 @@ const stopPropergate = (event) => {
 
 //This function is innvoked when you click FindOut. It compares the secret characters properties with the players options and answer with a sentence
 const checkQuestion = (currentQ) => {
-  let userValue = currentQ.value
-  let userAttr = currentQ.attribute
+  let userValue = currentQ.value,
+    userAttr = currentQ.attribute,
+    userCat = currentQ.category
 
-  //passes the properties of the current question and right/wrong option to the filter function
   //using set up sentences from an array
-  if (isEqual(currentQ.category, 'accessories') || isEqual(currentQ.category, 'behaviour')) {
+  if (userCat === 'accessories' || userCat === 'behaviour') {
     if (userValue === secret[userAttr]) {
-      alert(sentences[0][currentQ.category].replaceAll('x', userAttr))
+      alert(sentences[0][userCat].replaceAll('x', userAttr))
     } else {
-      alert(sentences[1][currentQ.category].replaceAll('x', userAttr))
+      alert(sentences[1][userCat].replaceAll('x', userAttr))
     }
   } else {
     if (userValue === secret[userAttr]) {
@@ -397,7 +399,8 @@ const checkQuestion = (currentQ) => {
       alert(sentences[1][userAttr].replaceAll('x', userValue))
     }
   }
-
+  
+  //passes parameters to a filter function
   filterCharacters(userValue, userAttr)
 }
 
@@ -441,7 +444,7 @@ const checkMyGuess = (suspect) => {
   let winOrLose = document.getElementById('winOrLose')
   //shows winOrLose section
   winOrLose.style.display = 'block'
-  if (isEqual(suspect, secret.name)) {
+  if (suspect === secret.name) {
     winOrLose.innerHTML = `
       <div class="win-or-lose">
         <img
@@ -452,11 +455,9 @@ const checkMyGuess = (suspect) => {
           Yes, ${suspect} was the secret character! Well done!
         </h1>
         <div class="card-img-wrap">
-          <div>
-            <div class='card-img'>
+          <div class='card-img'>
             <img src=${secret.img} 
-            alt=${secret.name} 
-          />
+            alt=${secret.name}/>
           </div>
         </div>
         <h1> Your total time was ${Math.round((totalSeconds/60)*100)/100} minutes for this round</h1>
@@ -479,8 +480,7 @@ const checkMyGuess = (suspect) => {
           <div class='card-img'>
             <img 
             src=${secret.img} 
-            alt=${secret.name} 
-            />
+            alt=${secret.name}/>
           </div>
         </div>
         <h1> Your total time was ${Math.round((totalSeconds/60)*100)/100} minutes for this round</h1>

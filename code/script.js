@@ -3,6 +3,7 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
+const winOrlose = document.getElementById("winOrLose");
 // Array with all the characters, as objects
 const CHARACTERS = [{
     name: "Jabala",
@@ -459,8 +460,10 @@ const checkMyGuess = (suspect) => {
   // 4. Hide the game board
   if (suspect === secret.name) {
     console.log(`${secret.name} is the correct guess. You win!`);
+
     /* board.style = "display: none;" */
     board.classList.add("game-board-hidden");
+    winOrlose.style = "display: block;"
 
   } else {
     console.log(`${suspect} is the incorrect guess. You lose!`);

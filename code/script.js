@@ -318,19 +318,19 @@ const checkQuestion = () => {
   selectQuestion()
   const secretValue = secret[currentQuestion.attribute]
   if (secretValue === currentQuestion.value) {
-    filterCharacters(true);
+    filterCharacters(true,currentQuestion.category);
   } else {
-    filterCharacters(false);
+    filterCharacters(false,currentQuestion.category);
   }
-  filterCharacters(keep)
+
 };
 
 
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {//DO I NEED CURRENTQUESTION HERE?
+const filterCharacters = (keep) => {
 
-  //FIRST TRY
+  
   // Show the correct alert message for different categories
   if (currentQuestion.category === 'accessories') {
     if (keep) {
@@ -392,9 +392,9 @@ const filterCharacters = (keep) => {//DO I NEED CURRENTQUESTION HERE?
 
   // Invoke a function to redraw the board with the remaining people.
   if (keep) {
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
   } else {
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
   }
   generateBoard()
 }

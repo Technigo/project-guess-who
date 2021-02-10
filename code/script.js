@@ -254,7 +254,6 @@ const setSecret = () => {
 const start = () => {
    // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-   
   setSecret()
   generateBoard()
   // What else should happen when we start the game?
@@ -269,27 +268,31 @@ const selectQuestion = () => {
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-       // value: ,
-      // 👆 add the value from the input here
-      category: category,
-    }
+      value,       // value: ,
+                          // 👆 add the value from the input here
+      category,
+      console.log('test1')
+  }
   } else if (category === 'eye color') {
       attribute: 'eyeColor',
+      value,
+      category,
     // Set this up your self
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: 'glasses' 
-      //attribute: ,
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
+      attribute: 'glasses',  //attribute: ,
+       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
-      category: category,
-    }
-  } else if (category === 'other') {
-    // Set this up your self (should be same structure as above)
+      category,
+      console.log('test2')
   }
+  //} else if (category === 'other') {
+    // Set this up your self (should be same structure as above)
+  //}
   generateBoard() //? here aswell
+  console.log('test3')
 }
-
+console.log('test4')
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
@@ -322,7 +325,8 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   filterCharacters(keep)
-}
+  generateBoard() // or is above filterCharacters already calling the board?
+} 
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -338,8 +342,39 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (group === 'other') {
-    // Similar to the one above
-  } else {
+    if (keep) {
+      alert(
+        `Yes, the person has ${attribute}! Keep all that has ${attribute}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${attribute}! Remove all that have ${attribute}`
+      )
+    }
+  } 
+  } else if (group === 'hair color') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${attribute} hair! Keep all that has ${attribute} hair!`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${attribute} hair color! Remove all that has ${attribute} hair.`
+      )
+    }// Similar to the one above
+  }   else if (group === 'eye color') {
+      if (keep) {
+        alert(
+          `Yes, the person has ${attribute} eyes! Keep all that has ${attribute} eyes.`
+        )
+      } else {
+        alert(
+          `No, the person doesn't have ${attribute} eyes! Remove all that has ${attribute} eyes`
+        )
+      }// Similar to the one above
+  }
+  
+    else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
     } else {
@@ -375,4 +410,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOutButton.addEventListener('click', checkQuestion) //?? 
+findOutButton.addEventListener('click', checkQuestion)  

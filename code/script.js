@@ -170,11 +170,11 @@ const checkMyGuess = (suspect) => {
   // 4. Hide the game board
 
   if (suspect === secret.name){
-    winOrLoseText.innerHTML = `
-    Yey! High Five! It was ${secret.name}
+    winOrLoseText.innerHTML = 
+    `Yey! High Five! It was ${secret.name}`
   } else {
     winOrLoseText.innerHTML = 
-    Sorry! It is not ${suspect}
+    `Sorry! It is not ${suspect}`
   }
 
     }

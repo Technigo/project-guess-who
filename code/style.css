@@ -8,15 +8,15 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Comfortaa', cursive;
 }
 
 h1 {
   font-size: 42px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: #e95f34;
 }
 
 .question-section {
@@ -64,7 +64,7 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid var(--primary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -78,6 +78,7 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+  color: var(--primary);
 }
 
 .card .guess {
@@ -85,7 +86,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #e95f34;
   text-align: center;
   height: inherit;
 }
@@ -129,30 +130,15 @@ button, .buttonRestart {
   margin-bottom: 60px;
 }
 
-
 .small {
   padding: 8px 16px;
+  margin-top: 30px;
 }
-
-/*.outlined-button {
-  background-color: var(--primary);
-  color: var(--secondary);
-  align-self: center;
-  margin-bottom: 40px;
-}*/
 
 button:hover, .buttonRestart:hover {
-  /*border: #ffb38c;*/
   background-color: #ffb38c;
-  color: white;
- 
+  color: white; 
 }
-
-/*.filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
-}*/
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -166,7 +152,7 @@ button:hover, .buttonRestart:hover {
   left: 0;
   right: 0;
   height: 150vh;
-  background-color: #ffca5a;
+  background-color: var(--secondary);
 }
 
 .win-or-lose {
@@ -176,7 +162,7 @@ button:hover, .buttonRestart:hover {
   justify-content: center;
   max-width: 100vw;
   text-align: center;
-  background-color: #ffca5a;
+  background-color: var(--secondary);
 }
 
 .win-or-lose img {
@@ -184,8 +170,6 @@ button:hover, .buttonRestart:hover {
   margin-top: 2%;
   margin-left: 15%;
 }
-
-
 
 .win-or-lose h1 {
   margin-bottom: 32px;

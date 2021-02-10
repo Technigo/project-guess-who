@@ -249,11 +249,11 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  let randomElement = Math.random() * charactersInPlay.length //för ett randomiserat tal skalat till längden på arrayen obs blir decimaltal (float) därför kör vi math.floor sedan
-  let randomElementInt = Math.floor(randomElement); //för avrundning till heltal
-  secret = charactersInPlay[randomElementInt]; //Nu tilldelar vi secret person genom att plocka ut randomiserade personen från arrayen
+  let randomElement = Math.random() * charactersInPlay.length //note to self! for a randomised number rounded off to length of array (will be a decimal (float) and therefore math.floor after)
+  let randomElementInt = Math.floor(randomElement); 
+  secret = charactersInPlay[randomElementInt]; //note to self! here we assign secret person by picking out the randomised number (aka person) from the array
   //secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  //raka parenteser talar om att vi plockar ut ett randomiserat element på den randomiserade positionen
+  //note to self! straight brackets show that we are picking out a randomised element on the randomised position in our array
 }
 
 // This function to start (and restart) the game
@@ -267,13 +267,10 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  console.log(secret);
-  console.log(secret.hairColor);
   const category = questions.options[questions.selectedIndex].parentNode.label;
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   const property = questions.options[questions.selectedIndex].label;
-console.log(property);
 
   if (category === 'hair color') {
     currentQuestion = {
@@ -282,7 +279,6 @@ console.log(property);
       // 👆 add the value from the input here
       category: category,
     }
-    
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
@@ -300,14 +296,13 @@ console.log(property);
     }
   } else if (category === 'other') {
     currentQuestion = {
-    attribute: property,
+      attribute: property,
       value: true,
       // 👆 add the value from the input here
       category: category,
     // Set this up your self (should be same structure as above)
     }
   }
-  console.log(currentQuestion.attribute);
 }
 
 // This function should be invoked when you click on 'Find Out'.
@@ -316,7 +311,7 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   let keepPerson;
   let checking = currentQuestion.attribute;
-  if (secret[checking] === currentQuestion.value) { //obs secret[value] om value är en variabel, secret.value om value är en objektegenskap, i det här fallet är checking en variabel som skapats och inte en objektegenskap
+  if (secret[checking] === currentQuestion.value) { //note to self! secret[value] if value is a variable, secret.value if value is an object, in this case checking is a variable and not an object key
     keepPerson = true;
   } else {
     keepPerson = false;
@@ -329,7 +324,6 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
-   console.log(`test ${currentQuestion.category}`);
   if (currentQuestion.attribute === 'hairColor') {
     if (keep) {
       alert(
@@ -360,8 +354,7 @@ const filterCharacters = (keep) => {
           `No, the person doesn't have ${currentQuestion.attribute}! Remove all that has ${currentQuestion.attribute}`
         )
       }
-    }
-     else if (currentQuestion.category === 'other') {
+  } else if (currentQuestion.category === 'other') {
       if (keep) {
         alert(
           `Yes, the person is a ${currentQuestion.attribute}! Keep all that are a ${currentQuestion.attribute}`
@@ -369,25 +362,10 @@ const filterCharacters = (keep) => {
       } else {
         alert(
           `No, the person isn't a ${currentQuestion.attribute}! Remove all that are a ${currentQuestion.attribute}`
-          )
-        }
+        )
       }
+    }
         
-    
-    
-    
-    
-    /*
-  } else if ( === 'other') {
-    // Similar to the one above
-  } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
-    } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
-    }*/
-  
-
   // filter to keep or remove based on the keep variable.
   if (keep) { 
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
@@ -423,8 +401,9 @@ const checkMyGuess = (suspect) => {
   // 3. Show the win or lose section
   // 4. Hide the game board
 }
+
 //a function to hide the win or lose section when play again is chosen
-const something = () => {
+const showAgainWinOrLose = () => {
   winOrLose.style.display = "none";
   start();
 }
@@ -436,4 +415,4 @@ start()
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
-playAgain.addEventListener('click', something);
+playAgain.addEventListener('click', showAgainWinOrLose);

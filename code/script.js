@@ -304,44 +304,66 @@ const checkQuestion = () => {
   selectQuestion()
   //console.log(currentQuestion)
   if (currentQuestion["value"] === secret[currentQuestion["attribute"]]) {
-    console.log(true)
-    let keep = true
+    console.log(true);
+    keep = true;
+    console.log(keep)
   } else {
-    console.log(false)
-    let keep = false
+    console.log(false);
+    keep = false;
   }
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
- // filterCharacters(keep)
+  filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
-  if (group === 'accessories') {
-    if (keep) {
+  if (currentQuestion.category === 'accessories') {
+    if (keep === true) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
-      )
+        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}.`
+        )
+        charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}.`
       )
+      charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
     }
-  } else if (group === 'other') {
-    // Similar to the one above
+  } else if (currentQuestion.category === 'other') {
+      if (keep === true) {
+        alert(
+          `Yes, the person is a ${currentQuestion.attribute}! Keep all who are ${currentQuestion.attribute}s.`
+          )
+          charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
+      } else {
+        alert(
+          `No, the person isn't a ${currentQuestion.attribute}! Remove all who are ${currentQuestion.attribute}s.`
+        )
+        charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
+      }
   } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+    if (keep === true) {
+      alert(
+        `Yes, the person has ${currentQuestion.value} ${currentQuestion.category}! Keep all persons with ${currentQuestion.value} ${currentQuestion.category}.`
+      )
+      charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
     } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert(
+        `No, the person doesn't have ${currentQuestion.value} ${currentQuestion.category}! Remove all persons with ${currentQuestion.value} ${currentQuestion.category}.`
+      )
+      charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
     }
   }
+  generateBoard()
+  
 
+    //charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] ===)
   // filter to keep or remove based on the keep variable.
   /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
+    or x§
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
 
   // Invoke a function to redraw the board with the remaining people.

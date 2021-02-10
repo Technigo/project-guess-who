@@ -244,7 +244,6 @@ const CHARACTERS = [{
   },
 ]
 
-
 //array of sentences as answer depending on what question the  player chooses
 const sentences = [{
     furColor: `Yes, the animal is x! Keep all x animals.`,
@@ -333,48 +332,34 @@ const selectQuestion = (handleOption) => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   questionsAsked++
   //value is set to the option playes selects
-  if (isEqual(category, 'fur color')) {
-    currentQuestion = {
-      attribute: 'furColor',
-      value: handleOption,
-      category: category,
-    };
-  } else if (isEqual(category, 'fur pattern')) {
-    currentQuestion = {
-      attribute: 'furPattern',
-      value: handleOption,
-      category: category,
-    }
-  } else if (isEqual(category, 'animal')) {
-    currentQuestion = {
-      attribute: 'animal',
-      value: handleOption,
-      category: category,
-    };
-    //here the value is set to true and the player option is used in a switch to keep track of different accessories/other
-  } else if (isEqual(category, 'acessories')) {
-    switch (handleOption) {
-      case 'collar':
-        currentQuestion = {
-          attribute: 'collar',
-          value: true,
-          category: category,
-        };
-        break;
-      case 'bling':
-        currentQuestion = {
-          attribute: 'bling',
-          value: true,
-          category: category,
-        };
-        break;
-    }
-  } else {
-    currentQuestion = {
-      attribute: 'bad',
-      value: true,
-      category: category,
-    }
+  switch (category) {
+    case 'fur color':
+      currentQuestion = {
+        attribute: 'furColor',
+        value: handleOption,
+        category: category,
+      };
+      break;
+    case 'fur pattern':
+      currentQuestion = {
+        attribute: 'furPattern',
+        value: handleOption,
+        category: category,
+      }
+      break;
+    case 'animal':
+      currentQuestion = {
+        attribute: 'animal',
+        value: handleOption,
+        category: category,
+      }
+      break
+    default:
+      currentQuestion = {
+        attribute: handleOption,
+        value: true,
+        category: category,
+      };
   };
   //on click stopPropergate is run
   const findOut = document.getElementById('filter')
@@ -393,112 +378,36 @@ const stopPropergate = (event) => {
 }
 
 //This function is innvoked when you click FindOut. It compares the secret characters properties with the players options and answer with a sentence
-//passes the properties of the current question and right/wrong option to the filter function
 const checkQuestion = (currentQ) => {
   let userValue = currentQ.value
   let userAttr = currentQ.attribute
 
-  switch (currentQ.category) {
-    case 'fur color':
-      if (isEqual(userValue, secret.furColor)) {
-        //in the sentences a placeholder (x) is changed for the local current specific attribute/value
-        alert((sentences[0].furColor).replaceAll(`x`, `${userValue}`))
-      } else {
-        alert((sentences[1].furColor).replaceAll(`x`, `${userValue}`))
-      }
-      break;
-    case 'fur pattern':
-      if (isEqual(userValue, secret.furPattern)) {
-        alert((sentences[0].furPattern).replaceAll(`x`, `${userValue}`))
-      } else {
-        alert((sentences[1].furPattern).replaceAll(`x`, `${userValue}`))
-      }
-      break;
-    case 'animal':
-      if (isEqual(userValue, secret.animal)) {
-        alert((sentences[0].animal).replaceAll(`x`, `${userValue}`))
-      } else {
-        alert((sentences[1].animal).replaceAll(`x`, `${userValue}`))
-      }
-      break;
-    case 'accessories':
-      switch (userAttr) {
-        case 'collar':
-          if (isEqual(userValue, secret.collar)) {
-            alert((sentences[0].accessories).replaceAll(`x`, `${userAttr}`))
-          } else {
-            alert((sentences[1].accessories).replaceAll(`x`, `${userAttr}`))
-          }
-          break;
-        case 'bling':
-          if (isEqual(userValue, secret.bling)) {
-            alert((sentences[0].accessories).replaceAll(`x`, `${userAttr}`))
-          } else {
-            alert((sentences[1].accessories).replaceAll(`x`, `${userAttr}`))
-          }
-          break;
-      }
-      break;
-    default:
-      if (isEqual(userValue, secret.behaviour)) {
-        alert((sentences[0].behaviour).replaceAll(`x`, `${userAttr}`))
-      } else {
-        alert((sentences[1].behaviour).replaceAll(`x`, `${userAttr}`))
-      }
+  //passes the properties of the current question and right/wrong option to the filter function
+  //using set up sentences from an array
+  if (isEqual(currentQ.category, 'accessories') || isEqual(currentQ.category, 'behaviour')) {
+    if (userValue === secret[userAttr]) {
+      alert(sentences[0][currentQ.category].replaceAll('x', userAttr))
+    } else {
+      alert(sentences[1][currentQ.category].replaceAll('x', userAttr))
+    }
+  } else {
+    if (userValue === secret[userAttr]) {
+      alert(sentences[0][userAttr].replaceAll('x', userValue))
+    } else {
+      alert(sentences[1][userAttr].replaceAll('x', userValue))
+    }
   }
-  filterCharacters(currentQ)
+
+  filterCharacters(userValue, userAttr)
 }
 
-// Filters the characters on properties of keep(depending on option chosen of player) and alerts the response. Then uses array.filter to return an array of characters based on that
-const filterCharacters = (keep) => {
-  let userValue = keep.value
 
-  switch (keep.category) {
-    case 'fur color':
-      if (isEqual(userValue, secret.furColor)) {
-        charactersInPlay = charactersInPlay.filter(char => char.furColor === userValue)
-      } else {
-        charactersInPlay = charactersInPlay.filter(char => char.furColor !== userValue)
-      }
-      break;
-    case 'fur pattern':
-      if (isEqual(userValue, secret.furPattern)) {
-        charactersInPlay = charactersInPlay.filter(char => char.furPattern === userValue)
-      } else {
-        charactersInPlay = charactersInPlay.filter(char => char.furPattern !== userValue)
-      }
-      break;
-    case 'animal':
-      if (isEqual(userValue, secret.animal)) {
-        charactersInPlay = charactersInPlay.filter(char => char.animal === userValue)
-      } else {
-        charactersInPlay = charactersInPlay.filter(char => char.animal !== userValue)
-      }
-      break;
-    case 'accessories':
-      switch (keep.attribute) {
-        case 'collar':
-          if (isEqual(userValue, secret.collar)) {
-            charactersInPlay = charactersInPlay.filter(char => char.collar === userValue)
-          } else {
-            charactersInPlay = charactersInPlay.filter(char => char.collar !== userValue)
-          }
-          break;
-        case 'bling':
-          if (isEqual(userValue, secret.bling)) {
-            charactersInPlay = charactersInPlay.filter(char => char.bling === userValue)
-          } else {
-            charactersInPlay = charactersInPlay.filter(char => char.bling !== userValue)
-          }
-          break;
-      }
-      break;
-      default:
-      if (isEqual(userValue, secret.bad)) {
-        charactersInPlay = charactersInPlay.filter(char => char.bad === userValue)
-      } else {
-        charactersInPlay = charactersInPlay.filter(char => char.bad !== userValue)
-      }
+// Filters the characters on properties of keep(depending on option chosen of player) and alerts the response. Then uses array.filter to return an array of characters based on that
+const filterCharacters = (keep, group) => {
+  if (keep === secret[group]) {
+    charactersInPlay = charactersInPlay.filter(char => char[group] === keep)
+  } else {
+    charactersInPlay = charactersInPlay.filter(char => char[group] !== keep)
   }
   //generates a new board depending on the filtered array
   generateBoard(charactersInPlay)

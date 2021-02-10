@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -273,7 +274,7 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const chosenValue = questions.options[questions.selectedIndex]
+  const chosenValue = questions.options[questions.selectedIndex].value
   console.log(chosenValue);
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -319,11 +320,12 @@ const selectQuestion = () => {
 
 
 // This function should be invoked when you click on 'Find Out'.
-const checkQuestion = () => {
-  // Compare the currentQuestion with the secret person.
+//const checkQuestion = () => {
+//  if (currentQuestion === ) {
+    // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-}
+//}
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -377,4 +379,5 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion );
+//findOutButton.addEventListener('click', checkQuestion);
 

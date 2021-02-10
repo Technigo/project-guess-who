@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #79BD9A;
+  --secondary: #A8DBA8;
 }
 
 body {
@@ -26,6 +26,7 @@ h1 {
   display: flex;
   flex-direction: column;
   padding: 5vw;
+  padding-top: 1vw;
   align-items: flex-start;
   box-sizing: border-box;
 }

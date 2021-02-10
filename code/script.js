@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const findOut = document.getElementById('filter')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -263,8 +263,10 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  const value = questions.value
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
+  console.log(category)
 
   if (category === 'hair color') {
     currentQuestion = {
@@ -287,6 +289,11 @@ const selectQuestion = () => {
       category: category,
     }
   } else if (category === 'other') {
+    currentQuestion = {
+      attribute: value, 
+      value: true,
+      category: category,
+    }
     // Set this up your self (should be same structure as above)
   }
 }
@@ -349,3 +356,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+findOutButton.addEventListener('click' ,() => checkQuestion())

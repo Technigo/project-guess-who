@@ -368,4 +368,4 @@ restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', () => {
   charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-}
+})

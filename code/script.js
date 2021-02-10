@@ -273,12 +273,14 @@ const selectQuestion = () => {
       value: value,
       // 👆 add the value from the input here
       category: category,
+      alertText: `has ${value} hair`
     }
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor', 
       value: value,
       category: category,
+      alertText: `has ${value} eyes`
       // Set this up your self
     }
   } else if (category === 'accessories') {
@@ -287,95 +289,108 @@ const selectQuestion = () => {
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
+      alertText: `wears ${value}`
     }
   } else if (category === 'other') {
     currentQuestion = {
       attribute: value,
       value: true,
       category: category,
+      alertText: `${value}`
       // Set this up your self (should be same structure as above)
     }
   }
   console.log('value: ', value)
-  //findOutBtn.addEventListener('click', checkQuestion(currentQuestion)
+  
 }
 
-// const validateResponse = (currentQuestion, secret) => {
-//  return currentQuestion === secret
-//}
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
   console.log('currentQuestion: ', currentQuestion)
-  //const keep = validateResponse(currentQuestion, secret)
-  //const keep = (currentQuestion, secret) => {
-  //  const currValue = Object.keys(currentQuestion).value
-  //  const secValue = Object.keys(secret).value
-
-  //  if (currValue == secValue) {
-  //    return currentQuestion === secret
-  //  } else {
-  //    return false
-  //  }
-  //}
-  console.log(keep)
+  const secretValue = secret[currentQuestion.attribute]
+  if (secretValue === currentQuestion.value) {
+    filterCharacters(true)
+  } else {
+    filterCharacters(false)
+  }
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   //console.log(keep)
-  filterCharacters(keep, currentQuestion)
 }
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep, currentQuestion) => {
+const filterCharacters = (keep) => {
+  //const group = currentQuestion.category
+  //const attribute = currentQuestion.value
   // Show the correct alert message for different categories
-  if (group === 'accessories') {
+
+  if (keep) {
+    alert(`Yes, the character ${currentQuestion.alertText}! Keep all characters that ${currentQuestion.alertText}.`)
+    charactersInPlay = charactersInPlay.filter((character) => character[currentQuestion.attribute] === currentQuestion.value)
+  } else {
+    alert(`No, the character doesn't ${currentQuestion.alertText}! Remove all characters that ${currentQuestion.alertText}.`)
+    charactersInPlay = charactersInPlay.filter((character) => character[currentQuestion.attribute] !== currentQuestion.value)
+  }
+
+  generateBoard()
+  /* if (group === 'accessories') {
     if (keep) {
       alert(
         `Yes, the character wears ${attribute}! Keep all characters that wears ${attribute}.`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === attribute)
     } else {
       alert(
         `No, the character doesn't wear ${attribute}! Remove all characters that wears ${attribute}.`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== attribute) 
     }
   } else if (group === 'other') {
       if (keep) {
         alert(
           `Yes, the character ${attribute}! Keep all characters that ${attribute}.`
         )
+        charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === attribute)
       } else {
         alert(
           `No, the character doesn't ${attribute}! Remove all characters that ${attribute}.`
         )
+        charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== attribute) 
       }
   } else if (group === 'hair color') {
       if (keep) {
         alert(
           `Yes, the character has ${attribute} hair! Keep all characters that has ${attribute} hair.`
         )
+        charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === attribute)
       } else {
         alert(
           `No, the character doesn't have ${attribute} hair! Remove all characters that has ${attribute} hair.`
         )
+        charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== attribute) 
       } 
   } else if (group === 'eye color') {
       if (keep) {
         alert(
           `Yes, the character has ${attribute} eyes! Keep all characters that has ${attribute} eyes.`
         )
+        charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === attribute)
       } else {
         alert(
           `No, the character doesn't have ${attribute} eyes! Remove all characters that has ${attribute} eyes.`
         )
+        charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== attribute) 
       }
-  }
+  } */
 
   // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
-
+  //if (keep) {
+  //  charactersInPlay = charactersInPlay.filter((person) => person[attribute] === attribute)
+  //} else {
+  //  charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== attribute) 
+  //}
   // Invoke a function to redraw the board with the remaining people.
 }
 
@@ -401,3 +416,11 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutBtn.addEventListener('click', checkQuestion)
+
+// filter to keep or remove based on the keep variable.
+  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    or 
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
+
+  // Invoke a function to redraw the board with the remaining people.
+// charactersInPlay = charactersInPlay.filter((person) => person['hairColor'] === attribute)

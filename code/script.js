@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
+const restartButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -326,31 +327,46 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       alert(
         `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
   } else if (group === 'other') {
     // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person has a ${attribute}! Keep all that has a ${attribute}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    } else {
+      alert(
+        `No, the person doesn't have a ${attribute}! Remove all that has a ${attribute}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+    }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
       alert(
         `Yes, the person has ${attribute}! Keep all that has ${attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
       alert(
         `No, the person doesn't have ${attribute}! Remove all that has ${attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
   }
 
   // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
+    // charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    // // or 
+    // charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
   // Invoke a function to redraw the board with the remaining people.
 }
@@ -377,3 +393,4 @@ start();
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 filterBtn.addEventListener('click', checkQuestion);
+restartButton.addEventListener('click' start);

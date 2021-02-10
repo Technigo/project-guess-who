@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
 const winOrLooseBoard = document.getElementById('winOrLose')
 const winOrLooseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -228,8 +229,8 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret; 
-let currentQuestion = undefined; 
+let secret;
+let currentQuestion = undefined;
 let charactersInPlay = "";
 
 // Draw the game board
@@ -301,7 +302,7 @@ const checkQuestion = () => {
   const secretValue = secret[currentQuestion.attribute];
   if (secretValue === currentQuestion.value) {
     filterCharacters(true, currentQuestion.category)
-  } else{
+  } else {
     filterCharacters(false, currentQuestion.category)
   }
 }
@@ -319,25 +320,25 @@ const filterCharacters = (keep, group) => {
         `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}!`
       )
     }
-  } else if(group === 'hair color') {
-      if (keep) {
-        alert(
-          `Yes, the person has ${currentQuestion.value} hair! Keep all that have ${currentQuestion.value} hair!`
-        )
-      } else{
-        alert(
-          `No, the person does not have ${currentQuestion.value} hair! Remove all that have ${currentQuestion.value} hair!`
-        )
-      }
+  } else if (group === 'hair color') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${currentQuestion.value} hair! Keep all that have ${currentQuestion.value} hair!`
+      )
+    } else {
+      alert(
+        `No, the person does not have ${currentQuestion.value} hair! Remove all that have ${currentQuestion.value} hair!`
+      )
+    }
   } else if (group === 'other') {
     if (keep) {
-        alert(
-          `Yes, the person is a ${currentQuestion.attribute}! Keep all that are ${currentQuestion.attribute}s!`
-        )
+      alert(
+        `Yes, the person is a ${currentQuestion.attribute}! Keep all that are ${currentQuestion.attribute}s!`
+      )
     } else {
-        alert (
-          `No, the person is not a ${currentQuestion.attribute}! Remove all that are not ${currentQuestion.attribute}s!`
-        )
+      alert(
+        `No, the person is not a ${currentQuestion.attribute}! Remove all that are not ${currentQuestion.attribute}s!`
+      )
     }
   } else {
     if (keep) {
@@ -345,16 +346,15 @@ const filterCharacters = (keep, group) => {
         `"Yes, the person has ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes"`
       )
     } else {
-      alert (
+      alert(
         `No, the person doesnt have ${currentQuestion.value} eyes! Remove all persons with ${currentQuestion.value} eyes"`
       )
-      
     }
   }
-if (keep){
-  charactersInPlay = charactersInPlay.filter(person => person[currentQuestion.attribute] === currentQuestion.value)
-} else {charactersInPlay = charactersInPlay.filter(person => person[currentQuestion.attribute] !== currentQuestion.value)}
-generateBoard()
+  if (keep) {
+    charactersInPlay = charactersInPlay.filter(person => person[currentQuestion.attribute] === currentQuestion.value)
+  } else { charactersInPlay = charactersInPlay.filter(person => person[currentQuestion.attribute] !== currentQuestion.value) }
+  generateBoard()
 }
 
 
@@ -364,28 +364,23 @@ const guess = (suspect) => {
   console.log(suspect);
   const userGuess = suspect;
   if (confirm(`Are you sure you want to try ${userGuess}?`)) {
-  checkMyGuess(userGuess);
-} 
+    checkMyGuess(userGuess);
+  }
 }
 
 const showWinSection = () => {
-  winOrLooseBoard.classList.add('shown'); 
+  winOrLooseBoard.classList.add('shown');
+  board.innerHTML = '';
 }
 
 const checkMyGuess = (userGuess) => {
   showWinSection()
   if (userGuess === secret.name) {
-    winOrLooseText.innerText = `Congratulations! It is ${userGuess}!`
+    winOrLooseText.innerText = `Congratulations! It is ${userGuess}!`;
   } else {
-    winOrLooseText.innerText = `Sorry, try again!`
+    winOrLooseText.innerText = `Sorry, it is not ${userGuess} try again!`
   }
 }
-// If you confirm, this function is invoked
-  
-  // 1. Check if the suspect is the same as the secret person's name if (suspect = secret.name) {}
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 
 // Invokes the start function when website is loaded
 start()
@@ -394,3 +389,4 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', () => location.reload())

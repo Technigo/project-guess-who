@@ -256,8 +256,12 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+
+  //Displaying the board so we can start the game
   generateBoard();
-  
+  // When the games starts the secret person will be selected
+  setSecret();
+   
 }
 
 // setting the currentQuestion object when you select something in the dropdown

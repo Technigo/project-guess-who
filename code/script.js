@@ -258,6 +258,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   generateBoard();
+  setSecret();
+  console.log(secret);
   // What else should happen when we start the game?
 }
 

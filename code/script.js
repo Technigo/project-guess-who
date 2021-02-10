@@ -6,6 +6,7 @@ const filter = document.querySelector('#filter')
 const winOrLose = document.querySelector("#winOrLose")
 const playAgain = document.querySelector("#playAgain")
 const winOrLoseText = document.querySelector("#winOrLoseText")
+const totalGuesses = document.querySelector("#totalGuesses")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -17,6 +18,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Jack',
@@ -26,6 +28,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Jacques',
@@ -35,6 +38,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: true,
+    jewellery: false,
   },
   {
     name: 'Jai',
@@ -44,6 +48,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Jake',
@@ -53,6 +58,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'James',
@@ -62,6 +68,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Jana',
@@ -71,6 +78,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    jewellery: true,
   },
   {
     name: 'Jane',
@@ -80,6 +88,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Jaqueline',
@@ -89,6 +98,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    jewellery: true,
   },
 
   {
@@ -99,6 +109,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: true,
+    jewellery: false,
   },
   {
     name: 'Jean',
@@ -108,6 +119,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
+    jewellery: false,
   },
   {
     name: 'Jeane',
@@ -117,6 +129,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Jed',
@@ -126,6 +139,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
+    jewellery: false,
   },
   {
     name: 'Jenni',
@@ -135,6 +149,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Jeri',
@@ -144,6 +159,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Jerry',
@@ -153,6 +169,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Jess',
@@ -162,6 +179,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Jocelyn',
@@ -171,6 +189,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    jewellery: true,
   },
   {
     name: 'Jon',
@@ -180,6 +199,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Jordan',
@@ -189,6 +209,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    jewellery: true,
   },
   {
     name: 'Josephine',
@@ -198,6 +219,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    jewellery: true,
   },
   {
     name: 'Josh',
@@ -207,6 +229,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Jude',
@@ -216,6 +239,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    jewellery: false,
   },
   {
     name: 'Julie',
@@ -225,6 +249,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    jewellery: false,
   },
 ]
 
@@ -258,6 +283,8 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
+  numberOfGuesses = 0
+  totalGuesses.innerText = 0
 }
 
 // Sets currentQuestion object when the user chooses a value
@@ -283,7 +310,7 @@ const selectQuestion = () => {
       attribute: value,
       value: true,
       category: category,
-      text: `a ${value}`,
+      text: value,
     }
   } else if (category === 'other') {
     currentQuestion = {
@@ -294,6 +321,8 @@ const selectQuestion = () => {
     }
   }
 }
+
+let numberOfGuesses = 0
 
 // When clicking the find out button, this function compares the selected value to the secret person
 const checkQuestion = () => {
@@ -310,6 +339,9 @@ const checkQuestion = () => {
   else if (currentQuestion.attribute === "hat" && currentQuestion.value === secret.hat) {
     keep = true
   }
+  else if (currentQuestion.attribute === "jewellery" && currentQuestion.value === secret.jewellery) {
+    keep = true
+  }
   else if (currentQuestion.attribute === "smoker" && currentQuestion.value === secret.smoker) {
     keep = true
   }
@@ -317,6 +349,8 @@ const checkQuestion = () => {
     keep = false
   }
   filterCharacters(keep)
+  numberOfGuesses++
+  totalGuesses.innerText = numberOfGuesses
 }
 
 
@@ -324,11 +358,11 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   if (keep) {
     alert(
-      `Yes, the person has ${currentQuestion.text}! Keep all that have ${currentQuestion.text}.`)
+      `Yes, the secret person has ${currentQuestion.text}! Keeping all characters with ${currentQuestion.text}.`)
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
   } else {
     alert(
-      `No, the person doesn't have ${currentQuestion.text}! Remove all that have ${currentQuestion.text}.`
+      `No, the secret person does not have ${currentQuestion.text}! Removing all characters with ${currentQuestion.text}.`
     )
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
   }
@@ -349,9 +383,9 @@ const checkMyGuess = (suspect) => {
   winOrLose.style.display = "flex"
   board.style.display = "none"
   if (suspect === secret.name) {
-    winOrLoseText.innerText = "You won! Congratulations!"
+    winOrLoseText.innerText = `You won! It took you ${numberOfGuesses} guesses to find out that the secret person was ${secret.name}. Congratulations!`
   } else {
-    winOrLoseText.innerText = "You lost. Wanna try again?"
+    winOrLoseText.innerText = `You lost. The secret person was ${secret.name}. Total number of guesses: ${numberOfGuesses}. Wanna try again?`
   }
 }
 

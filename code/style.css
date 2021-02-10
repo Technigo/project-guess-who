@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: black;
+  --secondary: #FF6154;
 }
 
 body {
@@ -16,7 +16,14 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: var(--primary);
+}
+h2 {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 48px;
+  margin: 10px 0;
+  color: var(--primary);
 }
 
 .question-section {
@@ -35,7 +42,7 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: var(--primary);
   width: 100%;
   margin: 24px 0;
 }
@@ -64,13 +71,27 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+  border: 1px solid var(--secondary);
+  box-shadow: 0 0 5px var(--secondary);
+  margin: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+
+
+.card:nth-of-type(4n+1) {
+  background-color: #E6E6E6;
+}
+.card:nth-of-type(4n+2) {
+  background-color: #D9D9D9;
+}
+.card:nth-of-type(4n+3) {
+  background-color: #C0C0C0;
+}
+.card:nth-of-type(4n+4) {
+  background-color: #CCC;
 }
 
 .card p {
@@ -85,13 +106,13 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--primary);
   text-align: center;
   height: inherit;
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: white;
 }
 
 .card:hover img,
@@ -136,12 +157,12 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: var(--secondary);
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: var(--secondary);
+  border-color: var(--primary);
   color: var(--primary);
 }
 

@@ -294,6 +294,16 @@ button {
   margin-bottom: 32px;
 }
 
+.summary {
+  font-size: 18px;
+  color: var(--primary);
+  font-weight: 500;
+  padding: 5px;
+  border: solid var(--primary) 0.5px;
+  background-color:  rgba(255, 255, 255, 0.493);
+  width: 300px;
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;

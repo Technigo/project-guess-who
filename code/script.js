@@ -2,7 +2,7 @@
 const board = document.getElementById("board")
 const questions = document.getElementById("questions")
 const restartButton = document.getElementById("restart")
-const userName = document.getElementById("name-input")
+const countUp = document.getElementById("timer")
 
 // Array with all the characters, as objects
 const CHARACTERS = [{
@@ -266,7 +266,7 @@ const sentences = [{
 
 // Global variables
 let secret, currentQuestion, charactersInPlay, startTime, endTime, questionsAsked = 0,
-  totalSeconds = 0, player
+  totalSeconds = 0, player, summaryArray=[]
 
 // Draw the game board
 const generateBoard = () => {
@@ -328,28 +328,30 @@ const timer = (x) => {
   if (seconds < 10){
     seconds = "0" + seconds;
   }
-  document.getElementById("timer").innerHTML = `Time passed: ${minute}:${seconds}`;
+  countUp.innerHTML = `Time passed: ${minute}:${seconds}`;
 }
 
 // This function to start (and restart) the game
 // sets the gameboard, all the characters in play, secret character and timer
 const start = () => {
-  const qSection = document.getElementById("question-section");
+  const form = document.getElementById("form");
   charactersInPlay = CHARACTERS
-  qSection.innerHTML += `<form id="form" class="form">
+  //adds a input for player name in the beginning
+  form.innerHTML += `
   <label for="name-input">
   Insert your name:</label>
   <input id="name-input" name="name-input" type="text"/>
-  <button id="name-Btn" class="filled-button" type="submit">Let's play!</submit>
-  </form>`
-  const nameBtn = document.getElementById("name-Btn");
-  const form = document.getElementById("form");
+  <button id="name-Btn" class="filled-button">Let's play!</button>
+  `
   form.style.display="flex";
- 
-  nameBtn.addEventListener("click", (event) => {
-    event.preventDefault();
-    form.style.display = "none";
+
+  const nameBtn = document.getElementById("name-Btn");
+  const userName = document.getElementById("name-input")
+  //onclick the name will be saved and the name input will be removed
+  nameBtn.addEventListener("click", () => {
     player = userName.value;
+    form.style.display = "none"; 
+    form.innerHTML = ""; 
   })
   generateBoard()
   setSecret()
@@ -473,7 +475,7 @@ const checkMyGuess = (suspect) => {
           src="images/print.png"
           alt="Guess Who"/>
         <h1 id="winOrLoseText">
-          Yes, ${suspect} was the secret character! Well done!
+          Yes, ${suspect} was the secret character! Well done ${player}!
         </h1>
         <div class="card-img-wrap">
           <div class="card-img">
@@ -485,6 +487,7 @@ const checkMyGuess = (suspect) => {
         <button id="playAgain" class="filled-button">
           PLAY AGAIN
         </button>
+        <h2>Results previous games:</h2>
       </div>
     `
   } else {
@@ -495,7 +498,7 @@ const checkMyGuess = (suspect) => {
           src="images/print.png"
           alt="Guess Who"/>
         <h1 id="winOrLoseText">
-          Sorry, ${suspect} was the not the secret character, but ${secret.name}! Better luck next time.
+          Sorry, ${suspect} was the not the secret character, but ${secret.name}! Better luck next time ${player}.
         </h1>
         <div class="card-img-wrap">
           <div class="card-img">
@@ -508,9 +511,19 @@ const checkMyGuess = (suspect) => {
         <button id="playAgain" class="filled-button">
           PLAY AGAIN
         </button>
+         <h2>Results previous games:</h2>
       </div>
     `
+    
   }
+  //keeps the results from previous games
+  summaryArray.push(`Questions: ${questionsAsked}, ${countUp.innerHTML}`)
+  for (let i=0; i<summaryArray.length; i++)
+  {
+    winOrLose.innerHTML+= `<div class="win-or-lose">
+  <div class="summary" id="summary">${summaryArray[i]}</div></div>`
+  }
+  
   questionsAsked = 0;
   //play again? click and winOrLose section will be hidden and start() will run
   const playAgain = document.getElementById("playAgain")

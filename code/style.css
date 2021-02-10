@@ -57,6 +57,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  gap: 16px;
 }
 
 /****** CARD ******/

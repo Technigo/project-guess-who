@@ -1,0 +1,14 @@
+.character-img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .character-wrapper {
+    border: 1px solid red;
+    padding: 8px;
+    gap: 16px;
+  }
+  
+  .disable {
+    opacity: 0.1;
+  }

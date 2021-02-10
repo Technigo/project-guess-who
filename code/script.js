@@ -227,6 +227,7 @@ const CHARACTERS = [
 // Global variables
 let secret, currentQuestion, charactersInPlay
 
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -247,62 +248,67 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  
 
 }
 
 // This function to start (and restart) the game
 const start = () => {
   charactersInPlay = CHARACTERS
-  generateBoard()
   setSecret()
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  // What else should happen when we start the game?
+  generateBoard()
+  
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const selectedOption = questions.value
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
+  const value = questions.options[questions.selectedIndex].value
+  
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: selectedOption,
-      // 👆 add the value from the input here
-      category: category,
+      value: value,      
+      category: category
     }
   } else if (category === 'eye color') {    
     currentQuestion = {
       attribute: 'eyeColor',
-      value: selectedOption,
-      category: category,
+      value: value,
+      category: category
     }
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: selectedOption,      
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
-      category: category,
+      attribute: value,      
+      value: true, 
+      category: category
     }
   } else if (category === 'other') {
     currentQuestion = {
-      attribute: 'smoker',
+      attribute: value, /* Jag vill inte ha smoker här? */
       value: true,
-      category: category,
+      category: category
     }
   }
 }
 
-// This function should be invoked when you click on 'Find Out'.
+
 const checkQuestion = () => {
-  if (currentQuestion.value === secret.hairColor ) {
-    console.log('Hej') 
-  } else { console.log('tja')}
+  //const secretAttribute = currentQuestion[attribute]
+  const keep = currentQuestion.value === secret[currentQuestion.attribute]
+  console.log(keep)
+  
+  /*if (currentQuestion.value === secretAttribute) {
+    keep = true;   
+  }
+  else {
+    keep = false;
+}*/
+}
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-}
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -356,3 +362,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 findOutBtn.addEventListener('click',checkQuestion)
+questions.addEventListener('change',selectQuestion)

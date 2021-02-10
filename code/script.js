@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
+const guessButton = document.getElementById('guessBtn')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -238,7 +240,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button id="guessBtn" class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
@@ -306,11 +308,12 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const secretValue = secret[currentQuestion.attribute];
   if (secretValue === currentQuestion.value) {
-      console.log('it works');
+      console.log('checkQuestion function works');
+      filterCharacters(true);
   } else {
       console.log(`not included`)
+      filterCharacters(false);
   }
-
   // Compare the currentQuestion (object) with the secret person (object). Is there a match between the question selected(category) and what property value the secret has is respective category? In that case filter. 
   // See if we should keep or remove people based on that (true or false)
   // Then invoke filterCharacters. 
@@ -319,6 +322,8 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
+  const group = questions.options[questions.selectedIndex].parentNode.label;
+  let attribute = currentQuestion.value;
   if (group === 'accessories') {
     if (keep) {
       alert(
@@ -329,29 +334,60 @@ const filterCharacters = (keep) => {
         `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
       )
     }
-  } else if (group === 'other') {
-    // Similar to the one above
-  } else {
+  } else if (group === 'other') { //smokers
+      if (keep) {
+        alert(
+          `Yes, the person is a ${attribute}! Keep all that are ${attribute}s`
+        )
+      } else {
+        alert(
+          `No, the person is not a ${attribute}! Remove all that are ${attribute}s`
+        )
+      }
+  } else if (group === 'hair color') {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      alert(
+        `Yes the person has ${attribute} hair! Keep all that have ${attribute} hair!`
+      )
     } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert(
+        `No, the person does not have ${attribute} hair! Remove all that have ${attribute} hair`
+      )
     }
-  }
+    
+    } else if (group === 'eye color') {
+      if (keep) {
+        alert (
+          `Yes the person has ${attribute} eyes! Keep all that have ${attribute} eyes!`
+        )
+      } else {
+        alert(
+          `No, the person does not have ${attribute} eyes! Remove all that have ${attribute} eyes`
+        )
+      }
+    
+    }
+  filterCharacters()
+}
 
   // filter to keep or remove based on the keep variable.
   /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or 
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
 
-  // Invoke a function to redraw the board with the remaining people.
-}
+  // Invoke a function to redraw the board with the remaining people. 
+  //Use for each??
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
+  prompt(
+    `Are you sure you want to guess on ${suspect}?`, `YES`
+  )
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  console.log ('you pressed the guessBtn');
 }
 
 // If you confirm, this function is invoked
@@ -370,3 +406,4 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterBtn.addEventListener('click', checkQuestion)
+guessButton.addEventListener('click', guess)

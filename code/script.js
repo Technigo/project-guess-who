@@ -333,8 +333,6 @@ const checkQuestion = () => {
 };
 
 
-/////WHY DO IT NOT FILTER OUT GLASSES AND HATS NOW?
-
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -411,28 +409,24 @@ const guess = (suspect) => {
     let confirmation = confirm(`So you're guessing on ${suspect}?`);
     if (confirmation === true) {
     checkMyGuess(suspect)
-
-}
+  }
+};
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
-  // 1. Check if the suspect is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+
 
   if (suspect === secret.name){
-    winOrLoseText.innerHTML = 
-    `Yey! High Five! It was ${secret.name}`
+    winOrLoseText.innerHTML = `Yey! High Five! It was ${secret.name}`
+    winOrLose.style.display = 'block';
   } else {
-    winOrLoseText.innerHTML = 
-    `Sorry! It is not ${suspect}`
+    winOrLose.style.display = 'block';
+    winOrLoseText.innerHTML = `Sorry! It is not ${suspect}`
   }
-  
-    }
+
     winOrLose.style.display = 'flex'
     board.style.display = 'none'
-}
+};
 // Invokes the start function when website is loaded
 
 start()

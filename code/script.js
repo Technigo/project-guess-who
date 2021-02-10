@@ -14,17 +14,27 @@ const feedbackSection = document.getElementById('feedback-section')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
+    name: 'Quokka',
+    img: 'images/quokka.jpg',
     hairColor: 'hidden',
     eyeColor: 'hidden',
     glasses: true,
     hat: true,
     smoker: false,
   },
+  // {
+  //   name: '',
+  //   img: '',
+  //   color: '',
+  //   animalType: '',
+  //   numberOfLegs: '',
+  //   livesInWater: true,
+  //   livesInJungle: false,
+  //   isAmamal: true,
+  // },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
+    name: 'Leopard',
+    img: 'images/leopard.jpg',
     hairColor: 'hidden',
     eyeColor: 'blue',
     glasses: false,
@@ -32,8 +42,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
+    name: 'Katt',
+    img: 'images/kitten.jpg',
     hairColor: 'grey',
     eyeColor: 'blue',
     glasses: false,
@@ -41,8 +51,8 @@ const CHARACTERS = [
     smoker: true,
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
+    name: 'Björn',
+    img: 'images/bear.jpg',
     hairColor: 'black',
     eyeColor: 'brown',
     glasses: false,
@@ -50,8 +60,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
+    name: 'Lamm',
+    img: 'images/lamb.jpg',
     hairColor: 'yellow',
     eyeColor: 'green',
     glasses: true,
@@ -59,8 +69,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
+    name: 'Hök',
+    img: 'images/hawk.jpg',
     hairColor: 'brown',
     eyeColor: 'green',
     glasses: true,
@@ -68,8 +78,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
+    name: 'Elefant',
+    img: 'images/elephant.jpg',
     hairColor: 'black',
     eyeColor: 'hidden',
     glasses: true,
@@ -77,8 +87,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
+    name: 'Kalv',
+    img: 'images/cow.jpg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
     glasses: true,
@@ -86,8 +96,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
+    name: 'Orm',
+    img: 'images/snake.jpg',
     hairColor: 'orange',
     eyeColor: 'green',
     glasses: true,
@@ -96,8 +106,8 @@ const CHARACTERS = [
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
+    name: 'Älg',
+    img: 'images/moose.jpg',
     hairColor: 'purple',
     eyeColor: 'hidden',
     glasses: true,
@@ -105,8 +115,8 @@ const CHARACTERS = [
     smoker: true,
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
+    name: 'Anka',
+    img: 'images/duck.jpg',
     hairColor: 'brown',
     eyeColor: 'blue',
     glasses: true,
@@ -114,8 +124,8 @@ const CHARACTERS = [
     smoker: true,
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
+    name: 'Häst',
+    img: 'images/horse.jpg',
     hairColor: 'brown',
     eyeColor: 'green',
     glasses: true,
@@ -123,8 +133,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
+    name: 'Giraff',
+    img: 'images/giraffe.jpg',
     hairColor: 'orange',
     eyeColor: 'green',
     glasses: true,
@@ -132,8 +142,8 @@ const CHARACTERS = [
     smoker: true,
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
+    name: 'Gris',
+    img: 'images/pig.jpg',
     hairColor: 'white',
     eyeColor: 'hidden',
     glasses: false,
@@ -141,8 +151,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
+    name: 'Apa',
+    img: 'images/monkey.jpg',
     hairColor: 'orange',
     eyeColor: 'green',
     glasses: true,
@@ -150,8 +160,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
+    name: 'Räv',
+    img: 'images/fox.jpg',
     hairColor: 'hidden',
     eyeColor: 'blue',
     glasses: false,
@@ -159,8 +169,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
+    name: 'Igelkott',
+    img: 'images/hedgehog.jpg',
     hairColor: 'black',
     eyeColor: 'blue',
     glasses: true,
@@ -168,8 +178,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
+    name: 'Tvättbjörn',
+    img: 'images/racoon.jpg',
     hairColor: 'black',
     eyeColor: 'brown',
     glasses: true,
@@ -177,8 +187,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
+    name: 'Gås',
+    img: 'images/goose.jpg',
     hairColor: 'brown',
     eyeColor: 'green',
     glasses: true,
@@ -186,8 +196,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
+    name: 'Koala',
+    img: 'images/koala.jpg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
     glasses: true,
@@ -195,8 +205,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
+    name: 'Tiger',
+    img: 'images/tiger.jpg',
     hairColor: 'grey',
     eyeColor: 'brown',
     glasses: false,
@@ -204,8 +214,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
+    name: 'Bäver',
+    img: 'images/beaver.jpg',
     hairColor: 'yellow',
     eyeColor: 'green',
     glasses: false,
@@ -213,8 +223,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
+    name: 'Groda',
+    img: 'images/frog.jpg',
     hairColor: 'black',
     eyeColor: 'green',
     glasses: false,
@@ -222,8 +232,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
+    name: 'Hund',
+    img: 'images/puppy.png',
     hairColor: 'black',
     eyeColor: 'brown',
     glasses: true,
@@ -242,10 +252,10 @@ const generateBoard = () => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <img class="animal-img" src=${person.img} alt=${person.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Gissa på ${person.name}?</span>
+          <button class="filled-button small" onclick="guess('${person.name}')">Gissa</button>
         </div>
       </div>
     `
@@ -267,35 +277,33 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  console.log(`Eventlister working`)
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const optionValue = questions.options[questions.selectedIndex].value
+  const value = questions.options[questions.selectedIndex].value
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: optionValue,
-      category: category,
+      value,
+      category,
     }
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
-      value: optionValue,
-      category: category,
+      value,
+      category
     }
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: optionValue,
+      attribute: value,
       value: true, 
-      category: category,
+      category
     }
   } else if (category === 'other') {
     currentQuestion = {
       attribute: 'smoker',
       value: true, 
-      category: category,
+      category
     }
   }
-  console.log(`Category: ${category}, attribute: ${currentQuestion.attribute}, value: ${optionValue}`)
 }
 
 // This function should be invoked when you click on 'Find Out'.
@@ -359,23 +367,19 @@ const feedbackMessage = (message) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   let myGuess = suspect
-  if (confirm("Are you sure?")) {
+  if (confirm("Är du säker?")) {
     checkMyGuess(myGuess)
   } else {
-    alert("Okay, keep trying!")
+    alert("Okej, försök igen!")
   }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (myGuess) => {
   if (myGuess === secret.name) {
-    winOrLoseText.innerHTML = ` 
-    ${myGuess} is correct, you won!
-    `
+    winOrLoseText.innerHTML = `${myGuess} är rätt, du vann!`
   } else {
-    winOrLoseText.innerHTML = ` 
-    ${myGuess} is wrong, game over!
-    `
+    winOrLoseText.innerHTML = `${myGuess} är fel, game over!`
   }
   board.innerHTML = ''
   winOrLose.classList.add("show")

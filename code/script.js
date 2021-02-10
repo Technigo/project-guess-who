@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const filterButton = document.getElementById('filter')
+const findOut = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -248,6 +248,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  //console.log(secret)
 }
 
 // This function to start (and restart) the game
@@ -268,15 +269,19 @@ const selectQuestion = () => {
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
-      // 👆 add the value from the input here
+      value: value,
       category: category,
     }
   } else if (category === 'eye color') {
-    // Set this up your self
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value:value,
+      category: category,
+    }
+    
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: value,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,

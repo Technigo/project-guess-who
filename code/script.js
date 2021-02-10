@@ -226,7 +226,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion, charactersInPlay, secretValue
 
 // Draw the game board
 const generateBoard = () => {
@@ -284,9 +284,7 @@ const selectQuestion = () => {
 
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: 'accessory',
-      // 👆 this is the property of the booleans such as smoke, glasses 
-      // and hat. add the value from the input here
+      attribute: 'accessories',
       value: true, // we're asking if this person wears a hat for example, so always true in the question.
       category: category,
     }
@@ -305,32 +303,59 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-  console.log('checkQuestion-control', currentQuestion)
+  // console.log('checkQuestion-control', currentQuestion)
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  const secretValue = secret[currentQuestion.attribute];
+  // console.log('secret value logged', secretValue)
+
+  if (currentQuestion.value === secretValue) {
+    keep = true
+    console.log('keep is true')
+    filterCharacters(keep, currentQuestion.attribute)
+  } else {
+    keep = false
+    console.log('keep is false')
+    filterCharacters(keep, currentQuestion.attribute)
+  }
+
+
 }
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
+const filterCharacters = (keep, group) => {
   // Show the correct alert message for different categories
   if (group === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person wears hat/glasses! Keep all that wears hat/glasses`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the person doesn't wear hat/glasses! Remove all that wears hat/glasses`
       )
     }
   } else if (group === 'other') {
-    // Similar to the one above
+      if (keep) {
+        alert(
+          `Yes, the person is a smoker! Keep all smokers!`
+        )
+      }  else {
+          alert(
+            `No, the person is not a smoker, remove all smokers.`
+          )
+        }
+      
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      alert(
+        `Yes, the person has ${currentQuestion.value} hair! Keep all persons with ${currentQuestion.value} hair`
+      )                     // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
     } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert(
+        `NO, the person doesnt have ${currentQuestion.value} hair! Remove all persons with ${currentQuestion.value} hair`
+      )                     // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
     }
   }
 

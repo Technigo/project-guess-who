@@ -405,6 +405,7 @@ const checkMyGuess = (suspect) => {
     const playAgain = document.getElementById("playAgain")
       playAgain.addEventListener("click", () => {
       winOrLose.style.display = "none"
+      start();
     });
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

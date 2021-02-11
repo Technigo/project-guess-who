@@ -66,7 +66,19 @@
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
-        <button id="playAgain" class="filled-button">PLAY AGAIN</button>
+        
+        <div>
+          <div id="a-winner" class="winner">
+          <h1>You are a winner!</h1>
+          <iframe src="https://giphy.com/embed/EBolRO7z50KTOn85Pi" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/thebachelor-the-bachelor-thebachelorabc-bachelorabc-EBolRO7z50KTOn85Pi"></a></p>
+          <button id="playAgain" class="filled-button">PLAY AGAIN</button>
+          </div>
+          <div id="a-looser" class="looser">
+            <h1>You are Wrong!</h1>
+            <iframe src="https://giphy.com/embed/dUYddwtCVUOIpgXijq" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/DowntonAbbey-downton-abbey-movie-film-dUYddwtCVUOIpgXijq"></a></p>
+            <button id="try-again-btn">Try again</button>
+          </div>
+        </div>
       </div>
     </section>
     <script src="script.js"></script>

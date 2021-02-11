@@ -1,7 +1,9 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  /* --primary: #a259ff; */
+  --primary: 	#55CBCD;
+  --secondary: #BDDFE3;
+  /* --secondary: #b0a6ff; */
 }
 
 body {
@@ -145,9 +147,12 @@ button {
   color: var(--primary);
 }
 
+button:focus {
+  outline:none !important;
+}
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
-  display: block;
+  display: none;
   align-items: center;
   justify-content: center;
   background: var(--secondary);
@@ -230,4 +235,11 @@ button {
     color: var(--primary);
     border: none;
   }
+}
+.winner{
+  display: none;
+}
+
+.looser{
+  display: none;
 }

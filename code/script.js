@@ -3,6 +3,10 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const winOrLooseBlock = document.querySelector('.win-or-lose-wrapper')
+const winner = document.querySelector('.winner')
+const looser = document.querySelector('.looser')
+const tryAgainBtn = document.getElementById('try-again-btn')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -413,17 +417,39 @@ const checkMyGuess = (suspect) => {
   //console.log(secret.name)
   //console.log(suspect)
   if (suspect == secret.name) {
-    console.log('you are correct')
+    runWinnerBlock();
   } else
-    console.log("you are wrong")
+   {
+     runLooserBlock();
+   }
   // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section use display.block
+  // 3. Show the win or lose section display block
   // 4. Hide the game board. display none 
 }
 
+//I want to display the winner/looser block but hide the game board
+const runWinnerBlock = () => {
+  winOrLooseBlock.style.display = 'flex'
+  winner.style.display ='block'
+  board.style.display = 'none'
+}
+const runLooserBlock = () => {
+  console.log("you are wrong")
+  winOrLooseBlock.style.display = 'flex'
+  looser.style.display ='block'
+  board.style.display = 'none'
+
+  //style.display='' goes back to default settings in css
+tryAgainBtn.addEventListener('click', () => {
+  winOrLooseBlock.style.display = ''
+  looser.style.display =''
+  board.style.display = ''
+  })
+  
+}
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
 restartButton.addEventListener('click', start)

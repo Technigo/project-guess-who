@@ -359,10 +359,12 @@ const filterCharacters = (keep) => {
   }
 
   // filter to keep or remove based on the keep variable.
-  charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-  or 
-  charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-  console.log(charactersInPlay.length)
+  if (keep) {
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value) 
+  } else {
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+  }
+  generateBoard()
   // Invoke a function to redraw the board with the remaining people.
 }
 

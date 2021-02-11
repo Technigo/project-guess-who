@@ -252,27 +252,32 @@ const sentences = [{
     furColor: `Yes, the animal is x! Keep all x animals.`,
     furPattern: `Yes, the animal has x fur! Keep all animals that have x fur.`,
     animal: `Yes, it is a x! Keep all animals that are a x.`,
-    accessories: `Yes, the animal wears x! Keep all the x wearers.`,
-    behaviour: `Yes, it is a x boy/girl! Keep all the x ones.`,
+    collar: `Yes, the animal wears a x! Keep all the x wearers.`,
+    bling: `Yes, the animal wears x! Keep all the xy animals.`,
+    bad: `Yes, it is a x boy/girl! Keep all the x ones.`,
   },
   {
     furColor: `No, the animal is not x. Remove all x animals!`,
     furPattern: `No, the animal don"t got x fur. Remove all animals that have x fur!`,
-    animal: `No, it"s not a x. Remove all animals that are a x!`,
-    accessories: `No, the animal doesn"t wear x. Remove all the x wearers!`,
-    behaviour: `No, it is not a x boy/girl. Remove all the x ones!`,
+    animal: `No, it's not a x. Remove all animals that are a x!`,
+    collar: `No, the animal doesn"t wear x. Remove all the x wearers!`,
+    bling: `No, the animal does not wear x! Remove all the xy animals.`,
+    bad: `No, it is not a x boy/girl. Remove all the x ones!`,
   }
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay, questionsAsked = 0,
-  totalSeconds = 0, rightGuesses = 0, wrongGuesses = 0,
-  player, summaryArray = []
+let secret, currentQuestion, charactersInPlay, player,
+  questionsAsked = 0,
+  totalSeconds = 0,
+  rightGuesses = 0,
+  wrongGuesses = 0,
+  summaryArray = []
 
 // Draw the game board
 const generateBoard = () => {
-  board.innerHTML = `<audio id="card-sound" src="./audio/card-flip.mp3">
-  </audio>`
+  //displays how many questions a player asked
+  counter.innerHTML = `Questions asked: ${questionsAsked}`
 
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
@@ -298,16 +303,15 @@ const generateBoard = () => {
       </div>
     `
   })
+  board.innerHTML = `<audio id="card-sound" src="./audio/card-flip.mp3">
+  </audio>`
+
   const counter = document.getElementById("counter")
   const audio = document.getElementById("card-sound")
   const card = document.querySelectorAll(".card-front")
-
   //sound on hover when cards are flipped
   card.forEach(card => card.addEventListener("mouseenter", () => audio.play()))
   card.forEach(card => card.addEventListener("mouseout", () => audio.play()))
-
-  //displays how many questions a player asked
-  counter.innerHTML = `Questions asked: ${questionsAsked}`
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -315,7 +319,7 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-//timer showing the passing seconds in the game
+//timer showing the passing minutes/seconds in the game
 const timer = (x) => {
   if (x === "restart") {
     totalSeconds = 0;
@@ -332,11 +336,19 @@ const timer = (x) => {
   countUp.innerHTML = `Time passed: ${minute}:${seconds}`;
 }
 
+//stops the timer and resets time to 0
+const stopTimer = () => {
+  var setTimer = setInterval(timer, 1000);
+  clearInterval(setTimer)
+  timer("restart")
+}
+
 // This function to start (and restart) the game
 // sets the gameboard, all the characters in play, secret character and timer
 const start = () => {
   const form = document.getElementById("form");
-  board.innerHTML= ''
+  form.classList.add("active")
+  board.innerHTML = ''
   //adds a input for player name in the beginning
   form.innerHTML += `
     <label for="name-input">
@@ -347,30 +359,26 @@ const start = () => {
       Let's play!
     </button>
   `
-  form.style.display = "flex";
-
   const nameBtn = document.getElementById("name-Btn");
   const userName = document.getElementById("name-input")
+
   //onclick the name will be saved and the name input will be removed
   nameBtn.addEventListener("click", () => {
     player = userName.value;
-    form.style.display = "none";
-    form.innerHTML = "";
+    form.innerHTML = ""
+    form.classList.remove("active")
     charactersInPlay = CHARACTERS
     generateBoard()
     setSecret()
-    totalSeconds = 0;
-    timer("restart")
-    setInterval(timer, 1000)
+    stopTimer()
   })
-
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (handleOption) => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const findOut = document.getElementById("filter")
-  questionsAsked++
+
   switch (category) {
     case "fur color":
       currentQuestion = {
@@ -400,6 +408,7 @@ const selectQuestion = (handleOption) => {
         category: category,
       };
   };
+  questionsAsked++
   findOut.addEventListener("click", stopPropergate);
 }
 
@@ -411,36 +420,23 @@ const stopPropergate = (event) => {
 }
 
 //This function is invoked when you click Find Out. 
-//Compares the secret properties with player options and answer with a sentence 
-//The sentences is stored and fetched from an array
+//Puts forward values needed for filtering and invokes the filter functionn
 const checkQuestion = (currentQ) => {
-  let group = currentQ.attribute
-  let word = currentQ.value
-  
-  //value is set to attr for boolean values (accessories eg) 
-  //same if/else-statement can then be used for all properties
-  if (currentQ.category === 'accessories' || currentQ.category === 'behaviour') {
-    word = currentQ.attribute
-    group = currentQ.category
-  }
-  if (currentQ.value === secret[currentQ.attribute]) {
-    alert(sentences[0][group].replaceAll("x", word))
-  } else {
-    alert(sentences[1][group].replaceAll("x", word))
-  }
-  filterCharacters(currentQ.value, currentQ.attribute) //passes parameters to a filter function
+  let group;
+  currentQ.category === ("accessories || behavior") ? group = currentQ.category : group = currentQ.attribute
+  filterCharacters(currentQ.value, group)
 }
 
-
-// Filters the characters on properties of keep(player option) and alerts the response. 
-// Uses array.filter to return an array of characters based on that
+// Alerts if the question option was correct or not using sentences stored in an array 
+// Filters chars on properties by keep(player option) with array.filter to return an array to generate a new gameboard
 const filterCharacters = (keep, group) => {
-  if (keep === secret[group]) {
+  keep === secret[group] ? (
+    alert(sentences[0][group].replaceAll("x", questions.value)),
     charactersInPlay = charactersInPlay.filter(char => char[group] === keep)
-  } else {
+  ) : (
+    alert(sentences[1][group].replaceAll("x", questions.value)),
     charactersInPlay = charactersInPlay.filter(char => char[group] !== keep)
-  }
-  //generates a new board depending on the filtered array
+  );
   generateBoard(charactersInPlay)
 }
 
@@ -471,26 +467,30 @@ const guess = (suspect) => {
 // If you confirm, this function is invoked which says if you won or lose
 const checkMyGuess = (suspect) => {
   let winOrLose = document.getElementById("winOrLose")
-  winOrLose.style.display = "block" //shows winOrLose section
+  let winLoseText;
 
-  if (suspect === secret.name) {
-    rightGuesses++
-    winOrLose.innerHTML = `
+  winOrLose.classList.add("active")
+  suspect === secret.name ? (
+    rightGuesses++,
+    winLoseText = `Yes, ${suspect} was the secret character! Well done ${player}!`
+  ) : (
+    wrongGuesses++,
+    winLoseText = `Sorry, ${suspect} was the not the secret character, but ${secret.name}! Better luck next time ${player}.`
+  );
+
+  winOrLose.innerHTML = `
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/print.png"
-          alt="Guess Who"/>
-        <h1 id="winOrLoseText">
-          Yes, ${suspect} was the secret character! Well done ${player}!
-        </h1>
+        <div class="guess-who-icon">
+          <img src="./images/print.png" alt="Guess Who" />
+        </div>
+        <h1 id="winOrLoseText">${winLoseText}</h1>
         <div class="card-img-wrap">
           <div class="card-img">
             <img src=${secret.img} 
             alt=${secret.name}/>
           </div>
         </div>
-        <h1> Your total time was ${Math.round((totalSeconds/60)*100)/100} minutes for this round</h1>
+        <h1>${countUp.innerHTML} and ${questionsAsked} questions asked for this round</h1>
         <button id="playAgain" class="filled-button">
           PLAY AGAIN
         </button>
@@ -503,57 +503,32 @@ const checkMyGuess = (suspect) => {
         <h2>Results previous games:</h2>
       </div>
     `
-  } else {
-    wrongGuesses++
-    winOrLose.innerHTML = `
-      <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/print.png"
-          alt="Guess Who"/>
-        <h1 id="winOrLoseText">
-          Sorry, ${suspect} was the not the secret character, but ${secret.name}! Better luck next time ${player}.
-        </h1>
-        <div class="card-img-wrap">
-          <div class="card-img">
-            <img 
-            src=${secret.img} 
-            alt=${secret.name}/>
-          </div>
-        </div>
-        <h1> Your total time was ${Math.round((totalSeconds/60)*100)/100} minutes for this round</h1>
-        <button id="playAgain" class="filled-button">
-          PLAY AGAIN
-        </button>
-        <h2> You have a total of 
-          <span class="wrong">${wrongGuesses}</span> 
-          incorrect guesses and 
-          <span class="right">${rightGuesses}</span> 
-          correct guesses!
-        </h2>
-         <h2>Results previous games:</h2>
-      </div>
-    `
-  }
   //keeps the results from previous games & displays
-  if (summaryArray.length>5){
+  summaryArray.push(`Questions: ${questionsAsked}, ${countUp.innerHTML}`)
+  summaryArray.forEach(sum => winOrLose.innerHTML += `
+    <div class="win-or-lose">
+      <div class="summary" id="summary">
+        ${sum}
+      </div>
+    </div>
+  `)
+  if (summaryArray.length > 5) {
     summaryArray = []
   }
-  summaryArray.push(`Questions: ${questionsAsked}, ${countUp.innerHTML}`)
-  summaryArray.forEach(sum => winOrLose.innerHTML += `<div class="win-or-lose">
-  <div class="summary" id="summary">${sum}</div></div>`)
- 
+
   questionsAsked = 0;
+
   //play again? click and winOrLose section will be hidden and start() will run
   const playAgain = document.getElementById("playAgain")
   playAgain.addEventListener("click", () => {
-    winOrLose.style.display = "none"
+    winOrLose.classList.remove("ative")
     start()
   })
 }
 
-// Invokes the start function when website is loaded
+// Invokes the start function when website is loaded & sets timer
 start()
+setInterval(timer, 1000)
 
 restartButton.addEventListener("click", start)
 

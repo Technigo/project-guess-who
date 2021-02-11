@@ -159,6 +159,10 @@ button {
   height: 100vh;
 }
 
+.show-win-or-lose-wrapper {
+display: flex;
+}
+
 .win-or-lose {
   display: flex;
   flex-direction: column;

@@ -17,6 +17,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Jack',
@@ -26,6 +27,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    angryFace: true,
   },
   {
     name: 'Jacques',
@@ -35,6 +37,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: true,
+    angryFace: false,
   },
   {
     name: 'Jai',
@@ -44,6 +47,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Jake',
@@ -53,6 +57,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'James',
@@ -62,6 +67,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Jana',
@@ -71,6 +77,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Jane',
@@ -80,6 +87,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Jaqueline',
@@ -89,6 +97,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
 
   {
@@ -99,6 +108,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: true,
+    angryFace: true,
   },
   {
     name: 'Jean',
@@ -108,6 +118,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
+    angryFace: true,
   },
   {
     name: 'Jeane',
@@ -117,6 +128,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Jed',
@@ -126,6 +138,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
+    angryFace: true,
   },
   {
     name: 'Jenni',
@@ -135,6 +148,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Jeri',
@@ -144,6 +158,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Jerry',
@@ -153,6 +168,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Jess',
@@ -162,6 +178,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Jocelyn',
@@ -171,6 +188,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    angryFace: true,
   },
   {
     name: 'Jon',
@@ -180,6 +198,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Jordan',
@@ -189,6 +208,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Josephine',
@@ -198,6 +218,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Josh',
@@ -207,6 +228,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Jude',
@@ -216,6 +238,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    angryFace: false,
   },
   {
     name: 'Julie',
@@ -225,6 +248,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    angryFace: true,
   },
 ]
 
@@ -338,6 +362,14 @@ const {attribute, category, value} = currentQuestion
      alert(`Nope! The character does not have ${value} eyes removing all characters with ${value} eyes.`)
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
     }
+  } else if (category === 'other') {
+    if (keep) {
+      alert(`Oh, yeah the character has ${value} Let's keep all the characters with ${value}`)
+
+    } else {
+      alert(`Nope! The character does not have ${value} Removing all the characters with ${value}`)
+    } 
+
   }
 
   // filter to keep or remove based on the keep variable.

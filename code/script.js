@@ -6,6 +6,7 @@ const filterButton = document.getElementById('filter')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const winOrLose = document.getElementById('winOrLose')
 const playAgainButton = document.getElementById('playAgain')
+const scoreBoardText = document.getElementById('scoreBoardText')
 
 
 // CHARACTER object Array

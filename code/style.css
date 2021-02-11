@@ -59,6 +59,11 @@ select {
   align-content: center;
 }
 
+.game-board-inactive {
+  display: none;
+}
+
+
 /****** CARD ******/
 .card {
   width: 135px;
@@ -157,6 +162,10 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
+}
+
+.win-or-lose-wrapper-active{
+  display: block;
 }
 
 .win-or-lose {

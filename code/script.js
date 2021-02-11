@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -372,11 +373,25 @@ const filterCharacters = (keep) => {
 const guess = (suspect) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
+  if (confirm("Are you sure? If your guess is wrong the game will be lost!")) {
+    checkMyGuess(suspect)
+  }
+
   // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
+
+  let message = "You lost!"
+  if (suspect === secret.name) {
+    message = "You won!"
+  } else {
+    
+  }
+  board.classList.add('game-board-inactive')
+  winOrLose.classList.add('win-or-lose-wrapper-active')
+
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

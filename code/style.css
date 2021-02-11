@@ -3,7 +3,7 @@
 /* Import font specific styles */
 @import "./styles/typography.css";
 /* Import styles for block elements */
-@import "./styles/questionSection.css";
+@import "./styles/sideSection.css";
 @import "./styles/gameboard.css";
 @import "./styles/cards.css";
 @import "./styles/buttons.css";

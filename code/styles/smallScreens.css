@@ -2,7 +2,7 @@ body {
   flex-direction: column;
 }
 
-.question-section {
+.side-section {
   width: 100%;
   min-height: 0;
 }

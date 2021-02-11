@@ -11,48 +11,57 @@
     />
   </head>
   <body>
-    <aside class="question-section" id="sideSection">
-      <button id="restart" class="button button__outlined">RESTART</button>
-
+    <aside class="side-section">
       <img class="icon" src="images/guess-who-bubble.png" alt="Guess Who" />
+      <div id="newGame">
+        <h1 class="title">Welcome!</h1>
 
-      <h1 class="title">Does the person have</h1>
+        <input type="text" class="input-name" id="playerName" placeholder="What is your name?" />
+        <button id="startGame" class="button button__filled">Start Game</button>
+      </div>
+      <div class="hidden" id="questionSection">
+        <h1 class="title">Does the person have</h1>
 
-      <select class="select-questions" id="questions">
-        <optgroup label="hair color">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <option value="white">white hair</option>
-          <option value="grey">grey hair</option>
-          <option value="purple">purple hair</option>
-          <option value="black">black hair</option>
-          <option value="orange">orange hair</option>
-          <option value="hidden">hidden hair</option>
-        </optgroup>
-        <optgroup label="eye color">
-          <option value="blue">blue eyes</option>
-          <option value="brown">brown eyes</option>
-          <option value="green">green eyes</option>
-          <option value="hidden">hidden eyes</option>
-        </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <option value="necklace">a necklace</option>
-          <option value="earrings">earrings</option>
-          <option value="headCover">a head covering</option>
-        </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
-          <option value="facialHair">facial hair</option>
-          <option value="buttonShirt">a buttoned up shirt</option>
-        </optgroup>
-      </select>
+        <select class="select-questions" id="questions">
+          <optgroup label="hair color">
+            <option value="brown">brown hair</option>
+            <option value="yellow">yellow hair</option>
+            <option value="white">white hair</option>
+            <option value="grey">grey hair</option>
+            <option value="purple">purple hair</option>
+            <option value="black">black hair</option>
+            <option value="orange">orange hair</option>
+            <option value="hidden">hidden hair</option>
+          </optgroup>
+          <optgroup label="eye color">
+            <option value="blue">blue eyes</option>
+            <option value="brown">brown eyes</option>
+            <option value="green">green eyes</option>
+            <option value="hidden">hidden eyes</option>
+          </optgroup>
+          <optgroup label="accessories">
+            <option value="glasses">glasses</option>
+            <option value="necklace">a necklace</option>
+            <option value="earrings">earrings</option>
+            <option value="headCover">a head covering</option>
+          </optgroup>
+          <optgroup label="other">
+            <option value="smoker">a smoking habit</option>
+            <option value="facialHair">facial hair</option>
+            <option value="buttonShirt">a buttoned up shirt</option>
+          </optgroup>
+        </select>
 
-      <button id="filter" class="button button__filled">FIND OUT</button>
+        <button id="filter" class="button button__filled">FIND OUT</button>
 
-      <p class="info__text" id="questionCount">
-        Questions asked: <span class="info__text--data">0</span>
-      </p>
+        <p class="info__text" id="nameInfo">
+          Player Name: <span class="info__text--data">--</span>
+        </p>
+        <p class="info__text" id="questionCount">
+          Questions asked: <span class="info__text--data">0</span>
+        </p>
+        <button id="restart" class="button button__outlined">RESTART</button>
+      </div>
     </aside>
 
     <section class="board-wrapper">
@@ -68,7 +77,7 @@
     <section id="endScreen" class="end-screen__wrapper hidden">
       <div class="end-screen">
         <img class="icon" src="images/guess-who-bubble.png" alt="Guess Who" />
-        <h1 class="title" id="endStateText">YES! That is correct</h1>
+        <h1 class="title" id="endStateText"></h1>
         <p class="info__text" id="questionCount">
           Questions asked: <span class="info__text--data">0</span>
         </p>

@@ -5,7 +5,8 @@ import { getRandomNumber as random } from "./scripts/helperFunctions.js";
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
-const sideSection = document.getElementById("sideSection");
+const questionSection = document.getElementById("questionSection");
+const newGameSection = document.getElementById("newGame");
 const endScreen = document.getElementById("endScreen");
 const alert = document.getElementById("alert");
 
@@ -14,6 +15,7 @@ let secret,
   currentQuestion,
   charactersInPlay,
   counter,
+  playerName,
   timer = {
     start: "",
     end: "",
@@ -39,8 +41,10 @@ const generateBoard = () => {
 
 // Update game info texts
 const updateInfo = () => {
-  const questionCounter = sideSection.children.namedItem("questionCount").firstElementChild;
+  const questionCounter = questionSection.children.namedItem("questionCount").firstElementChild;
+  const nameInfo = questionSection.children.namedItem("nameInfo").firstElementChild;
   questionCounter.innerText = counter;
+  nameInfo.innerText = playerName;
 };
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -174,10 +178,20 @@ const stopTimer = () => {
 };
 
 // Invokes the start function when website is loaded
-start();
+// start();
 
 // All the event listeners
-sideSection.addEventListener("click", (event) => {
+newGameSection.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.id === "startGame") {
+    newGameSection.classList.toggle("hidden");
+    questionSection.classList.toggle("hidden");
+    playerName = newGameSection.children.namedItem("playerName").value;
+    start();
+  }
+});
+
+questionSection.addEventListener("click", (event) => {
   const target = event.target;
   if (target.id === "filter") {
     selectQuestion();

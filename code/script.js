@@ -326,54 +326,62 @@ const filterCharacters = (keep) => {
             alert(
                 `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
             )
+            charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
         } else {
             alert(
                 `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
             )
+            charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
         }
     } else if (group === 'other') {
         if (keep) {
             alert(
                 `Yes, the person is a ${currentQuestion.attribute}! Keep all persons that are ${currentQuestion.attribute}s`
             )
+            charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
+
         } else {
             alert(
                 `No, the person isn´t a ${currentQuestion.attribute}! Remove all persons that are ${currentQuestion.attribute}s`
             )
+            charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
         }
         // Similar to the one above
     } else if (group === 'hair color') {
         if (keep) {
             alert(
-                    `Yes, the person has ${currentQuestion.value} hair color! Keep all persons with ${currentQuestion.value} hair`
-                )
+                `Yes, the person has ${currentQuestion.value} hair color! Keep all persons with ${currentQuestion.value} hair`
+            )
+            charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
                 // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
         } else {
             alert(
-                    `No, the person hasn´t ${currentQuestion.value} hair! Remove all persons that have ${currentQuestion.value} hair`
-                )
+                `No, the person hasn´t ${currentQuestion.value} hair! Remove all persons that have ${currentQuestion.value} hair`
+            )
+            charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
                 // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
         }
     } else if (group === 'eye color') {
         if (keep) {
             alert(
-                    `Yes, the person hasn´t ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes`
-                )
+                `Yes, the person hasn´t ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes`
+            )
+            charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
                 // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
         } else {
             alert(
-                    `No, the person hasn´t ${currentQuestion.value} eyes! Remove all that have ${currentQuestion.value} eyes`
-                )
+                `No, the person hasn´t ${currentQuestion.value} eyes! Remove all that have ${currentQuestion.value} eyes`
+            )
+            charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
                 // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
         }
     }
 
     // filter to keep or remove based on the keep variable.
-    /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or 
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
+
 
     // Invoke a function to redraw the board with the remaining people.
+    generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

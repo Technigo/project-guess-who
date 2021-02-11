@@ -231,3 +231,11 @@ button {
     border: none;
   }
 }
+
+.active {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}

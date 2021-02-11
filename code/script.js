@@ -2,7 +2,10 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const findOutBtn = document.getElementById('filter')
+const findOutButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainbutton = document.getElementById('playAgain')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -224,12 +227,12 @@ const CHARACTERS = [
   },
 ]
 
-// Global variables
+
 let secret, currentQuestion, charactersInPlay
 
 
 
-// Draw the game board
+
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -246,21 +249,20 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  
-
 }
 
-// This function to start (and restart) the game
 const start = () => {
   charactersInPlay = CHARACTERS
   setSecret()
   generateBoard()
-  
+  winOrLose.classList.remove('active')
+  board.classList.remove('hide')
+  winOrLoseText.innerHTML = `
+    `   
 }
-
 
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
@@ -297,7 +299,6 @@ const selectQuestion = () => {
   }  
 }
 
-// dessa är samma så retunerar den true annars false så om keep är sann så ska det hända annars det, men även kategorin måste in. kan jag hitta den i window? options? kolla börjar på lektion
 const checkQuestion = () => {
   let keep
   if (currentQuestion.attribute === 'hairColor' && currentQuestion.value === secret.hairColor) {
@@ -313,13 +314,11 @@ const checkQuestion = () => {
   } else {
     keep = false
   }
-console.log(keep)
 filterCharacters(keep)
 }
 
 
 const filterCharacters = (keep) => {    
-  
 if (currentQuestion.category === 'accessories') {
   if (keep) {    
     alert(
@@ -377,55 +376,48 @@ if (currentQuestion.category === 'accessories') {
               )
               charactersInPlay = charactersInPlay.filter((person) => 
               person[currentQuestion.attribute] !== currentQuestion.value)
-            }
-            
+            }            
           }
           generateBoard()          
-          }        
-    
-    // when clicking guess, the player first have to confirm that they want to make a guess.
-    const guess = (suspect) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+}        
+const guess = (suspect) => {
+      const guessPerson = confirm(`Do you want to guess ${suspect}`)
+      if (guessPerson === true) {
+        checkMyGuess(suspect)
+      }
 }
 
-// If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
-  // 1. Check if the suspect is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
+  if (suspect === secret.name ) {
+    winOrLose.classList.add('active')
+    board.classList.add('hide')
+    winOrLoseText.innerHTML += `      
+        <p>Nice done!</p>
+        <p>${suspect} was the correct person</p>
+    `   
+  }
+  else {
+    winOrLose.classList.add('active')
+    board.classList.add('hide')
+    winOrLoseText.innerHTML += `      
+        <p>Sorry!</p>
+        <p>${suspect} wasn´t the correct person</p>
+        <p>It was ${secret.name}</p>      
+    `
+  } 
   // 4. Hide the game board
 }
+
+
 
 start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOutBtn.addEventListener('click',checkQuestion)
+findOutButton.addEventListener('click',checkQuestion)
 //Every time I change option in dropdown i trigger selectQuestion() to update currentQuestion
 questions.addEventListener('change',selectQuestion)
+playAgainbutton.addEventListener('click', start)
 
 
 
-/*ska den ligga i knappen?
-charactersInPlayFilterd = charactersInPlay.filter(character =>{
-  if (character[currentQuestion.attribute] === questions.value) {
-    return true
-  }
-  else {
-    return false
-  }
-  
-} ) 
-const filterCharacters = () => {
-  charactersInPlayFilterd = charactersInPlayFilterd.filter(character => {
-    if (secret[currentQuestion.attribute] === currentQuestion.value) {
-      return character[currentQuestion] === currentQuestion.value;
-    } else {
-      return character[currentQuestion.attribute] !== currentQuestion.value
-    }
-    
-  })
-  console.log(charactersInPlayFilterd)
-  */

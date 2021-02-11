@@ -8,6 +8,7 @@ const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgain = document.getElementById('play-again')
 const feedback = document.getElementById('feedback')
 const feedbackSection = document.getElementById('feedback-section')
+const defaultOption = document.getElementById('default')
 
 
 // Array with all the characters, as objects
@@ -246,7 +247,7 @@ const CHARACTERS = [
   {
     name: 'Hund',
     img: 'images/puppy.png',
-    color: 'fläckif',
+    color: 'fläckig',
     numberOfLegs: 'fyra',
     simma: false,
     vifta: true,  
@@ -256,7 +257,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret, currentQuestion
+let secret, currentQuestion, message
 let charactersFiltered = CHARACTERS
 
 // Draw the game board
@@ -284,7 +285,9 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  //charactersInPlay = CHARACTERS
+  charactersFiltered = CHARACTERS
+  questions.selectedIndex = defaultOption
+  feedbackSection.classList.remove("visible")
   generateBoard()
   setSecret()
 }
@@ -335,7 +338,7 @@ const filterCharacters = (keep) => {
   const group = currentQuestion.category
   const value = currentQuestion.value
   const attribute = currentQuestion.attribute
-  let message = ""
+  message = ""
   if (group === 'Färg') {
     if (keep) {
       message = `<div class="answer-yes">STÄMMER</div><strong>Djuret har ${value} päls!</strong> <div>Behåller alla djur med ${value} päls.</div>`
@@ -344,7 +347,7 @@ const filterCharacters = (keep) => {
     }
   } else if (group === 'Antal ben') {
       if (keep) {
-        message = `<div class="answer-yes">STÄMMER</div><strong>Djuret ${value} ben!</strong> <div>Behåller alla djur med ${value} ben.</div>`
+        message = `<div class="answer-yes">STÄMMER</div><strong>Djuret har ${value} ben!</strong> <div>Behåller alla djur med ${value} ben.</div>`
       } else {
         message = `<div class="answer-no">TYVÄRR</div><strong>Djuret har inte ${value} ben!</strong> <div>Tar bort alla djur med ${value} ben...</div>`
       }

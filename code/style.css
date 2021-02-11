@@ -17,6 +17,7 @@ h1 {
   line-height: 48px;
   margin: 10px 0;
   color: white;
+  text-align: center;
 }
 
 .question-section {
@@ -28,6 +29,8 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
 }
 
 .feedback-section {
@@ -45,7 +48,7 @@ h1 {
 .answer-yes {
   color: #459f44 ;
   font-weight: 900;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .answer-no {
@@ -165,7 +168,8 @@ button {
 .outlined-button {
   background-color: transparent;
   color: var(--primary);
-  align-self: flex-end;
+  align-self: center;
+  margin-bottom: 20px;
 }
 
 .filled-button,

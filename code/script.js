@@ -328,65 +328,66 @@ const filterCharacters = (keep) => {
     if (keep) {
       alert(
         `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
-      ); 
-      redrawBoard(true);
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
     } else {
       alert(
-        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
-      );
-      redrawBoard(false);
+      `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
     }
   } else if (group === 'other') { //smokers
       if (keep) {
         alert(
           `Yes, the person is a ${currentQuestion.attribute}! Keep all that are ${currentQuestion.attribute}s`
-        );
-        redrawBoard(true);
+        )
+        charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
       } else {
         alert(
           `No, the person is not a ${currentQuestion.attribute}! Remove all that are ${currentQuestion.attribute}s`
-        );
-        redrawBoard(false);
+        )
+        charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
       }
   } else if (group === 'hair color') {
     if (keep) {
       alert(
         `Yes the person has ${attribute} hair! Keep all that have ${attribute} hair!`
-      );
-      redrawBoard(true);
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
     } else {
       alert(
         `No, the person does not have ${attribute} hair! Remove all that have ${attribute} hair`
-      );
-      redrawBoard(false);
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
     }
     
     } else if (group === 'eye color') {
       if (keep) {
         alert (
           `Yes the person has ${attribute} eyes! Keep all that have ${attribute} eyes!`
-        );
-        redrawBoard(true);
+        )
+        charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
       } else {
         alert(
           `No, the person does not have ${attribute} eyes! Remove all that have ${attribute} eyes`
-        );
-        redrawBoard(false);
+        )
+        charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
       }
     
     }
+    generateBoard ()
 }
 
   // filter to keep or remove based on the keep variable. //use generate board
-  const redrawBoard = (keep) => {
-      if (keep) {
+  //const redrawBoard = (keep) => {
+     // if (keep) {
     //  charactersInPlay = charactersInPlay.filter((person) => {(person[currentQuestion.attribute] === currentQuestion.value)
-      console.log("hej")
-    } else {
-      //charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value);
-      console.log("hej")
-  }
-}
+     // console.log("hej")
+   // } else {
+      //charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
+   //   console.log("hej")
+ // }
+//}
   // Invoke a function to redraw the board with the remaining people. 
   //Use for each??
   //vad ska stoppas in i denna funktionen? särskilj på Key & value och vad är det jag vill titta på?

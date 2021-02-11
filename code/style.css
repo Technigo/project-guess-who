@@ -7,7 +7,7 @@
 @import "./styles/gameboard.css";
 @import "./styles/cards.css";
 @import "./styles/buttons.css";
-@import "./styles/winOrLose.css";
+@import "./styles/endScreen.css";
 
 /* Import styles specific to small screens */
 @import "./styles/smallScreens.css" (max-width: 768px);

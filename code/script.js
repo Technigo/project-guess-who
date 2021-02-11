@@ -5,14 +5,12 @@ import { getRandomNumber as random } from "./scripts/helperFunctions.js";
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
-const btnFindOut = document.getElementById("filter");
-const winOrLose = document.getElementById("winOrLose");
-const endStateText = document.getElementById("winOrLoseText");
-const restartButton = document.getElementById("playAgain");
+const sideSection = document.getElementById("sideSection");
+const endScreen = document.getElementById("endScreen");
 const alert = document.getElementById("alert");
 
 // Global variables
-let secret, currentQuestion, charactersInPlay;
+let secret, currentQuestion, charactersInPlay, counter;
 
 // Draw the game board
 const generateBoard = () => {
@@ -31,6 +29,12 @@ const generateBoard = () => {
   });
 };
 
+// Update game info texts
+const updateInfo = () => {
+  const guessCounter = sideSection.children.namedItem("guessCount").firstElementChild;
+  guessCounter.innerText = counter;
+};
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[random(charactersInPlay.length, true)];
@@ -46,7 +50,8 @@ const setSecret = () => {
  */
 const start = () => {
   charactersInPlay = CHARACTERS;
-  winOrLose.classList.toggle("hidden");
+  counter = 0;
+  updateInfo();
   generateBoard();
   setSecret();
 };
@@ -90,6 +95,9 @@ const selectQuestion = () => {
   }
   // DEBUG: remove on submission
   console.log("Question: ", currentQuestion);
+  // increase question counter
+  counter++;
+  updateInfo();
   // After the currentQuestion is set we call checkQuestion
   checkQuestion();
 };
@@ -111,16 +119,12 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   alert.classList.toggle("hidden");
   if (keep) {
-    alert.children.item(
-      0
-    ).innerText = `Yes, the person has ${currentQuestion.text}! Keep all that has ${currentQuestion.text}.`;
+    alert.firstElementChild.innerText = `Yes, the person has ${currentQuestion.text}! Keep all that has ${currentQuestion.text}.`;
     charactersInPlay = charactersInPlay.filter(
       (character) => character[currentQuestion.attribute] === currentQuestion.value
     );
   } else {
-    alert.children.item(
-      0
-    ).innerText = `No, the person doesn't have ${currentQuestion.text}! Remove all that have ${currentQuestion.text}`;
+    alert.firstElementChild.innerText = `No, the person doesn't have ${currentQuestion.text}! Remove all that have ${currentQuestion.text}`;
     charactersInPlay = charactersInPlay.filter(
       (character) => character[currentQuestion.attribute] !== currentQuestion.value
     );
@@ -138,23 +142,32 @@ const guess = (suspect) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   // 1. Check if the suspect is the same as the secret person's name
-  const winState = suspect === secret.name ? true : false;
+  const winState = suspect === secret.name ? true : false,
+    endStateText = endScreen.querySelector("#endStateText"),
+    guessCounter = endScreen.querySelector("#guessCount").firstElementChild;
   // 2. Set a Message to show in the win or lose section accordingly
   if (winState) {
     endStateText.innerText = "YES! That is correct";
   } else {
     endStateText.innerText = "NO! That is wrong";
   }
+  guessCounter.innerText = counter;
   // 3. Show the win or lose section
-  winOrLose.classList.toggle("hidden");
+  endScreen.classList.toggle("hidden");
 };
 
 // Invokes the start function when website is loaded
 start();
 
 // All the event listeners
-restartButton.addEventListener("click", start);
-btnFindOut.addEventListener("click", selectQuestion);
+sideSection.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.id === "filter") {
+    selectQuestion();
+  } else if (target.id === "restart") {
+    start();
+  }
+});
 board.addEventListener("click", (event) => {
   const target = event.target;
   if (target.id === "guess") {
@@ -166,5 +179,12 @@ alert.addEventListener("click", (event) => {
   if (target.id === "confirm") {
     alert.classList.toggle("hidden");
     generateBoard();
+  }
+});
+endScreen.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.id === "playAgain") {
+    endScreen.classList.toggle("hidden");
+    start();
   }
 });

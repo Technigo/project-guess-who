@@ -11,7 +11,7 @@
     />
   </head>
   <body>
-    <aside class="question-section">
+    <aside class="question-section" id="sideSection">
       <button id="restart" class="button button__outlined">RESTART</button>
 
       <img class="icon" src="images/guess-who-bubble.png" alt="Guess Who" />
@@ -49,6 +49,10 @@
       </select>
 
       <button id="filter" class="button button__filled">FIND OUT</button>
+
+      <p class="info__text" id="guessCount">
+        Questions asked: <span class="info__text--data">0</span>
+      </p>
     </aside>
 
     <section class="board-wrapper">
@@ -61,10 +65,13 @@
       </main>
     </section>
 
-    <section id="winOrLose" class="win-or-lose__wrapper">
-      <div class="win-or-lose">
+    <section id="endScreen" class="end-screen__wrapper hidden">
+      <div class="end-screen">
         <img class="icon" src="images/guess-who-bubble.png" alt="Guess Who" />
-        <h1 class="title" id="winOrLoseText"></h1>
+        <h1 class="title" id="endStateText">YES! That is correct</h1>
+        <p class="info__text" id="guessCount">
+          Questions asked: <span class="info__text--data">0</span>
+        </p>
         <button id="playAgain" class="button button__filled">PLAY AGAIN</button>
       </div>
     </section>

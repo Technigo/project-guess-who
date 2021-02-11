@@ -229,6 +229,7 @@ const CHARACTERS = [{
 
 // *** Global variables
 let secret, currentQuestion, charactersInPlay, secretValue
+let countClicks = 0;
 
 // *** Draws the game board
 const generateBoard = () => {
@@ -390,7 +391,7 @@ const checkMyGuess = (suspect) => {
     winOrLose.style = 'display: block;'
     congrats.innerHTML += `
     <h1>Congratulations!</h1>
-    <p>You managed to Guess Who - it was ${secret.name}.</p>
+    <p>You managed to Guess Who - it was ${secret.name} and it took you ${countClicks} moves.</p>
     <img src="${secret.img}" alt="${secret.name}">
         <p>Wanna play again?</p>
     ` 
@@ -416,6 +417,7 @@ questions.addEventListener('change', () => {
 // Find out button
 check.addEventListener('click', () => {
   checkQuestion(currentQuestion)
+  countClicks += 1;
 })
 
 // Restart button

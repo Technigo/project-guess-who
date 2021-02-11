@@ -319,7 +319,7 @@ const checkQuestion = () => {
     console.log(keep)
   } else {
     keep = false
-    console.log("false")
+    console.log(keep)
   }
   // Then invoke filterCharacters
   filterCharacters(keep);
@@ -367,20 +367,20 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} eye color! Keep all persons who has ${value} eye color`
       )
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
     } else {
       alert(
         `No, the person doesn not have ${value} eye color! Remove all persons who does not have ${value} eye color`
       )
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
     }
   }
   
   // filter to keep or remove based on the keep variable.
   if (keep) {
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    charactersInPlay = charactersInPlay.filter( person => { 
+      return person[currentQuestion.attribute] === value })
   } else {
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+    charactersInPlay = charactersInPlay.filter( person => {
+      return person[currentQuestion.attribute] !== value })
   } 
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
@@ -405,10 +405,10 @@ const checkMyGuess = (suspect) => {
   if (suspect === secret.name){
   // 2. Set a Message to show in the win or lose section accordingly
     winOrLoseText.innerHTML = `
-    Congratulations, You won! ${suspect} is the person we were looking for. Press the button to play again! `
+    Congratulations, You won! ${suspect} is the person we were looking for. `
     } else {
       winOrLoseText.innerHTML = `
-      Unfortunately, ${suspect} is not the person we were looking for. Press the button to try it again! `
+      Unfortunately, ${suspect} is not the person we were looking for. `
   }
   // 3. Show the win or lose section
   winOrLose.style.display = "flex";

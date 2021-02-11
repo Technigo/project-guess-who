@@ -223,7 +223,9 @@ const CHARACTERS = [
     hat: true,
     smoker: false,
   },
+  
 ]
+
 
 
 // Global variables
@@ -246,12 +248,6 @@ const generateBoard = () => {
   })
 }
 
-
-
-
-
-
-
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -261,8 +257,8 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  generateBoard()
-  setSecret()
+  generateBoard();
+  setSecret();
   
   // What else should happen when we start the game?
 }
@@ -273,13 +269,13 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
-  const optionValue = questions.value
+  const value = questions.options[questions.selectedIndex].value
   // We also need a variable that stores the actual value of the question we've selected.
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: optionValue,
+      value: value,
       // 👆 add the value from the input here
       category: category,
     }
@@ -287,27 +283,34 @@ const selectQuestion = () => {
     // Set this up your self
     currentQuestion = {
       attribute: 'eyeColor',
-      value: optionValue,
+      value: value,
       // 👆 add the value from the input here
       category: category,
     }
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: optionValue,
+      attribute: 'glasses',
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      value, // we're asking if this person wears a hat for exaple, so always true in the question.
+      category: category,
+    }
+  } else if (category === 'accessories') {
+    currentQuestion = {
+      attribute: 'hat',
+      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
+      value, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
     // Set this up your self (should be same structure as above)
     currentQuestion = {
-      attribute: optionValue,
+      attribute: 'smoker',
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      value, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   }
-  console.log(optionValue)
+  
 }
 
 // This function should be invoked when you click on 'Find Out'.
@@ -321,39 +324,75 @@ const checkQuestion = () => {
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const group = currentQuestion.category
-  const attribute = currentQuestion.value
+  //const attribute = currentQuestion.value
   // Show the correct alert message for different categories
   if (group === 'accessories') {
     if (keep) {
       alert(
         `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     } else {
       alert(
         `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
     }
   } else if (group === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
+      alert(
+        `Yes, the person is a ${currentQuestion.attribute}! Keep all that is a ${currentQuestion.attribute}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
+    } else {
+      alert(
+        `No, the person doesn't ${currentQuestion.attribute}! Remove all persons that ${currentQuestion.attribute}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
+    }
+  } else if (group === 'eye color') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${currentQuestion.value} eyes! Keep all that has ${currentQuestion.value} eyes`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
+    } else {
+      alert(
+        `No, the person doesn't have ${currentQuestion.value} eyes! Remove all persons do not have ${currentQuestion.value} eyes`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
+    }  
+
+    // Similar to the one above
+  } else if (group === 'hair color') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${currentQuestion.value} hair! Keep all persons with ${currentQuestion.value} hair`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
     } else {
+      alert(
+        `No, the person has not ${currentQuestion.value} hair! Remove all persons with ${currentQuestion.value} hair`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
     }
-  }
-
+}
   // filter to keep or remove based on the keep variable.
   /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or 
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
 
   // Invoke a function to redraw the board with the remaining people.
+  
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

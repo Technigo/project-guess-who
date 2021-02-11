@@ -3,8 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
-const winOrLose = document.getElementById('winOrLose').style.display ='block'
+const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgian = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 
@@ -408,21 +409,33 @@ const guess = (suspect) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
+  
   if (suspect === secret.name) {
-    winOrLose.innerHTML = 'winOrLose'()
+    winOrLoseText.innerHTML = `It correct ${suspect}`
 
+  } else {
+    winOrLoseText.innerHTML = `${suspect} is wrong`
   }
+  board.innerHTML=""
+  winOrLose.classList.add("show")
+  
+
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
 }
 
+
+
+  
+
 // Invokes the start function when website is loaded
 start()
 
 
 // All the event listeners
+playAgian.addEventListener("click", () => {winOrLose.classList.remove("show"); start()})
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutBtn.addEventListener('click', checkQuestion)

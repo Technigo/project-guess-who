@@ -1,5 +1,6 @@
 // Import scripts
 import { CHARACTERS } from "./scripts/characters.js";
+import { getCard } from "./scripts/cards.js";
 import { getRandomNumber as random } from "./scripts/helperFunctions.js";
 
 // All the DOM selectors stored as short variables
@@ -14,6 +15,7 @@ const alert = document.getElementById("alert");
 let secret,
   currentQuestion,
   charactersInPlay,
+  charactersToFlip,
   counter,
   playerName,
   timer = {
@@ -26,16 +28,15 @@ let secret,
 const generateBoard = () => {
   board.innerHTML = "";
   charactersInPlay.forEach((person) => {
-    board.innerHTML += `
-      <div class="card">
-        <p class="card__name">${person.name}</p>
-        <img class="card__image" src=${person.img} alt=${person.name}>
-        <div class="guess">
-          <span class="guess__text">Guess on ${person.name}?</span>
-          <button class="button button__filled button__filled--small" id="guess" data-name="${person.name}">Guess</button>
-        </div>
-      </div>
-    `;
+    board.innerHTML += getCard(person);
+  });
+};
+
+// Flip cards
+const flipCards = () => {
+  charactersToFlip.forEach((person) => {
+    const cardPerson = document.getElementById(person);
+    cardPerson.classList.add("card__inner--flipped");
   });
 };
 
@@ -62,6 +63,7 @@ const setSecret = () => {
  */
 const start = () => {
   charactersInPlay = CHARACTERS;
+  charactersToFlip = [];
   counter = 0;
   timer.start = Date.now();
   updateInfo();
@@ -133,14 +135,24 @@ const filterCharacters = (keep) => {
   alert.classList.toggle("hidden");
   if (keep) {
     alert.firstElementChild.innerText = `Yes, the person has ${currentQuestion.text}! Keep all that has ${currentQuestion.text}.`;
-    charactersInPlay = charactersInPlay.filter(
-      (character) => character[currentQuestion.attribute] === currentQuestion.value
-    );
+    charactersInPlay = charactersInPlay.filter((character) => {
+      if (character[currentQuestion.attribute] === currentQuestion.value) {
+        return character;
+      } else {
+        charactersToFlip.push({
+          name: character.name,
+        });
+      }
+    });
   } else {
     alert.firstElementChild.innerText = `No, the person doesn't have ${currentQuestion.text}! Remove all that have ${currentQuestion.text}`;
-    charactersInPlay = charactersInPlay.filter(
-      (character) => character[currentQuestion.attribute] !== currentQuestion.value
-    );
+    charactersInPlay = charactersInPlay.filter((character) => {
+      if (character[currentQuestion.attribute] !== currentQuestion.value) {
+        return character;
+      } else {
+        charactersToFlip.push(character.name);
+      }
+    });
   }
 };
 
@@ -210,7 +222,7 @@ alert.addEventListener("click", (event) => {
   const target = event.target;
   if (target.id === "confirm") {
     alert.classList.toggle("hidden");
-    generateBoard();
+    flipCards();
   }
 });
 endScreen.addEventListener("click", (event) => {

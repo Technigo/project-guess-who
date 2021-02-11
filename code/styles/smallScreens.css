@@ -8,7 +8,7 @@ body {
 }
 
 .button {
-  padding: 8px inherit;
+  padding: 8px 50px;
 }
 
 .title {
@@ -36,14 +36,15 @@ body {
 
 .card {
   width: 113px;
-  position: relative;
+  /* position: relative; */
 }
 
-.card .guess {
+.guess {
   display: flex;
   top: 0;
   position: absolute;
   justify-content: flex-end;
+  width: 100%;
 }
 
 .guess__text {
@@ -55,5 +56,5 @@ body {
   margin-bottom: 1px;
   background: white;
   color: var(--primary);
-  border: none;
+  border: 2px solid var(--primary);
 }

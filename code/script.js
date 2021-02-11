@@ -318,15 +318,6 @@ filterCharacters(keep)
 }
 
 
-
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-
-
-// It'll filter the characters array and redraw the game board.
-// Show the correct alert message for different categories
-
 const filterCharacters = (keep) => {    
   
 if (currentQuestion.category === 'accessories') {
@@ -334,54 +325,63 @@ if (currentQuestion.category === 'accessories') {
     alert(
         `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
         )
+        charactersInPlay = charactersInPlay.filter((person) =>           
+        person[currentQuestion.attribute] === currentQuestion.value)
       } else {
         alert(
         `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
         )
+        charactersInPlay = charactersInPlay.filter((person) => 
+        person[currentQuestion.attribute] !== currentQuestion.value)
       }
-  } else if (currentQuestion.category === 'other') {
-    if (keep) {
+    }else if (currentQuestion.category === 'other') { 
+      if (keep) {  
       alert(
         `Yes, the person is a ${currentQuestion.attribute}! Keep everyone who is a  ${currentQuestion.attribute}`
-      )    
-    } else {
+        )
+        charactersInPlay = charactersInPlay.filter((person) =>           
+        person[currentQuestion.attribute] === currentQuestion.value)   
+      } else {
       alert(
       `No, the person isn´t a ${currentQuestion.attribute}! Remove everyone that is a ${currentQuestion.attribute}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => 
+      person[currentQuestion.attribute] !== currentQuestion.value)      
     }
   }
-    else if (currentQuestion.category === 'hair color'){
-    if (keep) {
+    else if (currentQuestion.category === 'hair color'){ 
+      if (keep) {   
       alert(
         `Yes, the person has ${currentQuestion.value} hair! Keep all persons with ${currentQuestion.value} hair`
         )
-    } else {
-      alert(
-      `NO, the person doesnt have ${currentQuestion.value} hair! Remove all persons with ${currentQuestion.value} hair`
-      )
-    }
-  }
-    else if (currentQuestion.category === 'eye color'){
-    if (keep) {
-      alert(
-        `Yes, the person has ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes`
-        )
-    } else {
-      alert(
-        `NO, the person doesnt have ${currentQuestion.value} eyes! Remove all persons with ${currentQuestion.value} eyes`
-        )
+        charactersInPlay = charactersInPlay.filter((person) =>           
+        person[currentQuestion.attribute] === currentQuestion.value)
+      } else {
+        alert(
+          `NO, the person doesnt have ${currentQuestion.value} hair! Remove all persons with ${currentQuestion.value} hair`
+          )
+          charactersInPlay = charactersInPlay.filter((person) => 
+          person[currentQuestion.attribute] !== currentQuestion.value)
+        }
       }
-      
-    }
-  }  
-  
-  // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
-
-    // Invoke a function to redraw the board with the remaining people.
-    
+      else if (currentQuestion.category === 'eye color'){
+        if (keep) {
+        alert(
+          `Yes, the person has ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes`
+          )
+          charactersInPlay = charactersInPlay.filter((person) =>           
+          person[currentQuestion.attribute] === currentQuestion.value)
+          } else {
+            alert(
+              `NO, the person doesnt have ${currentQuestion.value} eyes! Remove all persons with ${currentQuestion.value} eyes`
+              )
+              charactersInPlay = charactersInPlay.filter((person) => 
+              person[currentQuestion.attribute] !== currentQuestion.value)
+            }
+            
+          }
+          generateBoard()          
+          }        
     
     // when clicking guess, the player first have to confirm that they want to make a guess.
     const guess = (suspect) => {

@@ -6,7 +6,7 @@ const filterButton = document.getElementById('filter');
 const winOrLooseBoard = document.getElementById('winOrLose');
 const winOrLooseText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
-const round = document.getElementById('rounds-number')
+const round = document.getElementById('rounds-number');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -110,7 +110,7 @@ const CHARACTERS = [
     mouth: 'open',
     glasses: true,
     hat: false,
-    earrings:false,
+    earrings: false,
     necklace: false,
     smoker: false,
   },
@@ -374,24 +374,24 @@ const selectQuestion = () => {
       value: valueOfTheQuestion,
       category: category,
     }
-  } else if (category === 'hairstyle'){
+  } else if (category === 'hairstyle') {
     currentQuestion = {
       attribute: 'hairStyle',
       value: valueOfTheQuestion,
       category: category,
     }
-  }else if (category === 'eye color') {
+  } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
       value: valueOfTheQuestion,
       category: category,
     }
-  } else if(category === 'mouth'){
-      currentQuestion = {
-        attribute: 'mouth',
-        value: valueOfTheQuestion,
-        category: category,
-      }
+  } else if (category === 'mouth') {
+    currentQuestion = {
+      attribute: 'mouth',
+      value: valueOfTheQuestion,
+      category: category,
+    }
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: valueOfTheQuestion,
@@ -410,7 +410,7 @@ const selectQuestion = () => {
 //  This function compares properties' values of secret object and currentQuestion object. 
 //It is invoked when player clicks on 'Find Out' button.
 const checkQuestion = () => {
-  roundNumber ++;
+  roundNumber++;
   updateTracker();
   const secretValue = secret[currentQuestion.attribute];
   if (secretValue === currentQuestion.value) {
@@ -432,13 +432,13 @@ const filterCharacters = (keep, group) => {
         `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}!`
       );
     }
-  } else if (group === 'hairstyle'){
+  } else if (group === 'hairstyle') {
     if (keep) {
-      if (currentQuestion.value === 'braids'){
+      if (currentQuestion.value === 'braids') {
         alert(
           `Yes, the person has ${currentQuestion.value}! Keep all that have ${currentQuestion.value}!`
         );
-      }else if (currentQuestion.value === 'bun'){
+      } else if (currentQuestion.value === 'bun') {
         alert(
           `Yes, the person has ${currentQuestion.value} hairdo! Keep all that have ${currentQuestion.value} hairdo!`
         );
@@ -448,11 +448,11 @@ const filterCharacters = (keep, group) => {
         );
       }
     } else {
-      if (currentQuestion.value === 'braids'){
+      if (currentQuestion.value === 'braids') {
         alert(
           `No, the person does not have ${currentQuestion.value}! Remove all that have ${currentQuestion.value}!`
         );
-      }else if (currentQuestion.value === 'bun'){
+      } else if (currentQuestion.value === 'bun') {
         alert(
           `No, the person does not have ${currentQuestion.value} hairdo! Remove all that have ${currentQuestion.value} hairdo!`
         );
@@ -462,8 +462,8 @@ const filterCharacters = (keep, group) => {
         );
       }
     }
-  } else if (group === 'mouth'){
-    if(keep) {
+  } else if (group === 'mouth') {
+    if (keep) {
       alert(
         `Yes, the person has ${currentQuestion.value} mouth! Keep all that have ${currentQuestion.value} mouth!`
       );
@@ -526,12 +526,12 @@ const showWinSection = () => {
 const checkMyGuess = (userGuess) => {
   showWinSection()
   if (userGuess === secret.name) {
-    if (roundNumber === 1){
-      winOrLooseText.innerText = 
+    if (roundNumber === 1) {
+      winOrLooseText.innerText =
         `Congratulations! It is ${userGuess}! 
         It took you just ${roundNumber} guess to win!`;
     } else {
-      winOrLooseText.innerText = 
+      winOrLooseText.innerText =
         `Congratulations! It is ${userGuess}! 
         You won with ${roundNumber} guesses!`;
     }

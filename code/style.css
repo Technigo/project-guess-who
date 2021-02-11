@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #59a4ff;
+  --secondary: #614ced;
 }
 
 body {
@@ -18,7 +18,9 @@ h1 {
   margin: 10px 0;
   color: white;
 }
-
+.question-tracker {
+  color: white;
+}
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -49,6 +51,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgb(217, 217, 244);
 }
 
 .game-board {
@@ -57,6 +60,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 /****** CARD ******/

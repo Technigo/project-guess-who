@@ -257,8 +257,9 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  generateBoard();
-  setSecret();
+  generateBoard()
+  setSecret()
+  selectQuestion()
   
   // What else should happen when we start the game?
 }
@@ -361,9 +362,7 @@ const filterCharacters = (keep) => {
       )
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
     }  
-
-    // Similar to the one above
-  } else if (group === 'hair color') {
+} else if (group === 'hair color') {
     if (keep) {
       alert(
         `Yes, the person has ${currentQuestion.value} hair! Keep all persons with ${currentQuestion.value} hair`

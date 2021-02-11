@@ -8,7 +8,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 h1 {
@@ -34,7 +34,7 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -118,7 +118,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -231,4 +231,60 @@ button {
     color: var(--primary);
     border: none;
   }
+}
+
+.character-img {
+  width: 100px;
+  height: 100px;
+}
+
+.character-wrapper {
+  border: 1px solid red;
+  padding: 8px;
+  gap: 16px;
+}
+
+.disable {
+  opacity: 0.1;
+}
+
+.none {
+  display: none;
+}
+.block {
+  display: block;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.question .text {
+  margin-bottom: 5px;
+}
+
+.question .choice {
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  display: inline-block;
+  margin: 0 4px 8px 0;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.question .choice.disable {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.question .choice[data-value="blue"] {
+  background-color: blue;
+}
+.question .choice[data-value="brown"] {
+  background-color: rgb(54, 34, 21);
+}
+.question .choice[data-value="white"] {
+  background-color: rgb(255, 255, 255);
+  color: #000;
 }

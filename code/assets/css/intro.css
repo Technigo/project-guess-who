@@ -1,0 +1,11 @@
+@import "./normalize.css";
+@import "./variables.css";
+@import "./general.css";
+@import "./animations.css";
+
+.intro {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

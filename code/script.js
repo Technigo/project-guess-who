@@ -6,6 +6,11 @@ const findOutButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainbutton = document.getElementById('playAgain')
+
+const shuffleCards = new Audio('https://www.soundjay.com/misc/sounds/shuffling-cards-2.mp3')
+const loseSound = new Audio('https://www.soundjay.com/misc/sounds/fail-trombone-03.mp3')
+const winSound = new Audio('https://www.soundjay.com/human/sounds/applause-8.mp3')
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -13,6 +18,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hairColor: 'hidden',
     eyeColor: 'hidden',
+    beard: false,
     glasses: true,
     hat: true,
     smoker: false,
@@ -22,6 +28,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hairColor: 'hidden',
     eyeColor: 'blue',
+    beard: true,
     glasses: false,
     hat: true,
     smoker: false,
@@ -31,6 +38,7 @@ const CHARACTERS = [
     img: 'images/jacques.svg',
     hairColor: 'grey',
     eyeColor: 'blue',
+    beard: true,
     glasses: false,
     hat: true,
     smoker: true,
@@ -40,6 +48,7 @@ const CHARACTERS = [
     img: 'images/jai.svg',
     hairColor: 'black',
     eyeColor: 'brown',
+    beard: false,
     glasses: false,
     hat: false,
     smoker: false,
@@ -49,6 +58,7 @@ const CHARACTERS = [
     img: 'images/jake.svg',
     hairColor: 'yellow',
     eyeColor: 'green',
+    beard: false,
     glasses: true,
     hat: false,
     smoker: false,
@@ -58,6 +68,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hairColor: 'brown',
     eyeColor: 'green',
+    beard: true,
     glasses: true,
     hat: false,
     smoker: false,
@@ -67,6 +78,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hairColor: 'black',
     eyeColor: 'hidden',
+    beard: false,
     glasses: true,
     hat: false,
     smoker: false,
@@ -76,6 +88,7 @@ const CHARACTERS = [
     img: 'images/jane.svg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
+    beard: false,
     glasses: true,
     hat: false,
     smoker: false,
@@ -85,6 +98,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hairColor: 'orange',
     eyeColor: 'green',
+    beard: false,
     glasses: true,
     hat: false,
     smoker: false,
@@ -95,6 +109,7 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hairColor: 'purple',
     eyeColor: 'hidden',
+    beard: false,
     glasses: true,
     hat: false,
     smoker: true,
@@ -104,6 +119,7 @@ const CHARACTERS = [
     img: 'images/jean.svg',
     hairColor: 'brown',
     eyeColor: 'blue',
+    beard: true,
     glasses: true,
     hat: true,
     smoker: true,
@@ -113,6 +129,7 @@ const CHARACTERS = [
     img: 'images/jeane.svg',
     hairColor: 'brown',
     eyeColor: 'green',
+    beard: false,
     glasses: true,
     hat: false,
     smoker: false,
@@ -122,6 +139,7 @@ const CHARACTERS = [
     img: 'images/jed.svg',
     hairColor: 'orange',
     eyeColor: 'green',
+    beard: true,
     glasses: true,
     hat: true,
     smoker: true,
@@ -131,6 +149,7 @@ const CHARACTERS = [
     img: 'images/jenni.svg',
     hairColor: 'white',
     eyeColor: 'hidden',
+    beard: false,
     glasses: false,
     hat: true,
     smoker: false,
@@ -140,6 +159,7 @@ const CHARACTERS = [
     img: 'images/jeri.svg',
     hairColor: 'orange',
     eyeColor: 'green',
+    beard: false,
     glasses: true,
     hat: false,
     smoker: false,
@@ -149,6 +169,7 @@ const CHARACTERS = [
     img: 'images/jerry.svg',
     hairColor: 'hidden',
     eyeColor: 'blue',
+    beard: false,
     glasses: false,
     hat: true,
     smoker: false,
@@ -158,6 +179,7 @@ const CHARACTERS = [
     img: 'images/jess.svg',
     hairColor: 'black',
     eyeColor: 'blue',
+    beard: false,
     glasses: true,
     hat: false,
     smoker: false,
@@ -167,6 +189,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hairColor: 'black',
     eyeColor: 'brown',
+    beard: false,
     glasses: true,
     hat: false,
     smoker: false,
@@ -176,6 +199,7 @@ const CHARACTERS = [
     img: 'images/jon.svg',
     hairColor: 'brown',
     eyeColor: 'green',
+    beard: false,
     glasses: true,
     hat: false,
     smoker: false,
@@ -185,6 +209,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
+    beard: false,
     glasses: true,
     hat: true,
     smoker: false,
@@ -194,6 +219,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hairColor: 'grey',
     eyeColor: 'brown',
+    beard: false,
     glasses: false,
     hat: false,
     smoker: false,
@@ -203,6 +229,7 @@ const CHARACTERS = [
     img: 'images/josh.svg',
     hairColor: 'yellow',
     eyeColor: 'green',
+    beard: false,
     glasses: false,
     hat: false,
     smoker: false,
@@ -212,6 +239,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hairColor: 'black',
     eyeColor: 'green',
+    beard: true,
     glasses: false,
     hat: false,
     smoker: false,
@@ -221,6 +249,7 @@ const CHARACTERS = [
     img: 'images/julie.svg',
     hairColor: 'black',
     eyeColor: 'brown',
+    beard: false,
     glasses: true,
     hat: true,
     smoker: false,
@@ -228,7 +257,8 @@ const CHARACTERS = [
 ]
 
 
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion, charactersInPlay, playerName
+let attributeQuestions = 0
 
 
 
@@ -256,8 +286,10 @@ const setSecret = () => {
 
 const start = () => {
   charactersInPlay = CHARACTERS
+  playerName= prompt('Hi! What´s your name?')
   setSecret()
   generateBoard()
+  attributeQuestions = 0
   winOrLose.classList.remove('active')
   board.classList.remove('hide')
   winOrLoseText.innerHTML = `
@@ -307,6 +339,8 @@ const checkQuestion = () => {
     keep = true
   }else if (currentQuestion.attribute === 'glasses' && currentQuestion.value === secret.glasses){
     keep = true
+  }else if (currentQuestion.attribute === 'beard' && currentQuestion.value === secret.beard){
+    keep = true
   }else if (currentQuestion.attribute === 'hat' && currentQuestion.value === secret.hat){
     keep = true
   }else if (currentQuestion.attribute === 'smoker' && currentQuestion.value === secret.smoker){
@@ -314,6 +348,7 @@ const checkQuestion = () => {
   } else {
     keep = false
   }
+  attributeQuestions++  
 filterCharacters(keep)
 }
 
@@ -392,24 +427,24 @@ const checkMyGuess = (suspect) => {
     winOrLose.classList.add('active')
     board.classList.add('hide')
     winOrLoseText.innerHTML += `      
-        <p>Nice done!</p>
+        <p>Nice done ${playerName}!</p>
         <p>${suspect} was the correct person</p>
-    `   
+        <p>You asked ${attributeQuestions} question before you got it!</p>
+    ` 
+    winSound.play()  
   }
   else {
     winOrLose.classList.add('active')
     board.classList.add('hide')
     winOrLoseText.innerHTML += `      
-        <p>Sorry!</p>
+        <p>Sorry ${playerName}!</p>
         <p>${suspect} wasn´t the correct person</p>
-        <p>It was ${secret.name}</p>      
+        <p>It was ${secret.name}</p> 
+        <p>You asked ${attributeQuestions} question, maybe should have asked one more?</p>     
     `
-  } 
-  // 4. Hide the game board
+    loseSound.play()
+  }  
 }
-
-
-
 start()
 
 // All the event listeners
@@ -417,7 +452,7 @@ restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click',checkQuestion)
 //Every time I change option in dropdown i trigger selectQuestion() to update currentQuestion
 questions.addEventListener('change',selectQuestion)
-playAgainbutton.addEventListener('click', start)
+playAgainbutton.addEventListener('click', () => {shuffleCards.play(),start()})
 
 
 

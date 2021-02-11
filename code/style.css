@@ -23,6 +23,17 @@ h1 {
   margin: 10px 0;
   color: white;
 }
+.score-board {
+  margin: 10px;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: "Montserrat";
+  font-weight: bold;
+  padding: 17px 27px;
+  cursor: pointer;
+}
 
 .question-section {
   width: 30%;

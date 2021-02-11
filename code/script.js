@@ -369,6 +369,17 @@ const guess = (suspect) => {
   confirm(`Are you sure you want to guess on ${suspect}?`) ? checkMyGuess(suspect) : {}
 }
 
+//Scoreboard  counter
+let currentScore = 0 
+const checkScore = (suspect) => {
+  suspect === secret.name ? currentScore++ : currentScore--
+}
+const scoreBoard = () => {
+  let playerScore = currentScore
+  return scoreBoardText.innerHTML = `Your score is: ${playerScore}`
+}
+
+
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
     // Check if the suspect is the same as the secret person's name
@@ -377,6 +388,9 @@ const checkMyGuess = (suspect) => {
     //  Show the win or lose section, Hide the game board
     winOrLose.style.display = 'flex'
     board.style.display = 'none'
+    
+    checkScore()
+    scoreBoard()
 }
 
 // Invokes the start function when website is loaded

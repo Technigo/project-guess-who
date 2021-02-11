@@ -1,15 +1,13 @@
 // All the DOM selectors stored as short variables
 const characterWrapper = document.getElementById("board");
 const guessBtn = document.getElementById("guess");
-const userHairQuestion = document.getElementById("hairQuestions");
-const userEyeQuestion = document.getElementById("eyeQuestions");
-const userGlassesQuestion = document.getElementById("glassesQuestion");
-const userHatQuestion = document.getElementById("hatQuestion");
-const userSmokerQuestion = document.getElementById("smokerQuestion");
+const charactersControls = document.getElementById("character-controls");
+const revealButton = document.getElementById("reveal-button");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
+    id: 1,
     name: "Jabala",
     img: "images/jabala.svg",
     hairColor: "hidden",
@@ -20,6 +18,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 2,
     name: "Jack",
     img: "images/jack.svg",
     hairColor: "hidden",
@@ -30,6 +29,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 3,
     name: "Jacques",
     img: "images/jacques.svg",
     hairColor: "grey",
@@ -40,6 +40,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 4,
     name: "Jai",
     img: "images/jai.svg",
     hairColor: "black",
@@ -50,6 +51,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 5,
     name: "Jake",
     img: "images/jake.svg",
     hairColor: "yellow",
@@ -60,6 +62,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 6,
     name: "James",
     img: "images/james.svg",
     hairColor: "brown",
@@ -70,6 +73,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 7,
     name: "Jana",
     img: "images/jana.svg",
     hairColor: "black",
@@ -80,6 +84,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 8,
     name: "Jane",
     img: "images/jane.svg",
     hairColor: "yellow",
@@ -90,6 +95,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 9,
     name: "Jaqueline",
     img: "images/jaqueline.svg",
     hairColor: "orange",
@@ -101,6 +107,7 @@ const CHARACTERS = [
   },
 
   {
+    id: 10,
     name: "Jazebelle",
     img: "images/jazebelle.svg",
     hairColor: "purple",
@@ -111,6 +118,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 11,
     name: "Jean",
     img: "images/jean.svg",
     hairColor: "brown",
@@ -121,6 +129,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 12,
     name: "Jeane",
     img: "images/jeane.svg",
     hairColor: "brown",
@@ -131,6 +140,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 13,
     name: "Jed",
     img: "images/jed.svg",
     hairColor: "orange",
@@ -141,6 +151,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 14,
     name: "Jenni",
     img: "images/jenni.svg",
     hairColor: "white",
@@ -151,6 +162,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 15,
     name: "Jeri",
     img: "images/jeri.svg",
     hairColor: "orange",
@@ -161,6 +173,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 16,
     name: "Jerry",
     img: "images/jerry.svg",
     hairColor: "hidden",
@@ -171,6 +184,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 17,
     name: "Jess",
     img: "images/jess.svg",
     hairColor: "black",
@@ -181,6 +195,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 18,
     name: "Jocelyn",
     img: "images/jocelyn.svg",
     hairColor: "black",
@@ -191,6 +206,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 19,
     name: "Jon",
     img: "images/jon.svg",
     hairColor: "brown",
@@ -201,6 +217,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 20,
     name: "Jordan",
     img: "images/jordan.svg",
     hairColor: "yellow",
@@ -211,6 +228,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 21,
     name: "Josephine",
     img: "images/josephine.svg",
     hairColor: "grey",
@@ -221,6 +239,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 22,
     name: "Josh",
     img: "images/josh.svg",
     hairColor: "yellow",
@@ -231,6 +250,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 23,
     name: "Jude",
     img: "images/jude.svg",
     hairColor: "black",
@@ -241,6 +261,7 @@ const CHARACTERS = [
     removed: false,
   },
   {
+    id: 24,
     name: "Julie",
     img: "images/julie.svg",
     hairColor: "black",
@@ -252,11 +273,25 @@ const CHARACTERS = [
   },
 ];
 
-const loadCharacters = () => {
+// Function to update current question
+const updateQuestion = () => {
+  const { options, selectedIndex } = charactersControls;
+  const type = options[selectedIndex].parentNode.label;
+  const value = options[selectedIndex].value;
+
+  question = {
+    type,
+    value,
+  };
+};
+
+const renderCharacters = () => {
   characterWrapper.innerHTML = "";
   CHARACTERS.map((character) => {
     characterWrapper.innerHTML += `
-      <div class="character-wrapper ${character.removed ? "disable" : ""}">
+      <div class="character-wrapper ${
+        character.removed ? "disable" : ""
+      }" onclick="guess(${character.id}, '${character.name}')">
         <p>${character.name}</p>
         <img src=${character.img} alt=${character.name} class="character-img"/>
       </div>
@@ -268,171 +303,44 @@ const selectCharacter = () => {
   const random = Math.floor(Math.random() * (CHARACTERS.length + 1));
   selectedCharacter = CHARACTERS[random];
 };
-selectCharacter();
 
-const userChoice = () => {
-  if (userHairQuestion.value === selectedCharacter.hairColor) {
-    const restCharacters = CHARACTERS.filter(
-      (character) => character.hairColor === selectedCharacter.hairColor
-    );
+const filterCharacters = () => {
+  let { value, type } = question;
 
-    const removedCharacters = CHARACTERS.filter(
-      (character) => character.hairColor !== selectedCharacter.hairColor
-    );
-    removedCharacters.map((character) => {
-      character.removed = true;
-    });
-    loadCharacters();
+  if (value == "true" || value == "false") {
+    value = Boolean(value);
   }
-  if (userHairQuestion.value !== selectedCharacter.hairColor) {
-    const restCharacters = CHARACTERS.filter(
-      (character) => character.hairColor !== userHairQuestion.value
-    );
 
+  if (value === selectedCharacter[type]) {
     const removedCharacters = CHARACTERS.filter(
-      (character) => character.hairColor === userHairQuestion.value
+      (character) => character[type] !== selectedCharacter[type]
     );
     removedCharacters.map((character) => {
       character.removed = true;
     });
-    loadCharacters();
+  } else if (value !== selectedCharacter[type]) {
+    const removedCharacters = CHARACTERS.filter(
+      (character) => character[type] === value
+    );
+    removedCharacters.map((character) => {
+      character.removed = true;
+    });
+  }
+  renderCharacters();
+};
+
+const guess = (id, name) => {
+  if (confirm(`${name}? Are you sure?`)) {
+    if (id === selectedCharacter.id) {
+      alert("You win");
+    } else if (id !== selectedCharacter.id) {
+      alert("Game over");
+    }
   }
 };
 
-const userEyeChoice = () => {
-  if (userEyeQuestion.value === selectedCharacter.eyeColor) {
-    const restCharacters = CHARACTERS.filter(
-      (character) => character.eyeColor === selectedCharacter.eyeColor
-    );
-    const removedCharacters = CHARACTERS.filter(
-      (character) => character.eyeColor !== selectedCharacter.eyeColor
-    );
-    removedCharacters.map((character) => {
-      character.removed = true;
-    });
-    loadCharacters();
-  }
-  if (userEyeQuestion.value !== selectedCharacter.eyeColor) {
-    const restCharacters = CHARACTERS.filter(
-      (character) => character.eyeColor !== userEyeQuestion.value
-    );
-
-    const removedCharacters = CHARACTERS.filter(
-      (character) => character.eyeColor === userEyeQuestion.value
-    );
-    removedCharacters.map((character) => {
-      character.removed = true;
-    });
-    loadCharacters();
-  }
-};
-
-const userGlassesChoice = () => {
-  if (Boolean(userGlassesQuestion.value) == selectedCharacter.glasses) {
-    const restCharacters = CHARACTERS.filter(
-      (character) => character.glasses === selectedCharacter.glasses
-    );
-    const removedCharacters = CHARACTERS.filter(
-      (character) => character.glasses !== selectedCharacter.glasses
-    );
-    removedCharacters.map((character) => {
-      character.removed = true;
-    });
-    loadCharacters();
-  }
-
-  if (Boolean(userGlassesQuestion.value) !== selectedCharacter.glasses) {
-    const restCharacters = CHARACTERS.filter(
-      (character) => character.glasses !== Boolean(userGlassesQuestion.value)
-    );
-
-    const removedCharacters = CHARACTERS.filter(
-      (character) => character.glasses === Boolean(userGlassesQuestion.value)
-    );
-    removedCharacters.map((character) => {
-      character.removed = true;
-    });
-    loadCharacters();
-  }
-};
-
-const userHatChoice = () => {
-  if (Boolean(userHatQuestion.value) == selectedCharacter.hat) {
-    const restCharacters = CHARACTERS.filter(
-      (character) => character.hat === selectedCharacter.hat
-    );
-    const removedCharacters = CHARACTERS.filter(
-      (character) => character.hat !== selectedCharacter.hat
-    );
-    removedCharacters.map((character) => {
-      character.removed = true;
-    });
-    loadCharacters();
-  }
-
-  if (Boolean(userHatQuestion.value) !== selectedCharacter.hat) {
-    const restCharacters = CHARACTERS.filter(
-      (character) => character.hat !== Boolean(userHatQuestion.value)
-    );
-
-    const removedCharacters = CHARACTERS.filter(
-      (character) => character.hat === Boolean(userHatQuestion.value)
-    );
-    removedCharacters.map((character) => {
-      character.removed = true;
-    });
-    loadCharacters();
-  }
-};
-
-const userSmokerChoice = () => {
-  if (Boolean(userSmokerQuestion.value) == selectedCharacter.smoker) {
-    const restCharacters = CHARACTERS.filter(
-      (character) => character.smoker === selectedCharacter.smoker
-    );
-    const removedCharacters = CHARACTERS.filter(
-      (character) => character.smoker !== selectedCharacter.smoker
-    );
-    removedCharacters.map((character) => {
-      character.removed = true;
-    });
-    loadCharacters();
-  }
-
-  if (Boolean(userSmokerQuestion.value) !== selectedCharacter.smoker) {
-    const restCharacters = CHARACTERS.filter(
-      (character) => character.smoker !== Boolean(userSmokerQuestion.value)
-    );
-
-    const removedCharacters = CHARACTERS.filter(
-      (character) => character.smoker === Boolean(userSmokerQuestion.value)
-    );
-    removedCharacters.map((character) => {
-      character.removed = true;
-    });
-    loadCharacters();
-  }
-};
-
-// const userChoice = {
-//   name: undefined,
-//   img: undefined,
-//   hairColor: undefined,
-//   eyeColor: undefined,
-//   glasses: undefined,
-//   hat: undefined,
-//   smoker: undefined,
-// };
-
-const guess = () => {
-  let userAnswer = prompt("Please guess").toLowerCase();
-  if (userAnswer === selectedCharacter.name.toLowerCase()) {
-    alert("You win")
-
-  } else if (userAnswer !== selectedCharacter.name.toLowerCase()) {
-    alert("Game over")
-  }
-
-}
-
-setTimeout(loadCharacters, 1000);
+const initialize = (() => {
+  selectCharacter();
+  updateQuestion();
+  setTimeout(renderCharacters, 1000);
+})();

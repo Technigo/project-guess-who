@@ -13,47 +13,42 @@
   </head>
   <body>
     <aside class="question-section">
-      <select onchange="userChoice()" id="hairQuestions">
-        <optgroup label="hair color">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <option value="hidden">hidden hair</option>
-          <option value="grey">grey hair</option>
-          <option value="black">black hair</option>
-          <option value="orange">orange hair</option>
-          <option value="purple">purple hair</option>
-          <option value="white">white hair</option>
-        </optgroup>
-      </select>
-      <select onchange="userEyeChoice()" id="eyeQuestions">
-        <optgroup label="eye color">
-          <option value="hidden">hidden eye</option>
-          <option value="blue">blue eye</option>
-          <option value="brown">brown eye</option>
-          <option value="green">green eye</option>
-        </optgroup>
-      </select>
-      <select onchange="userGlassesChoice()" id="glassesQuestion">
-        <optgroup label="glasses">
-          <option value="true">yes</option>
-          <option value="">no</option>
-        </optgroup>
-      </select>
-      <select onchange="userHatChoice()" id="hatQuestion">
-        <optgroup label="hat">
-          <option value="true">yes</option>
-          <option value="">no</option>
-        </optgroup>
-      </select>
-      <select onchange="userSmokerChoice()" id="smokerQuestion">
-        <optgroup label="smoker">
-          <option value="true">yes</option>
-          <option value="">no</option>
-        </optgroup>
-      </select>
 
-      <!-- <button id="filter" class="filled-button">FIND OUT</button> -->
-      <button id="guess" class="filled-button" onclick="guess()" >Guess</button>
+      <section>
+        <label for="character-controls">Characters</label>
+        <select id="character-controls" onchange="updateQuestion()">
+          <optgroup label="hairColor">
+            <option value="brown">brown hair</option>
+            <option value="yellow">yellow hair</option>
+            <option value="hidden">hidden hair</option>
+            <option value="grey">grey hair</option>
+            <option value="black">black hair</option>
+            <option value="orange">orange hair</option>
+            <option value="purple">purple hair</option>
+            <option value="white">white hair</option>
+          </optgroup>
+          <optgroup label="eyeColor">
+            <option value="hidden">hidden eye</option>
+            <option value="blue">blue eye</option>
+            <option value="brown">brown eye</option>
+            <option value="green">green eye</option>
+          </optgroup>
+          <optgroup label="glasses">
+            <option value="true">yes</option>
+            <option value="false">no</option>
+          </optgroup>
+          <optgroup label="hat">
+            <option value="true">yes</option>
+            <option value="false">no</option>
+          </optgroup>
+          <optgroup label="smoker">
+            <option value="true">yes</option>
+            <option value="false">no</option>
+          </optgroup>
+        </select>
+        <button id="reveal-button" onclick="filterCharacters()">Reveal!</button>
+      </section>
+      <button id="guess" class="filled-button" >Guess</button>
     </aside>
 
     <section class="board-wrapper">

@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutbtn = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [{
@@ -303,31 +304,67 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+        const secretValue = secret[currentQuestion.attribute]
+        if (secretValue === currentQuestion.value) {
+            filterCharacters(true)
+        } else {
+            filterCharacters(false)
+        }
+    }
     // Compare the currentQuestion with the secret person.
     // See if we should keep or remove people based on that
     // Then invoke filterCharacters
-}
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-    // Show the correct alert message for different categories
+    const group = currentQuestion.category
+    const attribute = currentQuestion.value
+        // Show the correct alert message for different categories
     if (group === 'accessories') {
         if (keep) {
             alert(
-                `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+                `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
             )
         } else {
             alert(
-                `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+                `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
             )
         }
     } else if (group === 'other') {
-        // Similar to the one above
-    } else {
         if (keep) {
-            // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+            alert(
+                `Yes, the person is a ${currentQuestion.attribute}! Keep all persons that are ${currentQuestion.attribute}s`
+            )
         } else {
-            // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+            alert(
+                `No, the person isn´t a ${currentQuestion.attribute}! Remove all persons that are ${currentQuestion.attribute}s`
+            )
+        }
+        // Similar to the one above
+    } else if (group === 'hair color') {
+        if (keep) {
+            alert(
+                    `Yes, the person has ${currentQuestion.value} hair color! Keep all persons with ${currentQuestion.value} hair`
+                )
+                // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+        } else {
+            alert(
+                    `No, the person hasn´t ${currentQuestion.value} hair! Remove all persons that have ${currentQuestion.value} hair`
+                )
+                // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+        }
+    } else if (group === 'eye color') {
+        if (keep) {
+            alert(
+                    `Yes, the person hasn´t ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes`
+                )
+                // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+        } else {
+            alert(
+                    `No, the person hasn´t ${currentQuestion.value} eyes! Remove all that have ${currentQuestion.value} eyes`
+                )
+                // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
         }
     }
 
@@ -360,3 +397,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
+findOutbtn.addEventListener('click', checkQuestion)

@@ -276,9 +276,7 @@ let secret, currentQuestion, charactersInPlay, player,
 
 // Draw the game board
 const generateBoard = () => {
-  //displays how many questions a player asked
-  counter.innerHTML = `Questions asked: ${questionsAsked}`
-
+  board.innerHTML =""
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div id="card" class="card">
@@ -303,12 +301,14 @@ const generateBoard = () => {
       </div>
     `
   })
-  board.innerHTML = `<audio id="card-sound" src="./audio/card-flip.mp3">
-  </audio>`
 
   const counter = document.getElementById("counter")
   const audio = document.getElementById("card-sound")
   const card = document.querySelectorAll(".card-front")
+
+  //displays how many questions a player asked
+  counter.innerHTML = `Questions asked: ${questionsAsked}`
+
   //sound on hover when cards are flipped
   card.forEach(card => card.addEventListener("mouseenter", () => audio.play()))
   card.forEach(card => card.addEventListener("mouseout", () => audio.play()))
@@ -343,13 +343,12 @@ const stopTimer = () => {
   timer("restart")
 }
 
-// This function to start (and restart) the game
-// sets the gameboard, all the characters in play, secret character and timer
-const start = () => {
+//make it possible for the player to add name before starting the game
+const preGame  = () => {
   const form = document.getElementById("form");
-  form.classList.add("active")
-  board.innerHTML = ''
-  //adds a input for player name in the beginning
+  form.classList.add("active") //shows the form section
+ 
+  board.innerHTML = ""
   form.innerHTML += `
     <label for="name-input">
       Insert your name:
@@ -361,18 +360,22 @@ const start = () => {
   `
   const nameBtn = document.getElementById("name-Btn");
   const userName = document.getElementById("name-input")
-
-  //onclick the name will be saved and the name input will be removed
   nameBtn.addEventListener("click", () => {
-    player = userName.value;
+    player = userName.value; //stores nameinput
     form.innerHTML = ""
-    form.classList.remove("active")
+    form.classList.remove("active") //hides form with nameinput
+    start() //runs start
+  })
+}
+
+// This function to start (and restart) the game
+// sets the gameboard, all the characters in play, secret character and timer
+const start = () => {
     charactersInPlay = CHARACTERS
     generateBoard()
     setSecret()
     stopTimer()
-  })
-}
+  }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (handleOption) => {
@@ -420,7 +423,7 @@ const stopPropergate = (event) => {
 }
 
 //This function is invoked when you click Find Out. 
-//Puts forward values needed for filtering and invokes the filter functionn
+//Puts forward values needed for filtering and invokes the filter function
 const checkQuestion = (currentQ) => {
   let group;
   currentQ.category === ("accessories || behavior") ? group = currentQ.category : group = currentQ.attribute
@@ -445,7 +448,9 @@ const filterCharacters = (keep, group) => {
 const guess = (suspect) => {
   board.innerHTML = `
     <div class="guess-confirmation">
-      Are you sure you want to guess on ${suspect}? 
+      <h2> 
+        Are you sure you want to guess on ${suspect}? 
+      </h2>
       <button id="yes-btn" class="filled-button">
         YES
       </button> 
@@ -466,10 +471,11 @@ const guess = (suspect) => {
 
 // If you confirm, this function is invoked which says if you won or lose
 const checkMyGuess = (suspect) => {
-  let winOrLose = document.getElementById("winOrLose")
+  const winOrLose = document.getElementById("winOrLose")
   let winLoseText;
 
   winOrLose.classList.add("active")
+
   suspect === secret.name ? (
     rightGuesses++,
     winLoseText = `Yes, ${suspect} was the secret character! Well done ${player}!`
@@ -503,7 +509,7 @@ const checkMyGuess = (suspect) => {
         <h2>Results previous games:</h2>
       </div>
     `
-  //keeps the results from previous games & displays
+  //keeps the results from previous games & displays it
   summaryArray.push(`Questions: ${questionsAsked}, ${countUp.innerHTML}`)
   summaryArray.forEach(sum => winOrLose.innerHTML += `
     <div class="win-or-lose">
@@ -512,26 +518,25 @@ const checkMyGuess = (suspect) => {
       </div>
     </div>
   `)
-  if (summaryArray.length > 5) {
-    summaryArray = []
+  if (summaryArray.length > 5) { 
+    summaryArray = [] //clears the resultlist when it gets to long
   }
-
-  questionsAsked = 0;
 
   //play again? click and winOrLose section will be hidden and start() will run
   const playAgain = document.getElementById("playAgain")
   playAgain.addEventListener("click", () => {
-    winOrLose.classList.remove("ative")
-    start()
+    winOrLose.classList.remove("active")
+    questionsAsked = 0;
+    preGame()
   })
 }
 
-// Invokes the start function when website is loaded & sets timer
-start()
+// Invokes the pre start function when website is loaded & sets timer
+preGame()
 setInterval(timer, 1000)
 
 restartButton.addEventListener("click", start)
 
-questions.addEventListener("change", () => {
-  selectQuestion(questions.value)
-})
+//when the player chooses a question in the scroll down menu change is invoked
+//passes the select value to selctedQuestion
+questions.addEventListener("change", () => (selectQuestion(questions.value)))

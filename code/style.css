@@ -24,6 +24,7 @@ body {
 }
 
 /* Header */
+
 .header {
   background-color: var(--secondary);
   height: 70vh;
@@ -36,33 +37,31 @@ body {
 
 /* How to play section with image and click */
 
-.card-header {
+.how-to-play, .question {
   background-color: white;
   border-radius: 30px 30px 30px 0px;
   position: absolute;
   top:15px;
   left: 70px;
   cursor: pointer;
+  text-align: center;
+  font-size: 26px;
+  padding: 12px;
 }
 
-.card-header:hover {
+.question:hover {
   background-color: var(--primary);
   color: white;
 }
 
-.how-to-play-card {
-  height: 70px;
+.answer {
   width: 750px;
-  position: absolute;
-  background-color: white;
   display: none;
-  top: 10px;
-  left: 70px;
   z-index: 1;
-  border-radius: 30px 30px 30px 0px;
-  padding-left: 20px;
+  padding: 4px;
   font-size: 22px;
-  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
 }
 
 .header-img {
@@ -76,12 +75,6 @@ body {
   transform: rotate(65deg);
 }
 
-.card-header p {
-  text-align: center;
-  font-size: 26px;
-  margin: 12px;
-}
-
 /* Header middle section with h1, input player name and button */
 
 .h1 {
@@ -92,7 +85,7 @@ body {
   color: white;
 }
 
-.input-button {
+.input-button-section {
   display: flex;
   align-items: center;
 }
@@ -114,29 +107,26 @@ body {
   align-items: center;
   justify-content: center;
   border: 4px solid var(--primary);
-  padding: 0;
   width: 250px;
   height: 78px;
   background-color: var(--primary);
-  cursor: pointer;
-  outline: none;
-}
-
-.lets-play-button:hover {
-  background-color: var(--second);
-}
-
-.h2 {
   font-size: 40px;
   color: white; 
 }
+
+.lets-play-button:hover {
+  background-color: var(--secondary);
+}
+
 
 /* Section with the characters */ 
 
 .board-wrapper {
   width: 100%;
   margin-top: 20px;
+  margin-bottom: 50px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -214,19 +204,22 @@ body {
 
 /* ASK QUESTION CONTAINER */
 
-.question-container {
+.question-section {
+  width: 90%;
+  padding: 20px 10px 20px 10px;
+  background-color: var(--secondary);
   display: flex;
-  justify-content: center;
-  margin-bottom: 50px;
-  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .question-container-left-side {
   display: flex;
   justify-content: space-around;
+  padding-left: 10px;
 }
 
-/* Player icon and input name container */
+/* Player icon and input name */
 
 .player-name-box {
   display: flex;
@@ -245,39 +238,25 @@ body {
   margin-top: -20px;
 }
 
-.question-section {
-  width: 91.1%;
-  padding: 20px;
-  background-color: var(--secondary);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
-
 select {
   display: block;
   border: none;
   font-size: 26px;
-  font-family: 'Patrick Hand';
+  font-family: 'Patrick Hand', sans-serif;
   color: var(--primary);
   width: 350px;
   padding-left: 10px;
   margin: 0px 20px 0px 20px;
 }
 
-.questionNumber {
-  margin-left: 20px;
-}
-
 .questionNumber p {
+  margin-left: 20px;
   font-size: 20px;
   color: white;
 }
 
 .question-container-right-side {
-  display: flex;
-  justify-content: flex-end;
+  padding-right: 10px;
 }
 
 .guess-who-icon {
@@ -303,7 +282,6 @@ button {
 .outlined-button {
   background-color: transparent;
   color: var(--primary);
-  align-self: flex-end;
 }
 
 .filled-button,
@@ -361,6 +339,7 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+  font-size: 34px;
 }
 
 /* Media queris */
@@ -370,9 +349,19 @@ button {
     flex-direction: column;
   }
 
+  .answer {
+    width: 280px;
+    font-size: 18px;
+  }
+
   .header-img {
     height: 140px;
     width: 120px;
+  }
+
+  .h1 {
+    font-size: 80px;
+    margin-bottom: 30px;
   }
 
   .input {
@@ -384,15 +373,36 @@ button {
   .lets-play-button {
     width: 150px;
     height: 58px;
+    font-size: 26px;
   }
 
-  .h2 {
-    font-size: 34px;
+  .board-wrapper {
+    width: 100%;
   }
 
-  .h1 {
-    font-size: 80px;
-    margin-bottom: 30px;
+  .game-board {
+    width: 100%;
+    max-width: 750px;
+  }
+
+  .card {
+    width: 110px;
+    position: relative;
+  }
+
+  .card .guess {
+    top: 0;
+    position: absolute;
+    justify-content: flex-end;
+  }
+
+  .card .guess .filled-button {
+    padding: 6px;
+    width: 80px;
+    margin-bottom: 10px;
+    background: white;
+    color: var(--primary);
+    border: none;
   }
 
   .question-container-left-side {
@@ -428,32 +438,4 @@ button {
     width: 51px;
   }
 
-  .board-wrapper {
-    width: 100%;
-  }
-
-  .game-board {
-    width: 100%;
-    max-width: 750px;
-  }
-
-  .card {
-    width: 110px;
-    position: relative;
-  }
-
-  .card .guess {
-    top: 0;
-    position: absolute;
-    justify-content: flex-end;
-  }
-
-  .card .guess .filled-button {
-    padding: 6px;
-    width: 80px;
-    margin-bottom: 10px;
-    background: white;
-    color: var(--primary);
-    border: none;
-  }
 }

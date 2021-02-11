@@ -7,9 +7,8 @@ const winOrLose = document.getElementById('winOrLose');
 const winOrLoseText = document.getElementById('winOrLoseText');
 const playAgain = document.getElementById('playAgain');
 const playButton = document.getElementById('lets-play-button');
-const gameContainer = document.getElementById('game-container');
 const howToPlay = document.getElementById('how-to-play-question');
-const howToPlayCard = document.getElementById('how-to-play-answer');
+const howToPlayAnswer = document.getElementById('how-to-play-answer');
 const input = document.getElementById('input');
 const playerName = document.getElementById('player-name');
 let questionNumber = document.getElementById('questionNum');
@@ -445,8 +444,7 @@ const filterCharacters = (keep) => {
   }
   generateBoard();
   questionNumber ++;
-  questionNum.innerHTML = `<div><p>QUESTION ${questionNumber}</p></div>`
-  
+  questionNum.innerHTML = `<p>QUESTIONS ASKED: ${questionNumber}</p>`
 };
 
   // Invoke a function to redraw the board with the remaining people.
@@ -468,10 +466,10 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     winOrLoseText.innerHTML = `
-      Congratulations, ${input.value}! You win! You guessed on ${suspect} and that was correct and you did it in only ${questionNumber} questions!`;
+      Congratulations, ${input.value}! You win! You guessed on ${suspect} and that was correct and you did it with only ${questionNumber} questions!`;
   } else {
     winOrLoseText.innerHTML = `
-      I'm sorry, ${input.value}! You lose! You guessed on ${suspect} and that was wrong and you did it in ${questionNumber} questions! The right answer was ${secret.name}!`;
+      I'm sorry, ${input.value}! You lose! You guessed on ${suspect} and that was wrong and you did it with ${questionNumber} questions! The right answer was ${secret.name}!`;
   }
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
@@ -500,11 +498,11 @@ playButton.addEventListener('click', () => {
 });
 
 howToPlay.addEventListener('click', () => {
-  howToPlayCard.style.display = "flex";
+  howToPlayAnswer.style.display = "flex";
 });
 
-howToPlayCard.addEventListener('click', () => {
-  howToPlayCard.style.display = "none";
+howToPlayAnswer.addEventListener('click', () => {
+  howToPlayAnswer.style.display = "none";
 });
 
 

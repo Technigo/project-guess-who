@@ -258,7 +258,6 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   winOrLoseSection.classList.remove('show-win-or-lose-wrapper')
-  // What else should happen when we start the game?
   generateBoard()
   setSecret()
   console.log(secret);
@@ -267,8 +266,6 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
   const optionValue = questions.value;
 
 
@@ -307,16 +304,12 @@ const checkQuestion = () => {
   } else {
       filterCharacters(false);
   }
-  // Compare the currentQuestion (object) with the secret person (object). Is there a match between the question selected(category) and what property value the secret has is respective category? In that case filter. 
-  // See if we should keep or remove people based on that (true or false)
-  // Then invoke filterCharacters. 
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  // Show the correct alert message for different categories
   const group = currentQuestion.category;
-  let attribute = currentQuestion.value;  //kan denna också vara const?
+  let attribute = currentQuestion.value;
   if (group === 'accessories') {
     if (keep) {
       alert(
@@ -350,7 +343,7 @@ const filterCharacters = (keep) => {
     } else {
       alert(
         `No, the person does not have ${attribute} hair! Remove all that have ${attribute} hair`
-      )
+       )
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
     }
     
@@ -366,29 +359,22 @@ const filterCharacters = (keep) => {
         )
         charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
       }
-    
     }
     generateBoard ()
 }
-
-  //vad ska stoppas in i denna funktionen? särskilj på Key & value och vad är det jag vill titta på?
-
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   let confirmAnswer = confirm (
     `Are you sure you want to guess on ${suspect}?`
   );
-    if (confirmAnswer === true) {
+    if (confirmAnswer) {
       checkMyGuess(suspect)
     } else { 
       alert (`Ok, keep playing :-) `)
     }
   }
  
-  // store the interaction from the player in a variable.
-  // If the player wants to guess, invoke the checkMyGuess function.
-
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   let winOrLoseText = document.getElementById('winOrLoseText')
@@ -399,12 +385,6 @@ const checkMyGuess = (suspect) => {
   } else {
     winOrLoseText.innerHTML=`Oh no, your guess was wrong :-(`
   }
-  // is suspect === secret.name  //jämför de två objecten för att se om de är likadana
-  // tex just compare if the names are identical? gives true or false
-  // 1. Check if the suspect is the same as the secret person's name see line 242. Endast charachter name som skickas med
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 }
 
 // Invokes the start function when website is loaded

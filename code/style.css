@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #fff;
+  --secondary: #05411c;
 }
 
 body {
@@ -136,13 +136,13 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #000
 }
 
 .filled-button:hover {
-  background-color: white;
+  background-color: #09b92f;
   border-color: white;
-  color: var(--primary);
+  color: #000
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -209,7 +209,7 @@ button {
 
   .card {
     width: 113px;
-    position: relative;
+    position: relative;    
   }
 
   .card .guess {

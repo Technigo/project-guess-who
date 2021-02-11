@@ -374,6 +374,7 @@ const preGame = () => {
 // sets the gameboard, all the characters in play, secret character and timer
 const start = () => {
   charactersInPlay = CHARACTERS
+  questions.selectedIndex = defaultStatus;
   generateBoard()
   setSecret()
   stopTimer()

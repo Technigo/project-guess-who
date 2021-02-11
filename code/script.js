@@ -259,6 +259,7 @@ const start = () => {
   charactersInPlay = CHARACTERS       // Here we're setting charactersInPlay array to be all the characters to start with
   generateBoard()     // What else should happen when we start the game?
   setSecret()
+  selectQuestion()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -270,6 +271,7 @@ const selectQuestion = () => {
       attribute: 'hairColor',
       value: selectedValue, // added the value from the input here
       category: category,
+      // text: `${selectedValue} hair`,
     }
   } else if (category === 'eye color') {
     currentQuestion = {
@@ -330,6 +332,7 @@ const filterCharacters = (keep) => {
   } else if (currentQuestion.category === 'hair color') {
     if (keep) {
       alert(          // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+        //`Yes, the person has ${currentQuestion.value} hair! Keep all persons with ${currentQuestion.value} hair.`
         `Yes, the person has ${currentQuestion.value} hair! Keep all persons with ${currentQuestion.value} hair.`
       )
     } else {          // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
@@ -352,7 +355,7 @@ const filterCharacters = (keep) => {
   // filter to keep or remove based on the keep variable.
 
     if (keep) {
-    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)  //find the property in person (object)
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)  //find the property in every person (object)
     } else {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)  // a string, which is passed into the square bracket below to access property from object
     }

@@ -4,9 +4,9 @@ Replace this readme with your own information about your project.
 
 Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
-Guess who builds on the classic kids board game. It is a game for 2 players. Each player has a character and the opposing player must guess who they are. You must answer truthfully and use a variety of different questions. Try to use the best questions possible that will narrow down the character cards quickly.
+This project builds on the classic board game Guess Who. In this version it is a game for 1 player. The player tries to guess who the secret character is using a variety of different questions. Try to use the best questions possible that will narrow down the character cards quickly.
 
-Ask questions such as what color is their hair, or do they wear a moustache. You play against a computer opponent.  
+I added player instructions in the Console. ??
 
 ## The problem
 

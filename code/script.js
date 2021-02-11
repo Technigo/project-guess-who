@@ -284,15 +284,18 @@ const selectQuestion = () => {
 
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: 'accessories',
+      // attribute: 'accessories',
+      attribute: questions.value,
       value: true, // we're asking if this person wears a hat for example, so always true in the question.
       category: category,
     }
+
     // console.log(currentQuestion)
 
   } else if (category === 'other') {
       currentQuestion = {
-        attribute: 'smoke',
+        // attribute: 'smoke',
+        attribute: questions.value,
         value: true,
         category: category,
       }
@@ -313,30 +316,32 @@ const checkQuestion = () => {
   if (currentQuestion.value === secretValue) {
     keep = true
     console.log('keep is true')
-    filterCharacters(keep, currentQuestion.attribute)
+    filterCharacters(true)
   } else {
     keep = false
     console.log('keep is false')
-    filterCharacters(keep, currentQuestion.attribute)
+    filterCharacters(false)
   }
-
-
 }
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep, group) => {
-  // Show the correct alert message for different categories
-  if (group === 'accessories') {
+const filterCharacters = (keep) => {
+  const category = currentQuestion.category;
+  const attribute = currentQuestion.attribute;
+  
+  console.log(keep, category, attribute)
+
+  if (category === 'accessories') { 
     if (keep) {
       alert(
-        `Yes, the person wears hat/glasses! Keep all that wears hat/glasses`
+        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
       )
     } else {
       alert(
-        `No, the person doesn't wear hat/glasses! Remove all that wears hat/glasses`
+        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
       )
     }
-  } else if (group === 'other') {
+  } else if (category === 'other') {
       if (keep) {
         alert(
           `Yes, the person is a smoker! Keep all smokers!`
@@ -346,18 +351,28 @@ const filterCharacters = (keep, group) => {
             `No, the person is not a smoker, remove all smokers.`
           )
         }
-      
-  } else {
+  } else if (category === 'hair color') {
     if (keep) {
       alert(
         `Yes, the person has ${currentQuestion.value} hair! Keep all persons with ${currentQuestion.value} hair`
       )                     // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
     } else {
       alert(
-        `NO, the person doesnt have ${currentQuestion.value} hair! Remove all persons with ${currentQuestion.value} hair`
+        `No, the person doesnt have ${currentQuestion.value} hair! Remove all persons with ${currentQuestion.value} hair`
+      )                     // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+    }
+  } else if (category === 'eye color') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes`
+      )                     // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+    } else {
+      alert(
+        `No, the person doesnt have ${currentQuestion.value} eyes! Remove all persons with ${currentQuestion.value} eyes`
       )                     // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
     }
   }
+
 
   // filter to keep or remove based on the keep variable.
   /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)

@@ -16,7 +16,7 @@ const CHARACTERS = [
     eyeColor: 'hidden',
     glasses: true,
     hat: true,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jack',
@@ -25,7 +25,7 @@ const CHARACTERS = [
     eyeColor: 'blue',
     glasses: false,
     hat: true,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jacques',
@@ -34,7 +34,7 @@ const CHARACTERS = [
     eyeColor: 'blue',
     glasses: false,
     hat: true,
-    smoker: true,
+    smoking: true,
   },
   {
     name: 'Jai',
@@ -43,7 +43,7 @@ const CHARACTERS = [
     eyeColor: 'brown',
     glasses: false,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jake',
@@ -52,7 +52,7 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'James',
@@ -61,7 +61,7 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jana',
@@ -70,7 +70,7 @@ const CHARACTERS = [
     eyeColor: 'hidden',
     glasses: true,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jane',
@@ -79,7 +79,7 @@ const CHARACTERS = [
     eyeColor: 'hidden',
     glasses: true,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jaqueline',
@@ -88,7 +88,7 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
 
   {
@@ -98,7 +98,7 @@ const CHARACTERS = [
     eyeColor: 'hidden',
     glasses: true,
     hat: false,
-    smoker: true,
+    smoking: true,
   },
   {
     name: 'Jean',
@@ -107,7 +107,7 @@ const CHARACTERS = [
     eyeColor: 'blue',
     glasses: true,
     hat: true,
-    smoker: true,
+    smoking: true,
   },
   {
     name: 'Jeane',
@@ -116,7 +116,7 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jed',
@@ -125,7 +125,7 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: true,
-    smoker: true,
+    smoking: true,
   },
   {
     name: 'Jenni',
@@ -134,7 +134,7 @@ const CHARACTERS = [
     eyeColor: 'hidden',
     glasses: false,
     hat: true,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jeri',
@@ -143,7 +143,7 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jerry',
@@ -152,7 +152,7 @@ const CHARACTERS = [
     eyeColor: 'blue',
     glasses: false,
     hat: true,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jess',
@@ -161,7 +161,7 @@ const CHARACTERS = [
     eyeColor: 'blue',
     glasses: true,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jocelyn',
@@ -170,7 +170,7 @@ const CHARACTERS = [
     eyeColor: 'brown',
     glasses: true,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jon',
@@ -179,7 +179,7 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jordan',
@@ -188,7 +188,7 @@ const CHARACTERS = [
     eyeColor: 'hidden',
     glasses: true,
     hat: true,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Josephine',
@@ -197,7 +197,7 @@ const CHARACTERS = [
     eyeColor: 'brown',
     glasses: false,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Josh',
@@ -206,7 +206,7 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: false,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Jude',
@@ -215,7 +215,7 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: false,
     hat: false,
-    smoker: false,
+    smoking: false,
   },
   {
     name: 'Julie',
@@ -224,7 +224,7 @@ const CHARACTERS = [
     eyeColor: 'brown',
     glasses: true,
     hat: true,
-    smoker: false,
+    smoking: false,
   },
 ];
 

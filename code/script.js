@@ -7,7 +7,7 @@ const winOrLose = document.getElementById('winOrLose')
 const congrats = document.getElementById('congrats')
 const playAgain = document.getElementById('playAgain')
 
-// *** Array with all the characters, as objects
+// Array with all the characters, as objects
 const CHARACTERS = [{
     name: 'Jabala',
     img: 'images/jabala.svg',
@@ -227,11 +227,11 @@ const CHARACTERS = [{
   },
 ]
 
-// *** Global variables
+// Global variables
 let secret, currentQuestion, charactersInPlay, secretValue
 let countClicks = 0;
 
-// *** Draws the game board
+// Draws the game board
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -254,11 +254,12 @@ const setSecret = () => {
 }
 
 // Starts the game, sets characters in play, sets secret person
-// and generates the board
+// generates the board and sets the click counter to 0
 const start = () => {
   charactersInPlay = CHARACTERS
   setSecret()
   generateBoard()
+  countClicks = 0;
   console.log(secret.name)
 }
 
@@ -308,9 +309,9 @@ const selectQuestion = (selected) => {
 
 // Checks if your guess matches the secret person
 const checkQuestion = () => {
-  const secretValue = secret[currentQuestion.attribute];
+  const secretValue = secret[currentQuestion.attribute]
   if (secretValue === currentQuestion.value) {
-    keep = true;
+    keep = true
     filterCharacters(true)
   } else {
     keep = false
@@ -364,6 +365,7 @@ const filterCharacters = (keep) => {
         `No, the person doesn't have ${value} eyes! Remove all that have ${value} eyes.`)
     }
   }
+
   if (keep) {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value);
   } else {
@@ -374,7 +376,7 @@ const filterCharacters = (keep) => {
 
 // Lets you guess on who you think the secret person is
 const guess = (suspect) => {
-  let confirm = window.confirm(`Do you want to guess ${suspect}?`);
+  let confirm = window.confirm(`Do you want to guess that ${suspect} is the secret person?`);
   if (confirm) {
     checkMyGuess(suspect);
   } else {
@@ -384,19 +386,18 @@ const guess = (suspect) => {
 }
 
 // Displays a message if you have won or lost
-// INTE KLAR
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
-    alert(`${suspect} is correct`);
+    alert(`Yes, ${suspect} is the secret person!`);
     winOrLose.style = 'display: block;'
     congrats.innerHTML += `
     <h1>Congratulations!</h1>
-    <p>You managed to Guess Who - it was ${secret.name} and it took you ${countClicks} moves.</p>
+    <p>You managed to Guess Who! It was ${secret.name} and it took you ${countClicks} moves.</p>
     <img src="${secret.img}" alt="${secret.name}">
         <p>Wanna play again?</p>
     ` 
   } else {
-    alert(`${suspect} is wrong`);
+    alert(`No, ${suspect} is not the secret person!`);
     winOrLose.style = 'display: block;'
     congrats.innerHTML += `
         <p>Wanna play again?</p>
@@ -414,7 +415,7 @@ questions.addEventListener('change', () => {
   selectQuestion(questions.value)
 })
 
-// Find out button
+// Find out button with counter
 check.addEventListener('click', () => {
   checkQuestion(currentQuestion)
   countClicks += 1;
@@ -425,6 +426,7 @@ restartButton.addEventListener('click', start)
 
 // Play again button
 playAgain.addEventListener('click', () => {
+  congrats.innerHTML = '';
   winOrLose.style = 'display: hidden;'
   start()
 })

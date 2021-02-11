@@ -420,7 +420,7 @@ const selectQuestion = (handleOption) => {
 const checkQuestion = () => {
   let group;
 
-  currentQuestion.category === ("accessories" || "behavior") ? (
+  currentQuestion.category === "accessories" || currentQuestion.category === "behaviour" ? (
     group = currentQuestion.attribute
   ) : (
     group = currentQuestion.value

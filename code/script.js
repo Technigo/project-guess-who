@@ -10,7 +10,15 @@ const endScreen = document.getElementById("endScreen");
 const alert = document.getElementById("alert");
 
 // Global variables
-let secret, currentQuestion, charactersInPlay, counter;
+let secret,
+  currentQuestion,
+  charactersInPlay,
+  counter,
+  timer = {
+    start: "",
+    end: "",
+    difference: "",
+  };
 
 // Draw the game board
 const generateBoard = () => {
@@ -51,6 +59,7 @@ const setSecret = () => {
 const start = () => {
   charactersInPlay = CHARACTERS;
   counter = 0;
+  timer.start = Date.now();
   updateInfo();
   generateBoard();
   setSecret();
@@ -152,8 +161,16 @@ const checkMyGuess = (suspect) => {
     endStateText.innerText = "NO! That is wrong";
   }
   questionCounter.innerText = counter;
+  stopTimer();
   // 3. Show the win or lose section
   endScreen.classList.toggle("hidden");
+};
+
+const stopTimer = () => {
+  timer.stop = Date.now();
+  timer.difference = timer.stop - timer.start;
+  const finalTime = endScreen.querySelector("#timer").firstElementChild;
+  finalTime.innerText = `${Math.floor(timer.difference / 1000)} seconds`;
 };
 
 // Invokes the start function when website is loaded

@@ -289,24 +289,17 @@ const selectQuestion = () => {
     }
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: 'glasses',
+      attribute: value,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value, // we're asking if this person wears a hat for exaple, so always true in the question.
-      category: category,
-    }
-  } else if (category === 'accessories') {
-    currentQuestion = {
-      attribute: 'hat',
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value, // we're asking if this person wears a hat for exaple, so always true in the question.
+      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
     // Set this up your self (should be same structure as above)
     currentQuestion = {
-      attribute: 'smoker',
+      attribute: value,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value, // we're asking if this person wears a hat for exaple, so always true in the question.
+      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   }
@@ -330,7 +323,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const group = currentQuestion.category
-  //const attribute = currentQuestion.value
+  const attribute = currentQuestion.value
   // Show the correct alert message for different categories
   if (group === 'accessories') {
     if (keep) {

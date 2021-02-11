@@ -279,6 +279,7 @@ const selectQuestion = () => {
       category: category, //NOEMI: what does this do?
     }
 
+    
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: 'accessories',

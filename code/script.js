@@ -256,11 +256,13 @@ const generateBoard = () => {
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
-
+const updateTracker = () => {
+  round.innerText = `${roundNumber}`
+}
 // This function starts (and restarts) the game
 const start = () => {
-  //updateRoundTracker(0);
   roundNumber = 0;
+  updateTracker()
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
@@ -301,7 +303,7 @@ const selectQuestion = () => {
 //It is invoked when player clicks on 'Find Out' button.
 const checkQuestion = () => {
   roundNumber ++;
-  round.innerText = `${roundNumber}`;
+  updateTracker();
   const secretValue = secret[currentQuestion.attribute];
   if (secretValue === currentQuestion.value) {
     filterCharacters(true, currentQuestion.category)
@@ -377,9 +379,15 @@ const showWinSection = () => {
 const checkMyGuess = (userGuess) => {
   showWinSection()
   if (userGuess === secret.name) {
-    winOrLooseText.innerText = 
-    `Congratulations! It is ${userGuess}! 
-    You won in ${roundNumber} rounds!`;
+    if (roundNumber === 1){
+      winOrLooseText.innerText = 
+        `Congratulations! It is ${userGuess}! 
+        It took you just ${roundNumber} guess to win!`;
+    } else {
+      winOrLooseText.innerText = 
+        `Congratulations! It is ${userGuess}! 
+        You won with ${roundNumber} guesses!`;
+    }
   } else {
     winOrLooseText.innerText = `Sorry, it is not ${userGuess} try again!`
   }
@@ -392,6 +400,7 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
-playAgainButton.addEventListener('click', () =>{
-  location.reload();
+playAgainButton.addEventListener('click', () => {
+  winOrLooseBoard.classList.remove('shown');
+  start()
 })

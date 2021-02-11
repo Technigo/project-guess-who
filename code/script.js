@@ -160,14 +160,15 @@ const checkMyGuess = (suspect) => {
     questionCounter = endScreen.querySelector("#questionCount").firstElementChild;
   // 2. Set a Message to show in the win or lose section accordingly
   if (winState) {
-    endStateText.innerText = "YES! That is correct";
+    endStateText.innerText = `Good job ${playerName}! You guessed correctly!`;
   } else {
-    endStateText.innerText = "NO! That is wrong";
+    endStateText.innerText = `Sorry ${playerName}... You guessed wrong.`;
   }
   questionCounter.innerText = counter;
   stopTimer();
   // 3. Show the win or lose section
   endScreen.classList.toggle("hidden");
+  board.innerHTML = "";
 };
 
 const stopTimer = () => {

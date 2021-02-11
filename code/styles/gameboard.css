@@ -4,12 +4,13 @@
   position: relative;
   width: 90%;
   max-width: 882px;
+  margin: 10vh 0;
 }
 
 .game-board__cards {
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
+  justify-content: center;
 }
 
 .alert {

@@ -8,16 +8,15 @@ body {
 }
 
 .button {
-  padding: 8px 16px;
+  padding: 8px inherit;
 }
 
 .title {
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 36px;
 }
 
 .icon {
-  width: 51px;
+  width: 90px;
 }
 
 .board-wrapper {
@@ -32,6 +31,7 @@ body {
 .game-board {
   width: 100%;
   max-width: 750px;
+  margin: 0;
 }
 
 .card {

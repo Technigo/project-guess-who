@@ -14,13 +14,15 @@ body {
 
 .side-section {
   width: 30%;
+  min-width: 300px;
   min-height: 100vh;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
   padding: 5vw;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   box-sizing: border-box;
+  align-content: center;
 }
 
 .board-wrapper {
@@ -32,15 +34,17 @@ body {
 }
 
 .end-screen__wrapper {
-  align-items: center;
-  justify-content: center;
   background: var(--secondary);
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   height: 100vh;
+  width: 100%;
+}
+
+/* general icon class used various blocks */
+
+.icon {
+  width: 126px;
+  align-self: flex-end;
 }
 
 /* Reusable class to hide elements */

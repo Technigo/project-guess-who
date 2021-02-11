@@ -4,6 +4,8 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findoutButton = document.getElementById('filter')
 const winOrLoose = document.getElementById('winOrLose');
+const winOrLooseText = document.getElementById('winOrLoseText');
+const playAgainButton = document.getElementById('playAgain');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -227,7 +229,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion, charactersInPlay, numberOfGuesses;
 
 // Draw the game board
 const generateBoard = () => {
@@ -258,6 +260,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard();
   setSecret();
+  numberOfGuesses = 0;
   console.log(secret);
 }
 
@@ -304,11 +307,11 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   selectQuestion();
-
+  numberOfGuesses++;
   if (currentQuestion.value === secret[currentQuestion.attribute]) {
     filterCharacters(true); 
     console.log('this is true');
-  } else if (currentQuestion.value !== [currentQuestion.attribute]) {
+  } else {
     filterCharacters(false); 
     console.log('this is not true');
   } 
@@ -374,31 +377,38 @@ const guess = (suspect) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
-  // 1. Check if the suspect is the same as the secret person's name
+  //Checks if the suspect is the same as the secret person's name
+  console.log("You guessed "+ numberOfGuesses + " times");
   if (suspect === secret.name) {
-    alert (`${suspect} is correct`);
+    //Shows the win or lose section, hides the game board
+    board.classList.add("game-board-hidden");
+    winOrLoose.style = "display:block;"
+    winOrLooseText.innerText  = `You won. ${suspect} is the correct person. You got it after ${numberOfGuesses} filtrations.`;
   } else {
-    alert (`${suspect} is wrong`);
+  /*  alert (`Sorry, ${suspect} is wrong`);
+    restartGame(); */
+    board.classList.add("game-board-hidden");
+    winOrLoose.style = "display:block;";
+    winOrLooseText.innerText  = `You failed. ${suspect} is the not the correct person ${secret.name} is the correct person.`;
   }
-  board.style = "display: hidden;";
- // winOrLoose.style = "display: block;";
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
+}
 
-  // 4. Hide the game board
- 
+const restartGame =() => {
+  console.log("restart game")
+  winOrLoose.style = "display: none;"
+  board.classList.remove("game-board-hidden");
+  start();
 }
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 
 
 // All the event listeners
 restartButton.addEventListener('click', start);
-//questions.addEventListener('change', selectQuestion);
 findoutButton.addEventListener('click', () => checkQuestion());
-
+playAgainButton.addEventListener('click', () => restartGame());
 
 
 

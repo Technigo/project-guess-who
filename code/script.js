@@ -2,6 +2,10 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filter = document.getElementById('filter')
+const winOrLose = document.getElementById('win-or-lose')
+const winOrLoseText = document.getElementById('win-or-lose-text')
+const playAgain = document.getElementById('play-again')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -254,18 +258,22 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard();
+  setSecret();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
+  const value = questions.options[questions.selectedIndex].value;
+  console.log(value, category);
+   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-
+ 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: value,
       // 👆 add the value from the input here
       category: category,
     }
@@ -285,6 +293,17 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+  if (currentQuestion[attribute, value, category] === secret) {
+    return true;
+
+    // keep all charachters matching the criteria
+  }
+  else if (currentQuestion !== secret) {
+    return false;
+    // keep all charachters matching the criteria
+  }
+    //pass this on to the variable filterCharacter in an argument, like (keep).
+  filterCharacters();
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -341,3 +360,12 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+
+// detta har jag skrivit
+questions.addEventListener('change', selectQuestion);
+filter.addEventListener('click', checkQuestion);
+
+// questions.addEventListener('change', () => {
+//   const questionValue = questions.options[questions.selectedIndex].value;
+//   console.log(value, type);
+// });

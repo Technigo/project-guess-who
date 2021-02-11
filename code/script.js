@@ -233,7 +233,7 @@ let secret, currentQuestion, charactersInPlay, numberOfGuesses;
 
 // Draw the game board
 const generateBoard = () => {
-  board.innerHTML = ''
+  board.innerHTML = '';
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
@@ -379,17 +379,15 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
   //Checks if the suspect is the same as the secret person's name
   console.log("You guessed "+ numberOfGuesses + " times");
+  board.classList.add("game-board-hidden");
+  winOrLoose.style = "display:block;"
   if (suspect === secret.name) {
     //Shows the win or lose section, hides the game board
-    board.classList.add("game-board-hidden");
-    winOrLoose.style = "display:block;"
     winOrLooseText.innerText  = `You won. ${suspect} is the correct person. You got it after ${numberOfGuesses} filtrations.`;
   } else {
   /*  alert (`Sorry, ${suspect} is wrong`);
     restartGame(); */
-    board.classList.add("game-board-hidden");
-    winOrLoose.style = "display:block;";
-    winOrLooseText.innerText  = `You failed. ${suspect} is the not the correct person ${secret.name} is the correct person.`;
+     winOrLooseText.innerText  = `You failed. ${suspect} is the not the correct person ${secret.name} is the correct person.`;
   }
 }
 
@@ -402,8 +400,6 @@ const restartGame =() => {
 
 // Invokes the start function when website is loaded
 start();
-
-
 
 // All the event listeners
 restartButton.addEventListener('click', start);

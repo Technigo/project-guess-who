@@ -15,6 +15,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hairColor: 'hidden',
     eyeColor: 'hidden',
+    mouth: 'open',
     glasses: true,
     hat: true,
     earrings: false,
@@ -25,6 +26,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hairColor: 'hidden',
     eyeColor: 'blue',
+    mouth: 'open',
     glasses: false,
     hat: true,
     earrings: false,
@@ -35,6 +37,7 @@ const CHARACTERS = [
     img: 'images/jacques.svg',
     hairColor: 'grey',
     eyeColor: 'blue',
+    mouth: 'open',
     glasses: false,
     hat: true,
     earrings: false,
@@ -45,6 +48,7 @@ const CHARACTERS = [
     img: 'images/jai.svg',
     hairColor: 'black',
     eyeColor: 'brown',
+    mouth: 'open',
     glasses: false,
     hat: false,
     earrings: false,
@@ -55,6 +59,7 @@ const CHARACTERS = [
     img: 'images/jake.svg',
     hairColor: 'yellow',
     eyeColor: 'green',
+    mouth: 'open',
     glasses: true,
     hat: false,
     earrings: false,
@@ -65,6 +70,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hairColor: 'brown',
     eyeColor: 'green',
+    mouth: 'closed',
     glasses: true,
     hat: false,
     earrings: false,
@@ -75,6 +81,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hairColor: 'black',
     eyeColor: 'hidden',
+    mouth: 'closed',
     glasses: true,
     hat: false,
     earrings: false,
@@ -85,6 +92,7 @@ const CHARACTERS = [
     img: 'images/jane.svg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
+    mouth: 'open',
     glasses: true,
     hat: false,
     earrings:false,
@@ -95,6 +103,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hairColor: 'orange',
     eyeColor: 'green',
+    mouth: 'open',
     glasses: true,
     hat: false,
     earrings: true,
@@ -106,6 +115,7 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hairColor: 'purple',
     eyeColor: 'hidden',
+    mouth: 'closed',
     glasses: true,
     hat: false,
     earrings: false,
@@ -116,6 +126,7 @@ const CHARACTERS = [
     img: 'images/jean.svg',
     hairColor: 'brown',
     eyeColor: 'blue',
+    mouth: 'closed',
     glasses: true,
     hat: true,
     earrings: false,
@@ -126,6 +137,7 @@ const CHARACTERS = [
     img: 'images/jeane.svg',
     hairColor: 'brown',
     eyeColor: 'green',
+    mouth: 'open',
     glasses: true,
     hat: false,
     earrings: false,
@@ -136,6 +148,7 @@ const CHARACTERS = [
     img: 'images/jed.svg',
     hairColor: 'orange',
     eyeColor: 'green',
+    mouth: 'closed',
     glasses: true,
     hat: true,
     earrings: false,
@@ -146,6 +159,7 @@ const CHARACTERS = [
     img: 'images/jenni.svg',
     hairColor: 'white',
     eyeColor: 'hidden',
+    mouth: 'open',
     glasses: false,
     hat: true,
     earrings: false,
@@ -156,6 +170,7 @@ const CHARACTERS = [
     img: 'images/jeri.svg',
     hairColor: 'orange',
     eyeColor: 'green',
+    mouth: 'open',
     glasses: true,
     hat: false,
     earrings: false,
@@ -166,6 +181,7 @@ const CHARACTERS = [
     img: 'images/jerry.svg',
     hairColor: 'hidden',
     eyeColor: 'blue',
+    mouth: 'closed',
     glasses: false,
     hat: true,
     earrings: false,
@@ -176,6 +192,7 @@ const CHARACTERS = [
     img: 'images/jess.svg',
     hairColor: 'black',
     eyeColor: 'blue',
+    mouth: 'open',
     glasses: true,
     hat: false,
     earrings: false,
@@ -186,6 +203,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hairColor: 'black',
     eyeColor: 'brown',
+    mouth: 'open',
     glasses: true,
     hat: false,
     earrings: true,
@@ -196,6 +214,7 @@ const CHARACTERS = [
     img: 'images/jon.svg',
     hairColor: 'brown',
     eyeColor: 'green',
+    mouth: 'open',
     glasses: true,
     hat: false,
     earrings: false,
@@ -206,6 +225,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
+    mouth: 'closed',
     glasses: true,
     hat: true,
     earrings: false,
@@ -216,6 +236,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hairColor: 'grey',
     eyeColor: 'brown',
+    mouth: 'open',
     glasses: false,
     hat: false,
     earrings: true,
@@ -226,6 +247,7 @@ const CHARACTERS = [
     img: 'images/josh.svg',
     hairColor: 'yellow',
     eyeColor: 'green',
+    mouth: 'open',
     glasses: false,
     hat: false,
     earrings: false,
@@ -235,6 +257,7 @@ const CHARACTERS = [
     name: 'Jude',
     img: 'images/jude.svg',
     hairColor: 'black',
+    mouth: 'closed',
     eyeColor: 'green',
     glasses: false,
     hat: false,
@@ -246,6 +269,7 @@ const CHARACTERS = [
     img: 'images/julie.svg',
     hairColor: 'black',
     eyeColor: 'brown',
+    mouth: 'open',
     glasses: true,
     hat: true,
     earrings: false,
@@ -308,6 +332,12 @@ const selectQuestion = () => {
       value: valueOfTheQuestion,
       category: category,
     }
+  } else if(category === 'mouth'){
+      currentQuestion = {
+        attribute: 'mouth',
+        value: valueOfTheQuestion,
+        category: category,
+      }
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: valueOfTheQuestion,
@@ -346,6 +376,16 @@ const filterCharacters = (keep, group) => {
     } else {
       alert(
         `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}!`
+      );
+    }
+  } else if (group === 'mouth'){
+    if(keep) {
+      alert(
+        `Yes, the person has ${currentQuestion.value} mouth! Keep all that have ${currentQuestion.value} mouth!`
+      );
+    } else {
+      alert(
+        `No, the person does not have ${currentQuestion.value} mouth! Remove all that have ${currentQuestion.value} mouth!`
       );
     }
   } else if (group === 'hair color') {

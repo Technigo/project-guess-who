@@ -14,6 +14,7 @@ const CHARACTERS = [
     name: 'Jabala',
     img: 'images/jabala.svg',
     hairColor: 'hidden',
+    hairStyle: 'hidden',
     eyeColor: 'hidden',
     mouth: 'open',
     glasses: true,
@@ -26,6 +27,7 @@ const CHARACTERS = [
     name: 'Jack',
     img: 'images/jack.svg',
     hairColor: 'hidden',
+    hairStyle: 'hidden',
     eyeColor: 'blue',
     mouth: 'open',
     glasses: false,
@@ -38,6 +40,7 @@ const CHARACTERS = [
     name: 'Jacques',
     img: 'images/jacques.svg',
     hairColor: 'grey',
+    hairStyle: 'hidden',
     eyeColor: 'blue',
     mouth: 'open',
     glasses: false,
@@ -50,6 +53,7 @@ const CHARACTERS = [
     name: 'Jai',
     img: 'images/jai.svg',
     hairColor: 'black',
+    hairStyle: 'short',
     eyeColor: 'brown',
     mouth: 'open',
     glasses: false,
@@ -62,6 +66,7 @@ const CHARACTERS = [
     name: 'Jake',
     img: 'images/jake.svg',
     hairColor: 'yellow',
+    hairStyle: 'short',
     eyeColor: 'green',
     mouth: 'open',
     glasses: true,
@@ -74,6 +79,7 @@ const CHARACTERS = [
     name: 'James',
     img: 'images/james.svg',
     hairColor: 'brown',
+    hairStyle: 'short',
     eyeColor: 'green',
     mouth: 'closed',
     glasses: true,
@@ -86,6 +92,7 @@ const CHARACTERS = [
     name: 'Jana',
     img: 'images/jana.svg',
     hairColor: 'black',
+    hairStyle: 'short',
     eyeColor: 'hidden',
     mouth: 'closed',
     glasses: true,
@@ -98,6 +105,7 @@ const CHARACTERS = [
     name: 'Jane',
     img: 'images/jane.svg',
     hairColor: 'yellow',
+    hairStyle: 'bun',
     eyeColor: 'hidden',
     mouth: 'open',
     glasses: true,
@@ -110,6 +118,7 @@ const CHARACTERS = [
     name: 'Jaqueline',
     img: 'images/jaqueline.svg',
     hairColor: 'orange',
+    hairStyle: 'short',
     eyeColor: 'green',
     mouth: 'open',
     glasses: true,
@@ -123,6 +132,7 @@ const CHARACTERS = [
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
     hairColor: 'purple',
+    hairStyle: 'bob',
     eyeColor: 'hidden',
     mouth: 'closed',
     glasses: true,
@@ -135,6 +145,7 @@ const CHARACTERS = [
     name: 'Jean',
     img: 'images/jean.svg',
     hairColor: 'brown',
+    hairStyle: 'hidden',
     eyeColor: 'blue',
     mouth: 'closed',
     glasses: true,
@@ -147,6 +158,7 @@ const CHARACTERS = [
     name: 'Jeane',
     img: 'images/jeane.svg',
     hairColor: 'brown',
+    hairStyle: 'bob',
     eyeColor: 'green',
     mouth: 'open',
     glasses: true,
@@ -159,6 +171,7 @@ const CHARACTERS = [
     name: 'Jed',
     img: 'images/jed.svg',
     hairColor: 'orange',
+    hairStyle: 'hidden',
     eyeColor: 'green',
     mouth: 'closed',
     glasses: true,
@@ -171,6 +184,7 @@ const CHARACTERS = [
     name: 'Jenni',
     img: 'images/jenni.svg',
     hairColor: 'white',
+    hairStyle: 'bob',
     eyeColor: 'hidden',
     mouth: 'open',
     glasses: false,
@@ -183,6 +197,7 @@ const CHARACTERS = [
     name: 'Jeri',
     img: 'images/jeri.svg',
     hairColor: 'orange',
+    hairStyle: 'bun',
     eyeColor: 'green',
     mouth: 'open',
     glasses: true,
@@ -195,6 +210,7 @@ const CHARACTERS = [
     name: 'Jerry',
     img: 'images/jerry.svg',
     hairColor: 'hidden',
+    hairStyle: 'hidden',
     eyeColor: 'blue',
     mouth: 'closed',
     glasses: false,
@@ -207,6 +223,7 @@ const CHARACTERS = [
     name: 'Jess',
     img: 'images/jess.svg',
     hairColor: 'black',
+    hairStyle: 'bob',
     eyeColor: 'blue',
     mouth: 'open',
     glasses: true,
@@ -219,6 +236,7 @@ const CHARACTERS = [
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
     hairColor: 'black',
+    hairStyle: 'bun',
     eyeColor: 'brown',
     mouth: 'open',
     glasses: true,
@@ -231,6 +249,7 @@ const CHARACTERS = [
     name: 'Jon',
     img: 'images/jon.svg',
     hairColor: 'brown',
+    hairStyle: 'short',
     eyeColor: 'green',
     mouth: 'open',
     glasses: true,
@@ -243,6 +262,7 @@ const CHARACTERS = [
     name: 'Jordan',
     img: 'images/jordan.svg',
     hairColor: 'yellow',
+    hairStyle: 'hidden',
     eyeColor: 'hidden',
     mouth: 'closed',
     glasses: true,
@@ -255,6 +275,7 @@ const CHARACTERS = [
     name: 'Josephine',
     img: 'images/josephine.svg',
     hairColor: 'grey',
+    hairStyle: 'short',
     eyeColor: 'brown',
     mouth: 'open',
     glasses: false,
@@ -267,6 +288,7 @@ const CHARACTERS = [
     name: 'Josh',
     img: 'images/josh.svg',
     hairColor: 'yellow',
+    hairStyle: 'short',
     eyeColor: 'green',
     mouth: 'open',
     glasses: false,
@@ -279,6 +301,7 @@ const CHARACTERS = [
     name: 'Jude',
     img: 'images/jude.svg',
     hairColor: 'black',
+    hairStyle: 'short',
     mouth: 'closed',
     eyeColor: 'green',
     glasses: false,
@@ -291,6 +314,7 @@ const CHARACTERS = [
     name: 'Julie',
     img: 'images/julie.svg',
     hairColor: 'black',
+    hairStyle: 'braids',
     eyeColor: 'brown',
     mouth: 'open',
     glasses: true,
@@ -350,7 +374,13 @@ const selectQuestion = () => {
       value: valueOfTheQuestion,
       category: category,
     }
-  } else if (category === 'eye color') {
+  } else if (category === 'hairstyle'){
+    currentQuestion = {
+      attribute: 'hairStyle',
+      value: valueOfTheQuestion,
+      category: category,
+    }
+  }else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
       value: valueOfTheQuestion,
@@ -402,6 +432,36 @@ const filterCharacters = (keep, group) => {
         `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}!`
       );
     }
+  } else if (group === 'hairstyle'){
+    if (keep) {
+      if (currentQuestion.value === 'braids'){
+        alert(
+          `Yes, the person has ${currentQuestion.value}! Keep all that have ${currentQuestion.value}!`
+        );
+      }else if (currentQuestion.value === 'bun'){
+        alert(
+          `Yes, the person has ${currentQuestion.value} hairdo! Keep all that have ${currentQuestion.value} hairdo!`
+        );
+      } else {
+        alert(
+          `Yes, the person has ${currentQuestion.value} haircut! Keep all that have ${currentQuestion.value} haircut!`
+        );
+      }
+    } else {
+      if (currentQuestion.value === 'braids'){
+        alert(
+          `No, the person does not have ${currentQuestion.value}! Remove all that have ${currentQuestion.value}!`
+        );
+      }else if (currentQuestion.value === 'bun'){
+        alert(
+          `No, the person does not have ${currentQuestion.value} hairdo! Remove all that have ${currentQuestion.value} hairdo!`
+        );
+      } else {
+        alert(
+          `No, the person does not have ${currentQuestion.value} haircut! Remove all that have ${currentQuestion.value} haircut!`
+        );
+      }
+    }
   } else if (group === 'mouth'){
     if(keep) {
       alert(
@@ -448,7 +508,6 @@ const filterCharacters = (keep, group) => {
   } else { charactersInPlay = charactersInPlay.filter(person => person[currentQuestion.attribute] !== currentQuestion.value) }
   generateBoard()
 }
-
 
 //Guess function allows the player to check the guess and secret person
 const guess = (suspect) => {

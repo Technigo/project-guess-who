@@ -6,10 +6,6 @@
   max-width: 882px;
 }
 
-.game-board,
-.alert {
-}
-
 .game-board__cards {
   display: flex;
   flex-wrap: wrap;

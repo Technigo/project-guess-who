@@ -54,15 +54,20 @@
       <button id="filter" class="filled-button">FIND OUT</button>
     </aside>
 
-    <div class="alert-hidden" id="hidden">
-        <p>you are right</p>
-        <button>OK</button>
-    </div>
-
     <section class="board-wrapper">
+      <div class="alert"></div>
+      <div class="confirm">
+          <div class="confirm-content">
+            <p>Are you really sure you dare to guess?</p>
+            <div class="confirm-buttons">
+            <button id="confirm-btn">OK</button>
+            <button id="cancel-btn">Cancel</button>
+            </div>
+          </div>
+      </div>
       <main class="game-board" id="board"></main>
     </section>
-
+   
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
         <img
@@ -71,16 +76,15 @@
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
-        
         <div>
           <div id="a-winner" class="winner">
           <h1>You are a winner!</h1>
           <iframe src="https://giphy.com/embed/EBolRO7z50KTOn85Pi" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/thebachelor-the-bachelor-thebachelorabc-bachelorabc-EBolRO7z50KTOn85Pi"></a></p>
           <button id="playAgain" class="filled-button">PLAY AGAIN</button>
-          
           </div>
           <div id="a-looser" class="looser">
             <h1>You are Wrong!</h1>
+            <p id="many-guesses"></p>
             <iframe src="https://giphy.com/embed/dUYddwtCVUOIpgXijq" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/DowntonAbbey-downton-abbey-movie-film-dUYddwtCVUOIpgXijq"></a></p>
             <button id="try-again-btn">Try again</button>
           </div>

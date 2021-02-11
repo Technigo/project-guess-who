@@ -1,8 +1,8 @@
 /* Global css variables used for colors */
 :root {
   /* --primary: #a259ff; */
-  --primary: 	#55CBCD;
-  --secondary: #BDDFE3;
+  --primary: 	#2f999b;
+  --secondary:  #55CBCD;
   /* --secondary: #b0a6ff; */
 }
 
@@ -244,10 +244,55 @@ button:focus {
   display: none;
 }
 
-.alert-hidden{
+.alert{
+  position: absolute;
   display: none;
+  align-self: center;
+  justify-self: center;
+  padding: 20px;
+  background: var(--secondary);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-bottom:500px;
+  width: 40%;
+}
+.alert button{
+  color: var(--primary);
 }
 
-.alert-show{
-  display: block; 
+.confirm{
+  position: absolute;
+  flex-direction: column;
+  display: none;
+  align-self: center;
+  justify-self: center;
+  padding: 20px;
+  background: var(--secondary);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-bottom:500px;
+  width: 30%;
+}
+.confirm button{
+  color: var(--primary);
+}
+
+/* .confirm-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+.confirm-buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#many-guesses{
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
 }

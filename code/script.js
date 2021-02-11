@@ -297,10 +297,8 @@ const selectQuestion = () => {
   }
 }
 
-// This function should be invoked when you click on 'Find Out'.
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+// This function is invoked when you click on 'Find Out'.
+// Compare the currentQuestion with the secret person. Keep or remove characters based on that
 const checkQuestion = () => {
   let keep 
   if (currentQuestion.attribute === 'hairColor' && currentQuestion.value === secret.hairColor) {
@@ -317,30 +315,57 @@ const checkQuestion = () => {
     keep = false
   }
   console.log("keep", keep);
+  // Invoke filterCharacters
   filterCharacters(keep)
 }
 
-// It'll filter the characters array and redraw the game board.
+// Filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
+  let category = currentQuestion.category
+  let attribute = currentQuestion.attribute
+  let value =currentQuestion.value
+
   // Show the correct alert message for different categories
-  console.log("current cate", currentQuestion.category);
-  if (currentQuestion.category === 'accessories') {
+  console.log("current category", currentQuestion.category);
+  if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
+        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
       )
     } else {
       alert(
         `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
       )
     }
-  } else if (group === 'other') {
-    // Similar to the one above
+  } else if (category === 'other') {
+    if (keep) {
+      alert (
+        `Yes, the person is a ${attribute}! Keep all ${attribute}`
+      )
+    } else {
+      alert (
+        `No, the person is not ${attribute}! Remove all ${attribute}`
+      )
+    }
+  } else if (category === 'hair color'){
+    if (keep) {
+      alert (
+        `Yes, the person has ${value} hair! Keep all persons whit ${value} hair.`
+      )
+    } else {
+      alert (
+        `No, the person does not have ${value} hair! Remove all persons whit ${value} hair`
+      )
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      alert (
+        `Yes, the person has ${value} eyes! Keep all persons whit ${value} eyes.`
+        )
     } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert (
+        `No, the person does not have ${value} eyes! Remove all persons whit ${value} eyes`
+      )
     }
   }
 
@@ -374,7 +399,7 @@ start()
 restartButton.addEventListener('click', start)
 // select question using change elemnt, when selecting question the function is invoked
 questions.addEventListener('change', selectQuestion)
-
+// compare selected question with secret person attribute and value
 findOutButton.addEventListener('click', checkQuestion)
 
 

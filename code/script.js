@@ -8,6 +8,9 @@ const winOrLooseText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
 const round = document.getElementById('rounds-number');
 const timer = document.getElementById('timer')
+const winSound = document.getElementById('win-sound')
+const looseSound = document.getElementById('loose-sound')
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -551,21 +554,30 @@ const showWinSection = () => {
   board.innerHTML = '';
 }
 //This function invokes showWinSection function and shows the message depending on whether the guess was correct
+const playWinSound = () => {
+  winSound.play()
+}
+const playLooseSound = () => {
+  looseSound.play()
+}
+
 const checkMyGuess = (userGuess) => {
   showWinSection()
   if (userGuess === secret.name) {
+    playWinSound()
     if (roundNumber === 1) {
       winOrLooseText.innerText =
         `Congratulations! It is ${userGuess}! 
         It took you just ${roundNumber} question to win!
-        The game took ${minutes} minutes and ${seconds} seconds`;
+        The game took ${minutes}:${seconds}.`;
     } else {
       winOrLooseText.innerText =
         `Congratulations! It is ${userGuess}! 
         You won with ${roundNumber} questions!
-        The game took ${minutes} minutes and ${seconds} seconds`;
+        The game took ${minutes}m:${seconds}s.`;
     }
   } else {
+    playLooseSound()
     winOrLooseText.innerText = 
     `Sorry, it is not ${userGuess}! Do you want to play again?`
   }

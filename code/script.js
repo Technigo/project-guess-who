@@ -7,7 +7,7 @@ const winOrLooseBoard = document.getElementById('winOrLose');
 const winOrLooseText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
 const round = document.getElementById('rounds-number');
-
+const timer = document.getElementById('timer')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -331,6 +331,34 @@ let currentQuestion;
 let charactersInPlay;
 let roundNumber = 0;
 
+//Global variables: timer
+let seconds = 0;
+let minutes = 0;
+let displaySeconds = 0;
+let displayMinutes = 0;
+
+const gameTimer = () => {
+  seconds++;
+  if (seconds / 60 === 1){
+    seconds = 0;
+    minutes++;
+  }
+  if(seconds < 10) {
+    displaySeconds = `0${seconds}`
+  } else{
+    displaySeconds = seconds;
+  }
+  if (minutes < 10) {
+    displayMinutes = `0${minutes}`
+  } else {
+    displayMinutes = minutes;
+  }
+  timer.innerHTML = `${displayMinutes}:${displaySeconds}`;
+}
+const resetGameTimer = () =>{
+  seconds = 0;
+  minutes = 0;
+}
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -529,25 +557,33 @@ const checkMyGuess = (userGuess) => {
     if (roundNumber === 1) {
       winOrLooseText.innerText =
         `Congratulations! It is ${userGuess}! 
-        It took you just ${roundNumber} guess to win!`;
+        It took you just ${roundNumber} question to win!
+        The game took ${minutes} minutes and ${seconds} seconds`;
     } else {
       winOrLooseText.innerText =
         `Congratulations! It is ${userGuess}! 
-        You won with ${roundNumber} guesses!`;
+        You won with ${roundNumber} questions!
+        The game took ${minutes} minutes and ${seconds} seconds`;
     }
   } else {
-    winOrLooseText.innerText = `Sorry, it is not ${userGuess} try again!`
+    winOrLooseText.innerText = 
+    `Sorry, it is not ${userGuess}! Do you want to play again?`
   }
 }
 
 // Invokes the start function when website is loaded
 start()
+setInterval(gameTimer,1000);
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', () =>{ 
+  resetGameTimer();
+  start();
+  })
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', () => {
   winOrLooseBoard.classList.remove('shown');
-  start()
+  resetGameTimer();
+  start();
 })

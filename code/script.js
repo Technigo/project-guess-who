@@ -262,37 +262,36 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  // This variable stores what option group (category) the question belongs to.
+  // This variable stores what category the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const value = questions.value
-  console.log("category", category)
-  console.log("value", value)
+  // This variable stores what value the question has.
+  const value = questions.options[questions.selectedIndex].value
+  console.log("categoty and value:", category, value)
   // currentQuestion stores what attribute we ask for, the value of the attribute andwhat category it belongs to of the question selected
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: value,
-      category: category,
+      value,
+      category,
     }
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
-      value:value,
-      category: category,
+      value,
+      category,
     }
     
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: value,
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
-      category: category,
+      attribute: value, // this is the property of the booleans such as smoke, glasses and hat.
+      value: true, // asking if this person wears a hat for exaple, so always true in the question.
+      category,
     }
   } else if (category === 'other') {
     currentQuestion = {
       attribute: value, 
       value: true,
-      category: category,
+      category,
     }
   }
 }
@@ -369,12 +368,14 @@ const filterCharacters = (keep) => {
     }
   }
 
-  // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
+  // filter to keep or remove based on the keep variable. 
+  charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+  console.log(charactersInPlay)
+  
+  //charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

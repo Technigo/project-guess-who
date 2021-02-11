@@ -267,7 +267,8 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
-  const selectedElementValue = questions.options[questions.selectedIndex].innerText;
+  const selectedElementValue = questions.options[questions.selectedIndex].value;
+  const selectedElementInnerText = questions.options[questions.selectedIndex].innerText;
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -275,6 +276,7 @@ const selectQuestion = () => {
     currentQuestion = {
       attribute: 'hairColor',
       value: selectedElementValue,
+      innerText: selectedElementInnerText,
       // 👆 add the value from the input here
       category: category,
     }
@@ -283,6 +285,7 @@ const selectQuestion = () => {
     currentQuestion = {
       attribute: 'eyeColor',
       value: selectedElementValue,
+      innerText: selectedElementInnerText,
       // 👆 add the value from the input here
       category: category,
     }
@@ -290,6 +293,7 @@ const selectQuestion = () => {
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: selectedElementValue,
+      innerText: selectedElementInnerText,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
@@ -298,6 +302,7 @@ const selectQuestion = () => {
     // Set this up your self (should be same structure as above)
     currentQuestion = {
       attribute: selectedElementValue,
+      innerText: selectedElementInnerText,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
@@ -314,38 +319,38 @@ const checkQuestion = () => {
 
   const secretValue = secret[currentQuestion.attribute];
   if (secretValue === currentQuestion.value) {
-    filterCharacters(true, currentQuestion.category, currentQuestion.value);
+    filterCharacters(true, currentQuestion);
     } else {
-    filterCharacters(false, currentQuestion.category, currentQuestion.value);
+    filterCharacters(false, currentQuestion);
   }
 }
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep, group, attribute, value) => {
+const filterCharacters = (keep, { attribute, innerText, value, category }) => {
   // Show the correct alert message for different categories
 
-  if (group === 'accessories') {
+  if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keeping all that wears ${attribute}`
+        `Yes, the person wears ${innerText}! Keeping all that wears ${innerText}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Removing all that wears ${attribute}`
+        `No, the person doesn't wear ${innerText}! Removing all that wears ${innerText}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
-  } else if (group === 'other') {
+  } else if (category === 'other') {
     // Similar to the one above
     if (keep) {
       alert(
-        `Yes, the person has a ${attribute}! Keeping all that has a ${attribute}`
+        `Yes, the person has a ${innerText}! Keeping all that has a ${innerText}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       alert(
-        `No, the person doesn't have a ${attribute}! Removing all that has a ${attribute}`
+        `No, the person doesn't have a ${innerText}! Removing all that has a ${innerText}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
@@ -353,13 +358,13 @@ const filterCharacters = (keep, group, attribute, value) => {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
       alert(
-        `Yes, the person has ${attribute}! Keeping all that has ${attribute}`
+        `Yes, the person has ${innerText}! Keeping all that has ${innerText}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
       alert(
-        `No, the person doesn't have ${attribute}! Removing all that has ${attribute}`
+        `No, the person doesn't have ${innerText}! Removing all that has ${innerText}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
@@ -380,14 +385,14 @@ const guess = (suspect) => {
   // If the player wants to guess, invoke the checkMyGuess function.
   const userGuess = confirm(`Are you sure you want to guess ${suspect}`);
   if (userGuess) {
-    checkMyGuess();
+    checkMyGuess(suspect);
   }
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
     // 1. Check if the suspect is the same as the secret person's name
-    if (suspect === setSecret.name) {
+    if (suspect === secret.name) {
       winOrLoseText.innerText = "WOOP WOOP, that is correct!"
       let winOrLose = document.getElementById("winOrLose")   
       winOrLose.style.display = "block" 

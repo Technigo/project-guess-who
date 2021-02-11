@@ -8,4 +8,4 @@ The challenge was to access and hide data from an object array containing data a
 
 ## View it live
 
-[Project site here:](https://guesshoo.netlify.app/)
+Project site here:[Guess Hoo](https://guesshoo.netlify.app/)

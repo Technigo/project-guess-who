@@ -261,7 +261,7 @@ const sentences = [{
     furColor: `No, the animal is not x. Remove all x animals!`,
     furPattern: `No, the animal don't got x fur. Remove all animals that have x fur!`,
     animal: `No, it's not a x. Remove all animals that are a x!`,
-    collar: `No, the animal doesn"t wear x. Remove all the x wearers!`,
+    collar: `No, the animal doesn't wear x. Remove all the x wearers!`,
     bling: `No, the animal does not wear x! Remove all the xy animals.`,
     bad: `No, it is not a x boy/girl. Remove all the x ones!`,
   }
@@ -416,11 +416,11 @@ const selectQuestion = (handleOption) => {
 }
 
 //This function is invoked when you click Find Out. 
-//Puts forward values needed for filtering and invokes the filter function
+//Puts forward values needed for the sentences and filtering in filter function 
 const checkQuestion = () => {
   let group;
-  //sets the group for the filter function, depending on type 
-  currentQuestion.category === ("accessories || behavior") ? (
+
+  currentQuestion.category === ("accessories" || "behavior") ? (
     group = currentQuestion.attribute
   ) : (
     group = currentQuestion.value
@@ -478,16 +478,16 @@ const checkMyGuess = (suspect) => {
   suspect === secret.name ? (
     rightGuesses++,
     win = `Yes, ${suspect} was the secret character! Well done ${player}!`,
-    endGame(win, suspect)  
+    endGame(win)  
   ) : (
     wrongGuesses++,
     lose = `No, that was not the right answer, but ${suspect}. Better luck next time ${player}!`,
-    endGame(lose, suspect)
+    endGame(lose)
   );
 }
 
 //prints out the win/lose screen 
-const endGame = (result, suspect) => {
+const endGame = (result) => {
   const winOrLose = document.getElementById("winOrLose")
   winOrLose.classList.add("active")
 

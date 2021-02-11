@@ -249,7 +249,6 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret)
 }
 
 
@@ -263,6 +262,11 @@ const start = () => {
   setSecret()
   // 2. Cards generated
   generateBoard()
+
+   //Hide the winOrLose section after pressing the PLAY AGAIN button 
+   winOrLose.style.display = "none"
+   // Showing back the board 
+   board.style.display = "flex"
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -307,14 +311,10 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
-  const secretValue = secret[currentQuestion.attribute]
-  if (secretValue === currentQuestion.value) {
-    filterCharacters(true);
-  } else {
-    filterCharacters(false);
-  }
-
+  
+  const keep = currentQuestion.value === secret[currentQuestion.attribute]
   // Then invoke filterCharacters
+  filterCharacters(keep)
 
 }
 
@@ -333,9 +333,9 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(`Yes, the person wears ${attribute}! Keep all that wears ${attribute}`)
+      alert(`Yes, the person is ${attribute}! Keep all that are ${attribute}'s`)
     } else {
-      alert(`No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`)
+      alert(`No, the person is not ${attribute}! Remove all ${attribute}'s`)
     }
   } else if (category === 'hair color') {
     if (keep) {
@@ -362,17 +362,29 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
+   // store the interaction from the player in a variable.
+  const confirmSuspect = confirm(`Are you sure you want that your guess is ${suspect}?`)
   // If the player wants to guess, invoke the checkMyGuess function.
+  if (confirmSuspect === true) {
+    checkMyGuess(suspect)
+  }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   // 1. Check if the suspect is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
+  if (suspect === secret.name) {
+    // 2. Set a Message to show in the win or lose section accordingly
+    winOrLoseText.innerHTML = `You guessed on the correct ${suspect}!!!`
+  } else {
+    winOrLoseText.innerHTML = `No it's not ${suspect}. The correct answer is ${secret.name}!`
+  }
+  
   // 3. Show the win or lose section
+  winOrLose.style.display = 'flex'
   // 4. Hide the game board
+  board.style.display = 'none'
+
 }
 
 // Invokes the start function when website is loaded

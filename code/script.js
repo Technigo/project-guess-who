@@ -8,6 +8,7 @@ const playAgain = document.querySelector("#playAgain")
 const winOrLoseText = document.querySelector("#winOrLoseText")
 const totalGuesses = document.querySelector("#totalGuesses")
 const time = document.querySelector("#time")
+const guessesMade = document.querySelector("#guessesMade")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -290,39 +291,41 @@ const start = () => {
   totalGuesses.innerText = 0
   timePassed = 0
   timePassed.innerText = 0
+  guessesMade.innerHTML = ""
 }
 
 // Sets currentQuestion object when the user chooses a value
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value;
+  const text = questions.options[questions.selectedIndex].innerText;
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
       value: value,
       category: category,
-      text: `${value} hair`,
+      text: text,
     }
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
       value: value,
       category: category,
-      text: `${value} eyes`,
+      text: text,
     }
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: value,
       value: true,
       category: category,
-      text: value,
+      text: text,
     }
   } else if (category === 'other') {
     currentQuestion = {
       attribute: value,
       value: true,
       category: category,
-      text: "a smoking habit",
+      text: text,
     }
   }
 }
@@ -371,6 +374,14 @@ const filterCharacters = (keep) => {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
   }
   generateBoard()
+  addGuessesMade()
+}
+
+// Adds the current guess to the list of guesses made
+const addGuessesMade = () => {
+  guessesMade.innerHTML += `
+  <li>${currentQuestion.text}</li>
+  `
 }
 
 // When clicking guess, the user has to confirm their guess
@@ -386,6 +397,7 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
   winOrLose.style.display = "flex"
   board.style.display = "none"
+  guessesMade.innerHTML = ""
   if (suspect === secret.name) {
     winOrLoseText.innerText = `You won! It took you ${numberOfGuesses} guesses and ${timePassed} seconds to find out that the secret person was ${secret.name}. Congratulations!`
   } else {

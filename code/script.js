@@ -19,6 +19,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -30,6 +31,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -41,6 +43,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     earrings: false,
+    necklace: false,
     smoker: true,
   },
   {
@@ -52,6 +55,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -63,6 +67,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -74,6 +79,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -85,6 +91,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     earrings: false,
+    necklace: true,
     smoker: false,
   },
   {
@@ -96,6 +103,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     earrings:false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -107,6 +115,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     earrings: true,
+    necklace: true,
     smoker: false,
   },
 
@@ -119,6 +128,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     earrings: false,
+    necklace: false,
     smoker: true,
   },
   {
@@ -130,6 +140,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     earrings: false,
+    necklace: false,
     smoker: true,
   },
   {
@@ -141,6 +152,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -152,6 +164,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     earrings: false,
+    necklace: false,
     smoker: true,
   },
   {
@@ -163,6 +176,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -174,6 +188,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -185,6 +200,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -196,6 +212,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -207,6 +224,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     earrings: true,
+    necklace: false,
     smoker: false,
   },
   {
@@ -218,6 +236,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -229,6 +248,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     earrings: false,
+    necklace: true,
     smoker: false,
   },
   {
@@ -240,6 +260,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     earrings: true,
+    necklace: false,
     smoker: false,
   },
   {
@@ -251,6 +272,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -262,6 +284,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
   {
@@ -273,6 +296,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     earrings: false,
+    necklace: false,
     smoker: false,
   },
 ];

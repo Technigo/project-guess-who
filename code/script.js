@@ -379,12 +379,14 @@ if (keep) {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
-  // console.log(suspect)
   
-  checkMyGuess(suspect)
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  const makeAGuess = confirm(`Please confirm if you want to guess on ${suspect}`)
+  
+  if (makeAGuess === true) {
+    checkMyGuess(suspect)
+  } else {
+
+  }
 }
 
 // If you confirm, this function is invoked

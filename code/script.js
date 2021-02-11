@@ -311,6 +311,7 @@ const checkQuestion = () => {
   } else {
     filterCharacters(false)
   }
+  filterCharacters()
 }
   
   // Compare the currentQuestion with the secret person.
@@ -322,32 +323,39 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
-  if (group === 'accessories') {
+  if (currentQuestion.category === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
-      )
+      alert(`Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`)
     } else {
-      alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
-      )
+      alert(`No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`)
     }
-  } else if (group === 'other') {
-    // Similar to the one above
+  } else if (currentQuestion.category === 'eyeColor') {
+    if (keep) {
+      alert(`Yes, the person has ${currentQuestion.value} eyes! Keep all that has ${currentQuestion.value} eyes`)
+    } else {
+      alert(`No, the person doesn't have ${currentQuestion.value} eyes! Remove all that has ${currentQuestion.value} eyes`)
+    }  
+  } else if (currentQuestion.category === 'hairColor') {
+    if (keep) {
+      alert(`Yes, the person has ${currentQuestion.value} hair! Keep all that has ${currentQuestion.value} hair`)
+    } else {
+      alert(`No, the person doesn't have ${currentQuestion.value} hair! Remove all that has ${currentQuestion.value} hair`)
+    }  
+  } else if (currentQuestion.category === 'other') {
+    if (keep) {
+      alert(`Yes the person smokes! Keep all the smokers`)
   } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
-    } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
-    }
+      alert(`No the person doesn't smoke! Remove all the smokers`)
   }
-
-  // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
-
+  if (keep) {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
+  } else {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
+  }
+  }
+  // filter to keep or remove based on the keep variable.    
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

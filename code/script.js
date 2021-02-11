@@ -2,7 +2,9 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const filterButton = document.getElementById('filter') //find out button
+const findOut = document.getElementById('filter') //find out button
+const winOrLose =document.getElementById('winOrLose')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -266,7 +268,11 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.value
+  console.log(category) //hair color, eye color, accessories, other
+ 
+  const value = questions.options[questions.selectedIndex].value
+
+  console.log(value)// brown, blue, glasses, smoker
 
   if (category === 'hair color') {
     currentQuestion = {
@@ -302,6 +308,7 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+  console.log(secret)
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -358,5 +365,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-filterButton.addEventListener('click', checkQuestion)
-questions.addEventListener('change', () => selectQuestion())
+playAgain.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+findOut.addEventListener('click', checkQuestion)

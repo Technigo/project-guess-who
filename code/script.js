@@ -225,7 +225,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay, category
+let secret, currentQuestion, charactersInPlay
 
 
 
@@ -271,28 +271,28 @@ const selectQuestion = () => {
       attribute: 'hairColor',
       value: userInput,      
       category: category,
-      text: `${userInput} hair` 
+      
     }
   } else if (category === 'eye color') {    
     currentQuestion = {
       attribute: 'eyeColor',
       value: userInput,
       category: category,
-      text: `${userInput} eyes`
+      
     }
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: userInput,      
       value: true, 
       category: category,
-      text: userInput
+      
     }
   } else if (category === 'other') {
     currentQuestion = {
       attribute: userInput, 
       value: true,
       category: category,
-      text: 'a smoking habit'
+      
     }
   }  
 }
@@ -327,65 +327,53 @@ filterCharacters(keep)
 // It'll filter the characters array and redraw the game board.
 // Show the correct alert message for different categories
 
-const filterCharacters = (keep) => { 
-  if (keep) { 
-    alert(
-      `Yes the person has ${currentQuestion.text}, keeping all persons with ${currentQuestion.text} `
-    )    
-  } else {
-  alert(
-      `No the person dosen´t have ${currentQuestion.text}, removing all persons with ${currentQuestion.text}`
-  )
-  }
-}
+const filterCharacters = (keep) => {    
   
-/*  
-if (category === 'accessories') {
+if (currentQuestion.category === 'accessories') {
   if (keep) {    
     alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
         )
       } else {
         alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
         )
       }
-  } else if (category === 'other') {
+  } else if (currentQuestion.category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person is a ${attribute}! Keep everyone who is a  ${attribute}`
+        `Yes, the person is a ${currentQuestion.attribute}! Keep everyone who is a  ${currentQuestion.attribute}`
       )    
     } else {
       alert(
-      `No, the person isn´t ${attribute}! Remove everyone that is a ${attribute}`
+      `No, the person isn´t a ${currentQuestion.attribute}! Remove everyone that is a ${currentQuestion.attribute}`
       )
     }
   }
-    else if (category === 'hair color'){
+    else if (currentQuestion.category === 'hair color'){
     if (keep) {
       alert(
-        `Yes, the person has ${value} hair! Keep all persons with ${value} hair`
+        `Yes, the person has ${currentQuestion.value} hair! Keep all persons with ${currentQuestion.value} hair`
         )
     } else {
       alert(
-      `NO, the person doesnt have ${value} hair! Remove all persons with ${value} hair`
+      `NO, the person doesnt have ${currentQuestion.value} hair! Remove all persons with ${currentQuestion.value} hair`
       )
     }
   }
-    else if (category === 'eye color'){
+    else if (currentQuestion.category === 'eye color'){
     if (keep) {
       alert(
-        `Yes, the person has ${value} eyes! Keep all persons with ${value} eyes`
+        `Yes, the person has ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes`
         )
     } else {
       alert(
-        `NO, the person doesnt have ${value} eyes! Remove all persons with ${value} eyes`
+        `NO, the person doesnt have ${currentQuestion.value} eyes! Remove all persons with ${currentQuestion.value} eyes`
         )
       }
       
-    }*/
-
-  
+    }
+  }  
   
   // filter to keep or remove based on the keep variable.
   /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)

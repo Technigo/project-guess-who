@@ -31,8 +31,8 @@ const generateBoard = () => {
 
 // Update game info texts
 const updateInfo = () => {
-  const guessCounter = sideSection.children.namedItem("guessCount").firstElementChild;
-  guessCounter.innerText = counter;
+  const questionCounter = sideSection.children.namedItem("questionCount").firstElementChild;
+  questionCounter.innerText = counter;
 };
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -144,14 +144,14 @@ const checkMyGuess = (suspect) => {
   // 1. Check if the suspect is the same as the secret person's name
   const winState = suspect === secret.name ? true : false,
     endStateText = endScreen.querySelector("#endStateText"),
-    guessCounter = endScreen.querySelector("#guessCount").firstElementChild;
+    questionCounter = endScreen.querySelector("#questionCount").firstElementChild;
   // 2. Set a Message to show in the win or lose section accordingly
   if (winState) {
     endStateText.innerText = "YES! That is correct";
   } else {
     endStateText.innerText = "NO! That is wrong";
   }
-  guessCounter.innerText = counter;
+  questionCounter.innerText = counter;
   // 3. Show the win or lose section
   endScreen.classList.toggle("hidden");
 };

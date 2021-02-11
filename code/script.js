@@ -17,7 +17,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: true,
   },
   {
     name: 'Jack',
@@ -27,7 +28,8 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
-    angryFace: true,
+    angry: true,
+    happy: false,
   },
   {
     name: 'Jacques',
@@ -37,7 +39,8 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: true,
-    angryFace: false,
+    angry: false,
+    happy: false,
   },
   {
     name: 'Jai',
@@ -47,7 +50,8 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: true,
   },
   {
     name: 'Jake',
@@ -57,7 +61,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: true,
   },
   {
     name: 'James',
@@ -67,7 +72,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: false,
   },
   {
     name: 'Jana',
@@ -77,7 +83,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: true,
   },
   {
     name: 'Jane',
@@ -87,7 +94,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: false,
   },
   {
     name: 'Jaqueline',
@@ -97,7 +105,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: true,
   },
 
   {
@@ -108,7 +117,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: true,
-    angryFace: true,
+    angry: true,
+    happy: false,
   },
   {
     name: 'Jean',
@@ -118,7 +128,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
-    angryFace: true,
+    angry: true,
+    happy: false,
   },
   {
     name: 'Jeane',
@@ -128,7 +139,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: true,
   },
   {
     name: 'Jed',
@@ -138,7 +150,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
-    angryFace: true,
+    angry: true,
+    happy: false,
   },
   {
     name: 'Jenni',
@@ -148,7 +161,8 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: false,
   },
   {
     name: 'Jeri',
@@ -158,7 +172,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: false,
   },
   {
     name: 'Jerry',
@@ -168,7 +183,8 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: false,
   },
   {
     name: 'Jess',
@@ -178,7 +194,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: true,
   },
   {
     name: 'Jocelyn',
@@ -188,7 +205,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    angryFace: true,
+    angry: true,
+    happy: false,
   },
   {
     name: 'Jon',
@@ -198,7 +216,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: true,
   },
   {
     name: 'Jordan',
@@ -208,7 +227,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: true,
   },
   {
     name: 'Josephine',
@@ -218,7 +238,8 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: true,
   },
   {
     name: 'Josh',
@@ -228,7 +249,8 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: true,
   },
   {
     name: 'Jude',
@@ -238,7 +260,8 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
-    angryFace: false,
+    angry: false,
+    happy: false,
   },
   {
     name: 'Julie',
@@ -248,7 +271,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
-    angryFace: true,
+    angry: true,
+    happy: false,
   },
 ]
 
@@ -293,7 +317,7 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value of the question we've selected.
 
 const value = questions.value
-  if (category === 'hair color') {
+ if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
       value: value,
@@ -316,6 +340,12 @@ const value = questions.value
     }
   } else if (category === 'other') {
     // Set this up your self (should be same structure as above)
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    }
+  } else if (category === 'look') {
     currentQuestion = {
       attribute: value,
       value: true,
@@ -362,13 +392,21 @@ const {attribute, category, value} = currentQuestion
      alert(`Nope! The character does not have ${value} eyes removing all characters with ${value} eyes.`)
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
     }
-  } else if (category === 'other') {
+  } else if (category === 'look') {
     if (keep) {
-      alert(`Oh, yeah the character has ${value} Let's keep all the characters with ${value}`)
+      alert(`Booh yeah! the character looks ${attribute} Let's keep all the characters that look ${attribute}`)
 
     } else {
-      alert(`Nope! The character does not have ${value} Removing all the characters with ${value}`)
+      alert(`Nope! The character doesn't look ${attribute} Removing all the characters that look ${attribute}`)
     } 
+
+  } else if (category === 'other') {
+    if (keep) {
+      alert(` Yes, the character is a ${attribute}. keeping all the characters that are ${attribute}`)
+    
+    } else {
+      alert(`Nope! The character is not a ${attribute} Removing all the characters that are ${attribute}s`)
+    }
 
   }
 
@@ -387,7 +425,7 @@ const {attribute, category, value} = currentQuestion
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   // store the interaction from the player in a variable.
-  const userConfirms = confirm(`Are you sure you want to guess on ${suspect}`)
+  const userConfirms = confirm(`Are you sure you want to guess on ${suspect} ?`)
   if (userConfirms) {
     checkMyGuess(suspect)
   }

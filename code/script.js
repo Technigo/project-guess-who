@@ -2,7 +2,6 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-//const filterButton = document.getElementById("filter")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -223,7 +222,7 @@ const CHARACTERS = [
     hat: true,
     smoker: false,
   },
-]
+];
 
 // Global variables
 let secret, currentQuestion, charactersInPlay
@@ -243,8 +242,8 @@ const generateBoard = () => {
       </div>
     `
   })
+  
 }
-
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -254,43 +253,55 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  generateBoard()
-  setSecret()
-  // What else should happen when we start the game?
+  
+    // What else should happen when we start the game?
+generateBoard()
+setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
+  
   // We also need a variable that stores the actual value of the question we've selected.
-
+const value = question.value
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: value,
       // 👆 add the value from the input here
       category: category,
-    }
+    };
+
   } else if (category === 'eye color') {
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value: value,
+      category: category,
+    };
     // Set this up your self
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: 'value',
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
-    }
+    };
+
   } else if (category === 'other') {
     currentQuestion = {
-      value: true
-    }
+      attribute: 'other',
+      value: true,
+      category: category,
+    };
     // Set this up your self (should be same structure as above)
-  }
-}
-
+  };
+  };
+  
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -303,7 +314,8 @@ const filterCharacters = (keep) => {
     if (keep) {
       alert(
         `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
-      )
+      );
+
     } else {
       alert(
         `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
@@ -347,3 +359,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', () => selectQuestion())
+
+

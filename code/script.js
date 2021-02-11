@@ -283,11 +283,17 @@ const selectQuestion = () => {
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: 'glasses', 
-      attribute: 'hat',
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
+  }  else if (category === 'accessories') {
+      currentQuestion = {
+        attribute: 'hat',
+        // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
+        value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+        category: category,
+      }
   } else if (category === 'other') {
     currentQuestion = {
       attribute: 'smoker', 
@@ -299,10 +305,19 @@ const selectQuestion = () => {
 }
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+  const secretValue = secret[currentQuestion.attribute]
+  if (secretValue === currentQuestion.value) {
+    filterCharacters(true)
+  } else {
+    filterCharacters(false)
+  }
+}
+  
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-}
+
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {

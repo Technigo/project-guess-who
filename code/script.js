@@ -1,7 +1,6 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
-const option = document.getElementById('option')
 const filter = document.getElementById('filter')
 const restartButton = document.getElementById('restart')
 const winOrLose = document.getElementById('winOrLose')
@@ -16,239 +15,254 @@ const CHARACTERS = [
   {
     name: 'Quokka',
     img: 'images/quokka.jpg',
-    hairColor: 'hidden',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: true,
-    smoker: false,
+    color: 'brun',
+    numberOfLegs: 'två',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
-  // {
-  //   name: '',
-  //   img: '',
-  //   color: '',
-  //   animalType: '',
-  //   numberOfLegs: '',
-  //   livesInWater: true,
-  //   livesInJungle: false,
-  //   isAmamal: true,
-  // },
   {
     name: 'Leopard',
     img: 'images/leopard.jpg',
-    hairColor: 'hidden',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    smoker: false,
+    color: 'fläckig',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Katt',
     img: 'images/kitten.jpg',
-    hairColor: 'grey',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    smoker: true,
+    color: 'grå',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Björn',
     img: 'images/bear.jpg',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: false,
-    hat: false,
-    smoker: false,
+    color: 'brun',
+    numberOfLegs: 'fyra',
+    simma: true,
+    vifta: false,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Lamm',
     img: 'images/lamb.jpg',
-    hairColor: 'yellow',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    color: 'vit',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Hök',
     img: 'images/hawk.jpg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    color: 'orange',
+    numberOfLegs: 'två',
+    simma: false,
+    vifta: false,  
+    flyga: true,
+    ruva: true,
   },
   {
     name: 'Elefant',
     img: 'images/elephant.jpg',
-    hairColor: 'black',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    color: 'grå',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Kalv',
     img: 'images/cow.jpg',
-    hairColor: 'yellow',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    color: 'vit',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Orm',
     img: 'images/snake.jpg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    color: 'grå',
+    numberOfLegs: 'inga ben',
+    simma: true,
+    vifta: false,  
+    flyga: false,
+    ruva: true,
   },
 
   {
     name: 'Älg',
     img: 'images/moose.jpg',
-    hairColor: 'purple',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    smoker: true,
+    color: 'brun',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: false,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Anka',
     img: 'images/duck.jpg',
-    hairColor: 'brown',
-    eyeColor: 'blue',
-    glasses: true,
-    hat: true,
-    smoker: true,
+    color: 'orange',
+    numberOfLegs: 'två',
+    simma: true,
+    vifta: false,  
+    flyga: true,
+    ruva: true,
   },
   {
     name: 'Häst',
     img: 'images/horse.jpg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    color: 'brun',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Giraff',
     img: 'images/giraffe.jpg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: true,
-    smoker: true,
+    color: 'fläckig',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Gris',
     img: 'images/pig.jpg',
-    hairColor: 'white',
-    eyeColor: 'hidden',
-    glasses: false,
-    hat: true,
-    smoker: false,
+    color: 'rosa',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Apa',
     img: 'images/monkey.jpg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    color: 'brun',
+    numberOfLegs: 'två',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Räv',
     img: 'images/fox.jpg',
-    hairColor: 'hidden',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    smoker: false,
+    color: 'orange',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Igelkott',
     img: 'images/hedgehog.jpg',
-    hairColor: 'black',
-    eyeColor: 'blue',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    color: 'brun',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: false,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Tvättbjörn',
     img: 'images/racoon.jpg',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    color: 'brun',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Gås',
     img: 'images/goose.jpg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    color: 'gul',
+    numberOfLegs: 'två',
+    simma: true,
+    vifta: false,  
+    flyga: true,
+    ruva: true,
   },
   {
     name: 'Koala',
     img: 'images/koala.jpg',
-    hairColor: 'yellow',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: true,
-    smoker: false,
+    color: 'grå',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: false,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Tiger',
     img: 'images/tiger.jpg',
-    hairColor: 'grey',
-    eyeColor: 'brown',
-    glasses: false,
-    hat: false,
-    smoker: false,
+    color: 'orange',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Bäver',
     img: 'images/beaver.jpg',
-    hairColor: 'yellow',
-    eyeColor: 'green',
-    glasses: false,
-    hat: false,
-    smoker: false,
+    color: 'brun',
+    numberOfLegs: 'fyra',
+    simma: true,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
     name: 'Groda',
     img: 'images/frog.jpg',
-    hairColor: 'black',
-    eyeColor: 'green',
-    glasses: false,
-    hat: false,
-    smoker: false,
+    color: 'gul',
+    numberOfLegs: 'fyra',
+    simma: true,
+    vifta: false,  
+    flyga: false,
+    ruva: true,
   },
   {
     name: 'Hund',
     img: 'images/puppy.png',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: true,
-    hat: true,
-    smoker: false,
+    color: 'fläckif',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion
+let charactersFiltered = CHARACTERS
 
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  charactersFiltered.forEach((person) => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
@@ -264,13 +278,13 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)]
   console.log("secret", secret)
 }
 
 // This function to start (and restart) the game
 const start = () => {
-  charactersInPlay = CHARACTERS
+  //charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
 }
@@ -279,27 +293,21 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
-  if (category === 'hair color') {
+  if (category === 'Färg') {
     currentQuestion = {
-      attribute: 'hairColor',
+      attribute: 'color',
       value,
       category,
     }
-  } else if (category === 'eye color') {
+  } else if (category === 'Antal ben') {
     currentQuestion = {
-      attribute: 'eyeColor',
+      attribute: 'numberOfLegs',
       value,
       category
     }
-  } else if (category === 'accessories') {
+  } else if (category === 'Vad den gör') {
     currentQuestion = {
       attribute: value,
-      value: true, 
-      category
-    }
-  } else if (category === 'other') {
-    currentQuestion = {
-      attribute: 'smoker',
       value: true, 
       category
     }
@@ -328,34 +336,36 @@ const filterCharacters = (keep) => {
   const value = currentQuestion.value
   const attribute = currentQuestion.attribute
   let message = ""
-  if (group === 'accessories') {
+  if (group === 'Färg') {
     if (keep) {
-      message = `<strong>Yes</strong>,<br> the person wears ${attribute}! <br> Kept all that wears ${attribute}.`
+      message = `<div class="answer-yes">STÄMMER</div><strong>Djuret har ${value} päls!</strong> <div>Behåller alla djur med ${value} päls.</div>`
     } else {
-      message = `strong>No, the person doesn't wear ${attribute}! <br> Removed all that wears ${attribute}...`
+      message = `<div class="answer-no">TYVÄRR</div><strong>Djuret har inte ${value} päls!</strong> <div>Tar bort alla djur med ${value} päls...</div>`
     }
-  } else if (group === 'hair color') {
+  } else if (group === 'Antal ben') {
       if (keep) {
-        message = `<strong>Yes</strong>,<br> the person has ${value} hair! <br> Kept all persons with ${value} hair.`
+        message = `<div class="answer-yes">STÄMMER</div><strong>Djuret ${value} ben!</strong> <div>Behåller alla djur med ${value} ben.</div>`
       } else {
-        message = `<strong>No</strong>,<br> the person doesn't have ${value} hair! <br> Removed all persons with ${value} hair...`
+        message = `<div class="answer-no">TYVÄRR</div><strong>Djuret har inte ${value} ben!</strong> <div>Tar bort alla djur med ${value} ben...</div>`
       }
-  } else if (group === 'eye color') {
+  } else if (group === 'Vad den gör') {
       if (keep) {
-        message = `<strong>Yes</strong>,<br> the person has ${value} eyes! <br> Kept all persons with ${value} eyes.`
+        message = `<div class="answer-yes">STÄMMER</div><strong>Djuret kan ${attribute}!</strong> <div>Behåller alla djur som kan ${attribute}.</div>`
       } else {
-        message = `<strong>No</strong>,<br> the person does not have ${value} eyes! <br> Removed all persons with ${value} eyes...`
+        message = `<div class="answer-no">TYVÄRR</div><strong>Djuret kan inte ${attribute}!</strong> <div>Tar bort alla djur som inte kan ${attribute}...</div>`
       }
-  } else if (group === 'other') {
-    if (keep) {
-      message = `<strong>Yes</strong>,<br> this person has a smoking habit! <br> Kept all persons with a smoking habit.`
-    } else {
-      message = `<strong>No</strong>,<br> this person does not have a smoking habit! <br> Removed all persons with a smoking habit...`
-    }
-  }
-  //alert(message)
+  } 
+
+  charactersFiltered = charactersFiltered.filter(animal => {
+    console.log(value)
+        if (secret[attribute] === value) {
+            return animal[attribute] === value;
+        } else {
+            return animal[attribute] !== value;
+        }
+    });
   feedbackMessage(message)
-  charactersInPlay = charactersInPlay.filter((person) => keep? person[attribute] === value:person[attribute] !== value)
+  //charactersFiltered = charactersFiltered.filter((animal) => keep? animal[attribute] === value:animal[attribute] !== value)
   generateBoard()
 }
 

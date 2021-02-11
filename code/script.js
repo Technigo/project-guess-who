@@ -4,7 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const check = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
-const winOrLoseText = document.getElementById('winOrLoseText')
+const congrats = document.getElementById('congrats')
 const playAgain = document.getElementById('playAgain')
 
 // *** Array with all the characters, as objects
@@ -258,6 +258,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   setSecret()
   generateBoard()
+  console.log(secret.name)
 }
 
 // Compares your question with the secret person
@@ -386,15 +387,21 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     alert(`${suspect} is correct`);
-    winOrLose.style = 'display:block;'
+    winOrLose.style = 'display: block;'
+    congrats.innerHTML += `
+    <h1>Congratulations!</h1>
+    <p>You managed to Guess Who - it was ${secret.name}.</p>
+    <img src="${secret.img}" alt="${secret.name}">
+        <p>Wanna play again?</p>
+    ` 
   } else {
     alert(`${suspect} is wrong`);
-    winOrLose.style = 'display:block;'
+    winOrLose.style = 'display: block;'
+    congrats.innerHTML += `
+        <p>Wanna play again?</p>
+    ` 
   }
 }
-
-// 2. Set a Message to show in the win or lose section accordingly
-// 3. Show the win or lose section
 
 // Invokes the start function when website is loaded
 start()

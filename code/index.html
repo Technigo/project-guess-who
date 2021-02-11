@@ -52,7 +52,7 @@
     </aside>
 
     <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
+      <main class="game-board" class="game-board-hidden" id="board"></main>
     </section>
 
     <section id="winOrLose" class="win-or-lose-wrapper">
@@ -62,8 +62,9 @@
           src="images/guess-who-bubble.png"
           alt="Guess Who"
         />
-        <h1 id="winOrLoseText"></h1>
+        <div id="congrats" class="congrats"></div>
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
+    
       </div>
     </section>
     <script src="script.js"></script>

@@ -248,26 +248,26 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  //console.log(secret)
+  console.log("secret", secret)
 }
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?'
+  // call funcions to draw the board game and randonly select a secret person from CHARACTER array
   generateBoard()
   setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
+  // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.value
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  console.log(category)
-
+  console.log("category", category)
+  console.log("value", value)
+  // currentQuestion stores what attribute we ask for, the value of the attribute andwhat category it belongs to of the question selected
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
@@ -294,24 +294,40 @@ const selectQuestion = () => {
       value: true,
       category: category,
     }
-    // Set this up your self (should be same structure as above)
   }
 }
 
 // This function should be invoked when you click on 'Find Out'.
-const checkQuestion = () => {
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+const checkQuestion = () => {
+  let keep 
+  if (currentQuestion.attribute === 'hairColor' && currentQuestion.value === secret.hairColor) {
+    keep = true
+  } else if (currentQuestion.attribute === 'eyeColor' && currentQuestion.value === secret.eyeColor) {
+    keep = true
+  } else if (currentQuestion.attribute === 'glasses' && currentQuestion.value === secret.glasses) {
+    keep = true
+  } else if (currentQuestion.attribute === 'hat' && currentQuestion.value === secret.hat) {
+    keep = true
+  } else if (currentQuestion.attribute === 'smoker' && currentQuestion.value === secret.smoker) {
+    keep = true
+  } else {
+    keep = false
+  }
+  console.log("keep", keep);
+  filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
-  if (group === 'accessories') {
+  console.log("current cate", currentQuestion.category);
+  if (currentQuestion.category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
       )
     } else {
       alert(
@@ -356,5 +372,10 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+// select question using change elemnt, when selecting question the function is invoked
 questions.addEventListener('change', selectQuestion)
-findOutButton.addEventListener('click' ,() => checkQuestion())
+
+findOutButton.addEventListener('click', checkQuestion)
+
+
+

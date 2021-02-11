@@ -307,45 +307,23 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-  
+
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
 
-  // const checkQuestion = () => {
-  //   let keep
-  //   if (currentQuestion.attribute === "hairColor" && currentQuestion.value === secret.hairColor) {
-  //     keep = true
-  //   } else if (currentQuestion.attribute === "eyeColor" && currentQuestion.value === secret.eyeColor) {
-  //     keep = true
-  //   } else if (currentQuestion.attribute === "glasses" && currentQuestion.value === secret.glasses) {
-  //     keep = true
-  //   } else if (currentQuestion.attribute === "hat" && currentQuestion.value === secret.hat) {
-  //     keep = true
-  //   } else if (currentQuestion.attribute === "smoker" && currentQuestion.value === secret.smoker) {
-  //     keep = true
-  //   } else {
-  //     keep = false
-  //   }
-  //   filterCharacters(keep)
-  // }
-
-  // console.log(currentQuestion);
-
   const secretValue = secret[currentQuestion.attribute];
   if (secretValue === currentQuestion.value) {
-    filterCharacters(true);
+    filterCharacters(true, currentQuestion.category, currentQuestion.attribute);
     } else {
-    filterCharacters(false);
+    filterCharacters(false, currentQuestion.category, currentQuestion.attribute);
   }
 }
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
+const filterCharacters = (keep, group, attribute) => {
   // Show the correct alert message for different categories
-  // Store it in a variable as: const filteredBoard =  CHARACTERS.filter(
 
-  // )
   if (group === 'accessories') {
     if (keep) {
       alert(
@@ -386,8 +364,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
   }
-
-  generateBoard(charactersInPlay);
+  generateBoard();
   // filter to keep or remove based on the keep variable.
     // charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     // // or 

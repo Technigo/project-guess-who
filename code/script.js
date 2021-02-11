@@ -267,7 +267,7 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
-  const selectedElementValue = questions.options[questions.selectedIndex].value;
+  const selectedElementValue = questions.options[questions.selectedIndex].innerText;
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -314,25 +314,25 @@ const checkQuestion = () => {
 
   const secretValue = secret[currentQuestion.attribute];
   if (secretValue === currentQuestion.value) {
-    filterCharacters(true, currentQuestion.category, currentQuestion.attribute);
+    filterCharacters(true, currentQuestion.category, currentQuestion.value);
     } else {
-    filterCharacters(false, currentQuestion.category, currentQuestion.attribute);
+    filterCharacters(false, currentQuestion.category, currentQuestion.value);
   }
 }
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep, group, attribute) => {
+const filterCharacters = (keep, group, attribute, value) => {
   // Show the correct alert message for different categories
 
   if (group === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person wears ${attribute}! Keeping all that wears ${attribute}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the person doesn't wear ${attribute}! Removing all that wears ${attribute}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
@@ -340,12 +340,12 @@ const filterCharacters = (keep, group, attribute) => {
     // Similar to the one above
     if (keep) {
       alert(
-        `Yes, the person has a ${attribute}! Keep all that has a ${attribute}`
+        `Yes, the person has a ${attribute}! Keeping all that has a ${attribute}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       alert(
-        `No, the person doesn't have a ${attribute}! Remove all that has a ${attribute}`
+        `No, the person doesn't have a ${attribute}! Removing all that has a ${attribute}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
@@ -353,13 +353,13 @@ const filterCharacters = (keep, group, attribute) => {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
       alert(
-        `Yes, the person has ${attribute}! Keep all that has ${attribute}`
+        `Yes, the person has ${attribute}! Keeping all that has ${attribute}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
       alert(
-        `No, the person doesn't have ${attribute}! Remove all that has ${attribute}`
+        `No, the person doesn't have ${attribute}! Removing all that has ${attribute}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }

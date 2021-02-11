@@ -311,7 +311,7 @@ const checkQuestion = () => {
   } else {
     filterCharacters(false)
   }
-  filterCharacters()
+  //filterCharacters()
 }
   
   // Compare the currentQuestion with the secret person.
@@ -344,14 +344,14 @@ const filterCharacters = (keep) => {
   } else if (currentQuestion.category === 'other') {
     if (keep) {
       alert(`Yes the person smokes! Keep all the smokers`)
-  } else {
+    } else {
       alert(`No the person doesn't smoke! Remove all the smokers`)
+  }
   }
   if (keep) {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
   } else {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
-  }
   }
   // filter to keep or remove based on the keep variable.    
   // Invoke a function to redraw the board with the remaining people.
@@ -360,6 +360,10 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
+  const confirmation = confirm(`Are you sure about bet on ${suspect}?`)
+  if (confirmation) {
+    checkMyGuess(suspect)
+  } 
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -367,12 +371,19 @@ const guess = (suspect) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
+  if (suspect === secret.name) {
+    alert('That is correct, you won!')
+    board.innerHTML = ''
+    winOrLose.style.display = 'block'
+    
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  } else {
+  alert('That is not correct, you loose!')
+  }
 }
-
 // Invokes the start function when website is loaded
 start()
 

@@ -243,3 +243,11 @@ button:focus {
 .looser{
   display: none;
 }
+
+.alert-hidden{
+  display: none;
+}
+
+.alert-show{
+  display: block; 
+}

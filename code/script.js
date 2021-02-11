@@ -7,7 +7,8 @@ const winOrLooseBlock = document.querySelector('.win-or-lose-wrapper')
 const winner = document.querySelector('.winner')
 const looser = document.querySelector('.looser')
 const tryAgainBtn = document.getElementById('try-again-btn')
-
+const alertBox = document.getElementById('hidden')
+const playAgain =document.getElementById('playAgain')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -362,16 +363,15 @@ const filterCharacters = (shouldKeep) => {
     if (shouldKeep) {
       //here we want to catch the value we stored in attributes from currentQuestions
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      alert (
-        `Yes, the person has ${value} hair ! Keep all that has ${value}`
-      )
+       alert (
+      `Yes, the person has ${value} hair ! Keep all that has ${value}`)
       // alert popup that says something like: "Yes, the person has yellow hair! 
       //Keep all persons with yellow hair"
+      
     } else { 
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
       alert (
-        `NO, the person does not have ${value} ! Take away all that has ${value}`
-      )
+      `NO, the person does not have ${value} ! Take away all that has ${value}`)
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
       
     }
@@ -427,12 +427,21 @@ const checkMyGuess = (suspect) => {
   // 4. Hide the game board. display none 
 }
 
+
 //I want to display the winner/looser block but hide the game board
 const runWinnerBlock = () => {
   winOrLooseBlock.style.display = 'flex'
   winner.style.display ='block'
   board.style.display = 'none'
+
+  playAgain.addEventListener('click', () => {
+    winOrLooseBlock.style.display = ''
+    looser.style.display =''
+    board.style.display = ''
+    start();
+    })
 }
+
 const runLooserBlock = () => {
   console.log("you are wrong")
   winOrLooseBlock.style.display = 'flex'
@@ -448,6 +457,9 @@ tryAgainBtn.addEventListener('click', () => {
   
 }
 
+const showAlert =() =>{
+  alertBox.style.display = 'block'
+}
 // Invokes the start function when website is loaded
 start();
 
@@ -455,5 +467,7 @@ start();
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click' ,() => checkQuestion())
+
+
 //When clicking on the 'Find out' button, you should invoke the checkQuestion function
 // (using an eventListener)

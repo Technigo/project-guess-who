@@ -256,6 +256,8 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  winOrLose.style.display = 'none'
+  board.style.display = 'flex'
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   //shows, generates the gameboard

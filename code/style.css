@@ -247,9 +247,11 @@ button:focus {
     width: 100%;
     min-height: 0;
   }
+  
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
@@ -291,4 +293,21 @@ button:focus {
     color: var(--primary);
     border: none;
   }
+
+  .confirm{
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 100px;
+    z-index: 99;
+  }
+
+  .alert{
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 100px;
+    z-index: 99;
+  }
+
 }

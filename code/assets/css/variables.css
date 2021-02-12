@@ -22,5 +22,5 @@
   --spacing: 4px;
 
   /* FONTS */
-  --primaryFont: "Roboto", sans-serif;
+  --primaryFont: "IBM Plex Mono", monospace;
 }

@@ -3,6 +3,8 @@ const characterWrapper = document.getElementById("board");
 const charactersControls = document.getElementById("character-controls");
 const choiceElements = document.querySelectorAll(".question .choice");
 const remainGuessElement = document.getElementById("remain-guess");
+const pageContainer = document.getElementById("page-container");
+const loading = document.getElementById("loading");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -274,6 +276,7 @@ const CHARACTERS = [
 ];
 
 let guessLimit = 4;
+let firstTimeRender = true;
 
 choiceElements.forEach((choiceElement) =>
   choiceElement.addEventListener("click", (e) => {
@@ -342,16 +345,36 @@ const filterCharacters = (value, type) => {
 
 const renderCharacters = () => {
   characterWrapper.innerHTML = "";
-  CHARACTERS.map((character) => {
-    characterWrapper.innerHTML += `
-      <div class="character-wrapper ${
-        character.isRemoved ? "disable" : ""
-      }" onclick="guess(${character.id}, '${character.name}')">
-        <p>${character.name}</p>
-        <img src=${character.img} alt=${character.name} class="character-img"/>
+  if (firstTimeRender === true) {
+    CHARACTERS.map((character) => {
+      characterWrapper.innerHTML += `
+      <div class="grid">
+        <div class="character-wrapper ${
+          character.isRemoved ? "disable" : ""
+        }" onclick="guess(${character.id}, '${character.name}')">
+          <p>${character.name}</p>
+          <img src=${character.img} alt=${
+        character.name
+      } class="character-img"/>
+        </div>
       </div>
-    `;
-  });
+      `;
+    });
+    firstTimeRender = false;
+  } else {
+    CHARACTERS.map((character) => {
+      characterWrapper.innerHTML += `
+        <div class="character-wrapper ${
+          character.isRemoved ? "disable" : ""
+        }" onclick="guess(${character.id}, '${character.name}')">
+          <p>${character.name}</p>
+          <img src=${character.img} alt=${
+        character.name
+      } class="character-img"/>
+        </div>
+      `;
+    });
+  }
 };
 
 const guess = (id, name) => {
@@ -365,8 +388,15 @@ const guess = (id, name) => {
   }
 };
 
+const renderPage = () => {
+  loading.classList.add("none");
+  pageContainer.classList.remove("none");
+  pageContainer.classList.add("page-container");
+};
+
 const initialize = (() => {
+  setTimeout(renderPage, 4000);
   remainGuessElement.innerText = guessLimit;
   selectSecretCharacter();
-  setTimeout(renderCharacters, 1000);
+  renderCharacters();
 })();

@@ -326,8 +326,9 @@ const checkQuestion = () => {
 const filterCharacters = (keep, group) => {
   console.log(keep) //false or true
   console.log(group)// eg. haircolor
-  console.log(secret[currentQuestion.attribute]) //the attribute of secrret person eg. orange hair, blue eyes
-  console.log(currentQuestion.value) // same but for the selected  - this one for below? 
+  console.log(currentQuestion.category) // same as group
+  //console.log(secret[currentQuestion.attribute]) //the attribute of secrret person eg. orange hair, blue eyes
+  //console.log(currentQuestion.value) // same but for the selected  - this one for below? 
   // Show the correct alert message for different categories
   if (group === 'accessories') {
     if (keep) {
@@ -349,7 +350,6 @@ const filterCharacters = (keep, group) => {
         `No the person has not ${currentQuestion.value} eyes! Remove all with eyes ${currentQuestion.value}`
       )
     }
-
   } else if (group === 'other') {
     if (keep) { //attribute to show glasses, smoker etc
       alert(
@@ -375,17 +375,27 @@ const filterCharacters = (keep, group) => {
     }
   }
 
+  if (keep) {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
+  } else {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
+  }
   // filter to keep or remove based on the keep variable.
- /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-  or 
-  charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-*/
+
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
+  console.log(secret.name)
+  if (suspect.name === secret.name) {
+    //do something
+  } else {
+    //do something
+  }
+
+
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.

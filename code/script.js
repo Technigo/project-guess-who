@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const winOrLose = document.getElementById("winOrLose")
+const playAgainButton = document.getElementById("playAgain")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -255,6 +257,7 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  // when you click play again the winOrLose will not be displayed
   // call funcions to draw the board game and randonly select a secret person from CHARACTER array
   generateBoard()
   setSecret()
@@ -325,7 +328,7 @@ const filterCharacters = (keep) => {
   let value =currentQuestion.value
 
   // Show the correct alert message for different categories
-  console.log("current category", currentQuestion.category);
+  console.log("current category", category);
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -391,12 +394,17 @@ const guess = (suspect) => {
    }
   }
 
-// If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
-  // 1. Check if the suspect is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  // Check if the suspect is the same as the secret person's name and show message (ternary operator)
+  suspect === secret.name ? winOrLoseText.innerHTML = `You guessed on ${suspect} and it was correct!`: winOrLoseText.innerHTML = `No it's not ${suspect}. It was ${secret.name}!`
+  // Show the win or lose section, hide the game board
+  winOrLose.style.display = 'flex'
+
+}
+
+const playAgain = () => {
+  winOrLose.style.display = 'none'
+  start()
 }
 
 // Invokes the start function when website is loaded
@@ -408,6 +416,4 @@ restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 // compare selected question with secret person attribute and value
 findOutButton.addEventListener('click', checkQuestion)
-
-
-
+playAgainButton.addEventListener('click', playAgain)

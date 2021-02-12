@@ -15,7 +15,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: true,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 4,
@@ -48,7 +48,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 5,
@@ -59,7 +59,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 6,
@@ -70,7 +70,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 7,
@@ -81,7 +81,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 8,
@@ -92,7 +92,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 9,
@@ -103,7 +103,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
 
   {
@@ -115,7 +115,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: true,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 11,
@@ -126,7 +126,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 12,
@@ -137,7 +137,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 13,
@@ -148,7 +148,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 14,
@@ -159,7 +159,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 15,
@@ -170,7 +170,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 16,
@@ -181,7 +181,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 17,
@@ -192,7 +192,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 18,
@@ -203,7 +203,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 19,
@@ -214,7 +214,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 20,
@@ -225,7 +225,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 21,
@@ -236,7 +236,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 22,
@@ -247,7 +247,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 23,
@@ -258,7 +258,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
   {
     id: 24,
@@ -269,37 +269,45 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
-    removed: false,
+    isRemoved: false,
   },
 ];
 
-let choiceLimit = 5;
+let guessLimit = 4;
 
-const renderCharacters = () => {
-  characterWrapper.innerHTML = "";
-  CHARACTERS.map((character) => {
-    characterWrapper.innerHTML += `
-      <div class="character-wrapper ${
-        character.removed ? "disable" : ""
-      }" onclick="guess(${character.id}, '${character.name}')">
-        <p>${character.name}</p>
-        <img src=${character.img} alt=${character.name} class="character-img"/>
-      </div>
-    `;
-  });
-};
+choiceElements.forEach((choiceElement) =>
+  choiceElement.addEventListener("click", (e) => {
+    // console.log(e);
+    // console.log(e.target);
+    if (!e.target.classList.contains("disable")) {
+      if (guessLimit >= 1) {
+        const value = e.target.getAttribute("data-value");
+        const type = e.target.parentNode.getAttribute("data-type");
+        e.target.classList.add("disable");
+        // console.log(value, type);
+        filterCharacters(value, type);
+        guessLimit--;
+        remainGuessElement.innerText = guessLimit;
+      } else {
+        alert("You ran out of your choices. Guess one of them >:D");
+      }
+    }
+  })
+);
 
-const selectCharacter = () => {
+const selectSecretCharacter = () => {
   const random = Math.floor(Math.random() * CHARACTERS.length);
-  selectedCharacter = CHARACTERS[random];
+  selectedSecretCharacter = CHARACTERS[random];
 };
 
 const filterCharacters = (value, type) => {
+  // console.log(value, type);
   if (value == "true" || value == "false") {
     value = Boolean(value);
   }
-
-  if (value === selectedCharacter[type]) {
+  // console.log("selectedSecretCharacter[type]", selectedSecretCharacter[type]);
+  // console.log("value", value);
+  if (value === selectedSecretCharacter[type]) {
     document.getElementById("right-guess").innerHTML =
       "Super! Your guess is right!";
 
@@ -308,13 +316,13 @@ const filterCharacters = (value, type) => {
     }, 3000);
 
     const removedCharacters = CHARACTERS.filter(
-      (character) => character[type] !== selectedCharacter[type]
+      (character) => character[type] !== selectedSecretCharacter[type]
     );
 
     removedCharacters.map((character) => {
-      character.removed = true;
+      character.isRemoved = true;
     });
-  } else if (value !== selectedCharacter[type]) {
+  } else if (value !== selectedSecretCharacter[type]) {
     document.getElementById("wrong-guess").innerHTML = `Your guess is wrong!`;
 
     setTimeout(function () {
@@ -326,43 +334,39 @@ const filterCharacters = (value, type) => {
     );
 
     removedCharacters.map((character) => {
-      character.removed = true;
+      character.isRemoved = true;
     });
   }
   renderCharacters();
 };
 
+const renderCharacters = () => {
+  characterWrapper.innerHTML = "";
+  CHARACTERS.map((character) => {
+    characterWrapper.innerHTML += `
+      <div class="character-wrapper ${
+        character.isRemoved ? "disable" : ""
+      }" onclick="guess(${character.id}, '${character.name}')">
+        <p>${character.name}</p>
+        <img src=${character.img} alt=${character.name} class="character-img"/>
+      </div>
+    `;
+  });
+};
+
 const guess = (id, name) => {
   if (confirm(`${name}? Are you sure?`)) {
-    if (id === selectedCharacter.id) {
+    if (id === selectedSecretCharacter.id) {
       alert("You win");
-    } else if (id !== selectedCharacter.id) {
+    } else if (id !== selectedSecretCharacter.id) {
       alert("Game over");
-      window.location.reload();
     }
+    window.location.reload();
   }
 };
 
-choiceElements.forEach((i) =>
-  i.addEventListener("click", (e) => {
-    if (!e.target.classList.contains("disable")) {
-      if (choiceLimit >= 1) {
-        const value = e.target.getAttribute("data-value");
-        const type = e.target.parentNode.getAttribute("data-type");
-        e.target.classList.add("disable");
-
-        filterCharacters(value, type);
-        choiceLimit--;
-        remainGuessElement.innerText = choiceLimit;
-      } else {
-        alert("You ran out of your choices. Guess one of them >:D");
-      }
-    }
-  })
-);
-
 const initialize = (() => {
-  remainGuessElement.innerText = choiceLimit;
-  selectCharacter();
+  remainGuessElement.innerText = guessLimit;
+  selectSecretCharacter();
   setTimeout(renderCharacters, 1000);
 })();

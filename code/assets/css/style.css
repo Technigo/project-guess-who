@@ -22,7 +22,7 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: #f1f1f1;
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -239,13 +239,22 @@ button {
 }
 
 .character-wrapper {
-  border: 1px solid red;
-  padding: 8px;
-  gap: 16px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  padding: 0 8px;
+  text-align: center;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+.character-wrapper:hover {
+  box-shadow: 0 8px 6px -6px #454545;
+  transform: scale(1.014);
 }
 
 .disable {
-  opacity: 0.1;
+  opacity: 0.2;
+  cursor: not-allowed;
 }
 
 .none {
@@ -273,16 +282,44 @@ button {
   cursor: pointer;
 }
 
-.question .choice.disable {
-  opacity: 0.5;
+/* .question .choice.disable {
+  opacity: 0.2;
   cursor: not-allowed;
-}
+} */
 
 .question .choice[data-value="blue"] {
   background-color: blue;
 }
 .question .choice[data-value="brown"] {
   background-color: rgb(54, 34, 21);
+}
+.question .choice[data-value="black"] {
+  background-color: #000;
+}
+.question .choice[data-value="yellow"] {
+  background-color: yellow;
+  color: #000;
+}
+.question .choice[data-value="purple"] {
+  background-color: purple;
+}
+.question .choice[data-value="grey"] {
+  background-color: rgb(77, 77, 77);
+}
+.question .choice[data-value="hidden"] {
+  background-color: grey;
+}
+.question .choice[data-value="orange"] {
+  background-color: orange;
+}
+.question .choice[data-value="green"] {
+  background-color: green;
+}
+.question .choice[data-value="true"] {
+  background-color: green;
+}
+.question .choice[data-value="false"] {
+  background-color: red;
 }
 .question .choice[data-value="white"] {
   background-color: rgb(255, 255, 255);

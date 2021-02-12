@@ -21,6 +21,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: false,
+    button: false
   },
   {
     name: 'Jack',
@@ -34,6 +36,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: true,
+    beard: true,
+    button: true,
   },
   {
     name: 'Jacques',
@@ -47,6 +51,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: true,
     patterns: false,
+    beard: true,
+    button: false,
   },
   {
     name: 'Jai',
@@ -60,6 +66,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: false,
+    button: false,
   },
   {
     name: 'Jake',
@@ -73,6 +81,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: true,
+    beard: false,
+    button: true,
   },
   {
     name: 'James',
@@ -86,6 +96,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: true,
+    button: false,
   },
   {
     name: 'Jana',
@@ -99,6 +111,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: false,
+    button: true,
   },
   {
     name: 'Jane',
@@ -112,6 +126,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: true,
+    beard: false,
+    button: false,
   },
   {
     name: 'Jaqueline',
@@ -125,6 +141,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: false,
+    button: false,
   },
 
   {
@@ -139,6 +157,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: true,
     patterns: false,
+    beard: false,
+    button: false,
   },
   {
     name: 'Jean',
@@ -152,6 +172,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: true,
     patterns: false,
+    beard: true,
+    button: true,
   },
   {
     name: 'Jeane',
@@ -165,6 +187,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: false,
+    button: false,
   },
   {
     name: 'Jed',
@@ -178,6 +202,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: true,
     patterns: false,
+    beard: true,
+    button: false,
   },
   {
     name: 'Jenni',
@@ -191,6 +217,8 @@ const CHARACTERS = [
     phone: true,
     smokinghabit: false,
     patterns: false,
+    beard: false,
+    button: false,
   },
   {
     name: 'Jeri',
@@ -204,6 +232,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: true,
+    beard: false,
+    button: false,
   },
   {
     name: 'Jerry',
@@ -217,6 +247,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: false,
+    button: false,
   },
   {
     name: 'Jess',
@@ -230,6 +262,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: false,
+    button: false,
   },
   {
     name: 'Jocelyn',
@@ -243,6 +277,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: false,
+    button: false,
   },
   {
     name: 'Jon',
@@ -256,6 +292,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: false,
+    button: true,
   },
   {
     name: 'Jordan',
@@ -269,6 +307,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: false,
+    button: true,
   },
   {
     name: 'Josephine',
@@ -282,6 +322,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: false,
+    button: false,
   },
   {
     name: 'Josh',
@@ -295,6 +337,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: true,
+    beard: false,
+    button: true,
   },
   {
     name: 'Jude',
@@ -308,6 +352,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: false,
+    beard: true,
+    button: false,
   },
   {
     name: 'Julie',
@@ -321,6 +367,8 @@ const CHARACTERS = [
     phone: false,
     smokinghabit: false,
     patterns: true,
+    beard: false,
+    button: false,
   },
 ]
 
@@ -422,31 +470,31 @@ if (category === 'accessories') {
   }
 } else if (category === 'hair color') {
   if (keep) {
-    alert(`You are correct, the person has ${value} hair! Keep all that has ${value} hair.`
+    alert(`Sure thing, the person has ${value} hair! Keep all that has ${value} hair.`
     )
   } else {
     alert(
-    `No, the person doesn't have ${value} hair. Remove all that has ${value} hair.`
+    `Nope, the person doesn't have ${value} hair. Remove all that has ${value} hair.`
     )
   }
 } else if (category === 'eye color') {
   if (keep) {
     alert(
-      `You are correct, the person has ${value} eyes! Keep all that has ${value} eyes.`
+      `Correctamundo, the person has ${value} eyes! Keep all that has ${value} eyes.`
     )
   } else {
     alert(
-      `No, the person doesn't have ${value} eyes. Remove all that has ${value} eyes.`
+      `Sorry, the person doesn't have ${value} eyes. Remove all that has ${value} eyes.`
       )
   }
 } else if (category === 'other') {
   if (keep) {
     alert(
-      `You are correct, the person has a ${attribute}. Keep all that has a ${attribute}s.`
+      `Affirmative, the person has a ${attribute}. Keep all that has a ${attribute}.`
     )
 } else {
     alert(
-      `No, the person doesn't have a ${attribute}. Remove all that has a ${attribute}.`
+      `Negative, the person doesn't have a ${attribute}. Remove all that has a ${attribute}.`
     )
   } 
 }

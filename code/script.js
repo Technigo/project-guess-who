@@ -8,7 +8,7 @@ const playAgain = document.getElementById('playAgain')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
+    name: 'Ava',
     img: 'images/jabala.svg',
     hairColor: 'hidden',
     eyeColor: 'hidden',
@@ -17,7 +17,7 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jack',
+    name: 'Noah',
     img: 'images/jack.svg',
     hairColor: 'hidden',
     eyeColor: 'blue',
@@ -26,7 +26,7 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jacques',
+    name: 'Oliver',
     img: 'images/jacques.svg',
     hairColor: 'grey',
     eyeColor: 'blue',
@@ -35,7 +35,7 @@ const CHARACTERS = [
     smoker: true,
   },
   {
-    name: 'Jai',
+    name: 'William',
     img: 'images/jai.svg',
     hairColor: 'black',
     eyeColor: 'brown',
@@ -71,7 +71,7 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jane',
+    name: 'Sophia',
     img: 'images/jane.svg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
@@ -90,7 +90,7 @@ const CHARACTERS = [
   },
 
   {
-    name: 'Jazebelle',
+    name: 'Charlotte',
     img: 'images/jazebelle.svg',
     hairColor: 'purple',
     eyeColor: 'hidden',
@@ -99,7 +99,7 @@ const CHARACTERS = [
     smoker: true,
   },
   {
-    name: 'Jean',
+    name: 'Benjamin',
     img: 'images/jean.svg',
     hairColor: 'brown',
     eyeColor: 'blue',
@@ -108,7 +108,7 @@ const CHARACTERS = [
     smoker: true,
   },
   {
-    name: 'Jeane',
+    name: 'Amelia',
     img: 'images/jeane.svg',
     hairColor: 'brown',
     eyeColor: 'green',
@@ -117,7 +117,7 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jed',
+    name: 'Lucas',
     img: 'images/jed.svg',
     hairColor: 'orange',
     eyeColor: 'green',
@@ -135,7 +135,7 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jeri',
+    name: 'Mia',
     img: 'images/jeri.svg',
     hairColor: 'orange',
     eyeColor: 'green',
@@ -144,7 +144,7 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jerry',
+    name: 'Ryan',
     img: 'images/jerry.svg',
     hairColor: 'hidden',
     eyeColor: 'blue',
@@ -153,7 +153,7 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jess',
+    name: 'Claire',
     img: 'images/jess.svg',
     hairColor: 'black',
     eyeColor: 'blue',
@@ -162,7 +162,7 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jocelyn',
+    name: 'Elena',
     img: 'images/jocelyn.svg',
     hairColor: 'black',
     eyeColor: 'brown',
@@ -171,7 +171,7 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jon',
+    name: 'Adam',
     img: 'images/jon.svg',
     hairColor: 'brown',
     eyeColor: 'green',
@@ -180,7 +180,7 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jordan',
+    name: 'Kai',
     img: 'images/jordan.svg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
@@ -189,7 +189,7 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Josephine',
+    name: 'Eva',
     img: 'images/josephine.svg',
     hairColor: 'grey',
     eyeColor: 'brown',
@@ -207,7 +207,7 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jude',
+    name: 'Tyler',
     img: 'images/jude.svg',
     hairColor: 'black',
     eyeColor: 'green',
@@ -227,7 +227,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion, charactersInPlay, count
 
 // Draw the game board
 const generateBoard = () => {

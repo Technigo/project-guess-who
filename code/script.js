@@ -327,19 +327,13 @@ const selectQuestion = () => {
       value: selectedValue,
       category: category,
     }
-  } else if (category === 'accessories') {
+  } else if (category === 'accessories' || category === 'other') {
     currentQuestion = {
       attribute: selectedValue,   // this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true,            // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
-  } else if (category === 'other') {
-    currentQuestion = {
-      attribute: selectedValue,
-      value: true,
-      category: category,
-    }
-  }
+  } 
 }
 
 // This function should be invoked when you click on 'Find Out'.

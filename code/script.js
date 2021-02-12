@@ -35,7 +35,7 @@ const generateBoard = () => {
 // Flip cards
 const flipCards = () => {
   charactersToFlip.forEach((person) => {
-    const cardPerson = document.getElementById(person);
+    const cardPerson = board.querySelector(`#${person}`);
     cardPerson.classList.add("card__inner--flipped");
   });
 };
@@ -139,9 +139,7 @@ const filterCharacters = (keep) => {
       if (character[currentQuestion.attribute] === currentQuestion.value) {
         return character;
       } else {
-        charactersToFlip.push({
-          name: character.name,
-        });
+        charactersToFlip.push(character.name);
       }
     });
   } else {
@@ -223,6 +221,9 @@ alert.addEventListener("click", (event) => {
   if (target.id === "confirm") {
     alert.classList.toggle("hidden");
     flipCards();
+    // DEBUG: remove on submission
+    console.log("characters in play", charactersInPlay);
+    console.log("characters to flip", charactersToFlip);
   }
 });
 endScreen.addEventListener("click", (event) => {

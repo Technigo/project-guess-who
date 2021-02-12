@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
   --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --secondary: #5ee7df;
 }
 
 body {
@@ -28,6 +28,8 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  border-right-style: double;
+  border-color: var(--primary);
 }
 
 select {

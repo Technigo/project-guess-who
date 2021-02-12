@@ -11,25 +11,59 @@ body {
   font-family: 'Acme', sans-serif;
 }
 
-h1,
-h2 {
-  font-size: 42px;
-  line-height: 48px;
+h1 {
+  font-size: 35px;
   margin: 10px 0;
   color: var(--primary);
   font-family: 'Acme', sans-serif;
-
 }
-h2 {
+
+.counter span {
   font-size: 30px;
+  /* margin: 10px 0; */
+  color: var(--primary);
+  font-family: 'Acme', sans-serif;
 }
 
-li {
+.counter {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.guess-list {
+  display: block
+}
+
+.guesses-made {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.guesses-made span {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0 10px 0 5px;
+  font-size: 16px;
+  margin: 5px;
+  font-family: 'Pangolin', cursive;
 }
 
 .yes-or-no {
   width: 20px;
+}
+
+.right-guess {
+  background-color: rgb(83, 172, 83);
+}
+
+.wrong-guess {
+  background-color: rgb(246, 114, 114);
 }
 
 .question-section {
@@ -51,7 +85,7 @@ select {
   color: var(--primary);
   background-color: #fdecb8;
   width: 100%;
-  margin: 24px 0;
+  margin: 10px 0;
 }
 
 .guess-who-icon {
@@ -230,15 +264,15 @@ select + .filled-button {
     padding: 8px 16px;
   }
   h1 {
+    font-size: 30px;
+  }
+
+  .counter span {
     font-size: 24px;
-    line-height: 30px;
   }
-  h2 {
-    font-size: 20px;
-    line-height: 30px;
-  }
-  .guess-who-icon {
-    width: 51px;
+
+  .guesses-made span {
+    font-size: 18px;
   }
 
   .board-wrapper {
@@ -282,4 +316,5 @@ select + .filled-button {
     background: white;
     color: var(--primary);
     border-width: 1px;
+  }
 }

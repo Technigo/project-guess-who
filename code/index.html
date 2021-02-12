@@ -16,7 +16,7 @@
 
     <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
 
-    <h1>Does the person have</h1>
+    <h1>Does the person have ... ?</h1>
 
     <select id="questions">
       <option value="none" selected disabled>Choose a characteristic</option>
@@ -47,15 +47,22 @@
     </select>
 
     <button id="filter" class="filled-button">FIND OUT</button>
-    <h2>Number of guesses:
+
+    <div class="counter">
+      <span>Number of guesses:</span>
       <span id="totalGuesses" class="totalGuesses"></span>
-    </h2>
-    <h2>Time:
-      <span id="time" class="totalGuesses">0</span> seconds
-    </h2>
-    <h2>Guesses made on:</h2>
-    <ul id="guessesMade">
-    </ul>
+    </div>
+
+    <div class="counter">
+      <span>Time (in seconds):</span>
+      <span id="time" class="totalGuesses">0</span>
+    </div>
+
+    <div class="counter guess-list">
+      <span>Guesses made on:</span>
+      <div class="guesses-made" id="guessesMade">
+      </div>
+    </div>
   </aside>
 
   <section class="board-wrapper">

@@ -304,28 +304,24 @@ const selectQuestion = () => {
     currentQuestion = {
       attribute: 'hairColor',
       value: value,
-      category: category,
       text: text,
     }
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
       value: value,
-      category: category,
       text: text,
     }
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: value,
       value: true,
-      category: category,
       text: text,
     }
   } else if (category === 'other') {
     currentQuestion = {
       attribute: value,
       value: true,
-      category: category,
       text: text,
     }
   }
@@ -382,12 +378,12 @@ const filterCharacters = (keep) => {
 const addGuessesMade = (keep) => {
   if (keep) {
     guessesMade.innerHTML += `
-  <li><img class="yes-or-no" src="./images/yes.svg">${currentQuestion.text}</li>
+  <span class="right-guess"><img class="yes-or-no" src="./images/yes.svg">${currentQuestion.text}</span>
   `
   }
   else {
     guessesMade.innerHTML += `
-    <li><img class="yes-or-no" src="./images/no.svg">${currentQuestion.text}</li>
+    <span class="wrong-guess"><img class="yes-or-no" src="./images/no.svg">${currentQuestion.text}</span>
     `
   }
 }

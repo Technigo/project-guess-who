@@ -419,26 +419,26 @@ const selectQuestion = (handleOption) => {
 //This function is invoked when you click Find Out. 
 //Puts forward values needed for filterCharacters
 const checkQuestion = () => {
-  let group
   let attr = currentQuestion.attribute
-  let value = currentQuestion.value         
+  let value = currentQuestion.value
 
-  typeof value === "boolean" ? group = attr : group = value 
-  value === secret[attr] ? filterCharacters(true, group) : filterCharacters(false, group)
+  value === secret[attr] ? filterCharacters(true) : filterCharacters(false)
 }
 
 // Alerts if the currentQuestion option was correct or not
 // Filters chars on boolean by keep with array.filter to generate a new gameboard
-const filterCharacters = (keep, group) => {
-  let attr = currentQuestion.attribute
+const filterCharacters = (keep) => {
+  let group = currentQuestion.attribute
   let value = currentQuestion.value
+  let word
 
+  typeof value === "boolean" ? word = group : word = value;
   keep ? (
-    alert(sentences[0][attr].replaceAll("x", group)),// "group" is needed to use sentences stored in an array
-    charactersInPlay = charactersInPlay.filter(char => char[attr] === value)
+    alert(sentences[0][group].replaceAll("x", word)), // "word" is needed to use sentences stored in an array
+    charactersInPlay = charactersInPlay.filter(char => char[group] === value)
   ) : (
-    alert(sentences[1][attr].replaceAll("x", group)),
-    charactersInPlay = charactersInPlay.filter(char => char[attr] !== value)
+    alert(sentences[1][group].replaceAll("x", word)),
+    charactersInPlay = charactersInPlay.filter(char => char[group] !== value)
   );
   generateBoard(charactersInPlay)
 }
@@ -475,7 +475,7 @@ const checkMyGuess = (suspect) => {
   suspect === secret.name ? (
     rightGuesses++,
     win = `Yes, ${suspect} was the secret character! Well done ${player}!`,
-    endGame(win)  
+    endGame(win)
   ) : (
     wrongGuesses++,
     lose = `No, that was not the right answer, but ${suspect}. Better luck next time ${player}!`,

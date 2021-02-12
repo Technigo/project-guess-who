@@ -1,12 +1,12 @@
-# Project Name
+# Project Name: Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project was to creat the game Guess Who. We used JavaScript: objects, arrays, diffrent functions such as forEach() and filter().
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I used my team alot to discus and solv diffrent part of the code. It was alot of preritten code and it took some time to un derstand where to start.
+
+If I had more time I would style the game.
 
 ## View it live
 

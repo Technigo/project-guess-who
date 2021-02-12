@@ -260,6 +260,7 @@ const start = () => {
   winOrLose.style.display = 'none'
   generateBoard()
   setSecret()
+
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -300,7 +301,6 @@ const selectQuestion = () => {
         category 
     }
   }
-    return currentQuestion
 };
   
 // This function should be invoked when you click on 'Find Out'.

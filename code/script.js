@@ -396,7 +396,7 @@ const checkMyGuess = (myGuess) => {
   if (myGuess === secret.name) {
     winOrLoseText.innerHTML = `${myGuess} är rätt, du vann!`
   } else {
-    winOrLoseText.innerHTML = `${myGuess} är fel, game over!`
+    winOrLoseText.innerHTML = `${myGuess} är fel, game over! Rätt svar är ${secret.name}.`
   }
   board.innerHTML = ''
   winOrLose.classList.add("show")

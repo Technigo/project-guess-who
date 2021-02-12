@@ -1,13 +1,11 @@
-# Project Name
+# Guess who game
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Creating a guess who game using a template. practice working with objects, arrays, forEach-methods and conditionals.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I went through the instrictions of the assignment in order, and solved problems in that order. When I came across problems I googled, asked and looked in stack overflow and rewatched the lectures.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://wonderful-dijkstra-d6b94b.netlify.app/

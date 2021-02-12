@@ -280,14 +280,14 @@ const selectQuestion = () => {
       category: category,
     // Set this up your self
     }  
-  } else if (category === 'accessories') {
+  } else if (category === 'accessories' || category === 'other') {
     currentQuestion = {
-      attribute: 'glasses', 
+      attribute: categoryValue, 
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
-  }  else if (category === 'accessories') {
+  /*}  else if (category === 'accessories') {
       currentQuestion = {
         attribute: 'hat',
         // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
@@ -300,7 +300,7 @@ const selectQuestion = () => {
       value: true,
       category: category,
     // Set this up your self (should be same structure as above)
-    }
+    }*/
   }
 }
 // This function should be invoked when you click on 'Find Out'.
@@ -329,13 +329,13 @@ const filterCharacters = (keep) => {
     } else {
       alert(`No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`)
     }
-  } else if (currentQuestion.category === 'eyeColor') {
+  } else if (currentQuestion.category === 'eye color') {
     if (keep) {
       alert(`Yes, the person has ${currentQuestion.value} eyes! Keep all that has ${currentQuestion.value} eyes`)
     } else {
       alert(`No, the person doesn't have ${currentQuestion.value} eyes! Remove all that has ${currentQuestion.value} eyes`)
     }  
-  } else if (currentQuestion.category === 'hairColor') {
+  } else if (currentQuestion.category === 'hair color') {
     if (keep) {
       alert(`Yes, the person has ${currentQuestion.value} hair! Keep all that has ${currentQuestion.value} hair`)
     } else {
@@ -346,8 +346,9 @@ const filterCharacters = (keep) => {
       alert(`Yes the person smokes! Keep all the smokers`)
     } else {
       alert(`No the person doesn't smoke! Remove all the smokers`)
+    }
   }
-  }
+
   if (keep) {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
   } else {

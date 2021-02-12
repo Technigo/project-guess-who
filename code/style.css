@@ -13,7 +13,7 @@ body {
 
 h1 {
   font-size: 42px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 48px;
   margin: 10px 0;
   color: white;
@@ -38,6 +38,14 @@ select {
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+}
+
+.info-guess {
+  color: red;
+}
+
+.note {
+  color: rgb(6, 6, 44)
 }
 
 .guess-who-icon {
@@ -160,12 +168,20 @@ button {
 }
 
 .win-or-lose {
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
   text-align: center;
+  background: navy;
+  padding: 15px; 
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vh;
 }
 
 .win-or-lose img {
@@ -175,6 +191,32 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+/**************** GLOW *********************/
+.glow-lost {
+  font-size: 80px;
+  color: rgb(247, 3, 3);
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+  width: 100%;
+}
+
+.glow-won {
+  font-size: 80px;
+  color: rgb(55, 246, 7);
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+  width: 100%;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
 }
 
 @media (max-width: 768px) {

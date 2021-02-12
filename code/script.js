@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const findOut = document.getElementById('filter') //find out button
 const winOrLose =document.getElementById('winOrLose')
 const playAgain = document.getElementById('playAgain')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -325,7 +326,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep, group) => {
   console.log(keep) //false or true
-  console.log(group)// eg. haircolor
+  console.log(group)// eg. haircolor, accessories
   console.log(currentQuestion.category) // same as group
   //console.log(secret[currentQuestion.attribute]) //the attribute of secrret person eg. orange hair, blue eyes
   //console.log(currentQuestion.value) // same but for the selected  - this one for below? 
@@ -362,7 +363,7 @@ const filterCharacters = (keep, group) => {
     }
     // Similar to the one above
   } else {
-    if (keep) { //works and shows haircolor
+    if (keep) { //works and shows haircolor 
       alert (
         `Yes, the person has ${currentQuestion.value} hair! Keep all with hair ${currentQuestion.value} `
       )
@@ -375,10 +376,10 @@ const filterCharacters = (keep, group) => {
     }
   }
 
-  if (keep) {
-    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
+  if (keep) { // om ja att person har ex blont hår - filtrera bort de som inte har blont eller om Nej- false 
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value) // filtera bort dom som inte har samma
   } else {
-    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value) //om inte innehåller filtrera bort
   }
   // filter to keep or remove based on the keep variable.
 
@@ -388,14 +389,11 @@ const filterCharacters = (keep, group) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
-  console.log(secret.name)
-  if (suspect.name === secret.name) {
-    //do something
-  } else {
-    //do something
+  const guessConfirmation =  confirm(`Are you sure you want to guess on ${suspect} ?`)
+  if (guessConfirmation){
+    console.log(suspect)
+    checkMyGuess(suspect)
   }
-
-
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -403,6 +401,20 @@ const guess = (suspect) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
+  if (suspect === secret.name){
+    //the H1 in the html
+    winOrLoseText.innerHTML = `
+    Congratulations! You guessed ${suspect} and that is the correct person!
+    `
+  } else {
+    winOrLoseText.innerHTML = `
+    Oh no... you guessed on ${suspect} and you couldn't be more wrong. 
+    Have you even played this game before? Seems like you need more practise. 
+    `
+  }
+
+  winOrLose.style.display = 'flex' //shows the winOrLose 
+  board.style.display = 'none' //takes away the board
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

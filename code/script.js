@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filter = document.getElementById('filter')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [{
@@ -228,7 +229,6 @@ let secret, currentQuestion, charactersInPlay
 
 // Draw the game board
 const generateBoard = () => {
-    console.log(secret)
     board.innerHTML = ''
     charactersInPlay.forEach((person) => {
         board.innerHTML += `
@@ -304,7 +304,7 @@ const checkQuestion = () => {
         No indication of what will happen if its not a match as the value will then automatially be assigned false*/
     if (currentQuestion.category === 'hair color') {
         keep = secret.hairColor === currentQuestion.value
-        console.log(`${secret.hairColor} ${currentQuestion.value} ${keep}`)
+        console.log(`${secret.hairColor} ${currentQuestion.value} ${keep}`) /*just for testing and to understand the code*/
     } else if (currentQuestion.category === 'eye color') {
         keep = secret.eyeColor === currentQuestion.value
     } else if (currentQuestion.category === 'accessories') {
@@ -334,17 +334,17 @@ const filterCharacters = (keep) => {
             )
         } else {
             alert(
-                `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+                `No, the person doesn't wear ${attribute}! Remove all that wear ${attribute}`
             )
         }
     } else if (group === 'other') {
         if (keep) {
             alert(
-                `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+                `Yes, the person has a ${attribute}! Keep all that have a ${attribute}`
             )
         } else {
             alert(
-                `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+                `No, the person doesn't have a ${attribute}! Remove all that have a ${attribute}`
             )
         }
     } else {
@@ -362,18 +362,25 @@ const filterCharacters = (keep) => {
         charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
 
+    /*re-draw the board with the new array of correctly filtered CHARACTERS (now charactersInPlay)*/
     generateBoard(charactersInPlay)
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (suspect) => {
-    // store the interaction from the player in a variable.
-    // remember the confirm() ?
-    // If the player wants to guess, invoke the checkMyGuess function.
+/*the player confirms that they are making a finalGuess*/
+const guess = (suspect) => { /*how does the code know that the "suspect" is the person we have clicked? (onclick=guess?)*/
+    let finalGuess = confirm(`Are you sure you would like guess ${suspect}?`)
+    if (finalGuess) {
+        checkMyGuess(suspect)
+    }
 }
 
-// If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
+    console.log(suspect)
+    if (suspect === secret.name) { /*why is only the name generated for the suspect? Not the entire object?*/
+        alert('YAY!that is correct!')
+    } else {
+        alert('Sorry,try again')
+    }
     // 1. Check if the suspect is the same as the secret person's name
     // 2. Set a Message to show in the win or lose section accordingly
     // 3. Show the win or lose section
@@ -386,3 +393,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 filter.addEventListener('click', checkQuestion)
+playAgain.addEventListener('click', start)

@@ -6,5 +6,7 @@ I started by reading up on the techniques I needed to use, for example filtering
 
 If I had more time I would work with 'drying' the code and making it more efficient. I would also add my own styling. 
 
+I have one error message in the console which I was not able to solve. 
+
 ## View it live
 https://adoring-hypatia-922d83.netlify.app/ 

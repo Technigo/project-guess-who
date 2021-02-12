@@ -260,14 +260,14 @@ const start = () => {
   winOrLoseSection.classList.remove('show-win-or-lose-wrapper')
   generateBoard()
   setSecret()
-  console.log(secret);
+  selectQuestion()
+  questions.value = 'defaultOption' 
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const optionValue = questions.value;
-
 
   if (category === 'hair color') {
     currentQuestion = {
@@ -381,8 +381,12 @@ const checkMyGuess = (suspect) => {
   board.innerHTML = ''
   winOrLoseSection.classList.add('show-win-or-lose-wrapper')
   if (secret.name === suspect) {
+    let winSound = document.getElementById('winSound')
+    winSound.play()
    winOrLoseText.innerHTML=`Congratulations, you guessed right!!`
   } else {
+    let loseSound = document.getElementById('loseSound')
+    loseSound.play()
     winOrLoseText.innerHTML=`Oh no, your guess was wrong :-(`
   }
 }

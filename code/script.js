@@ -254,7 +254,7 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
   setSecret();
   generateBoard();
@@ -269,7 +269,7 @@ const selectQuestion = () => {
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: true,
       // 👆 add the value from the input here
       category: category,
     }
@@ -277,13 +277,30 @@ const selectQuestion = () => {
     // Set this up your self
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: eyeColor,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
-  } else if (category === 'other') {
+  } else if (category === 'glasses') {
+    currentQuestion = {
+      attribute: glasses,
+      value: true,
+      category: category,
+    }
     // Set this up your self (should be same structure as above)
+  } else if (category === 'hat') {
+    currentQuestion = {
+      attribute: hat,
+      value: true,
+      category: category,
+    }
+  } else if (category === smoker) {
+    currentQuestion = {
+      attribute: smoker,
+      value: true,
+      category: category,
+    }
   }
 }
 
@@ -341,7 +358,7 @@ const checkMyGuess = (suspect) => {
 }
 
 // Invokes the start function when website is loaded
-start()
+start(CHARACTERS);
 
 // All the event listeners
 restartButton.addEventListener('click', start)

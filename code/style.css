@@ -56,7 +56,7 @@ select {
   width: 90%;
   max-width: 882px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   align-content: center;
 }
 

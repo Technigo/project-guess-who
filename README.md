@@ -1,13 +1,19 @@
-# Project Name
+# Guess Who game
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project was to create a virtual Guess Who game, with a lot of focus on JavaScript. 
+You guess on different attributes and try to find out who the secret person is - and hopefully you nail it!
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I tackled the project by first writing down exactly what is expected to happen in the game. The ifs and buts and next steps.
+Then starting with the first function and working my way through the game.
+The project involves a lot of functions with else if statements, arrays and loops, also using properties from the character objects to do comparisons throughout the game.
+When I was done with the necessary functions I styled the site and added a counter to keep track on how many times you ask a question.
+In the project I have used HTML, CSS and mostly JavaScript.
+
+If I had more time I could have worked more with the responsiveness and also added animations and sounds. I could also have chosen different images and created a a completely different Guess Who than what was in the initial file.
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guess-who-project.netlify.app/

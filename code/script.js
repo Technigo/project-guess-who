@@ -258,6 +258,7 @@ const CHARACTERS = [
 // Global variables
 let secret, currentQuestion, message
 let charactersFiltered = CHARACTERS
+let counter = 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -286,6 +287,9 @@ const setSecret = () => {
 const start = () => {
   charactersFiltered = CHARACTERS
   questions.selectedIndex = defaultStatus
+  counter = 0
+  document.getElementById("counter").innerHTML = "0" 
+  console.log(counter)
   feedbackSection.classList.remove("visible")
   generateBoard()
   setSecret()
@@ -318,17 +322,19 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+  numberOfCounts()
   selectQuestion()
   const secretValue = secret[currentQuestion.attribute]
-  console.log(secretValue)
-  console.log(currentQuestion.value)
   if (secretValue === currentQuestion.value) {
-    console.log(true)
     filterCharacters(true)
   } else {
-    console.log(false)
     filterCharacters(false)
   }
+}
+
+const numberOfCounts = () => {
+  counter += 1
+  document.getElementById("counter").innerHTML = counter
 }
 
 
@@ -359,7 +365,6 @@ const filterCharacters = (keep) => {
   } 
 
   charactersFiltered = charactersFiltered.filter(animal => {
-    console.log(value)
         if (secret[attribute] === value) {
             return animal[attribute] === value;
         } else {

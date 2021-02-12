@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
+    <title>Guess who: step 3</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -23,19 +23,33 @@
       <h1>Does the person have</h1>
 
       <select id="questions">
+
+        <!-- Add the rest of hair colors as options  -->
         <optgroup label="hair color">
+          <option vaue="hidden">hidden hair</option>
           <option value="brown">brown hair</option>
           <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
+          <option value="black">black hair</option>
+          <option value="orange">orange hair</option>
+          <option value="white">white hair</option>
+          <option vaue="pink">pink hair</option>
+          <option vaue="gray">gray hair</option>
         </optgroup>
+       
+        <!-- Add the rest of eye colors as options  -->  
         <optgroup label="eye color">
           <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
-        </optgroup>
+          <option value="blue">green eyes</option>
+          <option value="blue">blue eyes</option>
+          <option value="blue">brown eyes</option>
+        </optgroup>  
+
+        <!-- Add the other accessory option here. (hat)  -->  
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
+          <option value="hat">wearing hat</option>
         </optgroup>
+        
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
         </optgroup>

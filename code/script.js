@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -267,28 +268,43 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  console.log(category);
   // This variable stores what option group (category) the question belongs to.
+  
   // We also need a variable that stores the actual value of the question we've selected.
+  let valueSelectedQuestion = questions.value
+  console.log(valueSelectedQuestion);
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: valueSelectedQuestion,
       // 👆 add the value from the input here
       category: category,
-    }
+    };
   } else if (category === 'eye color') {
+    currentQuestion = {
+      attribute:'eyeColor',
+      value: valueSelectedQuestion,    
+      category: category,
+    };
     // Set this up your self
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
+      attribute: valueSelectedQuestion,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
   } else if (category === 'other') {
+     currentQuestion = {
+       attribute: valueSelectedQuestion,
+       value: true,
+       category: category,
+     }
     // Set this up your self (should be same structure as above)
   }
+  console.log(currentQuestion);
 }
 
 // This function should be invoked when you click on 'Find Out'.
@@ -349,3 +365,9 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)
+/*findOutButton.addEventListener('click', () => {
+console.log(questions)
+}) */
+

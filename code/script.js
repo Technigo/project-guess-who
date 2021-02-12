@@ -2,7 +2,6 @@
 const board = document.getElementById('board');
 const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
-const selectQuestion = document.getElementById('selectQuestion');
 //just a comment to see if it works
 
 // Array with all the characters, as objects
@@ -362,5 +361,5 @@ const checkMyGuess = (suspect) => {
 start(CHARACTERS);
 
 // All the event listeners
-selectQuestion.addEventListener('click', start);
+
 restartButton.addEventListener('click', start);

@@ -329,24 +329,24 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
+      //charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     } else {
       alert(
         `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
+      //charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
     }
   } else if (group === 'other') {
     if (keep) {
       alert(
         `Yes, the person is a ${currentQuestion.attribute}! Keep all persons that is a ${currentQuestion.attribute}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
+      //charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     } else {
       alert(
         `No, the person is not a ${currentQuestion.attribute}! Remove all persons that is a ${currentQuestion.attribute}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
+      //charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
     }
     // Similar to the one above
   } else if (group === 'hair color') {
@@ -354,13 +354,13 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${currentQuestion.value} hair! Keep all that has ${currentQuestion.value} hair`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
+      //charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
     } else {
       alert(
         `No, the person doesn't have ${currentQuestion.value} hair! Remove all persons with ${currentQuestion.value} hair`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value) 
+      //charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value) 
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
     }
   } else if (group === 'eye color') {
@@ -368,16 +368,24 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${currentQuestion.value} eyes! Keep all that has ${currentQuestion.value} eyes`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
+      //charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
       
     } else {
       alert(
         `No, the person doesn't have ${currentQuestion.value} eyes! Remove all persons with ${currentQuestion.value} eyes`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
+      //charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
 
     }
   } 
+
+  if (keep) {
+  charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
+
+  } else {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
+  }
+
   generateBoard()
 }
 

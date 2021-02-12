@@ -16,6 +16,8 @@ const CHARACTERS = [
     eyeColor: 'hidden',
     glasses: true,
     hat: true,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
   {
@@ -25,6 +27,8 @@ const CHARACTERS = [
     eyeColor: 'blue',
     glasses: false,
     hat: true,
+    jewelry: false,
+    pet: true,
     smoker: false,
   },
   {
@@ -34,6 +38,8 @@ const CHARACTERS = [
     eyeColor: 'blue',
     glasses: false,
     hat: true,
+    jewelry: false,
+    pet: false,
     smoker: true,
   },
   {
@@ -43,6 +49,8 @@ const CHARACTERS = [
     eyeColor: 'brown',
     glasses: false,
     hat: false,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
   {
@@ -52,6 +60,8 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: false,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
   {
@@ -61,6 +71,8 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: false,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
   {
@@ -70,6 +82,8 @@ const CHARACTERS = [
     eyeColor: 'hidden',
     glasses: true,
     hat: false,
+    jewelry: true,
+    pet: false,
     smoker: false,
   },
   {
@@ -79,6 +93,8 @@ const CHARACTERS = [
     eyeColor: 'hidden',
     glasses: true,
     hat: false,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
   {
@@ -88,6 +104,8 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: false,
+    jewelry: true,
+    pet: false,
     smoker: false,
   },
   {
@@ -97,6 +115,8 @@ const CHARACTERS = [
     eyeColor: 'hidden',
     glasses: true,
     hat: false,
+    jewelry: false,
+    pet: false,
     smoker: true,
   },
   {
@@ -106,6 +126,8 @@ const CHARACTERS = [
     eyeColor: 'blue',
     glasses: true,
     hat: true,
+    jewelry: false,
+    pet: false,
     smoker: true,
   },
   {
@@ -115,6 +137,8 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: false,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
   {
@@ -124,6 +148,8 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: true,
+    jewelry: false,
+    pet: false,
     smoker: true,
   },
   {
@@ -133,6 +159,8 @@ const CHARACTERS = [
     eyeColor: 'hidden',
     glasses: false,
     hat: true,
+    jewelry: true,
+    pet: false,
     smoker: false,
   },
   {
@@ -142,6 +170,8 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: false,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
   {
@@ -151,6 +181,8 @@ const CHARACTERS = [
     eyeColor: 'blue',
     glasses: false,
     hat: true,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
   {
@@ -160,6 +192,8 @@ const CHARACTERS = [
     eyeColor: 'blue',
     glasses: true,
     hat: false,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
   {
@@ -169,6 +203,8 @@ const CHARACTERS = [
     eyeColor: 'brown',
     glasses: true,
     hat: false,
+    jewelry: true,
+    pet: false,
     smoker: false,
   },
   {
@@ -178,6 +214,8 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: true,
     hat: false,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
   {
@@ -187,6 +225,8 @@ const CHARACTERS = [
     eyeColor: 'hidden',
     glasses: true,
     hat: true,
+    jewelry: true,
+    pet: false,
     smoker: false,
   },
   {
@@ -196,6 +236,8 @@ const CHARACTERS = [
     eyeColor: 'brown',
     glasses: false,
     hat: false,
+    jewelry: true,
+    pet: false,
     smoker: false,
   },
   {
@@ -205,6 +247,8 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: false,
     hat: false,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
   {
@@ -214,6 +258,8 @@ const CHARACTERS = [
     eyeColor: 'green',
     glasses: false,
     hat: false,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
   {
@@ -223,6 +269,8 @@ const CHARACTERS = [
     eyeColor: 'brown',
     glasses: true,
     hat: true,
+    jewelry: false,
+    pet: false,
     smoker: false,
   },
 ]
@@ -355,7 +403,7 @@ const filterCharacters = (keep) => {
   // filter to keep or remove based on the keep variable.
 
     if (keep) {
-    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)  //find the property in every person (object)
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)  //find the property in every person (object) and compare it with the selected question's value
     } else {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)  // a string, which is passed into the square bracket below to access property from object
     }

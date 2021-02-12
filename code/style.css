@@ -216,9 +216,13 @@ button {
   margin-left: 15%;
 }
 
-.win-or-lose h1 {
+.win-or-lose p {
   margin-bottom: 32px;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
 }
+
 
 @media (max-width: 768px) {
   body {

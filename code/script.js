@@ -5,6 +5,7 @@ const filter = document.getElementById('filter')
 const restartButton = document.getElementById('restart')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const winOrLooseCorrect = document.getElementById('correct')
 const playAgain = document.getElementById('play-again')
 const feedback = document.getElementById('feedback')
 const feedbackSection = document.getElementById('feedback-section')
@@ -396,7 +397,8 @@ const checkMyGuess = (myGuess) => {
   if (myGuess === secret.name) {
     winOrLoseText.innerHTML = `${myGuess} är rätt, du vann!`
   } else {
-    winOrLoseText.innerHTML = `${myGuess} är fel, game over! Rätt svar är ${secret.name}.`
+    winOrLoseText.innerHTML = `${myGuess} är fel, game over!`
+    winOrLooseCorrect.innerHTML = `Rätt svar är ${secret.name}.`
   }
   board.innerHTML = ''
   winOrLose.classList.add("show")

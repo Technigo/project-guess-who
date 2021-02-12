@@ -319,7 +319,6 @@ const selectQuestion = () => {
  
 }
 
-
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
 if (currentQuestion.attribute === "hairColor") {
@@ -354,8 +353,7 @@ else if (currentQuestion.attribute === "hat") {
   } else {
     keep = false;
   }
-}
-else {
+} else {
   if (currentQuestion.value === secret.smoker) {
     keep = true;
   } else {

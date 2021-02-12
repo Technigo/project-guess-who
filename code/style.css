@@ -8,7 +8,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Pangolin', cursive;
+  font-family: 'Acme', sans-serif;
 }
 
 h1,
@@ -17,11 +17,19 @@ h2 {
   line-height: 48px;
   margin: 10px 0;
   color: var(--primary);
-  font-family: 'Yusei Magic', sans-serif;
+  font-family: 'Acme', sans-serif;
 
 }
 h2 {
   font-size: 30px;
+}
+
+li {
+  display: flex;
+}
+
+.yes-or-no {
+  width: 20px;
 }
 
 .question-section {
@@ -36,11 +44,12 @@ h2 {
 }
 
 select {
-  display: block;
   border: none;
+  border-radius: 10px;
   font-size: 22px;
   font-family: 'Pangolin', cursive;
   color: var(--primary);
+  background-color: #fdecb8;
   width: 100%;
   margin: 24px 0;
 }
@@ -62,12 +71,14 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 /****** CARD ******/
 
 
 .card {
+  font-family: 'Pangolin', cursive;
   width: 135px;
   height: 165px;
   border: 1px solid var(--primary);
@@ -168,6 +179,10 @@ button {
   color: var(--primary);
 }
 
+select + .filled-button {
+  margin: 10px 0;
+}
+
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
@@ -200,6 +215,8 @@ button {
   margin-bottom: 32px;
 }
 
+/****** MEDIA QUERIES ******/
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -216,7 +233,10 @@ button {
     font-size: 24px;
     line-height: 30px;
   }
-
+  h2 {
+    font-size: 20px;
+    line-height: 30px;
+  }
   .guess-who-icon {
     width: 51px;
   }
@@ -231,15 +251,25 @@ button {
   }
 
   .card {
-    width: 113px;
+    width: 120px;
     position: relative;
+    margin: 5px;
+  }
+
+  .card:hover img,
+  .card:hover p {
+    display: block;
+  }
+
+  .card p {
+    margin-top: 35px;
   }
 
   .card .guess {
     display: flex;
     top: 0;
     position: absolute;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
   }
 
   .card .guess span {
@@ -247,10 +277,9 @@ button {
   }
 
   .card .guess .filled-button {
+    margin-top: 2px;
     padding: 6px 11px;
-    margin-bottom: 1px;
     background: white;
     color: var(--primary);
-    border: none;
-  }
+    border-width: 1px;
 }

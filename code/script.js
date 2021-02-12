@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const board = document.querySelector('#board')
+const questionSection = document.querySelector("#questionSection")
 const questions = document.querySelector('#questions')
 const restartButton = document.querySelector('#restart')
 const filter = document.querySelector('#filter')
@@ -374,14 +375,21 @@ const filterCharacters = (keep) => {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
   }
   generateBoard()
-  addGuessesMade()
+  addGuessesMade(keep)
 }
 
 // Adds the current guess to the list of guesses made
-const addGuessesMade = () => {
-  guessesMade.innerHTML += `
-  <li>${currentQuestion.text}</li>
+const addGuessesMade = (keep) => {
+  if (keep) {
+    guessesMade.innerHTML += `
+  <li><img class="yes-or-no" src="./images/yes.svg">${currentQuestion.text}</li>
   `
+  }
+  else {
+    guessesMade.innerHTML += `
+    <li><img class="yes-or-no" src="./images/no.svg">${currentQuestion.text}</li>
+    `
+  }
 }
 
 // When clicking guess, the user has to confirm their guess
@@ -397,7 +405,7 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
   winOrLose.style.display = "flex"
   board.style.display = "none"
-  guessesMade.innerHTML = ""
+  questionSection.style.display = "none"
   if (suspect === secret.name) {
     winOrLoseText.innerText = `You won! It took you ${numberOfGuesses} guesses and ${timePassed} seconds to find out that the secret person was ${secret.name}. Congratulations!`
   } else {
@@ -409,6 +417,7 @@ const checkMyGuess = (suspect) => {
 const restart = () => {
   winOrLose.style.display = "none"
   board.style.display = "flex"
+  questionSection.style.display = "flex"
   start()
 }
 

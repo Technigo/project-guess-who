@@ -59,6 +59,10 @@ select {
   align-content: center;
 }
 
+.game-board-hidden {
+  display: none;
+}
+
 /****** CARD ******/
 .card {
   width: 135px;
@@ -71,6 +75,22 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+
+.card-Secret-Person {
+  width: 135px;
+  height: 165px;
+  overflow: hidden;
+  border: 3px solid white;
+  border-radius: 4px;
+  margin: 3px;
+}
+
+.card-Secret-Person p {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .card p {
@@ -170,7 +190,6 @@ button {
 
 .win-or-lose img {
   align-self: flex-start;
-  margin-left: 15%;
 }
 
 .win-or-lose h1 {
@@ -186,9 +205,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

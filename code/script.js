@@ -340,7 +340,7 @@ const timer = (x) => {
 
 //stops the timer and resets time to 0
 const stopTimer = () => {
-  var setTimer = setInterval(timer, 1000);
+  let setTimer = setInterval(timer, 1000);
   clearInterval(setTimer)
   timer("restart")
 }
@@ -419,10 +419,12 @@ const selectQuestion = (handleOption) => {
 //This function is invoked when you click Find Out. 
 //Puts forward values needed for filterCharacters
 const checkQuestion = () => {
-  let attr = currentQuestion.attribute
   let value = currentQuestion.value
+  let attribute = currentQuestion.attribute
 
-  value === secret[attr] ? filterCharacters(true) : filterCharacters(false)
+  value === secret[attribute] ?
+    filterCharacters(true) :
+    filterCharacters(false)
 }
 
 // Alerts if the currentQuestion option was correct or not
@@ -432,7 +434,10 @@ const filterCharacters = (keep) => {
   let value = currentQuestion.value
   let word
 
-  typeof value === "boolean" ? word = group : word = value;
+  typeof value === "boolean" ?
+    word = group :
+    word = value;
+
   keep ? (
     alert(sentences[0][group].replaceAll("x", word)), // "word" is needed to use sentences stored in an array
     charactersInPlay = charactersInPlay.filter(char => char[group] === value)
@@ -472,6 +477,7 @@ const guess = (suspect) => {
 // If you confirm, this function is invoked which says if you won or lose
 const checkMyGuess = (suspect) => {
   let win, lose
+
   suspect === secret.name ? (
     rightGuesses++,
     win = `Yes, ${suspect} was the secret character! Well done ${player}!`,
@@ -489,31 +495,30 @@ const endGame = (result) => {
   winOrLose.classList.add("active")
 
   winOrLose.innerHTML = `
-  <div class="win-or-lose">
-    <div class="guess-who-icon">
-      <img src="./images/print.png" alt="Guess Who" />
-    </div>
-    <h1 id="winOrLoseText">${result}</h1>
-    <div class="card-img-wrap">
-      <div class="card-img">
-        <img src=${secret.img} 
-        alt=${secret.name}/>
+    <div class="win-or-lose">
+      <div class="guess-who-icon">
+        <img src="./images/print.png" alt="Guess Who" />
       </div>
-    </div>
-    <h1>${countUp.innerHTML} and ${questionsAsked} questions asked for this round</h1>
-    <button id="playAgain" class="filled-button">
-      PLAY AGAIN
-    </button>
-    <h2> You have a total of 
-      <span class="win-or-lose__wrong">${wrongGuesses}</span> 
-      incorrect guesses and 
-      <span class="win-or-lose__right">${rightGuesses}</span> 
-      correct guesses!
-    </h2>
-    <h2>Results previous games:</h2>
-  </div>
-  </div>
-`
+      <h1 id="winOrLoseText">${result}</h1>
+      <div class="card-img-wrap">
+        <div class="card-img">
+          <img src=${secret.img} 
+          alt=${secret.name}/>
+        </div>
+      </div>
+      <h1>${countUp.innerHTML} and ${questionsAsked} questions asked for this round</h1>
+      <button id="playAgain" class="filled-button">
+        PLAY AGAIN
+      </button>
+      <h2> You have a total of 
+        <span class="win-or-lose__wrong">${wrongGuesses}</span> 
+        incorrect guesses and 
+        <span class="win-or-lose__right">${rightGuesses}</span> 
+        correct guesses!
+      </h2>
+      <h2>Results previous games:</h2>
+    </div>   
+  `
   //keeps the results from previous games & displays it
   summaryArray.push(`Questions: ${questionsAsked}, ${countUp.innerHTML}`)
   summaryArray.forEach(sum => winOrLose.innerHTML += `

@@ -260,7 +260,6 @@ const start = () => {
   setSecret()
   generateBoard()
   countClicks = 0;
-  console.log(secret.name)
 }
 
 // Compares your question with the secret person
@@ -273,21 +272,18 @@ const selectQuestion = (selected) => {
       value: true,
       category: category,
     }
-    console.log(currentQuestion)
   } else if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
       value: selected,
       category: category,
     }
-    console.log(currentQuestion)
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
       value: selected,
       category: category,
     }
-    console.log(currentQuestion)
   } else if (category === 'accessories') {
     if (selected === 'hat') {
       currentQuestion = {
@@ -295,14 +291,12 @@ const selectQuestion = (selected) => {
         value: true,
         category: category,
       }
-      console.log(currentQuestion)
     } else if (selected === 'glasses') {
       currentQuestion = {
         attribute: 'glasses',
         value: true,
         category: category,
       }
-      console.log(currentQuestion)
     }
   }
 }
@@ -389,18 +383,20 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     alert(`Yes, ${suspect} is the secret person!`);
+    board.innerHTML = 'display: none;'
     winOrLose.style = 'display: block;'
     congrats.innerHTML += `
     <h1>Congratulations!</h1>
-    <p>You managed to Guess Who! It was ${secret.name} and it took you ${countClicks} moves.</p>
+    <p>You managed to Guess Who! It was ${secret.name} and it took you ${countClicks} moves <span style>&#9996;</span></p>
     <img src="${secret.img}" alt="${secret.name}">
         <p>Wanna play again?</p>
     ` 
   } else {
     alert(`No, ${suspect} is not the secret person!`);
+    board.innerHTML = 'display: none;'
     winOrLose.style = 'display: block;'
     congrats.innerHTML += `
-        <p>Wanna play again?</p>
+        <p>Too bad, wanna play again?</p>
     ` 
   }
 }
@@ -427,6 +423,6 @@ restartButton.addEventListener('click', start)
 // Play again button
 playAgain.addEventListener('click', () => {
   congrats.innerHTML = '';
-  winOrLose.style = 'display: hidden;'
+  winOrLose.style = 'display: none;'
   start()
 })

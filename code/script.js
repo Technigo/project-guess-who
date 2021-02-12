@@ -248,7 +248,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log("secret", secret)
+  console.log("secret person", secret)
 }
 
 // This function to start (and restart) the game
@@ -262,12 +262,12 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  // This variable stores what category the question belongs to.
+  // These variable stores what category the question belongs to and its value.
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what value the question has.
-  const value = questions.options[questions.selectedIndex].value
-  console.log("categoty and value:", category, value)
-  // currentQuestion stores what attribute we ask for, the value of the attribute andwhat category it belongs to of the question selected
+  //console.log("categoty", category)
+  value = questions.value
+  //console.log("value", value)
+  // currentQuestion stores what attribute we ask for, the value of the attribute and what category it belongs to of the question selected
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
@@ -283,7 +283,7 @@ const selectQuestion = () => {
     
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: value, // this is the property of the booleans such as smoke, glasses and hat.
+      attribute: value, // this is the property of the booleans such as glasses and hat.
       value: true, // asking if this person wears a hat for exaple, so always true in the question.
       category,
     }
@@ -296,7 +296,7 @@ const selectQuestion = () => {
   }
 }
 
-// This function is invoked when you click on 'Find Out'.
+// This function is invoked when you click 'Find Out'.
 // Compare the currentQuestion with the secret person. Keep or remove characters based on that
 const checkQuestion = () => {
   let keep 
@@ -369,21 +369,27 @@ const filterCharacters = (keep) => {
   }
 
   // filter to keep or remove based on the keep variable. 
-  charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-  console.log(charactersInPlay)
-  
-  //charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-  // Invoke a function to redraw the board with the remaining people.
+  if (keep) {
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+  } else {
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+  }
+  // Invoke function to redraw the board with the remaining people.
   generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-}
+  const confirmGuess = confirm (`Do you want to guess on ${suspect}?`) 
+    if (confirmGuess === true) {
+      console.log("suspect", suspect)
+      //invoke checkMyGuess function when comfirming
+      checkMyGuess(suspect)
+    } else {
+     console.log(false)
+   }
+  }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {

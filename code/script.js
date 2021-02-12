@@ -268,25 +268,24 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  console.log(category);
+  
   // This variable stores what option group (category) the question belongs to.
   
   // We also need a variable that stores the actual value of the question we've selected.
   let valueSelectedQuestion = questions.value
-  console.log(valueSelectedQuestion);
-
+  
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
       value: valueSelectedQuestion,
       // 👆 add the value from the input here
-      category: category,
+      category,
     };
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute:'eyeColor',
       value: valueSelectedQuestion,    
-      category: category,
+      category,
     };
     // Set this up your self
   } else if (category === 'accessories') {
@@ -294,17 +293,17 @@ const selectQuestion = () => {
       attribute: valueSelectedQuestion,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
-      category: category,
+      category,
     }
   } else if (category === 'other') {
      currentQuestion = {
        attribute: valueSelectedQuestion,
        value: true,
-       category: category,
+       category,
      }
     // Set this up your self (should be same structure as above)
   }
-  console.log(currentQuestion);
+  
 }
 
 // This function should be invoked when you click on 'Find Out'.
@@ -312,31 +311,68 @@ const checkQuestion = () => {
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  selectQuestion()
+  // Compare the currentQuestion with the secret person.
+  const secretAttribute = secret[currentQuestion.attribute]
+  
+  let willKeep
+
+  if (secretAttribute === currentQuestion.value) {
+    // See if we should keep or remove people based on that
+    willKeep = true
+  }
+  else {
+    willKeep = false
+  }
+
+  // Then invoke filterCharacters
+  filterCharacters(willKeep)
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
+  console.log(keep)
+
+  const group = currentQuestion.category
+  const attribute = currentQuestion.attribute
+  const physicalAttribute = currentQuestion.value
+
   // Show the correct alert message for different categories
   if (group === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person wears ${attribute}! Keep all wearing ${attribute}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the person doesn't wear ${attribute}! Remove all wearing ${attribute}`
       )
     }
   } else if (group === 'other') {
     // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person is a ${attribute}! Keep all the ${attribute} persons`
+      )
+    } else {
+      alert(
+        `No, the person is not a ${attribute}! Remove all the ${attribute} persons`
+      )
+    }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      alert(
+        `Yes, the person has ${group} ${physicalAttribute}! Keep all persons with ${group} ${physicalAttribute}`
+      )
     } else {
       // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert(
+        `No, the person doesn't have ${physicalAttribute} ${group}. Remove all persons with ${physicalAttribute} ${group} `
+      )
     }
-  }
 
+  }
   // filter to keep or remove based on the keep variable.
   /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or 
@@ -370,4 +406,3 @@ findOutButton.addEventListener('click', checkQuestion)
 /*findOutButton.addEventListener('click', () => {
 console.log(questions)
 }) */
-

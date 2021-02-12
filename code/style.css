@@ -49,7 +49,6 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: aqua;
 }
 
 .game-board {

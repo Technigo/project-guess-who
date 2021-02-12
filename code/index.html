@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guess Who?</title>
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Patrick+Hand&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/37c653cfef.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -21,8 +16,8 @@
 
     <!-- Top left side of header with How to play information and image -->
 
-      <div class="how-to-play question" id="how-to-play-question">How to play?</div>
-      <div class="how-to-play answer" id="how-to-play-answer">You select questions to ask about the secret person, and the goal is at the end to guess who the secret person is!</div>
+      <div class="how-to-play question" id="howToPlayQuestion">How to play? click here!</div>
+      <div class="how-to-play answer" id="howToPlayAnswer">You select questions to ask about the secret person, and the goal is at the end to guess who the secret person is!</div>
       <img src="images/jenni.svg" class="header-img"/>
       
     <!-- Center section of header with title, input name and button -->
@@ -30,29 +25,34 @@
       <h1 class="h1">Guess Who?</h1>
       <div class="input-button-section">
         <input class="input" id="input" type="text" name="name" placeholder="enter your name">
-        <button class="lets-play-button" type="submit" id="lets-play-button">let's play</button>
+        <button class="lets-play-button" type="submit" id="letsPlayButton">let's play</button>
       </div>
 
     </header>
     
 
-    <!-- Game board section with all the cards -->
+    <!-- Game board section with all the cards and questions -->
 
-    <section class="board-wrapper">
+    <section class="board-wrapper" id="gameBoard">
+    
+    <!-- Icon and player name -->
+
+      <div class="player-name-box">
+        <i class="fas fa-user"></i>
+        <span class="player-name" id="playerName"></span>
+      </div>
+      
+    <!-- Section for the cards -->
+
       <main class="game-board" id="board"></main>
     
-    <!-- Question section underneath game board -->
+    <!-- Question section underneath the cards -->
 
       <section class="question-section">
         
-    <!-- Player name with icon -->
+    <!--Question select, left side-->
+
         <div class="question-container-left-side">
-          <div class="player-name-box">
-          <i class="fas fa-user"></i>
-          <div class="player-name" id="player-name"></div>
-          </div>
-        
-    <!--Question select-->
 
           <select id="questions">
             <option disabled selected>Does the person have..?</option>
@@ -86,9 +86,10 @@
             </optgroup>
           </select>
       
-  
+    <!-- Buttons find out and restart -->  
+
           <button id="filter" class="filled-button">FIND OUT</button>
-          <span class="questionNumber" id="questionNum"></span>
+          <span class="question-counter" id="questionCounter"></span>
         </div>
 
         <div class="question-container-right-side">
@@ -102,11 +103,6 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
         <h1 id="winOrLoseText"></h1>
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>

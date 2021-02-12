@@ -492,10 +492,13 @@ start();
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
-playAgain.addEventListener('click', start);
+playAgain.addEventListener('click', () => {
+  start();
+  gameBoard.scrollIntoView({behavior: 'smooth'});
+});
 
 playButton.addEventListener('click', () => {
-  board.scrollIntoView({behavior: 'smooth'});
+  gameBoard.scrollIntoView({behavior: 'smooth'});
   playerName.innerHTML = `<p>${input.value}</p>`
 });
 

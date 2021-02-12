@@ -40,7 +40,7 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: black;
   width: 100%;
   margin: 24px 0;
 }

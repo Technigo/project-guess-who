@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
 const showSecretCard = document.getElementById('showSecret')
+const numberOfGuesses = document.getElementById('numberOfGuesses')
 
 const CHARACTERS = [
   {
@@ -228,6 +229,7 @@ const CHARACTERS = [
 
 // Global variables
 let secret, currentQuestion, charactersInPlay, secretValue
+let startNumber = 0;
 
 // Draws the game board
 const generateBoard = () => {
@@ -378,6 +380,7 @@ const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     board.innerHTML = ''
     document.getElementById('winOrLose').style.display = 'flex'
+    numberOfGuesses.innerHTML = `You guessed ${startNumber} times`
     showSecretCard.innerHTML = `
       <img src=${secret.img}>
       <h2>${secret.name}</h2>
@@ -389,6 +392,11 @@ const checkMyGuess = (suspect) => {
 
 // Invokes the start function when website is loaded
 start()
+
+const clickCounter = () => {
+  // This function counts how many times the player clicks on Find Out-button.
+  startNumber = 1+startNumber++
+}
 
 // Event listeners
 restartButton.addEventListener('click', start)

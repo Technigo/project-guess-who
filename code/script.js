@@ -323,7 +323,7 @@ const start = () => {
   // What else should happen when we start the game?
 
   setSecret(); //The game will generate a secret charatcer at the very start
-  console.log(`Secret Person: ${secret.name}`); // Log the secret person to console for debugging.
+  /* console.log(`Secret Person: ${secret.name}`); */ // Log the secret person to console for debugging.
   generateBoard(); // The game will render all the characters onto the board.
 };
 
@@ -443,7 +443,6 @@ const checkMyGuess = (suspect) => {
       timeDiff = endTime - startTime;
       timeDiff /= 1000;
       timeInSeconds = Math.round(timeDiff);
-      console.log(`${secret.name} is the correct guess. You win!`);
 
       /* board.style = "display: none;" */
       board.classList.add("game-board-hidden");

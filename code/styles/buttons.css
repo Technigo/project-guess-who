@@ -1,3 +1,6 @@
+/* Layout, colors and size for buttons */
+
+/* General button style */
 .button {
   border: 2px solid var(--primary);
   border-radius: 50px;
@@ -6,23 +9,28 @@
   cursor: pointer;
 }
 
+/* class to make an outline button */
 .button__outlined {
   background-color: transparent;
   color: var(--primary);
 }
 
+/* class to make a filled button;
+  and make the outline button filled on hover  */
 .button__filled,
 .button__outlined:hover {
   background-color: var(--primary);
   color: white;
 }
 
+/* hover effect for a filled button */
 .button__filled:hover {
   background-color: white;
   border-color: white;
   color: var(--primary);
 }
 
+/* class to style a filled button that is small */
 .button__filled--small {
   padding: 8px 16px;
 }

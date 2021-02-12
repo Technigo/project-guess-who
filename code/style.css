@@ -1,7 +1,9 @@
 /* Import the main layout styles */
 @import "./styles/mainLayout.css";
+
 /* Import font specific styles */
 @import "./styles/typography.css";
+
 /* Import styles for block elements */
 @import "./styles/sideSection.css";
 @import "./styles/gameboard.css";

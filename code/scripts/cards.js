@@ -1,6 +1,5 @@
+// Function to dynamically return a card template based on character object data
 export const getCard = (person) => {
-  //   let html = "";
-
   let html = `
     <div class="card">
         <div class="card__inner" id="${person.name}">
@@ -18,6 +17,5 @@ export const getCard = (person) => {
         </div>    
     </div>
     `;
-
   return html;
 };

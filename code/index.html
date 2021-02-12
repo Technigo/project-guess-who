@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
+    <title>Guess Who</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -11,17 +11,20 @@
     />
   </head>
   <body>
+    <!-- side section containing questions, info & game setup -->
     <aside class="side-section">
       <img class="icon" src="images/guess-who-bubble.png" alt="Guess Who" />
+      <!-- New game setup (shown only on first page load) -->
       <div class="side-section__content" id="newGame">
         <h1 class="title">Welcome!</h1>
-
         <input type="text" class="input-name" id="playerName" placeholder="What is your name?" />
         <button id="startGame" class="button button__filled">Start Game</button>
       </div>
+
+      <!-- Main game interaction content (hidden by default; visible after start game) -->
       <div class="side-section__content hidden" id="questionSection">
         <h1 class="title">Does the person have</h1>
-
+        <!-- Questions select input -->
         <select class="select-questions" id="questions">
           <optgroup label="hair color">
             <option value="brown">brown hair</option>
@@ -51,40 +54,48 @@
             <option value="buttonShirt">a buttoned up shirt</option>
           </optgroup>
         </select>
-
         <button id="filter" class="button button__filled">FIND OUT</button>
-
+        <!-- Game info (player name, question counter) -->
         <p class="info__text" id="nameInfo">
           Player Name: <span class="info__text--data">--</span>
         </p>
         <p class="info__text" id="questionCount">
           Questions asked: <span class="info__text--data">0</span>
         </p>
+        <!-- Restart button (does NOT return player to new game screen)-->
         <button id="restart" class="button button__outlined">RESTART</button>
       </div>
     </aside>
 
+    <!-- Main wrapper for the game board -->
     <section class="board-wrapper">
       <main class="game-board">
+        <!-- Alert element shown when user clicks FIND OUT (hidden by default) -->
         <div class="alert hidden" id="alert">
           <p class="alert__text"></p>
           <button class="button button__filled" id="confirm">OK</button>
         </div>
+        <!-- Div to contain generated character cards -->
         <div class="game-board__cards" id="board"></div>
       </main>
     </section>
 
+    <!-- End screen shown directly after user makes a guess (hidden by default) -->
     <section id="endScreen" class="end-screen__wrapper hidden">
       <div class="end-screen">
         <img class="icon" src="images/guess-who-bubble.png" alt="Guess Who" />
+        <!-- Title text generated based on end state -->
         <h1 class="title" id="endStateText"></h1>
+        <!-- End game stats (timer, question counter) -->
         <p class="info__text" id="questionCount">
           Questions asked: <span class="info__text--data">0</span>
         </p>
         <p class="info__text" id="timer">Time: <span class="info__text--data">0</span></p>
+        <!-- Restart button (closes this section and redraws board) -->
         <button id="playAgain" class="button button__filled">PLAY AGAIN</button>
       </div>
     </section>
+    <!-- Load in script module -->
     <script type="module" src="script.js"></script>
   </body>
 </html>

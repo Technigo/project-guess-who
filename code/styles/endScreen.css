@@ -1,3 +1,5 @@
+/* Layout, colors and size for elements in end screen block */
+
 .end-screen {
   display: flex;
   flex-direction: column;

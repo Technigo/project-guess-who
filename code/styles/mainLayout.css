@@ -20,7 +20,6 @@ body {
   display: flex;
   flex-direction: column;
   padding: 5vw;
-  /* align-items: flex-start; */
   box-sizing: border-box;
   align-content: center;
 }

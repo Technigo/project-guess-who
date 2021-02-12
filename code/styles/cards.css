@@ -1,14 +1,14 @@
+/* Layout, colors and size for card elements */
+
+/* Main card block */
 .card {
   width: 135px;
   height: 165px;
   margin: 6px;
 }
 
-.card__inner--flipped {
-  transform: rotateY(180deg);
-  border: 2px dotted var(--secondary) !important;
-}
-
+/* The inner card wrapper used for content positioning 
+  (since the card has two sides we need this inner wrapper) */
 .card__inner {
   position: relative;
   width: 100%;
@@ -19,10 +19,14 @@
   border: 2px solid var(--secondary);
 }
 
-.card__front {
-  overflow: hidden;
+/* Flipped state of the inner wrapper
+  (the card flips when it has this class) */
+.card__inner--flipped {
+  transform: rotateY(180deg);
+  border: 2px dotted var(--secondary) !important;
 }
 
+/* Shared style for both the front and back side of card */
 .card__front,
 .card__back {
   position: absolute;
@@ -30,6 +34,11 @@
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+}
+
+/* Front and back-side specific styles */
+.card__front {
+  overflow: hidden;
 }
 
 .card__back {
@@ -44,6 +53,7 @@
   width: 100px;
 }
 
+/* The guess element displayed inside the card */
 .guess {
   display: none;
   flex-direction: column;
@@ -53,16 +63,22 @@
   height: inherit;
 }
 
+/* HOVER EFFECTS */
+
+/* Changes the background color to indicate a hover
+  Also makes sure that the inner flipped class status isn't affected by a hover
+  Since we don't want a flipped card to be hoverable */
 .card__inner:not(.card__inner--flipped):hover {
   background-color: var(--secondary);
 }
 
+/* Hides the card contents on hover to show the guess element */
 .card__inner:hover .card__image,
 .card__inner:hover .card__name {
   display: none;
 }
 
-/* The div with the guess class is only shown on hover */
+/* Shows the guess element on hover */
 .card:hover .guess {
   display: flex;
 }

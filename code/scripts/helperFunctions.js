@@ -1,4 +1,4 @@
-// Collection of functions that are generci and can be reused across multiple files.
+// Collection of functions that are generic and can be reused across multiple files and projects.
 
 /**
  * Get a random number based on a range.

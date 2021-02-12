@@ -8,7 +8,6 @@ const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgain = document.getElementById('play-again')
 const feedback = document.getElementById('feedback')
 const feedbackSection = document.getElementById('feedback-section')
-const defaultOption = document.getElementById('default')
 
 
 // Array with all the characters, as objects
@@ -286,7 +285,7 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   charactersFiltered = CHARACTERS
-  questions.selectedIndex = defaultOption
+  questions.selectedIndex = defaultStatus
   feedbackSection.classList.remove("visible")
   generateBoard()
   setSecret()

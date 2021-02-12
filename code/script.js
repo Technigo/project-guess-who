@@ -2,7 +2,7 @@
 const board = document.getElementById("board")
 const questions = document.getElementById("questions")
 const restartButton = document.getElementById("restart")
-const countUp = document.getElementById("timer")
+const countUp = document.getElementById("question-timer")
 const findOut = document.getElementById("filter")
 
 // Array with all the characters, as objects
@@ -303,7 +303,7 @@ const generateBoard = () => {
     `
   })
 
-  const counter = document.getElementById("counter")
+  const counter = document.getElementById("question-counter")
   const card = document.querySelectorAll(".card-front")
   counter.innerHTML = `Questions asked: ${questionsAsked}` //displays how many questions a player asked
   cardFlipAudio(card) //sound on hover when cards are flipped
@@ -417,32 +417,28 @@ const selectQuestion = (handleOption) => {
 }
 
 //This function is invoked when you click Find Out. 
-//Puts forward values needed for the sentences and filtering in filter function 
+//Puts forward values needed for filterCharacters
 const checkQuestion = () => {
-  let group;
+  let group
+  let attr = currentQuestion.attribute
+  let value = currentQuestion.value         
 
-  currentQuestion.category === "accessories" || currentQuestion.category === "behaviour" ? (
-    group = currentQuestion.attribute
-  ) : (
-    group = currentQuestion.value
-  );
-
-  currentQuestion.value === secret[currentQuestion.attribute] ? (
-    filterCharacters(true, group)
-  ) : (
-    filterCharacters(false, group)
-  );
+  typeof value === "boolean" ? group = attr : group = value 
+  value === secret[attr] ? filterCharacters(true, group) : filterCharacters(false, group)
 }
 
-// Alerts if the currentQuestion option was correct or not using sentences stored in an array 
-// Filters chars on boolean by keep with array.filter to return an array to generate a new gameboard
+// Alerts if the currentQuestion option was correct or not
+// Filters chars on boolean by keep with array.filter to generate a new gameboard
 const filterCharacters = (keep, group) => {
-  keep === true ? (
-    alert(sentences[0][currentQuestion.attribute].replaceAll("x", group)),
-    charactersInPlay = charactersInPlay.filter(char => char[currentQuestion.attribute] === currentQuestion.value)
+  let attr = currentQuestion.attribute
+  let value = currentQuestion.value
+
+  keep ? (
+    alert(sentences[0][attr].replaceAll("x", group)),// "group" is needed to use sentences stored in an array
+    charactersInPlay = charactersInPlay.filter(char => char[attr] === value)
   ) : (
-    alert(sentences[1][currentQuestion.attribute].replaceAll("x", group)),
-    charactersInPlay = charactersInPlay.filter(char => char[currentQuestion.attribute] !== currentQuestion.value)
+    alert(sentences[1][attr].replaceAll("x", group)),
+    charactersInPlay = charactersInPlay.filter(char => char[attr] !== value)
   );
   generateBoard(charactersInPlay)
 }
@@ -509,9 +505,9 @@ const endGame = (result) => {
       PLAY AGAIN
     </button>
     <h2> You have a total of 
-      <span class="wrong">${wrongGuesses}</span> 
+      <span class="win-or-lose__wrong">${wrongGuesses}</span> 
       incorrect guesses and 
-      <span class="right">${rightGuesses}</span> 
+      <span class="win-or-lose__right">${rightGuesses}</span> 
       correct guesses!
     </h2>
     <h2>Results previous games:</h2>
@@ -522,7 +518,7 @@ const endGame = (result) => {
   summaryArray.push(`Questions: ${questionsAsked}, ${countUp.innerHTML}`)
   summaryArray.forEach(sum => winOrLose.innerHTML += `
     <div class="win-or-lose">
-      <div class="summary" id="summary">
+      <div class="win-or-lose__result" id="winLose-result">
         ${sum}
       </div>
     </div>

@@ -67,7 +67,7 @@ select {
   margin: 24px 0;
 }
 
-.counter {
+.question-counter {
   margin: 20px 0;
   padding: 20px 0;
   color: white;
@@ -75,7 +75,7 @@ select {
   font-size: 18px;
 }
 
-.timer {
+.question-timer {
   padding: 10px;
   width: 90%;
   background-color: rgba(255, 255, 255, 0.493);
@@ -306,11 +306,6 @@ button {
   text-align: center;
 }
 
-.win-or-lose-insert{
-  display: flex;
-  flex-direction: column;
-}
-
 .win-or-lose .card-img-wrap {
   border:solid var(--primary);
   background-color: rgb(120, 197, 211);
@@ -322,15 +317,15 @@ button {
   margin-bottom: 32px;
 }
 
-.right {
+.win-or-lose__right {
   color: rgb(11, 221, 11);
 }
 
-.wrong {
+.win-or-lose__wrong {
 color: rgb(187, 0, 0);
 }
 
-.summary {
+.win-or-lose__result {
   font-size: 18px;
   color: var(--primary);
   font-weight: 500;
@@ -380,6 +375,10 @@ color: rgb(187, 0, 0);
   }
 
   .win-or-lose {
+    max-width: 100vw;
+  }
+
+  .guess-who-icon {
     max-width: 100vw;
   }
 }

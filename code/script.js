@@ -367,12 +367,12 @@ const filterCharacters = (keep, group) => {
   if (group === 'accessories') {
     if (keep) { 
       alert(
-        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
+        `Oh yes, the person wears ${currentQuestion.attribute}! Keeping all persons that wears ${currentQuestion.attribute}.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     } else {
       alert(
-        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
+        `Oh no, the person doesn't wear ${currentQuestion.attribute}! Removing all persons that wears ${currentQuestion.attribute}.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
     }
@@ -380,12 +380,12 @@ const filterCharacters = (keep, group) => {
     // Similar to the one above
     if (keep) {
       alert(
-      `Yes, the person has ${currentQuestion.value} hair! Keep all persons with ${currentQuestion.value} hair`
+      `Oh yes, the person has ${currentQuestion.value} hair! Keeping all persons with ${currentQuestion.value} hair.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     } else {
       alert(
-      `No, the person doesnt have ${currentQuestion.value} hair! Remove all persons with ${currentQuestion.value}`
+      `Oh no, the person doesn't have ${currentQuestion.value} hair! Removing all persons with ${currentQuestion.value} hair.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
     }
@@ -395,12 +395,12 @@ const filterCharacters = (keep, group) => {
     // Similar to the one above
     if (keep) {
       alert(
-      `Yes, the person has ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes`
+      `Oh yes, the person has ${currentQuestion.value} eyes! Keeping all persons with ${currentQuestion.value} eyes.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     } else {
       alert(
-      `No, the person doesnt have ${currentQuestion.value} eyes! Remove all persons with ${currentQuestion.value} eyes`
+      `Oh no, the person doesn't have ${currentQuestion.value} eyes! Removing all persons with ${currentQuestion.value} eyes.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
     }
@@ -409,12 +409,12 @@ const filterCharacters = (keep, group) => {
     // Similar to the one above
     if (keep) {
       alert(
-      `Yes, the person has a ${currentQuestion.attribute}! Keep all persons with a ${currentQuestion.attribute}`
+      `Oh yes, the person is a ${currentQuestion.attribute}! Keeping all persons who's not a ${currentQuestion.attribute}.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     } else {
       alert(
-      `No, the person doesnt have a ${currentQuestion.attribute}! Remove all persons with a ${currentQuestion.attribute}`
+      `Oh no, the person isn't a ${currentQuestion.attribute}! Removing all persons who are a ${currentQuestion.attribute}.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
     }
@@ -444,7 +444,7 @@ const checkMyGuess = (suspect) => {
   }
 
   else {
-    winOrLoseText.innerHTML = "You lost"
+    winOrLoseText.innerHTML = "You lost!"
   }
 
   winOrLoseSection.style.display = "block";

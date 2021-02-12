@@ -1,8 +1,11 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
-const findOutButton = document.getElementById('filter') // Jag la till denna nu när jag håller på med Step Three men vet ej om den stämmer
+const board = document.getElementById('board');
+const questions = document.getElementById('questions');
+const restartButton = document.getElementById('restart');
+const filterButton = document.getElementById('filter');
+const winOrLose = document.getElementById('winOrLose');
+const winnOrLose = document.getElementById('winOrLoseText')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -251,40 +254,38 @@ const setSecret = () => {
   console.log(secret)
 }
 
-
-
-
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-  generateBoard() // Jag la till denna i Step One
-  setSecret() // Jag la till denna i Step Two
-  
+  generateBoard() // Jag har lagt till denna (Step 1)
+  setSecret() // Jag har lagt till denna (Step 2)
+  board.style.display="flex" // 
+  winOrLose.style.display="none"
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  const value = questions.options[questions.selectedIndex].value
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  //---const value = questions.options[questions.selectedIndex].label  // Jag la till den med hänvisning från Mette
-  const value = questions.value
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: value, // Eftersom vi har flera values så betyder det att vi ska ha endast en som sparar oavsett vilket värde vi tar
-      category: category, 
-    }// Checka ifall du kan lägga till flera här dvs samtliga hair
+      value: value,
+      // 👆 add the value from the input here
+      category: category,
+    }
   } else if (category === 'eye color') {
-    // Set this up your self
     currentQuestion = {
       attribute: 'eyeColor',
       value: value,
-      category: category,
-    }
+      category: category,}
+    // Set this up your self
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: value,
@@ -297,92 +298,104 @@ const selectQuestion = () => {
       attribute: value,
       value: true, 
       category: category,
+    }
     // Set this up your self (should be same structure as above)
   }
 }
-}
-
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-  
-  const secretValue = secret[currentQuestion.attribute]
-  if(secretValue === currentQuestion.value) {
+  /*const secretValue = secret[currentQuestion.attribute];
+  if (secretValue === currentQuestion.value) {
     filterCharacters(true,currentQuestion.category)
   } else {
     filterCharacters(false,currentQuestion.category)
+  } */
+
+  //selectQuestion(); // Kör du denna kan du ta bort add event listeners för question längre ner. 
+  if (secret[currentQuestion.attribute] === currentQuestion.value) { // Såhär gjorde martin och det var enklare att förstå
+    filterCharacters(true)
+  } else {
+    filterCharacters(false)
   }
+
+
+
+
   
-  /*const keep = currentQuestion === secret
-  console.log(keep)
+  
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  filterCharacters(keep) */
-
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
+  const attribute = currentQuestion.attribute;
+  const value = currentQuestion.value;
+  const category = currentQuestion.category;
   // Show the correct alert message for different categories
-  const attribute = currentQuestion.attribute
-  const value = currentQuestion.value
-  const category = currentQuestion.category
-  //const {group, attribute, value} = currentQuestion
-
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
+        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
+        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
       )
     }
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person bllaaa ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
+        `Yes, the person ${attribute}! Keep all that ${attribute}`
       )
     } else {
       alert(
-        `No, the person doesnnnnnnnn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
+        `No, the person doesn't ${attribute}! Remove all that ${attribute}`
       )
     }
+    // Similar to the one above
   } else if (category === 'eye color') {
     if (keep) {
-      alert (`Yes, the person has ${currentQuestion.value} eyess2222222! Keep all that have ${currentQuestion.value} eyes`)
-    } else /*if (keep === false)*/ {
-      alert (`No, the person doesn't have ${currentQuestion.value} eyes! Remove all that have ${currentQuestion.value} eyes`)
+      alert(
+        `Yes, the person has ${value} eyes! Keep all that have ${value} eyes`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value} eyes! Remove all that have ${value} eyes`
+      )
     }
+    // Similar to the one above
   } else if (category === 'hair color') {
     if (keep) {
-      alert (`Yes, the person has ${currentQuestion.value} hair! Keep all that have ${currentQuestion.value} hair`)
+      alert(
+        `Yes, the person has ${value} hair! Keep all that have ${value} hair`
+      )
     } else {
-      alert (`No, the person doesn't have ${currentQuestion.value} hair! Remove all that have ${currentQuestion.value} hair`)
+      alert(
+        `No, the person doesn't have ${value} hair! Remove all that have ${value} hair`
+      )
     }
-  }
-
+    // Similar to the one above
+  } 
 
   // filter to keep or remove based on the keep variable.
-if (keep) {
-  charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
-} else {
-  charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
-}
-  
+  if (keep) {
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+  } else {charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) 
+  }
 
-/*charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
-
-  // Invoke a function to redraw the board with the remaining people.
   generateBoard()
+  // Invoke a function to redraw the board with the remaining people.
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
+  const myGuess = confirm(`Are you sure ${suspect}`)
+  if (myGuess) {
+    checkMyGuess(suspect)
+  }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -394,14 +407,24 @@ const checkMyGuess = (suspect) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  if(suspect === secret.name) {
+    winnOrLose.innerHTML = `Congrats it was ${secret.name}`
+  } else {
+    winnOrLose.innerHTML = `No you was wrong, it was ${secret.name}`
+  }
+  
+  board.style.display="none"
+  winOrLose.style.display="flex"
+
 }
+
+
 
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOutButton.addEventListener('click', checkQuestion) // Kolla rad 290 const checkQuestion = () => {
-questions.addEventListener('change', () => 
-  selectQuestion())
-
+questions.addEventListener('change', selectQuestion) //Jag la till SelectQuestion funktionen på rad 315 under checkQuestion
+filterButton.addEventListener('click', checkQuestion)
+playAgain.addEventListener('click', start)

@@ -10,4 +10,4 @@ If I had more time I would style the game.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guess-who-ylva-landoff-lindberg.netlify.app

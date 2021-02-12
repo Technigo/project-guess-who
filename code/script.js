@@ -317,14 +317,15 @@ const checkQuestion = () => {
   // *See if we should keep or remove people based on that
   //* Then invoke filterCharacters
   if (secret[currentQuestion.attribute] === currentQuestion.value) { //if they are the same 
-    filterCharacters(true, currentQuestion.category)
+    filterCharacters(true)
   } else {
-    filterCharacters(false, currentQuestion.category)
+    filterCharacters(false)
   }  
 }
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep, group) => {
+const filterCharacters = (keep) => {
+  group = currentQuestion.category
   console.log(keep) //false or true
   console.log(group)// eg. haircolor, accessories
   console.log(currentQuestion.category) // same as group

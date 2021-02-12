@@ -1,7 +1,8 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const board = document.getElementById('board');
+const questions = document.getElementById('questions');
+const restartButton = document.getElementById('restart');
+const selectQuestion = document.getElementById('selectQuestion');
 //just a comment to see if it works
 
 // Array with all the characters, as objects
@@ -295,7 +296,7 @@ const selectQuestion = () => {
       value: true,
       category: category,
     }
-  } else if (category === smoker) {
+  } else if (category === 'smoker') {
     currentQuestion = {
       attribute: smoker,
       value: true,
@@ -361,4 +362,5 @@ const checkMyGuess = (suspect) => {
 start(CHARACTERS);
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+selectQuestion.addEventListener('click', start);
+restartButton.addEventListener('click', start);

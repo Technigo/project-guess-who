@@ -263,7 +263,7 @@ const start = () => {
 }
 
 // Compares your question with the secret person
-// and stores the value in let currentQuestion
+// and stores the value in currentQuestion
 const selectQuestion = (selected) => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   if (category === 'other') {
@@ -370,7 +370,8 @@ const filterCharacters = (keep) => {
 
 // Lets you guess on who you think the secret person is
 const guess = (suspect) => {
-  let confirm = window.confirm(`Do you want to guess that ${suspect} is the secret person?`);
+  let confirm = window.confirm(
+    `Do you want to guess that ${suspect} is the secret person?`)
   if (confirm) {
     checkMyGuess(suspect);
   } else {
@@ -406,12 +407,12 @@ start()
 
 // *** All the event listeners
 
-// Scroll list value BEFORE pushing Find out button
+// Changes the scroll list value BEFORE pushing the Find Out button
 questions.addEventListener('change', () => {
   selectQuestion(questions.value)
 })
 
-// Find out button with counter
+// Find Out button that invokes the checkQuestion function + counter thar adds nr of clicks you did to guess
 check.addEventListener('click', () => {
   checkQuestion(currentQuestion)
   countClicks += 1;

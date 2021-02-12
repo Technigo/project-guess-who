@@ -18,7 +18,7 @@ body {
 .header {
   background-color: var(--secondary);
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,7 +31,7 @@ body {
   background-color: white;
   border-radius: 30px 30px 30px 0px;
   position: absolute;
-  top:15px;
+  top: 15px;
   left: 70px;
   cursor: pointer;
   text-align: center;
@@ -298,10 +298,13 @@ button {
   align-items: center;
   background-color: var(--secondary);
   height: 50px;
+  width: 100vw;
+}
+
+.footer-text {
   color: white;
   font-size: 22px;
   padding-left: 10px;
-  width: 100%;
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -317,7 +320,7 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   color: white;
 }
 
@@ -328,11 +331,6 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
-}
-
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
 }
 
 .far {
@@ -382,16 +380,14 @@ button {
     font-size: 24px;
   }
 
-  .board-wrapper {
-    width: 100%;
-  }
-
   .game-board {
-    width: 100%;
+    width: 100vw;
+    padding: 0;
   }
 
   .player-name-box {
-    width: 100%;
+    width: 100vw;
+    padding: 0;
   }
 
   .card {
@@ -415,8 +411,8 @@ button {
   }
 
   .question-section {
-    width: 100%;
-    min-height: 0;
+    width: 100vw;
+    padding: 20px 0px;
     flex-direction: column;
   }
 
@@ -440,7 +436,7 @@ button {
   }
 
   .win-or-lose {
-    max-width: 300px;
+    width: 80%;
   }
 
 }

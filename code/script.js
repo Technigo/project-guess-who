@@ -371,15 +371,22 @@ const filterCharacters = (keep) => {
         `No, the person doesn't have ${physicalAttribute} ${group}. Remove all persons with ${physicalAttribute} ${group} `
       )
     }
-
   }
   // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
+charactersInPlay = charactersInPlay.filter((person) =>  {
 
-  // Invoke a function to redraw the board with the remaining people.
+  if (keep) {
+    return person[attribute] === physicalAttribute
+  }
+  else{
+    return person[attribute] !== physicalAttribute
+  }   
+ })
+ generateBoard()
+
 }
+  // Invoke a function to redraw the boardwith the remaining people.
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {

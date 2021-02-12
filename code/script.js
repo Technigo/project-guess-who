@@ -245,7 +245,6 @@ const generateBoard = () => {
   })
 }
 
-
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }

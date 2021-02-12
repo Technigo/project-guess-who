@@ -1,13 +1,15 @@
-# Project Name
+# Project: Guess Who game
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This is a simple Guess Who game built with javascript.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The aim of this project was to build the functionality of a Guess Who game with javascript. 
+I have used arrays, objects and array methods to loop and filter through arrays, passing on arguments between functions, and DOM selectors and event listeners to achieve functionality.
+Next step would be to exchange the array objects (the persons) to any other kind of game characters and expand the list of possible questions in the select form. I would also change the styling.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://thirsty-thompson-ab2825.netlify.app/
+
+

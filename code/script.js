@@ -260,7 +260,6 @@ const start = () => {
   setSecret();
   generateBoard();
   winOrLosePage.classList.toggle("hidden");
-  console.log("hello")
   // What else should happen when we start the game?
 }
 

@@ -1,13 +1,21 @@
-# Project Name
+# Project 5 -Guess who game
 
-Replace this readme with your own information about your project.
+The project was to create a functioning game of "Guess who".
+The computer select a secret person and it's the users task to find out who.
+The user ask questions, about for example the persons hair color, and the game should filter out persons depening on if the question is correct or not.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
-## The problem
+## The work
+One of the things I tried to work on was to keep the code short. If something was used several times I would make it general instead of putting it in every place it was to be used. I also wanted it to be clear and easy to read. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+One of the biggest challenges was to figure out what should be done. And when. And then figure out how to do it! A lot of things happen just a a result of a click of a button, and it all must happen in the right order.
+
+If I were to do it over again I would have done a "user-story" before so I would try to know my every step even before I even started coding.
+
+If I had more time I would have worked more on the winOrLose section, changed some styling on the game, added some more option values to the persons such as jewelry or gender. 
+
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://infallible-mccarthy-192b55.netlify.app/

@@ -1,8 +1,8 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
-const findoutButton = document.getElementById('filter')
+const board = document.getElementById('board');
+const questions = document.getElementById('questions');
+const restartButton = document.getElementById('restart');
+const findoutButton = document.getElementById('filter');
 const winOrLoose = document.getElementById('winOrLose');
 const winOrLooseText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
@@ -248,7 +248,7 @@ const generateBoard = () => {
   });
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Randomly select a person from the characters array and set as the value of the variable called secret.
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
@@ -260,7 +260,6 @@ const start = () => {
   generateBoard();
   setSecret();
   numberOfGuesses = 0; //This counts the number of questions. 
-  console.log(secret);
 }
 
 const selectQuestion = () => {
@@ -298,7 +297,7 @@ const selectQuestion = () => {
 // This function is invoked when you click on 'Find Out'.
 const checkQuestion = () => {
   // Compares the currentQuestion with the secret person and checks if we should keep or remove people based on that.
-  // Then invokes filterCharacters
+  // Then invokes filterCharacters.
   selectQuestion();
   numberOfGuesses++;
   if (currentQuestion.value === secret[currentQuestion.attribute]) {
@@ -354,21 +353,20 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   let confirmAnswer = window.confirm(`Are you sure you want to guess on ${suspect}`);
-  console.log("guess =" + suspect);
    // If the player wants to guess, invoke the checkMyGuess function.
   if (confirmAnswer) {
     checkMyGuess(suspect);
   } else {
-    alert(`Ok. Keep guessing`);
+    alert(`Ok. Keep guessing.`);
    }
 }
 
-// If you confirm, this function is invoked
+// If you confirm, this function is invoked.
 const checkMyGuess = (suspect) => {
-  //Shows the win or lose section, hides the game board
+  //Shows the win or lose section, hides the game board.
   board.classList.add("game-board-hidden");
   winOrLoose.style = "display:block;"
-  //Checks if the suspect is the same as the secret person's name
+  //Checks if the suspect is the same as the secret person's name.
   if (suspect === secret.name) {
     winOrLooseText.innerText  = `Yay! ${suspect} is the correct person. You got it after ${numberOfGuesses} questions.`;
   } else {

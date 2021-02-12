@@ -227,7 +227,6 @@ const CHARACTERS = [
     smoking: false,
   },
 ];
-
 // Global variables
 let secret, currentQuestion, charactersInPlay, actualValue
 
@@ -251,7 +250,6 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret)
 }
 
 // This function to start (and restart) the game
@@ -264,48 +262,41 @@ const start = () => {
   setSecret()
 }
 
-
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-  console.log(category)
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
+  const category = questions.options[questions.selectedIndex].parentNode.label
+  // This variable stores the actual value of the question we've selected.
   actualValue = questions.value
-  console.log(actualValue)
-
   // Here we have an object assigned to global variable currentQuestion depending on the category selected
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
       value: actualValue,
-      // 👆 add the value from the input here
-      category: category,
+      category
     }
   } else if (category === 'eye color') {
-    // Set this up your self
     currentQuestion = {
       attribute: 'eyeColor',
       value: actualValue,
-      category: category,
+      category
     }
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: actualValue,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
-      category: category,
+      value: true, // we're asking if this person wears a hat for example, so always true in the question.
+      category
     }
   } else if (category === 'other') {
     // Set this up your self (should be same structure as above)
     currentQuestion = {
       attribute: actualValue,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
-      category: category,
+      value: true, 
+      category
     }
   }
-  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out'.
@@ -316,10 +307,8 @@ const checkQuestion = () => {
 
   if(valueSecret === currentQuestion.value){
     keep = true
-    console.log(keep)
   } else {
     keep = false
-    console.log(keep)
   }
   // Then invoke filterCharacters
   filterCharacters(keep);
@@ -331,7 +320,7 @@ const filterCharacters = (keep) => {
   let attribute = currentQuestion.attribute;
   let value = currentQuestion.value;
 
-  // Show the correct alert message for different categories
+  // Showing alert messages for different categories
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -373,14 +362,12 @@ const filterCharacters = (keep) => {
       )
     }
   }
-  
+
   // filter to keep or remove based on the keep variable.
   if (keep) {
-    charactersInPlay = charactersInPlay.filter( person => { 
-      return person[currentQuestion.attribute] === value })
+    charactersInPlay = charactersInPlay.filter(person => person[currentQuestion.attribute] === value)
   } else {
-    charactersInPlay = charactersInPlay.filter( person => {
-      return person[currentQuestion.attribute] !== value })
+    charactersInPlay = charactersInPlay.filter(person => person[currentQuestion.attribute] !== value)
   } 
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
@@ -388,17 +375,15 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
-  // store the interaction from the player in a variable.
+  // storing the interaction from the player in a variable.
   const confirmationOnGuess = confirm(`Are you sure you want to make a guess on ${suspect}`);
   // If the player wants to guess, invoke the checkMyGuess function.
   if (confirmationOnGuess === true) {
-    console.log(suspect)
     checkMyGuess(suspect)
   } else {
-    console.log(false)
+    return false
   }
 }
-
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   // 1. Check if the suspect is the same as the secret person's name
@@ -406,9 +391,9 @@ const checkMyGuess = (suspect) => {
   // 2. Set a Message to show in the win or lose section accordingly
     winOrLoseText.innerHTML = `
     Congratulations, You won! ${suspect} is the person we were looking for. `
-    } else {
-      winOrLoseText.innerHTML = `
-      Unfortunately, ${suspect} is not the person we were looking for. `
+  } else {
+    winOrLoseText.innerHTML = `
+    Unfortunately, ${suspect} is not the person we were looking for. `
   }
   // 3. Show the win or lose section
   winOrLose.style.display = "flex";
@@ -433,4 +418,5 @@ playAgainButton.addEventListener('click', () => {
   //Show the board again
   board.style.display = "flex";
   //Invoke start function to start a new game
-  start() })
+  start() 
+})

@@ -304,13 +304,13 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS;
 
   //Restart - show the board again
-  board.style.display = "flex"
+  board.style.display = "flex";
 
   //hide winOrLose section
-  winOrLose.style.display = "none"
+  winOrLose.style.display = "none";
   // What else should happen when we start the game?
   setSecret()
   generateBoard()  
@@ -446,7 +446,7 @@ const checkMyGuess = (suspect) => {
 // 2. Set a Message to show in the win or lose section accordingly
    winOrLoseText.innerHTML = `You thought it was ${suspect} and you were right!`
   } else {
-    winOrLoseText.innerHTML = `Sorry, it's not ${suspect}. It was ${secret.name}`
+    winOrLoseText.innerHTML = `Sorry, it's not ${suspect}. It was ${secret.name} Shall we give it another go?`
   }
   
   // 3. Show the win or lose section

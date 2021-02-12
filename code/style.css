@@ -20,13 +20,13 @@ h1 {
 }
 
 .find-out-title {
-  text-shadow: 3px 4px 4px rgb(54, 27, 48);
+  text-shadow: 3px 4px 4px rgb(55, 61, 63);
 }
 
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: #af95d5;
+  background-color: #a05968;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23121312' fill-opacity='0.4'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
   display: flex;
   flex-direction: column;
@@ -166,7 +166,7 @@ button:active {
   display: none;
   align-items: center;
   justify-content: center;
-  background-color: #af95d5;
+  background-color: #a05968;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23121312' fill-opacity='0.4'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
   position: absolute;
   top: 0;

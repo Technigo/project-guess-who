@@ -9,3 +9,4 @@ I simply aimed to get the game to work; attending the lectures, googling and dis
 If I had more time I would have probably first added a counter and maybe a timer, and also changed a bit of the CSS so it would be more of my own work. Maybe also looking over the JS-code to see if it's possible to write the code more efficient/shorter. 
 
 ## View it live
+https://kind-northcutt-46c9ec.netlify.app/

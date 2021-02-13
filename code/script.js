@@ -631,6 +631,7 @@ greetingForm.addEventListener('submit', (event)=> {
 })
 
 restartButton.addEventListener('click', () =>{ 
+  
   start();
   })
 questions.addEventListener('change', selectQuestion)

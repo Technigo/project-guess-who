@@ -478,7 +478,9 @@ const checkQuestion = () => {
 
 // Triggers an alert telling whether the secret person has the attribute chosen or not, and redraws a filtered board.
 const filterCharacters = (keep) => {
-  const { category, attribute, value } = currentQuestion;
+ const category = currentQuestion.category
+ const attribute = currentQuestion.attribute
+ const value = currentQuestion.value
   if (category === "accessories") {
     if (keep) {
       alert(

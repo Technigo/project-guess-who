@@ -12,16 +12,27 @@
 </head>
 
 <body>
-  <aside class="question-section">
+  <aside class="question-section rules" id="aside-rules">
+    <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
+    <h1>Rules of the game</h1>
+    <ul class="game-rules">
+      <li>There are 24 characters in the game!</li>
+      <li>We pick a secret character!</li>
+      <li>You guess who it is!</li>
+      <li>Ask questions to get some clues!</li>
+      <li>When you are ready, take a guess!</li>
+      <li>If you guess wrong, you lose the game!</li>
+      <li>If you guess right, you win the game!</li>
+    </ul>
+  </aside>
+  <aside class="question-section game" id="aside-game">
     <button id="restart" class="outlined-button" type="button">RESTART</button>
 
     <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
 
     <h1>Does the person have</h1>
-    <p class="question-tracker"> Number of questions: <span class="rounds" id="rounds-number">0</span> </p>
-    <p class="timer-wrapper">Game time: <span id="timer">00:00</span></p>
     <select id="questions">
-      <option value="" selected disabled>choose here</option>
+      <option default id="default" value="" selected disabled>choose here</option>
       <optgroup label="hair color">
         <option value="brown">brown hair</option>
         <option value="yellow">yellow hair</option>
@@ -59,11 +70,22 @@
         <option value="smoker">a smoking habit</option>
       </optgroup>
     </select>
-
     <button id="filter" class="filled-button">FIND OUT</button>
+    <p class="name-wrapper">Player: <span id="player-name"></span> </p>
+    <p class="question-tracker"> Number of questions: <span class="rounds" id="rounds-number">0</span> </p>
+    <p class="timer-wrapper">Game time: <span id="timer">00:00</span></p>
   </aside>
 
   <section class="board-wrapper">
+    <div class="welcome-section" id="welcome-section">
+      <div class="chat-wrapper">
+        <p class="chat-bubble" id="greeting-text">Hello, player! What is your name?</p>
+      </div>
+      <form class="form-wrapper" id="form-wrapper">
+        <input type="text" id="input" class="text-input">
+        <button id="submit" type="submit" class="welcome-button">ENTER</button>
+      </form>
+    </div>
     <main class="game-board" id="board"></main>
   </section>
 

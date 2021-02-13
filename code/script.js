@@ -1,4 +1,11 @@
 // All the DOM selectors stored as short variables
+const asideRules =document.getElementById('aside-rules');
+const asideGame =document.getElementById('aside-game');
+const greetingText = document.getElementById('greeting-text');
+const greetingForm = document.getElementById('form-wrapper');
+const inputFromUser = document.getElementById('input');
+const player = document.getElementById('player-name');
+const welcomeBoard = document.getElementById('welcome-section');
 const board = document.getElementById('board');
 const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
@@ -7,9 +14,10 @@ const winOrLooseBoard = document.getElementById('winOrLose');
 const winOrLooseText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
 const round = document.getElementById('rounds-number');
-const timer = document.getElementById('timer')
-const winSound = document.getElementById('win-sound')
-const looseSound = document.getElementById('loose-sound')
+const timer = document.getElementById('timer');
+const looseSound = document.getElementById('loose-sound');
+const alertSound = document.getElementById('alert-sound');
+const defaultChoice = document.getElementById('default');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -333,6 +341,7 @@ let secret;
 let currentQuestion;
 let charactersInPlay;
 let roundNumber = 0;
+let playerName;
 
 //Global variables: timer
 let seconds = 0;
@@ -362,6 +371,24 @@ const resetGameTimer = () =>{
   seconds = 0;
   minutes = 0;
 }
+//Welcome conversation functions
+
+const showStartButton = (userInput) => {
+  greetingText.innerHTML = `
+  Welcome ${userInput}! Are you ready to play?`;
+  greetingForm.innerHTML = `
+  <button id="start-game" type="button" class="welcome-button">Start!</button>
+  ` 
+  const startGameButton = document.getElementById('start-game');
+  startGameButton.addEventListener('click', () => {
+    welcomeBoard.classList.add('hidden');
+    asideRules.classList.add('hidden');
+    asideGame.classList.add('shown')
+    player.innerHTML = `${userInput}`;
+    start();
+  });
+}
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -389,8 +416,11 @@ const updateTracker = () => {
 // This function starts (and restarts) the game
 const start = () => {
   roundNumber = 0;
-  updateTracker()
+  updateTracker();
+  resetGameTimer();
+  questions.selectedIndex = defaultChoice;
   charactersInPlay = CHARACTERS;
+  board.classList.add('shown');
   generateBoard();
   setSecret();
 }
@@ -544,6 +574,7 @@ const filterCharacters = (keep, group) => {
 const guess = (suspect) => {
   console.log(suspect);
   const userGuess = suspect;
+  playAlerSound()
   if (confirm(`Are you sure you want to try ${userGuess}?`)) {
     checkMyGuess(userGuess);
   }
@@ -553,14 +584,18 @@ const showWinSection = () => {
   winOrLooseBoard.classList.add('shown');
   board.innerHTML = '';
 }
-//This function invokes showWinSection function and shows the message depending on whether the guess was correct
+//Sound effects functions
 const playWinSound = () => {
+  const winSound = document.getElementById('win-sound');
   winSound.play()
 }
 const playLooseSound = () => {
   looseSound.play()
 }
-
+const playAlerSound = () => {
+  alertSound.play()
+}
+//This function invokes showWinSection function and shows the message depending on whether the guess was correct
 const checkMyGuess = (userGuess) => {
   showWinSection()
   if (userGuess === secret.name) {
@@ -584,18 +619,23 @@ const checkMyGuess = (userGuess) => {
 }
 
 // Invokes the start function when website is loaded
-start()
 setInterval(gameTimer,1000);
 
 // All the event listeners
+greetingForm.addEventListener('submit', (event)=> {
+  event.preventDefault();
+  const userName = inputFromUser.value;
+  showStartButton(userName);
+})
+
 restartButton.addEventListener('click', () =>{ 
-  resetGameTimer();
+  // resetGameTimer();
   start();
   })
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', () => {
   winOrLooseBoard.classList.remove('shown');
-  resetGameTimer();
+  // resetGameTimer();
   start();
 })

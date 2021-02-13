@@ -413,7 +413,7 @@ const guess = (suspect) => {
 
 // If user confirms guess, this function is invoked
 const checkMyGuess = (suspect) => {
-  if (suspect === secret.name) {                                                 // 1. Check if the suspect is the same as the secret person's name
+  if (suspect === secret.name) {                                                          // 1. Check if the suspect is the same as the secret person's name
     winOrLoseText.innerHTML = `You guessed correctly! 🤩 🎉 It is ${suspect}!`           // 2. Set a Message to show in the win or lose section accordingly
   } else {
     winOrLoseText.innerHTML = `You guessed incorrectly on ${suspect}! 🤔 It was ${secret.name}!`

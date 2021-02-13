@@ -263,6 +263,7 @@ const start = () => {
   setSecret()
 }
 
+// Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
@@ -315,11 +316,10 @@ const checkQuestion = (selectQuestion) => {
   filterCharacters(keep)
 } 
 
-
-// It'll filter the characters array and redraw the game board.
+// Filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-let group = currentQuestion.category
-let attribute = currentQuestion.attribute
+  let group = currentQuestion.category
+  const attribute = currentQuestion.attribute
 
   if (group === 'accessories') {
     if (keep) {
@@ -363,7 +363,7 @@ let attribute = currentQuestion.attribute
     }
   }
 
-  // filter to keep or remove based on the keep variable.
+  // Filter to keep or remove based on the keep variable.
   if (keep) {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] === currentQuestion.value)
   } else {
@@ -377,6 +377,7 @@ let attribute = currentQuestion.attribute
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   let myGuess = confirm(`Are you sure you want to guess on ${suspect}?`)
+
   if (myGuess) {
     checkMyGuess(suspect)
   }

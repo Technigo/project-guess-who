@@ -12,4 +12,4 @@ If I had more time I would make the "Play again" button to function. I would als
 
 ## View it live
 
-To view the site live, please follow this link: 
+To view the site live, please follow this link: https://reverent-hawking-ae4148.netlify.app/

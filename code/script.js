@@ -348,6 +348,7 @@ let minutes = 0;
 let displaySeconds = 0;
 let displayMinutes = 0;
 
+//Time function
 const gameTimer = () => {
   seconds++;
   if (seconds / 60 === 1){
@@ -370,7 +371,7 @@ const resetGameTimer = () =>{
   seconds = 0;
   minutes = 0;
 }
-//Welcome conversation functions
+//Welcome conversation function: shows welcome message and start game button
 
 const showStartButton = (userInput) => {
   greetingText.innerHTML = `
@@ -584,19 +585,6 @@ const showWinSection = () => {
   winOrLooseBoard.classList.add('shown');
   board.innerHTML = '';
 }
-//Sound effects functions
-const playWinSound = () => {
-  const winSound = document.getElementById('win-sound');
-  winSound.play()
-}
-const playLooseSound = () => {
-  const looseSound = document.getElementById('loose-sound');
-  looseSound.play()
-}
-const playAlerSound = () => {
-  const alertSound = document.getElementById('alert-sound');
-  alertSound.play()
-}
 //This function invokes showWinSection function and shows the message depending on whether the guess was correct
 const checkMyGuess = (userGuess) => {
   showWinSection()
@@ -604,42 +592,62 @@ const checkMyGuess = (userGuess) => {
     playWinSound()
     if (roundNumber === 1) {
       winOrLooseText.innerText =
-        `Congratulations! It is ${userGuess}! 
+        `Congratulations, ${playerName}! It is ${userGuess}! 
         It took you just ${roundNumber} question to win!
         The game took ${minutes}:${seconds}.`;
     } else {
       winOrLooseText.innerText =
-        `Congratulations! It is ${userGuess}! 
+        `Congratulations, ${playerName}! It is ${userGuess}! 
         You won with ${roundNumber} questions!
         The game took ${minutes}m:${seconds}s.`;
     }
   } else {
     playLooseSound()
     winOrLooseText.innerText = 
-    `Sorry, it is not ${userGuess}! Do you want to play again?`
+    `Sorry, ${playerName}! It is not ${userGuess}! Do you want to play again?`
   }
 }
+//Sound effects functions
+const playWinSound = () => {
+  const winSound = document.getElementById('win-sound');
+  winSound.play();
+}
+const playLooseSound = () => {
+  const looseSound = document.getElementById('loose-sound');
+  looseSound.play();
+}
+const playAlerSound = () => {
+  const alertSound = document.getElementById('alert-sound');
+  alertSound.play();
+}
 
-// Invokes the start function when website is loaded
+// Invokes the game timer function when website is loaded
 setInterval(gameTimer,1000);
 
-// All the event listeners
+// Event listeners
+
+//Takes the user's name and invokes showStartButton function
 greetingForm.addEventListener('submit', (event)=> {
   event.preventDefault();
   const userName = inputFromUser.value;
+  playerName = userName;
   showStartButton(userName);
-})
+});
 
+//Restarts the game when pressing the button
 restartButton.addEventListener('click', () =>{ 
-  
   start();
-  })
-questions.addEventListener('change', selectQuestion)
-filterButton.addEventListener('click', checkQuestion)
+  });
+
+questions.addEventListener('change', selectQuestion);
+
+filterButton.addEventListener('click', checkQuestion);
+
 playAgainButton.addEventListener('click', () => {
   winOrLooseBoard.classList.remove('shown');
   start();
 })
+
 newPlayerButton.addEventListener('click', () =>{ 
 location.reload()
 })

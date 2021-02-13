@@ -176,7 +176,6 @@ button {
     border-radius: 10px;
     font-size: 20px;
     letter-spacing: 3px;
-    /* font-family: 'Montserrat'; */
     font-family: flashyFont;
     font-weight: bold;
     padding: 17px 32px;
@@ -189,7 +188,6 @@ button {
 }
 
 .outlined-button {
-    /* background-color: transparent; */
     color: var(--primary);
     align-self: flex-end;
     font-size: 14px;
@@ -201,14 +199,12 @@ button {
 .outlined-button:hover {
     background-color: var(--primary);
     color: black;
-    /* font-family: regularFont; */
 }
 
 .filled-button:hover {
     background-color: black;
     border-color: white;
     color: var(--primary);
-    /* font-family: regularFont; */
 }
 
 
@@ -236,12 +232,6 @@ button {
     text-align: center;
 }
 
-
-/* .win-or-lose img {
-    align-self: flex-start;
-    margin-left: 15%;
-} */
-
 .win-or-lose h1 {
     margin-bottom: 32px;
 }
@@ -261,9 +251,6 @@ button {
     h1 {
         font-size: 24px;
         line-height: 30px;
-    }
-    .guess-who-icon {
-        width: 51px;
     }
     .board-wrapper {
         width: 100%;

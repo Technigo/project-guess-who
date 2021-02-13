@@ -396,7 +396,8 @@ const checkMyGuess = (suspect) => {
         losingSound.play()
     }
 
-    // board.innerHTML = '' HIDE THE GAME BOARD
+    // Hiding the game board cards when win or loose message is displayed
+    board.innerHTML = ''
 }
 
 

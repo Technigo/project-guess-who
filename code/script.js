@@ -10,8 +10,8 @@ const winOrLoseSection = document.getElementById("winOrLose")
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
+    name: 'Luke',
+    img: 'images2/Luke.jpg',
     hatColor: 'pink',
     shirtColor: 'checkered',
     glasses: true,
@@ -20,8 +20,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
+    name: 'Lyndon',
+    img: 'images2/Lyndon.jpg',
     hatColor: 'pink',
     shirtColor: 'black',
     glasses: true,
@@ -30,8 +30,8 @@ const CHARACTERS = [
     unibrow: true
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
+    name: 'Lars',
+    img: 'images2/Lars.jpg',
     hatColor: 'darkBlue',
     shirtColor: 'black',
     glasses: false,
@@ -40,8 +40,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
+    name: 'Louis',
+    img: 'images2/Louis.jpg',
     hatColor: 'black',
     shirtColor: 'yellow',
     glasses: false,
@@ -50,8 +50,8 @@ const CHARACTERS = [
     unibrow: true
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
+    name: 'Liam',
+    img: 'images2/Liam.jpg',
     hatColor: 'ochre',
     shirtColor: 'white',
     glasses: true,
@@ -60,8 +60,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
+    name: 'Livingstone',
+    img: 'images2/Livingstone.jpg',
     hatColor: 'beige',
     shirtColor: 'white',
     glasses: true,
@@ -70,8 +70,8 @@ const CHARACTERS = [
     unibrow: true
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
+    name: 'Lana',
+    img: 'images2/Lana.jpg',
     hatColor: 'black',
     shirtColor: 'yellow',
     glasses: true,
@@ -80,8 +80,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
+    name: 'Linda',
+    img: 'images2/Linda.jpg',
     hatColor: 'ochre',
     shirtColor: 'checkered',
     glasses: true,
@@ -90,8 +90,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
+    name: 'Livia',
+    img: 'images2/Livia.jpg',
     hatColor: 'green',
     shirtColor: 'white',
     glasses: true,
@@ -101,8 +101,8 @@ const CHARACTERS = [
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
+    name: 'Leland',
+    img: 'images2/Leland.jpg',
     hatColor: 'redAndWhite',
     shirtColor: 'checkered',
     glasses: true,
@@ -111,8 +111,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
+    name: 'Léon',
+    img: 'images2/Leon.jpg',
     hatColor: 'beige',
     shirtColor: 'black',
     glasses: true,
@@ -121,8 +121,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
+    name: 'Lydia',
+    img: 'images2/Lydia.jpg',
     hatColor: 'beige',
     shirtColor: 'white',
     glasses: true,
@@ -131,19 +131,19 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hatColor: 'green',
+    name: 'Linnéa',
+    img: 'images2/Linnea.jpg',
+    hatColor: 'none',
     shirtColor: 'white',
-    glasses: true,
-    moustache: true,
-    scarf: true,
+    glasses: false,
+    moustache: false,
+    scarf: false,
     unibrow: false
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hatColor: 'white',
+    name: 'Logan',
+    img: 'images2/Logan.jpg',
+    hatColor: 'whiteAndBlack',
     shirtColor: 'checkered',
     glasses: false,
     moustache: true,
@@ -151,8 +151,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
+    name: 'Lindsey',
+    img: 'images2/Lindsey.jpg',
     hatColor: 'green',
     shirtColor: 'white',
     glasses: true,
@@ -161,8 +161,8 @@ const CHARACTERS = [
     unibrow: true
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
+    name: 'Larry',
+    img: 'images2/Larry.jpg',
     hatColor: 'pink',
     shirtColor: 'black',
     glasses: false,
@@ -171,8 +171,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
+    name: 'Legolas',
+    img: 'images2/Legolas.jpg',
     hatColor: 'black',
     shirtColor: 'black',
     glasses: true,
@@ -181,8 +181,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
+    name: 'London',
+    img: 'images2/London.jpg',
     hatColor: 'black',
     shirtColor: 'yellow',
     glasses: true,
@@ -191,8 +191,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
+    name: 'Lucie',
+    img: 'images2/Lucie.jpg',
     hatColor: 'beige',
     shirtColor: 'white',
     glasses: true,
@@ -201,8 +201,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
+    name: 'Lennon',
+    img: 'images2/Lennon.jpg',
     hatColor: 'ochre',
     shirtColor: 'checkered',
     glasses: true,
@@ -211,8 +211,8 @@ const CHARACTERS = [
     unibrow: true
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
+    name: 'Lynn',
+    img: 'images2/Lynn.jpg',
     hatColor: 'darkBlue',
     shirtColor: 'yellow',
     glasses: false,
@@ -221,8 +221,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
+    name: 'Lola',
+    img: 'images2/Lola.jpg',
     hatColor: 'ochre',
     shirtColor: 'white',
     glasses: false,
@@ -231,8 +231,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
+    name: 'Lee',
+    img: 'images2/Lee.jpg',
     hatColor: 'black',
     shirtColor: 'white',
     glasses: false,
@@ -241,8 +241,8 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
+    name: 'Lenwood',
+    img: 'images2/Lenwood.jpg',
     hatColor: 'black',
     shirtColor: 'yellow',
     glasses: true,
@@ -267,7 +267,7 @@ function generateBoard() {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <img class="person-image" src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>

@@ -330,23 +330,23 @@ const setSecret = () => {
 
 // This function is to start (and restart) the game
 const start = () => {
-  winOrLose.style.display = 'none';        //Hide the winOrLose section on restart      
-  board.style.display = 'flex';            //On restart, show the board again
-  charactersInPlay = CHARACTERS;          // Here we're setting charactersInPlay array to be all the characters to start with
-  generateBoard();                         // What else should happen when we start the game?
+  winOrLose.style.display = 'none';            
+  board.style.display = 'flex';            
+  charactersInPlay = CHARACTERS;         
+  generateBoard();                         
   setSecret();
   selectQuestion();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label;    // This variable stores what option group (category) the question belongs to.
-  const selectedValue = questions.options[questions.selectedIndex].value;   // A variable that stores the actual value of the question we've selected.
+  const category = questions.options[questions.selectedIndex].parentNode.label;    
+  const selectedValue = questions.options[questions.selectedIndex].value;   
   
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: selectedValue, // added the value from the input here
+      value: selectedValue, 
       category: category,
       text: `${selectedValue} hair`,
     }
@@ -365,10 +365,10 @@ const selectQuestion = () => {
       text: `${selectedValue} clothes`,
     }
   } else if (category === 'accessories' || category === 'other') {
-    const singular = selectedValue === 'pet' || selectedValue === 'hat';    //variable that stores true or false, if pet or hat it's true
+    const singular = selectedValue === 'pet' || selectedValue === 'hat';    
     currentQuestion = {
-      attribute: selectedValue,   // this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true,            // we're asking if this person wears a hat for exaple, so always true in the question.
+      attribute: selectedValue,   
+      value: true,            
       category: category,
       text: `${singular ? 'a ' : ''}${selectedValue}`, 
     }
@@ -378,21 +378,20 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
   let keep;
-  if (currentQuestion.value === secret[currentQuestion.attribute]) {      // Compare the currentQuestion with the secret person.
-    keep = true;       // See if we should keep or remove people based on that
+  if (currentQuestion.value === secret[currentQuestion.attribute]) {      
+    keep = true;       
   } else {
     keep = false;
   }
 
-  filterCharacters(keep);      // Then invoke filterCharacters
+  filterCharacters(keep);      
   incrementCount();
 };
 
-// It'll filter the characters array and redraw the game board.
+// It'll show an alert message to the user, filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  // Show an alert message for different categories and filter to keep or remove based on the keep variable.
   if (keep) {
-    alert(                                                                                                //Think of replacing alerts with adding div instead with .innerHTML, easier to style
+    alert(                                                                                                
       `Yes, the person has ${currentQuestion.text}! Keep all that have ${currentQuestion.text}.`  
     );
     charactersInPlay = charactersInPlay.filter(
@@ -407,7 +406,7 @@ const filterCharacters = (keep) => {
     );
   }
 
-  generateBoard();   // Invoke a function to redraw the board with the remaining people.
+  generateBoard();   
 };
 
 // function that keeps track of how many times the user clicks the "Find out"-button, i.e. filtering
@@ -418,22 +417,22 @@ const incrementCount = () => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
-  const confirmGuess = confirm(`Are you sure you want to make a guess on ${suspect}?`);        // store the interaction from the player in a variable in a confirm() 
+  const confirmGuess = confirm(`Are you sure you want to make a guess on ${suspect}?`);        
   if (confirmGuess == true) {
-    checkMyGuess(suspect);     // If the player wants to guess, invoke the checkMyGuess function.
+    checkMyGuess(suspect);     
   } 
 };
 
 // If user confirms guess, this function is invoked
 const checkMyGuess = (suspect) => {
-  if (suspect === secret.name) {                                                          // 1. Check if the suspect is the same as the secret person's name
-    winOrLoseText.innerHTML = `You guessed correctly! 🤩 🎉 It is ${suspect}!`;           // 2. Set a Message to show in the win or lose section accordingly
+  if (suspect === secret.name) {                                                          
+    winOrLoseText.innerHTML = `You guessed correctly! 🤩 🎉 It is ${suspect}!`;           
   } else {
     winOrLoseText.innerHTML = `You guessed incorrectly on ${suspect}! 🤔 It was ${secret.name}!`;
   }
   
-  winOrLose.style.display = 'flex';      // 3. Show the win or lose section
-  board.style.display = 'none';          // 4. Hide the game board
+  winOrLose.style.display = 'flex';      
+  board.style.display = 'none';          
 };
 
 // Invokes the start function when website is loaded

@@ -2,6 +2,11 @@
 const board = document.getElementById('board');
 const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
+const findOutButton = document.getElementById('filter');
+const winOrLose = document.getElementById('winOrLose');
+const winOrLoseText = document.getElementById('winOrLoseText');
+
+//const filter;
 //const selectQuestion = document.getElementById
 //just a comment to see if it works
 
@@ -299,35 +304,28 @@ const selectQuestion = () => {
       category: category,
     }
   } else if (category === 'eye color') {
-    // Set this up your self
-  } else if (category === 'accessories') {
     currentQuestion = {
       attribute: eyeColor,
+      value: true,
+    }
+  } else if (category === 'accessories') {
+    currentQuestion = {
+      attribute: accessories,
       // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
-  } else if (category === 'glasses') {
+  } else if (category === 'other') {
     currentQuestion = {
-      attribute: glasses,
+      attribute: other,
       value: true,
       category: category,
     }
     // Set this up your self (should be same structure as above)
-  } else if (category === 'hat') {
-    currentQuestion = {
-      attribute: hat,
-      value: true,
-      category: category,
-    }
-  } else if (category === 'smoker') {
-    currentQuestion = {
-      attribute: smoker,
-      value: true,
-      category: category,
-    }
   }
 }
+
+
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
@@ -383,9 +381,11 @@ const checkMyGuess = (suspect) => {
 }
 
 // Invokes the start function when website is loaded
-start(CHARACTERS);
+start();
 
 // All the event listeners
-// Not sure if this questions.addEvent works. Will keep this as a comment for now
-questions.addEventListener('click', start);
-restartButton.addEventListener('click', start);
+//
+questions.addEventListener('change', () => selectQuestion());
+restartButton.addEventListener('click', start); 
+findOutButton.addEventListener('click', checkQuestion)
+

@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #a02972;
+  --secondary: #bd539d;
 }
 
 body {
@@ -177,6 +177,17 @@ button {
   margin-bottom: 32px;
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #3a1f3d;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -231,3 +242,5 @@ button {
     border: none;
   }
 }
+
+

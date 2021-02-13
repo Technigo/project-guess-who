@@ -289,15 +289,15 @@ const selectQuestion = () => {
       category,
     }
   }
-  console.log(currentQuestion)
 }
 
-
 // This function should be invoked when you click on 'Find Out'.
-const checkQuestion = () => {
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+const checkQuestion = () => {
+  const keep = currentQuestion.value === secret[currentQuestion.attribute]
+  filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -352,6 +352,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
-filterButton.addEventListener('click', () => {
-
-})
+filterButton.addEventListener('click', checkQuestion);

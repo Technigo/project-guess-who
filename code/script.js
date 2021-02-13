@@ -264,6 +264,7 @@ const start = () => {
 }
 
 // Setting the currentQuestion object when you select something in the dropdown
+// ! It doesn't work with shorthands for some reason. I know I could use it here though !
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value

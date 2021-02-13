@@ -66,7 +66,7 @@ select {
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;
-  margin: 3px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;

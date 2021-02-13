@@ -245,6 +245,7 @@ const generateBoard = () => {
 
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret);
 }
 
 const start = () => {
@@ -352,11 +353,11 @@ const checkMyGuess = (suspect) => {
     if (suspect === secret.name) {
       winOrLoseText.innerText = "WOOP WOOP, that is correct!"
       let winOrLose = document.getElementById("winOrLose")   
-      winOrLose.style.display = "block" 
+      winOrLose.style.display = "flex" 
     } else {
       winOrLoseText.innerText = "NOOOOO, that's wrong!"
       let winOrLose = document.getElementById("winOrLose")   
-      winOrLose.style.display = "block" 
+      winOrLose.style.display = "flex" 
     }
     
     const playAgain = document.getElementById("playAgain")

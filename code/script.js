@@ -257,6 +257,8 @@ const start = () => {
   charactersInPlay = CHARACTERS
   console.log('Guess who!')  // i added this here
   generateBoard()  // i added this here
+  setSecret() 
+  console.log(secret)
   // What else should happen when we start the game?
 }
 
@@ -300,17 +302,14 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-  if (currentQuestion.attribute === 'hairColor' && currentQuestion.value === secret.hairColor) {
-    keep = true
-  } else if (currentQuestion.attribute === 'eyeColor' && currentQuestion.value === secret.eyeColor) {
-    keep = true
-  } else if (currentQuestion.attribute === 'accessories' && currentQuestion.value === secret.accessories) {
-    keep = true
-  } else if (currentQuestion.attribute === 'other' && currentQuestion.value === secret.other) {
+  let keep
+  let secretValue = secret[currentQuestion.attribute]
+  if (currentQuestion === secretValue) {
     keep = true
   } else {
     keep = false
   }
+  console.log (keep)
 
   filterCharacters(keep)
   // Compare the currentQuestion with the secret person.
@@ -321,17 +320,18 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  console.log(keep)
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
       alert(
         `Yes, the person wears ${[currentQuestion.attribute]}! Keep all that wears ${[currentQuestion.attribute]}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       alert(
         `No, the person doesn't wear ${[currentQuestion.attribute]}! Remove all that wears ${[currentQuestion.attribute]}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
   } else if (category === 'other') {
     if (keep) {
@@ -368,9 +368,9 @@ const filterCharacters = (keep) => {
   }
     // Similar to the one above
   // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+ /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
+  charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
 
   // Invoke a function to redraw the board with the remaining people.
 }
@@ -392,7 +392,7 @@ const checkMyGuess = (suspect) => {
 
 // Invokes the start function when website is loaded
 start()
-setSecret()   // i added this here
+  // i added this here
 
 // All the event listeners
 restartButton.addEventListener('click', start)
@@ -400,3 +400,4 @@ restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)// i added this here
 
 findOutButton.addEventListener('click', checkQuestion)
+

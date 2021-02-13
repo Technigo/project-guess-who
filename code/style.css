@@ -45,8 +45,23 @@ select {
   background-color: #fff;
 }
 
-.guess-who-icon {
-  width: 126px;
+.filter-counter {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  background: #303960;
+}
+
+.filter-counter span {
+  padding: 17px 27px;
 }
 
 .board-wrapper {
@@ -173,14 +188,12 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
-}
-
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
+
+
+/***** MEDIA QUERY *****/
 
 @media (max-width: 768px) {
   body {
@@ -192,9 +205,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

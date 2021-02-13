@@ -6,9 +6,9 @@ const findOutButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainbutton = document.getElementById('playAgain')
-
 const askedQuestion = document.getElementById('askedQuestions')
 
+// Soundfiles 
 const shuffleCards = new Audio('https://www.soundjay.com/misc/sounds/shuffling-cards-2.mp3')
 const loseSound = new Audio('https://www.soundjay.com/misc/sounds/fail-trombone-03.mp3')
 const winSound = new Audio('https://www.soundjay.com/human/sounds/applause-8.mp3')
@@ -258,13 +258,8 @@ const CHARACTERS = [
   },
 ]
 
-
 let secret, currentQuestion, charactersInPlay, playerName
 let attributeQuestions = 0
-
-
-
-
 
 const generateBoard = () => {
   board.innerHTML = ''
@@ -281,7 +276,6 @@ const generateBoard = () => {
     `
   })
 }
-
 
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -351,7 +345,6 @@ const checkQuestion = () => {
 filterCharacters(keep)
 }
 
-
 const filterCharacters = (keep) => {    
 if (currentQuestion.category === 'accessories') {
   if (keep) {    
@@ -413,7 +406,8 @@ if (currentQuestion.category === 'accessories') {
             }            
           }          
           generateBoard()          
-}        
+}    
+
 const guess = (suspect) => {
       const guessPerson = confirm(`Do you want to guess ${suspect}`)
       if (guessPerson === true) {
@@ -449,9 +443,5 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click',checkQuestion)
-//Every time I change option in dropdown i trigger selectQuestion() to update currentQuestion
 questions.addEventListener('change',selectQuestion)
 playAgainbutton.addEventListener('click', () => {shuffleCards.play(),start()})
-
-
-

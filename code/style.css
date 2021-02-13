@@ -16,7 +16,7 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: var(--primary);
 }
 
 .question-section {
@@ -142,7 +142,7 @@ button {
 
 .filled-button:hover {
   background-color: #09b92f;
-  border-color: white;
+  border-color: var(--primary);
   color: #000
 }
 
@@ -227,16 +227,13 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: var(--primary);
     color: var(--primary);
     border: none;
   }
 }
-.span-guess {
-  color:white;
-  font-family: 'Montserrat';
-}
 
+/* CLASSES FOR SHOW AND HIDE  */
 
 .active {
   display: flex;

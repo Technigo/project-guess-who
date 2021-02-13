@@ -412,7 +412,7 @@ const filterCharacters = (keep) => {
 // function that keeps track of how many times the user clicks the "Find out"-button, i.e. filtering
 const incrementCount = () => {
   countUserFiltering += 1;
-  filterCounter.innerHTML = 'NUMBER OF QUESTIONS ASKED: ' + countUserFiltering;
+  filterCounter.innerHTML = `NUMBER OF QUESTIONS ASKED: ${countUserFiltering}`;
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

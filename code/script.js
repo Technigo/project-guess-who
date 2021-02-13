@@ -8,8 +8,7 @@ const winOrLose = document.getElementById('winOrLose')
 const secretPerson = document.getElementById('secretPerson')
 
 // Array with all the characters, as objects
-const CHARACTERS = [
-  {
+const CHARACTERS = [{
     name: 'Jabala',
     img: 'images/jabala.svg',
     hairColor: 'hidden',
@@ -225,7 +224,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
-  },
+  }
 ]
 
 // Global variables
@@ -258,52 +257,52 @@ const setSecret = () => {
 const start = () => {
 
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS;
-  setSecret();
-  generateBoard();
-};
+  charactersInPlay = CHARACTERS
+  setSecret()
+  generateBoard()
+}
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (value) => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.????
-  
+
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
       value: value,
       category: category,
-    };
-    
+    }
+
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
       value: value,
       category: category,
-    }; 
-    
+    }
+
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: value,
-      value: true, 
+      value: true,
       category: category,
-    };
-    
+    }
+
   } else if (category === 'other') {
     currentQuestion = {
       attribute: 'smoker',
-      value: true, 
+      value: true,
       category: category,
-    }; 
+    }
   }
-};
+}
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-  const secretValue = secret [currentQuestion.attribute]
+  const secretValue = secret[currentQuestion.attribute]
 
-  if(secretValue === currentQuestion.value) {
+  if (secretValue === currentQuestion.value) {
     keep = true;
     filterCharacters(true, currentQuestion.attribute)
   } else {
@@ -319,54 +318,53 @@ const filterCharacters = (keep) => {
   const value = currentQuestion.value
 
   // Show the correct alert message for different categories
-   if (category === 'hair Color') {
+  if (category === 'hair color') {
     if (keep) {
       alert(
-        `Yes, the person has ${attribute} hair! Keep all the persons with ${attribute} hair`
+        `Yes, the person has ${value} hair! Keeping all the people with ${value} hair.`
       )
     } else {
       alert(
-        `NO, the person doesn't have ${attribute} hair! Remove all persons with ${attribute} hair`
+        `No, the person doesn't have ${value} hair! Removing people with ${value} hair.`
       )
     }
-  } else if  (category === 'eye Color') {
+  } else if (category === 'eye color') {
     if (keep) {
       alert(
-        `Yes, the person has ${attribute} eyes! Keep all the persons with ${attribute} eyes`
+        `Yes, the person has ${value} eyes! Keeping all the people with ${value} eyes.`
       )
     } else {
       alert(
-        `NO, the person doesnt have ${attribute} eyes! Remove all persons with ${attribute} eyes`
-      ) 
+        `No, the person doesn't have ${value} eyes! Removing people with ${value} eyes.`
+      )
     }
-  }
-  else if (category === 'accessories') {
+  } else if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person wears ${attribute}! Keeping all the people that wears ${attribute}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the person doesn't wear ${attribute}! Removing people that wears ${attribute}.`
       )
     }
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person is a ${attribute}! Keep all persons who is a ${attribute}`
+        `Yes, the person is a ${attribute}! Keeping all the people that are ${attribute}s.`
       )
     } else {
       alert(
-        `No, the person isn't a ${attribute}! Remove all persons who is a ${attribute}`
+        `No, the person is not a ${attribute}! Removing people that are ${attribute}s.`
       )
     }
-  } 
+  }
 
   // filter to keep or remove based on the keep variable.
   if (keep) {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-  } else { 
-  charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) 
+  } else {
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
   }
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
@@ -379,8 +377,6 @@ const guess = (suspect) => {
   let confirmGuess = confirm(confirmQuestion)
   if (confirmGuess === true) {
     checkMyGuess(suspect)
-  } else {
-    alert('Keep on guessing!')
   }
 }
 
@@ -388,20 +384,15 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     winOrLoseText.innerHTML = `Congratulations! ${suspect} is the right person!`
-    
-  }else {
+
+  } else {
     winOrLoseText.innerHTML = `Sorry, it's not ${suspect}. The right person was ${secret.name}!`
   }
-
   winOrLose.style.display = 'flex'
   board.style.display = 'none'
-  // 1. Check if the suspect is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 }
 const playAgain = document.getElementById('playAgain')
-playAgain.addEventListener('click', () =>{
+playAgain.addEventListener('click', () => {
   winOrLose.style.display = 'none'
   board.style.display = 'flex'
   start()
@@ -417,4 +408,4 @@ questions.addEventListener("change", () => {
 })
 filterButton.addEventListener('click', () => {
   checkQuestion()
-}) 
+})

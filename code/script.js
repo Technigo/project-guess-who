@@ -572,7 +572,16 @@ const checkMyGuess = (suspect) => {
 start();
 
 // All the event listeners
-restartButton.addEventListener("click", start);
+//trigger a restart of the game
+restartButton.addEventListener("click", () => {
+  board.style.display = "flex"
+  start()
+});
 findOut.addEventListener("click", checkQuestion);
 questions.addEventListener("change", () => selectQuestion());
-playAgain.addEventListener("click", start);
+//trigger the play again button
+playAgain.addEventListener("click", () => {
+  winOrLose.style.display = "none";
+  board.style.display = "flex";
+  start()
+});

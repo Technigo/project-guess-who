@@ -13,10 +13,9 @@ const filterButton = document.getElementById('filter');
 const winOrLooseBoard = document.getElementById('winOrLose');
 const winOrLooseText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
+const newPlayerButton = document.getElementById('new-player')
 const round = document.getElementById('rounds-number');
 const timer = document.getElementById('timer');
-const looseSound = document.getElementById('loose-sound');
-const alertSound = document.getElementById('alert-sound');
 const defaultChoice = document.getElementById('default');
 
 // Array with all the characters, as objects
@@ -418,6 +417,7 @@ const start = () => {
   roundNumber = 0;
   updateTracker();
   resetGameTimer();
+  currentQuestion = undefined;
   questions.selectedIndex = defaultChoice;
   charactersInPlay = CHARACTERS;
   board.classList.add('shown');
@@ -590,9 +590,11 @@ const playWinSound = () => {
   winSound.play()
 }
 const playLooseSound = () => {
+  const looseSound = document.getElementById('loose-sound');
   looseSound.play()
 }
 const playAlerSound = () => {
+  const alertSound = document.getElementById('alert-sound');
   alertSound.play()
 }
 //This function invokes showWinSection function and shows the message depending on whether the guess was correct
@@ -629,13 +631,14 @@ greetingForm.addEventListener('submit', (event)=> {
 })
 
 restartButton.addEventListener('click', () =>{ 
-  // resetGameTimer();
   start();
   })
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', () => {
   winOrLooseBoard.classList.remove('shown');
-  // resetGameTimer();
   start();
+})
+newPlayerButton.addEventListener('click', () =>{ 
+location.reload()
 })

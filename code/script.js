@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -256,6 +257,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard()
   setSecret()
+  winOrLose.style.display = ''
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -270,15 +272,12 @@ const selectQuestion = () => {
       attribute: 'hairColor',
       value: categoryValue, 
       category: category,
-      // value: ,
-      // 👆 add the value from the input here
     }
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
       value: categoryValue, 
       category: category,
-    // Set this up your self
     }  
   } else if (category === 'accessories' || category === 'other') {
     currentQuestion = {
@@ -287,20 +286,6 @@ const selectQuestion = () => {
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }
-  /*}  else if (category === 'accessories') {
-      currentQuestion = {
-        attribute: 'hat',
-        // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-        value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
-        category: category,
-      }
-  } else if (category === 'other') {
-    currentQuestion = {
-      attribute: 'smoker', 
-      value: true,
-      category: category,
-    // Set this up your self (should be same structure as above)
-    }*/
   }
 }
 // This function should be invoked when you click on 'Find Out'.
@@ -311,14 +296,7 @@ const checkQuestion = () => {
   } else {
     filterCharacters(false)
   }
-  //filterCharacters()
 }
-  
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-
-
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -361,7 +339,7 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
-  const confirmation = confirm(`Are you sure about bet on ${suspect}?`)
+  const confirmation = confirm(`Are you sure about your bet on ${suspect}?`)
   if (confirmation) {
     checkMyGuess(suspect)
   } 
@@ -373,7 +351,7 @@ const guess = (suspect) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
-    alert('That is correct, you won!')
+    alert('That is correct, you win!')
     board.innerHTML = ''
     winOrLose.style.display = 'block'
     
@@ -392,3 +370,4 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', start)

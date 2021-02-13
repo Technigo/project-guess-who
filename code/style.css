@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #13c9bd;
+  --primary: #BDABBE;
+  --secondary: #32575D;
 }
 
 body {
@@ -16,7 +16,7 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: #BE8A4A;
 }
 
 .question-section {
@@ -29,7 +29,7 @@ h1 {
   align-items: flex-start;
   box-sizing: border-box;
   border-right-style: double;
-  border-color: var(--primary);
+  border-color: #BE8A4A;
 }
 
 select {
@@ -37,7 +37,7 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--primary);
+  color: #BE8A4A;
   width: 100%;
   margin: 24px 0;
 }

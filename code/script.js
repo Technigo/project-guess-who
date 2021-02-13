@@ -7,6 +7,8 @@ const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainbutton = document.getElementById('playAgain')
 
+const askedQuestion = document.getElementById('askedQuestions')
+
 const shuffleCards = new Audio('https://www.soundjay.com/misc/sounds/shuffling-cards-2.mp3')
 const loseSound = new Audio('https://www.soundjay.com/misc/sounds/fail-trombone-03.mp3')
 const winSound = new Audio('https://www.soundjay.com/human/sounds/applause-8.mp3')
@@ -263,6 +265,7 @@ let attributeQuestions = 0
 
 
 
+
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -304,29 +307,25 @@ const selectQuestion = () => {
     currentQuestion = {
       attribute: 'hairColor',
       value: userInput,      
-      category: category,
-      
+      category: category,      
     }
   } else if (category === 'eye color') {    
     currentQuestion = {
       attribute: 'eyeColor',
       value: userInput,
-      category: category,
-      
+      category: category,      
     }
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: userInput,      
       value: true, 
-      category: category,
-      
+      category: category,      
     }
   } else if (category === 'other') {
     currentQuestion = {
       attribute: userInput, 
       value: true,
-      category: category,
-      
+      category: category,      
     }
   }  
 }
@@ -371,7 +370,7 @@ if (currentQuestion.category === 'accessories') {
     }else if (currentQuestion.category === 'other') { 
       if (keep) {  
       alert(
-        `Yes, the person is a ${currentQuestion.attribute}! Keep everyone who is a  ${currentQuestion.attribute}`
+        `Yes, the person is a ${currentQuestion.value}! Keep everyone who is a  ${currentQuestion.attribute}`
         )
         charactersInPlay = charactersInPlay.filter((person) =>           
         person[currentQuestion.attribute] === currentQuestion.value)   
@@ -412,7 +411,7 @@ if (currentQuestion.category === 'accessories') {
               charactersInPlay = charactersInPlay.filter((person) => 
               person[currentQuestion.attribute] !== currentQuestion.value)
             }            
-          }
+          }          
           generateBoard()          
 }        
 const guess = (suspect) => {

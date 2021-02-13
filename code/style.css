@@ -71,6 +71,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 0 10px grey;
 }
 
 .card p {
@@ -231,6 +232,11 @@ button {
     border: none;
   }
 }
+.span-guess {
+  color:white;
+  font-family: 'Montserrat';
+}
+
 
 .active {
   display: flex;

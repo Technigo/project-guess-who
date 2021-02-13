@@ -256,11 +256,10 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
     charactersInPlay = CHARACTERS
-        // board.style.display = 'flex'
-        // board.style.display ='none'
+    board.style.display = 'flex'
+    winOrLose.style.display = 'none'
     generateBoard()
     setSecret()
-    console.log(secret)
 }
 
 
@@ -302,13 +301,11 @@ const checkQuestion = () => {
     selectQuestion()
         /*declaring the variable "keep"*/
     let keep
-    console.log(currentQuestion) /*just for testing and to understand the code*/
-        /*variable will be given the value true or false (boolean) based on whether the currentQuestions matches the "secret" or not. 
+        /*variable will be given the value true or false based on whether the currentQuestions matches the "secret" or not. 
         If they are match the code will assign the value true. 
-        No indication of what will happen if its not a match as the value will then automatially be assigned false*/
+        No firection for what will happen if its not a match as the value will then automatially be assigned false*/
     if (currentQuestion.category === 'hair color') {
         keep = secret.hairColor === currentQuestion.value
-        console.log(`${secret.hairColor} ${currentQuestion.value} ${keep}`) /*just for testing and to understand the code*/
     } else if (currentQuestion.category === 'eye color') {
         keep = secret.eyeColor === currentQuestion.value
     } else if (currentQuestion.category === 'accessories') {
@@ -333,29 +330,27 @@ const filterCharacters = (keep) => {
     /*generating the correct alert based on keep = true/false for the chosen property*/
     if (group === 'accessories') {
         if (keep) {
-            alert(
-                `Yes, the person wears ${attribute}! Keep all that wear ${attribute}`
-            )
+            alert(`Yes, the person wears ${attribute}! Keep all that wear ${attribute}`)
         } else {
-            alert(
-                `No, the person doesn't wear ${attribute}! Remove all that wear ${attribute}`
-            )
+            alert(`No, the person doesn't wear ${attribute}! Remove all that wear ${attribute}`)
         }
     } else if (group === 'other') {
         if (keep) {
-            alert(
-                `Yes, the person has a ${attribute}! Keep all that have a ${attribute}`
-            )
+            alert(`Yes, the person has a ${attribute}! Keep all that have a ${attribute}`)
         } else {
-            alert(
-                `No, the person doesn't have a ${attribute}! Remove all that have a ${attribute}`
-            )
+            alert(`No, the person doesn't have a ${attribute}! Remove all that have a ${attribute}`)
+        }
+    } else if (group === 'hair color') {
+        if (keep) {
+            alert(`Yes, the person has ${value} hair! Keep all persons with ${value} hair`)
+        } else {
+            alert(`No, the person doesnt have ${value} hair. Remove all persons with ${value} hair`)
         }
     } else {
         if (keep) {
-            alert(`Yes, the person has ${value}! Keep all persons with ${value}`)
+            alert(`Yes, the person has ${value} eyes! Keep all persons with ${value} eyes`)
         } else {
-            alert(`No, the person doesnt have ${value}! Remove all persons with ${value}`)
+            alert(`No, the person doesnt have ${value} eyes. Remove all persons with ${value} eyes`)
         }
     }
 
@@ -378,15 +373,16 @@ const guess = (suspect) => {
     }
 }
 
+/*compare the clicked characted name with the secret name to decide if the choice was correct or now*/
 const checkMyGuess = (suspect) => {
     console.log(suspect)
     if (suspect === secret.name) {
-        winOrLoseText.innerHTML = 'Yay! You win'
+        winOrLoseText.innerHTML = `Congratulations ${suspect} is correct! You win`
     } else {
         winOrLoseText.innerHTML = 'Sorry, try again'
     }
-    // 3. Show the win or lose section
-    board.style.display = "none";
+    board.style.display = "none"; /*hide the gameboard*/
+    winOrLose.style.display = "flex"; /*display the win or lose page*/
 }
 
 // Invokes the start function when website is loaded

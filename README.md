@@ -1,13 +1,13 @@
-# Project Name
+This is a project made during my fifth week at the Technigo bootcamp. The learning objectives was to learn more about creating objects, arrays and loop through them as well as continue working with functions.
 
-Replace this readme with your own information about your project.
+# Guess Who - game
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The objectives were practiced by continue building the classic board game Guess Who; finishing up several functions and objects. Create new functions and loops to pick out values, compare them and store them.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+As always, the work began by cloning a repo from github to VSCode. This time I've used the developer tools in chrome more than before and learned the greatness of it, meaning I also practiced console.log for troubleshooting a lot. Also I feel I am starting to find a way to work more and more, focusing on small pieces one at a time. Breaking down the problem to smaller pieces certainly makes it more magageable. If i had more time I would add some more styling and change the pictures.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+

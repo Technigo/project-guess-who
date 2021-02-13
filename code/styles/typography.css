@@ -1,0 +1,54 @@
+/* Set default font family */
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Set the general font color */
+.title,
+.info__text,
+.alert__text,
+.guess__text {
+  color: white;
+}
+
+/* Specific font styles and sizing */
+.title {
+  font-size: 42px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.button {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.alert__text {
+  font-weight: bold;
+  text-align: center;
+}
+
+.guess__text {
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  width: 90%;
+}
+
+.info__text {
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.info__text--data {
+  font-weight: normal;
+}
+
+.card__name {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+}

@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -393,14 +395,30 @@ const guess = (suspect) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-}
+  const userConfirms = confirm(`Are you sure you want to guess who the suspect is?`)
+
+  if (userConfirms === true){
+    checkMyGuess(suspect)
+  }
+} 
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
+  
+  if (suspect === secret.name) {
+    winOrLoseText.innerHTML = `Wow! You guessed right! ${suspect} is the secret person`
+  } else {
+    winOrLoseText.innerHTML = `Sorry, but you didn't guess. ${suspect} is not the secret person`
+  }
+
   // 3. Show the win or lose section
-  // 4. Hide the game board
+  winOrLose.style.display = 'flex'
+   // 4. Hide the game board
+  board.style.display = 'none'
+ 
+
 }
 
 // Invokes the start function when website is loaded

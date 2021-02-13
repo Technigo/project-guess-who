@@ -1,4 +1,4 @@
-# Project Name
+# Guess Who - Technigo Bootcamp Week 5
 My first JavaScript project on my own in week 5 of Technigo Bootcamp.
 The assigment was to create functions to the game. Sending messages/questions to the user, filter the characters out and reload the page. etc.. 
 

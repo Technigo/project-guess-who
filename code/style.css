@@ -2,10 +2,6 @@
 :root {
   --primary: #EED6D3;
   --secondary: #E8B4B8;
-
-
-  /*--primary: #a259ff;
-  --secondary: #b0a6ff;*/
 }
 
 body {
@@ -13,7 +9,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Josefin Sans', sans-serif;
-  /*font-family: 'Montserrat', sans-serif;*/
 }
 
 h1 {

@@ -419,10 +419,10 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
   
   if (suspect === secret.name) {
-    winOrLoseText.innerHTML = `It correct ${suspect}`
+    winOrLoseText.innerHTML = `Yay! That's correct, ${suspect} it is!`
 
   } else {
-    winOrLoseText.innerHTML = `${suspect} is wrong`
+    winOrLoseText.innerHTML = `Sorry, ${suspect} is wrong..`
   }
   board.innerHTML=""
   winOrLose.classList.add("show")

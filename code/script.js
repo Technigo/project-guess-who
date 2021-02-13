@@ -546,7 +546,7 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
 
   if (suspect === secret.name) {
-    winOrLoseText.innerHTML = `You have got it!! It was ${suspect}. Good job!`
+    winOrLoseText.innerHTML = `You are a genius!! It was ${suspect}.`
   } else {
     winOrLoseText.innerHTML = `It is not ${suspect}. It was ${secret.name}.`
   }

@@ -4,6 +4,8 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filter = document.getElementById('filter')
 const playAgain = document.getElementById('playAgain')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [{
@@ -254,6 +256,8 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
     charactersInPlay = CHARACTERS
+        // board.style.display = 'flex'
+        // board.style.display ='none'
     generateBoard()
     setSecret()
     console.log(secret)
@@ -367,7 +371,7 @@ const filterCharacters = (keep) => {
 }
 
 /*the player confirms that they are making a finalGuess*/
-const guess = (suspect) => { /*how does the code know that the "suspect" is the person we have clicked? (onclick=guess?)*/
+const guess = (suspect) => {
     let finalGuess = confirm(`Are you sure you would like guess ${suspect}?`)
     if (finalGuess) {
         checkMyGuess(suspect)
@@ -376,15 +380,13 @@ const guess = (suspect) => { /*how does the code know that the "suspect" is the 
 
 const checkMyGuess = (suspect) => {
     console.log(suspect)
-    if (suspect === secret.name) { /*why is only the name generated for the suspect? Not the entire object?*/
-        alert('YAY!that is correct!')
+    if (suspect === secret.name) {
+        winOrLoseText.innerHTML = 'Yay! You win'
     } else {
-        alert('Sorry,try again')
+        winOrLoseText.innerHTML = 'Sorry, try again'
     }
-    // 1. Check if the suspect is the same as the secret person's name
-    // 2. Set a Message to show in the win or lose section accordingly
     // 3. Show the win or lose section
-    // 4. Hide the game board
+    board.style.display = "none";
 }
 
 // Invokes the start function when website is loaded

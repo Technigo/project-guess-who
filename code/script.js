@@ -10,12 +10,12 @@ const winOrLoseSection = document.getElementById("winOrLose")
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Luke',
-    img: 'images2/Luke.jpg',
-    hatColor: 'pink',
-    shirtColor: 'checkered',
+    name: 'Lydia',
+    img: 'images2/Lydia.jpg',
+    hatColor: 'beige',
+    shirtColor: 'white',
     glasses: true,
-    moustache: true,
+    moustache: false,
     scarf: false,
     unibrow: false
   },
@@ -30,16 +30,6 @@ const CHARACTERS = [
     unibrow: true
   },
   {
-    name: 'Lars',
-    img: 'images2/Lars.jpg',
-    hatColor: 'darkBlue',
-    shirtColor: 'black',
-    glasses: false,
-    moustache: true,
-    scarf: true,
-    unibrow: false
-  },
-  {
     name: 'Louis',
     img: 'images2/Louis.jpg',
     hatColor: 'black',
@@ -48,6 +38,16 @@ const CHARACTERS = [
     moustache: false,
     scarf: false,
     unibrow: true
+  },
+  {
+    name: 'Lars',
+    img: 'images2/Lars.jpg',
+    hatColor: 'darkBlue',
+    shirtColor: 'black',
+    glasses: false,
+    moustache: true,
+    scarf: true,
+    unibrow: false
   },
   {
     name: 'Liam',
@@ -60,14 +60,14 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Livingstone',
-    img: 'images2/Livingstone.jpg',
-    hatColor: 'beige',
-    shirtColor: 'white',
+    name: 'Luke',
+    img: 'images2/Luke.jpg',
+    hatColor: 'pink',
+    shirtColor: 'checkered',
     glasses: true,
-    moustache: false,
+    moustache: true,
     scarf: false,
-    unibrow: true
+    unibrow: false
   },
   {
     name: 'Lana',
@@ -99,7 +99,6 @@ const CHARACTERS = [
     scarf: false,
     unibrow: false
   },
-
   {
     name: 'Leland',
     img: 'images2/Leland.jpg',
@@ -120,15 +119,15 @@ const CHARACTERS = [
     scarf: true,
     unibrow: false
   },
-  {
-    name: 'Lydia',
-    img: 'images2/Lydia.jpg',
+  { 
+    name: 'Livingstone',
+    img: 'images2/Livingstone.jpg',
     hatColor: 'beige',
     shirtColor: 'white',
     glasses: true,
     moustache: false,
     scarf: false,
-    unibrow: false
+    unibrow: true
   },
   {
     name: 'Linnéa',
@@ -141,32 +140,12 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Logan',
-    img: 'images2/Logan.jpg',
-    hatColor: 'whiteAndBlack',
-    shirtColor: 'checkered',
-    glasses: false,
-    moustache: true,
-    scarf: false,
-    unibrow: false
-  },
-  {
-    name: 'Lindsey',
-    img: 'images2/Lindsey.jpg',
-    hatColor: 'green',
-    shirtColor: 'white',
+    name: 'London',
+    img: 'images2/London.jpg',
+    hatColor: 'black',
+    shirtColor: 'yellow',
     glasses: true,
     moustache: false,
-    scarf: false,
-    unibrow: true
-  },
-  {
-    name: 'Larry',
-    img: 'images2/Larry.jpg',
-    hatColor: 'pink',
-    shirtColor: 'black',
-    glasses: false,
-    moustache: true,
     scarf: false,
     unibrow: false
   },
@@ -181,12 +160,32 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'London',
-    img: 'images2/London.jpg',
-    hatColor: 'black',
-    shirtColor: 'yellow',
-    glasses: true,
+    name: 'Lola',
+    img: 'images2/Lola.jpg',
+    hatColor: 'ochre',
+    shirtColor: 'white',
+    glasses: false,
     moustache: false,
+    scarf: false,
+    unibrow: false
+  },
+  {
+    name: 'Lee',
+    img: 'images2/Lee.jpg',
+    hatColor: 'black',
+    shirtColor: 'white',
+    glasses: false,
+    moustache: false,
+    scarf: false,
+    unibrow: false
+  },
+  {
+    name: 'Logan',
+    img: 'images2/Logan.jpg',
+    hatColor: 'whiteAndBlack',
+    shirtColor: 'checkered',
+    glasses: false,
+    moustache: true,
     scarf: false,
     unibrow: false
   },
@@ -221,24 +220,24 @@ const CHARACTERS = [
     unibrow: false
   },
   {
-    name: 'Lola',
-    img: 'images2/Lola.jpg',
-    hatColor: 'ochre',
-    shirtColor: 'white',
+    name: 'Larry',
+    img: 'images2/Larry.jpg',
+    hatColor: 'pink',
+    shirtColor: 'black',
     glasses: false,
-    moustache: false,
+    moustache: true,
     scarf: false,
-    unibrow: false
+    unibrow: false 
   },
-  {
-    name: 'Lee',
-    img: 'images2/Lee.jpg',
-    hatColor: 'black',
+  { 
+    name: 'Lindsey',
+    img: 'images2/Lindsey.jpg',
+    hatColor: 'green',
     shirtColor: 'white',
-    glasses: false,
+    glasses: true,
     moustache: false,
     scarf: false,
-    unibrow: false
+    unibrow: true
   },
   {
     name: 'Lenwood',
@@ -266,12 +265,12 @@ function generateBoard() {
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
         <img class="person-image" src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
+        <p>${person.name}</p>
       </div>
     `
   })

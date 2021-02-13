@@ -19,7 +19,7 @@ h1 {
   margin: 10px 0;
   color: white;
 }
-
+/* Aside section  */
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -49,6 +49,8 @@ select {
 .guess-who-icon {
   width: 126px;
 }
+/* Aside section: player, timer, questions tracker  */
+
 .question-tracker {
   color: white;
   margin-top: 5px;
@@ -64,6 +66,8 @@ select {
   margin-bottom: 0;
   color: white;
 }
+/* Board styling */
+
 .board-wrapper {
   width: 70%;
   display: flex;
@@ -71,6 +75,7 @@ select {
   justify-content: center;
   background-color: rgb(217, 217, 244);
 }
+/* Welcome conversation */
 .welcome-section {
   display: flex;
   flex-direction: column;
@@ -214,12 +219,7 @@ button {
   height: 100vh;
   width: 100vw;
 }
-.shown {
-  display: flex;
-}
-.hidden {
-  display:none;
-}
+
 .win-or-lose {
   display: flex;
   flex-direction: column;
@@ -240,6 +240,16 @@ button {
 .win-loose {
   margin-bottom: 20px;
 }
+
+/* Classes to add/remove sections */
+.shown {
+  display: flex;
+}
+.hidden {
+  display:none;
+}
+
+/* Media quaries */
 @media (max-width: 768px) {
   body {
     flex-direction: column;

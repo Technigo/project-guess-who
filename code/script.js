@@ -573,7 +573,6 @@ const filterCharacters = (keep, group) => {
 
 //Guess function allows the player to check the guess and secret person
 const guess = (suspect) => {
-  console.log(suspect);
   const userGuess = suspect;
   playAlerSound()
   if (confirm(`Are you sure you want to try ${userGuess}?`)) {
@@ -638,16 +637,18 @@ greetingForm.addEventListener('submit', (event)=> {
 restartButton.addEventListener('click', () =>{ 
   start();
   });
-
+//runs the SelectQuestion function upon the change in the selector
 questions.addEventListener('change', selectQuestion);
 
+//runs checkQuestion function upon click of the "find out button"
 filterButton.addEventListener('click', checkQuestion);
 
+//restarts the game when clicked on Play Again button
 playAgainButton.addEventListener('click', () => {
   winOrLooseBoard.classList.remove('shown');
   start();
 })
-
+//reloads the page when clicked on New Player button
 newPlayerButton.addEventListener('click', () =>{ 
 location.reload()
 })

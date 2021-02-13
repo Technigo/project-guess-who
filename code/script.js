@@ -253,7 +253,6 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game? 
   generateBoard()
   setSecret()
 }
@@ -261,41 +260,36 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options [questions.selectedIndex].value
+  const value = questions.value
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: true,
-      // 👆 add the value from the input here
+      value,
       category: category,
     }
   } else if (category === 'eye color') {
-    // Set this up your self
     currentQuestion = {
       attribute: 'eyeColor',
-      value: true,
+      value,
       category: category,
     }
 
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: 'accessories',
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
-      category: category,
+      value: true,
+      category,
     }
   } else if (category === 'other') {
     currentQuestion = {
       attribute: 'other',
       value: true,
-      category: category,
+      category,
     }
-    // Set this up your self (should be same structure as above)
   }
-  console.log(selectQuestion);
+  console.log(currentQuestion.category)
+  console.log(currentQuestion.value);
 }
 
 // This function should be invoked when you click on 'Find Out'.

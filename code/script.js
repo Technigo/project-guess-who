@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -259,20 +260,20 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-  const value = questions.value
+  const category = questions.options[questions.selectedIndex].parentNode.label;
+  const value = questions.options[questions.selectedIndex].value;
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
       value,
-      category: category,
+      category,
     }
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
       value,
-      category: category,
+      category,
     }
 
   } else if (category === 'accessories') {
@@ -288,9 +289,9 @@ const selectQuestion = () => {
       category,
     }
   }
-  console.log(currentQuestion.category)
-  console.log(currentQuestion.value);
+  console.log(currentQuestion)
 }
+
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
@@ -351,4 +352,6 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
+filterButton.addEventListener('click', () => {
 
+})

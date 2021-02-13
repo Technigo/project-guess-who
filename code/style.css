@@ -121,6 +121,7 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  outline: none;
 }
 
 .small {

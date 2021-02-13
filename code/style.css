@@ -134,10 +134,34 @@ button {
   align-self: flex-end;
 }
 
-.filled-button,
+.filled-button {
+  background-color: var(--primary);
+  color: white;
+  width: 100%;
+}
+
 .outlined-button:hover {
   background-color: var(--primary);
   color: white;
+}
+
+.score-board {
+  background-color: var(--primary);
+  color: white;
+  width: 100%;
+}
+
+.counter span {
+  font-size: 30px;
+  color: var(--primary);
+  font-family: 'Acme', sans-serif;
+}
+
+.counter {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
 }
 
 .filled-button:hover {

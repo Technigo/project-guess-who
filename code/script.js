@@ -6,6 +6,8 @@ const winOrLoseText = document.getElementById('winOrLoseText')
 const winOrLose = document.getElementById('winOrLose')
 const restartButton = document.getElementById('restart')
 const playAgainButton = document.getElementById('playAgain')
+const totalGuesses = document.querySelector("#totalGuesses")
+const time = document.querySelector("#time")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -58,7 +60,7 @@ const CHARACTERS = [
     name: 'Jai',
     img: 'images/jai.svg',
     hairColor: 'black',
-    eyeColor: 'brown',
+    eyeColor: 'hazel',
     glasses: false,
     headgear: false,
     necklace: false,
@@ -269,7 +271,7 @@ const CHARACTERS = [
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
     hairColor: 'black',
-    eyeColor: 'brown',
+    eyeColor: 'hazel',
     glasses: true,
     headgear: false,
     necklace: false,
@@ -314,7 +316,7 @@ const CHARACTERS = [
     name: 'Josephine',
     img: 'images/josephine.svg',
     hairColor: 'grey',
-    eyeColor: 'brown',
+    eyeColor: 'hazel',
     glasses: false,
     headgear: false,
     necklace: false,
@@ -359,7 +361,7 @@ const CHARACTERS = [
     name: 'Julie',
     img: 'images/julie.svg',
     hairColor: 'black',
-    eyeColor: 'brown',
+    eyeColor: 'hazel',
     glasses: true,
     headgear: true,
     necklace: false,
@@ -375,7 +377,7 @@ const CHARACTERS = [
 // Global variables
 let secret, currentQuestion, charactersInPlay
 
-// Draw the game board
+// Draws the game board
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -398,14 +400,16 @@ const setSecret = () => {
   console.log(secret);
 }
 
-// This function to start (and restart) the game
+// This function to start (and restart) the game, resets guess counter + timer
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-  generateBoard();
-  setSecret();
-};
+  generateBoard()
+  setSecret()
+  numberOfGuesses = 0
+  totalGuesses.innerText = 0
+  timePassed = 0
+  timePassed.innerText = 0
+}
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -443,6 +447,8 @@ const selectQuestion = () => {
       category
    }
   }
+  numberOfGuesses++
+  totalGuesses.innerText = numberOfGuesses
 }
 
 // This function should be invoked when you click on 'Find Out'.
@@ -498,7 +504,6 @@ if (category === 'accessories') {
     )
   } 
 }
-
   // filter to keep or remove based on the keep variable.
   
   if (keep) {
@@ -507,8 +512,22 @@ if (category === 'accessories') {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
   }
   generateBoard()
-
+  addGuessesMade(keep)
   // Invoke a function to redraw the board with the remaining people.
+}
+
+// Adds the current guess to the list of guesses made
+const addGuessesMade = (keep) => {
+  if (keep) {
+    guessesMade.innerHTML += `
+  <span class="right-guess"><img class="yes-or-no" src="./images/yes.svg">${currentQuestion.text}</span>
+  `
+  }
+  else {
+    guessesMade.innerHTML += `
+    <span class="wrong-guess"><img class="yes-or-no" src="./images/no.svg">${currentQuestion.text}</span>
+    `
+  }
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -529,7 +548,7 @@ const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     winOrLoseText.innerHTML = `You have got it!! It was ${suspect}. Good job!`
   } else {
-    winOrLoseText.innerHTML = `Sorry. It is not ${suspect}. It was ${secret.name}!`
+    winOrLoseText.innerHTML = `It is not ${suspect}. It was ${secret.name}.`
   }
   
   // 1.Check if the suspect is the same as the secret person's name
@@ -543,6 +562,12 @@ const checkMyGuess = (suspect) => {
 playAgain.addEventListener('click', () => {
   location.reload()
 })
+
+// Sets the timer
+setInterval(() => {
+  timePassed++
+  time.innerText = timePassed
+}, 1000)
 
 // Invokes the start function when website is loaded
 start()

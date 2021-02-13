@@ -38,7 +38,6 @@
         <optgroup label="eye color">
           <option value="hidden">hidden eyes</option>
           <option value="blue">blue eyes</option>
-          <option value="brown">brown eyes</option>
           <option value="grey">grey eyes</option>
           <option value="green">green eyes</option>
           <option value="hazel">hazel eyes</option>
@@ -60,7 +59,20 @@
         </optgroup>
       </select>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
+      <button id="filter" class="filled-button">FIND OUT</button><br>
+
+  <div class="counter">
+  <span>Number of guesses:</span>
+  <span id="totalGuesses" class="totalGuesses"></span>
+</div>
+
+<div class="counter">
+  <span>Time (in seconds):</span>
+  <span id="time" class="totalGuesses">0</span>
+</div>
+
+</div>
+
     </aside>
 
     <section class="board-wrapper">
@@ -76,6 +88,8 @@
         />
         <h1 id="winOrLoseText"></h1>
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
+      </div>
+
       </div>
     </section>
     <script src="script.js"></script>

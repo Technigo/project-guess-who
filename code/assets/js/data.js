@@ -1,5 +1,5 @@
 // Array with all the characters, as objects
-const CHARACTERS = [
+export const CHARACTERS = [
   {
     id: 1,
     name: "Jabala",

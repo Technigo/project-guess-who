@@ -331,7 +331,9 @@ const setSecret = () => {
 // This function is to start (and restart) the game
 const start = () => {
   winOrLose.style.display = 'none';            
-  board.style.display = 'flex';            
+  board.style.display = 'flex';
+  countUserFiltering = 0;            
+  filterCounter.innerHTML = `NUMBER OF QUESTIONS ASKED: ${countUserFiltering}`;
   charactersInPlay = CHARACTERS;         
   generateBoard();                         
   setSecret();

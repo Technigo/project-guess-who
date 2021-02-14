@@ -310,41 +310,41 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wear ${attribute}`
+        `Good Job! The person wears ${attribute}! I'm keeping all that wear ${attribute} for you.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wear ${attribute}`
+        `Naah.. The person doesn't wear ${attribute}! I'm getting rid of all that wear ${attribute}.`
       )
     }
   } else if (category === 'eye color'){
     if (keep){
       alert(
-        `Yes, the person has ${value} eyes! Keep all that have ${value} eyes`
+        `Yes, the person has pretty ${value} eyes! I'm keeping all that have those pretty ${value} eyes.`
       )
     } else {
       alert(
-        `No, the person doesn't have ${value} eyes! Keep all that have ${value} eyes`
+        `Nope. The person doesn't have ${value} eyes! I'm removing all that have ${value} eyes. Nothing personal - just for you.`
       )
     }
   } else if (category === 'hair color'){
     if (keep){
       alert(
-        `Yes, the person has ${value} hair! Keep all that have ${value} hair`
+        `Yupp! The person has ${value} hair! I'm keeping all that have ${value} hair and you keep up the good work!`
       )
     } else {
       alert(
-        `No, the person doesn't have ${value} hair! Keep all that have ${value} hair`
+        `Nononononono! The person doesn't have ${value} hair! I'm removing all person that have ${value} hair. Are you also getting nervous?`
       )
     }
   } else if (category === 'other') {
     if (keep){
       alert(
-        `Yes, the person is a ${attribute}! Keep all that are ${attribute}`
+        `Yes, unfortunately the person is a ${attribute}! I'm keeping all his ${attribute} friends.`
       )
     } else {
       alert(
-        `No, the person is not a ${attribute}! Keep all that are ${attribute}`
+        `Luckily, the person is not a ${attribute}! I'm removing all ${attribute}.`
       )
     }
   }
@@ -364,9 +364,6 @@ const guess = (suspect) => {
     if (askForConfirmation){
       checkMyGuess(suspect)
     }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked
@@ -376,9 +373,8 @@ const checkMyGuess = (suspect) => {
   } else{
     winOrLoseText.innerHTML = (`I hope you're not doing this for a living. You were wrong with ${suspect}! ${suspect.name} would have been the one!`)
   }
-  // 3. Show the win or lose section
+
   winOrLose.style.display = `flex`
-  // 4. Hide the game board
   board.style.display = `none`
 }
 

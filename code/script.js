@@ -48,7 +48,7 @@ const CHARACTERS = [
   {
     name: 'Jake',
     img: 'images/jake.svg',
-    hairColor: 'yellow',
+    hairColor: 'blond',
     eyeColor: 'green',
     glasses: true,
     hat: false,
@@ -75,7 +75,7 @@ const CHARACTERS = [
   {
     name: 'Jane',
     img: 'images/jane.svg',
-    hairColor: 'yellow',
+    hairColor: 'blond',
     eyeColor: 'hidden',
     glasses: true,
     hat: false,
@@ -184,7 +184,7 @@ const CHARACTERS = [
   {
     name: 'Jordan',
     img: 'images/jordan.svg',
-    hairColor: 'yellow',
+    hairColor: 'blond',
     eyeColor: 'hidden',
     glasses: true,
     hat: true,
@@ -202,7 +202,7 @@ const CHARACTERS = [
   {
     name: 'Josh',
     img: 'images/josh.svg',
-    hairColor: 'yellow',
+    hairColor: 'blond',
     eyeColor: 'green',
     glasses: false,
     hat: false,

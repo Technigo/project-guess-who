@@ -21,42 +21,44 @@
       />
 
       <h1>Does the person have</h1>
-
       <select id="questions">
         <optgroup label="hair color">
           <option value="brown">Brown hair</option>
           <option value="yellow">Yellow hair</option>
-          <option value="grey">Grey hair</option>
+          <option value="red">Red hair</option>
           <option value="black">Black hair</option>
-          <option value="orange">Orange hair</option>
           <option value="purple">Purple hair</option>
-          <option value="white">white hair</option>
           <option value="hidden">hidden</option>
           <!-- Add the rest of hair colors as options  -->
 
         </optgroup>
-        <optgroup label="eye color">
-          <option value="hidden">hidden eyes</option>
-          <option value="blue">blue eyes</option>
-          <option value="brown">brown eyes</option>
-          <option value="green">green eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+        <optgroup label="hero type">
+          <option value="soldier">Soldier</option>
+          <option value="warrior">Warrior</option>
+          <option value="mage">Mage</option>
+          <option value="mutant">Mutant</option>
 
+          <!-- Add the rest of eye colors as options  -->
+  
         </optgroup>
         <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <option value="hat">hat</option>
+          <option value="Cap">Cap</option>
+          <option value="weapon">weapon</option>
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
 
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+        <optgroup label="power">
+          <option value="superpower">Superpower </option>
+          <option value="technology">Technology</option>
+          <option value="withoutpower">Without power</option>
+
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div id="counter">
+      </div>
     </aside>
-
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
     </section>
@@ -72,6 +74,16 @@
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
+
+      <div  id="custom-popup" class="custom-popup">
+        <div class="custom-popup-content">
+          <div id="custom-popup-text" class="custom-popup-text">
+            <h2></h2>
+          </div>
+          <div id="custom-popup-buttons" class="custom-popup-buttons">
+           </div>
+        </div>
+       </div>
     <script src="script.js"></script>
   </body>
 </html>

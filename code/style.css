@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #d31515;
+  --secondary: #060606;
 }
 
 body {
@@ -13,6 +13,14 @@ body {
 
 h1 {
   font-size: 42px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 10px 0;
+  color: white;
+}
+
+h2 {
+  font-size: 20px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
@@ -41,7 +49,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 350px;
 }
 
 .board-wrapper {
@@ -64,7 +72,7 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid var(--primary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -121,6 +129,7 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .small {
@@ -159,9 +168,9 @@ button {
   height: 100vh;
 }
 .win-or-lose-wrapper-on{
-  display: block;
+  display: flex;
+  
 }
-
 .win-or-lose {
   display: flex;
   flex-direction: column;
@@ -179,6 +188,46 @@ button {
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
+
+.person-images{
+  width: 90px;
+  height: 150px;
+}
+/****** CUSTOM POPUP ******/
+
+.custom-popup{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.8); 
+  z-index: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.custom-popup-on{
+  display: flex;
+}
+
+.custom-popup-content{
+  width: 600px;
+  height: 200px;
+  padding: 20px;
+  background-color: var(--primary);
+  border-radius: 30px;
+}
+.custom-popup-text{
+  text-align: justify;
+}
+
+.custom-popup-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 
 @media (max-width: 768px) {
   body {
@@ -198,7 +247,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 200px;
   }
 
   .board-wrapper {

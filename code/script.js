@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -417,8 +418,6 @@ const checkMyGuess = (suspect) => {
   winOrLose.style.display = 'flex'
    // 4. Hide the game board
   board.style.display = 'none'
- 
-
 }
 
 // Invokes the start function when website is loaded
@@ -428,6 +427,9 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
-/*findOutButton.addEventListener('click', () => {
-console.log(questions)
-}) */
+playAgainButton.addEventListener('click', () => {
+  winOrLose.style.display = 'none'
+  board.style.display ='flex' 
+  start()
+})
+

@@ -28,6 +28,8 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
 }
 
 select {
@@ -38,6 +40,7 @@ select {
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  padding: 10px 0;
 }
 
 .guess-who-icon {
@@ -61,7 +64,7 @@ select {
 
 /****** CARD ******/
 .card {
-  width: 135px;
+  width: 120px; /* changed width to fit in screen-view whitout scrolling*/
   height: 165px;
   overflow: hidden;
   border: 3px solid var(--secondary);
@@ -130,7 +133,8 @@ button {
 .outlined-button {
   background-color: transparent;
   color: var(--primary);
-  align-self: flex-end;
+  margin-top: 15px;
+  /*align-self: flex-end;*/
 }
 
 .filled-button,

@@ -17,4 +17,4 @@ If i would have had more time i think i would have focused more on slowing down 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://brave-khorana-d703a8.netlify.app/

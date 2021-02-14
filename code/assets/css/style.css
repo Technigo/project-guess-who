@@ -249,11 +249,6 @@ button {
   transform: scale(1.014);
 }
 
-.disable {
-  opacity: 0.2;
-  cursor: not-allowed;
-}
-
 .none {
   display: none;
 }
@@ -325,4 +320,9 @@ button {
 
 .page-container {
   display: flex;
+}
+
+.disable {
+  opacity: 0.2;
+  cursor: not-allowed !important;
 }

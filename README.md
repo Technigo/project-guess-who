@@ -13,7 +13,7 @@ After a little while i was able to invoke the start funcion with the board funct
 I went through the hints steps set up all my event listeners and after a while it kind of just floated on. 
 Also i think everything got a bit easier with Maks last session for the array filter and how to access the different values and categories and then i could apply this on my own project. I even got alot of help from other team mates (not from my own group) who i had meetings with to just go through the steps. 
 
-If i would have had more time i think i would have focused more on slowing down the start process. Understanding the game logic (which for this week i think was tough) and focus on knowing my next step before being to eager to start. 
+If i would have had more time i think i would have focused more on slowing down the start process. Understanding the game logic (which for this week i think was tough) and focus on knowing my next step before being to eager to start. I would probably also try not to be afraid of braking down the code, make errors, try to understand the error messages and know that they will guide me to fix the problem. 
 
 ## View it live
 

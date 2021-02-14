@@ -266,10 +266,10 @@ function generateBoard() {
         <img class='person-image' src=${person.img} alt=${person.name}>
         <div class='guess'>
           <span>Guess on ${person.name}?</span>
-          <button class='small' onclick='guess('${person.name}')'>Guess</button>
+          <button class='small' onclick="guess('${person.name}')">Guess</button>
         </div>
         <p>${person.name}</p>
-        <button class='small-mobile' onclick='guess('${person.name}')'>Guess</button>
+        <button class='small-mobile' onclick="guess('${person.name}')">Guess</button>
       </div>
     `
   })

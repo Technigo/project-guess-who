@@ -8,4 +8,4 @@ First I concentrated on getting the game to work. I progressed on my own for a w
 
 ## View it live
 
-https://guesswho-bylinnea.netlify.app/ 
+https://guesswho-bylinnea.netlify.app 

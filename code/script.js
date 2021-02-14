@@ -42,7 +42,7 @@ const CHARACTERS = [
   {
     name: 'Lars',
     img: 'images2/Lars.jpg',
-    hatColor: 'darkBlue',
+    hatColor: 'dark blue',
     shirtColor: 'black',
     glasses: false,
     moustache: true,
@@ -52,7 +52,7 @@ const CHARACTERS = [
   {
     name: 'Liam',
     img: 'images2/Liam.jpg',
-    hatColor: 'ochre',
+    hatColor: 'yellow',
     shirtColor: 'white',
     glasses: true,
     moustache: false,
@@ -82,7 +82,7 @@ const CHARACTERS = [
   {
     name: 'Linda',
     img: 'images2/Linda.jpg',
-    hatColor: 'ochre',
+    hatColor: 'yellow',
     shirtColor: 'checkered',
     glasses: true,
     moustache: false,
@@ -102,7 +102,7 @@ const CHARACTERS = [
   {
     name: 'Leland',
     img: 'images2/Leland.jpg',
-    hatColor: 'redAndWhite',
+    hatColor: 'santa',
     shirtColor: 'checkered',
     glasses: true,
     moustache: true,
@@ -132,7 +132,7 @@ const CHARACTERS = [
   {
     name: 'Linnéa',
     img: 'images2/Linnea.jpg',
-    hatColor: 'none',
+    hatColor: 'no hat',
     shirtColor: 'white',
     glasses: false,
     moustache: false,
@@ -162,7 +162,7 @@ const CHARACTERS = [
   {
     name: 'Lola',
     img: 'images2/Lola.jpg',
-    hatColor: 'ochre',
+    hatColor: 'yellow',
     shirtColor: 'white',
     glasses: false,
     moustache: false,
@@ -182,7 +182,7 @@ const CHARACTERS = [
   {
     name: 'Logan',
     img: 'images2/Logan.jpg',
-    hatColor: 'whiteAndBlack',
+    hatColor: 'captains',
     shirtColor: 'checkered',
     glasses: false,
     moustache: true,
@@ -202,7 +202,7 @@ const CHARACTERS = [
   {
     name: 'Lennon',
     img: 'images2/Lennon.jpg',
-    hatColor: 'ochre',
+    hatColor: 'yellow',
     shirtColor: 'checkered',
     glasses: true,
     moustache: true,
@@ -212,7 +212,7 @@ const CHARACTERS = [
   {
     name: 'Lynn',
     img: 'images2/Lynn.jpg',
-    hatColor: 'darkBlue',
+    hatColor: 'dark blue',
     shirtColor: 'yellow',
     glasses: false,
     moustache: false,
@@ -268,9 +268,10 @@ function generateBoard() {
         <img class="person-image" src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="small" onclick="guess('${person.name}')">Guess</button>
         </div>
         <p>${person.name}</p>
+        <button class="small-mobile" onclick="guess('${person.name}')">Guess</button>
       </div>
     `
   })
@@ -296,7 +297,7 @@ const start = () => {
   generateBoard();
   setSecret();
   console.log(secret);
-  // Wmoustache else should happen when we start the game?
+  // what else should happen when we start the game?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -304,23 +305,29 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const chosenValue = questions.options[questions.selectedIndex].value
   console.log(chosenValue);
-  // This variable stores wmoustache option group (category) the question belongs to.
-  // We also need a variable tmoustache stores the actual value of the question we've selected.
+  // This variable stores what option group (category) the question belongs to.
+  // We also need a variable that stores the actual value of the question we've selected.
   
 
-  if (category === 'hair color') {
+  if (category === 'hat') {
     currentQuestion = {
       attribute: 'hatColor',
       value: chosenValue,
       category: category,
     }
-  } else if (category === 'eye color') {
+  } else if (category === 'shirt') {
     currentQuestion = {
       attribute: 'shirtColor',
       value: chosenValue,
       category: category,
     }
-  } else if (category === 'accessories') {
+  } else if (category === 'glasses') {
+    currentQuestion = {
+    attribute: chosenValue,
+    value: true, 
+    category: category,
+    }
+  } else if (category === 'facial hair') {
     currentQuestion = {
     attribute: chosenValue,
       // 👆 this is the property of the booleans such as smoke, glasses and moustache. add the value from the input here
@@ -328,17 +335,12 @@ const selectQuestion = () => {
     category: category,
     }
   } else {
-    // Set this up your self (should be same structure as above)
     currentQuestion = {
     attribute: chosenValue,
     value: true, 
     category: category,
     }
   }
-
-//For testing
-  console.log(currentQuestion);
-  console.log(currentQuestion.value);
  
 }
 
@@ -347,10 +349,8 @@ const checkQuestion = () => {
 if (currentQuestion.attribute === "hatColor") {
     if (currentQuestion.value === secret.hatColor) {
       keep = true;
-      
-
-      //Compare the currentQuestion with the secret person.
-    //See if we should keep or remove people based on tmoustache
+    //Compare the currentQuestion with the secret person.
+    //See if we should keep or remove people based on that
     //Then invoke filterCharacters
   } else {
     keep = false;
@@ -363,7 +363,7 @@ else if (currentQuestion.attribute === "shirtColor") {
     keep = false;
   }
 }
-else if (currentQuestion.attribute === "glasses") {
+else if (currentQuestion.attribute === "facial hair") {
   if (currentQuestion.value === secret.glasses) {
     keep = true;
   } else {
@@ -392,40 +392,53 @@ const filterCharacters = (keep, group) => {
   console.log(group);
   
   // Show the correct alert message for different categories
-  if (group === 'accessories') {
+  if (group === 'other accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${currentQuestion.attribute}! Keep all tmoustache wears ${currentQuestion.attribute}!`
+        `You said ${currentQuestion.attribute}?! Yes that's what the thief was wearing... Keep all suspects that wear ${currentQuestion.attribute}!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
     } else {
       alert(
-        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all tmoustache wears ${currentQuestion.attribute}!`
+        `You said ${currentQuestion.attribute}?! No, that's not what I saw. Remove all suspects that wear ${currentQuestion.attribute}!`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
     }
-  } else if (group === 'other') {
+  } else if (group === 'hat') {
     if (keep) {
       alert(
-        `Yes, the person is a ${currentQuestion.attribute}! Keep all tmoustache are ${currentQuestion.attribute}s!`
+        `Yes, the car thief was wearing a ${currentQuestion.value} hat! Keep all suspects that wear a ${currentQuestion.value} hat!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
     } else {
       alert(
-        `No, the person isn't a ${currentQuestion.attribute}! Remove all tmoustache are a ${currentQuestion.attribute}s!`
+        `No, the car thief wasn't wearing a ${currentQuestion.value} hat! Remove all suspects that wear a  ${currentQuestion.value} hat!`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
     }
-    // Similar to the one above
+    
+  } else if (group === 'shirt') {
+    if (keep) {
+      alert(
+        `Yes, the car thief was wearing a ${currentQuestion.value} shirt! Keep all suspects that wear a ${currentQuestion.value} shirt!`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
+    } else {
+      alert(
+        `No, the car thief wasn't wearing a ${currentQuestion.value} shirt! Remove all suspects that wear a  ${currentQuestion.value} shirt!`
+      );
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
+    }
+    
   } else {
     if (keep) {
       alert(
-        `Yes, the person has ${currentQuestion.value} ${currentQuestion.category}! Keep all tmoustache have ${currentQuestion.value} ${currentQuestion.category}!`
+        `You said ${currentQuestion.attribute}?! Yes that's what the thief had... Keep all suspects that have a ${currentQuestion.attribute}!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
     } else {
       alert(
-        `No, the person doesn't have ${currentQuestion.value} ${currentQuestion.category}! Remove all tmoustache have ${currentQuestion.value} ${currentQuestion.category}!`
+        `You said ${currentQuestion.attribute}?! No, that's not what I saw. Remove all suspects that have a ${currentQuestion.attribute}!`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
     }
@@ -438,7 +451,7 @@ const filterCharacters = (keep, group) => {
   generateBoard()
 }
 
-// when clicking guess, the player first have to confirm tmoustache they want to make a guess.
+// when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   const isConfirmed = confirm(`Is ${suspect} your answer?`)
 
@@ -453,13 +466,13 @@ const guess = (suspect) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
-    winOrLoseText.innerHTML = "You won, you genius you!"
+    winOrLoseText.innerHTML = "You caught the car thief! You get a free ride in your neighbour's 740!"
   }
 
   else {
-    winOrLoseText.innerHTML = "You lost!"
+    winOrLoseText.innerHTML = "The car thief is still running free! I guess no Volvo will be safe until there is a real detective in town..."
   }
-  winOrLoseSection.style.display = "block";
+  winOrLoseSection.style.display = "flex";
   board.style.display = 'none';
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly

@@ -11,11 +11,6 @@
   </head>
   <body>
     <div id="loading">
-      <audio autoplay controls>
-        <source src="./assets/audio/mixkit-person-yawns-deeply-2275.wav" type="audio/wav">
-        <!-- <source src="horse.mp3" type="audio/mpeg"> -->
-        Your browser does not support the audio element.
-      </audio> 
       <div class="loading-container">
         <div class="loader">
           <div class="loader--dot"></div>
@@ -31,7 +26,7 @@
     <div id="page-container" class="none">
       <aside class="question-section">
         <section>
-          <div>You have <span id="time">01:00</span> minutes!</div>
+          <div>You have <span id="time">01:00</span> seconds!</div>
           <label for="character-controls"><span id="player"></span>,you have <span id="remain-guess"></span> guess(es).</label>
           <div class="question" data-type="hairColor">
             <p>What's the hair color?</p>
@@ -79,19 +74,7 @@
         <main class="game-board" id="board">
         </main>
       </section>
-      
-  
-      <section id="winOrLose" class="win-or-lose-wrapper">
-        <div class="win-or-lose">
-          <img
-            class="guess-who-icon"
-            src="./assets/images/guess-who-bubble.png"
-            alt="Guess Who"
-          />
-          <h1 id="winOrLoseText"></h1>
-          <button id="playAgain" class="filled-button">PLAY AGAIN</button>
-        </div>
-      </section>
+
     </div>
     <div id="alert" class="alert none"></div>
     <!-- <script src="script.js"></script> -->

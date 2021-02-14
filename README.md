@@ -1,13 +1,18 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+Project 5, Guess Who.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks assignment was to create a classic Guess Who board game. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I used HTML, CSS and JavaScript when approaching this problem. I worked with forEach loops, arrays and objects. I added a confetti animation by downloading some files from https://www.cssscript.com/tag/confetti/. As always I used Beautify to tidy up my code. If I had more time I would have changed the images and created a different version of the game.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
+
+
+
+
+

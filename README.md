@@ -1,13 +1,11 @@
-# Project Name
+# Guess who!
 
-Replace this readme with your own information about your project.
+This weeks project was making the game "Guess who?" 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Having gone a bit overboard with last weeks project i decided just do the minimum requirements for this one, so it's not super ambitious. But basically i followed the steps and got it to work without any bells and whistles. I had some problems with working out how to construct the guess-object for it to work in the different scenarios. I think i understand JS objects pretty well, which i suppose is the purpose of the exercise, but the difficulties were rather in understanding the proposed solution and the game logic. So maybe for me it would have been a better idea to try coming up with my own solution for the guess object and how it is matched with the secret. 
 
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Had i had more time (and perhaps motivation) i would have liked to change the input from drop-down to some kind of buttons, i would also have liked to redo the styling a little bit. Maybe add some kittens even.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://nostalgic-wright-b748ff.netlify.app/

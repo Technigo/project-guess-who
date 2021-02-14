@@ -416,4 +416,5 @@ restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 // compare selected question with secret person attribute and value
 findOutButton.addEventListener('click', checkQuestion)
+// play again button
 playAgainButton.addEventListener('click', playAgain)

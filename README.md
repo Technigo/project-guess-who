@@ -13,4 +13,5 @@ If I had more time I would look into the intermediary and/or advanced goals aswe
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://blissful-golick-2b352d.netlify.app/
+

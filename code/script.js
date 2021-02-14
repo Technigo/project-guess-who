@@ -1,4 +1,3 @@
-// All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
@@ -7,7 +6,6 @@ const winOrLoseWrapper = document.getElementById('winOrLose')
 const playAgainButton = document.getElementById('playAgain')
 const showWinOrLose = document.getElementById('showWinOrLose')
 
-// Array with all characters
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -291,38 +289,33 @@ const generateBoard = () => {
         </div>
       </div>
     `
-  }) 
-  console.dir(generateBoard); //take away later
+  })
 }
 
-// Randomly select a person from CHARACTERS array and set as the value of the variable called secret
+// Randomly select a person from Characters array and set as the value of secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(`"Find out who the secret person is:"`, secret);  //TAKE AWAY secret later
-  return secret // is this redundant?
+  console.log("Find out who the secret person is!");
+  return secret
 } 
 
-// Start (and restart) the game
-  let start = () => {
-    charactersInPlay = CHARACTERS
-    document.getElementById('winOrLose').style.display = "none";
-    document.getElementById('board').style.display = "flex"
-    document.getElementById('showWinOrLose').style.display = "none"
+let start = () => {
+  charactersInPlay = CHARACTERS
+  
+  document.getElementById('winOrLose').style.display = "none";
+  document.getElementById('board').style.display = "flex"
+  document.getElementById('showWinOrLose').style.display = "none"
 
-// callback is invoked med 3 argument: the value of the element, the index of the element, and the array object being mapped.
-    setSecret(); 
+  setSecret(); 
 
-    let board = generateBoard(charactersInPlay);
+  let board = generateBoard(charactersInPlay);
     console.log("These are your cards, enjoy the game!")
     return board
-  }
+}
 
-// setting the currentQuestion object when you select something in the dropdown 
 function selectQuestion() {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  //--> This variable stores what option group (category) "".parentNode.label"  the question belongs to.
-
-
+  //This variable stores what option group (category) "".parentNode.label"  the question belongs to.
   //Variable that stores the actual value of the question we've selected.
   currentQuestion = {
     attribute: questions.options[questions.selectedIndex].value,
@@ -331,16 +324,12 @@ function selectQuestion() {
   console.log('You chose:', currentQuestion, 'Now click on the Find Out button!')
 }
 
-// This function should be invoked when you click on 'Find Out'. TODO***
 const checkQuestion = () => {
-  selectQuestion() //Den startar på brown, vilket gör att en inte kan välja brown som val nummer 1. Därfar att 'change' inte triggas, därför behövs denna
-  let attribute = currentQuestion.attribute //Gets the currentQuestion value
-  let category = questions.options[questions.selectedIndex].parentNode.label //SPARA: gets the tag <optgroup label> - obs! Detta är en dublett av 293 men med LET
+  selectQuestion() //'change' triggades inte på haircolor brown som first option, därför behövs denna.
+  let attribute = currentQuestion.attribute
+  let category = questions.options[questions.selectedIndex].parentNode.label
   let question
-  //det är någonting med det här!!!! 
-  //hur ska jag veta vad secrets attribut är? 
-  //rätt värde i secret
-  //question borde heta mer guess eller något liknande?
+
   if (category === 'hair color') { 
     question = {
         category: 'hairColor',
@@ -385,33 +374,13 @@ const checkQuestion = () => {
     }
   }
     console.log(question);
-    currentQuestion = question //assigns global variable currentQuestion = question som också är en global variabel där uppe*
+    currentQuestion = question
 
-  //I want to do a variable/function that stores the secret value from start perhaps it should not be nested inside of this function
-
-  /*
-  const secretValue = () => { //const or let?
-  //This is something that can be used for the end. IF a user guesses correct on both boolean and string values??
-  let match = secret[question.currentType]
-  let matchTwo = secret[question.currentType] === currentValue
-
-/*
-   if (matchTwo ) { //is this correct? 
-    return true 
-    } else if (match ) {
-      return true
-    }
-*/ /*
-  }
-*/
-//secretValue(); 
-
-//dessa två i en if else statement?? Run den ena om user chose '' value, och run den andra om user chose a Boolean value. HOW WOULD I WRITE THAT? 
 const keep = secret[question.category] === question.attribute 
-console.log('sdfsd', secret[question.category], secret) //ta bort denna console.log eller beskriv vad den gör så att jag ser det???********
-console.log('You are one step closer to finding out who the secret person is!', keep)
+//console.log(secret[question.category], secret)
+console.log('You are one step closer to finding out who the secret person is!', keep) 
 
-// Om den hemliga personen är samma som nuv. kategori och är densamma som nuv. valt värde filtrera Sant, else filtrera Falskt. 
+    // Om den hemliga personen är samma som nuv. kategori och är densamma som nuv. valt värde filtrera Sant, else filtrera Falskt. 
     if (keep === true) {
       console.log('You matched')
       filterCharacters(keep, question.category, question.attribute)
@@ -421,11 +390,8 @@ console.log('You are one step closer to finding out who the secret person is!', 
     }
   }
 
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters 
-
-const filterCharacters = (keep, group, attribute) => { //question.category is now group, and question.attribute i now attribute
+//question.category is now group, and question.attribute is now attribute
+const filterCharacters = (keep, group, attribute) => {
   console.log(keep, group, attribute);
   if (keep != true) { 
     let charactersFiltered = charactersInPlay.filter(name => {
@@ -441,7 +407,7 @@ const filterCharacters = (keep, group, attribute) => { //question.category is no
   if (group === 'glasses') {
     if (keep) {
       alert(
-        `Yes, the person wears ${questions.options[questions.selectedIndex].value}! Keep all that wears ${group}`//they have also written attribute here
+        `Yes, the person wears ${questions.options[questions.selectedIndex].value}! Keep all that wears ${group}`
       )
     } else {
       alert(
@@ -451,7 +417,7 @@ const filterCharacters = (keep, group, attribute) => { //question.category is no
   } else if (group === 'hat') {
       if (keep) {
       alert(
-        `Yes, the person wears ${questions.options[questions.selectedIndex].value}! Keep all that wears ${group}`//they have also written attribute here
+        `Yes, the person wears ${questions.options[questions.selectedIndex].value}! Keep all that wears ${group}`
       )
     } else {
       alert(
@@ -505,18 +471,6 @@ const filterCharacters = (keep, group, attribute) => { //question.category is no
   generateBoard(); 
 }
 
-  // filter to keep or remove based on the keep variable.
-
-
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) 
-  */
-
-  // Invoke a function to redraw the board with the remaining people.
-
-
-// when clicking guess, the player first have to confirm that they want to make a guess. confirm() window method
 const guess = (suspect) => {
   if (confirm('Are you sure you want to guess?')) {
     console.log('User want to make a guess!');
@@ -526,11 +480,8 @@ const guess = (suspect) => {
   }
 }
 
-// store the interaction from the player in a variable. * What would that do? *
-//userGuess = guess
-
 // If you confirm, this function is invoked
-const checkMyGuess = (suspect) => { //name kan nås globalt, secret också. suspect är i det här fallet endast ett namn. 
+const checkMyGuess = (suspect) => {
   console.log(suspect);
   if (secret.name === suspect) {
     let showWinner = () => { 
@@ -540,7 +491,6 @@ const checkMyGuess = (suspect) => { //name kan nås globalt, secret också. susp
     } 
     showWinner()
     console.log('you won')
-    console.dir(showWinner) //take away later
   } else {
       let showLoser = () => {
         document.getElementById('winOrLose').style.display = "block";
@@ -549,14 +499,9 @@ const checkMyGuess = (suspect) => { //name kan nås globalt, secret också. susp
       } 
       showLoser()
       console.log('you lost')
-      console.dir(showLoser) //take away later
     }
     document.getElementById('board').style.display = "none"; //hides board
 }
-  // 1. Check if the suspect is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 
 start()
 
@@ -564,4 +509,3 @@ start()
 playAgainButton.addEventListener('click', start)
 restartButton.addEventListener('click', start)
 filledButton.addEventListener('click', checkQuestion)
-//questions.addEventListener('change', selectQuestion) //is not used. 

@@ -5,7 +5,7 @@ The aim in this project was to learn creating and manipulating objects and array
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The problem was to understand the whole flow of the code, because part of the structure was already pre-written. So the solution was to understand every function separately and understand how they were connected to each other.
 
 ## View it live
 

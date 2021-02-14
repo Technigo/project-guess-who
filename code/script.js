@@ -303,7 +303,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const {attribute, value, category} = currentQuestion
-  // Show the correct alert message for different categories
+  
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -386,7 +386,6 @@ const playAgain = () => {
 start()
 
 // All the event listeners
-
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 filterButton.addEventListener('click', checkQuestion);

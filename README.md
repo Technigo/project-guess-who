@@ -13,4 +13,4 @@ The task was approached through using several JavaScript methods of working with
 
 
 ## View it live
-Look at the page live on Netlify:
+Look at the page live on Netlify: https://frosty-noether-4c6685.netlify.app/

@@ -5,16 +5,13 @@ const restartButton = document.getElementById('restart');
 const findOutButton = document.getElementById('filter');
 const winOrLose = document.getElementById('winOrLose');
 const winOrLoseText = document.getElementById('winOrLoseText');
-
-//const filter;
-//const selectQuestion = document.getElementById
-//just a comment to see if it works
+//const playAgainButton = document.getElementById(playAgainButton);
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
     name: 'Jabala',
-    img: 'images/jabala.svg',
+    img: 'images/jabala.svg', 
     hairColor: 'hidden',
     eyeColor: 'hidden',
     glasses: false,
@@ -329,6 +326,7 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+  const keep = currentQuestion.value === secret[currentQuestion.attribute];
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters

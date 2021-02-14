@@ -14,81 +14,99 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hairColor: 'hidden',
     eyeColor: 'hidden',
+    clothing: 'single',
     glasses: true,
-    hat: true,
+    headCover: true,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Jack',
     img: 'images/jack.svg',
     hairColor: 'hidden',
     eyeColor: 'blue',
+    clothing: 'multi',
     glasses: false,
-    hat: true,
+    headCover: true,
     smoker: false,
+    facialHair: true,
   },
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
     hairColor: 'grey',
     eyeColor: 'blue',
+    clothing: 'multi',
     glasses: false,
-    hat: true,
+    headCover: true,
     smoker: true,
+    facialHair: true,
   },
   {
     name: 'Jai',
     img: 'images/jai.svg',
     hairColor: 'black',
     eyeColor: 'brown',
+    clothing: 'multi',
     glasses: false,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Jake',
     img: 'images/jake.svg',
     hairColor: 'yellow',
     eyeColor: 'green',
+    clothing: 'multi',
     glasses: true,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'James',
     img: 'images/james.svg',
     hairColor: 'brown',
     eyeColor: 'green',
+    clothing: 'single',
     glasses: true,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: true,
   },
   {
     name: 'Jana',
     img: 'images/jana.svg',
     hairColor: 'black',
     eyeColor: 'hidden',
+    clothing: 'single',
     glasses: true,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Jane',
     img: 'images/jane.svg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
+    clothing: 'multi',
     glasses: true,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Jaqueline',
     img: 'images/jaqueline.svg',
     hairColor: 'orange',
     eyeColor: 'green',
+    clothing: 'single',
     glasses: true,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: false,
   },
 
   {
@@ -96,135 +114,165 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hairColor: 'purple',
     eyeColor: 'hidden',
+    clothing: 'single',
     glasses: true,
-    hat: false,
+    headCover: false,
     smoker: true,
+    facialHair: false,
   },
   {
     name: 'Jean',
     img: 'images/jean.svg',
     hairColor: 'brown',
     eyeColor: 'blue',
+    clothing: 'multi',
     glasses: true,
-    hat: true,
+    headCover: true,
     smoker: true,
+    facialHair: true,
   },
   {
     name: 'Jeane',
     img: 'images/jeane.svg',
     hairColor: 'brown',
     eyeColor: 'green',
+    clothing: 'single',
     glasses: true,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Jed',
     img: 'images/jed.svg',
     hairColor: 'orange',
     eyeColor: 'green',
+    clothing: 'multi',
     glasses: true,
-    hat: true,
+    headCover: true,
     smoker: true,
+    facialHair: true,
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
     hairColor: 'white',
     eyeColor: 'hidden',
+    clothing: 'single',
     glasses: false,
-    hat: true,
+    headCover: true,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Jeri',
     img: 'images/jeri.svg',
     hairColor: 'orange',
     eyeColor: 'green',
+    clothing: 'multi',
     glasses: true,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Jerry',
     img: 'images/jerry.svg',
     hairColor: 'hidden',
     eyeColor: 'blue',
+    clothing: 'multi',
     glasses: false,
-    hat: true,
+    headCover: true,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Jess',
     img: 'images/jess.svg',
     hairColor: 'black',
     eyeColor: 'blue',
+    clothing: 'single',
     glasses: true,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
     hairColor: 'black',
     eyeColor: 'brown',
+    clothing: 'multi',
     glasses: true,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Jon',
     img: 'images/jon.svg',
     hairColor: 'brown',
     eyeColor: 'green',
+    clothing: 'single',
     glasses: true,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Jordan',
     img: 'images/jordan.svg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
+    clothing: 'single',
     glasses: true,
-    hat: true,
+    headCover: true,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Josephine',
     img: 'images/josephine.svg',
     hairColor: 'grey',
     eyeColor: 'brown',
+    clothing: 'single',
     glasses: false,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Josh',
     img: 'images/josh.svg',
     hairColor: 'yellow',
     eyeColor: 'green',
+    clothing: 'multi',
     glasses: false,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: false,
   },
   {
     name: 'Jude',
     img: 'images/jude.svg',
     hairColor: 'black',
     eyeColor: 'green',
+    clothing: 'multi',
     glasses: false,
-    hat: false,
+    headCover: false,
     smoker: false,
+    facialHair: true,
   },
   {
     name: 'Julie',
     img: 'images/julie.svg',
     hairColor: 'black',
     eyeColor: 'brown',
+    clothing: 'multi',
     glasses: true,
-    hat: true,
+    headCover: true,
     smoker: false,
+    facialHair: false,
   },
 ]
 
@@ -281,10 +329,28 @@ const selectQuestion = () => {
         value: optionValue,
         category: category
       }
+  } else if (category === 'facial hair') {
+    currentQuestion = {
+      attribute: 'facialHair',
+      value: true,
+      category: category
+    }
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: optionValue,
       value: true,
+      category: category
+    }
+  } else if (category === 'head covering') {
+    currentQuestion = {
+      attribute: 'headCover',
+      value: true,
+      category: category
+    }
+  } else if (category === 'clothing') {
+    currentQuestion = {
+      attribute: 'clothing',
+      value: optionValue,
       category: category
     }
   } else if (category === 'other') {
@@ -335,18 +401,54 @@ const filterCharacters = (keep) => {
         )
         charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
       }
-  } else {
-    if (keep === true) {
-      alert(
-        `Yes, the person has ${currentQuestion.value} ${currentQuestion.category}!`
-      )
-      charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
+    } else if (currentQuestion.category === 'facial hair') {
+      if (keep === true) {
+        alert(
+          `Yes, the person has ${currentQuestion.category}!`
+          )
+          charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
+      } else {
+        alert(
+          `No, the person doesn't have ${currentQuestion.category}!`
+        )
+        charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
+      }
+    } else if (currentQuestion.category === 'head covering') {
+      if (keep === true) {
+        alert(
+          `Yes, the person has a ${currentQuestion.category}!`
+          )
+          charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
+      } else {
+        alert(
+          `No, the person doesn't have a ${currentQuestion.category}!`
+        )
+        charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
+      }
+    } else if (currentQuestion.category === 'clothing') {
+      if (keep === true) {
+        alert(
+          `Yes, the person has a ${currentQuestion.value} colored shirt!`
+          )
+          charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
+      } else {
+        alert(
+          `No, the person doesn't have a ${currentQuestion.value} colored shirt!`
+        )
+        charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
+      }  
     } else {
-      alert(
-        `No, the person doesn't have ${currentQuestion.value} ${currentQuestion.category}!`
-      )
-      charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
-    }
+      if (keep === true) {
+        alert(
+          `Yes, the person has ${currentQuestion.value} ${currentQuestion.category}!`
+        )
+        charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
+      } else {
+        alert(
+          `No, the person doesn't have ${currentQuestion.value} ${currentQuestion.category}!`
+        )
+        charactersInPlay= charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
+      }
   }
   generateBoard()
 }

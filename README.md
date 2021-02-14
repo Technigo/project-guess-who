@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+This weeks project was to creat our own version of the board game Guess Who? using HTML, CSS and Javascript.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started to go trough all the material about, for example, object, arrays and loops. Then I started right away to manage to do as much as possible in the beginning of the week to have time left if I was needing help. I solved the first stepd by my self and then I asked my team for help. If I had more time I would have changed the desig more than the background color and also changed the persons and attributes to something else.
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guesswhogame.netlify.app/

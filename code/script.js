@@ -132,7 +132,7 @@ const CHARACTERS = [
   {
     name: 'Linnéa',
     img: 'images2/Linnea.jpg',
-    hatColor: 'no hat',
+    hatColor: 'invisible',
     shirtColor: 'white',
     glasses: false,
     moustache: false,
@@ -304,7 +304,6 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const chosenValue = questions.options[questions.selectedIndex].value
-  console.log(chosenValue);
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   
@@ -321,7 +320,7 @@ const selectQuestion = () => {
       value: chosenValue,
       category: category,
     }
-  } else if (category === 'glasses') {
+  } else if (category === 'other accessories') {
     currentQuestion = {
     attribute: chosenValue,
     value: true, 
@@ -346,7 +345,9 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+  console.log(currentQuestion.attribute);
 if (currentQuestion.attribute === "hatColor") {
+  
     if (currentQuestion.value === secret.hatColor) {
       keep = true;
     //Compare the currentQuestion with the secret person.
@@ -363,8 +364,8 @@ else if (currentQuestion.attribute === "shirtColor") {
     keep = false;
   }
 }
-else if (currentQuestion.attribute === "facial hair") {
-  if (currentQuestion.value === secret.glasses) {
+else if (currentQuestion.attribute === "unibrow") {
+  if (currentQuestion.value === secret.unibrow) {
     keep = true;
   } else {
     keep = false;
@@ -372,6 +373,12 @@ else if (currentQuestion.attribute === "facial hair") {
 }
 else if (currentQuestion.attribute === "moustache") {
   if (currentQuestion.value === secret.moustache) {
+    keep = true;
+  } else {
+    keep = false;
+  }
+} else if (currentQuestion.attribute === "glasses") {
+  if (currentQuestion.value === secret.glasses) {
     keep = true;
   } else {
     keep = false;
@@ -389,7 +396,6 @@ filterCharacters(keep, group);
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep, group) => {
-  console.log(group);
   
   // Show the correct alert message for different categories
   if (group === 'other accessories') {
@@ -407,12 +413,12 @@ const filterCharacters = (keep, group) => {
   } else if (group === 'hat') {
     if (keep) {
       alert(
-        `Yes, the car thief was wearing a ${currentQuestion.value} hat! Keep all suspects that wear a ${currentQuestion.value} hat!`
+        `Yes, the hat I saw was ${currentQuestion.value}! Keep all suspects whose head wears some ${currentQuestion.value} hat!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value);
     } else {
       alert(
-        `No, the car thief wasn't wearing a ${currentQuestion.value} hat! Remove all suspects that wear a  ${currentQuestion.value} hat!`
+        `No, not ${currentQuestion.value}! Remove all suspects whose head wears some ${currentQuestion.value} hat!`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
     }

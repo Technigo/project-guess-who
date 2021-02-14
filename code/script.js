@@ -281,7 +281,6 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)]
-  console.log("secret", secret)
 }
 
 // This function to start (and restart) the game
@@ -373,7 +372,6 @@ const filterCharacters = (keep) => {
         }
     });
   feedbackMessage(message)
-  //charactersFiltered = charactersFiltered.filter((animal) => keep? animal[attribute] === value:animal[attribute] !== value)
   generateBoard()
 }
 

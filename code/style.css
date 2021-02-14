@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #59a4ff;
+  --secondary: #614ced;
 }
 
 body {
@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background: rgb(217, 217, 244);
 }
 
 h1 {
@@ -18,7 +19,7 @@ h1 {
   margin: 10px 0;
   color: white;
 }
-
+/* Aside section  */
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -29,7 +30,12 @@ h1 {
   align-items: flex-start;
   box-sizing: border-box;
 }
-
+.game {
+  display: none;
+}
+.game-rules {
+  color: white;
+}
 select {
   display: block;
   border: none;
@@ -43,20 +49,74 @@ select {
 .guess-who-icon {
   width: 126px;
 }
+/* Aside section: player, timer, questions tracker  */
+
+.question-tracker {
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+.timer-wrapper {
+  margin-top: 5px;
+  color: white;
+
+}
+.name-wrapper {
+  margin-top: 15px;
+  margin-bottom: 0;
+  color: white;
+}
+/* Board styling */
 
 .board-wrapper {
   width: 70%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgb(217, 217, 244);
 }
+/* Welcome conversation */
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-self: center;
+}
+.chat-wrapper {
+  text-align: center;
+}
+.chat-bubble {
+  color: var(--secondary);
+  font-size: 36px;
+  font-family: 'Montserrat';
+}
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.text-input {
+  font-size: 22px;
+  font-family: 'Montserrat';
+  color: var(--secondary);
+  width: 50%;
+  border: none;
+  border-radius: 5px;
+}
+.welcome-button {
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  border: var(--primary);
+  background-color: var(--primary);
 
+}
 .game-board {
   width: 90%;
   max-width: 882px;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 /****** CARD ******/
@@ -159,9 +219,7 @@ button {
   height: 100vh;
   width: 100vw;
 }
-.shown {
-  display: flex;
-}
+
 .win-or-lose {
   display: flex;
   flex-direction: column;
@@ -179,12 +237,29 @@ button {
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
+.win-loose {
+  margin-bottom: 20px;
+}
 
+/* Classes to add/remove sections */
+.shown {
+  display: flex;
+}
+.hidden {
+  display:none;
+}
+
+/* Media quaries */
 @media (max-width: 768px) {
   body {
     flex-direction: column;
   }
-
+  .chat-bubble {
+    font-size: 16px;
+  }
+  .text-input{
+    font-size: 14px;
+  }
   .question-section {
     width: 100%;
     min-height: 0;

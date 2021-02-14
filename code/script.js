@@ -326,16 +326,18 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-  const keep = currentQuestion.value === secret[currentQuestion.attribute];
   // Compare the currentQuestion with the secret person.
+  const keep = currentQuestion.value === secret[currentQuestion.attribute];
   // See if we should keep or remove people based on that
+  filterCharacters(keep);
   // Then invoke filterCharacters
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
+  const {attribute, value, category} = currentQuestion;
   // Show the correct alert message for different categories
-  if (group === 'accessories') {
+  if (category === 'accessories') {
     if (keep) {
       alert(
         `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
@@ -345,20 +347,42 @@ const filterCharacters = (keep) => {
         `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
       )
     }
-  } else if (group === 'other') {
-    // Similar to the one above
-  } else {
+  } else if (category === 'other') {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      alert(
+        `Yes, the person has ${attribute}! Keep all that has ${attribute} `
+        );
     } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      alert(
+        `No the person don't have ${attribute}. Remove all persons with ${attribute}`
+        );
+    }
+  } else if (category === 'hairColor') {
+    if (keep) {
+      alert(
+        `Yes the person has ${attribute} hair color! Keep all that has ${attribute} hair color`
+        );
+    } else {
+      alert(
+        `No the person don't have ${attribute} hair color! Remove all persons with ${attribute} hair color`
+        );
+    }
+  } else if (category === 'eyeColor') {
+    if (keep) {
+      alert(
+        `Yes the person has ${attribute} eye color! Keep all that has ${attribute} eye color.`
+        );
+    } else {
+      alert(
+        `No the person don't have ${attribute} eye color! Remove all persons with ${attribute} eye color`
+        );
     }
   }
 
   // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
+  charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    
+    /*charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
 
   // Invoke a function to redraw the board with the remaining people.
 }

@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
 
 
 // Array with all the characters, as objects
@@ -397,9 +398,8 @@ const checkMyGuess = (suspect) => {
   } else {
     winOrLoseText.innerHTML = 'GAME OVER!'
   }
-  winOrLose.style.display = 'block'
+  winOrLose.style.display = 'flex'
   board.style.display = 'none'
-  
 
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
@@ -407,6 +407,11 @@ const checkMyGuess = (suspect) => {
   // 4. Hide the game board
 }
 
+const playAgain = () => {
+ board.style.display = 'flex'
+ winOrLose.style.display = 'none'
+ start()
+}
 // Invokes the start function when website is loaded
 start()
   // i added this here
@@ -418,3 +423,4 @@ questions.addEventListener('change', selectQuestion)// i added this here
 
 findOutButton.addEventListener('click', checkQuestion)
 
+playAgainButton.addEventListener('click', playAgain)

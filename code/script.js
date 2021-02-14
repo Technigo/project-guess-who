@@ -371,8 +371,8 @@ const checkMyGuess = (suspect) => {
     winOrLoseText.innerHTML = (`I hope you're not doing this for a living. You were wrong with ${suspect}! ${secret.name} would have been the one!`)
   }
 
-  winOrLose.style.display = `flex`
-  board.style.display = `none`
+winOrLose.style.display = `flex`
+board.style.display = `none`
 }
 
 //Play again

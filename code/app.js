@@ -5,6 +5,7 @@ const choiceElements = document.querySelectorAll(".question .choice");
 const remainGuessElement = document.getElementById("remain-guess");
 const pageContainer = document.getElementById("page-container");
 const loading = document.getElementById("loading");
+const alertMsg = document.getElementById("alert");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -280,19 +281,31 @@ let firstTimeRender = true;
 
 choiceElements.forEach((choiceElement) =>
   choiceElement.addEventListener("click", (e) => {
-    // console.log(e);
-    // console.log(e.target);
     if (!e.target.classList.contains("disable")) {
       if (guessLimit >= 1) {
         const value = e.target.getAttribute("data-value");
         const type = e.target.parentNode.getAttribute("data-type");
         e.target.classList.add("disable");
-        // console.log(value, type);
         filterCharacters(value, type);
         guessLimit--;
         remainGuessElement.innerText = guessLimit;
       } else {
-        alert("You ran out of your choices. Guess one of them >:D");
+        alertMsg.classList.add("block");
+        alertMsg.innerHTML = `
+          <div class="gradient-border alert-container">
+            <p class="alert-text">You ran out of your choices. Guess one of them >:D</p>
+            <button id="alert-confirm" class="alert-confirm">Ok</button>
+          </div>
+        `;
+        if (alertMsg.classList.contains("block")) {
+          pageContainer.classList.add("disable");
+          document
+            .getElementById("alert-confirm")
+            .addEventListener("click", () => {
+              alertMsg.classList.remove("block");
+              pageContainer.classList.remove("disable");
+            });
+        }
       }
     }
   })
@@ -304,19 +317,17 @@ const selectSecretCharacter = () => {
 };
 
 const filterCharacters = (value, type) => {
-  // console.log(value, type);
   if (value == "true" || value == "false") {
     value = Boolean(value);
   }
-  // console.log("selectedSecretCharacter[type]", selectedSecretCharacter[type]);
-  // console.log("value", value);
   if (value === selectedSecretCharacter[type]) {
-    document.getElementById("right-guess").innerHTML =
-      "Super! Your guess is right!";
-
-    setTimeout(function () {
-      document.getElementById("right-guess").innerHTML = "";
-    }, 3000);
+    alertMsg.classList.add("block");
+    alertMsg.innerHTML = `
+      <div class="gradient-border alert-container">
+        <p class="alert-text">Super! Your guess is right!</p>
+        <button id="alert-confirm" class="alert-confirm">Ok</button>
+      </div>
+    `;
 
     const removedCharacters = CHARACTERS.filter(
       (character) => character[type] !== selectedSecretCharacter[type]
@@ -326,11 +337,13 @@ const filterCharacters = (value, type) => {
       character.isRemoved = true;
     });
   } else if (value !== selectedSecretCharacter[type]) {
-    document.getElementById("wrong-guess").innerHTML = `Your guess is wrong!`;
-
-    setTimeout(function () {
-      document.getElementById("wrong-guess").innerHTML = "";
-    }, 3000);
+    alertMsg.classList.add("block");
+    alertMsg.innerHTML = `
+      <div class="gradient-border alert-container">
+        <p class="alert-text">Your guess is wrong!</p>
+        <button id="alert-confirm" class="alert-confirm">Ok</button>
+      </div>
+    `;
 
     const removedCharacters = CHARACTERS.filter(
       (character) => character[type] === value
@@ -338,6 +351,13 @@ const filterCharacters = (value, type) => {
 
     removedCharacters.map((character) => {
       character.isRemoved = true;
+    });
+  }
+  if (alertMsg.classList.contains("block")) {
+    pageContainer.classList.add("disable");
+    document.getElementById("alert-confirm").addEventListener("click", () => {
+      alertMsg.classList.remove("block");
+      pageContainer.classList.remove("disable");
     });
   }
   renderCharacters();
@@ -380,11 +400,32 @@ const renderCharacters = () => {
 const guess = (id, name) => {
   if (confirm(`${name}? Are you sure?`)) {
     if (id === selectedSecretCharacter.id) {
-      alert("You win");
+      // alert("You win");
+      alertMsg.classList.add("block");
+      alertMsg.innerHTML = `
+        <div class="gradient-border alert-container">
+          <p class="alert-text">You win</p>
+          <button id="restart" class="alert-confirm">Play Again</button>
+        </div>
+      `;
     } else if (id !== selectedSecretCharacter.id) {
-      alert("Game over");
+      alertMsg.classList.add("block");
+      alertMsg.innerHTML = `
+        <div class="gradient-border alert-container">
+          <p class="alert-text">Game over</p>
+          <button id="restart" class="alert-confirm">Play Again</button>
+        </div>
+      `;
+
+      // alert("Game over");
     }
-    window.location.reload();
+    if (alertMsg.classList.contains("block")) {
+      pageContainer.classList.add("disable");
+      document.getElementById("restart").addEventListener("click", () => {
+        window.location.reload();
+      });
+    }
+    // window.location.reload();
   }
 };
 
@@ -395,7 +436,7 @@ const renderPage = () => {
 };
 
 const initialize = (() => {
-  setTimeout(renderPage, 4000);
+  setTimeout(renderPage, 1000);
   remainGuessElement.innerText = guessLimit;
   selectSecretCharacter();
   renderCharacters();

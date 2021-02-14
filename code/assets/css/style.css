@@ -56,6 +56,7 @@ select {
   flex-wrap: wrap;
   align-content: center;
   gap: 16px;
+  justify-content: center;
 }
 
 /****** CARD ******/
@@ -112,14 +113,14 @@ select {
 }
 
 /****** BUTTONS ******/
-button {
+/* button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
-}
+} */
 
 .small {
   padding: 8px 16px;
@@ -320,9 +321,82 @@ button {
 
 .page-container {
   display: flex;
+  position: relative;
 }
 
 .disable {
   opacity: 0.2;
   cursor: not-allowed !important;
+}
+
+.alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 4px;
+}
+
+.gradient-border {
+  width: 500px;
+  height: 200px;
+  --borderWidth: 8px;
+  background: #fff;
+  position: relative;
+  border-radius: var(--borderWidth);
+  padding: 8px;
+}
+.gradient-border:after {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.alert-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.alert-confirm {
+  cursor: pointer;
+  width: 120px;
+  padding: 4px 0;
+  margin: 0 auto 16px auto;
+}
+
+.alert-text::selection {
+  color: #fff;
+  background-color: #f9d423;
 }

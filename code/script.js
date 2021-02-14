@@ -294,9 +294,6 @@ const value = questions.value
 }
 
 // This function should be invoked when you click on 'Find Out'.
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
 const checkQuestion = () => {
   const keep = currentQuestion.value === secret[currentQuestion.attribute]
 

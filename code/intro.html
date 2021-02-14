@@ -13,15 +13,18 @@
   <body class="intro">
     <div class="main-wrapper">
       <section class="main">
-        <h1 class="loading main-title">Welcome to GUESS WHO game!</h1>
+        <h1 class="main-title">Welcome to GUESS WHO game!</h1>
         <p class="loading">In this game, we randomly select a character.</p>
         <p class="loading">Your goal is guessing the secret character.</p>
         <p class="loading">You can ask four question from us then you should guess!</p>
         <p class="loading">Let's have fun!</p>
-        <a href="./index.html" class="btn-container loading ">
+        <input type="text" placeholder="Please tell us your name" class="loading" id="player-name" onchange="getPlayerName()"> 
+        <a href="./index.html" class="btn-container loading">
           <button type="submit" class="start-btn gradient-border">Start Game</button></a
         >
       </section>
     </div>
+
+    <script src="./assets/js/intro.js"></script>
   </body>
 </html>

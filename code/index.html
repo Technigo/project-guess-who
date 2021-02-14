@@ -31,7 +31,8 @@
     <div id="page-container" class="none">
       <aside class="question-section">
         <section>
-          <label for="character-controls">You have <span id="remain-guess"></span> guess(es).</label>
+          <div>You have <span id="time">01:00</span> minutes!</div>
+          <label for="character-controls"><span id="player"></span>,you have <span id="remain-guess"></span> guess(es).</label>
           <div class="question" data-type="hairColor">
             <p>What's the hair color?</p>
             <span class="choice" data-value="hidden">hidden hair</span>
@@ -65,8 +66,12 @@
             <span class="choice" data-value="true">yes</span>
             <span class="choice" data-value="false">no</span>
           </div>
-          <p id="right-guess"></p>
-          <p id="wrong-guess"></p>
+          <div class="question" data-type="facialHair">
+            <p>Does the character facial hair?</p>
+            <span class="choice" data-value="true">yes</span>
+            <span class="choice" data-value="false">no</span>
+          </div>
+
         </section>
       </aside>
   
@@ -90,6 +95,6 @@
     </div>
     <div id="alert" class="alert none"></div>
     <!-- <script src="script.js"></script> -->
-    <script src="app.js"></script>
+    <script src="./assets/js/app.js"></script>
   </body>
 </html>

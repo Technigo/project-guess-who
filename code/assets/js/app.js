@@ -3,6 +3,7 @@ const characterWrapper = document.getElementById("board");
 const charactersControls = document.getElementById("character-controls");
 const choiceElements = document.querySelectorAll(".question .choice");
 const remainGuessElement = document.getElementById("remain-guess");
+const player = document.getElementById("player");
 const pageContainer = document.getElementById("page-container");
 const loading = document.getElementById("loading");
 const alertMsg = document.getElementById("alert");
@@ -18,6 +19,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -29,6 +31,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    facialHair: true,
     isRemoved: false,
   },
   {
@@ -40,6 +43,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: true,
+    facialHair: true,
     isRemoved: false,
   },
   {
@@ -51,6 +55,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -62,6 +67,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -73,6 +79,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    facialHair: true,
     isRemoved: false,
   },
   {
@@ -84,6 +91,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -95,6 +103,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    facialHair: true,
     isRemoved: false,
   },
   {
@@ -106,6 +115,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
 
@@ -118,6 +128,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: true,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -129,6 +140,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -140,6 +152,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -151,6 +164,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
+    facialHair: true,
     isRemoved: false,
   },
   {
@@ -162,6 +176,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -173,6 +188,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -184,6 +200,7 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -195,6 +212,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -206,6 +224,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -217,6 +236,7 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -228,6 +248,7 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -239,6 +260,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -250,6 +272,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
   {
@@ -261,6 +284,7 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    facialHair: true,
     isRemoved: false,
   },
   {
@@ -272,12 +296,84 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    facialHair: false,
     isRemoved: false,
   },
 ];
 
+const showMsg = ({
+  text,
+  confirmText = "OK",
+  cancelText,
+  onConfirm,
+  onCancel,
+}) => {
+  const hideModal = () => {
+    alertMsg.classList.remove("block");
+    pageContainer.classList.remove("disable");
+  };
+
+  const showModal = () => {
+    alertMsg.classList.add("block");
+    pageContainer.classList.add("disable");
+  };
+
+  showModal();
+
+  alertMsg.innerHTML = `
+      <div class="gradient-border alert-container">
+        <p class="alert-text">${text}</p>
+        <button id="confirm" class="alert-confirm">${confirmText}</button>
+        ${
+          cancelText
+            ? `<button id="cancel" class="alert-confirm">${cancelText}</button>`
+            : ``
+        }
+      </div>
+    `;
+  if (document.getElementById("confirm")) {
+    document.getElementById("confirm").addEventListener("click", () => {
+      if (onConfirm) {
+        onConfirm();
+      }
+      hideModal();
+    });
+  }
+
+  if (document.getElementById("cancel")) {
+    document.getElementById("cancel").addEventListener("click", () => {
+      if (onCancel) {
+        onCancel();
+      }
+      hideModal();
+    });
+  }
+};
+
+const startTimer = (duration) => {
+  const timer = setInterval(() => {
+    duration--;
+    document.querySelector("#time").textContent = duration;
+    if (duration === 0) {
+      clearInterval(timer);
+      showMsg({
+        text: "To late! Time is up!",
+        confirmText: "Play Again",
+        onConfirm: () => window.location.reload(),
+      });
+    }
+  }, 1000);
+};
+
+const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 let guessLimit = 4;
 let firstTimeRender = true;
+let playerName = capitalizeFirstLetter(localStorage.getItem("playerName"));
+
+player.innerText = playerName;
 
 choiceElements.forEach((choiceElement) =>
   choiceElement.addEventListener("click", (e) => {
@@ -288,24 +384,10 @@ choiceElements.forEach((choiceElement) =>
         e.target.classList.add("disable");
         filterCharacters(value, type);
         guessLimit--;
+
         remainGuessElement.innerText = guessLimit;
       } else {
-        alertMsg.classList.add("block");
-        alertMsg.innerHTML = `
-          <div class="gradient-border alert-container">
-            <p class="alert-text">You ran out of your choices. Guess one of them >:D</p>
-            <button id="alert-confirm" class="alert-confirm">Ok</button>
-          </div>
-        `;
-        if (alertMsg.classList.contains("block")) {
-          pageContainer.classList.add("disable");
-          document
-            .getElementById("alert-confirm")
-            .addEventListener("click", () => {
-              alertMsg.classList.remove("block");
-              pageContainer.classList.remove("disable");
-            });
-        }
+        showMsg({ text: "You ran out of your choices. Guess one of them >:D" });
       }
     }
   })
@@ -321,13 +403,7 @@ const filterCharacters = (value, type) => {
     value = Boolean(value);
   }
   if (value === selectedSecretCharacter[type]) {
-    alertMsg.classList.add("block");
-    alertMsg.innerHTML = `
-      <div class="gradient-border alert-container">
-        <p class="alert-text">Super! Your guess is right!</p>
-        <button id="alert-confirm" class="alert-confirm">Ok</button>
-      </div>
-    `;
+    showMsg({ text: "Super! Your guess is right!" });
 
     const removedCharacters = CHARACTERS.filter(
       (character) => character[type] !== selectedSecretCharacter[type]
@@ -337,13 +413,7 @@ const filterCharacters = (value, type) => {
       character.isRemoved = true;
     });
   } else if (value !== selectedSecretCharacter[type]) {
-    alertMsg.classList.add("block");
-    alertMsg.innerHTML = `
-      <div class="gradient-border alert-container">
-        <p class="alert-text">Your guess is wrong!</p>
-        <button id="alert-confirm" class="alert-confirm">Ok</button>
-      </div>
-    `;
+    showMsg({ text: "Your guess is wrong!" });
 
     const removedCharacters = CHARACTERS.filter(
       (character) => character[type] === value
@@ -351,13 +421,6 @@ const filterCharacters = (value, type) => {
 
     removedCharacters.map((character) => {
       character.isRemoved = true;
-    });
-  }
-  if (alertMsg.classList.contains("block")) {
-    pageContainer.classList.add("disable");
-    document.getElementById("alert-confirm").addEventListener("click", () => {
-      alertMsg.classList.remove("block");
-      pageContainer.classList.remove("disable");
     });
   }
   renderCharacters();
@@ -398,35 +461,27 @@ const renderCharacters = () => {
 };
 
 const guess = (id, name) => {
-  if (confirm(`${name}? Are you sure?`)) {
-    if (id === selectedSecretCharacter.id) {
-      // alert("You win");
-      alertMsg.classList.add("block");
-      alertMsg.innerHTML = `
-        <div class="gradient-border alert-container">
-          <p class="alert-text">You win</p>
-          <button id="restart" class="alert-confirm">Play Again</button>
-        </div>
-      `;
-    } else if (id !== selectedSecretCharacter.id) {
-      alertMsg.classList.add("block");
-      alertMsg.innerHTML = `
-        <div class="gradient-border alert-container">
-          <p class="alert-text">Game over</p>
-          <button id="restart" class="alert-confirm">Play Again</button>
-        </div>
-      `;
+  showMsg({
+    text: `${name}? Are you sure?`,
+    confirmText: "Yes, Go ahead!",
+    cancelText: "No, Cancel",
+    onConfirm: () => {
+      let messageText;
 
-      // alert("Game over");
-    }
-    if (alertMsg.classList.contains("block")) {
-      pageContainer.classList.add("disable");
-      document.getElementById("restart").addEventListener("click", () => {
-        window.location.reload();
-      });
-    }
-    // window.location.reload();
-  }
+      if (id === selectedSecretCharacter.id) {
+        messageText = "You win!";
+      } else {
+        messageText = "You lose, Game over!";
+      }
+      setTimeout(() => {
+        showMsg({
+          text: messageText,
+          confirmText: "Play Again",
+          onConfirm: () => window.location.reload(),
+        });
+      }, 0);
+    },
+  });
 };
 
 const renderPage = () => {
@@ -436,6 +491,7 @@ const renderPage = () => {
 };
 
 const initialize = (() => {
+  startTimer(60);
   setTimeout(renderPage, 1000);
   remainGuessElement.innerText = guessLimit;
   selectSecretCharacter();

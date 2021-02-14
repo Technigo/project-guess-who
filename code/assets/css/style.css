@@ -371,18 +371,6 @@ select {
   background-size: 300% 300%;
 }
 
-@keyframes animatedgradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .alert-container {
   display: flex;
   flex-direction: column;
@@ -391,7 +379,7 @@ select {
 
 .alert-confirm {
   cursor: pointer;
-  width: 120px;
+  width: 140px;
   padding: 4px 0;
   margin: 0 auto 16px auto;
 }

@@ -1,13 +1,26 @@
-# Project Name
+# Super Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Super Guess Who. A classic Guess Who about super heroes from Marvel and DC 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started to understand each step by step of the game logic, what step should go first
+
+I have used regular js methods and techniques such as:
+- Arrow functions
+- if statements 
+- for each loop
+- array and object manipulation
+
+I have decided to replace some of the prompts logic with my own styled popup message
+
+To solve this problem i have created a generic function to handle a global custom popup that receives 3 params (text of the message, quantity of buttons 1 or 2, and guess) with an if statement.
+
+If i would have more time i would:
+- add the time counter between each guessing
+- add some sounds effects
+- add a fliping card style to prevent removing characters from the array and just flip them down 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://super-guess-who.netlify.app/

@@ -4,8 +4,8 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const playAgainButton = document.getElementById('playAgain')
 const findOutButton = document.getElementById('filter')
-const winOrLoseText = document.getElementById("winOrLoseText")
-const winOrLoseSection = document.getElementById("winOrLose")
+const winOrLoseText = document.getElementById('winOrLoseText')
+const winOrLoseSection = document.getElementById('winOrLose')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -257,29 +257,27 @@ let currentQuestion
 
 let secret  
 
-//let person = CHARACTERS.
-
 // Draw the game board
 function generateBoard() {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card">
-        <img class="person-image" src=${person.img} alt=${person.name}>
-        <div class="guess">
+      <div class='card'>
+        <img class='person-image' src=${person.img} alt=${person.name}>
+        <div class='guess'>
           <span>Guess on ${person.name}?</span>
-          <button class="small" onclick="guess('${person.name}')">Guess</button>
+          <button class='small' onclick='guess('${person.name}')'>Guess</button>
         </div>
         <p>${person.name}</p>
-        <button class="small-mobile" onclick="guess('${person.name}')">Guess</button>
+        <button class='small-mobile' onclick='guess('${person.name}')'>Guess</button>
       </div>
     `
   })
 }
 
 function playAgain() {
-  winOrLoseSection.style.display = "none";
-  winOrLoseText.innerHTML = "";
+  winOrLoseSection.style.display = 'none';
+  winOrLoseText.innerHTML = '';
   board.style.display = 'flex';
   start();
 
@@ -292,22 +290,18 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
   console.log(secret);
-  // what else should happen when we start the game?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const chosenValue = questions.options[questions.selectedIndex].value
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  
-
+  // category stores what option group (category) the question belongs to.
+  // chosenValue stores the actual value of the question we've selected.
   if (category === 'hat') {
     currentQuestion = {
       attribute: 'hatColor',
@@ -329,8 +323,7 @@ const selectQuestion = () => {
   } else if (category === 'facial hair') {
     currentQuestion = {
     attribute: chosenValue,
-      // 👆 this is the property of the booleans such as smoke, glasses and moustache. add the value from the input here
-    value: true, // we're asking if this person wears a moustache for exaple, so always true in the question.
+    value: true, 
     category: category,
     }
   } else {
@@ -340,44 +333,37 @@ const selectQuestion = () => {
     category: category,
     }
   }
- 
 }
 
-// This function should be invoked when you click on 'Find Out'.
+/*This function should be invoked when you click on 'Find Out'.
+It compares currentQuestion with the values from the secret person. */
 const checkQuestion = () => {
-  console.log(currentQuestion.attribute);
-if (currentQuestion.attribute === "hatColor") {
+if (currentQuestion.attribute === 'hatColor') {
   
-    if (currentQuestion.value === secret.hatColor) {
+  if (currentQuestion.value === secret.hatColor) {
       keep = true;
-    //Compare the currentQuestion with the secret person.
-    //See if we should keep or remove people based on that
-    //Then invoke filterCharacters
   } else {
     keep = false;
   }
-}
-else if (currentQuestion.attribute === "shirtColor") {
+} else if (currentQuestion.attribute === 'shirtColor') {
   if (currentQuestion.value === secret.shirtColor) {
     keep = true;
   } else {
     keep = false;
   }
-}
-else if (currentQuestion.attribute === "unibrow") {
+} else if (currentQuestion.attribute === 'unibrow') {
   if (currentQuestion.value === secret.unibrow) {
     keep = true;
   } else {
     keep = false;
   }
-}
-else if (currentQuestion.attribute === "moustache") {
+} else if (currentQuestion.attribute === 'moustache') {
   if (currentQuestion.value === secret.moustache) {
     keep = true;
   } else {
     keep = false;
   }
-} else if (currentQuestion.attribute === "glasses") {
+} else if (currentQuestion.attribute === 'glasses') {
   if (currentQuestion.value === secret.glasses) {
     keep = true;
   } else {
@@ -449,10 +435,6 @@ const filterCharacters = (keep, group) => {
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value);
     }
   }
-
-  // filter to keep or remove based on the keep variable.
-  
-    
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
 }
@@ -460,25 +442,19 @@ const filterCharacters = (keep, group) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   const isConfirmed = confirm(`Is ${suspect} your answer?`)
-
   if (isConfirmed) {
     checkMyGuess(suspect);
   }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     winOrLoseText.innerHTML = "You caught the car thief! You get a free ride in your neighbour's 740!"
-  }
-
-  else {
+  } else {
     winOrLoseText.innerHTML = "The car thief is still running free! I guess no Volvo will be safe until there is a real detective in town..."
   }
-  winOrLoseSection.style.display = "flex";
+  winOrLoseSection.style.display = 'flex';
   board.style.display = 'none';
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly

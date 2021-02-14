@@ -1,12 +1,15 @@
-# Project Name
+# Project Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+- Create and manipulate objects
+- Create and manipulate arrays
+- Array methods such as forEach() and filter()
+- More about manipulating the DOM using Javascript
+- How to structure your code in functions
+- How to plan and think about game logic
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I tried to follow the instructions we got from Technigo to understand the project and what they wanted us to create. I had a hard time, had to rewatch videos and look at some code examples to understand how and why. 
 
 ## View it live
 

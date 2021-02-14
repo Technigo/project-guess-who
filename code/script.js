@@ -1,243 +1,277 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
+const filter = document.getElementById('filter')
 const restartButton = document.getElementById('restart')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const winOrLooseCorrect = document.getElementById('correct')
+const playAgain = document.getElementById('play-again')
+const feedback = document.getElementById('feedback')
+const feedbackSection = document.getElementById('feedback-section')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hairColor: 'hidden',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: true,
-    smoker: false,
+    name: 'Quokka',
+    img: 'images/quokka.jpg',
+    color: 'brun',
+    numberOfLegs: 'två',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hairColor: 'hidden',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    smoker: false,
+    name: 'Leopard',
+    img: 'images/leopard.jpg',
+    color: 'fläckig',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hairColor: 'grey',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    smoker: true,
+    name: 'Katt',
+    img: 'images/kitten.jpg',
+    color: 'grå',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: false,
-    hat: false,
-    smoker: false,
+    name: 'Björn',
+    img: 'images/bear.jpg',
+    color: 'brun',
+    numberOfLegs: 'fyra',
+    simma: true,
+    vifta: false,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hairColor: 'yellow',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    name: 'Lamm',
+    img: 'images/lamb.jpg',
+    color: 'vit',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    name: 'Hök',
+    img: 'images/hawk.jpg',
+    color: 'orange',
+    numberOfLegs: 'två',
+    simma: false,
+    vifta: false,  
+    flyga: true,
+    ruva: true,
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hairColor: 'black',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    name: 'Elefant',
+    img: 'images/elephant.jpg',
+    color: 'grå',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hairColor: 'yellow',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    name: 'Kalv',
+    img: 'images/cow.jpg',
+    color: 'vit',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    name: 'Orm',
+    img: 'images/snake.jpg',
+    color: 'grå',
+    numberOfLegs: 'inga ben',
+    simma: true,
+    vifta: false,  
+    flyga: false,
+    ruva: true,
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hairColor: 'purple',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    smoker: true,
+    name: 'Älg',
+    img: 'images/moose.jpg',
+    color: 'brun',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: false,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hairColor: 'brown',
-    eyeColor: 'blue',
-    glasses: true,
-    hat: true,
-    smoker: true,
+    name: 'Anka',
+    img: 'images/duck.jpg',
+    color: 'orange',
+    numberOfLegs: 'två',
+    simma: true,
+    vifta: false,  
+    flyga: true,
+    ruva: true,
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    name: 'Häst',
+    img: 'images/horse.jpg',
+    color: 'brun',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: true,
-    smoker: true,
+    name: 'Giraff',
+    img: 'images/giraffe.jpg',
+    color: 'fläckig',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hairColor: 'white',
-    eyeColor: 'hidden',
-    glasses: false,
-    hat: true,
-    smoker: false,
+    name: 'Gris',
+    img: 'images/pig.jpg',
+    color: 'rosa',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    name: 'Apa',
+    img: 'images/monkey.jpg',
+    color: 'brun',
+    numberOfLegs: 'två',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hairColor: 'hidden',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    smoker: false,
+    name: 'Räv',
+    img: 'images/fox.jpg',
+    color: 'orange',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hairColor: 'black',
-    eyeColor: 'blue',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    name: 'Igelkott',
+    img: 'images/hedgehog.jpg',
+    color: 'brun',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: false,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    name: 'Tvättbjörn',
+    img: 'images/racoon.jpg',
+    color: 'brun',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    name: 'Gås',
+    img: 'images/goose.jpg',
+    color: 'gul',
+    numberOfLegs: 'två',
+    simma: true,
+    vifta: false,  
+    flyga: true,
+    ruva: true,
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hairColor: 'yellow',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: true,
-    smoker: false,
+    name: 'Koala',
+    img: 'images/koala.jpg',
+    color: 'grå',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: false,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hairColor: 'grey',
-    eyeColor: 'brown',
-    glasses: false,
-    hat: false,
-    smoker: false,
+    name: 'Tiger',
+    img: 'images/tiger.jpg',
+    color: 'orange',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hairColor: 'yellow',
-    eyeColor: 'green',
-    glasses: false,
-    hat: false,
-    smoker: false,
+    name: 'Bäver',
+    img: 'images/beaver.jpg',
+    color: 'brun',
+    numberOfLegs: 'fyra',
+    simma: true,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hairColor: 'black',
-    eyeColor: 'green',
-    glasses: false,
-    hat: false,
-    smoker: false,
+    name: 'Groda',
+    img: 'images/frog.jpg',
+    color: 'gul',
+    numberOfLegs: 'fyra',
+    simma: true,
+    vifta: false,  
+    flyga: false,
+    ruva: true,
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: true,
-    hat: true,
-    smoker: false,
+    name: 'Hund',
+    img: 'images/puppy.png',
+    color: 'fläckig',
+    numberOfLegs: 'fyra',
+    simma: false,
+    vifta: true,  
+    flyga: false,
+    ruva: false,
   },
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret, currentQuestion, message
+let charactersFiltered = CHARACTERS
+let counter = 0
 
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  charactersFiltered.forEach((person) => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <img class="animal-img" src=${person.img} alt=${person.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Gissa på ${person.name}?</span>
+          <button class="filled-button small" onclick="guess('${person.name}')">Gissa</button>
         </div>
       </div>
     `
@@ -246,98 +280,132 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)]
 }
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  charactersFiltered = CHARACTERS
+  questions.selectedIndex = defaultStatus
+  counter = 0
+  document.getElementById("counter").innerHTML = "0" 
+  console.log(counter)
+  feedbackSection.classList.remove("visible")
+  generateBoard()
+  setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-
-  if (category === 'hair color') {
+  const value = questions.options[questions.selectedIndex].value
+  if (category === 'Färg') {
     currentQuestion = {
-      attribute: 'hairColor',
-      // value: ,
-      // 👆 add the value from the input here
-      category: category,
+      attribute: 'color',
+      value,
+      category,
     }
-  } else if (category === 'eye color') {
-    // Set this up your self
-  } else if (category === 'accessories') {
+  } else if (category === 'Antal ben') {
     currentQuestion = {
-      //attribute: ,
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
-      category: category,
+      attribute: 'numberOfLegs',
+      value,
+      category
     }
-  } else if (category === 'other') {
-    // Set this up your self (should be same structure as above)
+  } else if (category === 'Vad den gör') {
+    currentQuestion = {
+      attribute: value,
+      value: true, 
+      category
+    }
   }
 }
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  numberOfCounts()
+  selectQuestion()
+  const secretValue = secret[currentQuestion.attribute]
+  if (secretValue === currentQuestion.value) {
+    filterCharacters(true)
+  } else {
+    filterCharacters(false)
+  }
 }
+
+const numberOfCounts = () => {
+  counter += 1
+  document.getElementById("counter").innerHTML = counter
+}
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  // Show the correct alert message for different categories
-  if (group === 'accessories') {
+  const group = currentQuestion.category
+  const value = currentQuestion.value
+  const attribute = currentQuestion.attribute
+  message = ""
+  if (group === 'Färg') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
-      )
+      message = `<div class="answer-yes">STÄMMER</div><strong>Djuret har ${value} päls!</strong> <div>Behåller alla djur med ${value} päls.</div>`
     } else {
-      alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
-      )
+      message = `<div class="answer-no">TYVÄRR</div><strong>Djuret har inte ${value} päls!</strong> <div>Tar bort alla djur med ${value} päls...</div>`
     }
-  } else if (group === 'other') {
-    // Similar to the one above
-  } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
-    } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
-    }
-  }
+  } else if (group === 'Antal ben') {
+      if (keep) {
+        message = `<div class="answer-yes">STÄMMER</div><strong>Djuret har ${value} ben!</strong> <div>Behåller alla djur med ${value} ben.</div>`
+      } else {
+        message = `<div class="answer-no">TYVÄRR</div><strong>Djuret har inte ${value} ben!</strong> <div>Tar bort alla djur med ${value} ben...</div>`
+      }
+  } else if (group === 'Vad den gör') {
+      if (keep) {
+        message = `<div class="answer-yes">STÄMMER</div><strong>Djuret kan ${attribute}!</strong> <div>Behåller alla djur som kan ${attribute}.</div>`
+      } else {
+        message = `<div class="answer-no">TYVÄRR</div><strong>Djuret kan inte ${attribute}!</strong> <div>Tar bort alla djur som inte kan ${attribute}...</div>`
+      }
+  } 
 
-  // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
+  charactersFiltered = charactersFiltered.filter(animal => {
+        if (secret[attribute] === value) {
+            return animal[attribute] === value;
+        } else {
+            return animal[attribute] !== value;
+        }
+    });
+  feedbackMessage(message)
+  generateBoard()
+}
 
-  // Invoke a function to redraw the board with the remaining people.
+const feedbackMessage = (message) => {
+  feedbackSection.classList.add("visible")
+  feedback.innerHTML = `${message}`
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  let myGuess = suspect
+  if (confirm("Är du säker?")) {
+    checkMyGuess(myGuess)
+  } else {
+    alert("Okej, försök igen!")
+  }
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (suspect) => {
-  // 1. Check if the suspect is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+const checkMyGuess = (myGuess) => {
+  if (myGuess === secret.name) {
+    winOrLoseText.innerHTML = `${myGuess} är rätt, du vann!`
+  } else {
+    winOrLoseText.innerHTML = `${myGuess} är fel, game over!`
+    winOrLooseCorrect.innerHTML = `Rätt svar är ${secret.name}.`
+  }
+  board.innerHTML = ''
+  winOrLose.classList.add("show")
 }
 
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', () => {feedbackSection.classList.remove("visible"); start()})
+filter.addEventListener('click', checkQuestion)
+playAgain.addEventListener('click', () => {winOrLose.classList.remove("show"); start()})

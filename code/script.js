@@ -1,6 +1,6 @@
 // All the DOM selectors stored as short variables
-const asideRules =document.getElementById('aside-rules');
-const asideGame =document.getElementById('aside-game');
+const asideRules = document.getElementById('aside-rules');
+const asideGame = document.getElementById('aside-game');
 const greetingText = document.getElementById('greeting-text');
 const greetingForm = document.getElementById('form-wrapper');
 const inputFromUser = document.getElementById('input');
@@ -351,13 +351,13 @@ let displayMinutes = 0;
 //Time function
 const gameTimer = () => {
   seconds++;
-  if (seconds / 60 === 1){
+  if (seconds / 60 === 1) {
     seconds = 0;
     minutes++;
   }
-  if(seconds < 10) {
+  if (seconds < 10) {
     displaySeconds = `0${seconds}`
-  } else{
+  } else {
     displaySeconds = seconds;
   }
   if (minutes < 10) {
@@ -367,7 +367,7 @@ const gameTimer = () => {
   }
   timer.innerHTML = `${displayMinutes}:${displaySeconds}`;
 }
-const resetGameTimer = () =>{
+const resetGameTimer = () => {
   seconds = 0;
   minutes = 0;
 }
@@ -378,7 +378,7 @@ const showStartButton = (userInput) => {
   Welcome ${userInput}! Are you ready to play?`;
   greetingForm.innerHTML = `
   <button id="start-game" type="button" class="welcome-button">Start!</button>
-  ` 
+  `
   const startGameButton = document.getElementById('start-game');
   startGameButton.addEventListener('click', () => {
     welcomeBoard.classList.add('hidden');
@@ -430,42 +430,49 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const valueOfTheQuestion = questions.value;
-  if (category === 'hair color') {
-    currentQuestion = {
-      attribute: 'hairColor',
-      value: valueOfTheQuestion,
-      category: category,
-    }
-  } else if (category === 'hairstyle') {
-    currentQuestion = {
-      attribute: 'hairStyle',
-      value: valueOfTheQuestion,
-      category: category,
-    }
-  } else if (category === 'eye color') {
-    currentQuestion = {
-      attribute: 'eyeColor',
-      value: valueOfTheQuestion,
-      category: category,
-    }
-  } else if (category === 'mouth') {
-    currentQuestion = {
-      attribute: 'mouth',
-      value: valueOfTheQuestion,
-      category: category,
-    }
-  } else if (category === 'accessories') {
-    currentQuestion = {
-      attribute: valueOfTheQuestion,
-      value: true,
-      category: category,
-    }
-  } else if (category === 'other') {
-    currentQuestion = {
-      attribute: valueOfTheQuestion,
-      value: true,
-      category: category,
-    }
+  switch (category) {
+    case 'hair color':
+      currentQuestion = {
+        attribute: 'hairColor',
+        value: valueOfTheQuestion,
+        category,
+      };
+      break;
+    case 'hairstyle':
+      currentQuestion = {
+        attribute: 'hairStyle',
+        value: valueOfTheQuestion,
+        category,
+      };
+      break;
+    case 'eye color':
+      currentQuestion = {
+        attribute: 'eyeColor',
+        value: valueOfTheQuestion,
+        category,
+      };
+      break;
+    case 'mouth':
+      currentQuestion = {
+        attribute: 'mouth',
+        value: valueOfTheQuestion,
+        category,
+      };
+      break;
+    case 'accessories':
+      currentQuestion = {
+        attribute: valueOfTheQuestion,
+        value: true,
+        category,
+      };
+      break;
+    default:
+      currentQuestion = {
+        attribute: valueOfTheQuestion,
+        value: true,
+        category,
+      };
+      break;
   }
   return currentQuestion;
 }
@@ -475,101 +482,102 @@ const checkQuestion = () => {
   roundNumber++;
   updateTracker();
   const secretValue = secret[currentQuestion.attribute];
-  if (secretValue === currentQuestion.value) {
-    filterCharacters(true, currentQuestion.category)
-  } else {
-    filterCharacters(false, currentQuestion.category)
-  }
+  (secretValue === currentQuestion.value) ? filterCharacters(true, currentQuestion.category) : filterCharacters(false, currentQuestion.category);
 }
 //This function filters the characters based on the value of their choice.
 //It also alerts the player of whether their choice was right/wrong
 const filterCharacters = (keep, group) => {
-  if (group === 'accessories') {
-    if (keep) {
-      alert(
-        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}!`
-      );
-    } else {
-      alert(
-        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}!`
-      );
-    }
-  } else if (group === 'hairstyle') {
-    if (keep) {
-      if (currentQuestion.value === 'braids') {
+  switch (group) {
+    case 'accessories':
+      (keep) ?
         alert(
-          `Yes, the person has ${currentQuestion.value}! Keep all that have ${currentQuestion.value}!`
-        );
-      } else if (currentQuestion.value === 'bun') {
+          `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}!`
+        ) :
         alert(
-          `Yes, the person has ${currentQuestion.value} hairdo! Keep all that have ${currentQuestion.value} hairdo!`
+          `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}!`
         );
+      break;
+    case 'hairstyle':
+      if (keep) {
+        switch (currentQuestion.value) {
+          case 'braids':
+            alert(
+              `Yes, the person has ${currentQuestion.value}! Keep all that have ${currentQuestion.value}!`
+            );
+            break;
+          case 'bun':
+            alert(
+              `Yes, the person has ${currentQuestion.value} hairdo! Keep all that have ${currentQuestion.value} hairdo!`
+            );
+            break;
+          default:
+            alert(
+              `Yes, the person has ${currentQuestion.value} haircut! Keep all that have ${currentQuestion.value} haircut!`
+            );
+            break;
+        }
       } else {
+        switch (currentQuestion.value) {
+          case 'braids':
+            alert(
+              `No, the person does not have ${currentQuestion.value}! Remove all that have ${currentQuestion.value}!`
+            );
+            break;
+          case 'bun':
+            alert(
+              `No, the person does not have ${currentQuestion.value} hairdo! Remove all that have ${currentQuestion.value} hairdo!`
+            );
+            break;
+          default:
+            alert(
+              `No, the person does not have ${currentQuestion.value} haircut! Remove all that have ${currentQuestion.value} haircut!`
+            );
+            break;
+        }
+      };
+      break;
+    case 'mouth':
+      (keep) ?
         alert(
-          `Yes, the person has ${currentQuestion.value} haircut! Keep all that have ${currentQuestion.value} haircut!`
-        );
-      }
-    } else {
-      if (currentQuestion.value === 'braids') {
+          `Yes, the person has ${currentQuestion.value} mouth! Keep all that have ${currentQuestion.value} mouth!`
+        ) :
         alert(
-          `No, the person does not have ${currentQuestion.value}! Remove all that have ${currentQuestion.value}!`
+          `No, the person does not have ${currentQuestion.value} mouth! Remove all that have ${currentQuestion.value} mouth!`
         );
-      } else if (currentQuestion.value === 'bun') {
+      break;
+    case 'hair color':
+      (keep) ?
         alert(
-          `No, the person does not have ${currentQuestion.value} hairdo! Remove all that have ${currentQuestion.value} hairdo!`
-        );
-      } else {
+          `Yes, the person has ${currentQuestion.value} hair! Keep all that have ${currentQuestion.value} hair!`
+        ) :
         alert(
-          `No, the person does not have ${currentQuestion.value} haircut! Remove all that have ${currentQuestion.value} haircut!`
+          `No, the person does not have ${currentQuestion.value} hair! Remove all that have ${currentQuestion.value} hair!`
         );
-      }
-    }
-  } else if (group === 'mouth') {
-    if (keep) {
-      alert(
-        `Yes, the person has ${currentQuestion.value} mouth! Keep all that have ${currentQuestion.value} mouth!`
-      );
-    } else {
-      alert(
-        `No, the person does not have ${currentQuestion.value} mouth! Remove all that have ${currentQuestion.value} mouth!`
-      );
-    }
-  } else if (group === 'hair color') {
-    if (keep) {
-      alert(
-        `Yes, the person has ${currentQuestion.value} hair! Keep all that have ${currentQuestion.value} hair!`
-      );
-    } else {
-      alert(
-        `No, the person does not have ${currentQuestion.value} hair! Remove all that have ${currentQuestion.value} hair!`
-      );
-    }
-  } else if (group === 'other') {
-    if (keep) {
-      alert(
-        `Yes, the person is a ${currentQuestion.attribute}! Keep all that are ${currentQuestion.attribute}s!`
-      );
-    } else {
-      alert(
-        `No, the person is not a ${currentQuestion.attribute}! Remove all that are not ${currentQuestion.attribute}s!`
-      );
-    }
-  } else {
-    if (keep) {
-      alert(
-        `"Yes, the person has ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes"`
-      );
-    } else {
-      alert(
-        `No, the person doesnt have ${currentQuestion.value} eyes! Remove all persons with ${currentQuestion.value} eyes"`
-      )
-    }
+      break;
+    case 'other':
+      (keep) ?
+        alert(
+          `Yes, the person is a ${currentQuestion.attribute}! Keep all that are ${currentQuestion.attribute}s!`
+        ) :
+        alert(
+          `No, the person is not a ${currentQuestion.attribute}! Remove all that are not ${currentQuestion.attribute}s!`
+        );
+      break;
+    default:
+      (keep) ?
+        alert(
+          `"Yes, the person has ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes"`
+        ) :
+        alert(
+          `No, the person doesnt have ${currentQuestion.value} eyes! Remove all persons with ${currentQuestion.value} eyes"`
+        );
+      break;
   }
-  if (keep) {
-    charactersInPlay = charactersInPlay.filter(person => person[currentQuestion.attribute] === currentQuestion.value)
-  } else { charactersInPlay = charactersInPlay.filter(person => person[currentQuestion.attribute] !== currentQuestion.value) }
+  (keep) ?
+    charactersInPlay = charactersInPlay.filter(person => person[currentQuestion.attribute] === currentQuestion.value) :
+    charactersInPlay = charactersInPlay.filter(person => person[currentQuestion.attribute] !== currentQuestion.value);
   generateBoard()
-}
+};
 
 //Guess function allows the player to check the guess and secret person
 const guess = (suspect) => {
@@ -602,8 +610,8 @@ const checkMyGuess = (userGuess) => {
     }
   } else {
     playLooseSound()
-    winOrLooseText.innerText = 
-    `Sorry, ${playerName}! It is not ${userGuess}! Do you want to play again?`
+    winOrLooseText.innerText =
+      `Sorry, ${playerName}! It is not ${userGuess}! Do you want to play again?`
   }
 }
 //Sound effects functions
@@ -621,12 +629,12 @@ const playAlerSound = () => {
 }
 
 // Invokes the game timer function when website is loaded
-setInterval(gameTimer,1000);
+setInterval(gameTimer, 1000);
 
 // Event listeners
 
 //Takes the user's name and invokes showStartButton function
-greetingForm.addEventListener('submit', (event)=> {
+greetingForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const userName = inputFromUser.value;
   playerName = userName;
@@ -634,9 +642,9 @@ greetingForm.addEventListener('submit', (event)=> {
 });
 
 //Restarts the game when pressing the button
-restartButton.addEventListener('click', () =>{ 
+restartButton.addEventListener('click', () => {
   start();
-  });
+});
 //runs the SelectQuestion function upon the change in the selector
 questions.addEventListener('change', selectQuestion);
 
@@ -649,6 +657,6 @@ playAgainButton.addEventListener('click', () => {
   start();
 })
 //reloads the page when clicked on New Player button
-newPlayerButton.addEventListener('click', () =>{ 
-location.reload()
+newPlayerButton.addEventListener('click', () => {
+  location.reload()
 })

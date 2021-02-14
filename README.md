@@ -8,4 +8,4 @@ My plan for this project was to do it step by step, start with step one finish i
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guesswhoitis.netlify.app/

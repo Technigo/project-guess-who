@@ -4,80 +4,27 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guess Who</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/main.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="./assets/css/intro.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <div id="loading">
-      <div class="loading-container">
-        <div class="loader">
-          <div class="loader--dot"></div>
-          <div class="loader--dot"></div>
-          <div class="loader--dot"></div>
-          <div class="loader--dot"></div>
-          <div class="loader--dot"></div>
-          <div class="loader--dot"></div>
-          <div class="loader--text"></div>
-        </div>
-      </div>
-    </div>
-    <div id="page-container" class="none">
-      <aside class="question-section">
-        <section>
-          <div>You have <span id="time">01:00</span> seconds!</div>
-          <label for="character-controls"><span id="player"></span>,you have <span id="remain-guess"></span> guess(es).</label>
-          <div class="question" data-type="hairColor">
-            <p>What's the hair color?</p>
-            <span class="choice" data-value="hidden">hidden hair</span>
-            <span class="choice" data-value="black">black</span>
-            <span class="choice" data-value="yellow">yellow</span>
-            <span class="choice" data-value="purple">purple</span>
-            <span class="choice" data-value="grey">grey</span>
-            <span class="choice" data-value="orange">orange</span>
-            <span class="choice" data-value="brown">brown</span>
-            <span class="choice" data-value="white">white</span>
-          </div>
-          <div class="question" data-type="eyeColor">
-            <p>What's the eye color?</p>
-            <span class="choice" data-value="hidden">hidden eye</span>
-            <span class="choice" data-value="blue">blue</span>
-            <span class="choice" data-value="brown">brown</span>
-            <span class="choice" data-value="green">green</span>
-          </div>
-          <div class="question" data-type="glasses">
-            <p>Does the character wear glasses?</p>
-            <span class="choice" data-value="true">yes</span>
-            <span class="choice" data-value="false">no</span>
-          </div>
-          <div class="question" data-type="hat">
-            <p>Does the character wear hat?</p>
-            <span class="choice" data-value="true">yes</span>
-            <span class="choice" data-value="false">no</span>
-          </div>
-          <div class="question" data-type="smoker">
-            <p>Is the character a smoker?</p>
-            <span class="choice" data-value="true">yes</span>
-            <span class="choice" data-value="false">no</span>
-          </div>
-          <div class="question" data-type="facialHair">
-            <p>Does the character facial hair?</p>
-            <span class="choice" data-value="true">yes</span>
-            <span class="choice" data-value="false">no</span>
-          </div>
-
-        </section>
-      </aside>
-  
-      <section class="board-wrapper">
-        <main class="game-board" id="board">
-        </main>
+  <body class="intro">
+    <div class="main-wrapper">
+      <section class="main">
+        <h1 class="main-title">Welcome to GUESS WHO game!</h1>
+        <p class="loading">In this game, we randomly select a character.</p>
+        <p class="loading">Your goal is guessing the secret character.</p>
+        <p class="loading">You can ask four question from us then you should guess!</p>
+        <p class="loading">Let's have fun!</p>
+        <input type="text" placeholder="Please tell us your name" class="loading" id="player-name" onchange="getPlayerName()"> 
+        <a href="./game.html" class="btn-container loading">
+          <button type="submit" class="start-btn gradient-border">Start Game</button></a
+        >
       </section>
-
     </div>
-    <div id="alert" class="alert none"></div>
-    <!-- <script src="script.js"></script> -->
-    <script src="./assets/js/app.js" type="module"></script>
+
+    <script src="./assets/js/intro.js"></script>
   </body>
 </html>

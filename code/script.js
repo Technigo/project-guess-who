@@ -1,231 +1,267 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
-const questions = document.getElementById('questions')
+const counter = document.getElementById('counter')
+const findOut = document.getElementById('filter')
 const restartButton = document.getElementById('restart')
+const revange = document.getElementById('playAgain')
+const resulText = document.getElementById('winOrLoseText')
+const popup = document.getElementById('custom-popup')
+const popupText = document.getElementById('custom-popup-text')
+const popupButtons = document.getElementById('custom-popup-buttons')
+const questions = document.getElementById('questions')
+const winLose = document.getElementById('winOrLose')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
+    name: 'Ant-Man',
+    img: 'images/Ant-Man.jfif',
     hairColor: 'hidden',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: true,
-    smoker: false,
+    heroType: 'warrior',
+    power: 'technology',
+    Cap: false,
+    canFly: false,
+    weapon: false,
+
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
+    name: 'Aquaman',
+    img: 'images/Aquaman.jfif',
+    hairColor: 'yellow',
+    heroType: 'mutant',
+    power: 'superpower',
+    Cap: false,
+    canFly: false,
+    weapon: false,
+  },
+  {
+    name: 'Batman',
+    img: 'images/Batman.jfif',
     hairColor: 'hidden',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    smoker: false,
+    heroType: 'warrior',
+    power: 'technology',
+    Cap: true,
+    canFly: false,
+    weapon: false,
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hairColor: 'grey',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    smoker: true,
+    name: 'Black-Panther',
+    img: 'images/Black-Panther.png',
+    hairColor: 'hidden',
+    heroType: 'soldier',
+    power: 'technology',
+    Cap: false,
+    canFly: false,
+    weapon: false,
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: false,
-    hat: false,
-    smoker: false,
+    name: 'Black-Widow',
+    img: 'images/Black-Widow.png',
+    hairColor: 'red',
+    heroType: 'soldier',
+    power: 'withoutpower',
+    Cap: false,
+    canFly: false,
+    weapon: true,
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
+    name: 'Captain-America',
+    img: 'images/Captain-America.png',
     hairColor: 'yellow',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    heroType: 'soldier',
+    power: 'superpower',
+    Cap: false,
+    canFly: false,
+    weapon: true,
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hairColor: 'black',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    smoker: false,
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
+    name: 'Captain-Marvel',
+    img: 'images/Captain-Marvel.jfif',
     hairColor: 'yellow',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    heroType: 'soldier',
+    power: 'superpower',
+    Cap: false,
+    canFly: true,
+    weapon: false,
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    name: 'Cat-Woman',
+    img: 'images/Cat-woman.jfif',
+    hairColor: 'yellow',
+    heroType: 'warrior',
+    power: 'withoutpower',
+    Cap: false,
+    canFly: false,
+    weapon: false,
+  },
+  {
+    name: 'Deadpool',
+    img: 'images/Deadpool.png',
+    hairColor: 'hidden',
+    heroType: 'mutant',
+    power: 'superpower',
+    weapon: true,
+    Cap: false,
+    canFly: false,
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
+    name: 'Dr-Strange',
+    img: 'images/Dr-Strange.jfif',
+    hairColor: 'brown',
+    heroType: 'mage',
+    power: 'superpower',
+    Cap: true,
+    canFly: true,
+    weapon: false,
+  },
+  {
+    name: 'Falcon',
+    img: 'images/Falcon.jfif',
+    hairColor: 'black',
+    heroType: 'soldier',
+    power: 'technology',
+    Cap: false,
+    canFly: true,
+    weapon: true,
+  },
+  {
+    name: 'Gamora',
+    img: 'images/Gamora.png',
     hairColor: 'purple',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    smoker: true,
+    heroType: 'warrior',
+    power: 'withoutpower',
+    Cap: false,
+    canFly: false,
+    weapon: true,
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
+    name: 'Green-Lantern',
+    img: 'images/Green-Lantern.jfif',
     hairColor: 'brown',
-    eyeColor: 'blue',
-    glasses: true,
-    hat: true,
-    smoker: true,
+    heroType: 'mage',
+    power: 'superpower',
+    Cap: false,
+    canFly: true,
+    weapon: false,
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    name: 'Hulk',
+    img: 'images/Hulk.jfif',
+    hairColor: 'black',
+    heroType: 'mutant',
+    power: 'superpower',
+    Cap: false,
+    canFly: false,
+    weapon: false,
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: true,
-    smoker: true,
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hairColor: 'white',
-    eyeColor: 'hidden',
-    glasses: false,
-    hat: true,
-    smoker: false,
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
+    name: 'Iron-Man',
+    img: 'images/Iron-Man.jfif',
     hairColor: 'hidden',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    smoker: false,
+    heroType: 'warrior',
+    power: 'technology',
+    Cap: false,
+    canFly: true,
+    weapon: true,
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hairColor: 'black',
-    eyeColor: 'blue',
-    glasses: true,
-    hat: false,
-    smoker: false,
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: true,
-    hat: false,
-    smoker: false,
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
+    name: 'Mantis',
+    img: 'images/Mantis.png',
     hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    smoker: false,
+    heroType: 'mage',
+    power: 'superpower',
+    Cap: false,
+    canFly: false,
+    weapon: false,
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hairColor: 'yellow',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: true,
-    smoker: false,
+    name: 'Scarlet-Witch',
+    img: 'images/Scarlet-Witch.png',
+    hairColor: 'red',
+    heroType: 'mage',
+    power: 'superpower',
+    Cap: false,
+    canFly: true,
+    weapon: false,
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hairColor: 'grey',
-    eyeColor: 'brown',
-    glasses: false,
-    hat: false,
-    smoker: false,
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hairColor: 'yellow',
-    eyeColor: 'green',
-    glasses: false,
-    hat: false,
-    smoker: false,
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
+    name: 'Superman',
+    img: 'images/Superman.jfif',
     hairColor: 'black',
-    eyeColor: 'green',
-    glasses: false,
-    hat: false,
-    smoker: false,
+    heroType: 'warrior',
+    power: 'superpower',
+    Cap: true,
+    canFly: true,
+    weapon: false,
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
+    name: 'Thor',
+    img: 'images/Thor.jfif',
+    hairColor: 'brown',
+    heroType: 'warrior',
+    power: 'superpower',
+    Cap: true,
+    canFly: true,
+    weapon: true,
+  },
+  {
+    name: 'Vision',
+    img: 'images/Vision.png',
+    hairColor: 'hidden',
+    heroType: 'mage',
+    power: 'superpower',
+    Cap: true,
+    canFly: true,
+    weapon: false,
+  },
+  {
+    name: 'Wonder-Woman',
+    img: 'images/Wonder-Woman.jfif',
     hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: true,
-    hat: true,
-    smoker: false,
+    heroType: 'warrior',
+    power: 'superpower',
+    Cap: false,
+    canFly: false,
+    weapon: true,
+  },
+  {
+    name: 'Star-Lord',
+    img: 'images/Dark-Lord.jfif',
+    hairColor: 'brown',
+    heroType: 'warrior',
+    power: 'technology',
+    Cap: true,
+    canFly: false,
+    weapon: true,
+  },
+  {
+    name: 'Spiderman',
+    img: 'images/Spiderman.jfif',
+    hairColor: 'hidden',
+    heroType: 'mutant',
+    power:'superpower',
+    Cap: false,
+    canFly: false,
+    weapon: false,
+  },
+  {
+    name: 'Punisher',
+    img: 'images/Punisher.jfif',
+    hairColor: 'black',
+    heroType: 'soldier',
+    power:'withoutpower',
+    Cap: false,
+    canFly: false,
+    weapon: true,
   },
 ]
 
 // Global variables
 let secret, currentQuestion, charactersInPlay
+let guessCounter = 0
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -234,7 +270,7 @@ const generateBoard = () => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <img class="person-images"src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
@@ -243,10 +279,43 @@ const generateBoard = () => {
     `
   })
 }
+// Aditional popup functionality  
+const customPopup = (message, multipleButtons, suspect) => {
+
+  popup.classList.add('custom-popup-on')
+ 
+  popupText.innerHTML = `
+  <h2>${message}</h2>`
+
+  if (multipleButtons) {
+    popupButtons.innerHTML = `
+    <button id="Ok" class="custom-button" onclick="onSelectConfirm('${suspect}')">Accept</button>
+    <button id="Cancel" class="custom-button" onclick="onSelectConfirm(false)">Cancel</button>
+    `
+  } else {
+    popupButtons.innerHTML = `
+    <button id="Ok" class="custom-button" onclick="closePopud()">Accept</button>
+     `
+  }
+
+}
+const closePopud = () => {
+  popup.classList.remove('custom-popup-on')
+}
+const onSelectConfirm = (suspect) => {
+
+  if (suspect) {
+    checkMyGuess(suspect)
+  }
+
+  closePopud()
+
+}
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret)
 }
 
 // This function to start (and restart) the game
@@ -254,90 +323,154 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard()
+  setSecret()
+  //to restart the counter
+  counter.innerHTML = ""
+  guessCounter = 0
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+
+  // variable created to assign the selected value
+  const selectedValue = questions.value
+
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
-      // 👆 add the value from the input here
+      value: selectedValue,
       category: category,
     }
-  } else if (category === 'eye color') {
-    // Set this up your self
+  } else if (category === 'hero type') {
+    currentQuestion = {
+      attribute: 'heroType',
+      value: selectedValue,
+      category: category,
+    }
+
   } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      attribute: selectedValue,
+      value: true,
       category: category,
     }
-  } else if (category === 'other') {
-    // Set this up your self (should be same structure as above)
+  } else if (category === 'power') {
+    currentQuestion = {
+      attribute: 'power',
+      value: selectedValue,
+      category: category,
+    }
+
   }
 }
 
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
+  selectQuestion()
+
   // Compare the currentQuestion with the secret person.
+  const secretAttribute = secret[currentQuestion.attribute]
+  let shouldKeep
+  //Counter function
+  guessCounter++
+
+  counter.innerHTML = `
+  <h2>Number of guesses: ${guessCounter}</h2>>
+  `
   // See if we should keep or remove people based on that
+  if (secretAttribute === currentQuestion.value) {
+    shouldKeep = true
+  }
+  else {
+    shouldKeep = false
+  }
+
   // Then invoke filterCharacters
+  filterCharacters(shouldKeep)
+
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
+  const group = currentQuestion.category
+  const attribute = currentQuestion.attribute
+  const physicalAttribute = currentQuestion.value
+
   // Show the correct alert message for different categories
   if (group === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
-      )
+      customPopup(`Yes, the person wears ${attribute}! Keep all that wears ${attribute}`, false)
     } else {
-      alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
-      )
+      customPopup(`No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`, false)
     }
-  } else if (group === 'other') {
-    // Similar to the one above
-  } else {
+  } 
+   else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      // customPopup popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
+      customPopup(
+        `Yes, the person has ${group} ${physicalAttribute}! Keep all persons with ${group} ${physicalAttribute}`, false
+      )
     } else {
-      // alert popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      // customPopup popup that says something like: "NO, the person doesnt have yellow hair! Remove all persons with yellow hair"
+      customPopup(
+        `No, the person has not ${group} ${physicalAttribute}! Remove all persons with ${group} ${physicalAttribute}`, false
+      )
     }
+
   }
 
   // filter to keep or remove based on the keep variable.
-  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or 
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) */
+  charactersInPlay = charactersInPlay.filter((person) => {
+    if (keep) {
+      return person[attribute] === physicalAttribute
+    }
+    else {
+      return person[attribute] != physicalAttribute
 
+    }
+  })
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
+// store the interaction from the player in a variable.
 const guess = (suspect) => {
-  // store the interaction from the player in a variable.
   // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  customPopup(`Are you sure you want to guess on ${suspect}?`, true, suspect)
 }
 
 // If you confirm, this function is invoked
+// 1. Check if the suspect is the same as the secret person's name
 const checkMyGuess = (suspect) => {
-  // 1. Check if the suspect is the same as the secret person's name
+
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
+  winLose.classList.add('win-or-lose-wrapper-on')
+  if (suspect === secret.name) {
+    resulText.textContent = 'Congrats! You win'
+  } else {
+    resulText.textContent = 'GAME OVER! You Lose 😖'
+  }
   // 4. Hide the game board
 }
+//Bonus Step
+const playAgain = () => {
+  start()
+  winLose.classList.remove('win-or-lose-wrapper-on')
 
+}
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOut.addEventListener('click', checkQuestion)
+revange.addEventListener('click', playAgain)
+
+

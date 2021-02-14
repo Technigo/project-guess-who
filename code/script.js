@@ -352,12 +352,12 @@ const filterCharacters = (keep) => {
   } else if (category === 'eye color'){
     if (keep) {
       alert(
-      `Yes, the person has ${[currentQuestion.value]}! Keep all that don't have ${[currentQuestion.value]}`
+      `Yes, the person has ${[currentQuestion.value]} eyes! Keep all that don't have ${[currentQuestion.value]} eyes`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     } else {
       alert(
-        `No, the person doesn't have ${[currentQuestion.value]}! Remove all that has ${[currentQuestion.value]}`
+        `No, the person doesn't have ${[currentQuestion.value]} eyes! Remove all that has ${[currentQuestion.value]} eyes`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value) 
       }
@@ -365,12 +365,12 @@ const filterCharacters = (keep) => {
   } else if (category === 'hair color'){
     if (keep) {
       alert(
-        `Yes, the person has ${[currentQuestion.value]}! Keep all that don't have ${[currentQuestion.value]}`
+        `Yes, the person has ${[currentQuestion.value]} hair! Keep all that don't have ${[currentQuestion.value]} hair`
         )
         charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
       } else {
       alert(
-        `No, the person doesn't have ${[currentQuestion.value]}! Remove all that has ${[currentQuestion.value]}`
+        `No, the person doesn't have ${[currentQuestion.value]} hair! Remove all that has ${[currentQuestion.value]} hair`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value) 
     }

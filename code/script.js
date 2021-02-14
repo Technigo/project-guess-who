@@ -251,46 +251,40 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
+// Function to start the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
   generateBoard()
   setSecret()
-  console.log('secret: ', secret)
+
+  console.log(secret)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
   const value = questions.value
-  // We also need a variable that stores the actual value of the question we've selected.
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
       value: value,
-      // 👆 add the value from the input here
       category: category,
-      alertText: `has ${value} hair`
+      alertText: `${value} hair`
     }
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor', 
       value: value,
       category: category,
-      alertText: `has ${value} eyes`
-      // Set this up your self
+      alertText: `${value} eyes`
     }
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: value,
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      value: true, 
       category: category,
-      alertText: `wears ${value}`
+      alertText: `${value}`
     }
   } else if (category === 'other') {
     currentQuestion = {
@@ -298,7 +292,6 @@ const selectQuestion = () => {
       value: true,
       category: category,
       alertText: `${value}`
-      // Set this up your self (should be same structure as above)
     }
   }
 }
@@ -313,20 +306,15 @@ const checkQuestion = () => {
   } else {
     filterCharacters(false)
   }
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  // Show the correct alert message for different categories
-
   if (keep) {
-    alert(`Yes, the character ${currentQuestion.alertText}! Keep all characters that ${currentQuestion.alertText}.`)
+    alert(`Yes, the character has ${currentQuestion.alertText}! Keep all characters that has ${currentQuestion.alertText}.`)
     charactersInPlay = charactersInPlay.filter((character) => character[currentQuestion.attribute] === currentQuestion.value)
   } else {
-    alert(`No, the character doesn't ${currentQuestion.alertText}! Remove all characters that ${currentQuestion.alertText}.`)
+    alert(`No, the character doesn't have ${currentQuestion.alertText}! Remove all characters that has ${currentQuestion.alertText}.`)
     charactersInPlay = charactersInPlay.filter((character) => character[currentQuestion.attribute] !== currentQuestion.value)
   }
 
@@ -342,16 +330,12 @@ const guess = (suspect) => {
   } else {
     generateBoard()
   }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
-  // 1. Check if the suspect is the same as the secret person's name
   const correctGuess = secret.name === suspect
-  // 2. Set a Message to show in the win or lose section accordingly
+
   if (correctGuess) {
     document.getElementById('winOrLoseText').innerHTML = `
     The secret character is in fact ${suspect}. You win! 🎉💃
@@ -361,9 +345,9 @@ const checkMyGuess = (suspect) => {
     Sorry, the secret character is ${secret.name}.. You lose! 😬
     `
   }
-  // 3. Show the win or lose section
+
   document.getElementById('winOrLose').classList.add('show-win-or-lose-section')
-  // 4. Hide the game board
+
   board.innerHTML = ''
 }
 
@@ -374,4 +358,4 @@ start()
 restartBtn.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutBtn.addEventListener('click', checkQuestion)
-playAgainBtn.addEventListener('click', function(){location.reload()})
+playAgainBtn.addEventListener('click', () => {location.reload()})

@@ -309,6 +309,7 @@ const checkQuestion = () => {
     }
 }
 
+
 // This function will filter the characters array displaying messages accordingly 
 const filterCharacters = (keep) => {
     const group = currentQuestion.category
@@ -387,12 +388,16 @@ const guess = (suspect) => {
 // and generating a win of looes display accordingly
 const checkMyGuess = (suspect) => {
     if (suspect === secret.name) {
-        winOrLose.style.display = "block"
-        winOrLoseText.innerHTML = `WOHO! You got it right - well done!`
+        winOrLose.style.display = "flex"
+        winOrLoseText.innerHTML = `
+        <p>WOHO!</p> <p>You got it right</p> <p>well done!</p>
+        `
         winningSound.play();
     } else {
-        winOrLose.style.display = "block"
-        winOrLoseText.innerHTML = `FAIL! You got it wrong - better luck next time!`
+        winOrLose.style.display = "flex"
+        winOrLoseText.innerHTML = `
+        <p> FAIL!</p> <p>You got it wrong</p> <p>better luck next time!</p>
+        `
         losingSound.play()
     }
 

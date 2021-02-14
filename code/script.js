@@ -371,12 +371,15 @@ const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     winOrLoseText.innerHTML = (`You little Sherlock you! You guessed right on ${suspect}!`)
   } else{
-    winOrLoseText.innerHTML = (`I hope you're not doing this for a living. You were wrong with ${suspect}! ${suspect.name} would have been the one!`)
+    winOrLoseText.innerHTML = (`I hope you're not doing this for a living. You were wrong with ${suspect}! ${secret.name} would have been the one!`)
   }
 
   winOrLose.style.display = `flex`
   board.style.display = `none`
 }
+
+//Play again
+const playAgain = (start)
 
 // Invokes the start function when website is loaded
 start()

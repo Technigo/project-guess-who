@@ -5,11 +5,9 @@ const restartButton = document.getElementById('restart')
 const filledButton = document.getElementById('filter')
 const winOrLoseWrapper = document.getElementById('winOrLose')
 const playAgainButton = document.getElementById('playAgain')
-//the only one I did not put as a DOM selector now was <h1 line 59 HTML "winOrLoseText" 
-let guessMore = document.getElementById('guess') //Eller ska det vara bara guessButton? ///????????????
+const showWinOrLose = document.getElementById('showWinOrLose')
 
-//////// kom ihåg att lägga till <div class=guess> och evt evt ta bort DOM selector om jag väljer min version. // //////////
-// Array with all the characters, as objects
+// Array with all characters
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -19,6 +17,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jack',
@@ -28,6 +28,8 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    earrings: false,
+    beard: true
   },
   {
     name: 'Jacques',
@@ -37,6 +39,8 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: true,
+    earrings: false,
+    beard: true
   },
   {
     name: 'Jai',
@@ -46,6 +50,8 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jake',
@@ -55,6 +61,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'James',
@@ -64,6 +72,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jana',
@@ -73,6 +83,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jane',
@@ -82,6 +94,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jaqueline',
@@ -91,8 +105,9 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    earrings: true,
+    beard: false
   },
-
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
@@ -101,6 +116,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: true,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jean',
@@ -110,6 +127,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jeane',
@@ -119,6 +138,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    earrings: false,
+    beard: false,
   },
   {
     name: 'Jed',
@@ -128,6 +149,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: true,
+    earrings: false,
+    beard: true
   },
   {
     name: 'Jenni',
@@ -137,6 +160,8 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jeri',
@@ -146,6 +171,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jerry',
@@ -155,6 +182,8 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jess',
@@ -164,6 +193,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jocelyn',
@@ -173,6 +204,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    earrings: true,
+    beard: false
   },
   {
     name: 'Jon',
@@ -182,6 +215,8 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jordan',
@@ -191,6 +226,8 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Josephine',
@@ -200,6 +237,8 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    earrings: true,
+    beard: false
   },
   {
     name: 'Josh',
@@ -209,6 +248,8 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    earrings: false,
+    beard: false
   },
   {
     name: 'Jude',
@@ -218,6 +259,8 @@ const CHARACTERS = [
     glasses: false,
     hat: false,
     smoker: false,
+    earrings: false,
+    beard: true
   },
   {
     name: 'Julie',
@@ -227,14 +270,14 @@ const CHARACTERS = [
     glasses: true,
     hat: true,
     smoker: false,
+    earrings: false,
+    beard: false
   },
 ]
 
 // Global variables
 let secret, currentQuestion, charactersInPlay
-let question
 
- //THIS ONE NOW DRAWS THE BOARD
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -248,108 +291,55 @@ const generateBoard = () => {
         </div>
       </div>
     `
-  })
+  }) 
+  console.dir(generateBoard); //take away later
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Randomly select a person from CHARACTERS array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  //returns secret person in Console and I can acess it by typing secret (global variable)
   console.log(`"Find out who the secret person is:"`, secret);  //TAKE AWAY secret later
   return secret // is this redundant?
 } 
 
-// Start (and restart) the game + Make sure to set a secret person when the game starts.
+// Start (and restart) the game
   let start = () => {
     charactersInPlay = CHARACTERS
     document.getElementById('winOrLose').style.display = "none";
     document.getElementById('board').style.display = "flex"
-// https://stackoverflow.com/questions/6095530/maximum-call-stack-size-exceeded-error javascript Uncaught RangeError: Maximum call stack size exceeded
-/*    const cardHeader = () => {
-      board.innerHTML += `
-      <div id=cardHeader class=cardHeader>
-      <h2>"These are your cards, enjoy the game!"
-      </h2>
-    </div>`
-    return cardHeader
-    } 
-      let cardHead = start = start();
-      console.log(cardHead);
-      */
+    document.getElementById('showWinOrLose').style.display = "none"
 
-    // HEre I COULD HAVE JUSt CALLED the GENERATEBOARD instead probably??
-    // callback is invoked med 3 argument: the value of the element, the index of the element, and the array object being mapped.
+// callback is invoked med 3 argument: the value of the element, the index of the element, and the array object being mapped.
     setSecret(); 
 
     let board = generateBoard(charactersInPlay);
     console.log("These are your cards, enjoy the game!")
     return board
   }
-//NEW this one offers the filteredArray? 
-/*
-const offerCharacters = () => {
-    board.innerHTML = ''
-    charactersInPlay.forEach(person => {
-          board.innerHTML += `
-          <div class="card">
-          <p>${person.name}</p>
-          <img src=${person.img} alt=${person.name}>
-          <div class="guess">
-            <span>Guess on ${person.name}?</span>
-            <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
-          </div>
-        </div>
-      `;
-    })
-}
-*/
 
 // setting the currentQuestion object when you select something in the dropdown 
 function selectQuestion() {
   const category = questions.options[questions.selectedIndex].parentNode.label
- // let currentQuestion = questions.options[questions.selectedIndex].value
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected. DONE avkommentera!!
+  //--> This variable stores what option group (category) "".parentNode.label"  the question belongs to.
+
+
+  //Variable that stores the actual value of the question we've selected.
   currentQuestion = {
     attribute: questions.options[questions.selectedIndex].value,
     category
   } 
-  /*
-  if (category === 'hair color') {
-    currentQuestion = {
-      attribute: questions.options[questions.selectedIndex].value,
-      category: 'hair color',
-    }
-  } else if (category === 'eye color') {
-    currentQuestion = {
-      attribute: questions.options[questions.selectedIndex].value,
-      category: 'eye color', 
-    }
-  } else if (category === 'accessories') {
-    currentQuestion = {
-      attribute: questions.options[questions.selectedIndex].value,
-      category: 'accessories',
-    }
-  } else if (category === 'other') {
-    currentQuestion = {
-      attribute: questions.options[questions.selectedIndex].value,
-      category: 'other',
-    }
-  } */
   console.log('You chose:', currentQuestion, 'Now click on the Find Out button!')
 }
 
-
-
 // This function should be invoked when you click on 'Find Out'. TODO***
 const checkQuestion = () => {
-  selectQuestion() //Den startar på brown, vilket gör att en inte kan välja brown som val 1. DÄrför att 'change' not triggas.  
-  let attribute = currentQuestion.attribute //questions.options[questions.selectedIndex] //SPARA: Gets the currentQuestion value // It says that this is undefined
+  selectQuestion() //Den startar på brown, vilket gör att en inte kan välja brown som val nummer 1. Därfar att 'change' inte triggas, därför behövs denna
+  let attribute = currentQuestion.attribute //Gets the currentQuestion value
   let category = questions.options[questions.selectedIndex].parentNode.label //SPARA: gets the tag <optgroup label> - obs! Detta är en dublett av 293 men med LET
-//det är någonting med det här!!!! 
+  let question
+  //det är någonting med det här!!!! 
   //hur ska jag veta vad secrets attribut är? 
   //rätt värde i secret
-  
   //question borde heta mer guess eller något liknande?
   if (category === 'hair color') { 
     question = {
@@ -374,18 +364,29 @@ const checkQuestion = () => {
         question = {
           category: 'hat',
           attribute: true
+        }
+      } else if ('earrings' === attribute) {
+        question = {
+          category: 'earrings',
+          attribute: true
       }
     }
   } else if (category === 'other') {
+      if ('smoker' === attribute) {
       question = {
         category: 'smoker',
         attribute: true
       } 
+    } else if ('beard' === attribute) {
+      question = {
+        category: 'beard',
+        attribute: true
+      } 
     }
+  }
     console.log(question);
-    currentQuestion = question //assigns global variable currentQuestion = question
+    currentQuestion = question //assigns global variable currentQuestion = question som också är en global variabel där uppe*
 
-  //if else satsen här nere. GÖR EN NY SECRET VALUE********* mata in med currentType?? eller gör en ny secretType
   //I want to do a variable/function that stores the secret value from start perhaps it should not be nested inside of this function
 
   /*
@@ -404,29 +405,28 @@ const checkQuestion = () => {
   }
 */
 //secretValue(); 
-// ÄR DET OK ATTA DEN ENA INTE KÖRS???????
-//Writing OK?, but I did not yet figure out how to filter between these two.****
+
 //dessa två i en if else statement?? Run den ena om user chose '' value, och run den andra om user chose a Boolean value. HOW WOULD I WRITE THAT? 
-const keep = secret[category] === attribute // without currentValue it says in itself If it is T/F for glasses etc. BUT comes out as undefined for hair color and eye color AND WITH currentValue it comes out as undefined our false when I choose hat for example. 
-//const secretValue2 = secret[question.currentType] //This one does now show undefined which is corret. Noops. 
+const keep = secret[question.category] === question.attribute 
+console.log('sdfsd', secret[question.category], secret) //ta bort denna console.log eller beskriv vad den gör så att jag ser det???********
 console.log('You are one step closer to finding out who the secret person is!', keep)
 
-// OM den hemliga personen är samma som nuv. label och är samma som nuv. valt värde filtrera Sant else returnera falskt. 
+// Om den hemliga personen är samma som nuv. kategori och är densamma som nuv. valt värde filtrera Sant, else filtrera Falskt. 
     if (keep === true) {
-      console.log('You matched') //works until here  
+      console.log('You matched')
       filterCharacters(keep, question.category, question.attribute)
     } else {
-      console.log('You guess is not right this time, please try again!') //ändra?
-      filterCharacters(keep, question.category, question.attribute)
+      console.log('You guess is not right this time, please try again!') 
+      filterCharacters(keep, question.category, question.attribute) //pass by value
     }
   }
-    
+
   // Compare the currentQuestion with the secret person.
   // See if we should keep or remove people based on that
-  // Then invoke filterCharacters ***DONE***
-
+  // Then invoke filterCharacters 
 
 const filterCharacters = (keep, group, attribute) => { //question.category is now group, and question.attribute i now attribute
+  console.log(keep, group, attribute);
   if (keep != true) { 
     let charactersFiltered = charactersInPlay.filter(name => {
       if (name[group] === attribute) { 
@@ -449,7 +449,7 @@ const filterCharacters = (keep, group, attribute) => { //question.category is no
       )
     }
   } else if (group === 'hat') {
-    if (keep) {
+      if (keep) {
       alert(
         `Yes, the person wears ${questions.options[questions.selectedIndex].value}! Keep all that wears ${group}`//they have also written attribute here
       )
@@ -459,114 +459,109 @@ const filterCharacters = (keep, group, attribute) => { //question.category is no
       )
     } 
   } else if (group === 'smoker') {
-    //not sure about this first if here on 351
-    if (keep) {
+      if (keep) {
       alert(
         `Yes, the person is a ${questions.options[questions.selectedIndex].value}! Keep all ${group}`
       )
-  } else {
+    } else {
     alert(
       `No, the person is not a ${questions.options[questions.selectedIndex].value}! Remove all ${group}`
       )
     } 
-  } else if (group === 'hairColor') {
+  }
+  else if (group === 'hairColor') {
     if (keep) { 
-    alert(
-      `Yes, the person has ${questions.options[questions.selectedIndex].value} hair! Keep all persons with ${attribute} hair`
-    )
+      alert(
+        `Yes, the person has ${questions.options[questions.selectedIndex].value} hair! Keep all persons with ${attribute} hair`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${questions.options[questions.selectedIndex].value} hair! Remove all persons with ${attribute} hair`
+      )
     }
-    else {
-    alert(
-      `No, the person doesn't have ${questions.options[questions.selectedIndex].value} hair! Remove all persons with ${attribute} hair`
-    )
-    }
-    } else if (group === 'eyeColor') {
-      if (keep) { 
+  } 
+  else if (group === 'eyeColor') {
+    if (keep) { 
       alert(
         `Yes, the person has eyecolor ${questions.options[questions.selectedIndex].value}! Keep all persons with eyecolor ${attribute}`
       )
-      }
     } else {
       alert(
         `No, the person doesn't have eyecolor ${questions.options[questions.selectedIndex].value}! Remove all persons with eyecolor ${attribute} `
       )
-  }
-  //charactersInPlay = charactersFiltered ---> ligger nu här ovanför! 
-  //offerCharacters();
-  generateBoard(); //-----> alt. behåll min nya variant ovan??
+    } 
+  } 
+  else if (group === 'earrings' || group === 'beard') {
+    if (keep) { 
+      alert(
+        `Yes, the person wears ${questions.options[questions.selectedIndex].value}! Keep all persons with ${group}`
+        )
+    } else {
+      alert(
+        `No, the person doesn't wear ${questions.options[questions.selectedIndex].value}! Remove all persons with ${group} `
+      )
+    } 
+  } 
+  generateBoard(); 
 }
 
+  // filter to keep or remove based on the keep variable.
+
+
+  /* charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    or 
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value) 
+  */
 
   // Invoke a function to redraw the board with the remaining people.
 
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// when clicking guess, the player first have to confirm that they want to make a guess. confirm() window method
 const guess = (suspect) => {
   if (confirm('Are you sure you want to guess?')) {
-    console.log('User wnat to make a guess!');
+    console.log('User want to make a guess!');
     checkMyGuess(suspect)
   } else {
     console.log('The game continues!');
   }
-//  const confirm = authenticate
-  // store the interaction from the player in a variable. ********
 }
+
+// store the interaction from the player in a variable. * What would that do? *
+//userGuess = guess
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => { //name kan nås globalt, secret också. suspect är i det här fallet endast ett namn. 
+  console.log(suspect);
   if (secret.name === suspect) {
-    let showWinOrLose = () => {
+    let showWinner = () => { 
       document.getElementById('winOrLose').style.display = "block";
-      winOrLoseWrapper.innerHTML += `
-        <div class="message">
-          <h1>Congrats! You won the game!</h1>
-        </div>`
-        ;
+      document.getElementById('showWinOrLose').style.display = "block"
+      winOrLoseText.innerHTML = `Congrats! You won the game!`;
     } 
-    showWinOrLose()
+    showWinner()
     console.log('you won')
+    console.dir(showWinner) //take away later
   } else {
-      let showWinOrLose = () => {
+      let showLoser = () => {
         document.getElementById('winOrLose').style.display = "block";
-        winOrLoseWrapper.innerHTML += `
-        <div class="message">
-          <h2>Sorry, that was a wrong guess! You lost!</h2>
-        </div>`
-        ;
+        document.getElementById('showWinOrLose').style.display = "block"
+        winOrLoseText.innerHTML = `Sorry, that was a wrong guess! You lost!`;
       } 
-      showWinOrLose()
+      showLoser()
       console.log('you lost')
+      console.dir(showLoser) //take away later
     }
     document.getElementById('board').style.display = "none"; //hides board
 }
-//522:   // store the interaction from the player in a variable. ********
+  // 1. Check if the suspect is the same as the secret person's name
+  // 2. Set a Message to show in the win or lose section accordingly
+  // 3. Show the win or lose section
+  // 4. Hide the game board
 
-
-//Play again button does not yet work
-//Ändra färg på h2 i winOrLose
-
-// Invokes the start function when website is loaded
 start()
 
-// All the event listeners
+//Event listeners
 playAgainButton.addEventListener('click', start)
 restartButton.addEventListener('click', start)
 filledButton.addEventListener('click', checkQuestion)
-questions.addEventListener('change', selectQuestion) //is not used. 
-//guess.addEventListener('click', checkMyGuess) // ligger i 'genereateBoard' onclick
-
-/*
-= () => {
-  setTimeout(()=>{location.reload();},2000) }
-*/
-
-/*
-//I added restart function ---> should go higher up and check the syntax*
-const restart = () => {
-  document.location.href = "";
-};
-
-// All the event listeners
-restartButton.addEventListener('click', start)
-playAgainButton.addEventListener('click', restart) //can do a set timeout här! 
-*/
+//questions.addEventListener('change', selectQuestion) //is not used. 

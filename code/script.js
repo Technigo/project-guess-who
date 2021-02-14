@@ -261,8 +261,8 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const value = questions.options[questions.selectedIndex].value
-
+  
+const value = questions.value
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
@@ -277,13 +277,13 @@ const selectQuestion = () => {
     }
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: 'value',
+      attribute: value,
       value: true,
       category,
     }
   } else if (category === 'other') {
     currentQuestion = {
-      attribute: 'value',
+      attribute: value,
       value: true,
       category,
     }
@@ -296,22 +296,22 @@ const selectQuestion = () => {
   // Then invoke filterCharacters
 const checkQuestion = () => {
   const keep = currentQuestion.value === secret[currentQuestion.attribute]
+
   filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const {attribute, value, category} = currentQuestion
-
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all that wears ${attribute}`
+        `Yes, the person wears ${attribute}! Keep all that wear ${attribute}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
+        `No, the person doesn't wear ${attribute}! Remove all that wear ${attribute}`
       )
     }
   } else if (category === 'eye color'){
@@ -351,12 +351,13 @@ const filterCharacters = (keep) => {
   } else {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
   }
-  generateBoard ()
+  generateBoard (charactersInPlay)
 }
 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
+  const askForConfirmation = confirm()
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.

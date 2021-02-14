@@ -131,6 +131,8 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  font-size: 12px;
+  padding: 15px;
 }
 
 .filled-button,
@@ -145,12 +147,28 @@ button {
   color: var(--primary);
 }
 
+.guess-number {
+  color: white;
+  font-weight: 500;
+}
+
+.time {
+  position: fixed;
+  overflow: scroll; 
+  left: 0;
+  top: 90vh;
+  padding: 20px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -205,6 +223,8 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    display: flex;
+    justify-content: center;
   }
 
   .card {
@@ -229,5 +249,23 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+
+  button {
+    font-size: 12px;
+  }
+  .outlined-button {
+    margin-top: 15px
+  }
+  .time {
+    top: 0;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 5px;
+    background-color: var(--secondary);
+    padding: 3px 20px 20px 10px;
+    font-weight: 400;
+    font-size: 12px;
   }
 }

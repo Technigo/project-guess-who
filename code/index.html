@@ -23,7 +23,8 @@
       <h1>Does the person have</h1>
 
       <select id="questions">
-         <!-- Hair colors  -->
+          <!-- Hair colors  -->
+         <option id="default" value="" selected disabled>👇🏼 Select </option>
         <optgroup label="hair color">
           <option value="brown">brown hair</option>
           <option value="yellow">yellow hair</option>
@@ -31,7 +32,8 @@
           <option value="orange">orange hair</option>
           <option value="purple">purple hair</option>
           <option value="grey">grey hair</option>
-          <option value="hidden ">hidden hair</option>
+          <option value="white">white hair</option>
+          <option value="hidden">hidden hair</option>
           <!-- Eye colors  -->
         </optgroup>
         <optgroup label="eye color">
@@ -40,22 +42,40 @@
           <option value="blue">blue eyes</option>
           <option value="green">green eyes</option>
         </optgroup>
+          <!--Gender-->
+        <optgroup label="gender">
+          <option value="woman">woman</option>
+          <option value="man">man</option>
+        </optgroup>
           <!-- Other accessory -->
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
           <option value="hat">hat</option>
-          <!-- Habbit -->
+          <option value="greenclothes">green clothes</option>   
         </optgroup>
+         <!-- Habbit -->
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+
+      <div>
+        <p class=guess-number>Number of guesses: <span id='guess-number'>0</span></p>
+      </div>
+
+      <div class="timer">
+        <div id="display" class="time">
+          🕓 00:00
+        </div>
+      </div>
     </aside>
 
     <section class="board-wrapper">
-      <main id="board" class="game-board"></main>
+      <main id="board" class="game-board">
+        
+      </main>
     </section>
 
     <section id="winOrLose" class="win-or-lose-wrapper">
@@ -69,6 +89,8 @@
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

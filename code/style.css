@@ -1,11 +1,12 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #76327e;
+  --secondary: #ca9ddc; 
 }
 
 body {
   display: flex;
+  flex-direction: row-reverse;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
@@ -19,12 +20,20 @@ h1 {
   color: white;
 }
 
+.counter {
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
+  position: fixed;
+  left: 0;
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
@@ -92,6 +101,7 @@ select {
 
 .card:hover {
   background-color: var(--secondary);
+  transition: ease-in 0.3s;
 }
 
 .card:hover img,
@@ -131,6 +141,7 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  margin-bottom: 15px;
 }
 
 .filled-button,
@@ -151,6 +162,7 @@ button {
   align-items: center;
   justify-content: center;
   background: var(--secondary);
+  opacity: 0.97;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -185,6 +197,7 @@ button {
   .question-section {
     width: 100%;
     min-height: 0;
+    position: inherit;
   }
   button {
     padding: 8px 16px;

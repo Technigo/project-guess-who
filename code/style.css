@@ -1,7 +1,9 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #21865f;
+  --secondary: rgb(72, 194, 123);
+  --light:  rgb(128, 212, 169);
+  --dark: rgb(15, 73, 52);
 }
 
 body {
@@ -16,7 +18,7 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: var(--dark);
 }
 
 .question-section {
@@ -49,6 +51,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--light);
 }
 
 .game-board {
@@ -61,16 +64,18 @@ select {
 
 /****** CARD ******/
 .card {
+
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid var(--primary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--light);
 }
 
 .card p {
@@ -85,7 +90,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--dark);
   text-align: center;
   height: inherit;
 }
@@ -136,12 +141,12 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: var(--dark);
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: var(--light);
+  border-color: var(--light);
   color: var(--primary);
 }
 
@@ -168,13 +173,30 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
+.win-or-lose .guess-who-icon {
   align-self: flex-start;
   margin-left: 15%;
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+.win-or-lose .game-board {
+  margin-left: 27px;
+  margin-bottom: 32px;
+  max-width: 25%;
+  height: auto;
+  align-self: center;
+}
+
+.win-or-lose .card:hover {
+  background-color: var(--light);
+}
+
+.win-or-lose .card:hover img,
+.win-or-lose .card:hover p {
+  display: flex;
 }
 
 @media (max-width: 768px) {

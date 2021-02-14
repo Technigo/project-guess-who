@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const countQuestion = document.getElementById('countQuestion')
 
 
 // Array with all the characters, as objects
@@ -277,7 +278,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay, keep
+let secret, currentQuestion, charactersInPlay, keep, count = 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -372,7 +373,11 @@ const checkQuestion = () => {
     keep = false;
   }
 
+
   filterCharacters(keep)
+  count += 1;
+  console.log(count)
+  countQuestion.innerHTML = `${count}`
 }
 
 // This will filter the characters array and redraw the game board.
@@ -464,13 +469,12 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     winOrLoseText.innerHTML = "You won!!! Congrats!"
-    winOrLose.style.display = "block";
+    winOrLose.style.display = "flex";
   } else {
-    winOrLose.style.display = "block";
+    winOrLose.style.display = "flex";
     winOrLoseText.innerHTML = "Game over... Better luck next time."
   }
 
-  board.style.display = "none"
 }
 
 // Invokes the start function when website is loaded

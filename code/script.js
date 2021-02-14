@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
+const filterButton = document.getElementById('filter')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -253,6 +253,9 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  generateBoard();
+  setSecret();
+  console.log(secret);
   // What else should happen when we start the game?
 }
 
@@ -265,7 +268,7 @@ const selectQuestion = () => {
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      // value: ,
+      value: true,
       // 👆 add the value from the input here
       category: category,
     }
@@ -341,3 +344,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+filterCharacters.addEventListener('click', )

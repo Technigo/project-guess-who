@@ -379,14 +379,18 @@ const checkMyGuess = (suspect) => {
 }
 
 //Play again
-const playAgain = (start)
+const playAgain = () => {
+  winOrLose.style.display = `none`
+  board.style.display = `flex`
+  start ()
+}
 
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
-playAgainButton.addEventListener(`click`, start);
+
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 filterButton.addEventListener('click', checkQuestion);
-
+playAgainButton.addEventListener(`click`, playAgain);

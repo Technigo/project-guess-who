@@ -1,17 +1,16 @@
-# Project Name
+# Guess Who game
 
-Replace this readme with your own information about your project.
+This weeks project was to construct a digital version of the old character guessing board game "Guess Who". In this version it is a game for 1 player. The player tries to guess who the secret character is using a variety of different questions. Try to use the best questions possible that will narrow down the character cards quickly.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
-This project builds on the classic board game Guess Who. In this version it is a game for 1 player. The player tries to guess who the secret character is using a variety of different questions. Try to use the best questions possible that will narrow down the character cards quickly.
-
-I added player instructions in the Console. ??
 
 ## The problem
+Since I had never myself played the game Guess Who before I tried out different online versions to understand the different steps in creating the game. I have mainly practiced game logic, objects, arrays, and function scope and closure for the project. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I have focused on the JavaScript and built the code more or less top to bottom. There was a heightened sense of importance on the debugging process for this project which was valuable, and it's something that I will bring with me for the rest of the bootcamp.
+
+When I encountered problems I have asked my teammates on Slack, or live during our weekly team-meetings, or asked a question on Stack overflow. I've thoroughly followed my classmates questions in the help channel and asked google for help. I re-watched code sessions to understand this weeks learning objectives better. 
+
+If there was more time I would have changed the CSS, and practiced doing a timer that measures how long time each game takes. 
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to view it live on Netlify: https://heuristic-banach-b932cd.netlify.app/

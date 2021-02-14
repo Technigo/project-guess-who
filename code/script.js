@@ -295,6 +295,7 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
 
+  const value = questions.value
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',

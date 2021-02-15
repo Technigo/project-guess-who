@@ -156,8 +156,7 @@ const guess = (id, name) => {
     cancelText: "No, Cancel",
     onConfirm: () => {
       let messageText;
-
-      if (id === selectedSecretCharacter.id) {
+      if (Number(id) === selectedSecretCharacter.id) {
         messageText = "You win!";
       } else {
         messageText = "You lose, Game over!";

@@ -193,7 +193,7 @@ const setRemainedGuess = (remainedGuess) => {
 };
 
 startTimer(60);
-setTimeout(renderPage, 1000);
+setTimeout(renderPage, 3000);
 setRemainedGuess(guessLimit);
 selectedSecretCharacter = selectSecretCharacter(CHARACTERS);
 renderCharacters();

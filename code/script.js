@@ -336,7 +336,6 @@ const countingGuesses = () => {
     alert(
       "You have made 3 guesses, now you must choose the person"
     )
-     
   } else {
         //Do nothing
   }
@@ -372,7 +371,6 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  console.log(keep)
   group = currentQuestion.category
   attribute = currentQuestion.attribute
   value = currentQuestion.value
@@ -400,7 +398,6 @@ const filterCharacters = (keep) => {
       )
     }
   }
-    
   else if (group === 'hair color') {
     if (keep) {
       alert(
@@ -461,19 +458,19 @@ const checkMyGuess = (suspect) => {
     board.style.display = "none";
     winOrLoseWrapper.style.display = "flex";
     winOrLoseText.innerHTML = `
-    <audio autoplay= "autoplay">
-      <source src= "sound/victory.wav" type="audio/mpeg">
-    </audio>
-    <h1 class="glow-won">You have WON !!!</h1>
-  `
+      <audio autoplay= "autoplay">
+        <source src= "sound/victory.wav" type="audio/mpeg">
+      </audio>
+      <h1 class="glow-won">You have WON !!!</h1>
+    `
   } else {
     board.style.display = "none";
     winOrLoseWrapper.style.display = "flex";
     winOrLoseText.innerHTML = `
-    <audio autoplay = "autoplay">
-      <source src= "sound/blaster.wav" type="audio/mpeg"/>
-    </audio>
-    <h1 class="glow-lost">You have lost!</h1>
+      <audio autoplay = "autoplay">
+        <source src= "sound/blaster.wav" type="audio/mpeg"/>
+      </audio>
+      <h1 class="glow-lost">You have lost!</h1>
     `
   }
 }
@@ -487,8 +484,6 @@ restartButton.addEventListener('click', () => {
 })
 
 questions.addEventListener("change", () => {
-  //countingGuesses()
-
   selectQuestion(questions.value)
 })
 

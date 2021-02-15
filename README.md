@@ -1,13 +1,18 @@
-# Project Name
+# Project Guess Who
 
-Replace this readme with your own information about your project.
+This was Technigo bootcamp's 5th week and we had to make a game based on below actions:
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+- Create and manipulate objects
+- Create and manipulate arrays
+- Array methods such as forEach() and filter()
+- More about manipulating the DOM using Javascript
+- How to structure your code in functions
+- How to plan and think about game logic
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I tried to follow the instructions we got from Technigo to understand the project and what they wanted us to create. I had a hard time understanding, had to rewatch videos and look at some code examples to understand how and why. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://clever-bell-729503.netlify.app

@@ -1,13 +1,11 @@
-# Project Name
+# Project Guess-Who (Week 5)
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Had to build a functioning guess-who game through the understandings of arrays, functions, filters, and object management in javascript. Thus allowing us to 'guess' who the secret person was of the game.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The first big problem I came across was getting the 'Find Out' button to function properly. It could be clicked but nothing would happen after. I needed to better define my variable for value as well as my values for my alerts to properly function. I solved it partly from an eyeball from my team and partly from looking and breaking down others code. I also had trouble with win or lose function not displaying properly. I realized I needed to reverse my style displays for the board both in the checkMyGuess function and the start function. Otherwise all the cards would be turned off from the previous game when restarted. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+

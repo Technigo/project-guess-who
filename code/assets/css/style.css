@@ -8,7 +8,6 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
@@ -22,10 +21,10 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: #f1f1f1;
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding: 3vw;
   align-items: flex-start;
   box-sizing: border-box;
 }
@@ -34,7 +33,6 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -57,6 +55,8 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  gap: 16px;
+  justify-content: center;
 }
 
 /****** CARD ******/
@@ -113,15 +113,14 @@ select {
 }
 
 /****** BUTTONS ******/
-button {
+/* button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
-}
+} */
 
 .small {
   padding: 8px 16px;
@@ -230,4 +229,162 @@ button {
     color: var(--primary);
     border: none;
   }
+}
+
+.character-img {
+  width: 100px;
+  height: 100px;
+}
+
+.character-wrapper {
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  padding: 0 8px;
+  text-align: center;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+.character-wrapper:hover {
+  box-shadow: 0 8px 6px -6px #454545;
+  transform: scale(1.014);
+}
+
+.none {
+  display: none;
+}
+.block {
+  display: block;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.question .text {
+  margin-bottom: 5px;
+}
+
+.question .choice {
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+  display: inline-block;
+  margin: 0 4px 8px 0;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+/* .question .choice.disable {
+  opacity: 0.2;
+  cursor: not-allowed;
+} */
+
+.question .choice[data-value="blue"] {
+  background-color: blue;
+}
+.question .choice[data-value="brown"] {
+  background-color: rgb(54, 34, 21);
+}
+.question .choice[data-value="black"] {
+  background-color: #000;
+}
+.question .choice[data-value="yellow"] {
+  background-color: yellow;
+  color: #000;
+}
+.question .choice[data-value="purple"] {
+  background-color: purple;
+}
+.question .choice[data-value="grey"] {
+  background-color: rgb(77, 77, 77);
+}
+.question .choice[data-value="hidden"] {
+  background-color: grey;
+}
+.question .choice[data-value="orange"] {
+  background-color: orange;
+}
+.question .choice[data-value="green"] {
+  background-color: green;
+}
+.question .choice[data-value="true"] {
+  background-color: green;
+}
+.question .choice[data-value="false"] {
+  background-color: red;
+}
+.question .choice[data-value="white"] {
+  background-color: rgb(255, 255, 255);
+  color: #000;
+}
+
+.page-container {
+  display: flex;
+  position: relative;
+}
+
+.disable {
+  opacity: 0.2;
+  cursor: not-allowed !important;
+}
+
+.alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 4px;
+}
+
+.gradient-border {
+  width: 500px;
+  height: 200px;
+  --borderWidth: 8px;
+  background: #fff;
+  position: relative;
+  border-radius: var(--borderWidth);
+  padding: 8px;
+}
+.gradient-border:after {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+.alert-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.alert-confirm {
+  cursor: pointer;
+  width: 140px;
+  padding: 4px 0;
+  margin: 0 auto 16px auto;
+}
+
+.alert-text::selection {
+  color: #fff;
+  background-color: #f9d423;
 }

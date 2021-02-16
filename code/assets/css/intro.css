@@ -1,0 +1,102 @@
+@import "./normalize.css";
+@import "./variables.css";
+@import "./general.css";
+@import "./animations.css";
+
+.intro {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main-title {
+  animation: pulse 1s cubic-bezier(0.61, -0.01, 0.03, 1.08) alternate infinite;
+}
+
+.main-title::selection {
+  color: #fff;
+  background-color: #f9d423;
+}
+
+.loading {
+  animation: fadein 1s ease-in 0s 1 forwards;
+  opacity: 0;
+}
+.loading:nth-child(0) {
+  animation-delay: 0s;
+}
+.loading:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.loading:nth-child(2) {
+  animation-delay: 1s;
+}
+.loading:nth-child(3) {
+  animation-delay: 1.5s;
+}
+.loading:nth-child(4) {
+  animation-delay: 2s;
+}
+.loading:nth-child(5) {
+  animation-delay: 2.5s;
+}
+.loading:nth-child(6) {
+  animation-delay: 3s;
+}
+.loading:nth-child(7) {
+  animation-delay: 3.5s;
+}
+
+.btn-container {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.main {
+  display: grid;
+}
+
+.start-btn {
+  padding: 8px 16px;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  border: none;
+}
+
+.start-btn:hover {
+  background: rgb(255, 78, 80);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 78, 80, 1) 0%,
+    rgba(249, 212, 35, 1) 35%,
+    rgba(0, 221, 255, 1) 100%
+  );
+}
+
+.gradient-border {
+  --borderWidth: 3px;
+  background: #f1f1f1;
+  position: relative;
+  border-radius: var(--borderWidth);
+}
+.gradient-border:after {
+  content: "";
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(
+    10deg,
+    #6fba82,
+    #07b39b,
+    #1098ad,
+    #f37055,
+    #f79533
+  );
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  /* animation: animatedgradient 3s ease alternate infinite; */
+  background-size: 300% 300%;
+}

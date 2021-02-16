@@ -258,31 +258,32 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard() 
   setSecret()  
+  console.log(secret)
   board.style.display = 'flex'
   winOrLose.style.display = 'none'
-  console.log(secret)
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const value = questions.options[questions.selectedIndex].value
+  const chosenValue = questions.value
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: value,
+      value: chosenValue,
       category: category,      
     }
   } else if (category === 'eye color') {
     currentQuestion = {
       attribute: 'eyeColor',
-      value: value,
+      value: chosenValue,
       category: category,
     }
   } else if (category === 'accessories' || category === 'other') { //used || instead of creating 2 else if's
     currentQuestion = {
-      attribute: value,
+      attribute: chosenValue,
       value: true, 
       category: category,
     }
@@ -291,8 +292,9 @@ const selectQuestion = () => {
 
 // Invoked when FindOutButton clicked.
 const checkQuestion = () => {
-  const secretValue = secret[currentQuestion.value];
-  if (secretValue === currentQuestion.value) {
+  let value = currentQuestion.value
+  let attribute = currentQuestion.attribute
+  if (value === secret[attribute]) {
       filterCharacters(true)
   } else {
       filterCharacters(false)
@@ -302,7 +304,7 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const {category, value, attribute} = currentQuestion
+  let category = currentQuestion.attribute
    if (category === 'accessories') {
     if (keep) {
       alert(
@@ -341,7 +343,7 @@ const filterCharacters = (keep) => {
     } else {
       alert(
         `No, this person does not have ${currentQuestion.value} hair. Remove everyone with ${currentQuestion.value} hair.`
-      )
+      )   
   }
 }
   // filter to keep or remove based on the keep variable.
@@ -350,7 +352,6 @@ const filterCharacters = (keep) => {
   } else {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
   }
-  console.log(charactersInPlay)
   generateBoard()
 }
 

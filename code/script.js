@@ -286,11 +286,14 @@ const selectQuestion = () => {
   }
 }
 
-// This function should be invoked when you click on 'Find Out'.
+// Invoked when FindOutButton clicked.
 const checkQuestion = () => {
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  if (currentQuestion.value === secret[currentQuestion.attribute] ) {
+      filterCharacters = true
+  } else {
+      filterCharacters = false
+  }
+  console.log(checkQuestion)
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -307,8 +310,16 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (group === 'other') {
-    // Similar to the one above
-  } else {
+      if (keep) {
+        alert(
+          `Yes, this person is a ${attribute}! Keep everyone that is a ${attribute}.`
+        )
+      } else {
+        alert(
+          `No, this person is not a ${attribute}! Remove everyone that is a ${attribute}!`
+        )
+      }
+  } else { 
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all persons with yellow hair"
     } else {

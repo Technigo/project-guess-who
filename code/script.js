@@ -337,15 +337,14 @@ const filterCharacters = (keep) => {
       alert(
         `No, this person does not have ${currentQuestion.value} hair. Remove everyone with ${currentQuestion.value} hair.`
       );   
-  } 
-
+  }
+}
   // filter to keep or remove based on the keep variable.
   if (keep) {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
   } else {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
   }
-}
   generateBoard()
 }
 

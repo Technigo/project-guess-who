@@ -266,32 +266,32 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
     const category = questions.options[questions.selectedIndex].parentNode.label
-    const selectedValue = questions.options[questions.selectedIndex].value
+    const value = questions.value
 
     /* the variable currentQuestion is created as an object to use for comparison with the "secret"-person*/
     if (category === 'hair color') {
         currentQuestion = {
             attribute: 'hairColor',
-            value: selectedValue,
-            category: category,
+            value: value,
+            category,
         }
     } else if (category === 'eye color') {
         currentQuestion = {
             attribute: 'eyeColor',
-            value: selectedValue,
-            category: category,
+            value: value,
+            category,
         }
     } else if (category === 'accessories') {
         currentQuestion = {
-            attribute: selectedValue,
+            attribute: value,
             value: true,
-            category: category,
+            category,
         }
     } else if (category === 'other') {
         currentQuestion = {
-            attribute: selectedValue,
+            attribute: value,
             value: true,
-            category: category,
+            category,
         }
     }
 }
@@ -323,9 +323,9 @@ const checkQuestion = () => {
 
 const filterCharacters = (keep) => {
     /*declaring the different variable from the checkQuestion function*/
-    let attribute = currentQuestion.attribute
-    let value = currentQuestion.value
-    let group = currentQuestion.category
+    const attribute = currentQuestion.attribute
+    const value = currentQuestion.value
+    const group = currentQuestion.category
 
     /*generating the correct alert based on keep = true/false for the chosen property*/
     if (group === 'accessories') {

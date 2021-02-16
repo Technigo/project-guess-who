@@ -256,28 +256,31 @@ const start = () => {
   generateBoard();
   setSecret();
   console.log(secret);
-  // What else should happen when we start the game?
+  
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
+  const value = questions.options[questions.selectedIndex].value
+  
 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hairColor',
-      value: true,
-      // 👆 add the value from the input here
+      value: value,
       category: category,
     }
   } else if (category === 'eye color') {
-    // Set this up your self
-  } else if (category === 'accessories') {
     currentQuestion = {
-      //attribute: ,
-      // 👆 this is the property of the booleans such as smoke, glasses and hat. add the value from the input here
+      attribute: 'eyeColor',
+      value: value,
+      category: category,
+    }
+    // Set this up your self
+  } else if (category === 'accessories' || category === 'other') {
+    currentQuestion = {
+      attribute: value,
       value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
       category: category,
     }

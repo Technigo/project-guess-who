@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const filterButton = document.getElementById('filter')
+const findOutButton = document.getElementById('filter')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -253,9 +253,9 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  generateBoard();
-  setSecret();
-  console.log(secret);
+  generateBoard()
+  setSecret()
+  console.log(secret)
   
 }
 
@@ -277,15 +277,12 @@ const selectQuestion = () => {
       value: value,
       category: category,
     }
-    // Set this up your self
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'accessories' || category === 'other') { //used || instead of creating 2 else if's
     currentQuestion = {
       attribute: value,
-      value: true, // we're asking if this person wears a hat for exaple, so always true in the question.
+      value: true, 
       category: category,
     }
-  } else if (category === 'other') {
-    // Set this up your self (should be same structure as above)
   }
 }
 
@@ -347,4 +344,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-filterCharacters.addEventListener('click', )
+questions.addEventListener('change', selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)

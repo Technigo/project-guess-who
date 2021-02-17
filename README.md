@@ -1,13 +1,13 @@
-# Project Name
+# Project Name - Guess who?
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+In this week's project you'll create your own digital version of the old character guessing board game Guess Who?
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The approach was slow but steady, tried to take in as much as possible of provided material and made a handdrawn sketch of the flow before attempting it in code. I follewed the step by step guide and made my way through the solutions/problems. The game did'n feel complete without the play again functionalty so added that as one of the bonus steps.
+
+I find myself always wanting an perhaps needing more time. all and all, I'm happy that my game is working. If I have had more time I would have put it into styling and extra effects for more fun
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://gracious-ritchie-308aae.netlify.app/

@@ -397,7 +397,6 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret);
 }
 
 // This function to start (and restart) the game, resets guess counter + timer
@@ -570,7 +569,9 @@ setInterval(() => {
 }, 1000)
 
 // Invokes the start function when website is loaded
+
 start()
+
 
 // All the event listeners
 restartButton.addEventListener('click', start)

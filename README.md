@@ -16,4 +16,5 @@ With this project I was happy to meet the requierments but in the future I would
 
 ## View it live
 
-https://app.netlify.com/sites/condescending-ramanujan-50f929/overview
+https://condescending-ramanujan-50f929.netlify.app/  
+

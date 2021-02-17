@@ -1,14 +1,14 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #EED6D3;
+  --secondary: #E8B4B8;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 h1 {
@@ -158,6 +158,11 @@ button {
   right: 0;
   height: 100vh;
 }
+
+.show {
+  display: flex;
+}
+
 
 .win-or-lose {
   display: flex;

@@ -6,6 +6,7 @@ const playAgainButton = document.getElementById('playAgain')
 const findOutButton = document.getElementById('filter')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const winOrLoseSection = document.getElementById('winOrLose')
+const  copyrightMobile = document.getElementById('copyrightMobile')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -456,6 +457,7 @@ const checkMyGuess = (suspect) => {
   }
   winOrLoseSection.style.display = 'flex';
   board.style.display = 'none';
+  copyrightMobile.style.display = 'none';
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

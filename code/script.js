@@ -6,7 +6,7 @@ const playAgainButton = document.getElementById('playAgain')
 const findOutButton = document.getElementById('filter')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const winOrLoseSection = document.getElementById('winOrLose')
-const  copyrightMobile = document.getElementById('copyrightMobile')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -254,12 +254,10 @@ const CHARACTERS = [
 
 // Global variables
 
-let currentQuestion 
-
-let secret  
+let currentQuestion, secret  
 
 // Draw the game board
-function generateBoard() {
+const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
@@ -276,7 +274,7 @@ function generateBoard() {
   })
 }
 
-function playAgain() {
+const playAgain = () => {
   winOrLoseSection.style.display = 'none';
   winOrLoseText.innerHTML = '';
   board.style.display = 'flex';
@@ -294,7 +292,6 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
-  console.log(secret);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -457,6 +454,7 @@ const checkMyGuess = (suspect) => {
   }
   winOrLoseSection.style.display = 'flex';
   board.style.display = 'none';
+  const  copyrightMobile = document.getElementById('copyrightMobile')
   copyrightMobile.style.display = 'none';
   // 1. Check if the suspect is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly

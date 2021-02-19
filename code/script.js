@@ -228,8 +228,7 @@ const CHARACTERS = [{
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay, secretValue
-let countClicks = 0;
+let secret, currentQuestion, charactersInPlay, secretValue, countClicks
 
 // Draws the game board
 const generateBoard = () => {
@@ -241,7 +240,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" id='guess-who' onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button" class="small" id='guess-who' onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
@@ -305,10 +304,8 @@ const selectQuestion = (selected) => {
 const checkQuestion = () => {
   const secretValue = secret[currentQuestion.attribute]
   if (secretValue === currentQuestion.value) {
-    keep = true
     filterCharacters(true)
   } else {
-    keep = false
     filterCharacters(false)
   }
 }

@@ -8,6 +8,7 @@ const winner = document.querySelector('.winner')
 const looser = document.querySelector('.looser')
 const alertBox = document.querySelector('.alert')
 const confirmBox = document.querySelector('.confirm')
+const howManyGuesses = document.getElementById('so-many-guesses')
 const tryAgainBtn = document.getElementById('try-again-btn')
 const playAgain = document.getElementById('playAgain')
 const amountOfGuesses = document.getElementById('many-guesses')
@@ -482,6 +483,11 @@ const runWinnerBlock = () => {
   winner.style.display ='block'
   looser.style.display =''
   board.style.display = 'none'
+  if (guessClicks <= 1){
+    howManyGuesses.innerHTML = `You won after making ${guessClicks} guess only ⭐️`
+    } else if (guessClicks >= 2){
+    howManyGuesses.innerHTML = `You won after making ${guessClicks} guesses only ⭐️`
+    }
 }
 
 //click event to play again. location.reload, inbuild method to refresh page
@@ -515,7 +521,11 @@ start();
 
 // All the event listeners
 //When clicking on the 'Find out' button, you should invoke the checkQuestion function
-restartButton.addEventListener('click', start)
+// restartButton.addEventListener('click', start)
+
+restartButton.addEventListener('click', () => {
+  location.reload()
+})
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click' ,checkQuestion)
 

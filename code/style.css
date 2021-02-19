@@ -232,7 +232,7 @@ button:focus {
   align-items: center;
 }
 
-#many-guesses{
+#many-guesses, #so-many-guesses{
   color: white;
   font-size: 16px;
   font-weight: bold;

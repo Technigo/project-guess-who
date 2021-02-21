@@ -296,17 +296,19 @@ button:focus {
 
   .confirm{
     flex-direction: column;
+    align-self: flex-start;
     width: 200px;
-    height: 200px;
-    margin-bottom: 100px;
+    height: 150px;
+    margin-top: 30px;
     z-index: 99;
   }
 
   .alert{
     flex-direction: column;
+    align-self: flex-start;
     width: 200px;
-    height: 200px;
-    margin-bottom: 100px;
+    height: 150px;
+    margin-top: 30px;
     z-index: 99;
   }
 

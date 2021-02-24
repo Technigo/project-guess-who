@@ -401,7 +401,7 @@ start()
 console.log('Start function invoked: ', charactersInPlay)
 
 // Invokes the generateBoard function when website is loaded
-generateBoard()
+/*generateBoard()*/
 
 // Invokes the setSecret function when website is loaded
 setSecret()

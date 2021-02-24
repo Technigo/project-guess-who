@@ -1,3 +1,4 @@
+
 // DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
@@ -260,7 +261,6 @@ const start = () => {
   winOrLose.style.display = 'none'
   generateBoard()
   setSecret()
-
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -310,13 +310,9 @@ const selectQuestion = () => {
   
 const checkQuestion = () => {
   selectQuestion()
-  const secretValue = secret[currentQuestion.attribute]
-  if (secretValue === currentQuestion.value) {
-    filterCharacters(true,currentQuestion.category);
-  } else {
-    filterCharacters(false,currentQuestion.category);
-  }
-};
+  const keep = currentQuestion.value === secret[currentQuestion.attribute]
+filterCharacters(keep)
+}
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {

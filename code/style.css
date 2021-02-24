@@ -1,22 +1,23 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #f53cdc;
+  --secondary: #f3f15f;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Kalam', cursive;
 }
 
 h1 {
-  font-size: 42px;
-  font-weight: 500;
+  font-size: 60px;
+  font-weight: 800;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: #f53cdc;
+  font-family: 'Architects Daughter', cursive;
 }
 
 .question-section {
@@ -33,9 +34,9 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
+  font-size: 30px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: #f53cdc;
   width: 100%;
   margin: 24px 0;
 }
@@ -49,6 +50,8 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url(./images/small-comic-background.png);
+  background-repeat: repeat;
 }
 
 .game-board {
@@ -64,13 +67,14 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+  border: 4px solid #f53cdc;
+  margin: 6px;
+  border-radius: 4%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: whitesmoke;
 }
 
 .card p {
@@ -233,5 +237,11 @@ display: flex;
     background: white;
     color: var(--primary);
     border: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .game-board {
+    max-width: 1000px;
   }
 }

@@ -248,7 +248,7 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Randomly selects a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
@@ -273,30 +273,30 @@ const selectQuestion = () => {
     currentQuestion = {
       attribute: 'hairColor',
       value: optionValue,
-      category: category,
+      category,
     }
   } else if (category === 'eye color') {
     currentQuestion = {
     attribute: 'eyeColor',
     value: optionValue,
-    category: category,
+    category,
     }
   } else if (category === 'accessories') {
     currentQuestion = {
       attribute: optionValue,
       value: true, 
-      category: category,
+      category,
     }
   } else if (category === 'other') {
     currentQuestion = {
       attribute: optionValue,
       value: true, 
-      category: category,
+      category,
   }
 };
 }
 
-// This function should be invoked when you click on 'Find Out'.
+// This function is invoked when you click on 'Find Out'.
 const checkQuestion = () => {
   const secretValue = secret[currentQuestion.attribute];
   if (secretValue === currentQuestion.value) {
@@ -306,7 +306,7 @@ const checkQuestion = () => {
   }
 }
 
-// It'll filter the characters array and redraw the game board.
+// This function filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const group = currentQuestion.category;
   let attribute = currentQuestion.value;
@@ -383,16 +383,17 @@ const checkMyGuess = (suspect) => {
   if (secret.name === suspect) {
     let winSound = document.getElementById('winSound')
     winSound.play()
-   winOrLoseText.innerHTML=`Congratulations, you guessed right!!`
+   winOrLoseText.innerHTML=`Congratulations you guessed right! ${secret.name} is the secret person!!`
   } else {
     let loseSound = document.getElementById('loseSound')
     loseSound.play()
-    winOrLoseText.innerHTML=`Oh no, your guess was wrong :-(`
+    winOrLoseText.innerHTML=`Oh no, your guess was wrong :-( The secret person was ${secret.name}!`
   }
 }
 
 // Invokes the start function when website is loaded
 start()
+
 // All the event listeners
 restartButton.addEventListener('click', start)
 playAgainButton.addEventListener('click', start)

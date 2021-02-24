@@ -270,9 +270,7 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-
+ 
   const value = questions.value
   if (category === 'hair color') {
     currentQuestion = {
@@ -305,9 +303,7 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const keep = currentQuestion.value === secret[currentQuestion.attribute]
   filterCharacters(keep)
-  // Compare the currentQuestion with the secret person.
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+ 
 }
 
 // Filter the characters array and redraw the game board.

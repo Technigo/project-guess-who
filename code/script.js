@@ -247,15 +247,12 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
   console.log(secret)
 }
 
-// This function to start (and restart) the game
 const start = () => {
-   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   setSecret()
   generateBoard()
@@ -263,7 +260,6 @@ const start = () => {
   winOrLose.style.display = "none"
 }
 
-// setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   let value = questions.value
@@ -299,14 +295,12 @@ const selectQuestion = () => {
         }
 }
 
-// This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
   let keep = currentQuestion.value === secret[currentQuestion.attribute]
   
   filterCharacters(keep)
 }
 
-// It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const {attribute, category,value} = currentQuestion
   
@@ -335,7 +329,7 @@ const filterCharacters = (keep) => {
         alert(`No, the person doesn't have ${value} eyes! Remove all that has ${value} eyes`)
         }
     }
-  // filter to keep or remove based on the keep variable.
+
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     }  else {
@@ -345,7 +339,6 @@ const filterCharacters = (keep) => {
     generateBoard(charactersInPlay)
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   const confirmationOnGuess = confirm(`Are you sure you want to make a guess on ${suspect}`);
     if (confirmationOnGuess === true) {
@@ -354,7 +347,6 @@ const guess = (suspect) => {
         }
 }
 
-// If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   let winOrLoseText = document.getElementById('winOrLoseText')   
    
@@ -371,7 +363,7 @@ const checkMyGuess = (suspect) => {
 
 start()
  
-// All the event listeners
+
 restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', checkQuestion) 
 questions.addEventListener('change',() => { selectQuestion(questions.value)})

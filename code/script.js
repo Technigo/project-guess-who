@@ -302,18 +302,18 @@ const setSecret = () => {
 let start = () => {
   charactersInPlay = CHARACTERS
   
-  document.getElementById('winOrLose').style.display = "none";
+  document.getElementById('winOrLose').style.display = "none"
   document.getElementById('board').style.display = "flex"
   document.getElementById('showWinOrLose').style.display = "none"
 
-  setSecret(); 
+  setSecret()
 
-  let board = generateBoard(charactersInPlay);
+  let board = generateBoard(charactersInPlay)
     console.log("These are your cards, enjoy the game!")
     return board
 }
 
-function selectQuestion() {
+const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   //This variable stores what option group (category) "".parentNode.label"  the question belongs to.
   //Variable that stores the actual value of the question we've selected.
@@ -325,7 +325,7 @@ function selectQuestion() {
 }
 
 const checkQuestion = () => {
-  selectQuestion() //'change' triggades inte på haircolor brown som first option, därför behövs denna.
+  selectQuestion() //'change' was not triggered on haircolor brown as first option, that's why this needs to be called here.  
   let attribute = currentQuestion.attribute
   let category = questions.options[questions.selectedIndex].parentNode.label
   let question
@@ -373,7 +373,7 @@ const checkQuestion = () => {
       } 
     }
   }
-    console.log(question);
+    console.log(question)
     currentQuestion = question
 
 const keep = secret[question.category] === question.attribute 
@@ -473,34 +473,34 @@ const filterCharacters = (keep, group, attribute) => {
 
 const guess = (suspect) => {
   if (confirm('Are you sure you want to guess?')) {
-    console.log('User want to make a guess!');
+    console.log('User want to make a guess!')
     checkMyGuess(suspect)
   } else {
-    console.log('The game continues!');
+    console.log('The game continues!')
   }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
-  console.log(suspect);
+  console.log(suspect)
   if (secret.name === suspect) {
     let showWinner = () => { 
-      document.getElementById('winOrLose').style.display = "block";
+      document.getElementById('winOrLose').style.display = "block"
       document.getElementById('showWinOrLose').style.display = "block"
-      winOrLoseText.innerHTML = `Congrats! You won the game!`;
+      winOrLoseText.innerHTML = `Congrats! You won the game!`
     } 
     showWinner()
     console.log('you won')
   } else {
       let showLoser = () => {
-        document.getElementById('winOrLose').style.display = "block";
+        document.getElementById('winOrLose').style.display = "block"
         document.getElementById('showWinOrLose').style.display = "block"
-        winOrLoseText.innerHTML = `Sorry, that was a wrong guess! You lost!`;
+        winOrLoseText.innerHTML = `Sorry, that was a wrong guess! You lost!`
       } 
       showLoser()
       console.log('you lost')
     }
-    document.getElementById('board').style.display = "none"; //hides board
+    document.getElementById('board').style.display = "none" //hides board
 }
 
 start()

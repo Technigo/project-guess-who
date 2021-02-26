@@ -377,10 +377,10 @@ const checkQuestion = () => {
     currentQuestion = question
 
 const keep = secret[question.category] === question.attribute 
-//console.log(secret[question.category], secret)
+console.log(secret[question.category], secret)
 console.log('You are one step closer to finding out who the secret person is!', keep) 
 
-    // Om den hemliga personen är samma som nuv. kategori och är densamma som nuv. valt värde filtrera Sant, else filtrera Falskt. 
+    //If the secret person is the same as current category and is the same as current choosen value -> filter True, else filter False.  
     if (keep === true) {
       console.log('You matched')
       filterCharacters(keep, question.category, question.attribute)
@@ -404,34 +404,14 @@ const filterCharacters = (keep, group, attribute) => {
     charactersInPlay = charactersFiltered
   }
 
-  if (group === 'glasses') {
-    if (keep) {
-      alert(
-        `Yes, the person wears ${questions.options[questions.selectedIndex].value}! Keep all that wears ${group}`
-      )
-    } else {
-      alert(
-        `No, the person doesn't wear ${questions.options[questions.selectedIndex].value}! Remove all that wears ${group}`
-      )
-    }
-  } else if (group === 'hat') {
-      if (keep) {
-      alert(
-        `Yes, the person wears ${questions.options[questions.selectedIndex].value}! Keep all that wears ${group}`
-      )
-    } else {
-      alert(
-        `No, the person doesn't wear ${questions.options[questions.selectedIndex].value}! Remove all that wears ${group}`
-      )
-    } 
-  } else if (group === 'smoker') {
+  if (group === 'smoker') {
       if (keep) {
       alert(
         `Yes, the person is a ${questions.options[questions.selectedIndex].value}! Keep all ${group}`
       )
     } else {
-    alert(
-      `No, the person is not a ${questions.options[questions.selectedIndex].value}! Remove all ${group}`
+      alert(
+        `No, the person is not a ${questions.options[questions.selectedIndex].value}! Remove all ${group}`
       )
     } 
   }
@@ -457,7 +437,7 @@ const filterCharacters = (keep, group, attribute) => {
       )
     } 
   } 
-  else if (group === 'earrings' || group === 'beard') {
+  else if (group === 'earrings' || group === 'beard' || group === 'hat' || group === 'glasses') {
     if (keep) { 
       alert(
         `Yes, the person wears ${questions.options[questions.selectedIndex].value}! Keep all persons with ${group}`

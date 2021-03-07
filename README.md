@@ -1,13 +1,12 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A project inspired by the classic board game Guess Who. JavaScript conditionals, objects and arrays and also connect this to the DOM.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Describe how you approached to problem, and what tools and techniques you used to solve it.
+Approaching programming object and arrays. Discussion with other developers, stack overflow, google etc.   following a 6 step plan from starting the game to the end. Next step would be to add more interaction for the user, like player name and more CSS styling.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guessing-who.netlify.app/

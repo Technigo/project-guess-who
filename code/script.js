@@ -328,7 +328,7 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
-// This function is to start (and restart) the game
+// Start (and restart) the game
 const start = () => {
   winOrLose.style.display = 'none';            
   board.style.display = 'flex';
@@ -340,7 +340,7 @@ const start = () => {
   selectQuestion();
 };
 
-// setting the currentQuestion object when you select something in the dropdown
+// Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;    
   const selectedValue = questions.options[questions.selectedIndex].value;   
@@ -377,7 +377,7 @@ const selectQuestion = () => {
   } 
 };
 
-// This function should be invoked when you click on 'Find Out'.
+// Invoked when you click on 'Find Out'.
 const checkQuestion = () => {
   let keep;
   if (currentQuestion.value === secret[currentQuestion.attribute]) {      
@@ -411,13 +411,13 @@ const filterCharacters = (keep) => {
   generateBoard();   
 };
 
-// function that keeps track of how many times the user clicks the "Find out"-button, i.e. filtering
+// Keeps track of how many times the user clicks the "Find out"-button, i.e. filtering
 const incrementCount = () => {
   countUserFiltering += 1;
   filterCounter.innerHTML = `NUMBER OF QUESTIONS ASKED: ${countUserFiltering}`;
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// When clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
   const confirmGuess = confirm(`Are you sure you want to make a guess on ${suspect}?`);        
   if (confirmGuess == true) {
@@ -425,7 +425,7 @@ const guess = (suspect) => {
   } 
 };
 
-// If user confirms guess, this function is invoked
+// Invokes if the user confirms guess
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {                                                          
     winOrLoseText.innerHTML = `You guessed correctly! 🤩 🎉 It is ${suspect}!`;           

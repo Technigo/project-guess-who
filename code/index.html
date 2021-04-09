@@ -3,62 +3,127 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
+    <meta property="og:title" content="Guess Who Game">
+    <meta property="og:description" content="Play the old board game Guess Who!">
+    <meta property="og:image" content="https://game-guess-who.netlify.app/" />
+    <title>Guess Who?</title>
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/37c653cfef.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <aside class="question-section">
-      <button id="restart" class="outlined-button">RESTART</button>
 
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
+    <!-- Header -->
 
-      <h1>Does the person have</h1>
+    <header class="header">
 
-      <select id="questions">
-        <optgroup label="hair color">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
-        </optgroup>
-        <optgroup label="eye color">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
-        </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
-        </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
-        </optgroup>
-      </select>
+    <!-- Top left side of header with How to play information and image -->
 
-      <button id="filter" class="filled-button">FIND OUT</button>
-    </aside>
+      <div class="how-to-play question" id="howToPlayQuestion">How to play? click here!</div>
+      <div class="how-to-play answer" id="howToPlayAnswer">You select questions to ask about the secret person, and the goal is at the end to guess who the secret person is!</div>
+      <img src="images/jenni.svg" class="header-img"/>
+      
+    <!-- Center section of header with title, input name and button -->
 
-    <section class="board-wrapper">
+      <h1 class="h1">Guess Who?</h1>
+      <div class="input-button-section">
+        <input class="input" id="input" type="text" name="name" placeholder="enter your name">
+        <button class="lets-play-button" type="submit" id="letsPlayButton">let's play</button>
+      </div>
+
+    </header>
+    
+
+    <!-- Game board section with all the cards and questions -->
+
+    <section class="board-wrapper" id="gameBoard">
+    
+    <!-- Icon and player name -->
+
+      <div class="player-name-box">
+        <i class="fas fa-user"></i>
+        <span class="player-name" id="playerName"></span>
+      </div>
+      
+    <!-- Section for the cards -->
+
       <main class="game-board" id="board"></main>
+    
+    <!-- Question section underneath the cards -->
+
+      <section class="question-section">
+        
+    <!--Question select, left side-->
+
+        <div class="question-container-left-side">
+
+          <select id="questions">
+            <option disabled selected>Does the person have..?</option>
+            <optgroup label="hair color">
+              <option value="brown">brown hair</option>
+              <option value="yellow">yellow hair</option>
+              <option value="hidden">hidden hair</option>
+              <option value="grey">grey hair</option>
+              <option value="black">black hair</option>
+              <option value="orange">orange hair</option>
+              <option value="purple">purple hair</option>
+              <option value="white">white hair</option>
+            </optgroup>
+            <optgroup label="eye color">
+              <option value="hidden">hidden eyes</option>
+              <option value="green">green eyes</option>
+              <option value="brown">brown eyes</option>
+              <option value="blue">blue eyes</option>
+            </optgroup>
+            <optgroup label="accessories">
+              <option value="glasses">glasses</option>
+              <option value="hat">hat</option>
+            </optgroup>
+            <optgroup label="other">
+              <option value="smoker">a smoking habit</option>
+            </optgroup>
+            <optgroup label="age">
+              <option value="under 30">under 30</option>
+              <option value="30-45">30-45</option>
+              <option value="over 45">over 45</option>
+            </optgroup>
+          </select>
+      
+    <!-- Buttons find out and restart -->  
+
+          <button id="filter" class="filled-button">FIND OUT</button>
+          <div class="counter-box">
+            <div class="timer-box">
+              <i class="far fa-clock"></i> : 
+              <span class="timer" id="timer"></span>
+            </div>
+            <span class="question-counter" id="questionCounter"></span>
+          </div>
+        </div>
+
+        <div class="question-container-right-side">
+          <button id="restart" class="outlined-button">RESTART</button>
+        </div>
+
+      </section>
     </section>
+
+  <!-- Win or Lose section -->
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
         <h1 id="winOrLoseText"></h1>
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
+    
+  
+  <!-- Footer -->
+  
+    <footer class="footer">
+      <p class="footer-text">created by jessika hage</p>
+    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>

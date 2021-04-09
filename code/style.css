@@ -231,6 +231,7 @@ body {
 
 .question-container-left-side {
   display: flex;
+  align-items: center;
 }
 
 /* The questions and question counter */
@@ -246,10 +247,35 @@ select {
   margin: 0px 20px;
 }
 
-.question-counter p {
+.counter-box {
+  display: flex;
+  flex-direction: column;
   margin-left: 20px;
+}
+
+.question-counter p {
   font-size: 20px;
   color: white;
+  margin: 5px;
+}
+
+.timer-box {
+  display: flex;
+  align-items: center;
+  color: white;
+  margin: 5px;
+}
+
+.timer {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+}
+
+.timer-box .far {
+  font-size: 26px;
+  margin-right: 5px;
 }
 
 /* Right side of question section with restart button */
@@ -425,6 +451,16 @@ button {
   .filled-button {
     width: 200px;
     margin-top: 10px;
+  }
+
+  .counter-box {
+    margin: 10px 0 0 0;
+  }
+
+  .timer-box {
+    justify-content: center;
+    color: white;
+    margin-left: 0;
   }
 
   .question-counter p {

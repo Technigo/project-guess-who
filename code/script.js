@@ -12,7 +12,8 @@ const howToPlay = document.getElementById('howToPlayQuestion');
 const howToPlayAnswer = document.getElementById('howToPlayAnswer');
 const input = document.getElementById('input');
 const playerName = document.getElementById('playerName');
-let questionNumber = document.getElementById('questionCounter');
+const questionCounter = document.getElementById('questionCounter');
+const timerTicker = document.getElementById('timer');
 
 // Array with all the characters, as objects
 
@@ -285,7 +286,9 @@ const CHARACTERS = [
 
 // Global variables
 let secret, currentQuestion, charactersInPlay;
-questionNumber = 0;
+let secondsTotal = 0;
+let questionNumber = 0;
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -310,6 +313,28 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
+const timer = (current) => {
+  if (current === "restart") {
+    secondsTotal = 0;
+  }
+  secondsTotal ++;
+  let minute = Math.floor(secondsTotal / 60);
+  let seconds = secondsTotal - (minute * 60);
+  if (minute < 10) {
+    minute = "0" + minute;
+  }
+  if (seconds < 10) {
+    seconds = "0" + seconds;
+  }
+  timerTicker.innerHTML = `${minute}:${seconds}`;
+}
+
+//stops the timer and resets time to 0
+const stopTimer = () => {
+  let setTimer = setInterval(timer, 1000);
+  clearInterval(setTimer)
+  timer("restart")
+}
 
 // This function to start (and restart) the game
 const start = () => {
@@ -317,11 +342,12 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   setSecret();
   generateBoard();
+  stopTimer();
   gameBoard.style.display = "flex";
   winOrLose.style.display = "none";
   input.value = '';
   questionNumber = 0;
-  questionCounter.innerHTML = '';
+  questionCounter.innerHTML = `<p>QUESTIONS ASKED: ${questionNumber}</p>`
 };
 
 // Setting the currentQuestion object when selecting something in the dropdown
@@ -465,16 +491,16 @@ const checkMyGuess = (suspect) => {
     winOrLoseText.innerHTML = `
       <i class="far fa-grin-stars"></i>
       <h1>CONGRATULATIONS, ${input.value}! GREAT JOB!</h1>
-      <h2>You guessed on ${suspect} and that was correct and you did it with only ${questionNumber} questions!</h2>`;
+      <h2>You guessed on ${suspect} and that was correct and you did it in only ${questionNumber} questions  and ${timerTicker.innerHTML} minutes!</h2>`;
   } else if (suspect === secret.name) {
       winOrLoseText.innerHTML = `
         <i class="far fa-grin-stars"></i>
         <h1>CONGRATULATIONS, ${input.value}!</h1> 
-        <h2>You guessed on ${suspect} and that was correct and you did it with ${questionNumber} questions!</h2>`;
+        <h2>You guessed on ${suspect} and that was correct and it took you ${questionNumber} questions and ${timerTicker.innerHTML} minutes!</h2>`;
   } else {
       winOrLoseText.innerHTML = `
         <i class="far fa-frown"></i>
-        <h2>I'm sorry, ${input.value}! You guessed on ${suspect} and that was wrong and you did it with ${questionNumber} questions! The right answer was ${secret.name}!</h2>`;
+        <h2>I'm sorry, ${input.value}! You guessed on ${suspect} and that was wrong and it took you ${questionNumber} questions and ${timerTicker.innerHTML} minutes! The right answer was ${secret.name}!</h2>`;
   }
   // Restarts question counter, hides gameBoard and shows winOrLose section
   questionCounter.innerHTML = '';
@@ -485,6 +511,7 @@ const checkMyGuess = (suspect) => {
 
 // Invokes the start function when website is loaded
 start();
+setInterval(timer, 1000);
 
 
 // All the event listeners

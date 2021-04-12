@@ -491,10 +491,10 @@ const filterCharacters = (keep, group) => {
     case 'accessories':
       (keep) ?
         alert(
-          `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}!`
+          `Yes, the person wears ${currentQuestion.attribute}! We keep all that wears ${currentQuestion.attribute}!`
         ) :
         alert(
-          `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}!`
+          `No, the person doesn't wear ${currentQuestion.attribute}! We remove all that wears ${currentQuestion.attribute}!`
         );
       break;
     case 'hairstyle':
@@ -502,17 +502,17 @@ const filterCharacters = (keep, group) => {
         switch (currentQuestion.value) {
           case 'braids':
             alert(
-              `Yes, the person has ${currentQuestion.value}! Keep all that have ${currentQuestion.value}!`
+              `Yes, the person has ${currentQuestion.value}! We keep all that have ${currentQuestion.value}!`
             );
             break;
           case 'bun':
             alert(
-              `Yes, the person has ${currentQuestion.value} hairdo! Keep all that have ${currentQuestion.value} hairdo!`
+              `Yes, the person has ${currentQuestion.value} hairdo! We keep all that have ${currentQuestion.value} hairdo!`
             );
             break;
           default:
             alert(
-              `Yes, the person has ${currentQuestion.value} haircut! Keep all that have ${currentQuestion.value} haircut!`
+              `Yes, the person has ${currentQuestion.value} haircut! We keep all that have ${currentQuestion.value} haircut!`
             );
             break;
         }
@@ -520,17 +520,17 @@ const filterCharacters = (keep, group) => {
         switch (currentQuestion.value) {
           case 'braids':
             alert(
-              `No, the person does not have ${currentQuestion.value}! Remove all that have ${currentQuestion.value}!`
+              `No, the person does not have ${currentQuestion.value}! We remove all that have ${currentQuestion.value}!`
             );
             break;
           case 'bun':
             alert(
-              `No, the person does not have ${currentQuestion.value} hairdo! Remove all that have ${currentQuestion.value} hairdo!`
+              `No, the person does not have ${currentQuestion.value} hairdo! We remove all that have ${currentQuestion.value} hairdo!`
             );
             break;
           default:
             alert(
-              `No, the person does not have ${currentQuestion.value} haircut! Remove all that have ${currentQuestion.value} haircut!`
+              `No, the person does not have ${currentQuestion.value} haircut! We remove all that have ${currentQuestion.value} haircut!`
             );
             break;
         }
@@ -539,37 +539,37 @@ const filterCharacters = (keep, group) => {
     case 'mouth':
       (keep) ?
         alert(
-          `Yes, the person has ${currentQuestion.value} mouth! Keep all that have ${currentQuestion.value} mouth!`
+          `Yes, the person has ${currentQuestion.value} mouth! We keep all that have ${currentQuestion.value} mouth!`
         ) :
         alert(
-          `No, the person does not have ${currentQuestion.value} mouth! Remove all that have ${currentQuestion.value} mouth!`
+          `No, the person does not have ${currentQuestion.value} mouth! We remove all that have ${currentQuestion.value} mouth!`
         );
       break;
     case 'hair color':
       (keep) ?
         alert(
-          `Yes, the person has ${currentQuestion.value} hair! Keep all that have ${currentQuestion.value} hair!`
+          `Yes, the person has ${currentQuestion.value} hair! We keep all that have ${currentQuestion.value} hair!`
         ) :
         alert(
-          `No, the person does not have ${currentQuestion.value} hair! Remove all that have ${currentQuestion.value} hair!`
+          `No, the person does not have ${currentQuestion.value} hair! We remove all that have ${currentQuestion.value} hair!`
         );
       break;
     case 'other':
       (keep) ?
         alert(
-          `Yes, the person is a ${currentQuestion.attribute}! Keep all that are ${currentQuestion.attribute}s!`
+          `Yes, the person is a ${currentQuestion.attribute}! We keep all that are ${currentQuestion.attribute}s!`
         ) :
         alert(
-          `No, the person is not a ${currentQuestion.attribute}! Remove all that are not ${currentQuestion.attribute}s!`
+          `No, the person is not a ${currentQuestion.attribute}! We remove all that are not ${currentQuestion.attribute}s!`
         );
       break;
     default:
       (keep) ?
         alert(
-          `"Yes, the person has ${currentQuestion.value} eyes! Keep all persons with ${currentQuestion.value} eyes"`
+          `"Yes, the person has ${currentQuestion.value} eyes! We keep all persons with ${currentQuestion.value} eyes"`
         ) :
         alert(
-          `No, the person doesnt have ${currentQuestion.value} eyes! Remove all persons with ${currentQuestion.value} eyes"`
+          `No, the person doesnt have ${currentQuestion.value} eyes! We remove all persons with ${currentQuestion.value} eyes"`
         );
       break;
   }

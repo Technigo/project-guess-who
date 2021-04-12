@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #ea9a96;
+  --secondary: #303960;
 }
 
 body {
@@ -15,14 +15,14 @@ h1 {
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
-  margin: 10px 0;
+  margin: 130px 0px 0px 0px;     
   color: white;
 }
 
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-image: url(./images/background-image.png);
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -36,12 +36,32 @@ select {
   font-size: 22px;
   font-family: 'Montserrat';
   color: var(--secondary);
+  padding: 10px;
   width: 100%;
   margin: 24px 0;
+  border: 1px solid #aaa;
+  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  border-radius: 15px;
+  background-color: #fff;
 }
 
-.guess-who-icon {
-  width: 126px;
+.filter-counter {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  background: #303960;
+}
+
+.filter-counter span {
+  padding: 17px 27px;
 }
 
 .board-wrapper {
@@ -128,7 +148,7 @@ button {
 }
 
 .outlined-button {
-  background-color: transparent;
+  background: transparent;
   color: var(--primary);
   align-self: flex-end;
 }
@@ -168,14 +188,12 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
-}
-
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
+
+
+/***** MEDIA QUERY *****/
 
 @media (max-width: 768px) {
   body {
@@ -183,12 +201,15 @@ button {
   }
 
   .question-section {
+    background-image: url(./images/background-image2.png);
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

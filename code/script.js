@@ -252,39 +252,39 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   setSecret()
   generateBoard()
-  board.style.display = "flex"
-  winOrLose.style.display = "none"
+  // board.style.display = "flex"
+  // winOrLose.style.display = "none"
 }
 
-const selectQuestion = () => {
+const selectQuestion = (someValue) => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  let value = questions.value
+ 
  
   if (category === 'hair color') {
-    console.log('hair color', value)
+   
     currentQuestion = {
       attribute: 'hairColor',
-      value: value,       
+      value: someValue,       
       category: category,
     } 
   } else if (category === 'eye color') {
-    console.log('eye color', value)
+    
       currentQuestion = { 
         attribute: 'eyeColor',
-        value: value,
+        value: someValue,
         category: category,
       } 
     } else if (category === "accessories") {
-      console.log('accessories', value)
+      
         currentQuestion = {
-          attribute: value, // value instead of glasses 
+          attribute: someValue, // value instead of glasses 
           value: true,
           category: category, 
         }
       } else {
-      console.log('other', value)
+      
           currentQuestion = {
-            attribute: value,   
+            attribute: someValue,   
             value: true, 
             category: category,
             }
@@ -297,42 +297,42 @@ const checkQuestion = () => {
   filterCharacters(keep)
 }
 
-const filterCharacters = (keep) => {
+const filterCharacters = (someKeep) => {
   const {attribute, category,value} = currentQuestion
   
   if (category === 'accessories') {
-    if (keep) {
+    if (someKeep) {
       alert(`Yes, the person wears ${attribute}! Keep all that wears ${attribute}`)
     } else {
       alert(`No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`)
     }
   } else if (category === 'other') {
-      if (keep) {
+      if (someKeep) {
         alert(`Yes, the person has ${attribute}! Keep all that has ${attribute}`)
       } else {
         alert(`No, the person doesn't have ${attribute}! Remove all that have ${attribute}`)
       }
     } else if (category === 'hair color') {
-        if (keep) {
+        if (someKeep) {
           alert(`Yes, the person has ${value} hair! Keep all that has ${value} hair!`)
         } else {
           alert(`No, the person doesn't have ${value} hair color! Remove all that has ${value} hair.`)
         }
     } else {
-        if (keep) {
+        if (someKeep) {
         alert(`Yes, the person has ${value} eyes! Keep all that has ${value} eyes.`)
         } else {
         alert(`No, the person doesn't have ${value} eyes! Remove all that has ${value} eyes`)
         }
     }
 
-    if (keep) {
+    if (someKeep) {
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     }  else {
          charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] !== currentQuestion.value)
        }
 
-    generateBoard(charactersInPlay)
+    generateBoard()
 }
 
 const guess = (suspect) => {
@@ -362,5 +362,5 @@ start()
 
 restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', checkQuestion) 
-questions.addEventListener('change',() => { selectQuestion(questions.value)})
+questions.addEventListener('change',() => selectQuestion(questions.value))
 playAgainButton.addEventListener('click', start) 

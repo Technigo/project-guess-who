@@ -1,14 +1,19 @@
-# Project 5, (week 5) - Guess Who 
+# Project 5, Technigo Bootcamp - Guess Who 
 
 Create the classic board game "Guess Who", using javascript. 
 
 ## The problem
 
-Followed a step by step approach as per provided instructions from Technigo brief. I struggled from the start, this assignment has been very stressful and not understanding the steps needed to make it work, overthinking and blocking myself from getting anywhere. For me this assignment actually felt harder with the pre-set code, as I could'nt understand its functions properly. 
+Requirements: 
+- The board with characters should be generated when website is loaded.
+- A randomly selected person should be set as the secret when game starts.
+- You should be able to select questions to ask about the people and filter the board based on those questions.
+- You should also give the player feedback with alerts
+- You should be able to guess on the secret person and get an answer if it's correct or not.
 
-I asked many questions in Slack and Stack, also discussing with team members, google and slowly I managed to understand the functions and why they were needed and what needed to be added. 
+Stretch goal: 
+- create a restart button 
 
-If I had more time I would complete red level. 
 
 
 ## View it live

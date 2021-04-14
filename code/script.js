@@ -295,7 +295,7 @@ const generateBoard = () => {
 // Randomly select a person from Characters array and set as the value of secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log("Find out who the secret person is!");
+  console.log("Find out who the secret person is!")
   return secret
 } 
 
@@ -309,7 +309,7 @@ let start = () => {
   setSecret()
 
   let board = generateBoard(charactersInPlay)
-    console.log("These are your cards, enjoy the game!")
+    alert("These are your cards, enjoy the game!")
     return board
 }
 
@@ -325,7 +325,7 @@ const selectQuestion = () => {
 }
 
 const checkQuestion = () => {
-  selectQuestion() //'change' was not triggered on haircolor brown as first option, that's why this needs to be called here.  
+  selectQuestion() //'change' was not triggered on haircolor brown as first option, so this needs to be called here.  
   let attribute = currentQuestion.attribute
   let category = questions.options[questions.selectedIndex].parentNode.label
   let question
@@ -378,19 +378,21 @@ const checkQuestion = () => {
 
 const keep = secret[question.category] === question.attribute 
 console.log(secret[question.category], secret)
-console.log('You are one step closer to finding out who the secret person is!', keep) 
+console.log(question.attribute) // ex of console.log(hidden) so question.attribute is either t/f or hidden, blue, green etc. 
+alert('You are one step closer to finding out who the secret person is!', keep) 
 
     //If the secret person is the same as current category and is the same as current choosen value -> filter True, else filter False.  
     if (keep === true) {
       console.log('You matched')
       filterCharacters(keep, question.category, question.attribute)
     } else {
-      console.log('You guess is not right this time, please try again!') 
+      alert('You guess is not right this time, please try again!') 
       filterCharacters(keep, question.category, question.attribute) //pass by value
     }
   }
 
 //question.category is now group, and question.attribute is now attribute
+// keep = boolean - group is some kind of category eg. hairColor - attribute is what I guessed on eg. orange (hair)
 const filterCharacters = (keep, group, attribute) => {
   console.log(keep, group, attribute);
   if (keep != true) { 
@@ -400,7 +402,7 @@ const filterCharacters = (keep, group, attribute) => {
       } else {
         return true
       }
-    });
+    })
     charactersInPlay = charactersFiltered
   }
 

@@ -292,10 +292,9 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from Characters array and set as the value of secret
+// Select a person from Characters array and set as the value of secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log("Find out who the secret person is!")
   return secret
 } 
 
@@ -309,7 +308,7 @@ let start = () => {
   setSecret()
 
   let board = generateBoard(charactersInPlay)
-    alert("These are your cards, enjoy the game!")
+    alert("Find out who the secret person is. These are your cards, enjoy the game!")
     return board
 }
 
@@ -321,9 +320,22 @@ const selectQuestion = () => {
     attribute: questions.options[questions.selectedIndex].value,
     category
   } 
-  console.log('You chose:', currentQuestion, 'Now click on the Find Out button!')
+  console.log('You chose:', currentQuestion.attribute, 'Now click on the Find Out button!') //shows the whole object
 }
-
+/* const checkQuestion = () => {
+  //console.log(secret)
+  //console.log(secret[currentQuestion.attribute]) //prints out the attribute of secret person (eg. brown hair, glasses: true, brown eyes)
+  
+  // *Compare the currentQuestion with the secret person.
+  //console.log(currentQuestion.value) // prints out the value of the current question (eg. purple hair, glasses: false, blue eyes)
+  // *See if we should keep or remove people based on that
+  //* Then invoke filterCharacters
+  if (secret[currentQuestion.attribute] === currentQuestion.value) { //if they are the same 
+    filterCharacters(true)
+  } else {
+    filterCharacters(false)
+  }  
+} */
 const checkQuestion = () => {
   selectQuestion() //'change' was not triggered on haircolor brown as first option, so this needs to be called here.  
   let attribute = currentQuestion.attribute
@@ -373,24 +385,26 @@ const checkQuestion = () => {
       } 
     }
   }
-    console.log(question)
+    console.log(question) // gets the object ---> {category: "hairColor", attribute: "yellow"}
     currentQuestion = question
 
-const keep = secret[question.category] === question.attribute 
-console.log(secret[question.category], secret)
-console.log(question.attribute) // ex of console.log(hidden) so question.attribute is either t/f or hidden, blue, green etc. 
+const keep = secret[question.category] === question.attribute //the same ********************
+console.log(keep) // boolean
+console.log(secret[question.category], secret) //YELLOW {name: "Josh", img: "images/josh.svg", hairColor: "yellow", eyeColor: "green", glasses: false, …}
+console.log(question.attribute) // ex of console.log(YELLOW) so question.attribute is either t/f or hidden, blue, green etc. 
 alert('You are one step closer to finding out who the secret person is!', keep) 
 
     //If the secret person is the same as current category and is the same as current choosen value -> filter True, else filter False.  
-    if (keep === true) {
+    if (keep) {
       console.log('You matched')
-      filterCharacters(keep, question.category, question.attribute)
+      filterCharacters(keep, question.category, question.attribute) // why do I send all of these ones in? 
     } else {
       alert('You guess is not right this time, please try again!') 
       filterCharacters(keep, question.category, question.attribute) //pass by value
     }
   }
 
+  //This function SHOULD FILTER all characters that does not have the characteristics of secret, when user guess correct on feature.**
 //question.category is now group, and question.attribute is now attribute
 // keep = boolean - group is some kind of category eg. hairColor - attribute is what I guessed on eg. orange (hair)
 const filterCharacters = (keep, group, attribute) => {
@@ -398,6 +412,7 @@ const filterCharacters = (keep, group, attribute) => {
   if (keep != true) { 
     let charactersFiltered = charactersInPlay.filter(name => {
       if (name[group] === attribute) { 
+        console.log(name[group]) //what user guessed on eg. yellow (hair)
         return false
       } else {
         return true
@@ -405,7 +420,7 @@ const filterCharacters = (keep, group, attribute) => {
     })
     charactersInPlay = charactersFiltered
   }
-
+  
   if (group === 'smoker') {
       if (keep) {
       alert(
@@ -455,10 +470,9 @@ const filterCharacters = (keep, group, attribute) => {
 
 const guess = (suspect) => {
   if (confirm('Are you sure you want to guess?')) {
-    console.log('User want to make a guess!')
     checkMyGuess(suspect)
   } else {
-    console.log('The game continues!')
+    alert('The game continues!')
   }
 }
 

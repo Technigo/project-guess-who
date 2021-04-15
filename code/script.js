@@ -395,22 +395,20 @@ console.log(question.attribute) // ex of console.log(YELLOW) so question.attribu
 alert('You are one step closer to finding out who the secret person is!', keep) 
 
     //If the secret person is the same as current category and is the same as current choosen value -> filter True, else filter False.  
-    if (keep) {
-      console.log('You matched')
-      filterCharacters(keep, question.category, question.attribute) // why do I send all of these ones in? 
-    } else {
-      alert('You guess is not right this time, please try again!') 
-      filterCharacters(keep, question.category, question.attribute) //pass by value
-    }
+
+    filterCharacters(keep, question.category, question.attribute) // why do I send all of these ones in? 
+
   }
 
   //This function SHOULD FILTER all characters that does not have the characteristics of secret, when user guess correct on feature.**
 //question.category is now group, and question.attribute is now attribute
 // keep = boolean - group is some kind of category eg. hairColor - attribute is what I guessed on eg. orange (hair)
 const filterCharacters = (keep, group, attribute) => {
+  keep ? console.log('You matched') : alert('You guess is not right this time, please try again!')
+
   console.log(keep, group, attribute);
   if (keep != true) { 
-    let charactersFiltered = charactersInPlay.filter(name => {
+    let charactersFilteredOnFalseGuess = charactersInPlay.filter(name => {
       if (name[group] === attribute) { 
         console.log(name[group]) //what user guessed on eg. yellow (hair)
         return false
@@ -418,8 +416,22 @@ const filterCharacters = (keep, group, attribute) => {
         return true
       }
     })
-    charactersInPlay = charactersFiltered
+    charactersInPlay = charactersFilteredOnFalseGuess
+
   }
+  else {
+    console.log('filter all matching')
+    let charactersFilteredOnTrueGuess = charactersInPlay.filter(name => {
+      if (name[group] === attribute) { 
+        console.log(name[group]) //what user guessed on eg. yellow (hair)
+        return true
+      } else {
+        return false
+      }
+    })
+    charactersInPlay = charactersFilteredOnTrueGuess
+  }
+
   
   if (group === 'smoker') {
       if (keep) {

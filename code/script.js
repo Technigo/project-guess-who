@@ -387,7 +387,18 @@ const checkQuestion = () => {
 const filterCharacters = (keep, group, attribute) => {
   keep ? alert('You matched') : alert('You guess is not right this time, please try again!') //maybe take away this whole shabam - many alerts
 
-  if (keep != true) { 
+  let filteredCharacters = charactersInPlay.filter(element => {
+    console.log(element) //take away all console.logs
+//    name[group] ? keep : !keep
+    if (element[group] === attribute) {
+      return keep
+    } else {
+      return !keep
+    }
+  })
+  charactersInPlay = filteredCharacters
+
+  /* if (keep != true) { 
     let charactersFilteredOnFalseGuess = charactersInPlay.filter(name => {
       if (name[group] === attribute) { 
         return false
@@ -401,13 +412,13 @@ const filterCharacters = (keep, group, attribute) => {
   else {
     let charactersFilteredOnTrueGuess = charactersInPlay.filter(name => {
       if (name[group] === attribute) { 
-        return true
+        return true 
       } else {
         return false
       }
     })
     charactersInPlay = charactersFilteredOnTrueGuess
-  }
+  } */
 
   if (group === 'smoker') {
       if (keep) {

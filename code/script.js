@@ -308,7 +308,7 @@ let start = () => {
   setSecret()
 
   let board = generateBoard(charactersInPlay)
-    alert("Find out who the secret person is. These are your cards, enjoy the game!")
+    alert("These are your cards, enjoy the game!")
     return board
 }
 
@@ -372,53 +372,23 @@ const checkQuestion = () => {
     }
   }
 
-  currentQuestion = question
-
   const keep = secret[question.category] === question.attribute
 
-  alert('You are one step closer to finding out who the secret person is!', keep) // ta bort? 
+  currentQuestion = question
 
   filterCharacters(keep, question.category, question.attribute)
-
 }
-
 
 // question.category is now group, and question.attribute is now attribute
 const filterCharacters = (keep, group, attribute) => {
-  keep ? alert('You matched') : alert('You guess is not right this time, please try again!') //maybe take away this whole shabam - many alerts
-
-  let filteredCharacters = charactersInPlay.filter(element => {
-    console.log(element) //take away all console.logs
-//    name[group] ? keep : !keep
+  charactersFiltered = charactersInPlay.filter(element => {
     if (element[group] === attribute) {
       return keep
     } else {
       return !keep
     }
   })
-  charactersInPlay = filteredCharacters
-
-  /* if (keep != true) { 
-    let charactersFilteredOnFalseGuess = charactersInPlay.filter(name => {
-      if (name[group] === attribute) { 
-        return false
-      } else {
-        return true
-      }
-    })
-    charactersInPlay = charactersFilteredOnFalseGuess
-
-  }
-  else {
-    let charactersFilteredOnTrueGuess = charactersInPlay.filter(name => {
-      if (name[group] === attribute) { 
-        return true 
-      } else {
-        return false
-      }
-    })
-    charactersInPlay = charactersFilteredOnTrueGuess
-  } */
+  charactersInPlay = charactersFiltered
 
   if (group === 'smoker') {
       if (keep) {

@@ -13,4 +13,4 @@ When I encountered problems I have asked my teammates on Slack, or live during o
 If there was more time I would have changed the CSS, and practiced doing a timer that measures how long time each game takes. 
 
 ## View it live
-Link to view it live on Netlify: https://heuristic-banach-b932cd.netlify.app/
+Link to view it live on Netlify: https://guesswho-game.netlify.app/

@@ -1,13 +1,13 @@
-# Project Name
+# Bootcamp-Project #04: Guess Who Game
+This project was about getting famliar with objects, arrays, loops and functions - Creating arrays and objects, accessing attributes in particular objects and filtering them based on their values with functions. As a starter-setting I got a starter HTML, CSS and JS file for a Guess-Who game and the task was to make the game work.
 
-Replace this readme with your own information about your project.
+## Learning content and lessons learned: 
+- JavaScript (create & manipulate arrays, loops, objects)
+- Array methods (for each(), filter())
+- manipulating DOM using JavaScript
+- translate the logic / flow of the Guess Who Game into code
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started off by playing the game myself and focusing on what steps will be needed. In addition to that I got provided with some hints in the starter code, which kind of set up the structure for the flow of the code. Following this structure and doing many console.log's along the way made the game work quite smoothly. This project helped a lot with understanding the flow of code, break a "system" into seperate steps and put them together into a working "system".
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://project-guesswho.netlify.app/

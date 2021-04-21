@@ -258,7 +258,6 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard() 
   setSecret()  
-  console.log(secret)
   board.style.display = 'flex'
   winOrLose.style.display = 'none'
 
@@ -302,17 +301,19 @@ const checkQuestion = () => {
 
  }
 
+ 
+
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  let category = currentQuestion.attribute
+   let category = currentQuestion.attribute
    if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
+        `Yes, the person wears ${currentQuestion.category}! Keep all that wears ${currentQuestion.category}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${currentQuestion.attribute}! Remove all that wears ${currentQuestion.attribute}`
+        `No, the person doesn't wear ${currentQuestion.category}! Remove all that wears ${currentQuestion.category}`
       )
     }
   } else if (category === 'other') {
@@ -325,7 +326,7 @@ const filterCharacters = (keep) => {
           `No, this person is not a smoker! Remove everyone that is a smoker!`
         )
       }
-  } else if (category === 'eye color') {
+  } else if (category === 'eyeColor') {
       if (keep) {
         alert(
           `Yes, this person has ${currentQuestion.value} eyes! Keep everyone with ${currentQuestion.value} eyes.`
@@ -335,7 +336,7 @@ const filterCharacters = (keep) => {
           `No, this person does not have ${currentQuestion.value} eyes! Remove everyone with ${currentQuestion.value} eyes!`
         )
       }
-  } else if (category === 'hair color'){ 
+  } else if (category === 'hairColor'){ 
     if (keep) {
       alert(
         `Yes, this person has ${currentQuestion.value} hair! Keep everyone with ${currentQuestion.value} hair.`

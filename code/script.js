@@ -289,6 +289,7 @@ const selectQuestion = () => {
   }
 }
 
+
 // Invoked when FindOutButton clicked.
 const checkQuestion = () => {
   let value = currentQuestion.value
@@ -305,11 +306,12 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-   let category = currentQuestion.attribute
-   if (category === 'accessories') {
+   let category = currentQuestion.category
+   console.log(currentQuestion)
+   if (category === 'accessories') {     
     if (keep) {
       alert(
-        `Yes, the person wears ${currentQuestion.category}! Keep all that wears ${currentQuestion.category}`
+        `Yes, the person wears ${currentQuestion.attribute}! Keep all that wears ${currentQuestion.attribute}`
       )
     } else {
       alert(
@@ -326,7 +328,7 @@ const filterCharacters = (keep) => {
           `No, this person is not a smoker! Remove everyone that is a smoker!`
         )
       }
-  } else if (category === 'eyeColor') {
+  } else if (category === 'eye color') {
       if (keep) {
         alert(
           `Yes, this person has ${currentQuestion.value} eyes! Keep everyone with ${currentQuestion.value} eyes.`
@@ -336,7 +338,7 @@ const filterCharacters = (keep) => {
           `No, this person does not have ${currentQuestion.value} eyes! Remove everyone with ${currentQuestion.value} eyes!`
         )
       }
-  } else if (category === 'hairColor'){ 
+  } else if (category === 'hair color'){ 
     if (keep) {
       alert(
         `Yes, this person has ${currentQuestion.value} hair! Keep everyone with ${currentQuestion.value} hair.`

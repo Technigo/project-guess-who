@@ -1,14 +1,15 @@
 # Project Name
 
-This is the fifth project of Technigo bootcamp spring 2021. 
-The assignment was to build Guess Who game.
+Guess Who -game
 
 
-## The problem
+## The learning goals
 
-I followed the steps given to us to build the project.
-
-If I have had more time I would have changed the images etc. so that the game would look more like my own game. 
+-How to use arrays and objects  in JavaScript
+-How to use array methods such as forEach() and filter()
+-How to manipulate the DOM using JavaScript
+-How to structure code in functions 
+-How to plan and think about game logic
 
 
 ## View it live

@@ -10,7 +10,6 @@ I noticed I still struggle with the different syntax with functions and how to s
 
 It was useful to have part of the code already provided as we could focused on what is important to learn and be able to see a functional and styled page in the end.
 
-The step 4 was very challenging for me as I got an error message, the program couldnt read the type property. In the end I got help from a classmate to be able to move forward as saving that value in a variable did not solved the problem work.
 
 ## View it live
 

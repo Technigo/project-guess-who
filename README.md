@@ -1,8 +1,8 @@
-## GUESS WHO PROJECT
+## Guess Who project
 
 The purpose of this project was to learn how to use arrays, forEach-loops and objects in JavaScript. We put into practice as well knowledge about scope and closures in JavaScript.
 
-## WHAT I LEARNED
+## What I learned
 
 The project gave me more clearity about scope and the control flow in JavaScript. 
 

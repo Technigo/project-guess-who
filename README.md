@@ -1,15 +1,12 @@
-# Project Name
+# Guess Who -game
 
-Guess Who -game
+## Learning goals
 
-
-## The learning goals
-
--How to use arrays and objects  in JavaScript
--How to use array methods such as forEach() and filter()
--How to manipulate the DOM using JavaScript
--How to structure code in functions 
--How to plan and think about game logic
+* How to use arrays and objects  in JavaScript
+* How to use array methods such as forEach() and filter()
+* How to manipulate the DOM using JavaScript
+* How to structure code in functions 
+* How to plan and think about game logic
 
 
 ## View it live

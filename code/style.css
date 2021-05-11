@@ -19,6 +19,12 @@ h1 {
   color: white;
 }
 
+h2 {
+  line-height: 48px;
+  margin: 30px 0;
+  color: white;
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -146,6 +152,18 @@ button {
 }
 
 /****** WIN OR LOSE SECTION ******/
+.winOrLoseFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+}
+
 .win-or-lose-wrapper {
   display: none;
   align-items: center;
@@ -166,15 +184,30 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  margin: 20px auto 0px;
 }
 
-.win-or-lose img {
+.guess-who-icon {
   align-self: flex-start;
   margin-left: 15%;
+  margin-top: 10px; 
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+.secret-person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  margin: 10px auto 0;
+}
+
+.secret-image {
+  width: 60%;
 }
 
 @media (max-width: 768px) {

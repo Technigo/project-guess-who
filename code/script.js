@@ -369,8 +369,8 @@ const checkMyGuess = (suspect) => {
   } else {
       winOrLoseText.innerHTML = 'Sorry, try again'
   }
-  board.style.display = "none"; 
-  winOrLose.style.display = "flex";
+  board.style.display = "none"
+  winOrLose.style.display = "flex"
 }
 
 // Invokes the start function when website is loaded

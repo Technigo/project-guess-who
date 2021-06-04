@@ -8,4 +8,4 @@ I went through the instrictions of the assignment in order, and solved problems 
 
 ## View it live
 
-https://wonderful-dijkstra-d6b94b.netlify.app/
+https://project-guess-who.netlify.app/

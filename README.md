@@ -1,3 +1,5 @@
+Project week 5 of Technigo bootcamp
+
 # Guess Who game
 
 The project was to create a virtual Guess Who game, with a lot of focus on JavaScript. 

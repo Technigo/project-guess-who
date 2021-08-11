@@ -201,7 +201,9 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret, currentQuestion, charactersInPlay
+let secret
+let currentQuestion
+let charactersInPlay
 
 // Draw the game board
 const generateBoard = () => {

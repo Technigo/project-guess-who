@@ -1,6 +1,6 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
+  --primary: #a661ff;
   --secondary: #b0a6ff;
 }
 
@@ -54,14 +54,16 @@ select {
 .game-board {
   width: 90%;
   max-width: 882px;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr 1fr 1fr 1fr ;
+  
 }
+
 
 /****** CARD ******/
 .card {
-  width: 135px;
+  width: 155px;
   height: 165px;
   overflow: hidden;
   border: 3px solid var(--secondary);
@@ -200,15 +202,19 @@ button {
 
   .board-wrapper {
     width: 100%;
+    
   }
 
   .game-board {
     width: 100%;
     max-width: 750px;
+
+   
   }
 
   .card {
-    width: 112px;
+   
+    width: 150px;
     position: relative;
   }
 

@@ -222,6 +222,7 @@ const generateBoard = () => {
   })
 }
 
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -320,6 +321,6 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
-
+generateBoard()
 // All the event listeners
 restartButton.addEventListener('click', start)

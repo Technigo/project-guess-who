@@ -226,6 +226,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret)
 }
 
 // This function to start (and restart) the game
@@ -255,11 +256,17 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   selectQuestion()
   const { category, value } = currentQuestion
+  const {name, img, hair, eyes, accessories, other} = secret
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    if (value.includes(hair) || value.includes(eyes))
+      filterCharacters(true)
+    else {
+      filterCharacters(false)
+    }
 
   } else if (category === 'accessories' || category === 'other') {
 

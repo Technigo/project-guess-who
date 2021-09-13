@@ -1,4 +1,4 @@
-// All the DOM selectors stored as short variables
+  // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
@@ -232,6 +232,7 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  setTimeout(() => generateBoard(), 2000)
 }
 
 // setting the currentQuestion object when you select something in the dropdown

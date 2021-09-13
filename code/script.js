@@ -4,6 +4,7 @@ const questions = document.getElementById("questions");
 const restartBtn = document.getElementById("restart");
 const findOutBtn = document.getElementById("filter");
 const winOrLose = document.getElementById(`winOrLose`);
+const championCounter = document.getElementById(`championCounter`);
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -1261,20 +1262,18 @@ const CHARACTERS = [
 let secret = ``;
 let currentQuestion = ``;
 let charactersInPlay = ``;
-let personToCheck = ``;
+let championToCheck = ``;
 
-// <img src=${person.img} alt=${person.name}>
 // Draw the game board
 const generateBoard = () => {
-  console.log("Redrawing board");
   board.innerHTML = "";
-  charactersInPlay.forEach((person) => {
+  charactersInPlay.forEach((champion) => {
     board.innerHTML += `
-      <div class="card" style="background-image: url('${person.img}');background-size: cover;">
-        <p>${person.name}</p>
+      <div class="card" style="background-image: url('${champion.img}');background-size: cover;">
+        <p>${champion.name}</p>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Guess on ${champion.name}?</span>
+          <button class="filled-button small" onclick="guess('${champion.name}')">Guess</button>
         </div>
       </div>
     `;
@@ -1285,15 +1284,16 @@ const generateBoard = () => {
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  console.log("Secret", secret);
 };
 
 // This function to start (and restart) the game
 const start = () => {
   winOrLose.classList.remove("active");
-  console.log(winOrLose);
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
+  setCharacterInPlayCounter();
   generateBoard();
   setSecret();
   selectQuestion();
@@ -1302,7 +1302,7 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
-  const category = questions.options[questions.selectedIndex].parentNode.label;
+  const category = questions.options[questions.selectedIndex].parentNode.id;
   // We also need a variable that stores the actual value of the question we've selected.
   value = questions.options[questions.selectedIndex].value;
 
@@ -1320,20 +1320,24 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
 
-  if (category === "hair" || category === "eyes" || category === "mood") {
-    if (category === "hair" && value === secret.hair) {
+  // accessories: [],
+
+  if (
+    category === "hair" ||
+    category === "homeRegion" ||
+    category === "mainRole"
+  ) {
+    if (category === "Hair" && value === secret.hair) {
       filterCharacters(true);
-    } else if (category === "eyes" && value === secret.eyes) {
+    } else if (category === "homeRegion" && value === secret.homeRegion) {
       filterCharacters(true);
-    } else if (category === "mood" && value === secret.mood) {
+    } else if (category === "mainRole" && value === secret.mainRole) {
       filterCharacters(true);
     } else {
       filterCharacters(false);
     }
-  } else if (category === "accessories" || category === "other") {
+  } else if (category === "accessories") {
     if (secret.accessories.includes(value)) {
-      filterCharacters(true);
-    } else if (secret.other.includes(value)) {
       filterCharacters(true);
     } else {
       filterCharacters(false);
@@ -1341,115 +1345,99 @@ const checkQuestion = () => {
   }
 };
 
-const keepPlayersAccessoriesOther = (category, value) => {
-  charactersInPlay = charactersInPlay.filter((person) =>
-    person[category].includes(value)
+const keepChampionsAccessories = (category, value) => {
+  charactersInPlay = charactersInPlay.filter((champion) =>
+    champion[category].includes(value)
   );
 };
 
-const removePlayersAccessoriesOther = (category, value) => {
+const removeChampionsAccessories = (category, value) => {
   charactersInPlay = charactersInPlay.filter(
-    (person) => !person[category].includes(value)
+    (champion) => !champion[category].includes(value)
   );
 };
 
-const keepPlayersHairEyesMood = (category, value) => {
+const keepChampionsHairHomeRegionMainRole = (category, value) => {
   charactersInPlay = charactersInPlay.filter(
-    (person) => person[category] === value
+    (champion) => champion[category] === value
   );
 };
 
-const removePlayersHairEyesMood = (category, value) => {
+const removeChampionsHairHomeRegionMainRole = (category, value) => {
   charactersInPlay = charactersInPlay.filter(
-    (person) => person[category] !== value
+    (champion) => champion[category] !== value
   );
 };
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-
   // Show the correct alert message for different categories
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   if (category === "accessories") {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
+        `Yes, the champion have a ${value}! Keeping all the champions that have a ${value}.`
       );
-      keepPlayersAccessoriesOther(category, value);
+      keepChampionsAccessories(category, value);
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
+        `No, the champion doesn't have a ${value}! Removing all the champions that have a ${value}.`
       );
-      removePlayersAccessoriesOther(category, value);
-    }
-  } else if (category === "other") {
-    if (keep) {
-      keepPlayersAccessoriesOther(category, value);
-      alert(
-        `Yes, the person has ${value}! Keep all the people that has ${value}.`
-      );
-    } else {
-      removePlayersAccessoriesOther(category, value);
-      alert(
-        `No, the person doesn't have ${value}! Remove all people that doesn't have ${value}.`
-      );
+      removeChampionsAccessories(category, value);
     }
   } else if (category === "hair") {
     if (keep) {
-      keepPlayersHairEyesMood(category, value);
+      keepChampionsHairHomeRegionMainRole(category, value);
       alert(
-        `Yes, the person has ${value} hair! Keep all people that has ${value} hair.`
+        `Yes, the champion has ${value} hair! Keeping all the champions that has ${value} hair.`
       );
     } else {
-      removePlayersHairEyesMood(category, value);
+      removeChampionsHairHomeRegionMainRole(category, value);
       alert(
-        `No, the person doesnt have ${value} hair! Remove all people with ${value} hair.`
+        `No, the champion doesnt have ${value} hair! Removing all champions with ${value} hair.`
       );
     }
-  } else if (category === "eyes") {
+  } else if (category === "homeRegion") {
     if (keep) {
-      keepPlayersHairEyesMood(category, value);
+      keepChampionsHairHomeRegionMainRole(category, value);
       alert(
-        `Yes, the person has ${value} eyes! Keep all people that has ${value} eyes.`
+        `Yes, the champion is from ${value}! Keeping all the champions that are from ${value}.`
       );
     } else {
-      removePlayersHairEyesMood(category, value);
+      removeChampionsHairHomeRegionMainRole(category, value);
       alert(
-        `No, the person doesnt have ${value} eyes! Remove all people with ${value} eyes.`
+        `No, the champion is not from ${value}! Removing all the champions from ${value}.`
       );
     }
-  } else if (category === "mood") {
+  } else if (category === "mainRole") {
     if (keep) {
-      keepPlayersHairEyesMood(category, value);
+      keepChampionsHairHomeRegionMainRole(category, value);
       alert(
-        `Yes, the person looks ${value}! Keep all people that looks ${value}.`
+        `Yes, the champion is a ${value}! Keeping all the champions that are ${value}s.`
       );
     } else {
-      removePlayersHairEyesMood(category, value);
+      removeChampionsHairHomeRegionMainRole(category, value);
       alert(
-        `No, the person doesnt look ${value}! Remove all people that looks ${value}.`
+        `No, the champion is not a ${value}! Removing all the champions that are ${value}s.`
       );
     }
   }
-
-  console.log(`characters in play`, charactersInPlay);
+  setCharacterInPlayCounter();
   generateBoard();
 };
 
 const confirmGuess = (message) => {
   let result = confirm(message);
   if (result === true) {
-    checkMyGuess(personToCheck);
-  } else {
-    console.log("Cancel was pressed");
+    checkMyGuess(championToCheck);
   }
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
-  personToCheck = personToConfirm;
+const guess = (championToConfirm) => {
+  championToCheck = championToConfirm;
   confirmGuess("Do you really wanna guess on this option?");
 
   // store the interaction from the player in a variable.
@@ -1458,13 +1446,9 @@ const guess = (personToConfirm) => {
 };
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  console.log(`secrets name`, secret.name);
-
-  if (personToCheck === secret.name) {
-    console.log("hej");
-    winOrLoseText.innerHTML = `Congratulations you guessed on the right person!`;
-    console.log(winOrLose);
+const checkMyGuess = (championToCheck) => {
+  if (championToCheck === secret.name) {
+    winOrLoseText.innerHTML = `Congratulations you guessed on the right champion!`;
   } else {
     winOrLoseText.innerHTML = `Sorry, you guessed wrong!`;
   }
@@ -1474,6 +1458,10 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+};
+
+const setCharacterInPlayCounter = () => {
+  championCounter.innerHTML = `Champions left in play: ${charactersInPlay.length}`;
 };
 
 // Invokes the start function when website is loaded

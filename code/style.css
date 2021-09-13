@@ -1,9 +1,3 @@
-/* Global css variables used for colors */
-:root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
-}
-
 body {
   display: flex;
   margin: 0;
@@ -12,17 +6,21 @@ body {
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 100px;
   font-weight: 500;
-  line-height: 48px;
+  line-height: 120px;
   margin: 10px 0;
+  color: white;
+}
+
+h2 {
   color: white;
 }
 
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: rgb(6, 28, 37);
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -35,15 +33,25 @@ select {
   border: none;
   font-size: 22px;
   font-family: "Montserrat";
-  color: var(--secondary);
+  color: rgb(6, 28, 37);
   width: 100%;
   margin: 24px 0;
 }
 
-.guess-who-icon {
-  width: 126px;
+.guess-who {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.guess-who__spans {
+  display: flex;
+  flex-direction: column;
+  font-size: 40px;
+  line-height: 50px;
+  color: white;
+  margin-left: 20px;
+}
 .board-wrapper {
   width: 70%;
   display: flex;
@@ -98,7 +106,7 @@ select {
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: rgb(6, 28, 37);
 }
 
 .card:hover img,
@@ -121,7 +129,7 @@ select {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
+  border: 2px solid rgb(6, 28, 37);
   border-radius: 50px;
   font-size: 16px;
   font-family: "Montserrat";
@@ -133,23 +141,21 @@ button {
 .small {
   padding: 8px 16px;
 }
-
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
+.filled-button {
+  background-color: white;
   align-self: flex-end;
 }
 
-.filled-button,
-.outlined-button:hover {
-  background-color: var(--primary);
+.filled-button:hover {
+  background-color: black;
+  border-color: black;
   color: white;
 }
 
-.filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
+/****** GAME-STATUS SECTION ******/
+
+.game-status {
+  color: white;
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -157,7 +163,7 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background-color: rgb(6, 28, 37);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -238,7 +244,6 @@ button {
     padding: 6px 11px;
     margin-bottom: 1px;
     background: white;
-    color: var(--primary);
     border: none;
   }
 }

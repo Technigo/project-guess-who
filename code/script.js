@@ -256,10 +256,18 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
 
+  //const keep = currentQuestion.value === secret[currentQuestion.attribute]
+  //filterCharacters(true)
+
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
+    if (secret.hair === value || secret.eyes === value) {
+      keep = true;
+    } else {
+      keep = false;
+    }
   } else if (category === "accessories" || category === "other") {
   }
 };

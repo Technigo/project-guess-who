@@ -327,3 +327,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+// questions.addEventListener('change',)

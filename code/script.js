@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -231,6 +232,9 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  generateBoard()
+  setSecret()
+  console.log(secret)
   // What else should happen when we start the game?
 }
 
@@ -249,18 +253,31 @@ const selectQuestion = () => {
 }
 
 // This function should be invoked when you click on 'Find Out' button.
-const checkQuestion = () => {
-  const { category, value } = currentQuestion
+findOutButton.addEventListener('click', () => {
+  console.log('this is the buttom:',findOutButton)
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  const checkQuestion = () => {
+    const { category, value} = currentQuestion
+    console.log(currentQuestion)
 
-  } else if (category === 'accessories' || category === 'other') {
+    // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+    // See if we should keep or remove people based on that
+    // Then invoke filterCharacters
+    if (category === 'hair' || category === 'eyes') {
+      console.log('this is the if in event:', category)
 
-  }
+
+    } else if (category === 'accessories' || category === 'other') {
+
+    } else {
+      console.log('You need to fix loop')
+    }
+   
 }
+// checkQuestion();
+// console.log('this is the buttom:',findOutButton.value)
+
+});
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {

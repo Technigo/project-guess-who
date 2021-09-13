@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const secretPerson = document.getElementById('secretPerson')
+const findOutButton = document.getElementById('filter')
 
 
 // Array with all the characters, as objects
@@ -235,6 +236,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   setSecret()
   generateBoard()
+  selectQuestion()
   // What else should happen when we start the game?
 }
 
@@ -328,6 +330,7 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start);
 questions.addEventListener("change", selectQuestion);
+findOutButton.addEventListener('click', checkQuestion);
 

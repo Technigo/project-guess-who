@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -345,4 +346,5 @@ setSecret()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-document.getElementById('questions').addEventListener('change', selectQuestion)
+questions.addEventListener('change', selectQuestion)
+filterButton.addEventListener('click', checkQuestion)

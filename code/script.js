@@ -226,13 +226,13 @@ const generateBoard = () => {
   });
 };
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+//! Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
-// This function to start (and restart) the game
+//! This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
@@ -240,6 +240,7 @@ const start = () => {
   generateBoard();
   setSecret();
   console.log(secret);
+  setTimeout(selectQuestion, 1000);
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -250,13 +251,16 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
 
+  const value = questions.options[questions.selectedIndex].value;
+  console.log(value); // show the selected questions value
+
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   };
 };
-
-// This function should be invoked when you click on 'Find Out' button.
+console.log(currentQuestion);
+//! This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
 
@@ -266,6 +270,9 @@ const checkQuestion = () => {
   if (category === "hair" || category === "eyes") {
   } else if (category === "accessories" || category === "other") {
   }
+
+  console.log(checkQuestion);
+  setTimeout(filterCharacters, 1000);
 };
 
 // It'll filter the characters array and redraw the game board.
@@ -329,3 +336,4 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+questions.addEventListener("change", selectQuestion);

@@ -258,8 +258,8 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   selectQuestion()
-  const { category, value } = currentQuestion
-  const {name, img, hair, eyes, accessories, other} = secret
+  const { category, value } = currentQuestion //what is guessed
+  const {name, img, hair, eyes, accessories, other} = secret //who is the secret person
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -273,7 +273,22 @@ const checkQuestion = () => {
     }
 
   } else if (category === 'accessories' || category === 'other') {
-    
+    //check which category it is
+    //create a const of the list from the persons attributes
+    //check if the choosen value exits within the secret persons attributes
+    //want to comapre accesories or other with value
+    //want to loop trough the secret persons attributes and others, and compare with value
+    accessories.forEach((accessory) => { 
+      if (accessory === value) 
+        filterCharacters(true)
+    })
+
+    other.forEach((otherItem) => { 
+      if (otherItem === value) 
+        filterCharacters(true)
+        else
+          filterCharacters(false)
+    })
   }
 }
 
@@ -286,13 +301,25 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    } else {
+      alert(
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    }
   } else {
     if (keep) {
       alert(

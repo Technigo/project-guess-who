@@ -233,23 +233,26 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   setTimeout(() => generateBoard(), 2000)
-  //console.log(secret)
+  //console.log(secret) //console log to see the object before setSecret function
   setSecret()
-  //console.log(secret)
+  //console.log(secret) //console log to see the object after setSecret function
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
+  console.log(category) //console log to see the label of the questions/category
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value
+  console.log(value) //console log to see the selected option's value of the questions/category
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+  //console log to make sure that the global variable currentQuestion is storing the category and value 
+  console.log(currentQuestion) 
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -327,3 +330,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+
+ //when selecting an option from the drop down list, it will invoke the selectQuestion function
+questions.addEventListener('change', selectQuestion)     

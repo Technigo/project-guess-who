@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -258,7 +259,7 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
+  console.log('sucessfully invoked the checkQuestion with the find out btn') //console log to see if the find out button works
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -332,4 +333,7 @@ start()
 restartButton.addEventListener('click', start)
 
  //when selecting an option from the drop down list, it will invoke the selectQuestion function
-questions.addEventListener('change', selectQuestion)     
+questions.addEventListener('change', selectQuestion)    
+
+//when clicking on the Find out button, it will invoke the checkQuestion function
+findOutButton.addEventListener('click', checkQuestion)

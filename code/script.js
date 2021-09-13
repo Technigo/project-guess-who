@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -231,7 +232,11 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  // What else should happen when we start the game? 
+  //All pictures should be shown
+  generateBoard();
+  // the secret person needs to be set
+  setSecret();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -240,26 +245,40 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
+  const value = questions.value;
+ 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
+  let keep
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    if (value === secret.hair || value === secret.eyes) {
+      keep = true;
+    } else {
+      keep = false;
+    }
   } else if (category === 'accessories' || category === 'other') {
-
+    if (value === secret.accessories || value === secret.other) {
+      keep = true;
+    } else {
+      keep = false;
+    }
   }
+
+  console.log(`Ratewert = ${value}`)
+  console.log(`geheimer Wert = ${secret.other}`)
+  console.log(`Keep = ${keep}`)
+  filterCharacters(keep); 
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -273,11 +292,19 @@ const filterCharacters = (keep) => {
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}` ///////////////pro
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person is a smoker! Keep all people that smoke`
+      )
+    } else {
+      alert(
+        `No, the person isn't a smoker! Remove all people that don't smoke`
+      )
+    }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
@@ -322,4 +349,9 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
+//restarts the game
 restartButton.addEventListener('click', start)
+//invokes selectQuestion (creates the currentQuestion-Object)
+findOutButton.addEventListener('click', selectQuestion)
+//the findoutButton also invokes checkQuestion (compares the currentQuestio-Object with the secret Person)
+findOutButton.addEventListener('click', checkQuestion)

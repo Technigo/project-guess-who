@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
+  scroll-behavior: smooth;
 }
 
 h1 {
@@ -15,6 +16,7 @@ h1 {
 
 h2 {
   color: white;
+  font-size: 40px;
 }
 
 .question-section {
@@ -58,7 +60,6 @@ select {
   align-items: center;
   justify-content: center;
 }
-
 .game-board {
   width: 90%;
   max-width: 882px;
@@ -138,12 +139,16 @@ button {
   cursor: pointer;
 }
 
-.small {
-  padding: 8px 16px;
+.guess span {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  padding: 4px;
 }
+
 .filled-button {
   background-color: white;
-  align-self: flex-end;
+  padding: 8px 16px;
+  justify-content: center;
 }
 
 .filled-button:hover {
@@ -165,11 +170,12 @@ button {
   justify-content: center;
   background-color: rgb(6, 28, 37);
   position: absolute;
+  width: 100%;
+  height: 100vh;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
 }
 
 .win-or-lose {
@@ -203,16 +209,14 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
-  h1 {
-    font-size: 24px;
-    line-height: 30px;
-  }
 
-  .guess-who-icon {
-    width: 51px;
+  h1 {
+    font-size: 100px;
+    line-height: 30px;
   }
 
   .board-wrapper {
@@ -241,8 +245,9 @@ button {
   }
 
   .card .guess .filled-button {
-    padding: 6px 11px;
-    margin-bottom: 1px;
+    padding: 4px;
+    font-size: 15px;
+    margin-bottom: 30px;
     background: white;
     border: none;
   }

@@ -1290,6 +1290,7 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   winOrLose.classList.remove("active");
+  document.body.style.overflow = "auto";
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
@@ -1327,7 +1328,7 @@ const checkQuestion = () => {
     category === "homeRegion" ||
     category === "mainRole"
   ) {
-    if (category === "Hair" && value === secret.hair) {
+    if (category === "hair" && value === secret.hair) {
       filterCharacters(true);
     } else if (category === "homeRegion" && value === secret.homeRegion) {
       filterCharacters(true);
@@ -1453,6 +1454,7 @@ const checkMyGuess = (championToCheck) => {
     winOrLoseText.innerHTML = `Sorry, you guessed wrong!`;
   }
   winOrLose.classList.add(`active`);
+  document.body.style.overflow = "hidden";
 
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly

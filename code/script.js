@@ -227,10 +227,14 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  generateBoard();
+  setSecret();
+  console.log(secret)
   // What else should happen when we start the game?
 }
 

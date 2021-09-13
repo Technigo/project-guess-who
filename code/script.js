@@ -255,6 +255,7 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
+  console.log(currentQuestion);
 
   //const keep = currentQuestion.value === secret[currentQuestion.attribute]
   //filterCharacters(true)
@@ -263,18 +264,36 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
-    if (secret.hair === value || secret.eyes === value) {
-      keep = true;
+    if (value === secret.hair) {
+      filterCharacters(true);
+      console.log(value);
+      console.log(secret.hair);
+    } else if (value === secret.eyes) {
+      filterCharacters(true);
+      console.log(value);
+      console.log(secret.eyes);
     } else {
-      keep = false;
+      filterCharacters(false);
+      console.log("wrong");
     }
   } else if (category === "accessories" || category === "other") {
+    if (value === secret.other) {
+      filterCharacters(true);
+      console.log(secret.other);
+    } else if (value === secret.accessories) {
+      filterCharacters(true);
+      console.log(secret.accessories);
+    } else {
+      filterCharacters(false);
+      console.log("wrong");
+    }
   }
 };
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
+  console.log(currentQuestion);
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
@@ -287,12 +306,22 @@ const filterCharacters = (keep) => {
       );
     }
   } else if (category === "other") {
-    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person is a ${value}! Keep all people that are ${value}s`
+      );
+    } else {
+      alert(
+        `No, the person is not a ${value}! Remove all people that are ${value}s`
+      );
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(`Yes, the person has ${value}! Keep all people with ${value}`);
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesnt have ${value}! Remove all people with ${value}`
+      );
     }
   }
 

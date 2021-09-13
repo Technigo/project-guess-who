@@ -257,12 +257,24 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'hair' && secret.hair === value) {
+      keep = true
+    }
 
-  } else if (category === 'accessories' || category === 'other') {
-
+  else if (category === 'eyes' && secret.eyes === value) {
+      keep = true
   }
-}
+
+  else if (category === 'accessories' || category === 'other') {
+// DO THIS SARAH
+  }
+
+  else {
+    keep = false
+  }
+
+  filterCharacters(keep)
+};
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -282,8 +294,14 @@ const filterCharacters = (keep) => {
     // Similar to the one above
   } else {
     if (keep) {
+      alert(
+        `Yes, the person has ${value} ${category}! Keep all the people with ${value} ${category}`
+      )
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
+      alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
+
+      )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }

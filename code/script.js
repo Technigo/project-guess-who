@@ -250,6 +250,8 @@ const selectQuestion = () => {
     category: category,
     value: value,
   };
+  console.log(`chosen category in dropdown is ${category}`);
+  console.log(`chosen value in dropdown is ${value}`);
 };
 
 // This function should be invoked when you click on 'Find Out' button.

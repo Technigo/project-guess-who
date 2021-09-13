@@ -2,6 +2,8 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const secretPerson = document.getElementById('secretPerson')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -239,6 +241,7 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  const value = questions.value;
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -246,6 +249,7 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
+    value: value,
     // value: value
   }
 }
@@ -325,3 +329,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener("change", selectQuestion);
+

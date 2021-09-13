@@ -246,13 +246,11 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.options[questions.selectedIndex].label;
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-
   currentQuestion = {
     category: category,
     value: value,
   };
+
   console.log(currentQuestion);
 };
 
@@ -367,5 +365,6 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
-filter.addEventListener("click", selectQuestion);
+questions.addEventListener("change", selectQuestion);
+filter.addEventListener("click", checkQuestion);
 playAgain.addEventListener("click", start);

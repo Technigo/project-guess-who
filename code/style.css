@@ -1,19 +1,20 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #1D3557;
+  --secondary: #457B9D;
+  --third:#E63946;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
   font-size: 42px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 48px;
   margin: 10px 0;
   color: white;
@@ -34,7 +35,7 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: 'Open Sans', sans-serif;
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -64,8 +65,8 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border: 2px solid var(--third);
+  border-radius: 2px;
   margin: 3px;
   display: flex;
   flex-direction: column;
@@ -92,6 +93,7 @@ select {
 
 .card:hover {
   background-color: var(--secondary);
+  border:2px solid var(--secondary);
 }
 
 .card:hover img,
@@ -136,12 +138,12 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #E63946;
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: #E63946;
+  border-color: #E63946;
   color: var(--primary);
 }
 

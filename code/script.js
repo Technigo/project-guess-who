@@ -339,4 +339,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-filter.addEventListener('click', selectQuestion) 
+filter.addEventListener('click', checkQuestion) 
+questions.addEventListener('change', selectQuestion)

@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
+const filter = document.getElementById('filter')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -232,6 +232,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard();
+  setSecret();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -240,25 +242,37 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const categoryvalue = questions.options[questions.selectedIndex].value
 
+  if (category === 'hair color') {
   currentQuestion = {
-    category: category,
-    // value: value
+      attribute: 'haircolor',
+      category: category,
+      value: categoryValue, 
+    }
   }
+  checkQuestion()
 }
+
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  //const { category, value } = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  //if (category === 'hair' || category === 'eyes') {
 
-  } else if (category === 'accessories' || category === 'other') {
+  //} else if (category === 'accessories' || category === 'other') {
 
+  //}
+
+  const secretValue = secret[currentQuestion.attribute]
+  if (secretValue === currentQuestion.value) {
+    filterCharacters(true)
+  } else {
+    filterCharacters(false)
   }
 }
 
@@ -281,24 +295,26 @@ const filterCharacters = (keep) => {
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.attribute] === currentQuestion.value)
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
   }
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+  
+    //for hair and eyes :
+      
       or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      
 
-    for accessories and other
+    //for accessories and other
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+  
 
   // Invoke a function to redraw the board with the remaining people.
 }
@@ -323,3 +339,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+filter.addEventListener('click', selectQuestion) 

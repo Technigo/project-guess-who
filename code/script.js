@@ -246,8 +246,25 @@ const selectQuestion = () => {
   // const value =
 
   currentQuestion = {
-    category: category,
-    // value: value
+    category: 'hair',
+    value: 'yellow',
+  }
+  currentQuestion = {
+    category: 'hair',
+    value: 'brown',
+  }
+  currentQuestion = {
+    category: 'eyes',
+    value: 'hidden'
+  }
+
+  currentQuestion = {
+    category: 'accessories',
+    value: 'glasses'
+  }
+  currentQuestion = {
+    category:'other',
+    value: 'smoker'
   }
 }
 

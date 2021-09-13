@@ -6,197 +6,197 @@ const restartButton = document.getElementById('restart')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
+    name: 'Aladdin',
+    img: 'images/aladdin.jpg',
+    hairstyle: 'medium',
     hair: 'black',
-    eyes: 'brown',
+    accessories: ['hat'],
+    other: []
+  },
+  {
+    name: 'Alice',
+    img: 'images/alice.jpg',
+    hairstyle: 'long',
+    hair: 'blonde',
+    accessories: ['ribbon'],
+    other: []
+  },
+  {
+    name: 'Anna',
+    img: 'images/anna.jpg',
+    hairstyle: 'updo',
+    hair: 'auburn',
+    accessories: ['necklace'],
+    other: []
+  },
+  {
+    name: 'Ariel',
+    img: 'images/ariel.jpg',
+    hairstyle: 'long',
+    hair: 'red',
+    accessories: [],
+    other: ['mermaid']
+  },
+  {
+    name: 'Aurora',
+    img: 'images/aurora.jpg',
+    hairstyle: 'long',
+    hair: 'blonde',
+    accessories: ['crown', 'necklace'],
+    other: []
+  },
+  {
+    name: 'Belle',
+    img: 'images/belle.jpg',
+    hairstyle: ['long', 'updo'],
+    hair: 'brown',
+    accessories: ['earrings'],
+    other: []
+  },
+  {
+    name: 'Cinderella',
+    img: 'images/cinderella.jpg',
+    hairstyle: 'updo',
+    hair: 'blonde',
+    accessories: ['earrings', 'necklace', 'ribbon'],
+    other: []
+  },
+  {
+    name: 'Elsa',
+    img: 'images/elsa.jpg',
+    hairstyle: 'long',
+    hair: 'white',
     accessories: [],
     other: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
+    name: 'Esmeralda',
+    img: 'images/esmeralda.jpg',
+    hairstyle: 'long',
     hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['earrings', 'ribbon'],
     other: []
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    name: 'Genie',
+    img: 'images/genie.jpg',
+    hairstyle: 'updo',
+    hair: 'black',
+    accessories: ['earrings'],
+    other: ['beard']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    name: 'Hercules',
+    img: 'images/hercules.jpg',
+    hairstyle: 'short',
+    hair: 'auburn',
+    accessories: ['ribbon'],
     other: []
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
+    name: 'Megara',
+    img: 'images/megara.jpg',
+    hairstyle: ['long', 'updo'],
+    hair: 'brown',
+    accessories: ['ribbon'],
+    other: []
+  },
+  {
+    name: 'Merida',
+    img: 'images/merida.jpg',
+    hairstyle: 'long',
     hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
+    accessories: [],
     other: []
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
+    name: 'Moana',
+    img: 'images/moana.jpg',
+    hairstyle: 'long',
+    hair: 'dark brown',
+    accessories: ['flower', 'necklace'],
+    other: []
+  },
+  {
+    name: 'Mulan',
+    img: 'images/mulan.jpg',
+    hairstyle: 'medium',
+    hair: 'black',
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Peter-Pan',
+    img: 'images/peterpan.jpg',
+    hairstyle: 'short',
     hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['can fly']
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
+    name: 'Pinocchio',
+    img: 'images/pinocchio.jpg',
+    hairstyle: 'short',
     hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['hat', 'ribbon'],
+    other: ['doll']
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
+    name: 'Pocahontas',
+    img: 'images/pocahontas.jpg',
+    hairstyle: 'long',
     hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['necklace'],
     other: []
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
+    name: 'Snow-White',
+    img: 'images/snowwhite.jpg',
+    hairstyle: 'medium',
+    hair: 'black',
+    accessories: ['ribbon'],
+    other: []
+  },
+  {
+    name: 'Tarzan',
+    img: 'images/tarzan.jpg',
+    hairstyle: 'long',
+    hair: 'auburn',
+    accessories: [],
+    other: ['naked']
+  },
+  {
+    name: 'Beast',
+    img: 'images/thebeast.jpg',
+    hairstyle: 'short',
     hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['horns']
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
+    name: 'Tiana',
+    img: 'images/tiana.jpg',
+    hairstyle: 'updo',
     hair: 'black',
-    eyes: 'green',
-    accessories: [],
+    accessories: ['crown', 'necklace'],
     other: []
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Tinkerbell',
+    img: 'images/tinkerbell.jpg',
+    hairstyle: 'updo',
+    hair: 'blonde',
+    accessories: ['ribbon'],
+    other: ['can fly']
+  },
+  {
+    name: 'Woody',
+    img: 'images/woody.jpg',
+    hairstyle: 'short',
+    hair: 'brown',
+    accessories: ['hat'],
+    other: ['toy']
   },
 ]
 
@@ -255,7 +255,7 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'hair' || category === 'hairstyle') {
 
   } else if (category === 'accessories' || category === 'other') {
 

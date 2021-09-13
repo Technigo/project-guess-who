@@ -19,15 +19,18 @@ h1 {
   color: white;
 }
 
-.question-section {
+.question-section, .start-section {
   width: 30%;
   min-height: 100vh;
   background-color: var(--secondary);
-  display: flex;
   flex-direction: column;
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+}
+
+.question-section {
+  display: none;
 }
 
 select {
@@ -127,14 +130,19 @@ button {
   padding: 8px 16px;
 }
 
-.outlined-button {
+.outlined-button, .outlined-button-1 {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
 }
 
+.outlined-button {
+  display: none;
+}
+
 .filled-button,
-.outlined-button:hover {
+.outlined-button:hover,
+.outlined-button-1:hover  {
   background-color: var(--primary);
   color: white;
 }
@@ -182,7 +190,7 @@ button {
     flex-direction: column;
   }
 
-  .question-section {
+  .question-section, .start-section {
     width: 100%;
     min-height: 0;
   }

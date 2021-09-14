@@ -330,9 +330,11 @@ const filterCharacters = (keep) => {
 generateBoard()
 }
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
+const guess = (suspectCharacter) => {
   // store the interaction from the player in a variable.
-  
+  const confirmGuess = confirm(`Is this person your guess?`)
+  if (confirmGuess)
+  checkMyGuess(suspectCharacter)
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 }

@@ -60,12 +60,13 @@ select {
 
 /****** CARD ******/
 .card {
-  width: 150px;
+  width: 160px;
   height: 185px;
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;
   margin: 3px;
+  padding-bottom: 6px;
   display: flex;
   background-color: #f2f3ec;
   flex-direction: column;

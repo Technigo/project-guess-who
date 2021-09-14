@@ -19,99 +19,99 @@ const CHARACTERS = [
   {
     name: 'Bonnie',
     img: 'images/bonnie.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
+    skinColor: 'pink',
+    skinTexture: 'stripes',
+    attributes: ['twolegs'],
     other: []
   },
   {
     name: 'Cooper',
     img: 'images/cooper.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'blue',
+    skinTexture: 'spots',
+    attributes: ['swim'],
+    other: ['teeth'],
   },
   {
     name: 'Dani',
     img: 'images/dani.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
+    skinColor: 'blue',
+    skinTexture: 'spots',
+    attributes: ['fourlegs'],
     other: []
   },
   {
     name: 'Edward',
     img: 'images/edward.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'blue',
+    skinTexture: 'spikes',
+    attributes: ['fourlegs'],
+    other: ['horn']
   },
   {
     name: 'Freyja',
     img: 'images/freyja.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
+    skinColor: 'pink',
+    skinTexture: 'stripes',
+    attributes: ['fourlegs'],
     other: []
   },
   {
     name: 'George',
     img: 'images/george.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
+    skinColor: 'red',
+    skinTexture: 'stripes',
+    attributes: ['fins'],
     other: []
   },
   {
     name: 'Holly',
     img: 'images/holly.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
+    skinColor: 'orange',
+    skinTexture: 'spots',
+    attributes: ['twolegs'],
     other: []
   },
   {
     name: 'Idris',
     img: 'images/Idris.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'orange',
+    skinTexture: '',
+    attributes: ['fly'],
+    other: ['beak']
   },
 
   {
     name: 'Jasmine',
     img: 'images/jasmine.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
+    skinColor: 'yellow',
+    skinTexture: 'fins',
+    attributes: ['fourlegs'],
     other: []
   },
   {
     name: 'Kurt',
     img: 'images/kurt.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'green',
+    skinTexture: 'spots',
+    attributes: ['twolegs'],
+    other: ['teeth']
   },
   {
     name: 'Lilly',
     img: 'images/lilly.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
+    skinColor: 'blue',
+    skinTexture: 'stripes',
+    attributes: ['swim'],
     other: []
   },
   {
     name: 'Marcus',
     img: 'images/marcus.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'green',
+    skinTexture: 'spots',
+    attributes: ['fourlegs'],
+    other: ['horn']
   },
   {
     name: 'Naomi',
@@ -268,9 +268,9 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'skinColor' || category === 'bodyTexture') {
 
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'attributes' || category === 'other') {
 
   }
 }

@@ -1,8 +1,11 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
-const findOutBtn = document.getElementById('filter')
+const board = document.getElementById('board');
+const questions = document.getElementById('questions');
+const restartButton = document.getElementById('restart');
+const findOutBtn = document.getElementById('filter');
+const winOrLoseText = document.getElementById('winOrLoseText');
+const winOrLoseSection = document.getElementById('winOrLose');
+const playAgainBtn = document.getElementById('playAgain');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -344,27 +347,45 @@ const filterCharacters = (keep) => {
 
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
-}
+};
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  let personToCheck = personToConfirm
   // store the interaction from the player in a variable.
   // remember the confirm() ?
+  let userConfirmed = window.confirm(`Do you want to guess ${personToConfirm}?`)
   // If the player wants to guess, invoke the checkMyGuess function.
-}
+  if (userConfirmed) {
+    checkMyGuess(personToCheck)
+  }
+  else {
+    alert("Guess cancelled")
+  };
+};
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  const userHasGuessedCorrectly = (secret.name === personToCheck.name);
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
+  if (userHasGuessedCorrectly) {
+    winOrLoseText.innerHTML = "Well Done! You guessed correctly and one the game!"
+  }
+  else {
+    winOrLoseText.innerHTML = "Oh no! You guessed wrong, you loose!"
+  };
   // 3. Show the win or lose section
+  winOrLoseSection.classList.toggle('display');
+
   // 4. Hide the game board
-}
+};
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutBtn.addEventListener('click', checkQuestion);
+playAgainBtn.addEventListener('click', start);

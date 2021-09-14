@@ -260,49 +260,29 @@ const checkQuestion = () => {
   console.log(currentQuestion);
   let keep = false;
 
-  //const keep = currentQuestion.value === secret[currentQuestion.attribute]
-  //filterCharacters(true)
-
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
 
   if (category === "hair") {
     keep = secret.hair === value;
+    console.log(`category is ${category} value is ${value}`);
+    console.log(`keep value for selected hair category is: ${keep}`);
   } else if (category === "eyes") {
     keep = secret.eyes === value;
+    console.log(`category is ${category} value is ${value}`);
+    console.log(`keep value for selected eyes category is: ${keep}`);
   } else if (category === "accessories") {
     keep = secret.accessories.includes(value);
+    console.log(`category is ${category} value is ${value}`);
+    console.log(`keep value for selected accessories category is: ${keep}`);
   } else if (category === "other") {
     keep = secret.other.includes(value);
+    console.log(`category is ${category} value is ${value}`);
+    console.log(`keep value for selected other category is: ${keep}`);
   }
 
   filterCharacters(keep);
-  // if (category === "hair" || category === "eyes") {
-  //   if (value === secret.hair) {
-  //     filterCharacters(true);
-  //     console.log(value);
-  //     console.log(secret.hair);
-  //   } else if (value === secret.eyes) {
-  //     filterCharacters(true);
-  //     console.log(value);
-  //     console.log(secret.eyes);
-  //   } else {
-  //     filterCharacters(false);
-  //     console.log("wrong");
-  //   }
-  // } else if (category === "accessories" || category === "other") {
-  //   if (value === secret.other) {
-  //     filterCharacters(true);
-  //     console.log(secret.other);
-  //   } else if (value === secret.accessories) {
-  //     filterCharacters(true);
-  //     console.log(secret.accessories);
-  //   } else {
-  //     filterCharacters(false);
-  //     console.log("wrong");
-  //   }
-  // }
 };
 
 // It'll filter the characters array and redraw the game board.

@@ -252,7 +252,6 @@ const selectQuestion = () => {
     value: value
     
   }
-  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -373,7 +372,7 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerHTML = "Well Done! You guessed correctly and one the game!"
   }
   else {
-    winOrLoseText.innerHTML = "Oh no! You guessed wrong, you loose!"
+    winOrLoseText.innerHTML = "Oh no! You guessed wrong, you lose!"
   };
   // 3. Show the win or lose section
   winOrLoseSection.classList.toggle('display');

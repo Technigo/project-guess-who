@@ -70,7 +70,7 @@ const CHARACTERS = [
     hair: "red",
     homeRegion: "none",
     mainRole: "mage",
-    accessories: [],
+    accessories: ["headpiece"],
   },
   {
     name: "Aphelios",
@@ -350,7 +350,7 @@ const CHARACTERS = [
     hair: "purple",
     homeRegion: "ionia",
     mainRole: "fighter",
-    accessories: [],
+    accessories: ["headpiece"],
   },
   {
     name: "Ivern",
@@ -1263,6 +1263,9 @@ let secret = ``;
 let currentQuestion = ``;
 let charactersInPlay = ``;
 let championToCheck = ``;
+let questionsAsked = 0;
+let startTime = ``;
+let endTime = ``;
 
 // Draw the game board
 const generateBoard = () => {
@@ -1289,6 +1292,9 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  startTimer();
+  questionsAsked = 0;
+  guessCounter.innerHTML = `Questions asked: ${questionsAsked}`;
   winOrLose.classList.remove("active");
   document.body.style.overflow = "auto";
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -1298,6 +1304,19 @@ const start = () => {
   generateBoard();
   setSecret();
   selectQuestion();
+};
+
+const startTimer = () => {
+  startTime = new Date();
+};
+
+const endTimer = () => {
+  endTime = new Date();
+  let timeDiff = endTime - startTime;
+  timeDiff /= 1000;
+
+  let seconds = Math.round(timeDiff);
+  timer.innerHTML = `The game took ${seconds} seconds to finish`;
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -1315,12 +1334,13 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  playSound(`./sound/askQuestion.mp3`);
   const { category, value } = currentQuestion;
+  onClick();
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-
   // accessories: [],
 
   if (
@@ -1433,6 +1453,7 @@ const confirmGuess = (message) => {
   let result = confirm(message);
   if (result === true) {
     checkMyGuess(championToCheck);
+    window.scrollTo(0, 0);
   }
 };
 
@@ -1454,16 +1475,27 @@ const checkMyGuess = (championToCheck) => {
     winOrLoseText.innerHTML = `Sorry, you guessed wrong!`;
   }
   winOrLose.classList.add(`active`);
+  playSound(`./sound/win.mp3`);
   document.body.style.overflow = "hidden";
-
+  endTimer();
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
 };
 
+const onClick = () => {
+  questionsAsked += 1;
+  guessCounter.innerHTML = `Questions asked: ${questionsAsked}`;
+};
+
 const setCharacterInPlayCounter = () => {
-  championCounter.innerHTML = `Champions left in play: ${charactersInPlay.length}`;
+  championCounter.innerHTML = `Champions left: ${charactersInPlay.length}`;
+};
+
+const playSound = (audiofile) => {
+  const audio = new Audio(audiofile);
+  audio.play();
 };
 
 // Invokes the start function when website is loaded

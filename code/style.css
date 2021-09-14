@@ -20,7 +20,8 @@ h2 {
 }
 
 .question-section {
-  width: 30%;
+  width: 35%;
+  min-width: 250px;
   min-height: 100vh;
   background-color: rgb(6, 28, 37);
   display: flex;
@@ -61,11 +62,13 @@ select {
   justify-content: center;
 }
 .game-board {
-  width: 90%;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
   max-width: 882px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 /****** CARD ******/
@@ -160,6 +163,9 @@ button {
 /****** GAME-STATUS SECTION ******/
 
 .game-status {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
   color: white;
 }
 
@@ -200,6 +206,11 @@ button {
   display: flex;
 }
 
+.timer {
+  color: white;
+  margin-top: 10px;
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -226,6 +237,8 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    display: flex;
+    justify-content: center;
   }
 
   .card {

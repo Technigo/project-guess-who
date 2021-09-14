@@ -5,6 +5,7 @@ const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
 const winOrLoseSection = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
+const playAgainButton = document.getElementById("playAgain");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -374,3 +375,8 @@ start();
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutButton.addEventListener("click", checkQuestion);
+
+playAgainButton.addEventListener("click", () => {
+  winOrLoseSection.classList.toggle("display");
+  start();
+});

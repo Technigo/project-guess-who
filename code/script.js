@@ -1,6 +1,6 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
+const board = document.getElementById('board')// This gets the main element and is used in the generateBoard function expresion to genereate the board game.
+const questions = document.getElementById('questions')// This gets the select element
 const restartButton = document.getElementById('restart')
 
 // Array with all the characters, as objects
@@ -200,12 +200,12 @@ const CHARACTERS = [
   },
 ]
 
-// Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+// Global variables: These are undefined in order to be later filled in with a value when a function runs.
+let secret           //It will store a random person (an object from the CHARACTERS array)
+let currentQuestion  //It will store an object with the category selected by the user and it's value.
+let charactersInPlay 
 
-// Draw the game board
+// Funtion Expression: Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -221,36 +221,34 @@ const generateBoard = () => {
     `
   })
 }
-
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Function that randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-
-// This function to start (and restart) the game
+// Function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   generateBoard();
   setSecret();
-  console.log(secret)
   // What else should happen when we start the game?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const category = questions.options[questions.selectedIndex].parentNode.label //This variable shows the label of the options selected.
+  const value = questions.value;
 
   currentQuestion = {
-    category: category,
-    // value: value
+    category: category, //hair, eyes, accessories, others
+    value: value,      // value from the categories
   }
+  console.log(category)
+  console.log(value)
+  console.log(currentQuestion)
 }
+
+
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
@@ -327,4 +325,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-// questions.addEventListener('change',)
+questions.addEventListener('change',selectQuestion)

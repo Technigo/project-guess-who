@@ -262,13 +262,13 @@ const checkQuestion = () => {
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
     keep = value === secret[category];
-    console.log("This is the comparison:" + value === secret[category]);
+    // console.log("This is the comparison:" + value === secret[category]);
 
-    console.log("Value: " + value);
+    // console.log("Value: " + value);
     //Compare with secret object
-    console.log("Secret: " + secret[category]);
+    // console.log("Secret: " + secret[category]);
   } else if (category === "accessories" || category === "other") {
-    //
+    keep = secret[category].includes(value);
   }
 
   filterCharacters(keep);
@@ -282,21 +282,69 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
     } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
     }
   } else if (category === "other") {
-    // Similar to the one above
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
+      alert(
+        `Yes the person is a ${value}!Keep all the people who are ${value}`
+      );
+    } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
+      alert(
+        `No the person is not a ${value}!Remove all the people who are ${value}`
+      );
+    }
+  } else if (category === "hair") {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+      alert(
+        `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
+      );
+    } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
+
+      alert(
+        `No, the person has not ${value} hair! Remove all people that have ${value} hair`
+      );
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`
+      );
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
+
+      alert(
+        `No, the person has not ${value} eyes! Remove all people that have ${value} eyes`
+      );
     }
   }
 
@@ -315,6 +363,7 @@ const filterCharacters = (keep) => {
   */
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard(keep);
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

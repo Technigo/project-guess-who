@@ -1,19 +1,18 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #428e93;
+  --secondary:#9ea34e;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-}
+  font-family: 'Urbanist', sans-serif;}
 
 h1 {
-  font-size: 42px;
-  font-weight: 500;
+  font-size: 48px;
+  font-weight: 600;
   line-height: 48px;
   margin: 10px 0;
   color: white;
@@ -34,14 +33,14 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: 'Urbanist';
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 200px;
 }
 
 .board-wrapper {
@@ -61,13 +60,14 @@ select {
 
 /****** CARD ******/
 .card {
-  width: 135px;
-  height: 165px;
+  width: 150px;
+  height: 185px;
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
+  background-color: #f2f3ec;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
@@ -78,6 +78,11 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+}
+
+.card img {
+  width: 95%;
+  padding-bottom: 5px;
 }
 
 .card .guess {
@@ -115,11 +120,11 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
+  border-radius: 30px;
   font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: bold;
-  padding: 17px 27px;
+  font-family: 'Urbanist';
+  font-weight: 600;
+  padding: 15px 15px;
   cursor: pointer;
 }
 
@@ -195,7 +200,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 150px;
   }
 
   .board-wrapper {
@@ -225,9 +230,9 @@ button {
 
   .card .guess .filled-button {
     padding: 6px 11px;
-    margin-bottom: 1px;
-    background: white;
-    color: var(--primary);
+    margin-bottom: 115px;
+    background: 428e93;
+    color: white;
     border: none;
   }
 }

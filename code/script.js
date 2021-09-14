@@ -12,7 +12,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Jack',
@@ -20,7 +20,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Jacques',
@@ -35,8 +35,8 @@ const CHARACTERS = [
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: [],
-    other: []
+    accessories: 'no_acc',
+    other: 'nonsmoker'
   },
   {
     name: 'Jake',
@@ -44,7 +44,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'James',
@@ -52,7 +52,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Jana',
@@ -60,7 +60,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Jane',
@@ -68,7 +68,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Jaqueline',
@@ -76,7 +76,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: 'nonsmoker'
   },
 
   {
@@ -101,7 +101,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Jed',
@@ -117,7 +117,7 @@ const CHARACTERS = [
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Jeri',
@@ -125,7 +125,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Jerry',
@@ -133,7 +133,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Jess',
@@ -141,7 +141,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Jocelyn',
@@ -149,7 +149,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Jon',
@@ -157,7 +157,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Jordan',
@@ -165,31 +165,31 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: 'nonsmoker'
   },
   {
     name: 'Josephine',
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
-    other: []
+    accessories: 'no_acc',
+    other: 'nonsmoker'
   },
   {
     name: 'Josh',
     img: 'images/josh.svg',
     hair: 'yellow',
     eyes: 'green',
-    accessories: [],
-    other: []
+    accessories: 'no_acc',
+    other: 'nonsmoker'
   },
   {
     name: 'Jude',
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
-    other: []
+    accessories: 'no_acc',
+    other: 'nonsmoker'
   },
   {
     name: 'Julie',
@@ -197,7 +197,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: 'nonsmoker'
   },
 ]
 
@@ -226,7 +226,9 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+
 }
+
 
 // This function to start (and restart) the game
 const start = () => {
@@ -267,16 +269,17 @@ const checkQuestion = () => {
     } else {
       keep = false;
     }
-  } else if (category === 'accessories' || category === 'other') {
-    if (value === secret.accessories || value === secret.other) {
+  } 
+  //the character properties for accessories and other are stored in arrays, but the values to compare with are strings and that's why the comparisson only works with == and not with ===
+    else if (category === 'accessories' || category === 'other') {
+    if (value == secret.accessories || value == secret.other) {      
       keep = true;
     } else {
       keep = false;
     }
   }
-
-  console.log(`Ratewert = ${value}`)
-  console.log(`geheimer Wert = ${secret.other}`)
+  console.log(secret)
+  console.log(`Guessing value = ${value}`)
   console.log(`Keep = ${keep}`)
   filterCharacters(keep); 
 }
@@ -287,31 +290,54 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+      if (value == 'no_acc') {
+        alert(
+          `Yes, the person has no ${category}! Keep all the people without ${category}`
+        )
+      } else {
+          alert(
+            `Yes, the person wears ${value}! Keep all people that wears ${value}`
+          )
+        }
     } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}` ///////////////pro
-      )
+      if (value == 'no_acc') {
+        alert(
+          `No, the person has ${category}! Remove all people without ${category}!`
+        )
+      } else {
+          alert(
+            `No, the person doesn't wear ${value}! Remove all people that wears ${value}` 
+          )
+        }
     }
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person is a smoker! Keep all people that smoke`
+        `Yes, the person is a ${value}! Keep all people that are ${value}s`
       )
     } else {
-      alert(
-        `No, the person isn't a smoker! Remove all people that don't smoke`
+        alert(
+          `No, the person isn't a ${value}! Remove all people that are ${value}s`
+        )
+      }
+  } else if (category === 'hair') {
+    if (keep) {
+      alert(`Yes, the person has ${value} hair! Keep all people with ${value} hair`
       )
-    }
+    } else {
+        alert(`No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
+        )
+      }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(`Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+        alert(`No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes`
+        )
+      }
     }
-  }
+  
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.

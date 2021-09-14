@@ -44,9 +44,9 @@ const CHARACTERS = [
     name: 'Edward',
     img: 'images/edward.svg',
     skinColor: 'blue',
-    skinTexture: 'spikes',
+    skinTexture: 'plain',
     attributes: ['fourlegs'],
-    other: ['horn']
+    other: ['horn', 'spikes']
   },
   {
     name: 'Freyja',
@@ -61,8 +61,8 @@ const CHARACTERS = [
     img: 'images/george.svg',
     skinColor: 'red',
     skinTexture: 'stripes',
-    attributes: ['fins'],
-    other: []
+    attributes: ['fourlegs'],
+    other: ['fins']
   },
   {
     name: 'Holly',
@@ -76,8 +76,8 @@ const CHARACTERS = [
     name: 'Idris',
     img: 'images/Idris.svg',
     skinColor: 'orange',
-    skinTexture: '',
-    attributes: ['fly'],
+    skinTexture: 'plain',
+    attributes: ['fly', 'twolegs'],
     other: ['beak']
   },
 
@@ -85,9 +85,9 @@ const CHARACTERS = [
     name: 'Jasmine',
     img: 'images/jasmine.svg',
     skinColor: 'yellow',
-    skinTexture: 'fins',
+    skinTexture: 'spots',
     attributes: ['fourlegs'],
-    other: []
+    other: ['spikes']
   },
   {
     name: 'Kurt',
@@ -116,90 +116,90 @@ const CHARACTERS = [
   {
     name: 'Naomi',
     img: 'images/naomi.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
+    skinColor: 'pink',
+    skinTexture: 'spots',
+    attributes: ['twolegs'],
     other: []
   },
   {
     name: 'Ollie',
     img: 'images/ollie.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'blue',
+    skinTexture: 'plain',
+    attributes: ['fly'],
+    other: ['beak']
   },
   {
     name: 'Poppy',
     img: 'images/poppy.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'blue',
+    skinTexture: 'stripes',
+    attributes: ['fourlegs'],
+    other: ['spikes']
   },
   {
     name: 'Quentin',
     img: 'images/quentin.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'blue',
+    skinTexture: 'plain',
+    attributes: ['swim'],
+    other: ['teeth']
   },
   {
     name: 'Rosie',
     img: 'images/rosie.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'green',
+    skinTexture: 'spots',
+    attributes: ['twolegs'],
+    other: ['teeth']
   },
   {
     name: 'Spencer',
     img: 'images/spencer.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'green',
+    skinTexture: 'plain',
+    attributes: ['twolegs'],
+    other: ['spikes', 'teeth']
   },
   {
     name: 'Tina',
     img: 'images/tina.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'orange',
+    skinTexture: 'stripes',
+    attributes: ['twolegs'],
+    other: ['fins']
   },
   {
     name: 'Umer',
     img: 'images/umer.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'red',
+    skinTexture: 'plain',
+    attributes: ['fly'],
+    other: ['beak']
   },
   {
     name: 'Valerie',
     img: 'images/valerie.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
+    skinColor: 'green',
+    skinTexture: 'stripes',
+    attributes: ['fourlegs'],
     other: []
   },
   {
     name: 'Walter',
     img: 'images/walter.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
+    skinColor: 'yellow',
+    skinTexture: 'spots',
+    attributes: ['twolegs'],
     other: []
   },
   {
     name: 'Yolanda',
     img: 'images/yolanda.svg',
-    skinColor: 'hidden',
-    skinTexture: 'hidden',
-    attributes: ['glasses', 'hat'],
-    other: []
+    skinColor: 'green',
+    skinTexture: 'spots',
+    attributes: ['fourlegs'],
+    other: ['spikes']
   },
 ]
 
@@ -259,18 +259,46 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  if (currentQuestion["value"] === secret[currentQuestion["attribute"]]) {
-    keep = true;
-  } else {
-    keep = false;
-  }
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'skinColor' || category === 'bodyTexture') {
+  if (category === 'Skin Color' || category === 'Skin/body texture') {
+    if (category === 'Skin Color') {
+      if (secret.skinColor === value) {
+        filterCharacters(true)
+      }
+      else {
+        filterCharacters(false)
+      }
+    }
+    else {
+      if (secret.skinTexture === value) {
+        filterCharacters(true)
+      }
+      else {
+        filterCharacters(false)
+      }
+    }
 
-  } else if (category === 'attributes' || category === 'other') {
+  } else if (category === 'Attributes' || category === 'Other attributes') {
+
+    if (category === 'Attributes') {
+      if (secret.attributes.includes(value)) {
+        filterCharacters(true)
+      }
+      else {
+        filterCharacters(false)
+      }
+    }
+    else {
+      if (secret.other.includes(value)) {
+        filterCharacters(true)
+      }
+      else {
+        filterCharacters(false)
+      }
+    }
 
   }
 }
@@ -278,10 +306,12 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+  let stringPropertyName = ''
+  let arrayPropertyName = ''
 
-  
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'Skin Color') {
+    stringPropertyName = 'skinColor';
     if (keep) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
@@ -291,29 +321,74 @@ const filterCharacters = (keep) => {
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
     }
-  } else if (category === 'other') {
-    // Similar to the one above
-  } else {
+
+  }
+  else if (category === 'Skin/body texture') {
+    stringPropertyName = 'skinTexture'
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+      )
+    }
+
+  } else if (category === 'Attributes') {
+    arrayPropertyName = 'attributes';
+    if (keep) {
+      alert(
+        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+      )
     }
   }
 
+  else if (category === 'Other attributes') {
+    arrayPropertyName = 'other'
+    if (keep) {
+      alert(
+        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+      )
+    }
+
+  }
+if (arrayPropertyName !== ''){
+  if(keep){
+    charactersInPlay = charactersInPlay.filter((person) => person[arrayPropertyName].includes(value))
+  }else{
+
+    charactersInPlay = charactersInPlay.filter((person) => !person[arrayPropertyName].includes(value))
+  }
+  
+}
+else {
+  if (keep) {
+    charactersInPlay = charactersInPlay.filter((person) => person[stringPropertyName] === value)
+  }
+else {
+  charactersInPlay = charactersInPlay.filter((person) => person[stringPropertyName] !== value)
+}
+}
+//om inte tom sträng. då har jag tilldelat det värdet. om den har tilldelat värde då ska den söka i en array
+
+
+generateBoard()
+
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+
+
+
 
   // Invoke a function to redraw the board with the remaining people.
 }

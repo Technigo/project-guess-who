@@ -237,7 +237,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard();
   // tillagd av MIG calls for the board to be generated
-  console.log("generateBoard");
+
   setSecret();
   // tillagd av MIG  this fetches a random character
   console.log(secret);
@@ -303,7 +303,7 @@ const filterCharacters = (keep) => {
     }
   }
 
-  // Determine what is the category
+  // Determine what is the category.
   // filter by category to keep or remove based on the keep variable.
 
   // for hair and eyes :

@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 
 let guessButton = ''
+let chosenPerson = ''
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -222,9 +223,10 @@ const generateBoard = () => {
         </div>
       </div>
     `
+  
+    personToConfirm = person.name
+
   })
-  const guessButtonInside = document.getElementById('guess')
-  guessButton = guessButtonInside
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -234,22 +236,17 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
   console.log(secret)
-  // What else should happen when we start the game?
+  
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
 
   currentQuestion = {
     category: category,
@@ -259,45 +256,40 @@ const selectQuestion = () => {
   checkQuestion()
 }
 
-// This function should be invoked when you click on 'Find Out' button.
-
-
-  const checkQuestion = () => {
-    const { category, value} = currentQuestion
-    console.log(currentQuestion)
+const checkQuestion = () => {
+  const { category, value} = currentQuestion
+  console.log(currentQuestion)
 
     // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
     // See if we should keep or remove people based on that
     // Then invoke filterCharacters
-    if (category === 'hair' || category === 'eyes') {
-      console.log("jag testar", secret[currentQuestion.category])
-      let secretValue = secret[currentQuestion.category]
-      console.log(secretValue)
-      console.log('det här hemliga current question value:',currentQuestion.value)
-      if (secretValue === currentQuestion.value){
-        filterCharacters(true, currentQuestion.category)
-        //EXEMPEL currentQuestion.category = hair eller = eyes
-        console.log("IT IS TRUE")
-      } else {
-        filterCharacters(false, currentQuestion.catergory)
-        console.log("IT IS FALSE")
-      }
+  if (category === 'hair' || category === 'eyes') {
+    console.log("jag testar", secret[currentQuestion.category])
+    let secretValue = secret[currentQuestion.category]
+    console.log(secretValue)
+    console.log('det här hemliga current question value:',currentQuestion.value)
+    if (secretValue === currentQuestion.value){
+      filterCharacters(true, currentQuestion.category)
+    //EXEMPEL currentQuestion.category = hair eller = eyes
+      console.log("IT IS TRUE")
+    }else {
+      filterCharacters(false, currentQuestion.catergory)
+      console.log("IT IS FALSE")
+    }
       
 
-    } else if (category === 'accessories' || category === 'other') {
+  }else if (category === 'accessories' || category === 'other') {
       let secretValueArray = secret[currentQuestion.category]
       // let currentQuestionArray = [currentQuestion.value]
       console.log('this is the BEFORE if with ass or other', secretValueArray)
       console.log('this is the BEFORE if with ass or other', currentQuestion.value)
       if (secretValueArray.includes(currentQuestion.value)){
-      console.log('this is the if with ass or other', secretValueArray)
-      filterCharacters(true, currentQuestion.category)
+        console.log('this is the if with ass or other', secretValueArray)
+        filterCharacters(true, currentQuestion.category)
       } else {
-      filterCharacters(false, currentQuestion.category)
-      console.log("The person has NOT glasses or other")
+        filterCharacters(false, currentQuestion.category)
+        console.log("The person has NOT glasses or other")
       }
-      
-
     }  
 }
 
@@ -367,35 +359,25 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       } 
     }
-    console.log('innan generate board')
+    console.log('before generate board')
     generateBoard()
-
-
-
-  // Invoke a function to redraw the board with the remaining people.
-  
-    // Here we're setting charactersInPlay array to be all the characters to start with
-  
-    // What else should happen when we start the game?
-    
   }
 
 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
- console.log('person to cofirm works', secret.name)
- console.log('person to cofirm works', charactersInPlay.name)
-  
-  if (secret.name === charactersInPlay.name){
-  
-    console.log("You are such a star!")
-  }
-  else {
-    console.log("try again!")
-  }
 
-}
+window.confirm(`Do you really want to guess on ${personToConfirm}`)
+  if(window.confirm){
+    personToCheck = personToConfirm
+    checkMyGuess(personToCheck)
+  }else {
+    alert("ok, try again!")
+  }
+  }
+ 
+
   // FOR PERSON TO CONFIRM store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -403,10 +385,29 @@ const guess = (personToConfirm) => {
 
 
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+
+  console.log('person to cofirm works with secret name', secret.name)
+  console.log('person to cofirm works with global variable', personToCheck)
+
+  if (secret.name === personToCheck){
+
+    console.log("You are such a star!")
+    alert("you are such a star!!")
+    const winOrLose = document.getElementById('winOrLose')
+    winOrLose.style.display ="flex"
+
+    const playAgainButton = document.getElementById('playAgain')
+    playAgainButton.addEventListener('click', () => {
+      winOrLose.style.display = 'none'
+      start()
+   })
+   
+  
+}else {
+  alert('Oh NOOOO, you have to try again')
+}
+
+
 }
 
 // Invokes the start function when website is loaded
@@ -417,4 +418,4 @@ restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', () => {
   console.log('this is the buttom:',findOutButton)
   selectQuestion()});
-guessButton.addEventListener('click', personToConfirm)
+

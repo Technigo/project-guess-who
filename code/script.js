@@ -257,26 +257,69 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   console.log(currentQuestion);
+  let keep = false;
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === "hair" || category === "eyes") {
-    if (value === secret.hair) {
-      filterCharacters(true);
-      console.log(value);
-      console.log(secret.hair);
-    } else if (value === secret.eyes) {
-      filterCharacters(true);
-      console.log(value);
-      console.log(secret.hair);
-    } else {
-      filterCharacters(false);
-      console.log("wrong");
-    }
-  } else if (category === "accessories" || category === "other") {
+  if (category === "hair") {
+    keep = secret.hair === value;
+    console.log(keep);
+    console.log(category);
+    console.log(value);
+  } else if (category === "eyes") {
+    keep = secret.eyes === value;
+    console.log(keep);
+    console.log(category);
+    console.log(value);
+  } else if (category === "accessories") {
+    keep = secret.accessories.includes(value);
+    console.log(keep);
+    console.log(category);
+    console.log(value);
+  } else if (category === "other") {
+    keep = secret.other.includes(value);
+    console.log(keep);
+    console.log(category);
+    console.log(value);
   }
+
+  filterCharacters(keep);
 };
+
+// OR:
+// if (category === "hair" || category === "eyes") {
+//   if (value === secret.hair) {
+//     filterCharacters(true);
+//     console.log(value);
+//     console.log(secret.hair);
+//     console.log("correct");
+//   } else if (value === secret.eyes) {
+//     filterCharacters(true);
+//     console.log(value);
+//     console.log(secret.eyes);
+//     console.log("correct");
+//   } else {
+//     filterCharacters(false);
+//     console.log("wrong");
+//   }
+// } else if (category === "accessories" || category === "other") {
+//   if (value === secret.other) {
+//     filterCharacters(true);
+//     console.log(value);
+//     console.log(secret.other);
+//     console.log("correct");
+//   } else if (value === secret.accessories) {
+//     filterCharacters(true);
+//     console.log(value);
+//     console.log(secret.accessories);
+//     console.log("correct");
+//   } else {
+//     filterCharacters(false);
+//     console.log("wrong");
+//   }
+// }
+// };
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -285,29 +328,52 @@ const filterCharacters = (keep) => {
   if (category === "accessories") {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person is wearing ${value}! Keep all people that are wearing ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
       );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person isn't wearing ${value}! Remove all people that are not wearing ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
       );
     }
   } else if (category === "other") {
-    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person is a ${value}! Keep all people that are ${value}s`
+      );
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
+    } else {
+      alert(
+        `No, the person is not a ${value}! Remove all the people who are ${value}s!`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
+    }
   } else {
-    // if (keep) {
-    //   alert(
-    //     `Yes, the person has ${value} hair! Keep all people that has ${value} hair`
-    //   )
-    //   // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-    // } else {
-    //   alert(
-    //     `No, the person doesn't have ${value} hair! Remove all people that has ${value} hair`
-    //   )
-    //   // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-    // }
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} ${category}! Keep all people that has ${value} ${category}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+    } else {
+      alert(
+        `No, the person doesn't have ${value} ${category}! Remove all people that has ${value} ${category}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
+    }
   }
-
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   /* 
@@ -321,6 +387,7 @@ const filterCharacters = (keep) => {
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
+  generateBoard();
 };
 // Invoke a function to redraw the board with the remaining people.
 

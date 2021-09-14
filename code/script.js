@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 
+let guessButton = ''
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -222,6 +223,8 @@ const generateBoard = () => {
       </div>
     `
   })
+  const guessButtonInside = document.getElementById('guess')
+  guessButton = guessButtonInside
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -283,18 +286,20 @@ const selectQuestion = () => {
 
     } else if (category === 'accessories' || category === 'other') {
       let secretValueArray = secret[currentQuestion.category]
-      if (secretValueArray = currentQuestion.value){
+      // let currentQuestionArray = [currentQuestion.value]
+      console.log('this is the BEFORE if with ass or other', secretValueArray)
+      console.log('this is the BEFORE if with ass or other', currentQuestion.value)
+      if (secretValueArray.includes(currentQuestion.value)){
       console.log('this is the if with ass or other', secretValueArray)
       filterCharacters(true, currentQuestion.category)
       } else {
       filterCharacters(false, currentQuestion.category)
+      console.log("The person has NOT glasses or other")
       }
       
 
     }  
 }
-
-
 
 
 // It'll filter the characters array and redraw the game board.
@@ -380,9 +385,9 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
  console.log('person to cofirm works', secret.name)
- console.log('person to cofirm works', secret[charactersInPlay.name])
+ console.log('person to cofirm works', charactersInPlay.name)
   
-  if (secret.name === secret[charactersInPlay.name]){
+  if (secret.name === charactersInPlay.name){
   
     console.log("You are such a star!")
   }

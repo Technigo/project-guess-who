@@ -237,23 +237,19 @@ const start = () => {
   generateBoard();
   setSecret();
   console.log(secret); //REMOVE
-
-  // What else should happen when we start the game?
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
-  const actualValue = questions.value; //OSÄKER
-  console.log("Questions value" + questions.value);
+  // A variable that stores the actual value of the question
+  const actualValue = questions.value;
+  console.log("Questions value " + questions.value + category);
+
   // This variable stores what option group (category) the question belongs to.
-
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
   currentQuestion = {
     category: category,
-    // value: value
+    value: actualValue,
   };
 };
 
@@ -265,7 +261,12 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
+    filterCharacters(true); //OSÄKER
   } else if (category === "accessories" || category === "other") {
+    filterCharacters(true); //DENNA KORREKT
+  } else {
+    //SKA DENNA VARA MED?
+    filterCharacters(false);
   }
 };
 
@@ -330,5 +331,5 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
-//questions.addEventListener("change", value); //Eventlistener when user selects attributes in the drop down list
+questions.addEventListener("change", selectQuestion); //Eventlistener when user selects attributes in the drop down list
 filterButton.addEventListener("click", checkQuestion);

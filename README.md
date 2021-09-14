@@ -4,8 +4,6 @@ This project was to create our own version of the classig guessing board game 'G
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+It was hard getting to understand the existing code at first and to be able to test and se if youre progress was working accordingly. The trick was to use the console.log in the right way (and a lot).
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

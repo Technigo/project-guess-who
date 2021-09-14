@@ -229,7 +229,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
-let keep;
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -279,39 +279,48 @@ const selectQuestion = () => {
   console.log(currentQuestion);
 }
 
-// This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-    if (secret.hair === value || secret.eyes === value) {
-      keep === true;
-    } else {
-      keep === false;
-    }
-  } else if (category === 'accessories' || category === 'other') {
-    if (secret.accessories === value || secret.other === value) {
-      keep === true;
-    } else {
-      keep === false;
-    }
-  } else {
-    if (secret.gender === value) {
-      keep === true;
-    } else {
-      keep === false;
-    }
-  }
+  // Refactored version
+ let keep = Array.isArray(secret[category]) ? secret[category].includes(value) : secret[category]  === value;
+// To understnad this refactoring first check the links below:
+// I have a ternary operator syntax which is a bit confusing so u can read about it here:
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+// The Array.isArray() method determines whether the passed value is an Array. It returns a Boolean.
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
+// In current case if secret[category] is an Array it will continue to this evaluation operation: secret[category].includes(value) === value
+// and return a result of the evaluation in boolean format. In other case if the secret[category] is not an Array it will return false and continue to
+//evaluate secret[category] === value , and return a boolean for this evaluation.
+
+
+//  This code is a longer version of 286 line and also works perfectly fine. 
+//   let keep;
+//   if (category === 'hair' || category === 'eyes') {
+//     if (secret.hair === value || secret.eyes  === value) {
+//       keep = true; 
+//     } else {
+//       keep = false;
+//     }
+//   } else if (category === 'accessories' || category === 'other') {
+//     if (secret.accessories.includes(value) || secret.other.includes(value)=== value) {
+//       keep = true;
+//     } else {
+//       keep = false;
+//     }
+//   } else {
+//     if (secret.gender === value) {
+//       keep = true;
+//     } else {
+//       keep = false;
+//     }
+//   }
   filterCharacters(keep);
 };
 
-// It'll filter the characters array and redraw the game board.
+
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-  // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -325,7 +334,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   } else if (category === 'other') {
-    // Similar to the one above
     if (keep) {
       alert(
         `Yes, the person is a ${value}! Keep all people that smokes.`
@@ -342,54 +350,38 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has a ${value} hair! Keep all people that have ${value} hair.`
       );
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
       alert(
         `No, the person doesn't have a ${value} hair! Remove all people that have a ${value} hair.`
       );
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   } else if (category === 'eyes') {
     if (keep) {
       alert(
         `Yes, the person has a ${value} eyes! Keep all people that have ${value} eyes.`
       );
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
       alert(
         `No, the person doesn't have a ${value} eyes! Remove all people that have a ${value} eyes.`
       );
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   } else {
     if (keep) {
       alert(
         `Yes, the person is a ${value}! Keep all people with ${value} appearance.`
       );
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
       alert(
         `No, the person is not a ${value}! Remove all people that have a ${value} appearance.`
       );
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   };
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-  // Invoke a function to redraw the board with the remaining people.
   generateBoard();
 };
 

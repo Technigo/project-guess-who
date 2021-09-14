@@ -251,8 +251,8 @@ const selectQuestion = () => {
     category: category,
     value: value
     
-  }
-}
+  };
+};
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
@@ -365,7 +365,7 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  const userHasGuessedCorrectly = (secret.name === personToCheck.name);
+  const userHasGuessedCorrectly = (secret.name === personToCheck);
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   if (userHasGuessedCorrectly) {

@@ -293,14 +293,14 @@ const filterCharacters = (keep) => {
   if (category === "accessories") {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
@@ -309,14 +309,14 @@ const filterCharacters = (keep) => {
   } else if (category === "other") {
     if (keep) {
       alert(
-        `Yes, the person is a ${value}! Keep all people that are ${value}s`
+        `Yes, the person is a ${value}! Keep all people that are ${value}s.`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
       alert(
-        `No, the person is not a ${value}! Remove all people that are ${value}s`
+        `No, the person is not a ${value}! Remove all people that are ${value}s.`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
@@ -325,7 +325,7 @@ const filterCharacters = (keep) => {
   } else {
     if (keep) {
       alert(
-        `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`
+        `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value

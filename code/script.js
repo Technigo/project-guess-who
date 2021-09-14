@@ -235,6 +235,7 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
+  console.log(secret);
   // What else should happen when we start the game?
 };
 
@@ -258,7 +259,7 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   console.log(currentQuestion);
-  let keep = false;
+  let keep = false; //Here I created a boolean value for the variable keep. Later on I will reassign the variable a new boolean value (depending on if the secret matches the selected value).
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -363,14 +364,30 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  let personToCheck = personToConfirm;
+  let userConfirmed = confirm("Are you sure?");
+  if (userConfirmed) {
+    checkMyGuess(personToCheck);
+  } else {
+    alert("Guess is cancelled");
+  }
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  const correctGuess = secret.name === personToCheck;
+  console.log(`person to check is: ${personToCheck}`);
+  console.log(`secret person is: ${secret.name}`);
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  console.log("Check my guess function is called");
+  if (correctGuess) {
+    console.log("You won!");
+  } else {
+    console.log("You loose!");
+  }
 };
 
 // Invokes the start function when website is loaded

@@ -257,7 +257,7 @@ const selectQuestion = () => {
     value: value,
   };
   console.log("this is the category:", category, "and value:", value);
-  console.log("this is:", currentQuestion);
+  console.log("this is;", currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out' button.      invoke to see if we get wrong or right answer

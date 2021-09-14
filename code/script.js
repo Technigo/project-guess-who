@@ -388,4 +388,7 @@ start();
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutBtn.addEventListener('click', checkQuestion);
-playAgainBtn.addEventListener('click', start);
+playAgainBtn.addEventListener('click', () => {
+  winOrLoseSection.classList.toggle('display');
+  start()
+});

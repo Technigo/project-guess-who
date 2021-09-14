@@ -3,6 +3,9 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
+const playAgainButton = document.getElementById("playAgain");
+const winOrLose = document.getElementById("winOrLose");
+const winOrLoseText = document.getElementById("winOrLoseText");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -260,6 +263,7 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   console.log(currentQuestion);
+  let keep;
 
   // Compare the currentQuestion details with the secret person details in a
   //  different manner based on category (hair/eyes or accessories/others).
@@ -371,6 +375,16 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  const personToCheck = personToConfirm;
+  let guessConfirm = window.confirm(
+    `Are you sure ${personToCheck} is the person?`
+  );
+
+  if (guessConfirm) {
+    checkMyGuess(personToCheck);
+  } else {
+    alert("Guess canceled! Continue the game.");
+  }
 };
 
 // If you confirm, this function is invoked
@@ -379,6 +393,17 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  let toToggleWinOrLose = (msg) => {
+    winOrLose.classList.toggle("open");
+    winOrLoseText.innerHTML = `${msg}`;
+  };
+
+  if (personToCheck === secret.name) {
+    toToggleWinOrLose("You Win!");
+  } else if (personToCheck !== secret.name) {
+    console.log(personToCheck);
+    toToggleWinOrLose("You Lose!");
+  }
 };
 
 // Invokes the start function when website is loaded
@@ -388,3 +413,7 @@ start();
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutButton.addEventListener("click", checkQuestion);
+playAgainButton.addEventListener("click", () => {
+  start();
+  winOrLose.classList.toggle("open");
+});

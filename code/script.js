@@ -239,30 +239,46 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  console.log(category)
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value
-
+  console.log(value)
   currentQuestion = {
     category: category,
     value: value
   }
+  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  console.log(currentQuestion)
+  console.log(category)
+  console.log(value)
+  let keep = false
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'hair') {
+  keep = (secret.hair === value)
+  
+  } else if (category === 'eyes') {
+  keep = (secret.eyes === value)
 
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'accessories') {
+    keep = (secret.accessories.includes(value))
 
+  } else if (category === 'others') {
+    keep = (secret.other.includes(value))
   }
+
+  filterCharacters(keep)
 }
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -270,21 +286,29 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+      alert(`Yes, the person have ${value} accessories! Keep all people that have ${value} accessories.`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
+        `No, the person doesn't have ${value} accessories! Remove all people that have ${value} accessories`)
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    if (keep) {
+      alert(`Yes, the person have ${value} other! Keep all people that have ${value} other.`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    } else {
+      alert(`No, the person doesn't have ${value} other! Remove all people that have ${value} other`)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    }
+
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(`Yes, the person wears ${value} hair/eyes! Keep all people that wears ${value} hair/eyes`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(`No, the person doesn't have ${value} hair/eyes! Remove all people that have ${value} hair/eyes`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
 
@@ -303,11 +327,12 @@ const filterCharacters = (keep) => {
   */
 
   // Invoke a function to redraw the board with the remaining people.
+generateBoard()
 }
-
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
+  
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 }

@@ -250,33 +250,22 @@ const selectQuestion = () => {
     category: category,
     value: value, // This variable stores the actual value of the question selected.
   };
-  console.log(`chosen category in dropdown is ${category}`);
-  console.log(`chosen value in dropdown is ${value}`);
 };
 
 // This function will be invoked when you click on the 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  console.log(currentQuestion);
   let keep = false; // Creates a boolean value for the variable keep. Later on the variable will be reassigned a new boolean value (depending on if the secret matches the selected value).
 
   // Compares the currentQuestion details with the secret person details based on category (hair, eyes, accessories or others).
   if (category === "hair") {
     keep = secret.hair === value;
-    console.log(`category is ${category} value is ${value}`);
-    console.log(`keep value for selected hair category is: ${keep}`);
   } else if (category === "eyes") {
     keep = secret.eyes === value;
-    console.log(`category is ${category} value is ${value}`);
-    console.log(`keep value for selected eyes category is: ${keep}`);
   } else if (category === "accessories") {
     keep = secret.accessories.includes(value);
-    console.log(`category is ${category} value is ${value}`);
-    console.log(`keep value for selected accessories category is: ${keep}`);
   } else if (category === "other") {
     keep = secret.other.includes(value);
-    console.log(`category is ${category} value is ${value}`);
-    console.log(`keep value for selected other category is: ${keep}`);
   }
 
   filterCharacters(keep); // Invokes filterCharacters
@@ -285,7 +274,6 @@ const checkQuestion = () => {
 // Filters the characters array and redraws the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-  console.log(currentQuestion);
   // Displays an alert message for different categories and filters by category to keep or remove based on the keep variable.
   if (category === "accessories") {
     if (keep) {
@@ -353,15 +341,10 @@ const guess = (personToConfirm) => {
 // If user confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   const correctGuess = secret.name === personToCheck; // Checks if the personToCheck is the same as the secret person's name
-  console.log(`person to check is: ${personToCheck}`);
-  console.log(`secret person is: ${secret.name}`);
-  console.log("Check my guess function is called");
   // Displays a message that is shown in the win or lose section
   if (correctGuess) {
-    console.log("You won!");
     winOrLoseText.innerHTML = `${personToCheck} is correct, you have won!`;
   } else {
-    console.log("You loose!");
     winOrLoseText.innerHTML = `${personToCheck} is wrong, you loose!`;
   }
   // Toggles the classlist that make the win or lose section appear

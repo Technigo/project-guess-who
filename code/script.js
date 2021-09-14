@@ -9,7 +9,7 @@ const findOutButton = document.getElementById('filter')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
+    name: 'Arthur',
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
@@ -259,6 +259,11 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  if (currentQuestion["value"] === secret[currentQuestion["attribute"]]) {
+    keep = true;
+  } else {
+    keep = false;
+  }
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -273,6 +278,8 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+
+  
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {

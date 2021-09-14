@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const playAgainButton = document.getElementById('playAgain')
 
 
 // Array with all the characters, as objects
@@ -304,7 +305,7 @@ const filterCharacters = (keep) => {
 
   } else {
     if (keep) {
-      alert(`Yes, the person wears ${value} hair/eyes! Keep all people that wears ${value} hair/eyes`)
+      alert(`Yes, the person wears ${value} hair! Keep all people that wears ${value} hair`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       alert(`No, the person doesn't have ${value} hair/eyes! Remove all people that have ${value} hair/eyes`)
@@ -340,18 +341,27 @@ const guess = (suspectCharacter) => {
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+const checkMyGuess = (suspectCharacter) => {
+
+  if (suspectCharacter === secret.name) {
+  winOrLoseText.innerHTML = `You won the game! You guessed on ${suspectCharacter} which is the right person`
+} else {
+  winOrLoseText.innerHTML = `You lost! The right person was ${secret.name}...`
+}
+  
+  winOrLose.style.display = 'flex';
+  
 }
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', () => {
+  start()
+  winOrLose.style.display = 'none';
+}) 
 

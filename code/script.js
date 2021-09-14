@@ -227,7 +227,6 @@ const generateBoard = () => {
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
-
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -242,24 +241,48 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   console.log('selectQuestion')
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
+  
+   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
+  
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value
+  console.log(category, value)
 
   currentQuestion = {
     category: category,
     value: value
   }
-  selectQuestion();
-  console.log('selectQuestionList')
 }
+
+//   if (category  === 'hair') {
+//   currentQuestion = {
+//     category: category,
+//     value: value
+//   }
+// } else if (category === 'eyes') {
+//   currentQuestion = {
+//     category: category,
+//     value: value
+//   }
+// } else if (category === 'accessories') {
+//   currentQuestion = {
+//     category: category,
+//     value: value
+//   }
+// } else (category === 'other') ;{
+//   currentQuestion = {
+//     category: category,
+//     value: value
+//   }
+// }
+
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  console.log('CHECK')
   const { category, value } = currentQuestion
-
+  console.log(category, value)
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -332,4 +355,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 filter.addEventListener('click', selectQuestion)
-console.log()
+questions.addEventListener('change', selectQuestion)

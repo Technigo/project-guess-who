@@ -1,10 +1,12 @@
-// All the DOM selectors stored as short variables
+// All the DOM selectors 
 const board = document.getElementById('board');
 const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findOutButton =  document.getElementById('filter');
+const winOrLoseText = document.getElementById('winOrLoseText');
+const winOrLoseSection = document.getElementById('winOrLose');
 
-// Array with all the characters, as objects
+// Array of objects with all the characters
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -260,15 +262,12 @@ const start = () => {
   generateBoard();
   setSecret();
   console.log(secret);
-  // What else should happen when we start the game?
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   console.log(category);
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value;
   console.log(value);
 
@@ -387,17 +386,22 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+let txt;
+  let confirmation = confirm("You want to make a guess?");
+  confirmation ? checkMyGuess(personToConfirm) : alert("You can continue the game.");
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  if (personToCheck === secret.name) 
+  {
+    winOrLoseText.innerText = "You Won! Congrats!";
+    winOrLoseSection.style.display = "block";
+  } else {
+    winOrLoseText.innerText = "Wrong Guess! Wanna try again?";
+    winOrLoseSection.style.display = "block";
+  }
+    board.style.display = "none";
 };
 
 // Invokes the start function when website is loaded

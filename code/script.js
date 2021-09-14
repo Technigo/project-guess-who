@@ -222,7 +222,6 @@ const generateBoard = () => {
   })
 }
 
-
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -235,7 +234,6 @@ const start = () => {
   generateBoard()
   setSecret()
   console.log(secret) // remove later
-
   // What else should happen when we start the game?
 }
 
@@ -243,19 +241,20 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  // A variable that stores the actual value of the question
+  const actualValue = questions.value;
+  //console.log("Questions value" + questions.value + category); //remove later
 
+  // This variable stores what option group (category) the question belongs to.
   currentQuestion = {
     category: category,
-    // value: value
+    value: actualValue, // We also need a variable that stores the actual value of the question we've selected.
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  const { category, actualValue } = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -270,6 +269,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+  
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -282,22 +282,45 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person is a ${value}! Keep all people that are ${value}`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person is not a ${value}! Remove all people that are ${value}`
+      )
     }
+  } else if (category === 'hair') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
+      )
+    } else {
+      alert(
+        `No, the person doesn't has ${value} hair! Remove all people that have ${value} hair`
+      )
+  } 
+  } else if (category === 'eyes') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that have ${value}`
+      )
+  } 
   }
+  filterCharacters(true)
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   /* 
     for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
 
     for accessories and other
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
@@ -328,4 +351,8 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
 
+
+//document.getElementById(filter) - is it necessary
+filter.addEventListener('click', checkQuestion)

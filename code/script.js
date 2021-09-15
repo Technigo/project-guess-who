@@ -232,6 +232,15 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+
+  // The board with the characters will show
+  generateBoard()
+
+  // One of the characters is randomly selected as the secret person
+  setSecret()
+
+  //Invokes the selectQuestion function
+  selectQuestion()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -240,11 +249,13 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  // const value = 
+  const value = questions.value
 
   currentQuestion = {
     category: category,
     // value: value
+    value: value
   }
 }
 
@@ -323,3 +334,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)

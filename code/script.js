@@ -2,201 +2,211 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findBtn = document.getElementById('filter') 
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
+    name: 'Darth Vader',
+    img : 'images/darthvader.jpg',
     hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    headpiece: 'helmet',
+    accessories: ['weapon', 'cape'],
+    other: ['villan']
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Dumbledore',
+    img: 'images/dumbledore.jpg',
+    hair: 'white',
+    headpiece: 'hat',
+    accessories: ['weapon', 'pet'],
+    other: ['wizard']
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
+    name: 'Black Widow',
+    img: 'images/blackwidow.jpg',
     hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    headpiece: 'no headpice',
+    accessories: [],
+    other: ['superhero']
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
+    name: 'Voldemort',
+    img: 'images/voldemort.jpg',
+    hair: 'bald',
+    headpiece: 'no headpice',
+    accessories: ['weapon', 'pet'],
+    other: ['villan']
+  },
+  {
+    name: 'Gandalf',
+    img: 'images/gandalf.jpg',
+    hair: 'hidden',
+    headpiece: 'hat',
+    accessories: ['weapon', 'cape'],
+    other: ['wizard']
+  },
+  {
+    name: 'Harley Quinn',
+    img: 'images/harleyquinn.jpg',
+    hair: 'white',
+    headpiece: 'no headpice',
+    accessories: [],
+    other: ['villan']
+  },
+  {
+    name: 'Thanos',
+    img: 'images/thanos.jpg',
+    hair: 'hidden',
+    headpiece: 'helmet',
+    accessories: [],
+    other: ['villan']
+  },
+  {
+    name: 'Hermione',
+    img: 'images/hermione.png',
+    hair: 'brown',
+    headpiece: 'no headpice',
+    accessories: [],
+    other: ['wizard']
+  },
+  {
+    name: 'Superman',
+    img: 'images/superman.jpg',
     hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    headpiece: 'no headpice',
+    accessories: ['cape'],
+    other: ['superhero']
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
+    name: 'Luke Skywalker',
+    img: 'images/luke.jpg',
+    hair: 'blond',
+    headpiece: 'no headpice',
+    accessories: ['weapon'],
+    other: ['superhero']
+  },
+  {
+    name: 'M. McGonagall',
+    img: 'images/minerva.jpg',
+    hair: 'gray',
+    headpiece: 'hat',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['wizard']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
+    name: 'Storm Tropper',
+    img: 'images/stormtropper.jpg',
     hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    headpiece: 'helmet',
+    accessories: ['weapon'],
+    other: ['villan']
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
+    name: 'Indiana Jones',
+    img: 'images/indianajones.jpg',
+    hair: 'hidden',
+    headpiece: 'hat',
+    accessories: ['weapon'],
+    other: ['superhero']
+  },
+  {
+    name: 'Harry Potter',
+    img: 'images/harry.jpg',
     hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
+    headpiece: 'no headpice',
+    accessories: ['weapon', 'pet'],
+    other: ['wizard']
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
+    name: 'Loki',
+    img: 'images/loki.jpg',
+    hair: 'hidden',
+    headpiece: 'helmet',
+    accessories: ['cape'],
+    other: ['villan']
+  },
+  {
+    name: 'Yoda',
+    img: 'images/yoda.jpg',
+    hair: 'bald',
+    headpiece: 'no headpice',
+    accessories: ['weapon'],
+    other: ['superhero']
+  },
+  {
+    name: 'Bellatrix L',
+    img: 'images/belatrix.jpg',
     hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    headpiece: 'no headpice',
+    accessories: [],
+    other: ['villan']
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
+    name: 'Catwoman',
+    img: 'images/catwoman.jpg',
+    hair: 'hidden',
+    headpiece: 'helmet',
+    accessories: ['glasses'],
+    other: ['villan']
+  },
+  {
+    name: 'Bobba Fett',
+    img: 'images/bobbafett.jpg',
+    hair: 'hidden',
+    headpiece: 'helmet',
+    accessories: ['weapon'],
+    other: ['villan']
+  },
+  {
+    name: 'Batman',
+    img: 'images/batman.jpg',
+    hair: 'hidden',
+    headpiece: 'helmet',
+    accessories: ['cape', 'weapon'],
+    other: ['superhero']
+  },
+  {
+    name: 'Smeagle',
+    img: 'images/smeagle.jpg',
+    hair: 'bald',
+    headpiece: 'no headpice',
+    accessories: [],
+    other: ['villan']
+  },
+  {
+    name: 'Captain America',
+    img: 'images/captain.jpg',
+    hair: 'hidden',
+    headpiece: 'helmet',
+    accessories: ['weapon'],
+    other: ['superhero']
+  },
+  {
+    name: 'Wolerine',
+    img: 'images/wolverine.jpg',
+    hair: 'black',
+    headpiece: 'no headpice',
+    accessories: ['weapon'],
+    other: ['superhero']
+  },
+  {
+    name: 'Thor',
+    img: 'images/thor.jpg',
+    hair: 'hidden',
+    headpiece: 'helmet',
+    accessories: ['cape'],
+    other: ['superhero']
+  },
+  {
+    name: 'Leia',
+    img: 'images/leia.jpg',
     hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
+    headpiece: 'no headpice',
     accessories: [],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    other: ['superhero']
   },
 ]
 
@@ -242,93 +252,150 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // A variable that stores the actual value of the question
-  const actualValue = questions.value;
-  //console.log("Questions value" + questions.value + category); //remove later
+  const value = questions.value;
 
   // This variable stores what option group (category) the question belongs to.
   currentQuestion = {
     category: category,
-    value: actualValue, // We also need a variable that stores the actual value of the question we've selected.
+    value: value, // We also need a variable that stores the actual value of the question we've selected.
   }
+  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, actualValue } = currentQuestion
+  const { category, value } = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
 
+//   if (
+//     category === "hair" ||
+//     category === "headpiece" ||
+//     category === "other"
+//   ) {
+//     if(secret[category] === value){
+//       filterCharacters(true)
+//     }
+//     if (category === "hair" && value === secret.hair){
+//       filterCharacters(true)
+//     } else if (category === "headpiece" && value === secret.headpiece){
+//       filterCharacters(true)
+//     } else if (category === "other" && value === secret.other){
+//       filterCharacters(true)
+//     } else {
+//       filterCharacters(false)
+//     }
+//   } else if (category === "accessories") {
+//     if (secret.accessories.includes(value)) {
+//       filterCharacters(true)
+//     } else {
+//       filterCharacters(false)
+//   }
+//   }
+// }
+
+  if (category === 'hair' || category === 'headpiece') {
+    if (secret[category] === value){
+filterCharacters(true) 
+}
+  else {filterCharacters()
+  }
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[category].includes(value)){
+      filterCharacters(true) 
+}
+  else {filterCharacters()
   }
 }
+}
+
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+  //if i change the value to actualValue, the alert doesnt apear
   
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === "hair") {
+    if (keep) {
+      alert(`Yes, the person has ${value}! Keep all people that have ${value}`);
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that has ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
+    }
+  } else if (category === "headpiece") {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value}! Keep all people that has ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that has ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
+    }
+  } else if (category === "accessories") {
     if (keep) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+      );
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
     }
-  } else if (category === 'other') {
+  } else if (category === "other") {
     if (keep) {
-      alert(
-        `Yes, the person is a ${value}! Keep all people that are ${value}`
-      )
+      alert(`Yes the person is a ${value}! Keep all the ${value}`);
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
     } else {
-      alert(
-        `No, the person is not a ${value}! Remove all people that are ${value}`
-      )
+      alert(`No the person is not a ${value}! Remove all the ${value}`);
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
     }
-  } else if (category === 'hair') {
-    if (keep) {
-      alert(
-        `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
-      )
-    } else {
-      alert(
-        `No, the person doesn't has ${value} hair! Remove all people that have ${value} hair`
-      )
-  } 
-  } else if (category === 'eyes') {
-    if (keep) {
-      alert(
-        `Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
-      )
-    } else {
-      alert(
-        `No, the person doesn't have ${value}! Remove all people that have ${value}`
-      )
-  } 
   }
-  filterCharacters(true)
+
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+  
+    // for hair and eyes :
+      // charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      // or
+      // charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+    // for accessories and other
+      // charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      // or
+      // charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+
 
   // Invoke a function to redraw the board with the remaining people.
+setTimeout(() => generateBoard(), 500)
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -352,7 +419,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
-
-
-//document.getElementById(filter) - is it necessary
-filter.addEventListener('click', checkQuestion)
+findBtn.addEventListener('click', checkQuestion)

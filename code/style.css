@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
   --primary: #026c80;
-  --secondary: #8db4ad;
+  --secondary: #064c72;
 }
 
 body {
@@ -110,6 +110,12 @@ select {
   font-weight: 600;
   margin-bottom: 8px;
   width: 90%;
+}
+
+img{
+  height: 130px;
+  width: 100px;
+  object-fit: contain;
 }
 
 /****** BUTTONS ******/

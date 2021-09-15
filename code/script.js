@@ -281,10 +281,8 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   let trueOrFalse;
-  if (category === "hair" || category === "eyes") {
-    trueOrFalse =
-      currentQuestion.value === secret.hair ||
-      currentQuestion.value === secret.eyes;
+  if (category === "hair") {
+    trueOrFalse = currentQuestion.value === secret.hair;
     if (trueOrFalse === true) {
       filterCharacters(true);
     } else {
@@ -292,6 +290,13 @@ const checkQuestion = () => {
     }
     //console.log(`hair/eyes: ${trueOrFalse}`); //console log to confirm true or false
     //console.log(Object.is(currentQuestion.value, secret.hair))
+  } else if (category === "eyes") {
+    trueOrFalse = currentQuestion.value === secret.eyes;
+    if (trueOrFalse === true) {
+      filterCharacters(true);
+    } else {
+      filterCharacters();
+    }
   } else if (category === "accessories" || category === "other") {
     trueOrFalse =
       secret.accessories.includes(currentQuestion.value) ||

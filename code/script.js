@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutBtn = document.getElementById('filter') 
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -219,7 +220,9 @@ const generateBoard = () => {
         </div>
       </div>
     `
+   
   })
+  
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -231,40 +234,63 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  generateBoard()
+  setSecret()
+  console.log(secret)
   // What else should happen when we start the game?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
+/*
+1. We’re selecting the <select> element from the DOM.
+2. We’re selecting the <option> element that has the value of the current question.
+3. We’re storing the category of the question in a variable called category.
+4. We’re storing the value of the question in a variable called value.
+5. We’re storing the current question in a variable called currentQuestion.
+*/
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
+  console.log('test findout button', category)
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
+  const value = questions.options[questions.selectedIndex].value
+  console.log('test value', value)
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value 
   }
+  console.log(currentQuestion)
+  checkQuestion()
 }
+
+
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  console.log('Testing')
   const { category, value } = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    console.log('Första if hår och eyes', category)
+    filterCharacters()
 
   } else if (category === 'accessories' || category === 'other') {
-
+    console.log('Första else if', category)
   }
 }
 
+
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
+  console.log('Filter?')
   const { category, value } = currentQuestion
+  console.log('Filter', category)
+  console.log('Filter', value)
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -280,8 +306,10 @@ const filterCharacters = (keep) => {
     // Similar to the one above
   } else {
     if (keep) {
+      console.log('yes')
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
+      console.log('else')
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
@@ -323,3 +351,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+// findOutBtn.addEventListener('click', checkQuestion)
+findOutBtn.addEventListener('click', selectQuestion)

@@ -235,8 +235,8 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  winOrLose.style.display = 'none'
-    board.style.display ='flex'
+  winOrLose.style.display = 'none';
+  board.style.display ='flex';
   
   //pop upp all the characters
   generateBoard()
@@ -344,18 +344,29 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToConfirm) => {
   // 1. Check if the personToCheck is the same as the secret person's name
     if (personToConfirm === secret.name){
+      const audio = new Audio("win.mp3")
+      audio.play()
       winOrLoseText.innerHTML = `Yes! ${personToConfirm} is the correct person, you Win!!`
-      
     }else{
-      winOrLoseText.innerHTML = `Nooooo! You loose, ${secret.name} Whas the correct one`
+      const audio = new Audio("loose.mp3")
+      audio.play()
+      winOrLoseText.innerHTML = `Sorry! You loose, ${secret.name} Whas the correct one`
+      
     }
+  
     // To hide the board and showe the WinOrLose message
     winOrLose.style.display = 'flex'
     board.style.display ='none'
-    }
 
+    //  winOrLose.innerHTML += `
+    //    <img
+    //      class="secret-card"
+    //      src="${secret.img}"
+    //      alt="${secret.name}"
+    //    />`
+     }
+  
 start()
-
 
 // All the event listeners
 restartButton.addEventListener('click', start)

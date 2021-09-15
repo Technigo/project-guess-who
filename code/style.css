@@ -176,6 +176,9 @@ button {
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
+.secret-card {  
+  width: 200px;
+}
 
 @media (max-width: 768px) {
   body {

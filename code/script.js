@@ -1,6 +1,7 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
+const filter = document.getElementById("filter");
 const restartButton = document.getElementById("restart");
 
 // Array with all the characters, as objects
@@ -204,6 +205,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+// let value;
 
 // Draw the game board
 // What happens: changes made in "board" ID in HTML. Creates "card" from CSS for each person.
@@ -249,8 +251,9 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   };
+  console.log(currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -261,7 +264,9 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
+    // value === value?
   } else if (category === "accessories" || category === "other") {
+    // value === true?
   }
 };
 
@@ -269,6 +274,7 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
+
   if (category === "accessories") {
     if (keep) {
       alert(
@@ -326,3 +332,5 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+questions.addEventListener("change", selectQuestion);
+filter.addEventListener("click", checkQuestion);

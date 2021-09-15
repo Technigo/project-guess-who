@@ -248,7 +248,8 @@ const selectQuestion = () => {
   console.log("this is the selectQuestion");
   const category = questions.options[questions.selectedIndex].parentNode.label; // behöver inte göra något med denna
 
-  const value = questions.options[questions.selectedIndex].value; // hämtar värdet av värdet
+  const value = questions.value;
+  //questions.options[questions.selectedIndex].value; // hämtar värdet av värdet
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -264,13 +265,19 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.      invoke to see if we get wrong or right answer
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  const secretValue = secret[currentQuestion.category];
+  // const secretValue = secret[currentQuestion.category];
 
   if (category === "hair" || category === "eyes") {
-    if (secretValue === currentQuestion.value) {
+    if (secret[category] === value) {
+      filterCharacters(true);
+    } else {
+      filterCharacters();
     }
   } else if (category === "accessories" || category === "other") {
-    if (secretValue === currentQuestion.value) {
+    if (secret[category].includes(value)) {
+      filterCharacters(true);
+    } else {
+      filterCharacters();
     }
   }
 };
@@ -288,29 +295,68 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
     }
   } else if (category === "other") {
-    console.log("this is else-if category other");
-    alert("Yes, the person smokes");
-    // Similar to the one above
-  } else {
     if (keep) {
-      console.log("RÄTT HÅRFÄRG");
+      alert("Yes, the person smokes, keep all the smokers");
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
+    } else {
+      alert(`No, the person doesn't smoke. Remove all the smokers`);
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
+    }
+  } else if (category === "eyes") {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} eyes. Keep all the people who has ${value} eyes`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+    } else {
+      alert(
+        `No, the person doesn't have ${value} eyes. Remove all the people that doesn't have ${value} eyes`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
+    }
+  } else if (category === "hair") {
+    if (keep) {
       alert(
         `Yes, the person has ${value} hair. Keep all the people with ${value} hair`
       );
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
     } else {
-      console.log("FEL HÅRFÄRG");
-      alert(`no, the person does not have ${value} hair`);
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn't have ${value} hair. Remove all the people with ${value} hair`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
     }
   }
+
+  generateBoard();
 };
+
+// alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+
 // alert popup that says something like: "No, the person doesn't have yellow hair! Remove all people with yellow hair"
 
 // Determine what is the category.

@@ -223,9 +223,55 @@ const generateBoard = () => {
 	});
 };
 
+const generateQuestions = () => {
+	const categories = {
+		hair: [],
+		eyes: [],
+		accessories: [],
+		other: [],
+	};
+
+	CHARACTERS.forEach((person) => {
+		// for each person in the array of characters do:
+		for (const category in person) {
+			// for each category in each person img, eyes. hair etc.. do:
+			if (category !== 'img' && category !== 'name') {
+				// if category is not equal to img and name do:
+				if (Array.isArray(person[category])) {
+					// if the category is an array spread the values of the array
+					// and push them in to the appropriate array in the categories object
+					categories[category].push(...person[category]);
+				} else {
+					// if the category is not an array push them in to the appropriate array in the categories object
+					categories[category].push(person[category]);
+				}
+			}
+		}
+	});
+
+	// create optiongroup variable
+	let optionGroups = '';
+	// loop through all keys in categories object
+	for (const category in categories) {
+		// Filter each category array so it has no duplicates
+		// the filter function goes through each value in the category array and
+		// checks if the value has the same index as the first occurance of the element
+		// in the original array in this case the category array
+		categories[category] = categories[category].filter((value, index, arr) => arr.indexOf(value) === index);
+		categories[category].sort();
+		optionGroups += `<optgroup label='${category}' id='${category}'>`;
+		categories[category].forEach((option) => {
+			optionGroups += `<option value='${option}'>${option} ${category}</option>`;
+		});
+		optionGroups += `</optgroup>`;
+	}
+	questions.innerHTML += optionGroups;
+};
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
 	secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+	console.log(`The secret person is ${secret.name}`, secret);
 };
 
 // This function to start (and restart) the game
@@ -234,6 +280,7 @@ const start = () => {
 	charactersInPlay = CHARACTERS;
 	// What else should happen when we start the game?
 	generateBoard();
+	generateQuestions();
 	setSecret();
 };
 
@@ -250,19 +297,25 @@ const selectQuestion = () => {
 		category: category,
 		value: value,
 	};
-	console.log(currentQuestion);
+	// console.log(currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
 	const { category, value } = currentQuestion;
-	// console.log(category, value);
+	console.log(category, value);
 
 	// Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
 	// See if we should keep or remove people based on that
 	// Then invoke filterCharacters
 	if (category === 'hair' || category === 'eyes') {
+		if (category === 'hair' && value === secret.hair) {
+			console.log('hej');
+
+			// filterCharacters(true);
+		}
 	} else if (category === 'accessories' || category === 'other') {
+		filterCharacters(true);
 	}
 };
 
@@ -270,6 +323,7 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
 	const { category, value } = currentQuestion;
 	// Show the correct alert message for different categories
+	console.log(currentQuestion);
 	if (category === 'accessories') {
 		if (keep) {
 			alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
@@ -323,5 +377,8 @@ start();
 
 // All the event listeners
 restartButton.addEventListener('click', start);
-questions.addEventListener('change', selectQuestion);
-filterButton.addEventListener('click', checkQuestion);
+// questions.addEventListener('change', selectQuestion);
+filterButton.addEventListener('click', () => {
+	selectQuestion();
+	checkQuestion();
+});

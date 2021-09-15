@@ -386,7 +386,7 @@ if(secret.name === personToConfirm){
   winOrLose.style.display = 'block';
   board.style.display = 'none';
 
-    winOrLoseText.innerHTML += `
+    winOrLoseText.innerHTML = `
     <H1>You Won!</H1>
     `
   console.log('you won again!')
@@ -395,52 +395,25 @@ if(secret.name === personToConfirm){
   winOrLose.style.display = 'block';
   board.style.display = 'none';
 
-  winOrLoseText.innerHTML += `
+  winOrLoseText.innerHTML = `
   <H1>You Lost, you LOOOOOSER!</H1>
   `
   console.log('try again again')
 }
-
-
-
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 }
 
+const playAgain = () => {
+  winOrLose.style.display = 'none';
+  board.style.display = 'flex';
 
-/*const generateBoard = () => {
-  board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
-    board.innerHTML += `
-      <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
-        <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
-        </div>
-      </div>
-    `
-  })
-  console.log('Generating board')*/
-
-
-
-
-
-
-
-
-
-
-
+  start();
+}
 
 // Invokes the start function when website is loaded
 start()
 console.log(secret);
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+playAgainBtn.addEventListener('click', playAgain)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)

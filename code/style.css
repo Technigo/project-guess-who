@@ -36,7 +36,9 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: var(--primary);
+  background-color: white;
+  border: 2px solid #E47B50;
   width: 100%;
   margin: 24px 0;
 }

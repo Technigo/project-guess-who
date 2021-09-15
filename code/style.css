@@ -19,6 +19,14 @@ h1 {
   color: white;
 }
 
+h2 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 8px 0;
+  color: white;
+}
+
 .question-section, .start-section {
   width: 30%;
   min-height: 100vh;
@@ -31,6 +39,10 @@ h1 {
 
 .question-section {
   display: none;
+}
+
+.player-info {
+  border: 2px #a259ff;
 }
 
 select {
@@ -200,6 +212,11 @@ button {
   h1 {
     font-size: 24px;
     line-height: 30px;
+  }
+
+  h2 {
+    font-size: 16px;
+    line-height: 20px;
   }
 
   .guess-who-icon {

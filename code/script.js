@@ -208,9 +208,9 @@ const CHARACTERS = [
 
 // Global variables
 let secret
-let currentQuestion
+let currentQuestions
 let charactersInPlay
-let numberOfGuesses
+let numberOfQuestions
 
 // Draw the game board
 const generateBoard = () => {
@@ -230,10 +230,12 @@ const generateBoard = () => {
 }
 
 const generatePlayerBoard = () => {
+  numberOfQuestions = 0
   question.insertAdjacentHTML('beforebegin', /*html*/`
-    <div>
-      <h1>Player: ${playerValue.value}</h1>
-      <h1>Guesses: ${numberOfGuesses}</h1>
+    <div class='player-info'>
+      <h2>Player: ${playerValue.value}</h1>
+      <h2 id='questions-asked'>Number of questions asked: ${numberOfQuestions}</h1>
+    </div>
   `)
 
   // playerArea.innerHTML.prepend(`<h3>Hellloo</h3>`)
@@ -251,6 +253,9 @@ const start = () => {
   startBtn.style.display = "none"
   restartBtn.style.display = "block"
 
+  numberOfQuestions = 0
+  document.getElementById('questions-asked').innerText = `Number of questions asked: ${numberOfQuestions}`
+
   document.getElementById("board").style.display = "flex";
   document.getElementById("winOrLose").style.display = "none";
 
@@ -258,7 +263,6 @@ const start = () => {
   document.getElementById("question-aside").style.display = "flex";
 
   charactersInPlay = CHARACTERS
-  generatePlayerBoard()
   setSecret()  
   generateBoard()
 }
@@ -268,7 +272,8 @@ const validate = () => {
     alert("Name must be filled out");
   }
   else
-   start()
+    generatePlayerBoard()
+    start()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -291,16 +296,18 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  numberOfQuestions += 1
+  document.getElementById('questions-asked').innerText = `Number of questions asked: ${numberOfQuestions}`
   selectQuestion()
-  const { category, value } = currentQuestion //what is guessed
-  const {name, img, hair, eyes, accessories, other} = secret //who is the secret person
+  const { category, value, value2 } = currentQuestion //what is guessed
+  // const {name, img, hair, eyes, accessories, other} = secret //who is the secret person
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
     //.includes searches for value in hair, and if hair contains value it is true.
-    if (value.includes(hair) || value.includes(eyes))
+    if (value.includes(secret.hair) || value.includes(secret.eyes))
       filterCharacters(true)
     else {
       filterCharacters(false)
@@ -314,11 +321,11 @@ const checkQuestion = () => {
     //check if the choosen value exits within the secret persons attributes
     //want to comapre accesories or other with value
     //want to loop trough the secret persons attributes and others, and compare with value
-    if(accessories.length === 0){
+    if(secret.accessories.length === 0){
       filterCharacters(false)
     }
     else { 
-      accessories.forEach((accessory) => { 
+      secret.accessories.forEach((accessory) => { 
         if (accessory === value) 
           filterCharacters(true)
         else
@@ -328,14 +335,14 @@ const checkQuestion = () => {
   } 
   
   else if (category === 'other') {
-    if(other.length === 0){
+    if(secret.other.length === 0){
       filterCharacters(false)
     }
 
     else { 
-      other.forEach((otherItem) => { 
-        if (otherItem === value) 
-            filterCharacters(true)
+      secret.other.forEach((otherItem) => { 
+        if (otherItem === value2) 
+          filterCharacters(true)
         else
           filterCharacters(false)
         })

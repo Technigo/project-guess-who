@@ -1,7 +1,7 @@
-/* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: bisque;
+  --secondary: tomato;
+  --tertiary: steelblue;
 }
 
 body {
@@ -16,7 +16,7 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: var(--primary);
 }
 
 .question-section {
@@ -33,11 +33,14 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
+  padding: 2px 7px;
+  font-size: 20px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: var(--tertiary);
+  background-color: var(--primary);
   width: 100%;
   margin: 24px 0;
+  border-radius: 5px;
 }
 
 .guess-who-icon {
@@ -136,12 +139,11 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: var(--tertiary);
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: var(--tertiary);
   color: var(--primary);
 }
 

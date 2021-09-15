@@ -285,7 +285,7 @@ const checkQuestion = () => {
   // Refactored version
  let keep = Array.isArray(secret[category]) ? secret[category].includes(value) : secret[category]  === value;
 // To understnad this refactoring first check the links below:
-// I have a ternary operator syntax which is a bit confusing so u can read about it here:
+// I have a ternary operator syntax which is a bit confusing but suits for current purpose so u can read about it here:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
 // The Array.isArray() method determines whether the passed value is an Array. It returns a Boolean.
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
@@ -424,3 +424,20 @@ playAgain.addEventListener('click', () => {
   board.style.display = "flex";
   start();
 }); 
+
+
+// Thats helped a lot to solve an issue i had https://stackoverflow.com/questions/27079598/error-failed-to-execute-appendchild-on-node-parameter-1-is-not-of-type-no?rq=1
+const customAlert = (text) => {
+  const alertWrapper = document.createElement('div');
+  document.body.appendChild(alertWrapper);
+  alertWrapper.style.display= "flex";
+  let alertText = document.createElement('p');
+  alertWrapper.appendChild(alertText);
+  alertText.innerHTML =text;
+  alertText.className= 'mb-0';
+  alertWrapper.className = 'alert-success';
+  alertWrapper.classList.add('alert');
+  alertWrapper.classList.add('extra');
+}
+
+customAlert("This is what I want to show you!");

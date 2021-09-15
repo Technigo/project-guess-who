@@ -62,6 +62,13 @@ select {
   justify-content: center;
 }
 
+.extra {
+  display: block;
+  align-self: flex-start;
+  justify-self: stretch;
+  justify-content: flex-start;
+}
+
 /****** CARD ******/
 
 .card {

@@ -230,6 +230,16 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
   console.log(secret);
 };
+let startTime;
+let elapsedTime = 0;
+let timerInterval;
+
+function reset() {
+  clearInterval(timerInterval);
+  print("00:00:00");
+  elapsedTime = 0;
+  start();
+}
 
 // This function to start (and restart) the game
 const start = () => {
@@ -239,6 +249,41 @@ const start = () => {
   setTimeout(() => generateBoard(), 500);
   setSecret();
   winOrLose.style.display = "";
+  startTimer();
+};
+
+function timeToString(time) {
+  let diffInHrs = time / 3600000;
+  let hh = Math.floor(diffInHrs);
+
+  let diffInMin = (diffInHrs - hh) * 60;
+  let mm = Math.floor(diffInMin);
+
+  let diffInSec = (diffInMin - mm) * 60;
+  let ss = Math.floor(diffInSec);
+
+  let diffInMs = (diffInSec - ss) * 100;
+  let ms = Math.floor(diffInMs);
+
+  let formattedHH = hh.toString().padStart(2, "0");
+  let formattedMM = mm.toString().padStart(2, "0");
+  let formattedSS = ss.toString().padStart(2, "0");
+  let formattedMS = ms.toString().padStart(2, "0");
+
+  return `Time played: ${formattedHH}:${formattedMM}:${formattedSS}`;
+}
+
+// Create function to modify innerHTML
+function print(txt) {
+  document.getElementById("timePlayed").innerHTML = txt;
+}
+
+const startTimer = () => {
+  startTime = Date.now() - elapsedTime;
+  timerInterval = setInterval(function printTime() {
+    elapsedTime = Date.now() - startTime;
+    print(timeToString(elapsedTime));
+  }, 10);
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -273,6 +318,15 @@ const checkQuestion = () => {
       filterCharacters();
     }
   }
+
+  // let counter = document.getElementById('counter');
+  // counter.forEach((count) => {
+  //   count++;
+  //   counter.innerHTML += `This far you have guessed ${count} times`
+  // });
+  // let element = document.getElementById('counter');
+  // let counter = 0;
+  // counter.forEach((element, index) => console.log(element, index));
 };
 
 // It'll filter the characters array and redraw the game board.
@@ -339,13 +393,6 @@ const filterCharacters = (keep) => {
     }
   }
 
-  
-  // let counter = document.getElementById('counter');
-  // count = 0;
-  // counter.forEach((count) => {
-  //   (counter.innerHTML += `This far you have guessed ${count} times`)
-  // });
-
   // Invoke a function to redraw the board with the remaining people.
   setTimeout(() => generateBoard(), 500);
 };
@@ -371,18 +418,15 @@ const checkMyGuess = (personToCheck) => {
     winOrLose.style.display = "block";
   } else {
     alert("That is not correct, you lose!");
+    reset();
   }
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 };
 
 // Invokes the start function when website is loaded
 start();
 
 // All the event listeners
-restartButton.addEventListener("click", start);
+restartButton.addEventListener("click", reset);
 questions.addEventListener("change", selectQuestion);
 filter.addEventListener("click", checkQuestion);
-playAgain.addEventListener("click", start);
+playAgain.addEventListener("click", reset);

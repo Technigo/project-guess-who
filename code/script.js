@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
+//const checkQuestion = document.getElementById('filter')
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -233,7 +235,7 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
-  console.log("the chosen person is", secret)
+  console.log("the chosen person is", (secret))
   // What else should happen when we start the game?
   
 }
@@ -243,13 +245,13 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variabel stores the actual value of the question we've selected.
-  const actualValue = questions.value;
-  console.log("The value of the question is: " + actualValue + " " + category);
+  const questionValue = questions.value;
+  console.log("The value of the question is: " + questionValue + " " + category);
 
   // this variable stores what option group (category) the question belogs to
   currentQuestion = {
     category: category,
-    value: actualValue,
+    value: questionValue,
   }
 }
 
@@ -261,8 +263,11 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    console.log('hair and eyes')
 
   } else if (category === 'accessories' || category === 'other') {
+
+    console.log('ass and oth')
 
   }
 }
@@ -329,3 +334,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start) //starts and restarts the game
 questions.addEventListener("change", selectQuestion); //registers a new question/value when it is chosen from the dropdown
+filter.addEventListener('click', checkQuestion)

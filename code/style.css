@@ -62,11 +62,10 @@ select {
   justify-content: center;
 }
 
-.extra {
+.alert {
   display: block;
-  align-self: flex-start;
-  justify-self: stretch;
-  justify-content: flex-start;
+  justify-content: center;
+  margin-bottom: 0;
 }
 
 /****** CARD ******/
@@ -130,7 +129,7 @@ button {
   border-radius: 50px;
   font-size: 16px;
   font-family: 'Montserrat';
-  font-weight: bold;
+  font-weight: bold !important;
   padding: 17px 27px;
   margin-bottom: 10px;
   cursor: pointer;

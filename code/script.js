@@ -320,65 +320,78 @@ const checkQuestion = () => {
   filterCharacters(keep);
 };
 
+const alertWrapper = document.createElement('div');
+const alertText = document.createElement('p');
+const customAlert = (text) => {
+  alertWrapper.remove();
+  document.body.prepend(alertWrapper);
+  alertWrapper.style.display= "flex";
+  alertWrapper.appendChild(alertText);
+  alertText.innerHTML =text;
+  alertText.className= 'mb-0';
+  alertWrapper.className = 'alert-success';
+  alertWrapper.classList.add('alert');
+  
+}
 
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   if (category === 'accessories') {
     if (keep) {
-      alert(
+      customAlert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
-      alert(
+      customAlert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(
+      customAlert(
         `Yes, the person is a ${value}! Keep all people that smokes.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
-      alert(
+      customAlert(
         `No, the person is not a ${value}! Remove all people that smokes.`
       );
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     } 
   } else if (category === 'hair') {
     if (keep) {
-      alert(
+      customAlert(
         `Yes, the person has a ${value} hair! Keep all people that have ${value} hair.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
-      alert(
+      customAlert(
         `No, the person doesn't have a ${value} hair! Remove all people that have a ${value} hair.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   } else if (category === 'eyes') {
     if (keep) {
-      alert(
+      customAlert(
         `Yes, the person has a ${value} eyes! Keep all people that have ${value} eyes.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
-      alert(
+      customAlert(
         `No, the person doesn't have a ${value} eyes! Remove all people that have a ${value} eyes.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   } else {
     if (keep) {
-      alert(
+      customAlert(
         `Yes, the person is a ${value}! Keep all people with ${value} appearance.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
-      alert(
+      customAlert(
         `No, the person is not a ${value}! Remove all people that have a ${value} appearance.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
@@ -409,10 +422,11 @@ const checkMyGuess = (personToCheck) => {
   }
   winOrLoseSection.style.display = "flex";
   board.style.display = "none";
+  alertWrapper.remove();
 };
 
 // Invokes the start function when website is loaded
-start();
+
 
 // All the event listeners
 restartButton.addEventListener('click', start); 
@@ -424,20 +438,22 @@ playAgain.addEventListener('click', () => {
   board.style.display = "flex";
   start();
 }); 
+start();
 
 
 // Thats helped a lot to solve an issue i had https://stackoverflow.com/questions/27079598/error-failed-to-execute-appendchild-on-node-parameter-1-is-not-of-type-no?rq=1
-const customAlert = (text) => {
-  const alertWrapper = document.createElement('div');
-  document.body.appendChild(alertWrapper);
-  alertWrapper.style.display= "flex";
-  let alertText = document.createElement('p');
-  alertWrapper.appendChild(alertText);
-  alertText.innerHTML =text;
-  alertText.className= 'mb-0';
-  alertWrapper.className = 'alert-success';
-  alertWrapper.classList.add('alert');
-  alertWrapper.classList.add('extra');
-}
+// this one was also educational: https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
+// const customAlert = (text) => {
+//   const alertWrapper = document.createElement('div');
+//   document.body.prepend(alertWrapper);
+//   alertWrapper.style.display= "flex";
+//   let alertText = document.createElement('p');
+//   alertWrapper.appendChild(alertText);
+//   alertText.innerHTML =text;
+//   alertText.className= 'mb-0';
+//   alertWrapper.className = 'alert-success';
+//   alertWrapper.classList.add('alert');
+// }
 
-customAlert("This is what I want to show you!");
+
+  

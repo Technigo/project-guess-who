@@ -1,8 +1,8 @@
 /* Global css variables used for colors */
 
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #9c1ffc;
+  --secondary: goldenrod;
 }
 
 body {
@@ -26,7 +26,7 @@ h1 {
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding: 4vw;
   align-items: flex-start;
   box-sizing: border-box;
 }
@@ -59,6 +59,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 /****** CARD ******/
@@ -124,6 +125,7 @@ button {
   font-family: 'Montserrat';
   font-weight: bold;
   padding: 17px 27px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 

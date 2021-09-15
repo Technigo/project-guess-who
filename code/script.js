@@ -257,7 +257,6 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  let keep;
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -278,45 +277,76 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  let attribute;
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
-   if (category === "hair") {
+  if (category === "hair") {
     if (keep) {
       alert(`Yes, the person has ${value}! Keep all people that have ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value);
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
     } else {
-      alert(`No, the person doesn't have ${value}! Remove all people that has ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value);
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that has ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
     }
   } else if (category === "eyes") {
     if (keep) {
-      alert(`Yes, the person has ${value} eyes! Keep all people that has ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value);
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people that has ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
     } else {
-      alert(`No, the person doesn't have ${value} eyes! Remove all people that has ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value);
+      alert(
+        `No, the person doesn't have ${value} eyes! Remove all people that has ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
     }
   } else if (category === "accessories") {
     if (keep) {
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+      alert(
+        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
     } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+      alert(
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
     }
   } else if (category === "other") {
     if (keep) {
       alert(`Yes the person smokes! Keep all the smokers`);
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
     } else {
       alert(`No the person doesn't smoke! Remove all the smokers`);
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
     }
   }
 
-  // Invoke a function to redraw the board with the remaining people.
+  
+  // let counter = document.getElementById('counter');
+  // count = 0;
+  // counter.forEach((count) => {
+  //   (counter.innerHTML += `This far you have guessed ${count} times`)
+  // });
 
+  // Invoke a function to redraw the board with the remaining people.
   setTimeout(() => generateBoard(), 500);
 };
 

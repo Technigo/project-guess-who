@@ -223,12 +223,13 @@ const generateBoard = () => {
 	});
 };
 
+// Populate the select options dynmically from the CHARACTERS array
 const generateQuestions = () => {
 	const categories = {
-		hair: [],
-		eyes: [],
-		accessories: [],
-		other: [],
+		hair: { value: [], type: '' },
+		eyes: { value: [], type: '' },
+		accessories: { value: [], type: '' },
+		other: { value: [], type: '' },
 	};
 
 	CHARACTERS.forEach((person) => {
@@ -240,28 +241,31 @@ const generateQuestions = () => {
 				if (Array.isArray(person[category])) {
 					// if the category is an array spread the values of the array
 					// and push them in to the appropriate array in the categories object
-					categories[category].push(...person[category]);
+					categories[category].value.push(...person[category]);
+					categories[category].type = 'array';
 				} else {
 					// if the category is not an array push them in to the appropriate array in the categories object
-					categories[category].push(person[category]);
+					categories[category].value.push(person[category]);
+					categories[category].type = 'string';
 				}
 			}
 		}
 	});
-
-	// create optiongroup variable
+	console.log(categories);
 	let optionGroups = '';
 	// loop through all keys in categories object
 	for (const category in categories) {
 		// Filter each category array so it has no duplicates
 		// the filter function goes through each value in the category array and
-		// checks if the value has the same index as the first occurance of the element
+		// checks if the value has the same index as the first occurance of the value
 		// in the original array in this case the category array
-		categories[category] = categories[category].filter((value, index, arr) => arr.indexOf(value) === index);
-		categories[category].sort();
+		categories[category].value = categories[category].value.filter((value, index, arr) => arr.indexOf(value) === index);
+		// sort values alphbetically
+		categories[category].value.sort();
+		// build the select element options as html tags
 		optionGroups += `<optgroup label='${category}' id='${category}'>`;
-		categories[category].forEach((option) => {
-			optionGroups += `<option value='${option}'>${option} ${category}</option>`;
+		categories[category].value.forEach((option) => {
+			optionGroups += `<option value='${option}'>${option} ${categories[category].type === 'array' ? '' : category}</option>`;
 		});
 		optionGroups += `</optgroup>`;
 	}
@@ -270,7 +274,7 @@ const generateQuestions = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-	secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+	secret = charactersInPlay[0]; // Math.floor(Math.random() * charactersInPlay.length)
 	console.log(`The secret person is ${secret.name}`, secret);
 };
 
@@ -303,20 +307,28 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
 	const { category, value } = currentQuestion;
-	console.log(category, value);
+	// console.log(category, value);
 
 	// Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
 	// See if we should keep or remove people based on that
 	// Then invoke filterCharacters
-	if (category === 'hair' || category === 'eyes') {
-		if (category === 'hair' && value === secret.hair) {
-			console.log('hej');
 
-			// filterCharacters(true);
-		}
-	} else if (category === 'accessories' || category === 'other') {
+	if (secret[category].includes(value)) {
+		//value === secret[category] ||
 		filterCharacters(true);
+	} else {
+		filterCharacters(false);
 	}
+
+	// if (category === 'hair' || category === 'eyes') {
+	// if (category === 'hair' && value === secret.hair) {
+	// console.log('hej');
+
+	// filterCharacters(true);
+	// }
+	// } else if (category === 'accessories' || category === 'other') {
+	// filterCharacters(true);
+	// }
 };
 
 // It'll filter the characters array and redraw the game board.

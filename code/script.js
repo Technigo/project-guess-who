@@ -2,9 +2,9 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const findOut = document.getElementById('filter')
+const filterBoard = document.getElementById('filter')
 
-// Array with all the characters, as objects
+// Array with all the characters, as objects:
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -206,7 +206,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 
-// Draw the game board
+// The game board:
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -223,25 +223,25 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// This function randomly selects a person from the characters array and set as the value of the variable called secret:
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
+// This function is used to start (and restart) the game:
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
+  // ???Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
 
-  //When the game starts, the game board should be rendered on the screen 
+  //When the game starts, this invokes the game board to be rendered on the screen: 
   generateBoard()
 
-  //The setSecret function is invoked that selects a secret character randomly from the Character array
+  //The setSecret function is invoked that selects a secret character randomly from the Character array:
   setSecret()
 
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// ???setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
@@ -256,7 +256,10 @@ const selectQuestion = () => {
     value: value
     // value: value
   }
+  console.log(currentQuestion)
 }
+
+selectQuestion() //???
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
@@ -306,7 +309,7 @@ const filterCharacters = (keep) => {
         `No, the person doesn't have ${value}! Remove all people that have ${value}`
       )
     }
-  } else if (category === 'other') {
+  } else if (category === 'other' ) { //needs update
     if (keep) {
       alert (
         `Yes, the person have ${value}! Keep all people that have ${value}`
@@ -315,19 +318,20 @@ const filterCharacters = (keep) => {
       alert (
         `No, the person doesn't have ${value}! Remove all people that have ${value}`
       )
+      filterBoard() //is this correct?
     }
   }
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   
-    //for hair and eyes :
-      //charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    //for hair and eyes : //how does this work??
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       //or
       //charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
     //for accessories and other
-      //charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       //or
       //charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   
@@ -356,5 +360,8 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-questions.addEventListener('change', selectQuestion)
+questions.addEventListener('change', selectQuestion) // This is to listen to the selectQuestion function (when the player interact with the listener)
 findOut.addEventListener('click', checkQuestion)
+
+
+//.filter - googla

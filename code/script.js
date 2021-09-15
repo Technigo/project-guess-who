@@ -231,8 +231,6 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  // create a function that randomly get one character to guess
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
@@ -244,7 +242,7 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   // A variable that stores the actual value of the question
   const actualValue = questions.value;
-  console.log("Questions value " + questions.value + category);
+  console.log("Questions value: " + questions.value + " category: " + category); //REMOVE
 
   // This variable stores what option group (category) the question belongs to.
   currentQuestion = {
@@ -261,12 +259,21 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
-    filterCharacters(true); //OSÄKER
+    if (secret[currentQuestion.category] === currentQuestion.value) {
+      console.log("Yes that is correct");
+      keep = true;
+    } else {
+      console.log("no, that didnt match");
+      keep = false;
+    }
   } else if (category === "accessories" || category === "other") {
-    filterCharacters(true); //DENNA KORREKT
-  } else {
-    //SKA DENNA VARA MED?
-    filterCharacters(false);
+    if (secret[currentQuestion.category].includes(currentQuestion.value)) {
+      console.log("Yes that is correct");
+      keep = true;
+    } else {
+      console.log("no, that didnt match");
+      keep = false;
+    }
   }
 };
 

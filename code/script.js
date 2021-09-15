@@ -249,7 +249,6 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label; // behöver inte göra något med denna
 
   const value = questions.value;
-  //questions.options[questions.selectedIndex].value; // hämtar värdet av värdet
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -355,43 +354,27 @@ const filterCharacters = (keep) => {
   generateBoard();
 };
 
-// alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-
-// alert popup that says something like: "No, the person doesn't have yellow hair! Remove all people with yellow hair"
-
-// Determine what is the category.
-// filter by category to keep or remove based on the keep variable.
-
-// for hair and eyes :
-
-// charactersInPlay = charactersInPlay.filter(
-//   (person) => person[attribute] === value
-// );
-// or;
-// charactersInPlay = charactersInPlay.filter(
-//   (person) => person[attribute] !== value
-// );
-
-// // for accessories and other
-// charactersInPlay = charactersInPlay.filter((person) =>
-//   person[category].includes(value)
-// );
-// or;
-// charactersInPlay = charactersInPlay.filter(
-//   (person) => !person[category].includes(value)
-// );
-
-// Invoke a function to redraw the board with the remaining people.
-
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  const characterResult = confirm(`Are you sure this is your choice?`);
+
+  if (characterResult) {
+    checkMyGuess(personToConfirm);
+  }
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    alert("That's correct, you win!");
+    board.innerHTML = "";
+    winOrLose.style.display = "block";
+  } else {
+    alert("That is not correct, you lose!");
+  }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

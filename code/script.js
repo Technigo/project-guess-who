@@ -2,8 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
-//const checkQuestion = document.getElementById('filter')
+const filterButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -259,16 +258,35 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
+
+  
+
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+
+  //const compare = () 
   if (category === 'hair' || category === 'eyes') {
-    console.log('hair and eyes')
+    if (secret[currentQuestion.category] === currentQuestion.value) {
+      console.log('correctomundo!');
+      filterCharacters(true);
+    } else {
+      console.log('nope!');  
+      filterCharacters(false);
+    }
+    
 
   } else if (category === 'accessories' || category === 'other') {
+    if (secret[currentQuestion.category].includes(currentQuestion.value)) {
+      console.log('correct ass and oth');
+      filterCharacters(true);
+    } else {
+      console.log('no ass or oth');
+      filterCharacters(false);
+    }
 
-    console.log('ass and oth')
-
+    
+    //if (person[question.category].includes(question.value))
   }
 }
 
@@ -334,4 +352,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start) //starts and restarts the game
 questions.addEventListener("change", selectQuestion); //registers a new question/value when it is chosen from the dropdown
-filter.addEventListener('click', checkQuestion)
+filterButton.addEventListener('click', checkQuestion);

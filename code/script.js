@@ -400,7 +400,7 @@ const loadingGifandBoard = () => {
   board.innerHTML = "";
   //put a loading gif to make it looks like the computer is progressing
   board.innerHTML += `        
-  <img src="/gif/loading-color.gif" class="loading-gif" alt="loading gif"/>
+  <img src="/gif/beanEater.gif" class="loading-gif" alt="loading gif"/>
 `;
   //after 1.5s redraw the board
   setTimeout(() => generateBoard(), 1500);

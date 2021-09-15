@@ -179,7 +179,9 @@ button {
 }
 
 .loading-gif {
-  width: 100%; /* want the loading gif to take up the whole board space */
+  width: 50%;
+  height: 50%;
+  margin: 0 auto; /*center*/
 }
 
 @media (max-width: 768px) {

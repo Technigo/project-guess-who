@@ -289,19 +289,26 @@ const start = () => {
 };
 
 // setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = () => {
-	const category = questions.options[questions.selectedIndex].parentNode.label;
-	const value = questions.value;
+const selectQuestion = (guess) => {
+	let category = '';
+	let value = '';
+	if (guess) {
+		category = 'name';
+		value = secret.name;
+	} else {
+		category = questions.options[questions.selectedIndex].parentNode.label;
+		value = questions.value;
+	}
+	currentQuestion = {
+		category: category,
+		value: value,
+	};
 
 	// This variable stores what option group (category) the question belongs to.
 	// We also need a variable that stores the actual value of the question we've selected.
 	// const value =
 
-	currentQuestion = {
-		category: category,
-		value: value,
-	};
-	// console.log(currentQuestion);
+	console.log(currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -386,6 +393,13 @@ const guess = (personToConfirm) => {
 	// store the interaction from the player in a variable.
 	// remember the confirm() ?
 	// If the player wants to guess, invoke the checkMyGuess function.
+	const confirmGuess = confirm(`Are you sure you want to guess on ${personToConfirm}`);
+	if (confirmGuess) {
+		selectQuestion(true);
+		checkMyGuess(personToConfirm);
+	} else {
+		confirm(`Sorry, ${personToConfirm} was not correct. Try again`);
+	}
 };
 
 // If you confirm, this function is invoked
@@ -394,6 +408,12 @@ const checkMyGuess = (personToCheck) => {
 	// 2. Set a Message to show in the win or lose section accordingly
 	// 3. Show the win or lose section
 	// 4. Hide the game board
+	if (personToCheck === secret.name) {
+		alert(`Yay! You guessed right, ${personToCheck} is the secret person`);
+		filterCharacters(true);
+	} else {
+		alert(`Darn! ${personToCheck} is not secret person`);
+	}
 };
 
 // Invokes the start function when website is loaded

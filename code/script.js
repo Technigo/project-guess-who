@@ -247,7 +247,7 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label 
-  const value = questions.options[questions.selectedIndex].value
+  const value = questions.value
 
   console.log (category)        ///za izbor pitanja
   console.log(value)
@@ -283,6 +283,7 @@ const checkQuestion = () => {
     filterCharacters(keep)
 
   } else if (category === 'accessories' || category === 'other') {
+    keep = secret[category].includes(value)
     console.log('acessories work')
     filterCharacters()
 
@@ -294,12 +295,13 @@ const checkQuestion = () => {
   const { category, value } = currentQuestion
   console.log(keep);
   console.log('filter works', currentQuestion);
+  keep = secret[category].includes(value)
   // Show the correct alert message for different categories
   if (category === 'accessories') {///glasses
     console.log('first if work', category);
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears a ${value}`
+        `Yes, the person wears ${value} ! Keep all people that wears a ${value} `
       )
     } else {
       alert(

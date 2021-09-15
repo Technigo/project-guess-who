@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const clickFilter = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -11,7 +12,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['teeth']
   },
   {
     name: 'Jack',
@@ -19,7 +20,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['teeth', 'facialHair']
   },
   {
     name: 'Jacques',
@@ -27,7 +28,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker', 'teeth']
   },
   {
     name: 'Jai',
@@ -35,7 +36,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['teeth']
   },
   {
     name: 'Jake',
@@ -43,7 +44,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['teeth']
   },
   {
     name: 'James',
@@ -51,14 +52,14 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['facialHair']
   },
   {
     name: 'Jana',
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewlery'],
     other: []
   },
   {
@@ -67,15 +68,15 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: ['teeth']
   },
   {
     name: 'Jaqueline',
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['glasses', 'jewlery'],
+    other: ['teeth']
   },
 
   {
@@ -92,7 +93,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'facialHair']
   },
   {
     name: 'Jeane',
@@ -100,7 +101,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['teeth']
   },
   {
     name: 'Jed',
@@ -108,15 +109,15 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'facialHair']
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    accessories: ['hat', 'jewlery'],
+    other: ['teeth']
   },
   {
     name: 'Jeri',
@@ -124,7 +125,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['teeth']
   },
   {
     name: 'Jerry',
@@ -140,15 +141,15 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: ['teeth']
   },
   {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['glasses', 'jewlery'],
+    other: ['teeth']
   },
   {
     name: 'Jon',
@@ -156,14 +157,14 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['teeth']
   },
   {
     name: 'Jordan',
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'jewlery'],
     other: []
   },
   {
@@ -171,8 +172,8 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
-    other: []
+    accessories: ['jewlery'],
+    other: ['teeth']
   },
   {
     name: 'Josh',
@@ -180,7 +181,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['teeth']
   },
   {
     name: 'Jude',
@@ -188,7 +189,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['facialHair']
   },
   {
     name: 'Julie',
@@ -196,7 +197,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['teeth']
   },
 ]
 
@@ -225,13 +226,15 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret) //ta bort sedan
 }
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  generateBoard()
+  setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -240,11 +243,11 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].parentNode.value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
 }
 
@@ -256,9 +259,21 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    if (currentQuestion === secret) { //true
+      filterCharacters(true)
+      console.log(`This is a correct guess`)
+    } else { //false
+      filterCharacters(false)
+      console.log(`This is a wrong guess`)
+    }
   } else if (category === 'accessories' || category === 'other') {
-
+    if (person[question.category].includes(question.value)) { // true
+      console.log(`This is included in the array`)
+      filterCharacters(true)
+    } else { //false
+      filterCharacters(false)
+      console.log(`This is not included in the array`)
+    }
   }
 }
 
@@ -323,3 +338,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+clickFilter.addEventListener('click', selectQuestion, checkQuestion)

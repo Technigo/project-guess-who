@@ -1,10 +1,13 @@
 // All the DOM selectors stored as short variables
+const playerArea = document.getElementById('question-aside')
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
+const question = document.getElementById('question')
 const startBtn = document.getElementById('play')
 const restartBtn = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
 const playAgainBtn = document.getElementById('playAgain')
+const playerValue = document.getElementById('playername')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -207,6 +210,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let numberOfGuesses
 
 // Draw the game board
 const generateBoard = () => {
@@ -223,6 +227,16 @@ const generateBoard = () => {
       </div>
     `
   })
+}
+
+const generatePlayerBoard = () => {
+  question.insertAdjacentHTML('beforebegin', /*html*/`
+    <div>
+      <h1>Player: ${playerValue.value}</h1>
+      <h1>Guesses: ${numberOfGuesses}</h1>
+  `)
+
+  // playerArea.innerHTML.prepend(`<h3>Hellloo</h3>`)
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -244,10 +258,17 @@ const start = () => {
   document.getElementById("question-aside").style.display = "flex";
 
   charactersInPlay = CHARACTERS
+  generatePlayerBoard()
+  setSecret()  
   generateBoard()
-  setSecret()
+}
 
-  // What else should happen when we start the game?
+const validate = () => {
+  if (playerValue.value == "") {
+    alert("Name must be filled out");
+  }
+  else
+   start()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -406,7 +427,7 @@ const checkMyGuess = (personToCheck) => {
 
 
 // All the event listeners
-startBtn.addEventListener('click', start)
-restartBtn.addEventListener('click', start)
+startBtn.addEventListener('click', validate)
+restartBtn.addEventListener('click', () => window.location.reload(false))
 filterBtn.addEventListener('click', checkQuestion)
 playAgainBtn.addEventListener('click', start)

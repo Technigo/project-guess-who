@@ -12,7 +12,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat'], 
     other: []
   },
   {
@@ -21,7 +21,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Jacques',
@@ -29,7 +29,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker', 'beard']
   },
   {
     name: 'Jai',
@@ -60,7 +60,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewellery'],
     other: []
   },
   {
@@ -76,7 +76,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewellery'],
     other: []
   },
 
@@ -110,7 +110,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'beard']
   },
   {
     name: 'Jenni',
@@ -149,7 +149,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewellery'],
     other: []
   },
   {
@@ -165,7 +165,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'jewellery'],
     other: []
   },
   {
@@ -173,7 +173,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['jewellery'],
     other: []
   },
   {
@@ -190,7 +190,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Julie',
@@ -236,6 +236,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard()
   setSecret()
+  //This console.log shows which is the secret person selected when not commented out:
   console.log(`The secret person is ${secret.name}`)
 }
 
@@ -245,30 +246,29 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // We also need a variable that stores the actual value of the question we've selected.
-  //const value = questions.options[questions.selectedIndex].text  // const value = 
   const value = questions.options[questions.selectedIndex].value
-  
 
+  const text = questions.options[questions.selectedIndex].text
+  
   currentQuestion = {
     category: category,
-    value: value // value: value
+    value: value, // value: value
+    text: text
   }
-
-  
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  //have tried to consol.log to display the variables category and value but it's not working
+
   const { category, value } = currentQuestion
+
   let keep = "false"
-  
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+
   if (category === 'hair' || category === 'eyes') {
-      //lägg till en inre if/else här? Jämföra vald trait med secrep person. 
       if (value === secret[category]) {
         console.log("hair/eyes match!")
         filterCharacters(keep)
@@ -289,27 +289,25 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
+  const { category, value, text } = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
-    if (filter) {
-      alert(`Yes, the person wears ${value}! Keep all people with ${value}.`)
+    if (keep) {
+      alert(`Yes, the person wears ${value}! Keep all people wearing ${value}.`)
     } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people with ${value}.`)
+      alert(`No, the person doesn't wear ${value}! Remove all people wearing ${value}.`)
     }
   } else if (category === 'other') {
     // Similar to the one above
     if (keep) {
-      alert(`Yes, the person has a smoking habit! Keep all people who smoke.`)
+      alert(`Yes, the person has ${text}! Keep all people who has ${text}.`)
     } else {
-      alert(`No, the person doesn't have a smoking habit! Remove all people who smoke.`)
+      alert(`No, the person doesn't have ${text}! Remove all people who have ${text}.`)
     }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`)
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`)
     }
   }

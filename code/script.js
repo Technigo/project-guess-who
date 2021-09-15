@@ -289,12 +289,12 @@ const start = () => {
 };
 
 // setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = (guess) => {
+const selectQuestion = (guess, name) => {
 	let category = '';
 	let value = '';
 	if (guess) {
 		category = 'name';
-		value = secret.name;
+		value = name;
 	} else {
 		category = questions.options[questions.selectedIndex].parentNode.label;
 		value = questions.value;
@@ -308,7 +308,7 @@ const selectQuestion = (guess) => {
 	// We also need a variable that stores the actual value of the question we've selected.
 	// const value =
 
-	console.log(currentQuestion);
+	console.log(`the current guess is ${currentQuestion.category} ${currentQuestion.value}`);
 };
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -395,7 +395,7 @@ const guess = (personToConfirm) => {
 	// If the player wants to guess, invoke the checkMyGuess function.
 	const confirmGuess = confirm(`Are you sure you want to guess on ${personToConfirm}`);
 	if (confirmGuess) {
-		selectQuestion(true);
+		selectQuestion(true, personToConfirm);
 		checkMyGuess(personToConfirm);
 	} else {
 		confirm(`Sorry, ${personToConfirm} was not correct. Try again`);
@@ -413,6 +413,7 @@ const checkMyGuess = (personToCheck) => {
 		filterCharacters(true);
 	} else {
 		alert(`Darn! ${personToCheck} is not secret person`);
+		filterCharacters(false);
 	}
 };
 

@@ -230,21 +230,26 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS;
+  generateBoard();
+  setSecret();
+  console.log("the chosen person is", secret)
   // What else should happen when we start the game?
+  
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  // This variabel stores the actual value of the question we've selected.
+  const actualValue = questions.value;
+  console.log("The value of the question is: " + actualValue + " " + category);
 
+  // this variable stores what option group (category) the question belogs to
   currentQuestion = {
     category: category,
-    // value: value
+    value: actualValue,
   }
 }
 
@@ -322,4 +327,5 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start) //starts and restarts the game
+questions.addEventListener("change", selectQuestion); //registers a new question/value when it is chosen from the dropdown

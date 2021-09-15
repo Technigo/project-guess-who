@@ -315,8 +315,10 @@ const checkQuestion = () => {
 
 	if (secret[category].includes(value)) {
 		//value === secret[category] ||
+		// console.log(true, value);
 		filterCharacters(true);
 	} else {
+		// console.log(false, value);
 		filterCharacters(false);
 	}
 
@@ -335,22 +337,31 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
 	const { category, value } = currentQuestion;
 	// Show the correct alert message for different categories
-	console.log(currentQuestion);
-	if (category === 'accessories') {
-		if (keep) {
-			alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
-		} else {
-			alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
-		}
-	} else if (category === 'other') {
-		// Similar to the one above
+	// console.log(currentQuestion);
+	if (keep) {
+		console.log(`keep is ${keep} true`);
+		charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+		console.log(charactersInPlay);
 	} else {
-		if (keep) {
-			// alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-		} else {
-			// alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-		}
+		console.log(`keep is ${keep} false`);
+		charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+		console.log(charactersInPlay);
 	}
+	// if (category === 'accessories') {
+	// 	if (keep) {
+	// 		alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
+	// 	} else {
+	// 		alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
+	// 	}
+	// } else if (category === 'other') {
+	// Similar to the one above
+	// } else {
+	// 	if (keep) {
+	// alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+	// } else {
+	// alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+	// 	}
+	// }
 
 	// Determine what is the category
 	// filter by category to keep or remove based on the keep variable.
@@ -367,6 +378,7 @@ const filterCharacters = (keep) => {
   */
 
 	// Invoke a function to redraw the board with the remaining people.
+	generateBoard();
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

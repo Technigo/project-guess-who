@@ -422,5 +422,5 @@ findOutButton.addEventListener('click',checkQuestion);
 playAgain.addEventListener('click', () => {
   winOrLoseSection.style.display = "none";
   board.style.display = "flex";
-  start;
+  start();
 }); 

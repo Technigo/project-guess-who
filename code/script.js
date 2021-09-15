@@ -36,7 +36,7 @@ const CHARACTERS = [
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['shirt'],
     other: []
   },
   {
@@ -44,7 +44,7 @@ const CHARACTERS = [
     img: 'images/jake.svg',
     hair: 'yellow',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'shirt'],
     other: []
   },
   {
@@ -60,7 +60,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses', 'jewellery'],
+    accessories: ['glasses', 'jewellery', 'shirt'],
     other: []
   },
   {
@@ -157,7 +157,7 @@ const CHARACTERS = [
     img: 'images/jon.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'shirt'],
     other: []
   },
   {
@@ -165,7 +165,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat', 'jewellery'],
+    accessories: ['glasses', 'hat', 'jewellery', 'shirt'],
     other: []
   },
   {
@@ -181,7 +181,7 @@ const CHARACTERS = [
     img: 'images/josh.svg',
     hair: 'yellow',
     eyes: 'green',
-    accessories: [],
+    accessories: ['shirt'],
     other: []
   },
   {
@@ -189,7 +189,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
+    accessories: ['shirt'],
     other: ['beard']
   },
   {
@@ -237,7 +237,7 @@ const start = () => {
   generateBoard()
   setSecret()
   //This console.log shows which is the secret person selected when not commented out:
-  console.log(`The secret person is ${secret.name}`)
+  //console.log(`The secret person is ${secret.name}`)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -248,21 +248,21 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value
 
+  // This variable stores the text from the select option. 
   const text = questions.options[questions.selectedIndex].text
   
   currentQuestion = {
     category: category,
-    value: value, // value: value
+    value: value,
     text: text
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
 
   const { category, value } = currentQuestion
 
-  let keep = "false"
+  let keep = "false" //Default value
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -293,25 +293,33 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(`Yes, the person wears ${value}! Keep all people wearing ${value}.`)
+      alert(`Yes, the person wears ${text}! Keep all people that wears ${text}.`)
     } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people wearing ${value}.`)
+      alert(`No, the person doesn't wear ${text}! Remove all people that wears ${text}.`)
     }
   } else if (category === 'other') {
     // Similar to the one above
     if (keep) {
-      alert(`Yes, the person has ${text}! Keep all people who has ${text}.`)
+      alert(`Yes, the person has ${text}! Keep all people with ${text}.`)
     } else {
-      alert(`No, the person doesn't have ${text}! Remove all people who have ${text}.`)
+      alert(`No, the person doesn't have ${text}! Remove all people with ${text}.`)
     }
   } else {
     if (keep) {
-      alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`)
+      alert(`Yes, the person has ${text}! Keep all people with ${text}.`)
     } else {
-      alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`)
+      alert(`No, the person doesn't have ${text}! Remove all people with ${text}.`)
     }
   }
+  // } else {
+  //   if (keep) {
+  //     alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`)
+  //   } else {
+  //     alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`)
+  //   }
+  // }
 
+  
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
 

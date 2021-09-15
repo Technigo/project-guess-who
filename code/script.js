@@ -236,7 +236,7 @@ const start = () => {
   setTimeout(() => generateBoard(), 2000)
   //console.log(secret) //console log to see the object before setSecret function
   setSecret()
-  //console.log(secret) //console log to see the object after setSecret function
+  console.log(secret) //console log to see the object after setSecret function
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -263,10 +263,24 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  let trueOrFalse
   if (category === 'hair' || category === 'eyes') {
-
+    trueOrFalse = (currentQuestion.value === secret.hair || currentQuestion.value === secret.eyes)
+    if (trueOrFalse === true ) {
+      filterCharacters(true)
+    } else {
+      filterCharacters()
+    }
+    console.log(`hair/eyes: ${trueOrFalse}`)    //console log to confirm true or false
+    //console.log(Object.is(currentQuestion.value, secret.hair))
   } else if (category === 'accessories' || category === 'other') {
-
+    trueOrFalse = (secret.accessories.includes(currentQuestion.value) || secret.other.includes(currentQuestion.value))
+    if (trueOrFalse === true ) {
+      filterCharacters(true)
+    } else {
+      filterCharacters()
+    }
+    console.log(`accessories/other: ${trueOrFalse}`)  //console log to confirm true or false
   }
 }
 
@@ -286,11 +300,34 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person is a ${value}! Keep all people that have a smoking habit`
+      )
+    } else {
+      alert(
+        `No, the person is not a ${value}! Remove all people that have a smoking habit`
+      )
+    }
+  } else if (category === 'hair') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
+      )
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes`
+      )
     }
   }
 

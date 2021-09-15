@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterBtn = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -238,28 +239,35 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  console.log('selectQuestion works!')
 
+  const category = questions.options[questions.selectedIndex].parentNode.label
+  console.log('the category is set!');
   // This variable stores what option group (category) the question belongs to.
+
   // We also need a variable that stores the actual value of the question we've selected.
-  // See https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/selectedIndex
-  // const value = select.options[select.selectedIndex].value;
-  // console.log(value);
+  const value = questions.options[questions.selectedIndex].value
+  console.log('the value is set!');
 
   currentQuestion = {
     category: category,
-    //value: value
+    value: value
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
+// Added const and eventlistener for filterBtn to invoke checkQuestion
 const checkQuestion = () => {
+  console.log('checkQuestion works!')
+
   const { category, value } = currentQuestion
+  console.log('currentQuestion works!')
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    console.log('${value} works!')
 
   } else if (category === 'accessories' || category === 'other') {
 
@@ -327,3 +335,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+filterBtn.addEventListener('click', checkQuestion)

@@ -59,7 +59,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'beard'],
     other: [],
     gender: 'male'
   },
@@ -249,6 +249,10 @@ const generateBoard = () => {
       </div>
     `
   });
+  // in case there is only one card left it will show the user a winning screen
+  if (charactersInPlay.length === 1) {
+  showWinScreen();
+  }
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -262,6 +266,7 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
+  questions.value="disabled-line";
   console.log(secret);
 };
 
@@ -320,18 +325,20 @@ const checkQuestion = () => {
   filterCharacters(keep);
 };
 
+
+// Thats helped a lot to solve an issue i had https://stackoverflow.com/questions/27079598/error-failed-to-execute-appendchild-on-node-parameter-1-is-not-of-type-no?rq=1
+// this one was also educational: https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
 const alertWrapper = document.createElement('div');
 const alertText = document.createElement('p');
 const customAlert = (text) => {
   alertWrapper.remove();
   document.body.prepend(alertWrapper);
-  alertWrapper.style.display= "flex";
   alertWrapper.appendChild(alertText);
   alertText.innerHTML =text;
   alertText.className= 'mb-0';
   alertWrapper.className = 'alert-success';
   alertWrapper.classList.add('alert');
-  
+  setTimeout(()=> alertWrapper.remove(), 3000);
 }
 
 const filterCharacters = (keep) => {
@@ -403,29 +410,42 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   let confirmation = confirm("You want to make a guess?");
-  confirmation ? checkMyGuess(personToConfirm) : alert("You can continue the game.");
-// the code below is same as code on line 393 , I just wanted to practice use of ternary operator.
-  // if (confirmation) {
-  //   checkMyGuess(personToConfirm);
-  // } else {
-  //   alert("You can continue the game.");
-  // }
+  if (confirmation) {
+    checkMyGuess(personToConfirm);
+  } 
 };
 
-// If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  if (personToCheck === secret.name) 
-  {
-    winOrLoseText.innerText = "You Won! Congrats!";
-  } else {
-    winOrLoseText.innerText = "Wrong Guess! Wanna try again?"; 
-  }
+// This function is drawing the winning screen
+const showWinScreen = () => {
+  winOrLoseText.innerText = "You Won! Congrats!";
+  winOrLoseSection.style.display = "flex";
+  winOrLoseSection.innerHTML += `
+  <div class="card">
+    <p>${secret.name}</p>
+    <img src=${secret.img}>
+  </div>`
+  board.style.display = "none";
+  alertWrapper.remove();
+}
+
+// This function is drawing the losing screen
+const showLoseScreen = () => {
+  winOrLoseText.innerText = "Wrong Guess! Wanna try again?"; 
   winOrLoseSection.style.display = "flex";
   board.style.display = "none";
   alertWrapper.remove();
-};
+}
 
-// Invokes the start function when website is loaded
+// If you confirm, this function is invoked
+const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name ) 
+  {
+    showWinScreen();
+  }
+ else {
+   showLoseScreen();
+  }
+};
 
 
 // All the event listeners
@@ -438,22 +458,12 @@ playAgain.addEventListener('click', () => {
   board.style.display = "flex";
   start();
 }); 
+
+// Invokes the start function when website is loaded
 start();
 
 
-// Thats helped a lot to solve an issue i had https://stackoverflow.com/questions/27079598/error-failed-to-execute-appendchild-on-node-parameter-1-is-not-of-type-no?rq=1
-// this one was also educational: https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
-// const customAlert = (text) => {
-//   const alertWrapper = document.createElement('div');
-//   document.body.prepend(alertWrapper);
-//   alertWrapper.style.display= "flex";
-//   let alertText = document.createElement('p');
-//   alertWrapper.appendChild(alertText);
-//   alertText.innerHTML =text;
-//   alertText.className= 'mb-0';
-//   alertWrapper.className = 'alert-success';
-//   alertWrapper.classList.add('alert');
-// }
+
 
 
   

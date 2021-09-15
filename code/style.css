@@ -66,6 +66,11 @@ select {
   display: block;
   justify-content: center;
   margin-bottom: 0;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 9;
 }
 
 /****** CARD ******/
@@ -132,6 +137,7 @@ button {
   font-weight: bold !important;
   padding: 17px 27px;
   margin-bottom: 10px;
+  outline: none !important;
   cursor: pointer;
 }
 
@@ -169,6 +175,7 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
+  flex-direction: column-reverse;
 }
 
 .win-or-lose {

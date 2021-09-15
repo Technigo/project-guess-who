@@ -6,6 +6,7 @@ const findOutButton =  document.getElementById('filter');
 const winOrLoseText = document.getElementById('winOrLoseText');
 const winOrLoseSection = document.getElementById('winOrLose');
 const playAgain = document.getElementById('playAgain');
+const winCard = document.getElementById('win-card');
 
 // Array of objects with all the characters
 const CHARACTERS = [
@@ -263,6 +264,7 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
+  winCard.innerHTML = "";
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
@@ -419,7 +421,7 @@ const guess = (personToConfirm) => {
 const showWinScreen = () => {
   winOrLoseText.innerText = "You Won! Congrats!";
   winOrLoseSection.style.display = "flex";
-  winOrLoseSection.innerHTML += `
+  winCard.innerHTML = `
   <div class="card">
     <p>${secret.name}</p>
     <img src=${secret.img}>

@@ -105,11 +105,11 @@ select {
   height: inherit;
 }
 
-.card:hover {
+.board-wrapper .card:hover {
   background-color: var(--secondary);
 }
 
-.card:hover img, .card:hover p {
+.board-wrapper .card:hover img, .board-wrapper .card:hover p {
   display: none;
 }
 
@@ -175,7 +175,7 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 .win-or-lose {

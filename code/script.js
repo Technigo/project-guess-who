@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart');
 const findOutButton =  document.getElementById('filter');
 const winOrLoseText = document.getElementById('winOrLoseText');
 const winOrLoseSection = document.getElementById('winOrLose');
+const playAgain = document.getElementById('playAgain');
 
 // Array of objects with all the characters
 const CHARACTERS = [
@@ -288,9 +289,11 @@ const checkQuestion = () => {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
 // The Array.isArray() method determines whether the passed value is an Array. It returns a Boolean.
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
-// In current case if secret[category] is an Array it will continue to this evaluation operation: secret[category].includes(value) === value
-// and return a result of the evaluation in boolean format. In other case if the secret[category] is not an Array it will return false and continue to
-//evaluate secret[category] === value , and return a boolean for this evaluation.
+// In current case if secret[category] is an Array it will continue to this evaluation operation: 
+// secret[category].includes(value)
+// and return a result of the evaluation in boolean format. In other case if the secret[category] 
+// is not an Array it will return false and continue to
+// evaluate secret[category] === value , and return a boolean for this evaluation.
 
 
 //  This code is a longer version of 286 line and also works perfectly fine. 
@@ -386,9 +389,14 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-let txt;
   let confirmation = confirm("You want to make a guess?");
   confirmation ? checkMyGuess(personToConfirm) : alert("You can continue the game.");
+// the code below is same as code on line 393 , I just wanted to practice use of ternary operator.
+  // if (confirmation) {
+  //   checkMyGuess(personToConfirm);
+  // } else {
+  //   alert("You can continue the game.");
+  // }
 };
 
 // If you confirm, this function is invoked
@@ -396,12 +404,11 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) 
   {
     winOrLoseText.innerText = "You Won! Congrats!";
-    winOrLoseSection.style.display = "block";
   } else {
-    winOrLoseText.innerText = "Wrong Guess! Wanna try again?";
-    winOrLoseSection.style.display = "block";
+    winOrLoseText.innerText = "Wrong Guess! Wanna try again?"; 
   }
-    board.style.display = "none";
+  winOrLoseSection.style.display = "flex";
+  board.style.display = "none";
 };
 
 // Invokes the start function when website is loaded
@@ -411,3 +418,9 @@ start();
 restartButton.addEventListener('click', start); 
 questions.addEventListener('change',selectQuestion);
 findOutButton.addEventListener('click',checkQuestion);
+
+playAgain.addEventListener('click', () => {
+  winOrLoseSection.style.display = "none";
+  board.style.display = "flex";
+  start;
+}); 

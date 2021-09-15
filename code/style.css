@@ -43,6 +43,7 @@ select {
 
 .guess-who-icon {
   width: 126px;
+  margin-left: 0 !important;
 }
 
 .board-wrapper {

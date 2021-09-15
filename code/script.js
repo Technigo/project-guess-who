@@ -211,6 +211,8 @@ let secret
 let currentQuestions
 let charactersInPlay
 let numberOfQuestions
+let startTime
+let elapsedTime
 
 
 // Draw the game board
@@ -234,10 +236,11 @@ const generatePlayerBoard = () => {
   numberOfQuestions = 0
   question.insertAdjacentHTML('beforebegin', /*html*/`
     <div class='player-info'>
-      <h2>Player: ${playerValue.value}</h1>
-      <h2 id='questions-asked'>Number of questions asked: ${numberOfQuestions}</h1>
-    </div>
-    <div id="timer"></div>
+      <h2>Player: ${playerValue.value}</h2>
+      <h2 id='questions-asked'>Number of questions asked: ${numberOfQuestions}</h2>
+      <h2>Time played: </h2>
+      <span class="time" id="display">00:00:00</span>
+    <div>
   `)
 
   // playerArea.innerHTML.prepend(`<h3>Hellloo</h3>`)
@@ -247,20 +250,6 @@ const generatePlayerBoard = () => {
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
   console.log(secret)
-}
-
-const countTimer= () => {
-  ++totalSeconds;
-  var hour = Math.floor(totalSeconds/3600);
-  var minute = Math.floor((totalSeconds - hour*3600)/60);
-  var seconds = totalSeconds - (hour*3600 + minute*60);
-  if(hour < 10)
-    hour = "0"+hour;
-  if(minute < 10)
-    minute = "0"+minute;
-  if(seconds < 10)
-    seconds = "0"+seconds;
-  document.getElementById("timer").innerHTML = hour + ":" + minute + ":" + seconds;
 }
 
 // let timerVar = setInterval(countTimer, 1000);
@@ -284,6 +273,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   setSecret()  
   generateBoard()
+  startTimer()
 }
 
 const validate = () => {
@@ -293,6 +283,31 @@ const validate = () => {
   else
     generatePlayerBoard()
     start()
+}
+
+const timeToString = (time) =>{
+  let diffInHrs = time / 3600000;
+  let hh = Math.floor(diffInHrs);
+
+  let diffInMin = (diffInHrs - hh) * 60;
+  let mm = Math.floor(diffInMin);
+
+  let diffInSec = (diffInMin - mm) * 60;
+  let ss = Math.floor(diffInSec);
+
+  let formattedHH = hh.toString().padStart(2, "0");
+  let formattedMM = mm.toString().padStart(2, "0");
+  let formattedSS = ss.toString().padStart(2, "0");
+
+  return `${formattedHH}:${formattedMM}:${formattedSS}`;
+}
+
+const startTimer = () => {
+  startTime = Date.now();
+  setInterval(function printTime() {
+    elapsedTime = Date.now() - startTime;
+    document.getElementById("display").innerHTML = timeToString(elapsedTime);
+  }, 1000);
 }
 
 // setting the currentQuestion object when you select something in the dropdown

@@ -27,7 +27,7 @@ const CHARACTERS = [
   {
     name: 'Cooper',
     img: 'images/cooper.svg',
-    skinColor: 'blue',
+    skinColor: 'green',
     skinTexture: 'spots',
     attributes: ['swim'],
     other: ['teeth'],
@@ -314,11 +314,11 @@ const filterCharacters = (keep) => {
     stringPropertyName = 'skinColor';
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the dinosaur have ${value} skin! Keep all dinosaurs that has ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the dinosaur doesn't have ${value} skin! Remove all dinosaurs that has ${value}`
       )
     }
 
@@ -327,11 +327,11 @@ const filterCharacters = (keep) => {
     stringPropertyName = 'skinTexture'
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the dinosaur have ${value}! Keep all people that has ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the dinosaur doesn't have ${value}! Remove all people that has ${value}`
       )
     }
 
@@ -339,11 +339,11 @@ const filterCharacters = (keep) => {
     arrayPropertyName = 'attributes';
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the dinosaur have ${value}! Keep all dinosaurs that has ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the dinosaur doesn't have ${value}! Remove all dinosaurs that has ${value}`
       )
     }
   }
@@ -352,11 +352,11 @@ const filterCharacters = (keep) => {
     arrayPropertyName = 'other'
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the dinosaur have ${value}! Keep all dinosaurs that has ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the dinosaur doesn't have ${value}! Remove all dinosaurs that has ${value}`
       )
     }
 

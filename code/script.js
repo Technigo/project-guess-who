@@ -247,8 +247,8 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  //generate the game board
-  setTimeout(() => generateBoard(), 2000);
+  //setTimeout(() => generateBoard(), 2000);
+  loadingGifandBoard(); //loading Gif and invoke generateBoard()
   //console.log(secret) //console log to see the object before setSecret function
   setSecret();
   //console.log(secret); //console log to see the object after setSecret function
@@ -400,7 +400,7 @@ const loadingGifandBoard = () => {
   board.innerHTML = "";
   //put a loading gif to make it looks like the computer is progressing
   board.innerHTML += `        
-  <img src="/gif/loading-buffering.gif" class="loading-gif" alt="loading gif"/>
+  <img src="/gif/loading-color.gif" class="loading-gif" alt="loading gif"/>
 `;
   //after 1.5s redraw the board
   setTimeout(() => generateBoard(), 1500);
@@ -474,7 +474,7 @@ playAgain.addEventListener("click", () => {
   //Show ide the game board
   board.style.display = "flex";
   countGuesses = 0; //reset the counter for how many guesses
-  loadingGifandBoard();
-  start();
-  //window.location.reload(); //refresh the page
+  //loadingGifandBoard();
+  //start();
+  window.location.reload(); //refresh the page
 });

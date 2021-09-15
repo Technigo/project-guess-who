@@ -1,8 +1,9 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
-const findOut = document.getElementById('filter')
+const filterButton = document.getElementById('filter')
 const restartButton = document.getElementById('restart')
+const guessPress = document.getElementById('winOrLose')
 
 // Array with all the characters, as objects----DONT TOUCH!!
 const CHARACTERS = [
@@ -226,31 +227,23 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret) //----------TESTING!!!!!
+  console.log(secret) //----------TEST, logs secret person.
 }
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-  generateBoard()
-  setSecret()
-  console.log('test') //----------TESTING!!!!!
+  charactersInPlay = CHARACTERS // Here we're setting charactersInPlay array to be all the characters to start with
+  generateBoard() // ---- Generate the board
+  setSecret() //---- Randomize the secret person
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  console.log("Question LIST TEST")  //--------TESTING!!!!!!!
   const category = questions.options[questions.selectedIndex].parentNode.label
-  console.log(category) //---------TESTING category VALUE!!!!!
-
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  
   const value = questions.options[questions.selectedIndex].value
-  console.log(value) // ----------TESTING LIST selected VALUE!!!!!
-
+  
   currentQuestion = {
     category: category,
     value: value
@@ -259,17 +252,32 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  console.log('FIND OUT BUTTON WORKS?!?!?') //-----TESTING FIND OUT BUTTON!!!!!
-
   const { category, value } = currentQuestion
-  console.log(category, value) //--------TESTING Category + Value!!!!!
+  console.log(currentQuestion) //<<<-----TEST!!!
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    if (secret[currentQuestion.category] === currentQuestion.value){
+      console.log('TRUE')//-----test<<<<<<<<<<<<<<<< VIDARE härifrån på nåt sätt.
+      filterCharacters(true, currentQuestion.category)
+    }
+    else {
+      console.log('NOT TRUE!!')//-----------TEST
+      filterCharacters(false, currentQuestion.category)
+    }
 
   } else if (category === 'accessories' || category === 'other') {
+  
+    if (secret[currentQuestion.category].includes(currentQuestion.value)){
+      console.log("hey hallå??#?#?")
+      filterCharacters(true, currentQuestion.category)
+    }
+    else{
+      console.log("NEJNEJNEJNEJJEJFJAJGJJA")
+      filterCharacters(false, currentQuestion.category)
+    }
 
   }
 }
@@ -290,33 +298,64 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person is a ${value}! Keep all people that is a ${value}`
+      )
+    } else {
+      alert(
+        `No, the person is not a ${value}! Remove all people that is a ${value}`
+      )
+    }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person have ${value+ " " +category}! Keep all people that have ${value+ " " +category}!`
+      )
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person don't have ${value+ " " +category}! Remove all people that have ${value+ " " +category}!`
+      )
     }
   }
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
+  
+  if (category === 'hair' || category === 'eyes' ){
+    /* for hair and eyes : */
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] === currentQuestion.value)
+    }
+    else {
+      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] !== currentQuestion.value)
+    }
+  }
+  if ( category === 'other' || category === 'accessories'){
+    if(keep){
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
+    }
+    else{
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
+    }
+  
+  }
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  const youSure = confirm("You sure?")
+  if ( youSure === true){
+    alert("OK!")
+    checkMyGuess()
+  }
+  else{
+    alert("Skit i det då")
+  }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -336,4 +375,5 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
-findOut.addEventListener('click', checkQuestion)
+filterButton.addEventListener('click', checkQuestion)
+guessPress.addEventListener('click', guess)

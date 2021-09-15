@@ -239,35 +239,38 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
+  console.log('selectQ works')
+    // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].parentNode.value
+  // This variable stores the actual value of the question we've selected.
+  const value = questions.options[questions.selectedIndex].value
 
   currentQuestion = {
     category: category,
     value: value,
   }
+  return currentQuestion
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  console.log('checkQ works')
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    if (currentQuestion === secret) { //true
-      filterCharacters(true)
+    if (CHARACTERS[currentQuestion.category] === currentQuestion.value) { //true
       console.log(`This is a correct guess`)
+      filterCharacters(true)
     } else { //false
-      filterCharacters(false)
       console.log(`This is a wrong guess`)
+      filterCharacters(false)
     }
   } else if (category === 'accessories' || category === 'other') {
-    if (person[question.category].includes(question.value)) { // true
+    if (CHARACTERS[currentQuestion.category].includes(currentQuestion.value)) { // true
       console.log(`This is included in the array`)
       filterCharacters(true)
     } else { //false
@@ -280,6 +283,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+  console.log('filterCharacters works')
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -338,4 +342,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-clickFilter.addEventListener('click', selectQuestion, checkQuestion)
+clickFilter.addEventListener('click', checkQuestion)

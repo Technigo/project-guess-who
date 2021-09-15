@@ -3,7 +3,9 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOut = document.getElementById("filter");
-
+const winOrLose = document.getElementById("winOrLose");
+const winOrLoseText = document.getElementById("winOrLoseText");
+const playAgain = document.getElementById("playAgain");
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -236,6 +238,9 @@ const start = () => {
   // What else should happen when we start the game?
   setTimeout(generateBoard, 100);
   setSecret();
+  selectQuestion();
+  winOrLose.style.display = "none";
+  board.style.display = "flex";
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -367,18 +372,31 @@ const filterCharacters = (keep) => {
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
+const guess = (personToCheck) => {
   // store the interaction from the player in a variable.
-  // remember the confirm() ?
+  let guessWho = confirm(`Are you sure?${personToCheck}`);
+  // const player = confirm(`Are you sure?${personToConfirm}`);
+  if (guessWho) {
+    checkMyGuess(personToCheck);
+  }
   // If the player wants to guess, invoke the checkMyGuess function.
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
+  if (personToCheck === secret.name) {
+    // 2. Set a Message to show in the win or lose section accordingly
+    winOrLoseText.innerHTML = `Yes you are right! ${personToCheck} was the
+    secret person`;
+  } else {
+    winOrLoseText.innerHTML = `I am sorry you are wrong!`;
+  }
   // 3. Show the win or lose section
+  winOrLose.style.display = "flex";
+
   // 4. Hide the game board
+  board.style.display = "hidden";
 };
 
 // Invokes the start function when website is loaded
@@ -388,3 +406,4 @@ start();
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", (ev) => selectQuestion(ev.target.value));
 findOut.addEventListener("click", checkQuestion);
+playAgain.addEventListener("click", start);

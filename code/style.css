@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #07121A;
+  --secondary: #3c5f79;
 }
 
 body {
@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  
 }
 
 h1 {
@@ -28,6 +29,7 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  
 }
 
 select {
@@ -41,7 +43,9 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 150px;
+  align-self: center;
+  padding-top: 20px;
 }
 
 .board-wrapper {
@@ -59,10 +63,28 @@ select {
   align-content: center;
 }
 
+.playlist {
+  margin-bottom: 20px;
+}
+
+.playlist h1 {
+  font-size: 20px;
+  line-height: 20px;
+
+}
+
+.playlist span {
+  font-weight: 800;
+}
+
+iframe {
+  border-radius: 20px;
+}
+
 /****** CARD ******/
 .card {
-  width: 135px;
-  height: 165px;
+  width: 200px;
+  height: 250px;
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;
@@ -71,6 +93,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  
 }
 
 .card p {
@@ -137,6 +160,7 @@ button {
 .outlined-button:hover {
   background-color: var(--primary);
   color: white;
+  margin-bottom: 40px;
 }
 
 .filled-button:hover {
@@ -150,8 +174,8 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
-  position: absolute;
+  background: var(--primary);
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;

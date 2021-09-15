@@ -16,39 +16,72 @@
 
       <img
         class="guess-who-icon"
-        src="images/guess-who-bubble.png"
+        src="champs/Guesswhologo.png"
         alt="Guess Who"
       />
 
-      <h1>Does the person have</h1>
+      <h1>Does the champion have</h1>
 
       <select id="questions">
         <option disabled selected>Choose something</option>
         <optgroup label="hair">
           <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <option value="black">black hair</option>
-          <option value="grey">grey hair</option>
-          <option value="orange">orange hair</option>
-          <option value="purple">purple hair</option>
           <option value="white">white hair</option>
+          <option value="black">black hair</option>
+          <option value="pink">pink hair</option>
+          <option value="purple">purple hair</option>
           <option value="hidden">hidden hair</option>
-          <!-- Add the rest of hair colors as options  -->
+          <option value="none">none</option>
+          <option value="red">red hair</option>
+          <option value="blue">blue hair</option>
         </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+
+        <optgroup label="costume">
+          <option value="red">red costume</option>
+          <option value="blue">blue costume</option>
+          <option value="green">green costume</option>
+          <option value="white">white costume</option>
+          <option value="brown">brown costume</option>
+          <option value="purple">purple costume</option>
+          <option value="black">black costume</option>
+          <option value="pink">pink costume</option>
+          <option value="gold">gold costume</option>
         </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
+
+        <optgroup label="abilities">
+          <option value="attack damage">attack damage</option>
+          <option value="ability power">abilitypower</option>
+          <option value="passive">passive</option>
+          
         </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+        <optgroup label="crowdcontrol">
+          <option value="charm">charm</option>
+          <option value="stunn">stunn</option>
+          <option value="grounded">grounded</option>
+          <option value="taunt">taunt</option>
+          <option value="knock up">knock up</option>
+          <option value="knock back">knock back</option>
+          <option value="root">root</option>
+          <option value="suppress">suppress</option>
+          <option value="silence">silence</option>
+          <option value="slow">slow</option>
+          <option value="fear">fear</option>
+          <option value="blind">blind</option>
+          <option value="hook">hook</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div class="playlist">
+        <h1>Listen to the top <span>League of Legends</span> Anthems while playing!</h1>
+      </div>
+
+      <div class="League-songs">
+        <iframe src="https://open.spotify.com/embed/track/6zAiRKvAMlXHxEtyO4yxIO?theme=0" width="100%" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src="https://open.spotify.com/embed/track/1FpVJ7HpZInE2GvhVE2TwT?theme=0" width="100%" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src="https://open.spotify.com/embed/track/69Sy7207dnixZ6w7RSV9Kb?theme=0" width="100%" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe src="https://open.spotify.com/embed/track/3f4fc8c8unrQeKecmUPEDR?theme=0" width="100%" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
     </aside>
 
     <section class="board-wrapper">

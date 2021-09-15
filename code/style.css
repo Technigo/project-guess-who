@@ -59,6 +59,10 @@ select {
   align-content: center;
 }
 
+.userWelcome{
+color: white;
+}
+
 /****** CARD ******/
 .card {
   width: 135px;
@@ -175,6 +179,25 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+/****** INPUT NAME ******/
+.question-name{
+  display: block;
+  width: 100%;
+  margin: 40px 0px;
+}
+
+.label-name{
+  display: block;
+  color: white;
+  font-weight: bold;
+}
+
+.input-name{
+  height: 30px;
+  width: 100%;
+  margin: 10px 0px;
 }
 
 @media (max-width: 768px) {

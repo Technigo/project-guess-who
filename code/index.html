@@ -12,9 +12,9 @@
 </head>
 
 <body>
-  <aside class="question-section">
+  <aside class="question-section" id="aside-section">
     <button id="restart" class="outlined-button">RESTART</button>
-
+    <h3 class="userWelcome" id="user"></h3>
     <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
 
     <h1>Does the person have</h1>
@@ -54,7 +54,19 @@
     </select>
 
     <button id="filter" class="filled-button">FIND OUT</button>
+
+    <!-- text input question 1-->
+    <div class="question-name" id="question-name">
+      <form id="name-form">
+        <label for="name-input" class="label-name">Write your name</label>
+        <input class="input-name" id="name-input" type="text" />
+        <button class="filled-button" id="sendName" type="submit">
+          SEND
+        </button>
+      </form>
+    </div>
   </aside>
+
 
   <section class="board-wrapper">
     <main class="game-board" id="board"></main>

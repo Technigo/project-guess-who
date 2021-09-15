@@ -270,7 +270,7 @@ const checkQuestion = () => {
     keep = true;
   } else if (category === "accessories" && value === secret[currentQuestion.category].includes(currentQuestion.value)) {
     keep = true;
-  } else if (category === "other" && value === secret[currentQuestion.category]) {
+  } else if (category === "other" && value === secret.other[0]) {
     keep = true;
   } else {
     keep = false;

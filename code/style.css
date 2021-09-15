@@ -169,8 +169,10 @@ button {
 }
 
 .win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+  align-self: center;
+  /* margin-left: 15%; */
+  width: 200px;
+  
 }
 
 .win-or-lose h1 {

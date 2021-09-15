@@ -2,6 +2,9 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter')
+
+let guessButton = ''
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -205,7 +208,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 
-// Draw the game board
+// Draw the game board -GOTOV KORAK-GENERIRA SE BOARD
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -217,26 +220,38 @@ const generateBoard = () => {
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
-      </div>
+      </div> 
     `
   })
-}
+  const guessButtonInside = document.getElementById('guess')
+  guessButton = guessButtonInside
+}  
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Randomly select a person from the characters array and set as the value of the variable called secret-GOTOV KORAK-ODABERE SE TAJNA OSOBA
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret);//moja promjena
+  
 }
 
-// This function to start (and restart) the game
+// This function to start (and restart) the game-GOTOV KORAK POVEZAN SA EVENTLISTENEROM RESTARTbutton
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard(); // moja promjena
+  setSecret(); // moja promjena
 }
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  const category = questions.options[questions.selectedIndex].parentNode.label 
+  const value = questions.options[questions.selectedIndex].value
+
+  console.log (category)        ///za izbor pitanja
+  console.log(value)
+
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -244,47 +259,80 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+  console.log('this is the question', currentQuestion)
+  checkQuestion()
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  console.log('test', currentQuestion)
+  let keep 
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    console.log('currentQuestion', value);
+
+    console.log('secret', secret[category])
+    keep = value === secret[category]
+
+    filterCharacters(keep)
 
   } else if (category === 'accessories' || category === 'other') {
+    console.log('acessories work')
+    filterCharacters()
 
   }
 }
 
-// It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
+ // It'll filter the characters array and redraw the game board.
+ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+  console.log(keep);
+  console.log('filter works', currentQuestion);
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'accessories') {///glasses
+    console.log('first if work', category);
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wears a ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear a ${value}! Remove all people that wears a ${value}`
       )
     }
-  } else if (category === 'other') {
-    // Similar to the one above
-  } else {
+  
+  } else if (category === 'other') {///smoking habit
     if (keep) {
+      alert(
+        `Yes, the person is a ${value}! Keep all the people that are a ${value}`
+      )
+    } else {
+      alert (
+        `No, the person is not a ${value}! Remove all the people that are a ${value}`
+      )
+    }
+    // Similar to the one above
+  } else {///hair selection
+
+    if (keep) {
+      alert (
+        `Yes, the person has ${value} ${category}! Keep all the people that have ${value}`
+      )
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
+      alert (
+        `No, the person doesnt have ${value} ${category}! Remove all people that have ${value}`
+      )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
+
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
@@ -323,3 +371,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+filterButton.addEventListener('click', selectQuestion);

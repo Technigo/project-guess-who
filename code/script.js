@@ -7,6 +7,7 @@ const winOrLoseText = document.getElementById('winOrLoseText');
 const winOrLoseSection = document.getElementById('winOrLose');
 const playAgain = document.getElementById('playAgain');
 const winCard = document.getElementById('win-card');
+const audio = document.getElementById('audio');
 
 // Array of objects with all the characters
 const CHARACTERS = [
@@ -265,6 +266,7 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
+  audio.pause();
   winCard.innerHTML = "";
   totalSeconds = 0;
   valString = "";
@@ -444,11 +446,14 @@ const showLoseScreen = () => {
   alertWrapper.remove();
 }
 
+
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name ) 
   {
     showWinScreen();
+    audio.play();
+    audio.volume = 0.2;
   }
  else {
    showLoseScreen();
@@ -476,8 +481,6 @@ function pad(val) {
   }
 }
 
-
-
 // All the event listeners
 restartButton.addEventListener('click', start); 
 questions.addEventListener('change',selectQuestion);
@@ -486,9 +489,6 @@ findOutButton.addEventListener('click', () => {
   ++attempts;
   console.log(attempts)
 });
-
-
-
 
 playAgain.addEventListener('click', () => {
   winOrLoseSection.style.display = "none";

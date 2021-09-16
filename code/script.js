@@ -242,51 +242,45 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   console.log('selectQuestion')
-  
-   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores what option group (category) the question belongs to.
-  
-  // We also need a variable that stores the actual value of the question we've selected.
+   const category = questions.options[questions.selectedIndex].parentNode.label
+    
+  //variable that stores the actual value of the question we've selected.
   const value = questions.value
   console.log(category, value)
 
   currentQuestion = {
     category: category,
     value: value
-  }
-
-  
+  }  
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  console.log('CHECK')
   const { category, value } = currentQuestion
-  console.log(category, value)
-  const secretValue = secret[currentQuestion.category]
-  
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  let keep = false
 
-  if (category === "hair" || category === "eyes") {
-    if (secret[category] === value) {
-      filterCharacters(true);
-    } else {
-      filterCharacters();
-    }
-  } else if (category === "accessories" || category === "other") {
-    if (secret[category].includes(value)) {
-      filterCharacters(true);
-    } else {
-      filterCharacters();
-    }
+
+// Compare the currentQuestion details with the secret person details
+  /*
+  1. The code uses the filterCharacters function to filter the characters based on the category and value.
+  2. The code uses the keep variable to store the result of the filterCharacters function.
+  3. The code uses the keep variable to filter the characters.
+  */
+  if (category === 'hair'){
+    keep = (secret.hair === value)
+    } else if (category === 'eyes'){
+    keep = (secret.eyes === value)
+  }  else if (category === 'accessories'){
+    keep = (secret.accessories.includes(value))
+  } else if (category === 'other'){
+    keep = (secret.other.includes(value))
   }
-  
-}
 
+  filterCharacters(keep)
+};
 
-// It'll filter the characters array and redraw the game board.
+// Filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   
@@ -305,13 +299,13 @@ const filterCharacters = (keep) => {
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `You are RIGHT, the person is a ${value}! Keep all people that are ${value}s`
+        `You are RIGHT, the person is a ${value}! Keep all people that is a ${value}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       charactersInPlay
     } else {
       alert(
-        `WRONG, the person is not a ${value}! Remove all people that are  ${value}s`
+        `WRONG, the person is not a ${value}! Remove all people that are a ${value}`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
@@ -325,7 +319,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       alert(
-        `WRONG, the person hasn't ${value} ${category} ! Remove all people that has ${value} ${category} `
+        `WRONG, the person don't have ${value} ${category} ! Remove all people that has ${value} ${category} `
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
@@ -336,20 +330,24 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const confirmGuess = confirm (`Is ${personToConfirm} your final guess?`)
+  const confirmGuess = confirm (`Are you sure ${personToConfirm} is your final guess?`)
   if (confirmGuess)
   checkMyGuess(personToConfirm)
 }
 
+
 // If you confirm, this function is invoked
+const audioLost = new Audio('./sound/NO.mp3')
+const audioWin = new Audio('./sound/win.mp3')
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    alert ('YEAH!')
+    alert ('CONGRATULATIONS!!!')
     winOrLoseText.innerHTML = `You won the game! You guessed on ${personToCheck} which is the right person`
-    
+    audioWin.play()
 } else {
   alert ('YOU LOSE')
   winOrLoseText.innerHTML = `You lost! The right person was ${secret.name}...`
+  audioLost.play()
 }
 winOrLose.style.display ="flex"
 }

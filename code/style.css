@@ -99,6 +99,11 @@ select {
   display: none;
 }
 
+img {
+  width: 100%;
+  height: 100%;
+}
+
 /* The div with the guess class is only shown on hover */
 .card:hover .guess {
   display: flex;

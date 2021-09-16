@@ -209,6 +209,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let count = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -238,12 +239,13 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
-  setTimeout(generateBoard, 100);
+  generateBoard();
   setSecret();
   selectQuestion();
   winOrLose.style.display = "none";
   board.style.display = "flex";
-  countBox.innerText = 0;
+  countBox.innerHTML = 0; //When we start the game we set the attempts to 0
+  count = 0; //reseting the counter
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -281,7 +283,7 @@ const checkQuestion = () => {
   filterCharacters(keep);
 };
 
-let count = 0;
+// Creating the function which help us count the attempts
 const counter = () => {
   count++;
   countBox.innerHTML = count;
@@ -396,7 +398,7 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     // 2. Set a Message to show in the win or lose section accordingly
     winOrLoseText.innerHTML = `Yes you are right! ${personToCheck} was the
-    secret person`;
+    secret person. You guessed it with ${count} attempts`;
   } else {
     winOrLoseText.innerHTML = `I am sorry you are wrong!`;
   }
@@ -415,4 +417,6 @@ restartButton.addEventListener("click", start);
 questions.addEventListener("change", (ev) => selectQuestion(ev.target.value));
 findOut.addEventListener("click", checkQuestion);
 playAgain.addEventListener("click", start);
+// creating a second event listener for the findOut button in order to call the
+// counter function
 findOut.addEventListener("click", counter);

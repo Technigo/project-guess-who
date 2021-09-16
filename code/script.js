@@ -269,13 +269,14 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion
   console.log('test', currentQuestion)
-  let keep 
+  //let keep 
+  //keep = secret[category].includes(value)
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    console.log('currentQuestion', value);
+    console.log('currentQuestion', value); 
 
     console.log('secret', secret[category])
     keep = value === secret[category]
@@ -285,7 +286,7 @@ const checkQuestion = () => {
   } else if (category === 'accessories' || category === 'other') {
     keep = secret[category].includes(value)
     console.log('acessories work')
-    filterCharacters()
+    filterCharacters(keep)
 
   }
 }
@@ -293,6 +294,7 @@ const checkQuestion = () => {
  // It'll filter the characters array and redraw the game board.
  const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+  console.log('ELIN filter', value, category)
   console.log(keep);
   console.log('filter works', currentQuestion);
   keep = secret[category].includes(value)
@@ -301,35 +303,35 @@ const checkQuestion = () => {
     console.log('first if work', category);
     if (keep) {
       alert(
-        `Yes, the person wears ${value} ! Keep all people that wears a ${value} `
+        `Yes, the character wears ${value} ! Keep all the characters that wears a ${value}. `
       )
     } else {
       alert(
-        `No, the person doesn't wear a ${value}! Remove all people that wears a ${value}`
+        `No, the character doesn't wear a ${value}! Remove all the characters that wears a ${value}.`
       )
     }
   
   } else if (category === 'other') {///smoking habit
     if (keep) {
       alert(
-        `Yes, the person is a ${value}! Keep all the people that are a ${value}`
+        `Yes, the character is a ${value}! Keep all the people that are a ${value}.`
       )
     } else {
       alert (
-        `No, the person is not a ${value}! Remove all the people that are a ${value}`
+        `No, the character is not a ${value}! Remove all the people that are a ${value}.`
       )
     }
-    // Similar to the one above
+    
   } else {///hair selection
 
     if (keep) {
       alert (
-        `Yes, the person has ${value} ${category}! Keep all the people that have ${value}`
+        `Yes, the character has ${value} ${category}! Keep all the characters that have ${value} hair.`
       )
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
       alert (
-        `No, the person doesnt have ${value} ${category}! Remove all people that have ${value}`
+        `No, the character doesnt have ${value} ${category}! Remove all the characters that have ${value} hair.`
       )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
@@ -349,6 +351,31 @@ const checkQuestion = () => {
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
+
+ if (category === 'hair' || category === 'eyes') {
+   console.log('last hair work')
+   if (keep) {
+     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category]=== currentQuestion.value)
+     console.log('keep hair', charactersInPlay)
+   } else {
+     charactersInPlay =charactersInPlay.filter((person) => person[currentQuestion.category] !== currentQuestion.value)
+     console.log('filter out hair', charactersInPlay)
+   }
+ }
+ else if (category === 'accessories' || category === 'other') 
+  {
+   console.log('last if works')
+    if (keep){
+  
+     charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+     console.log('keep if acesorize', charactersInPlay);
+    }
+    else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      console.log('filter out acesorize', charactersInPlay)
+    }
+ }
+ generateBoard()
 
   // Invoke a function to redraw the board with the remaining people.
 }

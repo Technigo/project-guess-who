@@ -3,8 +3,11 @@
 	--primary: #a259ff;
 	--secondary: #b0a6ff;
 }
-
 body {
+	margin: 0;
+}
+
+.game {
 	display: flex;
 	margin: 0;
 	padding: 0;
@@ -177,8 +180,39 @@ button {
 	margin-bottom: 32px;
 }
 
+.cheat-footer {
+	display: flex;
+	flex-direction: column;
+	padding: 5vw;
+	align-items: flex-start;
+	box-sizing: border-box;
+	height: 20vh;
+	font-family: 'Montserrat';
+	width: 30%;
+	background-color: var(--secondary);
+	/* position: fixed;
+	bottom: 0; */
+}
+
+.cheat-label {
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 48px;
+	margin: 0;
+	color: white;
+}
+.cheat-input {
+	display: block;
+	border: none;
+	font-size: 22px;
+	font-family: 'Montserrat';
+	color: var(--secondary);
+	width: 100%;
+	margin: 5px 0;
+}
+
 @media (max-width: 768px) {
-	body {
+	.game {
 		flex-direction: column;
 	}
 
@@ -229,5 +263,10 @@ button {
 		background: white;
 		color: var(--primary);
 		border: none;
+	}
+	.cheat-footer {
+		width: 100%;
+		height: 15vh;
+		background-color: var(--secondary);
 	}
 }

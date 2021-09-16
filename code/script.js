@@ -6,6 +6,8 @@ const filterButton = document.getElementById('filter');
 const winOrLose = document.getElementById('winOrLose');
 const winOrLoseText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
+const cheatCode = document.getElementById('cheatCode');
+const cheatFooter = document.getElementById('cheatFooter');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -210,6 +212,7 @@ let currentQuestion;
 let charactersInPlay;
 let numberOfGuesses = 0;
 let optionGroups = '';
+let cheating = false;
 const categories = {
 	hair: { value: [], type: '' },
 	eyes: { value: [], type: '' },
@@ -222,7 +225,7 @@ const generateBoard = () => {
 	board.innerHTML = '';
 	charactersInPlay.forEach((person) => {
 		board.innerHTML += `
-      <div class="card">
+      <div class="card" ${person.name === secret.name && cheating ? 'style="border: 3px solid red"' : ''}>
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
@@ -293,6 +296,7 @@ const start = () => {
 	board.style.display = 'flex';
 	winOrLose.style.display = 'none';
 	winOrLoseText.innerText = '';
+	cheatFooter.style.display = 'flex';
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -369,7 +373,7 @@ const checkMyGuess = (personToCheck) => {
 		filterCharacters(true);
 		board.style.display = 'none';
 		winOrLose.style.display = 'flex';
-		winOrLoseText.innerText = `Yay! You guessed right, ${personToCheck} is the secret person`;
+		winOrLoseText.innerText = `Yay! You guessed right, ${personToCheck} is the secret person${cheating ? ` however the victory is not that sweet when you cheat 😋` : ''}`;
 	} else {
 		alert(`Darn! ${personToCheck} is not secret person`);
 		filterCharacters(false);
@@ -387,3 +391,8 @@ filterButton.addEventListener('click', () => {
 	checkQuestion();
 });
 playAgainButton.addEventListener('click', start);
+cheatCode.addEventListener('change', () => {
+	cheating = true;
+	cheatFooter.style.display = 'none';
+	generateBoard();
+});

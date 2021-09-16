@@ -120,8 +120,10 @@ select {
   background-color: var(--secondary);
 }
 
-.board-wrapper .card:hover img, .board-wrapper .card:hover p {
-  display: none;
+@media (min-width: 769px) {
+  .board-wrapper .card:hover img, .board-wrapper .card:hover p {
+    display: none;
+  }
 }
 
 /* The div with the guess class is only shown on hover */
@@ -252,7 +254,7 @@ button {
     border: none;
   }
   .card .guess .filled-button:hover {
-    background-color: var(--primary);
+    background: var(--primary);
     color: white;
   }
   .timer {

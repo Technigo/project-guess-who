@@ -29,6 +29,8 @@ h1 {
   margin-bottom: 0;
 }
 
+
+
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -42,7 +44,8 @@ h1 {
 }
 
 select {
-  display: block;
+  /* display: block; */
+  display: flex;
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';

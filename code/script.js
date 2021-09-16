@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
 const winOrLoseText = document.getElementById("winOrLoseText")
 const winOrLoseSection = document.getElementById("winOrLose")
+const playAgainButton = document.getElementById("playAgain")
 
 
 // Array with all the characters, as objects
@@ -234,11 +235,19 @@ const setSecret = () => {
   console.log(secret)
 }
 
+const playAgain = () =>{
+  winOrLoseSection.style.display = "none";
+  board.style.display = "";
+  }
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  playAgain();
+  generateBoard();
+  setSecret();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -359,15 +368,15 @@ const guess = (personToConfirm) => {
   // remember the confirm() ?
   confirm('Do you really want to guess?')
   if (true){
-    checkMyGuess()
+    checkMyGuess(personToConfirm)
   } else{}
   // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = () => {
+const checkMyGuess = (personToCheck) => {
   
-  if (CHARACTERS.find(person=>person.name===secret.name)){
+  if (personToCheck === secret.name){
     winOrLoseText.innerHTML ="Woohoo! You win!"
   } else{
     winOrLoseText.innerHTML ="Oh no! Nevermind"
@@ -376,16 +385,17 @@ const checkMyGuess = () => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-
   winOrLoseSection.style.display = "block";
   board.style.display = "none";
 }
+
+
 // Invokes the start function when website is loaded
 start()
-generateBoard()
-setSecret()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', playAgain)
+

@@ -235,9 +235,7 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
-  win.style.display = "none";
-  lose.style.display = "none";
-  winOrLoseText.innerHTML = "";
+  winOrLose.style.display = "none";
   console.log(secret); //REMOVE
 };
 
@@ -346,12 +344,14 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alert("YAY, you win!");
-    board.innerHTML = "display: none";
-    win.style.display = "block";
+    winOrLose.style.display = "block";
+    winText.style.display = "block";
+    loseText.style.display = "none";
   } else {
     alert("Nooooooooooooo....");
-    board.innerHTML = "display: none";
-    lose.style.display = "block";
+    winOrLose.style.display = "block";
+    loseText.style.display = "block";
+    winText.style.display = "none";
   }
 };
 

@@ -22,9 +22,9 @@
       />
 
       <h1>Does the person have</h1>
-
-      <select id="questions">
-        <option disabled selected>Select here</option>
+<form>
+      <select id="questions" required>
+        <option disabled selected value="">Select here</option>
         <optgroup label="hair">
           <option value="brown">brown hair</option>
           <option value="yellow">yellow hair</option>
@@ -55,7 +55,7 @@
 
       <button id="filter" class="filleds-button">FIND OUT</button>
     </aside>
-
+  </form>
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
     </section>
@@ -71,7 +71,7 @@
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
       <footer>
-        <p>&#169; 2021 by Katie Wu</p>
+        <p>&#169;2021 by Katie Wu</p>
         <p>Team Foxes 🦊 | Technigo</p>
         <a href="https://www.technigo.io/" target="blank">
           <p>

@@ -287,26 +287,32 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === "other") {
     if (keep) {
       alert(`Yes, the person smokes! Keep all people that smokes`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(`No, the person doesn´t smoke! Remove all people that smokes`);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
-  } else {
+  } else { //categories hair and eyes
     if (keep) {
       alert(
         `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`
-      );
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       alert(
-        `No, the person doesnt have ${value} ${category}! Remove all people with ${value} ${category}}`
-      );
+        `No, the person doesnt have ${value} ${category}! Remove all people with ${value} ${category}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
   }
 
@@ -325,7 +331,9 @@ const filterCharacters = (keep) => {
   */
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 };
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {

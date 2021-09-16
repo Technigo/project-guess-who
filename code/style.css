@@ -198,16 +198,15 @@ button {
 }
 
 .cheat-label {
-	font-size: 15px;
+	font-size: 10px;
 	font-weight: 500;
-	line-height: 48px;
 	margin: 0;
 	color: white;
 }
 .cheat-input {
 	display: block;
 	border: none;
-	font-size: 22px;
+	font-size: 10px;
 	font-family: 'Montserrat';
 	color: var(--secondary);
 	width: 100%;

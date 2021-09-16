@@ -291,6 +291,8 @@ const start = () => {
 	// Here we're setting charactersInPlay array to be all the characters to start with
 	charactersInPlay = CHARACTERS;
 	// What else should happen when we start the game?
+	cheating = false;
+	guessCounter = 0;
 	setSecret();
 	generateBoard();
 	generateQuestions();
@@ -298,15 +300,13 @@ const start = () => {
 	winOrLose.style.display = 'none';
 	winOrLoseText.innerText = '';
 	cheatFooter.style.display = 'flex';
-	cheating = false;
-	guessCounter = 0;
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (guess, name) => {
 	guessCounter++;
 	guessCounterText.innerText = `Guess counter: ${guessCounter}`;
-	console.log(numberOfGuesses);
+	// console.log(numberOfGuesses);
 	let category = '';
 	let value = '';
 	if (guess) {

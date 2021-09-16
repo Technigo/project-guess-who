@@ -261,22 +261,27 @@ const checkQuestion = () => {
   if (currentQuestion.category === 'hair' || currentQuestion.category === 'eyes') {
     if (secret[currentQuestion.category] === currentQuestion.value){
       console.log('yes that is a match')
+      filterCharacters(true)
     }else {
       console.log('no that is not correct')
+      filterCharacters(false)
     }
       
     } else if (currentQuestion.category === 'accessories' || currentQuestion.category === 'other'){
       if (secret[currentQuestion.category].includes(currentQuestion.value)){
         console.log('yes that is a match')
+        filterCharacters(true)
       }else {
         console.log('no that is not correct')
+        filterCharacters(false)
       }
     }
-    filterCharacters()
+    filterCharacters(keep)
 }
 
 
 // It'll filter the characters array and redraw the game board.
+
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
@@ -291,27 +296,17 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    if (keep){
-      alert(
-        `Yes, the person is a ${value}! Keep all people who are ${value}s`
-        )
-    } else {
-      alert(
-        `No, the person is not a ${value}! Remove all people who are ${value}s`
-      )
-    }
+    // Similar to the one above
   } else {
     if (keep) {
-      alert(
-        `Yes, the person has ${value}! Keep all people with ${value}`
-      )
+      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
-      alert(
-        `No, the person does not have ${value}. Remove all people with ${value}`
-      )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
+      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+    
+  
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.

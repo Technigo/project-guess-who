@@ -293,6 +293,7 @@ const start = () => {
 	// What else should happen when we start the game?
 	cheating = false;
 	guessCounter = 0;
+	guessCounterHandler();
 	setSecret();
 	generateBoard();
 	generateQuestions();
@@ -302,10 +303,14 @@ const start = () => {
 	cheatFooter.style.display = 'flex';
 };
 
+const guessCounterHandler = () => {
+	guessCounterText.innerText = `Guess counter: ${guessCounter}`;
+};
+
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (guess, name) => {
 	guessCounter++;
-	guessCounterText.innerText = `Guess counter: ${guessCounter}`;
+	guessCounterHandler();
 	let category = '';
 	let value = '';
 	if (guess) {

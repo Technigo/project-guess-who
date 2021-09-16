@@ -254,34 +254,22 @@ const selectQuestion = () => {
   };
 };
 
-// This function should be invoked when you click on 'Find Out' button.
+// Checks if the secret character has the chosen characteristic
 const checkQuestion = () => {
   const { category, value } = currentQuestion
   let keep = false
-
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair'){
-    keep = (secret.hair === value)
+// checks if the values are the same but in a different way depending on whether the object value is a string or array 
+  if (typeof secret[category] === 'string'){
+    keep = (secret[category] === value)
     }
 
-  else if (category === 'eyes'){
-      keep = (secret.eyes === value)
+  else if (Array.isArray(secret[category])){
+    keep = (secret[category].includes(value))
   }
 
-  else if (category === 'accessories'){
-    keep = (secret.accessories.includes(value))
+  else {
+    console.log("a problem occured")
   }
-
-  else if (category === 'other'){
-    keep = (secret.other.includes(value))
-  }
-
-  // else {
-  //   keep = false
-  // }
 
   filterCharacters(keep)
 };

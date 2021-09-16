@@ -6,6 +6,8 @@ const winOrLoseText = document.getElementById('winOrLoseText')
 const winOrLose = document.getElementById('winOrLose')
 const restartButton = document.getElementById('restart')
 const playAgainButton = document.getElementById('playAgain')
+const totalGuesses = document.querySelector("#totalGuesses")
+const time = document.querySelector("#time")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -402,6 +404,10 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
+  numberOfGuesses = 0
+  totalGuesses.innerText = 0
+  timePassed = 0
+  timePassed.innerText = 0
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -440,6 +446,8 @@ const selectQuestion = () => {
       category
    }
   }
+  numberOfGuesses++
+  totalGuesses.innerText = numberOfGuesses
 }
 
 // This function should be invoked when you click on 'Find Out'.
@@ -553,6 +561,12 @@ const checkMyGuess = (suspect) => {
 playAgain.addEventListener('click', () => {
   location.reload()
 })
+
+// Sets the timer
+setInterval(() => {
+  timePassed++
+  time.innerText = timePassed
+}, 1000)
 
 // Invokes the start function when website is loaded
 

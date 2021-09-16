@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #D5EEFF;
+  --secondary: #1B435D;
 }
 
 body {
@@ -16,7 +16,7 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: #D5EEFF;
 }
 
 .question-section {
@@ -85,7 +85,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #D5EEFF;
   text-align: center;
   height: inherit;
 }
@@ -115,7 +115,7 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
+  border-radius: 4px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
@@ -136,13 +136,27 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #F99F48;
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: #F99F48;
+  border-color: #F99F48;
   color: var(--primary);
+}
+
+
+.counter span {
+  font-size: 20px;
+  color: var(--primary);
+  font-family: 'Acme', sans-serif;
+}
+
+.counter {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
 }
 
 /****** WIN OR LOSE SECTION ******/

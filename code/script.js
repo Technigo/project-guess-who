@@ -3,7 +3,7 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const filter = document.getElementById("filter");
 const restartButton = document.getElementById("restart");
-const playAgain = document.getElementById("playAgain");
+const playAgainButton = document.getElementById("playAgain");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -231,12 +231,17 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
+const playAgain = () => {
+  winOrLose.style.display = "none";
+};
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
   // Answer: generate the board and select a random person.
+  playAgain();
   generateBoard();
   setSecret();
 };
@@ -375,4 +380,4 @@ start();
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 filter.addEventListener("click", checkQuestion);
-playAgain.addEventListener("click", start);
+playAgainButton.addEventListener("click", start);

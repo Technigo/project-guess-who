@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Name</title>
+  <title>Guess Who</title>
   <link rel="stylesheet" href="style.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
     <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
 
     <h1>Does the person have</h1>
-
+    <!-- All the hair color options -->
     <select id="questions">
       <optgroup label="hair">
         <option value="brown">brown hair</option>
@@ -30,19 +30,19 @@
         <option value="white">white hair</option>
         <option value="hidden">hidden hair</option>
       </optgroup>
-
+      <!-- All the eye color options -->
       <optgroup label="eyes">
         <option value="hidden">hidden eyes</option>
         <option value="blue">blue eyes</option>
         <option value="brown">brown eyes</option>
         <option value="green">green eyes</option>
       </optgroup>
-
+      <!-- All the accessories options -->
       <optgroup label="accessories">
         <option value="glasses">glasses</option>
         <option value="hat">hat</option>
       </optgroup>
-
+      <!--Otion of other -->
       <optgroup label="other">
         <option value="smoker">a smoking habit</option>
       </optgroup>

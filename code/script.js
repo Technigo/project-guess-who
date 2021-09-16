@@ -206,6 +206,7 @@ let secret;
 let currentQuestion;
 let charactersInPlay;
 let numberOfGuesses = 0;
+let optionGroups = '';
 
 // Draw the game board
 const generateBoard = () => {
@@ -252,8 +253,7 @@ const generateQuestions = () => {
 			}
 		}
 	});
-	// console.log(categories);
-	let optionGroups = '';
+
 	// loop through all keys in categories object
 	for (const category in categories) {
 		// Filter each category array so it has no duplicates
@@ -270,6 +270,7 @@ const generateQuestions = () => {
 		});
 		optionGroups += `</optgroup>`;
 	}
+	questions.innerHTML = '';
 	questions.innerHTML += optionGroups;
 };
 
@@ -325,10 +326,10 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
 	const { category, value } = currentQuestion;
 	if (keep) {
-		alert(`Yes, the person has ${value}! Keep all people that has ${value}`);
+		alert(`Yes, the person has ${value} ${category}! Keep all people that has ${value} ${category}`);
 		charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
 	} else {
-		alert(`No, the person doesn't have ${value}! Remove all people that have ${value}`);
+		alert(`No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}`);
 		charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
 	}
 

@@ -233,7 +233,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
-let attemts = 0;
+let attempts = 0;
 
 
 // Draw the game board
@@ -270,6 +270,7 @@ const start = () => {
   valString = "";
   secondsLabel.innerHTML = "";
   minutesLabel.innerHTML = "";
+  attempts = 0;
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
@@ -424,7 +425,7 @@ const guess = (personToConfirm) => {
 
 // This function is drawing the winning screen
 const showWinScreen = () => {
-  winOrLoseText.innerText = `You Won in ${attemts} attemts!`;
+  winOrLoseText.innerText = `You Won in ${attempts} attempts!`;
   winOrLoseSection.style.display = "flex";
   winCard.innerHTML = `
   <div class="card">
@@ -482,8 +483,8 @@ restartButton.addEventListener('click', start);
 questions.addEventListener('change',selectQuestion);
 findOutButton.addEventListener('click', () => {
   checkQuestion();
-  ++attemts;
-  console.log(attemts)
+  ++attempts;
+  console.log(attempts)
 });
 
 

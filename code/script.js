@@ -499,9 +499,8 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.value
-  console.log(category)
-  console.log(questions)
+  const category = questions.options[questions.selectedIndex].parentNode.dataset.category
+
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value
@@ -517,6 +516,7 @@ const selectQuestion = () => {
 // Checks if the secret character has the chosen characteristic
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  console.log(currentQuestion)
   let keep = false
 // checks if the values are the same but in a different way depending on whether the object value is a string or array 
   if (typeof secret[category] === 'string'){

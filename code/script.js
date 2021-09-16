@@ -8,6 +8,12 @@ const winOrLose = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const startGameBtn = document.getElementById("startGameBtn");
 const startGame = document.getElementById("startGame");
+const gamePlayAudio = document.getElementById("gameplay-audio");
+const introAudio = document.getElementById("intro-audio");
+// const minutesLabel = document.getElementById("minutes");
+// const secondsLabel = document.getElementById("seconds");
+// let totalSeconds = 0;
+// setInterval(setTime, 1000);
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -240,8 +246,9 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   generateBoard();
-
   setSecret();
+  playAudio();
+
   // What else should happen when we start the game?
 };
 
@@ -397,6 +404,14 @@ const checkMyGuess = (personToCheck) => {
   }
 };
 
+const stopAudio = () => {
+  introAudio.src = "";
+};
+
+const playAudio = () => {
+  gamePlayAudio.play();
+};
+
 // Invokes the start function when website is loaded
 
 // All the event listeners
@@ -410,4 +425,5 @@ playAgainButton.addEventListener("click", () => {
 startGameBtn.addEventListener("click", () => {
   start();
   startGame.classList.toggle("close");
+  stopAudio();
 });

@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
 
 /* Global css variables used for colors */
-:root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
-}
 
 body {
   display: flex;
@@ -49,8 +45,14 @@ select {
   margin: 24px 0;
 }
 
+.guess-who-icon-on-cover {
+  z-index: 3;
+  position: absolute;
+  top: 420px;
+}
+
 .guess-who-icon {
-  width: 20vh;
+  width: 10rem;
   padding-bottom: 1em;
 }
 
@@ -63,21 +65,38 @@ select {
 }
 
 .game-board {
-  width: 90%;
-  max-width: 882px;
+  width: auto;
+  max-width: 80%;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  background-color: rgb(46, 65, 68);
+}
+
+.video-box {
+  z-index: 1;
+}
+
+video {
+  min-height: 100vh;
+  max-width: 100vw;
+  height: auto;
+  width: auto;
+  object-fit: cover;
+  z-index: 1;
+  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+  filter: blur(5px);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /****** CARD ******/
 .card {
-  width: 135px;
-  height: 165px;
+  width: 20%;
+  height: 10rem;
   overflow: hidden;
   border-radius: 4px;
-  margin: 3px;
+  margin: 3px 23px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,7 +141,7 @@ select {
 }
 
 .card img {
-  width: 135px !important;
+  width: 15rem;
   height: 165px !important;
   object-fit: contain;
 }
@@ -151,7 +170,7 @@ select {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid #632aad;
+  border: 2px solid #250c46;
   border-radius: 50px;
   font-size: 16px;
   font-family: "Montserrat";
@@ -164,17 +183,24 @@ button {
   padding: 8px 16px;
 }
 
+.start-game-btn {
+  position: absolute;
+  z-index: 3;
+  top: 820px;
+}
+
 .outlined-button {
-  background-color: rgb(228, 224, 224);
-  color: #632aad;
+  background-color: rgb(228, 224, 224, 0.8);
+  color: #250c46;
   align-self: flex-start;
   margin-bottom: 1em;
   font-size: 1em;
 }
 
+.start-game-btn,
 .filled-button,
 .outlined-button:hover {
-  background-color: #632aad;
+  background-color: #250c46;
   color: rgb(228, 224, 224);
   font-size: 2em;
 }
@@ -182,7 +208,7 @@ button {
 .filled-button:hover {
   background-color: rgb(228, 224, 224);
   border-color: rgb(228, 224, 224);
-  color: #632aad;
+  color: #250c46;
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -226,6 +252,10 @@ button {
   font-family: "Creepster", cursive;
   font-size: 6em;
   padding: 1em 0;
+  position: absolute;
+  z-index: 4;
+  top: 350px;
+  color: rgb(125, 23, 27);
 }
 
 .win-or-lose img {
@@ -256,14 +286,23 @@ button {
     line-height: 30px;
   }
 
+  .guess-who-icon-on-cover {
+    top: 230px;
+    width: 200px;
+  }
   .guess-who-icon {
     width: 10rem;
   }
 
   .start h1 {
-    font-size: 3em;
+    font-size: 2em;
+    top: 200px;
   }
 
+  .start-game-btn {
+    font-size: 1em;
+    top: 400px;
+  }
   .filled-button,
   .outlined-button:hover {
     font-size: 1em;
@@ -281,6 +320,7 @@ button {
   .card {
     width: 113px;
     position: relative;
+    margin: 3px 9px;
   }
 
   .card .guess {

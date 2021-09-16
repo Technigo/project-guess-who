@@ -14,16 +14,27 @@
     <section id="startGame" class="start-game-wrapper">
       <div class="start">
         <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
+          class="guess-who-icon-on-cover"
+          src="images/guess-who.png"
           alt="Guess Who"
         />
         <h1>halloween edition</h1>
-        <button id="startGameBtn" class="filled-button">START GAME</button>
+        <button id="startGameBtn" class="start-game-btn">START GAME</button>
+        <div class="video-box">
+          <video autoplay muted>
+            <source src="images/video.mp4" type="video/mp4" />
+          </video>
+          <audio id="intro-audio" controls autoplay>
+            <source src="sound/intro.wav" type="audio/wav" />
+          </audio>
+        </div>
       </div>
     </section>
 
     <aside class="question-section">
+      <audio id="gameplay-audio" controls loop>
+        <source src="sound/gameplay.wav" type="audio/wav" />
+      </audio>
       <button id="restart" class="outlined-button">RESTART</button>
 
       <img

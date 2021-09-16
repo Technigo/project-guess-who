@@ -13,7 +13,7 @@ const CHARACTERS = [
     name: 'Phanpy',
     img: 'images/phanpy.png',
     color: 'TURKOS',
-    eyes: 'hidden',
+    eyes: 'SVARTA',
     accessories: ['glasses', 'hat'],
     other: []
   },
@@ -21,7 +21,7 @@ const CHARACTERS = [
     name: 'Pikachu',
     img: 'images/pikachu.png',
     color: 'GUL',
-    eyes: 'blue',
+    eyes: 'SVARTA',
     accessories: ['hat'],
     other: []
   },
@@ -29,7 +29,7 @@ const CHARACTERS = [
     name: 'Totodile',
     img: 'images/totodile.png',
     color: 'TURKOS',
-    eyes: 'blue',
+    eyes: 'RÖDA',
     accessories: ['hat'],
     other: ['smoker']
   },
@@ -37,7 +37,7 @@ const CHARACTERS = [
     name: 'Charizard',
     img: 'images/charizard.png',
     color: 'ORANGE',
-    eyes: 'brown',
+    eyes: 'SVARTA',
     accessories: [],
     other: []
   },
@@ -45,7 +45,7 @@ const CHARACTERS = [
     name: 'Krokorock',
     img: 'images/krokorok.png',
     color: 'BRUN',
-    eyes: 'green',
+    eyes: 'SVARTA',
     accessories: ['glasses'],
     other: []
   },
@@ -53,7 +53,7 @@ const CHARACTERS = [
     name: 'Meowth',
     img: 'images/meowth.png',
     color: 'VIT',
-    eyes: 'green',
+    eyes: 'SVARTA',
     accessories: ['glasses'],
     other: []
   },
@@ -61,7 +61,7 @@ const CHARACTERS = [
     name: 'Oct',
     img: 'images/oct.png',
     color: 'RÖD/ROSA',
-    eyes: 'hidden',
+    eyes: 'SVARTA',
     accessories: ['glasses'],
     other: []
   },
@@ -69,7 +69,7 @@ const CHARACTERS = [
     name: 'Pilup',
     img: 'images/pilup.png',
     color: 'BLÅ',
-    eyes: 'hidden',
+    eyes: 'SVARTA',
     accessories: ['glasses'],
     other: []
   },
@@ -77,7 +77,7 @@ const CHARACTERS = [
     name: 'Squirtle',
     img: 'images/squirtle.png',
     color: 'TURKOS',
-    eyes: 'green',
+    eyes: 'RÖDA',
     accessories: ['glasses'],
     other: []
   },
@@ -86,15 +86,15 @@ const CHARACTERS = [
     name: 'Butterfree',
     img: 'images/butterfree.png',
     color: 'VIT',
-    eyes: 'hidden',
+    eyes: 'RÖDA',
     accessories: ['glasses'],
     other: ['smoker']
   },
   {
-    name: 'Chansey',
+    name: 'Blissey',
     img: 'images/chansey.png',
     color: 'RÖD/ROSA',
-    eyes: 'blue',
+    eyes: 'SVARTA',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
@@ -102,7 +102,7 @@ const CHARACTERS = [
     name: 'Dragonite',
     img: 'images/dragonite.png',
     color: 'ORANGE',
-    eyes: 'green',
+    eyes: 'SVARTA',
     accessories: ['glasses'],
     other: []
   },
@@ -110,7 +110,7 @@ const CHARACTERS = [
     name: 'Fennokin',
     img: 'images/fennokin.png',
     color: 'GUL',
-    eyes: 'green',
+    eyes: 'RÖDA',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
@@ -118,7 +118,7 @@ const CHARACTERS = [
     name: 'Minccino',
     img: 'images/minccino.png',
     color: 'GRÅ',
-    eyes: 'hidden',
+    eyes: 'SVARTA',
     accessories: ['hat'],
     other: []
   },
@@ -126,7 +126,7 @@ const CHARACTERS = [
     name: 'Nidoqueen',
     img: 'images/nidoqueen.png',
     color: 'BLÅ',
-    eyes: 'green',
+    eyes: 'SVARTA',
     accessories: ['glasses'],
     other: []
   },
@@ -134,7 +134,7 @@ const CHARACTERS = [
     name: 'Persian',
     img: 'images/persian.png',
     color: 'VIT',
-    eyes: 'blue',
+    eyes: 'SVARTA',
     accessories: ['hat'],
     other: []
   },
@@ -142,7 +142,7 @@ const CHARACTERS = [
     name: 'Pyroar',
     img: 'images/pyroar.png',
     color: 'BRUN',
-    eyes: 'blue',
+    eyes: 'BLÅA',
     accessories: ['glasses'],
     other: []
   },
@@ -150,7 +150,7 @@ const CHARACTERS = [
     name: 'Sandshrew',
     img: 'images/sandshrew.png',
     color: 'GUL',
-    eyes: 'brown',
+    eyes: 'SVARTA',
     accessories: ['glasses'],
     other: []
   },
@@ -158,7 +158,7 @@ const CHARACTERS = [
     name: 'Sneasel',
     img: 'images/sneasel.png',
     color: 'TURKOS',
-    eyes: 'green',
+    eyes: 'RÖDA',
     accessories: ['glasses'],
     other: []
   },
@@ -166,7 +166,7 @@ const CHARACTERS = [
     name: 'Venusaur',
     img: 'images/venusaur.png',
     color: 'TURKOS',
-    eyes: 'hidden',
+    eyes: 'RÖDA',
     accessories: ['glasses', 'hat'],
     other: []
   },
@@ -174,7 +174,7 @@ const CHARACTERS = [
     name: 'Zapdos',
     img: 'images/zapdos.png',
     color: 'GUL',
-    eyes: 'brown',
+    eyes: 'SVARTA',
     accessories: [],
     other: []
   },
@@ -182,7 +182,7 @@ const CHARACTERS = [
     name: 'Dratini',
     img: 'images/dratini.png',
     color: 'BLÅ',
-    eyes: 'green',
+    eyes: 'SVARTA',
     accessories: [],
     other: []
   },
@@ -190,7 +190,7 @@ const CHARACTERS = [
     name: 'Fletchling',
     img: 'images/fletchling.png',
     color: 'GRÅ',
-    eyes: 'green',
+    eyes: 'SVARTA',
     accessories: [],
     other: []
   },
@@ -198,7 +198,7 @@ const CHARACTERS = [
     name: 'Hoopa',
     img: 'images/hoopa.png',
     color: 'GRÅ',
-    eyes: 'brown',
+    eyes: 'BLÅA',
     accessories: ['glasses', 'hat'],
     other: []
   },
@@ -268,7 +268,7 @@ const checkQuestion = () => {
   if (category === 'color' || category === 'eyes') {
     
     let secretValue = secret[currentQuestion.category]
-    console.log('inside checkQuestion secret:',secretValue)
+    console.log('inside checkQuestion secret:', secretValue)
 
     if (secretValue === currentQuestion.value){
       filterCharacters(true)

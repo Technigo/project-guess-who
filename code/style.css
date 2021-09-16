@@ -147,9 +147,18 @@ button {
 
 /* COUNTER */
 .counter-box {
-  margin: 10px;
-  color: white;
+  margin: 20px auto;
+  padding: 5px;
+  color: black;
   font-size: large;
+  border: 2px solid white;
+  background-color: white;
+}
+
+/* RULES */
+.rules {
+  margin: auto;
+  cursor: pointer;
 }
 
 /****** WIN OR LOSE SECTION ******/

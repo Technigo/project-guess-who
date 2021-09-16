@@ -272,15 +272,7 @@ const start = () => {
   setSecret();
 
   questionsAsked.innerHTML = `
-  ${counter}
-  `;
-
-  wonGames.innerHTML = `
-  ${gamesWon}
-  `;
-
-  lostGames.innerHTML = `
-  ${gamesLost}
+    ${counter}
   `;
 };
 
@@ -407,9 +399,6 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  board.innerHTML = "";
-  winOrLose.style.display = "block";
-
   if (personToCheck === secret.name) {
     alert(
       `You are correct! Congratulations, you did it in ${counter} moves!!!!!`
@@ -419,6 +408,15 @@ const checkMyGuess = (personToCheck) => {
     alert(`You are wrong. You lost!`);
     lost();
   }
+
+  board.innerHTML = "";
+  winOrLose.style.display = "block";
+  winOrLoseText.innerHTML = `
+  
+  Games won: ${gamesWon}, 
+  Games lost: ${gamesLost}
+  
+  `;
 };
 
 // Invokes the start function when website is loaded

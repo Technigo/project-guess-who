@@ -226,7 +226,6 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  return secret
 }
 
 // This function to start (and restart) the game
@@ -235,7 +234,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
-  console.log('Who is secret and board generated')
+  console.log(secret)
   // What else should happen when we start the game?
 }
 
@@ -352,6 +351,11 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  const guessed = confirm(`Do you want to guess on this person?`)
+  if (guessed) {
+    checkMyGuess()
+  }
+
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -359,6 +363,13 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    winOrLoseText.innerHTML = `Are you a mind reader?! It was ${secret.name}.`
+  } else {
+    winOrLoseText.innerHTML = `Unfortunately, it is not ${secret.name}. Better luck next time.`
+  }
+  generateBoard(0)
+
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -372,3 +383,4 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOut.addEventListener('click', checkQuestion)
+guessed.addEventListener('onclick', checkMyGuess)

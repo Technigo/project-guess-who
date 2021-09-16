@@ -414,10 +414,10 @@ const guess = (personToConfirm) => {
   );
   // If the player wants to guess, invoke the checkMyGuess function.
   if (confirmGuess === true) {
-    alert(`you pressed OK!`);
+    //alert(`you pressed OK!`);
     checkMyGuess(personToConfirm);
   } else {
-    alert(`you pressed Cancel!`);
+    //alert(`you pressed Cancel!`);
   }
 };
 

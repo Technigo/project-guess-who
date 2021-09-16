@@ -3,6 +3,11 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findBtn = document.getElementById('filter') 
+const playAgainBtn = document.getElementById('playAgain')
+const winLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+
+
 
 
 // Array with all the characters, as objects
@@ -27,7 +32,7 @@ const CHARACTERS = [
     name: 'Black Widow',
     img: 'images/blackwidow.jpg',
     hair: 'brown',
-    headpiece: 'no headpice',
+    headpiece: 'no headpiece',
     accessories: [],
     other: ['superhero']
   },
@@ -35,9 +40,9 @@ const CHARACTERS = [
     name: 'Voldemort',
     img: 'images/voldemort.jpg',
     hair: 'bald',
-    headpiece: 'no headpice',
+    headpiece: 'no headpiece',
     accessories: ['weapon', 'pet'],
-    other: ['villan']
+    other: ['villan','wizard']
   },
   {
     name: 'Gandalf',
@@ -51,7 +56,7 @@ const CHARACTERS = [
     name: 'Harley Quinn',
     img: 'images/harleyquinn.jpg',
     hair: 'white',
-    headpiece: 'no headpice',
+    headpiece: 'no headpiece',
     accessories: [],
     other: ['villan']
   },
@@ -67,7 +72,7 @@ const CHARACTERS = [
     name: 'Hermione',
     img: 'images/hermione.png',
     hair: 'brown',
-    headpiece: 'no headpice',
+    headpiece: 'no headpiece',
     accessories: [],
     other: ['wizard']
   },
@@ -75,7 +80,7 @@ const CHARACTERS = [
     name: 'Superman',
     img: 'images/superman.jpg',
     hair: 'black',
-    headpiece: 'no headpice',
+    headpiece: 'no headpiece',
     accessories: ['cape'],
     other: ['superhero']
   },
@@ -84,7 +89,7 @@ const CHARACTERS = [
     name: 'Luke Skywalker',
     img: 'images/luke.jpg',
     hair: 'blond',
-    headpiece: 'no headpice',
+    headpiece: 'no headpiece',
     accessories: ['weapon'],
     other: ['superhero']
   },
@@ -116,7 +121,7 @@ const CHARACTERS = [
     name: 'Harry Potter',
     img: 'images/harry.jpg',
     hair: 'black',
-    headpiece: 'no headpice',
+    headpiece: 'no headpiece',
     accessories: ['weapon', 'pet'],
     other: ['wizard']
   },
@@ -132,7 +137,7 @@ const CHARACTERS = [
     name: 'Yoda',
     img: 'images/yoda.jpg',
     hair: 'bald',
-    headpiece: 'no headpice',
+    headpiece: 'no headpiece',
     accessories: ['weapon'],
     other: ['superhero']
   },
@@ -140,9 +145,9 @@ const CHARACTERS = [
     name: 'Bellatrix L',
     img: 'images/belatrix.jpg',
     hair: 'black',
-    headpiece: 'no headpice',
+    headpiece: 'no headpiece',
     accessories: [],
-    other: ['villan']
+    other: ['villan', 'wizard']
   },
   {
     name: 'Catwoman',
@@ -157,7 +162,7 @@ const CHARACTERS = [
     img: 'images/bobbafett.jpg',
     hair: 'hidden',
     headpiece: 'helmet',
-    accessories: ['weapon'],
+    accessories: ['weapon', 'cape'],
     other: ['villan']
   },
   {
@@ -172,7 +177,7 @@ const CHARACTERS = [
     name: 'Smeagle',
     img: 'images/smeagle.jpg',
     hair: 'bald',
-    headpiece: 'no headpice',
+    headpiece: 'no headpiece',
     accessories: [],
     other: ['villan']
   },
@@ -188,7 +193,7 @@ const CHARACTERS = [
     name: 'Wolerine',
     img: 'images/wolverine.jpg',
     hair: 'black',
-    headpiece: 'no headpice',
+    headpiece: 'no headpiece',
     accessories: ['weapon'],
     other: ['superhero']
   },
@@ -204,7 +209,7 @@ const CHARACTERS = [
     name: 'Leia',
     img: 'images/leia.jpg',
     hair: 'brown',
-    headpiece: 'no headpice',
+    headpiece: 'no headpiece',
     accessories: [],
     other: ['superhero']
   },
@@ -239,12 +244,11 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
+  winLose.classList.remove('active')
   console.log(secret) // remove later
-  // What else should happen when we start the game?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -266,9 +270,6 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
 
 //   if (
 //     category === "hair" ||
@@ -311,12 +312,9 @@ filterCharacters(true)
 }
 }
 
-
-
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  //if i change the value to actualValue, the alert doesnt apear
   
   // Show the correct alert message for different categories
   if (category === "hair") {
@@ -379,39 +377,33 @@ const filterCharacters = (keep) => {
     }
   }
 
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  
-    // for hair and eyes :
-      // charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-      // or
-      // charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-
-    // for accessories and other
-      // charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      // or
-      // charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-
-
   // Invoke a function to redraw the board with the remaining people.
 setTimeout(() => generateBoard(), 500)
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+const guessConfirm = window.confirm(`Are you sure you want to guess?`)
+console.log(guessConfirm) //remove later
+
+if(guessConfirm){
+  checkMyGuess(personToConfirm)
+}
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  if (personToCheck === secret.name){
+    alert(`You're right! YOU WIN!!!`)
+    board.innerHTML = ""
+    console.log(winLose)
+    winLose.classList.add('active')
+  } else {alert(`Sorry, this is not your character. Better luck next time!`)
+  board.innerHTML=""
+  winLose.classList.add('active')
 }
+  }
+
 
 // Invokes the start function when website is loaded
 start()
@@ -420,3 +412,4 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findBtn.addEventListener('click', checkQuestion)
+playAgainBtn.addEventListener('click', start)

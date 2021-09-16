@@ -183,6 +183,10 @@ button {
   margin-bottom: 32px;
 }
 
+.active {
+  display:flex;
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -237,3 +241,4 @@ button {
     border: none;
   }
 }
+

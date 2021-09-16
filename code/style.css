@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #ee998e;
+  --secondary: #f73f27;
 }
 
 body {
@@ -28,6 +28,30 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+}
+
+.timer {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.timer p {
+  font-size: 1.5em;
+  color: white;
+  padding-right: 5px;
+}
+
+#seconds,
+#minutes,
+#colon {
+  font-size: 1.5em;
+  color: white;
+}
+
+.countGuess {
+  font-size: 1.5em;
+  color: white;
 }
 
 select {

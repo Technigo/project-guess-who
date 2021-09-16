@@ -2,7 +2,8 @@
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
-const findOutBtn = document.getElementById("filter");
+const findOutBtn = document.getElementById("filter", (count = 0));
+const countGuess = document.getElementById("countGuess");
 const playAgainBtn = document.getElementById("playAgain");
 
 // Array with all the characters, as objects
@@ -20,7 +21,7 @@ const CHARACTERS = [
     img: "images/jack.svg",
     hair: "hidden",
     eyes: "blue",
-    accessories: ["hat"],
+    accessories: ["hat", "buttons"],
     other: [],
   },
   {
@@ -44,7 +45,7 @@ const CHARACTERS = [
     img: "images/jake.svg",
     hair: "yellow",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["glasses", "buttons"],
     other: [],
   },
   {
@@ -60,7 +61,7 @@ const CHARACTERS = [
     img: "images/jana.svg",
     hair: "black",
     eyes: "hidden",
-    accessories: ["glasses"],
+    accessories: ["glasses", "jewelry", "buttons"],
     other: [],
   },
   {
@@ -76,7 +77,7 @@ const CHARACTERS = [
     img: "images/jaqueline.svg",
     hair: "orange",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["glasses", "jewelry"],
     other: [],
   },
 
@@ -93,7 +94,7 @@ const CHARACTERS = [
     img: "images/jean.svg",
     hair: "brown",
     eyes: "blue",
-    accessories: ["glasses", "hat"],
+    accessories: ["glasses", "hat", "buttons"],
     other: ["smoker"],
   },
   {
@@ -149,7 +150,7 @@ const CHARACTERS = [
     img: "images/jocelyn.svg",
     hair: "black",
     eyes: "brown",
-    accessories: ["glasses"],
+    accessories: ["glasses", "jewelry"],
     other: [],
   },
   {
@@ -157,7 +158,7 @@ const CHARACTERS = [
     img: "images/jon.svg",
     hair: "brown",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["glasses", "buttons"],
     other: [],
   },
   {
@@ -165,7 +166,7 @@ const CHARACTERS = [
     img: "images/jordan.svg",
     hair: "yellow",
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    accessories: ["glasses", "hat", "jewelry", "buttons"],
     other: [],
   },
   {
@@ -173,7 +174,7 @@ const CHARACTERS = [
     img: "images/josephine.svg",
     hair: "grey",
     eyes: "brown",
-    accessories: [],
+    accessories: ["jewelry"],
     other: [],
   },
   {
@@ -181,7 +182,7 @@ const CHARACTERS = [
     img: "images/josh.svg",
     hair: "yellow",
     eyes: "green",
-    accessories: [],
+    accessories: ["buttons"],
     other: [],
   },
   {
@@ -206,6 +207,27 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay = CHARACTERS;
+let minutesLabel = document.getElementById("minutes");
+let secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+
+//Timer
+setInterval(setTime, 1000);
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(time) {
+  let timeString = time + "";
+  if (timeString.length < 2) {
+    return "0" + timeString;
+  } else {
+    return timeString;
+  }
+}
 
 // Draw the game board
 const generateBoard = () => {
@@ -263,37 +285,9 @@ const checkQuestion = () => {
   if (category === "hair" || category === "eyes") {
     keep = secret[category] === value;
   } else if (category === "accessories" || category === "other") {
-    keep = secret[category] === value;
+    keep = secret[category].includes(value);
   }
   filterCharacters(keep);
-
-  // OR:
-  //   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  //   // See if we should keep or remove people based on that
-  //   // Then invoke filterCharacters
-  //   if (category === "hair") {
-  //     keep = secret.hair === value;
-  //     console.log(keep);
-  //     console.log(category);
-  //     console.log(value);
-  //   } else if (category === "eyes") {
-  //     keep = secret.eyes === value;
-  //     console.log(keep);
-  //     console.log(category);
-  //     console.log(value);
-  //   } else if (category === "accessories") {
-  //     keep = secret.accessories.includes(value);
-  //     console.log(keep);
-  //     console.log(category);
-  //     console.log(value);
-  //   } else if (category === "other") {
-  //     keep = secret.other.includes(value);
-  //     console.log(keep);
-  //     console.log(category);
-  //     console.log(value);
-  //   }
-
-  // };
 };
 
 // It'll filter the characters array and redraw the game board.
@@ -349,22 +343,9 @@ const filterCharacters = (keep) => {
       );
     }
   }
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+  // Redraw the board with the remaining people.
   generateBoard();
 };
-// Invoke a function to redraw the board with the remaining people.
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspect) => {
@@ -398,9 +379,19 @@ const checkMyGuess = (suspect) => {
 start();
 
 // All the event listeners
-restartButton.addEventListener("click", start);
+restartButton.addEventListener("click", () => {
+  start();
+  // setInterval(setTime, 1000);
+  // setTime();
+  // pad(time);
+});
+
 questions.addEventListener("change", selectQuestion);
-findOutBtn.addEventListener("click", checkQuestion);
+findOutBtn.addEventListener("click", () => {
+  checkQuestion();
+  count += 1;
+  countGuess.innerHTML = "Guesses: " + count;
+});
 playAgainBtn.addEventListener("click", () => {
   start();
   winOrLose.style.display = "none";

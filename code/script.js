@@ -5,7 +5,6 @@ const restartButton = document.getElementById("restart");
 const findBtn = document.getElementById("filter");
 const playAgainBtn = document.getElementById("playAgain");
 const winLose = document.getElementById("winOrLose");
-const sentence = document.getElementById("sentence");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -316,13 +315,15 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === "hair") {
     if (keep) {
-      alert(`Yes, the person has ${value}! Keep all people that have ${value}`);
+      alert(
+        `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
+      );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
     } else {
       alert(
-        `No, the person doesn't have ${value}! Remove all people that has ${value}`
+        `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair.`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
@@ -330,13 +331,13 @@ const filterCharacters = (keep) => {
     }
   } else if (category === "headpiece") {
     if (keep) {
-      alert(`Yes, the person has ${value}! Keep all people that has ${value}`);
+      alert(`Yes, the person has ${value}! Keep all people that have ${value}`);
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
     } else {
       alert(
-        `No, the person doesn't have ${value}! Remove all people that has ${value}`
+        `No, the person doesn't have ${value}! Remove all people that have ${value}`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
@@ -345,14 +346,14 @@ const filterCharacters = (keep) => {
   } else if (category === "accessories") {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wear ${value}`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
@@ -387,7 +388,6 @@ const guess = (personToConfirm) => {
 };
 
 const audio = new Audio("win.wav");
-
 const audioLose = new Audio("lose.wav");
 
 // If you confirm, this function is invoked

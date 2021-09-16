@@ -305,6 +305,7 @@ const start = () => {
 	winOrLose.style.display = 'none';
 	winOrLoseText.innerText = '';
 	cheatFooter.style.display = 'flex';
+        questions.focus();
 };
 
 const startTimer = () => {

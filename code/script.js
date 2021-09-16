@@ -1,204 +1,205 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById("board");
-const questions = document.getElementById("questions");
-const restartButton = document.getElementById("restart");
-const findOutButton = document.getElementById("filter");
-const playAgain = document.getElementById("playAgain");
-const winOrLose = document.getElementById("winOrLose");
+const board = document.getElementById('board');
+const questions = document.getElementById('questions');
+const restartButton = document.getElementById('restart');
+const findOutButton = document.getElementById('filter');
+const playAgain = document.getElementById('playAgain');
+const winOrLose = document.getElementById('winOrLose');
+const form = document.getElementById('questionForm');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: "Jabala",
-    img: "images/jabala.svg",
-    hair: "hidden",
-    eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    name: 'Jabala',
+    img: 'images/jabala.svg',
+    hair: 'hidden',
+    eyes: 'hidden',
+    accessories: ['glasses', 'hat'],
     other: [],
   },
   {
-    name: "Jack",
-    img: "images/jack.svg",
-    hair: "hidden",
-    eyes: "blue",
-    accessories: ["hat"],
+    name: 'Jack',
+    img: 'images/jack.svg',
+    hair: 'hidden',
+    eyes: 'blue',
+    accessories: ['hat'],
     other: [],
   },
   {
-    name: "Jacques",
-    img: "images/jacques.svg",
-    hair: "grey",
-    eyes: "blue",
-    accessories: ["hat"],
-    other: ["smoker"],
+    name: 'Jacques',
+    img: 'images/jacques.svg',
+    hair: 'grey',
+    eyes: 'blue',
+    accessories: ['hat'],
+    other: ['smoker'],
   },
   {
-    name: "Jai",
-    img: "images/jai.svg",
-    hair: "black",
-    eyes: "brown",
+    name: 'Jai',
+    img: 'images/jai.svg',
+    hair: 'black',
+    eyes: 'brown',
     accessories: [],
     other: [],
   },
   {
-    name: "Jake",
-    img: "images/jake.svg",
-    hair: "yellow",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: 'Jake',
+    img: 'images/jake.svg',
+    hair: 'yellow',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "James",
-    img: "images/james.svg",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: 'James',
+    img: 'images/james.svg',
+    hair: 'brown',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jana",
-    img: "images/jana.svg",
-    hair: "black",
-    eyes: "hidden",
-    accessories: ["glasses"],
+    name: 'Jana',
+    img: 'images/jana.svg',
+    hair: 'black',
+    eyes: 'hidden',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jane",
-    img: "images/jane.svg",
-    hair: "yellow",
-    eyes: "hidden",
-    accessories: ["glasses"],
+    name: 'Jane',
+    img: 'images/jane.svg',
+    hair: 'yellow',
+    eyes: 'hidden',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jaqueline",
-    img: "images/jaqueline.svg",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: 'Jaqueline',
+    img: 'images/jaqueline.svg',
+    hair: 'orange',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: [],
   },
 
   {
-    name: "Jazebelle",
-    img: "images/jazebelle.svg",
-    hair: "purple",
-    eyes: "hidden",
-    accessories: ["glasses"],
-    other: ["smoker"],
+    name: 'Jazebelle',
+    img: 'images/jazebelle.svg',
+    hair: 'purple',
+    eyes: 'hidden',
+    accessories: ['glasses'],
+    other: ['smoker'],
   },
   {
-    name: "Jean",
-    img: "images/jean.svg",
-    hair: "brown",
-    eyes: "blue",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    name: 'Jean',
+    img: 'images/jean.svg',
+    hair: 'brown',
+    eyes: 'blue',
+    accessories: ['glasses', 'hat'],
+    other: ['smoker'],
   },
   {
-    name: "Jeane",
-    img: "images/jeane.svg",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: 'Jeane',
+    img: 'images/jeane.svg',
+    hair: 'brown',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jed",
-    img: "images/jed.svg",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    name: 'Jed',
+    img: 'images/jed.svg',
+    hair: 'orange',
+    eyes: 'green',
+    accessories: ['glasses', 'hat'],
+    other: ['smoker'],
   },
   {
-    name: "Jenni",
-    img: "images/jenni.svg",
-    hair: "white",
-    eyes: "hidden",
-    accessories: ["hat"],
+    name: 'Jenni',
+    img: 'images/jenni.svg',
+    hair: 'white',
+    eyes: 'hidden',
+    accessories: ['hat'],
     other: [],
   },
   {
-    name: "Jeri",
-    img: "images/jeri.svg",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: 'Jeri',
+    img: 'images/jeri.svg',
+    hair: 'orange',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jerry",
-    img: "images/jerry.svg",
-    hair: "hidden",
-    eyes: "blue",
-    accessories: ["hat"],
+    name: 'Jerry',
+    img: 'images/jerry.svg',
+    hair: 'hidden',
+    eyes: 'blue',
+    accessories: ['hat'],
     other: [],
   },
   {
-    name: "Jess",
-    img: "images/jess.svg",
-    hair: "black",
-    eyes: "blue",
-    accessories: ["glasses"],
+    name: 'Jess',
+    img: 'images/jess.svg',
+    hair: 'black',
+    eyes: 'blue',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jocelyn",
-    img: "images/jocelyn.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: ["glasses"],
+    name: 'Jocelyn',
+    img: 'images/jocelyn.svg',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jon",
-    img: "images/jon.svg",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: 'Jon',
+    img: 'images/jon.svg',
+    hair: 'brown',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jordan",
-    img: "images/jordan.svg",
-    hair: "yellow",
-    eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    name: 'Jordan',
+    img: 'images/jordan.svg',
+    hair: 'yellow',
+    eyes: 'hidden',
+    accessories: ['glasses', 'hat'],
     other: [],
   },
   {
-    name: "Josephine",
-    img: "images/josephine.svg",
-    hair: "grey",
-    eyes: "brown",
+    name: 'Josephine',
+    img: 'images/josephine.svg',
+    hair: 'grey',
+    eyes: 'brown',
     accessories: [],
     other: [],
   },
   {
-    name: "Josh",
-    img: "images/josh.svg",
-    hair: "yellow",
-    eyes: "green",
+    name: 'Josh',
+    img: 'images/josh.svg',
+    hair: 'yellow',
+    eyes: 'green',
     accessories: [],
     other: [],
   },
   {
-    name: "Jude",
-    img: "images/jude.svg",
-    hair: "black",
-    eyes: "green",
+    name: 'Jude',
+    img: 'images/jude.svg',
+    hair: 'black',
+    eyes: 'green',
     accessories: [],
     other: [],
   },
   {
-    name: "Julie",
-    img: "images/julie.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: ["glasses", "hat"],
+    name: 'Julie',
+    img: 'images/julie.svg',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: ['glasses', 'hat'],
     other: [],
   },
 ];
@@ -207,14 +208,14 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
-const flipCardAudio = new Audio("/music/sci-fi-confirmation.wav"); //audio for flipping the card
-const winAudio = new Audio("/music/correct-answer.wav"); //audio for correct answer
-const loseAudio = new Audio("/music/wrong-answer.wav"); //audio for wrong answer
+const flipCardAudio = new Audio('/music/sci-fi-confirmation.wav'); //audio for flipping the card
+const winAudio = new Audio('/music/correct-answer.wav'); //audio for correct answer
+const loseAudio = new Audio('/music/wrong-answer.wav'); //audio for wrong answer
 let countGuesses = 0;
 
 // Draw the game board
 const generateBoard = () => {
-  board.innerHTML = "";
+  board.innerHTML = '';
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
@@ -229,8 +230,8 @@ const generateBoard = () => {
   });
   //play sound when flipping the cards. QuerySelectorAll - find all CSS selectors 'card'
   //and for each card when mouseover -> play flipCardAudio
-  document.querySelectorAll(".card").forEach((card) => {
-    card.addEventListener("mouseover", () => {
+  document.querySelectorAll('.card').forEach((card) => {
+    card.addEventListener('mouseover', () => {
       flipCardAudio.currentTime = 0; //set currentTime = 0, the sound can reset even though the audio haven't finished playing
       flipCardAudio.play();
     });
@@ -263,7 +264,6 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value;
   //console.log(value); //console log to see the selected option's value of the questions/category
-
   currentQuestion = {
     category: category,
     value: value,
@@ -281,7 +281,7 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   let trueOrFalse;
-  if (category === "hair") {
+  if (category === 'hair') {
     trueOrFalse = currentQuestion.value === secret.hair;
     if (trueOrFalse === true) {
       filterCharacters(true);
@@ -290,14 +290,14 @@ const checkQuestion = () => {
     }
     //console.log(`hair/eyes: ${trueOrFalse}`); //console log to confirm true or false
     //console.log(Object.is(currentQuestion.value, secret.hair))
-  } else if (category === "eyes") {
+  } else if (category === 'eyes') {
     trueOrFalse = currentQuestion.value === secret.eyes;
     if (trueOrFalse === true) {
       filterCharacters(true);
     } else {
       filterCharacters();
     }
-  } else if (category === "accessories" || category === "other") {
+  } else if (category === 'accessories' || category === 'other') {
     trueOrFalse =
       secret.accessories.includes(currentQuestion.value) ||
       secret.other.includes(currentQuestion.value);
@@ -314,7 +314,7 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories. keep=true
-  if (category === "accessories") {
+  if (category === 'accessories') {
     if (keep) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
@@ -324,7 +324,7 @@ const filterCharacters = (keep) => {
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
     }
-  } else if (category === "other") {
+  } else if (category === 'other') {
     // Similar to the one above
     if (keep) {
       alert(
@@ -335,7 +335,7 @@ const filterCharacters = (keep) => {
         `No, the person is not a ${value}! Remove all people that have a smoking habit`
       );
     }
-  } else if (category === "hair") {
+  } else if (category === 'hair') {
     if (keep) {
       alert(
         `Yes, the person has ${value} hair! Keep all people with ${value} hair`
@@ -358,7 +358,7 @@ const filterCharacters = (keep) => {
   }
 
   // filter by category to keep or remove based on the keep variable.
-  if (category === "hair" || category === "eyes") {
+  if (category === 'hair' || category === 'eyes') {
     //if we get a match, it will filter and keep the characters that have the same value
     //as the selected input/value in the if-statement
     if (keep === true) {
@@ -375,7 +375,7 @@ const filterCharacters = (keep) => {
       );
       //console.log(`category: hair/eyes. keep=():`, charactersInPlay); //console log to see the result
     }
-  } else if (category === "accessories" || category === "other") {
+  } else if (category === 'accessories' || category === 'other') {
     //if we get a match, it will filter and keep the characters that have the same value
     //as the selected input/value in the if-statement. Attention! with Arrays we use INCLUDES!
     if (keep === true) {
@@ -397,7 +397,7 @@ const filterCharacters = (keep) => {
 
 const loadingGifandBoard = () => {
   //empty the board
-  board.innerHTML = "";
+  board.innerHTML = '';
   //put a loading gif to make it looks like the computer is progressing
   board.innerHTML += `        
   <img src="/gif/beanEater.gif" class="loading-gif" alt="loading gif"/>
@@ -443,38 +443,44 @@ const checkMyGuess = (personToCheck) => {
     `;
   }
   // Show the win or lose section
-  winOrLose.style.display = "block";
+  winOrLose.style.display = 'block';
   // Hide the game board
-  board.style.display = "none";
+  board.style.display = 'none';
 };
 
 // Invokes the start function when website is loaded
 start();
 
 // All the event listeners
-restartButton.addEventListener("click", () => {
+restartButton.addEventListener('click', () => {
   countGuesses = 0; //reset the counter for how many guesses
+  questions.value = ''; //empty select value when clicking the Restart button
   loadingGifandBoard();
   start();
 });
 
 //when selecting an option from the drop down list, it will invoke the selectQuestion function
-questions.addEventListener("change", selectQuestion);
+questions.addEventListener('change', selectQuestion);
 
 //when clicking on the Find out button, it will invoke the checkQuestion function
-findOutButton.addEventListener("click", () => {
+findOutButton.addEventListener('click', () => {
   checkQuestion();
   countGuesses++; //counter for how many guesses when clicking the Find out button
 });
 
 //when clicking the Play Again button in the winOrLose-section, it will restart the game
-playAgain.addEventListener("click", () => {
+playAgain.addEventListener('click', () => {
   //Hide the win or lose section
-  winOrLose.style.display = "none";
+  winOrLose.style.display = 'none';
   //Show ide the game board
-  board.style.display = "flex";
+  board.style.display = 'flex';
   countGuesses = 0; //reset the counter for how many guesses
   //loadingGifandBoard();
   //start();
   window.location.reload(); //refresh the page
+});
+
+//prevent page reload when submitting the form (when clicking on the Find out button)
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
 });

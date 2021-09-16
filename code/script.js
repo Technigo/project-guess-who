@@ -387,7 +387,7 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const guessConfirmed = confirm(`Is $(personToConfirm) your answer?`)
+  const guessConfirmed = confirm(`Is ${personToConfirm} your answer?`)
   if (guessConfirmed) {
     checkMyGuess(personToConfirm) 
   }

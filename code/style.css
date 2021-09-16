@@ -1,14 +1,14 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #704672;
+  --secondary: #b68cb8;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
@@ -34,7 +34,7 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -71,7 +71,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  transition: 1.5s; /*transition when fliping the card*/
+  transition: 1.5s; /*transition when flipping the card*/
 }
 
 .card p {
@@ -118,7 +118,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -178,6 +178,7 @@ button {
   margin-bottom: 32px;
 }
 
+/****** FOOTER ******/
 .win-or-lose-wrapper p,
 a {
   font-size: 12px;
@@ -195,6 +196,7 @@ footer {
   margin-top: 200px;
 }
 
+/****** GIF ******/
 .loading-gif {
   width: 50%;
   height: 50%;

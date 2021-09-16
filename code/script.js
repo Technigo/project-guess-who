@@ -208,10 +208,10 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
-const flipCardAudio = new Audio('/music/sci-fi-confirmation.wav'); //audio for flipping the card
+const flipCardAudio = new Audio('/music/sci-fi-confirmation.wav'); //audio for flipping the cards
 const winAudio = new Audio('/music/correct-answer.wav'); //audio for correct answer
 const loseAudio = new Audio('/music/wrong-answer.wav'); //audio for wrong answer
-let countGuesses = 0;
+let countGuesses = 0; //counter for how many guesses, will present it at the end of the game
 
 // Draw the game board
 const generateBoard = () => {
@@ -228,7 +228,7 @@ const generateBoard = () => {
       </div>
     `;
   });
-  //play sound when flipping the cards. QuerySelectorAll - find all CSS selectors 'card'
+  //play sound effect when flipping the cards. QuerySelectorAll - find all CSS selectors 'card'
   //and for each card when mouseover -> play flipCardAudio
   document.querySelectorAll('.card').forEach((card) => {
     card.addEventListener('mouseover', () => {
@@ -248,48 +248,37 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  //setTimeout(() => generateBoard(), 2000);
   loadingGifandBoard(); //loading Gif and invoke generateBoard()
-  //console.log(secret) //console log to see the object before setSecret function
-  setSecret();
-  //console.log(secret); //console log to see the object after setSecret function
+  setSecret(); //invoke
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label;
-  //console.log(category); //console log to see the label of the questions/category
-
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value;
-  //console.log(value); //console log to see the selected option's value of the questions/category
+  //stores the data in a array
   currentQuestion = {
     category: category,
     value: value,
   };
-  //console log to make sure that the global variable currentQuestion is storing the category and value
-  //console.log(currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  //console.log("sucessfully invoked the checkQuestion with the find out btn"); //console log to see if the find out button works
-
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   let trueOrFalse;
   if (category === 'hair') {
-    trueOrFalse = currentQuestion.value === secret.hair;
+    trueOrFalse = currentQuestion.value === secret.hair; //get either true or false
     if (trueOrFalse === true) {
       filterCharacters(true);
     } else {
       filterCharacters();
     }
-    //console.log(`hair/eyes: ${trueOrFalse}`); //console log to confirm true or false
-    //console.log(Object.is(currentQuestion.value, secret.hair))
   } else if (category === 'eyes') {
     trueOrFalse = currentQuestion.value === secret.eyes;
     if (trueOrFalse === true) {
@@ -298,6 +287,8 @@ const checkQuestion = () => {
       filterCharacters();
     }
   } else if (category === 'accessories' || category === 'other') {
+    //the value of the options for "acc" and "other" won't be the same (on this case),
+    //so can do || operator. Unlike the category hair and eyes, were both can be "hidden" or "brown"
     trueOrFalse =
       secret.accessories.includes(currentQuestion.value) ||
       secret.other.includes(currentQuestion.value);
@@ -306,7 +297,6 @@ const checkQuestion = () => {
     } else {
       filterCharacters();
     }
-    //console.log(`accessories/other: ${trueOrFalse}`); //console log to confirm true or false
   }
 };
 
@@ -317,42 +307,42 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
       );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
       );
     }
   } else if (category === 'other') {
     // Similar to the one above
     if (keep) {
       alert(
-        `Yes, the person is a ${value}! Keep all people that have a smoking habit`
+        `Yes, the person is a ${value}! Keep all people that have a smoking habit.`
       );
     } else {
       alert(
-        `No, the person is not a ${value}! Remove all people that have a smoking habit`
+        `No, the person is not a ${value}! Remove all people that have a smoking habit.`
       );
     }
   } else if (category === 'hair') {
     if (keep) {
       alert(
-        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair.`
       );
     } else {
       alert(
-        `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
+        `No, the person doesn't have ${value} hair! Remove all people with ${value} hair.`
       );
     }
   } else {
     if (keep) {
       alert(
-        `Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
+        `Yes, the person has ${value} eyes! Keep all people with ${value} eyes.`
       );
     } else {
       alert(
-        `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes`
+        `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes.`
       );
     }
   }
@@ -365,7 +355,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
-      //console.log(`category: hair/eyes. keep=true:`, charactersInPlay); //console log to see the result
     }
     //if we do not have a match, it will filter and keep the characters that has NOT
     //the value as the selected input/value in the else-statement
@@ -373,7 +362,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
-      //console.log(`category: hair/eyes. keep=():`, charactersInPlay); //console log to see the result
     }
   } else if (category === 'accessories' || category === 'other') {
     //if we get a match, it will filter and keep the characters that have the same value
@@ -382,12 +370,10 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
-      //console.log(`category: acc/other. keep=true:`, charactersInPlay); //console log to see the result
     } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
-      //console.log(`category: acc/other. keep=():`, charactersInPlay); //console log to see the result
     }
   }
   //made a new function that will empty the board to present a loading gif.
@@ -406,18 +392,15 @@ const loadingGifandBoard = () => {
   setTimeout(() => generateBoard(), 1500);
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+//the player have to confirm that they want to make a guess
 const guess = (personToConfirm) => {
-  // store the interaction from the player in variable confirmGuess.
+  //store the interaction from the player in variable, confirmGuess
   let confirmGuess = confirm(
     `Do you really want to guess on ${personToConfirm}?`
   );
-  // If the player wants to guess, invoke the checkMyGuess function.
+  // If the player wants to guess, invoke the checkMyGuess function
   if (confirmGuess === true) {
-    //alert(`you pressed OK!`);
     checkMyGuess(personToConfirm);
-  } else {
-    //alert(`you pressed Cancel!`);
   }
 };
 
@@ -442,10 +425,8 @@ const checkMyGuess = (personToCheck) => {
     <h1>You have guessed: ${countGuesses} time(s)!</h1>
     `;
   }
-  // Show the win or lose section
-  winOrLose.style.display = 'block';
-  // Hide the game board
-  board.style.display = 'none';
+  winOrLose.style.display = 'block'; // Show the win or lose section
+  board.style.display = 'none'; // Hide the game board
 };
 
 // Invokes the start function when website is loaded
@@ -462,21 +443,17 @@ restartButton.addEventListener('click', () => {
 //when selecting an option from the drop down list, it will invoke the selectQuestion function
 questions.addEventListener('change', selectQuestion);
 
-//when clicking on the Find out button, it will invoke the checkQuestion function
+//Find out button, it will invoke the checkQuestion function
 findOutButton.addEventListener('click', () => {
   checkQuestion();
-  countGuesses++; //counter for how many guesses when clicking the Find out button
+  countGuesses++; //counter for how many guesses, count each valid click on the Find out button
 });
 
-//when clicking the Play Again button in the winOrLose-section, it will restart the game
+//Play Again button in the winOrLose-section, it will restart the game
 playAgain.addEventListener('click', () => {
-  //Hide the win or lose section
-  winOrLose.style.display = 'none';
-  //Show ide the game board
-  board.style.display = 'flex';
+  winOrLose.style.display = 'none'; //Hide the win or lose section
+  board.style.display = 'flex'; //Show ide the game board
   countGuesses = 0; //reset the counter for how many guesses
-  //loadingGifandBoard();
-  //start();
   window.location.reload(); //refresh the page
 });
 

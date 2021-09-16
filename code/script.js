@@ -349,6 +349,7 @@ const filterCharacters = (keep) => {
     }
   }
 generateBoard()
+// Invoke a function to redraw the board with the remaining people.
 }
 
   // Determine what is the category
@@ -365,23 +366,35 @@ generateBoard()
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
 
-  // Invoke a function to redraw the board with the remaining people.
-// }
-
 // when clicking guess, the player first have to confirm that they want to make a guess.
-// const guess = (personToConfirm) => {
+const guess = (personToConfirm) => {
+  playerGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`)
   // store the interaction from the player in a variable.
   // remember the confirm() ?
+
   // If the player wants to guess, invoke the checkMyGuess function.
-// }
+  if (playerGuess) {
+    checkMyGuess(personToConfirm)
+  }
+  else {
+    alert(`No worries, you can guess later.`)
+  }
+}
 
 // If you confirm, this function is invoked
-// const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
+const checkMyGuess = (personToCheck) => {
+  if (checkMyGuess === secret.name) {
+    // 1. Check if the personToCheck is the same as the secret person's name
+    alert(`Your guess on ${secret.name} is correct. You win!`)
+    // 2. Set a Message to show in the win or lose section accordingly
+  }
+  else {
+    alert(`Your guess on ${secret.name} is false. You loose!`)
+  }
   // 3. Show the win or lose section
+  document.getElementById("board").style.display = "none";
   // 4. Hide the game board
-// }
+}
 
 // Invokes the start function when website is loaded
 start()

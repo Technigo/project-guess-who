@@ -3,6 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
+const winOrLoseText = document.getElementById("winOrLoseText")
+const winOrLoseSection = document.getElementById("winOrLose")
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -362,13 +365,21 @@ const guess = (personToConfirm) => {
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
+const checkMyGuess = () => {
+  
+  if (CHARACTERS.find(person=>person.name===secret.name)){
+    winOrLoseText.innerHTML ="Woohoo! You win!"
+  } else{
+    winOrLoseText.innerHTML ="Oh no! Nevermind"
+  }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-}
 
+  winOrLoseSection.style.display = "block";
+  board.style.display = "none";
+}
 // Invokes the start function when website is loaded
 start()
 generateBoard()

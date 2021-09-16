@@ -10,197 +10,221 @@ const playAgainButton = document.getElementById('playAgain')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
+    name: 'Aaron',
+    img: 'images2/aaron.jpg',
+    hair: 'brown',
+    eyes: 'white',
+    accessories: ['animal'],
+    other: []
+  },
+  {
+    name: 'Aiden',
+    img: 'images2/aiden.jpg',
+    hair: 'brown',
+    eyes: 'white',
+    accessories: ['hat', 'mobile'],
+    other: []
+  },
+  {
+    name: 'Alex',
+    img: 'images2/alex.jpg',
+    hair: 'brown',
+    eyes: 'white',
+    accessories: ['mobile'],
+    other: ['tattoos']
+  },
+  {
+    name: 'Ben',
+    img: 'images2/ben.jpg',
+    hair: 'brown',
+    eyes: 'hidden',
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Brian',
+    img: 'images2/brian.jpg',
+    hair: 'brown',
+    eyes: 'hidden',
+    accessories: ['glasses'],
+    other: ['beard']
+  },
+  {
+    name: 'Callum',
+    img: 'images2/callum.jpg',
+    hair: 'brown',
+    eyes: 'white',
+    accessories: ['glasses'],
+    other: ['mustache']
+  },
+  {
+    name: 'Calvin',
+    img: 'images2/calvin.jpg',
+    hair: 'brown',
+    eyes: 'white',
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Cameron',
+    img: 'images2/cameron.jpg',
+    hair: 'blonde',
+    eyes: 'hidden',
+    accessories: ['glasses'],
+    other: []
+  },
+  // {
+  //   name: 'Charlie',
+  //   img: 'images2/charlie.jpg',
+  //   hair: 'brown',
+  //   eyes: 'hidden',
+  //   accessories: [],
+  //   other: []
+  // },
+
+  {
+    name: 'Damon',
+    img: 'images2/damon.jpg',
+    hair: 'blonde',
+    eyes: 'white',
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Devon',
+    img: 'images2/devon.jpg',
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
+    name: 'Emily',
+    img: 'images2/emily.jpg',
+    hair: 'blonde',
+    eyes: 'white',
+    accessories: ['mobile', 'animal'],
     other: []
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    name: 'Gemma',
+    img: 'images2/gemma.jpg',
+    hair: 'blonde',
+    eyes: 'white',
+    accessories: [],
+    other: ['lipstick']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
+    name: 'Hayden',
+    img: 'images2/hayden.jpg',
+    hair: 'brown',
+    eyes: 'hidden',
     accessories: [],
     other: []
   },
   {
     name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    img: 'images2/jake.jpg',
+    hair: 'none',
+    eyes: 'white',
+    accessories: [],
+    other: ['tattoos']
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
+    name: 'Jamie',
+    img: 'images2/jamie.jpg',
+    hair: 'blonde',
     eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
     accessories: [],
     other: []
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
+    name: 'Jason',
+    img: 'images2/jason.jpg',
+    hair: 'brown',
+    eyes: 'white',
     accessories: [],
     other: []
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
+    name: 'Liam',
+    img: 'images2/liam.jpg',
+    hair: 'brown',
+    eyes: 'white',
+    accessories: [],
+    other: ['tattoos', 'beard', 'mustache']
+  },
+  // {
+  //   name: 'Nick',
+  //   img: 'images2/nick.jpg',
+  //   hair: 'brown',
+  //   eyes: 'white',
+  //   accessories: ['animal'],
+  //   other: []
+  // },
+  {
+    name: 'Nigel',
+    img: 'images2/nigel.jpg',
+    hair: 'none',
+    eyes: 'white',
+    accessories: [],
+    other: ['mustache']
+  },
+  // {
+  //   name: 'Phillip',
+  //   img: 'images2/phillip.jpg',
+  //   hair: 'brown',
+  //   eyes: 'white',
+  //   accessories: ['glasses', 'mobile'],
+  //   other: []
+  // },
+  {
+    name: 'Sasha',
+    img: 'images2/sasha.jpg',
+    hair: 'brown',
+    eyes: 'white',
+    accessories: [],
+    other: ['lipstick']
+  },
+  {
+    name: 'Shaun',
+    img: 'images2/shaun.jpg',
+    hair: 'brown',
+    eyes: 'white',
+    accessories: ['animal'],
+    other: []
+  },
+  {
+    name: 'Stefan',
+    img: 'images2/stefan.jpg',
+    hair: 'brown',
+    eyes: 'white',
     accessories: [],
     other: []
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    name: 'Tom',
+    img: 'images2/tom.jpg',
+    hair: 'brown',
+    eyes: 'white',
+    accessories: ['hat', 'mobile'],
     other: []
+  },
+  {
+    name: 'Tracey',
+    img: 'images2/tracey.jpg',
+    hair: 'brown',
+    eyes: 'white',
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Trent',
+    img: 'images2/trent.jpg',
+    hair: 'blonde',
+    eyes: 'white',
+    accessories: [],
+    other: ['beard']
   },
 ]
 
@@ -217,7 +241,7 @@ const generateBoard = () => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <img class="img-card" src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
@@ -285,39 +309,39 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes! Indeed ${value}! Keep all people with ${value}.`
       ) 
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `Nope! No ${value} here! Remove everyone with ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(`Yes, the person is a ${value}! Keep all the ${value}`)
+      alert(`Yes, the person has ${value}! Keep everyone with ${value}.`)
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
-      alert(`No, the person isn't a ${value}. Remove all the persons that are a ${value}`)
+      alert(`No, no ${value} here... Remove all the tinder nightmares that have ${value}`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'hair') {
     if (keep) {
       alert(
-        `Yes, the person has got ${value} hair! Keep all people with ${value} hair.`
+        `Oh yes, the person has got ${value} hair! Keep all the loosers with ${value} hair.`
         )
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       alert(
-        `No, the person does not have ${value} hair! Remove all people with ${value} hair.`
+        `No, this tinder nightmare does not have ${value} hair! Remove everyone with ${value} hair.`
         )
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   } else if (category === 'eyes') {
       if (keep) {
         alert(
-            `Yes, the person has got ${value} eyes! Keep all persons with ${value} eyes.`
+            `Yes, the person has got ${value} dead eyes! Keep all persons with ${value} dead eyes.`
         )
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
@@ -352,7 +376,8 @@ const checkMyGuess = (personToCheck) => {
     if (personToCheck === secret.name) {
   // 2. Set a Message to show in the win or lose section accordingly
   winOrLoseText.innerHTML = `
-      <p>You goddamn right it's ${secret.name}!</p><p>Well played!</p>`
+      <p>You goddamn right it's that dirty fish ${secret.name}!</p><p>Well played!</p>
+      <img src="images2/${secret.name}-big.jpg" />`
   // 3. Show the win or lose section
       winOrLose.style.display = "flex"
     } else {

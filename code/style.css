@@ -251,11 +251,12 @@ button {
     padding: 6px 11px;
     background: white;
     color: var(--primary);
-    border: none;
+    border: 2px solid var(--secondary);
   }
   .card .guess .filled-button:hover {
     background: var(--primary);
     color: white;
+    border: none;
   }
   .timer {
     font-size: 16px;

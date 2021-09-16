@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -232,6 +233,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard()
+  setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -240,13 +243,15 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
+
+
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
@@ -256,9 +261,20 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    if (secret[questions.category] === questions.value) {
+      alert(`Yes, thats correct!`)
+    } else {
+      alert(`No, that's not it!`)
+    }
 
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[questions.category].includes(questions.value)) {
+      //true 
+      alert(`Yes! That's correct!`)
+    } else  {
+      // false
+      alert(`Nope, sorry.. didn't match!`)
+    }
   }
 }
 
@@ -323,3 +339,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+filterButton.addEventListener('click', checkQuestion)

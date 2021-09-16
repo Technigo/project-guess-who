@@ -20,195 +20,219 @@ const CHARACTERS = [
   {
     name: "Alien",
     img: "images/alien.png",
-    hair: "hidden",
+    hair: "no",
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
-    other: [],
+    accessories: [],
+    weapon: ["acid spit", "sharp-teeth"],
+    type: "extraterrestrial",
   },
   {
     name: "Annabelle",
     img: "images/annabelle.png",
-    hair: "hidden",
+    hair: "orange",
     eyes: "blue",
-    accessories: ["hat"],
-    other: [],
+    accessories: ["dress"],
+    weapon: ["knife"],
+    type: "haunted doll",
   },
   {
     name: "Babadook",
     img: "images/babadok.png",
-    hair: "grey",
-    eyes: "blue",
-    accessories: ["hat"],
-    other: ["smoker"],
+    hair: "black",
+    eyes: "black",
+    accessories: ["hat", "long nails", "suit"],
+    weapon: [],
+    type: "ghost",
   },
   {
     name: "Chucky",
     img: "images/chucky.png",
-    hair: "black",
-    eyes: "brown",
-    accessories: [],
-    other: [],
+    hair: "orange",
+    eyes: "blue",
+    accessories: ["jumper", "overall"],
+    weapon: ["knife", "axe"],
+    type: "haunted doll",
   },
   {
     name: "Darthvader",
     img: "images/darthvader.png",
-    hair: "yellow",
-    eyes: "green",
-    accessories: ["glasses"],
-    other: [],
+    hair: "hidden",
+    eyes: "hidden",
+    accessories: ["helmet", "mask", "cape"],
+    weapon: ["light saber"],
+    type: "human",
   },
   {
     name: "Dracula",
     img: "images/dracula.png",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
-    other: [],
+    hair: "black",
+    eyes: "black",
+    accessories: ["cape"],
+    weapon: ["sharp-teeth", "mind-games"],
+    type: "supernatural",
   },
   {
     name: "Franky",
     img: "images/franky.png",
     hair: "black",
-    eyes: "hidden",
-    accessories: ["glasses"],
-    other: [],
+    eyes: "black",
+    accessories: [],
+    weapon: [],
+    type: "monster",
   },
   {
     name: "Freddy",
     img: "images/freddy.png",
-    hair: "yellow",
-    eyes: "hidden",
-    accessories: ["glasses"],
-    other: [],
+    hair: "no",
+    eyes: "green",
+    accessories: ["jumper", "hat"],
+    weapon: ["razors"],
+    type: "monster",
   },
   {
     name: "Gollum",
     img: "images/gollum.png",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses"],
-    other: [],
+    hair: "black",
+    eyes: "blue",
+    accessories: ["ring"],
+    weapon: [],
+    type: "monster",
   },
 
   {
-    name: "Halloween",
+    name: "Mike",
     img: "images/halloween.png",
-    hair: "purple",
+    hair: "brown",
     eyes: "hidden",
-    accessories: ["glasses"],
-    other: ["smoker"],
+    accessories: ["mask", "bomber jacket"],
+    weapon: ["knife"],
+    type: "human",
   },
   {
-    name: "Hellraiser",
+    name: "Pinhead",
     img: "images/hellraiser.png",
-    hair: "brown",
-    eyes: "blue",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    hair: "no",
+    eyes: "black",
+    accessories: ["pins", "dress"],
+    weapon: [],
+    type: "demon",
   },
   {
     name: "Jason",
     img: "images/jason.png",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
-    other: [],
+    hair: "hidden",
+    eyes: "hidden",
+    accessories: ["mask", "bomber jacket"],
+    weapon: ["knife", "axe"],
+    type: "human",
   },
   {
     name: "Jaws",
     img: "images/jaws.png",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    hair: "no",
+    eyes: "black",
+    accessories: [],
+    weapon: ["sharp-teeth"],
+    type: "monster",
   },
   {
     name: "Jigsaw",
     img: "images/jigsaw.png",
     hair: "white",
-    eyes: "hidden",
-    accessories: ["hat"],
-    other: [],
+    eyes: "black",
+    accessories: ["bike"],
+    weapon: ["mind-games"],
+    type: "human",
   },
   {
     name: "Joker",
     img: "images/joker.png",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses"],
-    other: [],
+    hair: "green",
+    eyes: "brown",
+    accessories: ["mask", "suit"],
+    weapon: ["guns"],
+    type: "human",
   },
   {
     name: "Kingkong",
     img: "images/kingkong.png",
-    hair: "hidden",
-    eyes: "blue",
-    accessories: ["hat"],
-    other: [],
+    hair: "black",
+    eyes: "brown",
+    accessories: [],
+    weapon: ["sharp-teeth", "super-strength"],
+    type: "monster",
   },
   {
-    name: "Mr. Andersson",
+    name: "Agent Smith",
     img: "images/matrix.png",
-    hair: "black",
-    eyes: "blue",
-    accessories: ["glasses"],
-    other: [],
+    hair: "brown",
+    eyes: "hidden",
+    accessories: ["glasses", "suit"],
+    weapon: ["guns", "super-strength"],
+    type: "AI",
   },
   {
     name: "Penny",
     img: "images/penny.png",
-    hair: "black",
+    hair: "orange",
     eyes: "brown",
-    accessories: ["glasses"],
-    other: [],
+    accessories: ["balloon", "mask"],
+    weapon: ["sharp-teeth"],
+    type: "monster",
   },
   {
     name: "Predator",
     img: "images/predator.png",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
-    other: [],
+    hair: "no",
+    eyes: "brown",
+    accessories: ["helmet", "cape"],
+    weapon: ["guns", "knife", "blaster"],
+    type: "extraterrestrial",
   },
   {
     name: "Sadako",
     img: "images/sadako.png",
-    hair: "yellow",
-    eyes: "hidden",
-    accessories: ["glasses", "hat"],
-    other: [],
+    hair: "black",
+    eyes: "black",
+    accessories: ["dress"],
+    weapon: [],
+    type: "monster",
   },
   {
     name: "Scream",
     img: "images/scream.png",
-    hair: "grey",
+    hair: "hidden",
+    eyes: "hidden",
+    accessories: ["cape", "mask"],
+    weapon: ["knife"],
+    type: "human",
+  },
+  {
+    name: "Jack",
+    img: "images/shining.png",
+    hair: "brown",
     eyes: "brown",
     accessories: [],
-    other: [],
+    weapon: ["axe"],
+    type: "human",
   },
   {
-    name: "Shinning",
-    img: "images/shining.png",
-    hair: "yellow",
-    eyes: "green",
-    accessories: [],
-    other: [],
-  },
-  {
-    name: "White King",
+    name: "Night King",
     img: "images/whiteking.png",
-    hair: "black",
-    eyes: "green",
-    accessories: [],
-    other: [],
+    hair: "no",
+    eyes: "blue",
+    accessories: ["armor"],
+    weapon: ["sword", "falx"],
+    type: "monster",
   },
   {
     name: "Hannibal Lecter",
     img: "images/hannibal.png",
-    hair: "black",
+    hair: "brown",
     eyes: "brown",
-    accessories: ["glasses", "hat"],
-    other: [],
+    accessories: ["mask", "suit"],
+    weapon: ["mind-games"],
+    type: "human",
   },
 ];
 
@@ -247,7 +271,7 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
-  playAudio();
+  playGameAudio();
 
   // What else should happen when we start the game?
 };
@@ -283,10 +307,12 @@ const checkQuestion = () => {
     keep = secret.hair === value;
   } else if (category === "eyes") {
     keep = secret.eyes === value;
+  } else if (category === "type") {
+    keep = secret.type === value;
   } else if (category === "accessories") {
     keep = secret.accessories.includes(value);
-  } else if (category === "other") {
-    keep = secret.other.includes(value);
+  } else if (category === "weapon") {
+    keep = secret.weapon.includes(value);
   }
 
   // else {
@@ -303,7 +329,7 @@ const filterCharacters = (keep) => {
   if (category === "accessories") {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears a/an ${value}! Keep all people that wears a/an ${value}`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
@@ -316,16 +342,18 @@ const filterCharacters = (keep) => {
         (person) => !person[category].includes(value)
       );
     }
-  } else if (category === "other") {
+  } else if (category === "weapon") {
     // Similar to the one above
     if (keep) {
-      alert(`Yes, the person is a ${value}! Keep all people that are ${value}`);
+      alert(
+        `Yes, the person likes to use ${value}! Keep all people that likes to use ${value}`
+      );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
       alert(
-        `No, the person is not a ${value}! Remove all people that are ${value}`
+        `No, the person is not likes to use ${value}! Remove all people that likes to use ${value}`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
@@ -375,7 +403,7 @@ const guess = (personToConfirm) => {
   // If the player wants to guess, invoke the checkMyGuess function.
   const personToCheck = personToConfirm;
   let guessConfirm = window.confirm(
-    `Are you sure ${personToCheck} is the person?`
+    `Are you sure ${personToCheck} is the villain?`
   );
 
   if (guessConfirm) {
@@ -391,6 +419,7 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+
   let toToggleWinOrLose = (msg) => {
     winOrLose.classList.toggle("open");
     winOrLoseText.innerHTML = `${msg}`;
@@ -404,11 +433,11 @@ const checkMyGuess = (personToCheck) => {
   }
 };
 
-const stopAudio = () => {
+const stopIntroAudio = () => {
   introAudio.src = "";
 };
 
-const playAudio = () => {
+const playGameAudio = () => {
   gamePlayAudio.play();
 };
 
@@ -425,5 +454,5 @@ playAgainButton.addEventListener("click", () => {
 startGameBtn.addEventListener("click", () => {
   start();
   startGame.classList.toggle("close");
-  stopAudio();
+  stopIntroAudio();
 });

@@ -234,20 +234,16 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard();
-  console.log('generateboard')
   setSecret();
-  console.log(secret)
-}
+  }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  console.log('selectQuestion')
   // This variable stores what option group (category) the question belongs to.
    const category = questions.options[questions.selectedIndex].parentNode.label
     
   //variable that stores the actual value of the question we've selected.
   const value = questions.value
-  console.log(category, value)
 
   currentQuestion = {
     category: category,
@@ -324,7 +320,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
-  
   generateBoard();
 }
 

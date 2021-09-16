@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #91c95a;
+  --secondary: #b8dc86;
 }
 
 body {
@@ -20,6 +20,7 @@ h1 {
 }
 
 .question-section {
+  border-style: solid;
   width: 30%;
   min-height: 100vh;
   background-color: var(--secondary);
@@ -33,7 +34,7 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
+  font-size: 30px;
   font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;
@@ -45,6 +46,7 @@ select {
 }
 
 .board-wrapper {
+  border-style: solid;
   width: 70%;
   display: flex;
   align-items: center;
@@ -52,6 +54,8 @@ select {
 }
 
 .game-board {
+  /* border-style: solid;
+  height: 10em; */
   width: 90%;
   max-width: 882px;
   display: flex;

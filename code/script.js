@@ -103,7 +103,7 @@ const MUSHROOMS = [
     sporeDispersal: 'gills',
     growsOnTrees: 'no',
     poisonousOrEdible: 'poisonous',
-    capOrBracketProperties: ['greenish', 'convex', 'flat'],
+    capOrBracketProperties: ['green', 'convex', 'flat'],
     stalkProperties: ['white', 'ring', 'volva (foot)'],
     swedishName: 'Lömsk flugsvamp',
     latinName: 'Amanita phalloides'
@@ -122,10 +122,10 @@ const MUSHROOMS = [
   {
     name: 'Jelly Ear',
     img: 'images/jabala.svg',
-    sporeDispersal: 'jelly',
+    sporeDispersal: 'none',
     growsOnTrees: 'yes',
     poisonousOrEdible: 'edible',
-    capOrBracketProperties: ['tan', 'brown'],
+    capOrBracketProperties: ['orange', 'cream', 'brown'],
     stalkProperties: [],
     swedishName: 'Judasöra',
     latinName: 'Auricularia auricula-judae'
@@ -133,7 +133,7 @@ const MUSHROOMS = [
   {
     name: 'Yellow Stagshorn',
     img: 'images/jabala.svg',
-    sporeDispersal: 'jelly',
+    sporeDispersal: 'none',
     growsOnTrees: 'yes',
     poisonousOrEdible: 'not edible',
     capOrBracketProperties: ['yellow'],
@@ -147,8 +147,8 @@ const MUSHROOMS = [
     sporeDispersal: 'pores',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
-    capOrBracketProperties: ['yellow', 'sandy', 'convex'],
-    stalkProperties: ['yellow', 'ochre', 'bare'],
+    capOrBracketProperties: ['yellow', 'cream', 'convex'],
+    stalkProperties: ['yellow', 'bare'],
     swedishName: 'Sandsopp',
     latinName: 'Suillus variegatus'
   },
@@ -158,8 +158,8 @@ const MUSHROOMS = [
     sporeDispersal: 'pores',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
-    capOrBracketProperties: ['orange', 'terracotta', 'convex'],
-    stalkProperties: ['white', 'black/brown speckles', 'scaly'],
+    capOrBracketProperties: ['orange', 'red', 'convex'],
+    stalkProperties: ['white', 'black/brown speckles'],
     swedishName: 'Tegelsopp',
     latinName: 'Leccinum versipelle'
   },
@@ -169,7 +169,7 @@ const MUSHROOMS = [
     sporeDispersal: 'pores',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
-    capOrBracketProperties: ['ochre', 'cream', 'yellow', 'depressed', 'offset'],
+    capOrBracketProperties: ['cream', 'yellow', 'depressed', 'offset'],
     stalkProperties: ['bare'],
     swedishName: 'Fjällticka',
     latinName: 'Cerioporus squamosus'
@@ -235,8 +235,8 @@ const MUSHROOMS = [
     sporeDispersal: 'teeth',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
-    capOrBracketProperties: ['orange', 'tan', 'yellow'],
-    stalkProperties: ['white', 'bare', 'depressed'],
+    capOrBracketProperties: ['orange', 'yellow', 'depressed'],
+    stalkProperties: ['white', 'bare'],
     swedishName: 'Blek taggsvamp',
     latinName: 'Hydnum repandum'
   },
@@ -246,8 +246,8 @@ const MUSHROOMS = [
     sporeDispersal: 'teeth',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
-    capOrBracketProperties: ['brown'],
-    stalkProperties: ['brown', 'white', 'bare', 'depressed', 'flat'],
+    capOrBracketProperties: ['brown', 'depressed', 'flat'],
+    stalkProperties: ['brown', 'white', 'bare'],
     swedishName: 'Fjällig taggsvamp',
     latinName: 'Sarcodon imbricatus'
   },
@@ -491,7 +491,7 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = MUSHROOMS
   generateBoard()
   setSecret()
   // What else should happen when we start the game?
@@ -499,10 +499,13 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  const category = questions.options[questions.selectedIndex].parentNode.value
+  console.log(category)
+  console.log(questions)
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value
+  console.log(value)
 
   currentQuestion = {
     category: category,

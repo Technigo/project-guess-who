@@ -11,7 +11,7 @@ body {
 	font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
+.guess-who-title {
 	font-size: 42px;
 	font-weight: 500;
 	line-height: 48px;
@@ -173,7 +173,7 @@ button {
 	margin-left: 15%;
 }
 
-.win-or-lose h1 {
+.win-or-lose .guess-who-title {
 	margin-bottom: 32px;
 }
 
@@ -189,7 +189,7 @@ button {
 	button {
 		padding: 8px 16px;
 	}
-	h1 {
+	.guess-who-title {
 		font-size: 24px;
 		line-height: 30px;
 	}

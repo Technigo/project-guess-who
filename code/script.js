@@ -9,6 +9,7 @@ const playAgainButton = document.getElementById('playAgain');
 const cheatCode = document.getElementById('cheatCode');
 const cheatFooter = document.getElementById('cheatFooter');
 const guessCounterText = document.getElementById('guessCounterText');
+const gameTimer = document.getElementById('guessCounterTimer');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -214,6 +215,8 @@ let charactersInPlay;
 let guessCounter = 0;
 let optionGroups = '';
 let cheating = false;
+let startTime;
+let elapsedTime;
 const categories = {
 	hair: { value: [], type: '' },
 	eyes: { value: [], type: '' },
@@ -297,10 +300,19 @@ const start = () => {
 	setSecret();
 	generateBoard();
 	generateQuestions();
+	startTimer();
 	board.style.display = 'flex';
 	winOrLose.style.display = 'none';
 	winOrLoseText.innerText = '';
 	cheatFooter.style.display = 'flex';
+};
+
+const startTimer = () => {
+	startTime = Date.now();
+	setInterval(() => {
+		elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+		gameTimer.innerHTML = `Time played: ${elapsedTime} s`;
+	}, 1000);
 };
 
 const guessCounterHandler = () => {
@@ -331,7 +343,6 @@ const selectQuestion = (guess, name) => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
 	const { category, value } = currentQuestion;
-
 	if (secret[category].includes(value)) {
 		filterCharacters(true);
 	} else {

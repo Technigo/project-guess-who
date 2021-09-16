@@ -191,7 +191,7 @@ button {
 	padding: 1vw 5vw;
 	align-items: flex-start;
 	box-sizing: border-box;
-	height: 13vh;
+	height: 7vh;
 	font-family: 'Montserrat';
 	width: 30%;
 	background-color: var(--secondary);
@@ -268,7 +268,7 @@ button {
 	}
 	.cheat-footer {
 		width: 100%;
-		height: 10vh;
+		height: 5vh;
 		background-color: var(--secondary);
 	}
 }

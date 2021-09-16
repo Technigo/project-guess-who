@@ -228,6 +228,7 @@ const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
   //Testing that the random secret person is set
+  console.log("Random character: ");
   console.log(secret);
 };
 
@@ -246,29 +247,34 @@ const selectQuestion = () => {
   // Store what option group (category) the question belongs to
   const category = questions.options[questions.selectedIndex].parentNode.label;
   // Store the actual value of the selected question
-  const actualValue = questions.value;
+  const value = questions.value;
   // Store category and value in the current question
   currentQuestion = {
-    category: category,
-    value: actualValue,
+    category: category, // Based on the optgroup
+    value: value, // Comes from the selected option
   };
   // Testing eventListener in the dropdown menu
-  console.log(actualValue + " " + category);
+  console.log(currentQuestion);
 };
-// This function should be invoked when you click on 'Find Out' button.
+
+// This function is invoked upon clicking on the 'Find Out' button.
 const checkQuestion = () => {
+  // Compare the details from currentQuestion with the secret person's details
   const { category, value } = currentQuestion;
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Comparison for key pairs with string values
   if (category === "hair" || category === "eyes") {
-  } else if (category === "accessories" || category === "other") {
+    if (secret[category] === value) {
+      filterCharacters(true);
+    } else filterCharacters();
+  } // Comparison for key pairs with array values
+  else if (category === "accesories" || category === "other") {
+    if (secret[category].includes(value)) {
+      filterCharacters(true);
+    } else filterCharacters();
   }
-  // filterCharacters()
 };
 
-// It'll filter the characters array and redraw the game board.
+// Filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
@@ -305,9 +311,9 @@ const filterCharacters = (keep) => {
   // filter by category to keep or remove based on the keep variable.
   /* 
     for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
 
     for accessories and other
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
@@ -349,7 +355,7 @@ start();
 // All the event listeners
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
-// findOutButton.addEventListener("click", checkQuestion);
+findOutButton.addEventListener("click", checkQuestion);
 
 /* Pseudocode
 

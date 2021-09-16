@@ -19,7 +19,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat', 'pet'],
+    accessories: ['hat'],
     other: ['beard']
   },
   {
@@ -75,7 +75,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'necklace'],
+    accessories: ['glasses', 'necklace', 'earrings'],
     other: []
   },
 
@@ -323,14 +323,14 @@ const filterCharacters = (keep) => {
     // Similar to the one above
     if (keep) {
       alert(
-        `Yes, the person has a ${ value}. Keep all people that wears ${value}
+        `Yes, the person has ${ value}. Keep all people that has ${value}
         `)
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
         // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } 
     else {
       alert(`
-      No that person doesn't have a ${value}. Remove all people that have a ${value}
+      No that person doesn't have ${value}. Remove all people that have ${value}
       `)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       // alert popup that says something like: "No, the person doesn't have yellow hair! Remove all people with yellow hair"
@@ -397,7 +397,7 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  if (checkMyGuess === secret.name) {
+  if (personToCheck === secret.name) {
     // 1. Check if the personToCheck is the same as the secret person's name
     alert(`Your guess on ${secret.name} is correct. You win!`)
     // 2. Set a Message to show in the win or lose section accordingly

@@ -269,10 +269,8 @@ const selectQuestion = () => {
 
 
 // This function should be invoked when you click on 'Find Out' button.
-
-
-
 // It'll filter the characters array and redraw the game board.
+
 
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
@@ -295,6 +293,27 @@ const checkQuestion = () => {
     }
 };  
 }
+
+    //this function KEEPS characters that match the secret hair and eyes
+    const keepCharactersHairEyes = (category, value) => {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+     }
+ 
+     //this function REMOVES characters that don't match the secret hair and eyes
+     const removeCharactersHairEyes = (category, value) => {
+     charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+     }
+ 
+     // this function KEEPS characters that match the secret accessories or other
+     const keepCharactersAccessoriesOther = (category, value) => {
+     charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+     }
+       
+     // this function REMOVES characters that don't match the secret accessories or other
+     const removeCharactersAccessoriesOther = (category, value) => {
+     charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+     }
+ 
 
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
@@ -342,25 +361,6 @@ const filterCharacters = (keep) => {
       }
     }
 
-    //this function KEEPS characters that match the secret hair and eyes
-     const keepCharactersHairEyes = (category, value) => {
-     charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-    }
-
-    //this function REMOVES characters that don't match the secret hair and eyes
-    const removeCharactersHairEyes = (category, value) => {
-    charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-    }
-
-    // this function KEEPS characters that match the secret accessories or other
-    const keepCharactersAccessoriesOther = (category, value) => {
-    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    }
-      
-    // this function REMOVES characters that don't match the secret accessories or other
-    const removeCharactersAccessoriesOther = (category, value) => {
-    charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-    }
 
   // This function redraws the board with the remaining people.
   generateBoard()

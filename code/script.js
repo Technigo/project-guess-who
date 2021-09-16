@@ -4,7 +4,6 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOut = document.getElementById('filter')
 const playAgain = document.getElementById('playAgain')
-
 // Array with all the characters, as objects:
 const CHARACTERS = [
   {

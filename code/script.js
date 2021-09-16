@@ -6,6 +6,8 @@ const findOutButton = document.getElementById("filter");
 const playAgainButton = document.getElementById("playAgain");
 const winOrLose = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
+const startGameBtn = document.getElementById("startGameBtn");
+const startGame = document.getElementById("startGame");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -214,7 +216,7 @@ const generateBoard = () => {
   board.innerHTML = "";
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card">
+      <div class="card border-gradient border-gradient-color">
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
@@ -238,6 +240,7 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   generateBoard();
+
   setSecret();
   // What else should happen when we start the game?
 };
@@ -395,7 +398,6 @@ const checkMyGuess = (personToCheck) => {
 };
 
 // Invokes the start function when website is loaded
-start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
@@ -404,4 +406,8 @@ findOutButton.addEventListener("click", checkQuestion);
 playAgainButton.addEventListener("click", () => {
   start();
   winOrLose.classList.toggle("open");
+});
+startGameBtn.addEventListener("click", () => {
+  start();
+  startGame.classList.toggle("close");
 });

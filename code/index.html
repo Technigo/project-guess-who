@@ -11,6 +11,18 @@
     />
   </head>
   <body>
+    <section id="startGame" class="start-game-wrapper">
+      <div class="start">
+        <img
+          class="guess-who-icon"
+          src="images/guess-who-bubble.png"
+          alt="Guess Who"
+        />
+        <h1>halloween edition</h1>
+        <button id="startGameBtn" class="filled-button">START GAME</button>
+      </div>
+    </section>
+
     <aside class="question-section">
       <button id="restart" class="outlined-button">RESTART</button>
 
@@ -20,7 +32,7 @@
         alt="Guess Who"
       />
 
-      <h1>Does the person have</h1>
+      <h1>Does the <span class="villain-text">villain</span> have</h1>
 
       <select id="questions">
         <option value="" disabled selected>Select a question</option>

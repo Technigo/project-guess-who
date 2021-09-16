@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #cca150;
+  --secondary: #7b76a0;
 }
 
 body {
@@ -35,13 +35,14 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: black;
   width: 100%;
   margin: 24px 0;
+  padding: 10px
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 180px;
 }
 
 .board-wrapper {
@@ -128,21 +129,27 @@ button {
 }
 
 .outlined-button {
-  background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
+  background-color: var(--primary);
+  color: white;
+  align-self: center;
+  margin: 5vh 0;
+  width: 20vh;
 }
 
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color:black;
+  align-self: center;
+  margin: 5vh 0;
+  width: 20vh;
 }
 
 .filled-button:hover {
   background-color: white;
   border-color: white;
   color: var(--primary);
+  width: 20vh;
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -171,7 +178,8 @@ button {
 .win-or-lose img {
   align-self: center;
   /* margin-left: 15%; */
-  width: 200px;
+  width: 100px;
+
   
 }
 
@@ -197,7 +205,8 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 120px;
+    margin: 5vh;
   }
 
   .board-wrapper {

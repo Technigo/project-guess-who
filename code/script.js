@@ -252,43 +252,36 @@ const selectQuestion = () => {
     category: category,
     value: value
   }
-  console.log('this is current question', currentQuestion)
+ 
   checkQuestion()
 }
 
 const checkQuestion = () => {
   const { category, value} = currentQuestion
-  console.log(currentQuestion)
 
     // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
     // See if we should keep or remove people based on that
     // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    console.log("jag testar", secret[currentQuestion.category])
+    
     let secretValue = secret[currentQuestion.category]
-    console.log(secretValue)
-    console.log('det här hemliga current question value:',currentQuestion.value)
+
     if (secretValue === currentQuestion.value){
-      filterCharacters(true, currentQuestion.category)
+      filterCharacters(true)
     //EXEMPEL currentQuestion.category = hair eller = eyes
-      console.log("IT IS TRUE")
+     
     }else {
-      filterCharacters(false, currentQuestion.catergory)
-      console.log("IT IS FALSE")
+      filterCharacters(false)
     }
       
 
   }else if (category === 'accessories' || category === 'other') {
       let secretValueArray = secret[currentQuestion.category]
-      // let currentQuestionArray = [currentQuestion.value]
-      console.log('this is the BEFORE if with ass or other', secretValueArray)
-      console.log('this is the BEFORE if with ass or other', currentQuestion.value)
+ 
       if (secretValueArray.includes(currentQuestion.value)){
-        console.log('this is the if with ass or other', secretValueArray)
-        filterCharacters(true, currentQuestion.category)
+        filterCharacters(true)
       } else {
-        filterCharacters(false, currentQuestion.category)
-        console.log("The person has NOT glasses or other")
+        filterCharacters(false)
       }
     }  
 }
@@ -296,7 +289,8 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
+
+  const { category, value } = currentQuestion //this one gives value to the category and value, ex  'hair' and 'brown'
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -343,11 +337,11 @@ const filterCharacters = (keep) => {
     if (category === 'hair' || category === 'eyes') {
       if (keep) {
         charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] === currentQuestion.value)
-        console.log('Det här är keep if hair', charactersInPlay)
+        
       } else {
         // or
         charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] !== currentQuestion.value)
-        console.log('Det här är keep if not hair', charactersInPlay)
+        
       }
       } 
     else if (category === 'accessories' || category === 'other') {
@@ -359,7 +353,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       } 
     }
-    console.log('before generate board')
+    
     generateBoard()
   }
 
@@ -386,13 +380,11 @@ window.confirm(`Do you really want to guess on ${personToConfirm}`)
 
 const checkMyGuess = (personToCheck) => {
 
-  console.log('person to cofirm works with secret name', secret.name)
-  console.log('person to cofirm works with global variable', personToCheck)
+
 
   if (secret.name === personToCheck){
 
     console.log("You are such a star!")
-    alert("you are such a star!!")
     const winOrLose = document.getElementById('winOrLose')
     winOrLose.style.display ="flex"
 
@@ -416,6 +408,5 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', () => {
-  console.log('this is the buttom:',findOutButton)
   selectQuestion()});
 

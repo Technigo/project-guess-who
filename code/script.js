@@ -306,7 +306,6 @@ const start = () => {
 const selectQuestion = (guess, name) => {
 	guessCounter++;
 	guessCounterText.innerText = `Guess counter: ${guessCounter}`;
-	// console.log(numberOfGuesses);
 	let category = '';
 	let value = '';
 	if (guess) {

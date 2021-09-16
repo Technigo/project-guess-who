@@ -276,7 +276,7 @@ const checkQuestion = () => {
         filterCharacters(false)
       }
     }
-    filterCharacters(keep)
+    filterCharacters()
 }
 
 

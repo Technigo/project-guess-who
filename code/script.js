@@ -270,69 +270,40 @@ const checkQuestion = () => {
   else {
     console.log("a problem occured")
   }
-
+  alertUserOfAnswer(keep)
   filterCharacters(keep)
 };
 
-// It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
+const alertUserOfAnswer = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
-    if (keep) {
-      alert(
-        `Yes, the person is wearing ${value}! Keep all people that are wearing ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    } else {
-      alert(
-        `No, the person isn't wearing ${value}! Remove all people that are wearing ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-    };
-  } else if (category === 'other') {
-    if (keep) {
-      alert(
-        `Yes, the person is a ${value}! Keep all people that are a ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    } else {
-      alert(
-        `No, the person isn't a ${value}! Remove all people that are a ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-    };
-    // Similar to the one above
-  } else {
     if (keep) {
       alert(
         `Yes, the person has ${value} ${category}! Keep all the people with ${value} ${category}`
       );
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
       alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
       )
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+    };
+}
+
+// It'll filter the characters array and redraw the game board.
+const filterCharacters = (keep) => {
+  const { category, value } = currentQuestion
+  if (Array.isArray(secret[category])) {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    };
+  } 
+   else {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+    } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     };
   };
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-  // Invoke a function to redraw the board with the remaining people.
   generateBoard()
 };
 

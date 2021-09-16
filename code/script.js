@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('filled-button')
+const WinOrLose = document.getElementById('winOrLose')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -260,11 +261,11 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-let keep 
+let keep
   if (category === 'hair' || category === 'eyes') {
     keep = secret[category] === value
   } else if (category === 'accessories' || category === 'other') {
-    keep = secret[category] === value
+    keep = secret[category].includes(value)
   }
   filterCharacters(keep)
 }

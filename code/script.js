@@ -296,16 +296,36 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes the person is a ${value}! Keep all people who smoke`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+      `No the person is not a ${value}. Remove all people who smoke`)
+    }
+  } else if (category === 'hair'){
+    if (keep) {
+      alert(
+      ` Yes, the person has ${value} hair. Keep all people with ${value} hair`
+      )
+    } else {
+      alert(
+        `No, the person does not have ${value} hair. Remove all people with ${value} hair.`
+      )
+    }
+  } else {
+    if (keep){
+      alert(
+        `Yes, the person does have ${value} eyes. Keep all people with ${value} eyes!`
+      )
+    } else {
+      alert(
+        `No, the person does not have ${value} eyes. Remove all with ${value} eyes!`
+      )
     }
   }
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-    
+      
   
 
   // Determine what is the category

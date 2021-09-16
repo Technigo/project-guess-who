@@ -52,7 +52,7 @@ select {
 }
 
 .game-board {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -61,8 +61,8 @@ select {
 
 /****** CARD ******/
 .card {
-  width: 150px;
-  height: 200px;
+  width: 120px;
+  height: 180px;
   overflow: hidden;
   border: 5px solid white;
   border-radius: 10px;

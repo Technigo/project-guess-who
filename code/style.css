@@ -107,7 +107,7 @@ iframe {
 
 .flip-card-inner {
   position: relative;
-  transition: transform 0.8s;
+  transition: transform 1.2s;
   transform-style: preserve-3d;
 }
 

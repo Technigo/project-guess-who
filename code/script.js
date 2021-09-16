@@ -28,7 +28,7 @@ const CHARACTERS = [
 		hair: 'grey',
 		eyes: 'blue',
 		accessories: ['hat'],
-		other: ['smoker'],
+		other: ['a cigarette'],
 	},
 	{
 		name: 'Jai',
@@ -85,7 +85,7 @@ const CHARACTERS = [
 		hair: 'purple',
 		eyes: 'hidden',
 		accessories: ['glasses'],
-		other: ['smoker'],
+		other: ['a cigarette'],
 	},
 	{
 		name: 'Jean',
@@ -93,7 +93,7 @@ const CHARACTERS = [
 		hair: 'brown',
 		eyes: 'blue',
 		accessories: ['glasses', 'hat'],
-		other: ['smoker'],
+		other: ['a cigarette'],
 	},
 	{
 		name: 'Jeane',
@@ -109,7 +109,7 @@ const CHARACTERS = [
 		hair: 'orange',
 		eyes: 'green',
 		accessories: ['glasses', 'hat'],
-		other: ['smoker'],
+		other: ['a cigarette'],
 	},
 	{
 		name: 'Jenni',
@@ -117,7 +117,7 @@ const CHARACTERS = [
 		hair: 'white',
 		eyes: 'hidden',
 		accessories: ['hat'],
-		other: [],
+		other: ['a phone'],
 	},
 	{
 		name: 'Jeri',
@@ -207,6 +207,12 @@ let currentQuestion;
 let charactersInPlay;
 let numberOfGuesses = 0;
 let optionGroups = '';
+const categories = {
+	hair: { value: [], type: '' },
+	eyes: { value: [], type: '' },
+	accessories: { value: [], type: '' },
+	other: { value: [], type: '' },
+};
 
 // Draw the game board
 const generateBoard = () => {
@@ -227,13 +233,6 @@ const generateBoard = () => {
 
 // Populate the select options dynmically from the CHARACTERS array
 const generateQuestions = () => {
-	const categories = {
-		hair: { value: [], type: '' },
-		eyes: { value: [], type: '' },
-		accessories: { value: [], type: '' },
-		other: { value: [], type: '' },
-	};
-
 	CHARACTERS.forEach((person) => {
 		// for each person in the array of characters do:
 		for (const category in person) {
@@ -325,11 +324,12 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
 	const { category, value } = currentQuestion;
+	const categoryText = categories[category].type === 'array' ? '' : ` ${category}`;
 	if (keep) {
-		alert(`Yes, the person has ${value} ${category}! Keep all people that has ${value} ${category}`);
+		alert(`Yes, the person has ${value}${categoryText}! Keep all people that has ${value}${categoryText}`);
 		charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
 	} else {
-		alert(`No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}`);
+		alert(`No, the person doesn't have ${value}${categoryText}! Remove all people that have ${value}${categoryText}`);
 		charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
 	}
 

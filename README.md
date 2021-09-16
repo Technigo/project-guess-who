@@ -1,13 +1,18 @@
-# Project Name
+# Guess Who Mini Game
 
-Replace this readme with your own information about your project.
+The main goal of the assignment was to recreate a gameplay of the Guess Who.
+If you are like me, and never heard about it before, pls follow the link to get a gasp on the gameplay https://en.wikipedia.org/wiki/Guess_Who%3F or just follow my project link and check it yourself;) : https://guess-who-game-marys.netlify.app/
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## Tech Stack: CSS & HTML, JS, Bootstrap
 
-## The problem
+## Cool Features:
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+- Customized alert messages with in-game guidances.
+- Confirmation modal pop-up window (created with Bootstrap modal component).
+- "We are the winners" track plays on the "Winner" screen (on Desktop only). Volume is decreased for greater UX.
+- Also the "Winner" screen includea the picture of correct character and number of attempts per completed game.
+- There is a timer for each new game.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Netlify link : https://guess-who-game-marys.netlify.app/

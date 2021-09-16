@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgain = document.getElementById('playAgain')
+const counter = document.getElementById('counter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -12,7 +13,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'], 
+    accessories: ['sunglasses', 'hat'], 
     other: []
   },
   {
@@ -20,15 +21,15 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: ['beard']
+    accessories: ['hat', 'jacket'],
+    other: ['beard', 'pet']
   },
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['hat', 'jacket'],
     other: ['smoker', 'beard']
   },
   {
@@ -52,7 +53,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: []
   },
   {
@@ -60,7 +61,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses', 'jewellery', 'shirt'],
+    accessories: ['sunglasses', 'jewellery', 'shirt'],
     other: []
   },
   {
@@ -68,7 +69,7 @@ const CHARACTERS = [
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: []
   },
   {
@@ -85,7 +86,7 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: ['smoker']
   },
   {
@@ -93,7 +94,7 @@ const CHARACTERS = [
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'jacket'],
     other: ['smoker']
   },
   {
@@ -165,7 +166,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat', 'jewellery', 'shirt'],
+    accessories: ['sunglasses', 'hat', 'jewellery', 'shirt'],
     other: []
   },
   {
@@ -206,6 +207,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let count = 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -227,6 +229,12 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+}
+
+// Counts how many questions has been asked
+const questionCounter = () => {
+  count += 1;
+  counter.innerHTML = /*html*/ `Questions asked: ${count}`
 }
 
 // This function to start (and restart) the game
@@ -293,29 +301,29 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(`Yes, the person wears ${text}! Keep all people that wears ${text}.`)
+      swal(`Yes, the person wears ${text}!`, `All people wearing ${text} have been kept.`)
     } else {
-      alert(`No, the person doesn't wear ${text}! Remove all people that wears ${text}.`)
+      swal(`No ${text}!`, `All people that wears ${text} have been removed.`)
     }
   } else if (category === 'other') {
     // Similar to the one above
     if (keep) {
-      alert(`Yes, the person has ${text}! Keep all people with ${text}.`)
+      swal(`Yes, the person has ${text}!`, `All people with ${text} have been kept.`)
     } else {
-      alert(`No, the person doesn't have ${text}! Remove all people with ${text}.`)
+      swal(`No ${text}!`, `All people with ${text} have been removed.`)
     }
   } else {
     if (keep) {
-      alert(`Yes, the person has ${text}! Keep all people with ${text}.`)
+      swal(`Yes, the person has ${text}!`, `All people with ${text} have been kept.`)
     } else {
-      alert(`No, the person doesn't have ${text}! Remove all people with ${text}.`)
+      swal(`No ${text}!`, `All people with ${text} have been removed.`)
     }
   }
   // } else {
   //   if (keep) {
-  //     alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`)
+  //     swal(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`)
   //   } else {
-  //     alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`)
+  //     swal(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`)
   //   }
   // }
 
@@ -355,6 +363,13 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm()
   const playerGuess = confirm(`Are you sure you want to guess ${personToConfirm}?`)
+
+  // const playerGuess = swal(`Are you sure you want to guess ${personToConfirm}?`, {
+  //      buttons: {
+  //        cancel: 'Maybe later',
+  //        confirm: 'You bet I do!',
+  //        },
+  //      })
   
   // If the player wants to guess, invoke the checkMyGuess function.
   if (playerGuess) {
@@ -371,9 +386,9 @@ const checkMyGuess = (personToConfirm) => {
   // 3. Show the win or lose section
   // 4. Hide the game board
   if (personToConfirm === secret.name) {
-    alert(`Holy macaroni! You're a winner!`)
+    swal(`You're a winner!`, `Let's celebrate!`, `success`)
   } else {
-    alert(`You lost! The correct answer was ${secret.name}.`)
+    swal(`Wrong answer!`, `The correct answer was ${secret.name}.`, `error`)
   }
 
   const winOrLose = document.getElementById('winOrLose')
@@ -386,11 +401,7 @@ const checkMyGuess = (personToConfirm) => {
 start()
 
 // All the event listeners
-
 questions.addEventListener("change", (ev) => selectQuestion(ev.target.value))
-
-findOutButton.addEventListener('click', checkQuestion)
-
+findOutButton.addEventListener('click', () => { checkQuestion(), questionCounter()})
 restartButton.addEventListener('click', start)
-
 playAgain.addEventListener('click', () => location.reload())

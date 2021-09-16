@@ -11,7 +11,7 @@
     />
   </head>
   <body>
-    <aside class="question-section">
+    <aside class="question-section" id="questionSection">
       <button id="restart" class="outlined-button">RESTART</button>
 
       <img
@@ -44,21 +44,28 @@
         </optgroup> 
 
         <optgroup label="accessories">
+          <option value="sunglasses">sunglasses</option>
           <option value="glasses">glasses</option>
           <option value="hat">a hat</option>
           <option value="jewellery">jewellery</option>
           <option value="shirt">a shirt</option>
+          <option value="jacket">a jacket</option>
         </optgroup>
 
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
           <option value="beard">a beard</option>
+          <option value="pet">a pet</option>
 
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
-      <!-- onclick="checkQuestion() -->
+      
+      <div class="counter-wrapper">
+        <div class=”counter” id="counter">Questions asked: 0</div>
+      </div>
+      
     </aside>
 
     <section class="board-wrapper">
@@ -77,5 +84,6 @@
       </div>
     </section>
     <script src="script.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </body>
 </html>

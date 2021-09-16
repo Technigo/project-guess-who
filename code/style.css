@@ -20,6 +20,16 @@ h1 {
   color: white;
 }
 
+.timer {
+  color: white;
+  right: 0;
+  font-size: 18px;
+}
+
+.timer-wrapper {
+  position: absolute;
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -33,7 +43,8 @@ h1 {
 
 select {
   display: block;
-  border: none;
+  border: none !important;
+  background-color: white !important;
   font-size: 22px;
   font-family: 'Montserrat';
   color: var(--secondary);
@@ -240,5 +251,8 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+  .timer {
+    font-size: 16px;
   }
 }

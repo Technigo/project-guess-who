@@ -233,6 +233,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let attemts = 0;
 
 
 // Draw the game board
@@ -265,6 +266,10 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   winCard.innerHTML = "";
+  totalSeconds = 0;
+  valString = "";
+  secondsLabel.innerHTML = "";
+  minutesLabel.innerHTML = "";
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
@@ -419,7 +424,7 @@ const guess = (personToConfirm) => {
 
 // This function is drawing the winning screen
 const showWinScreen = () => {
-  winOrLoseText.innerText = "You Won! Congrats!";
+  winOrLoseText.innerText = `You Won in ${attemts} attemts!`;
   winOrLoseSection.style.display = "flex";
   winCard.innerHTML = `
   <div class="card">
@@ -432,7 +437,7 @@ const showWinScreen = () => {
 
 // This function is drawing the losing screen
 const showLoseScreen = () => {
-  winOrLoseText.innerText = "Wrong Guess! Wanna try again?"; 
+  winOrLoseText.innerText = "Sorry, Wrong Guess!"; 
   winOrLoseSection.style.display = "flex";
   board.style.display = "none";
   alertWrapper.remove();
@@ -449,11 +454,40 @@ const checkMyGuess = (personToCheck) => {
   }
 };
 
+// timer creation: https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
+const minutesLabel = document.getElementById("minutes");
+const secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+setInterval(setTime, 1000);
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+  let valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
+
 
 // All the event listeners
 restartButton.addEventListener('click', start); 
 questions.addEventListener('change',selectQuestion);
-findOutButton.addEventListener('click',checkQuestion);
+findOutButton.addEventListener('click', () => {
+  checkQuestion();
+  ++attemts;
+  console.log(attemts)
+});
+
+
+
 
 playAgain.addEventListener('click', () => {
   winOrLoseSection.style.display = "none";

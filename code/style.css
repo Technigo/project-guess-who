@@ -8,15 +8,16 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 100px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: rgb(196, 25, 153);
 }
 
 .question-section {
@@ -34,7 +35,8 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -65,8 +67,8 @@ select {
   height: 165px;
   overflow: hidden;
   border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+  border-radius: 10px;
+  margin: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,7 +119,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -140,8 +142,8 @@ button {
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: rgb(216, 45, 159);
+  border-color: rgb(216, 45, 159);
   color: var(--primary);
 }
 

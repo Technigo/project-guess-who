@@ -239,12 +239,12 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  console.log('selectQ works')
     // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value
+  console.log(category, value)
 
   currentQuestion = {
     category: category,
@@ -255,6 +255,7 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+
   const { category, value } = currentQuestion
   console.log('checkQ works')
 
@@ -342,4 +343,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
 clickFilter.addEventListener('click', checkQuestion)

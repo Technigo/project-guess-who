@@ -3,6 +3,10 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const winOrLoose = document.getElementById('winOrLose')
+const winOrLooseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -232,6 +236,11 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+    // 3. Show the win or lose section
+    winOrLoose.style.display = "none"
+
+    // 4. Hide the game board
+    board.style.display = "flex"
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game? 
@@ -302,29 +311,16 @@ const filterCharacters = (keep) => {
   */
   if (category === 'accessories') {
     if (keep) {
-      if (value == '') {
-        alert(
-          `Yes, the person has no ${category}! Keep all the people without ${category}`
-        )
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      } else {
           alert(
             `Yes, the person wears ${value}! Keep all people that wears ${value}`
           )
           charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-        }
     } else {
-      if (value == '') {
-        alert(
-          `No, the person has ${category}! Remove all people without ${category}!`
-        )
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      } else {
+      
           alert(
             `No, the person doesn't wear ${value}! Remove all people that wears ${value}` 
           )
           charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-        }
     }
   } else if (category === 'other') {
     if (keep) {
@@ -334,7 +330,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
         alert(
-          `No, the person isn't a smoker! Remove all people that are smokers`
+          `No, the person isn't a ${value}! Remove all people that are ${value}s`
         )
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       }
@@ -383,7 +379,7 @@ const guess = (personToConfirm) => {
   // If the player wants to guess, invoke the checkMyGuess function.
   const confirmed = confirm("Are you sure that you want to guess? This will end the game");
   if (confirmed) {
-    checkMyGuess()
+    checkMyGuess(personToConfirm)
   }
 }
 
@@ -391,8 +387,17 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
+  if (personToCheck === secret.name) {
+    winOrLooseText.innerHTML = "Yes!!!"
+  } else {
+    winOrLooseText.innerHTML = "No!!!"
+  }
+    
   // 3. Show the win or lose section
+  winOrLoose.style.display = "block"
+
   // 4. Hide the game board
+  board.style.display = "none"
 }
 
 // Invokes the start function when website is loaded
@@ -405,3 +410,5 @@ restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', selectQuestion)
 //the findoutButton also invokes checkQuestion (compares the currentQuestio-Object with the secret Person)
 findOutButton.addEventListener('click', checkQuestion)
+//restarts the game
+playAgainButton.addEventListener('click', start)

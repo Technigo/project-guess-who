@@ -191,6 +191,10 @@ a {
   max-height: 25px;
 }
 
+footer {
+  margin-top: 200px;
+}
+
 .loading-gif {
   width: 50%;
   height: 50%;

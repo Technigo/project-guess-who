@@ -1,7 +1,7 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const restartBtn = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
@@ -206,7 +206,10 @@ const CHARACTERS = [
 
 // Global variables
 let secret 
-let currentQuestion
+let currentQuestion = {
+  category: 'hair',
+  value: 'brown'
+}
 let charactersInPlay = [];
 
 
@@ -225,7 +228,6 @@ const generateBoard = () => {
       </div>
     `
   })
-  console.log('Generating board')
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -238,10 +240,8 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  console.log(charactersInPlay)
   generateBoard();
   setSecret();
-  // What else should happen when we start the game?
 }
 
 
@@ -264,10 +264,6 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-console.log(currentQuestion)
-console.log(category)
-console.log(value)
-console.log(secret)
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -275,18 +271,14 @@ console.log(secret)
   if (category === 'hair' || category === 'eyes') {
     if(secret[category] === value) {
       filterCharacters(true)
-      console.log("test1")
     } else {
       filterCharacters(false)
-      console.log("test2")
     }
   } else if (category === 'accessories' || category === 'other') {
     if(secret[category].includes(value)) {
       filterCharacters(true)
-      console.log("test3")
     } else {
       filterCharacters(false)
-      console.log("test4")
     }
   }
 }
@@ -352,24 +344,13 @@ const filterCharacters = (keep) => {
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
 
   // Invoke a function to redraw the board with the remaining people.
 }
 
 
 const guess = (personToConfirm) => {
-  console.log(personToConfirm)
  
   var confirming = confirm(`Do you really want to guess at ${personToConfirm}?`);
   if (confirming == true) {
@@ -382,23 +363,19 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToConfirm) => {
 if(secret.name === personToConfirm){
-  console.log('You Won!')
   winOrLose.style.display = 'block';
   board.style.display = 'none';
 
     winOrLoseText.innerHTML = `
     <H1>You Won!</H1>
     `
-  console.log('you won again!')
 } else {
-  console.log('try again')
   winOrLose.style.display = 'block';
   board.style.display = 'none';
 
   winOrLoseText.innerHTML = `
   <H1>You Lost, you LOOOOOSER!</H1>
   `
-  console.log('try again again')
 }
 }
 
@@ -411,9 +388,9 @@ const playAgain = () => {
 
 // Invokes the start function when website is loaded
 start()
-console.log(secret);
 
 // All the event listeners
 playAgainBtn.addEventListener('click', playAgain)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
+restartBtn.addEventListener('click', playAgain)

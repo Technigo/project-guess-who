@@ -236,6 +236,7 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
   setSecret();
+  generateBoard();
   winOrLose.style.display = "";
 };
 
@@ -412,4 +413,4 @@ generateBoard();
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 filter.addEventListener("click", checkQuestion);
-playAgain.addEventListener("click", restart);
+playAgainButton.addEventListener("click", start);

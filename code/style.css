@@ -9,7 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  
+  background-color: var(--primary);
 }
 
 h1 {
@@ -23,7 +23,8 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  /*background-color: var(--secondary);*/
+  background-image: url(champs/lolbackground2.jpg);
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -38,6 +39,8 @@ select {
   font-size: 22px;
   font-family: 'Montserrat';
   color: var(--secondary);
+  border: 5px solid #C9B446;
+  border-style: double;
   width: 100%;
   margin: 24px 0;
 }
@@ -63,8 +66,20 @@ select {
   align-content: center;
 }
 
+.count-guess {
+  padding-bottom: 40px;
+  color: #fff;
+  font-weight: 600;
+}
+
 .playlist {
   margin-bottom: 20px;
+  margin-left: 25px;
+  background-color: #07121aaf;
+  border-radius: 20px;
+  text-align: center;
+  padding: 10px;
+  
 }
 
 .playlist h1 {
@@ -78,29 +93,60 @@ select {
 }
 
 iframe {
-  border-radius: 20px;
+  margin: 7px;
+  border: 5px solid #C9B446;
+  border-style: double;
 }
 
 /****** CARD ******/
+
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
 .card {
   width: 200px;
   height: 250px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border: 5px solid #C9B446;
+  border-style: double;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  
 }
 
 .card p {
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 25px;
+  font-weight: 400;
+  color: #fff;
+  font-family: 'Pirata One';
 }
 
 .card .guess {
@@ -138,8 +184,8 @@ iframe {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
   font-size: 16px;
+  border-radius: 30px;
   font-family: 'Montserrat';
   font-weight: bold;
   padding: 17px 27px;
@@ -148,6 +194,13 @@ button {
 
 .small {
   padding: 8px 16px;
+  margin: 20px;
+  font-family: 'Pirata One';
+  font-size: 30px;
+}
+
+.small:hover {
+  background-color: #a3a3a3;
 }
 
 .outlined-button {
@@ -156,15 +209,19 @@ button {
   align-self: flex-end;
 }
 
-.filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
   color: white;
-  margin-bottom: 40px;
+}
+
+.filled-button {
+  background-color: var(--primary);
+  color: white;
+  margin-bottom: 20px;
 }
 
 .filled-button:hover {
-  background-color: white;
+  background-color: #C9B446;
   border-color: white;
   color: var(--primary);
 }
@@ -216,10 +273,6 @@ button {
   h1 {
     font-size: 24px;
     line-height: 30px;
-  }
-
-  .guess-who-icon {
-    width: 51px;
   }
 
   .board-wrapper {

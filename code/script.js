@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
+const guessesInTotal = document.getElementById('guess')
 
 
 // Array with all the characters, as objects
@@ -357,14 +358,20 @@ const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
-        <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="card">
+          <p>${person.name}</p>
+          <img src=${person.img} alt=${person.name}>
+          <div class="flip-card-back">
+            <div class="guess">
+              <span>Guess on ${person.name}?</span>
+                <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          </div>
+          </div>
         </div>
       </div>
+    </div>
     `
   })
 }
@@ -379,7 +386,11 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
+  numberOfGuesses = 0
+  guessesInTotal.innerText = 0
 };
+
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -394,20 +405,16 @@ const selectQuestion = () => {
     category: category,
     value: value
   }
-  console.log(currentQuestion)
+  numberOfGuesses++
+  guessesInTotal.innerText = numberOfGuesses
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  console.log(currentQuestion)
-  console.log(category)
-  console.log(value)
   let keep = false
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Compare the currentQuestion details with the secret person details
   if (category === 'hair') {
   keep = (secret.hair === value)
   
@@ -425,10 +432,10 @@ const checkQuestion = () => {
 }
 
 
-// It'll filter the characters array and redraw the game board.
+// It will filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
+  // Shows the correct alert message for different categories
   if (category === 'abilities') {
     if (keep) {
       alert(`Yes, the champion have ${value} abilities! Keep all champion that have ${value} abilities.`)
@@ -464,22 +471,21 @@ const filterCharacters = (keep) => {
       }
     }
 
-    //Makes the bord redraw with remaining champions
+    
     generateBoard()
   }
 
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// Player can confirm their guess when clicking the guess button, it then stores the value and invokes function to check their guess.
 const guess = (suspectCharacter) => {
-  // store the interaction from the player in a variable.
+  
   const confirmGuess = confirm(`Is this champion your guess?`)
   if (confirmGuess)
   checkMyGuess(suspectCharacter)
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  
 }
 
-// If you confirm, this function is invoked
+// If you confirm your guess, this function is invoked to display either if it was correct or false.
 const checkMyGuess = (suspectCharacter) => {
 
   if (suspectCharacter === secret.name) {
@@ -495,6 +501,8 @@ const checkMyGuess = (suspectCharacter) => {
 // Invokes the start function when website is loaded
 start();
 
+
+
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
@@ -503,4 +511,5 @@ playAgainButton.addEventListener('click', () => {
   start()
   winOrLose.style.display = 'none';
 }) 
+
 

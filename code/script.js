@@ -272,6 +272,8 @@ const checkQuestion = () => {
       filterCharacters(true);
     } else filterCharacters();
   }
+  // Testing if non-matching characters were filtered out
+  console.log(CHARACTERS);
 };
 
 // Filter the characters array and redraw the game board.
@@ -300,10 +302,12 @@ const filterCharacters = (keep) => {
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-      alert(`Yes, the person has ${value}! Keep all people that have ${value}`);
+      alert(
+        `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}`
+      );
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-      `No, the person doesn't have ${value}! Remove all people that have ${value}`;
+      `No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}`;
     }
   }
 

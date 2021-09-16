@@ -440,8 +440,6 @@ const selectQuestion = () => {
       category
    }
   }
-  numberOfGuesses++
-  totalGuesses.innerText = numberOfGuesses
 }
 
 // This function should be invoked when you click on 'Find Out'.

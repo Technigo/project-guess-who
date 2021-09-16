@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--tertiary);
 }
 
 h1 {
@@ -28,6 +29,7 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  box-shadow: 0px 3px 4px 0 rgba(0, 0, 0, 0.6);
 }
 
 select {
@@ -67,13 +69,16 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid white;
+  background-color: lightsteelblue;
   border-radius: 4px;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0px 3px 4px 0 rgba(0, 0, 0, 0.6);
+  transition: transform ease-in-out .15s;
 }
 
 .card p {
@@ -95,6 +100,8 @@ select {
 
 .card:hover {
   background-color: var(--secondary);
+  border: 3px solid var(--primary);
+  transform: scale(1.12);
 }
 
 .card:hover img,

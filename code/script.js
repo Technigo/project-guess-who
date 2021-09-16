@@ -269,9 +269,8 @@ const checkQuestion = () => {
       console.log('NOT TRUE!!')//-----------TEST
       filterCharacters(false, currentQuestion.category)
     }
-
-  } else if (category === 'accessories' || category === 'other') {
-  
+  } 
+  else if (category === 'accessories' || category === 'other') {
     if (secret[currentQuestion.category].includes(currentQuestion.value)){
       console.log("hey hallå??#?#?")
       filterCharacters(true, currentQuestion.category)
@@ -280,7 +279,6 @@ const checkQuestion = () => {
       console.log("NEJNEJNEJNEJJEJFJAJGJJA")
       filterCharacters(false, currentQuestion.category)
     }
-
   }
 }
 
@@ -291,10 +289,12 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
-    } else {
+    } 
+    else {
       alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
     }
-  } else if (category === 'other') {
+  } 
+  else if (category === 'other') {
     // Similar to the one above
     if (keep) {
       alert(`Yes, the person is a ${value}! Keep all people that is a ${value}`)
@@ -302,14 +302,15 @@ const filterCharacters = (keep) => {
     else {
       alert(`No, the person is not a ${value}! Remove all people that is a ${value}`)
     }
-  } else {
+  } 
+  else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(`Yes, the person have ${value+ " " +category}! Keep all people that have ${value+ " " +category}!`)
     } 
     else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-      alert(`No, the person don't have ${value+ " " +category}! Remove all people that have ${value+ " " +category}!`)
+      alert(`No, the person doesn't have ${value+ " " +category}! Remove all people that have ${value+ " " +category}!`)
     }
   }
 
@@ -331,10 +332,8 @@ const filterCharacters = (keep) => {
     }
     else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-    }
-  
+    }  
   }
-  
   generateBoard() // Invoke a function to redraw the board with the remaining people.
 }
 
@@ -343,21 +342,27 @@ const filterCharacters = (keep) => {
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 const guess = (personToConfirm) => {
-  const youSure = confirm('You sure?')
+  const youSure = confirm(`You sure you want to guess on ${personToConfirm}?`)
   if (youSure) {
     personToCheck = personToConfirm
     checkMyGuess(personToCheck) 
   }
 }
 
+
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  const audioWin = new Audio('./assets/applause7.mp3')
+  const audioLost = new Audio('./assets/boo3.mp3')
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `You guessed ${personToCheck}, that is right!!`
+    audioWin.play()
     winOrLose.style.display ="flex"
+    
   }
   else {
     winOrLoseText.innerHTML = `Nope! You guessed ${personToCheck}, that is wrong!`
+    audioLost.play()
     winOrLose.style.display ="flex"
   }
   // 1. Check if the personToCheck is the same as the secret person's name

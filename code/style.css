@@ -237,6 +237,7 @@ button {
   .card {
     width: 113px;
     position: relative;
+    border: 2px solid var(--secondary);
   }
   .card .guess {
     display: flex;
@@ -251,7 +252,8 @@ button {
     padding: 6px 11px;
     background: white;
     color: var(--primary);
-    border: 2px solid var(--secondary);
+    margin-bottom: 5px;
+    border: 1px solid var(--secondary);
   }
   .card .guess .filled-button:hover {
     background: var(--primary);

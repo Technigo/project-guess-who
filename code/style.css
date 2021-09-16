@@ -43,7 +43,7 @@ select {
 	border: none;
 	font-size: 22px;
 	font-family: 'Montserrat';
-	color: var(--secondary);
+	color: var(--primary);
 	width: 100%;
 	margin: 24px 0;
 }

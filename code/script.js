@@ -210,10 +210,10 @@ let charactersInPlay = CHARACTERS;
 let minutesLabel = document.getElementById("minutes");
 let secondsLabel = document.getElementById("seconds");
 let totalSeconds = 0;
+let timeStart = setInterval(setTime, 1000);
+// let count = 0;
 
 //Timer
-setInterval(setTime, 1000);
-
 function setTime() {
   ++totalSeconds;
   secondsLabel.innerHTML = pad(totalSeconds % 60);
@@ -228,6 +228,11 @@ function pad(time) {
     return timeString;
   }
 }
+
+// function resetCounter() {
+//   count = 0;
+//   countGuess(count);
+// }
 
 // Draw the game board
 const generateBoard = () => {
@@ -256,6 +261,12 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
+  countGuess.innerHTML = "";
+  //Restart timer
+  totalSeconds = 0;
+  valString = "";
+  secondsLabel.innerHTML = "";
+  minutesLabel.innerHTML = "";
   // What else should happen when we start the game?
   generateBoard();
   setSecret();
@@ -381,7 +392,9 @@ start();
 // All the event listeners
 restartButton.addEventListener("click", () => {
   start();
-  // setInterval(setTime, 1000);
+  clearInterval(timeStart);
+  timeStart = setInterval(setTime, 1000);
+  // resetCounter();
   // setTime();
   // pad(time);
 });

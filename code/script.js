@@ -262,7 +262,7 @@ const generateQuestions = () => {
 			}
 		}
 	});
-
+	optionGroups = '';
 	// loop through all keys in categories object
 	for (const category in categories) {
 		// Filter each category array so it has no duplicates
@@ -296,16 +296,16 @@ const start = () => {
 	// What else should happen when we start the game?
 	cheating = false;
 	guessCounter = 0;
-	guessCounterHandler();
 	setSecret();
 	generateBoard();
 	generateQuestions();
 	startTimer();
+	guessCounterHandler();
 	board.style.display = 'flex';
 	winOrLose.style.display = 'none';
 	winOrLoseText.innerText = '';
 	cheatFooter.style.display = 'flex';
-        questions.focus();
+	questions.focus();
 };
 
 const startTimer = () => {

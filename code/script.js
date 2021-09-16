@@ -3,6 +3,8 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const filterButton = document.getElementById("filter");
+const winOrLoseText = document.getElementById("winOrLoseText");
+const winOrLoseSection = document.getElementById("winOrLose");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -307,12 +309,12 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       alert(
         `No, the person doesnt have ${value} ${category}! Remove all people with ${value} ${category}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
 
@@ -337,6 +339,13 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  let c = confirm(`Is ${personToConfirm} your final answer?`)
+  if (c == true) {
+    checkMyGuess(personToConfirm)
+  } else {
+    alert('Keep on playing then') //not working :(
+  }
+
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -344,6 +353,17 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  console.log('jag är här')
+  if (personToCheck === secret['name']) {
+    winOrLoseText.innerHTML = "Du vann!";
+// visa att man vann
+  } else {
+    winOrLoseText.innerHTML = "Loooooser!";
+    // loooooser
+  }
+winOrLoseSection.style.display='flex';
+board.style.display='none';
+
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

@@ -4,6 +4,8 @@ const questions = document.getElementById('questions')
 const filterButton = document.getElementById('filter')
 const restartButton = document.getElementById('restart')
 const guessPress = document.getElementById('winOrLose')
+const playAgainButton = document.getElementById('playAgain')
+const winOrLose = document.getElementById('winOrLose')
 
 // Array with all the characters, as objects----DONT TOUCH!!
 const CHARACTERS = [
@@ -288,36 +290,26 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
     } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
+      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
     }
   } else if (category === 'other') {
     // Similar to the one above
     if (keep) {
-      alert(
-        `Yes, the person is a ${value}! Keep all people that is a ${value}`
-      )
-    } else {
-      alert(
-        `No, the person is not a ${value}! Remove all people that is a ${value}`
-      )
+      alert(`Yes, the person is a ${value}! Keep all people that is a ${value}`)
+    } 
+    else {
+      alert(`No, the person is not a ${value}! Remove all people that is a ${value}`)
     }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-      alert(
-        `Yes, the person have ${value+ " " +category}! Keep all people that have ${value+ " " +category}!`
-      )
-    } else {
+      alert(`Yes, the person have ${value+ " " +category}! Keep all people that have ${value+ " " +category}!`)
+    } 
+    else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-      alert(
-        `No, the person don't have ${value+ " " +category}! Remove all people that have ${value+ " " +category}!`
-      )
+      alert(`No, the person don't have ${value+ " " +category}! Remove all people that have ${value+ " " +category}!`)
     }
   }
 
@@ -334,35 +326,40 @@ const filterCharacters = (keep) => {
     }
   }
   if ( category === 'other' || category === 'accessories'){
-    if(keep){
+    if(keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     }
-    else{
+    else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   
   }
-  // Invoke a function to redraw the board with the remaining people.
-  generateBoard()
+  
+  generateBoard() // Invoke a function to redraw the board with the remaining people.
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
-  const youSure = confirm("You sure?")
-  if ( youSure === true){
-    alert("OK!")
-    checkMyGuess()
-  }
-  else{
-    alert("Skit i det då")
-  }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+const guess = (personToConfirm) => {
+  const youSure = confirm('You sure?')
+  if (youSure) {
+    personToCheck = personToConfirm
+    checkMyGuess(personToCheck) 
+  }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    winOrLoseText.innerHTML = `You guessed ${personToCheck}, that is right!!`
+    winOrLose.style.display ="flex"
+  }
+  else {
+    winOrLoseText.innerHTML = `Nope! You guessed ${personToCheck}, that is wrong!`
+    winOrLose.style.display ="flex"
+  }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -376,4 +373,8 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
-guessPress.addEventListener('click', guess)
+guessPress.addEventListener('onClick', guess)
+playAgainButton.addEventListener('click', () => {
+  winOrLose.style.display = 'none'
+  start()
+})

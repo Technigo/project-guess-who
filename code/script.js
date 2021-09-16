@@ -4,6 +4,10 @@ const questions = document.getElementById("questions");
 const filter = document.getElementById("filter");
 const restartButton = document.getElementById("restart");
 const playAgainButton = document.getElementById("playAgain");
+const counterBox = document.getElementById("counterBox");
+const questionsAsked = document.getElementById("questionsAsked");
+const wonGames = document.getElementById("wonGames");
+const lostGames = document.getElementById("lostGames");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -206,6 +210,9 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let counter = 0;
+let gamesWon = 0;
+let gamesLost = 0;
 
 // Draw the game board
 // What happens: changes made in "board" ID in HTML. Creates "card" from CSS for each person.
@@ -231,8 +238,27 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
+// Hides winOrLose when pressing play again
 const playAgain = () => {
   winOrLose.style.display = "none";
+  restart();
+};
+
+const restart = () => {
+  counter = 0;
+};
+
+// Counter
+const add = () => {
+  counter += 1;
+};
+
+const won = () => {
+  gamesWon += 1;
+};
+
+const lost = () => {
+  gamesLost += 1;
 };
 
 // This function to start (and restart) the game
@@ -244,6 +270,18 @@ const start = () => {
   playAgain();
   generateBoard();
   setSecret();
+
+  questionsAsked.innerHTML = `
+  ${counter}
+  `;
+
+  wonGames.innerHTML = `
+  ${gamesWon}
+  `;
+
+  lostGames.innerHTML = `
+  ${gamesLost}
+  `;
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -276,6 +314,10 @@ const checkQuestion = () => {
       filterCharacters();
     }
   }
+  add();
+  questionsAsked.innerHTML = `
+  ${counter}
+  `;
 };
 
 // It'll filter the characters array and redraw the game board.
@@ -348,6 +390,8 @@ const filterCharacters = (keep) => {
       );
     }
   }
+
+  charactersInPlay.sort(() => Math.random() - 0.5);
   generateBoard();
 };
 
@@ -367,9 +411,13 @@ const checkMyGuess = (personToCheck) => {
   winOrLose.style.display = "block";
 
   if (personToCheck === secret.name) {
-    alert(`You are correct! Congratulation!!!!!`);
+    alert(
+      `You are correct! Congratulations, you did it in ${counter} moves!!!!!`
+    );
+    won();
   } else {
     alert(`You are wrong. You lost!`);
+    lost();
   }
 };
 

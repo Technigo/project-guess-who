@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/bea603fd54.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <aside class="question-section">
@@ -51,6 +55,28 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+
+      <div id="counterBox" class="counter-box">
+        <p>
+          Number of questions asked:
+          <span id="questionsAsked" class="questions-asked"></span>
+        </p>
+      </div>
+
+      <div id="wonLost" class="won-lost">
+        <p>
+          Won:
+          <span id="wonGames"> </span>
+        </p>
+        <p>
+          Lost:
+          <span id="lostGames"> </span>
+        </p>
+      </div>
+
+      <div id="rules" class="rules">
+        <i class="far fa-question-circle" style="color: white"></i>
+      </div>
     </aside>
 
     <section class="board-wrapper">

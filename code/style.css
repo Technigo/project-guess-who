@@ -30,6 +30,25 @@ h1 {
   box-sizing: border-box;
 }
 
+.counter {
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+
+.counter > h3 {
+  color: white;
+}
+
+.counter-box {
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 select {
   display: block;
   border: none;

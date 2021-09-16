@@ -6,6 +6,8 @@ const findOut = document.getElementById("filter");
 const winOrLose = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const playAgain = document.getElementById("playAgain");
+const countBox = document.getElementById("counterBox");
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -241,6 +243,7 @@ const start = () => {
   selectQuestion();
   winOrLose.style.display = "none";
   board.style.display = "flex";
+  countBox.innerText = 0;
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -271,12 +274,17 @@ const checkQuestion = () => {
 
     // console.log("Value: " + value);
     //Compare with secret object
-    // console.log("Secret: " + secret[category]);
   } else if (category === "accessories" || category === "other") {
     keep = secret[category].includes(value);
   }
 
   filterCharacters(keep);
+};
+
+let count = 0;
+const counter = () => {
+  count++;
+  countBox.innerHTML = count;
 };
 
 // It'll filter the characters array and redraw the game board.
@@ -372,12 +380,12 @@ const filterCharacters = (keep) => {
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToCheck) => {
+const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
-  let guessWho = confirm(`Are you sure?${personToCheck}`);
+  let guessWho = confirm(`Are you sure?Is it ${personToConfirm}`);
   // const player = confirm(`Are you sure?${personToConfirm}`);
   if (guessWho) {
-    checkMyGuess(personToCheck);
+    checkMyGuess(personToConfirm);
   }
   // If the player wants to guess, invoke the checkMyGuess function.
 };
@@ -407,3 +415,4 @@ restartButton.addEventListener("click", start);
 questions.addEventListener("change", (ev) => selectQuestion(ev.target.value));
 findOut.addEventListener("click", checkQuestion);
 playAgain.addEventListener("click", start);
+findOut.addEventListener("click", counter);

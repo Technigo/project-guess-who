@@ -8,6 +8,263 @@ const winOrLoseSection = document.getElementById('winOrLose');
 const playAgainBtn = document.getElementById('playAgain');
 
 // Array with all the characters, as objects
+const MUSHROOMS = [
+  {
+    name: 'Chanterelle',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'primative gills',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['yellow', 'funnel'],
+    stalkProperties: ['bare'],
+    swedishName: 'Kantarell',
+    latinName: 'Cantharellus cibarius'
+  },
+  {
+    name: 'Trumpet Chanterelle',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'primative gills',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['brown', 'funnel'],
+    stalkProperties: ['yellow', 'bare'],
+    swedishName: 'Tratt Kantarell',
+    latinName: 'Cantharellus tubaeformis'
+  },
+  {
+    name: 'Shaggy Inkcap',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'gills',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['white', 'conical'],
+    stalkProperties: ['white', 'ring'],
+    swedishName: 'Fjällig bläcksvamp',
+    latinName: 'Coprinus comatus'
+  },
+  {
+    name: 'Saffron Milkcap',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'gills',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['orange', 'depressed'],
+    stalkProperties: ['orange', 'bare'],
+    swedishName: 'Tallblodriska',
+    latinName: 'Lactarius deliciosus'
+  },
+  {
+    name: 'Charcoal Burner',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'gills',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['purple', 'green', 'brown', 'flat', 'convex'],
+    stalkProperties: ['white', 'bare'],
+    swedishName: 'Brokkremla',
+    latinName: 'Russula cyanoxantha'
+  },
+  {
+    name: 'Oyster',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'gills',
+    growsOnTrees: 'yes',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['grey', 'cream', 'brown', 'offset'],
+    stalkProperties: ['white'],
+    swedishName: 'Ostronmussling',
+    latinName: 'Pleurotus ostreatus'
+  },
+  {
+    name: 'The Sickener',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'gills',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'poisonous',
+    capOrBracketProperties: ['red', 'convex', 'flat'],
+    stalkProperties: ['white', 'bare'],
+    swedishName: 'Giftkremla',
+    latinName: 'Russula emetica'
+  },
+  {
+    name: 'Fly Agaric',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'gills',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'poisonous',
+    capOrBracketProperties: ['red', 'white', 'convex', 'flat'],
+    stalkProperties: ['white', 'ring', 'volva (foot)'],
+    swedishName: 'Röd flugsvamp',
+    latinName: 'Amanita muscaria'
+  },
+  {
+    name: 'Deathcap',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'gills',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'poisonous',
+    capOrBracketProperties: ['greenish', 'convex', 'flat'],
+    stalkProperties: ['white', 'ring', 'volva (foot)'],
+    swedishName: 'Lömsk flugsvamp',
+    latinName: 'Amanita phalloides'
+  },
+  {
+    name: 'Destroying Angel',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'gills',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'poisonous',
+    capOrBracketProperties: ['white', 'convex', 'flat'],
+    stalkProperties: ['white', 'ring', 'volva (foot)'],
+    swedishName: 'Vit flugsvamp',
+    latinName: 'Amanita virosa'
+  },
+  {
+    name: 'Jelly Ear',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'jelly',
+    growsOnTrees: 'yes',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['tan', 'brown'],
+    stalkProperties: [],
+    swedishName: 'Judasöra',
+    latinName: 'Auricularia auricula-judae'
+  },
+  {
+    name: 'Yellow Stagshorn',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'jelly',
+    growsOnTrees: 'yes',
+    poisonousOrEdible: 'not edible',
+    capOrBracketProperties: ['yellow'],
+    stalkProperties: [],
+    swedishName: 'Gullhorn',
+    latinName: 'Calocera viscosa'
+  },
+  {
+    name: 'Velvet Bolete',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'pores',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['yellow', 'sandy', 'convex'],
+    stalkProperties: ['yellow', 'ochre', 'bare'],
+    swedishName: 'Sandsopp',
+    latinName: 'Suillus variegatus'
+  },
+  {
+    name: 'Orange Birch Bolette',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'pores',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['orange', 'terracotta', 'convex'],
+    stalkProperties: ['white', 'black/brown speckles', 'scaly'],
+    swedishName: 'Tegelsopp',
+    latinName: 'Leccinum versipelle'
+  },
+  {
+    name: 'Dryads Saddle',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'pores',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['ochre', 'cream', 'yellow', 'depressed', 'offset'],
+    stalkProperties: ['bare'],
+    swedishName: 'Fjällticka',
+    latinName: 'Cerioporus squamosus'
+  },
+  {
+    name: 'Chicken of the woods',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'pores',
+    growsOnTrees: 'yes',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['yellow', 'flat'],
+    stalkProperties: [],
+    swedishName: 'Svavelticka',
+    latinName: 'Laetiporus sulphureus'
+  },
+  {
+    name: 'Birch Polypore',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'pores',
+    growsOnTrees: 'yes',
+    poisonousOrEdible: 'not edible',
+    capOrBracketProperties: ['grey', 'brown', 'hoof-shaped'],
+    stalkProperties: [],
+    swedishName: 'Björkticka',
+    latinName: 'Fomitopsis betulina'
+  },
+  {
+    name: 'Tinder fungus',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'pores',
+    growsOnTrees: 'yes',
+    poisonousOrEdible: 'not edible',
+    capOrBracketProperties: ['grey', 'hoof-shaped'],
+    stalkProperties: [],
+    swedishName: 'Fnöskticka',
+    latinName: 'Fomes fomentarius'
+  },
+  {
+    name: 'Giant puffball',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'puffs',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['white', 'round'],
+    stalkProperties: ['white'],
+    swedishName: 'Jätteröksvamp',
+    latinName: 'Calvatia gigantea'
+  },
+  {
+    name: 'Common puffball',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'puffs',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['white', 'round'],
+    stalkProperties: ['white'],
+    swedishName: 'Vårtig röksvamp',
+    latinName: 'Lycoperdon perlatum'
+  },
+  {
+    name: 'Wood Hedgehog',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'teeth',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['orange', 'tan', 'yellow'],
+    stalkProperties: ['white', 'bare', 'depressed'],
+    swedishName: 'Blek taggsvamp',
+    latinName: 'Hydnum repandum'
+  },
+  {
+    name: 'Scaly Tooth',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'teeth',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['brown'],
+    stalkProperties: ['brown', 'white', 'bare', 'depressed', 'flat'],
+    swedishName: 'Fjällig taggsvamp',
+    latinName: 'Sarcodon imbricatus'
+  },
+  {
+    name: 'Lions Mane',
+    img: 'images/jabala.svg',
+    sporeDispersal: 'teeth',
+    growsOnTrees: 'yes',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['white', 'cream'],
+    stalkProperties: ['white', 'cream'],
+    swedishName: 'Igelkottstaggsvamp',
+    latinName: 'Hericium erinaceus'
+  },
+  
+]
+
 const CHARACTERS = [
   {
     name: 'Jabala',

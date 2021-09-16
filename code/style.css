@@ -8,7 +8,8 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(to left, #005aa7, #fffde4, #005aa7);
 }
 
 h1 {
@@ -16,13 +17,12 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
 }
 
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -34,14 +34,14 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 160px;
 }
 
 .board-wrapper {
@@ -53,30 +53,30 @@ select {
 
 .game-board {
   width: 90%;
-  max-width: 882px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  padding: 10px 0;
 }
 
 /****** CARD ******/
 .card {
-  width: 135px;
-  height: 165px;
+  width: 200px;
+  height: 250px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border: 5px solid white;
+  border-radius: 10px;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: whitesmoke;
 }
 
 .card p {
   text-align: center;
-  margin-bottom: 0;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
 }
 
@@ -91,7 +91,17 @@ select {
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: #ffa42e79;
+  border: 4px solid black;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.guess-who-icon {
+  height: auto;
 }
 
 .card:hover img,
@@ -114,10 +124,9 @@ select {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
   border-radius: 50px;
-  font-size: 16px;
-  font-family: 'Montserrat';
+  font-size: 20px;
+  font-family: "Montserrat";
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -129,20 +138,30 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
+  background-color: rgb(68, 65, 65);
   align-self: flex-end;
+  color: white;
 }
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
-  color: white;
+  color: rgb(68, 65, 65);
+  background-color: white;
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
+  background-color: rgb(68, 65, 65);
+  border-color: black;
+  color: white;
+  box-shadow: 2px 2px 2px white;
+}
+
+.question-options,
+optgroup {
+  padding: 20px;
+  font-weight: bold;
+  color: black;
+  border-radius: 30px;
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -150,7 +169,7 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: linear-gradient(to left, #005aa7, #fffde4, #005aa7);
   position: absolute;
   top: 0;
   bottom: 0;

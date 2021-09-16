@@ -3,201 +3,194 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const filter = document.getElementById("filter");
+const playAgainButton = document.getElementById("playAgain");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   // write in caps lock when it should NOT be changed
   {
-    name: "Jabala",
-    img: "images/jabala.svg",
-    hair: "hidden",
-    eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    name: "Marshall",
+    img: "images/Marshall.jpg",
+    hair: "brown",
+    eyes: "green",
+    accessories: [],
     other: [],
   },
   {
-    name: "Jack",
-    img: "images/jack.svg",
-    hair: "hidden",
-    eyes: "blue",
-    accessories: ["hat"],
+    name: "Michael",
+    img: "images/MichaelScott.png",
+    hair: "black",
+    eyes: "green",
+    accessories: [],
     other: [],
   },
   {
-    name: "Jacques",
-    img: "images/jacques.svg",
-    hair: "grey",
+    name: "Leslie",
+    img: "images/lesliejpg.jpg",
+    hair: "yellow",
     eyes: "blue",
-    accessories: ["hat"],
-    other: ["smoker"],
+    accessories: [],
+    other: [],
   },
   {
-    name: "Jai",
-    img: "images/jai.svg",
+    name: "Phil",
+    img: "images/phil.jpg",
     hair: "black",
     eyes: "brown",
     accessories: [],
     other: [],
   },
   {
-    name: "Jake",
-    img: "images/jake.svg",
+    name: "Johnny",
+    img: "images/johnny.jpg",
     hair: "yellow",
-    eyes: "green",
+    eyes: "hidden",
     accessories: ["glasses"],
     other: [],
   },
   {
-    name: "James",
-    img: "images/james.svg",
+    name: "Ron",
+    img: "images/ron.png",
+    hair: "brown",
+    eyes: "brown",
+    accessories: [],
+    other: [],
+  },
+  {
+    name: "Cameron",
+    img: "images/cameron.jpg",
     hair: "brown",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: [],
     other: [],
   },
   {
-    name: "Jana",
-    img: "images/jana.svg",
-    hair: "black",
-    eyes: "hidden",
-    accessories: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Jane",
-    img: "images/jane.svg",
-    hair: "yellow",
-    eyes: "hidden",
-    accessories: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Jaqueline",
-    img: "images/jaqueline.svg",
+    name: "Mitchell",
+    img: "images/mitchell.png",
     hair: "orange",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: [],
+    other: [],
+  },
+  {
+    name: "Ron",
+    img: "images/ron.jpg",
+    hair: "orange",
+    eyes: "green",
+    accessories: ["wand"],
     other: [],
   },
 
   {
-    name: "Jazebelle",
-    img: "images/jazebelle.svg",
-    hair: "purple",
+    name: "Robin",
+    img: "images/robin.jpg",
+    hair: "brown",
+    eyes: "brown",
+    accessories: [],
+    other: ["smoker"],
+  },
+  {
+    name: "Barney",
+    img: "images/barney.jpg",
+    hair: "yellow",
+    eyes: "blue",
+    accessories: [],
+    other: [],
+  },
+  {
+    name: "Frankie",
+    img: "images/frankie.jpg",
+    hair: "gray",
+    eyes: "green",
+    accessories: [],
+    other: ["smoker"],
+  },
+  {
+    name: "Lois",
+    img: "images/lois.png",
+    hair: "orange",
     eyes: "hidden",
     accessories: ["glasses"],
-    other: ["smoker"],
+    other: [],
   },
   {
-    name: "Jean",
-    img: "images/jean.svg",
+    name: "Rick",
+    img: "images/rick.png",
+    hair: "gray",
+    eyes: "black",
+    accessories: [],
+    other: [],
+  },
+  {
+    name: "Marge",
+    img: "images/marge.jpg",
+    hair: "blue",
+    eyes: "black",
+    accessories: ["necklace"],
+    other: [],
+  },
+  {
+    name: "Smithers",
+    img: "images/smith.jpg",
     hair: "brown",
-    eyes: "blue",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
-  },
-  {
-    name: "Jeane",
-    img: "images/jeane.svg",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Jed",
-    img: "images/jed.svg",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
-  },
-  {
-    name: "Jenni",
-    img: "images/jenni.svg",
-    hair: "white",
-    eyes: "hidden",
-    accessories: ["hat"],
-    other: [],
-  },
-  {
-    name: "Jeri",
-    img: "images/jeri.svg",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Jerry",
-    img: "images/jerry.svg",
-    hair: "hidden",
-    eyes: "blue",
-    accessories: ["hat"],
-    other: [],
-  },
-  {
-    name: "Jess",
-    img: "images/jess.svg",
-    hair: "black",
-    eyes: "blue",
-    accessories: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Jocelyn",
-    img: "images/jocelyn.svg",
-    hair: "black",
     eyes: "brown",
     accessories: ["glasses"],
     other: [],
   },
   {
-    name: "Jon",
-    img: "images/jon.svg",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: "Poussey",
+    img: "images/poussey.jpg",
+    hair: "black",
+    eyes: "brown",
+    accessories: [],
     other: [],
   },
   {
-    name: "Jordan",
-    img: "images/jordan.svg",
+    name: "Cindy",
+    img: "images/cindy.png",
+    hair: "black",
+    eyes: "brown",
+    accessories: [],
+    other: [],
+  },
+  {
+    name: "Dumbledore",
+    img: "images/dumbledore.jpg",
+    hair: "gray",
+    eyes: "green",
+    accessories: ["glasses", "wand"],
+    other: [],
+  },
+  {
+    name: "Harry",
+    img: "images/harry.png",
     hair: "yellow",
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
-    other: [],
+    accessories: ["glasses"],
+    other: ["smoker"],
   },
   {
-    name: "Josephine",
-    img: "images/josephine.svg",
+    name: "Snoop",
+    img: "images/snoop.jpg",
     hair: "grey",
-    eyes: "brown",
-    accessories: [],
-    other: [],
+    eyes: "hidden",
+    accessories: ["hat", "glasses"],
+    other: ["smoker"],
   },
   {
-    name: "Josh",
-    img: "images/josh.svg",
-    hair: "yellow",
+    name: "Elliot",
+    img: "images/thumbnail_20210826_114509.jpg",
+    hair: "gray",
     eyes: "green",
     accessories: [],
     other: [],
   },
   {
-    name: "Jude",
-    img: "images/jude.svg",
-    hair: "black",
+    name: "Lily",
+    img: "images/lily.jpg",
+    hair: "orange",
     eyes: "green",
     accessories: [],
-    other: [],
-  },
-  {
-    name: "Julie",
-    img: "images/julie.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: ["glasses", "hat"],
     other: [],
   },
 ];
@@ -232,21 +225,16 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  // What else should happen when we start the game?
+
   generateBoard();
-  // tillagd av MIG calls for the board to be generated
 
   setSecret();
-  // tillagd av MIG  this fetches a random character
-  console.log(secret); // visar den hemliga personen i spelet
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  console.log("this is the selectQuestion");
-  const category = questions.options[questions.selectedIndex].parentNode.label; // behöver inte göra något med denna
+  const category = questions.options[questions.selectedIndex].parentNode.label;
 
   const value = questions.value;
 
@@ -257,8 +245,6 @@ const selectQuestion = () => {
     category: category,
     value: value,
   };
-  console.log("this is the category:", category, "and value:", value);
-  console.log("this is;", currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out' button.      invoke to see if we get wrong or right answer
@@ -369,12 +355,11 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    alert("That's correct, you win!");
-    board.innerHTML = "";
-    winOrLose.style.display = "block";
+    winOrLoseText.innerHTML = `Woho, ${personToCheck} is correct! 🌟`;
   } else {
-    alert("That is not correct, you lose!");
+    winOrLoseText.innerHTML = `Nooo, ${personToCheck} is not correct! 👎`;
   }
+  winOrLose.style.display = "flex";
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -388,3 +373,7 @@ start();
 restartButton.addEventListener("click", start);
 filter.addEventListener("click", checkQuestion);
 questions.addEventListener("change", selectQuestion);
+playAgainButton.addEventListener("click", () => {
+  start();
+  winOrLose.style.display = "none";
+});

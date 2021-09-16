@@ -8,6 +8,17 @@ Start by briefly describing the assignment in a sentence or two. Keep it short a
 
 Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
 
+struggle to how to compare two objects with each other 
+to add audio to the project, after some googling I've managed to find a useful information that I added to my project 
+
+
+
 ## View it live
 
 Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
+// CUT AUDIO FILES
+https://mp3cut.net/
+
+// FREE SOUNDS
+https://www.freesfx.com/sfx/lost-game

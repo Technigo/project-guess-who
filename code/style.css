@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #242424;
+  --secondary: rgb(255, 108, 108);
 }
 
 body {
@@ -12,11 +12,11 @@ body {
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 48px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: rgb(231, 231, 231);
 }
 
 .question-section {
@@ -35,13 +35,14 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: black;
   width: 100%;
   margin: 24px 0;
 }
 
 .guess-who-icon {
   width: 126px;
+
 }
 
 .board-wrapper {
@@ -127,11 +128,12 @@ button {
   padding: 8px 16px;
 }
 
-.outlined-button {
+/* deleted because I dont need it */
+/* .outlined-button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
-}
+} */
 
 .filled-button,
 .outlined-button:hover {

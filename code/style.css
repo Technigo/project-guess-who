@@ -90,6 +90,12 @@ select {
   height: inherit;
 }
 
+.card img {
+  width: 135px !important;
+  height: 165px !important;
+  object-fit: contain;
+}
+
 .card:hover {
   background-color: var(--secondary);
 }

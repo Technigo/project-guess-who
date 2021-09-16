@@ -10,72 +10,72 @@ const winOrLoseText = document.getElementById("winOrLoseText");
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: "Jabala",
-    img: "images/jabala.svg",
+    name: "Alien",
+    img: "images/alien.png",
     hair: "hidden",
     eyes: "hidden",
     accessories: ["glasses", "hat"],
     other: [],
   },
   {
-    name: "Jack",
-    img: "images/jack.svg",
+    name: "Annabelle",
+    img: "images/annabelle.png",
     hair: "hidden",
     eyes: "blue",
     accessories: ["hat"],
     other: [],
   },
   {
-    name: "Jacques",
-    img: "images/jacques.svg",
+    name: "Babadook",
+    img: "images/babadok.png",
     hair: "grey",
     eyes: "blue",
     accessories: ["hat"],
     other: ["smoker"],
   },
   {
-    name: "Jai",
-    img: "images/jai.svg",
+    name: "Chucky",
+    img: "images/chucky.png",
     hair: "black",
     eyes: "brown",
     accessories: [],
     other: [],
   },
   {
-    name: "Jake",
-    img: "images/jake.svg",
+    name: "Darthvader",
+    img: "images/darthvader.png",
     hair: "yellow",
     eyes: "green",
     accessories: ["glasses"],
     other: [],
   },
   {
-    name: "James",
-    img: "images/james.svg",
+    name: "Dracula",
+    img: "images/dracula.png",
     hair: "brown",
     eyes: "green",
     accessories: ["glasses"],
     other: [],
   },
   {
-    name: "Jana",
-    img: "images/jana.svg",
+    name: "Franky",
+    img: "images/franky.png",
     hair: "black",
     eyes: "hidden",
     accessories: ["glasses"],
     other: [],
   },
   {
-    name: "Jane",
-    img: "images/jane.svg",
+    name: "Freddy",
+    img: "images/freddy.png",
     hair: "yellow",
     eyes: "hidden",
     accessories: ["glasses"],
     other: [],
   },
   {
-    name: "Jaqueline",
-    img: "images/jaqueline.svg",
+    name: "Gollum",
+    img: "images/gollum.png",
     hair: "orange",
     eyes: "green",
     accessories: ["glasses"],
@@ -83,120 +83,120 @@ const CHARACTERS = [
   },
 
   {
-    name: "Jazebelle",
-    img: "images/jazebelle.svg",
+    name: "Halloween",
+    img: "images/halloween.png",
     hair: "purple",
     eyes: "hidden",
     accessories: ["glasses"],
     other: ["smoker"],
   },
   {
-    name: "Jean",
-    img: "images/jean.svg",
+    name: "Hellraiser",
+    img: "images/hellraiser.png",
     hair: "brown",
     eyes: "blue",
     accessories: ["glasses", "hat"],
     other: ["smoker"],
   },
   {
-    name: "Jeane",
-    img: "images/jeane.svg",
+    name: "Jason",
+    img: "images/jason.png",
     hair: "brown",
     eyes: "green",
     accessories: ["glasses"],
     other: [],
   },
   {
-    name: "Jed",
-    img: "images/jed.svg",
+    name: "Jaws",
+    img: "images/jaws.png",
     hair: "orange",
     eyes: "green",
     accessories: ["glasses", "hat"],
     other: ["smoker"],
   },
   {
-    name: "Jenni",
-    img: "images/jenni.svg",
+    name: "Jigsaw",
+    img: "images/jigsaw.png",
     hair: "white",
     eyes: "hidden",
     accessories: ["hat"],
     other: [],
   },
   {
-    name: "Jeri",
-    img: "images/jeri.svg",
+    name: "Joker",
+    img: "images/joker.png",
     hair: "orange",
     eyes: "green",
     accessories: ["glasses"],
     other: [],
   },
   {
-    name: "Jerry",
-    img: "images/jerry.svg",
+    name: "Kingkong",
+    img: "images/kingkong.png",
     hair: "hidden",
     eyes: "blue",
     accessories: ["hat"],
     other: [],
   },
   {
-    name: "Jess",
-    img: "images/jess.svg",
+    name: "Mr. Andersson",
+    img: "images/matrix.png",
     hair: "black",
     eyes: "blue",
     accessories: ["glasses"],
     other: [],
   },
   {
-    name: "Jocelyn",
-    img: "images/jocelyn.svg",
+    name: "Penny",
+    img: "images/penny.png",
     hair: "black",
     eyes: "brown",
     accessories: ["glasses"],
     other: [],
   },
   {
-    name: "Jon",
-    img: "images/jon.svg",
+    name: "Predator",
+    img: "images/predator.png",
     hair: "brown",
     eyes: "green",
     accessories: ["glasses"],
     other: [],
   },
   {
-    name: "Jordan",
-    img: "images/jordan.svg",
+    name: "Sadako",
+    img: "images/sadako.png",
     hair: "yellow",
     eyes: "hidden",
     accessories: ["glasses", "hat"],
     other: [],
   },
   {
-    name: "Josephine",
-    img: "images/josephine.svg",
+    name: "Scream",
+    img: "images/scream.png",
     hair: "grey",
     eyes: "brown",
     accessories: [],
     other: [],
   },
   {
-    name: "Josh",
-    img: "images/josh.svg",
+    name: "Shinning",
+    img: "images/shining.png",
     hair: "yellow",
     eyes: "green",
     accessories: [],
     other: [],
   },
   {
-    name: "Jude",
-    img: "images/jude.svg",
+    name: "White King",
+    img: "images/whiteking.png",
     hair: "black",
     eyes: "green",
     accessories: [],
     other: [],
   },
   {
-    name: "Julie",
-    img: "images/julie.svg",
+    name: "Hannibal Lecter",
+    img: "images/hannibal.png",
     hair: "black",
     eyes: "brown",
     accessories: ["glasses", "hat"],
@@ -271,24 +271,12 @@ const checkQuestion = () => {
   // Then invoke filterCharacters
   if (category === "hair") {
     keep = secret.hair === value;
-    console.log(keep);
-    console.log(category);
-    console.log(value);
   } else if (category === "eyes") {
     keep = secret.eyes === value;
-    console.log(keep);
-    console.log(category);
-    console.log(value);
   } else if (category === "accessories") {
     keep = secret.accessories.includes(value);
-    console.log(keep);
-    console.log(category);
-    console.log(value);
   } else if (category === "other") {
     keep = secret.other.includes(value);
-    console.log(keep);
-    console.log(category);
-    console.log(value);
   }
 
   // else {

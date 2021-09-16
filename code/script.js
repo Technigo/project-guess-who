@@ -267,7 +267,7 @@ const checkQuestion = () => {
       filterCharacters(true);
     } else filterCharacters();
   } // Comparison for key pairs with array values
-  else if (category === "accesories" || category === "other") {
+  else if (category === "accessories" || category === "other") {
     if (secret[category].includes(value)) {
       filterCharacters(true);
     } else filterCharacters();

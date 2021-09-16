@@ -297,6 +297,7 @@ const start = () => {
 	winOrLose.style.display = 'none';
 	winOrLoseText.innerText = '';
 	cheatFooter.style.display = 'flex';
+	cheating = false;
 };
 
 // setting the currentQuestion object when you select something in the dropdown

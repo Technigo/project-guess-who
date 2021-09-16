@@ -5,15 +5,46 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guess Who Game</title>
+  <!-- bootstrap js & jquery connected to make the custom confimation popup -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <!-- bootstrap CSS connected -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- project css  -->
   <link rel="stylesheet" href="style.css" />
+  <!-- google fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet" />
 </head>
 
 <body>
+  <!-- Bootstrap modal component https://getbootstrap.com/docs/4.0/components/modal/ -->
+  <div id="myModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Want to make a guess?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button id="confirm" type="button" class="btn btn-primary">Confirm</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <aside class="question-section">
     <button id="restart" class="outlined-button">RESTART</button>
@@ -38,21 +69,21 @@
         <option value="white">white</option>
         <option value="purple">purple</option>
         <option value="hidden">hidden</option>
-        <!-- Add the rest of hair colors as options  -->
+
       </optgroup>
       <optgroup label="eyes">
         <option value="blue">blue</option>
         <option value="blown">brown</option>
         <option value="green">green</option>
         <option value="hidden">hidden</option>
-        <!-- Add the rest of eye colors as options  -->
+
       </optgroup>
       <optgroup label="accessories">
         <option value="glasses">glasses</option>
         <option value="beard">beard</option>
         <option value="hat">hat</option>
         <option value="hood">hood</option>
-        <!-- Add the other accessory option here. (hat)  -->
+
       </optgroup>
       <optgroup label="other">
         <option value="smoker">a smoking habit</option>
@@ -79,6 +110,7 @@
     </div>
   </section>
 
+  <!-- Audio to play on the winning screen -->
   <audio id="audio">
     <source src="images/We Are The Champions song.mp3" type="audio/mp3">
   </audio>

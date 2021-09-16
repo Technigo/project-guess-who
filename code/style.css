@@ -1,5 +1,3 @@
-/* Global css variables used for colors */
-
 :root {
   --primary: #9c1ffc;
   --secondary: goldenrod;
@@ -9,7 +7,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 h1 {
@@ -46,7 +44,7 @@ select {
   border: none !important;
   background-color: white !important;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -121,7 +119,8 @@ select {
 }
 
 @media (min-width: 769px) {
-  .board-wrapper .card:hover img, .board-wrapper .card:hover p {
+  .board-wrapper .card:hover img,
+  .board-wrapper .card:hover p {
     display: none;
   }
 }
@@ -146,7 +145,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold !important;
   padding: 17px 27px;
   margin-bottom: 10px;
@@ -164,7 +163,8 @@ button {
   align-self: flex-end;
 }
 
-.filled-button, .outlined-button:hover {
+.filled-button,
+.outlined-button:hover {
   background-color: var(--primary);
   color: white;
 }
@@ -263,4 +263,41 @@ button {
   .timer {
     font-size: 16px;
   }
+}
+
+/**** confirmation modal styling  */
+
+.modal-title {
+  color: var(--secondary);
+  font-size: 20px;
+}
+
+.btn {
+  border-radius: 50px;
+  font-size: 16px;
+  font-family: "Montserrat";
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: white;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+}
+
+.btn-secondary:hover {
+  background-color: white;
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
 }

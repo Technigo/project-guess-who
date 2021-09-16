@@ -8,7 +8,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 h1 {
@@ -22,7 +22,7 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: lightseagreen;
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -34,7 +34,7 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -46,6 +46,7 @@ select {
 
 .board-wrapper {
   width: 70%;
+  background-color: rgb(207, 206, 207);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,13 +65,14 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
+  background-color: rgb(185, 224, 218);
   border: 3px solid var(--secondary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .card p {
@@ -117,7 +119,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -150,7 +152,7 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: lightseagreen;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -175,9 +177,6 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
-}
-.secret-card {  
-  width: 200px;
 }
 
 @media (max-width: 768px) {

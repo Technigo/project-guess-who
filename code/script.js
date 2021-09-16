@@ -11,7 +11,7 @@ const playAgainBtn = document.getElementById('playAgain');
 const MUSHROOMS = [
   {
     name: 'Chanterelle',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/2007-07-14_Cantharellus_cibarius_Detail.jpg/440px-2007-07-14_Cantharellus_cibarius_Detail.jpg',
     sporeDispersal: 'primative gills',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
@@ -22,7 +22,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Trumpet Chanterelle',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Craterellus_tubaeformis_LC0374.jpg/440px-Craterellus_tubaeformis_LC0374.jpg',
     sporeDispersal: 'primative gills',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
@@ -33,7 +33,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Shaggy Inkcap',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Coprinus_comatus_G4.JPG/440px-Coprinus_comatus_G4.JPG',
     sporeDispersal: 'gills',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
@@ -44,7 +44,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Saffron Milkcap',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Lactarius_deliciosus.jpg/440px-Lactarius_deliciosus.jpg',
     sporeDispersal: 'gills',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
@@ -55,7 +55,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Charcoal Burner',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Russula_cyanoxantha.JPG/440px-Russula_cyanoxantha.JPG',
     sporeDispersal: 'gills',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
@@ -66,7 +66,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Oyster',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Pleurotus_ostreatus_JPG7.jpg/470px-Pleurotus_ostreatus_JPG7.jpg',
     sporeDispersal: 'gills',
     growsOnTrees: 'yes',
     poisonousOrEdible: 'edible',
@@ -77,7 +77,7 @@ const MUSHROOMS = [
   },
   {
     name: 'The Sickener',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Russula_emetica_in_Poland.jpg/440px-Russula_emetica_in_Poland.jpg',
     sporeDispersal: 'gills',
     growsOnTrees: 'no',
     poisonousOrEdible: 'poisonous',
@@ -88,7 +88,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Fly Agaric',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Amanita_muscaria_3_vliegenzwammen_op_rij.jpg/440px-Amanita_muscaria_3_vliegenzwammen_op_rij.jpg',
     sporeDispersal: 'gills',
     growsOnTrees: 'no',
     poisonousOrEdible: 'poisonous',
@@ -99,7 +99,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Deathcap',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Amanita_phalloides_1.JPG/440px-Amanita_phalloides_1.JPG',
     sporeDispersal: 'gills',
     growsOnTrees: 'no',
     poisonousOrEdible: 'poisonous',
@@ -110,7 +110,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Destroying Angel',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Destroying_Angel.jpg/440px-Destroying_Angel.jpg',
     sporeDispersal: 'gills',
     growsOnTrees: 'no',
     poisonousOrEdible: 'poisonous',
@@ -121,7 +121,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Jelly Ear',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Auricularia_auricula-judae_64485.JPG/470px-Auricularia_auricula-judae_64485.JPG',
     sporeDispersal: 'none',
     growsOnTrees: 'yes',
     poisonousOrEdible: 'edible',
@@ -132,7 +132,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Yellow Stagshorn',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cviscosa_wiki.jpg/440px-Cviscosa_wiki.jpg',
     sporeDispersal: 'none',
     growsOnTrees: 'yes',
     poisonousOrEdible: 'not edible',
@@ -143,7 +143,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Velvet Bolete',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Suill.var.jpg/440px-Suill.var.jpg',
     sporeDispersal: 'pores',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
@@ -154,7 +154,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Orange Birch Bolette',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Spinus-orange-birch-bolete-2014-10-n014756-w.jpg/440px-Spinus-orange-birch-bolete-2014-10-n014756-w.jpg',
     sporeDispersal: 'pores',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
@@ -165,7 +165,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Dryads Saddle',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Polyporus_squamosus_Molter.jpg/470px-Polyporus_squamosus_Molter.jpg',
     sporeDispersal: 'pores',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
@@ -176,7 +176,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Chicken of the woods',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Laetiporus_sulphureus_JPG01.jpg/470px-Laetiporus_sulphureus_JPG01.jpg',
     sporeDispersal: 'pores',
     growsOnTrees: 'yes',
     poisonousOrEdible: 'edible',
@@ -187,7 +187,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Birch Polypore',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Piptoporus_betulinus_55.jpg/440px-Piptoporus_betulinus_55.jpg',
     sporeDispersal: 'pores',
     growsOnTrees: 'yes',
     poisonousOrEdible: 'not edible',
@@ -198,7 +198,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Tinder fungus',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Fomes_fomentarius_2010_G2.jpg/440px-Fomes_fomentarius_2010_G2.jpg',
     sporeDispersal: 'pores',
     growsOnTrees: 'yes',
     poisonousOrEdible: 'not edible',
@@ -209,7 +209,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Giant puffball',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Giant_Puffball.jpg/400px-Giant_Puffball.jpg',
     sporeDispersal: 'puffs',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
@@ -220,7 +220,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Common puffball',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Single_lycoperdon_perlatum.jpg/468px-Single_lycoperdon_perlatum.jpg',
     sporeDispersal: 'puffs',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
@@ -231,7 +231,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Wood Hedgehog',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Hedgehog_fungi2.jpg/440px-Hedgehog_fungi2.jpg',
     sporeDispersal: 'teeth',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
@@ -242,7 +242,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Scaly Tooth',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Habichtspilz-Sarcodon-imbricatus.jpg/468px-Habichtspilz-Sarcodon-imbricatus.jpg',
     sporeDispersal: 'teeth',
     growsOnTrees: 'no',
     poisonousOrEdible: 'edible',
@@ -253,7 +253,7 @@ const MUSHROOMS = [
   },
   {
     name: 'Lions Mane',
-    img: 'images/jabala.svg',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Igelstachelbart_Nov_06.jpg/440px-Igelstachelbart_Nov_06.jpg',
     sporeDispersal: 'teeth',
     growsOnTrees: 'yes',
     poisonousOrEdible: 'edible',
@@ -262,202 +262,16 @@ const MUSHROOMS = [
     swedishName: 'Igelkottstaggsvamp',
     latinName: 'Hericium erinaceus'
   },
-  
-]
-
-const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Common Earthball',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Scleroderma_citrinum.jpg/400px-Scleroderma_citrinum.jpg',
+    sporeDispersal: 'puffs',
+    growsOnTrees: 'no',
+    poisonousOrEdible: 'poisonous',
+    capOrBracketProperties: ['white', 'cream'],
+    stalkProperties: ['white', 'cream'],
+    swedishName: 'Gul rottryffel',
+    latinName: 'Scleroderma citrinum'
   },
 ]
 
@@ -588,10 +402,10 @@ const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   if (userHasGuessedCorrectly) {
-    winOrLoseText.innerHTML = "Well Done! You guessed correctly and one the game!"
+    winOrLoseText.innerHTML = "Well Done! You guessed correctly and identified a mushroom!"
   }
   else {
-    winOrLoseText.innerHTML = "Oh no! You guessed wrong, you lose!"
+    winOrLoseText.innerHTML = "Oh no! You didn't manage to correctly identify your mushroom today. Don't eat it! And don't worry, there's always next time!"
   };
   // 3. Show the win or lose section
   winOrLoseSection.classList.toggle('display');

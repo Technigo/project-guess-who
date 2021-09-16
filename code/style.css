@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: rgba(131, 207, 131, 0.897);
+  --secondary: rgba(34, 139, 34, 0.575);
 }
 
 body {
@@ -9,10 +9,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-image: url(./images/forest.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 30px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
@@ -59,8 +62,14 @@ select {
   align-content: center;
 }
 
+.credits {
+  margin-top: 50%;
+  font-size: 8px;
+}
+
 /****** CARD ******/
 .card {
+  background-color: rgba(255, 255, 255, 0.781);
   width: 135px;
   height: 165px;
   overflow: hidden;
@@ -73,9 +82,13 @@ select {
   justify-content: space-between;
 }
 
+.card img {
+  width: inherit;
+}
+
 .card p {
   text-align: center;
-  margin-bottom: 0;
+  margin: 7px;
   font-size: 16px;
   font-weight: 700;
 }
@@ -137,12 +150,14 @@ button {
 .outlined-button:hover {
   background-color: var(--primary);
   color: white;
+  cursor: url(https://img.icons8.com/emoji/48/000000/mushroom-emoji.png), auto;
 }
 
 .filled-button:hover {
   background-color: white;
   border-color: white;
   color: var(--primary);
+  cursor: url(https://img.icons8.com/emoji/48/000000/mushroom-emoji.png), auto;
 }
 
 /****** WIN OR LOSE SECTION ******/

@@ -8,6 +8,7 @@ const winOrLoseText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
 const cheatCode = document.getElementById('cheatCode');
 const cheatFooter = document.getElementById('cheatFooter');
+const guessCounterText = document.getElementById('guessCounterText');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -210,7 +211,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
-let numberOfGuesses = 0;
+let guessCounter = 0;
 let optionGroups = '';
 let cheating = false;
 const categories = {
@@ -298,11 +299,13 @@ const start = () => {
 	winOrLoseText.innerText = '';
 	cheatFooter.style.display = 'flex';
 	cheating = false;
+	guessCounter = 0;
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (guess, name) => {
-	numberOfGuesses++;
+	guessCounter++;
+	guessCounterText.innerText = `Guess counter: ${guessCounter}`;
 	console.log(numberOfGuesses);
 	let category = '';
 	let value = '';

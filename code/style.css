@@ -21,6 +21,11 @@ body {
 	margin: 10px 0;
 	color: white;
 }
+.guess-counter-text {
+	font-size: 20px;
+	font-weight: 500;
+	color: white;
+}
 
 .question-section {
 	width: 30%;

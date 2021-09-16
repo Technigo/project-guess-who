@@ -1,27 +1,57 @@
 /* Global css variables used for colors */
 
 :root {
-  --primary: #72a2aa;
-  --secondary: #a6dbff;
+  --primary: #a0cdd4;
+  --secondary: #af8eae;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Mali';
+  font-family: 'Italiana', serif;
+}
+
+.timer-guess-count {
+  display: flex;
+  flex-direction: row;
+}
+
+.timer, .guess-count {
+  display: flex;
+  justify-content: center;
+  border: var(--primary) solid;
+  background-color: var(--primary);
+  border-radius: 35px;
+  padding: 0 9%;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: white;
+  width: 110px;
+  margin-bottom: 5px;
+  font-family: 'Italiana', serif;
+  font-weight: bold;
+}
+
+.time {
+  margin: 0;
+}
+
+.guess-count {
+  margin-left: 6rem;
 }
 
 h1 {
   font-size: 42px;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 48px;
   margin: 10px 0;
   color: white;
+  letter-spacing: 1px;
 }
 
 .question-section {
-  width: 30%;
+  width: 33%;
   min-height: 100vh;
   background-color: var(--secondary);
   display: flex;
@@ -31,18 +61,45 @@ h1 {
   box-sizing: border-box;
 }
 
+.created-by-logo {
+  align-self: center;
+  margin-top: 8rem;
+}
+
+.creator-logo {
+  width: 85%;
+  margin-left: 1rem;
+}
+
+.created-by {
+  margin-bottom: -5vh;
+  font-size: large;
+  font-weight: bold;
+  margin-top: 6vh;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+
 select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Mali';
+  font-family: 'Italiana', serif;
+  font-weight: bold;
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
 }
 
+option {
+  font-size: 22px;
+  font-family: 'Italiana', serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
 .guess-who-icon {
-  width: 126px;
+  width: 160px;
 }
 
 .board-wrapper {
@@ -50,6 +107,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--primary);
 }
 
 .game-board {
@@ -66,20 +124,23 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--primary);
+  border: 3px solid var(--secondary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: white;
 }
 
 .card p {
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
+  color: var(--secondary);
+  letter-spacing: 1px;
 }
 
 .card .guess {
@@ -90,10 +151,11 @@ select {
   color: white;
   text-align: center;
   height: inherit;
+  letter-spacing: 1px;
 }
 
 .card:hover {
-  background-color: var(--primary);
+  background-color: var(--secondary);
 }
 
 .card img {
@@ -123,8 +185,8 @@ select {
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
-  font-size: 16px;
-  font-family: 'Mali';
+  font-family: 'Italiana', serif;
+  letter-spacing: 1px;
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -134,26 +196,47 @@ button {
   padding: 8px 16px;
 }
 
-.outlined-button {
+.outlined-button, .restart-button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  font-size: 20px;
 }
 
-.filled-button, .outlined-button:hover {
+.filled-button, .find-out, .restart-button {
+  font-size: 20px;
+}
+
+.filled-outlined-button, .findout-restbtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
+.findout {
+  height: 4rem;
+  margin-right: -3rem;
+}
+
+.restart-button {
+  margin-left: 8rem;
+}
+
+.filled-button, .find-out, .outlined-button:hover, .restart-button:hover {
   background-color: var(--primary);
   color: white;
 }
 
-.filled-button:hover {
+.filled-button:hover, .find-out:hover {
   background-color: white;
   border-color: white;
   color: var(--primary);
 }
 
-/****** WIN OR LOSE SECTION ******/
+/****** START GAME AND WIN OR LOSE SECTION ******/
 
-.win-or-lose-wrapper {
+.win-or-lose-wrapper, .start-game-wrapper {
   display: none;
   align-items: center;
   justify-content: center;
@@ -166,7 +249,7 @@ button {
   height: 100vh;
 }
 
-.win-or-lose {
+.win-or-lose, .start-game {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -175,12 +258,12 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
+.win-or-lose img, .start-game img {
   align-self: flex-start;
   margin-left: 15%;
 }
 
-.win-or-lose h1 {
+.win-or-lose h1, .start-game h1 {
   margin-bottom: 32px;
 }
 

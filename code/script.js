@@ -1,9 +1,33 @@
 // All the DOM selectors stored as short variables
+
+const startGameButton = document.getElementById('play')
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
+const countGuess = document.getElementById('countGuess')
+count = 0
+
+//Timer function
+const minutesLabel = document.getElementById('minutes')
+const secondsLabel = document.getElementById('seconds')
+let totalSeconds = 0;
+setInterval(setTime, 1000);
+
+function setTime() {
+  ++totalSeconds
+  secondsLabel.innerHTML = pad(totalSeconds % 60)
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60))
+}
+function pad(val) {
+  let valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -206,6 +230,12 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let gameStartSound = new Audio('sounds/game_opening.mp3')
+gameStartSound.volume = 1
+let gameWinSound = new Audio('sounds/win_sound.mp3')
+gameWinSound.volume = 1
+let gameLoseSound = new Audio('sounds/lose_sound.mp3')
+gameLoseSound.volume = 1
 
 // Draw the game board
 const generateBoard = () => {
@@ -232,11 +262,17 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
+  totalSeconds = 0
+  valString = ""
+  secondsLabel.innerHTML = ""
+  minutesLabel.innerHTML = ""
+  countGuess.innerHTML = "Guesses: "
+  startGame.style.display = 'flex'
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-  board.onload = generateBoard();
-  board.onload = setSecret();
-  console.log(secret)
+  board.onload = generateBoard()
+  board.onload = setSecret()
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -251,7 +287,7 @@ const selectQuestion = (selectedValue) => {
     category: category,
     value: value,
   }
-  console.log(currentQuestion)
+
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -330,7 +366,7 @@ const filterCharacters = (keep) => {
   */
 
   // Invoke a function to redraw the board with the remaining people.
-  generateBoard();
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -347,28 +383,45 @@ const guess = (suspectCharacter) => {
 const checkMyGuess = (suspectCharacter) => {
   if (suspectCharacter === secret.name) {
     winOrLoseText.innerHTML = `Hurray, you win! Congratulations!`
+    gameWinSound.play()
   } else {
     winOrLoseText.innerHTML = `Baw, you lose...it was ${secret.name}!`
+    gameLoseSound.play()
   }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-  winOrLose.style.display = 'flex';
+  winOrLose.style.display = 'flex'
 }
 
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+startGameButton.addEventListener('click', () => {
+  start()
+  startGame.style.display = 'none'
+  gameStartSound.play()
+})
+restartButton.addEventListener('click', () => {
+  start()
+  startGame.style.display = 'none'
+})
 questions.addEventListener('change', (event) => {
   selectQuestion(event.target.value)
 })
-filterButton.addEventListener('click', checkQuestion)
+filterButton.addEventListener('click', () => {
+  checkQuestion()
+  count += 1
+  countGuess.innerHTML = "Guesses:" + count
+})
+
 playAgainButton.addEventListener('click', () => {
   start()
+  startGame.style.display = 'none'
   winOrLose.style.display = 'none'
+  gameStartSound.play()
 })
 
 

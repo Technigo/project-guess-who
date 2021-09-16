@@ -8,12 +8,26 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mali:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <section id="startGame" class="start-game-wrapper">
+    <div class="start-game">
+      <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
+      <h1 id="startGameText">Welcome to Guess Who, Disney Edition! Let's play!</h1>
+      <button id="play" class="filled-button">PLAY</button>
+
+    </div>
+  </section>
   <aside class="question-section">
-    <button id="restart" class="outlined-button">RESTART</button>
+    <section class="timer-guess-count">
+      <div class="timer">
+        <p class="time">Time:</p>
+        <label id="minutes">00</label>:<label id="seconds">00</label>
+      </div>
+      <div id="countGuess" class="guess-count">Guesses:0</div>
+    </section>
 
     <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
 
@@ -31,7 +45,7 @@
       <optgroup label="hair">
         <option value="auburn hair">auburn hair</option>
         <option value="black hair">black hair</option>
-        <option value="blond hair">blond hair</option>
+        <option value="blonde hair">blonde hair</option>
         <option value="brown hair">brown hair</option>
         <option value="red hair">red hair</option>
         <option value="orange hair">orange hair</option>
@@ -58,7 +72,15 @@
       </optgroup>
     </select>
 
-    <button id="filter" class="filled-button">FIND OUT</button>
+    <section class="findout-restbtn">
+      <button id="filter" class="find-out">FIND OUT</button>
+      <button id="restart" class="restart-button">RESTART</button>
+    </section>
+
+    <div class="created-by-logo">
+      <p class="created-by">Created and developed by</p>
+      <img src="./images/annad.png" alt="creator" class="creator-logo">
+    </div>
   </aside>
 
   <section class="board-wrapper">

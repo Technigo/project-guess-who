@@ -4,7 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const secretPerson = document.getElementById('secretPerson')
 const findOutButton = document.getElementById('filter')
-
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -77,7 +77,7 @@ const CHARACTERS = [
     img: 'images/Idris.svg',
     skinColor: 'orange',
     skinTexture: 'plain',
-    attributes: ['fly', 'twolegs'],
+    attributes: ['fly'],
     other: ['beak']
   },
 
@@ -140,7 +140,7 @@ const CHARACTERS = [
   {
     name: 'Quentin',
     img: 'images/quentin.svg',
-    skinColor: 'blue',
+    skinColor: 'red',
     skinTexture: 'plain',
     attributes: ['swim'],
     other: ['teeth']
@@ -199,7 +199,7 @@ const CHARACTERS = [
     skinColor: 'green',
     skinTexture: 'spots',
     attributes: ['fourlegs'],
-    other: ['spikes']
+    other: ['fins']
   },
 ]
 
@@ -237,9 +237,9 @@ const start = () => {
   setSecret()
   generateBoard()
   selectQuestion()
-  // What else should happen when we start the game?
 }
 
+// What else should happen when we start the game?
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
@@ -306,19 +306,22 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  let stringPropertyName = ''
-  let arrayPropertyName = ''
+  let stringPropertyName = ''  //Mappa (translate) Skin color och Skin texture
+  let arrayPropertyName = '' //Mappa (translate) Attribute and Other attributes
+
+
+
 
   // Show the correct alert message for different categories
   if (category === 'Skin Color') {
     stringPropertyName = 'skinColor';
     if (keep) {
       alert(
-        `Yes, the dinosaur have ${value} skin! Keep all dinosaurs that has ${value}`
+        `Yes, the dinosaur have ${value} skin! Keep all dinosaurs that has ${value} skin`
       )
     } else {
       alert(
-        `No, the dinosaur doesn't have ${value} skin! Remove all dinosaurs that has ${value}`
+        `No, the dinosaur doesn't have ${value} skin! Remove all dinosaurs that has ${value} skin`
       )
     }
 
@@ -327,11 +330,11 @@ const filterCharacters = (keep) => {
     stringPropertyName = 'skinTexture'
     if (keep) {
       alert(
-        `Yes, the dinosaur have ${value}! Keep all people that has ${value}`
+        `Yes, the dinosaur have ${value}! Keep all dinosaurs that has ${value}`
       )
     } else {
       alert(
-        `No, the dinosaur doesn't have ${value}! Remove all people that has ${value}`
+        `No, the dinosaur doesn't have ${value}! Remove all dinosaurs that has ${value}`
       )
     }
 
@@ -361,33 +364,37 @@ const filterCharacters = (keep) => {
     }
 
   }
-if (arrayPropertyName !== ''){
-  if(keep){
-    charactersInPlay = charactersInPlay.filter((person) => person[arrayPropertyName].includes(value))
-  }else{
+  if (arrayPropertyName !== '') {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((character) => {
+        //expanded the filter to make the code readable for ME and code reviewer
+        if (character[arrayPropertyName].includes(value)) { 
+          return true;
+        }
+        else {
+          return false;
+        }
+      });
+    } else {
 
-    charactersInPlay = charactersInPlay.filter((person) => !person[arrayPropertyName].includes(value))
+      charactersInPlay = charactersInPlay.filter((character) => !character[arrayPropertyName].includes(value))
+    }
+
   }
-  
-}
-else {
-  if (keep) {
-    charactersInPlay = charactersInPlay.filter((person) => person[stringPropertyName] === value)
+  else {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((character) => character[stringPropertyName] === value)
+    }
+    else {
+      charactersInPlay = charactersInPlay.filter((character) => character[stringPropertyName] !== value)
+    }
   }
-else {
-  charactersInPlay = charactersInPlay.filter((person) => person[stringPropertyName] !== value)
-}
-}
-//om inte tom sträng. då har jag tilldelat det värdet. om den har tilldelat värde då ska den söka i en array
 
 
-generateBoard()
+  generateBoard()
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-
-
-
 
 
   // Invoke a function to redraw the board with the remaining people.
@@ -395,18 +402,31 @@ generateBoard()
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  const isConfirmed = confirm(`Is ${personToConfirm} your answer?`)
+  if (isConfirmed) {
+    checkMyGuess(personToConfirm);
+  }
+
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+const checkMyGuess = (personToCheck) => {
+    if (personToCheck == secret.name) {
+      document.getElementById('winOrLoseText').innerHTML="Yeah! You won! Up for another round?";
+    }
+    else{
+      document.getElementById('winOrLoseText').innerHTML="Oh no! You lost, try again!";
+    }
+
+    document.getElementById('winOrLose').style.display='block'; //Show the win or lose section
+    // document.getElementById('board').style.display='none'; //Hide the game board
 }
+
 
 // Invokes the start function when website is loaded
 start()
@@ -415,4 +435,7 @@ start()
 restartButton.addEventListener('click', start);
 questions.addEventListener("change", selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
-
+playAgainButton.addEventListener('click',() => {
+  start()
+  document.getElementById('winOrLose').style.display='none'; //This line ivokes play again button and draws the board
+});

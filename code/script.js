@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const filterBtn = document.getElementById('filter')
+const filterButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -226,6 +226,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(`The secret person is ${secret.name}`, secret);
 }
 
 // This function to start (and restart) the game
@@ -242,12 +243,12 @@ const selectQuestion = () => {
   // console.log('selectQuestion works!')
 
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // console.log('the category is set!');
+  console.log('the category is set to', category);
   // This variable stores what option group (category) the question belongs to.
 
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].value
-  // console.log('the value is set!');
+  const value = questions.value
+  console.log('the value is set to', value);
 
   currentQuestion = {
     category: category,
@@ -256,46 +257,48 @@ const selectQuestion = () => {
 }
 
 // This function should be invoked when you click on 'Find Out' button.
-// Added const and eventlistener for filterBtn to invoke checkQuestion
+// Added const and eventlistener for filterButton to invoke checkQuestion
 
 const checkQuestion = () => {
   selectQuestion()
+  // need to start with calling selectQuestion to define the currentQuestion object
   const { category, value } = currentQuestion
-  const {name, img, hair, eyes, accessories, other} = secret
+  const { name, img, hair, eyes, accessories, other } = secret
 
 
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
- if (category === 'hair' || category === 'eyes') {
-   if (value === hair || value === eyes) {
-    console.log('that is correct')
-    filterCharacters(true)
-   } else {
-     console.log('no, that didnt match')
-     filterCharacters(false)
-   }
-
-  } else if (category === 'accessories') {
-    if (secret.accessories.includes(value)){
-      console.log('yes it is')
-    filterCharacters(true)
-  } else {
-    console.log('no its not')
-    filterCharacters(false)
-  }
-
-  } else if (category === 'other') {
-    if (secret.other.includes(value)){
-      console.log('yes it is')
+  if (category === 'hair' || category === 'eyes') {
+    if (value.includes(secret.hair) || value.includes(secret.eyes))
+      // console.log('yes, that is correct')
       filterCharacters(true)
-  } else {
-    console.log('no its not')
-    filterCharacters(false)
-  } 
+    else {
+      // console.log('no, that didnt match')
+      filterCharacters(false)
+    }
+    }
+  else if (category === 'accessories') {
+    if (secret.accessories.includes(value)){
+      console.log('yes, that is correct')
+      filterCharacters(true)
+    }
+    else {
+      console.log('no, that didnt match')
+      filterCharacters(false)
+    }
   }
-
+  else if (category === 'other') {
+    if (secret.other.includes(value)){
+      console.log('yes, that is correct')
+      filterCharacters(true)
+    }
+    else {
+      console.log('no, that didnt match')
+      filterCharacters(false)
+    } 
+  }
 }
 
 
@@ -306,40 +309,42 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'other') {
     // Similar to the one above
     if (keep) {
-      alert('yes the person has a ${value}. Keep all people that wears ${value}')
+      alert(
+        `Yes, the person has a ${ value}. Keep all people that wears ${value}`
+        )
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
-      alert('no that person doesnt have a ${value}. Remove all people that wears ${value}')
+      alert(`No that person doesnt have a ${value}. Remove all people that have a ${value}`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   } else if (category === 'hair') {
     if (keep) {
-      alert('yes the person has ${value} hair. Keep all people that wears ${value}')
+      alert(`Yes, the person has ${value} hair. Keep all people that have ${value} hair.`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
-      alert('no the person does not have ${value} hair. Remove all people that wears ${value}')
+      alert(`No, the person does not have ${value} hair. Remove all people that have ${value} hair.`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   } else if (category === 'eyes') {
     if (keep) {
-    alert('yes the person has ${value} eyes. Keep all people that wears ${value}. Remove all people that wears ${value}')
+    alert(`Yes, the person has ${value} eyes. Keep all people that have ${value} eyes.`)
     charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
-      alert('no the person does not have ${value} eyes. Remove all people that wears ${value}')
+      alert(`No, the person does not have ${value} eyes. Remove all people that have ${value} eyes.`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
@@ -382,5 +387,5 @@ generateBoard()
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
-filterBtn.addEventListener('click', checkQuestion)
+restartButton.addEventListener('click', () => window.location.reload(false))
+filterButton.addEventListener('click', checkQuestion)

@@ -163,7 +163,7 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .win-or-lose {
@@ -205,8 +205,8 @@ button {
   }
 
   .guess-who-icon {
-    width: 120px;
-    margin: 5vh;
+    width: 80px;
+    margin: 3vh;
   }
 
   .board-wrapper {

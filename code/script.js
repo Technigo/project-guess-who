@@ -10,194 +10,194 @@ let chosenPerson = ''
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
+    name: 'Phanpy',
+    img: 'images/phanpy.png',
+    color: 'TURKOS',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
+    name: 'Pikachu',
+    img: 'images/pikachu.png',
+    color: 'GUL',
     eyes: 'blue',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
+    name: 'Totodile',
+    img: 'images/totodile.png',
+    color: 'TURKOS',
     eyes: 'blue',
     accessories: ['hat'],
     other: ['smoker']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
+    name: 'Charizard',
+    img: 'images/charizard.png',
+    color: 'ORANGE',
     eyes: 'brown',
     accessories: [],
     other: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
+    name: 'Krokorock',
+    img: 'images/krokorok.png',
+    color: 'BRUN',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
+    name: 'Meowth',
+    img: 'images/meowth.png',
+    color: 'VIT',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
+    name: 'Oct',
+    img: 'images/oct.png',
+    color: 'RÖD/ROSA',
     eyes: 'hidden',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
+    name: 'Pilup',
+    img: 'images/pilup.png',
+    color: 'BLÅ',
     eyes: 'hidden',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
+    name: 'Squirtle',
+    img: 'images/squirtle.png',
+    color: 'TURKOS',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
+    name: 'Butterfree',
+    img: 'images/butterfree.png',
+    color: 'VIT',
     eyes: 'hidden',
     accessories: ['glasses'],
     other: ['smoker']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
+    name: 'Chansey',
+    img: 'images/chansey.png',
+    color: 'RÖD/ROSA',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
+    name: 'Dragonite',
+    img: 'images/dragonite.png',
+    color: 'ORANGE',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
+    name: 'Fennokin',
+    img: 'images/fennokin.png',
+    color: 'GUL',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
+    name: 'Minccino',
+    img: 'images/minccino.png',
+    color: 'GRÅ',
     eyes: 'hidden',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
+    name: 'Nidoqueen',
+    img: 'images/nidoqueen.png',
+    color: 'BLÅ',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
+    name: 'Persian',
+    img: 'images/persian.png',
+    color: 'VIT',
     eyes: 'blue',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
+    name: 'Pyroar',
+    img: 'images/pyroar.png',
+    color: 'BRUN',
     eyes: 'blue',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
+    name: 'Sandshrew',
+    img: 'images/sandshrew.png',
+    color: 'GUL',
     eyes: 'brown',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
+    name: 'Sneasel',
+    img: 'images/sneasel.png',
+    color: 'TURKOS',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
+    name: 'Venusaur',
+    img: 'images/venusaur.png',
+    color: 'TURKOS',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
+    name: 'Zapdos',
+    img: 'images/zapdos.png',
+    color: 'GUL',
     eyes: 'brown',
     accessories: [],
     other: []
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
+    name: 'Dratini',
+    img: 'images/dratini.png',
+    color: 'BLÅ',
     eyes: 'green',
     accessories: [],
     other: []
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
+    name: 'Fletchling',
+    img: 'images/fletchling.png',
+    color: 'GRÅ',
     eyes: 'green',
     accessories: [],
     other: []
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
+    name: 'Hoopa',
+    img: 'images/hoopa.png',
+    color: 'GRÅ',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
     other: []
@@ -252,23 +252,27 @@ const selectQuestion = () => {
     category: category,
     value: value
   }
+  console.log('inside selectQuestion:', currentQuestion)
  
   checkQuestion()
 }
 
 const checkQuestion = () => {
   const { category, value} = currentQuestion
+  console.log(category, value)
+  console.log('inside checkQuestion:', currentQuestion)
 
-    // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+    // Compare the currentQuestion details with the secret person details in a different manner based on category (color/eyes or accessories/others).
     // See if we should keep or remove people based on that
     // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'color' || category === 'eyes') {
     
     let secretValue = secret[currentQuestion.category]
+    console.log('inside checkQuestion secret:',secretValue)
 
     if (secretValue === currentQuestion.value){
       filterCharacters(true)
-    //EXEMPEL currentQuestion.category = hair eller = eyes
+    //EXEMPEL currentQuestion.category = color eller = eyes
      
     }else {
       filterCharacters(false)
@@ -290,7 +294,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
 
-  const { category, value } = currentQuestion //this one gives value to the category and value, ex  'hair' and 'brown'
+  const { category, value } = currentQuestion //this one gives value to the category and value, ex  'color' and 'brown'
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -321,20 +325,20 @@ const filterCharacters = (keep) => {
         `Yes, the person has ${value} ${category} ! Keep all people that have ${value} ${category} `
       )
 
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      // alert popup that says something like: "Yes, the person has yellow color! Keep all people with yellow color"
     } else {
       alert(
         `No, the person hasn't ${value} ${category} ! Remove all people that has ${value} ${category} `
       )
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      // alert popup that says something like: "No, the person doesnt have yellow color! Remove all people with yellow color"
     }
   }
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   
-    //for hair and eyes 
-    if (category === 'hair' || category === 'eyes') {
+    //for color and eyes 
+    if (category === 'color' || category === 'eyes') {
       if (keep) {
         charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] === currentQuestion.value)
         

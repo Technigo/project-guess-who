@@ -2,6 +2,7 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const filterBtn = document.getElementById("filter");
+const playAgainBtn = document.getElementById("playAgain");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -230,10 +231,10 @@ const setSecret = () => {
 const start = () => {
 	charactersInPlay = CHARACTERS;
 	generateBoard();
+	board.style.display = "";
 	setSecret();
 };
 
-// setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
 	const category = questions.options[questions.selectedIndex].parentNode.label;
 	const value = questions.value;
@@ -242,28 +243,6 @@ const selectQuestion = () => {
 		category: category,
 		value: value,
 	};
-
-	if (
-		currentQuestion.category === "hair" ||
-		currentQuestion.category === "eyes"
-	) {
-		if (secret.value === currentQuestion.value) {
-			console.log(`Yes that is correct`);
-		} else {
-			console.log(`No that is not correct`);
-		}
-	}
-
-	if (
-		currentQuestion.category.includes("accessories") ||
-		currentQuestion.category.includes("other")
-	) {
-		if (secret[currentQuestion.category].includes(currentQuestion.value)) {
-			console.log(`Yes that is correct`);
-		} else {
-			console.log(`No that is not correct`);
-		}
-	}
 };
 
 const checkQuestion = () => {
@@ -273,64 +252,108 @@ const checkQuestion = () => {
 
 const filterCharacters = (keep) => {
 	if (currentQuestion.category.includes("accessories")) {
-		if (keep) {
+		if (secret[currentQuestion.category].includes(currentQuestion.value)) {
+			keep = true;
 			alert(
 				`Yes, the person wears ${currentQuestion.value}! Keep all people that wears ${currentQuestion.value}`
 			);
 		} else {
+			keep = false;
 			alert(
 				`No, the person doesn't wear ${currentQuestion.value}! Remove all people that wears ${currentQuestion.value}`
 			);
 		}
-		if (currentQuestion.category.includes("other")) {
-			if (keep) {
-				alert(
-					`Yes, the person wears ${currentQuestion.value}! Keep all people that wears ${currentQuestion.value}`
-				);
-			} else {
-				alert(
-					`No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-				);
-			}
-		}
+	}
+	if (currentQuestion.category.includes("other")) {
+		if (secret[currentQuestion.category].includes(currentQuestion.value)) {
+			keep = true;
 
-		/*  FORTSÄTT HÄR (FILTRERA EFTER HÅR/ÖGON) */
+			alert(
+				`Yes, the person wears ${currentQuestion.value}! Keep all people that wears ${currentQuestion.value}`
+			);
+		} else {
+			keep = false;
+			alert(
+				`No, the person doesn't wear ${currentQuestion.value}! Remove all people that wears ${currentQuestion.value}`
+			);
+		}
+	}
+
+	if (currentQuestion.category.includes("hair")) {
+		if (secret[currentQuestion.category].includes(currentQuestion.value)) {
+			keep = true;
+
+			alert(
+				`Yes, the person wears ${currentQuestion.value}! Keep all people that wears ${currentQuestion.value}`
+			);
+		} else {
+			keep = false;
+			alert(
+				`No, the person doesn't wear ${currentQuestion.value}! Remove all people that wears ${currentQuestion.value}`
+			);
+		}
+	}
+	if (currentQuestion.category.includes("eyes")) {
+		if (secret[currentQuestion.category].includes(currentQuestion.value)) {
+			keep = true;
+			alert(
+				`Yes, the person wears ${currentQuestion.value}! Keep all people that wears ${currentQuestion.value}`
+			);
+		} else {
+			keep = false;
+			alert(
+				`No, the person doesn't wear ${currentQuestion.value}! Remove all people that wears ${currentQuestion.value}`
+			);
+		}
+	}
+
+	if (currentQuestion.value !== "") {
+		if (keep) {
+			charactersInPlay = charactersInPlay.filter((person) =>
+				person[currentQuestion.category].includes(currentQuestion.value)
+			);
+		} else {
+			charactersInPlay = charactersInPlay.filter(
+				(person) =>
+					!person[currentQuestion.category].includes(currentQuestion.value)
+			);
+		}
+	} else {
+		if (keep) {
+			charactersInPlay = charactersInPlay.filter(
+				(person) => person[currentQuestion.category] === value
+			);
+		} else {
+			charactersInPlay = charactersInPlay.filter(
+				(person) => person[currentQuestion.category] !== value
+			);
+		}
+	}
+
+	generateBoard();
+};
+
+const guess = (suspected) => {
+	const yourGuess = prompt(
+		`So you think ${suspected} is the suspected person? (yes or no) `
+	);
+
+	if (yourGuess === "yes") {
+		board.style.display = "none";
+		winOrLose.style.display = "flex";
+		if (secret.name === suspected) {
+			alert(`you win`);
+		} else if (secret.name !== yourGuess) {
+			alert(`you lose`);
+		}
+	} else {
+		alert(`make a new guess`);
 	}
 };
 
-// Determine what is the category
-// filter by category to keep or remove based on the keep variable.
-/* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-// Invoke a function to redraw the board with the remaining people.
-
-// when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
-	// store the interaction from the player in a variable.
-	// remember the confirm() ?
-	// If the player wants to guess, invoke the checkMyGuess function.
-};
-
-// If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-	// 1. Check if the personToCheck is the same as the secret person's name
-	// 2. Set a Message to show in the win or lose section accordingly
-	// 3. Show the win or lose section
-	// 4. Hide the game board
-};
-
-// Invokes the start function when website is loaded
 start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
 filterBtn.addEventListener("click", checkQuestion);
+playAgainBtn.addEventListener("click", () => location.reload());

@@ -307,11 +307,11 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
+        `Yes, the person wears ${value}! Keep all people that wear ${value}.`
       );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
+        `No, the person doesn't wears ${value}! Remove all people that wear ${value}.`
       );
     }
   } else if (category === 'other') {

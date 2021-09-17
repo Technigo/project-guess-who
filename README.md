@@ -1,13 +1,15 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week was all about creating the game guess who. we got some pre made code that we took over and it was our job to make the code work again and add things to the javascript
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I asked for help alot in differnt mediums like github, slack and discord. we programmed together and tried our best to understand this weeks code.
+
+My repo just dissapeard so all my git commits just dissapeard. so I wish I could create them again showing what I pushed before
+
+I would also like to invoke a happening when the countdown stops making it impossible to answer when its done.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://quizzical-lalande-262fe0.netlify.app/

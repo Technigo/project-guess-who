@@ -266,6 +266,15 @@ const name = () =>{
 }
 
 
+functionSound  = () => {
+	let audio = document.createElement("audio");
+	audio.src = "./audio/sound.wav";
+	
+	audio.play();
+	audio();
+	 }
+
+
 const start = () => {
 	charactersInPlay = CHARACTERS;
 	generateBoard();
@@ -289,6 +298,7 @@ const selectQuestion = () => {
 const checkQuestion = () => {
 	selectQuestion();
 	filterCharacters();
+	functionSound()
 };
 
 const filterCharacters = (keep) => {
@@ -406,14 +416,29 @@ const guess = (suspected) => {
 	}
 };
 
+
+
+
+
+
 let counter = document.getElementById("clickcounter"),
+
 	count = 0;
 filterBtn.onclick = function () {
 	count += 1;
 	counter.innerHTML = `click counter: ` + count;
-};
+
+
+
+} 
+
+
+
 
 start();
+
+
+
 
 // All the event listeners
 restartButton.addEventListener("click", start);

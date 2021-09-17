@@ -4,6 +4,8 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
+const backgroundMusic = document.getElementById('backgroundMusic')
+const celebrate = document.getElementById('celebrateAudio')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -373,21 +375,35 @@ const checkMyGuess = (personToCheck) => {
   // 3. Show the win or lose section
   // 4. Hide the game board
   if (personToCheck === secret.name) {
+    pauseBackgroundMusic()
+    celebrate.play()
     alert("We have a winner! Well done!");
     winOrLose.style.display='block';
   }
   else {
     alert("Computer says no. Game over!");
     winOrLose.style.display='block';
+    pauseBackgroundMusic()
   }
 }
 
 // Invokes the start function when website is loaded
 start()
 
+// This function runs the background music
+const playBackgroundMusic = () => {
+  backgroundMusic.play()
+}
+
+// This function pauses the background music
+const pauseBackgroundMusic = () => {
+  backgroundMusic.pause()
+}
+
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
+questions.addEventListener('change', playBackgroundMusic) //Music starts when user clicks on the dropdown list
 findOutButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', () => {
   start()

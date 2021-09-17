@@ -1,6 +1,10 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
+// const questions2 = document.getElementById("questions2");
+// const questions3 = document.getElementById("questions3");
+// const questions4 = document.getElementById("questions4");
+// const questions5 = document.getElementById("questions5");
 const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
 const playAgainButton = document.getElementById("playAgain");
@@ -10,6 +14,7 @@ const startGameBtn = document.getElementById("startGameBtn");
 const startGame = document.getElementById("startGame");
 const gamePlayAudio = document.getElementById("gameplay-audio");
 const introAudio = document.getElementById("intro-audio");
+const gamePlayAudioBtn = document.getElementById("game-play-audio-btn");
 // const minutesLabel = document.getElementById("minutes");
 // const secondsLabel = document.getElementById("seconds");
 // let totalSeconds = 0;
@@ -278,7 +283,13 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label;
+  const category = [
+    questions.options[questions.selectedIndex].parentNode.label,
+    // questions2.options[questions2.selectedIndex].parentNode.label,
+    // questions3.options[questions3.selectedIndex].parentNode.label,
+    // questions4.options[questions4.selectedIndex].parentNode.label,
+    // questions5.options[questions5.selectedIndex].parentNode.label,
+  ];
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -433,26 +444,50 @@ const checkMyGuess = (personToCheck) => {
   }
 };
 
-const stopIntroAudio = () => {
-  introAudio.src = "";
+const toggleAudioBtnText = () => {
+  if (gamePlayAudioBtn.innerHTML === "Sound Off 🔈") {
+    gamePlayAudioBtn.innerHTML = "Sound On 🔊";
+  } else {
+    gamePlayAudioBtn.innerHTML = "Sound Off 🔈";
+  }
 };
 
 const playGameAudio = () => {
-  gamePlayAudio.play();
+  if (gamePlayAudio.paused) {
+    gamePlayAudio.play();
+  } else {
+    gamePlayAudio.pause();
+  }
+};
+
+const stopIntroAudio = () => {
+  introAudio.pause();
 };
 
 // Invokes the start function when website is loaded
 
 // All the event listeners
-restartButton.addEventListener("click", start);
+restartButton.addEventListener("click", () => {
+  start;
+  gamePlayAudio.currentTime = 0;
+});
 questions.addEventListener("change", selectQuestion);
+// questions2.addEventListener("change", selectQuestion);
+// questions3.addEventListener("change", selectQuestion);
+// questions4.addEventListener("change", selectQuestion);
+// questions5.addEventListener("change", selectQuestion);
 findOutButton.addEventListener("click", checkQuestion);
 playAgainButton.addEventListener("click", () => {
   start();
   winOrLose.classList.toggle("open");
+  playGameAudio();
 });
 startGameBtn.addEventListener("click", () => {
   start();
   startGame.classList.toggle("close");
   stopIntroAudio();
+});
+gamePlayAudioBtn.addEventListener("click", () => {
+  toggleAudioBtnText();
+  playGameAudio();
 });

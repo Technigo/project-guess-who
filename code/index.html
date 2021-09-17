@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💀</text></svg>"
+    />
   </head>
   <body>
     <section id="startGame" class="start-game-wrapper">
@@ -32,9 +36,6 @@
     </section>
 
     <aside class="question-section">
-      <audio id="gameplay-audio" controls loop>
-        <source src="sound/gameplay.wav" type="audio/wav" />
-      </audio>
       <button id="restart" class="outlined-button">RESTART</button>
 
       <img
@@ -46,7 +47,6 @@
       <h1>Does the <span class="villain-text">villain</span> have</h1>
 
       <select id="questions">
-        <option value="" disabled selected>Select a question</option>
         <optgroup label="hair">
           <option value="brown">brown hair</option>
           <option value="orange">orange hair</option>
@@ -57,6 +57,8 @@
           <option value="white">white hair</option>
           <!-- Add the rest of hair colors as options  -->
         </optgroup>
+      </select>
+      <select id="questions2">
         <optgroup label="eyes">
           <option value="hidden">hidden eyes</option>
           <option value="brown">brown eyes</option>
@@ -64,6 +66,8 @@
           <option value="no">no eyes</option>
           <!-- Add the rest of eye colors as options  -->
         </optgroup>
+      </select>
+      <select id="questions3">
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
           <option value="hat">hat</option>
@@ -83,6 +87,9 @@
           <option value="glasses">glasses</option>
           <option value="balloon">balloon</option>
           <option value="armor">armor</option>
+        </optgroup>
+      </select>
+      <select id="questions4">
         <optgroup label="weapon">
           <option value="acid spit">acid spit</option>
           <option value="sharp-teeth">sharp-teeth</option>
@@ -96,6 +103,8 @@
           <option value="blaster">blaster</option>
           <option value="falx">falx</option>
         </optgroup>
+      </select>
+      <select id="questions5">
         <optgroup label="type">
           <option value="human">human</option>
           <option value="extraterrestrial">extraterrestrial</option>
@@ -105,11 +114,15 @@
           <option value="demon">demon</option>
           <option value="haunted doll">haunted doll</option>
         </optgroup>
-          <!-- Add the other accessory option here. (hat)  -->
-        </optgroup>
       </select>
+      <!-- Add the other accessory option here. (hat)  -->
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <button id="game-play-audio-btn" class="game-audio-btn">
+        Sound Off 🔈<audio id="gameplay-audio" loop>
+          <source src="sound/gameplay.wav" type="audio/wav" />
+        </audio>
+      </button>
     </aside>
 
     <section class="board-wrapper">

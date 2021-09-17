@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week project was to create the Guess Who game
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This week project was focused on using Javascript to create the board game Guess Who. I followed the steps from Technigo's instruction to build the functions needed and add all the eventListeners in order to make the game work
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://pensive-swirles-36c58b.netlify.app

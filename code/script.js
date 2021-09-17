@@ -411,7 +411,7 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alert(`Woop woop! You won!`);
     winOrLose.style.display = 'block';
-    winOrLoseText.innerHTML = `<h1>You wonderful beast, you won!</h1>`
+    winOrLoseText.innerHTML = `<h1>You wonderful beast!<br /> You won! Go celebrate (by playing one more time).</h1>`
 
     
   } else {

@@ -10,7 +10,7 @@ const CHARACTERS = [
   {
     name: "Jabala",
     img: "images/jabala.svg",
-    hair: "hidden",
+    hair: ["hidden"],
     eyes: "hidden",
     accessories: ["glasses", "hat"],
     other: [],
@@ -18,7 +18,7 @@ const CHARACTERS = [
   {
     name: "Jack",
     img: "images/jack.svg",
-    hair: "hidden",
+    hair: ["hidden", "beard"],
     eyes: "blue",
     accessories: ["hat"],
     other: [],
@@ -26,7 +26,7 @@ const CHARACTERS = [
   {
     name: "Jacques",
     img: "images/jacques.svg",
-    hair: "grey",
+    hair: ["grey", "beard"],
     eyes: "blue",
     accessories: ["hat"],
     other: ["smoker"],
@@ -34,7 +34,7 @@ const CHARACTERS = [
   {
     name: "Jai",
     img: "images/jai.svg",
-    hair: "black",
+    hair: ["black"],
     eyes: "brown",
     accessories: [],
     other: [],
@@ -42,7 +42,7 @@ const CHARACTERS = [
   {
     name: "Jake",
     img: "images/jake.svg",
-    hair: "yellow",
+    hair: ["yellow"],
     eyes: "green",
     accessories: ["glasses"],
     other: [],
@@ -50,7 +50,7 @@ const CHARACTERS = [
   {
     name: "James",
     img: "images/james.svg",
-    hair: "brown",
+    hair: ["brown", "beard"],
     eyes: "green",
     accessories: ["glasses"],
     other: [],
@@ -58,7 +58,7 @@ const CHARACTERS = [
   {
     name: "Jana",
     img: "images/jana.svg",
-    hair: "black",
+    hair: ["black"],
     eyes: "hidden",
     accessories: ["glasses"],
     other: [],
@@ -66,7 +66,7 @@ const CHARACTERS = [
   {
     name: "Jane",
     img: "images/jane.svg",
-    hair: "yellow",
+    hair: ["yellow"],
     eyes: "hidden",
     accessories: ["glasses"],
     other: [],
@@ -74,7 +74,7 @@ const CHARACTERS = [
   {
     name: "Jaqueline",
     img: "images/jaqueline.svg",
-    hair: "orange",
+    hair: ["orange"],
     eyes: "green",
     accessories: ["glasses"],
     other: [],
@@ -83,7 +83,7 @@ const CHARACTERS = [
   {
     name: "Jazebelle",
     img: "images/jazebelle.svg",
-    hair: "purple",
+    hair: ["purple"],
     eyes: "hidden",
     accessories: ["glasses"],
     other: ["smoker"],
@@ -91,7 +91,7 @@ const CHARACTERS = [
   {
     name: "Jean",
     img: "images/jean.svg",
-    hair: "brown",
+    hair: ["brown", "beard"],
     eyes: "blue",
     accessories: ["glasses", "hat"],
     other: ["smoker"],
@@ -99,7 +99,7 @@ const CHARACTERS = [
   {
     name: "Jeane",
     img: "images/jeane.svg",
-    hair: "brown",
+    hair: ["brown"],
     eyes: "green",
     accessories: ["glasses"],
     other: [],
@@ -107,7 +107,7 @@ const CHARACTERS = [
   {
     name: "Jed",
     img: "images/jed.svg",
-    hair: "orange",
+    hair: ["orange", "beard"],
     eyes: "green",
     accessories: ["glasses", "hat"],
     other: ["smoker"],
@@ -115,7 +115,7 @@ const CHARACTERS = [
   {
     name: "Jenni",
     img: "images/jenni.svg",
-    hair: "white",
+    hair: ["white"],
     eyes: "hidden",
     accessories: ["hat"],
     other: [],
@@ -123,7 +123,7 @@ const CHARACTERS = [
   {
     name: "Jeri",
     img: "images/jeri.svg",
-    hair: "orange",
+    hair: ["orange"],
     eyes: "green",
     accessories: ["glasses"],
     other: [],
@@ -131,7 +131,7 @@ const CHARACTERS = [
   {
     name: "Jerry",
     img: "images/jerry.svg",
-    hair: "hidden",
+    hair: ["hidden"],
     eyes: "blue",
     accessories: ["hat"],
     other: [],
@@ -139,7 +139,7 @@ const CHARACTERS = [
   {
     name: "Jess",
     img: "images/jess.svg",
-    hair: "black",
+    hair: ["black"],
     eyes: "blue",
     accessories: ["glasses"],
     other: [],
@@ -147,7 +147,7 @@ const CHARACTERS = [
   {
     name: "Jocelyn",
     img: "images/jocelyn.svg",
-    hair: "black",
+    hair: ["black"],
     eyes: "brown",
     accessories: ["glasses"],
     other: [],
@@ -155,7 +155,7 @@ const CHARACTERS = [
   {
     name: "Jon",
     img: "images/jon.svg",
-    hair: "brown",
+    hair: ["brown"],
     eyes: "green",
     accessories: ["glasses"],
     other: [],
@@ -163,7 +163,7 @@ const CHARACTERS = [
   {
     name: "Jordan",
     img: "images/jordan.svg",
-    hair: "yellow",
+    hair: ["yellow"],
     eyes: "hidden",
     accessories: ["glasses", "hat"],
     other: [],
@@ -171,7 +171,7 @@ const CHARACTERS = [
   {
     name: "Josephine",
     img: "images/josephine.svg",
-    hair: "grey",
+    hair: ["grey"],
     eyes: "brown",
     accessories: [],
     other: [],
@@ -179,7 +179,7 @@ const CHARACTERS = [
   {
     name: "Josh",
     img: "images/josh.svg",
-    hair: "yellow",
+    hair: ["yellow"],
     eyes: "green",
     accessories: [],
     other: [],
@@ -187,7 +187,7 @@ const CHARACTERS = [
   {
     name: "Jude",
     img: "images/jude.svg",
-    hair: "black",
+    hair: ["black", "beard"],
     eyes: "green",
     accessories: [],
     other: [],
@@ -195,7 +195,7 @@ const CHARACTERS = [
   {
     name: "Julie",
     img: "images/julie.svg",
-    hair: "black",
+    hair: ["black"],
     eyes: "brown",
     accessories: ["glasses", "hat"],
     other: [],
@@ -312,7 +312,7 @@ const checkQuestion = () => {
   const { category, value } = currentQuestion;
 
   // This if statements first checks which category is picked
-  if (category === "hair" || category === "eyes") {
+  if (category === "eyes") {
     // If the category is hair/eyes it gets the value in this way
     if (secret[category] === value) {
       // If the value is true it runs filterCharacters with a true value
@@ -320,7 +320,7 @@ const checkQuestion = () => {
     } else {
       filterCharacters(); // Otherwise it runs with a false value
     }
-  } else if (category === "accessories" || category === "other") {
+  } else if (category === "accessories" || category === "other" || category === "hair") {
     // If the category is accessories/other it gets the value with the includes() method since their values are stored in an array
     if (secret[category].includes(value)) {
       // If the value is true it runs filterCharacters with a true value
@@ -330,7 +330,7 @@ const checkQuestion = () => {
     }
   }
 
-  document.getElementById("counter").innerHTML = `This far you have guessed ${counter} times`; // prints this when the user makes a guess
+  document.getElementById("counter").innerHTML = `This far you have made ${counter} guesses`; // prints this when the user makes a guess
   counter++; // then adds 1 to the counter
 
 };
@@ -344,16 +344,15 @@ const filterCharacters = (keep) => {
     if (keep) {
       alert(`Yes, the person has ${value}! Keep all people that have ${value}`);
       // THis filters out the characters if the value is true
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] === value
-      );
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value));
     } else {
       alert(
         `No, the person doesn't have ${value}! Remove all people that has ${value}`
       );
       // This filters out the characters if the value is false
       charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] !== value
+        (person) => !person[category].includes(value)
       );
     }
   } else if (category === "eyes") {

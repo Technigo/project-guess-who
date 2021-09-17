@@ -29,7 +29,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker', 'teeth']
+    other: ['smoker', 'teeth', 'facialHair']
   },
   {
     name: 'Jai',

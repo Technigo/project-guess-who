@@ -167,8 +167,6 @@ option {
   display: none;
 }
 
-/* The div with the guess class is only shown on hover */
-
 .card:hover .guess {
   display: flex;
 }
@@ -318,8 +316,11 @@ button {
     justify-content: center;
   }
   .card {
-    width: 113px;
+    width: 94px;
     position: relative;
+  }
+  .card p {
+    font-size: 15px;
   }
   .card .guess {
     display: flex;

@@ -1,13 +1,12 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+I have made a Guess who game. When the game loads the game picks a secret person and you get to ask the game answers that then filters out people depending on who the secret person is. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+First thing I did was trying to read and understand the code that was given to me. In the beginning this was difficult but in the end I got it working. For me the most difficult part this week has been trying to understand the starter code. 
+I changed the CSS, added a guess counter, a timer and some sound effects to make it more fun to play. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://alisebrink-project05-guess-who.netlify.app/

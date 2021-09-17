@@ -256,7 +256,6 @@ const generateBoard = () => {
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  console.log(secret);
 };
 let startTime;
 let elapsedTime = 0;
@@ -330,8 +329,6 @@ const selectQuestion = () => {
     category: category,
     value: value,
   };
-
-  console.log(currentQuestion);
 };
 
 
@@ -453,7 +450,6 @@ const filterCharacters = (keep) => {
 // When the user guesses on a person it then has to confirm that they want to make a guess
 const guess = (personToConfirm) => {
   const result = window.confirm(`Are you sure this is your choice?`);
-  console.log(result);
 
   if (result) {
     checkMyGuess(personToConfirm);

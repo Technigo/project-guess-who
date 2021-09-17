@@ -6,7 +6,14 @@ const filter = document.getElementById('filter')
 const playAgain = document.getElementById("playAgain")
 const winOrLose = document.getElementById("winOrLose")
 const winOrLoseText = document.getElementById("winOrLoseText")
+const qCounter = document.getElementById("question-counter")
+const timerDisplay = document.getElementById("timer")
 
+//for sound effects
+const flipSound = document.getElementById("flip")
+const backSound = document.getElementById("back")
+const volumeUP = document.getElementById("volume-up")
+const volumeOff = document.getElementById("volume-off")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -63,7 +70,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses','necklace'],
     other: []
   },
   {
@@ -79,7 +86,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses','necklace', 'earrings'],
     other: []
   },
 
@@ -152,7 +159,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses','earrings'],
     other: []
   },
   {
@@ -168,7 +175,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'necklace'],
     other: []
   },
   {
@@ -176,7 +183,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -206,25 +213,73 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
+let secret  
 let currentQuestion
 let charactersInPlay
+let characterCard
+let questionCounter
+let backgroundMusic = true
+let reset = false   //for resetting the question counter
+let timeInSeconds = 0
+let timer
 
+
+//for card flipping sound
+const playFlipSound = () => {
+  flipSound.play();
+}
+const playBackSound = () => {
+  // start playing the background sound
+  if (backgroundMusic) {
+    backSound.play();
+    backgroundMusic = false
+    volumeUP.style.display = "block"
+    volumeOff.style.display = "none"
+  } else {
+    backSound.pause();
+    backgroundMusic = true
+    volumeUP.style.display = "none"
+    volumeOff.style.display = "block"
+  }
+    
+}
+
+//update and display question counter
+const updateQuestionCounter = () => {
+  
+  if (reset) {
+    questionCounter= 0
+    qCounter.textContent = `Question asked:  ${questionCounter}`
+    reset= false
+  } else {
+    questionCounter++
+    qCounter.textContent= `Question asked:  ${questionCounter}`
+  }
+  
+// function for count-up timer
+  const setTime = ()=>{
+    
+
+  }
+
+}
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
+  
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card">
+      <div class="card" id="card">
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
-        <div class="guess">
+        <div class="guess" id="guess" onmouseover= "playFlipSound()" >
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
-        </div>
+          </div>
       </div>
     `
   })
+  
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -234,18 +289,28 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  reset = true
+  backgroundMusic = true
+  timeInSeconds = 0
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-  charactersInPlay.forEach(generateBoard)
+  // generating the game board by calling generateBoard function 
+  generateBoard()
+  // selecting a secret person to guess by calling setSecret function
   setSecret()
+  playBackSound()
+  updateQuestionCounter()
+  
 }
+
 //function for play again
 const startAgain = () => {
+  //toggling the display of game board and 'winOrlose' page and clear the h1 text
   board.style.display="flex"
   winOrLose.style.display = "none"
   winOrLoseText.textContent= ""
-
+//calling the start function again to start the game 
+  clearInterval(timer)
   start ()
 }
 
@@ -261,10 +326,12 @@ const selectQuestion = (event) => {
     category: category,
     value: value
   }
+  
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  updateQuestionCounter()
   const { category, value } = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
@@ -273,7 +340,7 @@ const checkQuestion = () => {
   if (category === 'hair' || category === 'eyes') {
     if (category === 'hair' && secret[category] === value) {
        filterCharacters (true)
-    } else if (category === 'eye' && secret[category] === value) {
+    } else if (category === 'eyes' && secret[category] === value) {
       filterCharacters (true)
     } else {
       filterCharacters (false)
@@ -297,29 +364,29 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! So, keeping all those that wear ${value}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! So, removing all those that wear ${value}.`
       )
     }
   } else if (category === 'other') {
     // Similar to the one above
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person is ${value}! So, keeping all those that are ${value}s.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person is not a ${value}! So, removing all those that are ${value}s.`
       )
     }
   } else {
     if (keep) {
-     alert (`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`)
+     alert (`Yes, the person has ${value} ${category}! So, keeping all those with ${value} ${category}.`)
     } else {
-      alert (`No, the person doesnt have ${value} ${category}! Remove all people with ${value} ${category}`)
+      alert (`No, the person doesn't have ${value} ${category}! So, removing all those with ${value} ${category}.`)
     }
   }
 
@@ -341,15 +408,22 @@ const filterCharacters = (keep) => {
  }
 
   // Invoke a function to redraw the board with the remaining people.
-  charactersInPlay.forEach(generateBoard)
+  //generateBoard()
+  if (charactersInPlay.length > 1) {
+    generateBoard()
+
+  }else if (charactersInPlay.length === 1) {
+    generateBoard()
+    setTimeout(() => { checkMyGuess(charactersInPlay[0].name) }, 2000) 
+  }
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const playerGuess = personToConfirm
-  const guessNow = confirm("Are you ready to make a guess now?")
+  //const playerGuess = personToConfirm
+  const guessNow = confirm("Wonderful! You want to make a guess now. Right?")
   if (guessNow) {
-    checkMyGuess (playerGuess)
+    checkMyGuess (personToConfirm)
   }
 
   // store the interaction from the player in a variable.
@@ -371,15 +445,20 @@ const checkMyGuess = (personToCheck) => {
   } else {
     board.style.display="none"
     winOrLose.style.display = "block"
-    winOrLoseText.textContent= `Opps! You lost! It was not ${personToCheck} but ${secret.name}. `
+    winOrLoseText.textContent= `Oops! You lost! It was not ${personToCheck} but ${secret.name}. `
   }
 }
+
 
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', startAgain)
 questions.addEventListener('change', selectQuestion)
 filter.addEventListener('click', checkQuestion)
 playAgain.addEventListener('click', startAgain)
+
+//for sound effects
+volumeUP.addEventListener('click', playBackSound )
+volumeOff.addEventListener('click', playBackSound)

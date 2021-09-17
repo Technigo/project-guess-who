@@ -25,11 +25,30 @@ h1 {
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  /* padding: 5vw; */
   align-items: flex-start;
   box-sizing: border-box;
 }
-
+.top-of-side{
+  width: 100%;
+  margin: 10px;
+  display: flex;
+  flex-direction:column;
+  color: white; 
+  
+}
+.timer{
+align-self: flex-end;
+top: 0;
+margin: 0;
+padding-right: 10px;
+  
+}
+.middle-of-side{
+  padding: 5vw;
+  display: flex;
+  flex-direction: column;
+}
 select {
   display: block;
   border: none;
@@ -49,6 +68,10 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.question-counter{
+  color: white;
+  font-size: 20px;
 }
 
 .game-board {
@@ -144,6 +167,21 @@ button {
   border-color: white;
   color: var(--primary);
 }
+
+.fa {
+  position: absolute; 
+  top: 0;
+  padding: 10px 5px;
+  cursor: pointer;
+}
+.volume-off{
+
+  display: none;
+} 
+.volume-up{
+  
+  display: block;
+} 
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {

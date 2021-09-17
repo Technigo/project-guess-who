@@ -23,7 +23,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Jacques',
@@ -31,7 +31,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker', 'beard']
   },
   {
     name: 'Jai',
@@ -81,7 +81,6 @@ const CHARACTERS = [
     accessories: ['glasses'],
     other: []
   },
-
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
@@ -112,7 +111,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'beard']
   },
   {
     name: 'Jenni',
@@ -228,18 +227,18 @@ const generateBoard = ( ) => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-secret =
- charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  secret =
+  charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
 // This function to start (and restart) the game
 const start = () => {
   
-  // Here we're setting charactersInPlay array to be all the characters to start with
+// Here we're setting charactersInPlay array to be all the characters to start with
   
   charactersInPlay = CHARACTERS; 
   
-  //this setSecret will show the sectret character
+//setSecret will show the sectret character
   generateBoard();
   setSecret();
   selectQuestion();
@@ -251,60 +250,55 @@ const start = () => {
 
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex] .parentNode.label;
-  // This variable stores what option group (category) the question belongs to.
-  
-  //console.log ("this is the selectQuestion");
 
-  // This variable  stores the actual value of the question we've selected.
-  const value = questions.value;
+// This variable stores what option group (category) the question belongs to.
+// This variable  stores the actual value of the question we've selected.
+const value = questions.value;
   currentQuestion = {
     category: category,
     value: value, 
   };
 };
-  //console.log("this is the category:", category, "and the value:", value);
-  //console.log("this is the;" , currentQuestion);
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion; 
+const { category, value } = currentQuestion; 
   let keep = false;
-  //The line below makes  currentQuestion compare the secret person. => Keeps or removes 
-
-  if (category === "hair" || category === "eyes" || category === "beard") {
+//The line below makes  currentQuestion compare the secret person. => Keeps or removes 
+  if (category === "hair" || category === "eyes") {
 
   keep = value === secret[category];
   console.log("value:" + value);
   console.log("Secret: " + secret[category]);
   } else if (category === "accessories" || category === "other") {
-    keep = secret[category].includes(value);
+  keep = secret[category].includes(value);
   }
 
 //Invoke filterCharacters 
   filterCharacters(keep);
  };
 
-// filter characters and redraw the board
+// Filter characters and redraw the board
 const filterCharacters = (keep) => {
   console.log("keep: " + keep);
-}
+
 const { category, value } = currentQuestion;
   
 // Showing the correct alert message for different categories.
   if (category === "accessories") {
-    if (keep) {
+  if (keep) {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
       alert(
-        `Yes! The person wears ${value} Keep all people that wears ${value}`
+        `Yes! The person wears ${value}. Keep all people that wears ${value}.`
       );
     } else {
       charactersInPlay = charactersInPlay.filter(
-        (person) => ! person[category].includes(value)
+      (person) => ! person[category].includes(value)
       );
       alert(
-        `No, the person doesn't wear ${value} Remove all people that wears ${value}`
+        `Nope, the person doesn't wear ${value}. Remove all people that wears ${value}`
       );
     }
   } else if (category === "other") {
@@ -313,7 +307,7 @@ const { category, value } = currentQuestion;
         person[category].includes(value)
       );
       alert(
-        `Yes! The person is a ${value}  Keep all people that are ${value}'s`
+        `Yes! The person is a ${value}. Keep all people that are ${value}'s`
       );
 
     } else {
@@ -343,7 +337,7 @@ const { category, value } = currentQuestion;
   } else if (category === "beard") {
     if (keep) {
       charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] === value
+       (person) => person[category] === value
       );
       alert(
         `Yes! The person has ${value} a beard.  Keep all people that have ${value} beard.`
@@ -374,7 +368,7 @@ const { category, value } = currentQuestion;
     }
   }
   generateBoard(keep);
-
+}
 // When clicking guess, the player first have to confirm that they want to make a guess.
 
 const guess = (personToCheck) => {

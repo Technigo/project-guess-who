@@ -23,6 +23,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
+    beard: 'brown',
     accessories: ['hat', 'parrot'],
     other: []
   },
@@ -31,6 +32,7 @@ const CHARACTERS = [
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
+    beard: 'grey',
     accessories: ['hat'],
     other: ['smoker']
   },
@@ -112,6 +114,7 @@ const CHARACTERS = [
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
+    beard: 'orange',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
@@ -192,6 +195,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
+    beard: 'black',
     accessories: [],
     other: []
   },
@@ -272,7 +276,7 @@ const checkQuestion = () => {
 // If the current question is based on the hair or eye category, the values are strings and we can use the following conditional.
 // Here we are saying if the category is hair/eyes AND the secret value matches the current value, we can use the filter method and return true
 // If the current question is in the accessories or other category, their values are stored in arrays, so have to be handled differently: 
-if (currentQuestion.category === 'hair' || currentQuestion.category === 'eyes') {
+if (currentQuestion.category === 'hair' || currentQuestion.category === 'eyes'|| currentQuestion.category === 'beard') {
     if (secret[currentQuestion.category] === currentQuestion.value){
       filterCharacters(true)
     }else {
@@ -328,7 +332,19 @@ const filterCharacters = (keep) => {
         `No, the person does not have ${value} hair. Remove all people with ${value} hair.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-    }
+    }  
+    } else if (category === 'beard'){
+      if (keep) {
+        alert(
+        ` Yes, the person has a ${value} beard. Keep all people with a ${value} beard`
+        );
+        charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      } else {
+        alert(
+          `No, the person does not have a ${value} beard. Remove all people with a ${value} beard.`
+        );
+        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      }
   } else {
     if (keep){
       alert(

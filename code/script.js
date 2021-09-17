@@ -225,7 +225,6 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  board.style.display = "flex";
   charactersInPlay = CHARACTERS;
 
   generateBoard();
@@ -369,6 +368,7 @@ const checkMyGuess = (personToCheck) => {
   }
   winOrLose.style.display = "flex";
   board.style.display = "none";
+  filter.style.display = "none";
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -387,4 +387,5 @@ questions.addEventListener("change", selectQuestion);
 playAgainButton.addEventListener("click", () => {
   start();
   winOrLose.style.display = "none";
+  board.style.display = "flex";
 });

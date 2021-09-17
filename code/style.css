@@ -24,6 +24,10 @@ h3 {
   color: white;
 }
 
+p {
+  color: white;
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;

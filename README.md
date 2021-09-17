@@ -10,3 +10,5 @@ In the beginning it was also hard to fully understand the parameters and values 
 New methods as fdilter() and confirm() was used.
 
 ## View it live
+
+project-guesswho-aspen.netlify.app

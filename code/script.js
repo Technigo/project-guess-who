@@ -236,7 +236,7 @@ const start = () => {
   generateBoard();
   setSecret();
   winOrLose.style.display = "none";
-  console.log(secret); //REMOVE
+  console.log(secret); //R E M O V E
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -259,18 +259,14 @@ const checkQuestion = () => {
 
   if (category === "hair" || category === "eyes") {
     if (secret[category] === value) {
-      console.log("Yes that is correct");
       filterCharacters(true);
     } else {
-      console.log("no, that didnt match");
       filterCharacters(false);
     }
   } else if (category === "accessories" || category === "other") {
     if (secret[category].includes(value)) {
-      console.log("Yes that is correct");
       filterCharacters(true);
     } else {
-      console.log("no, that didnt match");
       filterCharacters(false);
     }
   }
@@ -339,20 +335,27 @@ const guess = (personToConfirm) => {
     checkMyGuess(personToConfirm);
   }
 };
+const playSoundEffect = (audiofile) => {
+  const audio = new Audio(audiofile);
+  audio.play();
+};
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alert("YAY, you win!");
-    winOrLose.style.display = "block";
+    //winOrLose.style.display = "block";
     winText.style.display = "block";
     loseText.style.display = "none";
+    playSoundEffect("assets/win-sound-effect.mp3");
   } else {
     alert("Nooooooooooooo....");
-    winOrLose.style.display = "block";
+    //winOrLose.style.display = "block";
     loseText.style.display = "block";
     winText.style.display = "none";
+    playSoundEffect("assets/lose-sound-effect.mp3");
   }
+  winOrLose.style.display = "block";
 };
 
 // Invokes the start function when website is loaded
@@ -363,3 +366,12 @@ restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion); //Eventlistener when user selects attributes in the drop down list
 filterButton.addEventListener("click", checkQuestion);
 playAgain.addEventListener("click", start);
+
+//Starting with counter
+// let count = 0;
+// const disp = document.getElementById("counterDisplay");
+
+// const clickCounter = () => {
+//   count++;
+//   disp.innerHTML = count;
+// };

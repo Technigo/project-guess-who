@@ -12,34 +12,34 @@
   </head>
   <body>
     <aside class="question-section">
-      <button id="restart" class="outlined-button">RESTART</button>
+      <button id="restart" class="filled-button end">RESTART</button>
 
       <img
         class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
+        src="./images/mushroom_logo.png"
+        alt="Guess Mushr-whom?"
       />
 
       <h1>Welcome to the forest. You have found a mushroom but don't know what it is. Ask some questions about it to see if you can identify it. Good luck!</h1>
 
       <select id="questions">
-        <option value="disabled">Please choose an question to ask</option>
-        <optgroup data-category = "sporeDispersal" label="gills/pores/teeth">
+        <option value="disabled">Choose a mushroom characteristic:</option>
+        <optgroup data-category = "sporeDispersal" label="Does it have">
           <option value="primative gills">Primative Gills</option>
           <option value="gills">Gills</option>
           <option value="pores">Pores</option>
           <option value="teeth">Teeth</option>
-          <option value="none">None</option>
+          <option value="none of these">None</option>
         </optgroup>
-        <optgroup data-category="growsOnTrees" label="grow on trees?">
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        <optgroup data-category="poisonousOrEdible" label="poisonous or edible?">
+        <optgroup data-category="growsOnTrees" label="Where does it grow?">
+          <option value="on a tree">On a tree</option>
+          <option value="in the ground">In the ground</option>
+        <optgroup data-category="poisonousOrEdible" label="Edibility">
           <option value="poisonous">Poisonous</option>
-          <option value="not edible">Not edible</option>
+          <option value="inedible">Inedible</option>
           <option value="edible">Edible</option>
         </optgroup>
-        <optgroup data-category ="capOrBracketProperties" label="cap (or bracket) characteristics">
+        <optgroup data-category ="capOrBracketProperties" label="Cap (or bracket) colour and shape">
           <option value="yellow">yellow</option>
           <option value="brown">brown</option>
           <option value="white">white</option>
@@ -49,7 +49,7 @@
           <option value="grey">grey</option>
           <option value="cream">cream</option>
           <option value="red">red</option>
-          <option value="funnel">funnel</option>
+          <option value="a funnel">funnel</option>
           <option value="conical">conical</option>
           <option value="depressed">depressed</option>
           <option value="flat">flat</option>
@@ -58,16 +58,16 @@
           <option value="hoof-shaped">hoof-shaped</option>
           <option value="round">round</option>
         </optgroup>
-        <optgroup data-category="stalkProperties" label="stalk characteristics">
+        <optgroup data-category="stalkProperties" label="Characteristics of the stalk">
           <option value="white">white</option>
           <option value="yellow">yellow</option>
           <option value="cream">cream</option>
           <option value="brown">brown</option>
           <option value="orange">orange</option>
-          <option value="'black/brown speckles'">black/brown speckles</option>
+          <option value="black/brown speckles">black/brown speckles</option>
           <option value="bare">bare</option>
-          <option value="ring">ring</option>
-          <option value="volva (foot)">volva (foot)</option>
+          <option value="a ring">has a ring</option>
+          <option value="a volva (foot)">has a volva (foot)</option>
         </optgroup>
       </select>
 

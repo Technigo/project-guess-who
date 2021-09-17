@@ -13,9 +13,9 @@ const MUSHROOMS = [
     name: 'Chanterelle',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/2007-07-14_Cantharellus_cibarius_Detail.jpg/440px-2007-07-14_Cantharellus_cibarius_Detail.jpg',
     sporeDispersal: 'primative gills',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'edible',
-    capOrBracketProperties: ['yellow', 'funnel'],
+    capOrBracketProperties: ['yellow', 'a funnel'],
     stalkProperties: ['bare'],
     swedishName: 'Kantarell',
     latinName: 'Cantharellus cibarius'
@@ -24,9 +24,9 @@ const MUSHROOMS = [
     name: 'Trumpet Chanterelle',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Craterellus_tubaeformis_LC0374.jpg/440px-Craterellus_tubaeformis_LC0374.jpg',
     sporeDispersal: 'primative gills',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'edible',
-    capOrBracketProperties: ['brown', 'funnel'],
+    capOrBracketProperties: ['brown', 'a funnel'],
     stalkProperties: ['yellow', 'bare'],
     swedishName: 'Tratt Kantarell',
     latinName: 'Cantharellus tubaeformis'
@@ -35,10 +35,10 @@ const MUSHROOMS = [
     name: 'Shaggy Inkcap',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Coprinus_comatus_G4.JPG/440px-Coprinus_comatus_G4.JPG',
     sporeDispersal: 'gills',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['white', 'conical'],
-    stalkProperties: ['white', 'ring'],
+    stalkProperties: ['white', 'a ring'],
     swedishName: 'Fjällig bläcksvamp',
     latinName: 'Coprinus comatus'
   },
@@ -46,7 +46,7 @@ const MUSHROOMS = [
     name: 'Saffron Milkcap',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Lactarius_deliciosus.jpg/440px-Lactarius_deliciosus.jpg',
     sporeDispersal: 'gills',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['orange', 'depressed'],
     stalkProperties: ['orange', 'bare'],
@@ -57,7 +57,7 @@ const MUSHROOMS = [
     name: 'Charcoal Burner',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Russula_cyanoxantha.JPG/440px-Russula_cyanoxantha.JPG',
     sporeDispersal: 'gills',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['purple', 'green', 'brown', 'flat', 'convex'],
     stalkProperties: ['white', 'bare'],
@@ -68,7 +68,7 @@ const MUSHROOMS = [
     name: 'Oyster',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Pleurotus_ostreatus_JPG7.jpg/470px-Pleurotus_ostreatus_JPG7.jpg',
     sporeDispersal: 'gills',
-    growsOnTrees: 'yes',
+    growsOnTrees: 'on a tree',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['grey', 'cream', 'brown', 'offset'],
     stalkProperties: ['white'],
@@ -79,7 +79,7 @@ const MUSHROOMS = [
     name: 'The Sickener',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Russula_emetica_in_Poland.jpg/440px-Russula_emetica_in_Poland.jpg',
     sporeDispersal: 'gills',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'poisonous',
     capOrBracketProperties: ['red', 'convex', 'flat'],
     stalkProperties: ['white', 'bare'],
@@ -90,10 +90,10 @@ const MUSHROOMS = [
     name: 'Fly Agaric',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Amanita_muscaria_3_vliegenzwammen_op_rij.jpg/440px-Amanita_muscaria_3_vliegenzwammen_op_rij.jpg',
     sporeDispersal: 'gills',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'poisonous',
     capOrBracketProperties: ['red', 'white', 'convex', 'flat'],
-    stalkProperties: ['white', 'ring', 'volva (foot)'],
+    stalkProperties: ['white', 'a ring', 'a volva (foot)'],
     swedishName: 'Röd flugsvamp',
     latinName: 'Amanita muscaria'
   },
@@ -101,10 +101,10 @@ const MUSHROOMS = [
     name: 'Deathcap',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Amanita_phalloides_1.JPG/440px-Amanita_phalloides_1.JPG',
     sporeDispersal: 'gills',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'poisonous',
     capOrBracketProperties: ['green', 'convex', 'flat'],
-    stalkProperties: ['white', 'ring', 'volva (foot)'],
+    stalkProperties: ['white', 'a ring', 'a volva (foot)'],
     swedishName: 'Lömsk flugsvamp',
     latinName: 'Amanita phalloides'
   },
@@ -112,18 +112,18 @@ const MUSHROOMS = [
     name: 'Destroying Angel',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Destroying_Angel.jpg/440px-Destroying_Angel.jpg',
     sporeDispersal: 'gills',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'poisonous',
     capOrBracketProperties: ['white', 'convex', 'flat'],
-    stalkProperties: ['white', 'ring', 'volva (foot)'],
+    stalkProperties: ['white', 'a ring', 'a volva (foot)'],
     swedishName: 'Vit flugsvamp',
     latinName: 'Amanita virosa'
   },
   {
     name: 'Jelly Ear',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Auricularia_auricula-judae_64485.JPG/470px-Auricularia_auricula-judae_64485.JPG',
-    sporeDispersal: 'none',
-    growsOnTrees: 'yes',
+    sporeDispersal: 'none of these',
+    growsOnTrees: 'on a tree',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['orange', 'cream', 'brown'],
     stalkProperties: [],
@@ -133,9 +133,9 @@ const MUSHROOMS = [
   {
     name: 'Yellow Stagshorn',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Cviscosa_wiki.jpg/440px-Cviscosa_wiki.jpg',
-    sporeDispersal: 'none',
-    growsOnTrees: 'yes',
-    poisonousOrEdible: 'not edible',
+    sporeDispersal: 'none of these',
+    growsOnTrees: 'on a tree',
+    poisonousOrEdible: 'inedible',
     capOrBracketProperties: ['yellow'],
     stalkProperties: [],
     swedishName: 'Gullhorn',
@@ -145,7 +145,7 @@ const MUSHROOMS = [
     name: 'Velvet Bolete',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Suill.var.jpg/440px-Suill.var.jpg',
     sporeDispersal: 'pores',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['yellow', 'cream', 'convex'],
     stalkProperties: ['yellow', 'bare'],
@@ -156,7 +156,7 @@ const MUSHROOMS = [
     name: 'Orange Birch Bolette',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Spinus-orange-birch-bolete-2014-10-n014756-w.jpg/440px-Spinus-orange-birch-bolete-2014-10-n014756-w.jpg',
     sporeDispersal: 'pores',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['orange', 'red', 'convex'],
     stalkProperties: ['white', 'black/brown speckles'],
@@ -167,7 +167,7 @@ const MUSHROOMS = [
     name: 'Dryads Saddle',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Polyporus_squamosus_Molter.jpg/470px-Polyporus_squamosus_Molter.jpg',
     sporeDispersal: 'pores',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['cream', 'yellow', 'depressed', 'offset'],
     stalkProperties: ['bare'],
@@ -178,7 +178,7 @@ const MUSHROOMS = [
     name: 'Chicken of the woods',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Laetiporus_sulphureus_JPG01.jpg/470px-Laetiporus_sulphureus_JPG01.jpg',
     sporeDispersal: 'pores',
-    growsOnTrees: 'yes',
+    growsOnTrees: 'on a tree',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['yellow', 'flat'],
     stalkProperties: [],
@@ -189,8 +189,8 @@ const MUSHROOMS = [
     name: 'Birch Polypore',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Piptoporus_betulinus_55.jpg/440px-Piptoporus_betulinus_55.jpg',
     sporeDispersal: 'pores',
-    growsOnTrees: 'yes',
-    poisonousOrEdible: 'not edible',
+    growsOnTrees: 'on a tree',
+    poisonousOrEdible: 'inedible',
     capOrBracketProperties: ['grey', 'brown', 'hoof-shaped'],
     stalkProperties: [],
     swedishName: 'Björkticka',
@@ -200,29 +200,29 @@ const MUSHROOMS = [
     name: 'Tinder fungus',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Fomes_fomentarius_2010_G2.jpg/440px-Fomes_fomentarius_2010_G2.jpg',
     sporeDispersal: 'pores',
-    growsOnTrees: 'yes',
-    poisonousOrEdible: 'not edible',
+    growsOnTrees: 'on a tree',
+    poisonousOrEdible: 'inedible',
     capOrBracketProperties: ['grey', 'hoof-shaped'],
     stalkProperties: [],
     swedishName: 'Fnöskticka',
     latinName: 'Fomes fomentarius'
   },
-  {
-    name: 'Giant puffball',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Giant_Puffball.jpg/400px-Giant_Puffball.jpg',
-    sporeDispersal: 'puffs',
-    growsOnTrees: 'no',
-    poisonousOrEdible: 'edible',
-    capOrBracketProperties: ['white', 'round'],
-    stalkProperties: ['white'],
-    swedishName: 'Jätteröksvamp',
-    latinName: 'Calvatia gigantea'
-  },
+  // {
+  //   name: 'Giant puffball',
+  //   img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Giant_Puffball.jpg/400px-Giant_Puffball.jpg',
+  //   sporeDispersal: 'puffs',
+  //   growsOnTrees: 'in the ground',
+  //   poisonousOrEdible: 'edible',
+  //   capOrBracketProperties: ['white', 'round'],
+  //   stalkProperties: ['white'],
+  //   swedishName: 'Jätteröksvamp',
+  //   latinName: 'Calvatia gigantea'
+  // },
   {
     name: 'Common puffball',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Single_lycoperdon_perlatum.jpg/468px-Single_lycoperdon_perlatum.jpg',
     sporeDispersal: 'puffs',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['white', 'round'],
     stalkProperties: ['white'],
@@ -233,7 +233,7 @@ const MUSHROOMS = [
     name: 'Wood Hedgehog',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Hedgehog_fungi2.jpg/440px-Hedgehog_fungi2.jpg',
     sporeDispersal: 'teeth',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['orange', 'yellow', 'depressed'],
     stalkProperties: ['white', 'bare'],
@@ -244,7 +244,7 @@ const MUSHROOMS = [
     name: 'Scaly Tooth',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Habichtspilz-Sarcodon-imbricatus.jpg/468px-Habichtspilz-Sarcodon-imbricatus.jpg',
     sporeDispersal: 'teeth',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['brown', 'depressed', 'flat'],
     stalkProperties: ['brown', 'white', 'bare'],
@@ -255,7 +255,7 @@ const MUSHROOMS = [
     name: 'Lions Mane',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Igelstachelbart_Nov_06.jpg/440px-Igelstachelbart_Nov_06.jpg',
     sporeDispersal: 'teeth',
-    growsOnTrees: 'yes',
+    growsOnTrees: 'on a tree',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['white', 'cream'],
     stalkProperties: ['white', 'cream'],
@@ -266,13 +266,24 @@ const MUSHROOMS = [
     name: 'Common Earthball',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Scleroderma_citrinum.jpg/400px-Scleroderma_citrinum.jpg',
     sporeDispersal: 'puffs',
-    growsOnTrees: 'no',
+    growsOnTrees: 'in the ground',
     poisonousOrEdible: 'poisonous',
-    capOrBracketProperties: ['white', 'cream'],
+    capOrBracketProperties: ['white', 'cream', 'round'],
     stalkProperties: ['white', 'cream'],
     swedishName: 'Gul rottryffel',
     latinName: 'Scleroderma citrinum'
   },
+  {
+    name: 'Penny Bun',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Boletus_edulis_EtgHollande_041031_091.jpg/440px-Boletus_edulis_EtgHollande_041031_091.jpg',
+    sporeDispersal: 'pores',
+    growsOnTrees: 'in the ground',
+    poisonousOrEdible: 'edible',
+    capOrBracketProperties: ['brown', 'convex'],
+    stalkProperties: ['brown', 'cream', 'bare'],
+    swedishName: 'Karljohanssvamp',
+    latinName: 'Boletus edulis'
+  }
 ]
 
 // Global variables
@@ -352,12 +363,46 @@ const alertUserOfAnswer = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
     if (keep) {
-      alert(
-        `Yes, the person has ${value} ${category}! Keep all the people with ${value} ${category}`
-      );
+      if (category === 'sporeDispersal'){
+        alert(
+        `Yes, the mushroom has ${value}! Keep all the mushrooms with ${value}`
+      )}
+      else if (category === 'growsOnTrees') {
+        alert(
+          `Yes, the mushroom grows ${value}! Keep all the mushrooms that grow ${value}`
+        )}
+      else if (category === 'poisonousOrEdible') {
+        alert(
+          `Yes, the mushroom is ${value}! Keep all the mushrooms that are ${value}`
+        )}
+      else if (category === 'capOrBracketProperties'){
+        alert(
+          `Yes, the cap can be ${value}! Keep all the mushrooms with caps that can be ${value}`
+        )}
+      else if (category === 'stalkProperties'){
+        alert(
+          `Yes, the stalk can be/has ${value}! Keep all the mushrooms that can be/have ${value}`
+        )}
     } else {
-      alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
-      )
+      if (category === 'sporeDispersal'){
+        alert(`No, the mushroom doesn't have ${value}! Remove all mushrooms with ${value}`
+      )}
+      else if (category === 'growsOnTrees') {
+        alert(`No, the mushroom doesn't grow ${value}! Remove all mushrooms that grow ${value}`
+        )
+      }
+      else if (category === 'poisonousOrEdible') {
+        alert(`No, the mushroom isn't ${value}! Remove all mushrooms that are ${value}`
+        )
+      }
+      else if (category === 'capOrBracketProperties'){
+        alert(`No, the cap isn't ${value}! Remove all mushrooms that are ${value}`
+        )
+      }
+      else if (category === 'stalkProperties'){
+        alert(`No, the stalk doesn't have/isn't ${value}! Remove all mushrooms that have/are ${value}`
+        )
+      }
     };
 }
 
@@ -408,7 +453,9 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerHTML = "Oh no! You didn't manage to correctly identify your mushroom today. Don't eat it! And don't worry, there's always next time!"
   };
   // 3. Show the win or lose section
-  winOrLoseSection.classList.toggle('display');
+  winOrLoseSection.style.display = 'flex';
+
+
 
   // 4. Hide the game board
 };
@@ -421,6 +468,6 @@ restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutBtn.addEventListener('click', checkQuestion);
 playAgainBtn.addEventListener('click', () => {
-  winOrLoseSection.classList.toggle('display');
+   winOrLoseSection.style.display = 'none';
   start()
 });

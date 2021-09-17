@@ -12,200 +12,239 @@ const playerValue = document.getElementById('playername')
 // add DOM-selector for audio, and then write audio.play() where you want to find it
 
 // Array with all the characters, as objects
+// const CHARACTERS = [
+//   {
+//     name: 'Jabala',
+//     img: 'images/jabala.svg',
+//     hair: 'hidden',
+//     eyes: 'hidden',
+//     accessories: ['glasses', 'hat'],
+//     other: []
+//   },
+//   {
+//     name: 'Jack',
+//     img: 'images/jack.svg',
+//     hair: 'hidden',
+//     eyes: 'blue',
+//     accessories: ['hat'],
+//     other: []
+//   },
+//   {
+//     name: 'Jacques',
+//     img: 'images/jacques.svg',
+//     hair: 'grey',
+//     eyes: 'blue',
+//     accessories: ['hat'],
+//     other: ['smoker', 'beard']
+//   },
+//   {
+//     name: 'Jai',
+//     img: 'images/jai.svg',
+//     hair: 'black',
+//     eyes: 'brown',
+//     accessories: [],
+//     other: []
+//   },
+//   {
+//     name: 'Jake',
+//     img: 'images/jake.svg',
+//     hair: 'yellow',
+//     eyes: 'green',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'James',
+//     img: 'images/james.svg',
+//     hair: 'brown',
+//     eyes: 'green',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jana',
+//     img: 'images/jana.svg',
+//     hair: 'black',
+//     eyes: 'hidden',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jane',
+//     img: 'images/jane.svg',
+//     hair: 'yellow',
+//     eyes: 'hidden',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jaqueline',
+//     img: 'images/jaqueline.svg',
+//     hair: 'orange',
+//     eyes: 'green',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+
+//   {
+//     name: 'Jazebelle',
+//     img: 'images/jazebelle.svg',
+//     hair: 'purple',
+//     eyes: 'hidden',
+//     accessories: ['glasses'],
+//     other: ['smoker']
+//   },
+//   {
+//     name: 'Jean',
+//     img: 'images/jean.svg',
+//     hair: 'brown',
+//     eyes: 'blue',
+//     accessories: ['glasses', 'hat'],
+//     other: ['smoker']
+//   },
+//   {
+//     name: 'Jeane',
+//     img: 'images/jeane.svg',
+//     hair: 'brown',
+//     eyes: 'green',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jed',
+//     img: 'images/jed.svg',
+//     hair: 'orange',
+//     eyes: 'green',
+//     accessories: ['glasses', 'hat'],
+//     other: ['smoker']
+//   },
+//   {
+//     name: 'Jenni',
+//     img: 'images/jenni.svg',
+//     hair: 'white',
+//     eyes: 'hidden',
+//     accessories: ['hat'],
+//     other: []
+//   },
+//   {
+//     name: 'Jeri',
+//     img: 'images/jeri.svg',
+//     hair: 'orange',
+//     eyes: 'green',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jerry',
+//     img: 'images/jerry.svg',
+//     hair: 'hidden',
+//     eyes: 'blue',
+//     accessories: ['hat'],
+//     other: []
+//   },
+//   {
+//     name: 'Jess',
+//     img: 'images/jess.svg',
+//     hair: 'black',
+//     eyes: 'blue',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jocelyn',
+//     img: 'images/jocelyn.svg',
+//     hair: 'black',
+//     eyes: 'brown',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jon',
+//     img: 'images/jon.svg',
+//     hair: 'brown',
+//     eyes: 'green',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jordan',
+//     img: 'images/jordan.svg',
+//     hair: 'yellow',
+//     eyes: 'hidden',
+//     accessories: ['glasses', 'hat'],
+//     other: []
+//   },
+//   {
+//     name: 'Josephine',
+//     img: 'images/josephine.svg',
+//     hair: 'grey',
+//     eyes: 'brown',
+//     accessories: [],
+//     other: []
+//   },
+//   {
+//     name: 'Josh',
+//     img: 'images/josh.svg',
+//     hair: 'yellow',
+//     eyes: 'green',
+//     accessories: [],
+//     other: []
+//   },
+//   {
+//     name: 'Jude',
+//     img: 'images/jude.svg',
+//     hair: 'black',
+//     eyes: 'green',
+//     accessories: [],
+//     other: []
+//   },
+//   {
+//     name: 'Julie',
+//     img: 'images/julie.svg',
+//     hair: 'black',
+//     eyes: 'brown',
+//     accessories: ['glasses', 'hat'],
+//     other: []
+//   },
+// ]
+
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
+    name: 'Ahsoka',
+    img: 'images/ahsoka.png',
+    hair: 'blue and white',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    accessories: ['lightsaber'],
+    other: [],
+    species: ['togruta'],
+    mood: ['combat']
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
+    name: 'Chopper',
+    img: 'images/chopper.png',
+    hair: 'none',
+    eyes: 'none',
+    accessories: ['arms'],
+    other: [],
+    species: ['droid'],
+    mood: ['sassy']
+  }
+  // {
+  //   name: 'Jacques',
+  //   img: 'images/jacques.svg',
+  //   hair: 'grey',
+  //   eyes: 'blue',
+  //   accessories: ['hat'],
+  //   other: ['smoker', 'beard']
+  // },
+  // {
+  //   name: 'Jai',
+  //   img: 'images/jai.svg',
+  //   hair: 'black',
+  //   eyes: 'brown',
+  //   accessories: [],
+  //   other: []
+  // },
 ]
 
 // Global variables
@@ -216,6 +255,62 @@ let numberOfQuestions
 let startTime
 let elapsedTime
 
+//add the categories and values from the choosen characters at the beginning of the game
+const generateQuestions = () => {
+  //for every character
+  //save name of property if it does not exist already
+  //save value of property if it does not exist already
+  //add name as category to the optionlist
+  //add value as value to the optionlist, under the correct category and if hair or eyes, add name+category as name
+  let allCharacteristics = {}
+
+  charactersInPlay = CHARACTERS
+
+  charactersInPlay.forEach((person) => {
+    //creates array of keys in object (so for example hair and other)
+    const values = Object.keys(person)
+
+    //for every key in every person, check if it exist as a property in the object allCharacteristics
+    for (let key in person) {
+      if(!allCharacteristics.hasOwnProperty(key)){
+      allCharacteristics[key] = []
+      }
+      if(Array.isArray(person[key])){
+        person[key].forEach((value) => {
+          if(!allCharacteristics[key].includes(value)){
+            allCharacteristics[key].push(value)
+          }
+        })
+      }
+      else{
+        if(!allCharacteristics[key].includes(person[key])){
+          allCharacteristics[key].push(person[key])
+        }
+      }
+    }
+  })
+
+  delete allCharacteristics.name
+  delete allCharacteristics.img
+
+  for (let key in allCharacteristics) {
+    let optionsHTML
+
+    allCharacteristics[key].forEach((value) => {
+      optionsHTML += `
+      <option value="${value}">${value}</option>`
+    })
+    
+    questions.innerHTML += /*html*/` 
+    <optgroup label="${key}">
+      ${optionsHTML}
+    </optgroup>
+    `
+    // questions.appendChild(optgroup)
+    
+
+  }
+}
 
 // Draw the game board
 const generateBoard = () => {
@@ -283,6 +378,7 @@ const validate = () => {
     alert("Name must be filled out");
   }
   else{
+    generateQuestions()
     generatePlayerBoard()
     start()
   }

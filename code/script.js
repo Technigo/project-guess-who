@@ -18,7 +18,7 @@ const CHARACTERS = [
 		img: 'images/jabala.svg',
 		hair: 'hidden',
 		eyes: 'hidden',
-		accessories: ['glasses', 'hat'],
+		accessories: ['sun glasses', 'a hat'],
 		other: [],
 	},
 	{
@@ -26,16 +26,16 @@ const CHARACTERS = [
 		img: 'images/jack.svg',
 		hair: 'hidden',
 		eyes: 'blue',
-		accessories: ['hat'],
-		other: [],
+		accessories: ['a hat'],
+		other: ['a beard', 'a parrot'],
 	},
 	{
 		name: 'Jacques',
 		img: 'images/jacques.svg',
 		hair: 'grey',
 		eyes: 'blue',
-		accessories: ['hat'],
-		other: ['a cigarette'],
+		accessories: ['a hat'],
+		other: ['a smoking pipe'],
 	},
 	{
 		name: 'Jai',
@@ -58,7 +58,7 @@ const CHARACTERS = [
 		img: 'images/james.svg',
 		hair: 'brown',
 		eyes: 'green',
-		accessories: ['glasses'],
+		accessories: ['sun glasses'],
 		other: [],
 	},
 	{
@@ -66,7 +66,7 @@ const CHARACTERS = [
 		img: 'images/jana.svg',
 		hair: 'black',
 		eyes: 'hidden',
-		accessories: ['glasses'],
+		accessories: ['sun glasses'],
 		other: [],
 	},
 	{
@@ -82,7 +82,7 @@ const CHARACTERS = [
 		img: 'images/jaqueline.svg',
 		hair: 'orange',
 		eyes: 'green',
-		accessories: ['glasses'],
+		accessories: ['glasses', 'a necklace'],
 		other: [],
 	},
 
@@ -91,7 +91,7 @@ const CHARACTERS = [
 		img: 'images/jazebelle.svg',
 		hair: 'purple',
 		eyes: 'hidden',
-		accessories: ['glasses'],
+		accessories: ['sun glasses'],
 		other: ['a cigarette'],
 	},
 	{
@@ -99,7 +99,7 @@ const CHARACTERS = [
 		img: 'images/jean.svg',
 		hair: 'brown',
 		eyes: 'blue',
-		accessories: ['glasses', 'hat'],
+		accessories: ['glasses', 'a hat'],
 		other: ['a cigarette'],
 	},
 	{
@@ -115,15 +115,15 @@ const CHARACTERS = [
 		img: 'images/jed.svg',
 		hair: 'orange',
 		eyes: 'green',
-		accessories: ['glasses', 'hat'],
-		other: ['a cigarette'],
+		accessories: ['glasses', 'a hat'],
+		other: ['a cigarette', 'a beard'],
 	},
 	{
 		name: 'Jenni',
 		img: 'images/jenni.svg',
 		hair: 'white',
 		eyes: 'hidden',
-		accessories: ['hat'],
+		accessories: ['a hat'],
 		other: ['a phone'],
 	},
 	{
@@ -139,7 +139,7 @@ const CHARACTERS = [
 		img: 'images/jerry.svg',
 		hair: 'hidden',
 		eyes: 'blue',
-		accessories: ['hat'],
+		accessories: ['a hat'],
 		other: [],
 	},
 	{
@@ -171,7 +171,7 @@ const CHARACTERS = [
 		img: 'images/jordan.svg',
 		hair: 'yellow',
 		eyes: 'hidden',
-		accessories: ['glasses', 'hat'],
+		accessories: ['sun glasses', 'a hat', 'a necklace'],
 		other: [],
 	},
 	{
@@ -203,7 +203,7 @@ const CHARACTERS = [
 		img: 'images/julie.svg',
 		hair: 'black',
 		eyes: 'brown',
-		accessories: ['glasses', 'hat'],
+		accessories: ['glasses', 'a hat'],
 		other: [],
 	},
 ];

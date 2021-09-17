@@ -12,7 +12,7 @@ const CHARACTERS = [
     img: "images/jabala.svg",
     hair: ["hidden"],
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    accessories: ["sunglasses", "hat"],
     other: [],
   },
   {
@@ -52,7 +52,7 @@ const CHARACTERS = [
     img: "images/james.svg",
     hair: ["brown", "beard"],
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["sunglasses"],
     other: [],
   },
   {
@@ -60,7 +60,7 @@ const CHARACTERS = [
     img: "images/jana.svg",
     hair: ["black"],
     eyes: "hidden",
-    accessories: ["glasses", "jewlery"],
+    accessories: ["sunglasses", "jewlery"],
     other: [],
   },
   {
@@ -68,7 +68,7 @@ const CHARACTERS = [
     img: "images/jane.svg",
     hair: ["yellow"],
     eyes: "hidden",
-    accessories: ["glasses"],
+    accessories: ["sunglasses"],
     other: [],
   },
   {
@@ -85,7 +85,7 @@ const CHARACTERS = [
     img: "images/jazebelle.svg",
     hair: ["purple"],
     eyes: "hidden",
-    accessories: ["glasses"],
+    accessories: ["sunglasses"],
     other: ["smoker"],
   },
   {
@@ -165,7 +165,7 @@ const CHARACTERS = [
     img: "images/jordan.svg",
     hair: ["yellow"],
     eyes: "hidden",
-    accessories: ["glasses", "hat", "jewlery"],
+    accessories: ["sunglasses", "hat", "jewlery"],
     other: [],
   },
   {

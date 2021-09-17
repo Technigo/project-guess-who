@@ -12,7 +12,7 @@ I followed the guidance. When the basic logic of the game was working as it shou
 Added sound effects when flipping the cards and when player win or lose.
 Even though I find the sound effect when flipping the cards a bit annoying, it was a good practise.
 I googled a lot about the different array methods and how to use them. Got a few bugs, but could receive help from previously questions on Stack Overflow.
-If I had more time, I would make the page more like my own. Maybe replace all the images and attributes to something else. Or maybe instead of filtrering out the characters by code, I would try to make the user to filter the cards by clicking the ones they want to keep or remove.
+If I had more time, I would make the page more like my own. Maybe replace all the images and attributes to something else. Or maybe instead of filter out the characters by code, I would try to make the user to filter the cards by clicking the ones they want to keep or remove.
 
 ## View it live
 

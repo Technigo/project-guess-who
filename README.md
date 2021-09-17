@@ -1,6 +1,6 @@
 # Project Name
 
-I have made a Guess who game. When the game loads the game picks a secret person and you get to ask the game answers that then filters out people depending on who the secret person is. 
+I have made a Guess who game. When the game loads the game picks a secret person and you get to ask the game questions that then filters out people depending on who the secret person is. 
 
 ## The problem
 

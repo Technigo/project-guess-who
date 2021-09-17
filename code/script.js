@@ -449,7 +449,7 @@ const checkMyGuess = (personToCheck) => {
   }
     
   // 3. Show the win or lose section
-  winOrLoose.style.display = "block"
+  winOrLoose.style.display = "flex"
 
   // 4. Hide the game board
   board.style.display = "none"

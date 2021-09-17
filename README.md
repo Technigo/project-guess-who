@@ -1,13 +1,19 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+This weeks project was about building the classic game "Guess Who" using JavaScript. In this project I did this: 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+- Created and manipulated objects
+- Created and manipulated arrays
+- Used array methods such as `forEach()` and `filter()`
+- Manipulated the DOM using Javascript
+- Structured code in functions
+- Worked with game logic
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started with creating an overview over the starter code. Checking the given elements, functions and so on. Then I went on step by step. 
+If I would have more time, I would work more on the styling and think about better texts to be displayed to the user.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Take a look on my project here: https://nehrwein-guesswho.netlify.app/

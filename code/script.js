@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const secretPerson = document.getElementById('secretPerson')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
+const queastionCounter = document.getElementById('counter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -13,7 +14,7 @@ const CHARACTERS = [
     img: 'images/albin.svg',
     skinColor: 'blue',
     skinTexture: 'spots',
-    attributes: ['twolegs'],
+    attributes: ['stand on two legs'], //Written with space to look good in modul answer window
     other: []
   },
   {
@@ -21,7 +22,7 @@ const CHARACTERS = [
     img: 'images/bonnie.svg',
     skinColor: 'pink',
     skinTexture: 'stripes',
-    attributes: ['twolegs'],
+    attributes: ['stand on two legs'],
     other: []
   },
   {
@@ -37,7 +38,7 @@ const CHARACTERS = [
     img: 'images/dani.svg',
     skinColor: 'blue',
     skinTexture: 'spots',
-    attributes: ['fourlegs'],
+    attributes: ['stand on four legs'],
     other: []
   },
   {
@@ -45,7 +46,7 @@ const CHARACTERS = [
     img: 'images/edward.svg',
     skinColor: 'blue',
     skinTexture: 'plain',
-    attributes: ['fourlegs'],
+    attributes: ['stand on four legs'],
     other: ['horn', 'spikes']
   },
   {
@@ -53,7 +54,7 @@ const CHARACTERS = [
     img: 'images/freyja.svg',
     skinColor: 'pink',
     skinTexture: 'stripes',
-    attributes: ['fourlegs'],
+    attributes: ['stand on four legs'],
     other: []
   },
   {
@@ -61,7 +62,7 @@ const CHARACTERS = [
     img: 'images/george.svg',
     skinColor: 'red',
     skinTexture: 'stripes',
-    attributes: ['fourlegs'],
+    attributes: ['stand on four legs'],
     other: ['fins']
   },
   {
@@ -69,7 +70,7 @@ const CHARACTERS = [
     img: 'images/holly.svg',
     skinColor: 'orange',
     skinTexture: 'spots',
-    attributes: ['twolegs'],
+    attributes: ['tstand on two legs'],
     other: []
   },
   {
@@ -86,7 +87,7 @@ const CHARACTERS = [
     img: 'images/jasmine.svg',
     skinColor: 'yellow',
     skinTexture: 'spots',
-    attributes: ['fourlegs'],
+    attributes: ['stand on four legs'],
     other: ['spikes']
   },
   {
@@ -94,7 +95,7 @@ const CHARACTERS = [
     img: 'images/kurt.svg',
     skinColor: 'green',
     skinTexture: 'spots',
-    attributes: ['twolegs'],
+    attributes: ['stand on two legs'],
     other: ['teeth']
   },
   {
@@ -110,7 +111,7 @@ const CHARACTERS = [
     img: 'images/marcus.svg',
     skinColor: 'green',
     skinTexture: 'spots',
-    attributes: ['fourlegs'],
+    attributes: ['stand on four legs'],
     other: ['horn']
   },
   {
@@ -118,7 +119,7 @@ const CHARACTERS = [
     img: 'images/naomi.svg',
     skinColor: 'pink',
     skinTexture: 'spots',
-    attributes: ['twolegs'],
+    attributes: ['stand on two legs'],
     other: []
   },
   {
@@ -134,7 +135,7 @@ const CHARACTERS = [
     img: 'images/poppy.svg',
     skinColor: 'blue',
     skinTexture: 'stripes',
-    attributes: ['fourlegs'],
+    attributes: ['stand on four legs'],
     other: ['spikes']
   },
   {
@@ -150,7 +151,7 @@ const CHARACTERS = [
     img: 'images/rosie.svg',
     skinColor: 'green',
     skinTexture: 'spots',
-    attributes: ['twolegs'],
+    attributes: ['stand on two legs'],
     other: ['teeth']
   },
   {
@@ -166,7 +167,7 @@ const CHARACTERS = [
     img: 'images/tina.svg',
     skinColor: 'orange',
     skinTexture: 'stripes',
-    attributes: ['twolegs'],
+    attributes: ['stand on two legs'],
     other: ['fins']
   },
   {
@@ -182,15 +183,15 @@ const CHARACTERS = [
     img: 'images/valerie.svg',
     skinColor: 'green',
     skinTexture: 'stripes',
-    attributes: ['fourlegs'],
-    other: []
+    attributes: ['stand on four legs'],
+    other: ['spikes']
   },
   {
     name: 'Walter',
     img: 'images/walter.svg',
     skinColor: 'yellow',
     skinTexture: 'spots',
-    attributes: ['twolegs'],
+    attributes: ['stand'],
     other: []
   },
   {
@@ -198,7 +199,7 @@ const CHARACTERS = [
     img: 'images/yolanda.svg',
     skinColor: 'green',
     skinTexture: 'spots',
-    attributes: ['fourlegs'],
+    attributes: ['stand on four legs'],
     other: ['fins']
   },
 ]
@@ -207,6 +208,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let Counter = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -342,11 +344,11 @@ const filterCharacters = (keep) => {
     arrayPropertyName = 'attributes';
     if (keep) {
       alert(
-        `Yes, the dinosaur have ${value}! Keep all dinosaurs that has ${value}`
+        `Yes, the dinosaur ${value}! Keep all dinosaurs that has ${value}`
       )
     } else {
       alert(
-        `No, the dinosaur doesn't have ${value}! Remove all dinosaurs that has ${value}`
+        `No, the dinosaur doesn't ${value}! Remove all dinosaurs that has ${value}`
       )
     }
   }
@@ -355,7 +357,7 @@ const filterCharacters = (keep) => {
     arrayPropertyName = 'other'
     if (keep) {
       alert(
-        `Yes, the dinosaur have ${value}! Keep all dinosaurs that has ${value}`
+        `Yes, the dinosaur has ${value}! Keep all dinosaurs that has ${value}`
       )
     } else {
       alert(
@@ -392,10 +394,6 @@ const filterCharacters = (keep) => {
 
 
   generateBoard()
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-
 
   // Invoke a function to redraw the board with the remaining people.
 }
@@ -437,5 +435,5 @@ questions.addEventListener("change", selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
 playAgainButton.addEventListener('click',() => {
   start()
-  document.getElementById('winOrLose').style.display='none'; //This line ivokes play again button and draws the board
+  document.getElementById('winOrLose').style.display='none'; //This line invokes play again button and draws the board
 });

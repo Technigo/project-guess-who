@@ -1,6 +1,6 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #289da5;
+  --primary: #277840;
   --secondary:#9ea34e;
 }
 
@@ -11,10 +11,18 @@ body {
   font-family: 'Urbanist', sans-serif;}
 
 h1 {
-  font-size: 48px;
+  font-size: 44px;
   font-weight: 600;
   line-height: 48px;
   margin: 10px 0;
+  color: #277840;
+}
+
+h2 {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 48px;
+  margin: 20px 0;
   color: white;
 }
 
@@ -51,8 +59,8 @@ select {
 }
 
 .game-board {
-  width: 90%;
-  max-width: 882px;
+  width: 100%;
+  max-width: 1100px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -61,10 +69,10 @@ select {
 /****** CARD ******/
 .card {
   width: 160px;
-  height: 185px;
+  height: 160px;
   overflow: hidden;
   border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border-radius: 8px;
   margin: 3px;
   padding-bottom: 6px;
   display: flex;
@@ -76,14 +84,15 @@ select {
 
 .card p {
   text-align: center;
+  color: #277840;
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
 }
 
 .card img {
-  width: 95%;
-  padding-bottom: 5px;
+  width: 90%;
+  padding-bottom: 15px;
 }
 
 .card .guess {
@@ -176,7 +185,8 @@ button {
 
 .win-or-lose img {
   align-self: flex-start;
-  margin-left: 15%;
+  margin-left: 32%;
+  margin-top: 8%;
 }
 
 .win-or-lose h1 {
@@ -231,7 +241,7 @@ button {
 
   .card .guess .filled-button {
     padding: 6px 11px;
-    margin-bottom: 115px;
+    margin-bottom: 7px;
     background: 428e93;
     color: white;
     border: none;

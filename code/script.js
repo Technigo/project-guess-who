@@ -206,6 +206,7 @@ const CHARACTERS = [
 let secret; //random person that is supposed to be guessed
 let currentQuestion; //keep track of current questions
 let charactersInPlay; //list of characters still in play
+let counterValue = 0; //starting value for the counter function
 
 // Draw the game board
 const generateBoard = () => {
@@ -230,13 +231,22 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
+function findOutCounter() {
+  updateDisplay(++counterValue);
+}
+
+function updateDisplay(val) {
+  document.getElementById("counterLabel").innerHTML = val;
+}
+
 // This function to start (and restart) the game
 const start = () => {
+  counterValue = 0;
+  updateDisplay(counterValue);
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
   winOrLose.style.display = "none";
-  console.log(secret); //R E M O V E
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -244,14 +254,13 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const actualValue = questions.value;
 
-  // This variable stores what option group (category) the question belongs to.
   currentQuestion = {
     category: category,
     value: actualValue,
   };
 };
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function will be invoked when you click on 'Find Out' button.
 // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
 // Then invoke filterCharacters
 const checkQuestion = () => {
@@ -293,7 +302,6 @@ const filterCharacters = (keep) => {
       );
     }
   } else if (category === "other") {
-    // Similar to the one above
     if (keep) {
       alert(`Yes, the person is a ${value}! Keep all ${value}s`);
       charactersInPlay = charactersInPlay.filter((person) =>
@@ -327,7 +335,7 @@ const filterCharacters = (keep) => {
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-// If the player wants to guess, invoke the checkMyGuess function.
+// If the player wants to guess, the checkMyGuess function invokes.
 const guess = (personToConfirm) => {
   const playerInteraction = window.confirm("Are you sure you want to guess?");
 
@@ -335,26 +343,27 @@ const guess = (personToConfirm) => {
     checkMyGuess(personToConfirm);
   }
 };
+
+//Function for putting in different sound effect to use for winOrLose section
 const playSoundEffect = (audiofile) => {
   const audio = new Audio(audiofile);
   audio.play();
 };
 
-// If you confirm, this function is invoked
+// If you confirm previouse guess-function, this function is invoked where different text and sound displays depending on if user wins or loses.
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alert("YAY, you win!");
-    //winOrLose.style.display = "block";
-    winText.style.display = "block";
-    loseText.style.display = "none";
+    winOrLoseText.innerHTML = `<h1>HORRAY 🥳</h1> 
+    <h4>Are you on a winning streak?</h4>`;
     playSoundEffect("assets/win-sound-effect.mp3");
   } else {
     alert("Nooooooooooooo....");
-    //winOrLose.style.display = "block";
-    loseText.style.display = "block";
-    winText.style.display = "none";
+    winOrLoseText.innerHTML = `<h1>"Well" done...🙄</h1> 
+    <h4>Dare to play again?</h4>`;
     playSoundEffect("assets/lose-sound-effect.mp3");
   }
+  board.innerHTML = "";
   winOrLose.style.display = "block";
 };
 
@@ -363,15 +372,6 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
-questions.addEventListener("change", selectQuestion); //Eventlistener when user selects attributes in the drop down list
+questions.addEventListener("change", selectQuestion);
 filterButton.addEventListener("click", checkQuestion);
 playAgain.addEventListener("click", start);
-
-//Starting with counter
-// let count = 0;
-// const disp = document.getElementById("counterDisplay");
-
-// const clickCounter = () => {
-//   count++;
-//   disp.innerHTML = count;
-// };

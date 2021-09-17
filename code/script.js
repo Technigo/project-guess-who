@@ -397,7 +397,7 @@ const checkMyGuess = (personToConfirm) => {
           src="${secret.img}"
           alt="${secret.name}"
         />
-        <p>You had ${numberOfGuesses} questions to maked your mind   </p> 
+        <p>You asked ${numberOfGuesses} questions to make your mind   </p> 
       `;
 };
 

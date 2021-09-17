@@ -380,7 +380,7 @@ const checkMyGuess = (personToConfirm) => {
     //win sound will play
     const audio = new Audio("win.mp3");
     audio.play();
-    winOrLoseText.innerHTML = `Yeeeha! You Won!! ${personToConfirm} is the correct person.`;
+    winOrLoseText.innerHTML = `Yeeeha! You Won!! ${personToConfirm} was the right person.`;
   } else {
     //lose sound will play
     const audio = new Audio("loose.mp3");

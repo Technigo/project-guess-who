@@ -4,7 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('filled-button')
-const WinOrLose = document.getElementById('winOrLose')
+const winOrLose = document.getElementById('winOrLose')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -261,12 +261,13 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-let keep
+let keep = false;
   if (category === 'hair' || category === 'eyes') {
     keep = secret[category] === value
   } else if (category === 'accessories' || category === 'other') {
     keep = secret[category].includes(value)
   }
+  console.log(keep)
   filterCharacters(keep)
 }
 
@@ -314,13 +315,13 @@ const filterCharacters = (keep) => {
   // filter by category to keep or remove based on the keep variable.
    
   
-    if (keep && category === 'hair' || category === 'eyes') {
+    if (keep && category === 'hair' || keep && category === 'eyes') {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-    } else if (!keep && category === 'hair' || category === 'eyes') {
+    } else if (!keep && category === 'hair' || keep && category === 'eyes') {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-    } else if (keep && category === 'other' || category === 'accessories') {
+    } else if (keep && category === 'other' || keep && category === 'accessories') {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    } else if (!keep && category === 'other' || category === 'accessories') {
+    } else if (!keep && category === 'other' || keep && category === 'accessories') {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
 

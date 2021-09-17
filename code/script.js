@@ -369,7 +369,7 @@ const filterCharacters = (keep) => {
   if (arrayPropertyName !== '') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((character) => {
-        //expanded the filter to make the code readable for ME and code reviewer
+        //expanded the filter to make the code readable for ME and code reviewer. Code down below does the same thing.
         if (character[arrayPropertyName].includes(value)) { 
           return true;
         }

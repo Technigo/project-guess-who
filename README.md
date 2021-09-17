@@ -1,8 +1,6 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment for this week was to create a Guess Who game where the computer randomly selects a secret person that the user then can ask questions about to try to find out who the secret person is. The user can also guess on a specific person during the game.
 
 ## The problem
 
@@ -10,4 +8,4 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://linneawilhelmsson-week5-guess-who.netlify.app/

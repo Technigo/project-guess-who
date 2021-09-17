@@ -78,7 +78,7 @@ const CHARACTERS = [
     img: "images/jaqueline.svg",
     hair: "orange",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["glasses", "jevellery"],
     other: [],
   },
 
@@ -151,7 +151,7 @@ const CHARACTERS = [
     img: "images/jocelyn.svg",
     hair: "black",
     eyes: "brown",
-    accessories: ["glasses"],
+    accessories: ["glasses", "jevellery"],
     other: [],
   },
   {
@@ -167,7 +167,7 @@ const CHARACTERS = [
     img: "images/jordan.svg",
     hair: "yellow",
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    accessories: ["glasses", "hat", "jevellery"],
     other: [],
   },
   {
@@ -175,7 +175,7 @@ const CHARACTERS = [
     img: "images/josephine.svg",
     hair: "grey",
     eyes: "brown",
-    accessories: [],
+    accessories: ["jevellery"],
     other: [],
   },
   {
@@ -239,15 +239,21 @@ const setSecret = () => {
 
 //! This function to start (and restart) the game
 const start = () => {
-  // TODO Add a loading img or gif
+  // TODO Add a loading img or gif +
+  // TODO Add sound effects +
+  // TODO timer
+
+  board.innerHTML += `
+  <div class= gif-bg>
+  <img src="images/loading.gif" class="loading-gif" alt="loading"/>
+  </div>`;
 
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
-  generateBoard();
+  setTimeout(() => generateBoard(), 1000);
   setSecret();
-  console.log(secret);
-  // setTimeout(selectQuestion, 1000);
+  // console.log(secret);
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -372,8 +378,6 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  console.log(secret.name);
-
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -397,14 +401,19 @@ const checkMyGuess = (personToCheck) => {
   // Check if the personToCheck is the same as the secret person's name
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `
-      <p> You win the game! </p>    
+      <p> You win the game! </p>   
+      <p>The secret person is ${secret.name}!</p>   
+      <p>  👏👏👏  </p> 
     `;
+    let youWinAudio = new Audio("sound/youWin.wav");
+    youWinAudio.play();
   } else {
     winOrLoseText.innerHTML = `
-    <p> You lost!</p>  
-    <p> Our person was ${secret.name}.</p>    
-    <p> Try again!</p>    
+    <p> You lost! 👎🏻 </p>  
+    <p>  ${secret.name} is the person we are looking for. </p>         
     `;
+    let youLostAudio = new Audio("sound/youLost.wav");
+    youLostAudio.play();
   }
 
   playAgainButton.addEventListener("click", () => {

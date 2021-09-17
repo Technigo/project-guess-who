@@ -23,7 +23,7 @@ const CHARACTERS = [
     hair: "hidden",
     eyes: "blue",
     accessories: ["hat"],
-    other: [],
+    other: ["bierded"],
   },
   {
     name: "Jacques",
@@ -31,7 +31,7 @@ const CHARACTERS = [
     hair: "grey",
     eyes: "blue",
     accessories: ["hat"],
-    other: ["smoker"],
+    other: ["smoker", "bierded"],
   },
   {
     name: "Jai",
@@ -112,7 +112,7 @@ const CHARACTERS = [
     hair: "orange",
     eyes: "green",
     accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    other: ["smoker", "bierded"],
   },
   {
     name: "Jenni",
@@ -192,7 +192,7 @@ const CHARACTERS = [
     hair: "black",
     eyes: "green",
     accessories: [],
-    other: [],
+    other: ["bierded"],
   },
   {
     name: "Julie",
@@ -235,12 +235,12 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
+  numberOfGuesses = 0;
   charactersInPlay = CHARACTERS;
   winOrLose.style.display = "none";
   board.style.display = "flex";
   guesses.innerHTML = `
-  <p>You have guessed: ${numberOfGuesses} times</p>
+  <p style="font-size:25px; color:purple;">You have guessed: ${numberOfGuesses} times</p>
   `;
   //pop upp all the characters
   generateBoard();
@@ -263,14 +263,11 @@ const selectQuestion = () => {
   };
 };
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function is checking if the guessings are true or false and filtering the caracters when klicking on the 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   let keep = false;
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
     keep = value === secret[category];
   } else if (category === "accessories" || category === "other") {
@@ -283,10 +280,8 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   numberOfGuesses++;
   guesses.innerHTML = `
-  <p>You have guessed: ${numberOfGuesses} times</p>
+  <p style="font-size:25px; color:purple;">You have guessed: ${numberOfGuesses} times</p>
   `;
-  console.log(numberOfGuesses);
-  console.log(keep);
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
   if (category === "accessories") {
@@ -382,19 +377,21 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToConfirm) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   if (personToConfirm === secret.name) {
+    //win sound will play
     const audio = new Audio("win.mp3");
     audio.play();
-    winOrLoseText.innerHTML = `Yes! ${personToConfirm} is the correct person, you Win!!`;
+    winOrLoseText.innerHTML = `Yeeeha! You Won!! ${personToConfirm} is the correct person.`;
   } else {
+    //lose sound will play
     const audio = new Audio("loose.mp3");
     audio.play();
-    winOrLoseText.innerHTML = `Sorry! You lost, ${secret.name} Was the secret person`;
+    winOrLoseText.innerHTML = `Sorry! You lost, ${secret.name} Was the right person`;
   }
 
   // To hide the board and showe the WinOrLose message
   winOrLose.style.display = "flex";
   board.style.display = "none";
-
+  // adding a img off the secret person in the WinOrLose message
   winOrLoseText.innerHTML += `
         <img
           src="${secret.img}"

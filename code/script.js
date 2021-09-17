@@ -8,6 +8,9 @@ const winOrLoseSection = document.getElementById('winOrLose');
 const playAgainBtn = document.getElementById('playAgain');
 const displaySecret = document.getElementById('secret-mushroom')
 const secretText = document.getElementById('secret-text')
+const guessSpan = document.getElementById('guesses')
+const playButton = document.getElementById('music-on')
+const pauseButton = document.getElementById('music-off')
 
 // Array with all the characters, as objects
 const MUSHROOMS = [
@@ -169,7 +172,7 @@ const MUSHROOMS = [
     name: 'Dryads Saddle',
     img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Polyporus_squamosus_Molter.jpg/470px-Polyporus_squamosus_Molter.jpg',
     sporeDispersal: 'pores',
-    growsOnTrees: 'in the ground',
+    growsOnTrees: 'on a tree',
     poisonousOrEdible: 'edible',
     capOrBracketProperties: ['cream', 'yellow', 'depressed', 'offset'],
     stalkProperties: ['bare'],
@@ -292,6 +295,8 @@ const MUSHROOMS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let numberOfGuesses = 0
+const forestAudio = new Audio('https://bigsoundbank.com/UPLOAD/ogg/0905.ogg');
 
 // Draw the game board
 const generateBoard = () => {
@@ -320,6 +325,9 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = MUSHROOMS
   board.style.display = 'flex';
+  numberOfGuesses = 0
+  guessSpan.innerHTML = `${numberOfGuesses}`
+  forestAudio.play()
   generateBoard()
   setSecret()
   // What else should happen when we start the game?
@@ -453,10 +461,10 @@ const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   if (userHasGuessedCorrectly) {
-    winOrLoseText.innerHTML = `Well Done! You guessed correctly and identified ${secret.name}!`
+    winOrLoseText.innerHTML = `Well Done! You checked ${numberOfGuesses} characteristic(s) and correctly identified this mushroom: ${secret.name}!`
   }
   else {
-    winOrLoseText.innerHTML = `Oh no! You didn't manage to correctly identify your mushroom today so don't eat it! It was ${secret.name}. Click below to take another walk!`
+    winOrLoseText.innerHTML = `Oh no! You checked ${numberOfGuesses} characteristic(s) and didn't manage to correctly identify your mushroom today, so don't eat it! It was ${secret.name}. Click below to take another walk!`
   };
   // 3. Show the win or lose section
   winOrLoseSection.style.display = 'flex';
@@ -473,8 +481,18 @@ start();
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
-findOutBtn.addEventListener('click', checkQuestion);
+findOutBtn.addEventListener('click', () => {
+  checkQuestion()
+  numberOfGuesses +=1
+  guessSpan.innerHTML = `${numberOfGuesses}`
+});
 playAgainBtn.addEventListener('click', () => {
    winOrLoseSection.style.display = 'none';
   start()
 });
+playButton.addEventListener('click', () => {
+  forestAudio.play()
+})
+pauseButton.addEventListener('click', () => {
+  forestAudio.pause()
+})

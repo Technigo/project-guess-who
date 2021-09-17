@@ -12,8 +12,11 @@
   </head>
   <body>
     <aside class="question-section">
-      <button id="restart" class="filled-button end">RESTART</button>
-
+      <div>
+        <button id="restart" class="filled-button end">RESTART</button>
+        <button id="music-on" class="filled-button">Sound On</button>
+        <button id="music-off" class="filled-button">Sound Off</button>
+      </div>
       <img
         class="guess-who-icon"
         src="./images/mushroom_logo.png"
@@ -72,6 +75,7 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div class="button counter">No. of guesses: <span id=guesses>0</span></div>
       <p class="credits"><a href="https://icons8.com/icon/6OUwhiZ6iy_O/mushroom">Mushroom icon by Icons8</a></p>
     </aside>
 
@@ -95,7 +99,7 @@
         <h1 id="secret-text"></h1>
         <img id="secret-mushroom" src="" />
       </aside>
-      
+
     </section>
     <script src="script.js"></script>
   </body>

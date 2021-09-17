@@ -33,6 +33,11 @@ h1 {
   box-sizing: border-box;
 }
 
+.counter {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
 select {
   display: block;
   border: none;
@@ -137,7 +142,8 @@ button {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
-  padding: 17px 27px;
+  padding: 8px 12px;
+  margin: 2px;
   cursor: pointer;
 }
 

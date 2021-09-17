@@ -281,6 +281,7 @@ const checkQuestion = () => {
 
   }else if (category === 'element' || category === 'other') {
       let secretValueArray = secret[currentQuestion.category]
+      console.log('inside checkQuestion secret:', secretValueArray)
  
       if (secretValueArray.includes(currentQuestion.value)){
         filterCharacters(true)
@@ -382,29 +383,35 @@ window.confirm(`Do you really want to guess on ${personToConfirm}`)
 // If you confirm, this function is invoked
 
 
-const checkMyGuess = (personToCheck) => {
+const checkMyGuess = (personToCheck) => { 
 
-
+console.log('checkmyguess')
 
   if (secret.name === personToCheck){
 
-    console.log("You are such a star!")
+    
     const winOrLose = document.getElementById('winOrLose')
     winOrLose.style.display ="flex"
+   
+
+    const winOrLoseText = document.getElementById('winOrLoseText')
+    winOrLoseText.innerHTML = `<p>DU ÄR EN STJÄRNA</p>
+    <p> ${personToCheck} var den hemliga pokemonen!<p/>`
+  
 
     const playAgainButton = document.getElementById('playAgain')
     playAgainButton.addEventListener('click', () => {
       winOrLose.style.display = 'none'
       start()
+    
    })
-   
-  
-}else {
-  alert('Oh NOOOO, you have to try again')
+  } else {
+    alert('Oh NOOOO, you have to try again')
 }
 
 
 }
+
 
 // Invokes the start function when website is loaded
 start()

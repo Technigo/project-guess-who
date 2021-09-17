@@ -373,6 +373,7 @@ start();
 // All the event listeners
 restartButton.addEventListener("click", () => {
   start();
+  count = 0;
   clearInterval(timeStart);
   timeStart = setInterval(setTime, 1000);
 });

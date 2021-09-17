@@ -261,7 +261,7 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-let keep = false;
+let keep
   if (category === 'hair' || category === 'eyes') {
     keep = secret[category] === value
   } else if (category === 'accessories' || category === 'other') {
@@ -317,20 +317,24 @@ const filterCharacters = (keep) => {
   
     if (keep && category === 'hair' || keep && category === 'eyes') {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-    } else if (!keep && category === 'hair' || keep && category === 'eyes') {
+    } else if (!keep && category === 'hair' || !keep && category === 'eyes') {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     } else if (keep && category === 'other' || keep && category === 'accessories') {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    } else if (!keep && category === 'other' || keep && category === 'accessories') {
+    } else if (!keep && category === 'other' || !keep && category === 'accessories') {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
 
   // Invoke a function to redraw the board with the remaining people.
-  generateBoard();
+  generateBoard(keep);
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  confirm('Are you sure you want to guess?')
+    if (true) {
+      checkMyGuess()
+    }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.

@@ -245,7 +245,6 @@ const greetPlayer = () => {
   } else {
     alert(`We are ready to play ${person}`);
     greeting.innerHTML = `Player: ${person}`;
-    board.style.display = "flex";
     generateBoard();
   }
 };
@@ -256,12 +255,13 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   winOrLose.style.display = "none";
   // What else should happen when we start the game?
-  setTimeout(greetPlayer, 1300);
-  setSecret();
-  selectQuestion();
-
+  board.style.display = "flex";
   countBox.innerHTML = 0; //When we start the game we set the attempts to 0
   count = 0; //reseting the counter
+
+  setSecret();
+  selectQuestion();
+  setTimeout(greetPlayer, 1300);
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -381,13 +381,12 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  drumSound.play();
   // store the interaction from the player in a variable.
-
   let guessWho = confirm(`Are you sure?Is it ${personToConfirm}`);
   // const player = confirm(`Are you sure?${personToConfirm}`);
   if (guessWho) {
-    drumSound.play();
-    setTimeout(checkMyGuess, 1500);
+    checkMyGuess(personToConfirm);
   }
   // If the player wants to guess, invoke the checkMyGuess function.
 };

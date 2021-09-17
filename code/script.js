@@ -361,10 +361,12 @@ const checkMyGuess = (personToCheck) => {
     audioWin.play();
     winOrLoseText.innerHTML = `Woho, ${personToCheck} is correct! 🌟`;
     winOrLose.style.display = "flex";
+    board.style.display = "none";
   } else {
     audioLost.play();
     winOrLoseText.innerHTML = `Nooo, ${personToCheck} is not correct! 👎`;
     winOrLose.style.display = "flex";
+    board.style.display = "none";
   }
   winOrLose.style.display = "flex";
   // 1. Check if the personToCheck is the same as the secret person's name

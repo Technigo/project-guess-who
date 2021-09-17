@@ -180,7 +180,7 @@ const CHARACTERS = [
   {
     name: "Elliot",
     img: "images/thumbnail_20210826_114509.jpg",
-    hair: "gray",
+    hair: "grey",
     eyes: "green",
     accessories: [],
     other: [],

@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks assignment was to create a "guess who" board. The user should be able to guess on a category and the board should filter out all the characters that does not match the secret person.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had a lot of problems with how to write the code and where to begin. I used my team and other teams to help point me in the right direction. I also had to google a lot. I also got help from Jessi in my team to create an icon for my page.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+My project is deployed here: https://keen-hodgkin-97580d.netlify.app/

@@ -279,12 +279,35 @@ button {
   button {
     padding: 8px 16px;
   }
+  .guess-count {
+    margin-left: 1.5rem;
+    font-size: 18px;
+  }
+  .timer {
+    width: 100px;
+    font-size: 18px;
+  }
+  .restart-button {
+    margin-left: 3rem;
+  }
+  .filled-button, .find-out, .restart-button {
+    font-size: 18px;
+  }
   h1 {
     font-size: 24px;
     line-height: 30px;
   }
+  select {
+    font-size: 20px;
+  }
+  option {
+    font-size: 20px;
+  }
   .guess-who-icon {
     width: 51px;
+  }
+  .created-by-logo {
+    display: none;
   }
   .board-wrapper {
     width: 100%;
@@ -292,6 +315,7 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    justify-content: center;
   }
   .card {
     width: 113px;

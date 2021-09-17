@@ -230,12 +230,15 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+
 let gameStartSound = new Audio('sounds/game_opening.mp3')
-gameStartSound.volume = 1
+gameStartSound.volume = 0.5
+
 let gameWinSound = new Audio('sounds/win_sound.mp3')
-gameWinSound.volume = 1
+gameWinSound.volume = 0.5
+
 let gameLoseSound = new Audio('sounds/lose_sound.mp3')
-gameLoseSound.volume = 1
+gameLoseSound.volume = 0.5
 
 // Draw the game board
 const generateBoard = () => {
@@ -261,15 +264,14 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   totalSeconds = 0
   valString = ""
   secondsLabel.innerHTML = ""
   minutesLabel.innerHTML = ""
   countGuess.innerHTML = "Guesses: "
   startGame.style.display = 'flex'
+  boardWrapper.style.display = 'none'
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
   board.onload = generateBoard()
   board.onload = setSecret()
 
@@ -278,16 +280,12 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (selectedValue) => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const value = selectedValue // cant we do it like this instead? does it have to be like ^ 
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
+  const value = selectedValue
 
   currentQuestion = {
     category: category,
     value: value,
   }
-
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -296,9 +294,7 @@ const checkQuestion = () => {
 
   let keep = false
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Compare the currentQuestion details with the secret person details. 
   if (category === 'hair' || category === 'hairstyle') {
     keep = (secret[category] === value)
 
@@ -312,7 +308,6 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categorie
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -351,20 +346,6 @@ const filterCharacters = (keep) => {
     }
   }
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
 }
@@ -372,7 +353,6 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (suspectCharacter) => {
   // store the interaction from the player in a variable.
-  // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
   const confirmGuess = confirm(`Are you sure you want to guess?`)
   if (confirmGuess)
@@ -388,11 +368,8 @@ const checkMyGuess = (suspectCharacter) => {
     winOrLoseText.innerHTML = `Baw, you lose...it was ${secret.name}!`
     gameLoseSound.play()
   }
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
   winOrLose.style.display = 'flex'
+  boardWrapper.style.display = 'none'
 }
 
 // Invokes the start function when website is loaded
@@ -402,11 +379,13 @@ start()
 startGameButton.addEventListener('click', () => {
   start()
   startGame.style.display = 'none'
+  boardWrapper.style.display = 'flex'
   gameStartSound.play()
 })
 restartButton.addEventListener('click', () => {
   start()
   startGame.style.display = 'none'
+  boardWrapper.style.display = 'flex'
 })
 questions.addEventListener('change', (event) => {
   selectQuestion(event.target.value)
@@ -421,6 +400,7 @@ playAgainButton.addEventListener('click', () => {
   start()
   startGame.style.display = 'none'
   winOrLose.style.display = 'none'
+  boardWrapper.style.display = 'flex'
   gameStartSound.play()
 })
 

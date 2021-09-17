@@ -223,7 +223,6 @@ const generateBoard = () => {
         </div>
       </div>
     `
-  
     personToConfirm = person.name
 
   })
@@ -252,15 +251,12 @@ const selectQuestion = () => {
     category: category,
     value: value
   }
-  console.log('inside selectQuestion:', currentQuestion)
- 
   checkQuestion()
 }
 
 const checkQuestion = () => {
   const { category, value} = currentQuestion
-  console.log(category, value)
-  console.log('inside checkQuestion:', currentQuestion)
+  
 
     // Compare the currentQuestion details with the secret person details in a different manner based on category (color/eyes or element/others).
     // See if we should keep or remove people based on that
@@ -268,8 +264,7 @@ const checkQuestion = () => {
   if (category === 'color' || category === 'eyes') {
     
     let secretValue = secret[currentQuestion.category]
-    console.log('inside checkQuestion secret:', secretValue)
-
+    
     if (secretValue === currentQuestion.value){
       filterCharacters(true)
     //EXEMPEL currentQuestion.category = color eller = eyes
@@ -278,11 +273,9 @@ const checkQuestion = () => {
       filterCharacters(false)
     }
       
-
   }else if (category === 'element' || category === 'other') {
       let secretValueArray = secret[currentQuestion.category]
-      console.log('inside checkQuestion secret:', secretValueArray)
- 
+      
       if (secretValueArray.includes(currentQuestion.value)){
         filterCharacters(true)
       } else {
@@ -346,7 +339,6 @@ const filterCharacters = (keep) => {
       } else {
         // or
         charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] !== currentQuestion.value)
-        
       }
       } 
     else if (category === 'element' || category === 'other') {
@@ -385,30 +377,29 @@ window.confirm(`Do you really want to guess on ${personToConfirm}`)
 
 const checkMyGuess = (personToCheck) => { 
 
-console.log('checkmyguess')
-
   if (secret.name === personToCheck){
 
-    
     const winOrLose = document.getElementById('winOrLose')
     winOrLose.style.display ='flex'
-   
 
+    
+   
     const winOrLoseText = document.getElementById('winOrLoseText')
     winOrLoseText.innerHTML = `<p>DU ÄR EN STJÄRNA</p>
     <p> ${personToCheck} var den hemliga pokemonen!<p/>`
-  
 
+    const board = document.getElementById('board')
+    board.style.display ='none'
+  
     const playAgainButton = document.getElementById('playAgain')
     playAgainButton.addEventListener('click', () => {
       winOrLose.style.display = 'none'
-      start()
+    start()
     
    })
   } else {
     alert('ÅH NEEEEEJ, DU FÅR FÖRSÖKA IGEN')
 }
-
 
 }
 

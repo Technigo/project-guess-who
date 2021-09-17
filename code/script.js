@@ -1,10 +1,6 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
-// const questions2 = document.getElementById("questions2");
-// const questions3 = document.getElementById("questions3");
-// const questions4 = document.getElementById("questions4");
-// const questions5 = document.getElementById("questions5");
 const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
 const playAgainButton = document.getElementById("playAgain");
@@ -15,10 +11,37 @@ const startGame = document.getElementById("startGame");
 const gamePlayAudio = document.getElementById("gameplay-audio");
 const introAudio = document.getElementById("intro-audio");
 const gamePlayAudioBtn = document.getElementById("game-play-audio-btn");
-// const minutesLabel = document.getElementById("minutes");
-// const secondsLabel = document.getElementById("seconds");
-// let totalSeconds = 0;
-// setInterval(setTime, 1000);
+const anim = document.getElementById("anim");
+
+// timer from Stackoverflow
+const minutesLabel = document.getElementById("minutes");
+const secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+setInterval(setTime, 1000);
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+function pad(val) {
+  let valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
+//count guess
+const countGuess = document.getElementById("tally");
+let count = 0;
+
+const countUp = () => {
+  count++;
+  countGuess.innerHTML = count;
+  console.log(count);
+};
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -245,19 +268,28 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let charactersNotInPlay;
 
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = "";
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card border-gradient border-gradient-color">
+      <div class="card border-gradient border-gradient-color kept">
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="guess-btn" onclick="guess('${person.name}')">Guess</button>
         </div>
+      </div>
+    `;
+  });
+  charactersNotInPlay.forEach((person) => {
+    board.innerHTML += `
+      <div class="card border-gradient border-gradient-color thrown">
+        <p>${person.name}</p>
+        <img src=${person.img} alt=${person.name}>
       </div>
     `;
   });
@@ -274,26 +306,27 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
+  charactersNotInPlay = "";
   generateBoard();
   setSecret();
   playGameAudio();
+  totalSeconds = 0;
+  valString = "";
+  secondsLabel.innerHTML = "";
+  minutesLabel.innerHTML = "";
+  countGuess.innerHTML = "0";
 
   // What else should happen when we start the game?
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = [
-    questions.options[questions.selectedIndex].parentNode.label,
-    // questions2.options[questions2.selectedIndex].parentNode.label,
-    // questions3.options[questions3.selectedIndex].parentNode.label,
-    // questions4.options[questions4.selectedIndex].parentNode.label,
-    // questions5.options[questions5.selectedIndex].parentNode.label,
-  ];
+  const category = questions.options[questions.selectedIndex].parentNode.label;
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value;
+
   console.log(value);
 
   currentQuestion = {
@@ -333,25 +366,62 @@ const checkQuestion = () => {
   filterCharacters(keep);
 };
 // It'll filter the characters array and redraw the game board.
+
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   console.log(currentQuestion);
+
+  const keepCharStr = () => {
+    charactersInPlay = charactersInPlay.filter(
+      (person) => person[category] === value
+    );
+
+    console.log(charactersInPlay);
+    // rotateCards(charactersInPlay);
+  };
+
+  const removeCharStr = () => {
+    charactersInPlay = charactersInPlay.filter(
+      (person) => person[category] !== value
+    );
+    console.log(charactersInPlay);
+    // rotateCards(charactersInPlay);
+  };
+
+  const removeCharArray = () => {
+    charactersInPlay = charactersInPlay.filter(
+      (person) => !person[category].includes(value)
+    );
+    console.log(charactersInPlay);
+    // rotateCards(charactersInPlay);
+  };
+
+  const keepCharArray = () => {
+    charactersInPlay = charactersInPlay.filter((person) =>
+      person[category].includes(value)
+    );
+    console.log(charactersInPlay);
+    // rotateCards(charactersInPlay);
+  };
+
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
       alert(
         `Yes, the person wears a/an ${value}! Keep all people that wears a/an ${value}`
       );
-      charactersInPlay = charactersInPlay.filter((person) =>
-        person[category].includes(value)
-      );
+      // charactersInPlay = charactersInPlay.filter((person) =>
+      //   person[category].includes(value)
+      // );
+      keepCharArray();
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => !person[category].includes(value)
-      );
+      // charactersInPlay = charactersInPlay.filter(
+      //   (person) => !person[category].includes(value)
+      // );
+      removeCharArray();
     }
   } else if (category === "weapon") {
     // Similar to the one above
@@ -359,53 +429,66 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person likes to use ${value}! Keep all people that likes to use ${value}`
       );
-      charactersInPlay = charactersInPlay.filter((person) =>
-        person[category].includes(value)
-      );
+      // charactersInPlay = charactersInPlay.filter((person) =>
+      //   person[category].includes(value)
+      // );
+      keepCharArray();
     } else {
       alert(
         `No, the person is not likes to use ${value}! Remove all people that likes to use ${value}`
       );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => !person[category].includes(value)
-      );
+      // charactersInPlay = charactersInPlay.filter(
+      //   (person) => !person[category].includes(value)
+      // );
+      removeCharArray();
     }
   } else {
     if (keep) {
       alert(
         `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`
       );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] === value
-      );
+      // charactersInPlay = charactersInPlay.filter(
+      //   (person) => person[category] === value
+      // );
+      keepCharStr();
     } else {
       alert(
         `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
       );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] !== value
-      );
+      // charactersInPlay = charactersInPlay.filter(
+      //   (person) => person[category] !== value
+      // );
+      removeCharStr();
     }
   }
+
+  charactersNotInPlay = charactersInPlay.filter(
+    (person) => person[category] === value
+  );
 
   generateBoard();
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
 
   // Invoke a function to redraw the board with the remaining people.
 };
+
+// animation of cards
+
+// const rotateCards = () => {
+//   const { category, value } = currentQuestion;
+//   console.log(currentQuestion);
+
+// const printName = (char) => {
+//   return char.name;
+// };
+// charactersNotInPlay.forEach(printName);
+// // cards['name'].forEach(
+// // );
+// // console.log(cards.keys());
+//   generateBoard();
+// };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
@@ -472,11 +555,12 @@ restartButton.addEventListener("click", () => {
   gamePlayAudio.currentTime = 0;
 });
 questions.addEventListener("change", selectQuestion);
-// questions2.addEventListener("change", selectQuestion);
-// questions3.addEventListener("change", selectQuestion);
-// questions4.addEventListener("change", selectQuestion);
-// questions5.addEventListener("change", selectQuestion);
-findOutButton.addEventListener("click", checkQuestion);
+
+findOutButton.addEventListener("click", () => {
+  checkQuestion();
+  countUp();
+});
+
 playAgainButton.addEventListener("click", () => {
   start();
   winOrLose.classList.toggle("open");

@@ -14,12 +14,13 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💀</text></svg>"
     />
   </head>
+
   <body>
     <section id="startGame" class="start-game-wrapper">
       <div class="start">
         <img
           class="guess-who-icon-on-cover"
-          src="images/guess-who.png"
+          src="images/guess-who-logo.png"
           alt="Guess Who"
         />
         <h1>halloween edition</h1>
@@ -28,106 +29,117 @@
           <video autoplay muted>
             <source src="images/video.mp4" type="video/mp4" />
           </video>
-          <audio id="intro-audio" controls autoplay>
+          <audio id="intro-audio" controls muted>
             <source src="sound/intro.wav" type="audio/wav" />
           </audio>
         </div>
       </div>
     </section>
 
-    <aside class="question-section">
-      <button id="restart" class="outlined-button">RESTART</button>
+    <div class="game-wrapper bg-image">
+      <div class="overlay"></div>
+      <aside class="question-section">
+        <div class="btn-wrapper">
+          <button id="restart" class="restart">Restart</button>
 
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
+          <button id="game-play-audio-btn" class="game-audio-btn">
+            Sound Off 🔈<audio id="gameplay-audio" loop>
+              <source src="sound/gameplay.wav" type="audio/wav" />
+            </audio>
+          </button>
+        </div>
 
-      <h1>Does the <span class="villain-text">villain</span> have</h1>
+        <div class="time-guess-wrapper">
+          <div class="timer">
+            <div class="time">Time:</div>
+            <label id="minutes">00</label>:<label id="seconds">00</label>
+          </div>
+          <div class="count">
+            <div id="count-guess" class="count-guess">Guesses:</div>
+            <label id="tally" class="tally">0</label>
+          </div>
+        </div>
 
-      <select id="questions">
-        <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="orange">orange hair</option>
-          <option value="black">black hair</option>
-          <option value="hidden">hidden hair</option>
-          <option value="green">green hair</option>
-          <option value="no">no hair</option>
-          <option value="white">white hair</option>
-          <!-- Add the rest of hair colors as options  -->
-        </optgroup>
-      </select>
-      <select id="questions2">
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <option value="brown">brown eyes</option>
-          <option value="blue">blue eyes</option>
-          <option value="no">no eyes</option>
-          <!-- Add the rest of eye colors as options  -->
-        </optgroup>
-      </select>
-      <select id="questions3">
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <option value="hat">hat</option>
-          <option value="dress">dress</option>
-          <option value="long nails">long nails</option>
-          <option value="jumper">jumper</option>
-          <option value="overall">overall</option>
-          <option value="suit">suit</option>
-          <option value="helmet">helmet</option>
-          <option value="mask">mask</option>
-          <option value="cape">cape</option>
-          <option value="ring">ring</option>
-          <option value="bomber jacket">bomber jacket</option>
-          <option value="pins">pins</option>
-          <option value="dress">dress</option>
-          <option value="bike">bike</option>
-          <option value="glasses">glasses</option>
-          <option value="balloon">balloon</option>
-          <option value="armor">armor</option>
-        </optgroup>
-      </select>
-      <select id="questions4">
-        <optgroup label="weapon">
-          <option value="acid spit">acid spit</option>
-          <option value="sharp-teeth">sharp-teeth</option>
-          <option value="knife">knife</option>
-          <option value="axe">axe</option>
-          <option value="light saber">light saber</option>
-          <option value="mind-games">mind-games</option>
-          <option value="razors">razors</option>
-          <option value="guns">guns</option>
-          <option value="super-strength">super-strength</option>
-          <option value="blaster">blaster</option>
-          <option value="falx">falx</option>
-        </optgroup>
-      </select>
-      <select id="questions5">
-        <optgroup label="type">
-          <option value="human">human</option>
-          <option value="extraterrestrial">extraterrestrial</option>
-          <option value="monster">monster</option>
-          <option value="ghost">ghost</option>
-          <option value="AI">AI</option>
-          <option value="demon">demon</option>
-          <option value="haunted doll">haunted doll</option>
-        </optgroup>
-      </select>
-      <!-- Add the other accessory option here. (hat)  -->
+        <img
+          class="guess-who-icon"
+          src="images/guess-who-logo.png"
+          alt="Guess Who"
+        />
 
-      <button id="filter" class="filled-button">FIND OUT</button>
-      <button id="game-play-audio-btn" class="game-audio-btn">
-        Sound Off 🔈<audio id="gameplay-audio" loop>
-          <source src="sound/gameplay.wav" type="audio/wav" />
-        </audio>
-      </button>
-    </aside>
+        <h1 class="game-h1">
+          Does the <span class="villain-text">villain</span> have
+        </h1>
 
-    <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
-    </section>
+        <select id="questions">
+          <optgroup label="hair">
+            <option value="brown">brown hair</option>
+            <option value="orange">orange hair</option>
+            <option value="black">black hair</option>
+            <option value="hidden">hidden hair</option>
+            <option value="green">green hair</option>
+            <option value="no">no hair</option>
+            <option value="white">white hair</option>
+            <!-- Add the rest of hair colors as options  -->
+          </optgroup>
+          <optgroup label="eyes">
+            <option value="hidden">hidden eyes</option>
+            <option value="brown">brown eyes</option>
+            <option value="blue">blue eyes</option>
+            <option value="no">no eyes</option>
+            <!-- Add the rest of eye colors as options  -->
+          </optgroup>
+          <optgroup label="accessories">
+            <option value="glasses">glasses</option>
+            <option value="hat">hat</option>
+            <option value="dress">dress</option>
+            <option value="long nails">long nails</option>
+            <option value="jumper">jumper</option>
+            <option value="overall">overall</option>
+            <option value="suit">suit</option>
+            <option value="helmet">helmet</option>
+            <option value="mask">mask</option>
+            <option value="cape">cape</option>
+            <option value="ring">ring</option>
+            <option value="bomber jacket">bomber jacket</option>
+            <option value="pins">pins</option>
+            <option value="dress">dress</option>
+            <option value="bike">bike</option>
+            <option value="glasses">glasses</option>
+            <option value="balloon">balloon</option>
+            <option value="armor">armor</option>
+          </optgroup>
+          <optgroup label="weapon">
+            <option value="acid spit">acid spit</option>
+            <option value="sharp-teeth">sharp-teeth</option>
+            <option value="knife">knife</option>
+            <option value="axe">axe</option>
+            <option value="light saber">light saber</option>
+            <option value="mind-games">mind-games</option>
+            <option value="razors">razors</option>
+            <option value="guns">guns</option>
+            <option value="super-strength">super-strength</option>
+            <option value="blaster">blaster</option>
+            <option value="falx">falx</option>
+          </optgroup>
+          <optgroup label="type">
+            <option value="human">human</option>
+            <option value="extraterrestrial">extraterrestrial</option>
+            <option value="monster">monster</option>
+            <option value="ghost">ghost</option>
+            <option value="AI">AI</option>
+            <option value="demon">demon</option>
+            <option value="haunted doll">haunted doll</option>
+          </optgroup>
+        </select>
+        <!-- Add the other accessory option here. (hat)  -->
+
+        <button id="filter" class="find-out-btn">FIND OUT</button>
+      </aside>
+
+      <section class="board-wrapper">
+        <main class="game-board" id="board"></main>
+      </section>
+    </div>
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
@@ -140,6 +152,7 @@
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
+
     <script src="script.js"></script>
   </body>
 </html>

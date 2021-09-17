@@ -6,6 +6,10 @@ const findOutButton = document.getElementById('filter')
 const winOrLoose = document.getElementById('winOrLose')
 const winOrLooseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
+const modal = document.getElementById('myModal')
+const modalText = document.getElementById('modal-text')
+// Get the <span> element that closes the modal
+const modalClose = document.getElementsByClassName("close")[0];
 
 
 // Array with all the characters, as objects
@@ -16,7 +20,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     outfit: ['hijab'],
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hijab'],
     other: []
   },
   {
@@ -329,78 +333,63 @@ const checkQuestion = () => {
 // filterCharacters filters the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+
+  modal.style.display = "block";
   // Show the correct alert message for different categories
 
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+ 
   if (category === 'accessories') {
-    if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    if (value === 'glasses') {
+      if (keep) {
+        modalText.innerHTML = `Damn right, the person wears ${value}! Keep all people with ${value}`
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      } else {
+          modalText.innerHTML =  `So sorry, but the person doesn't wear ${value}! Let's remove all people with ${value}` 
+          charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      }
     } else {
-        alert(
-          `No, the person doesn't wear ${value}! Remove all people that wears ${value}` 
-        )
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      if (keep) {
+        modalText.innerHTML = `Yes, the person has a ${value}! Keep all people with a ${value}`
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      } else {
+          modalText.innerHTML =  `No, the person doesn't have a ${value}! Remove all people with a ${value}` 
+          charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      }
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(
-        `Yes, the person is a ${value}! Keep all people that are ${value}s`
-      )
+      modalText.innerHTML = `Yes, the person is a ${value}! Keep all ${value}s`
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
-        alert(
-          `No, the person isn't a ${value}! Remove all people that are ${value}s`
-        )
+        modalText.innerHTML =  `No, the person isn't a ${value}! Better remove the ${value}s`
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       } 
   } else if (category === 'outfit') {
     if (keep) {
-      alert(
-        `Yes, the person is wearing a ${value}! Keep all people that are wearing ${value}s`
-      )
+      modalText.innerHTML = `Yes, the person is wearing a ${value}! Keep all people with a ${value}`
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
-        alert(
-          `No, the person isn't wearing a ${value}! Remove all people that are wearing ${value}s`
-        )
+        modalText.innerHTML =  `No, unfortunately the person isn't wearing a ${value}! Let's remove everyone with a ${value}`
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       } 
   } 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)*/
   
-    else if (category === 'hair') {
+  
+  else if (category === 'hair') {
     if (keep) {
-      alert(`Yes, the person has ${value} hair! Keep all people with ${value} hair`
-      )
+      modalText.innerHTML = `Yes, the person has ${value} hair! Keep all people with ${value} hair`
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
-        alert(`No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
-        )
+      modalText.innerHTML =`No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       }
   } else {
     if (keep) {
-      alert(`Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
-      )
+      modalText.innerHTML =`Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
-        alert(`No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes`
-        )
+      modalText.innerHTML = `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes`
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       }
     }
@@ -415,7 +404,6 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
-  // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
   const confirmed = confirm("Are you sure that you want to guess? This will end the game");
   if (confirmed) {
@@ -425,8 +413,10 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
+  //in case the user hasn't closed the modal by himself, it will be forced closed at this step
+  closeAllModals()
+  // Check if the personToCheck is the same as the secret person's name
+  // Set a Message to show in the win or lose section accordingly
   if (personToCheck === secret.name) {
     //applause if winning
     let audio = document.createElement("audio");
@@ -448,14 +438,20 @@ const checkMyGuess = (personToCheck) => {
     winOrLooseText.innerHTML = `Sorry, you lost! <br>The secret person was ${secret.name}. <br>Wanna try again?`
   }
     
-  // 3. Show the win or lose section
+  // Show the win or lose section
   winOrLoose.style.display = "flex"
 
-  // 4. Hide the game board
+  // Hide the game board
   board.style.display = "none"
 
   console.log(counter)
 }
+
+// Function to close the modal
+const closeAllModals = () => {
+  modal.style.display = "none";
+}
+
 
 // Invokes the start function when website is loaded
 start()
@@ -471,3 +467,7 @@ findOutButton.addEventListener('click', checkQuestion)
 findOutButton.addEventListener('click', countPoints)
 //restarts the game
 playAgainButton.addEventListener('click', start)
+//When the user clicks on <span> (x), close the modal
+modalClose.addEventListener('click', closeAllModals)
+
+

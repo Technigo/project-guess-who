@@ -8,4 +8,4 @@ I followed the steps closely and tried to keep the code as short and clean as po
 
 ## View it live
 
-
+https://guess-who-annathunberg.netlify.app/

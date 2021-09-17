@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgain = document.getElementById('playAgain')
 const counter = document.getElementById('counter')
+const cardFlipSound = document.getElementById("cardFlipSound");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -237,6 +238,10 @@ const questionCounter = () => {
   counter.innerHTML = /*html*/ `Questions asked: ${count}`
 }
 
+const playSound = () => {
+  cardFlipSound.playSound()
+}
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -301,22 +306,22 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      swal(`Yes, the person wears ${text}!`, `All people wearing ${text} have been kept.`)
+      swal(`Yes, the person wears ${text}!`, `All people wearing ${text} has been kept.`)
     } else {
-      swal(`No ${text}!`, `All people that wears ${text} have been removed.`)
+      swal(`No, the person doesn't wear ${text}!`, `All people that wears ${text} has been removed.`)
     }
   } else if (category === 'other') {
     // Similar to the one above
     if (keep) {
-      swal(`Yes, the person has ${text}!`, `All people with ${text} have been kept.`)
+      swal(`Yes, the person has ${text}!`, `All people with ${text} has been kept.`)
     } else {
-      swal(`No ${text}!`, `All people with ${text} have been removed.`)
+      swal(`No, the person haven't got ${text}!`, `All people with ${text} has been removed.`)
     }
   } else {
     if (keep) {
-      swal(`Yes, the person has ${text}!`, `All people with ${text} have been kept.`)
+      swal(`Yes, the person has ${text}!`, `All people with ${text} has been kept.`)
     } else {
-      swal(`No ${text}!`, `All people with ${text} have been removed.`)
+      swal(`No, the person doesn't have ${text}!`, `All people with ${text} has been removed.`)
     }
   }
   // } else {

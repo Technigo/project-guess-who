@@ -1,13 +1,22 @@
-# Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+# Project Guess Who, Week 5
+This week we are building a classic "Guess Who" game and
+digging deaper into JavaScript with objects, arrays and functions.
+Some of the learnings:
+- Create and manipulate objects
+- Create and manipulate arrays
+- Array methods such as `forEach()` and `filter()`
+- More about manipulating the DOM using Javascript
+- How to structure your code in functions
+- How to plan and think about game logic
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I really got stuck and struggled with the filter functions and arrays. First I used true and false and the game worked fine but after wednesday class I wanted to change it into []. Then I only got errors and undifined messeges.. But after talking to one of my fellow Zebras we solved my problems using a code-solution she came up with that also worked for me. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://netlify
+
+Guess Who bubble was made by me in Canva. https://www.canva.com
+
+The Avengers characters is from: https://www.onecreativemommy.com

@@ -1,0 +1,7 @@
+{
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.ChromeDebuggingAttachment": false,
+    "liveServer.settings.fullReload": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

@@ -4,6 +4,9 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
+const gameMusic = document.getElementById('gameMusic')
+const winningSound = document.getElementById('winningSound')
+const losingSound= document.getElementById('losingSound')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -243,6 +246,9 @@ const start = () => {
 
   //Invokes the selectQuestion function
   selectQuestion()
+
+  gameMusic.play()
+  gameMusic.currentTime = 0
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -400,9 +406,13 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     document.getElementById('winOrLoseText').innerHTML="Congratulations! You won! Wanna play again?"
+    gameMusic.pause()
+    winningSound.play()
   }
   else {
     document.getElementById('winOrLoseText').innerHTML="Oh no! Better luck next time! Try again?"
+    gameMusic.pause()
+    losingSound.play()
   }
 
   document.getElementById('winOrLose').style.display='block'
@@ -427,4 +437,8 @@ findOutButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', () => {
   start()
   document.getElementById('winOrLose').style.display='none'
+})
+// To make the music start playing without pressing only the restart button
+findOutButton.addEventListener('click', () => {
+  gameMusic.play()
 })

@@ -46,7 +46,7 @@
 
         </optgroup>
         <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+          <option value="smoke">a smoking habit</option>
         </optgroup>
       </select>
 
@@ -84,6 +84,14 @@
       </div>
     </section>
 
+    <!-- MODAL -->
+    <section id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span> <!--Code for plus sign-->
+        <p id="modal-text"></p>
+      </div>
+    </section>
+
     <!--AUDIO TAGS-->
     <audio id="audio" src="./audio/start-sound.mp3" preload="auto" loop> 
     <audio id="audio-winning" src="./audio/winning-sound.wav" preload="auto" > 
@@ -92,6 +100,11 @@
 
     <!--SCRIPT-->
     <script src="script.js"></script>
-    <script src="/node_modules/confetti-js/dist/index.min.js"></script>
+    <script src="confetti.js"></script> 
+    <script>
+      confetti.start()
+    </script>
+
+
   </body>
 </html>

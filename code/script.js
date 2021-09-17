@@ -1469,7 +1469,7 @@ const checkMyGuess = (championToCheck) => {
   if (championToCheck === secret.name) {
     winOrLoseText.innerHTML = `Congratulations you guessed on the right champion!`;
   } else {
-    winOrLoseText.innerHTML = `Sorry, you guessed wrong!`;
+    winOrLoseText.innerHTML = `Sorry, you guessed wrong. The right champion was ${secret.name}!`;
   }
   winOrLose.classList.add(`active`);
   playSound(`./sound/win.mp3`);

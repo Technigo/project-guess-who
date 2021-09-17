@@ -206,6 +206,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let counter = 1;
 
 // Draw the game board
 const generateBoard = () => {
@@ -234,11 +235,14 @@ let startTime;
 let elapsedTime = 0;
 let timerInterval;
 
-function reset() {
+// A function that resets the timer and then runs the start function
+const reset = () => {
   clearInterval(timerInterval);
   print("00:00:00");
   elapsedTime = 0;
   start();
+  counter = 1; // resets the counter
+  document.getElementById("counter").innerHTML = `This far you have guessed 0 times`; // resets the innerHTML when the reset is run
 }
 
 // This function to start (and restart) the game
@@ -252,17 +256,18 @@ const start = () => {
   startTimer();
 };
 
-function timeToString(time) {
+// Gets the time and converts it into strings
+const timeToString = (time) => {
   let diffInHrs = time / 3600000;
-  let hh = Math.floor(diffInHrs);
+  let hh = Math.floor(diffInHrs); // Hours
 
-  let diffInMin = (diffInHrs - hh) * 60;
+  let diffInMin = (diffInHrs - hh) * 60; // Minutes
   let mm = Math.floor(diffInMin);
 
-  let diffInSec = (diffInMin - mm) * 60;
+  let diffInSec = (diffInMin - mm) * 60; // Seconds
   let ss = Math.floor(diffInSec);
 
-  let diffInMs = (diffInSec - ss) * 100;
+  let diffInMs = (diffInSec - ss) * 100; // Milliseconds
   let ms = Math.floor(diffInMs);
 
   let formattedHH = hh.toString().padStart(2, "0");
@@ -270,14 +275,15 @@ function timeToString(time) {
   let formattedSS = ss.toString().padStart(2, "0");
   let formattedMS = ms.toString().padStart(2, "0");
 
-  return `Time played: ${formattedHH}:${formattedMM}:${formattedSS}`;
+  return `Your playtime is: ${formattedHH}:${formattedMM}:${formattedSS}`; // Returns a string
 }
 
-// Create function to modify innerHTML
-function print(txt) {
+// A function that modifies the innerHTML
+const print = (txt) => {
   document.getElementById("timePlayed").innerHTML = txt;
 }
 
+// A function that starts the timer
 const startTimer = () => {
   startTime = Date.now() - elapsedTime;
   timerInterval = setInterval(function printTime() {
@@ -291,7 +297,7 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.value;
 
-  currentQuestion = {
+  currentQuestion = { // creating the object that holds information about what I pick from the dropdown
     category: category,
     value: value,
   };
@@ -299,43 +305,45 @@ const selectQuestion = () => {
   console.log(currentQuestion);
 };
 
-// This function should be invoked when you click on 'Find Out' button.
+
+// A function that checks which I picked in the dropdown 
+// It then takes the value and compares it to the secret persons value
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+
+  // This if statements first checks which category is picked
   if (category === "hair" || category === "eyes") {
+    // If the category is hair/eyes it gets the value in this way
     if (secret[category] === value) {
+      // If the value is true it runs filterCharacters with a true value
       filterCharacters(true);
     } else {
-      filterCharacters();
+      filterCharacters(); // Otherwise it runs with a false value
     }
   } else if (category === "accessories" || category === "other") {
+    // If the category is accessories/other it gets the value with the includes() method since their values are stored in an array
     if (secret[category].includes(value)) {
+      // If the value is true it runs filterCharacters with a true value
       filterCharacters(true);
     } else {
       filterCharacters();
     }
   }
 
-  // let counter = document.getElementById('counter');
-  // counter.forEach((count) => {
-  //   count++;
-  //   counter.innerHTML += `This far you have guessed ${count} times`
-  // });
-  // let element = document.getElementById('counter');
-  // let counter = 0;
-  // counter.forEach((element, index) => console.log(element, index));
+  document.getElementById("counter").innerHTML = `This far you have guessed ${counter} times`; // prints this when the user makes a guess
+  counter++; // then adds 1 to the counter
+
 };
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion;
-  // Show the correct alert message for different categories
+  const { category, value } = currentQuestion; // The variables I can use to print my alerts
+  
+  // Huge if-statement that runs differently depending on which category is picked and wether it is true/false values that are being passed in
   if (category === "hair") {
     if (keep) {
       alert(`Yes, the person has ${value}! Keep all people that have ${value}`);
+      // THis filters out the characters if the value is true
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
@@ -343,6 +351,7 @@ const filterCharacters = (keep) => {
       alert(
         `No, the person doesn't have ${value}! Remove all people that has ${value}`
       );
+      // This filters out the characters if the value is false
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
@@ -397,7 +406,7 @@ const filterCharacters = (keep) => {
   setTimeout(() => generateBoard(), 500);
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// When the user guesses on a person it then has to confirm that they want to make a guess
 const guess = (personToConfirm) => {
   const result = window.confirm(`Are you sure this is your choice?`);
   console.log(result);
@@ -405,9 +414,6 @@ const guess = (personToConfirm) => {
   if (result) {
     checkMyGuess(personToConfirm);
   }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 };
 
 // If you confirm, this function is invoked
@@ -415,10 +421,10 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alert("That's correct, you win!");
     board.innerHTML = "";
-    winOrLose.style.display = "block";
+    winOrLose.style.display = "block"; // This shows the winner block if you pick the correct person
   } else {
     alert("That is not correct, you lose!");
-    reset();
+    reset(); // resets the timer
   }
 };
 
@@ -426,7 +432,7 @@ const checkMyGuess = (personToCheck) => {
 start();
 
 // All the event listeners
-restartButton.addEventListener("click", reset);
+restartButton.addEventListener("click", reset); // The restart function also runs the reset and then runs the starter function
 questions.addEventListener("change", selectQuestion);
 filter.addEventListener("click", checkQuestion);
-playAgain.addEventListener("click", reset);
+playAgain.addEventListener("click", reset); // I invoke the reset first that resets the timer and then runs the starter function

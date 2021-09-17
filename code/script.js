@@ -172,7 +172,7 @@ const CHARACTERS = [
   {
     name: "Snoop",
     img: "images/snoop.jpg",
-    hair: "grey",
+    hair: "hidden",
     eyes: "hidden",
     accessories: ["hat", "glasses"],
     other: ["smoker"],
@@ -250,7 +250,6 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.      invoke to see if we get wrong or right answer
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  // const secretValue = secret[currentQuestion.category];
 
   if (category === "hair" || category === "eyes") {
     if (secret[category] === value) {
@@ -345,7 +344,9 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-  const characterResult = confirm(`Are you sure this is your choice?`);
+  const characterResult = confirm(
+    `Are you sure ${personToConfirm} is your choice?`
+  );
 
   if (characterResult) {
     checkMyGuess(personToConfirm);
@@ -354,9 +355,13 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  const audioWin = new Audio("./sounds/correct.wav");
+  const audioLost = new Audio("./sounds/wrong.wav");
   if (personToCheck === secret.name) {
+    audioWin.play();
     winOrLoseText.innerHTML = `Woho, ${personToCheck} is correct! 🌟`;
   } else {
+    audioLost.play();
     winOrLoseText.innerHTML = `Nooo, ${personToCheck} is not correct! 👎`;
   }
   winOrLose.style.display = "flex";
@@ -370,7 +375,9 @@ const checkMyGuess = (personToCheck) => {
 start();
 
 // All the event listeners
-restartButton.addEventListener("click", start);
+restartButton.addEventListener("click", () => {
+  start();
+});
 filter.addEventListener("click", checkQuestion);
 questions.addEventListener("change", selectQuestion);
 playAgainButton.addEventListener("click", () => {

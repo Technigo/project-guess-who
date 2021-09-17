@@ -10,6 +10,11 @@
       rel="stylesheet"
     />
   </head>
+
+  <audio
+    id="loser-sound"
+    src="sounds/sound_ex_machina_small_female_group_of_10_people_shouting_aaaah_with_disappointment._unison_663.mp3"
+  ></audio>
   <body>
     <aside class="question-section">
       <button id="restart" class="outlined-button">RESTART</button>
@@ -30,22 +35,18 @@
           <option value="white">white hair</option>
           <option value="grey">grey hair</option>
           <option value="hidden">hidden</option>
-          <!-- Add the rest of hair colors as options  -->
         </optgroup>
         <optgroup label="eyes">
           <option value="hidden">hidden eyes</option>
           <option value="green">green eyes</option>
           <option value="blue">blue eyes</option>
           <option value="brown">brown eyes</option>
-
-          <!-- Add the rest of eye colors as options  -->
         </optgroup>
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
           <option value="hat">hat</option>
           <option value="wand">wand</option>
           <option value="necklace">necklace</option>
-          <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
@@ -53,6 +54,7 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div id="playername"></div>
     </aside>
 
     <section class="board-wrapper">

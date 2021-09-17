@@ -1,10 +1,12 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById("board");
-const questions = document.getElementById("questions");
-const restartBtn = document.getElementById("restart");
-const findOutBtn = document.getElementById("filter");
+const board = document.getElementById(`board`);
+const questions = document.getElementById(`questions`);
+const restartBtn = document.getElementById(`restart`);
+const findOutBtn = document.getElementById(`filter`);
 const winOrLose = document.getElementById(`winOrLose`);
 const championCounter = document.getElementById(`championCounter`);
+const playAgain = document.getElementById(`playAgain`);
+const questionsHistory = document.getElementById(`questionsHistory`);
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -310,7 +312,7 @@ const CHARACTERS = [
     hair: "brown",
     homeRegion: "bilgewater",
     mainRole: "marksman",
-    accessories: ["weapon"],
+    accessories: ["weapon", "facialhair"],
   },
   {
     name: "Gwen",
@@ -1259,17 +1261,17 @@ const CHARACTERS = [
 ];
 
 // Global variables
-let secret = ``;
-let currentQuestion = ``;
-let charactersInPlay = ``;
-let championToCheck = ``;
+let secret,
+  currentQuestion,
+  charactersInPlay,
+  championToCheck,
+  startTime,
+  endTime;
 let questionsAsked = 0;
-let startTime = ``;
-let endTime = ``;
 
-// Draw the game board
+// Function that draws the game board
 const generateBoard = () => {
-  board.innerHTML = "";
+  board.innerHTML = ``;
   charactersInPlay.forEach((champion) => {
     board.innerHTML += `
       <div class="card" style="background-image: url('${champion.img}');background-size: cover;">
@@ -1283,29 +1285,29 @@ const generateBoard = () => {
   });
 };
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Function that randomly select a champion from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  console.log("Secret", secret);
 };
 
-// This function to start (and restart) the game
+// A functions which starts and restarts the game, start the game, change and resets some data so the game is loaded from the beginning
+// if you pressed the restart butten. Invokes a lot of functions.
 const start = () => {
   startTimer();
   questionsAsked = 0;
+  questionsHistory.innerHTML = ``;
   guessCounter.innerHTML = `Questions asked: ${questionsAsked}`;
   winOrLose.classList.remove("active");
   document.body.style.overflow = "auto";
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  // What else should happen when we start the game?
   setCharacterInPlayCounter();
   generateBoard();
   setSecret();
   selectQuestion();
 };
 
+// Functions that start and ends a timer.
 const startTimer = () => {
   startTime = new Date();
 };
@@ -1314,45 +1316,33 @@ const endTimer = () => {
   endTime = new Date();
   let timeDiff = endTime - startTime;
   timeDiff /= 1000;
-
   let seconds = Math.round(timeDiff);
   timer.innerHTML = `The game took ${seconds} seconds to finish`;
 };
 
-// setting the currentQuestion object when you select something in the dropdown
+// Function that sets the currentQuestion object when you select something in the dropdown and saves the value of category and value
+// inside the global variable currentQuestion.
 const selectQuestion = () => {
-  // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.id;
-  // We also need a variable that stores the actual value of the question we've selected.
-  value = questions.options[questions.selectedIndex].value;
-
+  const value = questions.options[questions.selectedIndex].value;
   currentQuestion = {
     category: category,
     value: value,
   };
 };
 
-// This function should be invoked when you click on 'Find Out' button.
+// Function that gets invoked by pressing the find out button. It plays the sound, invoke the function increaseQuestionsAsked and invokes the filterCharacter function.
 const checkQuestion = () => {
   playSound(`./sound/askQuestion.mp3`);
   const { category, value } = currentQuestion;
-  onClick();
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  // accessories: [],
+  increaseQuestionsAsked();
 
   if (
     category === "hair" ||
     category === "homeRegion" ||
     category === "mainRole"
   ) {
-    if (category === "hair" && value === secret.hair) {
-      filterCharacters(true);
-    } else if (category === "homeRegion" && value === secret.homeRegion) {
-      filterCharacters(true);
-    } else if (category === "mainRole" && value === secret.mainRole) {
+    if (secret[category] === value) {
       filterCharacters(true);
     } else {
       filterCharacters(false);
@@ -1366,6 +1356,7 @@ const checkQuestion = () => {
   }
 };
 
+// Functions for each type of filter which gets called from the function filterCharacters.
 const keepChampionsAccessories = (category, value) => {
   charactersInPlay = charactersInPlay.filter((champion) =>
     champion[category].includes(value)
@@ -1390,12 +1381,20 @@ const removeChampionsHairHomeRegionMainRole = (category, value) => {
   );
 };
 
-// It'll filter the characters array and redraw the game board.
+// Function that changes the questionHistory.innerHTML. It shows the right altert calls and invokes one of the previous four functions
+// to do the actual filtering depending on category and if keep is true or false. When done with the filtering it invokes generate board function to redraw the board
+// and invokes setCharacterInPlayCounter.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-  // Show the correct alert message for different categories
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
+
+  if (keep === true) {
+    questionsHistory.innerHTML += `
+  <div class="correct">${category}: ${value}</div>`;
+  } else {
+    questionsHistory.innerHTML += `
+    <div class="wrong">${category}: ${value}</div>`;
+  }
+
   if (category === "accessories") {
     if (keep) {
       alert(
@@ -1449,6 +1448,7 @@ const filterCharacters = (keep) => {
   generateBoard();
 };
 
+// Function that checks if the guess gets confirmed and invokes the function checkMyGuess with the champion selected by the player.
 const confirmGuess = (message) => {
   let result = confirm(message);
   if (result === true) {
@@ -1457,17 +1457,14 @@ const confirmGuess = (message) => {
   }
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// Function that invokes the confirmGuess function with a message.
 const guess = (championToConfirm) => {
   championToCheck = championToConfirm;
   confirmGuess("Do you really wanna guess on this option?");
-
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 };
 
-// If you confirm, this function is invoked
+//Function that checks if the guess is the same champion as at the secret card. Depending on the result it sends out a congratulate/sorry you lost message.
+//it activates the function playSound and invokes the endTimer function.
 const checkMyGuess = (championToCheck) => {
   if (championToCheck === secret.name) {
     winOrLoseText.innerHTML = `Congratulations you guessed on the right champion!`;
@@ -1478,21 +1475,21 @@ const checkMyGuess = (championToCheck) => {
   playSound(`./sound/win.mp3`);
   document.body.style.overflow = "hidden";
   endTimer();
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 };
 
-const onClick = () => {
+// Function that adds the number 1 everytime and change the number of questions asked. It is called in the function that starts when the player presses
+// the findOutBtn.
+const increaseQuestionsAsked = () => {
   questionsAsked += 1;
   guessCounter.innerHTML = `Questions asked: ${questionsAsked}`;
 };
 
+// Function that changes the innerHTML depending on the value of charactersInPLay.
 const setCharacterInPlayCounter = () => {
   championCounter.innerHTML = `Champions left: ${charactersInPlay.length}`;
 };
 
+// Function that playes the sound.
 const playSound = (audiofile) => {
   const audio = new Audio(audiofile);
   audio.play();

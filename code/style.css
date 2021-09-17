@@ -72,6 +72,7 @@ select {
 }
 
 /****** CARD ******/
+
 .card {
   background-color: black;
   color: white;
@@ -118,7 +119,6 @@ select {
   display: none;
 }
 
-/* The div with the guess class is only shown on hover */
 .card:hover .guess {
   display: flex;
 }
@@ -132,6 +132,7 @@ select {
 }
 
 /****** BUTTONS ******/
+
 button {
   border: 2px solid rgb(6, 28, 37);
   border-radius: 50px;
@@ -169,7 +170,27 @@ button {
   color: white;
 }
 
+.game-status__questions-asked-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.correct {
+  background-color: rgb(137, 189, 88);
+  padding: 5px;
+  color: black;
+  margin: 5px 0;
+}
+
+.wrong {
+  background-color: rgb(194, 53, 53);
+  padding: 5px;
+  color: black;
+  margin: 5px 0;
+}
+
 /****** WIN OR LOSE SECTION ******/
+
 .win-or-lose-wrapper {
   display: none;
   align-items: center;
@@ -210,6 +231,8 @@ button {
   color: white;
   margin-top: 10px;
 }
+
+/****** Mobile Phone ******/
 
 @media (max-width: 768px) {
   body {

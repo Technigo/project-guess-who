@@ -8,7 +8,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Black Ops One", cursive;
 }
 
 h1 {
@@ -34,7 +34,7 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: "Black Ops One", cursive;
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -112,7 +112,7 @@ select {
   width: 90%;
 }
 
-img{
+img {
   height: 130px;
   width: 100px;
   object-fit: contain;
@@ -123,7 +123,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Black Ops One", cursive;
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -137,6 +137,7 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  font-family: "Black Ops One", cursive;
 }
 
 .filled-button,
@@ -176,7 +177,7 @@ button {
 
 .win-or-lose img {
   align-self: flex-start;
-  margin-left: 15%;
+  margin-left: 40%;
 }
 
 .win-or-lose h1 {
@@ -184,7 +185,12 @@ button {
 }
 
 .active {
-  display:flex;
+  display: flex;
+}
+
+.attempts {
+  margin-bottom: 0;
+  color: white;
 }
 
 @media (max-width: 768px) {
@@ -241,4 +247,3 @@ button {
     border: none;
   }
 }
-

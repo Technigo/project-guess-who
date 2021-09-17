@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guess Who</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap"
       rel="stylesheet"
     />
+    <link rel="shortcut icon" href="./lego.png" type="image/x-icon" />
+    <!-- favicon  -->
   </head>
   <body>
     <aside class="question-section">
       <button id="restart" class="outlined-button">RESTART</button>
 
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
+      <img class="guess-who-icon" src="./Legologow.png" alt="Guess Who" />
 
       <h1>Does the person have</h1>
 
       <select id="questions">
         <optgroup label="hair">
-          <option value="bald">bald</option>
+          <option value="bald">no hair</option>
           <option value="black">black hair</option>
           <option value="blond">blond hair</option>
           <option value="brown">brown hair</option>
@@ -52,8 +52,15 @@
           <option value="wizard">wizard</option>
         </optgroup>
       </select>
+      <button onclick="findOutCounter()" id="filter" class="filled-button"> FIND OUT
+      </button>
+      <h4 class="attempts">Number of guesses: <span id="counterLabel">0</span></h4>
+    </select>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
+
+      <!-- <button id="filter" class="filled-button">FIND OUT</button>
+      <h3 class="attemps">Number of attempts:</h3>
+      <h3 class="attemps-counter" id="counter"></h3> -->
     </aside>
 
     <section class="board-wrapper">
@@ -62,12 +69,8 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
-        <h1 id="sentence"></h1>
+        <img class="guess-who-icon" src="./Legologow.png" alt="Guess Who" />
+        <h1 id="winLoseText"></h1>
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>

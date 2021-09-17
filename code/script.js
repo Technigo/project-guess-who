@@ -5,6 +5,7 @@ const restartButton = document.getElementById("restart");
 const findBtn = document.getElementById("filter");
 const playAgainBtn = document.getElementById("playAgain");
 const winLose = document.getElementById("winOrLose");
+const winLoseText = document.getElementById("winLoseText");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -215,6 +216,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let counterValue = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -239,8 +241,20 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
+//Function for counter
+function findOutCounter() {
+  updateDisplay(++counterValue);
+}
+
+//Function to update the display with number of guesses
+function updateDisplay(val) {
+  document.getElementById("counterLabel").innerHTML = val;
+}
+
 // This function to start (and restart) the game
 const start = () => {
+  counterValue = 0;
+  updateDisplay(counterValue);
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
@@ -260,7 +274,7 @@ const selectQuestion = () => {
     category: category,
     value: value, // We also need a variable that stores the actual value of the question we've selected.
   };
-  console.log(currentQuestion);
+  console.log(currentQuestion); // remove
 };
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -297,13 +311,13 @@ const checkQuestion = () => {
     if (secret[category] === value) {
       filterCharacters(true);
     } else {
-      filterCharacters();
+      filterCharacters(false);
     }
   } else if (category === "accessories" || category === "other") {
     if (secret[category].includes(value)) {
       filterCharacters(true);
     } else {
-      filterCharacters();
+      filterCharacters(false);
     }
   }
 };
@@ -393,14 +407,20 @@ const audioLose = new Audio("lose.wav");
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    alert(`You're right! YOU WIN!!!`);
+    alert(`You're right!`);
     audio.play();
     board.innerHTML = winLose.classList.add("active");
+    winLoseText.innerHTML = `
+    <h5>You're a WINNER!!</h5> 
+    <h6>You completed the game in ${counterValue} attempts. Do you wanna play again?</h6>`;
   } else {
-    alert(`Sorry, this is not your character. Better luck next time!`);
+    alert(`Sorry, this is not your character. It is ${secret.name}.`);
     audioLose.play();
     board.innerHTML = "";
     winLose.classList.add("active");
+    winLoseText.innerHTML = `
+    <h5>Better luck next time!</h5> 
+    <h6>Would you like to try again?</h6>`;
   }
 };
 

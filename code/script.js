@@ -275,7 +275,6 @@ const greetPlayer = () => {
   let person = prompt("Hello! What's your name?");
   alert(`Let's start the game ${person}!`);
   greeting.innerHTML = `Player: ${person}`;
-  generateBoard();
 };
 
 // This function to start (and restart) the game
@@ -293,7 +292,6 @@ const start = () => {
   valString = "";
   secondsLabel.innerHTML = "";
   minutesLabel.innerHTML = "";
-  console.log(secret); // remove later
 };
 
 // setting the currentQuestion object when you select something in the dropdown

@@ -231,10 +231,12 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
+//Function for counter
 function findOutCounter() {
   updateDisplay(++counterValue);
 }
 
+//Function to update the display with number of guesses
 function updateDisplay(val) {
   document.getElementById("counterLabel").innerHTML = val;
 }

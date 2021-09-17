@@ -11,6 +11,23 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+/* .footer {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  /* left: 0; */
+/*bottom: 0;
+  width: 100%;
+  background-color: #ffddfb;
+  color: black;
+  text-align: center;
+} */
+
+/* .navigation {
+  filter: grayscale(100%);
+  margin: 2px;
+} */
+
 h1 {
   font-size: 32px;
   font-weight: 500;
@@ -173,7 +190,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 600px;
+  max-width: 1000px;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;

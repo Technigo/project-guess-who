@@ -7,8 +7,7 @@ const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
 const winnerImg = document.getElementById('winner')
-const startPage = document.getElementById('startPage')
-const startButton = document.getElementById('startButton')
+const questionSection = document.getElementById('questionSection')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -379,8 +378,8 @@ const checkMyGuess = (personToCheck) => {
     if (personToCheck === secret.name) {
   // 2. Set a Message to show in the win or lose section accordingly
   winOrLoseText.innerHTML = `
-      <img class="winner-img" src="images2/${secret.name}-big.jpg" />
-      <p class="win-or-lose-text">You goddamn right it's that dirty fish ${secret.name}!</p><p>Well played!</p>`
+      <div class="winner-card"><img class="winner-img" src="images2/${secret.name}-big.jpg" />
+      <p class="win-or-lose-text">You goddamn right it's that dirty fish ${secret.name}!</p><p>Well played!</p></div>`
   // 3. Show the win or lose section
       winOrLose.style.display = "flex"
       
@@ -392,6 +391,8 @@ const checkMyGuess = (personToCheck) => {
 
   // 4. Hide the game board
   board.innerHTML = ''
+  questionSection.innerHTML = ''
+
 }
 
 // Invokes the start function when website is loaded

@@ -32,19 +32,21 @@
           <option value="orange">orange hair</option>
           <option value="purple">purple hair</option>
           <option value="hidden">hidden hair</option>
-          <!-- Add the rest of hair colors as options  -->
+          
         </optgroup>
         <optgroup label="eyes">
           <option value="blue">blue eyes</option>
           <option value="green">green eyes</option>
           <option value="brown">brown eyes</option>
           <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+         
         </optgroup>
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
           <option value="hat">hat</option>
-          <!-- Add the other accessory option here. (hat)  -->
+          <option value="earrings">earrings</option>
+          <option value="necklace">necklace</option>
+    
         </optgroup>
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
@@ -52,6 +54,14 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div class="timer">
+        <p class="time-text">Time:</p>
+        <div>
+          <label class="show-time" id="minutes">00</label>
+          <label class="show-time">:</label>
+          <label class="show-time" id="seconds">00</label>
+        </div>
+      </div>
     </aside>
 
     <section class="board-wrapper">
@@ -70,6 +80,7 @@
       </div>
     </section>
 
+    <!-- Audio for the music and sound effects -->
     <audio id="gameMusic" src="mixkit-kids-786.mp3" loop></audio>
     <audio id="winningSound" src="mixkit-game-level-completed-2059.wav" preload="auto"></audio>
     <audio id="losingSound" src="mixkit-sad-game-over-trombone-471.wav" preload="auto"></audio>

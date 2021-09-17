@@ -1,7 +1,6 @@
-/* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #1b98b1;
+  --secondary: #48cae4;
 }
 
 body {
@@ -28,6 +27,25 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+}
+
+.timer {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.time-text {
+  font-size: 1.5em;
+  color: white;
+  padding-right: 5px;
+}
+
+.show-time {
+  font-size: 1.5em;
+  color: white;
 }
 
 select {

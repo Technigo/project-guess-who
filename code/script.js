@@ -225,6 +225,7 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  board.style.display = "flex";
   charactersInPlay = CHARACTERS;
 
   generateBoard();

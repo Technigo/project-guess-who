@@ -64,7 +64,7 @@ const CHARACTERS = [
     img: "images/jana.svg",
     hair: "black",
     eyes: "hidden",
-    accessories: ["glasses"],
+    accessories: ["glasses", "jewellery"],
     other: [],
   },
   {
@@ -80,7 +80,7 @@ const CHARACTERS = [
     img: "images/jaqueline.svg",
     hair: "orange",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["glasses", "jewellery"],
     other: [],
   },
 
@@ -121,7 +121,7 @@ const CHARACTERS = [
     img: "images/jenni.svg",
     hair: "white",
     eyes: "hidden",
-    accessories: ["hat"],
+    accessories: ["hat", "jewellery"],
     other: [],
   },
   {
@@ -153,7 +153,7 @@ const CHARACTERS = [
     img: "images/jocelyn.svg",
     hair: "black",
     eyes: "brown",
-    accessories: ["glasses"],
+    accessories: ["glasses", "jewellery"],
     other: [],
   },
   {
@@ -169,7 +169,7 @@ const CHARACTERS = [
     img: "images/jordan.svg",
     hair: "yellow",
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    accessories: ["glasses", "hat", "jewellery"],
     other: [],
   },
   {
@@ -177,7 +177,7 @@ const CHARACTERS = [
     img: "images/josephine.svg",
     hair: "grey",
     eyes: "brown",
-    accessories: [],
+    accessories: ["jewellery"],
     other: [],
   },
   {
@@ -238,35 +238,38 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
-// Hides winOrLose when pressing play again
+// Hides winOrLose when pressing play again + invokes restart.
+// Invoked in start function.
 const playAgain = () => {
   winOrLose.style.display = "none";
   restart();
 };
 
+// Function to restart game
+// Invoked in playAgain
 const restart = () => {
   counter = 0;
 };
 
-// Counter
+// Function to add to counter after question has been asked
 const add = () => {
   counter += 1;
 };
 
+// Function invoked after game is won, adds 1 to gamesWon
 const won = () => {
   gamesWon += 1;
 };
 
+// Function invoked after game is lost, adds 1 to gamesLost
 const lost = () => {
   gamesLost += 1;
 };
 
 // This function to start (and restart) the game
+// Invokes playAgain, generates the board, selects a random person, and adds counter to innerHTML.
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  // What else should happen when we start the game?
-  // Answer: generate the board and select a random person.
   playAgain();
   generateBoard();
   setSecret();
@@ -280,8 +283,6 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value;
 
   currentQuestion = {
@@ -306,7 +307,9 @@ const checkQuestion = () => {
       filterCharacters();
     }
   }
+
   add();
+
   questionsAsked.innerHTML = `
   ${counter}
   `;
@@ -315,7 +318,6 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-  // Show the correct alert message for different categories
 
   if (category === "hair") {
     if (keep) {

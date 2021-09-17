@@ -345,6 +345,7 @@ const checkMyGuess = (personToCheck) => {
   audioLost.play()
 }
 winOrLose.style.display ="flex"
+board.style.display = 'none'
 }
 
 // Invokes the start function when website is loaded

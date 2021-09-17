@@ -215,6 +215,7 @@ let charactersInPlay;
 let guessCounter = 0;
 let optionGroups = '';
 let cheating = false;
+let askedQuestions = [];
 let startTime;
 let elapsedTime;
 const categories = {
@@ -241,8 +242,7 @@ const generateBoard = () => {
 	});
 };
 
-// Populate the select options dynmically from the CHARACTERS array
-const generateQuestions = () => {
+const generateCategories = () => {
 	CHARACTERS.forEach((person) => {
 		// for each person in the array of characters do:
 		for (const category in person) {
@@ -250,26 +250,39 @@ const generateQuestions = () => {
 			if (category !== 'img' && category !== 'name') {
 				// if category is not equal to img and name do:
 				if (Array.isArray(person[category])) {
-					// if the category is an array spread the values of the array
-					// and push them in to the appropriate array in the categories object
-					categories[category].value.push(...person[category]);
-					categories[category].type = 'array';
+					// check if values already exists in the category
+					const arraysHasSameData = (arr1, arr2) => {
+						return arr1.some((item) => arr2.includes(item));
+					};
+					if (!arraysHasSameData(categories[category].value, person[category])) {
+						// if the category is an array spread the values of the array
+						// and push them in to the appropriate array in the categories object
+						categories[category].value.push(...person[category]);
+						categories[category].type = 'array';
+					}
 				} else {
 					// if the category is not an array push them in to the appropriate array in the categories object
-					categories[category].value.push(person[category]);
-					categories[category].type = 'string';
+					// check if values already exists in the category
+					if (!categories[category].value.includes(person[category])) {
+						categories[category].value.push(person[category]);
+						categories[category].type = 'string';
+					}
 				}
 			}
 		}
 	});
+};
+
+// Populate the select options dynmically from the CHARACTERS array
+const generateQuestions = () => {
 	optionGroups = '';
 	// loop through all keys in categories object
 	for (const category in categories) {
-		// Filter each category array so it has no duplicates
-		// the filter function goes through each value in the category array and
-		// checks if the value has the same index as the first occurance of the value
-		// in the original array in this case the category array
-		categories[category].value = categories[category].value.filter((value, index, arr) => arr.indexOf(value) === index);
+		console.log(categories[category].value, askedQuestions);
+		// if (categories[category].value.some(askedQuestions)) {
+		// 	console.log('hej test');
+		// 	// categories[category].value = categories[category].value.filter((value) => !value === );
+		// }
 		// sort values alphbetically
 		categories[category].value.sort();
 		// build the select element options as html tags
@@ -298,6 +311,7 @@ const start = () => {
 	guessCounter = 0;
 	setSecret();
 	generateBoard();
+	generateCategories();
 	generateQuestions();
 	startTimer();
 	guessCounterHandler();
@@ -324,6 +338,7 @@ const guessCounterHandler = () => {
 const selectQuestion = (guess, name) => {
 	guessCounter++;
 	guessCounterHandler();
+	askedQuestions;
 	let category = '';
 	let value = '';
 	if (guess) {
@@ -337,7 +352,6 @@ const selectQuestion = (guess, name) => {
 		category: category,
 		value: value,
 	};
-
 	console.log(`the current guess is ${currentQuestion.category} ${currentQuestion.value}`);
 };
 

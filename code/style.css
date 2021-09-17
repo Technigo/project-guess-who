@@ -126,14 +126,16 @@ button {
 
 .small {
   padding: 8px 16px;
+  
 }
 
 .outlined-button {
-  background-color: var(--primary);
-  color: white;
+  background-color: var(--secondary);
+  color: var(--primary);
   align-self: center;
   margin: 5vh 0;
-  width: 20vh;
+  width: 100%;
+ 
 }
 
 .filled-button,
@@ -142,14 +144,14 @@ button {
   color:black;
   align-self: center;
   margin: 5vh 0;
-  width: 20vh;
+  width: 100%
 }
 
 .filled-button:hover {
-  background-color: white;
+  background-color: var(--primary);
   border-color: white;
-  color: var(--primary);
-  width: 20vh;
+  color: white;
+  
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -237,8 +239,8 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
-    color: var(--primary);
+    background: var(--primary);
+    color: white;
     border: none;
   }
 }

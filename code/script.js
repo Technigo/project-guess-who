@@ -14,7 +14,7 @@ const CHARACTERS = [
     img: 'images/phanpy.png',
     color: 'TURKOS',
     eyes: 'SVARTA',
-    accessories: ['glasses', 'hat'],
+    element: ['MARK'],
     other: []
   },
   {
@@ -22,7 +22,7 @@ const CHARACTERS = [
     img: 'images/pikachu.png',
     color: 'GUL',
     eyes: 'SVARTA',
-    accessories: ['hat'],
+    element: ['ELEKTRISK'],
     other: []
   },
   {
@@ -30,23 +30,23 @@ const CHARACTERS = [
     img: 'images/totodile.png',
     color: 'TURKOS',
     eyes: 'RÖDA',
-    accessories: ['hat'],
-    other: ['smoker']
+    element: ['VATTEN'],
+    other: []
   },
   {
     name: 'Charizard',
     img: 'images/charizard.png',
     color: 'ORANGE',
     eyes: 'SVARTA',
-    accessories: [],
+    element: ['ELD', 'FLYGANDE'],
     other: []
   },
   {
-    name: 'Krokorock',
+    name: 'Krokorok',
     img: 'images/krokorok.png',
     color: 'BRUN',
     eyes: 'SVARTA',
-    accessories: ['glasses'],
+    element: ['MARK', 'MÖRKER'],
     other: []
   },
   {
@@ -54,23 +54,23 @@ const CHARACTERS = [
     img: 'images/meowth.png',
     color: 'VIT',
     eyes: 'SVARTA',
-    accessories: ['glasses'],
+    element: ['NORMAL'],
     other: []
   },
   {
-    name: 'Oct',
+    name: 'Octillery',
     img: 'images/oct.png',
     color: 'RÖD/ROSA',
     eyes: 'SVARTA',
-    accessories: ['glasses'],
+    element: ['VATTEN'],
     other: []
   },
   {
-    name: 'Pilup',
+    name: 'Piplup',
     img: 'images/pilup.png',
     color: 'BLÅ',
     eyes: 'SVARTA',
-    accessories: ['glasses'],
+    element: ['VATTEN'],
     other: []
   },
   {
@@ -78,7 +78,7 @@ const CHARACTERS = [
     img: 'images/squirtle.png',
     color: 'TURKOS',
     eyes: 'RÖDA',
-    accessories: ['glasses'],
+    element: ['VATTEN'],
     other: []
   },
 
@@ -87,39 +87,39 @@ const CHARACTERS = [
     img: 'images/butterfree.png',
     color: 'VIT',
     eyes: 'RÖDA',
-    accessories: ['glasses'],
-    other: ['smoker']
+    element: ['INSEKT', 'FLYGANDE'],
+    other: []
   },
   {
     name: 'Blissey',
     img: 'images/chansey.png',
     color: 'RÖD/ROSA',
     eyes: 'SVARTA',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    element: ['NORMAL'],
+    other: []
   },
   {
     name: 'Dragonite',
     img: 'images/dragonite.png',
     color: 'ORANGE',
     eyes: 'SVARTA',
-    accessories: ['glasses'],
+    element: ['DRAKE', 'FLYGANDE'],
     other: []
   },
   {
-    name: 'Fennokin',
+    name: 'Fennekin',
     img: 'images/fennokin.png',
     color: 'GUL',
     eyes: 'RÖDA',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    element: ['ELD'],
+    other: []
   },
   {
     name: 'Minccino',
     img: 'images/minccino.png',
     color: 'GRÅ',
     eyes: 'SVARTA',
-    accessories: ['hat'],
+    element: ['NORMAL'],
     other: []
   },
   {
@@ -127,7 +127,7 @@ const CHARACTERS = [
     img: 'images/nidoqueen.png',
     color: 'BLÅ',
     eyes: 'SVARTA',
-    accessories: ['glasses'],
+    element: ['GIFT', 'MARK'],
     other: []
   },
   {
@@ -135,7 +135,7 @@ const CHARACTERS = [
     img: 'images/persian.png',
     color: 'VIT',
     eyes: 'SVARTA',
-    accessories: ['hat'],
+    element: ['NORMAL'],
     other: []
   },
   {
@@ -143,7 +143,7 @@ const CHARACTERS = [
     img: 'images/pyroar.png',
     color: 'BRUN',
     eyes: 'BLÅA',
-    accessories: ['glasses'],
+    element: ['ELD', 'NORMAL'],
     other: []
   },
   {
@@ -151,7 +151,7 @@ const CHARACTERS = [
     img: 'images/sandshrew.png',
     color: 'GUL',
     eyes: 'SVARTA',
-    accessories: ['glasses'],
+    element: ['MARK'],
     other: []
   },
   {
@@ -159,7 +159,7 @@ const CHARACTERS = [
     img: 'images/sneasel.png',
     color: 'TURKOS',
     eyes: 'RÖDA',
-    accessories: ['glasses'],
+    element: ['MÖRK', 'IS'],
     other: []
   },
   {
@@ -167,7 +167,7 @@ const CHARACTERS = [
     img: 'images/venusaur.png',
     color: 'TURKOS',
     eyes: 'RÖDA',
-    accessories: ['glasses', 'hat'],
+    element: ['GRÄS', 'GIFT'],
     other: []
   },
   {
@@ -175,7 +175,7 @@ const CHARACTERS = [
     img: 'images/zapdos.png',
     color: 'GUL',
     eyes: 'SVARTA',
-    accessories: [],
+    element: ['ELEKTRISK', 'FLYGANDE'],
     other: []
   },
   {
@@ -183,15 +183,15 @@ const CHARACTERS = [
     img: 'images/dratini.png',
     color: 'BLÅ',
     eyes: 'SVARTA',
-    accessories: [],
-    other: []
+    element: ['DRAKE'],
+    other: ['HORN']
   },
   {
     name: 'Fletchling',
     img: 'images/fletchling.png',
-    color: 'GRÅ',
+    color: 'RÖD/ROSA',
     eyes: 'SVARTA',
-    accessories: [],
+    element: ['NORMAL', 'FLYGANDE'],
     other: []
   },
   {
@@ -199,7 +199,7 @@ const CHARACTERS = [
     img: 'images/hoopa.png',
     color: 'GRÅ',
     eyes: 'BLÅA',
-    accessories: ['glasses', 'hat'],
+    element: ['PSYKISK', 'SPÖKE'],
     other: []
   },
 ]
@@ -262,7 +262,7 @@ const checkQuestion = () => {
   console.log(category, value)
   console.log('inside checkQuestion:', currentQuestion)
 
-    // Compare the currentQuestion details with the secret person details in a different manner based on category (color/eyes or accessories/others).
+    // Compare the currentQuestion details with the secret person details in a different manner based on category (color/eyes or element/others).
     // See if we should keep or remove people based on that
     // Then invoke filterCharacters
   if (category === 'color' || category === 'eyes') {
@@ -279,7 +279,7 @@ const checkQuestion = () => {
     }
       
 
-  }else if (category === 'accessories' || category === 'other') {
+  }else if (category === 'element' || category === 'other') {
       let secretValueArray = secret[currentQuestion.category]
  
       if (secretValueArray.includes(currentQuestion.value)){
@@ -296,25 +296,25 @@ const filterCharacters = (keep) => {
 
   const { category, value } = currentQuestion //this one gives value to the category and value, ex  'color' and 'brown'
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'element') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `JA, pokemonen är ${value}! Spara alla som är ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `NEJ, pokemonen är inte ${value}! Ta bort alla som är ${value}`
       )
     }
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person is a ${value}! Keep all people that are ${value}s`
+        `JA, pokemonen har ${value}! spara alla pokemon som har ${value}`
       )
       charactersInPlay
     } else {
       alert(
-        `No, the person is not a ${value}! Remove all people that are  ${value}s`
+        `NEJ, pokemonen har inte ${value}! Ta bort alla pokemon med  ${value}`
       )
     }
    
@@ -322,13 +322,13 @@ const filterCharacters = (keep) => {
      // HAIR QUESTION!
     if (keep) {
       alert(
-        `Yes, the person has ${value} ${category} ! Keep all people that have ${value} ${category} `
+        `JA, pokemonen har ${value} ${category} ! Spara alla pokemon som har ${value} ${category} `
       )
 
       // alert popup that says something like: "Yes, the person has yellow color! Keep all people with yellow color"
     } else {
       alert(
-        `No, the person hasn't ${value} ${category} ! Remove all people that has ${value} ${category} `
+        `Nej, pokemonen har inte ${value} ${category} ! Ta bort alla pokemon som har ${value} ${category} `
       )
       // alert popup that says something like: "No, the person doesnt have yellow color! Remove all people with yellow color"
     }
@@ -348,7 +348,7 @@ const filterCharacters = (keep) => {
         
       }
       } 
-    else if (category === 'accessories' || category === 'other') {
+    else if (category === 'element' || category === 'other') {
       if (keep) {
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       

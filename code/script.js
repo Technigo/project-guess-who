@@ -4,7 +4,8 @@ const board = document.getElementById("board"),
   restartButton = document.getElementById("restart"),
   findOutButton = document.getElementById("filter"),
   winOrLoseMessage = document.getElementById("winOrLoseText"),
-  winOrLoseSection = document.getElementById("winOrLose");
+  winOrLoseSection = document.getElementById("winOrLose"),
+  playAgainButton = document.getElementById("playAgain");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -223,7 +224,8 @@ const generateBoard = () => {
   });
 };
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Randomly select a person from the characters array
+// Set selected person as the secret character
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
@@ -234,17 +236,19 @@ const setSecret = () => {
 
 // Start (and restart) the game
 const start = () => {
-  // Set charactersInPlay array to be all the characters we start with
+  // Set charactersInPlay array to include all the characters we start with
   charactersInPlay = CHARACTERS;
   // Invoke the function that draws the game board
   generateBoard();
   // Pick a secret character
   setSecret();
+  // Hide the win or lose screen
+  winOrLoseSection.style.display = "none";
 };
 
-// Set the currentQuestion object when the user selects something in the dropdown
+// Select a question in the dropdown and set its value to currentQuestion
 const selectQuestion = () => {
-  // Store what option group (category) the question belongs to
+  // Store what "option group" (category) the question belongs to
   const category = questions.options[questions.selectedIndex].parentNode.label;
   // Store the actual value of the selected question
   const value = questions.value;
@@ -253,13 +257,11 @@ const selectQuestion = () => {
     category: category, // Based on the optgroup
     value: value, // Comes from the selected option
   };
-  // Testing eventListener in the dropdown menu
-  console.log(currentQuestion);
 };
 
-// This function is invoked upon clicking on the 'Find Out' button.
+// After clicking on the 'Find Out' button, compare the details from currentQuestion
+// with the secret person
 const checkQuestion = () => {
-  // Compare the details from currentQuestion with the secret person's details
   const { category, value } = currentQuestion;
   // Comparison for key pairs with string values
   if (category === "hair" || category === "eyes") {
@@ -272,8 +274,6 @@ const checkQuestion = () => {
       filterCharacters(true);
     } else filterCharacters();
   }
-  // Testing if non-matching characters were filtered out
-  console.log(CHARACTERS);
 };
 
 // Filter the characters array and redraw the game board.
@@ -285,81 +285,82 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${value}! Keep all people that wear ${value}`
       );
+      // Remove non-matching characters from the board
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
       );
     }
   } else if (category === "other") {
     // Similar to the one above
     if (keep) {
-      alert(`Yes, the person has ${value}! Keep all people that wear ${value}`);
+      alert(
+        `Yes, the person is a ${value}! Keep all people that are ${value}s`
+      );
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
     } else {
       alert(
-        `No, the person doesn't have ${value}! Remove all people that have ${value}`
+        `No, the person isn't a ${value}! Remove all people that aren't ${value}s`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
       );
     }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(
         `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}`
       );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       `No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}`;
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
     }
+    // Redraw the board with remaining characters
+    generateBoard();
   }
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-  // generateBoard();
-  // Invoke a function to redraw the board with the remaining people.
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// After clicking on the "guess" button, the player must confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  /* const confirmed = confirm(`Is ${personToConfirm} your guess?`);
-
+  const confirmed = confirm(`Are you sure about ${personToConfirm}?`);
   if (confirmed) {
     checkMyGuess(personToConfirm);
-  } */
-  // store the interaction from the player in a variable. -> in an eventlistener?
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  }
 };
 
-// If you confirm, this function is invoked
+// If user confirms, check who wins
 const checkMyGuess = (personToCheck) => {
-  // Check if the personToCheck is the same as the secret person's name
-  /* if (personToCheck === secret.name) {
+  // Send the user to the Win Or Lose screen
+  winOrLoseSection.style.display = "block";
+  // Determine who won by comparing the user's guess with the secret character
+  if (personToCheck === secret.name) {
     winOrLoseMessage.innerHTML = "You win!";
   } else {
     winOrLoseMessage.innerHTML = "Nope sorry, I win!";
-  } */
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  }
 };
 
-// Invokes the start function when website is loaded
+// Invoke the start function when website is loaded
 start();
 
-// All the event listeners
+// All event listeners
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutButton.addEventListener("click", checkQuestion);
+playAgainButton.addEventListener("click", start);
 
 /* Pseudocode
 

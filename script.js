@@ -230,9 +230,9 @@ const setSecret = () => {
   console.log(secret) //ta bort sedan
 }
 
-const logTime = () => {
-  setInterval(() => console.log(new Date()), 1000)
-}
+// const logTime = () => {
+//   setInterval(() => console.log(new Date()), 1000)
+// }
 
 // This function to start (and restart) the game
 const start = () => {
@@ -266,7 +266,6 @@ const selectQuestion = () => {
 const checkQuestion = () => {
 
   const { category, value, label } = currentQuestion
-  charactersInPlay = CHARACTERS  
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that and then invokes filterCharacters
@@ -291,6 +290,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value, label } = currentQuestion
+  // const {name, img, hair, eyes, accessories, other} = secret
 
   // Show the correct alert message for different categories
   if (category === 'accessories') {
@@ -318,7 +318,19 @@ const filterCharacters = (keep) => {
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }  
-  } else {
+  } else if (category === 'hair'){
+    if (keep) {
+      alert(
+        `Yes, the person have ${label}! Keep all people that has ${label}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    } else {
+      alert(
+        `No, the person doesn't have ${label}! Remove all people that has ${label}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    }
+  } else if (category === 'eyes') {
     if (keep) {
       alert(
         `Yes, the person have ${label}! Keep all people that has ${label}`

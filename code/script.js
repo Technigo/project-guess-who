@@ -7,6 +7,7 @@ const winOrLose = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const playAgain = document.getElementById("playAgain");
 const countBox = document.getElementById("counterBox");
+const greeting = document.getElementById("greeting");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -234,16 +235,29 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
+const greetPlayer = () => {
+  let person = prompt("What's your name?");
+  if (person == null || person === "") {
+    alert(`Don't be rude!`);
+    return false;
+  } else {
+    alert(`We are ready to play ${person}`);
+    greeting.innerHTML = `Player: ${person}`;
+    board.style.display = "flex";
+    generateBoard();
+  }
+};
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
+  winOrLose.style.display = "none";
   // What else should happen when we start the game?
-  generateBoard();
+  setTimeout(greetPlayer, 1000);
   setSecret();
   selectQuestion();
-  winOrLose.style.display = "none";
-  board.style.display = "flex";
+
   countBox.innerHTML = 0; //When we start the game we set the attempts to 0
   count = 0; //reseting the counter
 };
@@ -272,9 +286,7 @@ const checkQuestion = () => {
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
     keep = value === secret[category];
-    // console.log("This is the comparison:" + value === secret[category]);
 
-    // console.log("Value: " + value);
     //Compare with secret object
   } else if (category === "accessories" || category === "other") {
     keep = secret[category].includes(value);
@@ -291,8 +303,6 @@ const counter = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  console.log("Keep: " + keep);
-
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
   if (category === "accessories") {
@@ -362,20 +372,6 @@ const filterCharacters = (keep) => {
       );
     }
   }
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
 
   // Invoke a function to redraw the board with the remaining people.
   generateBoard(keep);

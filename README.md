@@ -1,13 +1,11 @@
-# Project Name
+# Guess who? by Anna Thunberg
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A browser version of the classic Guess who-boardgame.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I followed the steps closely and tried to keep the code as short and clean as possible. I needed help for most of the steps, and my teammates were invaluable to me. I have worked together with others during the whole project and tried to understand the steps, which I still struggle with. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+

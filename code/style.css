@@ -1,13 +1,14 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #b885fc;
+  --secondary: #ddc7f8;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
+  background-color: #ddc7f8;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -35,7 +36,7 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: #b885fc;
   width: 100%;
   margin: 24px 0;
 }
@@ -64,7 +65,7 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid #b885fc;;
   border-radius: 4px;
   margin: 3px;
   display: flex;

@@ -232,7 +232,7 @@ const generateBoard = () => {
   //and for each card when mouseover -> play flipCardAudio
   document.querySelectorAll('.card').forEach((card) => {
     card.addEventListener('mouseover', () => {
-      flipCardAudio.currentTime = 0; //set currentTime = 0, the sound can reset even though the audio haven't finished playing
+      flipCardAudio.currentTime = 0; //set currentTime = 0, the sound can reset even though the audio haven't finish playing
       flipCardAudio.play();
     });
   });
@@ -288,7 +288,7 @@ const checkQuestion = () => {
     }
   } else if (category === 'accessories' || category === 'other') {
     //the value of the options for "acc" and "other" won't be the same (on this case),
-    //so can do || operator. Unlike the category hair and eyes, were both can be "hidden" or "brown"
+    //so can do || operator. Unlike the category hair and eyes, were both value can be "hidden" or "brown"
     trueOrFalse =
       secret.accessories.includes(currentQuestion.value) ||
       secret.other.includes(currentQuestion.value);
@@ -376,7 +376,7 @@ const filterCharacters = (keep) => {
       );
     }
   }
-  //made a new function that will empty the board to present a loading gif.
+  //made a new function that will empty the board to present a loading gif
   //and redraw the board after 1.5s
   loadingGifandBoard();
 };

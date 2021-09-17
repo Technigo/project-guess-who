@@ -6,6 +6,7 @@ const findOut = document.getElementById('filter')
 const playAgain = document.getElementById('playAgain')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const questionCounter = document.getElementById('countQuestions')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -62,7 +63,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace'],
     other: []
   },
   {
@@ -78,7 +79,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace'],
     other: []
   },
 
@@ -167,7 +168,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'necklace'],
     other: []
   },
   {
@@ -208,7 +209,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-
+let numberOfGuesses
 
 // Draw the game board
 const generateBoard = () => {
@@ -232,6 +233,7 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -244,6 +246,8 @@ const start = () => {
   selectQuestion()
   winOrLose.style.display = "none"
   board.style.display = "flex"
+  numberOfGuesses = 0;
+  questionCounter.innerHTML = `<p class="guesses">GUESSES MADE: ${numberOfGuesses}</p>`
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -284,14 +288,13 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  console.log(keep)
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value} !Keep all people that wears ${value} `
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
@@ -340,6 +343,8 @@ const filterCharacters = (keep) => {
   }
   // Invoke a function to redraw the board with the remaining people.
   generateBoard(keep)
+  numberOfGuesses++
+  questionCounter.innerHTML = `<p>GUESSES MADE: ${numberOfGuesses}</p>`
 }
 
 // Determine what is the category
@@ -377,9 +382,18 @@ const checkMyGuess = (personToConfirm) => {
   // 1. Check if the personToCheck is the same as the secret person's name
 
   if (personToConfirm === secret.name) {
-    winOrLoseText.innerHTML = `YAY!⭐️ You guessed on ${personToConfirm} and it was correct!`
+    winOrLoseText.innerHTML = `YAY! ⭐️ You guessed on ${personToConfirm} and it was correct! You did it in only ${numberOfGuesses} questions.
+    <audio autoplay>
+    <source src="ES_Applause.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+    </audio>`
   } else {
-    winOrLoseText.innerHTML = `Sorry, it's not ${personToConfirm}. The correct answer is ${secret.name}!`
+    winOrLoseText.innerHTML = `Sorry, it's not ${personToConfirm}. The correct answer is ${secret.name}!
+    <audio autoplay>
+    <source src="ES_sad-melody.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+    </audio>`
+
     // 2. Set a Message to show in the win or lose section accordingly
   }
   // 3. Show the win or lose section

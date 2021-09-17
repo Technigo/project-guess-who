@@ -59,6 +59,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 /****** CARD ******/
@@ -99,6 +100,13 @@ select {
 .card:hover img,
 .card:hover p {
   display: none;
+}
+/* styling for guesses count */
+.question-count p {
+  color: brown;
+  font-size: 18px;
+  font-weight:600; 
+  margin-top: 40px;
 }
 
 /* The div with the guess class is only shown on hover */
@@ -177,6 +185,16 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+.won {
+  border-radius: 50px;
+  margin-top: 30px;
+}
+.lost {
+  width: 450px;
+  border-radius: 50px;
+  margin-top: 30px;
 }
 
 @media (max-width: 768px) {

@@ -272,7 +272,7 @@ function updateDisplay(val) {
 }
 
 const greetPlayer = () => {
-  let person = prompt("Hello!What's your name?");
+  let person = prompt("Hello! What's your name?");
   alert(`Let's start the game ${person}!`);
   greeting.innerHTML = `Player: ${person}`;
   generateBoard();

@@ -6,6 +6,8 @@ const findOutBtn = document.getElementById('filter');
 const winOrLoseText = document.getElementById('winOrLoseText');
 const winOrLoseSection = document.getElementById('winOrLose');
 const playAgainBtn = document.getElementById('playAgain');
+const displaySecret = document.getElementById('secret-mushroom')
+const secretText = document.getElementById('secret-text')
 
 // Array with all the characters, as objects
 const MUSHROOMS = [
@@ -317,6 +319,7 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = MUSHROOMS
+  board.style.display = 'flex';
   generateBoard()
   setSecret()
   // What else should happen when we start the game?
@@ -444,16 +447,20 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   const userHasGuessedCorrectly = (secret.name === personToCheck);
+  displaySecret.src = secret.img
+  secretText.innerHTML = `The mushroom you were identifing was ${secret.name}. Its Swedish name is ${secret.swedishName} and its Latin name is <em>${secret.latinName}</em>. It's easy to find mushrooms in the Swedish forests, but when you identify one you must be sure to look at all its different characteristics, as there are many lookalikes. Don't eat anything if you're not sure!`
+
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   if (userHasGuessedCorrectly) {
-    winOrLoseText.innerHTML = "Well Done! You guessed correctly and identified a mushroom!"
+    winOrLoseText.innerHTML = `Well Done! You guessed correctly and identified ${secret.name}!`
   }
   else {
-    winOrLoseText.innerHTML = "Oh no! You didn't manage to correctly identify your mushroom today. Don't eat it! And don't worry, there's always next time!"
+    winOrLoseText.innerHTML = `Oh no! You didn't manage to correctly identify your mushroom today so don't eat it! It was ${secret.name}. Click below to take another walk!`
   };
   // 3. Show the win or lose section
   winOrLoseSection.style.display = 'flex';
+  board.style.display = 'none';
 
 
 

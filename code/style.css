@@ -170,7 +170,7 @@ button {
   color: white;
 }
 
-.game-status__questions-asked-content {
+.game-status__questions-history {
   display: flex;
   flex-direction: column;
 }

@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #FEC260;
+  --secondary: #3B185F;
 }
 
 body {
@@ -41,7 +41,7 @@ h1 {
 align-self: flex-end;
 top: 0;
 margin: 0;
-padding-right: 10px;
+padding-right: 20px;
   
 }
 .middle-of-side{
@@ -68,6 +68,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #C9CBFF;
 }
 .question-counter{
   color: white;
@@ -80,6 +81,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  
 }
 
 /****** CARD ******/
@@ -87,7 +89,7 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid var(--primary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -195,6 +197,8 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
+  padding: 20%;
+  
 }
 
 .win-or-lose {

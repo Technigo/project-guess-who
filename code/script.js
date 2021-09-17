@@ -7,7 +7,8 @@ const playAgain = document.getElementById("playAgain")
 const winOrLose = document.getElementById("winOrLose")
 const winOrLoseText = document.getElementById("winOrLoseText")
 const qCounter = document.getElementById("question-counter")
-const timerDisplay = document.getElementById("timer")
+const secondsDisplay = document.getElementById("seconds")
+const minutesDisplay = document.getElementById("minutes")
 
 //for sound effects
 const flipSound = document.getElementById("flip")
@@ -255,12 +256,6 @@ const updateQuestionCounter = () => {
     questionCounter++
     qCounter.textContent= `Question asked:  ${questionCounter}`
   }
-  
-// function for count-up timer
-  const setTime = ()=>{
-    
-
-  }
 
 }
 // Draw the game board
@@ -310,7 +305,7 @@ const startAgain = () => {
   winOrLose.style.display = "none"
   winOrLoseText.textContent= ""
 //calling the start function again to start the game 
-  clearInterval(timer)
+ // clearInterval(timer)
   start ()
 }
 
@@ -441,7 +436,7 @@ const checkMyGuess = (personToCheck) => {
   if (secret.name === personToCheck) {
     board.style.display="none"
     winOrLose.style.display = "block"
-    winOrLoseText.textContent= `Congrats! You won! It was ${personToCheck} `
+    winOrLoseText.textContent= `Congrats! You won! It is ${personToCheck} `
   } else {
     board.style.display="none"
     winOrLose.style.display = "block"
@@ -452,6 +447,24 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
+// function for count-up timer
+setInterval(() => {
+  ++timeInSeconds
+    secondsDisplay.textContent = timerDisplay(timeInSeconds % 60)
+    minutesDisplay.textContent = timerDisplay(parseInt(timeInSeconds / 60))
+},1000)
+
+const timerDisplay = (val) => {
+ let valString = val + ""
+  if (valString.length < 2) {
+    return "0"+ valString
+  } else {
+    return valString
+  }
+
+}   
+
+
 
 // All the event listeners
 restartButton.addEventListener('click', startAgain)

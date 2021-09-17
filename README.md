@@ -1,13 +1,12 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Individual project to create a "Guess Who" game by using game logic, forEach loops and arrays.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I have created the project by using different functions and eventlisteners. I have used foreach loops, arrays and if-else conditionals. When the game worked as planned I added some attributes to the characters so that there are more options in the drop-down list. To round off I added a timer and a counter to keep track of how long time the game was played and how many questions were asked.  
+If I had more time I would like to add some audio features for the alert messages.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Netlify link: https://mjs-guess-who.netlify.app

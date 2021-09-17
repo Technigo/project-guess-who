@@ -34,6 +34,8 @@ h1 {
   padding-top: 10px;
   display: flex;
   align-items: center;
+  width: 80%;
+  justify-content: space-between;
 }
 
 .timer p {
@@ -52,6 +54,9 @@ h1 {
 .countGuess {
   font-size: 1.5em;
   color: white;
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
 }
 
 select {

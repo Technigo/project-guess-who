@@ -32,7 +32,6 @@
           <option value="grey">grey hair</option>
           <option value="purple">purple hair</option>
           <option value="hidden">hidden hair</option>
-          <!-- Add the rest of hair colors as options  -->
         </optgroup>
 
         <optgroup label="eyes">
@@ -40,7 +39,6 @@
           <option value="brown">brown eyes</option>
           <option value="green">green eyes</option>
           <option value="blue">blue eyes</option>
-          <!-- Add the rest of eye colors as options  -->
         </optgroup>
 
         <optgroup label="accessories">
@@ -48,7 +46,6 @@
           <option value="hat">hat</option>
           <option value="jewelry">ear rings/necklace</option>
           <option value="buttons">buttoned shirt</option>
-          <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
 
         <optgroup label="other">
@@ -59,9 +56,11 @@
       <button id="filter" class="filled-button">FIND OUT</button>
       <div class="timer">
         <p>Time:</p>
-        <label id="minutes">00</label>
-        <label id="colon">:</label>
-        <label id="seconds">00</label>
+        <div class="countTime">
+          <label id="minutes">00</label>
+          <label id="colon">:</label>
+          <label id="seconds">00</label>
+        </div>
       </div>
       <div class="countGuess" id="countGuess"></div>
     </aside>

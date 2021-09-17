@@ -211,28 +211,6 @@ let minutesLabel = document.getElementById("minutes");
 let secondsLabel = document.getElementById("seconds");
 let totalSeconds = 0;
 let timeStart = setInterval(setTime, 1000);
-// let count = 0;
-
-//Timer
-function setTime() {
-  ++totalSeconds;
-  secondsLabel.innerHTML = pad(totalSeconds % 60);
-  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-}
-
-function pad(time) {
-  let timeString = time + "";
-  if (timeString.length < 2) {
-    return "0" + timeString;
-  } else {
-    return timeString;
-  }
-}
-
-// function resetCounter() {
-//   count = 0;
-//   countGuess(count);
-// }
 
 // Draw the game board
 const generateBoard = () => {
@@ -251,34 +229,47 @@ const generateBoard = () => {
   });
 };
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+//Timer function
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(time) {
+  let timeString = time + "";
+  if (timeString.length < 2) {
+    return "0" + timeString;
+  } else {
+    return timeString;
+  }
+}
+
+// Function that randomly selects a person from the characters array and sets as the value of the variable called secret
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
-// This function to start (and restart) the game
+// Function that starts (and restarts) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
+  // creating charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  countGuess.innerHTML = "";
+  countGuess.innerHTML = "Guess: ";
+
   //Restart timer
   totalSeconds = 0;
   valString = "";
   secondsLabel.innerHTML = "";
   minutesLabel.innerHTML = "";
-  // What else should happen when we start the game?
+  // functions that are called when the game starts
   generateBoard();
   setSecret();
-  console.log(secret);
 };
 
-// setting the currentQuestion object when you select something in the dropdown
+// sets the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value;
 
   currentQuestion = {
@@ -287,7 +278,7 @@ const selectQuestion = () => {
   };
 };
 
-// This function should be invoked when you click on 'Find Out' button.
+// Function that is invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   console.log(currentQuestion);
@@ -301,10 +292,9 @@ const checkQuestion = () => {
   filterCharacters(keep);
 };
 
-// It'll filter the characters array and redraw the game board.
+// Function that filters the characters array and redraws the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-  // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
       alert(
@@ -354,11 +344,11 @@ const filterCharacters = (keep) => {
       );
     }
   }
-  // Redraw the board with the remaining people.
+
   generateBoard();
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// Function where the player confirms its guess
 const guess = (suspect) => {
   let userConfirm = confirm(`Do you think the secret person is ${suspect}?`);
   {
@@ -366,13 +356,9 @@ const guess = (suspect) => {
       checkMyGuess(suspect);
     }
   }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-  // checkMyGuess()
 };
 
-// If you confirm, this function is invoked
+// If player confirms, this function is invoked
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     winOrLoseText.innerHTML = `You win, ${suspect} is the secret person!`;
@@ -380,13 +366,8 @@ const checkMyGuess = (suspect) => {
     winOrLoseText.innerHTML = `You lose the game, ${suspect} is not the secret person, ${secret.name} is!`;
   }
   winOrLose.style.display = "flex";
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 };
 
-// Invokes the start function when website is loaded
 start();
 
 // All the event listeners
@@ -394,18 +375,17 @@ restartButton.addEventListener("click", () => {
   start();
   clearInterval(timeStart);
   timeStart = setInterval(setTime, 1000);
-  // resetCounter();
-  // setTime();
-  // pad(time);
 });
 
 questions.addEventListener("change", selectQuestion);
 findOutBtn.addEventListener("click", () => {
   checkQuestion();
+  //counting guesses made
   count += 1;
-  countGuess.innerHTML = "Guesses: " + count;
+  countGuess.innerHTML = "Guess: " + count;
 });
 playAgainBtn.addEventListener("click", () => {
   start();
   winOrLose.style.display = "none";
+  count = 0;
 });

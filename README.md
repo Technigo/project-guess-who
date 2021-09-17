@@ -10,4 +10,4 @@ If i had more time i would play with css and effects but i wanted rather to unde
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://technigo-aleksa-guess-who.netlify.app

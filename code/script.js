@@ -10,6 +10,7 @@ const cheatCode = document.getElementById('cheatCode');
 const cheatFooter = document.getElementById('cheatFooter');
 const guessCounterText = document.getElementById('guessCounterText');
 const gameTimer = document.getElementById('guessCounterTimer');
+const guessList = document.getElementById('guessList');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -300,7 +301,7 @@ const generateQuestions = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
 	secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]; //
-	// console.log(`The secret person is ${secret.name}`, secret);
+	console.log(`The secret person is ${secret.name}`, secret);
 };
 
 // This function to start (and restart) the game
@@ -309,17 +310,19 @@ const start = () => {
 	charactersInPlay = CHARACTERS;
 	// What else should happen when we start the game?
 	cheating = false;
+	askedQuestions = [];
 	guessCounter = 0;
+	board.style.display = 'flex';
+	winOrLose.style.display = 'none';
+	winOrLoseText.innerText = '';
+	cheatFooter.style.display = 'flex';
+	guessList.innerHTML = '';
 	setSecret();
 	generateBoard();
 	generateCategories();
 	generateQuestions();
 	startTimer();
 	guessCounterHandler();
-	board.style.display = 'flex';
-	winOrLose.style.display = 'none';
-	winOrLoseText.innerText = '';
-	cheatFooter.style.display = 'flex';
 	questions.focus();
 };
 
@@ -335,11 +338,13 @@ const guessCounterHandler = () => {
 	guessCounterText.innerText = `Guess counter: ${guessCounter}`;
 };
 
+const populateGuessList = () => {
+	guessList.innerHTML += /*html*/ `<li>${currentQuestion.value} ${currentQuestion.category}</li>`;
+};
+
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (guess, name) => {
-	guessCounter++;
-	guessCounterHandler();
-	askedQuestions;
+	// askedQuestions;
 	let category = '';
 	let value = '';
 	if (guess) {
@@ -353,7 +358,11 @@ const selectQuestion = (guess, name) => {
 		category: category,
 		value: value,
 	};
-	// console.log(`the current guess is ${currentQuestion.category} ${currentQuestion.value}`);
+	if (currentQuestion.value !== '') {
+		guessCounter++;
+		guessCounterHandler();
+		populateGuessList();
+	}
 };
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -427,7 +436,9 @@ filterButton.addEventListener('click', () => {
 	selectQuestion();
 	checkQuestion();
 });
-playAgainButton.addEventListener('click', start);
+playAgainButton.addEventListener('click', () => {
+	start();
+});
 cheatCode.addEventListener('change', () => {
 	cheating = true;
 	cheatFooter.style.display = 'none';

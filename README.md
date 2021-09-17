@@ -1,13 +1,13 @@
 # Project Name
+Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a game of "guess who". Since it was a long time ago i played that game, i had to remind myself of how to play the game before i started to write the code. We had some code in the project to begin with, the CSS and the HTML was already there, but i decided to make some changes to the design in the CSS. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I am al in al satisfied with the project, if i had more time i would incorporate som sounds and make a timer, a counter and some confetti rain (to show the winner). This week was all about the javaScript and i felt that i had control over the workflow, but i felt a need to learn some syntax more fluently. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Take a look at my game here:
+https://dazzling-chandrasekhar-25b61d.netlify.app 

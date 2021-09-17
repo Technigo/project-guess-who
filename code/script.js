@@ -3,6 +3,10 @@ const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const filterBtn = document.getElementById("filter");
 const playAgainBtn = document.getElementById("playAgain");
+const nameOfGamer = document.getElementById("namehere");
+
+
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -11,6 +15,7 @@ const CHARACTERS = [
 		img: "images/jabala.svg",
 		hair: "hidden",
 		eyes: "hidden",
+		age: "middleage",
 		accessories: ["glasses", "hat"],
 		other: [],
 	},
@@ -19,6 +24,7 @@ const CHARACTERS = [
 		img: "images/jack.svg",
 		hair: "hidden",
 		eyes: "blue",
+		age: "middleage",
 		accessories: ["hat"],
 		other: [],
 	},
@@ -27,6 +33,7 @@ const CHARACTERS = [
 		img: "images/jacques.svg",
 		hair: "grey",
 		eyes: "blue",
+		age: "old",
 		accessories: ["hat"],
 		other: ["smoker"],
 	},
@@ -35,6 +42,7 @@ const CHARACTERS = [
 		img: "images/jai.svg",
 		hair: "black",
 		eyes: "brown",
+		age: "middleage",
 		accessories: [],
 		other: [],
 	},
@@ -43,6 +51,7 @@ const CHARACTERS = [
 		img: "images/jake.svg",
 		hair: "yellow",
 		eyes: "green",
+		age: "middleage",
 		accessories: ["glasses"],
 		other: [],
 	},
@@ -51,6 +60,7 @@ const CHARACTERS = [
 		img: "images/james.svg",
 		hair: "brown",
 		eyes: "green",
+		age: "middleage",
 		accessories: ["glasses"],
 		other: [],
 	},
@@ -59,6 +69,7 @@ const CHARACTERS = [
 		img: "images/jana.svg",
 		hair: "black",
 		eyes: "hidden",
+		age: "middleage",
 		accessories: ["glasses"],
 		other: [],
 	},
@@ -67,6 +78,7 @@ const CHARACTERS = [
 		img: "images/jane.svg",
 		hair: "yellow",
 		eyes: "hidden",
+		age: "middleage",
 		accessories: ["glasses"],
 		other: [],
 	},
@@ -75,6 +87,7 @@ const CHARACTERS = [
 		img: "images/jaqueline.svg",
 		hair: "orange",
 		eyes: "green",
+		age: "old",
 		accessories: ["glasses"],
 		other: [],
 	},
@@ -84,6 +97,7 @@ const CHARACTERS = [
 		img: "images/jazebelle.svg",
 		hair: "purple",
 		eyes: "hidden",
+		age: "middleage",
 		accessories: ["glasses"],
 		other: ["smoker"],
 	},
@@ -92,6 +106,7 @@ const CHARACTERS = [
 		img: "images/jean.svg",
 		hair: "brown",
 		eyes: "blue",
+		age: "middleage",
 		accessories: ["glasses", "hat"],
 		other: ["smoker"],
 	},
@@ -100,6 +115,7 @@ const CHARACTERS = [
 		img: "images/jeane.svg",
 		hair: "brown",
 		eyes: "green",
+		age: "middleage",
 		accessories: ["glasses"],
 		other: [],
 	},
@@ -108,6 +124,7 @@ const CHARACTERS = [
 		img: "images/jed.svg",
 		hair: "orange",
 		eyes: "green",
+		age: "middleage",
 		accessories: ["glasses", "hat"],
 		other: ["smoker"],
 	},
@@ -116,6 +133,7 @@ const CHARACTERS = [
 		img: "images/jenni.svg",
 		hair: "white",
 		eyes: "hidden",
+		age: "middleage",
 		accessories: ["hat"],
 		other: [],
 	},
@@ -124,6 +142,7 @@ const CHARACTERS = [
 		img: "images/jeri.svg",
 		hair: "orange",
 		eyes: "green",
+		age: "middleage",
 		accessories: ["glasses"],
 		other: [],
 	},
@@ -132,6 +151,7 @@ const CHARACTERS = [
 		img: "images/jerry.svg",
 		hair: "hidden",
 		eyes: "blue",
+		age: "middleage",
 		accessories: ["hat"],
 		other: [],
 	},
@@ -140,6 +160,7 @@ const CHARACTERS = [
 		img: "images/jess.svg",
 		hair: "black",
 		eyes: "blue",
+		age: "middleage",
 		accessories: ["glasses"],
 		other: [],
 	},
@@ -148,6 +169,7 @@ const CHARACTERS = [
 		img: "images/jocelyn.svg",
 		hair: "black",
 		eyes: "brown",
+		age: "middleage",
 		accessories: ["glasses"],
 		other: [],
 	},
@@ -156,6 +178,7 @@ const CHARACTERS = [
 		img: "images/jon.svg",
 		hair: "brown",
 		eyes: "green",
+		age: "middleage",
 		accessories: ["glasses"],
 		other: [],
 	},
@@ -164,6 +187,7 @@ const CHARACTERS = [
 		img: "images/jordan.svg",
 		hair: "yellow",
 		eyes: "hidden",
+		age: "middleage",
 		accessories: ["glasses", "hat"],
 		other: [],
 	},
@@ -172,6 +196,7 @@ const CHARACTERS = [
 		img: "images/josephine.svg",
 		hair: "grey",
 		eyes: "brown",
+		age: "old",
 		accessories: [],
 		other: [],
 	},
@@ -180,6 +205,7 @@ const CHARACTERS = [
 		img: "images/josh.svg",
 		hair: "yellow",
 		eyes: "green",
+		age: "middleage",
 		accessories: [],
 		other: [],
 	},
@@ -188,6 +214,7 @@ const CHARACTERS = [
 		img: "images/jude.svg",
 		hair: "black",
 		eyes: "green",
+		age: "middleage",
 		accessories: [],
 		other: [],
 	},
@@ -196,6 +223,7 @@ const CHARACTERS = [
 		img: "images/julie.svg",
 		hair: "black",
 		eyes: "brown",
+		age: "middleage",
 		accessories: ["glasses", "hat"],
 		other: [],
 	},
@@ -228,11 +256,24 @@ const setSecret = () => {
 		charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
+
+const name = () =>{
+
+	let addName = prompt(`Hi Gamer, what is your name?` )
+	addName.value=""
+	nameOfGamer.innerText = `Welcome ${addName}`
+
+}
+
+
 const start = () => {
 	charactersInPlay = CHARACTERS;
 	generateBoard();
 	board.style.display = "";
 	setSecret();
+	count = 0;
+	counter.innerHTML = `click counter: 0`;
+	name()
 };
 
 const selectQuestion = () => {
@@ -269,12 +310,12 @@ const filterCharacters = (keep) => {
 			keep = true;
 
 			alert(
-				`Yes, the person wears ${currentQuestion.value}! Keep all people that wears ${currentQuestion.value}`
+				`Yes, the person is a ${currentQuestion.value}! Keep all people that are ${currentQuestion.value}s`
 			);
 		} else {
 			keep = false;
 			alert(
-				`No, the person doesn't wear ${currentQuestion.value}! Remove all people that wears ${currentQuestion.value}`
+				`No, the person is not a ${currentQuestion.value}! Remove all people that are ${currentQuestion.value}s`
 			);
 		}
 	}
@@ -284,12 +325,12 @@ const filterCharacters = (keep) => {
 			keep = true;
 
 			alert(
-				`Yes, the person wears ${currentQuestion.value}! Keep all people that wears ${currentQuestion.value}`
+				`Yes, the person has ${currentQuestion.value} hair! Keep all people with ${currentQuestion.value} hair`
 			);
 		} else {
 			keep = false;
 			alert(
-				`No, the person doesn't wear ${currentQuestion.value}! Remove all people that wears ${currentQuestion.value}`
+				`No, the person doesn't have ${currentQuestion.value} hair! Remove all people that have ${currentQuestion.value} hair`
 			);
 		}
 	}
@@ -297,12 +338,26 @@ const filterCharacters = (keep) => {
 		if (secret[currentQuestion.category].includes(currentQuestion.value)) {
 			keep = true;
 			alert(
-				`Yes, the person wears ${currentQuestion.value}! Keep all people that wears ${currentQuestion.value}`
+				`Yes, the person has ${currentQuestion.value} eyes! Keep all people with ${currentQuestion.value} eyes`
 			);
 		} else {
 			keep = false;
 			alert(
-				`No, the person doesn't wear ${currentQuestion.value}! Remove all people that wears ${currentQuestion.value}`
+				`No, the person doesn't have ${currentQuestion.value} eyes! Remove all people that have ${currentQuestion.value} eyes`
+			);
+		}
+	}
+
+	if (currentQuestion.category.includes("age")) {
+		if (secret[currentQuestion.category].includes(currentQuestion.value)) {
+			keep = true;
+			alert(
+				`Yes, the person are ${currentQuestion.value}! Keep all the ${currentQuestion.value} people`
+			);
+		} else {
+			keep = false;
+			alert(
+				`No, the person is not ${currentQuestion.value}! Remove all the ${currentQuestion.value} people`
 			);
 		}
 	}
@@ -344,11 +399,18 @@ const guess = (suspected) => {
 		if (secret.name === suspected) {
 			alert(`you win`);
 		} else if (secret.name !== yourGuess) {
-			alert(`you lose`);
+			alert(`you lose! This time the "Guess-Who-person" was ${secret.name}`);
 		}
 	} else {
 		alert(`make a new guess`);
 	}
+};
+
+let counter = document.getElementById("clickcounter"),
+	count = 0;
+filterBtn.onclick = function () {
+	count += 1;
+	counter.innerHTML = `click counter: ` + count;
 };
 
 start();

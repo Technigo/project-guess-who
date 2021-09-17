@@ -269,6 +269,8 @@ const reset = () => {
   start();
   counter = 1; // resets the counter
   document.getElementById("counter").innerHTML = `This far you have guessed 0 times`; // resets the innerHTML when the reset is run
+  cheer.pause()
+  playElevatorMusic()
 }
 
 // This function to start (and restart) the game
@@ -463,12 +465,22 @@ const checkMyGuess = (personToCheck) => {
     alert("That's correct, you win!");
     board.innerHTML = "";
     winOrLose.style.display = "block";
+    pauseElevatorMusic();
     cheer.play(); // This shows the winner block if you pick the correct person
   } else {
     alert("That is not correct, you lose!");
     reset(); // resets the timer
+    pauseElevatorMusic();
   }
 };
+
+const playElevatorMusic = () => {
+  elevator.play()
+}
+
+const pauseElevatorMusic = () => {
+  elevator.pause()
+}
 
 // Invokes the start function when website is loaded
 start();
@@ -478,3 +490,4 @@ restartButton.addEventListener("click", reset); // The restart function also run
 questions.addEventListener("change", selectQuestion);
 filter.addEventListener("click", checkQuestion);
 playAgain.addEventListener("click", reset); // I invoke the reset first that resets the timer and then runs the starter function
+questions.addEventListener("click", playElevatorMusic);

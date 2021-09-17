@@ -229,7 +229,7 @@ const categories = {
 const generateBoard = () => {
 	board.innerHTML = '';
 	charactersInPlay.forEach((person) => {
-		board.innerHTML += `
+		board.innerHTML += /*html*/ `
       <div class="card" ${person.name === secret.name && cheating ? 'style="border: 3px solid red"' : ''}>
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
@@ -242,6 +242,10 @@ const generateBoard = () => {
 	});
 };
 
+const arraysHasSameData = (arr1, arr2) => {
+	return arr1.some((item) => arr2.includes(item));
+};
+
 const generateCategories = () => {
 	CHARACTERS.forEach((person) => {
 		// for each person in the array of characters do:
@@ -251,9 +255,6 @@ const generateCategories = () => {
 				// if category is not equal to img and name do:
 				if (Array.isArray(person[category])) {
 					// check if values already exists in the category
-					const arraysHasSameData = (arr1, arr2) => {
-						return arr1.some((item) => arr2.includes(item));
-					};
 					if (!arraysHasSameData(categories[category].value, person[category])) {
 						// if the category is an array spread the values of the array
 						// and push them in to the appropriate array in the categories object
@@ -273,24 +274,24 @@ const generateCategories = () => {
 	});
 };
 
-// Populate the select options dynmically from the CHARACTERS array
+// Populate the select options dynamically from the CHARACTERS array
 const generateQuestions = () => {
 	optionGroups = '';
 	// loop through all keys in categories object
 	for (const category in categories) {
-		console.log(categories[category].value, askedQuestions);
-		// if (categories[category].value.some(askedQuestions)) {
-		// 	console.log('hej test');
-		// 	// categories[category].value = categories[category].value.filter((value) => !value === );
-		// }
-		// sort values alphbetically
-		categories[category].value.sort();
+		let categoryValues = categories[category].value;
+		// removes previous asked questions from options
+		if (arraysHasSameData(categoryValues, askedQuestions)) {
+			categoryValues.splice(categoryValues.indexOf(currentQuestion.value), 1);
+		}
+		// sort values alphabetically
+		categoryValues.sort();
 		// build the select element options as html tags
-		optionGroups += `<optgroup label='${category}' id='${category}'>`;
-		categories[category].value.forEach((option) => {
-			optionGroups += `<option value='${option}'>${option} ${categories[category].type === 'array' ? '' : category}</option>`;
+		optionGroups += /*html*/ `<optgroup label='${category}' id='${category}'>`;
+		categoryValues.forEach((option) => {
+			optionGroups += /*html*/ `<option value='${option}'>${option} ${categories[category].type === 'array' ? '' : category}</option>`;
 		});
-		optionGroups += `</optgroup>`;
+		optionGroups += /*html*/ `</optgroup>`;
 	}
 	questions.innerHTML = '';
 	questions.innerHTML += optionGroups;
@@ -299,7 +300,7 @@ const generateQuestions = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
 	secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]; //
-	console.log(`The secret person is ${secret.name}`, secret);
+	// console.log(`The secret person is ${secret.name}`, secret);
 };
 
 // This function to start (and restart) the game
@@ -352,7 +353,7 @@ const selectQuestion = (guess, name) => {
 		category: category,
 		value: value,
 	};
-	console.log(`the current guess is ${currentQuestion.category} ${currentQuestion.value}`);
+	// console.log(`the current guess is ${currentQuestion.category} ${currentQuestion.value}`);
 };
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -363,6 +364,8 @@ const checkQuestion = () => {
 	} else {
 		filterCharacters(false);
 	}
+	askedQuestions.push(value);
+	generateQuestions();
 };
 
 // It'll filter the characters array and redraw the game board.

@@ -13,7 +13,7 @@
     />
   </head>
   <body>
-    <audio id="myElevatorAudio" src="sounds/elevator.mp3" type="audio/mpeg" id="elevator" ></audio> 
+    <audio mute autoplay id="myElevatorAudio" src="sounds/elevator.mp3" type="audio/mpeg" id="elevator" ></audio> 
     <aside class="question-section">
 
       <button id="restart" class="outlined-button">RESTART</button>
@@ -37,6 +37,10 @@
           <option value="yellow">Yellow hair</option>
           <option value="beard">Has a beard</option>
           <!-- Add the rest of hair colors as options  -->
+        </optgroup>
+        <optgroup label="gender">
+          <option value="female">Is a female</option>
+          <option value="male">Is male</option>
         </optgroup>
         <optgroup label="eyes">
           <option value="blue">Blue eyes</option>

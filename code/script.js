@@ -12,14 +12,16 @@ const CHARACTERS = [
   {
     name: "Jabala",
     img: "images/jabala.svg",
+    gender: "female",
     hair: ["hidden"],
     eyes: "hidden",
-    accessories: ["sunglasses", "hat"],
+    accessories: ["sunglasses", "glasses", "hat"],
     other: [],
   },
   {
     name: "Jack",
     img: "images/jack.svg",
+    gender: "male",
     hair: ["hidden", "beard"],
     eyes: "blue",
     accessories: ["hat", "jewlery"],
@@ -28,6 +30,7 @@ const CHARACTERS = [
   {
     name: "Jacques",
     img: "images/jacques.svg",
+    gender: "male",
     hair: ["grey", "beard"],
     eyes: "blue",
     accessories: ["hat"],
@@ -36,6 +39,7 @@ const CHARACTERS = [
   {
     name: "Jai",
     img: "images/jai.svg",
+    gender: "male",
     hair: ["black"],
     eyes: "brown",
     accessories: [],
@@ -44,6 +48,7 @@ const CHARACTERS = [
   {
     name: "Jake",
     img: "images/jake.svg",
+    gender: "male",
     hair: ["yellow"],
     eyes: "green",
     accessories: ["glasses"],
@@ -52,30 +57,34 @@ const CHARACTERS = [
   {
     name: "James",
     img: "images/james.svg",
+    gender: "male",
     hair: ["brown", "beard"],
     eyes: "green",
-    accessories: ["sunglasses"],
+    accessories: ["sunglasses", "glasses"],
     other: [],
   },
   {
     name: "Jana",
     img: "images/jana.svg",
+    gender: "female",
     hair: ["black"],
     eyes: "hidden",
-    accessories: ["sunglasses", "jewlery"],
+    accessories: ["sunglasses", "glasses", "jewlery"],
     other: [],
   },
   {
     name: "Jane",
     img: "images/jane.svg",
+    gender: "female",
     hair: ["yellow"],
     eyes: "hidden",
-    accessories: ["sunglasses"],
+    accessories: ["sunglasses", "glasses"],
     other: [],
   },
   {
     name: "Jaqueline",
     img: "images/jaqueline.svg",
+    gender: "female",
     hair: ["orange"],
     eyes: "green",
     accessories: ["glasses", "jewlery"],
@@ -85,14 +94,16 @@ const CHARACTERS = [
   {
     name: "Jazebelle",
     img: "images/jazebelle.svg",
+    gender: "female",
     hair: ["purple"],
     eyes: "hidden",
-    accessories: ["sunglasses"],
+    accessories: ["sunglasses", "glasses"],
     other: ["smoker"],
   },
   {
     name: "Jean",
     img: "images/jean.svg",
+    gender: "male",
     hair: ["brown", "beard"],
     eyes: "blue",
     accessories: ["glasses", "hat"],
@@ -101,6 +112,7 @@ const CHARACTERS = [
   {
     name: "Jeane",
     img: "images/jeane.svg",
+    gender: "female",
     hair: ["brown"],
     eyes: "green",
     accessories: ["glasses"],
@@ -109,6 +121,7 @@ const CHARACTERS = [
   {
     name: "Jed",
     img: "images/jed.svg",
+    gender: "male",
     hair: ["orange", "beard"],
     eyes: "green",
     accessories: ["glasses", "hat"],
@@ -117,6 +130,7 @@ const CHARACTERS = [
   {
     name: "Jenni",
     img: "images/jenni.svg",
+    gender: "female",
     hair: ["white"],
     eyes: "hidden",
     accessories: ["hat"],
@@ -125,6 +139,7 @@ const CHARACTERS = [
   {
     name: "Jeri",
     img: "images/jeri.svg",
+    gender: "female",
     hair: ["orange"],
     eyes: "green",
     accessories: ["glasses"],
@@ -133,6 +148,7 @@ const CHARACTERS = [
   {
     name: "Jerry",
     img: "images/jerry.svg",
+    gender: "male",
     hair: ["hidden"],
     eyes: "blue",
     accessories: ["hat"],
@@ -141,6 +157,7 @@ const CHARACTERS = [
   {
     name: "Jess",
     img: "images/jess.svg",
+    gender: "female",
     hair: ["black"],
     eyes: "blue",
     accessories: ["glasses"],
@@ -149,6 +166,7 @@ const CHARACTERS = [
   {
     name: "Jocelyn",
     img: "images/jocelyn.svg",
+    gender: "female",
     hair: ["black"],
     eyes: "brown",
     accessories: ["glasses", "jewlery"],
@@ -157,6 +175,7 @@ const CHARACTERS = [
   {
     name: "Jon",
     img: "images/jon.svg",
+    gender: "male",
     hair: ["brown"],
     eyes: "green",
     accessories: ["glasses"],
@@ -165,14 +184,16 @@ const CHARACTERS = [
   {
     name: "Jordan",
     img: "images/jordan.svg",
+    gender: "male",
     hair: ["yellow"],
     eyes: "hidden",
-    accessories: ["sunglasses", "hat", "jewlery"],
+    accessories: ["sunglasses", "glasses", "hat", "jewlery"],
     other: [],
   },
   {
     name: "Josephine",
     img: "images/josephine.svg",
+    gender: "female",
     hair: ["grey"],
     eyes: "brown",
     accessories: ["jewlery"],
@@ -181,6 +202,7 @@ const CHARACTERS = [
   {
     name: "Josh",
     img: "images/josh.svg",
+    gender: "male",
     hair: ["yellow"],
     eyes: "green",
     accessories: [],
@@ -189,6 +211,7 @@ const CHARACTERS = [
   {
     name: "Jude",
     img: "images/jude.svg",
+    gender: "male",
     hair: ["black", "beard"],
     eyes: "green",
     accessories: [],
@@ -197,6 +220,7 @@ const CHARACTERS = [
   {
     name: "Julie",
     img: "images/julie.svg",
+    gender: "female",
     hair: ["black"],
     eyes: "brown",
     accessories: ["glasses", "hat"],
@@ -225,7 +249,6 @@ const generateBoard = () => {
       </div>
     `;
   });
-  elevator.play();
 };
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -315,7 +338,7 @@ const checkQuestion = () => {
   const { category, value } = currentQuestion;
 
   // This if statements first checks which category is picked
-  if (category === "eyes") {
+  if (category === "eyes" || category === "gender") {
     // If the category is hair/eyes it gets the value in this way
     if (secret[category] === value) {
       // If the value is true it runs filterCharacters with a true value
@@ -356,6 +379,22 @@ const filterCharacters = (keep) => {
       // This filters out the characters if the value is false
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
+      );
+    }
+  } else if (category === "gender") {
+    if (keep) {
+      alert(
+        `Yes, the person is ${value}! Keep all people that are ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+    } else {
+      alert(
+        `No, the person isn't ${value}! Remove all people that are ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
       );
     }
   } else if (category === "eyes") {

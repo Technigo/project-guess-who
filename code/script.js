@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const playAgainButton = document.getElementById('playAgain')
 const startButton = document.getElementById('start')
 const filter = document.getElementById('filter')
+const startWindow = document.getElementById('start-window')
 
 const startAudio = document.getElementById('audio')
 const winningAudio = document.getElementById('audio-winning')
@@ -14,8 +15,8 @@ const span = document.getElementsByClassName("close")[0];
 
 // when you open the page this is the first you see
 window.onload = () => {
-  board.style.display = 'none' // hiding board of characters
-  document.getElementById('start-window').style.display = 'flex' // showing start window 
+  startWindow.style.display = 'flex' // showing start window 
+  start()
 }
 
 
@@ -384,15 +385,14 @@ const checkMyGuess = (personToCheck) => {
 }
 
 
-// Invokes the start function when website is loaded
-start()
+
 
 // EVENT LISTINERS
 questions.addEventListener('change', selectQuestion)
 filter.addEventListener('click', checkQuestion)
 startButton.addEventListener('click', () => {
-  document.getElementById("audio").play();
-  document.getElementById('start-window').style.display='none';
+  startAudio.play();
+  startWindow.style.display='none';
   board.style.display = 'flex'
 })
 

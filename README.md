@@ -1,24 +1,34 @@
-# Project Name
+# Guess Who
 
-Replace this readme with your own information about your project.
+For this week project I have to create my own digital version of the old character guessing board game -> Guess Who? 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## What I learned
 
-## The problem
+After this week struggles of solving problems I came to conclusion that it's better to ask for help sononer then later. It can save a lot of time and with that time I can do other things to my project. 
+ 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Thanks to that project I've learned a lot about: 
+- comparing two different object 
+- use filter function to an array 
+- use audio tags in the HTML and manipulate with them in JS
+- dived in more into window onload function and how it works
+- how to add a small icon in the title tab in the browser 
+- how to create a modal window 
 
-struggle to how to compare two objects with each other 
-to add audio to the project, after some googling I've managed to find a useful information that I added to my project 
-
-
+What I want to add more to my project: 
+- create confirm window and style it 
+- confetti should only when you win 
+- at the end of the game show the score of users guesses
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+// Demo
+https://guess-who-by-darya.netlify.app/
 
-// CUT AUDIO FILES
+Useful Links that I used in the project: 
+
+// Cut audio files
 https://mp3cut.net/
 
-// FREE SOUNDS
+// Free sounds effect to downloud
 https://www.freesfx.com/sfx/lost-game

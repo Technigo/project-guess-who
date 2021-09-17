@@ -425,7 +425,7 @@ const checkMyGuess = (personToCheck) => {
     <h1>You have guessed: ${countGuesses} time(s)!</h1>
     `;
   }
-  winOrLose.style.display = 'block'; // Show the win or lose section
+  winOrLose.style.display = 'flex'; // Show the win or lose section
   board.style.display = 'none'; // Hide the game board
 };
 

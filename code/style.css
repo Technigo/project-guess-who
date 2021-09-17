@@ -41,7 +41,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 140px;
 }
 
 .board-wrapper {
@@ -179,12 +179,12 @@ button {
 }
 
 /****** FOOTER ******/
-.win-or-lose-wrapper p,
+.win-or-lose p,
 a {
   font-size: 12px;
   font-weight: 700;
   display: flex;
-  margin: 10px 0 0 20px;
+  margin: 6px;
 }
 
 .logo-technigo {
@@ -221,7 +221,7 @@ footer {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 70px;
   }
 
   .board-wrapper {

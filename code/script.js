@@ -9,6 +9,8 @@ const filterBtn = document.getElementById('filter')
 const playAgainBtn = document.getElementById('playAgain')
 const playerValue = document.getElementById('playername')
 
+// add DOM-selector for audio, and then write audio.play() where you want to find it
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -280,9 +282,10 @@ const validate = () => {
   if (playerValue.value == "") {
     alert("Name must be filled out");
   }
-  else
+  else{
     generatePlayerBoard()
     start()
+  }
 }
 
 const timeToString = (time) =>{

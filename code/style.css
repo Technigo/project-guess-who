@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #6F69AC;
+  --secondary: #95DAC1;
 }
 
 body {
@@ -166,6 +166,7 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  margin: 50px auto;
 }
 
 .win-or-lose img {

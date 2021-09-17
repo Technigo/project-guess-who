@@ -6,6 +6,10 @@ const findOutButton = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const winOrLose = document.getElementById("winOrLose");
 const playAgainButton = document.getElementById("playAgain");
+const tadaSound = document.getElementById("tada");
+const trumpetSound = document.getElementById("trumpet");
+const theEndSound = document.getElementById("theEnd");
+const falseSound = document.getElementById("wrongGuess");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -308,6 +312,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
+      tadaSound.play();
       alert(
         `Yes, the person wears ${value}! 🤩 Keeping all people that wears ${value}`
       );
@@ -315,6 +320,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
+      falseSound.play();
       alert(
         `No, the person doesn't wear ${value}! 🤔 Removing all people that wears ${value}`
       );
@@ -324,6 +330,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
+      tadaSound.play();
       alert(
         `Yes, the person is a ${value}! 🤩 Keeping all people that are ${value}'s`
       );
@@ -331,6 +338,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
+      falseSound.play();
       alert(
         `No, the person is not a ${value}! 🤔 Removing all people that are ${value}'s`
       );
@@ -340,6 +348,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
+      tadaSound.play();
       alert(
         `Yes, the person has ${value} hair! 🤩 Keeping all people that have ${value} hair.`
       );
@@ -347,6 +356,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
+      falseSound.play();
       alert(
         `No, the person doesn't have ${value} hair! 🤔 Removing all people that have ${value} hair.`
       );
@@ -356,6 +366,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
+      tadaSound.play();
       alert(
         `Yes, the person has ${value} beard! 🤩 Keeping all people that have ${value} beard.`
       );
@@ -363,6 +374,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
+      falseSound.play();
       alert(
         `No, the person doesn't have ${value} beard! 🤔 Removing all people that have ${value} beard.`
       );
@@ -372,6 +384,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
+      tadaSound.play();
       alert(
         `Yes, the person has ${value} eyes! 🤩 Keeping all people that have ${value} eyes.`
       );
@@ -379,6 +392,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
+      falseSound.play();
       alert(
         `No, the person doesn't have ${value} eyes! 🤔 Removing all people that have ${value} eyes.`
       );
@@ -402,8 +416,10 @@ const guess = (personToCheck) => {
 // If the player confirms, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
+    trumpetSound.play();
     winOrLoseText.innerHTML = `You did it! 🌟 You guessed on the correct person - ${personToCheck}! You win! 🎊🎊🎊`;
   } else {
+    theEndSound.play();
     winOrLoseText.innerHTML = `Sorry the mysterious person wasn't ${personToCheck}. You loose! 😓 The correct person was ${secret.name}.`;
   }
   // Showing the win or lose section

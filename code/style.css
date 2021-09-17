@@ -1,7 +1,10 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #3c73fe;
+  --secondary: #6bb0f9;
+
+  /* --primary: #a259ff;
+  --secondary: #b0a6ff; */
 }
 
 body {
@@ -44,7 +47,7 @@ select {
   width: 126px;
 }
 
-.board-wrap {
+.board-wrapper {
   width: 70%;
   display: flex;
   align-items: center;
@@ -177,6 +180,13 @@ button {
   margin-bottom: 32px;
 }
 
+.timer-wrapper {
+  /* position: absolute; */
+  color: #ffff;
+  font-size: 24px;
+  font-weight: 600;
+}
+
 .loading-gif {
   /* z-index: 1; */
   max-width: 50%;
@@ -198,12 +208,13 @@ button {
   align-items: center;
   justify-content: center;
 }
+
 footer {
   position: fixed;
   bottom: 0;
   width: 100%;
   background-color: #00000099;
-  color: #b0a6ff;
+  color: #ffffff;
   text-align: center;
   padding: 10px;
   margin-top: 50px;

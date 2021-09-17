@@ -62,7 +62,7 @@ const CHARACTERS = [
     img: "images/jana.svg",
     hair: "black",
     eyes: "hidden",
-    accessories: ["glasses"],
+    accessories: ["glasses", "jevellery"],
     other: [],
   },
   {
@@ -204,11 +204,6 @@ const CHARACTERS = [
   },
 ];
 
-//!
-// *TODO:
-// ? Should this ?
-// * important
-
 // Global variables
 let secret;
 let currentQuestion;
@@ -239,10 +234,6 @@ const setSecret = () => {
 
 //! This function to start (and restart) the game
 const start = () => {
-  // TODO Add a loading img or gif +
-  // TODO Add sound effects +
-  // TODO timer
-
   board.innerHTML += `
   <div class= gif-bg>
   <img src="images/loading.gif" class="loading-gif" alt="loading"/>
@@ -253,7 +244,7 @@ const start = () => {
   // What else should happen when we start the game?
   setTimeout(() => generateBoard(), 1000);
   setSecret();
-  // console.log(secret);
+  // console.log(secret); //remove when it is ready to launch
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -268,7 +259,7 @@ const selectQuestion = () => {
     value: value,
   };
 
-  console.log(`does the person has ${value} ${category} ?`); //checking the selectQuestion function
+  // console.log(`does the person has ${value} ${category} ?`); //checking the selectQuestion function
 };
 
 //! This function should be invoked when you click on 'Find Out' button.
@@ -283,23 +274,19 @@ const checkQuestion = () => {
     // if (secret[category] === value)
     if (secret[currentQuestion.category] === currentQuestion.value) {
       filterCharacters(true);
-      console.log("yes it works for hair & eyes ");
     } else {
       filterCharacters(false);
-      console.log("no that didnt match for h&e");
     }
   } else if (category === "accessories" || category === "other") {
     if (secret[category].includes(value)) {
       filterCharacters(true);
-      console.log(" yes it works for accessories & other ");
     } else {
       filterCharacters(false);
-      console.log(" not match for accessories & other ");
     }
   }
 };
 
-// It'll filter the characters array and redraw the game board.
+//! It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
@@ -321,29 +308,17 @@ const filterCharacters = (keep) => {
         `No, the person is not a ${value}! Remove all people that ${value}!`
       );
     }
-  } else if (category === "eyes") {
+  } else if (category === "hair" || category === "eyes") {
     if (keep) {
       alert(
-        `Yes, the person has ${value} eyes! Keep all people with  ${value} eyes! `
+        `Yes, the person has ${value} ${category} ! Keep all people with ${value} ${category}! `
       );
     } else {
       alert(
-        `No, the person doesnt have  ${value} eyes! Remove all people with  ${value} eyes!`
-      );
-    }
-  } else if (category === "hair") {
-    if (keep) {
-      alert(
-        `Yes, the person has  ${value} hair!! Keep all people with  ${value} hair`
-      );
-    } else {
-      alert(
-        `No, the person doesnt have  ${value} hair! Remove all people with ${value} hair`
+        `No, the person doesnt have ${value} ${category}! Remove all people with ${value} ${category}!`
       );
     }
   }
-
-  console.log(`filterCharacters works ${(category, value)}`);
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
@@ -354,7 +329,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
-      console.log("keep person works");
     } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
@@ -374,8 +348,8 @@ const filterCharacters = (keep) => {
   }
   generateBoard();
 };
-//! Invoke a function to redraw the board with the remaining people.
 
+//! Invoke a function to redraw the board with the remaining people.
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
@@ -402,7 +376,8 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `
       <p> You win the game! </p>   
-      <p>The secret person is ${secret.name}!</p>   
+      <img style= margin:0 width='30%' src=${secret.img} alt=${secret.name}>
+      <p>The secret person is ${secret.name}!</p>  
       <p>  👏👏👏  </p> 
     `;
     let youWinAudio = new Audio("sound/youWin.wav");
@@ -410,7 +385,8 @@ const checkMyGuess = (personToCheck) => {
   } else {
     winOrLoseText.innerHTML = `
     <p> You lost! 👎🏻 </p>  
-    <p>  ${secret.name} is the person we are looking for. </p>         
+    <img style= margin:0 width='30%' src=${secret.img} alt=${secret.name}>       
+    <p>  ${secret.name} is the person we are looking for. </p>  
     `;
     let youLostAudio = new Audio("sound/youLost.wav");
     youLostAudio.play();
@@ -424,6 +400,42 @@ const checkMyGuess = (personToCheck) => {
 
   // Set a Message to show in the win or lose section accordingly
   // Hide the game board
+};
+
+// timer https://stackoverflow.com/questions/20618355/how-to-write-a-countdown-timer-in-javascript
+// doesnt reset the counter with restart button
+// need a time is up message
+function startTimer(duration, display) {
+  var timer = duration,
+    minutes,
+    seconds;
+  setInterval(function () {
+    minutes = parseInt(timer / 60, 10);
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    display.textContent = minutes + ":" + seconds;
+
+    if (--timer < 0) {
+      timer = duration;
+    }
+    // else (duration === 0) {
+    //   clearInterval(timer);
+    //   showMsg({
+    //     text: "Time is up! Try again!",
+    //     confirmText: "Play Again",
+    //     onConfirm: () => window.location.reload(),
+    //   });
+    // }
+  }, 1000);
+}
+
+window.onload = function () {
+  var oneMinute = 60 * 1,
+    display = document.querySelector("#time");
+  startTimer(oneMinute, display);
 };
 
 // Invokes the start function when website is loaded

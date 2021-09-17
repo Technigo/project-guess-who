@@ -228,7 +228,6 @@ const generateBoard = () => {
   
 }
 
-
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -238,8 +237,8 @@ const setSecret = () => {
 const playAgain = () =>{
   winOrLoseSection.style.display = "none";
   board.style.display = "";
-  charactersInPlay = CHARACTERS
-  generateBoard();
+  //charactersInPlay = CHARACTERS
+  //generateBoard();
   
   }
 
@@ -259,8 +258,9 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label 
   // This variable stores actual value from the dropdown selected
-currentQuestion = {
   const value = document.getElementById('questions').value
+
+  currentQuestion = {
     category: category,
     value: value,
   }
@@ -271,14 +271,15 @@ const checkQuestion = () => {
   const { category, value } = currentQuestion
 // If the current question is based on the hair or eye category, the values are strings and we can use the following conditional.
 // Here we are saying if the category is hair/eyes AND the secret value matches the current value, we can use the filter method and return true
-  if (currentQuestion.category === 'hair' || currentQuestion.category === 'eyes') {
+// If the current question is in the accessories or other category, their values are stored in arrays, so have to be handled differently: 
+if (currentQuestion.category === 'hair' || currentQuestion.category === 'eyes') {
     if (secret[currentQuestion.category] === currentQuestion.value){
       filterCharacters(true)
     }else {
       filterCharacters(false)
     }
-  // If the current question is in the accessories or other category, their values are stored in arrays, so have to be handled differently:
-    } else if (currentQuestion.category === 'accessories' || currentQuestion.category === 'other'){
+  
+   } else if (currentQuestion.category === 'accessories' || currentQuestion.category === 'other'){
       if (secret[currentQuestion.category].includes(currentQuestion.value)){
         filterCharacters(true)
       }else {
@@ -298,6 +299,7 @@ const filterCharacters = (keep) => {
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))// This is needed to keep everyone who matches the question
+    } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
@@ -366,7 +368,7 @@ const checkMyGuess = (personToCheck) => {
   }
   // Show the win or lose section
   winOrLoseSection.style.display = "block";
-  // Hide the game board
+  // 4. Hide the game board
   board.style.display = "none";
 }
 

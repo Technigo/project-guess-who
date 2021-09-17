@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #4d454c;
-  --secondary: #77857d;
+  --primary: white;
+  --secondary: #08333d;
 }
 
 body {
@@ -9,8 +9,28 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
+  cursor: url(https://img.icons8.com/windows/32/000000/deathly-hallows.png),
+    auto;
+  background-image: url("images/562430.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
+.game-features {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: space-between;
+  margin-top: 40px;
+  color: white;
+  font-size: 20px;
+}
+.timer {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
 h1 {
   font-size: 42px;
   font-weight: 500;
@@ -28,6 +48,10 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  filter: opacity(80%);
+}
+p.time {
+  padding-right: 10px;
 }
 
 select {
@@ -71,13 +95,21 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: #08333d;
 }
 
 .card p {
   text-align: center;
   margin-bottom: 0;
   font-size: 16px;
+  color: white;
   font-weight: 700;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  /* max-height: 2em; */
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
 }
 
 .card .guess {
@@ -94,9 +126,11 @@ select {
   background-color: var(--secondary);
 }
 img {
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 135px;
   overflow: hidden;
+  object-fit: cover;
+  object-position: center top;
 }
 .card:hover img,
 .card:hover p {
@@ -129,6 +163,7 @@ button {
 
 .small {
   padding: 8px 16px;
+  background-color: #08333d;
 }
 
 .outlined-button {
@@ -140,11 +175,11 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #08333d;
 }
 
 .filled-button:hover {
-  background-color: white;
+  background-color: #08333d;
   border-color: white;
   color: var(--primary);
 }
@@ -173,8 +208,7 @@ button {
 }
 
 .win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+  align-self: center;
 }
 
 .win-or-lose h1 {
@@ -199,7 +233,8 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 100px;
+    height: 100px;
   }
 
   .board-wrapper {
@@ -230,7 +265,7 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: #08333d;
     color: var(--primary);
     border: none;
   }

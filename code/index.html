@@ -14,18 +14,14 @@
     <aside class="question-section">
       <button id="restart" class="outlined-button">RESTART</button>
 
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
+      <img class="guess-who-icon" src="images/logo.png" alt="Guess Who" />
 
       <h1>Does the person have</h1>
 
       <select id="questions">
         <optgroup label="hair">
           <option value="brown">Brown hair</option>
-          <option value="blonde">Yellow hair</option>
+          <option value="blonde">Blonde hair</option>
           <option value="black">Black hair</option>
           <option value="red">Red hair</option>
           <option value="none">No hair</option>
@@ -40,21 +36,29 @@
           <!-- Add the rest of eye colors as options  -->
         </optgroup>
         <optgroup label="accessories">
-          <option value="glasses">glasses</option>
+          <option value="glasses">Glasses</option>
           <option value="wand">Wand</option>
           <option value="hat">Hat</option>
-          <option value="pet">pet</option>
+          <option value="pet">Pet</option>
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
         <optgroup label="student">
-          <option value="yes">a student</option>
+          <option value="yes">A student?</option>
         </optgroup>
         <optgroup label="aWeasley">
-          <option value="yes">a Weasley</option>
+          <option value="yes">A Weasley?</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+
+      <section class="game-features">
+        <div id="countGuess" class="guess-count">Guesses: 0s</div>
+        <div class="timer">
+          <p class="time">Time:</p>
+          <label id="minutes">00</label>:<label id="seconds">00</label>
+        </div>
+      </section>
     </aside>
 
     <section class="board-wrapper">
@@ -63,11 +67,7 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
+        <img class="guess-who-icon" src="images/logo.png" alt="Guess Who" />
         <h1 id="winOrLoseText"></h1>
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>

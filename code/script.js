@@ -4,6 +4,8 @@ const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const filterButton = document.getElementById("filter");
 const restart = document.getElementById("playAgain");
+const countGuess = document.getElementById("countGuess");
+count = 0;
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -230,6 +232,10 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let backgroundMusic = new Audio("sounds/harryPotterTheme.mp3");
+backgroundMusic.volume = 0.5;
+let correctAnswerAudio = new Audio("sounds/correct.mp3");
+correctAnswerAudio.volume = 1;
 
 // Draw the game board
 const generateBoard = () => {
@@ -255,13 +261,39 @@ const setSecret = () => {
   console.log(secret);
 };
 
+//timer
+const minutesLabel = document.getElementById("minutes");
+const secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+setInterval(setTime, 1000);
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+function pad(val) {
+  let valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
+  countGuess.innerHTML = "Guesses: ";
   setSecret();
+  totalSeconds = 0;
+  valString = "";
+  secondsLabel.innerHTML = "";
+  minutesLabel.innerHTML = "";
   // What else should happen when we start the game?
   generateBoard(charactersInPlay);
+  backgroundMusic.play();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -357,9 +389,7 @@ const filterCharacters = (keep) => {
     }
   } else if (category === "student") {
     if (keep) {
-      alert(
-        `Yes, the person is a ${value}! Keep all people that is a ${value}`
-      );
+      alert(`Yes, the person is a student! Keep all people that is a student`);
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
@@ -423,9 +453,10 @@ const guess = (personToCheck) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    winOrLoseText.innerHTML = `You have won`;
+    winOrLoseText.innerHTML = `You powerful wizard! You won in ${totalSeconds} seconds.`;
+    correctAnswerAudio.play();
   } else {
-    winOrLoseText.innerHTML = `You have lost`;
+    winOrLoseText.innerHTML = `Sadly you were beaten. The correct one was ${secret.name}`;
   }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
@@ -440,10 +471,13 @@ start();
 // All the event listeners
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
-filterButton.addEventListener("click", checkQuestion);
+filterButton.addEventListener("click", () => {
+  checkQuestion();
+  count += 1;
+  countGuess.innerHTML = "Guesses:" + count;
+});
+
 restart.addEventListener("click", () => {
   start();
   winOrLose.style.display = "none";
 });
-
-/* GLÖM INTE TA DISPLAY NONE EFTER VINST*/

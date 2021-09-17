@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #026c80;
-  --secondary: #064c72;
+  --primary: #77847b;
+  --secondary: #bfcfc7;
 }
 
 body {
@@ -76,7 +76,7 @@ select {
 .card p {
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -184,15 +184,39 @@ button {
   margin-bottom: 32px;
 }
 
+/* Display win or lose section */
 .active {
   display: flex;
 }
 
-.attempts {
-  margin-bottom: 0;
+/* Number of attempts and timer */
+
+.info-box {
   color: white;
 }
 
+.attempts {
+  margin-bottom: 0;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.timer p {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+#seconds,
+#minutes,
+#colon {
+  font-size: 16px;
+}
+
+/* Media query  */
 @media (max-width: 768px) {
   body {
     flex-direction: column;

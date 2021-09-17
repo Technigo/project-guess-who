@@ -217,6 +217,10 @@ let secret;
 let currentQuestion;
 let charactersInPlay;
 let counterValue = 0;
+let minutesLabel = document.getElementById("minutes");
+let secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+let timeStart = setInterval(setTime, 1000);
 
 // Draw the game board
 const generateBoard = () => {
@@ -235,21 +239,44 @@ const generateBoard = () => {
   });
 };
 
+//Timer function
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(time) {
+  let timeString = time + "";
+  if (timeString.length < 2) {
+    return "0" + timeString;
+  } else {
+    return timeString;
+  }
+}
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
-//Function for counter
+//Attempts counter
 function findOutCounter() {
   updateDisplay(++counterValue);
 }
 
-//Function to update the display with number of guesses
+//Update number of guesses
 function updateDisplay(val) {
   document.getElementById("counterLabel").innerHTML = val;
 }
+
+const greetPlayer = () => {
+  let person = prompt("Hello!What's your name?");
+  alert(`Let's start the game ${person}!`);
+  greeting.innerHTML = `Player: ${person}`;
+  generateBoard();
+};
 
 // This function to start (and restart) the game
 const start = () => {
@@ -259,6 +286,13 @@ const start = () => {
   generateBoard();
   setSecret();
   winLose.classList.remove("active");
+  setTimeout(greetPlayer, 1300);
+
+  //Restart timer
+  totalSeconds = 0;
+  valString = "";
+  secondsLabel.innerHTML = "";
+  minutesLabel.innerHTML = "";
   console.log(secret); // remove later
 };
 
@@ -274,38 +308,11 @@ const selectQuestion = () => {
     category: category,
     value: value, // We also need a variable that stores the actual value of the question we've selected.
   };
-  console.log(currentQuestion); // remove
 };
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-
-  //   if (
-  //     category === "hair" ||
-  //     category === "headpiece" ||
-  //     category === "other"
-  //   ) {
-  //     if(secret[category] === value){
-  //       filterCharacters(true)
-  //     }
-  //     if (category === "hair" && value === secret.hair){
-  //       filterCharacters(true)
-  //     } else if (category === "headpiece" && value === secret.headpiece){
-  //       filterCharacters(true)
-  //     } else if (category === "other" && value === secret.other){
-  //       filterCharacters(true)
-  //     } else {
-  //       filterCharacters(false)
-  //     }
-  //   } else if (category === "accessories") {
-  //     if (secret.accessories.includes(value)) {
-  //       filterCharacters(true)
-  //     } else {
-  //       filterCharacters(false)
-  //   }
-  //   }
-  // }
 
   if (category === "hair" || category === "headpiece") {
     if (secret[category] === value) {
@@ -326,7 +333,6 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
 
-  // Show the correct alert message for different categories
   if (category === "hair") {
     if (keep) {
       alert(
@@ -394,13 +400,13 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   const guessConfirm = window.confirm(`Are you sure you want to guess?`);
-  console.log(guessConfirm); //remove later
 
   if (guessConfirm) {
     checkMyGuess(personToConfirm);
   }
 };
 
+// Win or lose audio
 const audio = new Audio("win.wav");
 const audioLose = new Audio("lose.wav");
 
@@ -412,7 +418,7 @@ const checkMyGuess = (personToCheck) => {
     board.innerHTML = winLose.classList.add("active");
     winLoseText.innerHTML = `
     <h5>You're a WINNER!!</h5> 
-    <h6>You completed the game in ${counterValue} attempts. Do you wanna play again?</h6>`;
+    <h6>You completed the game in ${counterValue} attempts and ${totalSeconds} seconds. Do you wanna play again?</h6>`;
   } else {
     alert(`Sorry, this is not your character. It is ${secret.name}.`);
     audioLose.play();
@@ -429,6 +435,10 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+restartButton.addEventListener("click", () => {
+  clearInterval(timeStart);
+  timeStart = setInterval(setTime, 1000);
+});
 questions.addEventListener("change", selectQuestion);
 findBtn.addEventListener("click", checkQuestion);
 playAgainBtn.addEventListener("click", start);

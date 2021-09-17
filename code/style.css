@@ -13,7 +13,7 @@ body {
 }
 
 h1 {
-  font-size: 100px;
+  font-size: 55px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
@@ -23,7 +23,7 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: cadetblue;
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -37,7 +37,7 @@ select {
   font-size: 22px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  color: var(--secondary);
+  color: rgba(31, 37, 34, 0.678);
   width: 100%;
   margin: 24px 0;
 }
@@ -51,6 +51,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #deb887;
 }
 
 .game-board {
@@ -59,6 +60,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  background: burlywood;
 }
 
 /****** CARD ******/
@@ -73,6 +75,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background: antiquewhite;
 }
 
 .card p {
@@ -130,21 +133,22 @@ button {
 }
 
 .outlined-button {
-  background-color: transparent;
-  color: var(--primary);
+  background-color: rgb(45 200 215 /55%);
+  color: white;
   align-self: flex-end;
 }
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
+  background-color: rgb(204, 95, 168);
+  border-color: rgb(216, 45, 159);
   color: white;
 }
 
 .filled-button:hover {
-  background-color: rgb(216, 45, 159);
+  background-color: rgb(45 200 215 /55%);
   border-color: rgb(216, 45, 159);
-  color: var(--primary);
+  color: white;
 }
 
 /****** WIN OR LOSE SECTION ******/

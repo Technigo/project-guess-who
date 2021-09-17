@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
+const counterBox = document.getElementById("counterBox")
+const questionsAsked = document.getElementById("questionsAsked")
 const winOrLoseText = document.getElementById("winOrLoseText")
 const winOrLoseSection = document.getElementById("winOrLose")
 const playAgainButton = document.getElementById("playAgain")
@@ -243,6 +245,12 @@ const playAgain = () =>{
   board.style.display = "";
   charactersInPlay = CHARACTERS
   generateBoard();
+  counter = 0
+  }
+
+  //This function adds to counter when a question has been asked
+const add = () => {
+    counter +=1;
   }
 
 // This function to start (and restart) the game
@@ -254,6 +262,9 @@ const start = () => {
   playAgain();
   generateBoard();
   setSecret();
+  
+  questionsAsked.innerHTML=`
+  ${counter}`
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -289,7 +300,9 @@ const checkQuestion = () => {
        filterCharacters(false)
       }
     }
-
+add()
+questionsAsked.innerHTML=`
+${counter}`
 }
 
 // This function filters the characters and the re-draws the board

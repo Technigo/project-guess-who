@@ -1,14 +1,15 @@
 /* Global css variables used for colors */
 :root {
   --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --secondary: #f4af9a;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
+  background-color: #2aa1d4;
 }
 
 h1 {
@@ -16,7 +17,11 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: #2aa1d4;
+}
+
+h4 {
+  color: #2aa1d4;
 }
 
 .question-section {
@@ -34,10 +39,11 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
+  font-family: "Montserrat";
+  color: #2aa1d4;
   width: 100%;
   margin: 24px 0;
+  padding: 10px;
 }
 
 .guess-who-icon {
@@ -66,6 +72,7 @@ select {
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;
+  border-color: #f4af9a;
   margin: 3px;
   display: flex;
   flex-direction: column;
@@ -114,10 +121,10 @@ select {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
+  border: 2px solid #2aa1d4;
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -129,20 +136,20 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
+  color: #2aa1d4;
   align-self: flex-end;
 }
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
+  background-color: #2aa1d4;
   color: white;
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
+  background-color: transparent;
+  border-color: #2aa1d4;
+  color: #2aa1d4;
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -164,7 +171,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  max-width: 1500px;
   text-align: center;
 }
 

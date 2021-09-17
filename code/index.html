@@ -16,7 +16,7 @@
 
       <img
         class="guess-who-icon"
-        src="images/guess-who-bubble.png"
+        src="images/guesswhologo.png"
         alt="Guess Who"
       />
 
@@ -50,7 +50,11 @@
         </optgroup>
       </select>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
+      <button id="filter" class="filled-button" onclick="incrementClick()">
+        FIND OUT
+      </button>
+
+      <h4>GUESS COUNTER: <span id="counter-label">0</span></h4>
     </aside>
 
     <section class="board-wrapper">
@@ -61,12 +65,16 @@
       <div class="win-or-lose">
         <img
           class="guess-who-icon"
-          src="images/guess-who-bubble.png"
+          src="images/guesswhologo.png"
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
+
+      <audio id="win" src="./win.wav" preload="auto"></audio>
+      <audio id="lose" src="./lose.mp3" preload="auto"></audio>
+      <audio id="flip" src="./flipcards.wav" preload="auto"></audio>
     </section>
     <script src="script.js"></script>
   </body>

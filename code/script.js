@@ -219,9 +219,10 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess" >
           <span>Guess on ${person.name}?</span>
-          <button id="guess" class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button id="guess" class="filled-button small" onclick="guess('${person.name}')">GISSA</button>
         </div>
       </div>
+  
     `
     personToConfirm = person.name
 
@@ -359,12 +360,12 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
 
-window.confirm(`Do you really want to guess on ${personToConfirm}`)
+window.confirm(`Vill du verkligen gissa på ${personToConfirm}`)
   if(window.confirm){
     personToCheck = personToConfirm
     checkMyGuess(personToCheck)
   }else {
-    alert("ok, try again!")
+    alert("ok, försök igen!")
   }
   }
  
@@ -394,6 +395,7 @@ const checkMyGuess = (personToCheck) => {
     const playAgainButton = document.getElementById('playAgain')
     playAgainButton.addEventListener('click', () => {
       winOrLose.style.display = 'none'
+      board.style.display = 'flex'
     start()
     
    })

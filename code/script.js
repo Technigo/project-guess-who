@@ -284,6 +284,23 @@ const checkQuestion = () => {
 
   }
 }
+  const keepBasedOnAccAndOther = (category, value) => {
+  charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+  }
+
+  const removeBasedOnAccAndOther = (category, value) => {
+  charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+  }
+
+
+  const keepBasedOnHairAndEyes = (category, value) => {
+  charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+  }
+
+  const removeBasedOnHairAndEyes = (category, value) => {
+  charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+  }
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -293,31 +310,62 @@ const filterCharacters = (keep) => {
     if (keep) {
       alert (`Yes, the person wears ${value}! Keep all people that wears ${value}`)
 
+      keepBasedOnAccAndOther(category, value);
+      console.log('keep the accessory', keepBasedOnAccAndOther)
+     
     } else {
       alert (`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
+
+      removeBasedOnAccAndOther(category, value);
+      console.log('remove the accessory', removeBasedOnAccAndOther)
     }
 
   } else if (category === 'other') {
     if (keep) {
-      alert (`Yes, the person wears ${value}! Keep all people that wears ${value}.`)
+      alert (`Yes, the person is ${value}! Keep all people that is ${value}.`)
+
+      keepBasedOnAccAndOther(category, value);
+      console.log('keep the smokes', keepBasedOnAccAndOther)
+
     } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}.`)
+      alert(`No, the person isn't ${value}! Remove all people that are ${value}.`)
+
+      removeBasedOnAccAndOther(category, value);
+      console.log('remove the smokers', removeBasedOnAccAndOther)
     }
 
 
   } else if (category === 'hair') {
     if (keep) {
       alert (`Yes, the person has ${value} hair! Keep all people that has ${value} hair.`)
+       //
+       keepBasedOnHairAndEyes(category, value);
+       console.log('keeping hair', keepBasedOnHairAndEyes)
+       //
+
     } else {
       alert (`No, the person doesn't has ${value} hair! Remove all people that has ${value} hair.`)
+
+      removeBasedOnHairAndEyes(category, value);
+      console.log('removing hair', removeBasedOnHairAndEyes)
+
       }
   
 
   } else if (category === 'eyes') {
     if (keep) {
         alert (`Yes, the person has ${value} eyes! Keep all people with ${value} eyes.`)
+
+        keepBasedOnHairAndEyes(category, value);
+        console.log('keeping eyes', keepBasedOnHairAndEyes)
+
       } else {
         alert (`No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes.`)
+
+        removeBasedOnHairAndEyes(category, value);
+        console.log('removing eyes', removeBasedOnHairAndEyes)
+
+
       }
     }
 
@@ -325,22 +373,24 @@ const filterCharacters = (keep) => {
   // filter by category to keep or remove based on the keep variable.
   /* 
     for hair and eyes :
-    const keepBasedOnHairAndEyes 
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    const keepBasedOnHairAndEyes (category, value) = {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      }
       or
     const removeBasedOnHairAndEyes 
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
 
     for accessories and other
     const keepBasedOnAccAndOther 
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
+      or 
     const removeBasedOnAccAndOther 
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
 
   // Invoke a function to redraw the board with the remaining people. Put the remove/keep inside of the else if. 
 }
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {

@@ -352,6 +352,12 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let victorySound = new Audio('audio/victory.mp3')
+victorySound.volume = 1
+let defeatSound = new Audio('audio/Defeat.mp3')
+defeatSound.volume = 1
+let restartSound = new Audio('audio/league_queue.mp3')
+restartSound.volume = 1
 
 // Draw the game board
 const generateBoard = () => {
@@ -490,8 +496,10 @@ const checkMyGuess = (suspectCharacter) => {
 
   if (suspectCharacter === secret.name) {
   winOrLoseText.innerHTML = `Victory! You guessed on ${suspectCharacter} which is the right champion!`
+  victorySound.play()
 } else {
   winOrLoseText.innerHTML = `Defeat! The right champion was ${secret.name}...`
+  defeatSound.play()
 }
   
   winOrLose.style.display = 'flex';
@@ -504,11 +512,15 @@ start();
 
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', () => {
+  start()
+  restartSound.play()
+})
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', () => {
   start()
+  restartSound.play()
   winOrLose.style.display = 'none';
 }) 
 

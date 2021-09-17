@@ -215,15 +215,15 @@ button {
 }
 
 .filled-button {
-  background-color: var(--primary);
-  color: white;
+  background-color: #C9B446;
+  color: var(--primary);
   margin-bottom: 20px;
 }
 
 .filled-button:hover {
   background-color: #C9B446;
   border-color: white;
-  color: var(--primary);
+  color: white;
 }
 
 /****** WIN OR LOSE SECTION ******/

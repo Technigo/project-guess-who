@@ -237,7 +237,6 @@ const start = () => {
   charactersInPlay = CHARACTERS; // Sets the charactersInPlay array to be all the characters to start with.
   generateBoard();
   setSecret();
-  console.log(secret);
 };
 
 // Sets the currentQuestion object when you select something in the dropdown

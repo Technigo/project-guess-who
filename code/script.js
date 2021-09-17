@@ -8,6 +8,8 @@ const winOrLoseText = document.getElementById("winOrLoseText");
 const playAgain = document.getElementById("playAgain");
 const countBox = document.getElementById("counterBox");
 const greeting = document.getElementById("greeting");
+const drumSound = document.getElementById("drums");
+const explosionSound = document.getElementById("explosion");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -254,7 +256,7 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   winOrLose.style.display = "none";
   // What else should happen when we start the game?
-  setTimeout(greetPlayer, 1000);
+  setTimeout(greetPlayer, 1300);
   setSecret();
   selectQuestion();
 
@@ -372,7 +374,7 @@ const filterCharacters = (keep) => {
       );
     }
   }
-
+  explosionSound.play();
   // Invoke a function to redraw the board with the remaining people.
   generateBoard(keep);
 };
@@ -380,10 +382,12 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
+
   let guessWho = confirm(`Are you sure?Is it ${personToConfirm}`);
   // const player = confirm(`Are you sure?${personToConfirm}`);
   if (guessWho) {
-    checkMyGuess(personToConfirm);
+    drumSound.play();
+    setTimeout(checkMyGuess, 1500);
   }
   // If the player wants to guess, invoke the checkMyGuess function.
 };

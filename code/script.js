@@ -6,6 +6,7 @@ const filterButton = document.getElementById('filter')
 const winOrLoseText = document.getElementById("winOrLoseText")
 const winOrLoseSection = document.getElementById("winOrLose")
 const playAgainButton = document.getElementById("playAgain")
+const applauseSound = document.getElementById("applause")
 
 
 // Array with all the characters, as objects
@@ -235,7 +236,6 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret)
 }
 //This function is invoked when the play again button is pressed. The whole board is generated, with all the characters
 const playAgain = () =>{
@@ -243,7 +243,6 @@ const playAgain = () =>{
   board.style.display = "";
   charactersInPlay = CHARACTERS
   generateBoard();
-  
   }
 
 // This function to start (and restart) the game
@@ -276,7 +275,7 @@ const checkQuestion = () => {
 // If the current question is based on the hair or eye category, the values are strings and we can use the following conditional.
 // Here we are saying if the category is hair/eyes AND the secret value matches the current value, we can use the filter method and return true
 // If the current question is in the accessories or other category, their values are stored in arrays, so have to be handled differently: 
-if (currentQuestion.category === 'hair' || currentQuestion.category === 'eyes'|| currentQuestion.category === 'beard') {
+  if (currentQuestion.category === 'hair' || currentQuestion.category === 'eyes'|| currentQuestion.category === 'beard') {
     if (secret[currentQuestion.category] === currentQuestion.value){
       filterCharacters(true)
     }else {
@@ -299,6 +298,7 @@ const filterCharacters = (keep) => {
   // According to the category, a different alert needs to be outputted
   if (category === 'accessories') {
     if (keep) {
+      applauseSound.play()
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
@@ -311,6 +311,7 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     if (keep) {
+      applauseSound.play()
       alert(
         `Yes the person is a ${value}! Keep all people who smoke`
       );
@@ -323,6 +324,7 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'hair'){
     if (keep) {
+      applauseSound.play()
       alert(
       ` Yes, the person has ${value} hair. Keep all people with ${value} hair`
       );
@@ -335,6 +337,7 @@ const filterCharacters = (keep) => {
     }  
     } else if (category === 'beard'){
       if (keep) {
+        applauseSound.play()
         alert(
         ` Yes, the person has a ${value} beard. Keep all people with a ${value} beard`
         );
@@ -347,6 +350,7 @@ const filterCharacters = (keep) => {
       }
   } else {
     if (keep){
+      applauseSound.play()
       alert(
         `Yes, the person does have ${value} eyes. Keep all people with ${value} eyes!`
       );
@@ -375,11 +379,16 @@ const guess = (personToConfirm) => {
 
 // Invoked when you confirm you want to guess
 const checkMyGuess = (personToCheck) => {
+  const woohooSound = document.getElementById("woohoo")
+const sadSound = document.getElementById("sad")
+
   //This checks if the personToCheck has the same name as the secret
   if (personToCheck === secret.name){
   //Set a Message to show in the win or lose section accordingly
+    woohooSound.play()
     winOrLoseText.innerHTML ="Woohoo! You win!"
   } else{
+    sadSound.play()
     winOrLoseText.innerHTML ="Oh no! You have lost! Nevermind"
   }
   // Show the win or lose section

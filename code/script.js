@@ -271,19 +271,19 @@ const selectQuestion = () => {
 //This function compares the details of the current question with the details of the secret person.
 
 const checkQuestion = () => { 
-  const { category, value } = currentQuestion
+  const { category, value } = currentQuestion // This allows me to write 'category' on line 278 and NOT currentQuestion.category
 // If the current question is based on the hair or eye category, the values are strings and we can use the following conditional.
 // Here we are saying if the category is hair/eyes AND the secret value matches the current value, we can use the filter method and return true
 // If the current question is in the accessories or other category, their values are stored in arrays, so have to be handled differently: 
-  if (currentQuestion.category === 'hair' || currentQuestion.category === 'eyes'|| currentQuestion.category === 'beard') {
-    if (secret[currentQuestion.category] === currentQuestion.value){
+  if (category === 'hair' || category === 'eyes'|| category === 'beard') {
+    if (secret[category] === value){
       filterCharacters(true)
     }else {
       filterCharacters(false)
     }
   
-   } else if (currentQuestion.category === 'accessories' || currentQuestion.category === 'other'){
-      if (secret[currentQuestion.category].includes(currentQuestion.value)){
+   } else if (category === 'accessories' || category === 'other'){
+      if (secret[category].includes(value)){
         filterCharacters(true)
       }else {
        filterCharacters(false)

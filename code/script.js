@@ -358,4 +358,5 @@ questions.addEventListener('change', selectQuestion)
 playAgainButton.addEventListener('click', () => {
   start()
   winOrLose.style.display = 'none';
+  board.style.display = 'none'
 }) 

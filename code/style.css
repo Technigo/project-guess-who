@@ -42,7 +42,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 180px;
+  width: 100%;
 }
 
 .board-wrapper {
@@ -165,7 +165,14 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  /* height: 100vh; */
+  height: 100%;
+  animation-name: win;
+  animation-duration: 4s;
+}
+
+@keyframes win {
+  from {background:var(--primary);}
+  to {background: var(--secondary);}
 }
 
 .win-or-lose {
@@ -180,14 +187,17 @@ button {
 .win-or-lose img {
   align-self: center;
   /* margin-left: 15%; */
-  width: 100px;
+  width: 200px;
 
   
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+ 
 }
+
+
 
 @media (max-width: 768px) {
   body {
@@ -208,7 +218,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 80px;
+    width: 200px;
     margin: 2vh;
   }
 

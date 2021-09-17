@@ -391,7 +391,7 @@ console.log('checkmyguess')
 
     
     const winOrLose = document.getElementById('winOrLose')
-    winOrLose.style.display ="flex"
+    winOrLose.style.display ='flex'
    
 
     const winOrLoseText = document.getElementById('winOrLoseText')
@@ -406,7 +406,7 @@ console.log('checkmyguess')
     
    })
   } else {
-    alert('Oh NOOOO, you have to try again')
+    alert('ÅH NEEEEEJ, DU FÅR FÖRSÖKA IGEN')
 }
 
 

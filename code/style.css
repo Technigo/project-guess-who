@@ -214,7 +214,8 @@ optgroup {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 200px;
+    text-align: center;
   }
 
   .board-wrapper {
@@ -246,7 +247,8 @@ optgroup {
     padding: 6px 11px;
     margin-bottom: 1px;
     background: white;
-    color: var(--primary);
+    color: black;
     border: none;
+    align-items: center;
   }
 }

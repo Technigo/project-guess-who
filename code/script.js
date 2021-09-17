@@ -100,7 +100,7 @@ const CHARACTERS = [
   {
     name: "Frankie",
     img: "images/frankie.jpg",
-    hair: "gray",
+    hair: "grey",
     eyes: "green",
     accessories: [],
     other: ["smoker"],
@@ -116,7 +116,7 @@ const CHARACTERS = [
   {
     name: "Rick",
     img: "images/rick.png",
-    hair: "gray",
+    hair: "grey",
     eyes: "black",
     accessories: [],
     other: [],
@@ -156,9 +156,9 @@ const CHARACTERS = [
   {
     name: "Dumbledore",
     img: "images/dumbledore.jpg",
-    hair: "gray",
+    hair: "grey",
     eyes: "green",
-    accessories: ["glasses", "wand"],
+    accessories: ["glasses", "wand", "hat"],
     other: [],
   },
   {

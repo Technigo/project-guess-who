@@ -4,6 +4,8 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const playAgainButton = document.getElementById("playAgain");
+const cheer = document.getElementById("myCheerAudio");
+const elevator = document.getElementById("myElevatorAudio");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -223,6 +225,7 @@ const generateBoard = () => {
       </div>
     `;
   });
+  elevator.play();
 };
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -420,7 +423,8 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alert("That's correct, you win!");
     board.innerHTML = "";
-    winOrLose.style.display = "block"; // This shows the winner block if you pick the correct person
+    winOrLose.style.display = "block";
+    cheer.play(); // This shows the winner block if you pick the correct person
   } else {
     alert("That is not correct, you lose!");
     reset(); // resets the timer

@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Who's there? - project 05</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <audio id="myElevatorAudio" src="sounds/elevator.mp3" type="audio/mpeg" id="elevator" ></audio> 
     <aside class="question-section">
+
       <button id="restart" class="outlined-button">RESTART</button>
 
       <img
@@ -69,6 +74,7 @@
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
+        <audio id="myCheerAudio" src="sounds/cheer.wav" type="audio/wav" id="cheer" ></audio>      
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>

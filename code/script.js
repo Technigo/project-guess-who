@@ -393,7 +393,7 @@ const checkMyGuess = (personToConfirm) => {
   board.style.display = "none";
   // adding a img off the secret person in the WinOrLose message
   winOrLoseText.innerHTML += `
-        <img
+        <img class="the-one-img"
           src="${secret.img}"
           alt="${secret.name}"
         /> 

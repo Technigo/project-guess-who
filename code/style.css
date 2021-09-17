@@ -174,9 +174,8 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+.the-one-img {
+  max-width: vw;
 }
 
 .win-or-lose h1 {

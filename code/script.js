@@ -23,7 +23,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Jacques',
@@ -31,7 +31,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker', 'beard']
   },
   {
     name: 'Jai',
@@ -62,7 +62,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace'],
     other: []
   },
   {
@@ -78,7 +78,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace', 'earrings'],
     other: []
   },
 
@@ -112,7 +112,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'beard']
   },
   {
     name: 'Jenni',
@@ -151,7 +151,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings'],
     other: []
   },
   {
@@ -167,7 +167,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'necklace'],
     other: []
   },
   {
@@ -175,7 +175,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -192,7 +192,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Julie',
@@ -297,10 +297,10 @@ const filterCharacters = (keep) => {
   else if (category === 'other') {
     // Similar to the one above
     if (keep) {
-      alert(`Yes, the person is a ${value}! Keep all people that is a ${value}`)
+      alert(`Yes, the person have a ${value}! Keep all people that have a ${value}`)
     } 
     else {
-      alert(`No, the person is not a ${value}! Remove all people that is a ${value}`)
+      alert(`No, the person doesn't a ${value}! Remove all people that have a ${value}`)
     }
   } 
   else {

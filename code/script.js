@@ -237,8 +237,8 @@ const setSecret = () => {
 const playAgain = () =>{
   winOrLoseSection.style.display = "none";
   board.style.display = "";
-  //charactersInPlay = CHARACTERS
-  //generateBoard();
+  charactersInPlay = CHARACTERS
+  generateBoard();
   
   }
 

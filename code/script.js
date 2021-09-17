@@ -3,6 +3,11 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const playAgainButton = document.getElementById('playAgain')
+
+const failSound = document.getElementById('fail')
+const applauseSound = document.getElementById('applause')
 
 let guessButton = ''
 
@@ -241,6 +246,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard(); // moja promjena
   setSecret(); // moja promjena
+  
 }
 
 
@@ -294,7 +300,7 @@ const checkQuestion = () => {
  // It'll filter the characters array and redraw the game board.
  const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  console.log('ELIN filter', value, category)
+  console.log('alex filter', value, category)
   console.log(keep);
   console.log('filter works', currentQuestion);
   keep = secret[category].includes(value)
@@ -382,6 +388,10 @@ const checkQuestion = () => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  const confirmGuess = confirm (`Is ${personToConfirm} your final guess?`)
+  console.log ("guess works");
+  if (confirmGuess)
+  checkMyGuess (personToConfirm)
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -389,6 +399,20 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck===secret.name) {
+    alert ("You have guessed wisely! Good job!")
+    applauseSound.play()
+    
+  } else {
+    alert ("Wrong! More luck next time")
+    failSound.play()
+  }
+  
+  board.style.display = 'none';
+  winOrLose.style.display = 'flex';
+  
+
+
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -401,3 +425,9 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 filterButton.addEventListener('click', selectQuestion);
+playAgainButton.addEventListener ('click', ()=> {
+  board.style.display="flex"
+  winOrLose.style.display = 'none';
+
+  start()
+}) 

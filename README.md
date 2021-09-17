@@ -11,4 +11,4 @@ New methods as filter() and confirm() was used.
 
 ## View it live
 
-project-guesswho-aspen.netlify.app
+https://project-guesswho-aspen.netlify.app/

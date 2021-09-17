@@ -279,13 +279,7 @@ const checkQuestion = () => {
       }
   }
 }
-// WATCH THE NET NINJA JAVASCRIPT VIDEOS
-// WATCH THE NET NINJA JAVASCRIPT VIDEOS
-// WATCH THE NET NINJA JAVASCRIPT VIDEOS
-// WATCH THE NET NINJA JAVASCRIPT VIDEOS
-// WATCH THE NET NINJA JAVASCRIPT VIDEOS
-// WATCH THE NET NINJA JAVASCRIPT VIDEOS
-// WATCH THE NET NINJA JAVASCRIPT VIDEOS
+// filtering CharactersinPlay with the alerts for the categories
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion

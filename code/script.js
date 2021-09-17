@@ -420,7 +420,8 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerHTML = `You did it! 🌟 You guessed on the correct person - ${personToCheck}! You win! 🎊🎊🎊`;
   } else {
     theEndSound.play();
-    winOrLoseText.innerHTML = `Sorry the mysterious person wasn't ${personToCheck}. You loose! 😓 The correct person was ${secret.name}.`;
+    winOrLoseText.innerHTML = `You loose! 😓 The correct person was ${secret.name}. 
+    <img src=${secret.img} alt=${secret.name}>`;
   }
   // Showing the win or lose section
   winOrLose.style.display = "flex";

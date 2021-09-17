@@ -217,7 +217,7 @@ let charactersInPlay = [];
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
-    board.innerHTML += `
+    board.innerHTML += /*html*/`
       <div class="card">
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
@@ -236,9 +236,8 @@ const setSecret = () => {
 }
 
 
-// This function to start (and restart) the game
+// Start and restarts the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   generateBoard();
   setSecret();
@@ -251,23 +250,16 @@ const selectQuestion = () => {
   let category = questions.options[questions.selectedIndex].parentNode.label
   let actualValue = questions.value;
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
   currentQuestion = {
     category: category,
     value: actualValue
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function is checking if the quess matches the secret person. 
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
     if(secret[category] === value) {
       filterCharacters(true)
@@ -340,13 +332,6 @@ const filterCharacters = (keep) => {
   }
 
   generateBoard()
-
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-
-
-  // Invoke a function to redraw the board with the remaining people.
 }
 
 
@@ -374,11 +359,12 @@ if(secret.name === personToConfirm){
   board.style.display = 'none';
 
   winOrLoseText.innerHTML = `
-  <H1>You Lost, you LOOOOOSER!</H1>
+  <H1>You Lost. <br> Do you want to play again?</H1>
   `
 }
 }
 
+//Resets the board to show "the board" and to hide the "win or lose" site.  
 const playAgain = () => {
   winOrLose.style.display = 'none';
   board.style.display = 'flex';

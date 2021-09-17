@@ -4,10 +4,11 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const playAgainButton = document.getElementById("playAgain");
-const cheer = document.getElementById("myCheerAudio");
-const elevator = document.getElementById("myElevatorAudio");
+const cheer = document.getElementById("myCheerAudio"); // Creating a variable to get the audio for the winner
+const elevator = document.getElementById("myElevatorAudio"); // Creating a variable to get the audio for the background music
 
 // Array with all the characters, as objects
+// added gender, sunglasses, beards and jewlery
 const CHARACTERS = [
   {
     name: "Jabala",
@@ -232,7 +233,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
-let counter = 1;
+let counter = 1; // This is my play counter variable
 
 // Draw the game board
 const generateBoard = () => {
@@ -269,8 +270,8 @@ const reset = () => {
   start();
   counter = 1; // resets the counter
   document.getElementById("counter").innerHTML = `This far you have guessed 0 times`; // resets the innerHTML when the reset is run
-  cheer.pause()
-  playElevatorMusic()
+  cheer.pause() // If the user wins the cheer plays and this pauses it when everything resets
+  playElevatorMusic() // this runs the function that has the elevator music
 }
 
 // This function to start (and restart) the game
@@ -474,10 +475,12 @@ const checkMyGuess = (personToCheck) => {
   }
 };
 
+// This function runs the elevator music
 const playElevatorMusic = () => {
   elevator.play()
 }
 
+// This function pauses the elevator music
 const pauseElevatorMusic = () => {
   elevator.pause()
 }
@@ -490,4 +493,5 @@ restartButton.addEventListener("click", reset); // The restart function also run
 questions.addEventListener("change", selectQuestion);
 filter.addEventListener("click", checkQuestion);
 playAgain.addEventListener("click", reset); // I invoke the reset first that resets the timer and then runs the starter function
-questions.addEventListener("click", playElevatorMusic);
+questions.addEventListener("click", playElevatorMusic); // When the user clicks the dropdown the elevator music starts
+// I had to add an event listener due to the fact that the browser doesnt allow it to run by default

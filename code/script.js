@@ -3,8 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
-const playAgainButton = document.getElementById('filled-button')
 const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -233,9 +234,10 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
+  winOrLose.style.display = 'none' //hides the win or lose section, so the board can reload
   charactersInPlay = CHARACTERS
-  generateBoard();
-  setSecret();
+  generateBoard();  // loads the board
+  setSecret();  // sets the secret person
   // What else should happen when we start the game?
 }
 
@@ -251,7 +253,6 @@ const selectQuestion = () => {
     category: category,
     value: value
   }
-  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -267,7 +268,6 @@ let keep
   } else if (category === 'accessories' || category === 'other') {
     keep = secret[category].includes(value)
   }
-  console.log(keep)
   filterCharacters(keep)
 }
 
@@ -331,9 +331,9 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  confirm('Are you sure you want to guess?')
-    if (true) {
-      checkMyGuess()
+  let letsGuess = confirm('Are you sure you want to guess?')
+    if (letsGuess) {
+      checkMyGuess(personToConfirm)
     }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
@@ -342,10 +342,17 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  // 1. Checks if the personToCheck is the same as the secret person's name
+  if (personToCheck === secret.name) {
+    // 2. Message to show in the win or lose section accordingly
+    winOrLoseText.innerHTML = "Yay, well done! You guessed it!"
+  } else {
+    winOrLoseText.innerHTML = "Oh no! That wasn't it"
+  }
+  // 3. Shows the win or lose section
+  winOrLose.style.display = 'block' 
+  
+  
 }
 
 // Invokes the start function when website is loaded
@@ -355,3 +362,4 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', start)

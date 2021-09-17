@@ -290,11 +290,11 @@ const filterCharacters = (keep) => {
     // Similar to the one above
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person is ${value}! Keep all people that are ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person isn't a ${value}! Remove all people that are not a ${value}`
       )
     }
   } else {

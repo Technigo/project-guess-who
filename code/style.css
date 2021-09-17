@@ -74,10 +74,6 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(./images/guess-who-bubble.png);
-  background-repeat: repeat;
-  background-color: #33adff;
-  background-size: 45px;
 }
 
 .game-board {
@@ -93,7 +89,7 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid black;
+  border: 3px solid red;
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -179,7 +175,7 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 0, 0, 0.237);
+  background: white;
   position: absolute;
   top: 0;
   bottom: 0;

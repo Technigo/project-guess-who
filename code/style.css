@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #ff9ef1;
+  --secondary: #fec6eb;
 }
 
 body {
@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 32px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
@@ -25,7 +25,7 @@ h1 {
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding: 1.5vw;
   align-items: flex-start;
   box-sizing: border-box;
 }
@@ -42,6 +42,12 @@ select {
 
 .guess-who-icon {
   width: 126px;
+}
+
+.tinder-img {
+  justify-content: center;
+  width: 200px;
+  align-self: center;
 }
 
 .board-wrapper {
@@ -155,11 +161,11 @@ button {
   justify-content: center;
   background: var(--secondary);
   position: absolute;
-  top: 0;
-  bottom: 0;
+  /* top: 0;
+  bottom: 0; */
   left: 0;
   right: 0;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .win-or-lose {
@@ -167,17 +173,30 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  max-width: 600px;
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.win-or-lose img {
+.guess-who-icon {
   align-self: flex-start;
   margin-left: 15%;
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+.win-or-lose-text {
+  font-size: 20px;
+}
+
+.winner-img {
+  height: 80%;
+  width: 80%;
+  object-fit: contain;
+  border: black solid 2px;
 }
 
 @media (max-width: 768px) {

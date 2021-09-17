@@ -6,6 +6,9 @@ const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
+const winnerImg = document.getElementById('winner')
+const startPage = document.getElementById('startPage')
+const startButton = document.getElementById('startButton')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -13,7 +16,7 @@ const CHARACTERS = [
     name: 'Aaron',
     img: 'images2/aaron.jpg',
     hair: 'brown',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: ['animal'],
     other: []
   },
@@ -21,7 +24,7 @@ const CHARACTERS = [
     name: 'Aiden',
     img: 'images2/aiden.jpg',
     hair: 'brown',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: ['hat', 'mobile'],
     other: []
   },
@@ -29,7 +32,7 @@ const CHARACTERS = [
     name: 'Alex',
     img: 'images2/alex.jpg',
     hair: 'brown',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: ['mobile'],
     other: ['tattoos']
   },
@@ -53,7 +56,7 @@ const CHARACTERS = [
     name: 'Callum',
     img: 'images2/callum.jpg',
     hair: 'brown',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: ['glasses'],
     other: ['mustache']
   },
@@ -61,7 +64,7 @@ const CHARACTERS = [
     name: 'Calvin',
     img: 'images2/calvin.jpg',
     hair: 'brown',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: [],
     other: []
   },
@@ -86,7 +89,7 @@ const CHARACTERS = [
     name: 'Damon',
     img: 'images2/damon.jpg',
     hair: 'blonde',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: [],
     other: []
   },
@@ -102,7 +105,7 @@ const CHARACTERS = [
     name: 'Emily',
     img: 'images2/emily.jpg',
     hair: 'blonde',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: ['mobile', 'animal'],
     other: []
   },
@@ -110,7 +113,7 @@ const CHARACTERS = [
     name: 'Gemma',
     img: 'images2/gemma.jpg',
     hair: 'blonde',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: [],
     other: ['lipstick']
   },
@@ -125,8 +128,8 @@ const CHARACTERS = [
   {
     name: 'Jake',
     img: 'images2/jake.jpg',
-    hair: 'none',
-    eyes: 'white',
+    hair: 'no',
+    eyes: 'dead',
     accessories: [],
     other: ['tattoos']
   },
@@ -142,7 +145,7 @@ const CHARACTERS = [
     name: 'Jason',
     img: 'images2/jason.jpg',
     hair: 'brown',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: [],
     other: []
   },
@@ -150,7 +153,7 @@ const CHARACTERS = [
     name: 'Liam',
     img: 'images2/liam.jpg',
     hair: 'brown',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: [],
     other: ['tattoos', 'beard', 'mustache']
   },
@@ -158,15 +161,15 @@ const CHARACTERS = [
   //   name: 'Nick',
   //   img: 'images2/nick.jpg',
   //   hair: 'brown',
-  //   eyes: 'white',
+  //   eyes: 'dead',
   //   accessories: ['animal'],
   //   other: []
   // },
   {
     name: 'Nigel',
     img: 'images2/nigel.jpg',
-    hair: 'none',
-    eyes: 'white',
+    hair: 'no',
+    eyes: 'dead',
     accessories: [],
     other: ['mustache']
   },
@@ -174,7 +177,7 @@ const CHARACTERS = [
   //   name: 'Phillip',
   //   img: 'images2/phillip.jpg',
   //   hair: 'brown',
-  //   eyes: 'white',
+  //   eyes: 'dead',
   //   accessories: ['glasses', 'mobile'],
   //   other: []
   // },
@@ -182,7 +185,7 @@ const CHARACTERS = [
     name: 'Sasha',
     img: 'images2/sasha.jpg',
     hair: 'brown',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: [],
     other: ['lipstick']
   },
@@ -190,7 +193,7 @@ const CHARACTERS = [
     name: 'Shaun',
     img: 'images2/shaun.jpg',
     hair: 'brown',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: ['animal'],
     other: []
   },
@@ -198,7 +201,7 @@ const CHARACTERS = [
     name: 'Stefan',
     img: 'images2/stefan.jpg',
     hair: 'brown',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: [],
     other: []
   },
@@ -206,7 +209,7 @@ const CHARACTERS = [
     name: 'Tom',
     img: 'images2/tom.jpg',
     hair: 'brown',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: ['hat', 'mobile'],
     other: []
   },
@@ -214,7 +217,7 @@ const CHARACTERS = [
     name: 'Tracey',
     img: 'images2/tracey.jpg',
     hair: 'brown',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: [],
     other: []
   },
@@ -222,7 +225,7 @@ const CHARACTERS = [
     name: 'Trent',
     img: 'images2/trent.jpg',
     hair: 'blonde',
-    eyes: 'white',
+    eyes: 'dead',
     accessories: [],
     other: ['beard']
   },
@@ -341,12 +344,12 @@ const filterCharacters = (keep) => {
   } else if (category === 'eyes') {
       if (keep) {
         alert(
-            `Yes, the person has got ${value} dead eyes! Keep all persons with ${value} dead eyes.`
+            `Yes, the person have ${value} eyes! Keep all persons with ${value} eyes.`
         )
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
         alert(
-            `No, the person hasn´t got ${value} eyes! Remove all persons that have ${value} eyes.`
+            `No, the person haven´t got ${value} eyes! Remove all persons that have ${value} eyes.`
         )
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
@@ -376,10 +379,11 @@ const checkMyGuess = (personToCheck) => {
     if (personToCheck === secret.name) {
   // 2. Set a Message to show in the win or lose section accordingly
   winOrLoseText.innerHTML = `
-      <p>You goddamn right it's that dirty fish ${secret.name}!</p><p>Well played!</p>
-      <img src="images2/${secret.name}-big.jpg" />`
+      <img class="winner-img" src="images2/${secret.name}-big.jpg" />
+      <p class="win-or-lose-text">You goddamn right it's that dirty fish ${secret.name}!</p><p>Well played!</p>`
   // 3. Show the win or lose section
       winOrLose.style.display = "flex"
+      
     } else {
       winOrLoseText.innerHTML = `
       <p>Sorry babe but you got it all oh-so wrong...</p>`

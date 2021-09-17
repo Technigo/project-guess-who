@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks assignment was to create a Guess who game with JavaScript. Practicing functions, arrays and objects.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The problem for me this week was to be able to figure out how to check my code. I'm not that comfortable to use consloe.log yet, but I've practiced it a lot this week. It was difficult to figure out where all the pieces were to be placed within the code. However it was a fun project and hopefully I can build a similar one in the future. Had I had more time I would have liked to change all the charaters to other ones. But now my focus was on figuring out the JS. But I will build a new game in the future, with Bravo celebs!
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://lisapblome-w5-guesswho.netlify.app

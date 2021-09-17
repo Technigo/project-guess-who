@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #812af4;
+  --secondary: #b4dcfa;
 }
 
 body {
@@ -49,6 +49,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgb(231, 244, 244);
 }
 
 .game-board {

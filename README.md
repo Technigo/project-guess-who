@@ -15,7 +15,7 @@ I really got stuck and struggled with the filter functions and arrays. First I u
 
 ## View it live
 
-https://netlify
+https://guesswhoavengers.netlify.app/
 
 Guess Who bubble was made by me in Canva. https://www.canva.com
 

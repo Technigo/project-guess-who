@@ -11,15 +11,15 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'a headwear'],
-    other: ['a happy face']
+    accessories: ['glasses', 'aHeadwear'],
+    other: ['aHappyFace']
   },
   {
     name: 'Jack',
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['a headwear', 'a beard'],
+    accessories: ['aHeadwear', 'aBeard'],
     other: []
   },
   {
@@ -27,8 +27,8 @@ const CHARACTERS = [
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
-    accessories: ['a headwear', 'a beard'],
-    other: ['a smoking habit']
+    accessories: ['aHeadwear', 'aBeard'],
+    other: ['aSmokingHabit']
   },
   {
     name: 'Jai',
@@ -36,7 +36,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: ['a happy face']
+    other: ['aHappyFace']
   },
   {
     name: 'Jake',
@@ -44,7 +44,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['a happy face']
+    other: ['aHappyFace']
   },
   {
     name: 'James',
@@ -59,7 +59,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses', 'a necklace'],
+    accessories: ['glasses', 'aNecklace'],
     other: []
   },
   {
@@ -75,8 +75,8 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'earrings', 'a necklace'],
-    other: ['a happy face']
+    accessories: ['glasses', 'earrings', 'aNecklace'],
+    other: ['aHappyFace']
   },
 
   {
@@ -85,15 +85,15 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['a smoking habit']
+    other: ['aSmokingHabit']
   },
   {
     name: 'Jean',
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'a headwear'],
-    other: ['a smoking habit']
+    accessories: ['glasses', 'aHeadwear'],
+    other: ['aSmokingHabit']
   },
   {
     name: 'Jeane',
@@ -101,22 +101,22 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['a happy face']
+    other: ['aHappyFace']
   },
   {
     name: 'Jed',
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'a headwear', 'a beard'],
-    other: ['a smoking habit']
+    accessories: ['glasses', 'aHeadwear', 'aBeard'],
+    other: ['aSmokingHabit']
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['a headwear'],
+    accessories: ['aHeadwear'],
     other: []
   },
   {
@@ -132,7 +132,7 @@ const CHARACTERS = [
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['a headwear'],
+    accessories: ['aHeadwear'],
     other: []
   },
   {
@@ -141,7 +141,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: ['a happy face']
+    other: ['aHappyFace']
   },
   {
     name: 'Jocelyn',
@@ -157,14 +157,14 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['a happy face']
+    other: ['aHappyFace']
   },
   {
     name: 'Jordan',
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'a headwear', 'a necklace'],
+    accessories: ['glasses', 'aHeadwear', 'aNecklace'],
     other: []
   },
   {
@@ -173,7 +173,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'brown',
     accessories: ['earrings'],
-    other: ['a happy face']
+    other: ['aHappyFace']
   },
   {
     name: 'Josh',
@@ -181,14 +181,14 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: ['a happy face']
+    other: ['aHappyFace']
   },
   {
     name: 'Jude',
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: ['a beard'],
+    accessories: ['aBeard'],
     other: []
   },
   {
@@ -196,7 +196,7 @@ const CHARACTERS = [
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'a headwear'],
+    accessories: ['glasses', 'aHeadwear'],
     other: []
   },
 ]
@@ -278,18 +278,21 @@ const checkQuestion = () => {
   if (category === 'hair' || category === 'eyes') {
     if (secret[category] === value) {
       filterCharacters(true);
-    } else {
+    }
+    else {
       filterCharacters(false);
     }
-} else if (category === 'accessories' || category === 'other') {
+} 
+
+else if (category === 'accessories' || category === 'other') {
   if (secret[category].includes(value)) {
     filterCharacters(true);
-  } else {
+  }
+  else {
     filterCharacters(false);
   }
+} 
 }
-}
-
  
 
 // It'll filter the characters array and redraw the game board.
@@ -299,26 +302,60 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(`Oh yes, the person has ${value}! Keep all people that have ${value}`)
+      alert(`Yes, the person has ${value}! Keep all people that have ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
-      alert(`Nope, the person doesn't have ${value}! Remove all people that have ${value}`)
+      alert(`Nope, the person doesn't have ${value}! Remove everyone with ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) 
+      // If the category is accessories/other it gets the value with the includes() method since their values are stored in an array
     }
   } 
+
     // Similar to the one above
   else if (category === 'other') {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(`Oh yes, the person has ${value}! Keep all people that have ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(`Nope, the person doesn't have ${value}! Remove all people that have ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))  
     }
   }
 
+    // Similar to the one above
+    else if (category === 'eyes') {
+      if (keep) {
+        // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+        alert(`Yes, the person has beautiful ${value}! Keep all people with ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      } else {
+        // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+        alert(`No, the person doesn't have ${value}! Remove all people that have ${value}`)
+        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      }
+    }
+
+      // Similar to the one above
+  else if (category === 'hair') {
+    if (keep) {
+      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(`That's correct, the person has ${value}! Keep all people with ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+    } else {
+      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(`Nope, the person doesn't have ${value}! Remove all people with ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+    }
+  }
+
+
+
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
+  
+ /*    for hair and eyes :
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
@@ -326,17 +363,23 @@ const filterCharacters = (keep) => {
     for accessories and other
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) */
+  
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
+// store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+const guess = (personToConfirm) => {
+  const result = window.confirm(`Is this really your guess?`);
+
+  if (result) {
+    checkMyGuess(personToConfirm);
+  }
 }
 
 // If you confirm, this function is invoked
@@ -345,6 +388,14 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  if (personToCheck === secret.name) {
+    alert("We have a winner! Congratulation!");
+    board.innerHTML = ""; 
+    winOrLose.style.display = "block";
+  }
+  else {
+    alert("Oh no! Computer says no. Game over!");
+  }
 }
 
 // Invokes the start function when website is loaded

@@ -13,7 +13,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'a headwear'],
+    accessories: ['glasses', 'headwear'],
     other: ['a happy face']
   },
   {
@@ -21,7 +21,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['a headwear', 'a beard'],
+    accessories: ['headwear', 'a beard'],
     other: ['a pet']
   },
   {
@@ -29,7 +29,7 @@ const CHARACTERS = [
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
-    accessories: ['a headwear', 'a beard'],
+    accessories: ['headwear', 'a beard'],
     other: ['a smoking habit']
   },
   {
@@ -94,7 +94,7 @@ const CHARACTERS = [
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'a headwear'],
+    accessories: ['glasses', 'headwear'],
     other: ['a smoking habit']
   },
   {
@@ -110,7 +110,7 @@ const CHARACTERS = [
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'a headwear', 'a beard'],
+    accessories: ['glasses', 'headwear', 'a beard'],
     other: ['a smoking habit']
   },
   {
@@ -118,7 +118,7 @@ const CHARACTERS = [
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['a headwear'],
+    accessories: ['headwear'],
     other: []
   },
   {
@@ -134,7 +134,7 @@ const CHARACTERS = [
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['a headwear'],
+    accessories: ['headwear'],
     other: []
   },
   {
@@ -166,7 +166,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'a headwear', 'a necklace'],
+    accessories: ['glasses', 'headwear', 'a necklace'],
     other: []
   },
   {
@@ -198,7 +198,7 @@ const CHARACTERS = [
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'a headwear'],
+    accessories: ['glasses', 'headwear'],
     other: []
   },
 ]

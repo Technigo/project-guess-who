@@ -229,9 +229,6 @@ const generateBoard = () => {
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  //Testing that the random secret person is set
-  console.log("Random character: ");
-  console.log(secret);
 };
 
 // Start (and restart) the game
@@ -366,19 +363,3 @@ restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutButton.addEventListener("click", checkQuestion);
 playAgainButton.addEventListener("click", start);
-
-/* Pseudocode
-
-2 players
-2 sets of character cards for each player (charArray1 and charArray2)
-each player chooses a character
-the other will guess their chosen character
-
-while cards !== 1
-
-Player asks binary question about character trait 
-if answer === 'no', loop through charArray and discard character(s) with non-matching traits
-else -> matching cards stay in place 
-
-if cards === 1, player wins
-else continue to next player */

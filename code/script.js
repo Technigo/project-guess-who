@@ -6,8 +6,11 @@ const findOutButton = document.getElementById('filter')
 const winOrLoose = document.getElementById('winOrLose')
 const winOrLooseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
-const modal = document.getElementById('myModal')
+const modal = document.getElementById('alertModal')
+const confirmModal = document.getElementById('confirmModal')
 const modalText = document.getElementById('modal-text')
+const confirmText = document.getElementById('confirm-text')
+const modalFooter = document.getElementById('confirm-footer-id')
 
 
 // Array with all the characters, as objects
@@ -264,7 +267,7 @@ const setSecret = () => {
 }
 
 
-// This function to start (and restart) the game
+// This function starts (and restarts) the game
 const start = () => {
   //Hide the win or lose section
   winOrLoose.style.display = "none"
@@ -302,7 +305,7 @@ const selectQuestion = () => {
 
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function is invoked when the user clicks on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
   let keep
@@ -328,7 +331,7 @@ const checkQuestion = () => {
   filterCharacters(keep); 
 }
 
-// filterCharacters filters the characters array and redraw the game board.
+// filterCharacters filters the characters array and redraws the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
 
@@ -398,17 +401,22 @@ const filterCharacters = (keep) => {
   generateBoard();
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// when clicking guess, the player has to confirm that he wants to make a guess and invoke checkMyGuess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // If the player wants to guess, invoke the checkMyGuess function.
-  const confirmed = confirm("Are you sure that you want to guess? This will end the game");
+  confirmModal.style.display = "block";
+  confirmText.innerHTML = "Are you sure that you want to guess? This will end the game"
+  modalFooter.innerHTML = /* html */`
+    <button id="sureBtn">Guess</button>
+    <button id="cancelBtn">Cancel</button>
+  `
+
+  /* const confirmed = confirm("Are you sure that you want to guess? This will end the game");
   if (confirmed) {
     checkMyGuess(personToConfirm)
-  }
+  } */
 }
 
-// If you confirm, this function is invoked
+// The guess gets evaluated and different messages and audio sounds pop up depending on right/wrong and the number of guesses
 const checkMyGuess = (personToCheck) => {
   //in case the user hasn't closed the modal by himself, it will be forced closed at this step
   closeAllModals()

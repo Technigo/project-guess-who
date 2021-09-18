@@ -55,7 +55,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Jana',
@@ -135,7 +135,7 @@ const CHARACTERS = [
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['a hat'],
+    accessories: ['a hat', 'a necklace'],
     other: []
   },
   {
@@ -159,7 +159,7 @@ const CHARACTERS = [
     img: 'images/jon.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: [],
     other: []
   },
   {

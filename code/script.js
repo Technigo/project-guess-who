@@ -8,8 +8,6 @@ const winOrLooseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
 const modal = document.getElementById('myModal')
 const modalText = document.getElementById('modal-text')
-// Get the <span> element that closes the modal
-const modalClose = document.getElementsByClassName("close")[0];
 
 
 // Array with all the characters, as objects
@@ -335,9 +333,8 @@ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
 
   modal.style.display = "block";
-  // Show the correct alert message for different categories
 
-  // filter by category to keep or remove based on the keep variable.
+  // filter by category to keep or remove based on the keep variable and show alert messages in a modal
  
   if (category === 'accessories') {
     if (value === 'glasses') {
@@ -467,7 +464,7 @@ findOutButton.addEventListener('click', checkQuestion)
 findOutButton.addEventListener('click', countPoints)
 //restarts the game
 playAgainButton.addEventListener('click', start)
-//When the user clicks on <span> (x), close the modal
-modalClose.addEventListener('click', closeAllModals)
+//Close the modal on click
+modal.addEventListener('click', closeAllModals)
 
 

@@ -355,6 +355,7 @@ button {
   .card {
     width: 8rem;
     margin: 2px 10px;
+    height: 13rem;
   }
 
   .game-board {
@@ -374,7 +375,7 @@ button {
 
   .card {
     width: 9rem;
-    height: 7rem;
+    height: 13rem;
     margin: 3px 6px;
   }
 }
@@ -461,9 +462,10 @@ button {
   }
 
   .card {
-    width: 100px;
+    width: 6rem;
     position: relative;
     margin: 3px 9px;
+    height: 11rem;
   }
 
   .card .guess {

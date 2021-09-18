@@ -1,4 +1,4 @@
-# Project Name
+# Project Guess Who Game
 
 The project task was to create my own digital version of the old character guessing board game Guess Who?
 I was handed a starter code were the HTML and styling was set up and also some JavaScript functions. 

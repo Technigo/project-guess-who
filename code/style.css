@@ -27,7 +27,8 @@
   
 
   .guess-who-icon {
-    width: 500px;
+    width: 70%;
+    min-width: 200px;
     transform: rotate(-5deg);
     /* padding-top: 2rem; */
   }
@@ -39,7 +40,6 @@
     padding: 2rem 4rem 2rem 4rem;
     /* padding-left: 4rem; */
     /* margin-top: 2rem; */
-
   }
 
   .rightContent {
@@ -337,7 +337,6 @@
 
       .game-board {
         gap: 1rem;
-        max-width: 700px;
         padding-top: 2rem;
         padding-bottom: 2rem;
       }
@@ -482,7 +481,7 @@
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
-        max-width: 991px;
+        /* max-width: 991px; */
         padding-top: 0;
         /* padding-bottom: 2rem; */
       }

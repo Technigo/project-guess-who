@@ -6,6 +6,10 @@ const findOutButton = document.getElementById("filter");
 const winoOrlose = document.getElementById("winOrLose");
 const playAgainButton = document.getElementById("playAgain");
 const winoOrloseText = document.getElementById("winOrLoseText");
+const rightSound = document.getElementById("right");
+const winnerSound = document.getElementById("winner");
+const EndSound = document.getElementById("End");
+const wrongSound = document.getElementById("wrong");
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -77,7 +81,7 @@ const CHARACTERS = [
     img: "images/jaqueline.svg",
     hair: "orange",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["glasses", "neckless"],
     other: [],
   },
 
@@ -150,7 +154,7 @@ const CHARACTERS = [
     img: "images/jocelyn.svg",
     hair: "black",
     eyes: "brown",
-    accessories: ["glasses"],
+    accessories: ["glasses", "earrings"],
     other: [],
   },
   {
@@ -240,8 +244,6 @@ const start = () => {
   selectQuestion();
   winoOrlose.style.display = "none";
   board.style.display = "flex";
-
-  // What else should happen when we start the game?
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -251,7 +253,6 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value;
-
   currentQuestion = {
     category: category,
     value: value,
@@ -284,6 +285,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
+      rightSound.play();
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
@@ -291,6 +293,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
+      wrongSound.play();
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
@@ -300,6 +303,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
+      rightSound.play();
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
@@ -307,6 +311,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
+      wrongSound.play();
       alert(
         `No, the person wears ${value}! Remove all people that wears ${value}`
       );
@@ -318,6 +323,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
+      rightSound.play();
       alert(
         `Yes, the person have ${value} hair! Keep all people that does't have  ${value} hair`
       );
@@ -326,6 +332,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
+      wrongSound.play();
       alert(
         `No,the person doesn't have ${value} hair! Remove all people that have ${value} hair`
       );
@@ -336,6 +343,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
+      rightSound.play();
       alert(
         `Yes, the person have ${value} eyes! Remove all people that have ${value} eyes`
       );
@@ -344,6 +352,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
+      wrongSound.play();
       alert(
         `No,the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
       );
@@ -372,7 +381,7 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const playerGuess = confirm(`do you whant to guess on ${personToConfirm}?`);
+  let playerGuess = confirm(`do you whant to guess on ${personToConfirm}?`);
 
   if (playerGuess) {
     checkMyGuess(personToConfirm);
@@ -385,20 +394,18 @@ const guess = (personToConfirm) => {
 
 const checkMyGuess = (personToConfirm) => {
   if (personToConfirm === secret.name) {
-    winoOrloseText.innerHTML = `YES!! You guess right!`;
+    winnerSound.play();
+    winoOrloseText.innerHTML = `YES!! You guess right ${personToConfirm} is correct!<img src=${secret.img} alt=${secret.name}>! You are a smart ass`;
   } else {
-    winoOrloseText.innerHTML = `Error!! You guess ${secret.name}`;
+    EndSound.play();
+    winoOrloseText.innerHTML = `Error!! Te correct person was ${secret.name}.
+    <img src=${secret.img} alt=${secret.name}>`;
   }
 
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
   winoOrlose.style.display = "flex";
   board.style.display = "none";
-  // 4. Hide the game board
 };
 
-// Invokes the start function when website is loaded
 start();
 
 // All the event listeners

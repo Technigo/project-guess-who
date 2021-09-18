@@ -3,18 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
-      crossorigin="anonymous"
-    />
+    <title>Halloween Guess Who</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <!-- emoji favicon -->
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💀</text></svg>"
@@ -22,6 +17,7 @@
   </head>
 
   <body>
+    <!-- landing page -->
     <section id="startGame" class="start-game-wrapper">
       <div class="start">
         <img
@@ -42,12 +38,14 @@
       </div>
     </section>
 
+    <!-- game board starts -->
     <div class="game-wrapper bg-image">
       <div class="overlay"></div>
       <aside class="question-section">
         <div class="btn-wrapper">
+          <!-- restart button -->
           <button id="restart" class="restart">Restart</button>
-
+          <!-- sound button that will change text depending if sound if on or off -->
           <button id="game-play-audio-btn" class="game-audio-btn">
             Sound Off 🔈<audio id="gameplay-audio" loop>
               <source src="sound/gameplay.wav" type="audio/wav" />
@@ -55,6 +53,7 @@
           </button>
         </div>
 
+        <!-- timer and guess count -->
         <div class="time-guess-wrapper">
           <div class="timer">
             <div class="time">Time:</div>
@@ -76,6 +75,7 @@
           Does the <span class="villain-text">villain</span> have
         </h1>
 
+        <!-- drop-down options -->
         <select id="questions">
           <optgroup label="hair">
             <option value="brown">brown hair</option>
@@ -85,14 +85,12 @@
             <option value="green">green hair</option>
             <option value="no">no hair</option>
             <option value="white">white hair</option>
-            <!-- Add the rest of hair colors as options  -->
           </optgroup>
           <optgroup label="eyes">
             <option value="hidden">hidden eyes</option>
             <option value="brown">brown eyes</option>
             <option value="blue">blue eyes</option>
             <option value="no">no eyes</option>
-            <!-- Add the rest of eye colors as options  -->
           </optgroup>
           <optgroup label="accessories">
             <option value="glasses">glasses</option>
@@ -137,16 +135,17 @@
             <option value="haunted doll">haunted doll</option>
           </optgroup>
         </select>
-        <!-- Add the other accessory option here. (hat)  -->
-
+        <!-- find out button -->
         <button id="filter" class="find-out-btn">FIND OUT</button>
       </aside>
 
+      <!-- board where the character cards will be made -->
       <section id="board-wrapper" class="board-wrapper">
         <main class="game-board" id="board"></main>
       </section>
     </div>
 
+    <!-- shows win or lose message -->
     <section id="win-or-lose" class="win-or-lose">
       <div id="win-or-lose-wrapper" class="win-or-lose-wrapper">
         <img
@@ -159,11 +158,6 @@
       </div>
     </section>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-      crossorigin="anonymous"
-    ></script>
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
 
 /* Global css variables used for colors */
+html {
+  height: 100%;
+}
 
 body {
   margin: 0;
@@ -292,10 +295,13 @@ button {
 .win-or-lose {
   display: none;
 }
+
+/* used to toggle to open first*/
 .open {
   display: block;
 }
 
+/* used to toggle to close first */
 .close {
   display: none;
 }
@@ -339,6 +345,10 @@ button {
 
 .win-or-lose-villain-img {
   height: 20rem;
+}
+
+.modal-wrapper {
+  display: none;
 }
 
 @media (max-width: 1396) {

@@ -308,8 +308,6 @@ const start = () => {
   secondsLabel.innerHTML = "";
   minutesLabel.innerHTML = "";
   countGuess.innerHTML = "0";
-
-  // What else should happen when we start the game?
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -317,7 +315,6 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
 
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value;
 
   console.log(value);
@@ -352,10 +349,6 @@ const checkQuestion = () => {
     keep = secret.weapon.includes(value);
   }
 
-  // else {
-  //   keep = false
-  // }
-
   filterCharacters(keep);
 };
 // It'll filter the characters array and redraw the game board.
@@ -368,7 +361,6 @@ const filterCharacters = (keep) => {
     charactersInPlay = charactersInPlay.filter(
       (person) => person[category] === value
     );
-
     console.log(charactersInPlay);
   };
 
@@ -399,28 +391,23 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears a/an ${value}! Keep all people that wears a/an ${value}`
       );
-
       keepCharArray();
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
-
       removeCharArray();
     }
   } else if (category === "weapon") {
-    // Similar to the one above
     if (keep) {
       alert(
         `Yes, the person likes to use ${value}! Keep all people that likes to use ${value}`
       );
-
       keepCharArray();
     } else {
       alert(
         `No, the person is not likes to use ${value}! Remove all people that likes to use ${value}`
       );
-
       removeCharArray();
     }
   } else {
@@ -428,27 +415,17 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`
       );
-
       keepCharStr();
     } else {
       alert(
         `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
       );
-
       removeCharStr();
     }
   }
 
-  charactersNotInPlay = charactersInPlay.filter(
-    (person) => person[category] === value
-  );
-
-  generateBoard();
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard();
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -457,6 +434,7 @@ const guess = (personToConfirm) => {
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
   const personToCheck = personToConfirm;
+
   let guessConfirm = window.confirm(
     `Are you sure ${personToCheck} is the villain?`
   );
@@ -538,7 +516,7 @@ findOutButton.addEventListener("click", () => {
 });
 
 playAgainButton.addEventListener("click", () => {
-  boardWrapper.style.display = "block";
+  boardWrapper.style.display = "flex";
   start();
   winOrLose.classList.toggle("open");
   gamePlayAudio.currentTime = 0;

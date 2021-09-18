@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 2rem 4rem 2rem 4rem;
+    padding: 2rem 4rem 1rem 4rem;
     /* padding-left: 4rem; */
     /* margin-top: 2rem; */
   }
@@ -129,7 +129,7 @@
     height: 160px;
     overflow: hidden;
     margin: 1rem;
-    padding-bottom: 0.5rem;
+    /* padding-bottom: 0.5rem; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -137,7 +137,12 @@
     background-color: #eee;
     border-radius: 50%;
   }
-  
+
+  /* .card img {
+    width: 140px;
+    height: 140px;
+  } */
+
   .card p {
     font-size: 1.2rem;
     text-align: center;

@@ -16,7 +16,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: [],
+    other: ['female'],
   },
   {
     name: 'Jack',
@@ -24,7 +24,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: [],
+    other: ['male'],
   },
   {
     name: 'Jacques',
@@ -32,7 +32,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker'],
+    other: ['smoker', 'male'],
   },
   {
     name: 'Jai',
@@ -40,7 +40,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: [],
+    other: ['male'],
   },
   {
     name: 'Jake',
@@ -48,7 +48,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: [],
+    other: ['male'],
   },
   {
     name: 'James',
@@ -56,7 +56,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: [],
+    other: ['male'],
   },
   {
     name: 'Jana',
@@ -64,7 +64,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: [],
+    other: ['female'],
   },
   {
     name: 'Jane',
@@ -72,7 +72,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: [],
+    other: ['female'],
   },
   {
     name: 'Jaqueline',
@@ -80,7 +80,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: [],
+    other: ['female'],
   },
 
   {
@@ -89,7 +89,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker'],
+    other: ['smoker', 'female'],
   },
   {
     name: 'Jean',
@@ -97,7 +97,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker'],
+    other: ['smoker', 'male'],
   },
   {
     name: 'Jeane',
@@ -105,7 +105,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: [],
+    other: ['female'],
   },
   {
     name: 'Jed',
@@ -113,7 +113,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker'],
+    other: ['smoker', 'male'],
   },
   {
     name: 'Jenni',
@@ -121,7 +121,7 @@ const CHARACTERS = [
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],
-    other: [],
+    other: ['female'],
   },
   {
     name: 'Jeri',
@@ -129,7 +129,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: [],
+    other: ['female'],
   },
   {
     name: 'Jerry',
@@ -137,7 +137,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: [],
+    other: ['male'],
   },
   {
     name: 'Jess',
@@ -145,7 +145,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: [],
+    other: ['male'],
   },
   {
     name: 'Jocelyn',
@@ -153,7 +153,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
-    other: [],
+    other: ['female'],
   },
   {
     name: 'Jon',
@@ -161,7 +161,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: [],
+    other: ['male'],
   },
   {
     name: 'Jordan',
@@ -169,7 +169,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: [],
+    other: ['male'],
   },
   {
     name: 'Josephine',
@@ -177,7 +177,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'brown',
     accessories: [],
-    other: [],
+    other: ['female'],
   },
   {
     name: 'Josh',
@@ -185,7 +185,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: [],
+    other: ['male'],
   },
   {
     name: 'Jude',
@@ -193,7 +193,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: [],
+    other: ['male'],
   },
   {
     name: 'Julie',
@@ -201,7 +201,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: [],
+    other: ['female'],
   },
 ]
 
@@ -292,11 +292,11 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
       )
     }
   } else if (category === 'hair') {
@@ -306,7 +306,7 @@ const filterCharacters = (keep) => {
       )
     } else {
       alert(
-        `Nope, the person doesn't have ${value} hair. Remove all that has ${value} hair.`
+        `Nope, the person doesn't have ${value} hair. Remove all that have ${value} hair.`
       )
     }
   } else if (category === 'eye') {
@@ -331,10 +331,12 @@ const filterCharacters = (keep) => {
     }
   } else {
     if (keep) {
-      alert(`Yes, the person has ${value}! Keep all people with ${value}`)
+      alert(
+        `Yes, the person has ${value}! Keep all that still can be the secret person.`
+      )
     } else {
       alert(
-        `No, the person doesnt have ${value}! Remove all people with ${value}`
+        `No, the person doesnt have ${value}! Remove all people that in fact are not the secret person.`
       )
     }
   }
@@ -386,7 +388,7 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `Are you a mind reader?! It was ${secret.name}.`
   } else {
-    winOrLoseText.innerHTML = `Unfortunately, it is not ${secret.name}. Better luck next time.`
+    winOrLoseText.innerHTML = `Unfortunately you guessed wrong. The secret person was ${secret.name}. Better luck next time.`
   }
   winOrLose.style.display = 'flex'
   boardWrapper.style.display = 'none'

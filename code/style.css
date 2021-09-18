@@ -46,7 +46,6 @@ select {
 }
 
 .board-wrapper {
-  border-style: solid;
   width: 70%;
   display: flex;
   align-items: center;
@@ -54,8 +53,6 @@ select {
 }
 
 .game-board {
-  /* border-style: solid;
-  height: 10em; */
   width: 90%;
   max-width: 882px;
   display: flex;
@@ -65,15 +62,22 @@ select {
 
 .instructions {
   display: flex;
+  width: 100%;
   flex-direction: column;
+  margin-right: 10em;
   padding: 2em;
   background-color: beige;
   border-style: dotted;
   text-align: center;
 }
 
+.game-instructions {
+  margin-left: 30px;
+}
+
 .game-text {
-  line-height: 2em;
+  font-size: 18px;
+  line-height: 1.5em;
   word-spacing: 0.25em;
   font-weight: bolder;
   text-align: left;
@@ -232,6 +236,12 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+  }
+
+  .instructions {
+    margin: 0 auto;
+    font-size: 14px;
+    width: 90vw;
   }
 
   .card {

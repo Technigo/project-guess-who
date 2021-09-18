@@ -63,6 +63,22 @@ select {
   align-content: center;
 }
 
+.instructions {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  background-color: beige;
+  border-style: dotted;
+  text-align: center;
+}
+
+.game-text {
+  line-height: 2em;
+  word-spacing: 0.25em;
+  font-weight: bolder;
+  text-align: left;
+}
+
 /****** CARD ******/
 .card {
   width: 135px;
@@ -135,6 +151,13 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+}
+
+.instruction-button {
+  background-color: transparent;
+  color: var(--primary);
+  align-self: flex-start;
+  margin-top: 10em;
 }
 
 .filled-button,

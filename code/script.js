@@ -7,6 +7,7 @@ const restartButton = document.getElementById("restart");
 const winOrLose = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const guesses = document.getElementById("guesses");
+const time = document.getElementById("time");
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -25,7 +26,7 @@ const CHARACTERS = [
     eyes: "blue",
     accessories: ["hat"],
     gender: "male",
-    other: ["bierded"],
+    other: ["bierded person"],
   },
   {
     name: "Jacques",
@@ -34,7 +35,7 @@ const CHARACTERS = [
     eyes: "blue",
     accessories: ["hat"],
     gender: "male",
-    other: ["smoker", "bierded"],
+    other: ["smoker", "bierded person"],
   },
   {
     name: "Jai",
@@ -125,7 +126,7 @@ const CHARACTERS = [
     eyes: "green",
     accessories: ["glasses", "hat"],
     gender: "male",
-    other: ["smoker", "bierded"],
+    other: ["smoker", "bierded person"],
   },
   {
     name: "Jenni",
@@ -215,7 +216,7 @@ const CHARACTERS = [
     eyes: "green",
     accessories: [],
     gender: "male",
-    other: ["bierded"],
+    other: ["bierded person"],
   },
   {
     name: "Julie",
@@ -229,10 +230,29 @@ const CHARACTERS = [
 ];
 
 // Global variables
+let minutesLabel = document.getElementById("minutes");
+let secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+let timeStart = setInterval(setTime, 1000);
 let secret;
 let currentQuestion;
 let charactersInPlay;
 let numberOfGuesses = 0;
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(time) {
+  let timeString = time + "";
+  if (timeString.length < 2) {
+    return "0" + timeString;
+  } else {
+    return timeString;
+  }
+}
 
 // Draw the game board
 const generateBoard = () => {
@@ -261,6 +281,16 @@ const setSecret = () => {
 const start = () => {
   numberOfGuesses = 0;
   charactersInPlay = CHARACTERS;
+  //Restart timer
+  totalSeconds = 0;
+  valString = "";
+  secondsLabel.innerHTML = "";
+  minutesLabel.innerHTML = "";
+
+  //Start timer
+  clearInterval(timeStart);
+  timeStart = setInterval(setTime, 1000);
+
   winOrLose.style.display = "none";
   board.style.display = "flex";
   guesses.innerHTML = `
@@ -348,7 +378,7 @@ const filterCharacters = (keep) => {
   } else if (category === "hair") {
     if (keep) {
       alert(
-        `Yes the person has ${value} hair! Keep all the people with ${value} hair`
+        `Yes the person has ${value} hair! Keep all the persons with ${value} hair`
       );
       // filter by category to keep or remove based on the keep variable.
       charactersInPlay = charactersInPlay.filter(
@@ -356,7 +386,7 @@ const filterCharacters = (keep) => {
       );
     } else {
       alert(
-        `No! the person do not have ${value} hair. Remove all person with ${value} hair`
+        `No! the person do not have ${value} hair. Remove all persons with ${value} hair`
       );
       // filter by category to keep or remove based on the keep variable.
       charactersInPlay = charactersInPlay.filter(
@@ -366,7 +396,7 @@ const filterCharacters = (keep) => {
   } else if (category === "eyes") {
     if (keep) {
       alert(
-        `Yes the person has ${value} eyes! Keep all the people with ${value} eyes`
+        `Yes the person has ${value} eyes! Keep all the persons with ${value} eyes`
       );
       // filter by category to keep or remove based on the keep variable.
       charactersInPlay = charactersInPlay.filter(
@@ -374,7 +404,7 @@ const filterCharacters = (keep) => {
       );
     } else {
       alert(
-        `No! the person do not have ${value} eyes. Remove all person with ${value} eyes`
+        `No! the person do not have ${value} eyes. Remove all persons with ${value} eyes`
       );
       // filter by category to keep or remove based on the keep variable.
       charactersInPlay = charactersInPlay.filter(
@@ -434,7 +464,7 @@ const checkMyGuess = (personToConfirm) => {
           src="${secret.img}"
           alt="${secret.name}"
         />
-        <p>It took you ${numberOfGuesses} questions to make your choice   </p> 
+        <p>It took you ${numberOfGuesses} questions and ${totalSeconds} seconds to make your mind</p> 
       `;
 };
 

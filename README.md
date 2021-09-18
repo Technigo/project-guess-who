@@ -14,12 +14,11 @@ What I learned:
 
 * For me it helped to divide the code in really small pieces. I solved the filter issue that I had by writing the code in if and else statements.
 
-When I hit a dead end or a problem
+## When I hit a dead end or a problem
 When a problem arose, I either googled, used dev-tools. My new thing is to use breakpoints in dev-tools. Really helpful. And I used #on-call-support channel on Slack and got help from a fellow class mate. 🙌🏻
 
 My own reflection
 This week was really intense but baby steps by baby steps I'm starting to grasp some JS.
-
 
 ## View it live
 Here it is: https://guesswhodinos.netlify.app/

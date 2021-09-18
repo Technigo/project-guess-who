@@ -170,7 +170,6 @@ button {
 
 .win-or-lose img {
   align-self: flex-start;
-  margin-left: 15%;
 }
 
 .win-or-lose h1 {
@@ -255,6 +254,7 @@ button {
   border: 1px solid #888;
   width: 80%; 
   max-width: 800px;
+  text-align: center;
   animation-name: animatetop;
   animation-duration: 0.4s
 }
@@ -269,6 +269,6 @@ button {
 /* Modal Footer */
 .modal-footer {
   padding: 2px 16px;
-  background-color: var(--secondary);
-  color: white;
+  display: flex;
+  justify-content: space-evenly;
 }

@@ -11,6 +11,7 @@ const confirmModal = document.getElementById('confirmModal')
 const modalText = document.getElementById('modal-text')
 const confirmText = document.getElementById('confirm-text')
 const modalFooter = document.getElementById('confirm-footer-id')
+const secretPersonImg = document.getElementById('secretPersonImg')
 
 
 // Array with all the characters, as objects
@@ -406,14 +407,16 @@ const guess = (personToConfirm) => {
   confirmModal.style.display = "block";
   confirmText.innerHTML = "Are you sure that you want to guess? This will end the game"
   modalFooter.innerHTML = /* html */`
-    <button id="sureBtn">Guess</button>
-    <button id="cancelBtn">Cancel</button>
+    <button id="sure-Btn" class="outlined-button">Guess</button>
+    <button id="cancel-Btn" class="outlined-button">Cancel</button>
   `
+  document
+    .getElementById('sure-Btn')
+    .addEventListener('click', () => checkMyGuess(personToConfirm))
 
-  /* const confirmed = confirm("Are you sure that you want to guess? This will end the game");
-  if (confirmed) {
-    checkMyGuess(personToConfirm)
-  } */
+  document
+    .getElementById('cancel-Btn')
+    .addEventListener('click', () => closeAllModals())  
 }
 
 // The guess gets evaluated and different messages and audio sounds pop up depending on right/wrong and the number of guesses
@@ -441,6 +444,9 @@ const checkMyGuess = (personToCheck) => {
     audio.src = "./assets/game_lost.wav";
     audio.play();
     winOrLooseText.innerHTML = `Sorry, you lost! <br>The secret person was ${secret.name}. <br>Wanna try again?`
+    winOrLooseText.innerHTML += `
+      <img src=${secret.img} alt="${secret.name}">
+      `
   }
     
   // Show the win or lose section
@@ -455,6 +461,7 @@ const checkMyGuess = (personToCheck) => {
 // Function to close the modal
 const closeAllModals = () => {
   modal.style.display = "none";
+  confirmModal.style.display = "none";
 }
 
 

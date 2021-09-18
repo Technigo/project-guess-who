@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #fff;
+  --secondary: #DB398D;
 }
 
 body {
@@ -136,12 +136,16 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #DB398D;
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  /* background-color: white;
+  border-color: white; */
+  background-color: grey;
+  border-color: grey;
+
+  /* color: var(--secondary); */
   color: var(--primary);
 }
 

@@ -12,7 +12,7 @@ This week I learned
 • how to structure my code in functions
 • how to plan and think about game logic
 
-If I had more time, I would put a guess counter and continue styling with my own images and layout.
+If I had more time, I would continue styling with my own images and layout.
 
 ## View it live
 

@@ -17,10 +17,7 @@
   <body>
     <aside class="question-section">
       <button id="restart" class="outlined-button">RESTART</button>
-      <div class="timer-wrapper">
-        <!-- this is the countdown timer -->
-        <p>You have <span id="time">01:00</span> minute!</p>
-      </div>
+
       <img
         class="guess-who-icon"
         src="images/guess-who-bubble.png"
@@ -62,6 +59,13 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div class="question-counter" id="questionCounter">
+        <p class="guesses">GUESSES: 0</p>
+      </div>
+      <div class="timer-wrapper">
+        <!-- this is the countdown timer -->
+        <p>You have <span id="time">01:00</span> minute!</p>
+      </div>
     </aside>
 
     <section class="board-wrapper">

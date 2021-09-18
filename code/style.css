@@ -184,7 +184,12 @@ button {
   /* position: absolute; */
   color: #ffff;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
+}
+.question-counter {
+  color: #ffff;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .loading-gif {

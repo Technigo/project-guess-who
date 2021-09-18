@@ -6,6 +6,7 @@ const filter = document.getElementById("filter");
 const guessButton = document.getElementById("winOrLose");
 const winOrLose = document.getElementById("winOrLose");
 const playAgainButton = document.getElementById("playAgain");
+const questionCounter = document.getElementById("questionCounter");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -208,6 +209,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let numberOfGuesses;
 
 // Draw the game board
 const generateBoard = () => {
@@ -226,13 +228,13 @@ const generateBoard = () => {
   });
 };
 
-//! Randomly select a person from the characters array and set as the value of the variable called secret
+//* Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
-//! This function to start (and restart) the game
+//* This function to start (and restart) the game
 const start = () => {
   board.innerHTML += `
   <div class= gif-bg>
@@ -244,6 +246,9 @@ const start = () => {
   // What else should happen when we start the game?
   setTimeout(() => generateBoard(), 1000);
   setSecret();
+  numberOfGuesses = 0;
+  questionCounter.innerHTML = `<p class="guesses">GUESSES: ${numberOfGuesses}</p>`;
+
   // console.log(secret); //remove when it is ready to launch
 };
 
@@ -262,7 +267,7 @@ const selectQuestion = () => {
   // console.log(`does the person has ${value} ${category} ?`); //checking the selectQuestion function
 };
 
-//! This function should be invoked when you click on 'Find Out' button.
+//* This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
 
@@ -286,7 +291,7 @@ const checkQuestion = () => {
   }
 };
 
-//! It'll filter the characters array and redraw the game board.
+//* It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
@@ -346,10 +351,12 @@ const filterCharacters = (keep) => {
       );
     }
   }
+  //* Invoke a function to redraw the board with the remaining people.
   generateBoard();
+  numberOfGuesses++;
+  questionCounter.innerHTML = `<p>GUESSES: ${numberOfGuesses}</p>`;
 };
 
-//! Invoke a function to redraw the board with the remaining people.
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
@@ -405,7 +412,7 @@ const checkMyGuess = (personToCheck) => {
 // timer https://stackoverflow.com/questions/20618355/how-to-write-a-countdown-timer-in-javascript
 // doesnt reset the counter with restart button
 // need a time is up message
-function startTimer(duration, display) {
+const startTimer = (duration, display) => {
   var timer = duration,
     minutes,
     seconds;
@@ -430,7 +437,7 @@ function startTimer(duration, display) {
     //   });
     // }
   }, 1000);
-}
+};
 
 window.onload = function () {
   var oneMinute = 60 * 1,

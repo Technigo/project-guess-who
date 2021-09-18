@@ -10,6 +10,7 @@
     flex-direction: column;
     margin: 0;
     font-family: Bangers;
+    font-weight: 400;
     color: #333;
     overflow: visible;
   }
@@ -393,6 +394,11 @@
       padding-left: 1rem;
       padding-right: 1rem;
     }
+
+    .win-or-lose.footer {
+    display: none;
+    }
+  
   
     
     .win-or-lose h1 {

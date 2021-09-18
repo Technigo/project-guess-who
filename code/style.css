@@ -6,8 +6,6 @@
   
   body {
     box-sizing: border-box;
-    padding-left: 5%;
-    padding-right: 5%;
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -28,8 +26,8 @@
   
 
   .guess-who-icon {
-    width: 400px;
-    transform: rotate(-20deg);
+    width: 500px;
+    transform: rotate(-5deg);
     /* padding-top: 2rem; */
   }
 
@@ -37,9 +35,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* padding-right: 4rem;
-    padding-left: 4rem; */
-    margin-top: 2rem;
+    padding: 2rem 4rem 2rem 4rem;
+    /* padding-left: 4rem; */
+    /* margin-top: 2rem; */
 
   }
 
@@ -48,6 +46,7 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    /* padding-bottom: 40px; */
   }
 
   select {
@@ -79,7 +78,7 @@
   .filled-button-small {
       width: 96px;
       height: 32px;
-      border-radius: 4px;
+      border-radius: 16px;
       margin: 0;
   }
 
@@ -87,7 +86,7 @@
     border: 2px solid var(--primary);
     background-color: transparent;
     color: var(--primary);
-    /* align-self: flex-end; */
+    width: 150px;
   }
 
   .outlined-button:hover {
@@ -103,8 +102,13 @@
 
 
   .board-wrapper {
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    /* padding-left: 100px;
+    padding-right: 100px; */
+    background-color: #379d00;
   }
   
   .game-board {
@@ -170,6 +174,7 @@
 
   
   /****** WIN OR LOSE SECTION ******/
+
   .win-or-lose-wrapper {
     display: none;
     align-items: center;
@@ -200,35 +205,93 @@
   }
 
 
+  /* FOOTER */
+
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  /* left: 0;
+  bottom: 0;
+  right: 0; */
+  /* width: 100%; */
+}
+
+.technigo-logo {
+  width: 50px;
+  margin: 0;
+}
+
+.github-logo {
+  width: 40px;
+  height: 40px;
+  /* counter-reset: #333; */
+  margin: 0;
+}
+
+.technigo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.github {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* margin-right: 1rem; */
+}
+
+
+.footer p {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.footer a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
 
   /* MEDIAQUERIES ------- */
   
   @media (max-width: 768px) {
 
     body {
-        margin-right: 1rem;
-        margin-left: 1rem;
+        /* margin-right: 1rem;
+        margin-left: 1rem; */
         padding: 0;
     }
 
 
     .header {
         flex-direction: column;
-        /* padding: 0; */
-        align-items: center;
-        width: 100%;
+        padding: 0;
+        /* align-items: center; */
+        /* width: 100%; */
+        margin-top: 0;
+        margin-left: 1rem;
+        margin-right: 1rem;
       }
 
       .rightContent {
         flex-direction: column;
         align-items: center;
-        width: 100%;
+        padding-bottom: 1rem;
       }
 
       .leftContent {
           display: flex;
           justify-content: space-around;
-          width: 100%;
           align-self: center;
       }
 
@@ -236,7 +299,7 @@
       select {
         font-size: 1rem;
         height: 44px;
-        padding-left: 1rem;
+        /* padding-left: 1rem; */
         width: 100%;
         margin-bottom: 1rem;
       }
@@ -251,7 +314,8 @@
       }
 
       .filled-button-small {
-        width: 80px;
+        width: 72px;
+        border-radius: 16px;
     }
 
 
@@ -273,6 +337,8 @@
       .game-board {
         gap: 1rem;
         max-width: 700px;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
       }
     
     
@@ -302,8 +368,8 @@
     }
   
     .guess-who-icon {
-      width: 240px;
-      transform: rotate(-10deg);
+      width: 300px;
+      transform: rotate(-5deg);
       padding: 0;
       margin-top: 1rem;
     }
@@ -314,6 +380,7 @@
       top: 0;
       position: relative;
       margin-bottom: 0;
+      width: 100%;
     }
   
     .card .guess .filled-button {
@@ -329,28 +396,48 @@
   
     
     .win-or-lose h1 {
-      /* margin-bottom: 32px; */
       font-size: 32px;
       line-height: 38px;
     }
+
+    .footer {
+    flex-direction: row;
+    padding: 1rem;
+  }
+
+  .footer p {
+    font-size: 14px;
+  }
 
 
 
 @media (min-width: 768px) and (max-width: 991px){
 
+
+  .header {
+    flex-direction: column;
+    /* padding-right: 1.5rem;
+    padding-left: 1.5rem; */
+    margin-top: 1rem;
+  
+  }
+
     .card {
-        width: 160px;
-        height: 160px;
+        width: 200px;
+        height: 200px;
         border-radius: 50%;
       }
 
-    .game-board {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 10px;
-        /* width: 100%; */
-        max-width: 900px;
-        padding-bottom: 2rem;
+
+      .rightContent {
+        /* width: 50%; */
+        flex-direction: row;
+        gap: 1rem;
+        padding-bottom: 0;
+      }
+
+      .leftContent {
+       padding-left: 0;
       }
 
 
@@ -366,14 +453,46 @@
         border-radius: 8px;
         font-size: 16px;
         height: 56px;
-        width: 100%;
+        width: 300px;
         margin-left: 0;
         margin-bottom: 1rem;
       }
 
+      .outlined-button {
+        width: 250px;
+      }
+
+      .board-wrapper {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+
+      .board-wrapper {
+        padding-top: 2rem;
+      }
+      
+      .game-board {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 991px;
+        padding-top: 0;
+        /* padding-bottom: 2rem; */
+      }
+
+      .guess-who-icon {
+        width: 400px;
+      }
+
       .win-or-lose .guess-who-icon {
           width: 400px;
+      }
 
+      .win-or-lose h1 {
+        /* margin-bottom: 32px; */
+        font-size: 48px;
+        line-height: 54px;
       }
   }
   

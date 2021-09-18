@@ -217,7 +217,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button-small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
@@ -330,9 +330,10 @@ const checkMyGuess = (personToCheck) => {
 if (personToCheck === secret.name) {
   winOrLoseText.innerHTML = `Wohoo!, ${personToCheck} was the one we were looking for! YOU ARE A WINNER!`
 } else {
-  winOrLoseText.innerHTML = `Nice try, but ${personToCheck} is not the one we were looking for! YOU LOOSE!`
+  winOrLoseText.innerHTML = `Nice try, but ${personToCheck} is not the one we were looking for! The secret person was ${secret.name}. YOU LOOSE!`
 }
 winOrLose.style.display = 'flex';
+board.style.display = 'none';
 }
 
 // Invokes the start function when website is loaded
@@ -344,6 +345,7 @@ findOutBtn.addEventListener('click', selectQuestion)
 playAgainBtn.addEventListener('click', () => {
   start()
   winOrLose.style.display = 'none';
+  board.style.display = 'flex';
 })
 
 // LÄGG TILL LJUD?

@@ -4,25 +4,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project Name</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"
     />
   </head>
   <body>
-    <aside class="question-section">
-      <button id="restart" class="outlined-button">RESTART</button>
-
+    <header class="header">
+        <div class="leftContent">
       <img
         class="guess-who-icon"
-        src="images/guesswho_jes.png"
+        src="images/guesswho.svg"
         alt="Guess Who"
       />
-      <p class="smallHeading">Ask a question 🕵🏼‍♀️</p>
-      <h1>Does the secret person have...</h1>
+      <!-- <h1>Does the secret person have...</h1> -->
+    </div>
       
-
+    <div class="rightContent">
       <select id="questions">
         <optgroup>
           <option value="disabled">Make a guess!</option>/>
@@ -55,8 +55,10 @@
         </optgroup>
       </select>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
-    </aside>
+      <button id="filter" class="button">FIND OUT</button>
+      <button id="restart" class="outlined-button">RESTART</button>
+    </div>
+    </header>
 
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
@@ -66,7 +68,7 @@
       <div class="win-or-lose">
         <img
           class="guess-who-icon"
-          src="images/guess-who-bubble.png"
+          src="images/guesswho.svg"
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>

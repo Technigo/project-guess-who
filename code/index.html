@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guess who?</title>
+    <title>Guess who? Harry Potter edition.</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -11,6 +11,12 @@
     />
   </head>
   <body>
+    <div class="start-game" id="startGame">
+      <img class="guess-who-icon" src="images/logo.png" alt="Guess Who" />
+      <h1>Guess Who, Harry Potter edition!</h1>
+      <h2>Get your wand ready!</h2>
+      <button id="play" class="filled-button">PLAY</button>
+    </div>
     <aside class="question-section">
       <button id="restart" class="outlined-button">RESTART</button>
 
@@ -26,25 +32,26 @@
           <option value="red">Red hair</option>
           <option value="none">No hair</option>
           <option value="gray">Gray hair</option>
-          <!-- Add the rest of hair colors as options  -->
         </optgroup>
+
         <optgroup label="house">
           <option value="gryffindor">Gryffindor</option>
           <option value="ravenclaw">Ravenclaw</option>
           <option value="slytherin">Slytherin</option>
           <option value="noHouse">Don't have a house</option>
-          <!-- Add the rest of eye colors as options  -->
         </optgroup>
+
         <optgroup label="accessories">
           <option value="glasses">Glasses</option>
           <option value="wand">Wand</option>
           <option value="hat">Hat</option>
           <option value="pet">Pet</option>
-          <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
+
         <optgroup label="student">
           <option value="yes">A student?</option>
         </optgroup>
+
         <optgroup label="aWeasley">
           <option value="yes">A Weasley?</option>
         </optgroup>

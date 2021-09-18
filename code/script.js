@@ -350,7 +350,7 @@ const checkMyGuess = (personToCheck) => {
   winOrLoseSection.classList.toggle("display");
 };
 
-// Invokes the start function when website is loaded
+// Invokes the start function when website is loaded.
 start();
 
 // All the event listeners

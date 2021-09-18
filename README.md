@@ -1,13 +1,19 @@
-# Project Name
+# Guess Who? Game Site
 
-Replace this readme with your own information about your project.
+This project is built in order to learn the basics of Javascript. Arrays and object manipulation is the main focus of this project.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The game is based on the board game "Guess Who?". A secret character is randomly chosen by the `math.random()` and the player will eliminate characters by choosing qualities they think the secret character possesses. The question is answered either by yes (character retained) or no (character eliminated) until the characters are narrowed down to a few. The player can either choose directly or not.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+### Improvements in the future
+
+The characters are going to be eliminated can have some animation before generating the new board.
+
+The confirmatory alerts can be changed to a pop-up box with styling.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+![game](images/game.png)
+
+[Guess Who Halloween Edition](https://angry-rosalind-754d79.netlify.app)

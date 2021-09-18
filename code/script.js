@@ -7,14 +7,14 @@ const guessPress = document.getElementById('winOrLose')
 const playAgainButton = document.getElementById('playAgain')
 const winOrLose = document.getElementById('winOrLose')
 
-// Array with all the characters, as objects----DONT TOUCH!!
+// Array with all the characters, as objects
 const CHARACTERS = [
   {
     name: 'Jabala',
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     other: []
   },
   {
@@ -22,7 +22,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['a hat'],
     other: ['beard']
   },
   {
@@ -30,8 +30,8 @@ const CHARACTERS = [
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker', 'beard']
+    accessories: ['a hat'],
+    other: ['smoking habit', 'beard']
   },
   {
     name: 'Jai',
@@ -62,7 +62,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses', 'necklace'],
+    accessories: ['glasses', 'a necklace'],
     other: []
   },
   {
@@ -78,7 +78,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'necklace', 'earrings'],
+    accessories: ['glasses', 'a necklace', 'earrings'],
     other: []
   },
 
@@ -88,15 +88,15 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['smoking habit']
   },
   {
     name: 'Jean',
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    accessories: ['glasses', 'a hat'],
+    other: ['smoking habit']
   },
   {
     name: 'Jeane',
@@ -111,15 +111,15 @@ const CHARACTERS = [
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker', 'beard']
+    accessories: ['glasses', 'a hat'],
+    other: ['smoking habit', 'beard']
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
+    accessories: ['a hat'],
     other: []
   },
   {
@@ -135,7 +135,7 @@ const CHARACTERS = [
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['a hat'],
     other: []
   },
   {
@@ -167,7 +167,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat', 'necklace'],
+    accessories: ['glasses', 'a hat', 'a necklace'],
     other: []
   },
   {
@@ -199,7 +199,7 @@ const CHARACTERS = [
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     other: []
   },
 ]
@@ -229,12 +229,13 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret) //----------TEST, logs secret person.
+  console.log(secret) //----------Logs secret person. CHEAT code!!! :D
 }
 
 // This function to start (and restart) the game
 const start = () => {
   charactersInPlay = CHARACTERS // Here we're setting charactersInPlay array to be all the characters to start with
+  board.style.display = "flex" //---make board show again after PlayAgain
   generateBoard() // ---- Generate the board
   setSecret() //---- Randomize the secret person
 }
@@ -300,7 +301,7 @@ const filterCharacters = (keep) => {
       alert(`Yes, the person have a ${value}! Keep all people that have a ${value}`)
     } 
     else {
-      alert(`No, the person doesn't a ${value}! Remove all people that have a ${value}`)
+      alert(`No, the person doesn't have a ${value}! Remove all people that have a ${value}`)
     }
   } 
   else {
@@ -352,18 +353,19 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  const audioWin = new Audio('./assets/applause7.mp3')
-  const audioLost = new Audio('./assets/boo3.mp3')
+  const audioWin = new Audio('./assets/applause7.mp3') // win audio
+  const audioLost = new Audio('./assets/boo3.mp3') //lose audio
   if (personToCheck === secret.name) {
-    winOrLoseText.innerHTML = `You guessed ${personToCheck}, that is right!!`
-    audioWin.play()
-    winOrLose.style.display ="flex"
-    
+    winOrLoseText.innerHTML = `Hooray! You guessed ${personToCheck}, that is right!!`
+    audioWin.play() // play win audio
+    winOrLose.style.display ="flex" // shows win or lose page
+    board.style.display = "none" // hides board
   }
   else {
     winOrLoseText.innerHTML = `Nope! You guessed ${personToCheck}, that is wrong!`
-    audioLost.play()
-    winOrLose.style.display ="flex"
+    audioLost.play() // play lose audio
+    winOrLose.style.display ="flex" // shows win or lose page
+    board.style.display = "none" // hides board
   }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly

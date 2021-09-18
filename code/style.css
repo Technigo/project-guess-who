@@ -288,20 +288,12 @@
         padding-top: 0.5rem;
       }
 
-      .card img {
+      img {
         width: 50%;
         height: 50%;
         position: relative;
         margin-top: 0.5rem;
       }
-
-      .card:hover {
-        display: none;
-      }
-
-      /* .card:hover img {
-        display: none;
-      } */
 
 
     h1 {

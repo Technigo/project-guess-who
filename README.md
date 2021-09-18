@@ -8,5 +8,4 @@ By taking it step by step, and along with a deep dive in to this issue during a 
 Another problem was not being able to see my commits and changes on github, I suspect is being a different branch, to solve this, I re-cloned the project and pasted in my work from the file I had been working on. If I had more time, I would have liked to add a timer and a question counter. 
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://madelene-trang-guess-who.netlify.app/

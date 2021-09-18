@@ -329,8 +329,13 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
 if (personToCheck === secret.name) {
   winOrLoseText.innerHTML = `Wohoo!, ${personToCheck} was the one we were looking for! YOU ARE A WINNER!`
+  let youWinAudio = new Audio("./code/ES_Human Voice Clip 28 - SFX Producer.mp3");
+  youWinAudio.play();
+
 } else {
   winOrLoseText.innerHTML = `Nice try, but ${personToCheck} is not the one we were looking for! The secret person was ${secret.name}. YOU LOOSE!`
+  let youLooseAudio = new Audio("./code/ES_Video Game Descend 8 - SFX Producer.mp3");
+  youLooseAudio.play();
 }
 winOrLose.style.display = 'flex';
 board.style.display = 'none';
@@ -351,3 +356,9 @@ playAgainBtn.addEventListener('click', () => {
 // LÄGG TILL LJUD?
 // const audioLost = new Audio('./assets/boo3.mp3')
 // audioLost.play()
+
+// let youLooseAudio = new Audio("code/ES_Video Game Descend 8 - SFX Producer.mp3");
+// youLoooseAudio.play();
+
+// let youWinAudio = new Audio("code/ES_Human Voice Clip 28 - SFX Producer.mp3");
+// youWinAudio.play();

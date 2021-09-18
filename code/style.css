@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #2295f3;
+  --secondary: #a9b4f0;
 }
 
 body {
@@ -46,9 +46,13 @@ select {
 
 .board-wrapper {
   width: 70%;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
+}
+
+.board{
+ display: none;
 }
 
 .game-board {
@@ -57,10 +61,6 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-}
-
-.userWelcome{
-color: white;
 }
 
 /****** CARD ******/
@@ -174,30 +174,80 @@ button {
 
 .win-or-lose img {
   align-self: flex-start;
-  margin-left: 15%;
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
 
-/****** INPUT NAME ******/
+.secret-image{
+  max-width: 20vh;
+}
+
+.winOrLoose2ndText{
+  color:white;
+}
+
+/****** TIMER - COUNTER ******/
+.subtitle-section{
+  margin: 20px 0px;
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.timer, .counter{
+  display: flex;
+  color: #2295f3;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.timer-time, .timer-minutes, .timer-colon, .timer-seconds, .counter-attemps, .counter-number{
+  margin: 0px 3px;
+  font-weight: 700;
+}
+
+.userWelcome {
+  color: #7c55c5;
+}
+/****** INPUT NAME / START ******/
 .question-name{
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  margin: 40px 0px;
+  align-self: center;
+  text-align: center;
+  justify-content: center;
+  padding: 5vw;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.welcome{
+ color:rgb(96, 96, 233);
 }
 
 .label-name{
   display: block;
-  color: white;
+  color: #7c55c5;
   font-weight: bold;
 }
 
 .input-name{
   height: 30px;
-  width: 100%;
-  margin: 10px 0px;
+  width: 40%;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.start{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 768px) {

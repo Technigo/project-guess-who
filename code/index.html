@@ -14,7 +14,22 @@
 <body>
   <aside class="question-section" id="aside-section">
     <button id="restart" class="outlined-button">RESTART</button>
-    <h3 class="userWelcome" id="user"></h3>
+
+    <section class="subtitle-section">
+      <div class="counter" id="counterId">
+        <h4 class="counter-attemps">Attemps:</h4>
+        <span class="counter-number" id="counter">00</span>
+      </div>
+
+      <div class="timer" id="timerId">
+        <h4 class="timer-time">Time:</h4>
+        <span class="timer-minutes" id="minutes">00</span>
+        <span class="timer-colon" id="colon">:</span>
+        <span class="timer-seconds" id="seconds">00</span>
+      </div>
+
+      <h3 class="userWelcome" id="user"></h3>
+    </section>
     <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
 
     <h1>Does the person have</h1>
@@ -55,27 +70,31 @@
 
     <button id="filter" class="filled-button">FIND OUT</button>
 
-    <!-- text input question 1-->
-    <div class="question-name" id="question-name">
-      <form id="name-form">
-        <label for="name-input" class="label-name">Write your name</label>
-        <input class="input-name" id="name-input" type="text" />
-        <button class="filled-button" id="sendName" type="submit">
-          SEND
-        </button>
-      </form>
-    </div>
+
   </aside>
 
+  <!-- text input question 1-->
+  <section class="question-name" id="question-name">
+    <h1 class="welcome">Welcome to Gues Who</h1>
+    <form id="name-form" class="form">
+      <label for="name-input" class="label-name">Please write your name</label>
+      <input class="input-name" id="name-input" type="text" />
+      <button class="filled-button start" id="startAndSendName" type="submit">
+        START
+      </button>
+    </form>
+  </section>
 
-  <section class="board-wrapper">
+
+
+  <section class="board-wrapper" id="main-board-wrapper">
     <main class="game-board" id="board"></main>
   </section>
 
   <section id="winOrLose" class="win-or-lose-wrapper">
     <div class="win-or-lose">
       <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
-      <h1 id="winOrLoseText"></h1>
+      <div id="winOrLoseText"></div>
       <button id="playAgain" class="filled-button">PLAY AGAIN</button>
     </div>
   </section>

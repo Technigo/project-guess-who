@@ -14,6 +14,6 @@ The confirmatory alerts can be changed to a pop-up box with styling.
 
 ## View it live
 
-![game](images/game.PNG)
+![game](game.PNG)
 
 [Guess Who Halloween Edition](https://angry-rosalind-754d79.netlify.app)

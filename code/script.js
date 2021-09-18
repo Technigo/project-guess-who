@@ -433,7 +433,7 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
-questions.addEventListener("change", selectQuestion());
+questions.addEventListener("change", selectQuestion);
 filterButton.addEventListener("click", () => {
   checkQuestion();
   count += 1;

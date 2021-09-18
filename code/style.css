@@ -176,6 +176,10 @@ button {
   margin-bottom: 32px;
 }
 
+#secret-img {
+  max-height: 25vh;
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;

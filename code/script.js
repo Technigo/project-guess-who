@@ -443,9 +443,10 @@ const checkMyGuess = (personToCheck) => {
     let audio = document.createElement("audio");
     audio.src = "./assets/game_lost.wav";
     audio.play();
-    winOrLooseText.innerHTML = `Sorry, you lost! <br>The secret person was ${secret.name}. <br>Wanna try again?`
+    winOrLooseText.innerHTML = `Sorry, you lost! <br>The secret person was ${secret.name}.`
     winOrLooseText.innerHTML += `
-      <img src=${secret.img} alt="${secret.name}">
+      <img id="secret-img" src=${secret.img} alt="${secret.name}">
+      <h1>Wanna try again?</h1>
       `
   }
     

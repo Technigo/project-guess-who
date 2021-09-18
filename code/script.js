@@ -8,6 +8,7 @@ const restartBtn = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
 const playAgainBtn = document.getElementById('playAgain')
 const playerValue = document.getElementById('playername')
+const sheet = document.styleSheets[0];
 
 // add DOM-selector for audio, and then write audio.play() where you want to find it
 
@@ -215,36 +216,150 @@ const CHARACTERS = [
     hair: 'blue and white',
     eyes: 'blue',
     accessories: ['lightsaber'],
-    other: [],
-    species: ['togruta'],
-    mood: ['combat']
+    other: ['jedi'],
+    species: 'togruta',
+    mood: 'angry'
   },
   {
     name: 'Chopper',
-    img: 'images/chopper.png',
-    hair: 'none',
-    eyes: 'none',
-    accessories: ['arms'],
-    other: [],
-    species: ['droid'],
-    mood: ['sassy']
+    img: 'images/chopper.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'Rex',
+    img: 'images/rex.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'Anakin Skywalker',
+    img: 'images/anakin.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'Darth Maul',
+    img: 'images/maul.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'Luke Skywalker',
+    img: 'images/luke.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'Grogu',
+    img: 'images/grogu.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'Cassian',
+    img: 'images/cassian.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'Leia',
+    img: 'images/leia.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'C-3PO',
+    img: 'images/c-3po.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'Chewbacca',
+    img: 'images/chewbacca.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'Han Solo',
+    img: 'images/han-solo.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'Thrawn',
+    img: 'images/thrawn.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'R2-D2',
+    img: 'images/r2-d2.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
+  },
+  {
+    name: 'Yoda',
+    img: 'images/yoda.jfif',
+    hair: 'no',
+    eyes: 'no',
+    accessories: [],
+    other: ['Astromech droid'],
+    species: 'droid',
+    mood: 'sassy'
   }
-  // {
-  //   name: 'Jacques',
-  //   img: 'images/jacques.svg',
-  //   hair: 'grey',
-  //   eyes: 'blue',
-  //   accessories: ['hat'],
-  //   other: ['smoker', 'beard']
-  // },
-  // {
-  //   name: 'Jai',
-  //   img: 'images/jai.svg',
-  //   hair: 'black',
-  //   eyes: 'brown',
-  //   accessories: [],
-  //   other: []
-  // },
 ]
 
 // Global variables
@@ -296,19 +411,25 @@ const generateQuestions = () => {
   for (let key in allCharacteristics) {
     let optionsHTML
 
-    allCharacteristics[key].forEach((value) => {
-      optionsHTML += `
-      <option value="${value}">${value}</option>`
-    })
-    
+    if(!(key === 'accessories' || key === 'other'|| key === 'species')){
+      allCharacteristics[key].forEach((value) => {
+        optionsHTML += `
+        <option value="${value}">${value} ${key}</option>`
+      })
+    }
+    else{
+      allCharacteristics[key].forEach((value) => {
+        optionsHTML += `
+        <option value="${value}">${value}</option>`
+      })
+    }
+      
     questions.innerHTML += /*html*/` 
     <optgroup label="${key}">
       ${optionsHTML}
     </optgroup>
     `
-    // questions.appendChild(optgroup)
-    
-
+      // questions.appendChild(optgroup)
   }
 }
 
@@ -327,6 +448,11 @@ const generateBoard = () => {
       </div>
     `
   })
+  document.documentElement.style.setProperty('--primary', '#d4c929');
+  document.documentElement.style.setProperty('--secondary', 'black');
+
+  document.documentElement.style.setProperty('--primary', '#a259ff');
+  document.documentElement.style.setProperty('--secondary', '#b0a6ff');
 }
 
 const generatePlayerBoard = () => {
@@ -339,8 +465,6 @@ const generatePlayerBoard = () => {
       <span class="time" id="display">00:00:00</span>
     <div>
   `)
-
-  // playerArea.innerHTML.prepend(`<h3>Hellloo</h3>`)
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -433,22 +557,12 @@ const checkQuestion = () => {
   numberOfQuestions += 1
   document.getElementById('questions-asked').innerText = `Number of questions asked: ${numberOfQuestions}`
   selectQuestion()
-  const { category, labelOfQuestion,valueOfQuestion } = currentQuestion //what is guessed
-  // const {name, img, hair, eyes, accessories, other} = secret //who is the secret person
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-    //.includes searches for value in hair, and if hair contains value it is true.
-    if (valueOfQuestion.includes(secret.hair) || valueOfQuestion.includes(secret.eyes))
-      filterCharacters(true)
-    else {
-      filterCharacters(false)
-    }
-  } 
   
-  else if (category === 'accessories') {
+  if (currentQuestion.category === 'accessories') {
     //check which category it is
     //create a const of the list from the persons attributes
     //check if the choosen value exits within the secret persons attributes
@@ -458,68 +572,50 @@ const checkQuestion = () => {
       filterCharacters(false)
     }
     else { 
-      if (secret.accessories.includes(valueOfQuestion)) 
+      if (secret.accessories.includes(currentQuestion.valueOfQuestion)) 
           filterCharacters(true)
         else
           filterCharacters(false)
       }
   } 
   
-  else if (category === 'other') {
+  else if (currentQuestion.category === 'other') {
     if(secret.other.length === 0){
       filterCharacters(false)
     }
 
     else { 
-        if (secret.other.length.includes(valueOfQuestion)) 
+        if (secret.other.includes(currentQuestion.valueOfQuestion)) 
           filterCharacters(true)
         else
           filterCharacters(false)
     }
   }
+  else{
+    if (currentQuestion.valueOfQuestion === secret[currentQuestion.category])
+      filterCharacters(true)
+    else {
+      filterCharacters(false)
+    }
+  }
 }
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, labelOfQuestion,valueOfQuestion } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
-    if (keep) {
+  if (keep) {
       alert(
-        `Yes, the person wears ${valueOfQuestion}! Keep all people that wears ${labelOfQuestion}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(valueOfQuestion))
-    } else {
-      alert(
-        `No, the person doesn't wear ${valueOfQuestion}! Remove all people that wears ${labelOfQuestion}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(valueOfQuestion))
-    }
-  } else if (category === 'other') {
-    if (keep) {
-      alert(
-        `Yes, the person wears ${valueOfQuestion}! Keep all people that wears ${labelOfQuestion}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(valueOfQuestion))
-    } else {
-      alert(
-        `No, the person doesn't wear ${valueOfQuestion}! Remove all people that wears ${labelOfQuestion}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(valueOfQuestion))
-    }
-  } else {
-    if (keep) {
-      alert(
-        `Yes, the person has ${valueOfQuestion}! Keep all people with ${labelOfQuestion}`
+        `Yes, the person has ${labelOfQuestion}! Keep all people with ${labelOfQuestion}`
         )
-        charactersInPlay = charactersInPlay.filter((person) => person[category] === valueOfQuestion)
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(valueOfQuestion))
     } else {
       alert(
-        `No, the person does not have ${valueOfQuestion}! Remove all people with ${labelOfQuestion}`
+        `No, the person does not have ${labelOfQuestion}! Remove all people with ${labelOfQuestion}`
         )
-       charactersInPlay = charactersInPlay.filter((person) => person[category] !== valueOfQuestion) 
+       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(valueOfQuestion)) 
     }
-  }
   generateBoard()
 }
 
@@ -542,10 +638,10 @@ const checkMyGuess = (personToCheck) => {
   document.getElementById("board").style.display = "none";
   document.getElementById("winOrLose").style.display = "flex";
   if(personToCheck === name){
-    document.getElementById("winOrLoseText").innerText = `Yay, ${personToCheck} is the right answer!`;
+    document.getElementById("winOrLoseText").innerText = `Yay, ${personToCheck} is the right answer! The time it took you to guess correct was ${timeToString(elapsedTime)}`;
   }
   else{
-    document.getElementById("winOrLoseText").innerText = `Oh no, ${personToCheck} is not the right answer!`;
+    document.getElementById("winOrLoseText").innerText = `Oh no, ${personToCheck} is not the right answer! The time it took you to guess on the wrong character was ${timeToString(elapsedTime)}`;
   }
 }
 

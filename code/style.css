@@ -45,7 +45,7 @@ h2, .time {
   border: 2px #a259ff;
 }
 
-select {
+select, input {
   display: block;
   border: none;
   font-size: 22px;

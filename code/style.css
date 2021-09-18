@@ -351,7 +351,7 @@ button {
   display: none;
 }
 
-@media (max-width: 1396) {
+@media (max-width: 1396px) {
   .card {
     width: 8rem;
     margin: 2px 10px;
@@ -362,7 +362,7 @@ button {
   }
 }
 
-@media (max-width: 1200) {
+@media (max-width: 1200px) {
   .question-section {
     padding: 3vw;
   }

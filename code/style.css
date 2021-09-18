@@ -233,7 +233,7 @@ button {
   }
 
   .card .guess .filled-button {
-    padding: 6px 11px;
+    padding: 0px 20px;
     margin-bottom: 1px;
     background: white;
     color: var(--primary);

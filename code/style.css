@@ -5,10 +5,12 @@
   }
   
   body {
+    box-sizing: border-box;
+    padding-left: 5%;
+    padding-right: 5%;
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding: 0;
     font-family: Bangers;
     color: #333;
     overflow: visible;
@@ -28,16 +30,16 @@
   .guess-who-icon {
     width: 400px;
     transform: rotate(-20deg);
-    padding-top: 2rem;
+    /* padding-top: 2rem; */
   }
 
   .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-right: 4rem;
-    padding-left: 4rem;
-    margin-top: 0;
+    /* padding-right: 4rem;
+    padding-left: 4rem; */
+    margin-top: 2rem;
 
   }
 
@@ -56,9 +58,10 @@
     color: #333;
     height: 64px;
     padding-left: 1rem;
-    width: 400px;
+    padding-right: 4rem;
     border-color: 2px, solid, #333;
   }
+
 
   button {
     border-radius: 12px;
@@ -100,8 +103,8 @@
 
 
   .board-wrapper {
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 100px;
+    padding-right: 100px;
   }
   
   .game-board {
@@ -205,13 +208,15 @@
     body {
         margin-right: 1rem;
         margin-left: 1rem;
+        padding: 0;
     }
 
 
     .header {
         flex-direction: column;
-        padding: 0;
+        /* padding: 0; */
         align-items: center;
+        width: 100%;
       }
 
       .rightContent {
@@ -253,23 +258,27 @@
       .board-wrapper {
         padding-left:0;
         padding-right: 0;
+        /* box-sizing: border-box; */
       }
       
-      .game-board {
+      /* .game-board {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 10px;
-        width: 100%;
         max-width: 700px;
         margin: 0;
         padding-bottom: 2rem;
+      } */
+
+      .game-board {
+        gap: 1rem;
+        max-width: 700px;
       }
     
     
       .card {
         margin: 0%;
         padding: 0;
-        border-radius: 12px;
         overflow: flex;
       } 
 
@@ -279,16 +288,20 @@
         padding-top: 0.5rem;
       }
 
-      img {
+      .card img {
         width: 50%;
         height: 50%;
         position: relative;
         margin-top: 0.5rem;
       }
 
-      .card:hover img {
+      .card:hover {
         display: none;
       }
+
+      /* .card:hover img {
+        display: none;
+      } */
 
 
     h1 {

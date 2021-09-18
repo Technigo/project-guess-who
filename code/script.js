@@ -294,12 +294,12 @@ const filterCharacters = (keep) => {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
-        `Yes, the person wears ${value} !Keep all people that wears ${value} `
+        `Yes, the person wears ${value}! Keep all people that wear ${value} `
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
       )
     }
   } else if (category === 'other') {

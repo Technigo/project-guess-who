@@ -1,17 +1,18 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
+const boardWrapper = document.getElementById("board-wrapper");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
 const playAgainButton = document.getElementById("playAgain");
-const winOrLose = document.getElementById("winOrLose");
-const winOrLoseText = document.getElementById("winOrLoseText");
+const winOrLose = document.getElementById("win-or-lose");
+const winOrLoseWrapper = document.getElementById("win-or-lose-wrapper");
+const winOrLoseText = document.getElementById("win-or-lose-text");
 const startGameBtn = document.getElementById("startGameBtn");
 const startGame = document.getElementById("startGame");
 const gamePlayAudio = document.getElementById("gameplay-audio");
 const introAudio = document.getElementById("intro-audio");
 const gamePlayAudioBtn = document.getElementById("game-play-audio-btn");
-const anim = document.getElementById("anim");
 
 // timer from Stackoverflow
 const minutesLabel = document.getElementById("minutes");
@@ -280,16 +281,8 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="guess-btn" onclick="guess('${person.name}')">Guess</button>
+          <button class="guess-btn" onclick="guess('${person.name}'); playGameAudio();">Guess</button>
         </div>
-      </div>
-    `;
-  });
-  charactersNotInPlay.forEach((person) => {
-    board.innerHTML += `
-      <div class="card border-gradient border-gradient-color thrown">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
       </div>
     `;
   });
@@ -377,7 +370,6 @@ const filterCharacters = (keep) => {
     );
 
     console.log(charactersInPlay);
-    // rotateCards(charactersInPlay);
   };
 
   const removeCharStr = () => {
@@ -385,7 +377,6 @@ const filterCharacters = (keep) => {
       (person) => person[category] !== value
     );
     console.log(charactersInPlay);
-    // rotateCards(charactersInPlay);
   };
 
   const removeCharArray = () => {
@@ -393,7 +384,6 @@ const filterCharacters = (keep) => {
       (person) => !person[category].includes(value)
     );
     console.log(charactersInPlay);
-    // rotateCards(charactersInPlay);
   };
 
   const keepCharArray = () => {
@@ -401,7 +391,6 @@ const filterCharacters = (keep) => {
       person[category].includes(value)
     );
     console.log(charactersInPlay);
-    // rotateCards(charactersInPlay);
   };
 
   // Show the correct alert message for different categories
@@ -410,17 +399,13 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears a/an ${value}! Keep all people that wears a/an ${value}`
       );
-      // charactersInPlay = charactersInPlay.filter((person) =>
-      //   person[category].includes(value)
-      // );
+
       keepCharArray();
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
-      // charactersInPlay = charactersInPlay.filter(
-      //   (person) => !person[category].includes(value)
-      // );
+
       removeCharArray();
     }
   } else if (category === "weapon") {
@@ -429,17 +414,13 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person likes to use ${value}! Keep all people that likes to use ${value}`
       );
-      // charactersInPlay = charactersInPlay.filter((person) =>
-      //   person[category].includes(value)
-      // );
+
       keepCharArray();
     } else {
       alert(
         `No, the person is not likes to use ${value}! Remove all people that likes to use ${value}`
       );
-      // charactersInPlay = charactersInPlay.filter(
-      //   (person) => !person[category].includes(value)
-      // );
+
       removeCharArray();
     }
   } else {
@@ -447,17 +428,13 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`
       );
-      // charactersInPlay = charactersInPlay.filter(
-      //   (person) => person[category] === value
-      // );
+
       keepCharStr();
     } else {
       alert(
         `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
       );
-      // charactersInPlay = charactersInPlay.filter(
-      //   (person) => person[category] !== value
-      // );
+
       removeCharStr();
     }
   }
@@ -473,22 +450,6 @@ const filterCharacters = (keep) => {
 
   // Invoke a function to redraw the board with the remaining people.
 };
-
-// animation of cards
-
-// const rotateCards = () => {
-//   const { category, value } = currentQuestion;
-//   console.log(currentQuestion);
-
-// const printName = (char) => {
-//   return char.name;
-// };
-// charactersNotInPlay.forEach(printName);
-// // cards['name'].forEach(
-// // );
-// // console.log(cards.keys());
-//   generateBoard();
-// };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
@@ -520,12 +481,29 @@ const checkMyGuess = (personToCheck) => {
   };
 
   if (personToCheck === secret.name) {
-    toToggleWinOrLose("You Win!");
+    boardWrapper.style.display = "none";
+    toToggleWinOrLose(
+      `You win! The villain is ${secret.name} <br>
+      <img style="height:20rem;" src=${secret.img} alt=${secret.name}>`
+    );
+    winAudio.play();
   } else if (personToCheck !== secret.name) {
-    console.log(personToCheck);
-    toToggleWinOrLose("You Lose!");
+    boardWrapper.style.display = "none";
+    toToggleWinOrLose(`You lose! The villain is ${secret.name}
+    <br>
+      <img class="win-or-lose-villain-img" src=${secret.img} alt=${secret.name}>`);
+    loseAudio.play();
   }
 };
+
+// audio controls
+var winAudio = new Audio("sound/scream.wav");
+var loseAudio = new Audio("sound/evil.wav");
+
+winAudio.volume = 0.2;
+loseAudio.volume = 0.2;
+introAudio.volume = 0.5;
+gamePlayAudio.volume = 0.2;
 
 const toggleAudioBtnText = () => {
   if (gamePlayAudioBtn.innerHTML === "Sound Off 🔈") {
@@ -547,8 +525,6 @@ const stopIntroAudio = () => {
   introAudio.pause();
 };
 
-// Invokes the start function when website is loaded
-
 // All the event listeners
 restartButton.addEventListener("click", () => {
   start;
@@ -562,9 +538,15 @@ findOutButton.addEventListener("click", () => {
 });
 
 playAgainButton.addEventListener("click", () => {
+  boardWrapper.style.display = "block";
   start();
   winOrLose.classList.toggle("open");
-  playGameAudio();
+  gamePlayAudio.currentTime = 0;
+  winAudio.currentTime = 0;
+  loseAudio.currentTime = 0;
+  gamePlayAudio.play();
+  winAudio.pause();
+  loseAudio.pause();
 });
 startGameBtn.addEventListener("click", () => {
   start();

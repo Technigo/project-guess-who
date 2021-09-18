@@ -18,6 +18,10 @@ h1,
   color: rgb(228, 224, 224);
 }
 
+.game-h1 {
+  margin-top: -60px;
+}
+
 .villain-text {
   text-transform: uppercase;
   font-family: "Creepster", cursive;
@@ -57,6 +61,7 @@ select {
 .guess-who-icon {
   width: 17rem;
   padding: 2em;
+  margin-top: 10rem;
 }
 
 .board-wrapper {
@@ -235,6 +240,7 @@ button {
   top: 820px;
 }
 
+.start-game-btn:hover,
 .restart,
 .game-audio-btn {
   background-color: rgb(228, 224, 224, 0.8);
@@ -244,6 +250,7 @@ button {
   font-size: 1em;
 }
 
+.play-again-btn:hover,
 .start-game-btn,
 .guess-btn,
 .find-out-btn:hover,
@@ -253,6 +260,7 @@ button {
   color: rgb(228, 224, 224);
 }
 
+.play-again-btn,
 .guess.btn:hover,
 .find-out-btn {
   background-color: rgb(228, 224, 224);
@@ -266,12 +274,8 @@ button {
   justify-content: space-between;
 }
 
-.thrown {
-  transform: rotate(0.5turn);
-}
-
 /****** WIN OR LOSE SECTION ******/
-.win-or-lose-wrapper,
+.win-or-lose,
 .start-game-wrapper {
   align-items: center;
   justify-content: center;
@@ -285,7 +289,7 @@ button {
   z-index: 10;
 }
 
-.win-or-lose-wrapper {
+.win-or-lose {
   display: none;
 }
 .open {
@@ -296,7 +300,7 @@ button {
   display: none;
 }
 
-.win-or-lose,
+.win-or-lose-wrapper,
 .start {
   display: flex;
   flex-direction: column;
@@ -318,13 +322,34 @@ button {
   color: rgb(125, 23, 27);
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+.guess-who-icon-last {
+  height: 13rem;
+  width: 13rem;
+  position: absolute;
+  margin-top: -40rem;
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+.guess-who-icon {
+  margin-top: 4rem;
+}
+
+.win-or-lose-villain-img {
+  height: 20rem;
+}
+
+@media (max-width: 1396) {
+  .card {
+    width: 8rem;
+    margin: 2px 10px;
+  }
+
+  .game-board {
+    max-width: 87%;
+  }
 }
 
 @media (max-width: 1200) {
@@ -339,6 +364,8 @@ button {
 
   .card {
     width: 9rem;
+    height: 7rem;
+    margin: 3px 6px;
   }
 }
 
@@ -372,10 +399,16 @@ button {
     width: auto;
   }
   .guess-who-icon {
-    /* max-width: 15rem;
-    width: auto; */
+    width: 19rem;
     position: absolute;
     margin-top: 4rem;
+  }
+
+  .guess-who-icon-last {
+    width: 13rem;
+    position: absolute;
+    margin-top: -34rem;
+    align-self: center;
   }
 
   .start h1 {
@@ -391,6 +424,15 @@ button {
   .outlined-button:hover {
     font-size: 1em;
     background-color: rgb(25, 31, 43) !important;
+  }
+
+  video {
+    min-height: 121vh;
+    max-width: 104vw;
+  }
+  .start-game-wrapper {
+    height: 130vh;
+    width: 108vw;
   }
 
   .game-wrapper {
@@ -431,5 +473,14 @@ button {
     background: rgb(228, 224, 224);
     color: var(--primary);
     border: none;
+  }
+
+  .win-or-lose h1 {
+    width: 80%;
+    margin-top: 102px;
+  }
+
+  .win-or-lose-villain-img {
+    height: 15rem;
   }
 }

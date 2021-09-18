@@ -259,20 +259,23 @@ const selectQuestion = () => {
   };
 };
 
-// After clicking on the 'Find Out' button, compare the details from currentQuestion
-// with the secret person
+// After clicking on the 'Find Out' button, compare the details from currentQuestion with the secret person
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   // Comparison for key pairs with string values
   if (category === "hair" || category === "eyes") {
     if (secret[category] === value) {
       filterCharacters(true);
-    } else filterCharacters();
+    } else {
+      filterCharacters();
+    }
   } // Comparison for key pairs with array values
   else if (category === "accessories" || category === "other") {
     if (secret[category].includes(value)) {
       filterCharacters(true);
-    } else filterCharacters();
+    } else {
+      filterCharacters();
+    }
   }
 };
 
@@ -323,14 +326,16 @@ const filterCharacters = (keep) => {
         (person) => person[category] === value
       );
     } else {
-      `No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}`;
+      alert(
+        `No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}`
+      );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
     }
-    // Redraw the board with remaining characters
-    generateBoard();
   }
+  // Redraw the board with remaining characters
+  generateBoard();
 };
 
 // After clicking on the "guess" button, the player must confirm that they want to make a guess.

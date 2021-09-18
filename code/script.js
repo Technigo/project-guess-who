@@ -5,7 +5,15 @@ const restartButton = document.getElementById('restart')
 const secretPerson = document.getElementById('secretPerson')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
-const queastionCounter = document.getElementById('counter')
+const startButton = document.getElementById('start')
+const startWindow = document.getElementById('start-window')
+
+
+// when you open the page this is the first you see
+window.onload = () => {
+  startWindow.style.display = 'flex' // showing start window 
+  start()
+}
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -437,3 +445,8 @@ playAgainButton.addEventListener('click',() => {
   start()
   document.getElementById('winOrLose').style.display='none'; //This line invokes play again button and draws the board
 });
+
+startButton.addEventListener('click', () => {
+  startWindow.style.display='none';
+  board.style.display = 'flex'
+})

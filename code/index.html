@@ -1,79 +1,90 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guess Who? Dino style</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <aside class="question-section">
-      <button id="restart" class="outlined-button">RESTART</button>
 
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guess Who? Dino style</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" href="./images/kurt.svg" type="png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
 
-      <h1>Does the dinosaur have</h1>
+<!-- START BUTTON AND ICON -->
 
-      <select id="questions">
-        <optgroup label="Skin Color">
-          <option value="green">Green skin</option>
-          <option value="blue">Blue skin</option>
-          <option value="yellow">Yellow skin</option>
-          <option value="pink">Pink skin</option>
-          <option value="orange">Orange skin</option>
-          <option value="red">Red skin</option>
+<body>
+  <aside class="question-section">
+    <button id="restart" class="outlined-button">RESTART</button>
 
-          <!-- Add the rest of hair colors as options  -->
-        </optgroup>
-        <optgroup label="Skin/body texture">
-          <option value="spots">Spots</option>
-          <option value="stripes">Stripes</option>
-          <option value="plain">Plain</option>
+    <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
 
-          <!-- Add the rest of eye colors as options  -->
-        </optgroup>
-        <optgroup label="Attributes">
-          <option value="swim">Swim</option>
-          <option value="fly">Fly</option>
-          <option value="stand on four legs">Stands on four legs</option>
-          <option value="stand on two legs">Stands on two legs</option>
-        
+    <h1>Does the dinosaur have</h1>
 
-          <!-- Add the other accessory option here. (hat)  -->
-        </optgroup>
-        <optgroup label="Other attributes">
-          <option value="fins">Fins</option>
-          <option value="spikes">Spikes</option>
-          <option value="beak">Beak</option>
-          <option value="teeth">Teeth</option>
-          <option value="horn">Horn</option>
-        </optgroup>
-      </select>
+    <!-- SKIN COLOR -->
+    <select id="questions">
+      <optgroup label="Skin Color">
+        <option value="green">Green skin</option>
+        <option value="blue">Blue skin</option>
+        <option value="yellow">Yellow skin</option>
+        <option value="pink">Pink skin</option>
+        <option value="orange">Orange skin</option>
+        <option value="red">Red skin</option>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
-    </aside>
+        <!-- SKIN/BODY TEXTURE -->
+      </optgroup>
+      <optgroup label="Skin/body texture">
+        <option value="spots">Spots</option>
+        <option value="stripes">Stripes</option>
+        <option value="plain">Plain</option>
 
-    <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
-    </section>
+        <!-- ATTRIBUTES-->
+      </optgroup>
+      <optgroup label="Attributes">
+        <option value="swim">Swim</option>
+        <option value="fly">Fly</option>
+        <option value="stand on four legs">Stands on four legs</option>
+        <option value="stand on two legs">Stands on two legs</option>
 
-    <section id="winOrLose" class="win-or-lose-wrapper">
-      <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
-        <h2 id="winOrLoseText"></h2>
-        <button id="playAgain" class="filled-button">PLAY AGAIN</button>
-      </div>
-    </section>
-    <script src="script.js"></script>
-  </body>
+
+        <!-- OTHER ATTRIBUTES-->
+      </optgroup>
+      <optgroup label="Other attributes">
+        <option value="fins">Fins</option>
+        <option value="spikes">Spikes</option>
+        <option value="beak">Beak</option>
+        <option value="teeth">Teeth</option>
+        <option value="horn">Horn</option>
+      </optgroup>
+    </select>
+
+    <button id="filter" class="filled-button">FIND OUT</button>
+  </aside>
+
+  <!--BOARD CONTENT-->
+
+  <section class="board-wrapper">
+    <main class="game-board" id="board"></main>
+  </section>
+
+  <section id="winOrLose" class="win-or-lose-wrapper">
+    <div class="win-or-lose">
+      <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
+      <h2 id="winOrLoseText"></h2>
+      <button id="playAgain" class="filled-button">PLAY AGAIN</button>
+    </div>
+  </section>
+
+  <!--START WINDOW-->
+  <section id="start-window" class="start-wrapper">
+    <div class="start-div">
+      <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
+      <h1 id="startTxt">Guess Who? Dino style!</h1>
+      <button id="start" class="filled-button">START</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
 </html>

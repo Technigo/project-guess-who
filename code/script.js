@@ -3,362 +3,362 @@ const playerArea = document.getElementById('question-aside')
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const question = document.getElementById('question')
+const themes = document.getElementById('theme')
 const startBtn = document.getElementById('play')
 const restartBtn = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
 const playAgainBtn = document.getElementById('playAgain')
 const playerValue = document.getElementById('playername')
-const sheet = document.styleSheets[0];
 
 // add DOM-selector for audio, and then write audio.play() where you want to find it
 
 // Array with all the characters, as objects
-// const CHARACTERS = [
-//   {
-//     name: 'Jabala',
-//     img: 'images/jabala.svg',
-//     hair: 'hidden',
-//     eyes: 'hidden',
-//     accessories: ['glasses', 'hat'],
-//     other: []
-//   },
-//   {
-//     name: 'Jack',
-//     img: 'images/jack.svg',
-//     hair: 'hidden',
-//     eyes: 'blue',
-//     accessories: ['hat'],
-//     other: []
-//   },
-//   {
-//     name: 'Jacques',
-//     img: 'images/jacques.svg',
-//     hair: 'grey',
-//     eyes: 'blue',
-//     accessories: ['hat'],
-//     other: ['smoker', 'beard']
-//   },
-//   {
-//     name: 'Jai',
-//     img: 'images/jai.svg',
-//     hair: 'black',
-//     eyes: 'brown',
-//     accessories: [],
-//     other: []
-//   },
-//   {
-//     name: 'Jake',
-//     img: 'images/jake.svg',
-//     hair: 'yellow',
-//     eyes: 'green',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'James',
-//     img: 'images/james.svg',
-//     hair: 'brown',
-//     eyes: 'green',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jana',
-//     img: 'images/jana.svg',
-//     hair: 'black',
-//     eyes: 'hidden',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jane',
-//     img: 'images/jane.svg',
-//     hair: 'yellow',
-//     eyes: 'hidden',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jaqueline',
-//     img: 'images/jaqueline.svg',
-//     hair: 'orange',
-//     eyes: 'green',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-
-//   {
-//     name: 'Jazebelle',
-//     img: 'images/jazebelle.svg',
-//     hair: 'purple',
-//     eyes: 'hidden',
-//     accessories: ['glasses'],
-//     other: ['smoker']
-//   },
-//   {
-//     name: 'Jean',
-//     img: 'images/jean.svg',
-//     hair: 'brown',
-//     eyes: 'blue',
-//     accessories: ['glasses', 'hat'],
-//     other: ['smoker']
-//   },
-//   {
-//     name: 'Jeane',
-//     img: 'images/jeane.svg',
-//     hair: 'brown',
-//     eyes: 'green',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jed',
-//     img: 'images/jed.svg',
-//     hair: 'orange',
-//     eyes: 'green',
-//     accessories: ['glasses', 'hat'],
-//     other: ['smoker']
-//   },
-//   {
-//     name: 'Jenni',
-//     img: 'images/jenni.svg',
-//     hair: 'white',
-//     eyes: 'hidden',
-//     accessories: ['hat'],
-//     other: []
-//   },
-//   {
-//     name: 'Jeri',
-//     img: 'images/jeri.svg',
-//     hair: 'orange',
-//     eyes: 'green',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jerry',
-//     img: 'images/jerry.svg',
-//     hair: 'hidden',
-//     eyes: 'blue',
-//     accessories: ['hat'],
-//     other: []
-//   },
-//   {
-//     name: 'Jess',
-//     img: 'images/jess.svg',
-//     hair: 'black',
-//     eyes: 'blue',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jocelyn',
-//     img: 'images/jocelyn.svg',
-//     hair: 'black',
-//     eyes: 'brown',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jon',
-//     img: 'images/jon.svg',
-//     hair: 'brown',
-//     eyes: 'green',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jordan',
-//     img: 'images/jordan.svg',
-//     hair: 'yellow',
-//     eyes: 'hidden',
-//     accessories: ['glasses', 'hat'],
-//     other: []
-//   },
-//   {
-//     name: 'Josephine',
-//     img: 'images/josephine.svg',
-//     hair: 'grey',
-//     eyes: 'brown',
-//     accessories: [],
-//     other: []
-//   },
-//   {
-//     name: 'Josh',
-//     img: 'images/josh.svg',
-//     hair: 'yellow',
-//     eyes: 'green',
-//     accessories: [],
-//     other: []
-//   },
-//   {
-//     name: 'Jude',
-//     img: 'images/jude.svg',
-//     hair: 'black',
-//     eyes: 'green',
-//     accessories: [],
-//     other: []
-//   },
-//   {
-//     name: 'Julie',
-//     img: 'images/julie.svg',
-//     hair: 'black',
-//     eyes: 'brown',
-//     accessories: ['glasses', 'hat'],
-//     other: []
-//   },
-// ]
-
 const CHARACTERS = [
+  {
+    name: 'Jabala',
+    img: 'images/jabala.svg',
+    hair: 'hidden',
+    eyes: 'hidden',
+    accessories: ['glasses', 'hat'],
+    other: []
+  },
+  {
+    name: 'Jack',
+    img: 'images/jack.svg',
+    hair: 'hidden',
+    eyes: 'blue',
+    accessories: ['hat'],
+    other: []
+  },
+  {
+    name: 'Jacques',
+    img: 'images/jacques.svg',
+    hair: 'grey',
+    eyes: 'blue',
+    accessories: ['hat'],
+    other: ['smoker', 'beard']
+  },
+  {
+    name: 'Jai',
+    img: 'images/jai.svg',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Jake',
+    img: 'images/jake.svg',
+    hair: 'yellow',
+    eyes: 'green',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
+    name: 'James',
+    img: 'images/james.svg',
+    hair: 'brown',
+    eyes: 'green',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
+    name: 'Jana',
+    img: 'images/jana.svg',
+    hair: 'black',
+    eyes: 'hidden',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
+    name: 'Jane',
+    img: 'images/jane.svg',
+    hair: 'yellow',
+    eyes: 'hidden',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
+    name: 'Jaqueline',
+    img: 'images/jaqueline.svg',
+    hair: 'orange',
+    eyes: 'green',
+    accessories: ['glasses'],
+    other: []
+  },
+
+  {
+    name: 'Jazebelle',
+    img: 'images/jazebelle.svg',
+    hair: 'purple',
+    eyes: 'hidden',
+    accessories: ['glasses'],
+    other: ['smoker']
+  },
+  {
+    name: 'Jean',
+    img: 'images/jean.svg',
+    hair: 'brown',
+    eyes: 'blue',
+    accessories: ['glasses', 'hat'],
+    other: ['smoker']
+  },
+  {
+    name: 'Jeane',
+    img: 'images/jeane.svg',
+    hair: 'brown',
+    eyes: 'green',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
+    name: 'Jed',
+    img: 'images/jed.svg',
+    hair: 'orange',
+    eyes: 'green',
+    accessories: ['glasses', 'hat'],
+    other: ['smoker']
+  },
+  {
+    name: 'Jenni',
+    img: 'images/jenni.svg',
+    hair: 'white',
+    eyes: 'hidden',
+    accessories: ['hat'],
+    other: []
+  },
+  {
+    name: 'Jeri',
+    img: 'images/jeri.svg',
+    hair: 'orange',
+    eyes: 'green',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
+    name: 'Jerry',
+    img: 'images/jerry.svg',
+    hair: 'hidden',
+    eyes: 'blue',
+    accessories: ['hat'],
+    other: []
+  },
+  {
+    name: 'Jess',
+    img: 'images/jess.svg',
+    hair: 'black',
+    eyes: 'blue',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
+    name: 'Jocelyn',
+    img: 'images/jocelyn.svg',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
+    name: 'Jon',
+    img: 'images/jon.svg',
+    hair: 'brown',
+    eyes: 'green',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
+    name: 'Jordan',
+    img: 'images/jordan.svg',
+    hair: 'yellow',
+    eyes: 'hidden',
+    accessories: ['glasses', 'hat'],
+    other: []
+  },
+  {
+    name: 'Josephine',
+    img: 'images/josephine.svg',
+    hair: 'grey',
+    eyes: 'brown',
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Josh',
+    img: 'images/josh.svg',
+    hair: 'yellow',
+    eyes: 'green',
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Jude',
+    img: 'images/jude.svg',
+    hair: 'black',
+    eyes: 'green',
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Julie',
+    img: 'images/julie.svg',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: ['glasses', 'hat'],
+    other: []
+  },
+]
+
+const CHARACTERS2 = [
   {
     name: 'Ahsoka',
     img: 'images/ahsoka.png',
     hair: 'blue and white',
     eyes: 'blue',
+    color: 'orange',
     accessories: ['lightsaber'],
-    other: ['jedi'],
+    other: [],
     species: 'togruta',
-    mood: 'angry'
   },
   {
     name: 'Chopper',
     img: 'images/chopper.jfif',
     hair: 'no',
     eyes: 'no',
+    color: 'white',
     accessories: [],
-    other: ['Astromech droid'],
+    other: ['astromech droid'],
     species: 'droid',
-    mood: 'sassy'
   },
   {
     name: 'Rex',
     img: 'images/rex.jfif',
-    hair: 'no',
-    eyes: 'no',
+    hair: 'yellow',
+    eyes: 'brown',
+    color: 'light',
     accessories: [],
-    other: ['Astromech droid'],
-    species: 'droid',
-    mood: 'sassy'
+    other: ['clonetrooper'],
+    species: 'human',
   },
   {
     name: 'Anakin Skywalker',
     img: 'images/anakin.jfif',
-    hair: 'no',
-    eyes: 'no',
-    accessories: [],
-    other: ['Astromech droid'],
-    species: 'droid',
-    mood: 'sassy'
+    hair: 'brown',
+    eyes: 'blue',
+    color: 'light',
+    accessories: ['lightsaber'],
+    other: ['jedi', 'sithlord'],
+    species: 'human',
   },
   {
-    name: 'Darth Maul',
+    name: 'Maul',
     img: 'images/maul.jfif',
     hair: 'no',
-    eyes: 'no',
-    accessories: [],
-    other: ['Astromech droid'],
-    species: 'droid',
-    mood: 'sassy'
+    eyes: 'red',
+    color: 'red',
+    accessories: ['horns'],
+    other: ['sithlord'],
+    species: 'zabrak',
   },
   {
     name: 'Luke Skywalker',
     img: 'images/luke.jfif',
-    hair: 'no',
-    eyes: 'no',
-    accessories: [],
-    other: ['Astromech droid'],
-    species: 'droid',
-    mood: 'sassy'
+    hair: 'brown',
+    eyes: 'blue',
+    color: 'light',
+    accessories: ['lightsaber'],
+    other: ['jedi', 'rebel'],
+    species: 'human',
   },
   {
     name: 'Grogu',
     img: 'images/grogu.jfif',
-    hair: 'no',
-    eyes: 'no',
+    hair: 'white',
+    eyes: 'brown',
+    color: 'green',
     accessories: [],
-    other: ['Astromech droid'],
-    species: 'droid',
-    mood: 'sassy'
+    other: [],
+    species: 'unknown',
   },
   {
     name: 'Cassian',
     img: 'images/cassian.jfif',
-    hair: 'no',
-    eyes: 'no',
+    hair: 'brown',
+    eyes: 'brown',
+    color: 'light',
     accessories: [],
-    other: ['Astromech droid'],
-    species: 'droid',
-    mood: 'sassy'
+    other: ['rebel'],
+    species: 'human',
   },
   {
     name: 'Leia',
     img: 'images/leia.jfif',
-    hair: 'no',
+    hair: 'brown',
     eyes: 'no',
-    accessories: [],
-    other: ['Astromech droid'],
-    species: 'droid',
-    mood: 'sassy'
+    color: 'light',
+    accessories: ['blaster', 'hairbuns'],
+    other: ['rebel'],
+    species: 'human',
   },
   {
     name: 'C-3PO',
     img: 'images/c-3po.jfif',
     hair: 'no',
-    eyes: 'no',
+    eyes: 'yellow',
+    color: 'yellow',
     accessories: [],
-    other: ['Astromech droid'],
+    other: ['protocol droid'],
     species: 'droid',
-    mood: 'sassy'
   },
   {
     name: 'Chewbacca',
     img: 'images/chewbacca.jfif',
-    hair: 'no',
-    eyes: 'no',
+    hair: 'brown',
+    eyes: 'blue',
+    color: 'brown',
     accessories: [],
-    other: ['Astromech droid'],
-    species: 'droid',
-    mood: 'sassy'
+    other: ['rebel'],
+    species: 'wookie',
   },
   {
     name: 'Han Solo',
     img: 'images/han-solo.jfif',
-    hair: 'no',
-    eyes: 'no',
-    accessories: [],
-    other: ['Astromech droid'],
-    species: 'droid',
-    mood: 'sassy'
+    hair: 'brown',
+    eyes: 'green',
+    color: 'light',
+    accessories: ['blaster'],
+    other: ['rebell'],
+    species: 'human',
   },
   {
     name: 'Thrawn',
     img: 'images/thrawn.jfif',
-    hair: 'no',
-    eyes: 'no',
+    hair: 'blue',
+    eyes: 'red',
+    color: 'blue',
     accessories: [],
-    other: ['Astromech droid'],
-    species: 'droid',
-    mood: 'sassy'
+    other: ['grand admiral'],
+    species: 'chiss',
   },
   {
     name: 'R2-D2',
     img: 'images/r2-d2.jfif',
     hair: 'no',
     eyes: 'no',
+    color: 'white',
     accessories: [],
-    other: ['Astromech droid'],
+    other: ['astromech droid'],
     species: 'droid',
-    mood: 'sassy'
   },
   {
     name: 'Yoda',
     img: 'images/yoda.jfif',
-    hair: 'no',
-    eyes: 'no',
+    hair: 'white',
+    eyes: 'brown',
+    color: 'green',
     accessories: [],
-    other: ['Astromech droid'],
-    species: 'droid',
-    mood: 'sassy'
+    other: ['jedi'],
+    species: 'unknown',
   }
 ]
 
@@ -379,7 +379,15 @@ const generateQuestions = () => {
   //add value as value to the optionlist, under the correct category and if hair or eyes, add name+category as name
   let allCharacteristics = {}
 
-  charactersInPlay = CHARACTERS
+  const theme = themes.options[themes.selectedIndex].label
+
+  if(theme === 'Star Wars'){
+    charactersInPlay = CHARACTERS2
+  }
+
+  else{
+    charactersInPlay = CHARACTERS
+  }
 
   charactersInPlay.forEach((person) => {
     //creates array of keys in object (so for example hair and other)
@@ -448,11 +456,6 @@ const generateBoard = () => {
       </div>
     `
   })
-  document.documentElement.style.setProperty('--primary', '#d4c929');
-  document.documentElement.style.setProperty('--secondary', 'black');
-
-  document.documentElement.style.setProperty('--primary', '#a259ff');
-  document.documentElement.style.setProperty('--secondary', '#b0a6ff');
 }
 
 const generatePlayerBoard = () => {
@@ -491,7 +494,20 @@ const start = () => {
   document.getElementById("start-aside").style.display = "none";
   document.getElementById("question-aside").style.display = "flex";
 
-  charactersInPlay = CHARACTERS
+  const theme = themes.options[themes.selectedIndex].label
+
+  if(theme === 'Star Wars'){
+    charactersInPlay = CHARACTERS2
+    document.documentElement.style.setProperty('--primary', '#d4c929');
+    document.documentElement.style.setProperty('--secondary', 'black');
+  }
+
+  else{
+    charactersInPlay = CHARACTERS
+    document.documentElement.style.setProperty('--primary', '#a259ff');
+    document.documentElement.style.setProperty('--secondary', '#b0a6ff');
+  }
+  
   setSecret()  
   generateBoard()
   startTimer()
@@ -535,7 +551,6 @@ const startTimer = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  console.log('selectQuestion works!')
   // selectedIndex gives the choosen indexnumber of the array. https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/selectedIndex
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label
@@ -638,10 +653,10 @@ const checkMyGuess = (personToCheck) => {
   document.getElementById("board").style.display = "none";
   document.getElementById("winOrLose").style.display = "flex";
   if(personToCheck === name){
-    document.getElementById("winOrLoseText").innerText = `Yay, ${personToCheck} is the right answer! The time it took you to guess correct was ${timeToString(elapsedTime)}`;
+    document.getElementById("winOrLoseText").innerText = `Good work ${playerValue.value}, ${personToCheck} is the right answer! The time it took you to guess correct was ${timeToString(elapsedTime)}`;
   }
   else{
-    document.getElementById("winOrLoseText").innerText = `Oh no, ${personToCheck} is not the right answer! The time it took you to guess on the wrong character was ${timeToString(elapsedTime)}`;
+    document.getElementById("winOrLoseText").innerText = `Oh no ${playerValue.value}, ${personToCheck} is not the right answer! The time it took you to guess on the wrong character was ${timeToString(elapsedTime)}`;
   }
 }
 

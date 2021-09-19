@@ -228,7 +228,7 @@ const generateBoard = () => {
         </div>
       </div>
     `
-  });
+  })
 };
 
 //Timer function
@@ -249,7 +249,7 @@ function pad(time) {
 // Function that randomly selects a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-}
+};
 
 // This function to start (and restart) the game
 const start = () => {

@@ -59,6 +59,27 @@ select {
   align-content: center;
 }
 
+.timer {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.timer p {
+  font-size: 1.5em;
+  color: white;
+  padding-right: 5px;
+}
+
+#seconds,
+#minutes,
+#colon {
+  font-size: 1.5em;
+  color: white;
+}
+
 /****** CARD ******/
 .card {
   width: 135px;

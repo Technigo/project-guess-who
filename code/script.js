@@ -210,7 +210,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 
-// Game instructions text that should appear and then dissapear when click on button.
+// Game instructions is invoked upon website load and on button click.
 const instructionText = () => {
   gameInstructions.style.display = 'flex'
 }
@@ -232,20 +232,17 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Secsecret sets a secret person randomly
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
   console.log(secret)
-
-  // What else should happen when we start the game?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -254,7 +251,6 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value
   console.log('choose the value')
 
@@ -272,9 +268,6 @@ const checkQuestion = () => {
 
   let keep = false
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category
-  // (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
     keep = secret[category] === value
@@ -322,11 +315,11 @@ const filterCharacters = (keep) => {
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `You are right, the person has ${value}! Keep all that has ${value}.`
+        `You are right, the person is a ${value}! Keep all that are ${value}.`
       )
     } else {
       alert(
-        `Sorry, the person doesn't have ${value}. Remove all that has ${value}.`
+        `Sorry, the person is not a ${value}. Remove all that are ${value}.`
       )
     }
   } else {
@@ -367,7 +360,8 @@ const filterCharacters = (keep) => {
       )
     }
   }
-  // Invoke a function to redraw the board with the remaining people.
+
+  // Here we reinvoke the board with the remaining people after filtering.
   generateBoard()
 }
 
@@ -377,10 +371,6 @@ const guess = (personToConfirm) => {
   if (guess) {
     checkMyGuess(personToConfirm)
   }
-
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked
@@ -394,19 +384,14 @@ const checkMyGuess = (personToCheck) => {
   boardWrapper.style.display = 'none'
 }
 
-// 1. Check if the personToCheck is the same as the secret person's name
-// 2. Set a Message to show in the win or lose section accordingly
-// 3. Show the win or lose section
-// 4. Hide the game board
-
-// Invokes the start function when website is loaded
-// start()
+// Instead of having the start() function invoked when loading the page, I added a function to show
+// Game instructions. This function can be invoked by restarting or pressing the Game instructions button
 instructionText()
 
 // All the event listeners
 restartButton.addEventListener('click', () => {
-  board.style.display = 'none'
-  instructionText()
+  board.style.display = 'flex'
+  gameInstructions.style.display = 'none'
 })
 questions.addEventListener('change', selectQuestion)
 findOut.addEventListener('click', checkQuestion)
@@ -419,7 +404,6 @@ instruction.addEventListener('click', () => {
   gameInstructions.style.display = 'flex'
   board.style.display = 'none'
 })
-
 playAgain.addEventListener('click', () => {
   winOrLose.style.display = 'none'
   boardWrapper.style.display = 'flex'

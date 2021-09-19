@@ -64,7 +64,7 @@ select {
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin-right: 10em;
+  margin-right: 5em;
   padding: 2em;
   background-color: beige;
   border-style: dotted;
@@ -239,9 +239,13 @@ button {
   }
 
   .instructions {
-    margin: 0 auto;
+    display: flex;
     font-size: 14px;
-    width: 90vw;
+    width: 100%;
+    border-style: none;
+  }
+  .game-instructions {
+    margin-right: 6em;
   }
 
   .card {

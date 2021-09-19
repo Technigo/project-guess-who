@@ -9,6 +9,8 @@ const restartBtn = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
 const playAgainBtn = document.getElementById('playAgain')
 const playerValue = document.getElementById('playername')
+const favicon = document.querySelector('[rel=icon]');
+const soundsArea = document.getElementById('soundeffects')
 
 // add DOM-selector for audio, and then write audio.play() where you want to find it
 
@@ -472,7 +474,7 @@ const setSecret = () => {
   console.log(secret)
 }
 
-// This function to start the game
+// This function to start the game and set characters from choosen theme
 const start = () => {
   startBtn.style.display = "none"
   restartBtn.style.display = "block"
@@ -492,6 +494,13 @@ const start = () => {
     charactersInPlay = CHARACTERS2
     document.documentElement.style.setProperty('--primary', '#d4c929');
     document.documentElement.style.setProperty('--secondary', 'black');
+
+    soundsArea.innerHTML = /*html*/ `
+      <audio autoplay>
+        <source src="./sound/coolsaber.mp3" type="audio/wav">
+      </audio>
+    `
+    favicon.href="./images/favicon-sw.png"
   }
 
   else{
@@ -653,9 +662,19 @@ const checkMyGuess = (personToCheck) => {
   document.getElementById("board").style.display = "none";
   document.getElementById("winOrLose").style.display = "flex";
   if(personToCheck === name){
+    soundsArea.innerHTML = /*html*/ `
+      <audio autoplay>
+        <source src="./sound/right.wav" type="audio/wav">
+      </audio>
+    `
     document.getElementById("winOrLoseText").innerText = `Good work ${playerValue.value}, ${personToCheck} is the right answer! The time it took you to guess correct was ${timeToString(elapsedTime)}`;
   }
   else{
+    soundsArea.innerHTML = /*html*/ `
+      <audio autoplay>
+        <source src="./sound/wrong.wav" type="audio/wav">
+      </audio>
+    `
     document.getElementById("winOrLoseText").innerText = `Oh no ${playerValue.value}, ${personToCheck} is not the right answer! The time it took you to guess on the wrong character was ${timeToString(elapsedTime)}`;
   }
 }

@@ -6,6 +6,7 @@ const restartButton = document.getElementById('restart')
 const guessPress = document.getElementById('winOrLose')
 const playAgainButton = document.getElementById('playAgain')
 const winOrLose = document.getElementById('winOrLose')
+const guessCounter = document.getElementById("guessCounter")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -238,6 +239,8 @@ const start = () => {
   board.style.display = "flex" //---make board show again after PlayAgain
   generateBoard() // ---- Generate the board
   setSecret() //---- Randomize the secret person
+  guessNumber = 0
+  guessCounter.innerText = 0 
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -278,6 +281,8 @@ const checkQuestion = () => {
       filterCharacters(false, currentQuestion.category)
     }
   }
+  guessNumber++
+  guessCounter.innerText = guessNumber
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -316,7 +321,6 @@ const filterCharacters = (keep) => {
   // filter by category to keep or remove based on the keep variable.
   
   if (category === 'hair' || category === 'eyes' ){
-    /* for hair and eyes : */
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] === currentQuestion.value)
     }
@@ -353,13 +357,13 @@ const checkMyGuess = (personToCheck) => {
   const audioWin = new Audio('./assets/applause7.mp3') // win audio
   const audioLost = new Audio('./assets/boo3.mp3') //lose audio
   if (personToCheck === secret.name) {
-    winOrLoseText.innerHTML = `Hooray! You guessed ${personToCheck}, that is right!!`
+    winOrLoseText.innerHTML = `Hooray! ${personToCheck} was the right answer!!! You made ${guessNumber} guesses!`
     audioWin.play() // play win audio
     winOrLose.style.display ="flex" // shows win or lose page
     board.style.display = "none" // hides board
   }
   else {
-    winOrLoseText.innerHTML = `Nope! You guessed ${personToCheck}, that is wrong!`
+    winOrLoseText.innerHTML = `Nope! ${personToCheck} is not the one! You made ${guessNumber} guesses!`
     audioLost.play() // play lose audio
     winOrLose.style.display ="flex" // shows win or lose page
     board.style.display = "none" // hides board

@@ -6,13 +6,19 @@ const filter = document.getElementById('filter')
 const playAgain = document.getElementById("playAgain")
 const winOrLose = document.getElementById("winOrLose")
 const winOrLoseText = document.getElementById("winOrLoseText")
+
+// for question counter display
 const qCounter = document.getElementById("question-counter")
+
+//for timer display
 const secondsDisplay = document.getElementById("seconds")
 const minutesDisplay = document.getElementById("minutes")
 
-//for sound effects
+//for flip and background sound file
 const flipSound = document.getElementById("flip")
 const backSound = document.getElementById("back")
+
+//for turning on and off background sound
 const volumeUP = document.getElementById("volume-up")
 const volumeOff = document.getElementById("volume-off")
 
@@ -215,31 +221,39 @@ const CHARACTERS = [
 
 // Global variables
 let secret  
-let currentQuestion
 let charactersInPlay
 let characterCard
-let questionCounter
-let backgroundMusic = true
+let questionCounter // for counting the questions asked by player
+let backgroundMusic = true //background music playing at the stat of game
 let reset = false   //for resetting the question counter
-let timeInSeconds = 0
+let timeInSeconds = 0 // for timer counter
 let timer
 
+let currentQuestion = {  
+  category: 'hair',  //giving the default value for the start of game as this value is pr selected and eventlistner is working on change event
+  value: 'brown'
+}
 
-//for card flipping sound
+//Defining all functions here
+
+//this function is for card flipping sound
 const playFlipSound = () => {
   flipSound.play();
 }
+//this function is for playing or pausing background sound
 const playBackSound = () => {
   // start playing the background sound
   if (backgroundMusic) {
     backSound.play();
     backgroundMusic = false
-    volumeUP.style.display = "block"
+    //toggling the display of sound icon
+    volumeUP.style.display = "block"    
     volumeOff.style.display = "none"
-  } else {
+  } else {                // pause the background sound
     backSound.pause();
     backgroundMusic = true
-    volumeUP.style.display = "none"
+    //toggling the display of sound icon
+    volumeUP.style.display = "none" 
     volumeOff.style.display = "block"
   }
     
@@ -247,21 +261,19 @@ const playBackSound = () => {
 
 //update and display question counter
 const updateQuestionCounter = () => {
-  
   if (reset) {
     questionCounter= 0
-    qCounter.textContent = `Question asked:  ${questionCounter}`
+    qCounter.textContent = `Question asked:  ${ questionCounter}`
     reset= false
   } else {
     questionCounter++
-    qCounter.textContent= `Question asked:  ${questionCounter}`
+    qCounter.textContent= `Question asked:  ${ questionCounter}`
   }
-
 }
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card" id="card">
@@ -274,7 +286,6 @@ const generateBoard = () => {
       </div>
     `
   })
-  
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -409,14 +420,14 @@ const filterCharacters = (keep) => {
 
   }else if (charactersInPlay.length === 1) {
     generateBoard()
-    setTimeout(() => { checkMyGuess(charactersInPlay[0].name) }, 2000) 
+    setTimeout(() => { checkMyGuess(charactersInPlay[0].name) }, 1000) 
   }
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   //const playerGuess = personToConfirm
-  const guessNow = confirm("Wonderful! You want to make a guess now. Right?")
+  const guessNow = confirm(`Are you sure that you want to make a guess on ${personToConfirm}?`)
   if (guessNow) {
     checkMyGuess (personToConfirm)
   }
@@ -434,10 +445,14 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
 
   if (secret.name === personToCheck) {
+    backgroundMusic = false
+    playBackSound()
     board.style.display="none"
     winOrLose.style.display = "block"
-    winOrLoseText.textContent= `Congrats! You won! It is ${personToCheck} `
+    winOrLoseText.textContent= `Congrats! You won! It is ${personToCheck}.`
   } else {
+    backgroundMusic = false
+    playBackSound()
     board.style.display="none"
     winOrLose.style.display = "block"
     winOrLoseText.textContent= `Oops! You lost! It was not ${personToCheck} but ${secret.name}. `

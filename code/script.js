@@ -6,6 +6,9 @@ const filter = document.getElementById('filter')
 const playAgain = document.getElementById("playAgain")
 const winOrLose = document.getElementById("winOrLose")
 const winOrLoseText = document.getElementById("winOrLoseText")
+const startGame = document.getElementById("play-game")
+const helloPage = document.getElementById("hello-page")
+const playerName = document.getElementById("player-name")
 
 // for question counter display
 const qCounter = document.getElementById("question-counter")
@@ -227,7 +230,7 @@ let questionCounter=0 // for counting the questions asked by player
 let backgroundMusic = true //background music playing at the stat of game
 let reset = false   //for resetting the question counter
 let timeInSeconds = 0 // for timer counter
-
+let gamePlayerName  //player name
 let currentQuestion = {  
   category: 'hair',  //giving the default value for the start of game as this value is pr selected and eventlistner is working on change event
   value: 'brown'
@@ -295,6 +298,15 @@ const setSecret = () => {
 
 // This function to start the game
 const start = () => {
+
+  //storing player name
+  gamePlayerName =  playerName.value
+    
+  board.style.display = "flex"  //displaying the game page
+  helloPage.style.display = "none"  //hiding hello page
+  
+
+  //setting variables value
   backgroundMusic = true
   timeInSeconds = 0
   // starting the background music
@@ -382,8 +394,7 @@ const checkQuestion = () => {
     } else {
       filterCharacters (false)
     } 
-      
-
+   
   }
 }
 
@@ -452,7 +463,7 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   
-  const guessNow = confirm(`Are you sure that you want to make a guess on ${personToConfirm}?`)
+  const guessNow = confirm(`${gamePlayerName}! are you sure that you want to make a guess on ${personToConfirm}?`)
   if (guessNow) {
     checkMyGuess (personToConfirm) // If the player wants to guess, invoke the checkMyGuess function.
   }
@@ -468,23 +479,19 @@ const checkMyGuess = (personToCheck) => {
     playBackSound()
     board.style.display="none"
     winOrLose.style.display = "block"
-    winOrLoseText.textContent= `Congrats! You won! It is ${personToCheck}.`
+    winOrLoseText.textContent= `Congrats ${gamePlayerName}! You won! It is ${personToCheck}.`
   } else {
     backgroundMusic = false
     playBackSound()
     board.style.display="none"
     winOrLose.style.display = "block"
-    winOrLoseText.textContent= `Oops! You lost! It was not ${personToCheck} but ${secret.name}. `
+    winOrLoseText.textContent= `Oops! ${gamePlayerName}, You lost! It was not ${personToCheck} but ${secret.name}. `
   }
 }
 
 
-// calling for start function when website is loaded
-start()
-
 // function for count-up timer
 setInterval(() => {
-
   ++timeInSeconds
   secondsDisplay.textContent = timerDisplay(timeInSeconds % 60)
   minutesDisplay.textContent = timerDisplay(parseInt(timeInSeconds / 60))
@@ -504,6 +511,7 @@ const timerDisplay = (val) => {
 }   
 
 // All the event listeners
+startGame.addEventListener ('click', start) // calling  start function when player click play button
 restartButton.addEventListener('click', reStart)
 questions.addEventListener('change', selectQuestion)
 filter.addEventListener('click', checkQuestion)

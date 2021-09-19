@@ -25,7 +25,6 @@ h1 {
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  /* padding: 5vw; */
   align-items: flex-start;
   box-sizing: border-box;
 }
@@ -181,7 +180,7 @@ button {
   display: none;
 } 
 .volume-up{
-  display: block;
+  display: none;
 } 
 
 /****** WIN OR LOSE SECTION ******/
@@ -217,6 +216,56 @@ button {
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
+
+/****** Hello Screen ******/
+.hello-page-wrapper {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  padding: 20%;
+  
+}
+
+.hello-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  text-align: center;
+}
+
+.hello-page img {
+  align-self: flex-start;
+  margin-left: 15%;
+  margin-bottom: 5%;
+}
+
+.hello-page label {
+  align-self: flex-start;
+  margin-left: 15%;
+  margin-bottom: 24px;
+  color: white;
+  line-height: 48px;
+  
+}
+.player-name{
+  width: 200px;
+  line-height: 32px;
+  margin-left: 10px;
+}
+
+
+
+
+/****** media query ******/
 
 @media (max-width: 768px) {
   body {

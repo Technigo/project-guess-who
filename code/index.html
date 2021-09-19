@@ -15,22 +15,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
   </head>
   <body>
-   
+   <!-- Initial Screen  --> 
+    <section id="hello-page" class="hello-page-wrapper">
+      <div class="hello-page">
+        <img
+          class="guess-who-icon"
+          src="images/guess-who-bubble.png"
+          alt="Guess Who"
+        />
+        <label for="player-name"> Name: 
+          <input 
+            class="player-name" 
+            id="player-name"
+            type="text" 
+           >
+        </label>
+
+        <button id="play-game" class="filled-button">PLAY</button>
+      </div>
+    </section>
   <!-- Question section for the game  -->
     <aside class="question-section">
       <!-- play sound icons and timer  -->
       <section class="top-of-side">
-        <section class= "volume">
+        <div class= "volume">
           <span class="volume-up" id="volume-up">
             <i class="fa fa-volume-up fa-lg"></i>
           </span>
           <span class="volume-off" id="volume-off">
             <i class="fa fa-volume-off fa-lg"></i>
           </span>
-        </section>
-        <section class= "timer">
+        </div>
+        <div class= "timer">
           <label  id="minutes">00</label>:<label id="seconds">00</label>
-        </section>
+        </div>
       </section>
       <!-- question asked by player  -->
       <section class="middle-of-side">
@@ -94,7 +112,7 @@
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
-    
+
 <!-- for sound effects  -->
     <audio id="flip" preload="auto">
       <source src="./audio/flipcard.wav" type="audio/wav"/>

@@ -239,6 +239,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret)
 }
 
 //This function adds to counter when a question has been asked
@@ -402,7 +403,7 @@ const sadSound = document.getElementById("sad")
   if (personToCheck === secret.name){
   //Set a Message to show in the win or lose section accordingly
     woohooSound.play()
-    winOrLoseText.innerHTML ="Woohoo! You win!"
+    winOrLoseText.innerHTML =`Woohoo! You won in ${counter} guesses!`
   } else{
     sadSound.play()
     winOrLoseText.innerHTML ="Oh no! You have lost! Nevermind"

@@ -56,29 +56,43 @@
           <option value="smoker">a smoking habit</option>
         </optgroup>
       </select>
-
-      <button id="filter" class="filled-button">FIND OUT</button>
+      <!--Added a counter for click-->
+      <button 
+      onclick="findOutCounter()" 
+      id="filter" 
+      class="filled-button">
+      FIND OUT
+    </button>
+    <h4>
+      Number of guesses: <span id="counterLabel">0</span>
+    </h4>
+    <div class="timer">
+      <div class="time">
+        <label id="minutes"></label>
+        <label id="colon">:</label>
+        <label id="seconds"></label>
+      </div>
+    </div>
     </aside>
 
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
     </section>
-
-    <section id="winOrLose" class="win-or-lose-wrapper">
-      <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
-        <h1 id="winOrLoseText"></h1>
-        <button id="playAgain" class="filled-button">PLAY AGAIN</button>
-      </div>
-    </section>
-    <audio id="right" src="images/rightsound.mp3" preload="auto"></audio>
-    <audio id="winner" src="images/winnersound.mp3" preload="auto"></audio>
-    <audio id="wrong" src="images/wrongSound.mp3" preload="auto"></audio>
-    <audio id="End" src="images/Youlosesound.mp3" preload="auto"></audio>
-    <script src="script.js"></script>
+      <section id="winOrLose" class="win-or-lose-wrapper">
+        <div class="win-or-lose">
+          <img
+            class="guess-who-icon"
+            src="images/guess-who-bubble.png"
+            alt="Guess Who"
+          />
+          <h1 id="winOrLoseText"></h1>
+          <button id="playAgain" class="filled-button">PLAY AGAIN</button>
+      </section>
+      <audio id="right" src="images/rightsound.mp3" preload="auto"></audio>
+      <audio id="winner" src="images/winnersound.mp3" preload="auto"></audio>
+      <audio id="wrong" src="images/wrongSound.mp3" preload="auto"></audio>
+      <audio id="End" src="images/Youlosesound.mp3" preload="auto"></audio>
+      <script src="script.js"></script>
+   
   </body>
 </html>

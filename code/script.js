@@ -211,6 +211,10 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let minutesLabel = document.getElementById("minutes");
+let secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+let timeStart = setInterval(setTime, 1000);
 
 // Draw the game board
 const generateBoard = () => {
@@ -235,15 +239,46 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(time) {
+  let timeString = time + "";
+  if (timeString.length < 2) {
+    return "0" + timeString;
+  } else {
+    return timeString;
+  }
+}
+
+function findOutCounter() {
+  updateDisplay(++counterValue);
+}
+
+function updateDisplay(val) {
+  document.getElementById("counterLabel").innerHTML = val;
+}
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
+  totalSeconds = 0;
+  valString = "";
+  secondsLabel.innerHTML = "";
+  minutesLabel.innerHTML = "";
+  counterValue = 0;
+  updateDisplay(counterValue);
   generateBoard();
   setSecret();
   selectQuestion();
   winoOrlose.style.display = "none";
   board.style.display = "flex";
+  clearInterval(timeStart);
+  timeStart = setInterval(setTime, 1000);
 };
 
 // setting the currentQuestion object when you select something in the dropdown

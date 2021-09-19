@@ -351,8 +351,8 @@
         width: 140px;
         height: 140px;
         margin: 0%;
-        padding: 1rem;
-        overflow: flex;
+        padding: 0 1rem 1.5rem 1rem;
+        /* overflow: flex; */
       } 
 
       .card p {

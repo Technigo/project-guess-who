@@ -64,7 +64,7 @@ const CHARACTERS = [
   {
     name: 'Jane',
     img: 'images/jane.svg',
-    hair: 'yellow',
+    hair: ['yellow', 'ponytail'],
     eyes: 'hidden',
     accessories: ['glasses'],
     other: []
@@ -121,7 +121,7 @@ const CHARACTERS = [
   {
     name: 'Jeri',
     img: 'images/jeri.svg',
-    hair: 'orange',
+    hair: ['orange', 'ponytail'],
     eyes: 'green',
     accessories: ['glasses'],
     other: []
@@ -145,7 +145,7 @@ const CHARACTERS = [
   {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
-    hair: 'black',
+    hair: ['black', 'ponytail'],
     eyes: 'brown',
     accessories: ['glasses'],
     other: []
@@ -225,6 +225,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(setSecret);
 }
 
 // This function to start (and restart) the game
@@ -232,6 +233,9 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard ()
+  setSecret ()
+  selectQuestion()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -244,7 +248,7 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 

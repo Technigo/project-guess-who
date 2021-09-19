@@ -38,7 +38,7 @@ body {
 	font-weight: 500;
 	color: white;
 	margin: 10px 0;
-	max-height: 200px;
+	max-height: 100px;
 	overflow-y: scroll;
 }
 

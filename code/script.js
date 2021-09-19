@@ -11,6 +11,7 @@ const cheatFooter = document.getElementById('cheatFooter');
 const guessCounterText = document.getElementById('guessCounterText');
 const gameTimer = document.getElementById('guessCounterTimer');
 const guessList = document.getElementById('guessList');
+const questionSection = document.getElementById('questionSection');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -256,12 +257,14 @@ const generateCategories = () => {
 				// if category is not equal to img and name do:
 				if (Array.isArray(person[category])) {
 					// check if values already exists in the category
-					if (!arraysHasSameData(categories[category].value, person[category])) {
-						// if the category is an array spread the values of the array
-						// and push them in to the appropriate array in the categories object
-						categories[category].value.push(...person[category]);
-						categories[category].type = 'array';
-					}
+					person[category].forEach((attribute) => {
+						if (!categories[category].value.includes(attribute)) {
+							// if the category is an array spread the values of the array
+							// and push them in to the appropriate array in the categories object
+							categories[category].value.push(attribute);
+							categories[category].type = 'array';
+						}
+					});
 				} else {
 					// if the category is not an array push them in to the appropriate array in the categories object
 					// check if values already exists in the category
@@ -313,6 +316,8 @@ const start = () => {
 	askedQuestions = [];
 	guessCounter = 0;
 	board.style.display = 'flex';
+	questionSection.style.display = 'flex';
+	cheatFooter.style.display = 'flex';
 	winOrLose.style.display = 'none';
 	winOrLoseText.innerText = '';
 	cheatFooter.style.display = 'flex';
@@ -419,7 +424,11 @@ const checkMyGuess = (personToCheck) => {
 		filterCharacters(true);
 		board.style.display = 'none';
 		winOrLose.style.display = 'flex';
-		winOrLoseText.innerText = `Yay! You guessed right, ${personToCheck} is the secret person${cheating ? ` however the victory is not that sweet when you cheat 😋` : ''}`;
+		questionSection.style.display = 'none';
+		cheatFooter.style.display = 'none';
+		winOrLoseText.innerText = `Yay! You guessed right, ${personToCheck} is the secret person!${
+			cheating ? ` however the victory is not that sweet when you cheat 😋` : ''
+		} You guessed it in in ${elapsedTime}s and ${guessCounter} guesses!`;
 	} else {
 		alert(`Darn! ${personToCheck} is not secret person`);
 		filterCharacters(false);

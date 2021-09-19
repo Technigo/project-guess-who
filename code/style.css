@@ -206,7 +206,8 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 125px;
+    height: 100px;
   }
 
   .board-wrapper {

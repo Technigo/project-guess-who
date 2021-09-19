@@ -427,7 +427,7 @@ const checkMyGuess = (personToCheck) => {
 		questionSection.style.display = 'none';
 		cheatFooter.style.display = 'none';
 		winOrLoseText.innerText = `Yay! You guessed right, ${personToCheck} is the secret person!${
-			cheating ? ` however the victory is not that sweet when you cheat 😋` : ''
+			cheating ? ` However the victory is not that sweet when you cheat 😎` : ''
 		} You guessed it in in ${elapsedTime}s and ${guessCounter} guesses!`;
 	} else {
 		alert(`Darn! ${personToCheck} is not secret person`);

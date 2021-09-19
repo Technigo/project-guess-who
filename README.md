@@ -9,4 +9,4 @@ Using Vanilla JS we are retrieving the information from select input field and t
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+trytoguess.netlify.app

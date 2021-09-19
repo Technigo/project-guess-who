@@ -10,7 +10,7 @@ const winOrLoseText = document.getElementById('winOrLoseText')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
+    name: 'Marie',
     img: 'images/jabala.svg',
     hair: 'unknown',
     eyes: 'hidden',
@@ -26,7 +26,7 @@ const CHARACTERS = [
     other: ['angry']
   },
   {
-    name: 'Jacques',
+    name: 'Melvin',
     img: 'images/jacques.svg',
     hair: 'unknown',
     eyes: 'blue',
@@ -42,7 +42,7 @@ const CHARACTERS = [
     other: ['happy']
   },
   {
-    name: 'Jake',
+    name: 'Bertil',
     img: 'images/jake.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -50,7 +50,7 @@ const CHARACTERS = [
     other: ['happy']
   },
   {
-    name: 'James',
+    name: 'Bosse',
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
@@ -58,7 +58,7 @@ const CHARACTERS = [
     other: ['unsure']
   },
   {
-    name: 'Jana',
+    name: 'Evelin',
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
@@ -66,7 +66,7 @@ const CHARACTERS = [
     other: ['happy']
   },
   {
-    name: 'Jane',
+    name: 'Hilda',
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
@@ -74,7 +74,7 @@ const CHARACTERS = [
     other: ['unsure']
   },
   {
-    name: 'Jaqueline',
+    name: 'Berit',
     img: 'images/jaqueline.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -83,7 +83,7 @@ const CHARACTERS = [
   },
 
   {
-    name: 'Jazebelle',
+    name: 'Pia',
     img: 'images/jazebelle.svg',
     hair: 'other',
     eyes: 'hidden',
@@ -91,7 +91,7 @@ const CHARACTERS = [
     other: ['smoker', 'unsure']
   },
   {
-    name: 'Jean',
+    name: 'Lars',
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
@@ -99,7 +99,7 @@ const CHARACTERS = [
     other: ['smoker', 'angry']
   },
   {
-    name: 'Jeane',
+    name: 'Katarina',
     img: 'images/jeane.svg',
     hair: 'brown',
     eyes: 'green',
@@ -107,7 +107,7 @@ const CHARACTERS = [
     other: ['happy']
   },
   {
-    name: 'Jed',
+    name: 'Henrik',
     img: 'images/jed.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -115,7 +115,7 @@ const CHARACTERS = [
     other: ['smoker', 'angry']
   },
   {
-    name: 'Jenni',
+    name: 'Ulrika',
     img: 'images/jenni.svg',
     hair: 'other',
     eyes: 'hidden',
@@ -123,7 +123,7 @@ const CHARACTERS = [
     other: ['unsure']
   },
   {
-    name: 'Jeri',
+    name: 'Malin',
     img: 'images/jeri.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -131,7 +131,7 @@ const CHARACTERS = [
     other: ['unsure']
   },
   {
-    name: 'Jerry',
+    name: 'Ronny',
     img: 'images/jerry.svg',
     hair: 'unknown',
     eyes: 'blue',
@@ -139,7 +139,7 @@ const CHARACTERS = [
     other: ['happy']
   },
   {
-    name: 'Jess',
+    name: 'Petra',
     img: 'images/jess.svg',
     hair: 'black',
     eyes: 'blue',
@@ -147,7 +147,7 @@ const CHARACTERS = [
     other: ['happy']
   },
   {
-    name: 'Jocelyn',
+    name: 'Ki',
     img: 'images/jocelyn.svg',
     hair: 'brown',
     eyes: 'dark',
@@ -155,7 +155,7 @@ const CHARACTERS = [
     other: ['angry']
   },
   {
-    name: 'Jon',
+    name: 'Martin',
     img: 'images/jon.svg',
     hair: 'brown',
     eyes: 'green',
@@ -163,7 +163,7 @@ const CHARACTERS = [
     other: ['happy']
   },
   {
-    name: 'Jordan',
+    name: 'Gunnar',
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
@@ -171,7 +171,7 @@ const CHARACTERS = [
     other: ['happy']
   },
   {
-    name: 'Josephine',
+    name: 'Fia',
     img: 'images/josephine.svg',
     hair: 'other',
     eyes: 'brown',
@@ -179,7 +179,7 @@ const CHARACTERS = [
     other: ['happy']
   },
   {
-    name: 'Josh',
+    name: 'Hannes',
     img: 'images/josh.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -187,7 +187,7 @@ const CHARACTERS = [
     other: ['happy']
   },
   {
-    name: 'Jude',
+    name: 'Pelle',
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
@@ -195,7 +195,7 @@ const CHARACTERS = [
     other: ['unsure']
   },
   {
-    name: 'Julie',
+    name: 'Ann-Charlotte',
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'dark',

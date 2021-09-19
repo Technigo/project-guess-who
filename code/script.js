@@ -206,7 +206,7 @@ const CHARACTERS = [
 
 // Global variables
 let secret
-let currentQuestion //---------Global for current category+value selected
+let currentQuestion 
 let charactersInPlay
 
 // Draw the game board
@@ -256,18 +256,15 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  console.log(currentQuestion) //<<<-----TEST!!!
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
     if (secret[currentQuestion.category] === currentQuestion.value){
-      console.log('TRUE')//-----test<<<<<<<<<<<<<<<< VIDARE härifrån på nåt sätt.
       filterCharacters(true, currentQuestion.category)
     }
     else {
-      console.log('NOT TRUE!!')//-----------TEST
       filterCharacters(false, currentQuestion.category)
     }
   } 

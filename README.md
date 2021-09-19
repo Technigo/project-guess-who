@@ -10,4 +10,4 @@ The site is build with HTML, CSS, JS. The left side has a sidebar with the title
 
 ## View it live
 
-https://gustav-guess-who.netlify.app/
+https://gustavfrid-week5-guess-who.netlify.app/

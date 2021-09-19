@@ -155,15 +155,9 @@ button {
   background-color: white;
 }
 
-/* RULES */
-.rules {
-  margin: auto;
-  cursor: pointer;
-}
-
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
-  display: none;
+  /* display: none; */
   align-items: center;
   justify-content: center;
   background: var(--secondary);

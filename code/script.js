@@ -4,7 +4,6 @@ const questions = document.getElementById("questions");
 const filter = document.getElementById("filter");
 const restartButton = document.getElementById("restart");
 const playAgainButton = document.getElementById("playAgain");
-const counterBox = document.getElementById("counterBox");
 const questionsAsked = document.getElementById("questionsAsked");
 const wonGames = document.getElementById("wonGames");
 const lostGames = document.getElementById("lostGames");
@@ -238,19 +237,6 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
-// Hides winOrLose when pressing play again + invokes restart.
-// Invoked in start function.
-const playAgain = () => {
-  winOrLose.style.display = "none";
-  restart();
-};
-
-// Function to restart game
-// Invoked in playAgain
-const restart = () => {
-  counter = 0;
-};
-
 // Function to add to counter after question has been asked
 const add = () => {
   counter += 1;
@@ -267,13 +253,13 @@ const lost = () => {
 };
 
 // This function to start (and restart) the game
-// Invokes playAgain, generates the board, selects a random person, and adds counter to innerHTML.
+// Generates the board, selects a random person, and adds + restarts counter.
 const start = () => {
   charactersInPlay = CHARACTERS;
-  playAgain();
+  winOrLose.style.display = "none";
   generateBoard();
   setSecret();
-
+  counter = 0;
   questionsAsked.innerHTML = `
     ${counter}
   `;
@@ -315,37 +301,22 @@ const checkQuestion = () => {
   `;
 };
 
-// It'll filter the characters array and redraw the game board.
+// Function to filter the characters array, alert yes/no, and redraw the game board.
+// Also shuffles gameboard.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
 
-  if (category === "hair") {
+  if (category === "hair" || category === "eyes") {
     if (keep) {
       alert(
-        `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
+        `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
     } else {
       alert(
-        `No, the person does not have ${value} hair. Remove all people that have ${value} hair`
-      );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] !== value
-      );
-    }
-  } else if (category === "eyes") {
-    if (keep) {
-      alert(
-        `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`
-      );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] === value
-      );
-    } else {
-      alert(
-        `No, the person does not have ${value} eyes. Remove all people that have ${value} eyes`
+        `No, the person does not have ${value} ${category}. Remove all people that have ${value} ${category}`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
@@ -389,7 +360,7 @@ const filterCharacters = (keep) => {
   generateBoard();
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// when clicking guess, the player first has to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   const guessedCharacter = confirm(
     "Are you sure you want to choose this character?"
@@ -399,7 +370,8 @@ const guess = (personToConfirm) => {
   }
 };
 
-// If you confirm, this function is invoked
+// If you confirm, this function is invoked.
+// Alerts correct/incorrect guess. Shows winOrLoseText & statistics.
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alert(
@@ -407,11 +379,10 @@ const checkMyGuess = (personToCheck) => {
     );
     won();
   } else {
-    alert(`You are wrong. You lost!`);
+    alert(`You are wrong. You lost! The secret person is ${secret.name}`);
     lost();
   }
 
-  board.innerHTML = "";
   winOrLose.style.display = "block";
   winOrLoseText.innerHTML = `
   

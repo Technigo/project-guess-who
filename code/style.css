@@ -348,8 +348,10 @@
     
     
       .card {
+        width: 140px;
+        height: 140px;
         margin: 0%;
-        padding: 0;
+        padding: 1rem;
         overflow: flex;
       } 
 

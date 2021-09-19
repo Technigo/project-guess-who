@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: rgb(255, 92, 88);
+  --secondary: rgb(255, 92, 88);
 }
 
 body {
@@ -16,13 +16,13 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: rgb(255, 237, 211);
 }
 
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: rgb(255, 92, 88);
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -35,9 +35,14 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color:rgb(255, 92, 88);
+  background-color: rgb(255, 237, 211);
   width: 100%;
+  height: 60px;
   margin: 24px 0;
+}
+select-items {
+  background-color: blanchedalmond;
 }
 
 .guess-who-icon {
@@ -49,6 +54,8 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgb(255, 237, 211);
+  color:rgb(255, 92, 88);
 }
 
 .game-board {
@@ -114,7 +121,6 @@ select {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -126,23 +132,25 @@ button {
 .small {
   padding: 8px 16px;
 }
-
+.filled-button {
+  background-color: rgb(255, 237, 211);
+  color:rgb(254, 143, 143);
+}
 .outlined-button {
-  background-color: transparent;
-  color: var(--primary);
+  background-color: rgb(252, 210, 209);
+  color:rgb(255, 92, 88);
+
   align-self: flex-end;
 }
 
-.filled-button,
-.outlined-button:hover {
-  background-color: var(--primary);
-  color: white;
+.filled-button:hover {
+  background-color: rgb(254, 143, 143);
+  color:rgb(255, 237, 211);
 }
 
-.filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
+.outlined-button:hover {
+  background-color:rgb(255, 237, 211);
+  color: rgb(255, 92, 88);
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -171,6 +179,7 @@ button {
 .win-or-lose img {
   align-self: flex-start;
   margin-left: 15%;
+  margin-top: 50px;
 }
 
 .win-or-lose h1 {

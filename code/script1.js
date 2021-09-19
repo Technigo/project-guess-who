@@ -348,9 +348,7 @@ const filterCharacters = (keep) => {
 
 // Function guess: When clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-
   let confirmation = confirm('Are you really sure you want to guess on this person?'); // This variable returns a boolean value
-
   //If the player wants to guess(if confirmation === true), the checkMyGuess function will be invoked.
   if(confirmation) {
     checkMyGuess(personToConfirm)
@@ -362,10 +360,10 @@ const checkMyGuess = (personToCheck) => {
  let guessPerson =  personToCheck === secret.name;
 
  if(guessPerson) {
-   winOrLoseText.innerHTML = 'Bravo! &#128079 &#128079 <br>You guessed correctly 	&#128515;!'
+   winOrLoseText.innerHTML = 'Bravo! &#128079 &#128079 <br><br>You guessed correctly! &#128515;';
    
  }else {
-   winOrLoseText.innerHTML = 'Oh nooo!<br>You lost the game &#128557;!'
+   winOrLoseText.innerHTML = 'Oh nooo!<br><br>You lost the game! &#128557;';
  }
 
  winOrLoseSection.style.display = 'block'; // Shows the hidden section
@@ -378,4 +376,4 @@ start(); // Invokes the start function when website is loaded
 restartBtn.addEventListener("click", start);
 playAgainBtn.addEventListener("click", playAgain);
 findOutBtn.addEventListener("click", checkQuestion);
-questions.addEventListener("change", selectQuestion); // select element
+questions.addEventListener("change", selectQuestion); 

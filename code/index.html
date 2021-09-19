@@ -32,6 +32,7 @@
           <option value="white">white hair</option>
           <option value="grey">grey hair</option>
           <option value="ponytail">ponytail</option>
+          <option value="hidden">hidden</option>
         </optgroup>
           <!-- Eye colors as options  --> 
       </optgroup>
@@ -45,7 +46,6 @@
       <optgroup label="accessories">
         <option value="glasses">glasses</option>
         <option value="hat">hat</option>
-        <option value="hood">hood</option>
         <!-- Add the other accessory option here. (hat)  -->
       </optgroup>
       <optgroup label="other">
@@ -54,6 +54,14 @@
     </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div class="timer">
+        <p>Time:</p>
+        <div class="countTime">
+          <label id="minutes">00</label>
+          <label id="colon">:</label>
+          <label id="seconds">00</label>
+        </div>
+      </div>
     </aside>
 
     <section class="board-wrapper">

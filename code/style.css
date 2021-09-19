@@ -1,7 +1,8 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #a7aafc;
+  /* --primary: #383E56; */
+  --secondary: #5da38e;
 }
 
 body {
@@ -35,7 +36,7 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: rgb(4, 53, 27);
   width: 100%;
   margin: 24px 0;
 }
@@ -253,8 +254,11 @@ button {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 20%;
+  text-align: center;
 }
+
+
 
 /* The Close Button */
 .close {

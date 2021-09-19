@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filter = document.getElementById('filter')
 const playAgainBtn = document.getElementById('playAgain')
+const guessesInTotal = document.getElementById('guess')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -241,6 +242,8 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard();
   setSecret();
+  numberOfGuesses = 0
+  guessesInTotal.innerText = 0 
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -254,6 +257,8 @@ const selectQuestion = () => {
       category: category,
       value: value
     }
+    numberOfGuesses++
+    guessesInTotal.innerText = numberOfGuesses
 }
 
 
@@ -379,7 +384,10 @@ const checkMyGuess = (suspectCharacter) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', () => {
+  start()
+  restartSound.play()
+})
 filter.addEventListener('click', checkQuestion) 
 questions.addEventListener('change', selectQuestion)
 playAgainBtn.addEventListener('click', () => {

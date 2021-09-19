@@ -1,13 +1,8 @@
 # Project Name
+The assigment of week 5 of the technigo bootcamp was to create a Guess Who-game with JavaScript. HTML, CSS and some JavaScript was provided from start.
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+## Retro
+This was the first week of the bootcamp where the main focus was on JavaScript. I am very proud of the final product. The parts that I am most proud over are the possibility to choose from two different themes, and the effects of the themes, and that the options-menu used to ask different questions is created dynamically after theme. My main struggles was grasping how objects works, and how to nest objects/arrays. The styling was not my main focus, and if I would have had more time, I would have changed to images of the Star Wars theme among other details. 
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://sofiawillebrand-week5-guess-who.netlify.app/

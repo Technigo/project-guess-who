@@ -230,7 +230,7 @@ let questionCounter=0 // for counting the questions asked by player
 let backgroundMusic = true //background music playing at the stat of game
 let reset = false   //for resetting the question counter
 let timeInSeconds = 0 // for timer counter
-let gamePlayerName  //player name
+let gamePlayerName   //for player name
 let currentQuestion = {  
   category: 'hair',  //giving the default value for the start of game as this value is pr selected and eventlistner is working on change event
   value: 'brown'
@@ -300,12 +300,17 @@ const setSecret = () => {
 const start = () => {
 
   //storing player name
-  gamePlayerName =  playerName.value
-    
+  if (playerName.value === "") {
+    gamePlayerName = "Player"
+  }
+  else {
+    gamePlayerName = playerName.value
+    playerName.value = ""
+  }
+  
   board.style.display = "flex"  //displaying the game page
   helloPage.style.display = "none"  //hiding hello page
   
-
   //setting variables value
   backgroundMusic = true
   timeInSeconds = 0
@@ -332,6 +337,7 @@ const startAgain = () => {
   board.style.display="flex"
   winOrLose.style.display = "none"
   winOrLoseText.textContent = ""
+  
 //calling the function to restart the question counter
   reset = true // for resetting the question counter
   updateQuestionCounter() 
@@ -345,7 +351,8 @@ const reStart = () => {
 // pausing the background music
   backgroundMusic = false
   playBackSound()
-  board.innerHTML = '' 
+  board.innerHTML = ''
+  
 //calling the function to restart the question counter
   reset = true // for resetting the question counter
   updateQuestionCounter() 
@@ -355,12 +362,17 @@ const reStart = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (event) => {
+  
+  event.preventDefault()
+  event.stopPropagation()
+
   // This variable stores what option group (category) the question belongs to.
 
   const category = event.target[questions.selectedIndex].parentNode.label
-  
+ 
   // this variable stores the actual value of the question player has  selected.
-   const value = event.target.value
+  const value = event.target.value
+  
 //storing the category and value in the currentQuestion object
   currentQuestion = {
     category: category,
@@ -371,7 +383,7 @@ const selectQuestion = (event) => {
 // This function invokes when player click on 'Find Out' button.
 
 const checkQuestion = () => {
-
+  
   updateQuestionCounter() // call of function to update the question counter 
 
   const { category, value } = currentQuestion

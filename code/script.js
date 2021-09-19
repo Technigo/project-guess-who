@@ -216,6 +216,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let counter = 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -239,19 +240,20 @@ const generateBoard = () => {
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
+
+//This function adds to counter when a question has been asked
+const add = () => {
+  counter +=1;
+}
 //This function is invoked when the play again button is pressed. The whole board is generated, with all the characters
 const playAgain = () =>{
   winOrLoseSection.style.display = "none";
   board.style.display = "";
   charactersInPlay = CHARACTERS
   generateBoard();
-  counter = 0
-  }
+ 
+}
 
-  //This function adds to counter when a question has been asked
-const add = () => {
-    counter +=1;
-  }
 
 // This function to start (and restart) the game
 const start = () => {
@@ -262,9 +264,10 @@ const start = () => {
   playAgain();
   generateBoard();
   setSecret();
-  
+  counter = 0;
   questionsAsked.innerHTML=`
-  ${counter}`
+  ${counter}`;
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -418,5 +421,5 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
-playAgainButton.addEventListener('click', playAgain)
+playAgainButton.addEventListener('click', start)
 

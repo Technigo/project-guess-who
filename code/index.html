@@ -4,24 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guess Who!</title>
+    <!-- style sheet  -->
     <link rel="stylesheet" href="style.css" />
+    <!-- font  -->
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <!-- play sound icon  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
   </head>
   <body>
-    <!-- for sound effects  -->
-    <audio id="flip" preload="auto">
-      <source src="./audio/flipcard.wav" type="audio/wav"/>
-    </audio>
-    <audio id="back" preload="auto" loop>
-      <source src="./audio/background.mp3" type="audio/mp3"/>
-    </audio>
-
-    <!-- Question section for the game  -->
+   
+  <!-- Question section for the game  -->
     <aside class="question-section">
+      <!-- play sound icons and timer  -->
       <section class="top-of-side">
         <section class= "volume">
           <span class="volume-up" id="volume-up">
@@ -35,6 +32,7 @@
           <label  id="minutes">00</label>:<label id="seconds">00</label>
         </section>
       </section>
+      <!-- question asked by player  -->
       <section class="middle-of-side">
         <button id="restart" class="outlined-button">RESTART</button>
         <img
@@ -96,6 +94,14 @@
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
+    
+<!-- for sound effects  -->
+    <audio id="flip" preload="auto">
+      <source src="./audio/flipcard.wav" type="audio/wav"/>
+    </audio>
+    <audio id="back" preload="auto" loop>
+      <source src="./audio/background.mp3" type="audio/mp3"/>
+    </audio>
 
 <!-- linking the script file  -->
     <script src="script.js"></script>

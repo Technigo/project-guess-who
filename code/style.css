@@ -170,6 +170,7 @@ button {
   color: var(--primary);
 }
 
+/* play sound icons */
 .fa {
   position: absolute; 
   top: 0;
@@ -177,11 +178,9 @@ button {
   cursor: pointer;
 }
 .volume-off{
-
   display: none;
 } 
 .volume-up{
-  
   display: block;
 } 
 

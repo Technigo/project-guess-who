@@ -223,11 +223,10 @@ const CHARACTERS = [
 let secret  
 let charactersInPlay
 let characterCard
-let questionCounter // for counting the questions asked by player
+let questionCounter=0 // for counting the questions asked by player
 let backgroundMusic = true //background music playing at the stat of game
 let reset = false   //for resetting the question counter
 let timeInSeconds = 0 // for timer counter
-let timer
 
 let currentQuestion = {  
   category: 'hair',  //giving the default value for the start of game as this value is pr selected and eventlistner is working on change event
@@ -238,25 +237,26 @@ let currentQuestion = {
 
 //this function is for card flipping sound
 const playFlipSound = () => {
-  flipSound.play();
+  flipSound.play()
 }
+
 //this function is for playing or pausing background sound
 const playBackSound = () => {
+
   // start playing the background sound
   if (backgroundMusic) {
-    backSound.play();
+    backSound.play()
     backgroundMusic = false
     //toggling the display of sound icon
     volumeUP.style.display = "block"    
     volumeOff.style.display = "none"
   } else {                // pause the background sound
-    backSound.pause();
+    backSound.pause()
     backgroundMusic = true
     //toggling the display of sound icon
     volumeUP.style.display = "none" 
     volumeOff.style.display = "block"
   }
-    
 }
 
 //update and display question counter
@@ -266,8 +266,8 @@ const updateQuestionCounter = () => {
     qCounter.textContent = `Question asked:  ${ questionCounter}`
     reset= false
   } else {
+    qCounter.textContent = `Question asked:  ${questionCounter}`
     questionCounter++
-    qCounter.textContent= `Question asked:  ${ questionCounter}`
   }
 }
 
@@ -293,51 +293,75 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
+// This function to start the game
 const start = () => {
-  reset = true
   backgroundMusic = true
   timeInSeconds = 0
+  // starting the background music
+  playBackSound()
+
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // generating the game board by calling generateBoard function 
   generateBoard()
+  
+  //calling  function for question counter
+  updateQuestionCounter() 
+  
   // selecting a secret person to guess by calling setSecret function
   setSecret()
-  playBackSound()
-  updateQuestionCounter()
-  
 }
+
 
 //function for play again
 const startAgain = () => {
+ 
   //toggling the display of game board and 'winOrlose' page and clear the h1 text
   board.style.display="flex"
   winOrLose.style.display = "none"
-  winOrLoseText.textContent= ""
+  winOrLoseText.textContent = ""
+//calling the function to restart the question counter
+  reset = true // for resetting the question counter
+  updateQuestionCounter() 
 //calling the start function again to start the game 
- // clearInterval(timer)
   start ()
+}
+
+//function for restarting game
+const reStart = () => {
+  
+// pausing the background music
+  backgroundMusic = false
+  playBackSound()
+  board.innerHTML = '' 
+//calling the function to restart the question counter
+  reset = true // for resetting the question counter
+  updateQuestionCounter() 
+//calling the start function with some interval to re-start the game 
+  setTimeout(start, 1000)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = (event) => {
-  const category = event.target[questions.selectedIndex].parentNode.label
-
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-   const value = event.target.value
 
+  const category = event.target[questions.selectedIndex].parentNode.label
+  
+  // this variable stores the actual value of the question player has  selected.
+   const value = event.target.value
+//storing the category and value in the currentQuestion object
   currentQuestion = {
     category: category,
     value: value
   }
-  
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function invokes when player click on 'Find Out' button.
+
 const checkQuestion = () => {
-  updateQuestionCounter()
+
+  updateQuestionCounter() // call of function to update the question counter 
+
   const { category, value } = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
@@ -364,6 +388,7 @@ const checkQuestion = () => {
 }
 
 // It'll filter the characters array and redraw the game board.
+
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
@@ -395,8 +420,7 @@ const filterCharacters = (keep) => {
       alert (`No, the person doesn't have ${value} ${category}! So, removing all those with ${value} ${category}.`)
     }
   }
-
-  // Determine what is the category
+ 
   // filter by category to keep or remove based on the keep variable.
   if (category === 'hair' || category === 'eyes') {
     if (keep) {
@@ -405,17 +429,18 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }else if (category === 'accessories' || category === 'other') {
-      if (keep) {
+    if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-
+        
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+        
     }
  }
 
   // Invoke a function to redraw the board with the remaining people.
-  //generateBoard()
-  if (charactersInPlay.length > 1) {
+  
+  if (charactersInPlay.length > 1) { //check if it is more than 1 person remaining and if it is last person than show win screen after a slight delay
     generateBoard()
 
   }else if (charactersInPlay.length === 1) {
@@ -426,24 +451,18 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  //const playerGuess = personToConfirm
+  
   const guessNow = confirm(`Are you sure that you want to make a guess on ${personToConfirm}?`)
   if (guessNow) {
-    checkMyGuess (personToConfirm)
+    checkMyGuess (personToConfirm) // If the player wants to guess, invoke the checkMyGuess function.
   }
 
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  
 }
 
-// If you confirm, this function is invoked
+// this function invokes when player wants to make a guess
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-
+  
   if (secret.name === personToCheck) {
     backgroundMusic = false
     playBackSound()
@@ -460,16 +479,21 @@ const checkMyGuess = (personToCheck) => {
 }
 
 
-// Invokes the start function when website is loaded
+// calling for start function when website is loaded
 start()
+
 // function for count-up timer
 setInterval(() => {
+
   ++timeInSeconds
-    secondsDisplay.textContent = timerDisplay(timeInSeconds % 60)
-    minutesDisplay.textContent = timerDisplay(parseInt(timeInSeconds / 60))
+  secondsDisplay.textContent = timerDisplay(timeInSeconds % 60)
+  minutesDisplay.textContent = timerDisplay(parseInt(timeInSeconds / 60))
+  
 },1000)
 
+// function to generate the time label
 const timerDisplay = (val) => {
+
  let valString = val + ""
   if (valString.length < 2) {
     return "0"+ valString
@@ -479,10 +503,8 @@ const timerDisplay = (val) => {
 
 }   
 
-
-
 // All the event listeners
-restartButton.addEventListener('click', startAgain)
+restartButton.addEventListener('click', reStart)
 questions.addEventListener('change', selectQuestion)
 filter.addEventListener('click', checkQuestion)
 playAgain.addEventListener('click', startAgain)

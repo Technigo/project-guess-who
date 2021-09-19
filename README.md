@@ -4,7 +4,7 @@ The assignment for this week was to create a Guess Who game where the computer r
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This week I had a lot of Aha-moments when the problems I faced was solved by for example adding a EventListener. I gained a lot of basic knowledge about JavaScript. When I got stuck I googled, got help from my Elephant team and also had the chance to ask a question in my 1:1 which helped me a lot. If I had more time I would like to add a counter which shows how many times the user have guessed and a timer that shows how long the game has been in play. I would also really like to add some sound effects if I had more time to make the game even more fun.
 
 ## View it live
 

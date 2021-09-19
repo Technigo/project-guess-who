@@ -356,13 +356,13 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  console.log('jag är här')
+  console.log('I´m here!')
   if (personToCheck === secret['name']) {
-    winOrLoseText.innerHTML = "Du vann!";
-// visa att man vann
+    winOrLoseText.innerHTML = "You won!";
+
   } else {
     winOrLoseText.innerHTML = "Loooooser!";
-    // loooooser
+ 
   }
 winOrLoseSection.style.display='flex';
 board.style.display='none';

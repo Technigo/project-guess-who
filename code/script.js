@@ -406,7 +406,7 @@ const sadSound = document.getElementById("sad")
     winOrLoseText.innerHTML =`Woohoo! You won in ${counter} guesses!`
   } else{
     sadSound.play()
-    winOrLoseText.innerHTML ="Oh no! You have lost! Nevermind"
+    winOrLoseText.innerHTML ="Oh no! You have lost! Nevermind, you are still awesome"
   }
   // Show the win or lose section
   winOrLoseSection.style.display = "block";

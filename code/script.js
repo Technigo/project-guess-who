@@ -305,7 +305,6 @@ const start = () => {
   }
   else {
     gamePlayerName = playerName.value
-    playerName.value = ""
   }
   
   board.style.display = "flex"  //displaying the game page

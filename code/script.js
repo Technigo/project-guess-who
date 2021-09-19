@@ -210,6 +210,9 @@ let secret
 let currentQuestion 
 let charactersInPlay
 
+const audioWin = new Audio('./assets/applause7.mp3') // win audio
+const audioLost = new Audio('./assets/boo3.mp3') //lose audio
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -353,8 +356,6 @@ const guess = (personToConfirm) => {
   // 3. Show the win or lose section
   // 4. Hide the game board
 const checkMyGuess = (personToCheck) => {
-  const audioWin = new Audio('./assets/applause7.mp3') // win audio
-  const audioLost = new Audio('./assets/boo3.mp3') //lose audio
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `Hooray! ${personToCheck} was the right one! <br> &#128515 <br> You made ${guessNumber} guesses.`
     audioWin.play() // play win audio

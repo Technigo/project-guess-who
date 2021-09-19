@@ -42,7 +42,7 @@ select {
   padding: 20px;
   font-size: 22px;
   font-family: gluten;
-  color: var(--secondary);
+  color: var(--primary);
   width: 100%;
   margin: 24px 0;
 }
@@ -221,6 +221,7 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    justify-content: center;
   }
 
   .card {

@@ -239,8 +239,8 @@ const start = () => {
   board.style.display = "flex" //---make board show again after PlayAgain
   generateBoard() // ---- Generate the board
   setSecret() //---- Randomize the secret person
-  guessNumber = 0
-  guessCounter.innerText = 0 
+  guessNumber = 0 //---- Resets guesses
+  guessCounter.innerText = 0  //---- Resets guesses
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -273,15 +273,13 @@ const checkQuestion = () => {
   } 
   else if (category === 'accessories' || category === 'other') {
     if (secret[currentQuestion.category].includes(currentQuestion.value)){
-      console.log("hey hallå??#?#?")
       filterCharacters(true, currentQuestion.category)
     }
     else{
-      console.log("NEJNEJNEJNEJJEJFJAJGJJA")
       filterCharacters(false, currentQuestion.category)
     }
   }
-  guessNumber++
+  guessNumber++ //--- Adds +1 on guesses
   guessCounter.innerText = guessNumber
 }
 
@@ -298,7 +296,6 @@ const filterCharacters = (keep) => {
     }
   } 
   else if (category === 'other') {
-    // Similar to the one above
     if (keep) {
       alert(`Yes, the person have a ${value}! Keep all people that have a ${value}`)
     } 
@@ -308,11 +305,9 @@ const filterCharacters = (keep) => {
   } 
   else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(`Yes, the person have ${value+ " " +category}! Keep all people that have ${value+ " " +category}!`)
     } 
     else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(`No, the person doesn't have ${value+ " " +category}! Remove all people that have ${value+ " " +category}!`)
     }
   }
@@ -353,25 +348,25 @@ const guess = (personToConfirm) => {
 
 
 // If you confirm, this function is invoked
+  // 1. Check if the personToCheck is the same as the secret person's name
+  // 2. Set a Message to show in the win or lose section accordingly
+  // 3. Show the win or lose section
+  // 4. Hide the game board
 const checkMyGuess = (personToCheck) => {
   const audioWin = new Audio('./assets/applause7.mp3') // win audio
   const audioLost = new Audio('./assets/boo3.mp3') //lose audio
   if (personToCheck === secret.name) {
-    winOrLoseText.innerHTML = `Hooray! ${personToCheck} was the right answer!!! You made ${guessNumber} guesses!`
+    winOrLoseText.innerHTML = `Hooray! ${personToCheck} was the right one! <br> &#128515 <br> You made ${guessNumber} guesses.`
     audioWin.play() // play win audio
     winOrLose.style.display ="flex" // shows win or lose page
     board.style.display = "none" // hides board
   }
   else {
-    winOrLoseText.innerHTML = `Nope! ${personToCheck} is not the one! You made ${guessNumber} guesses!`
+    winOrLoseText.innerHTML = `Nope! ${personToCheck} is not the one! <br> &#128577 <br> You made ${guessNumber} guesses.`
     audioLost.play() // play lose audio
     winOrLose.style.display ="flex" // shows win or lose page
     board.style.display = "none" // hides board
   }
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 }
 
 // Invokes the start function when website is loaded

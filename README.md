@@ -1,13 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Project for making a Guess Who game learning about creating and manipulating objects and arrays. Using methods forEach() and filter() and manipulating the DOM with JS.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I approached the problem by watching the lessons and some googling. Did the Iterations 1-6 to get some guidance, didn't really plan that much since a lot was set up already.
+A lot of conditionals used for arrays and objects. Did a counter for number of guesses. Changed some appearance on characters and added some more attributes. And some win/lose sound.
+
+If I had more time I would've liked to add a timer and personalize the board with something else.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://gracious-hopper-441c8c.netlify.app/

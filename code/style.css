@@ -129,7 +129,7 @@
     height: 160px;
     overflow: hidden;
     margin: 1rem;
-    /* padding-bottom: 0.5rem; */
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -391,10 +391,12 @@
       width: 100%;
     }
   
-    .card .guess .filled-button {
+    /* .card .guess .filled-button {
       margin-bottom: 10px;
+      padding-left: 1rem;
+      padding-right: 1rem;
       border: none;
-    }
+    } */
 
     
     .win-or-lose {
@@ -439,6 +441,7 @@
         width: 200px;
         height: 200px;
         border-radius: 50%;
+        padding: 0.5rem;
       }
 
 

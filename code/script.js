@@ -235,7 +235,6 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret-GOTOV KORAK-ODABERE SE TAJNA OSOBA
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret);//moja promjena
   
 }
 
@@ -267,14 +266,12 @@ const selectQuestion = () => {
     category: category,
     value: value
   }
-  console.log('this is the question', currentQuestion)
   checkQuestion()
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  console.log('test', currentQuestion)
   //let keep 
   //keep = secret[category].includes(value)
 
@@ -282,16 +279,13 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    console.log('currentQuestion', value); 
-
-    console.log('secret', secret[category])
+    
     keep = value === secret[category]
 
     filterCharacters(keep)
 
   } else if (category === 'accessories' || category === 'other') {
     keep = secret[category].includes(value)
-    console.log('acessories work')
     filterCharacters(keep)
 
   }
@@ -300,13 +294,9 @@ const checkQuestion = () => {
  // It'll filter the characters array and redraw the game board.
  const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  console.log('alex filter', value, category)
-  console.log(keep);
-  console.log('filter works', currentQuestion);
   keep = secret[category].includes(value)
   // Show the correct alert message for different categories
   if (category === 'accessories') {///glasses
-    console.log('first if work', category);
     if (keep) {
       alert(
         `Yes, the character wears ${value} ! Keep all the characters that wears a ${value}. `
@@ -359,7 +349,6 @@ const checkQuestion = () => {
   */
 
  if (category === 'hair' || category === 'eyes') {
-   console.log('last hair work')
    if (keep) {
      charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category]=== currentQuestion.value)
      console.log('keep hair', charactersInPlay)
@@ -370,7 +359,6 @@ const checkQuestion = () => {
  }
  else if (category === 'accessories' || category === 'other') 
   {
-   console.log('last if works')
     if (keep){
   
      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
@@ -389,7 +377,6 @@ const checkQuestion = () => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   const confirmGuess = confirm (`Is ${personToConfirm} your final guess?`)
-  console.log ("guess works");
   if (confirmGuess)
   checkMyGuess (personToConfirm)
   // store the interaction from the player in a variable.

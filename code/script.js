@@ -9,7 +9,7 @@ const restartBtn = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
 const playAgainBtn = document.getElementById('playAgain')
 const playerValue = document.getElementById('playername')
-const favicon = document.querySelector('[rel=icon]');
+const favicon = document.querySelector('[rel=icon]')
 const soundsArea = document.getElementById('soundeffects')
 
 // add DOM-selector for audio, and then write audio.play() where you want to find it
@@ -387,9 +387,6 @@ const generateQuestions = () => {
   }
 
   charactersInPlay.forEach((person) => {
-    //creates array of keys in object (so for example hair and other)
-    const values = Object.keys(person)
-
     //for every key in every person, check if it exist as a property in the object allCharacteristics
     for (let key in person) {
       if(!allCharacteristics.hasOwnProperty(key)){
@@ -471,7 +468,6 @@ const generatePlayerBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret)
 }
 
 // This function to start the game and set characters from choosen theme
@@ -482,18 +478,18 @@ const start = () => {
   numberOfQuestions = 0
   document.getElementById('questions-asked').innerText = `Number of questions asked: ${numberOfQuestions}`
 
-  document.getElementById("board").style.display = "flex";
-  document.getElementById("winOrLose").style.display = "none";
+  document.getElementById("board").style.display = "flex"
+  document.getElementById("winOrLose").style.display = "none"
 
-  document.getElementById("start-aside").style.display = "none";
-  document.getElementById("question-aside").style.display = "flex";
+  document.getElementById("start-aside").style.display = "none"
+  document.getElementById("question-aside").style.display = "flex"
 
   const theme = themes.options[themes.selectedIndex].label
 
   if(theme === 'Star Wars'){
     charactersInPlay = CHARACTERS2
-    document.documentElement.style.setProperty('--primary', '#d4c929');
-    document.documentElement.style.setProperty('--secondary', 'black');
+    document.documentElement.style.setProperty('--primary', '#d4c929')
+    document.documentElement.style.setProperty('--secondary', 'black')
 
     soundsArea.innerHTML = /*html*/ `
       <audio autoplay>
@@ -505,8 +501,8 @@ const start = () => {
 
   else{
     charactersInPlay = CHARACTERS
-    document.documentElement.style.setProperty('--primary', '#a259ff');
-    document.documentElement.style.setProperty('--secondary', '#b0a6ff');
+    document.documentElement.style.setProperty('--primary', '#a259ff')
+    document.documentElement.style.setProperty('--secondary', '#b0a6ff')
   }
   
   setSecret()  
@@ -518,11 +514,14 @@ const start = () => {
 const validate = () => {
   const theme = themes.options[themes.selectedIndex].label
 
-  if (playerValue.value == "") {
-    alert("Name must be filled out");
+  if (playerValue.value == "" && (theme==='Select Theme')) {
+    alert("Name must be filled out and theme must be choosen")
   }
   else if(theme==='Select Theme'){
-    alert("A theme must be choosen");
+    alert("A theme must be choosen")
+  }
+  else if (playerValue.value == "") {
+    alert("Name must be filled out")
   }
   else{
     generateQuestions()
@@ -533,32 +532,32 @@ const validate = () => {
 
 //returns time spent as HH:MM:SS
 const timeToString = (time) =>{
-  let diffInHrs = time / 3600000;
-  let hh = Math.floor(diffInHrs);
+  let diffInHrs = time / 3600000
+  let hh = Math.floor(diffInHrs)
 
-  let diffInMin = (diffInHrs - hh) * 60;
-  let mm = Math.floor(diffInMin);
+  let diffInMin = (diffInHrs - hh) * 60
+  let mm = Math.floor(diffInMin)
 
-  let diffInSec = (diffInMin - mm) * 60;
-  let ss = Math.floor(diffInSec);
+  let diffInSec = (diffInMin - mm) * 60
+  let ss = Math.floor(diffInSec)
 
-  let formattedHH = hh.toString().padStart(2, "0");
-  let formattedMM = mm.toString().padStart(2, "0");
-  let formattedSS = ss.toString().padStart(2, "0");
+  let formattedHH = hh.toString().padStart(2, "0")
+  let formattedMM = mm.toString().padStart(2, "0")
+  let formattedSS = ss.toString().padStart(2, "0")
 
-  return `${formattedHH}:${formattedMM}:${formattedSS}`;
+  return `${formattedHH}:${formattedMM}:${formattedSS}`
 }
 
 //calculates the time spent playing and displays it every second
 const startTimer = () => {
-  startTime = Date.now();
+  startTime = Date.now()
   setInterval(function printTime() {
-    elapsedTime = Date.now() - startTime;
-    document.getElementById("display").innerHTML = timeToString(elapsedTime);
-  }, 1000);
+    elapsedTime = Date.now() - startTime
+    document.getElementById("display").innerHTML = timeToString(elapsedTime)
+  }, 1000)
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// setting the currentQuestion object from what is selected in the dropdown
 const selectQuestion = () => {
   // selectedIndex gives the choosen indexnumber of the array. https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/selectedIndex
   // This variable stores what option group (category) the question belongs to.
@@ -656,18 +655,18 @@ const guess = (personToConfirm) => {
   }
 }
 
-// If you confirm, this function is invoked
+// if guess is confirmed, this function is invoked
 const checkMyGuess = (personToCheck) => {
   const {name} = secret
-  document.getElementById("board").style.display = "none";
-  document.getElementById("winOrLose").style.display = "flex";
+  document.getElementById("board").style.display = "none"
+  document.getElementById("winOrLose").style.display = "flex"
   if(personToCheck === name){
     soundsArea.innerHTML = /*html*/ `
       <audio autoplay>
         <source src="./sound/right.wav" type="audio/wav">
       </audio>
     `
-    document.getElementById("winOrLoseText").innerText = `Good work ${playerValue.value}, ${personToCheck} is the right answer! The time it took you to guess correct was ${timeToString(elapsedTime)}`;
+    document.getElementById("winOrLoseText").innerText = `Good work ${playerValue.value}, ${personToCheck} is the right answer! The time it took you to guess correct was ${timeToString(elapsedTime)}`
   }
   else{
     soundsArea.innerHTML = /*html*/ `
@@ -675,7 +674,7 @@ const checkMyGuess = (personToCheck) => {
         <source src="./sound/wrong.wav" type="audio/wav">
       </audio>
     `
-    document.getElementById("winOrLoseText").innerText = `Oh no ${playerValue.value}, ${personToCheck} is not the right answer! The time it took you to guess on the wrong character was ${timeToString(elapsedTime)}`;
+    document.getElementById("winOrLoseText").innerText = `Oh no ${playerValue.value}, ${personToCheck} is not the right answer! The time it took you to guess on the wrong character was ${timeToString(elapsedTime)}`
   }
 }
 

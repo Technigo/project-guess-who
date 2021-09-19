@@ -251,13 +251,12 @@ const start = () => {
 }
 
 // setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = () => {
+  const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
-  // We also need a variable that stores the actual value of the question we've selected.
+  // Variable that stores the actual value of the question we've selected.
 
   const actualValue = questions.value
-  //console.log("Questions value" + questions.value + category)
 
 
   // This variable stores what option group (category) the question belongs to.
@@ -339,7 +338,6 @@ const filterCharacters = (keep) => {
     } else {
       removeCharactersAccessoriesOther (category, value)
       alert (`No, the person isn't a ${value}! Remove all ${value}s`)
-      console.log(removeCharactersAccessoriesOther)
     }
 
   } else if (category === 'hair') {

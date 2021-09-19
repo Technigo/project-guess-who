@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+this is an online version of traditional Guess Who game where a singlr player play with computer.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+it is created using HTML, CSS and JavaScript. player can add his/her name, ask different question to guess the charater randomly selected by computer. Player canon and off background music and also make a guess in between the game. it is possible to restart game at any time. There is atrack of time as well as the number of questions asked by the player.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Check it here: https://guessitnow.netlify.app/

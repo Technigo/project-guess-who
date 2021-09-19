@@ -10,9 +10,12 @@
       rel="stylesheet"
     />
     <!--Champion title font-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -26,7 +29,7 @@
       />
 
       <h1>Does the champion have</h1>
-
+      <!--Dropdown with all the traits to guess on-->
       <select id="questions">
         <option disabled selected>Choose something</option>
         <optgroup label="hair">
@@ -57,7 +60,6 @@
           <option value="attack damage">attack damage</option>
           <option value="ability power">abilitypower</option>
           <option value="passive">passive</option>
-          
         </optgroup>
         <optgroup label="crowdcontrol">
           <option value="charm">charm</option>
@@ -83,18 +85,51 @@
         <span id="guess"></span>
       </div>
 
+      <!--Playlist with the most popular League of legends anthems on Spotify-->
       <div class="playlist">
-        <h1>Listen to the top <span>League of Legends</span> Anthems while playing!</h1>
+        <h1>
+          Listen to the top <span>League of Legends</span> Anthems while
+          playing!
+        </h1>
       </div>
 
       <div class="League-songs">
-        <iframe src="https://open.spotify.com/embed/track/6zAiRKvAMlXHxEtyO4yxIO?theme=0" width="100%" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-        <iframe src="https://open.spotify.com/embed/track/1FpVJ7HpZInE2GvhVE2TwT?theme=0" width="100%" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-        <iframe src="https://open.spotify.com/embed/track/69Sy7207dnixZ6w7RSV9Kb?theme=0" width="100%" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-        <iframe src="https://open.spotify.com/embed/track/3f4fc8c8unrQeKecmUPEDR?theme=0" width="100%" height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe
+          src="https://open.spotify.com/embed/track/6zAiRKvAMlXHxEtyO4yxIO?theme=0"
+          width="100%"
+          height="80"
+          frameborder="0"
+          allowtransparency="true"
+          allow="encrypted-media"
+        ></iframe>
+        <iframe
+          src="https://open.spotify.com/embed/track/1FpVJ7HpZInE2GvhVE2TwT?theme=0"
+          width="100%"
+          height="80"
+          frameborder="0"
+          allowtransparency="true"
+          allow="encrypted-media"
+        ></iframe>
+        <iframe
+          src="https://open.spotify.com/embed/track/69Sy7207dnixZ6w7RSV9Kb?theme=0"
+          width="100%"
+          height="80"
+          frameborder="0"
+          allowtransparency="true"
+          allow="encrypted-media"
+        ></iframe>
+        <iframe
+          src="https://open.spotify.com/embed/track/3f4fc8c8unrQeKecmUPEDR?theme=0"
+          width="100%"
+          height="80"
+          frameborder="0"
+          allowtransparency="true"
+          allow="encrypted-media"
+        ></iframe>
       </div>
     </aside>
 
+    <!--The game board-->
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
     </section>

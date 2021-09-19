@@ -19,7 +19,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['sunglasses', 'a hat'],
     other: []
   },
   {
@@ -27,7 +27,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['a hat', 'a parrot', 'an eyepatch'],
     other: []
   },
   {
@@ -35,8 +35,8 @@ const CHARACTERS = [
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker', 'beard']
+    accessories: ['pipe','beard'],
+    other: ['smoker' ]
   },
   {
     name: 'Jai',
@@ -59,7 +59,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['sunglasses', 'beard'],
     other: []
   },
   {
@@ -67,7 +67,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: []
   },
   {
@@ -75,7 +75,7 @@ const CHARACTERS = [
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['3D-glasses'],
     other: []
   },
   {
@@ -83,7 +83,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace', 'earrings'],
     other: []
   },
 
@@ -92,7 +92,7 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses', 'cigarette'],
     other: ['smoker']
   },
   {
@@ -100,7 +100,7 @@ const CHARACTERS = [
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat', 'cigarette', 'beard'],
     other: ['smoker']
   },
   {
@@ -108,7 +108,7 @@ const CHARACTERS = [
     img: 'images/jeane.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses','freckles'],
     other: []
   },
   {
@@ -116,7 +116,7 @@ const CHARACTERS = [
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat', 'cigarette'],
     other: ['smoker']
   },
   {
@@ -124,7 +124,7 @@ const CHARACTERS = [
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
+    accessories: ['a hat', 'a phone'],
     other: []
   },
   {
@@ -140,7 +140,7 @@ const CHARACTERS = [
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['a hat'],
     other: []
   },
   {
@@ -156,7 +156,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings'],
     other: []
   },
   {
@@ -172,7 +172,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['sunglasses', 'a hat'],
     other: []
   },
   {
@@ -180,7 +180,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -196,7 +196,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
+    accessories: ['beard'],
     other: []
   },
   {
@@ -204,7 +204,7 @@ const CHARACTERS = [
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     other: []
   },
 ]
@@ -216,9 +216,9 @@ const CHARACTERS2 = [
     hair: 'blue and white',
     eyes: 'blue',
     color: 'orange',
-    accessories: ['lightsaber'],
+    accessories: ['a lightsaber'],
     other: [],
-    species: 'togruta',
+    species: 'togruta'
   },
   {
     name: 'Chopper',
@@ -228,7 +228,7 @@ const CHARACTERS2 = [
     color: 'white',
     accessories: [],
     other: ['astromech droid'],
-    species: 'droid',
+    species: 'droid'
   },
   {
     name: 'Rex',
@@ -238,7 +238,7 @@ const CHARACTERS2 = [
     color: 'light',
     accessories: [],
     other: ['clonetrooper'],
-    species: 'human',
+    species: 'human'
   },
   {
     name: 'Anakin Skywalker',
@@ -246,9 +246,9 @@ const CHARACTERS2 = [
     hair: 'brown',
     eyes: 'blue',
     color: 'light',
-    accessories: ['lightsaber'],
+    accessories: ['a lightsaber'],
     other: ['jedi', 'sithlord'],
-    species: 'human',
+    species: 'human'
   },
   {
     name: 'Maul',
@@ -258,7 +258,7 @@ const CHARACTERS2 = [
     color: 'red',
     accessories: ['horns'],
     other: ['sithlord'],
-    species: 'zabrak',
+    species: 'zabrak'
   },
   {
     name: 'Luke Skywalker',
@@ -266,9 +266,9 @@ const CHARACTERS2 = [
     hair: 'brown',
     eyes: 'blue',
     color: 'light',
-    accessories: ['lightsaber'],
+    accessories: ['a lightsaber'],
     other: ['jedi', 'rebel'],
-    species: 'human',
+    species: 'human'
   },
   {
     name: 'Grogu',
@@ -278,7 +278,7 @@ const CHARACTERS2 = [
     color: 'green',
     accessories: [],
     other: [],
-    species: 'unknown',
+    species: 'unknown'
   },
   {
     name: 'Cassian',
@@ -288,17 +288,17 @@ const CHARACTERS2 = [
     color: 'light',
     accessories: [],
     other: ['rebel'],
-    species: 'human',
+    species: 'human'
   },
   {
     name: 'Leia',
     img: 'images/leia.jfif',
     hair: 'brown',
-    eyes: 'no',
+    eyes: 'brown',
     color: 'light',
-    accessories: ['blaster', 'hairbuns'],
+    accessories: ['a blaster', 'hairbuns'],
     other: ['rebel'],
-    species: 'human',
+    species: 'human'
   },
   {
     name: 'C-3PO',
@@ -308,7 +308,7 @@ const CHARACTERS2 = [
     color: 'yellow',
     accessories: [],
     other: ['protocol droid'],
-    species: 'droid',
+    species: 'droid'
   },
   {
     name: 'Chewbacca',
@@ -318,7 +318,7 @@ const CHARACTERS2 = [
     color: 'brown',
     accessories: [],
     other: ['rebel'],
-    species: 'wookie',
+    species: 'wookie'
   },
   {
     name: 'Han Solo',
@@ -326,9 +326,9 @@ const CHARACTERS2 = [
     hair: 'brown',
     eyes: 'green',
     color: 'light',
-    accessories: ['blaster'],
-    other: ['rebell'],
-    species: 'human',
+    accessories: ['a blaster'],
+    other: ['rebel'],
+    species: 'human'
   },
   {
     name: 'Thrawn',
@@ -338,7 +338,7 @@ const CHARACTERS2 = [
     color: 'blue',
     accessories: [],
     other: ['grand admiral'],
-    species: 'chiss',
+    species: 'chiss'
   },
   {
     name: 'R2-D2',
@@ -348,7 +348,7 @@ const CHARACTERS2 = [
     color: 'white',
     accessories: [],
     other: ['astromech droid'],
-    species: 'droid',
+    species: 'droid'
   },
   {
     name: 'Yoda',
@@ -358,7 +358,7 @@ const CHARACTERS2 = [
     color: 'green',
     accessories: [],
     other: ['jedi'],
-    species: 'unknown',
+    species: 'unknown'
   }
 ]
 
@@ -372,12 +372,7 @@ let elapsedTime
 
 //add the categories and values from the choosen characters at the beginning of the game
 const generateQuestions = () => {
-  //for every character
-  //save name of property if it does not exist already
-  //save value of property if it does not exist already
-  //add name as category to the optionlist
-  //add value as value to the optionlist, under the correct category and if hair or eyes, add name+category as name
-  let allCharacteristics = {}
+   let allCharacteristics = {}
 
   const theme = themes.options[themes.selectedIndex].label
 
@@ -416,6 +411,7 @@ const generateQuestions = () => {
   delete allCharacteristics.name
   delete allCharacteristics.img
 
+  //add the properties of the characters as options
   for (let key in allCharacteristics) {
     let optionsHTML
 
@@ -437,7 +433,6 @@ const generateQuestions = () => {
       ${optionsHTML}
     </optgroup>
     `
-      // questions.appendChild(optgroup)
   }
 }
 
@@ -458,6 +453,7 @@ const generateBoard = () => {
   })
 }
 
+//generate the sections that displays player-info
 const generatePlayerBoard = () => {
   numberOfQuestions = 0
   question.insertAdjacentHTML('beforebegin', /*html*/`
@@ -476,12 +472,8 @@ const setSecret = () => {
   console.log(secret)
 }
 
-// let timerVar = setInterval(countTimer, 1000);
-// let totalSeconds = 0;
-
-// This function to start (and restart) the game
+// This function to start the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   startBtn.style.display = "none"
   restartBtn.style.display = "block"
 
@@ -513,9 +505,15 @@ const start = () => {
   startTimer()
 }
 
+//validate the name-input to make sure that a name is filled in and that a theme is choosen
 const validate = () => {
+  const theme = themes.options[themes.selectedIndex].label
+
   if (playerValue.value == "") {
     alert("Name must be filled out");
+  }
+  else if(theme==='Select Theme'){
+    alert("A theme must be choosen");
   }
   else{
     generateQuestions()
@@ -524,6 +522,7 @@ const validate = () => {
   }
 }
 
+//returns time spent as HH:MM:SS
 const timeToString = (time) =>{
   let diffInHrs = time / 3600000;
   let hh = Math.floor(diffInHrs);
@@ -541,6 +540,7 @@ const timeToString = (time) =>{
   return `${formattedHH}:${formattedMM}:${formattedSS}`;
 }
 
+//calculates the time spent playing and displays it every second
 const startTimer = () => {
   startTime = Date.now();
   setInterval(function printTime() {
@@ -559,7 +559,6 @@ const selectQuestion = () => {
   const label = questions.options[questions.selectedIndex].label
   const value = questions.options[questions.selectedIndex].value
 
-  //currentQuestion is a global variable
   currentQuestion = {
     category: category,
     labelOfQuestion: label,
@@ -572,43 +571,18 @@ const checkQuestion = () => {
   numberOfQuestions += 1
   document.getElementById('questions-asked').innerText = `Number of questions asked: ${numberOfQuestions}`
   selectQuestion()
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
   
-  if (currentQuestion.category === 'accessories') {
-    //check which category it is
-    //create a const of the list from the persons attributes
-    //check if the choosen value exits within the secret persons attributes
-    //want to comapre accesories or other with value
-    //want to loop trough the secret persons attributes and others, and compare with value
-    if(secret.accessories.length === 0){
+  if(Array.isArray(secret[currentQuestion.category])){
+    if (secret[currentQuestion.category].includes(currentQuestion.valueOfQuestion))
+      filterCharacters(true)
+    else {
       filterCharacters(false)
-    }
-    else { 
-      if (secret.accessories.includes(currentQuestion.valueOfQuestion)) 
-          filterCharacters(true)
-        else
-          filterCharacters(false)
-      }
-  } 
-  
-  else if (currentQuestion.category === 'other') {
-    if(secret.other.length === 0){
-      filterCharacters(false)
-    }
-
-    else { 
-        if (secret.other.includes(currentQuestion.valueOfQuestion)) 
-          filterCharacters(true)
-        else
-          filterCharacters(false)
     }
   }
-  else{
-    if (currentQuestion.valueOfQuestion === secret[currentQuestion.category])
-      filterCharacters(true)
+  else {
+    if (currentQuestion.valueOfQuestion === secret[currentQuestion.category]){
+    filterCharacters(true)
+    }
     else {
       filterCharacters(false)
     }
@@ -620,17 +594,43 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, labelOfQuestion,valueOfQuestion } = currentQuestion
   // Show the correct alert message for different categories
-  if (keep) {
+  if (keep && category === 'hair' || keep && category === 'eyes' || keep && category === 'accessories') {
       alert(
-        `Yes, the person has ${labelOfQuestion}! Keep all people with ${labelOfQuestion}`
+        `Yes, the character has ${labelOfQuestion}! Keep all characters with ${labelOfQuestion}`
         )
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(valueOfQuestion))
-    } else {
-      alert(
-        `No, the person does not have ${labelOfQuestion}! Remove all people with ${labelOfQuestion}`
-        )
-       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(valueOfQuestion)) 
-    }
+  } 
+  else if (!keep && category === 'hair' || !keep && category === 'eyes' || !keep && category === 'accessories') {
+    alert(
+      `No, the character does not have ${labelOfQuestion}! Remove all characters with ${labelOfQuestion}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(valueOfQuestion))
+  } 
+  else if (keep && category === 'species'|| keep && category === 'color'){
+    alert(
+      `Yes, the character is ${labelOfQuestion}! Keep all characters who are ${valueOfQuestion}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(valueOfQuestion))
+  }
+  else  if (!keep && category === 'species' || !keep && category === 'color'){
+    alert(
+      `No, the character is not ${labelOfQuestion}! Remove all characters who are ${valueOfQuestion}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(valueOfQuestion)) 
+  }
+  else if (keep && category === 'other'){
+    alert(
+      `Yes, the character is a ${labelOfQuestion}! Keep all characters who are ${valueOfQuestion}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(valueOfQuestion))
+  }
+  else  if (!keep && category === 'other'){
+    alert(
+      `No, the character is not a ${labelOfQuestion}! Remove all characters who are ${valueOfQuestion}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(valueOfQuestion)) 
+  }
+
   generateBoard()
 }
 

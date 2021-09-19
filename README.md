@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+Guess-who-project.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Adding stuff to the guess-who-project to make it work, by -using Arrays in JavaScript, forEach-loops objects closures and scope in JavaScript.
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Time was my problem.
+If I hade more time i would use my own pictures.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://nifty-colden-9f0fd2.netlify.app/

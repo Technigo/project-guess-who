@@ -16,6 +16,6 @@ When I was done with the blue level requirements I wanted to add a timer. This I
 Even though I dont feel that I understand everything in the code it helped a lot in widening my understanding of arrays and objects in JavaScript.
 
 ## View it live
-See:
+See: https://guess-who-emeliecruz.netlify.app/
 
 

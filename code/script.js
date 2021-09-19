@@ -235,18 +235,13 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
-  console.log(secret)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value = question.value
   const value = questions.options[questions.selectedIndex].value
-  console.log('test value', value)
 
   currentQuestion = {
     category: category,
@@ -352,13 +347,3 @@ playAgainBtn.addEventListener('click', () => {
   winOrLose.style.display = 'none';
   board.style.display = 'flex';
 })
-
-// LÄGG TILL LJUD?
-// const audioLost = new Audio('./assets/boo3.mp3')
-// audioLost.play()
-
-// let youLooseAudio = new Audio("code/ES_Video Game Descend 8 - SFX Producer.mp3");
-// youLoooseAudio.play();
-
-// let youWinAudio = new Audio("code/ES_Human Voice Clip 28 - SFX Producer.mp3");
-// youWinAudio.play();

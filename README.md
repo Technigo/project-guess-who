@@ -1,13 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+Guess who - GAME. This weeks project was really difficult. The importance of a team is really obvious when you struggle. 
+I managed to get it to work with a lot of help and explanations from team members and code coaches. Added some sound even :-) (Not the hardest part 😅)
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+A lot of code written, it is a bit hard to take over someone elses code. That is something to really practice! 
+The syntax in the language is not easy. But I think that some parts acctually has landed, in my head. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+This is the deployed version on Netlify https://zen-kepler-e346a1.netlify.app/

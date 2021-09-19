@@ -1,12 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Guess Who project
+The task was to build a guess who game, in which player has to guess a secret person, by asking question about the characters.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Using Vanilla JS we are retrieving the information from select input field and then checking in it against the secret person property and redrawing the players board according if it has or hasn't have the asked property.
 
 ## View it live
 

@@ -259,22 +259,6 @@ const selectQuestion = () => {
 // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
-  //Alternative way for checkQuestion
-  //  let keep = false
-    
-  // See if we should keep or remove people based on that
-  //   if (category === 'hair' || category === 'eyes') {
-  //     keep = (value === secret[category])
-  //     console.log(keep)
-
-  //   } else if (category === 'accessories' || category === 'other') {
-  //     keep = secret[category].includes(value)
-  //   }
-
-  //   filterCharacters(keep)
-  // }
-
     if (category === 'hair' || category === 'eyes') {
       if (secret[category] === value) {
         filterCharacters(true)
@@ -292,6 +276,22 @@ const checkQuestion = () => {
         }
       } 
 }        
+
+  //Alternative way for checkQuestion
+  //  let keep = false
+    
+  // See if we should keep or remove people based on that
+  //   if (category === 'hair' || category === 'eyes') {
+  //     keep = (value === secret[category])
+  //     console.log(keep)
+
+  //   } else if (category === 'accessories' || category === 'other') {
+  //     keep = secret[category].includes(value)
+  //   }
+
+  //   filterCharacters(keep)
+  // }
+  
 
 // Filter the characters array and redraw the game board.
 

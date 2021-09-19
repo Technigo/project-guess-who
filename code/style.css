@@ -229,11 +229,21 @@ button {
     display: none;
   }
 
+  .card:hover {
+    background-color: none;
+  }
+
+  .filled-button:hover {
+    background-color: white;
+    border-color: white;
+    color: var(--secondary);
+  }
+
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    /* background: white;
     color: var(--primary);
-    border: none;
+    border: none; */
   }
 }

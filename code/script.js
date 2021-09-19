@@ -48,7 +48,7 @@ const CHARACTERS = [
     img: 'images2/brian.jpg',
     hair: 'brown',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'animal'],
     other: ['beard']
   },
   {
@@ -264,7 +264,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard()
-  setSecret()
+  setSecret()  
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -379,19 +379,21 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   winOrLoseText.innerHTML = `
       <div class="winner-card"><img class="winner-img" src="images2/${secret.name}-big.jpg" />
-      <p class="win-or-lose-text">You goddamn right it's that dirty fish ${secret.name}!</p><p>Well played!</p></div>`
+      <p class="win-or-lose-text">You goddamn right it's that dirty fish ${secret.name}!</p>
+      <p class="win-or-lose-text">Well played!</p></div>`
   // 3. Show the win or lose section
       winOrLose.style.display = "flex"
       
     } else {
       winOrLoseText.innerHTML = `
-      <p>Sorry babe but you got it all oh-so wrong...</p>`
+      <div class="winner-card"><img class="winner-img" src="images2/icon.png" alt="Killer Heels" />
+      <p>Sorry, but you got it all oh-so wrong...</p>`
       winOrLose.style.display = "flex"
     }
 
   // 4. Hide the game board
   board.innerHTML = ''
-  questionSection.innerHTML = ''
+  // questionSection.innerHTML = ''
 
 }
 

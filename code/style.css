@@ -32,7 +32,7 @@ h1 {
   font-size: 32px;
   font-weight: 500;
   line-height: 48px;
-  margin: 10px 0;
+  margin: 0;
   color: white;
 }
 
@@ -201,18 +201,18 @@ button {
   margin-left: 15%;
 }
 
-.win-or-lose h1 {
-  margin-bottom: 32px;
-}
+/* .win-or-lose h1 {
+  margin-bottom: 32px; 
+} */
 
 .win-or-lose-text {
   font-size: 20px;
 }
 
 .winner-img {
-  height: 80%;
-  width: 80%;
-  object-fit: contain;
+  height: 50%;
+  width: 50%;
+  /* object-fit: contain; */
   border: black solid 2px;
 }
 

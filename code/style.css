@@ -350,8 +350,9 @@
       .card {
         width: 140px;
         height: 140px;
+        border: 70px;
         margin: 0%;
-        padding: 0 1rem 1.5rem 1rem;
+        padding: 0.5rem 1rem 2rem 1rem;
         /* overflow: flex; */
       } 
 

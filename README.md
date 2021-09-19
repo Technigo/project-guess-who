@@ -1,12 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week's project was creating a game of 'Guess Who', where you play against the computer to guess the correct person based on a randomized choice.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+JavaScript has, in general, been quite difficult to understand so far since it's a lot at once. I've been having trouble getting the 'play again' button to function even though I can't 
+see what I'm missing. This is an issue I noticed a bit too late into the week, so if I had more time I'd have made sure to reach out and ask for help regarding that.
 
 ## View it live
 

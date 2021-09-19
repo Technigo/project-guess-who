@@ -337,7 +337,7 @@ const filterCharacters = (keep) => {
       keepCharactersAccessoriesOther (category, value)
       alert ( `Yes, the person is a ${value}! Keep all ${value}s`)
     } else {
-      removeCharactersAccessoriesOther
+      removeCharactersAccessoriesOther (category, value)
       alert (`No, the person isn't a ${value}! Remove all ${value}s`)
       console.log(removeCharactersAccessoriesOther)
     }

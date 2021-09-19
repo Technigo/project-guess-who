@@ -62,6 +62,13 @@ select {
   justify-content: center;
 }
 
+.timer-game p {
+  color: #745213;
+  margin-top: 50px;
+  font-weight: 500;
+}
+
+
 /****** CARD ******/
 .card {
   width: 135px;

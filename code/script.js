@@ -7,6 +7,7 @@ const playAgain = document.getElementById('playAgain')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const questionCounter = document.getElementById('countQuestions')
+const timerTick = document.getElementById('timer')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -210,6 +211,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 let numberOfGuesses
+let totalSeconds = 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -233,6 +235,33 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+// timer for the game
+const timer = (restart) => {
+  // if timer restart - total seconds will be equal to 0
+  if (restart) {
+    totalSeconds = 0;
+  } else {
+    totalSeconds++
+  }
+  // define minutes and seconds variable
+  let minutes = Math.floor(totalSeconds / 60)
+  let seconds = totalSeconds - (minutes * 60)
+  if (minutes < 10) {
+    minutes = `0${minutes}`
+  }
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+  // display the timer
+  timerTick.innerHTML = `<p>Timer: ${minutes}:${seconds}</p>`
+}
+
+// stop the timer and restart the timer with 0 seconds
+const stopTimer = () => {
+  let setTimer = setInterval(timer, 1000)
+  clearInterval(setTimer)
+  timer('restart')
+}
 
 // This function to start (and restart) the game
 const start = () => {
@@ -248,6 +277,7 @@ const start = () => {
   board.style.display = "flex"
   numberOfGuesses = 0;
   questionCounter.innerHTML = `<p class="guesses">GUESSES MADE: ${numberOfGuesses}</p>`
+  stopTimer()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -354,7 +384,7 @@ const filterCharacters = (keep) => {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
+ 
   for accessories and other
     charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     or
@@ -405,10 +435,11 @@ const checkMyGuess = (personToConfirm) => {
 
 // Invokes the start function when website is loaded/to start a new game
 start()
+setInterval(timer, 1000);
 
 // All the event listeners
 // when the user clicks on the restart button
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start, setInterval)
 // when the user selects the question in the drop down list
 questions.addEventListener('change', selectQuestion)
 // when the user clicks on the find out button

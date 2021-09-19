@@ -1,13 +1,16 @@
 # Project Name
+Guess Who?
 
-Replace this readme with your own information about your project.
+We were to create a site using Javascript, HTML and CSS that works about the same as the old board game "Guess Who?"
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+With Javascript randomizing a secret person at the loading of the site. And then it's up to the player to narrow down the different people by guessing the attributes untill you are ready to
+make a guess on what person you think it is. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had major issues not knowing where to start really, and how to formulate the questions I had to get the answers I sought. Luckily my teammates were fantastic in helping out and share
+the issues themselves had and how they solved it. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://goofy-almeida-ddd3c8.netlify.app/

@@ -205,6 +205,12 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let winSound = new Audio('sounds/win.mp3')
+winSound.volume = 1
+let loserSound = new Audio('sounds/loser_alert.mp3')
+loserSound.volume = 1
+let restartSound = new Audio('sounds/restart.mp3')
+restartSound.volume = 1
 
 // Draw the game board
 const generateBoard = () => {
@@ -248,7 +254,6 @@ const selectQuestion = () => {
       category: category,
       value: value
     }
-    console.log(currentQuestion)
 }
 
 
@@ -266,9 +271,11 @@ const checkQuestion = () => {
     keep = (secret.eyes === value)
   } else if (category === 'accessories') {
     keep = (secret.accessories.includes(value))
-  } else (category === 'other')
+  } else if (category === 'other') {
     keep = (secret.other.includes(value))
-  filterCharacters(keep)
+  }
+    filterCharacters(keep)
+  
 }
 
 
@@ -291,26 +298,27 @@ const filterCharacters = (keep) => {
     } else {
       alert(`No, the person is not a ${value}!`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-    }
+    } 
   } else if (category === 'hair') {
     if (keep) {
-      alert(`Yes, the person has ${value}!`)
+      alert(`Yes, the person has ${value} hair!`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
-      alert(`No, the person has ${value}!`)
+      alert(`No, the person does not have ${value} hair!`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       }
-     } else (category === 'eyes'); {
+     } else if (category === 'eyes') {
       if (keep) {
-        alert(`Yes, the person has  ${value}!`)
+        alert(`Yes, the person has ${value} eyes!`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       } else {
-        alert(`No, the person has not a ${value}!`)
+        alert(`No, the person does not have ${value} eyes!`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       }
     }
     generateBoard()
   }
+
   
  // } else if (category === 'other') {
     // Similar to the one above
@@ -355,8 +363,10 @@ const checkMyGuess = (suspectCharacter) => {
 
   if (suspectCharacter === secret.name) {
     winOrLoseText.innerHTML = `Victory! `;
+    winSound.play()
   } else {
   winOrLoseText.innerHTML = `Wrong guess`;
+  loserSound.play()
   }
   winOrLose.style.display = 'flex'
   // 1. Check if the personToCheck is the same as the secret person's name
@@ -374,5 +384,6 @@ filter.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
 playAgainBtn.addEventListener('click', () => {
   start()
+  restartSound.play()
   winOrLose.style.display = 'none';
 })

@@ -8,5 +8,4 @@ JavaScript has, in general, been quite difficult to understand so far since it's
 see what I'm missing. This is an issue I noticed a bit too late into the week, so if I had more time I'd have made sure to reach out and ask for help regarding that.
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://maja-l-guess-who-game.netlify.app/

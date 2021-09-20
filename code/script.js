@@ -386,13 +386,15 @@ generateBoard()
 
 // This function confirms the players wants to guess
 const guess = (personToConfirm) => {
-  confirm('Do you really want to guess?')
-  if (true){
+  
+  let confirmation = confirm('Do you really want to guess?')
+  if (confirmation){
     // This invokes the checkMyGuess function
     checkMyGuess(personToConfirm)
-  } else{}
+  } //else{}
   
 }
+
 
 // Invoked when you confirm you want to guess
 const checkMyGuess = (personToCheck) => {

@@ -348,6 +348,9 @@ const checkMyGuess = (personToCheck) => {
   // 3. Shows the win or lose section
   winOrLose.style.display = 'block' 
   
+  // 4. Hides board
+  board.style.display = 'none'
+  
   
 }
 

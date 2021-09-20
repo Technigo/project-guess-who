@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: rgb(255, 92, 88);
-  --secondary: rgb(255, 92, 88);
+  --primary: #FF5C58;
+  --secondary: #FFEDD3;
 }
 
 body {
@@ -16,7 +16,7 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: rgb(255, 237, 211);
+  color: var(--secondary);
 }
 
 .question-section {
@@ -41,6 +41,7 @@ select {
   height: 60px;
   margin: 24px 0;
 }
+
 select-items {
   background-color: blanchedalmond;
 }
@@ -62,6 +63,7 @@ select-items {
   width: 90%;
   max-width: 882px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   align-content: center;
 }
@@ -71,8 +73,8 @@ select-items {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border: 3px solid var(--primary);
+  border-radius: 30px;
   margin: 3px;
   display: flex;
   flex-direction: column;
@@ -95,10 +97,11 @@ select-items {
   color: white;
   text-align: center;
   height: inherit;
+  color:var(--secondary);
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: var(--primary);
 }
 
 .card:hover img,
@@ -132,25 +135,29 @@ button {
 .small {
   padding: 8px 16px;
 }
+
 .filled-button {
-  background-color: rgb(255, 237, 211);
-  color:rgb(254, 143, 143);
+  background-color: var(--secondary);
+  color:var(--primary);
+  border:2px solid var(--primary);
 }
+
 .outlined-button {
-  background-color: rgb(252, 210, 209);
-  color:rgb(255, 92, 88);
+  background-color: transparent;
+  color:var(--secondary);
+  border:2px solid var(--secondary);
 
   align-self: flex-end;
 }
 
 .filled-button:hover {
   background-color: rgb(254, 143, 143);
-  color:rgb(255, 237, 211);
+  color:var(--secondary);
 }
 
 .outlined-button:hover {
-  background-color:rgb(255, 237, 211);
-  color: rgb(255, 92, 88);
+  background-color:var(--secondary);
+  color: var(--primary);
 }
 
 /****** WIN OR LOSE SECTION ******/

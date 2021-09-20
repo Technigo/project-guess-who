@@ -1,13 +1,12 @@
-# Project Name
+project-guess-who
 
-Replace this readme with your own information about your project.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Made a game that is called guess who. Added som sound, time and a counter. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Some time it  was hard to understand the instructions. But we helpt eachother out and that was really good. 
+When we solved the first problems it feeld easier to move on.
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://clever-cray-a56c7d.netlify.app

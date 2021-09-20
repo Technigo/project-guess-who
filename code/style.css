@@ -225,6 +225,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
+  .questions {
+    background-color: white;
+  }
+
   button {
     padding: 8px 16px;
   }

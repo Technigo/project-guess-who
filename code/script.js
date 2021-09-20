@@ -216,7 +216,6 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-let Counter = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -352,11 +351,11 @@ const filterCharacters = (keep) => {
     arrayPropertyName = 'attributes';
     if (keep) {
       alert(
-        `Yes, the dinosaur ${value}! Keep all dinosaurs that has ${value}`
+        `Yes, the dinosaur ${value}! Keep all dinosaurs that ${value}`
       )
     } else {
       alert(
-        `No, the dinosaur doesn't ${value}! Remove all dinosaurs that has ${value}`
+        `No, the dinosaur doesn't ${value}! Remove all dinosaurs that ${value}`
       )
     }
   }

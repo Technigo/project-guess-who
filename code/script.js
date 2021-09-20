@@ -379,7 +379,7 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     // Checks if the personToCheck is the same as the secret person's name
 
-    document.getElementById("winOrLooseText").innerHTML = `🎊 Woot woot! Your guess on ${personToCheck} is correct. You win! 🎊`;
+    document.getElementById("winOrLooseText").innerHTML = `🎊 Woot woot! ${personToCheck} is indeed our mysterious person. You win! 🎊`;
     // Sets a Message to show in the win or loose section accordingly
 
     showWinOrLooseMessage()
@@ -387,9 +387,8 @@ const checkMyGuess = (personToCheck) => {
 
   }
   else {
-    document.getElementById("winOrLooseText").innerHTML = `Bummer! Your guess on ${personToCheck} is not correct. You loose!`;
+    document.getElementById("winOrLooseText").innerHTML = `Bummer! Your guess on ${personToCheck} was wrong. The mysterious person was ${secret.name} this time around. You loose!`;
     // Set a Message to show in the win or loose section accordingly
-
     showWinOrLooseMessage()
     // Invokes the win or loose section
   }

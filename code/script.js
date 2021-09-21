@@ -13,6 +13,7 @@ const startGame = document.getElementById("startGame");
 const gamePlayAudio = document.getElementById("gameplay-audio");
 const introAudio = document.getElementById("intro-audio");
 const gamePlayAudioBtn = document.getElementById("game-play-audio-btn");
+// const thrown = document.getElementById("thrown");
 
 // timer from Stackoverflow
 const minutesLabel = document.getElementById("minutes");
@@ -268,13 +269,15 @@ const CHARACTERS = [
 // Global variables
 let secret;
 let currentQuestion;
-let charactersInPlay;
 let charactersNotInPlay;
+let charactersInPlay;
 
 // Draw the game board
 const generateBoard = () => {
+  console.log(charactersNotInPlay);
   board.innerHTML = "";
   charactersInPlay.forEach((person) => {
+    console.log(charactersInPlay);
     board.innerHTML += `
       <div class="card border-gradient border-gradient-color kept">
         <p>${person.name}</p>
@@ -283,6 +286,15 @@ const generateBoard = () => {
           <span>Guess on ${person.name}?</span>
           <button class="guess-btn" onclick="guess('${person.name}'); playGameAudio();">Guess</button>
         </div>
+      </div>
+    `;
+  });
+  charactersNotInPlay.forEach((person) => {
+    console.log(charactersNotInPlay);
+    board.innerHTML += `
+      <div class="card thrown" >
+        <p>${person.name}</p>
+        
       </div>
     `;
   });
@@ -299,7 +311,7 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  charactersNotInPlay = "";
+  charactersNotInPlay = [];
   generateBoard();
   setSecret();
   playGameAudio();
@@ -355,35 +367,59 @@ const checkQuestion = () => {
 
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
+  charactersNotInPlay = charactersInPlay;
+  console.log(charactersNotInPlay);
   console.log(currentQuestion);
 
   const keepCharStr = () => {
     charactersInPlay = charactersInPlay.filter(
       (person) => person[category] === value
     );
+    charactersNotInPlay = charactersNotInPlay.filter(
+      (person) => person[category] !== value
+    );
     console.log(charactersInPlay);
+    console.log(charactersNotInPlay);
+    generateBoard();
   };
 
   const removeCharStr = () => {
     charactersInPlay = charactersInPlay.filter(
       (person) => person[category] !== value
     );
+    charactersNotInPlay = charactersNotInPlay.filter(
+      (person) => person[category] === value
+    );
     console.log(charactersInPlay);
+    console.log(charactersNotInPlay);
+    generateBoard();
   };
 
   const removeCharArray = () => {
     charactersInPlay = charactersInPlay.filter(
       (person) => !person[category].includes(value)
     );
+    charactersNotInPlay = charactersNotInPlay.filter((person) =>
+      person[category].includes(value)
+    );
     console.log(charactersInPlay);
+    console.log(charactersNotInPlay);
+    generateBoard();
   };
 
   const keepCharArray = () => {
     charactersInPlay = charactersInPlay.filter((person) =>
       person[category].includes(value)
     );
+    charactersNotInPlay = charactersNotInPlay.filter(
+      (person) => !person[category].includes(value)
+    );
     console.log(charactersInPlay);
+    console.log(charactersNotInPlay);
+    generateBoard();
   };
+
+  // animation for cards
 
   // Show the correct alert message for different categories
   if (category === "accessories") {
@@ -423,9 +459,6 @@ const filterCharacters = (keep) => {
       removeCharStr();
     }
   }
-
-  // Invoke a function to redraw the board with the remaining people.
-  generateBoard();
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

@@ -39,7 +39,7 @@ h1 {
 }
 
 .timer p {
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: white;
   padding-right: 5px;
 }
@@ -47,12 +47,12 @@ h1 {
 #seconds,
 #minutes,
 #colon {
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: white;
 }
 
-.countGuess {
-  font-size: 1.5em;
+.guess-counter {
+  font-size: 1.3em;
   color: white;
   display: flex;
   width: 80%;
@@ -78,6 +78,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgb(238, 222, 192);
 }
 
 .game-board {

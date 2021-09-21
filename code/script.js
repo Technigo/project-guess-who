@@ -2,8 +2,8 @@
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
-const findOutBtn = document.getElementById("filter", (count = 0));
-const countGuess = document.getElementById("countGuess");
+const findOutBtn = document.getElementById("filter");
+const guessCounter = document.getElementById("guesses");
 const playAgainBtn = document.getElementById("playAgain");
 
 // Array with all the characters, as objects
@@ -209,8 +209,8 @@ let currentQuestion;
 let charactersInPlay = CHARACTERS;
 let minutesLabel = document.getElementById("minutes");
 let secondsLabel = document.getElementById("seconds");
+let numberOfGuesses = 0;
 let totalSeconds = 0;
-let timeStart = setInterval(setTime, 1000);
 
 // Draw the game board
 const generateBoard = () => {
@@ -230,6 +230,8 @@ const generateBoard = () => {
 };
 
 //Timer function
+let timeStart = setInterval(setTime, 1000);
+
 function setTime() {
   ++totalSeconds;
   secondsLabel.innerHTML = pad(totalSeconds % 60);
@@ -244,7 +246,6 @@ function pad(time) {
     return timeString;
   }
 }
-
 // Function that randomly selects a person from the characters array and sets as the value of the variable called secret
 const setSecret = () => {
   secret =
@@ -255,7 +256,8 @@ const setSecret = () => {
 const start = () => {
   // creating charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  countGuess.innerHTML = "Guess: ";
+  numberOfGuesses = 0;
+  guessCounter.innerHTML = `${numberOfGuesses}`;
 
   //Restart timer
   totalSeconds = 0;
@@ -361,9 +363,9 @@ const guess = (suspect) => {
 // If player confirms, this function is invoked
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
-    winOrLoseText.innerHTML = `You win, ${suspect} is the secret person!`;
+    winOrLoseText.innerHTML = `Yay, after ${totalSeconds} seconds and ${numberOfGuesses} guesses, you win! ${suspect} is the secret person!`;
   } else {
-    winOrLoseText.innerHTML = `You lose the game, ${suspect} is not the secret person, ${secret.name} is!`;
+    winOrLoseText.innerHTML = `Noooooo, you made ${numberOfGuesses} guesses and still got it wrong! ${suspect} is not the secret person, ${secret.name} is! You lose the game!`;
   }
   winOrLose.style.display = "flex";
 };
@@ -371,22 +373,15 @@ const checkMyGuess = (suspect) => {
 start();
 
 // All the event listeners
-restartButton.addEventListener("click", () => {
-  start();
-  count = 0;
-  clearInterval(timeStart);
-  timeStart = setInterval(setTime, 1000);
-});
+restartButton.addEventListener("click", start);
 
 questions.addEventListener("change", selectQuestion);
 findOutBtn.addEventListener("click", () => {
   checkQuestion();
-  //counting guesses made
-  count += 1;
-  countGuess.innerHTML = "Guess: " + count;
+  numberOfGuesses += 1;
+  guessCounter.innerHTML = `${numberOfGuesses}`;
 });
 playAgainBtn.addEventListener("click", () => {
   start();
   winOrLose.style.display = "none";
-  count = 0;
 });

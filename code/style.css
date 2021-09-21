@@ -165,7 +165,7 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: var(--primary);
   position: absolute;
   top: 0;
   bottom: 0;

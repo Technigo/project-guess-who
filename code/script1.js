@@ -3,6 +3,9 @@ const board = document.getElementById("board"); // This gets the main element an
 const questions = document.getElementById("questions"); // This gets the select element
 const winOrLoseSection = document.getElementById("winOrLose") // This gets the section
 const winOrLoseText = document.getElementById("winOrLoseText") // This gets the section h1
+const winSound = document.getElementById('winnerSound')
+const loseSound = document.getElementById('loserSound')
+
 // BUTTONS SELECTORS:
 const restartBtn = document.getElementById("restart"); // This gets the restart button
 const findOutBtn = document.getElementById("filter"); // This gets the findOut button
@@ -360,9 +363,11 @@ const checkMyGuess = (personToCheck) => {
  let guessPerson =  personToCheck === secret.name;
 
  if(guessPerson) {
+   winSound.play()
    winOrLoseText.innerHTML = 'Bravo! &#128079 &#128079 <br><br>You guessed correctly! &#128515;';
    
  }else {
+   loseSound.play()
    winOrLoseText.innerHTML = 'Oh nooo!<br><br>You lost the game! &#128557;';
  }
 

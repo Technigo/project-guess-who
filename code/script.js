@@ -1,205 +1,205 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById("board"),
-  questions = document.getElementById("questions"),
-  restartButton = document.getElementById("restart"),
-  findOutButton = document.getElementById("filter"),
-  winOrLoseMessage = document.getElementById("winOrLoseText"),
-  winOrLoseSection = document.getElementById("winOrLose"),
-  playAgainButton = document.getElementById("playAgain");
+const board = document.getElementById('board'),
+  questions = document.getElementById('questions'),
+  restartButton = document.getElementById('restart'),
+  findOutButton = document.getElementById('filter'),
+  winOrLoseMessage = document.getElementById('winOrLoseText'),
+  winOrLoseSection = document.getElementById('winOrLose'),
+  playAgainButton = document.getElementById('playAgain');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: "Jabala",
-    img: "images/jabala.svg",
-    hair: "hidden",
-    eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    name: 'Jabala',
+    img: 'images/jabala.svg',
+    hair: 'hidden',
+    eyes: 'hidden',
+    accessories: ['glasses', 'hat'],
     other: [],
   },
   {
-    name: "Jack",
-    img: "images/jack.svg",
-    hair: "hidden",
-    eyes: "blue",
-    accessories: ["hat"],
+    name: 'Jack',
+    img: 'images/jack.svg',
+    hair: 'hidden',
+    eyes: 'blue',
+    accessories: ['hat'],
     other: [],
   },
   {
-    name: "Jacques",
-    img: "images/jacques.svg",
-    hair: "grey",
-    eyes: "blue",
-    accessories: ["hat"],
-    other: ["smoker"],
+    name: 'Jacques',
+    img: 'images/jacques.svg',
+    hair: 'grey',
+    eyes: 'blue',
+    accessories: ['hat'],
+    other: ['smoker'],
   },
   {
-    name: "Jai",
-    img: "images/jai.svg",
-    hair: "black",
-    eyes: "brown",
+    name: 'Jai',
+    img: 'images/jai.svg',
+    hair: 'black',
+    eyes: 'brown',
     accessories: [],
     other: [],
   },
   {
-    name: "Jake",
-    img: "images/jake.svg",
-    hair: "yellow",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: 'Jake',
+    img: 'images/jake.svg',
+    hair: 'yellow',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "James",
-    img: "images/james.svg",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: 'James',
+    img: 'images/james.svg',
+    hair: 'brown',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jana",
-    img: "images/jana.svg",
-    hair: "black",
-    eyes: "hidden",
-    accessories: ["glasses"],
+    name: 'Jana',
+    img: 'images/jana.svg',
+    hair: 'black',
+    eyes: 'hidden',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jane",
-    img: "images/jane.svg",
-    hair: "yellow",
-    eyes: "hidden",
-    accessories: ["glasses"],
+    name: 'Jane',
+    img: 'images/jane.svg',
+    hair: 'yellow',
+    eyes: 'hidden',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jaqueline",
-    img: "images/jaqueline.svg",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: 'Jaqueline',
+    img: 'images/jaqueline.svg',
+    hair: 'orange',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: [],
   },
 
   {
-    name: "Jazebelle",
-    img: "images/jazebelle.svg",
-    hair: "purple",
-    eyes: "hidden",
-    accessories: ["glasses"],
-    other: ["smoker"],
+    name: 'Jazebelle',
+    img: 'images/jazebelle.svg',
+    hair: 'purple',
+    eyes: 'hidden',
+    accessories: ['glasses'],
+    other: ['smoker'],
   },
   {
-    name: "Jean",
-    img: "images/jean.svg",
-    hair: "brown",
-    eyes: "blue",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    name: 'Jean',
+    img: 'images/jean.svg',
+    hair: 'brown',
+    eyes: 'blue',
+    accessories: ['glasses', 'hat'],
+    other: ['smoker'],
   },
   {
-    name: "Jeane",
-    img: "images/jeane.svg",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: 'Jeane',
+    img: 'images/jeane.svg',
+    hair: 'brown',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jed",
-    img: "images/jed.svg",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    name: 'Jed',
+    img: 'images/jed.svg',
+    hair: 'orange',
+    eyes: 'green',
+    accessories: ['glasses', 'hat'],
+    other: ['smoker'],
   },
   {
-    name: "Jenni",
-    img: "images/jenni.svg",
-    hair: "white",
-    eyes: "hidden",
-    accessories: ["hat"],
+    name: 'Jenni',
+    img: 'images/jenni.svg',
+    hair: 'white',
+    eyes: 'hidden',
+    accessories: ['hat'],
     other: [],
   },
   {
-    name: "Jeri",
-    img: "images/jeri.svg",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: 'Jeri',
+    img: 'images/jeri.svg',
+    hair: 'orange',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jerry",
-    img: "images/jerry.svg",
-    hair: "hidden",
-    eyes: "blue",
-    accessories: ["hat"],
+    name: 'Jerry',
+    img: 'images/jerry.svg',
+    hair: 'hidden',
+    eyes: 'blue',
+    accessories: ['hat'],
     other: [],
   },
   {
-    name: "Jess",
-    img: "images/jess.svg",
-    hair: "black",
-    eyes: "blue",
-    accessories: ["glasses"],
+    name: 'Jess',
+    img: 'images/jess.svg',
+    hair: 'black',
+    eyes: 'blue',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jocelyn",
-    img: "images/jocelyn.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: ["glasses"],
+    name: 'Jocelyn',
+    img: 'images/jocelyn.svg',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jon",
-    img: "images/jon.svg",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
+    name: 'Jon',
+    img: 'images/jon.svg',
+    hair: 'brown',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: [],
   },
   {
-    name: "Jordan",
-    img: "images/jordan.svg",
-    hair: "yellow",
-    eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    name: 'Jordan',
+    img: 'images/jordan.svg',
+    hair: 'yellow',
+    eyes: 'hidden',
+    accessories: ['glasses', 'hat'],
     other: [],
   },
   {
-    name: "Josephine",
-    img: "images/josephine.svg",
-    hair: "grey",
-    eyes: "brown",
+    name: 'Josephine',
+    img: 'images/josephine.svg',
+    hair: 'grey',
+    eyes: 'brown',
     accessories: [],
     other: [],
   },
   {
-    name: "Josh",
-    img: "images/josh.svg",
-    hair: "yellow",
-    eyes: "green",
+    name: 'Josh',
+    img: 'images/josh.svg',
+    hair: 'yellow',
+    eyes: 'green',
     accessories: [],
     other: [],
   },
   {
-    name: "Jude",
-    img: "images/jude.svg",
-    hair: "black",
-    eyes: "green",
+    name: 'Jude',
+    img: 'images/jude.svg',
+    hair: 'black',
+    eyes: 'green',
     accessories: [],
     other: [],
   },
   {
-    name: "Julie",
-    img: "images/julie.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: ["glasses", "hat"],
+    name: 'Julie',
+    img: 'images/julie.svg',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: ['glasses', 'hat'],
     other: [],
   },
 ];
@@ -209,7 +209,7 @@ let secret, currentQuestion, charactersInPlay;
 
 // Draw the game board
 const generateBoard = () => {
-  board.innerHTML = "";
+  board.innerHTML = '';
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
@@ -240,7 +240,7 @@ const start = () => {
   // Pick a secret character
   setSecret();
   // Hide the win or lose screen
-  winOrLoseSection.style.display = "none";
+  winOrLoseSection.style.display = 'none';
 };
 
 // Select a question in the dropdown and set its value to currentQuestion
@@ -260,18 +260,18 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   // Comparison for key pairs with string values
-  if (category === "hair" || category === "eyes") {
+  if (category === 'hair' || category === 'eyes') {
     if (secret[category] === value) {
       filterCharacters(true);
     } else {
-      filterCharacters();
+      filterCharacters(false);
     }
   } // Comparison for key pairs with array values
-  else if (category === "accessories" || category === "other") {
+  else if (category === 'accessories' || category === 'other') {
     if (secret[category].includes(value)) {
       filterCharacters(true);
     } else {
-      filterCharacters();
+      filterCharacters(false);
     }
   }
 };
@@ -280,7 +280,7 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
-  if (category === "accessories") {
+  if (category === 'accessories') {
     if (keep) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wear ${value}`
@@ -297,7 +297,7 @@ const filterCharacters = (keep) => {
         (person) => !person[category].includes(value)
       );
     }
-  } else if (category === "other") {
+  } else if (category === 'other') {
     // Similar to the one above
     if (keep) {
       alert(
@@ -346,12 +346,12 @@ const guess = (personToConfirm) => {
 // If user confirms, check who wins
 const checkMyGuess = (personToCheck) => {
   // Send the user to the Win Or Lose screen
-  winOrLoseSection.style.display = "block";
+  winOrLoseSection.style.display = 'block';
   // Determine who won by comparing the user's guess with the secret character
   if (personToCheck === secret.name) {
-    winOrLoseMessage.innerHTML = "You win!";
+    winOrLoseMessage.innerHTML = 'You win!';
   } else {
-    winOrLoseMessage.innerHTML = "Nope sorry, I win!";
+    winOrLoseMessage.innerHTML = 'Nope sorry, I win!';
   }
 };
 
@@ -359,7 +359,7 @@ const checkMyGuess = (personToCheck) => {
 start();
 
 // All event listeners
-restartButton.addEventListener("click", start);
-questions.addEventListener("change", selectQuestion);
-findOutButton.addEventListener("click", checkQuestion);
-playAgainButton.addEventListener("click", start);
+restartButton.addEventListener('click', start);
+questions.addEventListener('change', selectQuestion);
+findOutButton.addEventListener('click', checkQuestion);
+playAgainButton.addEventListener('click', start);

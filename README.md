@@ -2,12 +2,21 @@
 
 Replace this readme with your own information about your project.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Create my own digital version of the old character guessing board game Guess Who? Focus as much as possible on the JavaScript part.
 
 ## The problem
+My approach is:
+1 - understanding the code which is already there
+2 - Make a list of what you want to happen, without using code
+3 - start with no 1 on the list, try to solve problem and CONSOLE.LOG a lot
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I learned some new technologies for me: forEach, arrays, objects, includes, animation
+
+If I hade more time I would do some more styling, especially on the dropdown menu, because it is difficult to use on a phone
+
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guesswhoisit.netlify.app/
+

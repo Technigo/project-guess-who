@@ -179,7 +179,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Dratini',
+    name: 'Dragonair',
     img: 'images/dratini.png',
     color: 'BLÅ',
     eyes: 'SVARTA',
@@ -239,7 +239,6 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
-  console.log(secret)
   
 }
 
@@ -360,12 +359,13 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
 
-window.confirm(`Vill du verkligen gissa på ${personToConfirm}`)
-  if(window.confirm){
-    personToCheck = personToConfirm
-    checkMyGuess(personToCheck)
+let confirmedPerson = confirm(`Vill du verkligen gissa på ${personToConfirm}`)
+  
+if(confirmedPerson=== true){
+    checkMyGuess(personToConfirm)
   }else {
-    alert("ok, försök igen!")
+    alert("FÖRSÖK IGEN!")
+
   }
   }
  
@@ -383,13 +383,10 @@ const checkMyGuess = (personToCheck) => {
     const winOrLose = document.getElementById('winOrLose')
     winOrLose.style.display ='flex'
 
-    
-   
     const winOrLoseText = document.getElementById('winOrLoseText')
     winOrLoseText.innerHTML = `<p>DU ÄR EN STJÄRNA</p>
     <p> ${personToCheck} var den hemliga pokemonen!<p/>`
 
-    const board = document.getElementById('board')
     board.style.display ='none'
   
     const playAgainButton = document.getElementById('playAgain')
@@ -400,7 +397,9 @@ const checkMyGuess = (personToCheck) => {
     
    })
   } else {
+    
     alert('ÅH NEEEEEJ, DU FÅR FÖRSÖKA IGEN')
+   
 }
 
 }
@@ -411,6 +410,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOutButton.addEventListener('click', () => {
-  selectQuestion()});
+findOutButton.addEventListener('click', selectQuestion);
 

@@ -1,12 +1,12 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A game board where you try to find out who the secret character is. You may guess on different attributes to get closer to who it is before your final guess.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The main issue was to get the functions to work in order, and to properly filter out characters. The values had to be passed along in order for the different statements to make sense and return proper answers to the player.
+
+With more time I would've exchanged the default players to something a little bit more fun, like movie characters, dog breeds or why not countries or cities?
 
 ## View it live
 

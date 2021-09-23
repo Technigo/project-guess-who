@@ -87,7 +87,7 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hair: 'other',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: ['smoker', 'unsure']
   },
   {
@@ -167,7 +167,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat', 'jewelry'],
+    accessories: ['sunglasses', 'hat', 'jewelry'],
     other: ['happy']
   },
   {
@@ -259,9 +259,9 @@ const checkQuestion = () => {
  if (category === 'hair' || category === 'eyes') {
    if (value === hair || value === eyes) {
       filterCharacters(true)
-  } else {
+    } else {
       filterCharacters(false)
-   }
+    }
 
   } else if (category === 'accessories') {
       if (secret.accessories.includes(value)) {

@@ -315,6 +315,22 @@ const filterCharacters = (keep) => {
         (person) => !person[category].includes(value)
       );
     }
+  } else if (category === "eyes") {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+    } else {
+      alert(
+        `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
+    }
   } else {
     if (keep) {
       alert(

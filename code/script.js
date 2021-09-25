@@ -178,7 +178,7 @@ const CHARACTERS = [
     img: "images/dobby.jpg",
     hair: "none",
     house: "noHouse",
-    accessories: ["wand"],
+    accessories: [],
     student: "no",
     aWeasley: "no",
   },
@@ -413,8 +413,8 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToCheck) => {
-  confirm(`You are about to guess ${personToCheck}?`);
-  checkMyGuess(personToCheck);
+  const confirmGuess = confirm(`You are about to guess ${personToCheck}?`);
+  if (confirmGuess) checkMyGuess(personToCheck);
 };
 
 // If you confirm, this function is invoked

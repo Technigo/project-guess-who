@@ -242,28 +242,23 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
-  console.log(secret)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  console.log('clicks the dropdown')
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
   const value = questions.options[questions.selectedIndex].value
-  console.log('choose the value')
 
   currentQuestion = {
     category: category,
     value: value,
   }
-  console.log('category and value registered', currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  console.log('clicks find out button')
   const { category, value } = currentQuestion
 
   let keep = false

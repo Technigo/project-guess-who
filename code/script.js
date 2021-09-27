@@ -311,26 +311,11 @@ const checkQuestion = () => {
   // is not an Array it will return false and continue to
   // evaluate secret[category] === value , and return a boolean for this evaluation.
 
-  //  This code is my initial attempt and is a longer version of 286 line and also works perfectly fine.
-  //   let keep;
-  //   if (category === 'hair' || category === 'eyes') {
-  //     if (secret.hair === value || secret.eyes  === value) {
-  //       keep = true;
-  //     } else {
-  //       keep = false;
-  //     }
-  //   } else if (category === 'accessories' || category === 'other') {
-  //     if (secret.accessories.includes(value) || secret.other.includes(value)=== value) {
-  //       keep = true;
-  //     } else {
-  //       keep = false;
-  //     }
-  //   } else {
-  //     if (secret.gender === value) {
-  //       keep = true;
-  //     } else {
-  //       keep = false;
-  //     }
+  //  This code is a longer version of 286 line and also works perfectly fine.
+  //   if (typeof secret[category] === "string") {
+  //     keep = secret[category] === value;
+  //   } else if (Array.isArray(secret[category])) {
+  //     keep = secret[category].includes(value);
   //   }
   filterCharacters(keep);
 };

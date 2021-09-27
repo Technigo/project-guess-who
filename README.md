@@ -12,6 +12,7 @@ If you are like me, and never heard about it before, pls follow the link to get 
 - "We are the winners" track plays on the "Winner" screen (on Desktop only). Volume is decreased for greater UX.
 - Also the "Winner" screen includea the picture of correct character and number of attempts per completed game.
 - There is a timer for each new game.
+- When only one card is left user is redirected to the Winning screen automatically.
 
 ## View it live
 

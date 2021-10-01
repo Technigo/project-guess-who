@@ -430,24 +430,24 @@ const showLoseScreen = () => {
 };
 
 // timer creation: https://stackoverflow.com/questions/5517597/plain-count-up-timer-in-javascript
-setInterval(setTime, 1000);
 
 // counting function
-function setTime() {
+const setTime = () => {
   ++totalSeconds;
   secondsLabel.innerHTML = pad(totalSeconds % 60);
   minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-}
+};
 
 // timer rendering
-function pad(val) {
+const pad = (val) => {
   let valString = val + "";
   if (valString.length < 2) {
     return "0" + valString;
   } else {
     return valString;
   }
-}
+};
+setInterval(setTime, pad(1000));
 
 // All the event listeners
 restartButton.addEventListener("click", start);

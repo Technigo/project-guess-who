@@ -324,16 +324,16 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
 if (personToCheck === secret.name) {
   winOrLoseText.innerHTML = `Wohoo!, ${personToCheck} was the one we were looking for! YOU ARE A WINNER!`
-  let youWinAudio = new Audio("ES_Human Voice Clip 28 - SFX Producer.mp3");
-  youWinAudio.play();
+  let youWinAudio = new Audio("ES_Human Voice Clip 28 - SFX Producer.mp3")
+  youWinAudio.play()
 
 } else {
   winOrLoseText.innerHTML = `Nice try, but ${personToCheck} is not the one we were looking for! The secret person was ${secret.name}. YOU LOOSE!`
-  let youLooseAudio = new Audio("ES_Video Game Descend 8 - SFX Producer.mp3");
+  let youLooseAudio = new Audio("ES_Video Game Descend 8 - SFX Producer.mp3")
   youLooseAudio.play();
 }
-winOrLose.style.display = 'flex';
-board.style.display = 'none';
+winOrLose.style.display = 'flex'
+board.style.display = 'none'
 }
 
 // Invokes the start function when website is loaded
@@ -344,6 +344,6 @@ restartButton.addEventListener('click', start)
 findOutBtn.addEventListener('click', selectQuestion)
 playAgainBtn.addEventListener('click', () => {
   start()
-  winOrLose.style.display = 'none';
-  board.style.display = 'flex';
+  winOrLose.style.display = 'none'
+  board.style.display = 'flex'
 })

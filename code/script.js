@@ -6,7 +6,6 @@ const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
 const guessesInTotal = document.getElementById('guess')
 
-
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -15,7 +14,7 @@ const CHARACTERS = [
     hair: 'black',
     costume: 'red',
     abilities: ['ability power'],
-    crowdcontrol: ['charm']
+    crowdcontrol: ['charm'],
   },
   {
     name: 'Anivia',
@@ -23,7 +22,7 @@ const CHARACTERS = [
     hair: 'none',
     costume: 'blue',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['stunn']
+    crowdcontrol: ['stunn'],
   },
   {
     name: 'Cassiopeia',
@@ -31,7 +30,7 @@ const CHARACTERS = [
     hair: 'hidden',
     costume: 'green',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['grounded', 'stunn']
+    crowdcontrol: ['grounded', 'stunn'],
   },
   {
     name: 'Galio',
@@ -39,7 +38,7 @@ const CHARACTERS = [
     hair: 'none',
     costume: 'white',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['taunt', 'knock up']
+    crowdcontrol: ['taunt', 'knock up'],
   },
   {
     name: 'Gragas',
@@ -47,7 +46,7 @@ const CHARACTERS = [
     hair: 'red',
     costume: 'brown',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['stunn', 'knock back']
+    crowdcontrol: ['stunn', 'knock back'],
   },
   {
     name: 'Karma',
@@ -55,7 +54,7 @@ const CHARACTERS = [
     hair: 'brown',
     costume: 'purple',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['root']
+    crowdcontrol: ['root'],
   },
   {
     name: 'LeBlanc',
@@ -63,7 +62,7 @@ const CHARACTERS = [
     hair: 'black',
     costume: 'purple',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['root']
+    crowdcontrol: ['root'],
   },
   {
     name: 'Malzahar',
@@ -71,7 +70,7 @@ const CHARACTERS = [
     hair: 'hidden',
     costume: 'purple',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['silence', 'suppress']
+    crowdcontrol: ['silence', 'suppress'],
   },
   {
     name: 'Neeko',
@@ -79,7 +78,7 @@ const CHARACTERS = [
     hair: 'purple',
     costume: 'brown',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['root', 'stunn']
+    crowdcontrol: ['root', 'stunn'],
   },
 
   {
@@ -88,7 +87,7 @@ const CHARACTERS = [
     hair: 'none',
     costume: 'blue',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['knock up', 'slow']
+    crowdcontrol: ['knock up', 'slow'],
   },
   {
     name: 'Riven',
@@ -96,7 +95,7 @@ const CHARACTERS = [
     hair: 'white',
     costume: 'white',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['knock back', 'stunn']
+    crowdcontrol: ['knock back', 'stunn'],
   },
   {
     name: 'Kayn',
@@ -104,7 +103,7 @@ const CHARACTERS = [
     hair: 'black',
     costume: 'black',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['slow']
+    crowdcontrol: ['slow'],
   },
   {
     name: 'Graves',
@@ -112,7 +111,7 @@ const CHARACTERS = [
     hair: 'brown',
     costume: 'red',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['slow', 'knock back', 'blind']
+    crowdcontrol: ['slow', 'knock back', 'blind'],
   },
   {
     name: 'Katarina',
@@ -120,7 +119,7 @@ const CHARACTERS = [
     hair: 'red',
     costume: 'black',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: []
+    crowdcontrol: [],
   },
   {
     name: 'Shaco',
@@ -128,7 +127,7 @@ const CHARACTERS = [
     hair: 'hidden',
     costume: 'red',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['fear', 'slow']
+    crowdcontrol: ['fear', 'slow'],
   },
   {
     name: 'Tristana',
@@ -136,7 +135,7 @@ const CHARACTERS = [
     hair: 'red',
     costume: 'green',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['slow', 'knock back']
+    crowdcontrol: ['slow', 'knock back'],
   },
   {
     name: 'Warwick',
@@ -144,7 +143,7 @@ const CHARACTERS = [
     hair: 'none',
     costume: 'brown',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['fear', 'suppress']
+    crowdcontrol: ['fear', 'suppress'],
   },
   {
     name: 'Darius',
@@ -152,7 +151,7 @@ const CHARACTERS = [
     hair: 'brown',
     costume: 'red',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['slow', 'hook']
+    crowdcontrol: ['slow', 'hook'],
   },
   {
     name: 'Thresh',
@@ -160,7 +159,7 @@ const CHARACTERS = [
     hair: 'none',
     costume: 'green',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['knock back', 'hook', 'slow']
+    crowdcontrol: ['knock back', 'hook', 'slow'],
   },
   {
     name: 'Poppy',
@@ -168,7 +167,7 @@ const CHARACTERS = [
     hair: 'white',
     costume: 'brown',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['knock back', 'grounded', 'slow', 'stunn']
+    crowdcontrol: ['knock back', 'grounded', 'slow', 'stunn'],
   },
   {
     name: 'Rakan',
@@ -176,7 +175,7 @@ const CHARACTERS = [
     hair: 'white',
     costume: 'red',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['knock up', 'charm']
+    crowdcontrol: ['knock up', 'charm'],
   },
   {
     name: 'Teemo',
@@ -184,7 +183,7 @@ const CHARACTERS = [
     hair: 'purple',
     costume: 'brown',
     abilities: ['attack damage', 'ability power', 'passive'],
-    crowdcontrol: ['blind', 'slow']
+    crowdcontrol: ['blind', 'slow'],
   },
   {
     name: 'Nidalee',
@@ -192,7 +191,7 @@ const CHARACTERS = [
     hair: 'brown',
     costume: 'brown',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['root']
+    crowdcontrol: ['root'],
   },
   {
     name: 'Mordekaiser',
@@ -200,7 +199,7 @@ const CHARACTERS = [
     hair: 'hidden',
     costume: 'black',
     abilities: ['attack damage', 'ability power', 'passive'],
-    crowdcontrol: ['hook']
+    crowdcontrol: ['hook'],
   },
   {
     name: 'Caitlyn',
@@ -208,7 +207,7 @@ const CHARACTERS = [
     hair: 'black',
     costume: 'purple',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['root', 'slow']
+    crowdcontrol: ['root', 'slow'],
   },
   {
     name: 'Lulu',
@@ -216,7 +215,7 @@ const CHARACTERS = [
     hair: 'purple',
     costume: 'red',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['knock up', 'slow']
+    crowdcontrol: ['knock up', 'slow'],
   },
   {
     name: 'Qiyana',
@@ -224,7 +223,7 @@ const CHARACTERS = [
     hair: 'white',
     costume: 'blue',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['stunn']
+    crowdcontrol: ['stunn'],
   },
   {
     name: 'Garen',
@@ -232,7 +231,7 @@ const CHARACTERS = [
     hair: 'brown',
     costume: 'blue',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['silence']
+    crowdcontrol: ['silence'],
   },
   {
     name: 'Miss Fortune',
@@ -240,7 +239,7 @@ const CHARACTERS = [
     hair: 'red',
     costume: 'white',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['slow']
+    crowdcontrol: ['slow'],
   },
   {
     name: 'Akali',
@@ -248,7 +247,7 @@ const CHARACTERS = [
     hair: 'black',
     costume: 'green',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: []
+    crowdcontrol: [],
   },
   {
     name: 'Gwen',
@@ -256,7 +255,7 @@ const CHARACTERS = [
     hair: 'blue',
     costume: 'white',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['slow']
+    crowdcontrol: ['slow'],
   },
   {
     name: 'Singed',
@@ -264,7 +263,7 @@ const CHARACTERS = [
     hair: 'none',
     costume: 'pink',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['grounded', 'slow', 'root']
+    crowdcontrol: ['grounded', 'slow', 'root'],
   },
   {
     name: 'Jinx',
@@ -272,7 +271,7 @@ const CHARACTERS = [
     hair: 'blue',
     costume: 'pink',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['slow', 'root']
+    crowdcontrol: ['slow', 'root'],
   },
   {
     name: 'Shen',
@@ -280,7 +279,7 @@ const CHARACTERS = [
     hair: 'hidden',
     costume: 'purple',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['taunt', 'slow']
+    crowdcontrol: ['taunt', 'slow'],
   },
   {
     name: 'Jarvan',
@@ -288,7 +287,7 @@ const CHARACTERS = [
     hair: 'hidden',
     costume: 'gold',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['knock up']
+    crowdcontrol: ['knock up'],
   },
   {
     name: 'Seraphine',
@@ -296,7 +295,7 @@ const CHARACTERS = [
     hair: 'pink',
     costume: 'purple',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['charm']
+    crowdcontrol: ['charm'],
   },
   {
     name: 'Rammus',
@@ -304,7 +303,7 @@ const CHARACTERS = [
     hair: 'hidden',
     costume: 'green',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['knock up', 'taunt', 'slow']
+    crowdcontrol: ['knock up', 'taunt', 'slow'],
   },
   {
     name: 'Sona',
@@ -312,7 +311,7 @@ const CHARACTERS = [
     hair: 'blue',
     costume: 'blue',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['stunn']
+    crowdcontrol: ['stunn'],
   },
   {
     name: 'Sett',
@@ -320,7 +319,7 @@ const CHARACTERS = [
     hair: 'pink',
     costume: 'white',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: ['stunn', 'slow', 'suppress']
+    crowdcontrol: ['stunn', 'slow', 'suppress'],
   },
   {
     name: 'Sivir',
@@ -328,7 +327,7 @@ const CHARACTERS = [
     hair: 'brown',
     costume: 'gold',
     abilities: ['attack damage', 'passive'],
-    crowdcontrol: [ ]
+    crowdcontrol: [],
   },
   {
     name: 'Zyra',
@@ -336,7 +335,7 @@ const CHARACTERS = [
     hair: 'pink',
     costume: 'green',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['knock up', 'root']
+    crowdcontrol: ['knock up', 'root'],
   },
   {
     name: 'Blitzcrank',
@@ -344,7 +343,7 @@ const CHARACTERS = [
     hair: 'none',
     costume: 'gold',
     abilities: ['ability power', 'passive'],
-    crowdcontrol: ['knock up', 'hook', 'silence']
+    crowdcontrol: ['knock up', 'hook', 'silence'],
   },
 ]
 
@@ -359,7 +358,7 @@ defeatSound.volume = 1
 let restartSound = new Audio('audio/league_queue.mp3')
 restartSound.volume = 1
 
-// Draw the game board
+// Draws the game board
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -382,134 +381,148 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Randomly selects a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
+// This function starts (and restarts) the game
 const start = () => {
-  charactersInPlay = CHARACTERS;
-  generateBoard();
-  setSecret();
+  charactersInPlay = CHARACTERS
+  generateBoard()
+  setSecret()
   numberOfGuesses = 0
   guessesInTotal.innerText = 0
-};
+}
 
-
-
-// setting the currentQuestion object when you select something in the dropdown
+// sets the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  console.log(category)
 
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value
-  console.log(value)
   currentQuestion = {
     category: category,
-    value: value
+    value: value,
   }
   numberOfGuesses++
   guessesInTotal.innerText = numberOfGuesses
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function is invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
   let keep = false
 
-  // Compare the currentQuestion details with the secret person details
+  // Compares the currentQuestion details with the secret person details
   if (category === 'hair') {
-  keep = (secret.hair === value)
-  
+    keep = secret.hair === value
   } else if (category === 'costume') {
-  keep = (secret.costume === value)
-
+    keep = secret.costume === value
   } else if (category === 'abilities') {
-    keep = (secret.abilities.includes(value))
-
+    keep = secret.abilities.includes(value)
   } else if (category === 'crowdcontrol') {
-    keep = (secret.crowdcontrol.includes(value))
+    keep = secret.crowdcontrol.includes(value)
   }
 
   filterCharacters(keep)
 }
 
-
 // It will filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+
   // Shows the correct alert message for different categories
   if (category === 'abilities') {
     if (keep) {
-      alert(`Yes, the champion have ${value} abilities! Keep all champion that have ${value} abilities.`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      alert(
+        `Yes, the champion have ${value} abilities! Keep all champion that have ${value} abilities.`
+      )
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      )
     } else {
-      alert(`No, the champion doesn't have ${value} abilities! Remove all champions that have ${value} abilities`)
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      alert(
+        `No, the champion doesn't have ${value} abilities! Remove all champions that have ${value} abilities`
+      )
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      )
     }
   } else if (category === 'crowdcontrol') {
     if (keep) {
-      alert(`Yes, the champion have ${value} as crowd control! Keep all champions that have ${value} as crowd control.`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      alert(
+        `Yes, the champion have ${value} as crowd control! Keep all champions that have ${value} as crowd control.`
+      )
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      )
     } else {
-      alert(`No, the champion doesn't have ${value} as crowd control! Remove all champions that have ${value} as crowd control`)
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      alert(
+        `No, the champion doesn't have ${value} as crowd control! Remove all champions that have ${value} as crowd control`
+      )
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      )
     }
-
   } else if (category === 'hair') {
     if (keep) {
-      alert(`Yes, the champion has ${value} hair! Keep all champions with ${value} hair`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      alert(
+        `Yes, the champion has ${value} hair! Keep all champions with ${value} hair`
+      )
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      )
     } else {
-      alert(`No, the champion doesn't have ${value} hair! Remove all champions that have ${value} hair`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      }
-     } else if(category === 'costume') {
-      if (keep) {
-        alert(`Yes, the champion has ${value} costume! Keep all champions with ${value} costume`)
-        charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-      } else {
-        alert(`No, the champion doesn't have ${value} costume! Remove all champions that have ${value} costume`)
-        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      }
+      alert(
+        `No, the champion doesn't have ${value} hair! Remove all champions that have ${value} hair`
+      )
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      )
     }
-
-    
-    generateBoard()
+  } else if (category === 'costume') {
+    if (keep) {
+      alert(
+        `Yes, the champion has ${value} costume! Keep all champions with ${value} costume`
+      )
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      )
+    } else {
+      alert(
+        `No, the champion doesn't have ${value} costume! Remove all champions that have ${value} costume`
+      )
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      )
+    }
   }
 
+  generateBoard()
+}
 
 // Player can confirm their guess when clicking the guess button, it then stores the value and invokes function to check their guess.
 const guess = (suspectCharacter) => {
-  
   const confirmGuess = confirm(`Is this champion your guess?`)
-  if (confirmGuess)
-  checkMyGuess(suspectCharacter)
-  
+  if (confirmGuess) checkMyGuess(suspectCharacter)
 }
 
 // If you confirm your guess, this function is invoked to display either if it was correct or false.
 const checkMyGuess = (suspectCharacter) => {
-
   if (suspectCharacter === secret.name) {
-  winOrLoseText.innerHTML = `Victory! You guessed on ${suspectCharacter} which is the right champion!`
-  victorySound.play()
-} else {
-  winOrLoseText.innerHTML = `Defeat! The right champion was ${secret.name}...`
-  defeatSound.play()
-}
-  
-  winOrLose.style.display = 'flex';
-  
+    winOrLoseText.innerHTML = `Victory! You guessed on ${suspectCharacter} which is the right champion!`
+    victorySound.play()
+  } else {
+    winOrLoseText.innerHTML = `Defeat! The right champion was ${secret.name}...`
+    defeatSound.play()
+  }
+
+  winOrLose.style.display = 'flex'
 }
 
 // Invokes the start function when website is loaded
-start();
-
-
+start()
 
 // All the event listeners
 restartButton.addEventListener('click', () => {
@@ -521,7 +534,5 @@ findOutButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', () => {
   start()
   restartSound.play()
-  winOrLose.style.display = 'none';
-}) 
-
-
+  winOrLose.style.display = 'none'
+})

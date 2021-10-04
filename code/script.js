@@ -214,12 +214,12 @@ const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card">
+      <div class='card'>
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
-        <div class="guess" >
+        <div class='guess' >
           <span>Guess on ${person.name}?</span>
-          <button id="guess" class="filled-button small" onclick="guess('${person.name}')">GISSA</button>
+          <button id='guess' class='filled-button small' onclick='guess('${person.name}')'>GISSA</button>
         </div>
       </div>
   
@@ -319,12 +319,12 @@ const filterCharacters = (keep) => {
         `JA, pokemonen har ${value} ${category} ! Spara alla pokemon som har ${value} ${category} `
       )
 
-      // alert popup that says something like: "Yes, the person has yellow color! Keep all people with yellow color"
+      // alert popup that says something like: 'Yes, the person has yellow color! Keep all people with yellow color'
     } else {
       alert(
         `Nej, pokemonen har inte ${value} ${category} ! Ta bort alla pokemon som har ${value} ${category} `
       )
-      // alert popup that says something like: "No, the person doesnt have yellow color! Remove all people with yellow color"
+      // alert popup that says something like: 'No, the person doesnt have yellow color! Remove all people with yellow color'
     }
   }
 
@@ -364,7 +364,7 @@ let confirmedPerson = confirm(`Vill du verkligen gissa på ${personToConfirm}`)
 if(confirmedPerson=== true){
     checkMyGuess(personToConfirm)
   }else {
-    alert("FÖRSÖK IGEN!")
+    alert('FÖRSÖK IGEN!')
 
   }
   }
@@ -410,5 +410,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOutButton.addEventListener('click', selectQuestion);
+findOutButton.addEventListener('click', selectQuestion)
 

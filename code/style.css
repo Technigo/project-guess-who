@@ -26,7 +26,6 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  /* background-color: var(--secondary); */
   background-image: url("./assets/stripes.jpeg");
   background-repeat: repeat-y;
   display: flex;
@@ -242,7 +241,6 @@ button {
 
   .card .guess .filled-button {
     padding: 2px 20px;
-    /* margin-bottom: 1px; */
     background: white;
     color: var(--primary);
     border: none;

@@ -16,4 +16,4 @@ If you are like me, and never heard about it before, pls follow the link to get 
 
 ## View it live
 
-Netlify link : https://guess-who-game-marys.netlify.app/
+Netlify link : https://marysnopok-guess-who-game.netlify.app

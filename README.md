@@ -1,7 +1,7 @@
 # Guess Who Mini Game
 
 The main goal of the assignment was to recreate a gameplay of the Guess Who.
-If you are like me, and never heard about it before, pls follow the link to get a gasp on the gameplay https://en.wikipedia.org/wiki/Guess_Who%3F or just follow my project link and check it yourself;) : https://guess-who-game-marys.netlify.app/
+If you are like me, and never heard about it before, pls follow the link to get a gasp on the gameplay https://en.wikipedia.org/wiki/Guess_Who%3F or just follow my project link and check it yourself;) :https://marysnopok-guess-who-game.netlify.app
 
 ## Tech Stack: CSS & HTML, JS, Bootstrap
 

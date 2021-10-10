@@ -233,8 +233,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-  generateBoard();
-  setSecret();
+  generateBoard()
+  setSecret()
   }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -274,7 +274,7 @@ const checkQuestion = () => {
   }
 
   filterCharacters(keep)
-};
+}
 
 // Filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -320,7 +320,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
-  generateBoard();
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -357,6 +357,6 @@ filter.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
 playAgainButton.addEventListener('click', () => {
   start()
-  winOrLose.style.display = 'none';
+  winOrLose.style.display = 'none'
   board.style.display = 'flex'
 }) 

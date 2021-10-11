@@ -8,4 +8,4 @@ I had a lot of problems with how to write the code and where to begin. I used my
 
 ## View it live
 
-My project is deployed here: https://keen-hodgkin-97580d.netlify.app/
+My project is deployed here: https://guess-who-efstasia.netlify.app/

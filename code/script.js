@@ -232,14 +232,14 @@ const setSecret = () => {
 };
 
 //Function for counter
-function findOutCounter() {
+const findOutCounter = () => {
   updateDisplay(++counterValue);
-}
+};
 
 //Function to update the display with number of guesses
-function updateDisplay(val) {
+const updateDisplay = (val) => {
   document.getElementById("counterLabel").innerHTML = val;
-}
+};
 
 // This function to start (and restart) the game
 const start = () => {

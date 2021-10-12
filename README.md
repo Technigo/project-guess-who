@@ -1,4 +1,4 @@
-# Project Name
+# Project Guess Who
 
 This project was to create our own version of the classig guessing board game 'Guess Who?'
 

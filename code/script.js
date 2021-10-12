@@ -12,22 +12,24 @@ count = 0
 //Timer function
 const minutesLabel = document.getElementById('minutes')
 const secondsLabel = document.getElementById('seconds')
-let totalSeconds = 0;
-setInterval(setTime, 1000);
+let totalSeconds = 0
 
-function setTime() {
+
+const setTime = () => {
   ++totalSeconds
   secondsLabel.innerHTML = pad(totalSeconds % 60)
   minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60))
 }
-function pad(val) {
-  let valString = val + "";
+const pad = (val) => {
+  let valString = val + ""
   if (valString.length < 2) {
-    return "0" + valString;
+    return "0" + valString
   } else {
-    return valString;
+    return valString
   }
 }
+
+setInterval(setTime, 1000)
 
 // Array with all the characters, as objects
 const CHARACTERS = [

@@ -10,6 +10,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Italiana', serif;
+  flex-direction: column;
 }
 
 .timer-guess-count {
@@ -27,7 +28,7 @@ body {
   font-size: 22px;
   letter-spacing: 1px;
   color: white;
-  width: 110px;
+  min-width: 110px;
   margin-bottom: 5px;
   font-family: 'Italiana', serif;
   font-weight: bold;
@@ -38,7 +39,7 @@ body {
 }
 
 .guess-count {
-  margin-left: 6rem;
+  margin-left: 2rem;
 }
 
 h1 {
@@ -51,8 +52,8 @@ h1 {
 }
 
 .question-section {
-  width: 33%;
-  min-height: 100vh;
+  width: 100%;
+  height: 50vh;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
@@ -103,7 +104,7 @@ option {
 }
 
 .board-wrapper {
-  width: 70%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,17 +112,17 @@ option {
 }
 
 .game-board {
-  width: 90%;
+  width: 100%;
   max-width: 882px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 /****** CARD ******/
 
 .card {
-  width: 135px;
   height: 165px;
   overflow: hidden;
   border: 3px solid var(--secondary);
@@ -219,7 +220,7 @@ button {
 }
 
 .restart-button {
-  margin-left: 8rem;
+  margin-left: 3rem;
 }
 
 .filled-button, .find-out, .outlined-button:hover, .restart-button:hover {
@@ -266,13 +267,14 @@ button {
   margin-bottom: 32px;
 }
 
-@media (max-width: 768px) {
-  body {
-    flex-direction: column;
-  }
+.created-by-logo {
+  display: none;
+}
+
+@media (min-width: 768px) {
   .question-section {
     width: 100%;
-    min-height: 0;
+    height: 40vh;
   }
   button {
     padding: 8px 16px;
@@ -304,9 +306,6 @@ button {
   .guess-who-icon {
     width: 51px;
   }
-  .created-by-logo {
-    display: none;
-  }
   .board-wrapper {
     width: 100%;
   }
@@ -337,5 +336,45 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    flex-direction: row;
+  }
+  .timer, .guess-count {
+    min-width: 95px;
+  }
+  .question-section {
+    width: 70%;
+    height: 100vh;
+  }
+  .guess-count {
+    margin-left: 3rem;
+  }
+  section.findout-restbtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  .card {
+    width: 100px;
+  }
+  .restart-button {
+    margin-left: 6rem;
+  }
+  .created-by-logo {
+    display: initial;
+  }
+}
+
+@media (min-width: 1199px) {
+  .question-section {
+    width: 54%;
+  }
+  .card {
+    width: 113px;
   }
 }

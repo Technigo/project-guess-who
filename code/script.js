@@ -261,26 +261,6 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
-//game timer
-const minutesLabel = document.getElementById("minutes");
-const secondsLabel = document.getElementById("seconds");
-let totalSeconds = 0;
-setInterval(setTime, 1000);
-
-function setTime() {
-  ++totalSeconds;
-  secondsLabel.innerHTML = pad(totalSeconds % 60);
-  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-}
-function pad(val) {
-  let valString = val + "";
-  if (valString.length < 2) {
-    return "0" + valString;
-  } else {
-    return valString;
-  }
-}
-
 // This function to start (and restart) the game
 const start = () => {
   charactersInPlay = CHARACTERS;
@@ -292,6 +272,26 @@ const start = () => {
   minutesLabel.innerHTML = "";
   generateBoard(charactersInPlay);
 };
+
+const timer = () => {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+};
+
+const pad = (val) => {
+  let valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+};
+//game timer
+const minutesLabel = document.getElementById("minutes");
+const secondsLabel = document.getElementById("seconds");
+let totalSeconds = 0;
+setInterval(timer, 1000);
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {

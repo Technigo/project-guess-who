@@ -4,7 +4,7 @@ Project for making a Guess Who game learning about creating and manipulating obj
 
 ## The problem
 
-I approached the problem by watching the lessons and some googling. Did the Iterations 1-6 to get some guidance, didn't really plan that much since a lot was set up already.
+I approached the problem by watching lessons and some googling. Did the Iterations 1-6 to get some guidance, didn't really plan that much since a lot was set up already.
 A lot of conditionals used for arrays and objects. Did a counter for number of guesses. Changed some appearance on characters and added some more attributes. And some win/lose sound.
 
 If I had more time I would've liked to add a timer and personalize the board with something else.

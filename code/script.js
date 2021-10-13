@@ -220,14 +220,14 @@ let charactersInPlay
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  charactersInPlay.forEach((dino) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <p>${dino.name}</p>
+        <img src=${dino.img} alt=${dino.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Guess on ${dino.name}?</span>
+          <button class="filled-button small" onclick="guess('${dino.name}')">Guess</button>
         </div>
       </div>
     `
@@ -431,10 +431,6 @@ const checkMyGuess = (personToCheck) => {
     document.getElementById('winOrLose').style.display='block'; //Show the win or lose section
     // document.getElementById('board').style.display='none'; //Hide the game board
 }
-
-
-// Invokes the start function when website is loaded
-start()
 
 // All the event listeners
 restartButton.addEventListener('click', start);

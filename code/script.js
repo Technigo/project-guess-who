@@ -212,15 +212,15 @@ const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
-        <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
-        </div>
-      </div>
-    `
+    <div class="card">
+      <p>${person.name}</p>
+      <img src=${person.img} alt=${person.name}>
+    <div class="guess">
+      <span>Guess on ${person.name}?</span>
+      <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+    </div>
+  </div>
+  `
   })
 }
 
@@ -237,7 +237,6 @@ const start = () => {
   generateBoard()
   selectQuestion()
 
-  console.log(secret)
 }
 
 
@@ -365,8 +364,7 @@ const filterCharacters = (keep) => {
 
         if (character[arrayPropertyName].includes(value)) { 
           return true;
-        }
-        else {
+        } else {
           return false;
         }
       });

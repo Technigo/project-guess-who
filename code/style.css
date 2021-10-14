@@ -151,10 +151,6 @@ button {
   padding: 8px 16px;
 }
 
-.end {
-  /* align-self: flex-end; */
-}
-
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
@@ -191,7 +187,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 70%;
+  width: 60%;
   text-align: center;
 }
 
@@ -201,9 +197,11 @@ button {
 }
 
 .win-or-lose h1 {
-  margin: auto 25% 32px 25%;
+  /* margin: auto 25% 32px 25%; */
   color: black;
   font-weight: 700;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .display {
@@ -215,8 +213,8 @@ button {
 }
 
 .secret-mushroom-facts {
-  width: 30%;
-  min-height: 100vh;
+  width: 40%;
+  height: 100%;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
@@ -227,13 +225,48 @@ button {
 }
 
 .secret-mushroom-facts h1 {
-  font-size: 26px;
+  font-size: 22px;
   line-height: 1.6;
 }
 
 .secret-mushroom-facts img {
   width: 80%;
   align-self: center;
+}
+
+@media (max-width: 1024px) {
+
+  .win-or-lose-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .win-or-lose {
+    min-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .win-or-lose h1 {
+    font-size: 24px;
+    line-height: 1.5;
+    margin: 10px;
+    max-width: 90%;
+  }
+
+  .secret-mushroom-facts {
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    
+  }
+
+  .secret-mushroom-facts img {
+    width: 200px;
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -288,17 +321,5 @@ button {
     background: white;
     color: var(--primary);
     border: none;
-  }
-
-  .win-or-lose-wrapper {
-    flex-direction: column;
-  }
-
-  .win-or-lose h1 {
-    margin: auto auto 20px auto;
-  }
-
-  .secret-mushroom-facts {
-    display: none;
   }
 }

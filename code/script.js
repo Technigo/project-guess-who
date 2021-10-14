@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
+const questionSection = document.getElementById("question-section")
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutBtn = document.getElementById("filter");
@@ -315,6 +316,7 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = MUSHROOMS;
   board.style.display = "flex";
+  questionSection.style.display = "flex";
   numberOfGuesses = 0;
   guessSpan.innerHTML = `${numberOfGuesses}`;
   forestAudio.play();
@@ -460,6 +462,7 @@ const checkMyGuess = (personToCheck) => {
   winOrLoseSection.style.display = "flex";
   // Hide the game board.
   board.style.display = "none";
+  questionSection.style.display = "none";
 };
 
 const findOut = () => {

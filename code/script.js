@@ -371,8 +371,8 @@ const generateBoard = () => {
           <div class="flip-card-back">
             <div class="guess">
               <span>Guess on ${person.name}?</span>
-                <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
-          </div>
+              <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+            </div>
           </div>
         </div>
       </div>

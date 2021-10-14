@@ -251,8 +251,8 @@ const selectQuestion = () => {
   const value = questions.value;
   // Store category and value in the current question
   currentQuestion = {
-    category: category, // Based on the optgroup
-    value: value, // Comes from the selected option
+    category, // Based on the optgroup
+    value // Comes from the selected option
   };
 };
 
@@ -346,7 +346,7 @@ const guess = (personToConfirm) => {
 // If user confirms, check who wins
 const checkMyGuess = (personToCheck) => {
   // Send the user to the Win Or Lose screen
-  winOrLoseSection.style.display = 'block';
+  winOrLoseSection.style.display = 'flex';
   // Determine who won by comparing the user's guess with the secret character
   if (personToCheck === secret.name) {
     winOrLoseMessage.innerHTML = 'You win!';

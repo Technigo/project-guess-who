@@ -209,8 +209,9 @@ let secret;
 let currentQuestion;
 let charactersInPlay;
 
-let winAudio = new Audio("https://soundfxcenter.com/music/television-theme-songs/8d82b5_Inspector_Gadget_Ending_Theme_Song.mp3");
-let loseAudio = new Audio("#");
+let winAudio = new Audio("https://instrumentalfx.co/wp-content/upload/11/Inspector-Gadget-Theme-Song.mp3?_=2");
+let loseAudio = new Audio("https://vgmsite.com/soundtracks/inspector-gadget-snes/qidhguiyzn/17%20Game%20Over.mp3");
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = "";

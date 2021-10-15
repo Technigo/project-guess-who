@@ -208,13 +208,9 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
-let winAudio = new Audio(
-  "http://soundfxcenter.com/music/television-theme-songs/8d82b5_Inspector_Gadget_Ending_Theme_Song.mp3"
-);
-let loseAudio = new Audio(
-  "http://soundfxcenter.com/television/inspector-gadget/8d82b5_IG_This_Message_Will_Self_Destruct_Sound_Effect.mp3"
-);
 
+let winAudio = new Audio("https://soundfxcenter.com/music/television-theme-songs/8d82b5_Inspector_Gadget_Ending_Theme_Song.mp3");
+let loseAudio = new Audio("#");
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = "";
@@ -234,8 +230,7 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret =
-    charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
 // This function to start (and restart) the game
@@ -283,13 +278,9 @@ const alertUserOfAnswer = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
   if (keep) {
-    alert(
-      `Yes, the person has ${value} in the category ${category}! Keep all the people with ${value} in ${category}`
-    );
+    alert(`Yes, the person has ${value} in the category ${category}! Keep all the people with ${value} in ${category}`);
   } else {
-    alert(
-      `No, the person doesn't have ${value} in the category ${category}! Remove all people with ${value} in category ${category}`
-    );
+    alert(`No, the person doesn't have ${value} in the category ${category}! Remove all people with ${value} in category ${category}`);
   }
 };
 
@@ -298,23 +289,15 @@ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   if (Array.isArray(secret[category])) {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) =>
-        person[category].includes(value)
-      );
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
-      charactersInPlay = charactersInPlay.filter(
-        (person) => !person[category].includes(value)
-      );
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   } else {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] === value
-      );
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] !== value
-      );
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   }
   generateBoard();
@@ -325,9 +308,7 @@ const guess = (personToConfirm) => {
   let personToCheck = personToConfirm;
   // store the interaction from the player in a variable.
   // remember the confirm() ?
-  let userConfirmed = window.confirm(
-    `Do you want to guess ${personToConfirm}?`
-  );
+  let userConfirmed = window.confirm(`Do you want to guess ${personToConfirm}?`);
   // If the player wants to guess, invoke the checkMyGuess function.
   if (userConfirmed) {
     checkMyGuess(personToCheck);
@@ -345,14 +326,12 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseSection.style.display = "block";
     board.style.display = "none";
     winAudio.play();
-    winOrLoseText.innerHTML =
-      "Congratulations 🙌 inspector!!! you identified the secret person!";
+    winOrLoseText.innerHTML = "Congratulations 🙌 inspector!!! you identified the secret person!";
   } else {
     winOrLoseSection.style.display = "block";
     board.style.display = "none";
     loseAudio.play();
-    winOrLoseText.innerHTML =
-      "Sorry 🙁 inspector this is not the secret person, but don't give up and try again";
+    winOrLoseText.innerHTML = "Sorry 🙁 inspector this is not the secret person, but don't give up and try again";
   }
 };
 // 3. Show the win or lose section

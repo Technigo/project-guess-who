@@ -13,14 +13,10 @@ body {
 }
 
 #clickcounter {
-	
 	font-weight: bold;
 	background-color: transparent;
-	position: fixed;
+
 	margin-left: 19%;
-	
-	
-	
 }
 #clickcounter:hover {
 	color: var(--primary);
@@ -29,14 +25,13 @@ body {
 
 #namehere {
 	width: 95%;
-	margin: 5% 0  5% 0;
+	margin: 5% 0 5% 0;
 	text-align: center;
 	color: var(--primary);
 	font-weight: bold;
 	font-size: 1.5em;
 	padding: 1px 0 0 0;
 }
-
 
 h1 {
 	font-size: 43px;
@@ -53,7 +48,6 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	padding: 5vw;
-	
 }
 
 select {
@@ -72,24 +66,24 @@ select {
 }
 
 .board-wrapper {
-	width: 70%;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 .game-board {
-	width: 90%;
+	width: 80%;
 	max-width: 882px;
 	display: grid;
-	grid-template-columns: repeat(6, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 /****** CARD ******/
 .card {
-	width: 155px;
-	height: 160px;
+	width: 50%;
+	height: 50%;
 	overflow: hidden;
 	border: 3px solid var(--secondary);
 	border-radius: 4px;
@@ -146,10 +140,9 @@ button {
 	font-size: 16px;
 	font-family: "Montserrat";
 	font-weight: bold;
-	
+
 	padding: 17px 20px;
 	cursor: pointer;
-	
 }
 
 .small {
@@ -162,16 +155,12 @@ button {
 	position: absolute;
 	margin-top: -70px;
 	width: 10%;
-
-	
-	
 }
 
 .filled-button,
 .outlined-button:hover {
 	background-color: var(--primary);
 	color: white;
-	
 }
 
 .filled-button:hover {
@@ -217,10 +206,13 @@ button {
 		flex-direction: column;
 	}
 
+
 	.question-section {
 		width: 100%;
 		min-height: 0;
 	}
+
+
 	button {
 		padding: 8px 16px;
 	}
@@ -234,12 +226,11 @@ button {
 	}
 
 	.board-wrapper {
-		width: 100%;
+		width: 90%;
 	}
 
 	.game-board {
 		width: 100%;
-		max-width: 750px;
 	}
 
 	.card {

@@ -263,10 +263,10 @@ const name = () =>{
 	addName.value=""
 	nameOfGamer.innerText = `Welcome ${addName}`
 
-}
+} 
 
 
-functionSound  = () => {
+const functionSound  = () => {
 	let audio = document.createElement("audio");
 	audio.src = "./audio/sound.wav";
 	

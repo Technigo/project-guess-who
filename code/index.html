@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,14 +12,16 @@
     />
   </head>    
   <body>
+  
+
     <aside class="question-section">
 
 
 <p id="namehere"></p>
       
-
-
-  
+<div class="clickcounter-div">
+<p id="clickcounter" class="outlined-button"></p>
+</div>
        <img
         class="guess-who-icon"
         src="images/guess-who-bubble.png"
@@ -26,7 +29,7 @@
       />
 
       <h1>Does the person have</h1>
-      <p id="clickcounter" class="outlined-button"></p>
+     
 
       <select id="questions">
         
@@ -78,6 +81,7 @@
     </aside>
 
     <section class="board-wrapper">
+
       <main class="game-board" id="board"></main>
      
     </section>
@@ -94,6 +98,7 @@
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
+  
     <script src="script.js"> </script>
   </body>
 </html>

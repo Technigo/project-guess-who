@@ -1,10 +1,16 @@
 /* Global css variables used for colors */
-:root {
+/* :root {
   --primary: #5E8B7E;
   --secondary: #A7C4BC;
+} */
+
+:root {
+  --primary: #ECAC5D;
+  --secondary: #007561;
 }
 
 body {
+  position: relative;
   display: flex;
   margin: 0;
   padding: 0;
@@ -172,7 +178,9 @@ button {
 
 .win-or-lose img {
   align-self: flex-start;
-  margin-left: 15%;
+  /* margin-left: 15%; */
+  width: 250px;
+  height: auto;
 }
 
 .win-or-lose h1 {

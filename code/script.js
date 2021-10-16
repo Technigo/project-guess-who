@@ -244,7 +244,6 @@ const start = () => {
 
   // Selects a secret person
   setSecret()
-  console.log(secret)
 
   // The player selects a question
   selectQuestion()
@@ -374,11 +373,11 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     pauseBackgroundMusic()
     alert("We have a winner! Well done!");
-    winOrLose.style.display='block';
+    winOrLose.style.display='flex';
   }
   else {
     alert("Computer says no. Game over!");
-    winOrLose.style.display='block';
+    winOrLose.style.display='flex';
     pauseBackgroundMusic()
   }
 }

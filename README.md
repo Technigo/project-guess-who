@@ -1,11 +1,11 @@
 # Project Name
 
-Guess-who-project.
+A javacsript project build on the game "Guess Who".
 
-Adding stuff to the guess-who-project to make it work, by -using Arrays in JavaScript, forEach-loops objects closures and scope in JavaScript.
+I used Arrays in JavaScript, forEach-loops objects closures and scope.
 
 ## The problem
-Time was my problem.
+
 If I hade more time i would use my own pictures.
 
 ## View it live

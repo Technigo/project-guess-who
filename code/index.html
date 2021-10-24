@@ -12,78 +12,80 @@
     />
   </head>
   <body>
-    <aside class="question-section">
-      <button id="restart" class="outlined-button">STARTA OM</button>
+    <main class="container">
+      <aside class="question-section">
+        <button id="restart" class="outlined-button">STARTA OM</button>
 
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
-
-      <h1>HAR DIN POKEMON..</h1>
-
-      <select id="questions">
-        <optgroup label="color">
-          <option value="" disabled selected hidden>FRÅGA OM</option>
-          <option value="GUL">GUL</option>
-          <option value="TURKOS">TURKOS</option>
-          <option value="BLÅ">BLÅ</option>
-          <option value="RÖD/ROSA">RÖD/ROSA</option>
-          <option value="ORANGE">ORANGE</option>
-          <option value="VIT">VIT</option>
-          <option value="BRUN">BRUN</option>
-          <option value="GRÅ">GRÅ</option>
-          <!-- Add the rest of hair colors as options  -->
-        </optgroup>
-        <optgroup label="eyes">
-          <option value="SVARTA">SVARTA ÖGON</option>
-          <option value="RÖDA">RÖDA ÖGON</option>
-          <option value="BLÅA">BLÅA/GRÖNA ÖGON</option>
-          <!-- Add the rest of eye colors as options  -->
-        </optgroup>
-        <optgroup label="element">
-          <option value="DRAKE">DRAKE</option>
-          <option value="ELD">ELD</option>
-          <option value="ELEKTRISK">ELEKTRISK</option>
-          <option value="FLYGANDE">FLYGANDE</option>
-          <option value="GIFT">GIFT</option>
-          <option value="GRÄS">GRÄS</option>
-          <option value="INSEKT">INSEKT</option>
-          <option value="IS">IS</option>
-          <option value="MARK">MARK</option>
-          <option value="MÖRKER">MÖRKER</option>
-          <option value="NORMAL">NORMAL</option>
-          <option value="PSYKISK">PSYKISK</option>
-          <option value="SPÖkE">SPÖKE</option>
-          <option value="VATTEN">VATTEN</option>
-
-          <!-- Add the other accessory option here. (hat)  -->
-        </optgroup>
-        <optgroup label="other">
-          <option value="HORN">HORN</option>
-        </optgroup>
-      </select>
-
-      <button id="filter" class="filled-button">FRÅGA</button>
-    </aside>
-
-    <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
-    </section>
-
-    <section id="winOrLose" class="win-or-lose-wrapper">
-      <div class="win-or-lose">
         <img
           class="guess-who-icon"
-          src="https://media.giphy.com/media/IRFQYGCokErS0/giphy.gif"
+          src="images/guess-who-bubble.png"
           alt="Guess Who"
         />
 
-        <h1 id="winOrLoseText"></h1>
-        <button id="playAgain" class="filled-button">SPELA IGEN</button>
-      </div>
-    </section>
+        <h1>HAR DIN POKEMON..</h1>
+
+        <select id="questions">
+          <optgroup label="color">
+            <option value="" disabled selected hidden>FRÅGA OM</option>
+            <option value="GUL">GUL</option>
+            <option value="TURKOS">TURKOS</option>
+            <option value="BLÅ">BLÅ</option>
+            <option value="RÖD/ROSA">RÖD/ROSA</option>
+            <option value="ORANGE">ORANGE</option>
+            <option value="VIT">VIT</option>
+            <option value="BRUN">BRUN</option>
+            <option value="GRÅ">GRÅ</option>
+            <!-- Add the rest of hair colors as options  -->
+          </optgroup>
+          <optgroup label="eyes">
+            <option value="SVARTA">SVARTA ÖGON</option>
+            <option value="RÖDA">RÖDA ÖGON</option>
+            <option value="BLÅA">BLÅA/GRÖNA ÖGON</option>
+            <!-- Add the rest of eye colors as options  -->
+          </optgroup>
+          <optgroup label="element">
+            <option value="DRAKE">DRAKE</option>
+            <option value="ELD">ELD</option>
+            <option value="ELEKTRISK">ELEKTRISK</option>
+            <option value="FLYGANDE">FLYGANDE</option>
+            <option value="GIFT">GIFT</option>
+            <option value="GRÄS">GRÄS</option>
+            <option value="INSEKT">INSEKT</option>
+            <option value="IS">IS</option>
+            <option value="MARK">MARK</option>
+            <option value="MÖRKER">MÖRKER</option>
+            <option value="NORMAL">NORMAL</option>
+            <option value="PSYKISK">PSYKISK</option>
+            <option value="SPÖkE">SPÖKE</option>
+            <option value="VATTEN">VATTEN</option>
+
+            <!-- Add the other accessory option here. (hat)  -->
+          </optgroup>
+          <optgroup label="other">
+            <option value="HORN">HORN</option>
+          </optgroup>
+        </select>
+
+        <button id="filter" class="filled-button">FRÅGA</button>
+      </aside>
+
+      <section class="board-wrapper">
+        <main class="game-board" id="board"></main>
+      </section>
+
+      <section id="winOrLose" class="win-or-lose-wrapper">
+        <div class="win-or-lose">
+          <img
+            class="guess-who-icon"
+            src="https://media.giphy.com/media/IRFQYGCokErS0/giphy.gif"
+            alt="Guess Who"
+          />
+
+          <h1 id="winOrLoseText"></h1>
+          <button id="playAgain" class="filled-button">SPELA IGEN</button>
+        </div>
+      </section>
+    </main>
     <footer class="footer">
       <p>© 2021 Elin Elmvik Dicfalusy</p>
       <p>Student project for Technigo</p>

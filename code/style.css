@@ -19,6 +19,10 @@ h1 {
   color: white;
 }
 
+.container {
+  display: flex;
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -209,6 +213,11 @@ button {
 
 @media (max-width: 768px) {
   body {
+    flex-direction: column;
+  }
+
+  .container {
+    display: flex;
     flex-direction: column;
   }
 

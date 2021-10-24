@@ -8,7 +8,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0 0 100px 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 h1 {
@@ -34,11 +34,11 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   color: black;
   width: 100%;
   margin: 24px 0;
-  padding: 10px
+  padding: 10px;
 }
 
 .guess-who-icon {
@@ -118,7 +118,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -126,7 +126,6 @@ button {
 
 .small {
   padding: 8px 16px;
-  
 }
 
 .outlined-button {
@@ -135,23 +134,21 @@ button {
   align-self: center;
   margin: 4vh 0;
   width: 100%;
- 
 }
 
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color:black;
+  color: black;
   align-self: center;
   margin: 4vh 0;
-  width: 100%
+  width: 100%;
 }
 
 .filled-button:hover {
   background-color: var(--primary);
   border-color: white;
   color: white;
-  
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -171,8 +168,12 @@ button {
 }
 
 @keyframes win {
-  from {background:var(--primary);}
-  to {background: var(--secondary);}
+  from {
+    background: var(--primary);
+  }
+  to {
+    background: var(--secondary);
+  }
 }
 
 .win-or-lose {
@@ -187,16 +188,13 @@ button {
 .win-or-lose img {
   align-self: center;
   width: 200px;
-
-  
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
- 
 }
 
-.footer{
+.footer {
   background-color: rgba(0, 0, 0, 0.5);
   color: var(--primary);
   padding-left: 20px;
@@ -206,15 +204,11 @@ button {
   left: 0;
   width: 100%;
   height: 100px;
-  
-  
 }
 
 @media (max-width: 768px) {
- 
   body {
     flex-direction: column;
-    
   }
 
   .question-section {
@@ -223,7 +217,6 @@ button {
   }
   button {
     padding: 8px 16px;
-    
   }
   h1 {
     font-size: 24px;

@@ -204,6 +204,7 @@ button {
   left: 0;
   width: 100%;
   height: 100px;
+  margin-top: auto;
 }
 
 @media (max-width: 768px) {
@@ -259,5 +260,10 @@ button {
     background: var(--primary);
     color: white;
     border: none;
+  }
+
+  .footer {
+    position: inherit;
+    margin-top: auto;
   }
 }

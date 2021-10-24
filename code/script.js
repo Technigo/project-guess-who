@@ -247,8 +247,8 @@ const selectQuestion = () => {
   const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
-    category: category,
-    value: value,
+    category,
+    value,
   };
   checkQuestion();
 };

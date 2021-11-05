@@ -108,8 +108,8 @@ width: 200px;
 
 .card img{
 
-	height: 200px;
-	width: 200px;
+	height: 100%;
+	width: 100%;
 
 }
 
@@ -250,11 +250,7 @@ margin: 20px;
 		width: 51px;
 	}
 
-	.board-wrapper {
-		width: 100%;
-	display: flex;
-	align-content: center;
-	}
+	
 
 	.game-board {
 	width: 100%;
@@ -266,22 +262,7 @@ margin: 20px;
 	
 	}
 
-	.card {
-		width: 100%;
-		height: 100%;
-		align-content: center;
-		justify-content: center;
-		position: relative;
-		flex-direction: column;
-	
-	}
 
-	.card img{
-
-		height: 100%;
-		width: 100%;
-		
-		}
 
 
 
@@ -323,21 +304,8 @@ margin: 20px;
 		align-items: center;
 	}
 
-	.card {
-		width: 100%;
-		align-content: center;
-		justify-content: center;
-		position: relative;
-		flex-direction: column;
-	
-	}
 
-	.card img{
 
-		height: 100%;
-		width: 100%;
-		
-		}
 	
 
 

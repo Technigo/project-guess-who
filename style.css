@@ -258,9 +258,11 @@ margin: 20px;
 
 	
 	.board-wrapper{
-		width: 100%;
+		width: 99%;
 		height: 100%;
 	padding: 10px 0px;
+		justify-content: center;
+		align-items: center;
 	
 	}
 	
@@ -310,9 +312,11 @@ margin: 20px;
 		}
 
 		.board-wrapper{
-			width: 99%;
+			width: 98%;
 			height: 100%;
 		padding: 10px 0px;
+			justify-content: center;
+		align-items: center;
 		
 		}
 	

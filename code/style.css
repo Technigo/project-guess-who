@@ -81,7 +81,7 @@ h1 {
 .game-board {
 	height: 90vh;
 	display: grid;
-	grid-template-columns: repeat(6, 1fr);
+	grid-template-columns: repeat(6, 2fr);
 	grid-template-rows: 1fr 1fr 1fr 1fr;
 	grid-gap: 20px;
 	align-items: center;

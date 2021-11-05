@@ -79,14 +79,11 @@ h1 {
 
 
 .game-board {
-	height: 100vh;
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
 	grid-template-rows: 1fr 1fr 1fr 1fr;
 	grid-gap: 5px;
-	align-items: center;
-	justify-content: space-around;
-	margin: 20px;
+
 }
 
 /****** CARD ******/
@@ -95,8 +92,7 @@ h1 {
 
 
 .card {
-	width: 200px;
-	height: 200px;
+
 
 	overflow: hidden;
 	border: 3px solid var(--secondary);

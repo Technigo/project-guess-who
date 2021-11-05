@@ -310,7 +310,7 @@ margin: 20px;
 		}
 
 		.board-wrapper{
-			width: 98%;
+			width: 100%;
 			height: 100%;
 		padding: 0px;
 		
@@ -321,6 +321,7 @@ margin: 20px;
 	
 		grid-template-columns: repeat(1, 1fr);
 	   grid-gap: 10px;
+			padding-top; 10px;
 		justify-content: center;
 		align-items: center;
 	}

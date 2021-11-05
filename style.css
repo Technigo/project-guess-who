@@ -234,7 +234,7 @@ margin: 20px;
 		}
 
 	.question-section {
-		padding: 10px 1px;
+		padding:10px 0px;
 	width: 98%;
 	
 	}
@@ -260,7 +260,7 @@ margin: 20px;
 	.board-wrapper{
 		max-width: 98%;
 		height: 100%;
-	padding: 10px;
+	padding: 0px;
 	
 	}
 	
@@ -310,7 +310,7 @@ margin: 20px;
 		}
 
 		.board-wrapper{
-			width: 95%;
+			width: 98%;
 			height: 100%;
 		padding: 10px;
 		

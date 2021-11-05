@@ -320,7 +320,7 @@ margin: 20px;
 		.game-board {
 	
 		grid-template-columns: repeat(1, 1fr);
-	   grid-gap: 10px;
+	   grid-gap: 0px;
 			padding-top; 10px;
 		justify-content: center;
 		align-items: center;

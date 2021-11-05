@@ -266,7 +266,7 @@ margin: 20px;
 	
 
 	.game-board {
-	width: 100%;
+	width: 95%;
 	height: 100%;
 		grid-template-columns: repeat(2, 1fr);
 		grid-auto-rows: 1fr;

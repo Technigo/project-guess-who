@@ -316,7 +316,7 @@ margin: 20px;
 		}
 
 	.game-board {
-	width: 100%;
+
 		grid-template-columns: repeat(1, 1fr);
 	    grid-gap: 20px;
 		justify-content: center;

@@ -1,6 +1,4 @@
-# Project Name
 
-## The problem
 The project was to complete the classic game of Guess who. 
 The problem included creating an manipulate objects and arrays, using DOM and more complicated functions. Using methods like filter and forEach. 
 

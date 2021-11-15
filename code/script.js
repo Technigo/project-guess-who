@@ -246,14 +246,14 @@ function setTime() {
   minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
 }
 
-function pad(time) {
+let pad = (time) => {
   let timeString = time + "";
   if (timeString.length < 2) {
     return "0" + timeString;
   } else {
     return timeString;
   }
-}
+};
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
@@ -262,14 +262,14 @@ const setSecret = () => {
 };
 
 //Attempts counter
-function findOutCounter() {
+const findOutCounter = () => {
   updateDisplay(++counterValue);
-}
+};
 
 //Update number of guesses
-function updateDisplay(val) {
+const updateDisplay = (val) => {
   document.getElementById("counterLabel").innerHTML = val;
-}
+};
 
 const greetPlayer = () => {
   let person = prompt("Hello! What's your name?");
@@ -303,8 +303,8 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   currentQuestion = {
-    category: category,
-    value: value, // We also need a variable that stores the actual value of the question we've selected.
+    category,
+    value, // We also need a variable that stores the actual value of the question we've selected.
   };
 };
 

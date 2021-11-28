@@ -5,8 +5,8 @@ const restartButton = document.getElementById("restart")
 const findOutButton = document.getElementById("filter")
 const numberGuess = document.getElementById("number")
 
-// let guessButton = ""
-// let chosenPerson = ""
+let guessButton = ""
+let chosenPerson = ""
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -385,6 +385,11 @@ const checkMyGuess = personToCheck => {
     playAgainButton.addEventListener("click", () => {
       winOrLose.style.display = "none"
       board.style.display = "flex"
+      numberOfGuess = 0
+      numberOfQuestion = 0
+      numberGuess.innerHTML = `<p>Antal frågor: ${numberOfQuestion}</p>
+      <p>Antal gissningar: ${numberOfGuess}</p>`
+
       start()
     })
   } else {

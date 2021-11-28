@@ -1,11 +1,12 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById("board");
-const questions = document.getElementById("questions");
-const restartButton = document.getElementById("restart");
-const findOutButton = document.getElementById("filter");
+const board = document.getElementById("board")
+const questions = document.getElementById("questions")
+const restartButton = document.getElementById("restart")
+const findOutButton = document.getElementById("filter")
+const numberGuess = document.getElementById("number")
 
-let guessButton = "";
-let chosenPerson = "";
+// let guessButton = ""
+// let chosenPerson = ""
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -202,16 +203,18 @@ const CHARACTERS = [
     element: ["PSYKISK", "SPÖKE"],
     other: [],
   },
-];
+]
 
 // Global variables
-let secret;
-let currentQuestion;
-let charactersInPlay;
+let secret
+let currentQuestion
+let charactersInPlay
+let numberOfGuess = 0
+let numberOfQuestion = 0
 
 // Draw the game board
 const generateBoard = () => {
-  board.innerHTML = "";
+  board.innerHTML = ""
   charactersInPlay.forEach(person => {
     board.innerHTML += `
       <div class='card'>
@@ -223,93 +226,96 @@ const generateBoard = () => {
         </div>
       </div>
   
-    `;
-    personToConfirm = person.name;
-  });
-};
+    `
+    personToConfirm = person.name
+  })
+}
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret =
-    charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-};
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+}
 
 // This function to start (and restart) the game
 const start = () => {
-  charactersInPlay = CHARACTERS;
-  generateBoard();
-  setSecret();
-};
+  charactersInPlay = CHARACTERS
+  generateBoard()
+  setSecret()
+}
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label;
-  const value = questions.options[questions.selectedIndex].value;
+  const category = questions.options[questions.selectedIndex].parentNode.label
+  const value = questions.options[questions.selectedIndex].value
 
   currentQuestion = {
     category,
     value,
-  };
-  checkQuestion();
-};
+  }
+  checkQuestion()
+  numberOfQuestion += 1
+  numberGuess.innerHTML = `<p>Antal frågor: ${numberOfQuestion}</p>
+  <p>Antal gissningar: ${numberOfGuess}</p>`
+  console.log(numberOfGuess)
+}
 
 const checkQuestion = () => {
-  const { category, value } = currentQuestion;
+  const { category, value } = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (color/eyes or element/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "color" || category === "eyes") {
-    let secretValue = secret[currentQuestion.category];
+    let secretValue = secret[currentQuestion.category]
 
     if (secretValue === currentQuestion.value) {
-      filterCharacters(true);
+      filterCharacters(true)
       //EXEMPEL currentQuestion.category = color eller = eyes
     } else {
-      filterCharacters(false);
+      filterCharacters(false)
     }
   } else if (category === "element" || category === "other") {
-    let secretValueArray = secret[currentQuestion.category];
+    let secretValueArray = secret[currentQuestion.category]
 
     if (secretValueArray.includes(currentQuestion.value)) {
-      filterCharacters(true);
+      filterCharacters(true)
     } else {
-      filterCharacters(false);
+      filterCharacters(false)
     }
   }
-};
+}
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = keep => {
-  const { category, value } = currentQuestion; //this one gives value to the category and value, ex  'color' and 'brown'
+  const { category, value } = currentQuestion //this one gives value to the category and value, ex  'color' and 'brown'
   // Show the correct alert message for different categories
   if (category === "element") {
     if (keep) {
-      alert(`JA, pokemonen är ${value}! Spara alla som är ${value}`);
+      alert(`JA, pokemonen är ${value}! Spara alla som är ${value}`)
     } else {
-      alert(`NEJ, pokemonen är inte ${value}! Ta bort alla som är ${value}`);
+      alert(`NEJ, pokemonen är inte ${value}! Ta bort alla som är ${value}`)
     }
   } else if (category === "other") {
     if (keep) {
-      alert(`JA, pokemonen har ${value}! spara alla pokemon som har ${value}`);
-      charactersInPlay;
+      alert(`JA, pokemonen har ${value}! spara alla pokemon som har ${value}`)
+      charactersInPlay
     } else {
       alert(
         `NEJ, pokemonen har inte ${value}! Ta bort alla pokemon med  ${value}`
-      );
+      )
     }
   } else {
     // HAIR QUESTION!
     if (keep) {
       alert(
         `JA, pokemonen har ${value} ${category} ! Spara alla pokemon som har ${value} ${category} `
-      );
+      )
 
       // alert popup that says something like: 'Yes, the person has yellow color! Keep all people with yellow color'
     } else {
       alert(
         `Nej, pokemonen har inte ${value} ${category} ! Ta bort alla pokemon som har ${value} ${category} `
-      );
+      )
       // alert popup that says something like: 'No, the person doesnt have yellow color! Remove all people with yellow color'
     }
   }
@@ -322,40 +328,43 @@ const filterCharacters = keep => {
     if (keep) {
       charactersInPlay = charactersInPlay.filter(
         person => person[currentQuestion.category] === currentQuestion.value
-      );
+      )
     } else {
       // or
       charactersInPlay = charactersInPlay.filter(
         person => person[currentQuestion.category] !== currentQuestion.value
-      );
+      )
     }
   } else if (category === "element" || category === "other") {
     if (keep) {
       charactersInPlay = charactersInPlay.filter(person =>
         person[category].includes(value)
-      );
+      )
     } else {
       charactersInPlay = charactersInPlay.filter(
         person => !person[category].includes(value)
-      );
+      )
     }
   }
 
-  generateBoard();
-};
+  generateBoard()
+}
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = personToConfirm => {
   let confirmedPerson = confirm(
-    `Vill du verkligen gissa på ${personToConfirm}`
-  );
+    `VILL DU VERKLIGEN GISSA PÅ ${personToConfirm}?`
+  )
 
   if (confirmedPerson === true) {
-    checkMyGuess(personToConfirm);
+    checkMyGuess(personToConfirm)
+    numberOfGuess += 1
+    numberGuess.innerHTML = `<p>Antal frågor: ${numberOfQuestion}</p>
+    <p>Antal gissningar: ${numberOfGuess}</p>`
   } else {
-    alert("FÖRSÖK IGEN!");
+    alert("FORTSÄTT SPELA!")
   }
-};
+}
 
 // FOR PERSON TO CONFIRM store the interaction from the player in a variable.
 // remember the confirm() ?
@@ -364,28 +373,33 @@ const guess = personToConfirm => {
 
 const checkMyGuess = personToCheck => {
   if (secret.name === personToCheck) {
-    const winOrLose = document.getElementById("winOrLose");
-    winOrLose.style.display = "flex";
+    const winOrLose = document.getElementById("winOrLose")
+    winOrLose.style.display = "flex"
 
-    const winOrLoseText = document.getElementById("winOrLoseText");
+    const winOrLoseText = document.getElementById("winOrLoseText")
     winOrLoseText.innerHTML = `<p>DU ÄR EN STJÄRNA</p>
-    <p> ${personToCheck} var den hemliga pokemonen!<p/>`;
-    board.style.display = "none";
+    <p> ${personToCheck} var den hemliga pokemonen!<p/>`
+    board.style.display = "none"
 
-    const playAgainButton = document.getElementById("playAgain");
+    const playAgainButton = document.getElementById("playAgain")
     playAgainButton.addEventListener("click", () => {
-      winOrLose.style.display = "none";
-      board.style.display = "flex";
-      start();
-    });
+      winOrLose.style.display = "none"
+      board.style.display = "flex"
+      start()
+    })
   } else {
-    alert("ÅH NEEEEEJ, DU FÅR FÖRSÖKA IGEN");
+    alert("ÅH NEJ FEL! DU FÅR FÖRSÖKA IGEN")
+
+    charactersInPlay = charactersInPlay.filter(
+      pokemon => pokemon.name !== personToCheck
+    )
   }
-};
+  generateBoard()
+}
 
 // Invokes the start function when website is loaded
-start();
+start()
 
 // All the event listeners
-restartButton.addEventListener("click", start);
-findOutButton.addEventListener("click", selectQuestion);
+restartButton.addEventListener("click", start)
+findOutButton.addEventListener("click", selectQuestion)

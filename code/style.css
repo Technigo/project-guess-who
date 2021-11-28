@@ -8,21 +8,26 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding: 0 0 100px 0;
-  font-family: "Montserrat", sans-serif;
-  height: 100vh;
+
+  font-family: raleway;
+  min-height: 100vh;
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 36px;
   font-weight: 500;
-  line-height: 48px;
+  line-height: 42px;
   margin: 10px 0;
-  color: white;
 }
 
 .container {
   display: flex;
+}
+
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .question-section {
@@ -48,14 +53,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 100%;
-}
-
-.board-wrapper {
-  width: 70%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 50%;
 }
 
 .game-board {
@@ -205,13 +203,20 @@ button {
   color: var(--primary);
   padding-left: 20px;
   display: block;
-  width: 100%;
   margin-top: auto;
 }
 
 @media (max-width: 768px) {
   body {
     flex-direction: column;
+    padding: 0;
+  }
+
+  .board-wrapper {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .container {
@@ -226,14 +231,19 @@ button {
   button {
     padding: 8px 16px;
   }
+
+  .outlined-button,
+  .filled-button {
+    margin: 1vh 0;
+  }
   h1 {
     font-size: 24px;
     line-height: 30px;
   }
 
   .guess-who-icon {
-    width: 180px;
-    margin: 2vh;
+    width: 70px;
+    margin: 2vh 20px 1vh 0;
   }
 
   .board-wrapper {
@@ -267,5 +277,13 @@ button {
     background: var(--primary);
     color: white;
     border: none;
+  }
+
+  .game-board {
+    justify-content: center;
+  }
+
+  .intro-container {
+    flex-direction: row;
   }
 }

@@ -15,7 +15,7 @@ const CHARACTERS = [
     hair: "hidden",
     eyes: "hidden",
     accessories: ["glasses", "hat", "sunglasses"],
-    other: ["female"],
+    other: ["female"]
   },
   {
     name: "Jack",
@@ -23,7 +23,7 @@ const CHARACTERS = [
     hair: "hidden",
     eyes: "blue",
     accessories: ["hat"],
-    other: ["beard", "male"],
+    other: ["beard", "male"]
   },
   {
     name: "Jacques",
@@ -31,7 +31,7 @@ const CHARACTERS = [
     hair: "grey",
     eyes: "blue",
     accessories: ["hat"],
-    other: ["smoker", "beard", "male"],
+    other: ["smoker", "beard", "male"]
   },
   {
     name: "Jai",
@@ -39,7 +39,7 @@ const CHARACTERS = [
     hair: "black",
     eyes: "brown",
     accessories: [],
-    other: ["male"],
+    other: ["male"]
   },
   {
     name: "Jake",
@@ -47,7 +47,7 @@ const CHARACTERS = [
     hair: "yellow",
     eyes: "green",
     accessories: ["glasses"],
-    other: ["male"],
+    other: ["male"]
   },
   {
     name: "James",
@@ -55,7 +55,7 @@ const CHARACTERS = [
     hair: "brown",
     eyes: "green",
     accessories: ["glasses", "sunglasses"],
-    other: ["male"],
+    other: ["male"]
   },
   {
     name: "Jana",
@@ -63,7 +63,7 @@ const CHARACTERS = [
     hair: "black",
     eyes: "hidden",
     accessories: ["glasses", "sunglasses"],
-    other: ["female"],
+    other: ["female"]
   },
   {
     name: "Jane",
@@ -71,7 +71,7 @@ const CHARACTERS = [
     hair: "yellow",
     eyes: "hidden",
     accessories: ["glasses"],
-    other: ["female"],
+    other: ["female"]
   },
   {
     name: "Jaqueline",
@@ -79,7 +79,7 @@ const CHARACTERS = [
     hair: "orange",
     eyes: "green",
     accessories: ["glasses"],
-    other: ["female"],
+    other: ["female"]
   },
 
   {
@@ -88,7 +88,7 @@ const CHARACTERS = [
     hair: "purple",
     eyes: "hidden",
     accessories: ["glasses", "sunglasses"],
-    other: ["smoker", "female"],
+    other: ["smoker", "female"]
   },
   {
     name: "Jean",
@@ -96,7 +96,7 @@ const CHARACTERS = [
     hair: "brown",
     eyes: "blue",
     accessories: ["glasses", "hat"],
-    other: ["smoker", "male"],
+    other: ["smoker", "male"]
   },
   {
     name: "Jeane",
@@ -104,7 +104,7 @@ const CHARACTERS = [
     hair: "brown",
     eyes: "green",
     accessories: ["glasses"],
-    other: ["female"],
+    other: ["female"]
   },
   {
     name: "Jed",
@@ -112,7 +112,7 @@ const CHARACTERS = [
     hair: "orange",
     eyes: "green",
     accessories: ["glasses", "hat"],
-    other: ["smoker", "beard", "male"],
+    other: ["smoker", "beard", "male"]
   },
   {
     name: "Jenni",
@@ -120,7 +120,7 @@ const CHARACTERS = [
     hair: "white",
     eyes: "hidden",
     accessories: ["hat"],
-    other: ["female"],
+    other: ["female"]
   },
   {
     name: "Jeri",
@@ -128,7 +128,7 @@ const CHARACTERS = [
     hair: "orange",
     eyes: "green",
     accessories: ["glasses"],
-    other: ["female"],
+    other: ["female"]
   },
   {
     name: "Jerry",
@@ -136,7 +136,7 @@ const CHARACTERS = [
     hair: "hidden",
     eyes: "blue",
     accessories: ["hat"],
-    other: ["male"],
+    other: ["male"]
   },
   {
     name: "Jess",
@@ -144,7 +144,7 @@ const CHARACTERS = [
     hair: "black",
     eyes: "blue",
     accessories: ["glasses"],
-    other: ["female"],
+    other: ["female"]
   },
   {
     name: "Jocelyn",
@@ -152,7 +152,7 @@ const CHARACTERS = [
     hair: "black",
     eyes: "brown",
     accessories: ["glasses"],
-    other: ["female"],
+    other: ["female"]
   },
   {
     name: "Jon",
@@ -160,7 +160,7 @@ const CHARACTERS = [
     hair: "brown",
     eyes: "green",
     accessories: ["glasses"],
-    other: ["male"],
+    other: ["male"]
   },
   {
     name: "Jordan",
@@ -168,7 +168,7 @@ const CHARACTERS = [
     hair: "yellow",
     eyes: "hidden",
     accessories: ["glasses", "hat", "sunglasses"],
-    other: ["male"],
+    other: ["male"]
   },
   {
     name: "Josephine",
@@ -176,7 +176,7 @@ const CHARACTERS = [
     hair: "grey",
     eyes: "brown",
     accessories: [],
-    other: ["female"],
+    other: ["female"]
   },
   {
     name: "Josh",
@@ -184,7 +184,7 @@ const CHARACTERS = [
     hair: "yellow",
     eyes: "green",
     accessories: [],
-    other: ["male"],
+    other: ["male"]
   },
   {
     name: "Jude",
@@ -192,7 +192,7 @@ const CHARACTERS = [
     hair: "black",
     eyes: "green",
     accessories: [],
-    other: ["beard", "male"],
+    other: ["beard", "male"]
   },
   {
     name: "Julie",
@@ -200,8 +200,8 @@ const CHARACTERS = [
     hair: "black",
     eyes: "brown",
     accessories: ["glasses", "hat"],
-    other: ["female"],
-  },
+    other: ["female"]
+  }
 ];
 
 // Global variables
@@ -209,7 +209,7 @@ let secret;
 let currentQuestion;
 let charactersInPlay;
 
-let winAudio = new Audio("https://instrumentalfx.co/wp-content/upload/11/Inspector-Gadget-Theme-Song.mp3?_=2");
+let winAudio = new Audio("https://mingosounds.com/wp-content/uploads/2021/01/inspector_gadget.mp3");
 let loseAudio = new Audio("https://vgmsite.com/soundtracks/inspector-gadget-snes/qidhguiyzn/17%20Game%20Over.mp3");
 
 // Draw the game board
@@ -254,7 +254,7 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    value: value,
+    value: value
   };
 };
 

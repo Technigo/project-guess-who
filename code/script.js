@@ -18,7 +18,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat', 'green shirt'],
+    accessories: ['glasses', 'hat', 'a green shirt'],
     other: [],
   },
   {
@@ -50,7 +50,7 @@ const CHARACTERS = [
     img: 'images/jake.svg',
     hair: 'yellow',
     eyes: 'green',
-    accessories: ['glasses', 'green shirt'],
+    accessories: ['glasses', 'a green shirt'],
     other: [],
   },
   {
@@ -66,7 +66,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses', 'green shirt'],
+    accessories: ['glasses', 'a green shirt'],
     other: [],
   },
   {
@@ -82,7 +82,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'green shirt'],
+    accessories: ['glasses', 'a green shirt'],
     other: [],
   },
 
@@ -131,7 +131,7 @@ const CHARACTERS = [
     img: 'images/jeri.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'green shirt'],
+    accessories: ['glasses', 'a green shirt'],
     other: ['hair bun'],
   },
   {
@@ -155,7 +155,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'green shirt'],
+    accessories: ['glasses', 'a green shirt'],
     other: ['hair bun'],
   },
   {
@@ -203,7 +203,7 @@ const CHARACTERS = [
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'hat', 'green shirt'],
+    accessories: ['glasses', 'hat', 'a green shirt'],
     other: [],
   },
 ];
@@ -238,22 +238,19 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
-// This function to start (and restart) the game-GOTOV KORAK POVEZAN SA EVENTLISTENEROM RESTARTbutton
+// This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
-  generateBoard(); // moja promjena
-  setSecret(); // moja promjena
+  generateBoard();
+  setSecret();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.value;
-
-  console.log(category); ///za izbor pitanja
-  console.log(value);
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -305,28 +302,25 @@ const filterCharacters = (keep) => {
     ///smoking habit
     if (keep) {
       alert(
-        `Yes, the character is a ${value}! Keep all the people that are a ${value}.`
+        `Yes, the character has a  ${value}! Keep all the people that have a ${value}.`
       );
     } else {
       alert(
-        `No, the character is not a ${value}! Remove all the people that are a ${value}.`
+        `No, the character doesnt have a ${value}! Remove all the people that have a ${value}.`
       );
     }
   } else {
     ///hair selection
-
     if (keep) {
       alert(
-        `Yes, the character has ${
-          value + '' + category
-        }! Keep all the characters that have ${value + '' + category} hair.`
+        `Yes, the character has ${value} ! Keep all the characters that have ${value}.`
       );
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
       alert(
         `No, the character doesnt have ${
           value + '' + category
-        }! Remove all the characters that have ${value + '' + category} hair.`
+        }! Remove all the characters that have ${value + '' + category}.`
       );
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }

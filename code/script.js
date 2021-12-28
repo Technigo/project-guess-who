@@ -1,6 +1,7 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const findOut = document.getElementById('filter')
+const gameTimer = document.getElementById('timer')
 const playAgain = document.getElementById('playAgain')
 const questions = document.getElementById('questions')
 const winOrLose = document.getElementById('winOrLose')
@@ -318,41 +319,25 @@ const start = () => {
   questions.selectedIndex = '0'
   generateBoard()
   setSecret()
+  startTimer()
 }
 
   /* a function to reload the page
   invoked by the 'restart' and 'play again' button
   due to timer otherwise not resetting
   (ie i currently couldn't find a way) */
-function reload() {
-  window.location.reload();
-  return false;
+// function reload() {
+//   window.location.reload();
+//   return false;
+// }
+
+const startTimer = () => {
+  time = Date.now()
+  setInterval(() => {
+    elapsedTime = Math.floor((Date.now() - time) / 1000)
+    gameTimer.innerHTML = `${elapsedTime}`
+  }, 1000)
 }
-
-  /* timer function
-  first saves the current time upon load and stores it
-  then a function to calculate and 'start' the timer
-  with some variables to create a mm:ss output */
-let startTime = Math.floor(Date.now() / 1000);
-localStorage.setItem("startTime", startTime)
-
-function startTimeCounter() {
-  let now = Math.floor(Date.now() / 1000);
-  let diff = now - startTime;
-  let m = Math.floor(diff / 60);
-  let s = Math.floor(diff % 60);
-  m = checkTime(m);
-  s = checkTime(s);
-  document.getElementById("timer").innerHTML = m + ":" + s;
-  let t = setTimeout(startTimeCounter, 1000)
-}
-
-function checkTime(i) {
-  if (i < 10) {i = "0" + i};
-  return i;
-}
-
-startTimeCounter()
 
   /* function to count guesses when clicking 'find out' button */
 let guesses = 0;

@@ -323,6 +323,7 @@ const start = () => {
   setSecret()
 }
 
+  /* timer function that gets invoked upon start */
 const startTimer = () => {
   time = Date.now()
   setInterval(() => {
@@ -330,14 +331,6 @@ const startTimer = () => {
     gameTimer.innerHTML = `${elapsedTime}`
   }, 1000)
 }
-
-  /* function to count guesses when clicking 'find out' button */
-// let guesses = 0;
-
-// function onClick() {
-//   guesses += 1;
-//   document.getElementById("guesses").innerHTML = "Guesses: " + guesses;
-// }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {

@@ -463,7 +463,11 @@ const checkMyGuess = (suspect) => {
 
 start()
 
-playAgain.addEventListener('click', reload)
-restartButton.addEventListener('click', reload)
+playAgain.addEventListener('click', () => {
+  start()
+})
+restartButton.addEventListener('click', () => {
+  start()
+})
 findOut.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)

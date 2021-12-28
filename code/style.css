@@ -45,7 +45,7 @@ select {
   width: 126px;
 }
 
-#game-time, #guesses {
+#game-time, #game-guess {
   color: white;
   padding-top: 24px;
   font-size: 22px;

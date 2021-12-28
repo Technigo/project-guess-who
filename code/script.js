@@ -5,6 +5,7 @@ const gameTimer = document.getElementById('timer')
 const playAgain = document.getElementById('playAgain')
 const questions = document.getElementById('questions')
 const winOrLose = document.getElementById('winOrLose')
+const guessCounter = document.getElementById('guesses')
 const restartButton = document.getElementById('restart')
 const winOrLoseText = document.getElementById('winOrLoseText')
 
@@ -279,6 +280,7 @@ const CHARACTERS = [
 
 // Global variables
 let secret
+let guesses = 0
 let currentQuestion
 let charactersInPlay
 
@@ -305,8 +307,6 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-
-
   /* starts the game and
   uses all of the characters from the array
   (re)sets the board, guess panel and selection
@@ -315,21 +315,13 @@ const setSecret = () => {
 const start = () => {
   charactersInPlay = CHARACTERS
   board.style.display = 'flex'
-  winOrLose.style.display = 'none'
+  guessCounter.innerHTML = `0`
   questions.selectedIndex = '0'
+  winOrLose.style.display = 'none'
   generateBoard()
-  setSecret()
   startTimer()
+  setSecret()
 }
-
-  /* a function to reload the page
-  invoked by the 'restart' and 'play again' button
-  due to timer otherwise not resetting
-  (ie i currently couldn't find a way) */
-// function reload() {
-//   window.location.reload();
-//   return false;
-// }
 
 const startTimer = () => {
   time = Date.now()
@@ -340,12 +332,12 @@ const startTimer = () => {
 }
 
   /* function to count guesses when clicking 'find out' button */
-let guesses = 0;
+// let guesses = 0;
 
-function onClick() {
-  guesses += 1;
-  document.getElementById("guesses").innerHTML = "Guesses: " + guesses;
-}
+// function onClick() {
+//   guesses += 1;
+//   document.getElementById("guesses").innerHTML = "Guesses: " + guesses;
+// }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -388,7 +380,8 @@ const checkQuestion = () => {
 }
 
   /* [...]
-  depending on outcome print output in an alert box and
+  depending on outcome print output in an alert box,
+  update the number of guesses and
   finally re-draw the board by keeping or removing characters */
 const filterCharacters = (isGuessCorrect) => {
   const { attribute, value, category } = currentQuestion
@@ -431,6 +424,8 @@ const filterCharacters = (isGuessCorrect) => {
   else {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
   }
+  guesses++
+  guessCounter.innerHTML = guesses
   generateBoard()
 }
 

@@ -1,12 +1,14 @@
 # Project Name
 
-Bulding the game Guess Who? using HTML, CSS and JavaScript.
+This project was to create a piece of the classic board game Guess Who using HTML, CSS and JavaScript.
 
 ## The problem
 
-I approached the project step by step, slowly and surely working my way through each step. A lot of research and problem solving and in the end I managed to accomplish what I did with the help of my team, as we really worked together and spent this week helping each other out.
-
-If I had more time I would have changed more of the styling, added a timer, counter and sound effects. But I am happy with what I have and proud I was able to accomplish it. 
+- The board with characters is generated when the website is loaded.
+- A randomly selected person is be set as the secret when the game starts.
+- The player can then select questions to ask about the people and filter the board based on those questions.
+- The player receives feedback with alerts
+- The player can guess the secret person and get an answer if it's correct or not.
 
 
 ## View it live

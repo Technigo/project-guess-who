@@ -15,11 +15,9 @@ const span = document.getElementsByClassName("close")[0];
 
 // when you open the page this is the first you see
 window.onload = () => {
-
   startWindow.style.display = 'flex' // showing start window 
   document.getElementsByClassName('question-section')[0].style.display = 'none'
   start()
-
 }
 
 

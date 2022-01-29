@@ -16,7 +16,7 @@ const span = document.getElementsByClassName("close")[0];
 // when you open the page this is the first you see
 window.onload = () => {
   startWindow.style.display = 'flex' // showing start window 
-  document.getElementsByClassName('question-section')[0].style.display = 'none'
+  document.getElementsByClassName('question-section')[0].style.display = 'block'
   start()
 }
 
@@ -240,7 +240,6 @@ const generateBoard = () => {
   })
 }
   
-
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -289,9 +288,7 @@ const checkQuestion = () => {
   } else {
     keep = false
   }
-
   filterCharacters(keep) // sending keep as a paramater to the filterCharacters function
-  
 }
 
 const modalWindow = (category, value, keep) => {
@@ -333,19 +330,16 @@ const modalWindow = (category, value, keep) => {
   span.addEventListener('click', () => {
     modal.style.display = "none";
   })
-
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = (event) => {
     if (event.target == modal) {
       modal.style.display = "none";
     }
   }
-
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-
   const { category, value } = currentQuestion // taking value from category and value
   modalWindow(category, value, keep) // calling this function and passing 3 paramenters, this function filter and showing message to the user
   generateBoard() // invoking generateBoard() to show the user the filtered version of the characters based on questions that the user asked
@@ -353,7 +347,6 @@ const filterCharacters = (keep) => {
   
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-
   let person = personToConfirm
   let letsGuess = confirm(`Do you want to guess on ${personToConfirm}?`)
   if(letsGuess) {
@@ -363,7 +356,6 @@ const guess = (personToConfirm) => {
   }
 }
 
-// 
 const checkMyGuess = (personToCheck) => {
 
   if(personToCheck === secret.name) {
@@ -386,9 +378,6 @@ const checkMyGuess = (personToCheck) => {
     })
 }
 
-
-
-
 // EVENT LISTINERS
 questions.addEventListener('change', selectQuestion)
 filter.addEventListener('click', checkQuestion)
@@ -397,9 +386,6 @@ startButton.addEventListener('click', () => {
   startWindow.style.display='none';
   board.style.display = 'flex'
 })
-
-
-// confetti.start()
 
 
 

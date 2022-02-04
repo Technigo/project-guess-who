@@ -1,8 +1,6 @@
-# Project Name
+# Week 5: Guess who?
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project is to create my own digital version of the classic board game Guess Who in order to practice creating objects and arrays with all focus on the JavaScript.
 
 ## The problem
 

@@ -232,24 +232,25 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  setSecret() // ???
-  selectQuestion() // ???
-  console.log(secret)
   // What else should happen when we start the game?
+  generateBoard()
+  setSecret() // ???
+  console.log(secret)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const value = '' // ???
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
+  const value = questions.value // ???
+  console.log(value)
 
   currentQuestion = {
     category: category,
-    value: '' // ???
+    value: value // ???
   }
 }
 
@@ -261,7 +262,7 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    
   } else if (category === 'accessories' || category === 'other') {
 
   }
@@ -282,12 +283,16 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
+
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value}! Keep all people with ${value}`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn't have ${value}! Remove all people with ${value}`
+      )
     }
   }
 
@@ -325,13 +330,9 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
-generateBoard() // or should it be in the start function itself?
-
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOutButton.addEventListener('click', questions) // ???
+questions.addEventListener('change', selectQuestion)
+findOutButton.addEventListener('click', checkQuestion) // ???
 
-// questions.addEventListener('change', () => selectQuestion) // ???
-console.log(currentQuestion)
-questions.addEventListener('change', (event) => document.querySelector('.result').textContent = `${event.target.value}`) // ???

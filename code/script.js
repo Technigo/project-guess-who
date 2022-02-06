@@ -326,6 +326,32 @@ const filterCharacters = (keep) => {
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
+  if (category === 'hair' || category === 'eyes') {
+    if (value === secret.hair || value === secret.eyes) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      generateBoard()
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      generateBoard()
+    }
+  } else if (category === 'accessories' || category === 'other') {
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      generateBoard()
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      generateBoard()
+    }
+  }
+
+  // if (secret.other.includes(value)) {
+  //   charactersInPlay = charactersInPlay.filter((person) => person[other].includes(value))
+  //   generateBoard()
+  // } else {
+  //   charactersInPlay = charactersInPlay.filter((person) => !person[other].includes(value))
+  //   generateBoard()
+  // }
+
   /* 
     for hair and eyes :
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
@@ -358,6 +384,12 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
+
+// CHARACTERS.forEach(({ name, hair, eyes }) => {
+//   console.log(name)
+//   console.log(hair)
+//   console.log(eyes)
+// })
 
 // All the event listeners
 restartButton.addEventListener('click', start)

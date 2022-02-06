@@ -19,6 +19,11 @@ h1 {
   color: white;
 }
 
+img {
+  width: 150px;
+  height: 150px;
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;

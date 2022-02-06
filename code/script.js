@@ -231,6 +231,9 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  generateBoard()
+  setSecret()
+
   // What else should happen when we start the game?
 }
 
@@ -321,5 +324,8 @@ const checkMyGuess = (personToCheck) => {
 // Invokes the start function when website is loaded
 start()
 
+
 // All the event listeners
 restartButton.addEventListener('click', start)
+
+questions.addEventListener('change', selectQuestion)

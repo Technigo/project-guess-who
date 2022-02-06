@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter') // ???
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -205,6 +206,10 @@ let secret
 let currentQuestion
 let charactersInPlay
 
+// for counter
+let counterDisplay = document.getElementById('counterDisplay')
+let count = 0
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -257,6 +262,9 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  // for counter
+  count++
+  counterDisplay.innerHTML = count
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -273,8 +281,6 @@ const checkQuestion = () => {
 
   } else if (category === 'accessories' || category === 'other') {
     // peut avoir plusieurs accessoires/autres en même temps (donc 'contient', pas 'égal à')
-    // avec l'index? comment faire de manière plus optimale, par ex. en disant n'importe quel index au lieu de mettre tous les numéros
-    // if (value === secret.accessories[0] || value === secret.accessories[1] || value === secret.other[0] || value === secret.other[1]) {
     if (secret.accessories.includes(value) || secret.other.includes(value)) {
       filterCharacters(true)
       console.log('accessories/other is right')
@@ -369,17 +375,45 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
+  // store the interaction from the player in a variable. // qu'est-ce que ca veut dire????
   // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  if (confirm(`Do you really want to make a guess on ${personToConfirm}?`) == true) {
+    // If the player wants to guess, invoke the checkMyGuess function.
+    checkMyGuess(personToConfirm) // à mettre dans le 'if confirm true' ou à la fin de la fonction?
+  } else { // utile ou non?
+    false
+  }
+  console.log(secret.name)
+  console.log(personToConfirm)
+
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  console.log(personToCheck)
+
   // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  if (personToCheck === secret.name) {
+    // 2. Set a Message to show in the win or lose section accordingly
+    document.getElementById('winOrLoseText').innerText = 'You won!'
+    // 3. Show the win or lose section
+    document.getElementById('winOrLose').style.display = 'flex'
+    // 4. Hide the game board
+    board.style.display = 'none'
+  } else {
+    // 2. Set a Message to show in the win or lose section accordingly
+    document.getElementById('winOrLoseText').innerText = 'You lost!'
+    // 3. Show the win or lose section
+    document.getElementById('winOrLose').style.display = 'flex'
+    // 4. Hide the game board
+    board.style.display = 'none'
+  }
+}
+
+const playAgain = () => {
+  start()
+  document.getElementById('winOrLose').style.display = 'none'
+  board.style.display = 'flex'
 }
 
 // Invokes the start function when website is loaded
@@ -393,5 +427,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-questions.addEventListener('change', selectQuestion) // ???
-findOutButton.addEventListener('click', checkQuestion) // ???
+questions.addEventListener('change', selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', playAgain)

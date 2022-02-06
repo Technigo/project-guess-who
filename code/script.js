@@ -20,7 +20,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['parrot']
   },
   {
     name: 'Jacques',
@@ -75,7 +75,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace'],
     other: []
   },
 
@@ -200,7 +200,6 @@ const CHARACTERS = [
     other: []
   },
 ]
-
 // Global variables
 let secret
 let currentQuestion
@@ -226,6 +225,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret)
 }
 
 // This function to start (and restart) the game
@@ -235,7 +235,6 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard()
   setSecret() // ???
-  console.log(secret)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -246,7 +245,8 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
   const value = questions.value // ???
-  console.log(value)
+  console.log('The selected category is', category, 'with this value:', value)
+
 
   currentQuestion = {
     category: category,
@@ -262,9 +262,26 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    
-  } else if (category === 'accessories' || category === 'other') {
+    // juste 'égal' ou non
+    if (value === secret.hair || value === secret.eyes) {
+      filterCharacters(true)
+      console.log('hair/eyes is right')
+    } else {
+      filterCharacters(false)
+      console.log('hair/eyes is wrong')
+    }
 
+  } else if (category === 'accessories' || category === 'other') {
+    // peut avoir plusieurs accessoires/autres en même temps (donc 'contient', pas 'égal à')
+    // avec l'index? comment faire de manière plus optimale, par ex. en disant n'importe quel index au lieu de mettre tous les numéros
+    // if (value === secret.accessories[0] || value === secret.accessories[1] || value === secret.other[0] || value === secret.other[1]) {
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+      filterCharacters(true)
+      console.log('accessories/other is right')
+    } else {
+      filterCharacters(false)
+      console.log('accessories/other is wrong')
+    }
   }
 }
 
@@ -283,8 +300,6 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-
-  } else {
     if (keep) {
       alert(
         `Yes, the person has ${value}! Keep all people with ${value}`
@@ -293,6 +308,19 @@ const filterCharacters = (keep) => {
       alert(
         `No, the person doesn't have ${value}! Remove all people with ${value}`
       )
+    }
+  } else {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value}! Keep all people with ${value}`
+      )
+
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people with ${value}`
+      )
+
+      // Swal.fire(`No, the person doesn't have ${value}! Remove all people with ${value}`)
     }
   }
 
@@ -333,6 +361,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-questions.addEventListener('change', selectQuestion)
+questions.addEventListener('change', selectQuestion) // ???
 findOutButton.addEventListener('click', checkQuestion) // ???
-

@@ -232,20 +232,38 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  // Render the board on the screen
+  generateBoard()
+  // Randomly select a secret person
+  setSecret()
+  // Console.log the secret person to see that it works correctly
+  console.log(`The secret person is ${secret.name}`)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
+
+// The options collection returns a collection of all <option> elements in a drop-
+// down list.
+
+// The property selectedIndex return the index of the selected <option> element in
+// the collection
+
+// parentNode.label points to the label of the <optgroup> that the 
+// <option> belongs to 
+
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+  // Checks that this works!
+  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -323,3 +341,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)

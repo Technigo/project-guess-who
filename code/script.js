@@ -6,199 +6,427 @@ const restartButton = document.getElementById('restart')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: "Octavian",
+    animalType: "octopus",
+    gender: "boy",
+    personalityType: "cranky",
+    hobby: "play",
+    zodiac: "Virgo",
+    img: "images/octavian.png"
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: "Marcel",
+    animalType: "dog",
+    gender: "boy",
+    personalityType: "lazy",
+    hobby: "play",
+    zodiac: "Capricorn",
+    img: "images/marcel.png"
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    name: "Bam",
+    animalType: "deer",
+    gender: "boy",
+    personalityType: "jock",
+    hobby: "play",
+    zodiac: "Scorpio",
+    img: "images/bam.png"
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: "Kiki",
+    animalType: "cat",
+    gender: "girl",
+    personalityType: "normal",
+    hobby: "education",
+    zodiac: "Libra",
+    img: "images/kiki.png"
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: "Shino",
+    animalType: "deer",
+    gender: "girl",
+    personalityType: "peppy",
+    hobby: "education",
+    zodiac: "Scorpio",
+    img: "images/shino.png"
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: "Olaf",
+    animalType: "anteater",
+    gender: "boy",
+    personalityType: "smug",
+    hobby: "education",
+    zodiac: "Taurus",
+    img: "images/olaf.png"
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: "Lobo",
+    animalType: "wolf",
+    gender: "boy",
+    personalityType: "cranky",
+    hobby: "education",
+    zodiac: "Scorpio",
+    img: "images/lobo.png"
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: "Coco",
+    animalType: "rabbit",
+    gender: "girl",
+    personalityType: "normal",
+    hobby: "education",
+    zodiac: "Pisces",
+    img: "images/coco.png"
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    name: "Tiffany",
+    animalType: "rabbit",
+    gender: "girl",
+    personalityType: "snooty",
+    hobby: "fashion",
+    zodiac: "Capricorn",
+    img: "images/tiffany.png"
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: "Sasha",
+    animalType: "rabbit",
+    gender: "boy",
+    personalityType: "lazy",
+    hobby: "fashion",
+    zodiac: "Taurus",
+    img: "images/sasha.png"
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: "Carmen",
+    animalType: "rabbit",
+    gender: "girl",
+    personalityType: "peppy",
+    hobby: "fashion",
+    zodiac: "Capricorn",
+    img: "images/carmen.png"
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: "Truffles",
+    animalType: "pig",
+    gender: "girl",
+    personalityType: "peppy",
+    hobby: "fashion",
+    zodiac: "Leo",
+    img: "images/truffles.png"
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    name: "Kyle",
+    animalType: "wolf",
+    gender: "boy",
+    personalityType: "smug",
+    hobby: "music",
+    zodiac: "Sagittarius",
+    img: "images/kyle.png"
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: "Pancetti",
+    animalType: "pig",
+    gender: "girl",
+    personalityType: "snooty",
+    hobby: "music",
+    zodiac: "Scorpio",
+    img: "images/pancetti.png"
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: "Pietro",
+    animalType: "sheep",
+    gender: "boy",
+    personalityType: "smug",
+    hobby: "music",
+    zodiac: "Aries",
+    img: "images/pietro.png"
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
+    name: "Camofrog",
+    animalType: "frog",
+    gender: "boy",
+    personalityType: "cranky",
+    hobby: "music",
+    zodiac: "Gemini",
+    img: "images/camofrog.png"
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    name: "Marina",
+    animalType: "octopus",
+    gender: "girl",
+    personalityType: "normal",
+    hobby: "music",
+    zodiac: "Cancer",
+    img: "images/marina.png"
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: "Muffy",
+    animalType: "sheep",
+    gender: "girl",
+    personalityType: "sisterly",
+    hobby: "music",
+    zodiac: "Aquarius",
+    img: "images/muffy.png"
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: "Cherry",
+    animalType: "dog",
+    gender: "girl",
+    personalityType: "sisterly",
+    hobby: "music",
+    zodiac: "Taurus",
+    img: "images/cherry.png"
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: "Diva",
+    animalType: "frog",
+    gender: "girl",
+    personalityType: "sisterly",
+    hobby: "fitness",
+    zodiac: "Libra",
+    img: "images/diva.png"
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: "Stinky",
+    animalType: "cat",
+    gender: "boy",
+    personalityType: "jock",
+    hobby: "fitness",
+    zodiac: "Leo",
+    img: "images/stinky.png"
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: "Antonio",
+    animalType: "anteater",
+    gender: "boy",
+    personalityType: "jock",
+    hobby: "fitness",
+    zodiac: "Libra",
+    img: "images/antonio.png"
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: "Zucker",
+    animalType: "octopus",
+    gender: "boy",
+    personalityType: "lazy",
+    hobby: "nature",
+    zodiac: "Pisces",
+    img: "images/zucker.png"
   },
+  {
+    name: "Annalisa",
+    animalType: "anteater",
+    gender: "girl",
+    personalityType: "normal",
+    hobby: "nature",
+    zodiac: "Aquarius",
+    img: "images/annalisa.png"
+  },
+  {
+    name: "Ankha",
+    animalType: "cat",
+    gender: "girl",
+    personalityType: "snooty",
+    hobby: "nature",
+    zodiac: "Virgo",
+    img: "images/ankha.png"
+  }
 ]
+
+// const CHARACTERS = [
+//   {
+//     name: 'Jabala',
+//     img: 'images/jabala.svg',
+//     hair: 'hidden',
+//     eyes: 'hidden',
+//     accessories: ['glasses', 'hat'],
+//     other: []
+//   },
+//   {
+//     name: 'Jack',
+//     img: 'images/jack.svg',
+//     hair: 'hidden',
+//     eyes: 'blue',
+//     accessories: ['hat'],
+//     other: []
+//   },
+//   {
+//     name: 'Jacques',
+//     img: 'images/jacques.svg',
+//     hair: 'grey',
+//     eyes: 'blue',
+//     accessories: ['hat'],
+//     other: ['smoker']
+//   },
+//   {
+//     name: 'Jai',
+//     img: 'images/jai.svg',
+//     hair: 'black',
+//     eyes: 'brown',
+//     accessories: [],
+//     other: []
+//   },
+//   {
+//     name: 'Jake',
+//     img: 'images/jake.svg',
+//     hair: 'yellow',
+//     eyes: 'green',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'James',
+//     img: 'images/james.svg',
+//     hair: 'brown',
+//     eyes: 'green',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jana',
+//     img: 'images/jana.svg',
+//     hair: 'black',
+//     eyes: 'hidden',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jane',
+//     img: 'images/jane.svg',
+//     hair: 'yellow',
+//     eyes: 'hidden',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jaqueline',
+//     img: 'images/jaqueline.svg',
+//     hair: 'orange',
+//     eyes: 'green',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+
+//   {
+//     name: 'Jazebelle',
+//     img: 'images/jazebelle.svg',
+//     hair: 'purple',
+//     eyes: 'hidden',
+//     accessories: ['glasses'],
+//     other: ['smoker']
+//   },
+//   {
+//     name: 'Jean',
+//     img: 'images/jean.svg',
+//     hair: 'brown',
+//     eyes: 'blue',
+//     accessories: ['glasses', 'hat'],
+//     other: ['smoker']
+//   },
+//   {
+//     name: 'Jeane',
+//     img: 'images/jeane.svg',
+//     hair: 'brown',
+//     eyes: 'green',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jed',
+//     img: 'images/jed.svg',
+//     hair: 'orange',
+//     eyes: 'green',
+//     accessories: ['glasses', 'hat'],
+//     other: ['smoker']
+//   },
+//   {
+//     name: 'Jenni',
+//     img: 'images/jenni.svg',
+//     hair: 'white',
+//     eyes: 'hidden',
+//     accessories: ['hat'],
+//     other: []
+//   },
+//   {
+//     name: 'Jeri',
+//     img: 'images/jeri.svg',
+//     hair: 'orange',
+//     eyes: 'green',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jerry',
+//     img: 'images/jerry.svg',
+//     hair: 'hidden',
+//     eyes: 'blue',
+//     accessories: ['hat'],
+//     other: []
+//   },
+//   {
+//     name: 'Jess',
+//     img: 'images/jess.svg',
+//     hair: 'black',
+//     eyes: 'blue',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jocelyn',
+//     img: 'images/jocelyn.svg',
+//     hair: 'black',
+//     eyes: 'brown',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jon',
+//     img: 'images/jon.svg',
+//     hair: 'brown',
+//     eyes: 'green',
+//     accessories: ['glasses'],
+//     other: []
+//   },
+//   {
+//     name: 'Jordan',
+//     img: 'images/jordan.svg',
+//     hair: 'yellow',
+//     eyes: 'hidden',
+//     accessories: ['glasses', 'hat'],
+//     other: []
+//   },
+//   {
+//     name: 'Josephine',
+//     img: 'images/josephine.svg',
+//     hair: 'grey',
+//     eyes: 'brown',
+//     accessories: [],
+//     other: []
+//   },
+//   {
+//     name: 'Josh',
+//     img: 'images/josh.svg',
+//     hair: 'yellow',
+//     eyes: 'green',
+//     accessories: [],
+//     other: []
+//   },
+//   {
+//     name: 'Jude',
+//     img: 'images/jude.svg',
+//     hair: 'black',
+//     eyes: 'green',
+//     accessories: [],
+//     other: []
+//   },
+//   {
+//     name: 'Julie',
+//     img: 'images/julie.svg',
+//     hair: 'black',
+//     eyes: 'brown',
+//     accessories: ['glasses', 'hat'],
+//     other: []
+//   },
+// ]
 
 // Global variables
 let secret
@@ -212,7 +440,7 @@ const generateBoard = () => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <img class="villager-image" src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
@@ -232,6 +460,7 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard();
 }
 
 // setting the currentQuestion object when you select something in the dropdown

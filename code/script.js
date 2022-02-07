@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -10,7 +11,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['shades', 'hat'],
     other: []
   },
   {
@@ -18,7 +19,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['hat','eyepatch'],
     other: []
   },
   {
@@ -50,7 +51,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['shades'],
     other: []
   },
   {
@@ -58,7 +59,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['shades'],
     other: []
   },
   {
@@ -66,7 +67,7 @@ const CHARACTERS = [
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['shades'],
     other: []
   },
   {
@@ -83,7 +84,7 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['shades'],
     other: ['smoker']
   },
   {
@@ -163,7 +164,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['shades', 'hat'],
     other: []
   },
   {
@@ -201,7 +202,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
+let secret 
 let currentQuestion
 let charactersInPlay
 
@@ -222,21 +223,26 @@ const generateBoard = () => {
   })
 }
 
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret)
 }
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  generateBoard () // generates the board with all the characters
+  setSecret() // selects a secret characters
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  const value = questions.options[questions.selectedIndex].parentNode.value
+  
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -244,7 +250,7 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,   
   }
 }
 
@@ -323,3 +329,7 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener("change", selectQuestion);
+
+
+

@@ -3,6 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
+const winOrLoseSection = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -205,6 +208,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let numberOfQuestions = 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -269,9 +273,9 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  //Remove these console.logs when everything works
-  console.log("The value of the current question is " + value)
-  console.log("The category of the current question is " + category)
+  numberOfQuestions++
+  console.log(numberOfQuestions)
+  document.getElementById('questionsAsked').innerHTML = `Questions asked: ${numberOfQuestions}`
   // Compare the currentQuestion details with the secret person details in a
   // different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -348,7 +352,7 @@ const filterCharacters = (keep) => {
     generateBoard();
   }
 
-  
+  //OBS! FILTRERINGEN VERKAR INTE FUNKA PÅ ACCESSORIES AND OTHER
 
   
 
@@ -374,6 +378,14 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  let text = `So your guess is ${personToConfirm}?`
+  if (confirm(text) == true) {
+    checkMyGuess(personToConfirm)
+
+  } else {
+    console.log("Cancel")
+  }
+
 }
 
 // If you confirm, this function is invoked
@@ -382,6 +394,18 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  let message;
+  if (personToCheck === secret.name) {
+    alert('Correctamundo!')
+    message = `You won!`
+  } else {
+    alert('Nooooo!')
+    message = `You lost!`
+  }
+  console.log("checkpoint charlie")
+  winOrLoseSection.style.display = 'block';
+  winOrLoseText.innerHTML = message;
+  
 }
 
 // Invokes the start function when website is loaded
@@ -391,3 +415,7 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', () => {
+  winOrLoseSection.style.display = 'none'
+  start()
+})

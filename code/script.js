@@ -14,6 +14,9 @@ playAgain button
 Todo:
 
 *Generate board (how to invoke function - generateBoard() didn't work?)
+
+Assign secret : 
+make a function that outputs random character
 Total characters: 24 - Set Math.floor(Math.random() * 24)+1; ?
 
 Make selectQuestion work:
@@ -362,10 +365,12 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     // Similar to the one above
-  } else {
+  } else if (category === 'eyes'){
     if (keep) {
+      alert(`correct, person has ${value} eyes.`)
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
+      alert(`no, person dont have ${value} eyes. Remove?`)
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }

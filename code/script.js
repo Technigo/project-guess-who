@@ -2,431 +2,236 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOut = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
     name: "Octavian",
-    animalType: "octopus",
+    animal: "octopus",
     gender: "boy",
-    personalityType: "cranky",
+    personality: "cranky",
     hobby: "play",
     zodiac: "Virgo",
     img: "images/octavian.png"
   },
   {
     name: "Marcel",
-    animalType: "dog",
+    animal: "dog",
     gender: "boy",
-    personalityType: "lazy",
+    personality: "lazy",
     hobby: "play",
     zodiac: "Capricorn",
     img: "images/marcel.png"
   },
   {
     name: "Bam",
-    animalType: "deer",
+    animal: "deer",
     gender: "boy",
-    personalityType: "jock",
+    personality: "jock",
     hobby: "play",
     zodiac: "Scorpio",
     img: "images/bam.png"
   },
   {
     name: "Kiki",
-    animalType: "cat",
+    animal: "cat",
     gender: "girl",
-    personalityType: "normal",
+    personality: "normal",
     hobby: "education",
     zodiac: "Libra",
     img: "images/kiki.png"
   },
   {
     name: "Shino",
-    animalType: "deer",
+    animal: "deer",
     gender: "girl",
-    personalityType: "peppy",
+    personality: "peppy",
     hobby: "education",
     zodiac: "Scorpio",
     img: "images/shino.png"
   },
   {
     name: "Olaf",
-    animalType: "anteater",
+    animal: "anteater",
     gender: "boy",
-    personalityType: "smug",
+    personality: "smug",
     hobby: "education",
     zodiac: "Taurus",
     img: "images/olaf.png"
   },
   {
     name: "Lobo",
-    animalType: "wolf",
+    animal: "wolf",
     gender: "boy",
-    personalityType: "cranky",
+    personality: "cranky",
     hobby: "education",
     zodiac: "Scorpio",
     img: "images/lobo.png"
   },
   {
     name: "Coco",
-    animalType: "rabbit",
+    animal: "rabbit",
     gender: "girl",
-    personalityType: "normal",
+    personality: "normal",
     hobby: "education",
     zodiac: "Pisces",
     img: "images/coco.png"
   },
   {
     name: "Tiffany",
-    animalType: "rabbit",
+    animal: "rabbit",
     gender: "girl",
-    personalityType: "snooty",
+    personality: "snooty",
     hobby: "fashion",
     zodiac: "Capricorn",
     img: "images/tiffany.png"
   },
   {
     name: "Sasha",
-    animalType: "rabbit",
+    animal: "rabbit",
     gender: "boy",
-    personalityType: "lazy",
+    personality: "lazy",
     hobby: "fashion",
     zodiac: "Taurus",
     img: "images/sasha.png"
   },
   {
     name: "Carmen",
-    animalType: "rabbit",
+    animal: "rabbit",
     gender: "girl",
-    personalityType: "peppy",
+    personality: "peppy",
     hobby: "fashion",
     zodiac: "Capricorn",
     img: "images/carmen.png"
   },
   {
     name: "Truffles",
-    animalType: "pig",
+    animal: "pig",
     gender: "girl",
-    personalityType: "peppy",
+    personality: "peppy",
     hobby: "fashion",
     zodiac: "Leo",
     img: "images/truffles.png"
   },
   {
     name: "Kyle",
-    animalType: "wolf",
+    animal: "wolf",
     gender: "boy",
-    personalityType: "smug",
+    personality: "smug",
     hobby: "music",
     zodiac: "Sagittarius",
     img: "images/kyle.png"
   },
   {
     name: "Pancetti",
-    animalType: "pig",
+    animal: "pig",
     gender: "girl",
-    personalityType: "snooty",
+    personality: "snooty",
     hobby: "music",
     zodiac: "Scorpio",
     img: "images/pancetti.png"
   },
   {
     name: "Pietro",
-    animalType: "sheep",
+    animal: "sheep",
     gender: "boy",
-    personalityType: "smug",
+    personality: "smug",
     hobby: "music",
     zodiac: "Aries",
     img: "images/pietro.png"
   },
   {
     name: "Camofrog",
-    animalType: "frog",
+    animal: "frog",
     gender: "boy",
-    personalityType: "cranky",
+    personality: "cranky",
     hobby: "music",
     zodiac: "Gemini",
     img: "images/camofrog.png"
   },
   {
     name: "Marina",
-    animalType: "octopus",
+    animal: "octopus",
     gender: "girl",
-    personalityType: "normal",
+    personality: "normal",
     hobby: "music",
     zodiac: "Cancer",
     img: "images/marina.png"
   },
   {
     name: "Muffy",
-    animalType: "sheep",
+    animal: "sheep",
     gender: "girl",
-    personalityType: "sisterly",
+    personality: "sisterly",
     hobby: "music",
     zodiac: "Aquarius",
     img: "images/muffy.png"
   },
   {
     name: "Cherry",
-    animalType: "dog",
+    animal: "dog",
     gender: "girl",
-    personalityType: "sisterly",
+    personality: "sisterly",
     hobby: "music",
     zodiac: "Taurus",
     img: "images/cherry.png"
   },
   {
     name: "Diva",
-    animalType: "frog",
+    animal: "frog",
     gender: "girl",
-    personalityType: "sisterly",
+    personality: "sisterly",
     hobby: "fitness",
     zodiac: "Libra",
     img: "images/diva.png"
   },
   {
     name: "Stinky",
-    animalType: "cat",
+    animal: "cat",
     gender: "boy",
-    personalityType: "jock",
+    personality: "jock",
     hobby: "fitness",
     zodiac: "Leo",
     img: "images/stinky.png"
   },
   {
     name: "Antonio",
-    animalType: "anteater",
+    animal: "anteater",
     gender: "boy",
-    personalityType: "jock",
+    personality: "jock",
     hobby: "fitness",
     zodiac: "Libra",
     img: "images/antonio.png"
   },
   {
     name: "Zucker",
-    animalType: "octopus",
+    animal: "octopus",
     gender: "boy",
-    personalityType: "lazy",
+    personality: "lazy",
     hobby: "nature",
     zodiac: "Pisces",
     img: "images/zucker.png"
   },
   {
     name: "Annalisa",
-    animalType: "anteater",
+    animal: "anteater",
     gender: "girl",
-    personalityType: "normal",
+    personality: "normal",
     hobby: "nature",
     zodiac: "Aquarius",
     img: "images/annalisa.png"
   },
   {
     name: "Ankha",
-    animalType: "cat",
+    animal: "cat",
     gender: "girl",
-    personalityType: "snooty",
+    personality: "snooty",
     hobby: "nature",
     zodiac: "Virgo",
     img: "images/ankha.png"
   }
 ]
-
-// const CHARACTERS = [
-//   {
-//     name: 'Jabala',
-//     img: 'images/jabala.svg',
-//     hair: 'hidden',
-//     eyes: 'hidden',
-//     accessories: ['glasses', 'hat'],
-//     other: []
-//   },
-//   {
-//     name: 'Jack',
-//     img: 'images/jack.svg',
-//     hair: 'hidden',
-//     eyes: 'blue',
-//     accessories: ['hat'],
-//     other: []
-//   },
-//   {
-//     name: 'Jacques',
-//     img: 'images/jacques.svg',
-//     hair: 'grey',
-//     eyes: 'blue',
-//     accessories: ['hat'],
-//     other: ['smoker']
-//   },
-//   {
-//     name: 'Jai',
-//     img: 'images/jai.svg',
-//     hair: 'black',
-//     eyes: 'brown',
-//     accessories: [],
-//     other: []
-//   },
-//   {
-//     name: 'Jake',
-//     img: 'images/jake.svg',
-//     hair: 'yellow',
-//     eyes: 'green',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'James',
-//     img: 'images/james.svg',
-//     hair: 'brown',
-//     eyes: 'green',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jana',
-//     img: 'images/jana.svg',
-//     hair: 'black',
-//     eyes: 'hidden',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jane',
-//     img: 'images/jane.svg',
-//     hair: 'yellow',
-//     eyes: 'hidden',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jaqueline',
-//     img: 'images/jaqueline.svg',
-//     hair: 'orange',
-//     eyes: 'green',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-
-//   {
-//     name: 'Jazebelle',
-//     img: 'images/jazebelle.svg',
-//     hair: 'purple',
-//     eyes: 'hidden',
-//     accessories: ['glasses'],
-//     other: ['smoker']
-//   },
-//   {
-//     name: 'Jean',
-//     img: 'images/jean.svg',
-//     hair: 'brown',
-//     eyes: 'blue',
-//     accessories: ['glasses', 'hat'],
-//     other: ['smoker']
-//   },
-//   {
-//     name: 'Jeane',
-//     img: 'images/jeane.svg',
-//     hair: 'brown',
-//     eyes: 'green',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jed',
-//     img: 'images/jed.svg',
-//     hair: 'orange',
-//     eyes: 'green',
-//     accessories: ['glasses', 'hat'],
-//     other: ['smoker']
-//   },
-//   {
-//     name: 'Jenni',
-//     img: 'images/jenni.svg',
-//     hair: 'white',
-//     eyes: 'hidden',
-//     accessories: ['hat'],
-//     other: []
-//   },
-//   {
-//     name: 'Jeri',
-//     img: 'images/jeri.svg',
-//     hair: 'orange',
-//     eyes: 'green',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jerry',
-//     img: 'images/jerry.svg',
-//     hair: 'hidden',
-//     eyes: 'blue',
-//     accessories: ['hat'],
-//     other: []
-//   },
-//   {
-//     name: 'Jess',
-//     img: 'images/jess.svg',
-//     hair: 'black',
-//     eyes: 'blue',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jocelyn',
-//     img: 'images/jocelyn.svg',
-//     hair: 'black',
-//     eyes: 'brown',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jon',
-//     img: 'images/jon.svg',
-//     hair: 'brown',
-//     eyes: 'green',
-//     accessories: ['glasses'],
-//     other: []
-//   },
-//   {
-//     name: 'Jordan',
-//     img: 'images/jordan.svg',
-//     hair: 'yellow',
-//     eyes: 'hidden',
-//     accessories: ['glasses', 'hat'],
-//     other: []
-//   },
-//   {
-//     name: 'Josephine',
-//     img: 'images/josephine.svg',
-//     hair: 'grey',
-//     eyes: 'brown',
-//     accessories: [],
-//     other: []
-//   },
-//   {
-//     name: 'Josh',
-//     img: 'images/josh.svg',
-//     hair: 'yellow',
-//     eyes: 'green',
-//     accessories: [],
-//     other: []
-//   },
-//   {
-//     name: 'Jude',
-//     img: 'images/jude.svg',
-//     hair: 'black',
-//     eyes: 'green',
-//     accessories: [],
-//     other: []
-//   },
-//   {
-//     name: 'Julie',
-//     img: 'images/julie.svg',
-//     hair: 'black',
-//     eyes: 'brown',
-//     accessories: ['glasses', 'hat'],
-//     other: []
-//   },
-// ]
 
 // Global variables
 let secret
@@ -461,6 +266,8 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard();
+  setSecret();
+  console.log(secret);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -469,49 +276,114 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
+findOut.addEventListener('click', () => {
+  console.log('this works');
+  selectQuestion();
+  console.log(currentQuestion);
+  console.log(secret.animal);
+  checkQuestion();
+})
+
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  if (category === 'animal') {
+    if (value === secret.animal) {
+      let keep = true;
+      filterCharacters(keep);
+    } else {
+      keep = false;
+      filterCharacters();
+    }
+  } else if (category === 'personality') {
+    if (value === secret.personality) {
+      keep = true;
+      filterCharacters(keep);
+    } else {
+      keep = false;
+      filterCharacters();
+    }
+  } else if (category === 'hobby') {
+    if (value === secret.hobby) {
+      keep = true;
+      filterCharacters(keep);
+    } else {
+      keep = false
+      filterCharacters();
+    }
+  } else if (category === 'zodiac') {
+    if (value === secret.zodiac) {
+      keep = true;
+      filterCharacters(keep);
+    } else {
+      keep = false;
+      filterCharacters();
+    }
+  }
+
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  // if (category === 'animal' || category === 'personality') {
 
-  } else if (category === 'accessories' || category === 'other') {
+  // } else if (category === 'hobby' || category === 'zodiac') {
 
-  }
+  // }
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'animal') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the villager is a ${value}! Keep all the villagers that are ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the villager is not a ${value}! Remove all villagers that are ${value}`
       )
     }
-  } else if (category === 'other') {
-    // Similar to the one above
-  } else {
+  } else if (category === 'personality') {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the villager is a ${value}! Keep all the villagers that are ${value}`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the villager is not a ${value}! Remove all villagers that are ${value}`
+      )
+    }
+    // Similar to the one above
+  } else if (category === 'hobby') {
+    if (keep) {
+      alert(
+        `Yes, the villager likes ${value}! Keep all the villagers that like ${value}`
+      )
+    } else {
+      alert(
+        `No, the villager hates ${value}! Remove all the villagers that like ${value}!`
+      )
+    }
+  } else if (category === 'zodiac') {
+    if (keep) {
+      alert(
+        `Yes, the villager is a ${value}! Keep all the villagers that are ${value}.`
+      )
+    } else {
+      alert(
+        `No, the villager obviously isn't a ${value}! Remove all the villagers that are ${value}`
+      )
     }
   }
 

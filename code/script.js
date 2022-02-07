@@ -3,6 +3,82 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
+/*
+More doms to possibly add:
+question-section
+restart button
+filter button
+winOrLose
+playAgain button
+
+Todo:
+
+*Generate board (how to invoke function - generateBoard() didn't work?)
+Total characters: 24 - Set Math.floor(Math.random() * 24)+1; ?
+
+Make selectQuestion work:
+  -when should it be invoked?
+  You can access a <select> element by using getElementById():
+  var x = document.getElementById("questions");
+  -optgroup???
+  Select Object Methods remove()	Removes an option from a drop-down list
+  options	- Returns a collection of all the options in a drop-down list
+  add eventlistener that on click selects certain optgroup?
+  HTML change event
+  const selectElement = document.querySelector('.ice-cream');
+  selectElement.addEventListener('change', (event) => {
+  const result = document.querySelector('.result');
+  result.textContent = `You like ${event.target.value}`;
+});
+
+set up select event w all options to ask about
+
+set up global variable currentQuestion to compare w secretperson
+set up variables "category" and "value" (questions.options[questions.selectedIndex])
+
+
+when clicking find out - invoke checkQuestion (w eventlistener)
+  needs to check if attributes in currenQuestion matches "secret"
+  keep all w. attribute or remove all w attribute
+  call filterCharacters - function argument= keep (true/false)
+  "Does the person have yellow hair" 
+  and the person stored in the secret has yellow hair, 
+  we want to call filterCharacters(true).
+
+feedback to player: use alert() 
+  1st step: check in what category to customize alert reply
+  check with keep-param to give yes/no answer
+
+filter out parts of charactersInPlay array 
+    Example 1: const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+    const result = words.filter(word => word.length > 6);
+
+    console.log(result); // expected output: Array ["exuberant", "destruction", "present"]
+
+    Example 2: const ages = [32, 33, 16, 40];
+    const result = ages.filter(checkAdult);
+
+    function checkAdult(age) {
+    return age >= 18;
+    }
+    Remember that you also need to re render the game board 
+    so that only the people still in play is shown.
+
+Guess - Make guess button show only on hover
+      - make player confirm (ends game)
+      -if confirm > checkMyGuess function
+      checkmyguessfunction: argument in function=selected person 
+      compare if personToCheck === secret
+      message win/lose
+      hide board
+
+
+
+*/
+
+
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -222,6 +298,7 @@ const generateBoard = () => {
   })
 }
 
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -232,11 +309,18 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+
+  window.onload = function() {
+    generateBoard()
+  }
+
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  const value = questions.options[questions.selectedIndex].childNode.label
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -244,7 +328,7 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
 }
 

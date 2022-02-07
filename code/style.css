@@ -12,7 +12,7 @@
 
 /* Custom Fonts */
 
-@font-face {
+/* @font-face {
   font-family: 'RodinBokutohPro';
   src: url('assets/RodinBokutohPro-EB-AlphaNum.eot');
   src: url('assets/RodinBokutohPro-EB-AlphaNum.eot?#iefix') format('embedded-opentype'),
@@ -27,7 +27,7 @@
 
 @font-face {
   font-family: 'SeuratPro';
-  src: url('assets/SeuratPro-EB-AlphaNum.otf');
+  src: url('assets/SeuratPro-EB-AlphaNum.eot');
   src: url('assets/SeuratPro-EB-AlphaNum.eot?#iefix') format('embedded-opentype'),
       url('assets/SeuratPro-EB-AlphaNum.woff2') format('woff2'),
       url('assets/SeuratPro-EB-AlphaNum.woff') format('woff'),
@@ -36,7 +36,7 @@
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
+} */
 
 /* Global css variables used for colors */
 :root {

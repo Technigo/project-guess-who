@@ -13,7 +13,7 @@
 
 @font-face {
     font-family: 'SeuratPro';
-    src: url('assets/SeuratPro-EB-AlphaNum.otf');
+    src: url('assets/SeuratPro-EB-AlphaNum.eot');
     src: url('assets/SeuratPro-EB-AlphaNum.eot?#iefix') format('embedded-opentype'),
         url('assets/SeuratPro-EB-AlphaNum.woff2') format('woff2'),
         url('assets/SeuratPro-EB-AlphaNum.woff') format('woff'),

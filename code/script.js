@@ -1,8 +1,11 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const restartButton = document.getElementById('playAgain')
 const findOut = document.getElementById('filter')
+const guessButton = document.querySelector('.filled-button')
+const winOrLose = document.querySelector('.win-or-lose-wrapper')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -293,6 +296,7 @@ findOut.addEventListener('click', () => {
   checkQuestion();
 })
 
+// Check if answer is correct, then pass it to filterCharacters
 const checkQuestion = () => {
   const { category, value } = currentQuestion
   if (category === 'animal') {
@@ -328,22 +332,11 @@ const checkQuestion = () => {
       filterCharacters();
     }
   }
-
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  // if (category === 'animal' || category === 'personality') {
-
-  // } else if (category === 'hobby' || category === 'zodiac') {
-
-  // }
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
   if (category === 'animal') {
     if (keep) {
       alert(
@@ -364,7 +357,6 @@ const filterCharacters = (keep) => {
         `No, the villager is not a ${value}! Remove all villagers that are ${value}`
       )
     }
-    // Similar to the one above
   } else if (category === 'hobby') {
     if (keep) {
       alert(
@@ -387,25 +379,34 @@ const filterCharacters = (keep) => {
     }
   }
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+  console.log(currentQuestion.category);
+  console.log(keep);
+  console.log(value);
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-  // Invoke a function to redraw the board with the remaining people.
+  if (keep === true) {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] === value)
+    console.log(charactersInPlay);
+    generateBoard();
+  } else {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] !== value)
+    console.log("answer wrong");
+    console.log(charactersInPlay);
+    generateBoard();
+  }
 }
+
+// EventListener for clicking on Guess
+
+// guessButton.addEventListener('click', () => {
+
+// }) 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  if (confirm(`Are you sure you want to guess ${personToConfirm}?`)) {
+    checkMyGuess(personToConfirm);
+    console.log(personToConfirm);
+  }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -413,6 +414,15 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    alert(`Congratulations! ${secret.name} was the right villager.`);
+    winOrLose.style.display = "flex";
+    winOrLoseText.innerText = "Congratulations!!! You won!"
+  } else {
+    alert(`I'm sorry. ${personToCheck} was incorrect. ${secret.name} was the right villager`);
+    winOrLose.style.display = "flex";
+    winOrLoseText.innerText = "Boo-hoo! You lost!!!"
+  }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -423,4 +433,7 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', () => {
+  start();
+  winOrLose.style.display = "none";
+})

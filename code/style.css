@@ -26,6 +26,8 @@ body {
   padding: 0;
   font-family: 'Arvo', serif;
   font-weight: 400;
+  background-color: #D8CBB5;
+  width: 100vw;
 }
 
 h1 {
@@ -63,6 +65,7 @@ select {
   width: 126px;
   position: absolute;
   margin-top: 40px;
+  margin-left: -40px;
 }
 
 .acnh-icon {
@@ -99,7 +102,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /* background-color: #F7F5DE; */
+  background-color: white;
 }
 
 .card p {
@@ -206,11 +209,13 @@ button {
 .win-or-lose img {
   align-self: flex-start;
   margin-left: 15%;
+  width: 700px;
+  height: auto;
 }
 
 .win-or-lose h1 {
-  margin-bottom: 32px;
-  font-size: 42px;
+  margin: 32px 0;
+  font-size: 48px;
   font-weight: 700;
 }
 
@@ -267,4 +272,87 @@ button {
     color: var(--primary);
     border: none;
   }
+}
+
+/* Custom Alerts */
+
+.customAlert {
+  z-index: 2;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  width: 500px;
+  height: 425px;
+  background-color: white;
+  border-radius: 20px;
+  text-align: center;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 2;
+  border: 3px solid black;
+}
+
+.customAlertCorrect {
+  display: none;
+}
+
+.customAlertIncorrect {
+  display: none;
+}
+
+.customConfirm {
+  display: none;
+}
+
+.alert-text {
+  font-family: 'Arvo', serif;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 0 20px;
+  grid-column: span 2;
+}
+
+.ok-button {
+  margin: 20px;
+  padding: 0;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  grid-column: span 2;
+  border: 2px solid black;
+}
+
+.isabelle-icon {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  grid-column: span 2;
+  border: 2px solid black;
+}
+
+.confirm-button {
+  grid-column: 2 / span 1;
+  margin: 20px;
+  padding: 0;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
+}
+
+.cancel-button {
+  grid-column: 1 / span 1;
+  margin: 20px;
+  padding: 0;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
+}
+
+.cancel-button:hover, .confirm-button:hover, .ok-button:hover {
+  border: 2px solid black;
 }

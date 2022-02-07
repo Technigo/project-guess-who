@@ -1,11 +1,18 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
-const restartButton = document.getElementById('playAgain')
+const restartButton = document.getElementById('restart')
 const findOut = document.getElementById('filter')
 const guessButton = document.querySelector('.filled-button')
 const winOrLose = document.querySelector('.win-or-lose-wrapper')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgain = document.getElementById('playAgain')
+const correct = document.querySelector('.customAlertCorrect')
+const incorrect = document.querySelector('.customAlertIncorrect')
+const areYouSure = document.querySelector('.customConfirm')
+const correctText = document.getElementById('correctText')
+const incorrectText = document.getElementById('incorrectText')
+const confirmText = document.getElementById('confirmText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -240,6 +247,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let finalGuess
 
 // Draw the game board
 const generateBoard = () => {
@@ -255,6 +263,38 @@ const generateBoard = () => {
         </div>
       </div>
     `
+  })
+}
+
+// Custom Alert Correct
+const alertCorrect = (message) => {
+  correct.style.display = "grid";
+  correctText.innerText = message;
+  document.getElementById('correctButton').addEventListener('click', () => {
+    correct.style.display = "none";
+  })
+}
+
+// Custom Alert Incorrect
+const alertIncorrect = (message) => {
+  incorrect.style.display = "grid";
+  incorrectText.innerText = message;
+  document.getElementById('incorrectButton').addEventListener('click', () => {
+    incorrect.style.display = "none";
+  })
+}
+
+// Custom Confirm
+const customConfirm = (message, personToConfirm) => {
+  areYouSure.style.display = "grid";
+  confirmText.innerText = message;
+  document.getElementById('cancelButton').addEventListener('click', () => {
+    areYouSure.style.display = "none";
+  })
+  document.getElementById('confirmButton').addEventListener('click', () => {
+    areYouSure.style.display = "none";
+    console.log(personToConfirm);
+    checkMyGuess(personToConfirm);
   })
 }
 
@@ -289,10 +329,9 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 findOut.addEventListener('click', () => {
-  console.log('this works');
   selectQuestion();
-  console.log(currentQuestion);
-  console.log(secret.animal);
+  // console.log(currentQuestion);
+  // console.log(secret.animal);
   checkQuestion();
 })
 
@@ -339,100 +378,93 @@ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   if (category === 'animal') {
     if (keep) {
-      alert(
-        `Yes, the villager is a ${value}! Keep all the villagers that are ${value}`
+      alertCorrect(
+        `Yes, the villager is a ${value}! Keep all the ${value} villagers.`
       )
     } else {
-      alert(
-        `No, the villager is not a ${value}! Remove all villagers that are ${value}`
+      alertIncorrect(
+        `No, the villager is not a ${value}! Remove all ${value} villagers.`
       )
     }
   } else if (category === 'personality') {
     if (keep) {
-      alert(
-        `Yes, the villager is a ${value}! Keep all the villagers that are ${value}`
+      alertCorrect(
+        `Yes, the villager is ${value} type! Keep all the ${value} type villagers.`
       )
     } else {
-      alert(
-        `No, the villager is not a ${value}! Remove all villagers that are ${value}`
+      alertIncorrect(
+        `No, the villager is not ${value} type! Remove all the ${value} type villagers.`
       )
     }
   } else if (category === 'hobby') {
     if (keep) {
-      alert(
+      alertCorrect(
         `Yes, the villager likes ${value}! Keep all the villagers that like ${value}`
       )
     } else {
-      alert(
+      alertIncorrect(
         `No, the villager hates ${value}! Remove all the villagers that like ${value}!`
       )
     }
   } else if (category === 'zodiac') {
     if (keep) {
-      alert(
+      alertCorrect(
         `Yes, the villager is a ${value}! Keep all the villagers that are ${value}.`
       )
     } else {
-      alert(
-        `No, the villager obviously isn't a ${value}! Remove all the villagers that are ${value}`
+      alertIncorrect(
+        `No, the villager obviously isn't a ${value}! Remove all the villagers that are ${value}.`
       )
     }
   }
 
-  console.log(currentQuestion.category);
-  console.log(keep);
-  console.log(value);
+  // console.log(currentQuestion.category);
+  // console.log(keep);
+  // console.log(value);
 
   if (keep === true) {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] === value)
-    console.log(charactersInPlay);
+    // console.log(charactersInPlay);
     generateBoard();
   } else {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] !== value)
-    console.log("answer wrong");
-    console.log(charactersInPlay);
+    // console.log("answer wrong");
+    // console.log(charactersInPlay);
     generateBoard();
   }
 }
 
-// EventListener for clicking on Guess
-
-// guessButton.addEventListener('click', () => {
-
-// }) 
-
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  if (confirm(`Are you sure you want to guess ${personToConfirm}?`)) {
-    checkMyGuess(personToConfirm);
-    console.log(personToConfirm);
-  }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  customConfirm(`Are you sure you want to guess ${personToConfirm}?`, personToConfirm);
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    alert(`Congratulations! ${secret.name} was the right villager.`);
+    alertCorrect(`Congratulations! ${secret.name} was the right villager.`);
+    setTimeout(() => {
     winOrLose.style.display = "flex";
-    winOrLoseText.innerText = "Congratulations!!! You won!"
+    winOrLoseText.innerText = "Yay!!! You won!"
+  }, 3000)
   } else {
-    alert(`I'm sorry. ${personToCheck} was incorrect. ${secret.name} was the right villager`);
+    alertIncorrect(`I'm sorry. ${personToCheck} was incorrect. ${secret.name} was the right villager`);
+    setTimeout(() => {
     winOrLose.style.display = "flex";
     winOrLoseText.innerText = "Boo-hoo! You lost!!!"
+  }, 3000)
   }
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 }
 
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
+playAgain.addEventListener('click', () => {
+  start();
+  winOrLose.style.display = "none";
+})
+
 restartButton.addEventListener('click', () => {
   start();
   winOrLose.style.display = "none";

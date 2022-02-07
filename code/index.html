@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   </head>
   <body>
+
     <aside class="question-section">
       <button id="restart" class="outlined-button">RESTART</button>
 
@@ -75,17 +76,38 @@
       <main class="game-board" id="board"></main>
     </section>
 
+    <!-- Hidden winOrLose Section -->
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <!-- <img
-          class="guess-who-icon"
-          src="images/bubble-chat.png"
-          alt="Guess Who"
-        /> -->
+        <img src="images/nh.png" class="new-horizons" alt="New Horizons Banner">
         <h1 id="winOrLoseText"></h1>
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
+
+    <!-- Custom Alert Correct -->
+    <div class="customAlertCorrect customAlert">
+      <img src="images/isabelle_correct.jpg" class="isabelle-icon">
+      <p id="correctText" class="alert-text"></p>
+      <button id="correctButton" class="ok-button filled-button">OK</button>
+    </div>
+
+    <!-- Custom Alert Incorrect -->
+    <div class="customAlertIncorrect customAlert">
+      <img src="images/isabelle_incorrect.jpg" class="isabelle-icon">
+      <p id="incorrectText" class="alert-text"></p>
+      <button id="incorrectButton" class="ok-button filled-button">OK</button>
+    </div>
+
+    <!-- Custom Confirm -->
+    <div class="customConfirm customAlert">
+      <img src="images/isabelle_confirm.jpg" class="isabelle-icon">
+      <p id="confirmText" class="alert-text"></p>
+      <button id="cancelButton" class="cancel-button filled-button">Cancel</button>
+      <button id="confirmButton" class="confirm-button filled-button">OK</button>
+    </div>
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
   </body>
 </html>

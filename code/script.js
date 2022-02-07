@@ -1,7 +1,9 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const board = document.getElementById('board'),
+      questions = document.getElementById('questions'),
+      restartButton = document.getElementById('restart'),
+      filter = document.getElementById('filter');
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -10,8 +12,8 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    accessories: ['glasses', 'sunglasses', 'hat'],
+    other: ['smile']
   },
   {
     name: 'Jack',
@@ -19,7 +21,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Jacques',
@@ -27,7 +29,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker','beard']
   },
   {
     name: 'Jai',
@@ -35,7 +37,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Jake',
@@ -43,30 +45,30 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['smile']
   },
   {
     name: 'James',
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['glasses', 'sunglasses'],
+    other: ['beard']
   },
   {
     name: 'Jana',
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['glasses', 'sunglasses', 'jewelry'],
+    other: ['smile']
   },
   {
     name: 'Jane',
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'sunglasses'],
     other: []
   },
   {
@@ -74,8 +76,8 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['glasses', 'jewelry'],
+    other: ['smile']
   },
 
   {
@@ -83,7 +85,7 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'sunglasses'],
     other: ['smoker']
   },
   {
@@ -100,7 +102,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Jed',
@@ -108,14 +110,14 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'beard']
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
+    accessories: ['hat', 'jewelry'],
     other: []
   },
   {
@@ -132,7 +134,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Jess',
@@ -140,14 +142,14 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewelry'],
     other: []
   },
   {
@@ -156,23 +158,23 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Jordan',
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    accessories: ['glasses', 'sunglasses', 'hat', 'jewelry'],
+    other: ['smile']
   },
   {
     name: 'Josephine',
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
-    other: []
+    accessories: ['jewelry'],
+    other: ['smile']
   },
   {
     name: 'Josh',
@@ -180,7 +182,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Jude',
@@ -188,7 +190,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Julie',
@@ -242,32 +244,60 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
+  const value = questions.options[questions.selectedIndex].value
+
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const label = questions.options[questions.selectedIndex].label
+
+  // Storing the label for the value to be used in the alerts later. 
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
+    label: label
   }
+ 
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  selectQuestion()
+  const { category, value, label } = currentQuestion
+  const { name, img, hair, eyes, accessories, other} = secret
+
+
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
-  } else if (category === 'accessories' || category === 'other') {
-
+    if (value.includes(secret.hair) || value.includes(secret.eyes))
+      filterCharacters(true)
+    else {
+      filterCharacters(false)
+    }
+    } 
+  else if (category === 'accessories' || category === 'other') {
+    if (secret.accessories.inludes(label)){
+      filterCharacters(true)
+    }
+    else {
+      filterCharacters(false)
+    }
+  }
+  else if (category === 'other') {
+    if (secret.other.includes(label)) {
+      filterCharacters(true)
+    }
+    else {
+      filterCharacters(false)
+    }
   }
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
+  const { category, value, label } = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -329,3 +359,5 @@ start()
 restartButton.addEventListener('click', start)
 
 questions.addEventListener('change', selectQuestion)
+
+filter.addEventListener('click', checkQuestion)

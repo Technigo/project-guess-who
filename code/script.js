@@ -201,7 +201,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
+let secret 
 let currentQuestion
 let charactersInPlay
 
@@ -232,6 +232,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard()
+ 
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -319,7 +321,7 @@ const checkMyGuess = (personToCheck) => {
 }
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
 restartButton.addEventListener('click', start)

@@ -19,7 +19,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['facial hair', 'pet']
   },
   {
     name: 'Jacques',
@@ -27,7 +27,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker', 'facial hair']
   },
   {
     name: 'Jai',
@@ -51,7 +51,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['facial hair']
   },
   {
     name: 'Jana',
@@ -92,7 +92,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'facial hair']
   },
   {
     name: 'Jeane',
@@ -108,7 +108,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'facial hair']
   },
   {
     name: 'Jenni',
@@ -188,7 +188,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['facial hair']
   },
   {
     name: 'Julie',
@@ -204,6 +204,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -227,11 +228,15 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard()
+  setSecret()
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -244,7 +249,7 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
@@ -277,16 +282,39 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value}! Keep all people that have ${value}`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that have ${value}`
+      )
+    }
+  } else if (category === 'hair') {
+    if (keep) {
+      alert (
+        `Yes, the person has ${value}! Keep all people with ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people without ${value}`
+      )
+    }
+  } else if (category === 'eyes') {
+    if (keep) {
+      alert (
+        `Yes, the person has ${value}! Keep all people with ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people without ${value}`
+      )
     }
   }
 
-  // Determine what is the category
+
+  //Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   /* 
     for hair and eyes :
@@ -323,3 +351,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change')

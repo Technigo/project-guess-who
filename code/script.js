@@ -272,6 +272,18 @@ const checkQuestion = () => {
       console.log('har inte hår eller glasögon')
     }
   } else if (category === 'accessories' || category === 'other') {
+    //check if secret array of values includes selected value (returns true/false)
+      if ((secret.accessories).includes(value)) {
+        console.log(`includes accessories ${value}`)
+      } else if ((secret.other).includes(value)) {
+        console.log(`includes other: ${value}`)
+      } else {
+        console.log(`not includes ${value}`)
+      }
+
+    //(secret.accessories).includes(value)
+    (secret.other).includes(value)
+    console.log(glasses)
     // jämför med värden i accessories array, hitta rätt index att jämföra med
     // if (value === secret.accessories || value === secret.other) {
     //   console.log(secret.accessories)

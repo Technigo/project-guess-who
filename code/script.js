@@ -8,199 +8,199 @@ const playAgainButton = document.getElementById('playAgain')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Doris',
+    img: 'images/doris.jpg',
+    fur: ['grey', 'beige'],
+    skin: 'white',
+    claws: 'without',
+    special: ['stripes', 'bicoloured']
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['parrot']
+    name: 'Simba',
+    img: 'images/simba.jpg',
+    fur: ['beige', 'brown'],
+    skin: 'pink',
+    claws: 'without',
+    special: ['spots', 'bicoloured']
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    name: 'Luna',
+    img: 'images/luna.jpg',
+    fur: 'beige',
+    skin: 'pink',
+    claws: 'without',
+    special: ['fuzzy']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: 'Sigge',
+    img: 'images/sigge.jpg',
+    fur: ['white', 'blue'],
+    skin: 'brown',
+    claws: 'with',
+    special: ['fuzzy', 'bicoloured']
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Elsa',
+    img: 'images/elsa.jpg',
+    fur: ['yellow', 'brown'],
+    skin: 'brown',
+    claws: 'with',
+    special: ['spots', 'bicoloured']
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Bosse',
+    img: 'images/bosse.jpg',
+    fur: ['brown', 'orange'],
+    skin: 'white',
+    claws: 'without',
+    special: ['stripes']
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Zelda',
+    img: 'images/zelda.jpg',
+    fur: ['orange', 'yellow'],
+    skin: 'brown',
+    claws: 'without',
+    special: []
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Morris',
+    img: 'images/morris.jpg',
+    fur: ['beige', 'white'],
+    skin: 'brown',
+    claws: 'without',
+    special: ['bicoloured', 'fuzzy']
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'necklace'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    name: 'Selma',
+    img: 'images/selma.jpg',
+    fur: ['orange', 'brown'],
+    skin: 'pink',
+    claws: 'with',
+    special: ['bicoloured']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Sixten',
+    img: 'images/sixten.jpg',
+    fur: ['black', 'white'],
+    skin: 'white',
+    claws: 'without',
+    special: ['bicoloured']
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Sally',
+    img: 'images/sally.jpg',
+    fur: ['yellow', 'beige'],
+    skin: 'brown',
+    claws: 'without',
+    special: ['stripes', 'bicoloured']
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Findus',
+    img: 'images/findus.jpg',
+    fur: ['beige', 'white'],
+    skin: 'pink',
+    claws: 'with',
+    special: ['bicoloured']
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    name: 'Smulan',
+    img: 'images/smulan.jpg',
+    fur: ['black', 'grey'],
+    skin: 'pink',
+    claws: 'without',
+    special: ['bicoloured']
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Harry',
+    img: 'images/harry.jpg',
+    fur: ['white', 'brown', 'orange', 'beige'],
+    skin: 'brown',
+    claws: 'without',
+    special: ['multicoloured']
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Maja',
+    img: 'images/maja.jpg',
+    fur: ['brown', 'beige'],
+    skin: 'pink',
+    claws: 'with',
+    special: ['bicoloured']
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
+    name: 'Nisse',
+    img: 'images/nisse.jpg',
+    fur: ['black'],
+    skin: 'grey',
+    claws: 'without',
+    special: []
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    name: 'Nala',
+    img: 'images/nala.jpg',
+    fur: ['orange', 'white'],
+    skin: 'beige',
+    claws: 'with',
+    special: ['fuzzy']
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Frasse',
+    img: 'images/frasse.jpg',
+    fur: ['blue'],
+    skin: 'pink',
+    claws: 'with',
+    special: ['fuzzy']
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Siri',
+    img: 'images/siri.jpg',
+    fur: ['black', 'grey'],
+    skin: 'black',
+    claws: 'with',
+    special: ['bicoloured']
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: 'Sune',
+    img: 'images/sune.jpg',
+    fur: ['orange', 'brown'],
+    skin: 'black',
+    claws: 'with',
+    special: ['spots', 'bicoloured']
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: 'Iris',
+    img: 'images/iris.jpg',
+    fur: ['orange'],
+    skin: 'orange',
+    claws: 'without',
+    special: ['stripes']
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: 'Leo',
+    img: 'images/leo.jpg',
+    fur: ['grey'],
+    skin: 'pink',
+    claws: 'without',
+    special: []
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Mollie',
+    img: 'images/mollie.jpg',
+    fur: ['brown'],
+    skin: 'beige',
+    claws: 'with',
+    special: []
+  },
+  {
+    name: 'Tusse',
+    img: 'images/tusse.jpg',
+    fur: ['orange'],
+    skin: 'brown',
+    claws: 'with',
+    special: ['hairy']
   },
 ]
+
 // Global variables
 let secret
 let currentQuestion
@@ -217,7 +217,7 @@ const generateBoard = () => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <img class="characters" src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
@@ -266,27 +266,27 @@ const checkQuestion = () => {
   count++
   counterDisplay.innerHTML = count
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+  // Compare the currentQuestion details with the secret person details in a different manner based on category (skin/claws or fur/special).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'skin' || category === 'claws') {
     // juste 'égal' ou non
-    if (value === secret.hair || value === secret.eyes) {
+    if (value === secret.skin || value === secret.claws) {
       filterCharacters(true)
-      console.log('hair/eyes is right')
+      console.log('skin/claws is right')
     } else {
       filterCharacters(false)
-      console.log('hair/eyes is wrong')
+      console.log('skin/claws is wrong')
     }
 
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'fur' || category === 'special') {
     // peut avoir plusieurs accessoires/autres en même temps (donc 'contient', pas 'égal à')
-    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+    if (secret.fur.includes(value) || secret.special.includes(value)) {
       filterCharacters(true)
-      console.log('accessories/other is right')
+      console.log('fur/special is right')
     } else {
       filterCharacters(false)
-      console.log('accessories/other is wrong')
+      console.log('fur/special is wrong')
     }
   }
 }
@@ -295,53 +295,62 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'fur') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the secret cat has a ${value} fur! Keep all cats with a ${value} fur.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the secret cat doesn't have a ${value} fur! Remove all cats with a ${value} fur.`
       )
     }
-  } else if (category === 'other') {
+  } else if (category === 'special') {
     if (keep) {
       alert(
-        `Yes, the person has ${value}! Keep all people with ${value}`
+        `Yes, the secret cat has a special feature: ${value}! Keep all cats with the feature: ${value}.`
       )
     } else {
       alert(
-        `No, the person doesn't have ${value}! Remove all people with ${value}`
+        `No, the secret cat doesn't have the special feature: ${value}! Remove all cats with the feature: ${value}.`
       )
     }
-  } else {
+  } else if (category === 'skin') {
     if (keep) {
       alert(
-        `Yes, the person has ${value}! Keep all people with ${value}`
+        `Yes, the secret cat has a ${value} skin! Keep all cats with a ${value} skin.`
       )
 
     } else {
       alert(
-        `No, the person doesn't have ${value}! Remove all people with ${value}`
+        `No, the secret cat doesn't have a ${value} skin! Remove all cats with a ${value} skin.`
+      )
+    }
+  } else if (category === 'claws') {
+    if (keep) {
+      alert(
+        `Yes, the secret cat is ${value} claws! Keep all cats ${value} claws.`
       )
 
-      // Swal.fire(`No, the person doesn't have ${value}! Remove all people with ${value}`)
+    } else {
+      alert(
+        `No, the secret cat isn't ${value} claws! Remove all cats ${value} claws.`
+      )
     }
   }
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  if (category === 'hair' || category === 'eyes') {
-    if (value === secret.hair || value === secret.eyes) {
+  if (category === 'skin' || category === 'claws') {
+    if (value === secret.skin || value === secret.claws) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       generateBoard()
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       generateBoard()
     }
-  } else if (category === 'accessories' || category === 'other') {
-    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+  } else if (category === 'fur' || category === 'special') {
+    if (secret.fur.includes(value) || secret.special.includes(value)) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       generateBoard()
     } else {
@@ -349,26 +358,6 @@ const filterCharacters = (keep) => {
       generateBoard()
     }
   }
-
-  // if (secret.other.includes(value)) {
-  //   charactersInPlay = charactersInPlay.filter((person) => person[other].includes(value))
-  //   generateBoard()
-  // } else {
-  //   charactersInPlay = charactersInPlay.filter((person) => !person[other].includes(value))
-  //   generateBoard()
-  // }
-
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
 
   // Invoke a function to redraw the board with the remaining people.
 }
@@ -419,10 +408,10 @@ const playAgain = () => {
 // Invokes the start function when website is loaded
 start()
 
-// CHARACTERS.forEach(({ name, hair, eyes }) => {
+// CHARACTERS.forEach(({ name, skin, claws }) => {
 //   console.log(name)
-//   console.log(hair)
-//   console.log(eyes)
+//   console.log(skin)
+//   console.log(claws)
 // })
 
 // All the event listeners

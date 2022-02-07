@@ -4,7 +4,7 @@ const CHARACTERS = [
       img: 'images/doris.jpg',
       fur: ['grey', 'beige'],
       skin: 'white',
-      claws: 'no',
+      claws: 'without',
       special: ['stripes', 'bicoloured']
     },
     {
@@ -12,7 +12,7 @@ const CHARACTERS = [
       img: 'images/simba.jpg',
       fur: ['beige', 'brown'],
       skin: 'pink',
-      claws: 'no',
+      claws: 'without',
       special: ['spots', 'bicoloured']
     },
     {
@@ -20,7 +20,7 @@ const CHARACTERS = [
       img: 'images/luna.jpg',
       fur: 'beige',
       skin: 'pink',
-      claws: 'no',
+      claws: 'without',
       special: ['fuzzy']
     },
     {
@@ -28,7 +28,7 @@ const CHARACTERS = [
       img: 'images/sigge.jpg',
       fur: ['white', 'blue'],
       skin: 'brown',
-      claws: 'yes',
+      claws: 'with',
       special: ['fuzzy', 'bicoloured']
     },
     {
@@ -36,7 +36,7 @@ const CHARACTERS = [
       img: 'images/elsa.jpg',
       fur: ['yellow', 'brown'],
       skin: 'brown',
-      claws: 'yes',
+      claws: 'with',
       special: ['spots', 'bicoloured']
     },
     {
@@ -44,7 +44,7 @@ const CHARACTERS = [
       img: 'images/bosse.jpg',
       fur: ['brown', 'orange'],
       skin: 'white',
-      claws: 'no',
+      claws: 'without',
       special: ['stripes']
     },
     {
@@ -52,15 +52,15 @@ const CHARACTERS = [
       img: 'images/zelda.jpg',
       fur: ['orange', 'yellow'],
       skin: 'brown',
-      claws: 'no',
-      special: ['bicoloured']
+      claws: 'without',
+      special: []
     },
     {
       name: 'Morris',
       img: 'images/morris.jpg',
       fur: ['beige', 'white'],
       skin: 'brown',
-      claws: 'no',
+      claws: 'without',
       special: ['bicoloured', 'fuzzy']
     },
     {
@@ -68,7 +68,7 @@ const CHARACTERS = [
       img: 'images/selma.jpg',
       fur: ['orange', 'brown'],
       skin: 'pink',
-      claws: 'yes',
+      claws: 'with',
       special: ['bicoloured']
     },
     {
@@ -76,7 +76,7 @@ const CHARACTERS = [
       img: 'images/sixten.jpg',
       fur: ['black', 'white'],
       skin: 'white',
-      claws: 'no',
+      claws: 'without',
       special: ['bicoloured']
     },
     {
@@ -84,7 +84,7 @@ const CHARACTERS = [
       img: 'images/sally.jpg',
       fur: ['yellow', 'beige'],
       skin: 'brown',
-      claws: 'no',
+      claws: 'without',
       special: ['stripes', 'bicoloured']
     },
     {
@@ -92,7 +92,7 @@ const CHARACTERS = [
       img: 'images/findus.jpg',
       fur: ['beige', 'white'],
       skin: 'pink',
-      claws: 'yes',
+      claws: 'with',
       special: ['bicoloured']
     },
     {
@@ -100,7 +100,7 @@ const CHARACTERS = [
       img: 'images/smulan.jpg',
       fur: ['black', 'grey'],
       skin: 'pink',
-      claws: 'no',
+      claws: 'without',
       special: ['bicoloured']
     },
     {
@@ -108,7 +108,7 @@ const CHARACTERS = [
       img: 'images/harry.jpg',
       fur: ['white', 'brown', 'orange', 'beige'],
       skin: 'brown',
-      claws: 'no',
+      claws: 'without',
       special: ['multicoloured']
     },
     {
@@ -116,7 +116,7 @@ const CHARACTERS = [
       img: 'images/maja.jpg',
       fur: ['brown', 'beige'],
       skin: 'pink',
-      claws: 'yes',
+      claws: 'with',
       special: ['bicoloured']
     },
     {
@@ -124,7 +124,7 @@ const CHARACTERS = [
       img: 'images/nisse.jpg',
       fur: ['black'],
       skin: 'grey',
-      claws: 'no',
+      claws: 'without',
       special: []
     },
     {
@@ -132,7 +132,7 @@ const CHARACTERS = [
       img: 'images/nala.jpg',
       fur: ['orange', 'white'],
       skin: 'beige',
-      claws: 'yes',
+      claws: 'with',
       special: ['fuzzy']
     },
     {
@@ -140,7 +140,7 @@ const CHARACTERS = [
       img: 'images/frasse.jpg',
       fur: ['blue'],
       skin: 'pink',
-      claws: 'yes',
+      claws: 'with',
       special: ['fuzzy']
     },
     {
@@ -148,7 +148,7 @@ const CHARACTERS = [
       img: 'images/siri.jpg',
       fur: ['black', 'grey'],
       skin: 'black',
-      claws: 'yes',
+      claws: 'with',
       special: ['bicoloured']
     },
     {
@@ -156,7 +156,7 @@ const CHARACTERS = [
       img: 'images/sune.jpg',
       fur: ['orange', 'brown'],
       skin: 'black',
-      claws: 'yes',
+      claws: 'with',
       special: ['spots', 'bicoloured']
     },
     {
@@ -164,7 +164,7 @@ const CHARACTERS = [
       img: 'images/iris.jpg',
       fur: ['orange'],
       skin: 'orange',
-      claws: 'no',
+      claws: 'without',
       special: ['stripes']
     },
     {
@@ -172,7 +172,7 @@ const CHARACTERS = [
       img: 'images/leo.jpg',
       fur: ['grey'],
       skin: 'pink',
-      claws: 'no',
+      claws: 'without',
       special: []
     },
     {
@@ -180,7 +180,7 @@ const CHARACTERS = [
       img: 'images/mollie.jpg',
       fur: ['brown'],
       skin: 'beige',
-      claws: 'yes',
+      claws: 'with',
       special: []
     },
     {
@@ -188,7 +188,7 @@ const CHARACTERS = [
       img: 'images/tusse.jpg',
       fur: ['orange'],
       skin: 'brown',
-      claws: 'yes',
+      claws: 'with',
       special: ['hairy']
     },
   ]

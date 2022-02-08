@@ -233,7 +233,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // Adding all the characters when the page load
   generateBoard()
-  // Want to add a random person each time we play
+  // Want to select a random person each time we play when the page load
   setSecret ()
 }
 
@@ -243,7 +243,7 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  // const value = 
 
   currentQuestion = {
     category: category,

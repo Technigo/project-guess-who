@@ -422,14 +422,14 @@ const checkMyGuess = (personToConfirm) => {
 
   if (personToConfirm === secret.name) {
     winOrLoseText.innerHTML = `You are the dopest! You guessed on ${personToConfirm} and it was correct! You did it in only ${numberOfGuesses} questions.
-    <audio autoplay muted>
-    <source src="/code/sounds/wingame.mp3" type="audio/mp3">
+    <audio autoplay>
+    <source src="../code/sounds/wingame.mp3" type="audio/mp3">
     Your browser does not support the audio element.
     </audio>`
   } else {
     winOrLoseText.innerHTML = `Some you win, some you lose man. Unfortunately it's not ${personToConfirm}. The correct answer is ${secret.name}!
-    <audio autoplay muted>
-    <source src="/code/sounds/perdida.mp3" type="audio/mp3">
+    <audio autoplay>
+    <source src="../code/sounds/perdida.mp3" type="audio/mp3">
     Your browser does not support the audio element.
     </audio>`
 

@@ -238,26 +238,20 @@ const start = () => {
   selectQuestion();
   console.log(secret)
   console.log(secret.hair)
+  console.log(secret.accessories)
   // What else should happen when we start the game?
 }
-
-//OBS! Can you loop through the chararacters array instead? feel like it might be cleaner? or?  just practice as alternative,
-//this event handler, selected input - maybe hard?
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  console.log(category)
   const value = questions.options[questions.selectedIndex].value
-  console.log(value)
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
 
   currentQuestion = {
     category: category,
     value: value
-    // value: value
   }
 }
 
@@ -278,9 +272,9 @@ if (category === 'hair' && value === secret.hair) {
     keep = true;
 } else if (category === 'eyes' && value === secret.eyes) {
     keep == true;
-} else if (category === 'accessories' && value === secret.accessories) {
+} else if (category === 'accessories' && value === secret.accessories.find(element => element === value)) {
     keep = true;
-} else if (category === 'other' && value === secret.other) {
+} else if (category === 'other' && value === secret.other.find(element => element === value)) {
     keep = true;
 } else {
     keep = false;
@@ -294,16 +288,16 @@ if (category === 'hair' && value === secret.hair) {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+
+
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => person.accessories.includes(value));
     } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
+      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => !person.accessories.includes(value));
     } 
   } else if (category === 'hair') {
     if (keep) {
@@ -315,13 +309,11 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => person.other.includes(value));
     } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
+      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => !person.other.includes(value));
     }
   } else if (category === 'eyes') {
     if (keep) {
@@ -332,22 +324,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person.eyes !== value);
     }
   }
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-      
-  // Invoke a function to redraw the board with the remaining people.
   generateBoard();
 }
 
@@ -375,8 +351,6 @@ let guessStatus = {
 const checkMyGuess = (personToCheck) => {
     if (secret.name === personToCheck) {
     guessStatus.status = 'right';
-    console.log(guessStatus)
-    //add you guessed right displayed in html
   } else {
     guessStatus.status = 'wrong';
   }
@@ -384,12 +358,14 @@ const checkMyGuess = (personToCheck) => {
   board.innerHTML = ''
 
   board.innerHTML += `
+  <div style="display: flex; flex-direction: column;">
   <p>You guessed at ${personToCheck} and it was ${guessStatus.status}</p>
   <div class="card">
     <p>${secret.name}</p>
     <img src=${secret.img} alt=${secret.name}>
   </div>
   <p>${secret.name} was the secret person!</p>
+  </div>
 `
 
 

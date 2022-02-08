@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -243,11 +244,11 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].parentNode.options
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
 }
 
@@ -323,6 +324,8 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
-
+//invokes ...
+//selectQuestion()
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOutButton.addEventListener('click', select)

@@ -1,13 +1,14 @@
 # Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Guess who project.
+Pretty selfexplainatory. What i loved about this project was that it made me use a lot of creative tools. 
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This time I went mobile first. That kind off slowed the project down as i was finishing it.
+I watched a lot of tutorials on Traversy media and read a lot.
+The logo: Adobe illustrator
+The sounds: Logic pro X 
+The images: bighead.io
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Sexpunkter.netlify.app

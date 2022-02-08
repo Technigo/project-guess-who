@@ -1,233 +1,362 @@
-/* Global css variables used for colors */
-:root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
+
+ :root {
+     --primary: #47b0da;
+     --secondary: #010913;
+     --white: #f2f2f2;
+     --black: #030303;
 }
 
-body {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
+ * {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+     font-size: 62.5%;
+     text-transform: uppercase;
 }
 
-h1 {
-  font-size: 42px;
-  font-weight: 500;
-  line-height: 48px;
-  margin: 10px 0;
-  color: white;
+ body {
+     display: flex;
+     font-family: 'Oswald', sans-serif;
 }
 
-.question-section {
-  width: 30%;
-  min-height: 100vh;
-  background-color: var(--secondary);
-  display: flex;
-  flex-direction: column;
-  padding: 5vw;
-  align-items: flex-start;
-  box-sizing: border-box;
+/* ===== QUESTION SLIDE ===== */
+
+ .question-section {
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     width: 30%;
+     min-height: 100vh;
+     background-color: var(--secondary);
+     padding: 4rem 2.5rem;
+}
+ 
+ .image-container {
+     display: flex;
+     justify-content: flex-start;
 }
 
-select {
-  display: block;
-  border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
-  width: 100%;
-  margin: 24px 0;
+ .image-container img {
+     width: 100%;
+     height: auto;
 }
 
-.guess-who-icon {
-  width: 126px;
+ h1, h2, h3 {
+     color: var(--white);
+     letter-spacing: .1rem;
+     font-weight: 300;
 }
 
-.board-wrapper {
-  width: 70%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+ h1 {
+     font-size: 3.5rem;
 }
 
-.game-board {
-  width: 90%;
-  max-width: 882px;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
+ select {
+     display: flex;
+     border: none;
+     font-size: 1.5rem;
+     color: var(--secondary);
+     width: 50%;
+     border-radius: .5rem;
+     padding: .5rem;
+}
+
+ option, optgroup {
+     font-size: 1.5rem;
+     background-color: var(--white);
+}
+
+ .buttons {
+     display: flex;
+     flex-direction: column;
+}
+
+ button {
+     border: .3rem solid var(--primary);
+     border-radius: 1rem;
+     font-size: 1.5rem;
+     padding: 1rem;
+     cursor: pointer;
+}
+
+ .filled-button{
+     background-color: var(--primary);
+     color: white;
+}
+
+ .outlined-button {
+     background-color: transparent;
+     color: var(--primary);
+     margin-top: 1rem;
+}
+
+ .filled-button:hover {
+     background-color: white;
+     border-color: white;
+     color: var(--primary);
+     transition: .7s;
+}
+
+ .outlined-button:hover {
+     background-color: var(--primary);
+     color: white;
+     transition: .7s;
+}
+
+ .question-count p {
+     color: var(--primary);
+     font-size: 2.5rem;
+}
+
+ .timer-game p {
+     color: var(--white);
+     font-size: 2.5rem;
+}
+
+ #question-slide > * {
+     margin-bottom: 3rem;
+}
+
+ #question-slide > :last-child {
+     margin-bottom: 0rem;
+}
+
+/* ===== BOARD ===== */
+
+ .board-wrapper {
+     width: 70%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+     animation: gradient 15s ease infinite;
+     background-size: 500% 500%;
+     padding: 4rem 2.5rem;
+}
+
+ @keyframes gradient {
+     0% {
+         background-position: 0% 50%;
+    }
+     50% {
+         background-position: 100% 50%;
+    }
+     100% {
+         background-position: 0% 50%;
+    }
+}
+
+ .game-board {
+     width: 100%;
+     max-width: 89rem;
+     flex-wrap: wrap;
+     align-content: space-between;
+     justify-content: space-evenly;
 }
 
 /****** CARD ******/
-.card {
-  width: 135px;
-  height: 165px;
-  overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+
+ .card {
+     width: 12rem;
+     height: 16rem;
+     overflow: hidden;
+     background-color: var(--white);
+     border-radius: 1rem;
+     margin: 1rem;
 }
 
-.card p {
-  text-align: center;
-  margin-bottom: 0;
-  font-size: 16px;
-  font-weight: 700;
+ .card p {
+     text-align: center;
+     font-size: 2rem;
+     letter-spacing: .1rem;
+     font-weight: 300;
 }
 
-.card .guess {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  height: inherit;
+ .card .guess {
+     display: none;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     color: white;
+     text-align: center;
+     height: inherit;
+     letter-spacing: .1rem;
+     font-weight: 300;
 }
 
-.card:hover {
-  background-color: var(--secondary);
+ .card:hover {
+     background-color: var(--secondary);
+     transition: 1s;
 }
 
-.card:hover img,
-.card:hover p {
-  display: none;
+ .card:hover .guess {
+     display: flex;
+     transition: 1s;
 }
 
-/* The div with the guess class is only shown on hover */
-.card:hover .guess {
-  display: flex;
+ .card:hover img, .card:hover p {
+     display: none;
 }
 
-.guess span {
-  font-size: 16px;
-  line-height: 18px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  width: 90%;
+ .small {
+     padding: .5rem 1rem;
+     margin-top: 1rem;
+     width: 8rem;
 }
 
-/****** BUTTONS ******/
-button {
-  border: 2px solid var(--primary);
-  border-radius: 50px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: bold;
-  padding: 17px 27px;
-  cursor: pointer;
+ .guess span {
+     font-size: 1.8rem;
+     margin-bottom: 1rem;
+     width: 90%;
 }
 
-.small {
-  padding: 8px 16px;
+/* ===== WoL SECTION ===== */
+
+ .win-or-lose-wrapper {
+     display: none;
+     align-items: center;
+     justify-content: center;
+     background: var(--secondary);
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     height: 100vh;
 }
 
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
+ .guess-who-icon {
+     width: 50%;
 }
 
-.filled-button,
-.outlined-button:hover {
-  background-color: var(--primary);
-  color: white;
+ .win-or-lose {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     max-width: 700px;
+     text-align: center;
 }
 
-.filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
+ .win-or-lose img {
+     align-self: center;
+     margin-bottom: 3rem;
 }
 
-/****** WIN OR LOSE SECTION ******/
-.win-or-lose-wrapper {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: var(--secondary);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100vh;
+ .win-or-lose h1 {
+     margin-bottom: 3rem;
+     font-size: 3.5rem;
+     text-align: left;
 }
 
-.win-or-lose {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 700px;
-  text-align: center;
+ .won {
+     border-radius: 50px;
+     margin-top: 30px;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+ .lost {
+     width: 45rem;
+     border-radius: 5rem;
+     margin-top: 3rem;
 }
 
-.win-or-lose h1 {
-  margin-bottom: 32px;
+/* ===== MEDIA QUERIES ===== */
+
+ @media (max-width: 950px) {
+     h1 {
+         font-size: 2.5rem;
+    }
+
+     h2 {
+         font-size: 2rem;
+    }
+
+     h3 {
+         font-size: 1.5rem;
+    }
+
+     .question-count p {
+         font-size: 1.75rem;
+    }
+
+     .timer-game p {
+         font-size: 1.75rem;
+    }
+
+     select {
+         width: 20rem;
+    }
+
+     .win-or-lose h1 {
+         margin: 0 2rem 3rem 2rem;
+         font-size: 2.5rem;
+    }
 }
 
-@media (max-width: 768px) {
-  body {
-    flex-direction: column;
-  }
+ @media (max-width: 811px) {
+     body {
+         flex-direction: column;
+    }
 
-  .question-section {
-    width: 100%;
-    min-height: 0;
-  }
-  button {
-    padding: 8px 16px;
-  }
-  h1 {
-    font-size: 24px;
-    line-height: 30px;
-  }
+     .question-section {
+         width: 100%;
+         min-height: 0vh;
+         align-items: center;
+    }
 
-  .guess-who-icon {
-    width: 51px;
-  }
+     button {
+         padding: .8rem 1.6rem;
+    }
 
-  .board-wrapper {
-    width: 100%;
-  }
+     h1 {
+         font-size: 2.5rem;
+    }
 
-  .game-board {
-    width: 100%;
-    max-width: 750px;
-  }
+     .board-wrapper {
+         width: 100%;
+         padding: 2rem 1rem;
+         min-height: 500px;
+    }
 
-  .card {
-    width: 113px;
-    position: relative;
-  }
+     .game-board {
+         width: 100%;
+         max-width: 750px;
+    }
 
-  .card .guess {
-    display: flex;
-    top: 0;
-    position: absolute;
-    justify-content: flex-end;
-  }
+     .card {
+         width: 12rem;
+         position: relative;
+         height: 19rem;
+    }
 
-  .card .guess span {
-    display: none;
-  }
+     .card .guess {
+         display: flex;
+         top: 0;
+         position: absolute;
+         justify-content: flex-end;
+         align-content: center;
+    }
 
-  .card .guess .filled-button {
-    padding: 6px 11px;
-    margin-bottom: 1px;
-    background: white;
-    color: var(--primary);
-    border: none;
-  }
+     .small {
+         padding: 0 1rem;
+         margin: 0 1.9rem 1rem 1.9rem;
+    }
+
+     .card .guess span {
+         display: none;
+    }
+
+     .card:hover {
+         background-color: var(--secondary);
+         transition: 1s;
+    }
+
+     #question-slide > * {
+         margin-bottom: 2rem;
+    }
+
+     #question-slide > :last-child {
+         margin-bottom: 0rem;
+    }
 }

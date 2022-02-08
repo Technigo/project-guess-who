@@ -38,6 +38,13 @@ h1 {
   color: white;
 }
 
+.counter {
+  color: white;
+  font-size: 22px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;

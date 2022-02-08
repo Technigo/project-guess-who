@@ -13,6 +13,7 @@ const areYouSure = document.querySelector('.customConfirm')
 const correctText = document.getElementById('correctText')
 const incorrectText = document.getElementById('incorrectText')
 const confirmText = document.getElementById('confirmText')
+const counterText = document.getElementById('counter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -248,6 +249,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 let finalGuess
+let counter = 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -332,6 +334,8 @@ findOut.addEventListener('click', () => {
   // console.log(currentQuestion);
   // console.log(secret.animal);
   checkQuestion();
+  counter++;
+  counterText.innerText = counter;
 })
 
 // Check if answer is correct, then pass it to filterCharacters
@@ -462,11 +466,15 @@ start()
 playAgain.addEventListener('click', () => {
   start();
   winOrLose.style.display = "none";
+  counter = 0;
+  counterText.innerText = counter;
 })
 
 restartButton.addEventListener('click', () => {
   start();
   winOrLose.style.display = "none";
+  counter = 0;
+  counterText.innerText = counter;
 })
 
 // Media Query JavaScript for Custom Alert

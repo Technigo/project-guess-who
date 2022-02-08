@@ -50,7 +50,7 @@ const CHARACTERS = [
     {
       name: 'Zelda',
       img: 'images/zelda.jpg',
-      fur: ['orange', 'yellow'],
+      fur: ['orange'],
       skin: 'brown',
       claws: 'without',
       special: []

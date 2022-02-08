@@ -60,7 +60,7 @@ const CHARACTERS = [
   {
     name: 'Zelda',
     img: 'images/zelda.jpg',
-    fur: ['orange', 'yellow'],
+    fur: ['orange'],
     skin: 'brown',
     claws: 'without',
     special: []
@@ -213,8 +213,9 @@ let count = 0
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((cat) => {
-    board.innerHTML += `
+  CHARACTERS.forEach((cat) => {
+    if (charactersInPlay.includes(cat)) {
+      board.innerHTML += `
       <div class="card">
         <p>${cat.name}</p>
         <img class="characters" src=${cat.img} alt=${cat.name}>
@@ -224,6 +225,13 @@ const generateBoard = () => {
         </div>
       </div>
     `
+    } else {
+      board.innerHTML += `
+      <div class="card">
+        <img class="characters" src="images/cat-guess.jpg" alt="not this cat">
+      </div>
+    `
+    }
   })
 }
 

@@ -468,3 +468,14 @@ restartButton.addEventListener('click', () => {
   start();
   winOrLose.style.display = "none";
 })
+
+// Media Query JavaScript for Custom Alert
+
+// if (window.matchMedia("max-width: 768px")) {
+//   const height = document.querySelector('body').scrollHeight;
+//   console.log(height);
+//   let confirmTopMargin = (height / 2);
+//   console.log(confirmTopMargin);
+//   areYouSure.style.position = "absolute";
+//   areYouSure.style.marginTop = confirmTopMargin;
+// }

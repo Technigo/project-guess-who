@@ -367,6 +367,11 @@ button {
 
   .customAlert {
     width: 350px;
+    position: fixed;
+  }
+
+  .win-or-lose-wrapper {
+    position: fixed;
   }
 
   .win-or-lose {

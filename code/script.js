@@ -293,7 +293,6 @@ const customConfirm = (message, personToConfirm) => {
   })
   document.getElementById('confirmButton').addEventListener('click', () => {
     areYouSure.style.display = "none";
-    console.log(personToConfirm);
     checkMyGuess(personToConfirm);
   })
 }
@@ -379,41 +378,41 @@ const filterCharacters = (keep) => {
   if (category === 'animal') {
     if (keep) {
       alertCorrect(
-        `Yes, the villager is a ${value}! Keep all the ${value} villagers.`
+        `Yes, the villager is a ${value} 👏! Keep all the ${value} villagers.`
       )
     } else {
       alertIncorrect(
-        `No, the villager is not a ${value}! Remove all ${value} villagers.`
+        `No, the villager is not a ${value} 👎! Remove all ${value} villagers.`
       )
     }
   } else if (category === 'personality') {
     if (keep) {
       alertCorrect(
-        `Yes, the villager is ${value} type! Keep all the ${value} type villagers.`
+        `Yes, the villager is ${value} type 👏! Keep all the ${value} type villagers.`
       )
     } else {
       alertIncorrect(
-        `No, the villager is not ${value} type! Remove all the ${value} type villagers.`
+        `No, the villager is not ${value} type 👎! Remove all the ${value} type villagers.`
       )
     }
   } else if (category === 'hobby') {
     if (keep) {
       alertCorrect(
-        `Yes, the villager likes ${value}! Keep all the villagers that like ${value}`
+        `Yes, the villager likes ${value} 👏! Keep all the villagers that like ${value}`
       )
     } else {
       alertIncorrect(
-        `No, the villager hates ${value}! Remove all the villagers that like ${value}!`
+        `No, the villager hates ${value} 👎! Remove all the villagers that like ${value}!`
       )
     }
   } else if (category === 'zodiac') {
     if (keep) {
       alertCorrect(
-        `Yes, the villager is a ${value}! Keep all the villagers that are ${value}.`
+        `Yes, the villager is a ${value} 👏! Keep all the villagers that are ${value}.`
       )
     } else {
       alertIncorrect(
-        `No, the villager obviously isn't a ${value}! Remove all the villagers that are ${value}.`
+        `No, the villager obviously isn't a ${value} 👎! Remove all the villagers that are ${value}.`
       )
     }
   }
@@ -442,13 +441,13 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    alertCorrect(`Congratulations! ${secret.name} was the right villager.`);
+    alertCorrect(`Congratulations! 🎉 ${secret.name} was the right villager. 🥳`);
     setTimeout(() => {
     winOrLose.style.display = "flex";
     winOrLoseText.innerText = "Yay!!! You won!"
   }, 3000)
   } else {
-    alertIncorrect(`I'm sorry. ${personToCheck} was incorrect. ${secret.name} was the right villager`);
+    alertIncorrect(`I'm sorry. ${personToCheck} was incorrect 😓. ${secret.name} was the right villager.`);
     setTimeout(() => {
     winOrLose.style.display = "flex";
     winOrLoseText.innerText = "Boo-hoo! You lost!!!"

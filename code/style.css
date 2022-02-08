@@ -366,7 +366,20 @@ button {
   }
 
   .customAlert {
-    width: 400px;
+    width: 350px;
+  }
+
+  .win-or-lose {
+    max-width: 375px;
+    text-align: center;
+  }
+
+  .win-or-lose h1 {
+    line-height: 1.25;
+  }
+
+  .win-or-lose img {
+    width: 300px;
   }
 }
 

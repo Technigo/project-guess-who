@@ -11,4 +11,4 @@ The images: bighead.io
 
 ## View it live
 
-Sexpunkter.netlify.app
+Sexpunkterwho.netlify.app

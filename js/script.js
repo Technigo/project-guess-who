@@ -7,7 +7,7 @@ const restartButton = document.getElementById('restart')
 const CHARACTERS = [
   {
     name: 'Jabala',
-    img: 'images/jabala.svg',
+    img: ' images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
@@ -112,7 +112,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jenni',
-    img: 'images/jenni.svg',
+    img: '../images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],

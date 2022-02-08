@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
   --primary: #D5EEFF;
-  --secondary: #1B435D;
+  --secondary: #26459b;
 }
 
 body {
@@ -191,7 +191,7 @@ button {
   margin-bottom: 32px;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   body {
     flex-direction: column;
   }
@@ -219,6 +219,8 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    display: flex;
+    justify-content: center;
   }
 
   .card {
@@ -244,4 +246,19 @@ button {
     color: var(--primary);
     border: none;
   }
+  
+  button.filled-button.small {
+    visibility: hidden;
+}
+.card:hover button.filled-button.small {
+  visibility: visible;
+  color: #F99F48;
+}
+}
+
+@media screen and (min-width: 992px) {
+.card{
+  width: 114px;
+}
+
 }

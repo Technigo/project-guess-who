@@ -1,8 +1,8 @@
 // All the DOM selectors stored as short variables
 const board              = document.getElementById('board')
 const questions          = document.getElementById('questions')
-const restartButton      = document.getElementById('restart')
 const filterButton       = document.getElementById('filter')
+const restartButton      = document.getElementById('restart')
 const winOrLoseText      = document.getElementById('winOrLoseText')
 const winOrLose          = document.getElementById('winOrLose')
 const playAgainButton    = document.getElementById('playAgain')
@@ -17,7 +17,7 @@ const CHARACTERS = [
     hairColor: 'hidden',
     eyeColor: 'hidden',
     glasses: true,
-    headgear: true,
+    hat: true,
     necklace: false,
     earrings: false,
     phone: false,
@@ -32,7 +32,7 @@ const CHARACTERS = [
     hairColor: 'brown',
     eyeColor: 'blue',
     glasses: false,
-    headgear: true,
+    hat: true,
     necklace: false,
     earrings: false,
     phone: false,
@@ -47,7 +47,7 @@ const CHARACTERS = [
     hairColor: 'grey',
     eyeColor: 'blue',
     glasses: false,
-    headgear: true,
+    hat: true,
     necklace: false,
     earrings: false,
     phone: false,
@@ -62,7 +62,7 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'hazel',
     glasses: false,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: false,
     phone: false,
@@ -77,7 +77,7 @@ const CHARACTERS = [
     hairColor: 'yellow',
     eyeColor: 'green',
     glasses: true,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: false,
     phone: false,
@@ -92,7 +92,7 @@ const CHARACTERS = [
     hairColor: 'brown',
     eyeColor: 'green',
     glasses: true,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: false,
     phone: false,
@@ -107,7 +107,7 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'hidden',
     glasses: true,
-    headgear: false,
+    hat: false,
     necklace: true,
     earrings: false,
     phone: false,
@@ -122,7 +122,7 @@ const CHARACTERS = [
     hairColor: 'yellow',
     eyeColor: 'hidden',
     glasses: true,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: false,
     phone: false,
@@ -137,7 +137,7 @@ const CHARACTERS = [
     hairColor: 'orange',
     eyeColor: 'green',
     glasses: true,
-    headgear: false,
+    hat: false,
     necklace: true,
     earrings: true,
     phone: false,
@@ -153,7 +153,7 @@ const CHARACTERS = [
     hairColor: 'purple',
     eyeColor: 'hidden',
     glasses: true,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: false,
     phone: false,
@@ -168,7 +168,7 @@ const CHARACTERS = [
     hairColor: 'brown',
     eyeColor: 'blue',
     glasses: true,
-    headgear: true,
+    hat: true,
     necklace: false,
     earrings: false,
     phone: false,
@@ -183,7 +183,7 @@ const CHARACTERS = [
     hairColor: 'brown',
     eyeColor: 'green',
     glasses: true,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: false,
     phone: false,
@@ -198,7 +198,7 @@ const CHARACTERS = [
     hairColor: 'orange',
     eyeColor: 'green',
     glasses: true,
-    headgear: true,
+    hat: true,
     necklace: false,
     earrings: false,
     phone: false,
@@ -213,7 +213,7 @@ const CHARACTERS = [
     hairColor: 'white',
     eyeColor: 'hidden',
     glasses: false,
-    headgear: true,
+    hat: true,
     necklace: false,
     earrings: false,
     phone: true,
@@ -228,7 +228,7 @@ const CHARACTERS = [
     hairColor: 'orange',
     eyeColor: 'green',
     glasses: true,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: false,
     phone: false,
@@ -243,7 +243,7 @@ const CHARACTERS = [
     hairColor: 'hidden',
     eyeColor: 'blue',
     glasses: false,
-    headgear: true,
+    hat: true,
     necklace: false,
     earrings: false,
     phone: false,
@@ -258,7 +258,7 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'blue',
     glasses: true,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: false,
     phone: false,
@@ -273,7 +273,7 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'blue',
     glasses: true,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: false,
     phone: false,
@@ -288,7 +288,7 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'hazel',
     glasses: true,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: true,
     phone: false,
@@ -303,7 +303,7 @@ const CHARACTERS = [
     hairColor: 'yellow',
     eyeColor: 'blue',
     glasses: false,
-    headgear: true,
+    hat: true,
     necklace: false,
     earrings: false,
     phone: false,
@@ -318,7 +318,7 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'brown',
     glasses: false,
-    headgear: true,
+    hat: true,
     necklace: false,
     earrings: false,
     phone: false,
@@ -333,7 +333,7 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'blue',
     glasses: false,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: true,
     phone: false,
@@ -348,7 +348,7 @@ const CHARACTERS = [
     hairColor: 'brown',
     eyeColor: 'green',
     glasses: true,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: false,
     phone: false,
@@ -363,7 +363,7 @@ const CHARACTERS = [
     hairColor: 'yellow',
     eyeColor: 'hidden',
     glasses: true,
-    headgear: true,
+    hat: true,
     necklace: true,
     earrings: false,
     phone: false,
@@ -378,7 +378,7 @@ const CHARACTERS = [
     hairColor: 'grey',
     eyeColor: 'hazel',
     glasses: false,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: true,
     phone: false,
@@ -393,7 +393,7 @@ const CHARACTERS = [
     hairColor: 'yellow',
     eyeColor: 'green',
     glasses: false,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: false,
     phone: false,
@@ -408,7 +408,7 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'green',
     glasses: false,
-    headgear: false,
+    hat: false,
     necklace: false,
     earrings: false,
     phone: false,
@@ -423,7 +423,7 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'hazel',
     glasses: true,
-    headgear: true,
+    hat: true,
     necklace: false,
     earrings: false,
     phone: false,
@@ -645,8 +645,18 @@ playAgain.addEventListener('click', () => {
 
 // Sets the timer
 setInterval(() => {
+
   timePassed++
+  /*
+  if(timePassed > 59){
+    mins++
+    timePassed = timePassed - 59
+    //time.innerText = `00:${mins}:${timePassed}`
+  }else if(mins > 59){
+    hrs++
+  }*/
   time.innerText = timePassed
+
 }, 1000)
 
 // Invokes the start function when website is loaded

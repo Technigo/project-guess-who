@@ -4,6 +4,8 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter') // ???
 const playAgainButton = document.getElementById('playAgain')
+// for counter
+let counterDisplay = document.getElementById('counterDisplay')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -205,9 +207,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-
 // for counter
-let counterDisplay = document.getElementById('counterDisplay')
 let count = 0
 
 // Draw the game board
@@ -242,6 +242,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard()
   setSecret() // ???
+  counterDisplay.innerText = '0'
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -395,6 +396,7 @@ const checkMyGuess = (catToCheck) => {
     document.getElementById('winOrLose').style.display = 'flex'
     // 4. Hide the game board
     board.style.display = 'none'
+    // video not working well on iPhone, needs to be fixed, maybe the playsinline attribute
     document.getElementById('winReward').innerHTML = `
     <video src="./cute-cat.mp4" type="video/mp4" autoplay muted loop playsinline>video</video>
     <audio src="./cat-purring.wav" type="audio/wav" autoplay loop></audio>
@@ -415,6 +417,8 @@ const playAgain = () => {
   document.getElementById('winReward').innerHTML = ''
   board.style.display = 'flex'
   count = 0 // ne fonctionne pas, n'affiche pas 0, mais repart à 1 au prochain guess...
+  counterDisplay.innerText = '0'
+  // je dois trouver comment faire reset pour la question aussi...
 }
 
 // Invokes the start function when website is loaded

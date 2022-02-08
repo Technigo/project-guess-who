@@ -231,9 +231,10 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  // Adding all the characters when the page load
   generateBoard()
- 
+  // Want to add a random person each time we play
+  setSecret ()
 }
 
 // setting the currentQuestion object when you select something in the dropdown

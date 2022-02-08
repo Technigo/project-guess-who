@@ -1,7 +1,17 @@
-// All the DOM selectors stored as short variables
+// All the DOM selectors stored as short variables in order like the HTML
+const restartButton = document.getElementById('restart') 
+const questions = document.getElementById('questions') 
+const filter = document.getElementById('filter')
 const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgain = document.getElementById('playAgain')
+
+
+//Aduio sound effect
+const audio = new audio("");
+audio.currentTime = 0;
+audio.play();
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -229,9 +239,11 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  generateBoard()
+  setSecret ()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -323,3 +335,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+

@@ -1,14 +1,14 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #356879;
-  --secondary: #6B96A6;
+  --primary: #87BACD;
+  --secondary: #96C4D4;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 h1 {
@@ -45,8 +45,8 @@ video {
 select {
   display: block;
   border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
+  font-size: 20px;
+  font-family: 'Rubik', sans-serif;
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -132,9 +132,9 @@ select {
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Monoton', cursive;
+  /* font-weight: bold; */
   padding: 17px 27px;
   cursor: pointer;
 }

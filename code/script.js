@@ -228,7 +228,7 @@ const generateBoard = () => {
     } else {
       board.innerHTML += `
       <div class="card">
-        <img class="characters" src="images/cat-guess.jpg" alt="not this cat">
+        <img class="characters" src="images/cat-logo-large.svg" alt="not this cat">
       </div>
     `
     }

@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -58,7 +59,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewelry'],
     other: []
   },
   {
@@ -74,7 +75,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewelry'],
     other: []
   },
 
@@ -115,7 +116,7 @@ const CHARACTERS = [
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
+    accessories: ['hat', 'jewelry'],
     other: []
   },
   {
@@ -147,7 +148,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewelry'],
     other: []
   },
   {
@@ -163,7 +164,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'jewelry'],
     other: []
   },
   {
@@ -171,7 +172,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['jewelry'],
     other: []
   },
   {
@@ -224,13 +225,15 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 }
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS;
+  generateBoard();
+  setSecret();
   // What else should happen when we start the game?
 }
 
@@ -240,30 +243,44 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+  // console.log(currentQuestion.category)
+  // console.log(currentQuestion.value)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  selectQuestion()
   const { category, value } = currentQuestion
-
+  // console.log(secret[category])
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    if (currentQuestion.value === secret[category]) {
+      // console.log(`${secret["name"]} has ${secret[category]} ${category}`)
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[category].includes(value)){
+      // console.log(`${secret["name"]} has ${value}.`)
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
   }
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
+  console.log("filterCharacters called")
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
@@ -278,16 +295,51 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person is a ${value}! Keep all ${value}s`
+      )
+    } else {
+      alert(
+        `No, the person is not a ${value}! Remove all ${value}s`
+      )
+    }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`
+      )
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn't have ${value} ${category}! Remove all the people with ${value} ${category}.`
+      )
     }
   }
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
+  if (keep) {
+    if (category === 'hair' || category === 'eyes') {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+      generateBoard();
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+      generateBoard();
+    }
+  } else {
+    if (category === 'hair' || category === 'eyes') {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
+      generateBoard();
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+      generateBoard();
+    };
+    // generateBoard();
+  }
+  
+
   /* 
     for hair and eyes :
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
@@ -323,3 +375,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener("change", selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)

@@ -19,9 +19,16 @@ h1 {
   color: white;
 }
 
+/* added */
 img.characters {
   width: 150px;
   height: 150px;
+}
+
+/* added */
+video {
+  width: 300px;
+  max-width: 90vw;
 }
 
 .question-section {

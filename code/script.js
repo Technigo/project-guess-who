@@ -213,21 +213,23 @@ let count = 0
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  charactersInPlay.forEach((cat) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img class="characters" src=${person.img} alt=${person.name}>
+        <p>${cat.name}</p>
+        <img class="characters" src=${cat.img} alt=${cat.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Guess on ${cat.name}?</span>
+          <button class="filled-button small" onclick="guess('${cat.name}')">Guess</button>
         </div>
       </div>
     `
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+const badGuess = () => new Audio('./cat-hissing.wav').play()
+
+// Randomly select a cat from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
   console.log(secret)
@@ -266,7 +268,7 @@ const checkQuestion = () => {
   count++
   counterDisplay.innerHTML = count
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (skin/claws or fur/special).
+  // Compare the currentQuestion details with the secret cat details in a different manner based on category (skin/claws or fur/special).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'skin' || category === 'claws') {
@@ -304,6 +306,7 @@ const filterCharacters = (keep) => {
       alert(
         `No, the secret cat doesn't have a ${value} fur! Remove all cats with a ${value} fur.`
       )
+      badGuess()
     }
   } else if (category === 'special') {
     if (keep) {
@@ -314,6 +317,7 @@ const filterCharacters = (keep) => {
       alert(
         `No, the secret cat doesn't have the special feature: ${value}! Remove all cats with the feature: ${value}.`
       )
+      badGuess()
     }
   } else if (category === 'skin') {
     if (keep) {
@@ -325,6 +329,7 @@ const filterCharacters = (keep) => {
       alert(
         `No, the secret cat doesn't have a ${value} skin! Remove all cats with a ${value} skin.`
       )
+      badGuess()
     }
   } else if (category === 'claws') {
     if (keep) {
@@ -336,6 +341,7 @@ const filterCharacters = (keep) => {
       alert(
         `No, the secret cat isn't ${value} claws! Remove all cats ${value} claws.`
       )
+      badGuess()
     }
   }
 
@@ -343,18 +349,18 @@ const filterCharacters = (keep) => {
   // filter by category to keep or remove based on the keep variable.
   if (category === 'skin' || category === 'claws') {
     if (value === secret.skin || value === secret.claws) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      charactersInPlay = charactersInPlay.filter((cat) => cat[category] === value)
       generateBoard()
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      charactersInPlay = charactersInPlay.filter((cat) => cat[category] !== value)
       generateBoard()
     }
   } else if (category === 'fur' || category === 'special') {
     if (secret.fur.includes(value) || secret.special.includes(value)) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      charactersInPlay = charactersInPlay.filter((cat) => cat[category].includes(value))
       generateBoard()
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      charactersInPlay = charactersInPlay.filter((cat) => !cat[category].includes(value))
       generateBoard()
     }
   }
@@ -363,35 +369,39 @@ const filterCharacters = (keep) => {
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
+const guess = (catToConfirm) => {
   // store the interaction from the player in a variable. // qu'est-ce que ca veut dire????
   // remember the confirm() ?
-  if (confirm(`Do you really want to make a guess on ${personToConfirm}?`) == true) {
+  if (confirm(`Do you really want to make a guess on ${catToConfirm}?`) == true) {
     // If the player wants to guess, invoke the checkMyGuess function.
-    checkMyGuess(personToConfirm) // à mettre dans le 'if confirm true' ou à la fin de la fonction?
+    checkMyGuess(catToConfirm) // à mettre dans le 'if confirm true' ou à la fin de la fonction?
   } else { // utile ou non?
     false
   }
   console.log(secret.name)
-  console.log(personToConfirm)
+  console.log(catToConfirm)
 
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  console.log(personToCheck)
+const checkMyGuess = (catToCheck) => {
+  console.log(catToCheck)
 
-  // 1. Check if the personToCheck is the same as the secret person's name
-  if (personToCheck === secret.name) {
+  // 1. Check if the catToCheck is the same as the secret cat's name
+  if (catToCheck === secret.name) {
     // 2. Set a Message to show in the win or lose section accordingly
-    document.getElementById('winOrLoseText').innerText = 'You won!'
+    document.getElementById('winOrLoseText').innerText = `You won! As you guessed, ${catToCheck} was the secret cat!`
     // 3. Show the win or lose section
     document.getElementById('winOrLose').style.display = 'flex'
     // 4. Hide the game board
     board.style.display = 'none'
+    document.getElementById('winReward').innerHTML = `
+    <video src="./cute-cat.mp4" type="video/mp4" autoplay muted loop>video</video>
+    <audio src="./cat-purring.wav" type="audio/wav" autoplay loop></audio>
+    `
   } else {
     // 2. Set a Message to show in the win or lose section accordingly
-    document.getElementById('winOrLoseText').innerText = 'You lost!'
+    document.getElementById('winOrLoseText').innerText = `You lost! Unfortunately, ${catToCheck} wasn't the secret cat, it was ${secret.name}...`
     // 3. Show the win or lose section
     document.getElementById('winOrLose').style.display = 'flex'
     // 4. Hide the game board
@@ -402,7 +412,9 @@ const checkMyGuess = (personToCheck) => {
 const playAgain = () => {
   start()
   document.getElementById('winOrLose').style.display = 'none'
+  document.getElementById('winReward').innerHTML = ''
   board.style.display = 'flex'
+  count = 0 // ne fonctionne pas, n'affiche pas 0, mais repart à 1 au prochain guess...
 }
 
 // Invokes the start function when website is loaded

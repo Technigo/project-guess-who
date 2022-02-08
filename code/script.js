@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
+const counter = document.getElementById('counter') 
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -38,6 +39,17 @@ const CHARACTERS = [
     sweater: ['striped'],
     face: ['beard'],
     accessories: [],
+  },
+  {
+    name: 'Daniel',
+    img: 'images/DANIEL.jpg',
+    hair: 'unknown',
+    pants: 'black',
+    profession: 'unknown',
+    headGear: '',
+    sweater: ['white', 'yellow'],
+    face: ['beard'],
+    accessories: ['baby', 'baby carrier'],
   },
   {
     name: 'Emilio',
@@ -150,17 +162,6 @@ const CHARACTERS = [
     accessories: [],
   },
   {
-    name: 'Daniel',
-    img: 'images/DANIEL.jpg',
-    hair: 'unknown',
-    pants: 'black',
-    profession: 'unknown',
-    headGear: '',
-    sweater: ['white', 'yellow'],
-    face: ['beard'],
-    accessories: ['baby', 'baby carrier'],
-  },
-  {
     name: 'Nils',
     img: 'images/NILS.jpg',
     hair: 'brown',
@@ -200,7 +201,7 @@ const CHARACTERS = [
     pants: 'red',
     profession: 'carpenter',
     headGear: '',
-    sweater: ['red', 'blue'],
+    sweater: ['red'],
     face: ['freckles'],
     accessories: ['wrench'],
   },
@@ -276,6 +277,9 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let incrementOne = 0
+
+//this increment counter with one.
 
 // Draw the game board
 const generateBoard = () => {
@@ -307,6 +311,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
+  counter.innerText = 0
   // What else should happen when we start the game?
 }
 
@@ -315,12 +320,14 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
+  const text = questions.options[questions.selectedIndex].text
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   
   currentQuestion = {
     category: category, 
-    value: value
+    value: value,
+    text: text,
   }
 }
 
@@ -330,16 +337,11 @@ questions.addEventListener('change', () => {
   console.log(currentQuestion)
 })
 
-//This invokes the checkQuestion
-findOutBtn.addEventListener('click', () => {
-  checkQuestion()
-})
-
 //Compare currentQuestion (our guess) with the details of the secret person.
 //If secret has what was guessed, keep people that have that detail by passing keep to filterfuntion.
 //If secret has not what was guessed, remove people that does not have the detail in filterfunction. 
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  const { category, value, text } = currentQuestion
 
   if (category === 'hair' || category === 'pants' || category === 'profession' || category === 'headgear') {
     
@@ -347,20 +349,23 @@ const checkQuestion = () => {
       console.log(`secret has ${category} ${value}`)
       filterCharacters(value)
     } else {
-      console.log(`secret has not ${value}`)
+      console.log(`secret has not ${text}`)
       filterCharacters()
     }
   } else if (category === 'sweater' || category === 'face' || category === 'accessories') {
     //check if secret array of values includes selected value (returns true/false)
 
-      if ((secret.accessories).includes(value)) {
-        console.log(`secret has accessories ${value}`)
+      if ((secret.sweater).includes(value)) {
+        console.log(`secret has accessories ${text}`)
         filterCharacters(value)
       } else if ((secret.face).includes(value)) {
-        console.log(`secret has other: ${value}`)
+        console.log(`secret has other: ${text}`)
+        filterCharacters(value)
+      } else if ((secret.accessories).includes(value)) {
+        console.log(`secret has other: ${text}`)
         filterCharacters(value)
       } else {
-        console.log(`secret has not ${value}`)
+        console.log(`secret has not ${text}`)
         filterCharacters()
       }
   }
@@ -369,46 +374,47 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   //save current guess to compare what should be kept for different categories.
-  const { category, value } = currentQuestion
-  console.log(category, value)
+  const { category, value, text } = currentQuestion
+  console.log(currentQuestion)
+  console.log(text)
   console.log(keep)
   // Show the correct alert message for different categories
   if (category === 'sweater') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${text}! Keep all people that wears ${text}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${text}! Remove all people that wears ${text}`
       )
     }
   } else if (category === 'face') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that has ${value}`
+        `Yes, the person wears ${text}! Keep all people that has ${text}`
       )
     } else {
        alert(
-         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+         `No, the person doesn't wear ${text}! Remove all people that wears ${text}`
       )
     } 
   } else if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that has ${value}`
+        `Yes, the person wears ${text}! Keep all people that has ${text}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${text}! Remove all people that wears ${text}`
       )
     }
     
   } else {
     if (keep) {
-      alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`)
+      alert(`Yes, the person has ${value}! Keep all people with ${value}`)
     } else {
-      alert(`No, the person doesnt have ${value} ${category}! Remove all people with ${value}${category}`)
+      alert(`No, the person doesn't have ${value}! Remove all people with ${value}`)
     }
   }
 
@@ -437,6 +443,10 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  const confirmGuess = confirm(`So, you want to make a guess?`)
+  if (confirmGuess) {
+    checkMyGuess(personToConfirm)
+  } 
 }
 
 // If you confirm, this function is invoked
@@ -445,6 +455,12 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  if (personToCheck === secret.name) {
+    alert(`It is ${personToCheck}, good job!`)
+
+  } else {
+    alert(`Oh, I´m sorry but it is not ${personToCheck}, it was ${secret.name} all the time.. Better luck next time!`)
+  }
 }
 
 // Invokes the start function when website is loaded
@@ -452,3 +468,9 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+//This invokes the checkQuestion
+findOutBtn.addEventListener('click', () => {
+  checkQuestion()
+  incrementOne++
+  counter.innerText = incrementOne
+})

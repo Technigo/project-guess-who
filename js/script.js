@@ -1,10 +1,10 @@
 // All the DOM selectors stored as short variables
 const board              = document.getElementById('board')
 const questions          = document.getElementById('questions')
+const restartButton      = document.getElementById('restart')
 const filterButton       = document.getElementById('filter')
 const winOrLoseText      = document.getElementById('winOrLoseText')
 const winOrLose          = document.getElementById('winOrLose')
-const restartButton      = document.getElementById('restart')
 const playAgainButton    = document.getElementById('playAgain')
 const totalGuesses       = document.querySelector("#totalGuesses")
 const time               = document.querySelector("#time")
@@ -465,6 +465,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
+  sound()
   numberOfGuesses = 0
   totalGuesses.innerText = 0
   timePassed = 0
@@ -478,14 +479,14 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value of the question we've selected.
 
   const value = questions.value
-  if (category === 'hair color') {
+  if (category === 'hair') {
     currentQuestion = {
       attribute: 'hairColor',
       value,
       // 👆 add the value from the input here
       category
     }
-  } else if (category === 'eye color') {
+  } else if (category === 'eye') {
     // Set this up your self
     currentQuestion = {
       attribute: 'eyeColor',
@@ -527,42 +528,52 @@ const { attribute, category, value } = currentQuestion
 
 if (category === 'accessories') {
   if (keep) {
+    sound()
     alert(
       `You are correct, the person wears ${attribute}! Keep all that wears ${attribute}.`
     )
   } else {
+    sound()
     alert(
       `No, the person doesn't wear ${attribute}! Remove all that wears ${attribute}.`
     )
   }
-} else if (category === 'hair color') {
+} else if (category === 'hair') {
   if (keep) {
+    sound()
     alert(`Sure thing, the person has ${value} hair! Keep all that has ${value} hair.`
     )
+    
   } else {
+    sound()
     alert(
     `Nope, the person doesn't have ${value} hair. Remove all that has ${value} hair.`
     )
   }
-} else if (category === 'eye color') {
+} else if (category === 'eye') {
   if (keep) {
+    sound()
     alert(
       `Correctamundo, the person has ${value} eyes! Keep all that has ${value} eyes.`
     )
   } else {
+    sound()
     alert(
       `Sorry, the person doesn't have ${value} eyes. Remove all that has ${value} eyes.`
       )
   }
 } else if (category === 'other') {
   if (keep) {
+    sound()
     alert(
       `Affirmative, the person has a ${attribute}. Keep all that has a ${attribute}.`
     )
 } else {
+  sound()
     alert(
       `Negative, the person doesn't have a ${attribute}. Remove all that has a ${attribute}.`
     )
+
   } 
 }
   // filter to keep or remove based on the keep variable.
@@ -607,8 +618,10 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
 
   if (suspect === secret.name) {
+    sound()
     winOrLoseText.innerHTML = `You are a genius!! It was ${suspect}.`
   } else {
+    sound()
     winOrLoseText.innerHTML = `It is not ${suspect}. It was ${secret.name}.`
   }
   
@@ -618,6 +631,12 @@ const checkMyGuess = (suspect) => {
   // 4.Hide the game board
   winOrLose.style.display = 'flex'
   board.style.display = 'none'
+}
+
+//add sound
+const sound = ()=>{
+  let audio = new Audio('./audio/multi.mp3');
+  audio.play();
 }
 
 playAgain.addEventListener('click', () => {

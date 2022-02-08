@@ -30,4 +30,4 @@ In future I will give the game better shape and color.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://elegant-hypatia-dea1c6.netlify.app

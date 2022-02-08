@@ -229,26 +229,27 @@ const setWinningCharacter = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
+  // Set charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // Generate the board of characters
   generateBoard();
   // Assign winning character with setWinningCharacter
   setWinningCharacter();
-  console.log(winningCharacter);
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// Set currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  // Stores what category the question belongs to.
+  const questionCategory = questions.options[questions.selectedIndex].parentNode.label;
+ 
+  // Stores the actual value of the question selected
+  const questionValue = questions.options[questions.selectedIndex].value;
 
+  // Object with selected category and value
   currentQuestion = {
-    category: category,
-    // value: value
+    category: questionCategory,
+    value: questionValue,
   }
 }
 

@@ -7,9 +7,9 @@ const findOutBtn = document.getElementById('filter')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
+    name: 'Alice',
+    img: 'images/ALICE.jpg',
+    hair: 'brown',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
@@ -212,8 +212,8 @@ const generateBoard = () => {
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+      <p>${person.name}</p>
+      <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
@@ -259,51 +259,47 @@ questions.addEventListener('change', () => {
   console.log(currentQuestion)
 })
 
-// This function should be invoked when you click on 'Find Out' button.
-const checkQuestion = () => {
-  const { category, value } = currentQuestion
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-    if (value === secret.hair || value === secret.eyes) {
-      console.log('har hår eller glasögon')
-    } else {
-      console.log('har inte hår eller glasögon')
-    }
-  } else if (category === 'accessories' || category === 'other') {
-    //check if secret array of values includes selected value (returns true/false)
-      if ((secret.accessories).includes(value)) {
-        console.log(`includes accessories ${value}`)
-      } else if ((secret.other).includes(value)) {
-        console.log(`includes other: ${value}`)
-      } else {
-        console.log(`not includes ${value}`)
-      }
-
-    //(secret.accessories).includes(value)
-    (secret.other).includes(value)
-    console.log(glasses)
-    // jämför med värden i accessories array, hitta rätt index att jämföra med
-    // if (value === secret.accessories || value === secret.other) {
-    //   console.log(secret.accessories)
-    //   alert(`The person has ${value}`)
-    // } else {
-    //   alert(`The person does not have ${value}`)
-    //   console.log(secret.accessories)
-    // }
-  }
-}
-
-//This should invoke the checkQuestion
+//This invokes the checkQuestion
 findOutBtn.addEventListener('click', () => {
   checkQuestion()
 })
 
+//Compare currentQuestion (our guess) with the details of the secret person.
+//If secret has what was guessed, keep people that have that detail by passing keep to filterfuntion.
+//If secret has not what was guessed, remove people that does not have the detail in filterfunction. 
+const checkQuestion = () => {
+  const { category, value } = currentQuestion
+
+  if (category === 'hair' || category === 'eyes') {
+    if (value === secret.hair || value === secret.eyes) {
+      console.log(`secret has ${category} ${value}`)
+      filterCharacters(value)
+    } else {
+      console.log(`secret has not ${value}`)
+      filterCharacters()
+    }
+  } else if (category === 'accessories' || category === 'other') {
+    //check if secret array of values includes selected value (returns true/false)
+      if ((secret.accessories).includes(value)) {
+        console.log(`secret has accessories ${value}`)
+        filterCharacters(value)
+      } else if ((secret.other).includes(value)) {
+        console.log(`secret has other: ${value}`)
+        filterCharacters(value)
+      } else {
+        console.log(`secret has not ${value}`)
+        filterCharacters()
+      }
+  }
+}
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
+  //save current guess to compare what should be kept for different categories.
   const { category, value } = currentQuestion
+  console.log(category, value)
+  console.log(keep)
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -316,30 +312,42 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person wears ${value}! Keep all people that has ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+      )
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`)
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(`No, the person doesnt have ${value} ${category}! Remove all people with ${value}${category}`)
     }
   }
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
+  if (category === 'hair' || category === 'eyes') {
+    if (keep) {  
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+    }
+    //for accessories and other
+  } else {
+    if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
+    } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+    }
+  }
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

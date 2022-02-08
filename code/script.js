@@ -396,7 +396,7 @@ const checkMyGuess = (catToCheck) => {
     // 4. Hide the game board
     board.style.display = 'none'
     document.getElementById('winReward').innerHTML = `
-    <video src="./cute-cat.mp4" type="video/mp4" autoplay muted loop>video</video>
+    <video src="./cute-cat.mp4" type="video/mp4" autoplay muted loop playsinline>video</video>
     <audio src="./cat-purring.wav" type="audio/wav" autoplay loop></audio>
     `
   } else {

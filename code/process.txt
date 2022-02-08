@@ -1,0 +1,126 @@
+1. START THE GAME
+
+   - Generate the board of charachters (generateBoard)
+   - Set the "WinningCharacter" = randomly assign who the right charachter is (setWinningCharacter)
+
+2. Provide the player with a way to guess what the charachter is - guess attribute using the drop-down menu and submit
+
+3. Once a question has been submitted
+
+   - Check whether the value of the property is the same as the secret's
+   - Alert somewhere so the user can see whether it's true or false
+     - if true
+       - keep only charachters that have this property
+     - if false
+       - remove all charachters that have this property
+
+4. Repeat above step as amny time as possible
+
+5. Once a guess has been submitted
+
+   - Check whether it is the correct charachter = the "secret" one
+   - Alert somewhere so the user can see whether it's true or false
+
+   - If it is correct:
+
+     - Display congratulations message.
+     - Stop the player from being able to enter more guesses.
+     - Display control allowing the player to restart the game.
+
+   - If it is wrong:
+     - Tell the player it is game over.
+     - Stop the player from being able to enter more guesses
+     - Display control allowing the player to restart the game.
+
+6. Once the game restarts, make sure the game logic and UI are completely reset, then go back to step 1.
+
+EVENTLISTENERS
+
+- on restart-button => reset game (step 1)
+- on "find out" button for checking wheter it's true or false (step 3)
+- on guess-button for checking wheter it's true or false
+- on the confirm-message that appears when the user makes a guess
+  - cancel-button => close the window - do nothing
+  - confirm guess-button => check guess (step 4)
+
+---
+
+STRETCH VERSION 1
+
+1. START THE GAME
+
+   - Generate the board of charachters (generateBoard)
+   - Set the "secret" = randomly assign who the right charachter is (setSecret)
+   - STRETCH - 1.2 define question-counter and set the value to 0
+
+2. Player GUESS attribute using the drop-down menu and submit
+
+   - STRETCH: update questionCounter on every submit
+   - STRETCH: save and view previously guesses and number of questions made
+   - STRETCH: check value of questionCounter
+
+     - If max questions are reached:
+
+       - Tell the player it is to many questions & game over + Display button allowing the player to restart the game.
+
+     - If max questions -1:
+
+       - Message varning
+       - Check whether the value of the property is the same as the secret's
+       - Alert somewhere so the user can see whether it's true or false
+         - if true
+           - keep only charachters that have this property
+         - if false
+           - remove all charachters that have this property
+
+     - If not:
+       - Check whether the value of the property is the same as the secret's
+       - Alert somewhere so the user can see whether it's true or false
+         - if true
+           - keep only charachters that have this property
+         - if false
+           - remove all charachters that have this property
+
+3. Repeat above step as amny time as possible until max questions have been asked
+
+4. Once a guess has been submitted
+
+   - Ask the player to confirm the guess
+
+     - If yes
+
+       - Check whether it is the correct charachter = the "secret" one
+
+         - If it is correct:
+
+           - Display congratulations message + Display button allowing the player to restart the game.
+           - Stop the player from being able to enter more guesses.
+
+         - If it is wrong:
+           - Tell the player it is wrong + Display button allowing the player to restart the game.
+
+     - If no
+       - close pop-up window
+
+5. Once the game restarts, make sure the game logic and UI are completely reset, then go back to step 1.
+
+EVENTLISTENERS
+
+- on restart-button => reset game (step 1)
+- on "find out" button for checking wheter it's true or false (step 3)
+- on guess-button for checking wheter it's true or false
+- on the confirm-message that appears when the user makes a guess
+  - cancel-button => close the window - do nothing
+  - confirm guess-button => check guess (step 4)
+
+---
+
+STRETCHERS STREEEEEETCH
+
+Start window where:
+
+- Player enters name
+  - name shows on the left aside section
+- Player chooses level (beginner, intermediate, advanced)
+  - levels determines max # of questions that can be asked (max-variable set to this value)
+- Event listener on button that then starts the game

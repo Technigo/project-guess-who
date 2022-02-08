@@ -2,6 +2,7 @@ const gameBoard = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const filterButton = document.getElementById("filter");
+const winOrLoseWrapper = document.querySelector(".win-or-lose-wrapper")
 
 const characters = [
   {
@@ -261,7 +262,7 @@ const filterCharacters = (currentQuestion) => {
 }
 
 const alertMessage = (keepCharacter) => {
-  const { category, value } = currentQuestion
+  const { category, value } = currentQuestion;
   if (category === 'accessories') {
     if (keepCharacter) {
       alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
@@ -293,17 +294,22 @@ const alertMessage = (keepCharacter) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  confirm(`Are you sure you want to guess ${personToConfirm}?`);
+  checkMyGuess(personToConfirm)
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person"s name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  console.log(secretCharacter.name)
+  console.log(personToCheck)
+  if (secretCharacter.name === personToCheck) {
+
+    alert("You have won the game!")
+    winOrLoseWrapper.style.display = "flex";
+  } else {
+    alert("Sorry, that is not the right person. You have lost the game.")
+    winOrLoseWrapper.style.display = "flex";
+  }
 }
 
 // Invokes the start function when website is loaded

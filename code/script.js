@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOut = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -245,7 +246,7 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+   const value = questions.value
 
   currentQuestion = {
     category: category,
@@ -311,24 +312,26 @@ const filterCharacters = (keep) => {
         `No, the person doesn't have ${value}! Remove all people without ${value}`
       )
     }
+    
   }
 
 
   //Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
+   
+    //for hair and eyes :
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
+    //for accessories and other
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+  
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -351,4 +354,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-questions.addEventListener('change')
+questions.addEventListener('change', selectQuestion)
+findOut.addEventListener('click', checkQuestion)
+

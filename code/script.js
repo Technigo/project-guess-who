@@ -233,7 +233,8 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard()
-
+  //adding a secret person when the game starts
+  setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown

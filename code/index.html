@@ -4,10 +4,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guess Paws</title>
+  <title>Guess Paw</title>
   <!-- favicon needs to be changed/fixed -->
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
   <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -19,7 +23,7 @@
   <aside class="question-section">
     <button id="restart" class="outlined-button">RESTART</button>
 
-    <img class="guess-who-icon" src="images/cat-logo-small.svg" alt="Guess Who" />
+    <img class="guess-paw-icon" src="./assets/cat-logo-small.svg" alt="Guess Who" />
 
     <h1>How is the secret cat?</h1>
 
@@ -61,8 +65,9 @@
 
     <button id="filter" class="filled-button">FIND OUT</button>
 
-    <h1>Number of questions asked:</h1>
-    <h1 id="counterDisplay"></h1>
+    <h2>Questions asked: <span id="counterQuestionsDisplay"</span></h2>
+
+    <h2>Rounds played: <span id="counterRoundsDisplay"</span></h2>
 
   </aside>
 
@@ -72,14 +77,14 @@
 
   <section id="winOrLose" class="win-or-lose-wrapper">
     <div class="win-or-lose">
-      <img class="guess-who-icon" src="images/cat-logo-small.svg" alt="Guess Who" />
+      <img class="guess-paw-icon" src="./assets/cat-logo-small.svg" alt="Guess Paw" />
       <h1 id="winOrLoseText"></h1>
       <span id="winReward"></span>
       <button id="playAgain" class="filled-button">PLAY AGAIN</button>
     </div>
   </section>
   <script src="script.js"></script>
-  <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

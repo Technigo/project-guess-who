@@ -18,6 +18,13 @@ h1 {
   margin: 10px 0;
   color: white;
 }
+/* added */
+h2 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 10px 0;
+  color: white;
+}
 
 /* added */
 img.characters {
@@ -52,7 +59,7 @@ select {
   margin: 24px 0;
 }
 
-.guess-who-icon {
+.guess-paw-icon {
   width: 126px;
 }
 
@@ -87,6 +94,9 @@ select {
 
 .card p {
   text-align: center;
+  /* which font family is better? */
+  font-family: 'Monoton', cursive;
+  color: #356879;
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
@@ -97,14 +107,14 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  color: black;
+  color: #356879;
   text-align: center;
   height: inherit;
 }
 
 .card:hover {
   background-color: white;
-  background-image: url("./images/cat-guess.jpg");
+  background-image: url("./assets/cat-guess.jpg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -210,7 +220,12 @@ button {
     line-height: 30px;
   }
 
-  .guess-who-icon {
+  h2 {
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .guess-paw-icon {
     width: 51px;
   }
 

@@ -4,8 +4,10 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter') // ???
 const playAgainButton = document.getElementById('playAgain')
-// for counter
-let counterDisplay = document.getElementById('counterDisplay')
+// for counterQuestions
+let counterQuestionsDisplay = document.getElementById('counterQuestionsDisplay')
+let counterRoundsDisplay = document.getElementById('counterRoundsDisplay')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -207,8 +209,9 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-// for counter
-let count = 0
+// for counterQuestions
+let countQuestions = 0
+let countRounds = -1
 
 // Draw the game board
 const generateBoard = () => {
@@ -228,14 +231,31 @@ const generateBoard = () => {
     } else {
       board.innerHTML += `
       <div class="card">
-        <img class="characters" src="images/cat-logo-large.svg" alt="not this cat">
+        <img class="characters" src="./assets/cat-logo-large.svg" alt="not this cat">
       </div>
     `
     }
   })
 }
 
-const badGuess = () => new Audio('./cat-hissing.wav').play()
+
+const sweetAlert = (newTitle) => {
+  Swal.fire({
+    title: newTitle,
+    confirmButtonColor: "#356879",
+    showClass: {
+      popup: 'animate__animated animate__fadeInDown'
+    },
+    hideClass: {
+      popup: 'animate__animated animate__fadeOutUp'
+    }
+  })
+}
+
+
+
+// annoying sound, it needs to be changed
+// const badGuess = () => new Audio('./assets/cat-hissing.wav').play()
 
 // Randomly select a cat from the characters array and set as the value of the variable called secret
 const setSecret = () => {
@@ -249,8 +269,11 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard()
-  setSecret() // ???
-  counterDisplay.innerText = '0'
+  setSecret()
+  counterQuestionsDisplay.innerText = countQuestions
+  countRounds++
+  counterRoundsDisplay.innerText = countRounds
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -260,7 +283,7 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
-  const value = questions.value // ???
+  const value = questions.value
   console.log('The selected category is', category, 'with this value:', value)
 
 
@@ -273,9 +296,9 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  // for counter
-  count++
-  counterDisplay.innerHTML = count
+  // for counterQuestions
+  countQuestions++
+  counterQuestionsDisplay.innerText = countQuestions
 
   // Compare the currentQuestion details with the secret cat details in a different manner based on category (skin/claws or fur/special).
   // See if we should keep or remove people based on that
@@ -308,49 +331,32 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'fur') {
     if (keep) {
-      alert(
-        `Yes, the secret cat has a ${value} fur! Keep all cats with a ${value} fur.`
-      )
+      sweetAlert(`Yes, the secret cat has a ${value} fur! Hide all cats without ${value} fur.`)
+
     } else {
-      alert(
-        `No, the secret cat doesn't have a ${value} fur! Remove all cats with a ${value} fur.`
-      )
-      badGuess()
+      sweetAlert(`No, the secret cat doesn't have a ${value} fur! Hide all cats with ${value} fur.`)
+      // badGuess()
     }
   } else if (category === 'special') {
     if (keep) {
-      alert(
-        `Yes, the secret cat has a special feature: ${value}! Keep all cats with the feature: ${value}.`
-      )
+      sweetAlert(`Yes, the secret cat has a special feature: ${value}! Hide all cats without the feature: ${value}.`)
     } else {
-      alert(
-        `No, the secret cat doesn't have the special feature: ${value}! Remove all cats with the feature: ${value}.`
-      )
-      badGuess()
+      sweetAlert(`No, the secret cat doesn't have the special feature: ${value}! Hide all cats with the feature: ${value}.`)
+      // badGuess()
     }
   } else if (category === 'skin') {
     if (keep) {
-      alert(
-        `Yes, the secret cat has a ${value} skin! Keep all cats with a ${value} skin.`
-      )
-
+      sweetAlert(`Yes, the secret cat has a ${value} skin! Hide all cats without ${value} skin.`)
     } else {
-      alert(
-        `No, the secret cat doesn't have a ${value} skin! Remove all cats with a ${value} skin.`
-      )
-      badGuess()
+      sweetAlert(`No, the secret cat doesn't have a ${value} skin! Hide all cats with ${value} skin.`)
+      // badGuess()
     }
   } else if (category === 'claws') {
     if (keep) {
-      alert(
-        `Yes, the secret cat is ${value} claws! Keep all cats ${value} claws.`
-      )
-
+      sweetAlert(`Yes, the secret cat is ${value} claws! Hide all cats that aren't ${value} claws.`)
     } else {
-      alert(
-        `No, the secret cat isn't ${value} claws! Remove all cats ${value} claws.`
-      )
-      badGuess()
+      sweetAlert(`No, the secret cat isn't ${value} claws! Hide all cats ${value} claws.`)
+      // badGuess()
     }
   }
 
@@ -381,13 +387,30 @@ const filterCharacters = (keep) => {
 const guess = (catToConfirm) => {
   // store the interaction from the player in a variable. // qu'est-ce que ca veut dire????
   // remember the confirm() ?
-  if (confirm(`Do you really want to make a guess on ${catToConfirm}?`) == true) {
-    // If the player wants to guess, invoke the checkMyGuess function.
-    checkMyGuess(catToConfirm) // à mettre dans le 'if confirm true' ou à la fin de la fonction?
-  } else { // utile ou non?
-    false
-  }
-  console.log(secret.name)
+  //if (confirm(`Do you really want to make a guess on ${catToConfirm}?`) == true) {
+  // If the player wants to guess, invoke the checkMyGuess function.
+  //  checkMyGuess(catToConfirm) // à mettre dans le 'if confirm true' ou à la fin de la fonction?
+  //} else { // utile ou non?
+  //  false
+  //}
+
+  if (Swal.fire({
+    title: `Do you really want to make a guess on ${catToConfirm}?`,
+    text: 'It will end this round.',
+    icon: 'warning',
+    iconColor: '#356879',
+    showCancelButton: true,
+    confirmButtonColor: '#356879',
+    cancelButtonColor: '#6B96A6',
+    confirmButtonText: 'Confirm'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      checkMyGuess(catToConfirm)
+    }
+  }))
+
+
+    console.log(secret.name)
   console.log(catToConfirm)
 
 }
@@ -406,8 +429,8 @@ const checkMyGuess = (catToCheck) => {
     board.style.display = 'none'
     // video not working well on iPhone, needs to be fixed, maybe the playsinline attribute
     document.getElementById('winReward').innerHTML = `
-    <video src="./cute-cat.mp4" type="video/mp4" autoplay muted loop playsinline>video</video>
-    <audio src="./cat-purring.wav" type="audio/wav" autoplay loop></audio>
+    <video src="./assets/cute-cat.mp4" type="video/mp4" autoplay muted loop playsinline>video</video>
+    <audio src="./assets/cat-purring.wav" type="audio/wav" autoplay loop></audio>
     `
   } else {
     // 2. Set a Message to show in the win or lose section accordingly
@@ -424,8 +447,9 @@ const playAgain = () => {
   document.getElementById('winOrLose').style.display = 'none'
   document.getElementById('winReward').innerHTML = ''
   board.style.display = 'flex'
-  count = 0 // ne fonctionne pas, n'affiche pas 0, mais repart à 1 au prochain guess...
-  counterDisplay.innerText = '0'
+  countQuestions = 0
+  counterQuestionsDisplay.innerText = countQuestions
+  counterRoundsDisplay.innerText = countRounds
   // je dois trouver comment faire reset pour la question aussi...
 }
 

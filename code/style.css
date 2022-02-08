@@ -1,7 +1,8 @@
 /* Global css variables used for colors */
 :root {
   --primary: #d1070a;
-  --secondary: #222222;
+  --secondary: #161616;
+  --accent: #F3E711;
 }
 
 body {
@@ -50,7 +51,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #F3E711;
+  background: var(--accent);
   background: url(./images/lego.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -70,7 +71,7 @@ select {
   width: 135px;
   height: 185px;
   overflow: hidden;
-  border: 3px solid var(--primary);
+  border: 3px solid var(--secondary);
   background: var(--secondary);
   border-radius: 4px;
   margin: 3px;
@@ -99,13 +100,14 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--secondary);
+  text-transform: uppercase;
   text-align: center;
   height: inherit;
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: var(--accent);
 }
 
 .card:hover img,
@@ -129,11 +131,14 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
-  font-size: 16px;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  -webkit-text-fill-color: #F8F8F8; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.025em;
+  -webkit-text-stroke-color: black;
   font-family: 'Boogaloo', 'Montserrat', sans-serif;
   font-weight: bold;
-  padding: 17px 27px;
+  padding: 10px 25px;
   cursor: pointer;
 }
 
@@ -145,17 +150,18 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  margin-bottom: 1em;
 }
 
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #F8F8F8;
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: #F8F8F8;
+  border-color: #F8F8F8;
   color: var(--primary);
 }
 
@@ -200,16 +206,18 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
-    padding: 8px 16px;
+    padding: 8px 10px;
   }
+  
   h1 {
     font-size: 24px;
     line-height: 30px;
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 7em;
   }
 
   .board-wrapper {
@@ -238,10 +246,13 @@ button {
   }
 
   .card .guess .filled-button {
-    padding: 6px 11px;
+    padding: 3px 5px;
+    font-size: 1em;
     margin-bottom: 1px;
-    background: white;
+    background: var(--secondary);
     color: var(--primary);
+    -webkit-text-fill-color: #F8F8F8; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 0;
     border: none;
   }
 }

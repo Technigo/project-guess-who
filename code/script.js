@@ -10,194 +10,265 @@ const CHARACTERS = [
     name: 'Alice',
     img: 'images/ALICE.jpg',
     hair: 'brown',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    pants: 'black',
+    profession: 'unknown',
+    headGear: '',
+    sweater: ['blue'],
+    face: ['glasses', 'lipstick'],
+    accessories: ['dog', 'dog bone'],
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Bella',
+    img: 'images/BELLA.jpg',
+    hair: 'blonde',
+    pants: 'striped',
+    profession: 'villain',
+    headGear: '',
+    sweater: ['striped'],
+    face: ['mask', 'scarf'],
+    accessories: ['dog', 'dog bone'],
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
+    name: 'Charlie',
+    img: 'images/CHARLIE.jpg',
     hair: 'black',
-    eyes: 'brown',
+    pants: 'striped',
+    profession: 'villain',
+    headGear: '',
+    sweater: ['striped'],
+    face: ['beard'],
     accessories: [],
-    other: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
+    name: 'Emilio',
+    img: 'images/EMILIO.jpg',
     hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
+    pants: 'black',
+    profession: 'unknown',
+    headGear: '',
+    sweater: ['beige'],
+    face: ['beard'],
     accessories: [],
-    other: []
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
+    name: 'Frank',
+    img: 'images/FRANK.jpg',
+    hair: 'unknown',
+    pants: 'black',
+    profession: 'villain',
+    headGear: 'hat',
+    sweater: ['striped', 'red'],
+    face: ['beard', 'pirate patch'],
+    accessories: ['binocular'],
+  },
+  {
+    name: 'Hjalmar',
+    img: 'images/HJALMAR.jpg',
+    hair: 'unknown',
+    pants: 'blue',
+    profession: 'police',
+    headGear: 'hat',
+    sweater: ['blue'],
+    face: ['glasses'],
     accessories: [],
-    other: []
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
+    name: 'Holly',
+    img: 'images/HOLLY.jpg',
+    hair: 'red',
+    pants: 'blue',
+    profession: 'unknown',
+    headGear: '',
+    sweater: ['green'],
+    face: ['lipstick'],
+    accessories: ['skateboard'],
+  },
+  {
+    name: 'Isak',
+    img: 'images/ISAK.jpg',
+    hair: 'blonde',
+    pants: 'black',
+    profession: 'musician',
+    headGear: 'bandana',
+    sweater: ['green', 'white'],
+    face: ['beard'],
+    accessories: ['guitar'],
+  },
+  {
+    name: 'Jimmy',
+    img: 'images/JIMMY.jpg',
+    hair: 'unknown',
+    pants: 'blue',
+    profession: 'builder',
+    headGear: 'helmet',
+    sweater: ['orange', 'blue'],
+    face: ['beard', 'dirt'],
     accessories: [],
-    other: []
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
+    name: 'Liam',
+    img: 'images/LIAM.jpg',
+    hair: 'unknown',
+    pants: 'blue',
+    profession: 'farmer',
+    headGear: 'hat',
+    sweater: ['red', 'green'],
+    face: ['glasses'],
+    accessories: [],
+  },
+  {
+    name: 'Lova',
+    img: 'images/LOVA.jpg',
+    hair: 'unknown',
+    pants: 'black',
+    profession: 'driver',
+    headGear: 'helmet',
+    sweater: ['red', 'white'],
+    face: ['lipstick'],
+    accessories: [],
+  },
+  {
+    name: 'Melker',
+    img: 'images/MELKER.jpg',
+    hair: 'blonde',
+    pants: 'white',
+    profession: 'unknown',
+    headGear: '',
+    sweater: ['red'],
+    face: [],
+    accessories: ['dog', 'hot dog'],
+  },
+  {
+    name: 'Neville',
+    img: 'images/NEVILLE.jpg',
+    hair: 'unknown',
+    pants: 'black',
+    profession: 'scientist',
+    headGear: 'hat',
+    sweater: ['white'],
+    face: ['beard'],
+    accessories: [],
+  },
+  {
+    name: 'Daniel',
+    img: 'images/DANIEL.jpg',
+    hair: 'unknown',
+    pants: 'black',
+    profession: 'unknown',
+    headGear: '',
+    sweater: ['white', 'yellow'],
+    face: ['beard'],
+    accessories: ['baby', 'baby carrier'],
+  },
+  {
+    name: 'Nils',
+    img: 'images/NILS.jpg',
+    hair: 'brown',
+    pants: 'gray',
+    profession: 'villain',
+    headGear: '',
+    sweater: ['striped', 'red'],
+    face: ['mask'],
+    accessories: [],
+  },
+  {
+    name: 'Olivia',
+    img: 'images/OLIVIA.jpg',
+    hair: 'brown',
+    pants: 'blue',
+    profession: 'police',
+    headGear: 'hat',
+    sweater: ['blue'],
+    face: ['glasses'],
+    accessories: ['hand cuffs'],
+  },
+  {
+    name: 'Patrik',
+    img: 'images/PATRIK.jpg',
     hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    pants: 'black',
+    profession: 'chef',
+    headGear: '',
+    sweater: ['white'],
+    face: ['beard'],
+    accessories: [],
+  },
+  {
+    name: 'Sam',
+    img: 'images/SAM.jpg',
+    hair: 'brown',
+    pants: 'red',
+    profession: 'carpenter',
+    headGear: '',
+    sweater: ['red', 'blue'],
+    face: ['freckles'],
+    accessories: ['wrench'],
+  },
+  {
+    name: 'Theo',
+    img: 'images/THEO.jpg',
+    hair: 'black',
+    pants: 'blue',
+    profession: 'unknown',
+    headGear: '',
+    sweater: ['gray', 'red'],
+    face: ['glasses'],
+    accessories: ['dog', 'dog bone'],
+  },
+  {
+    name: 'Tobias',
+    img: 'images/TOBIAS.jpg',
+    hair: 'unknown',
+    pants: 'black',
+    profession: 'unknown',
+    headGear: 'hat',
+    sweater: ['green', 'white'],
+    face: ['whiskers'],
+    accessories: ['hot dog'],
+  },
+  {
+    name: 'Tomten',
+    img: 'images/TOMTEN.jpg',
+    hair: 'unknown',
+    pants: 'red',
+    profession: 'santa',
+    headGear: 'hat',
+    sweater: ['red'],
+    face: ['beard'],
+    accessories: ['teddy bear'],
+  },
+  {
+    name: 'Valter',
+    img: 'images/VALTER.jpg',
+    hair: 'gray',
+    pants: 'white',
+    profession: 'unknown',
+    headGear: '',
+    sweater: ['blue', 'white'],
+    face: ['beard'],
+    accessories: ['surf board'],
+  },
+  {
+    name: 'Viking',
+    img: 'images/VIKING.jpg',
+    hair: 'unknown',
+    pants: 'black',
+    profession: 'unknown',
+    headGear: 'helmet',
+    sweater: ['gray'],
+    face: ['beard'],
+    accessories: ['bike'],
+  },
+  {
+    name: 'Wilhelm',
+    img: 'images/WILHELM.jpg',
+    hair: 'black',
+    pants: 'gray',
+    profession: 'unknown',
+    headGear: '',
+    sweater: ['gray', 'black'],
+    face: ['glasses'],
+    accessories: [],
   },
 ]
 
@@ -270,20 +341,22 @@ findOutBtn.addEventListener('click', () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
-  if (category === 'hair' || category === 'eyes') {
-    if (value === secret.hair || value === secret.eyes) {
+  if (category === 'hair' || category === 'pants' || category === 'profession' || category === 'headgear') {
+    
+    if (value === secret.hair || value === secret.pants || value === secret.profession || value === secret.headgear) {
       console.log(`secret has ${category} ${value}`)
       filterCharacters(value)
     } else {
       console.log(`secret has not ${value}`)
       filterCharacters()
     }
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'sweater' || category === 'face' || category === 'accessories') {
     //check if secret array of values includes selected value (returns true/false)
+
       if ((secret.accessories).includes(value)) {
         console.log(`secret has accessories ${value}`)
         filterCharacters(value)
-      } else if ((secret.other).includes(value)) {
+      } else if ((secret.face).includes(value)) {
         console.log(`secret has other: ${value}`)
         filterCharacters(value)
       } else {
@@ -293,7 +366,6 @@ const checkQuestion = () => {
   }
 }
 
-
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   //save current guess to compare what should be kept for different categories.
@@ -301,7 +373,7 @@ const filterCharacters = (keep) => {
   console.log(category, value)
   console.log(keep)
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'sweater') {
     if (keep) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
@@ -311,7 +383,17 @@ const filterCharacters = (keep) => {
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
     }
-  } else if (category === 'other') {
+  } else if (category === 'face') {
+    if (keep) {
+      alert(
+        `Yes, the person wears ${value}! Keep all people that has ${value}`
+      )
+    } else {
+       alert(
+         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+      )
+    } 
+  } else if (category === 'accessories') {
     if (keep) {
       alert(
         `Yes, the person wears ${value}! Keep all people that has ${value}`
@@ -321,6 +403,7 @@ const filterCharacters = (keep) => {
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
     }
+    
   } else {
     if (keep) {
       alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`)
@@ -331,13 +414,13 @@ const filterCharacters = (keep) => {
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'hair' || category === 'pants' || category === 'profession' || category === 'headgear') {
     if (keep) {  
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
-    //for accessories and other
+    //for accessories and other we need check if the value is included in an array.
   } else {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
@@ -345,7 +428,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   }
-
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
 }

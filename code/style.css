@@ -219,61 +219,6 @@ button {
   font-weight: 700;
 }
 
-@media (max-width: 768px) {
-  body {
-    flex-direction: column;
-  }
-
-  .question-section {
-    width: 100%;
-    min-height: 0;
-  }
-  button {
-    padding: 8px 16px;
-  }
-  h1 {
-    font-size: 24px;
-    line-height: 30px;
-  }
-
-  .guess-who-icon {
-    width: 51px;
-  }
-
-  .board-wrapper {
-    width: 100%;
-  }
-
-  .game-board {
-    width: 100%;
-    max-width: 750px;
-  }
-
-  .card {
-    width: 113px;
-    position: relative;
-  }
-
-  .card .guess {
-    display: flex;
-    top: 0;
-    position: absolute;
-    justify-content: flex-end;
-  }
-
-  .card .guess span {
-    display: none;
-  }
-
-  .card .guess .filled-button {
-    padding: 6px 11px;
-    margin-bottom: 1px;
-    background: white;
-    color: var(--primary);
-    border: none;
-  }
-}
-
 /* Custom Alerts */
 
 .customAlert {
@@ -356,3 +301,72 @@ button {
 .cancel-button:hover, .confirm-button:hover, .ok-button:hover {
   border: 2px solid black;
 }
+
+/* Mobile Media Query */
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .question-section {
+    width: 100%;
+    min-height: 0;
+  }
+  button {
+    padding: 8px 16px;
+  }
+  h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .guess-who-icon {
+    width: 100px;
+    margin-top: 45px;
+    margin-left: 40px;
+  }
+
+  .board-wrapper {
+    width: 100%;
+  }
+
+  .game-board {
+    width: 100%;
+    max-width: 750px;
+    padding: 10px 0;
+    justify-content: center;
+    column-gap: 5px;
+    row-gap: 5px;
+  }
+
+  .card {
+    width: 113px;
+    height: 190px;
+    position: relative;
+  }
+
+  .card .guess {
+    display: flex;
+    top: 0;
+    position: absolute;
+    justify-content: flex-end;
+  }
+
+  .card .guess span {
+    display: none;
+  }
+
+  .card .guess .filled-button {
+    padding: 6px 11px;
+    margin-bottom: 10px;
+    background: white;
+    color: var(--primary);
+    border: none;
+  }
+
+  .customAlert {
+    width: 400px;
+  }
+}
+

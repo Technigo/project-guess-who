@@ -30,6 +30,10 @@ h1 {
   box-sizing: border-box;
 }
 
+.total-guesses {
+  align-items: flex-end;
+}
+
 select {
   display: block;
   border: none;
@@ -58,6 +62,10 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+}
+
+.wrapper {
+  color: white;
 }
 
 /****** CARD ******/

@@ -1,8 +1,13 @@
 const gameBoard = document.getElementById("board");
 const questions = document.getElementById("questions");
+const totalGuesses = document.getElementById("totalGuesses");
 const restartButton = document.getElementById("restart");
 const filterButton = document.getElementById("filter");
-const winOrLoseWrapper = document.querySelector(".win-or-lose-wrapper")
+const playAgainButton = document.getElementById("playAgain");
+const winOrLoseWrapper = document.querySelector(".win-or-lose-wrapper");
+const winOrLoseText = document.getElementById("winOrLoseText");
+const timer = document.getElementById("timer");
+
 
 const characters = [
   {
@@ -204,6 +209,8 @@ const characters = [
 let secretCharacter;
 let currentQuestion;
 let charactersInPlay;
+let timerInterval;
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -222,7 +229,6 @@ const generateBoard = () => {
   })
 }
 
-
 // Randomly select a person from the characters array 
 const setSecretCharacter = () => {
   secretCharacter = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -232,7 +238,9 @@ const startGame = () => {
   charactersInPlay = characters;
   generateBoard();
   setSecretCharacter();
-  console.log(secretCharacter)
+  guessCount = 0
+  totalGuesses.innerText = "Number of guesses: 0"
+  startTimer()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -259,6 +267,8 @@ const filterCharacters = (currentQuestion) => {
   }
   alertMessage(secretCharacterValues, currentQuestion.value, currentQuestion.category )
   generateBoard();
+  guessCount++
+  totalGuesses.innerHTML = `Number of guesses: ${guessCount}`
 }
 
 const alertMessage = (keepCharacter) => {
@@ -286,7 +296,6 @@ const alertMessage = (keepCharacter) => {
       )
     }
   }
-
  
   // redraw the board with the remaining people.
   generateBoard()
@@ -303,13 +312,51 @@ const checkMyGuess = (personToCheck) => {
   console.log(secretCharacter.name)
   console.log(personToCheck)
   if (secretCharacter.name === personToCheck) {
-
-    alert("You have won the game!")
     winOrLoseWrapper.style.display = "flex";
+    winOrLoseText.innerHTML = `Great Job! It was ${secretCharacter.name}.`
   } else {
-    alert("Sorry, that is not the right person. You have lost the game.")
     winOrLoseWrapper.style.display = "flex";
+    winOrLoseText.innerHTML = `It is not ${personToCheck}. It was ${secretCharacter.name}.`
   }
+}
+
+const startTimer = () => {
+  clearInterval(timerInterval);
+
+  let seconds = 0;
+  let minutes = 0;
+  let hours = 0;
+
+  // Set a interval every second
+  timerInterval = setInterval(() => {
+    timer.innerHTML = `${minutes}:${seconds}`
+ 
+    if(hours) {
+      hours + ":"
+    } else {
+      ""
+    }
+
+    if(minutes < 10) {
+      0 + minutes
+    } else {
+      minutes
+    }
+
+    if (seconds < 10) {
+      0 + seconds
+    } else {
+      seconds
+    }
+
+    seconds++;
+
+    // We check if the second equals 60 add one minute and reset seconds to 0
+    if (seconds == 60) {
+      minutes++;
+      seconds = 0;
+    }
+  }, 1000);
 }
 
 // Invokes the start function when website is loaded
@@ -318,3 +365,4 @@ startGame()
 // All the event listeners
 restartButton.addEventListener("click", startGame);
 filterButton.addEventListener("click", selectQuestion);
+playAgainButton.addEventListener("click", () => window.location.reload())

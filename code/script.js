@@ -242,7 +242,6 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   onGame ? location.reload() : (onGame = true);
-  console.log(onGame);
   score = MAX_ATTEMP;
   updateScore();
   resultWrappwer.classList.remove("active");
@@ -251,7 +250,6 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard(); //attach items in #board
   setSecret(); //assign the answer in the variable 'secret'
-  console.log("secret", secret);
 };
 const updateScore = () => {
   scoreBoard.innerText = `SCORE : ${score} / ${MAX_ATTEMP}`;
@@ -400,7 +398,7 @@ const checkMyGuess = (personToCheck) => {
   resultWrappwer.classList.add("active");
   const message =
     secret.name === personToCheck
-      ? `Congratulation, you win! score : ${score}`
+      ? `You win! your score is ${score}`
       : "Oops! wrong guess 😛";
   gameResult.innerText = message;
 };

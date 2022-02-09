@@ -187,6 +187,8 @@ button {
 }
 
 .win-or-lose h1 {
+  font-size: 2rem;
+  line-height: 2.5rem;
   margin-bottom: 32px;
 }
 

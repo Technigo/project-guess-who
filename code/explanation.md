@@ -13,7 +13,16 @@ _-Select new option_
 
 **Guess character**
 _-Eventlistener that takes the index of person that the button was clicked for and compare that person with secret_
-_-Alert if correct, "yes correct" else, you are wrong_
+_-Check if secret has selected option, if so call filterCharacters(keep) and save all that has value_
+_-Check if secret does not has selected option, if so call filterCharacters()_
+
+**Filter guess**
+_-FilterCharacters according to guess_
+_-If guess is matching secret, filter out all with guess in array charactersInPlay_
+_-If guess is not matching secret, filter and save all without guess detail to charactersInPlay_
+
+
+_-Alert if correct, do you want to remo "yes correct" else, you are wrong_
 _-Game is over, press start new game to restart_
 
 **Add ons**

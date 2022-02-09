@@ -13,7 +13,7 @@ const CHARACTERS = [
     hair: 'brown',
     pants: 'black',
     profession: 'unknown',
-    headGear: '',
+    headgear: '',
     sweater: ['blue'],
     face: ['glasses', 'lipstick'],
     accessories: ['dog', 'dog bone'],
@@ -24,7 +24,7 @@ const CHARACTERS = [
     hair: 'blonde',
     pants: 'striped',
     profession: 'villain',
-    headGear: '',
+    headgear: '',
     sweater: ['striped'],
     face: ['mask', 'scarf'],
     accessories: ['dog', 'dog bone'],
@@ -35,7 +35,7 @@ const CHARACTERS = [
     hair: 'black',
     pants: 'striped',
     profession: 'villain',
-    headGear: '',
+    headgear: '',
     sweater: ['striped'],
     face: ['beard'],
     accessories: [],
@@ -46,7 +46,7 @@ const CHARACTERS = [
     hair: 'unknown',
     pants: 'black',
     profession: 'unknown',
-    headGear: '',
+    headgear: '',
     sweater: ['white', 'yellow'],
     face: ['beard'],
     accessories: ['baby', 'baby carrier'],
@@ -57,7 +57,7 @@ const CHARACTERS = [
     hair: 'black',
     pants: 'black',
     profession: 'unknown',
-    headGear: '',
+    headgear: '',
     sweater: ['beige'],
     face: ['beard'],
     accessories: [],
@@ -68,7 +68,7 @@ const CHARACTERS = [
     hair: 'unknown',
     pants: 'black',
     profession: 'villain',
-    headGear: 'hat',
+    headgear: 'hat',
     sweater: ['striped', 'red'],
     face: ['beard', 'pirate patch'],
     accessories: ['binocular'],
@@ -79,7 +79,7 @@ const CHARACTERS = [
     hair: 'unknown',
     pants: 'blue',
     profession: 'police',
-    headGear: 'hat',
+    headgear: 'hat',
     sweater: ['blue'],
     face: ['glasses'],
     accessories: [],
@@ -90,7 +90,7 @@ const CHARACTERS = [
     hair: 'red',
     pants: 'blue',
     profession: 'unknown',
-    headGear: '',
+    headgear: '',
     sweater: ['green'],
     face: ['lipstick'],
     accessories: ['skateboard'],
@@ -101,7 +101,7 @@ const CHARACTERS = [
     hair: 'blonde',
     pants: 'black',
     profession: 'musician',
-    headGear: 'bandana',
+    headgear: 'bandana',
     sweater: ['green', 'white'],
     face: ['beard'],
     accessories: ['guitar'],
@@ -112,7 +112,7 @@ const CHARACTERS = [
     hair: 'unknown',
     pants: 'blue',
     profession: 'builder',
-    headGear: 'helmet',
+    headgear: 'helmet',
     sweater: ['orange', 'blue'],
     face: ['beard', 'dirt'],
     accessories: [],
@@ -123,7 +123,7 @@ const CHARACTERS = [
     hair: 'unknown',
     pants: 'blue',
     profession: 'farmer',
-    headGear: 'hat',
+    headgear: 'hat',
     sweater: ['red', 'green'],
     face: ['glasses'],
     accessories: [],
@@ -134,7 +134,7 @@ const CHARACTERS = [
     hair: 'unknown',
     pants: 'black',
     profession: 'driver',
-    headGear: 'helmet',
+    headgear: 'helmet',
     sweater: ['red', 'white'],
     face: ['lipstick'],
     accessories: [],
@@ -145,7 +145,7 @@ const CHARACTERS = [
     hair: 'blonde',
     pants: 'white',
     profession: 'unknown',
-    headGear: '',
+    headgear: '',
     sweater: ['red'],
     face: [],
     accessories: ['dog', 'hot dog'],
@@ -156,7 +156,7 @@ const CHARACTERS = [
     hair: 'unknown',
     pants: 'black',
     profession: 'scientist',
-    headGear: 'hat',
+    headgear: 'hat',
     sweater: ['white'],
     face: ['beard'],
     accessories: [],
@@ -167,7 +167,7 @@ const CHARACTERS = [
     hair: 'brown',
     pants: 'gray',
     profession: 'villain',
-    headGear: '',
+    headgear: '',
     sweater: ['striped', 'red'],
     face: ['mask'],
     accessories: [],
@@ -178,7 +178,7 @@ const CHARACTERS = [
     hair: 'brown',
     pants: 'blue',
     profession: 'police',
-    headGear: 'hat',
+    headgear: 'hat',
     sweater: ['blue'],
     face: ['glasses'],
     accessories: ['hand cuffs'],
@@ -189,7 +189,7 @@ const CHARACTERS = [
     hair: 'black',
     pants: 'black',
     profession: 'chef',
-    headGear: '',
+    headgear: '',
     sweater: ['white'],
     face: ['beard'],
     accessories: [],
@@ -200,7 +200,7 @@ const CHARACTERS = [
     hair: 'brown',
     pants: 'red',
     profession: 'carpenter',
-    headGear: '',
+    headgear: '',
     sweater: ['red'],
     face: ['freckles'],
     accessories: ['wrench'],
@@ -211,7 +211,7 @@ const CHARACTERS = [
     hair: 'black',
     pants: 'blue',
     profession: 'unknown',
-    headGear: '',
+    headgear: '',
     sweater: ['gray', 'red'],
     face: ['glasses'],
     accessories: ['dog', 'dog bone'],
@@ -222,7 +222,7 @@ const CHARACTERS = [
     hair: 'unknown',
     pants: 'black',
     profession: 'unknown',
-    headGear: 'hat',
+    headgear: 'hat',
     sweater: ['green', 'white'],
     face: ['whiskers'],
     accessories: ['hot dog'],
@@ -233,7 +233,7 @@ const CHARACTERS = [
     hair: 'unknown',
     pants: 'red',
     profession: 'santa',
-    headGear: 'hat',
+    headgear: 'hat',
     sweater: ['red'],
     face: ['beard'],
     accessories: ['teddy bear'],
@@ -244,7 +244,7 @@ const CHARACTERS = [
     hair: 'gray',
     pants: 'white',
     profession: 'unknown',
-    headGear: '',
+    headgear: '',
     sweater: ['blue', 'white'],
     face: ['beard'],
     accessories: ['surf board'],
@@ -255,7 +255,7 @@ const CHARACTERS = [
     hair: 'unknown',
     pants: 'black',
     profession: 'unknown',
-    headGear: 'helmet',
+    headgear: 'helmet',
     sweater: ['gray'],
     face: ['beard'],
     accessories: ['bike'],
@@ -266,7 +266,7 @@ const CHARACTERS = [
     hair: 'black',
     pants: 'gray',
     profession: 'unknown',
-    headGear: '',
+    headgear: '',
     sweater: ['gray', 'black'],
     face: ['glasses'],
     accessories: [],
@@ -277,9 +277,8 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-let incrementOne = 0
+let incrementOne = 0 //this variable is used to increment counter with one.
 
-//this increment counter with one.
 
 // Draw the game board
 const generateBoard = () => {
@@ -312,6 +311,7 @@ const start = () => {
   generateBoard()
   setSecret()
   counter.innerText = 0
+  incrementOne = 0
   // What else should happen when we start the game?
 }
 
@@ -356,13 +356,13 @@ const checkQuestion = () => {
     //check if secret array of values includes selected value (returns true/false)
 
       if ((secret.sweater).includes(value)) {
-        console.log(`secret has accessories ${text}`)
+        console.log(`secret has sweater ${text}`)
         filterCharacters(value)
       } else if ((secret.face).includes(value)) {
-        console.log(`secret has other: ${text}`)
+        console.log(`secret has face: ${text}`)
         filterCharacters(value)
       } else if ((secret.accessories).includes(value)) {
-        console.log(`secret has other: ${text}`)
+        console.log(`secret has accessories: ${text}`)
         filterCharacters(value)
       } else {
         console.log(`secret has not ${text}`)
@@ -412,9 +412,9 @@ const filterCharacters = (keep) => {
     
   } else {
     if (keep) {
-      alert(`Yes, the person has ${value}! Keep all people with ${value}`)
+      alert(`Yes, the person has ${text}! Keep all people with ${text}`)
     } else {
-      alert(`No, the person doesn't have ${value}! Remove all people with ${value}`)
+      alert(`No, the person doesn't have ${text}! Remove all people with ${text}`)
     }
   }
 
@@ -461,6 +461,7 @@ const checkMyGuess = (personToCheck) => {
   } else {
     alert(`Oh, I´m sorry but it is not ${personToCheck}, it was ${secret.name} all the time.. Better luck next time!`)
   }
+  start()
 }
 
 // Invokes the start function when website is loaded

@@ -85,8 +85,8 @@ const CHARACTERS = [
     img: 'images/wizard.png',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['hat', 'weapon'],
-    other: ['beard']
+    accessories: ['hat', 'weapon', 'beard'],
+    other: []
   },
   {
     name: 'Spirited Away',
@@ -133,8 +133,8 @@ const CHARACTERS = [
     img: 'images/shejk.png',
     hair: 'hidden',
     eyes: 'brown',
-    accessories: ['hat'],
-    other: ['beard']
+    accessories: ['hat', 'beard'],
+    other: []
   },
   {
     name: 'Pocahontas',
@@ -149,8 +149,8 @@ const CHARACTERS = [
     img: 'images/artist.png',
     hair: 'blue',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: ['paint']
+    accessories: ['hat', 'paint'],
+    other: []
   },
 ]
 
@@ -189,9 +189,8 @@ const renderTime = () => {
   addSeconds++;
   let minutes = Math.floor(addSeconds / 60).toString().padStart(2, '0');;
   let seconds = (addSeconds % 60).toString().padStart(2, '0');
-  console.log(addSeconds)
+  
   timeCounter.innerHTML = '';
-
   timeCounter.innerHTML += `
   <p>Elapsed time: ${minutes} : ${seconds}</p>
   `
@@ -216,9 +215,6 @@ const start = () => {
   generateBoard();
   setSecret();
   selectQuestion();
-  console.log(secret)
-  console.log(secret.hair)
-  console.log(secret.accessories)
   startTimer();
 }
 
@@ -250,26 +246,25 @@ const selectQuestion = () => {
 let count = 0;
 const checkQuestion = () => {
   count += 1;
-  console.log(count)
+
   guessCounter.innerHTML = '';
   guessCounter.innerHTML += `<p>Guess counter: ${count}</p>`;
   const { category, value } = currentQuestion
   console.log(category)
   console.log(value)
 
-let keep;
-
-if (category === 'hair' && value === secret.hair) {
-    keep = true;
-} else if (category === 'eyes' && value === secret.eyes) {
-    keep = true;
-} else if (category === 'accessories' && value === secret.accessories.find(element => element === value)) {
-    keep = true;
-} else if (category === 'other' && value === secret.other.find(element => element === value)) {
-    keep = true;
-} else {
-    keep = false;
-  }
+  let keep;
+  if (category === 'hair' && value === secret.hair) {
+      keep = true;
+  } else if (category === 'eyes' && value === secret.eyes) {
+      keep = true;
+  } else if (category === 'accessories' && value === secret.accessories.find(element => element === value)) {
+      keep = true;
+  } else if (category === 'other' && value === secret.other.find(element => element === value)) {
+      keep = true;
+  } else {
+      keep = false;
+    }
   filterCharacters(keep);
 }
 
@@ -315,12 +310,12 @@ const filterCharacters = (keep) => {
 
 const guess = (personToConfirm) => {
   let confirmChoice = confirm('Sure you wanna guess? It will be the last draw. Please confirm');
-  if (confirmChoice === true) {
-    checkMyGuess(personToConfirm);
-    stopTimer();
-  } else {
-    console.log('pressed cancel')
-  }
+    if (confirmChoice === true) {
+      checkMyGuess(personToConfirm);
+      stopTimer();
+    } else {
+      console.log('pressed cancel')
+    }
 }
 
 let guessStatus = {

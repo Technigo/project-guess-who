@@ -2,6 +2,7 @@
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
+const findOutButton = document.getElementById("filter");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -255,19 +256,18 @@ const selectQuestion = () => {
   };
 };
 
-selectQuestion();
-console.log(currentQuestion);
-
 // This function should be invoked when you click on 'Find Out' button.
-
+// Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+// See if we should keep or remove people based on that
+// Then invoke filterCharacters
 const checkQuestion = () => {
-  const { category, value } = currentQuestion;
+  console.log(currentQuestion);
+  //const { category, value } = currentQuestion;
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
+    //do this
   } else if (category === "accessories" || category === "other") {
+    //do this
   }
 };
 
@@ -332,3 +332,5 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+findOutButton.addEventListener("click", checkQuestion);
+questions.addEventListener("change", selectQuestion);

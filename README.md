@@ -1,6 +1,6 @@
 # Guess Who?
 
-Classic guessing game using vanila javascript.
+Classic guessing game developed by vanila javascript.
 
 ## The problem
 

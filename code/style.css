@@ -33,7 +33,7 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
+  font-size: 14px;
   font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;

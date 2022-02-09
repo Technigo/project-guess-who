@@ -15,7 +15,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['sun-glasses', 'hat'],
     other: []
   },
   {
@@ -23,8 +23,8 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    accessories: ['hat', 'eyepatch'],
+    other: ['beard']
   },
   {
     name: 'Jacques',
@@ -32,14 +32,14 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker', 'beard']
   },
   {
     name: 'Jai',
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['tie'],
     other: []
   },
   {
@@ -47,7 +47,7 @@ const CHARACTERS = [
     img: 'images/jake.svg',
     hair: 'yellow',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['reading-glasses'],
     other: []
   },
   {
@@ -55,7 +55,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['sun-glasses'],
     other: []
   },
   {
@@ -63,7 +63,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sun-glasses', 'necklace'],
     other: []
   },
   {
@@ -71,7 +71,7 @@ const CHARACTERS = [
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sun-glasses'],
     other: []
   },
   {
@@ -79,16 +79,15 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['reading-glasses', 'necklace', 'earrings'],
     other: []
   },
-
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sun-glasses'],
     other: ['smoker']
   },
   {
@@ -96,7 +95,7 @@ const CHARACTERS = [
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'hat'],
+    accessories: ['reading-glasses', 'hat'],
     other: ['smoker']
   },
   {
@@ -104,7 +103,7 @@ const CHARACTERS = [
     img: 'images/jeane.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['reading-glasses'],
     other: []
   },
   {
@@ -112,15 +111,15 @@ const CHARACTERS = [
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    accessories: ['reading-glasses', 'hat'],
+    other: ['smoker', 'beard', 'mustache']
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
+    accessories: ['hat', 'ring', 'phone'],
     other: []
   },
   {
@@ -128,7 +127,7 @@ const CHARACTERS = [
     img: 'images/jeri.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['reading-glasses'],
     other: []
   },
   {
@@ -144,7 +143,7 @@ const CHARACTERS = [
     img: 'images/jess.svg',
     hair: 'black',
     eyes: 'blue',
-    accessories: ['glasses'],
+    accessories: ['reading-glasses'],
     other: []
   },
   {
@@ -152,7 +151,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['reading-glasses', 'earrings'],
     other: []
   },
   {
@@ -160,7 +159,7 @@ const CHARACTERS = [
     img: 'images/jon.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['reading-glasses'],
     other: []
   },
   {
@@ -168,7 +167,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['sun-glasses', 'hat', 'necklace'],
     other: []
   },
   {
@@ -176,7 +175,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -192,15 +191,15 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
-    other: []
+    accessories: ['tie'],
+    other: ['beard', 'mustache']
   },
   {
     name: 'Julie',
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    accessories: ['reading-glasses', 'hat'],
     other: []
   },
 ]
@@ -248,11 +247,11 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value 
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 

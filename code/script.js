@@ -9,9 +9,8 @@ const playAgain = document.getElementById('playAgain')
 
 
 //Aduio sound effect
-const audio = new audio("");
-audio.currentTime = 0;
-audio.play();
+const audio = new audio("evilLaugh.mp3");
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -252,13 +251,17 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+   const value = questions.options[questions.selectedIndex].value
 
   currentQuestion = {
     category: category,
-    // value: value
+   value: value
   }
 }
+// Audio
+audio.currentTime = 0;
+audio.play();
+
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {

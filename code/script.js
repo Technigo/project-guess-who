@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter');
+const guessCounter = document.getElementById('guess-counter');
+const timeCounter = document.getElementById('time-counter');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -229,6 +231,32 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+//Displays elapsed time
+let addSeconds = 0;
+const renderTime = () => {
+  addSeconds++;
+  let minutes = Math.floor(addSeconds / 60).toString().padStart(2, '0');;
+  let seconds = (addSeconds % 60).toString().padStart(2, '0');
+  console.log(addSeconds)
+  timeCounter.innerHTML = '';
+
+  timeCounter.innerHTML += `
+  <p>Elapsed time: ${minutes} : ${seconds}</p>
+  `
+}
+
+let setTimer= '';
+//Set displaying of time to increase with 1s intervals, invoked at start and restart
+const startTimer = () => {
+  setTimer = setInterval(renderTime, 1000);
+}
+
+//Stops timer, invoked in guess function
+const stopTimer = () => {
+  clearInterval(setTimer);
+  console.log(setTimer)
+}
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -239,7 +267,7 @@ const start = () => {
   console.log(secret)
   console.log(secret.hair)
   console.log(secret.accessories)
-  // What else should happen when we start the game?
+  startTimer();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -255,16 +283,16 @@ const selectQuestion = () => {
   }
 }
 
-
+let count = 0;
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  count += 1;
+  console.log(count)
+  guessCounter.innerHTML = '';
+  guessCounter.innerHTML += `<p>Guess counter: ${count}</p>`;
   const { category, value } = currentQuestion
   console.log(category)
   console.log(value)
-  
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
 
 let keep;
 
@@ -281,9 +309,6 @@ if (category === 'hair' && value === secret.hair) {
   }
   filterCharacters(keep);
 }
-
-
-//OBS! fix accessories key value, since in an array will have to target another step with index
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -333,15 +358,11 @@ const guess = (personToConfirm) => {
   console.log(personToConfirm)
   let confirmChoice = confirm('Sure you wanna guess? It will be the last draw. Please confirm');
   if (confirmChoice === true) {
-    console.log('pressed ok')
     checkMyGuess(personToConfirm);
+    stopTimer();
   } else {
     console.log('pressed cancel')
   }
-
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 let guessStatus = {
@@ -358,8 +379,8 @@ const checkMyGuess = (personToCheck) => {
   board.innerHTML = ''
 
   board.innerHTML += `
-  <div style="display: flex; flex-direction: column;">
-  <p>You guessed at ${personToCheck} and it was ${guessStatus.status}</p>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+  <p style="text-align: center;">You guessed at ${personToCheck} and it was ${guessStatus.status}</p>
   <div class="card">
     <p>${secret.name}</p>
     <img src=${secret.img} alt=${secret.name}>
@@ -367,23 +388,11 @@ const checkMyGuess = (personToCheck) => {
   <p>${secret.name} was the secret person!</p>
   </div>
 `
-
-
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 }
 
 
 // Invokes the start function when website is loaded
 start();
-
-let count = 0;
-function increment () {
-  count ++;
-  console.log(count)
-}
 
 // All the event listeners
 restartButton.addEventListener('click', start);

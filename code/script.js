@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -243,25 +244,41 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value = 
+  //We can use the DOM selector question and add a .value to access the values
+  //Is it possible to write questions.options[questions.selectedIndex].value????
+  const value = questions.value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// The checkQuestion is invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  //Invoke the selectQuestion first otherwise the currentQuestion will be empty
+  selectQuestion();
+  const { category, value } = currentQuestion;
+  console.log("Category: " + category);
+  console.log("Value" + value);
 
+  console.log(secret);
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    //for strings we can use === to see if something is included
+    //filterCharacters(secret[category].value === value)
+     if (secret[category] === value){
+       filterCharacters(true);
+     } else {
+       filterCharacters(false)
+     }
+
+    
 
   } else if (category === 'accessories' || category === 'other') {
-
+ //include-method to check if something is in an array
   }
 }
 
@@ -269,25 +286,35 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
-    if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
-    } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
-    }
-  } else if (category === 'other') {
-    // Similar to the one above
+if (category === 'hair') {
+  if (keep) {
+    alert(`Yes, the person have ${value}! Keep all people with ${value}`)
   } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-    } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-    }
+    alert(`No, the person does not have ${value} hair. Remover all people with ${value} hair color`)
   }
+} else if (category === 'eyes') {
+  if (keep) {
+    alert(`Yes, the person have ${value} eyes! Keep all people with ${value} eyes`)
+  } else {
+    alert(`No, the person does not have ${value} eyes. Remove all people with ${value} eye color`)
+  }
+} else if (category === 'accessories'){
+  if (keep) {
+    alert(`Yes, the person wears ${value}! Keep all people with ${value}`)
+  } else {
+    alert(`No, the person does not wear ${value}. Remove all people that wears ${value}`)
+  }
+} else (category === 'other') {
+  if (keep) {
+    alert(`Yes, the person is a ${value}. Keep all the person who ${value}`)
+  } else {
+    alert(`No, the person does not ${value}. Remove all the people that ${value}`)
+  }
+}
+
+
+
+  
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
@@ -326,3 +353,5 @@ start();
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOutButton.addEventListener('click', checkQuestion)
+questions.addEventListener('change', selectQuestion)

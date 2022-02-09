@@ -6,6 +6,9 @@ const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
 const optgroups = Array.from(document.querySelectorAll("optgroup"));
 const optgroupsLabel = optgroups.map((optgroup) => optgroup.label);
+const gameResult = document.querySelector("#winOrLoseText");
+const playAgainButton = document.querySelector("#playAgain");
+const resultWrappwer = document.querySelector("#winOrLose");
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -210,7 +213,6 @@ let charactersInPlay;
 
 // Draw the game board
 const generateBoard = () => {
-  console.log("re-generate!");
   board.innerHTML = "";
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
@@ -234,6 +236,7 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  resultWrappwer.classList.remove("active");
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
@@ -263,18 +266,18 @@ const checkQuestion = () => {
     return;
   }
   const { category, value } = currentQuestion;
-
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  let isKeep;
   if (category === "hair" || category === "eyes") {
-    const isKeep = secret[category] === value;
+    isKeep = secret[category] === value;
     filterCharacters(isKeep);
     charactersInPlay = charactersInPlay.filter((person) =>
       isKeep ? person[category] === value : person[category] !== value
     );
   } else if (category === "accessories" || category === "other") {
-    const isKeep = secret[category].includes(value);
+    isKeep = secret[category].includes(value);
     filterCharacters(isKeep);
     charactersInPlay = charactersInPlay.filter((person) =>
       isKeep
@@ -284,7 +287,9 @@ const checkQuestion = () => {
   } else {
     console.error("cateogry does not exist");
   }
-  removeOption();
+  if (!isKeep) {
+    removeOption();
+  }
   generateBoard();
 };
 
@@ -363,14 +368,20 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  if (window.confirm("Are you sure? (this will finish the game")) {
+    checkMyGuess(personToConfirm);
+  }
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  resultWrappwer.style.height = document.body.scrollHeight + "px";
+  resultWrappwer.classList.add("active");
+  const message =
+    secret.name === personToCheck
+      ? "Congratulation, you win!"
+      : "Oops! wrong guess 😛";
+  gameResult.innerText = message;
 };
 
 // Invokes the start function when website is loaded
@@ -380,3 +391,4 @@ start();
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutButton.addEventListener("click", checkQuestion);
+playAgainButton.addEventListener("click", start);

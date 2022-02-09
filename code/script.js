@@ -1,12 +1,16 @@
 // All the DOM selectors stored as short variables
+const startGame = document.querySelector('.start-game-wrapper')
+const form = document.getElementById('form')
+const nameInput = document.getElementById('name-input')
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
 const counter = document.getElementById('counter') 
+const restart = document.getElementById('restart')
 const winOrLoose = document.querySelector('.win-or-lose-wrapper')
 const winOrLoseText = document.getElementById('winOrLoseText') 
 const playAgain = document.getElementById('playAgain')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -277,6 +281,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
+let playerName 
 let secret
 let currentQuestion
 let charactersInPlay
@@ -473,25 +478,54 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerText = 'Yay, you won! Play again?'
   } else {
     alert(`Oh, I´m sorry but it is not ${personToCheck}. It was ${secret.name} all the time.. Better luck next time!`)
-    winOrLoose.style.display = 'flex';
+    winOrLoose.style.display = 'flex'
     winOrLoseText.innerText = 'Oh no, you lost! Play again?'
+    
   }
-  start()
 }
 
 // Invokes the start function when website is loaded
 start()
 
 //*** All the event listeners **//
-//click start game btn to restart the game during playing
-restartButton.addEventListener('click', start)
+form.addEventListener('submit', e => {
+  e.preventDefault()
 
-//click play again btn to play again when game is over
-playAgain.addEventListener('click', start)
+  //Save name input
+  playerName = nameInput.value
+
+  startGame.innerHTML = `
+  <div class="win-or-lose-start">
+    <img
+      class="guess-who-icon"
+      src="images/guess-who-bubble.svg"
+      alt="Guess Who"
+    />
+      <h1>Okay ${playerName}, let´s start the game!</h1>
+      <button id="start-button" class="outlined-button">Start game</button>
+  </div>
+  `
+  console.log(playerName)
+  document.getElementById('start-button').addEventListener('click', () => {
+      startGame.style.display = 'none'
+  })
+})
+
 
 //click find out btn to start guessing and call the checkQuestion and add attempt to counter 
 findOutBtn.addEventListener('click', () => {
   checkQuestion()
   incrementOne++
   counter.innerText = incrementOne
+})
+
+//click start game btn to restart the game during playing
+restart.addEventListener('click', start)
+
+//click play again btn to play again when game is over
+playAgain.addEventListener('click', () => {
+  start()
+  winOrLose.style.display = 'none'
+  incrementOne = 0
+  counter.innerText = 0
 })

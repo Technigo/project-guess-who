@@ -10,8 +10,29 @@
   </head>
   <body>
     <aside class="question-section">
-      <button id="restart" class="outlined-button">Start game</button>
 
+      <!--Start page-->
+      <section id="start-game" class="start-game-wrapper">
+        <div class="win-or-lose-start">
+          <img
+            class="guess-who-icon"
+            src="images/guess-who-bubble.svg"
+            alt="Guess Who"
+          />
+          <h1>Hi there, friend!</h1>
+          <h2>So, you are here to play a game? How fun!</h2>
+          <h2>Before we start i would like to know.. What´s your name?</h2>
+          <form id="form">
+            <label class="name-input__text">
+              <input type="text" id="name-input" />
+              <button id="new-game-btn" class="filled-button small" type="submit">OK!</button>
+            </label>
+          </form>
+        </div>
+      </section>
+
+      <!--Game page-->  
+      <button id="restart" class="outlined-button">Restart</button>
       <img
         class="guess-who-icon"
         src="images/guess-who-bubble.svg"
@@ -119,7 +140,7 @@
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
-        <button id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <button id="playAgain" class="filled-button">YES! PLAY AGAIN!</button>
         <img
           class="win-or-lose-img"
           src="images/lego_marvel.jpg"

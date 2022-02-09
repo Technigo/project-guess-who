@@ -15,11 +15,40 @@ body {
 
 h1 {
   font-size: 42px;
-  font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: #F8F8F8;
+  font-weight: 400;
 }
+
+h2 {
+  font-size: 38px;
+  font-weight: 400;
+}
+
+/******WELCOME PAGE WITH NAME INPUT******/
+.start-game-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+  background: var(--secondary);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 3;
+}
+
+.name-input__text {
+  display: flex;
+  margin-bottom: 2em;
+}
+
+
+/******MAIN CONTENT******/
 
 .question-section {
   width: 30%;
@@ -43,7 +72,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 150px;
 }
 
 .board-wrapper {
@@ -86,7 +115,7 @@ select {
   margin-block: 0.275em;
   background: var(--secondary);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -132,12 +161,9 @@ select {
 button {
   border: 2px solid var(--primary);
   font-size: 1.5rem;
+  font-weight: 500;
   text-transform: uppercase;
-  -webkit-text-fill-color: #F8F8F8; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 0.025em;
-  -webkit-text-stroke-color: var(--secondary);
   font-family: 'Boogaloo', 'Montserrat', sans-serif;
-  font-weight: bold;
   padding: 10px 25px;
   cursor: pointer;
 }
@@ -156,11 +182,14 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
+  -webkit-text-fill-color: #F8F8F8; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.075em;
+  -webkit-text-stroke-color: var(--secondary);
   color: #F8F8F8;
 }
 
 .filled-button:hover {
-  background-color: #F8F8F8;
+  background-color: var(--secondary);
   border-color: #F8F8F8;
   color: var(--primary);
 }
@@ -190,7 +219,7 @@ button {
 
 .guess-who-icon {
   align-self: flex-start;
-  margin-left: 15%;
+  margin-left: 20%;
 }
 
 .guess-who-icon h1 {
@@ -220,6 +249,10 @@ button {
   h1 {
     font-size: 24px;
     line-height: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
   }
 
   .guess-who-icon {

@@ -256,17 +256,27 @@ const selectQuestion = () => {
 
 // Invoke function when 'Find Out' button is clicked
 const checkQuestion = () => {
-  // const { category, value } = currentQuestion
-  console.log(currentQuestion);
+  // const { category, value } = currentQuestion <-- DO I NEED THIS FROM TECHNIGO??
+  // console.log(currentQuestion);
+  // console.log(winningCharacter);
+
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  // if (currentQuestion.category === 'hair' || currentQuestion.category === 'eyes') {
-    
 
-  // } else if (category === 'accessories' || category === 'other') {
-
-  // }
+  if (currentQuestion.category === 'hair' || currentQuestion.category === 'eyes'){
+    if (currentQuestion.value === winningCharacter.hair || currentQuestion.value === winningCharacter.eyes) {
+      console.log('True comparison')
+    } else {
+      console.log('False comparison')
+    }
+  } else if (currentQuestion.category === 'accessories' || currentQuestion.category === 'other') {
+      if (winningCharacter.accessories.includes(currentQuestion.value)){
+        console.log("includes this accessory");
+    } else {
+      console.log("does not include this accessory");
+    }
+  }
 }
 
 // It'll filter the characters array and redraw the game board.

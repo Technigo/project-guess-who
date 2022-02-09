@@ -9,6 +9,11 @@ const optgroupsLabel = optgroups.map((optgroup) => optgroup.label);
 const gameResult = document.querySelector("#winOrLoseText");
 const playAgainButton = document.querySelector("#playAgain");
 const resultWrappwer = document.querySelector("#winOrLose");
+const scoreBoard = document.querySelector("#score");
+const MAX_ATTEMP = 5;
+let score;
+let onGame = false;
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -236,6 +241,10 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  onGame ? location.reload() : (onGame = true);
+  console.log(onGame);
+  score = MAX_ATTEMP;
+  updateScore();
   resultWrappwer.classList.remove("active");
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
@@ -244,7 +253,9 @@ const start = () => {
   setSecret(); //assign the answer in the variable 'secret'
   console.log("secret", secret);
 };
-
+const updateScore = () => {
+  scoreBoard.innerText = `SCORE : ${score} / ${MAX_ATTEMP}`;
+};
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
@@ -288,9 +299,15 @@ const checkQuestion = () => {
     console.error("cateogry does not exist");
   }
   if (!isKeep) {
+    score -= 1;
     removeOption();
   }
-  generateBoard();
+  updateScore();
+  if (score === 0) {
+    checkMyGuess("finish");
+  } else {
+    generateBoard();
+  }
 };
 
 const removeOption = () => {
@@ -375,11 +392,15 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
   resultWrappwer.style.height = document.body.scrollHeight + "px";
   resultWrappwer.classList.add("active");
   const message =
     secret.name === personToCheck
-      ? "Congratulation, you win!"
+      ? `Congratulation, you win! score : ${score}`
       : "Oops! wrong guess 😛";
   gameResult.innerText = message;
 };

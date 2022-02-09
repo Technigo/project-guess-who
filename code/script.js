@@ -2,6 +2,15 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const guessBtn = document.getElementById('filter')
+
+// Global variables
+let secret
+let currentQuestion
+let charactersInPlay
+let personToGuess
+let personToCheck
+let personToConfirm
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -300,10 +309,7 @@ const CHARACTERS = [
   }
 ]
 
-// Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -333,6 +339,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
+  selectQuestion()
   // What else should happen when we start the game?
 }
 
@@ -342,15 +349,22 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.value
+  const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
     category: category,
     value: value,
   }
+  checkQuestion()
 }
 
 // This function should be invoked when you click on 'Find Out' button.
+
+guessBtn.addEventListener('click', () => {
+  checkQuestion()
+  console.log('Hey')
+})
+
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
@@ -362,7 +376,7 @@ const checkQuestion = () => {
       let keep = true
       filercharacters(keep)
     } else {
-      keep = false
+     keep = false
       filercharacters()
     }
 
@@ -517,6 +531,16 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  if (personToCheck === secret.name) {
+    alert(
+      `Congratulations! You guessed right, the secret character is ${personToCheck}!`
+    )
+
+  } else {
+    alert(
+      `Sorry, ${personToCheck} is not the secret character. Please guess again.`
+    )
+  }
 }
 
 // Invokes the start function when website is loaded

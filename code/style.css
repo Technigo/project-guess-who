@@ -14,7 +14,9 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
+  /* Change font-family? */
+  font-family: Italiana, serif;
   /* Changed the background color */
   background-color: var(--third);
 }
@@ -25,6 +27,11 @@ h1 {
   line-height: 48px;
   margin: 10px 0;
   color: white;
+}
+
+/* Start-wrapper hidden as default */
+.start-wrapper {
+  display: none;
 }
 
 .question-section {
@@ -197,6 +204,7 @@ button {
   margin-bottom: 32px;
 }
 
+/* Mobile media queries */
 @media (max-width: 768px) {
   body {
     flex-direction: column;

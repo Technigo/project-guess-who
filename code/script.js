@@ -1,4 +1,7 @@
 // All the DOM selectors stored as short variables
+const startWindow = document.getElementById('startWindow')
+const startButton = document.getElementById('startButton')
+const gameWindow = document.getElementById('gameWindow')
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
@@ -211,6 +214,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 let numberOfGuesses
+let elapsedTime
 
 // Draw the game board
 const generateBoard = () => {
@@ -235,17 +239,19 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-const startTimer = () => {
-  let startTime = Date.now()
-  let elapsedTime = 0
-  setInterval(() => {
-    elapsedTime = Math.floor((Date.now() - startTime) / 1000)
-    gameTimer.innerHTML = ` ${elapsedTime} s`
-  }, 1000)
-}
+// const startTimer = () => {
+//   let startTime = Date.now()
+//   elapsedTime = 0
+//   setInterval(() => {
+//     elapsedTime = Math.floor((Date.now() - startTime) / 1000)
+//     gameTimer.innerHTML = ` ${elapsedTime} s`
+//   }, 1000)
+// }
 
 // This function starts and restarts the game
 const start = () => {
+  startWindow.style.display = 'none'
+  gameWindow.style.display = 'flex'
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
@@ -253,7 +259,7 @@ const start = () => {
   generateBoard()
   // Randomly select a secret person
   setSecret()
-  startTimer()
+  // startTimer() - FIX THIS
   numberOfGuesses = 0
   // Console.log the secret person to see that it works correctly
   console.log(`The secret person is ${secret.name}`)
@@ -263,7 +269,6 @@ const start = () => {
 
 // The options collection returns a collection of all <option> elements in a drop-
 // down list.
-
 // The property selectedIndex return the index of the selected <option> element in
 // the collection
 
@@ -271,9 +276,9 @@ const start = () => {
 // <option> belongs to 
 
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
   // This variable stores what option group (category) the question belongs to.
+  const category = questions.options[questions.selectedIndex].parentNode.label
+  
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value
 
@@ -362,7 +367,7 @@ const filterCharacters = (keep) => {
   // CHECKS THE LENGTH OF THE CHARACTERSINPLAY - TO BE REMOVED
   console.log(`Characters in play: ${charactersInPlay.length}`)
 
-  // Generate the updated board
+  // Generate the updated board with the remaining characters
   generateBoard();
 
   // Determine what is the category
@@ -405,22 +410,29 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
   let message;
   if (personToCheck === secret.name) {
-    //alert('Correctamundo!')
+    //alert('Correct!')
     message = `You won! The secret person was ${secret.name}.`
   } else {
     //alert('Nooooo!')
     message = `You lost! The secret person was ${secret.name}.`
   }
   // Show the win-or-lose-section with the message above
-  winOrLoseSection.style.display = 'block';
+  winOrLoseSection.style.display = 'flex';
   winOrLoseText.innerHTML = message;
   
 }
 
+
+window.onload = () => {
+  startWindow.style.display = 'flex'
+  gameWindow.style.display = 'none'
+}
+
 // Invokes the start function when website is loaded
-start()
+// start()
 
 // All the event listeners
+startButton.addEventListener('click', start)
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)

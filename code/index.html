@@ -5,18 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jessica's Guess who!</title>
     <link rel="stylesheet" href="style.css" />
-    <link
+
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
-    />
+    /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
   </head>
 
   <body>
 
-    
+    <!-- START WINDOW -->
 
-    <!-- QUESTION SECTION WITH RESTART BUTTON -->
+    <section id="startWindow" class="start-wrapper">
+      <div class="start-div">
+        <img
+        class="guess-who-icon"
+        src="images/guess-who-bubble.png"
+        alt="Guess Who"
+        />
+        <h1>Welcome to Guess Who!</h1>
+        <button id="startButton">START</button>
+      </div>
+    </section>
 
+    <!-- FIX THIS? OK TO HAVE THE MAIN ELEMENT IN TWO PLACES? -->
+    <main id="gameWindow">
+
+     <!-- QUESTION SECTION WITH RESTART BUTTON -->  
     <aside class="question-section">
       <button id="restart" class="outlined-button">RESTART</button>
 
@@ -29,6 +47,7 @@
       <h1>Does the person have</h1>
 
       <select id="questions">
+
         <!-- HAIR COLOR -->
         <optgroup label="hair">
           <option value="brown">brown hair</option>
@@ -40,6 +59,7 @@
           <option value="orange">orange hair</option>
           <option value="hidden">hidden hair</option>
         </optgroup>
+
         <!-- EYE COLOR -->
         <optgroup label="eyes">
           <option value="hidden">hidden eyes</option>
@@ -47,11 +67,13 @@
           <option value="green">green eyes</option>
           <option value="brown">brown eyes</option>
         </optgroup>
+
         <!-- ACCESSORIES -->
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
           <option value="hat">hat</option>
         </optgroup>
+
         <!-- OTHER ATTRIBUTES -->
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
@@ -62,7 +84,7 @@
 
       <button id="filter" class="filled-button">FIND OUT</button>
       <p>Number of guesses: <span id="totalGuesses"></span></p>
-      <p>Time played: <span id="timer"></span></p> 
+      <p>Time played: <span id="timer">Timer out of order</span></p> 
     </aside>
 
     <!-- GAME BOARD WRAPPER -->
@@ -70,6 +92,8 @@
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
     </section>
+
+    </main>
 
     <!-- WIN OR LOSE WRAPPER-->
 

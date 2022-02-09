@@ -11,6 +11,11 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+#backgroundImage {
+  position: fixed;
+  z-index: -1;
+}
+
 h1 {
   font-size: 42px;
   font-weight: 500;
@@ -22,7 +27,7 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  /* background-color: var(--secondary); */
   display: flex;
   flex-direction: column;
   padding: 5vw;

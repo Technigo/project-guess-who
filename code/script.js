@@ -359,9 +359,6 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 
-guessBtn.addEventListener('click', () => {
-  checkQuestion()
-})
 
 const checkQuestion = () => {
   selectQuestion()
@@ -504,9 +501,10 @@ const filterCharacters = (keep) => {
     //   charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   if (keep === true) {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] === value)
+    CHARACTERS.shift()
   } else {
-    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] === !value)
-    generateBoard()
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] !== value)
+    CHARACTERS.shift()
   }
 
   // Invoke a function to redraw the board with the remaining people.
@@ -535,6 +533,7 @@ const checkMyGuess = (personToCheck) => {
     alert(
       `Congratulations! You guessed right, the secret character is ${personToCheck}!`
     )
+    start()
 
   } else {
     alert(
@@ -548,3 +547,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+guessBtn.addEventListener('click', () => {
+  checkQuestion()
+})

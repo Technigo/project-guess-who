@@ -9,197 +9,148 @@ const timeCounter = document.getElementById('time-counter');
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
+    name: 'Angel',
+    img: 'images/angel.png',
+    hair: 'brown',
+    eyes: 'hidden',
+    accessories: ['wings', 'hat'],
+    other: ['dead']
+  },
+  {
+    name: 'Angry bird',
+    img: 'images/bird.png',
+    hair: 'red',
+    eyes: 'black',
+    accessories: ['wings'],
+    other: ['animal']
+  },
+  {
+    name: 'Chicken',
+    img: 'images/cute.png',
+    hair: 'yellow',
+    eyes: 'hidden',
+    accessories: ['wings'],
+    other: ['animal']
+  },
+  {
+    name: 'Liemannen',
+    img: 'images/liemannen.png',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['weapon'],
+    other: ['dead']
+  },
+  {
+    name: 'Super Mario',
+    img: 'images/mario.png',
+    hair: 'brown',
+    eyes: 'blue',
+    accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
+    name: 'Mumie',
+    img: 'images/mumie.png',
     hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
+    eyes: 'red',
     accessories: [],
-    other: []
+    other: ['dead']
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
+    name: 'Mushu',
+    img: 'images/mushu.png',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['wings'],
+    other: ['animal']
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
+    name: 'Ninja',
+    img: 'images/ninja.png',
     hair: 'hidden',
-    eyes: 'blue',
+    eyes: 'black',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
+    name: 'Peter Pan',
+    img: 'images/peterpan.png',
+    hair: 'hidden',
+    eyes: 'black',
+    accessories: ['hat', 'weapon'],
     other: []
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
+    name: 'Gandalf',
+    img: 'images/wizard.png',
+    hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    accessories: ['hat', 'weapon'],
+    other: ['beard']
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
+    name: 'Spirited Away',
+    img: 'images/spiritedaway.png',
+    hair: 'hidden',
+    eyes: 'black',
     accessories: [],
-    other: []
+    other: ['dead']
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
+    name: 'Minion',
+    img: 'images/minion.png',
     hair: 'black',
-    eyes: 'green',
+    eyes: 'white',
     accessories: [],
     other: []
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    name: 'Customer Service',
+    img: 'images/customerservice.png',
+    hair: 'brown',
+    eyes: 'hidden',
+    accessories: ['headset', 'glasses'],
     other: []
+  },
+  {
+    name: 'Aladdin',
+    img: 'images/aladdin.png',
+    hair: 'black',
+    eyes: 'black',
+    accessories: ['hat'],
+    other: []
+  },
+  {
+    name: 'Spiderman',
+    img: 'images/spiderman.png',
+    hair: 'hidden',
+    eyes: 'white',
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Shejk',
+    img: 'images/shejk.png',
+    hair: 'hidden',
+    eyes: 'brown',
+    accessories: ['hat'],
+    other: ['beard']
+  },
+  {
+    name: 'Pocahontas',
+    img: 'images/pocahontas.png',
+    hair: 'black',
+    eyes: 'black',
+    accessories: ['hat'],
+    other: []
+  },
+  {
+    name: 'Artist',
+    img: 'images/artist.png',
+    hair: 'blue',
+    eyes: 'blue',
+    accessories: ['hat'],
+    other: ['paint']
   },
 ]
 
@@ -215,7 +166,7 @@ const generateBoard = () => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <img style="width: 100px; height: 100px;" src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
@@ -229,6 +180,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret)
 }
 
 //Displays elapsed time
@@ -247,8 +199,10 @@ const renderTime = () => {
 
 const restart = () => {
   if (stopTimer.called === true) {
-    //initialize time count to start from zero again
+    //initialize counters to start from zero again
     addSeconds = 0;
+    count = 0;
+    guessCounter.innerHTML = `<p>Guess counter: 0</p>`;
     start();
     //Important to set property back to false after a completed round 
     //We want it to stopTimer.called to be true first when funciton is called
@@ -310,10 +264,12 @@ const checkQuestion = () => {
 
 let keep;
 
+
+
 if (category === 'hair' && value === secret.hair) {
     keep = true;
 } else if (category === 'eyes' && value === secret.eyes) {
-    keep == true;
+    keep = true;
 } else if (category === 'accessories' && value === secret.accessories.find(element => element === value)) {
     keep = true;
 } else if (category === 'other' && value === secret.other.find(element => element === value)) {
@@ -348,10 +304,10 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
+      alert(`Yes, the person is ${value}! Keep all people that are ${value}`)
       charactersInPlay = charactersInPlay.filter((person) => person.other.includes(value));
     } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
+      alert(`No, the person is not ${value}! Remove all people that are ${value}`)
       charactersInPlay = charactersInPlay.filter((person) => !person.other.includes(value));
     }
   } else if (category === 'eyes') {
@@ -359,10 +315,10 @@ const filterCharacters = (keep) => {
       alert(`Yes, the person has ${value} eyes! Keep all people that has ${value} eyes`);
       charactersInPlay = charactersInPlay.filter((person) => person.eyes === value);
     } else {
-      alert(`No, the person doesn't have ${value}! Remove all people that have ${value} eyes`);
+      alert(`No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`);
       charactersInPlay = charactersInPlay.filter((person) => person.eyes !== value);
     }
-  }
+  }    
   generateBoard();
 }
 
@@ -381,6 +337,8 @@ const guess = (personToConfirm) => {
 let guessStatus = {
   status: ''
 }
+
+
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
     if (secret.name === personToCheck) {
@@ -396,7 +354,7 @@ const checkMyGuess = (personToCheck) => {
   <p style="text-align: center;">You guessed at ${personToCheck} and it was ${guessStatus.status}</p>
   <div class="card">
     <p>${secret.name}</p>
-    <img src=${secret.img} alt=${secret.name}>
+    <img style="width: 100px; height: 100px;" src=${secret.img} alt=${secret.name}>
   </div>
   <p>${secret.name} was the secret person!</p>
   </div>

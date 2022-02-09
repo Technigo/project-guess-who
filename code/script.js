@@ -4,6 +4,9 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
 const counter = document.getElementById('counter') 
+const winOrLoose = document.querySelector('.win-or-lose-wrapper')
+const winOrLoseText = document.getElementById('winOrLoseText') 
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -310,8 +313,8 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
-  counter.innerText = 0
   incrementOne = 0
+  counter.innerText = incrementOne
   // What else should happen when we start the game?
 }
 
@@ -342,16 +345,25 @@ questions.addEventListener('change', () => {
 //If secret has not what was guessed, remove people that does not have the detail in filterfunction. 
 const checkQuestion = () => {
   const { category, value, text } = currentQuestion
+  console.log(currentQuestion)
 
-  if (category === 'hair' || category === 'pants' || category === 'profession' || category === 'headgear') {
+  if (category === 'hair' || category === 'headgear') {
     
-    if (value === secret.hair || value === secret.pants || value === secret.profession || value === secret.headgear) {
+    if (value === secret.hair || value === secret.headgear) {
       console.log(`secret has ${category} ${value}`)
       filterCharacters(value)
     } else {
       console.log(`secret has not ${text}`)
       filterCharacters()
     }
+  } else if (category === 'pants' || category === 'profession') {
+      if (value === secret.pants || value === secret.profession) {
+        console.log(`secret has ${category} ${value}`)
+        filterCharacters(value)
+      } else {
+        console.log(`secret has not ${text}`)
+        filterCharacters()
+      }
   } else if (category === 'sweater' || category === 'face' || category === 'accessories') {
     //check if secret array of values includes selected value (returns true/false)
 
@@ -382,39 +394,39 @@ const filterCharacters = (keep) => {
   if (category === 'sweater') {
     if (keep) {
       alert(
-        `Yes, the person wears ${text}! Keep all people that wears ${text}`
+        `Yes, the person wears ${text}! Keep all people that wears ${text}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${text}! Remove all people that wears ${text}`
+        `No, the person doesn't wear ${text}! Remove all people that wears ${text}.`
       )
     }
   } else if (category === 'face') {
     if (keep) {
       alert(
-        `Yes, the person wears ${text}! Keep all people that has ${text}`
+        `Yes, the person wears ${text}! Keep all people that has ${text}.`
       )
     } else {
        alert(
-         `No, the person doesn't wear ${text}! Remove all people that wears ${text}`
+         `No, the person doesn't wear ${text}! Remove all people that wears ${text}.`
       )
     } 
   } else if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${text}! Keep all people that has ${text}`
+        `Yes, the person wears ${text}! Keep all people that has ${text}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${text}! Remove all people that wears ${text}`
+        `No, the person doesn't wear ${text}! Remove all people that wears ${text}.`
       )
     }
     
   } else {
     if (keep) {
-      alert(`Yes, the person has ${text}! Keep all people with ${text}`)
+      alert(`Yes, the person has ${text}! Keep all people with ${text}.`)
     } else {
-      alert(`No, the person doesn't have ${text}! Remove all people with ${text}`)
+      alert(`No, the person doesn't have ${text}! Remove all people with ${text}.`)
     }
   }
 
@@ -450,16 +462,19 @@ const guess = (personToConfirm) => {
 }
 
 // If you confirm, this function is invoked
+// 1. Check if the personToCheck is the same as the secret person's name
+// 2. Set a Message to show in the win or lose section accordingly
+// 3. Show the win or lose section
+// 4. Hide the game board
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
   if (personToCheck === secret.name) {
     alert(`It is ${personToCheck}, good job!`)
-
+    winOrLoose.style.display = 'flex';
+    winOrLoseText.innerText = 'Yay, you won! Play again?'
   } else {
-    alert(`Oh, I´m sorry but it is not ${personToCheck}, it was ${secret.name} all the time.. Better luck next time!`)
+    alert(`Oh, I´m sorry but it is not ${personToCheck}. It was ${secret.name} all the time.. Better luck next time!`)
+    winOrLoose.style.display = 'flex';
+    winOrLoseText.innerText = 'Oh no, you lost! Play again?'
   }
   start()
 }
@@ -467,9 +482,14 @@ const checkMyGuess = (personToCheck) => {
 // Invokes the start function when website is loaded
 start()
 
-// All the event listeners
+//*** All the event listeners **//
+//click start game btn to restart the game during playing
 restartButton.addEventListener('click', start)
-//This invokes the checkQuestion
+
+//click play again btn to play again when game is over
+playAgain.addEventListener('click', start)
+
+//click find out btn to start guessing and call the checkQuestion and add attempt to counter 
 findOutBtn.addEventListener('click', () => {
   checkQuestion()
   incrementOne++

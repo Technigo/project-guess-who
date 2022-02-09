@@ -4,6 +4,8 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
+const optgroups = Array.from(document.querySelectorAll("optgroup"));
+const optgroupsLabel = optgroups.map((optgroup) => optgroup.label);
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -208,6 +210,7 @@ let charactersInPlay;
 
 // Draw the game board
 const generateBoard = () => {
+  console.log("re-generate!");
   board.innerHTML = "";
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
@@ -264,17 +267,35 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  console.log("currquestion", currentQuestion);
-  console.log(secret);
-  console.log(secret[category] === value);
   if (category === "hair" || category === "eyes") {
-    console.log("hair or eyes");
-    filterCharacters(secret[category] === value);
-    //  const selectedCharacters =  CHARACTERS.filter(character => character[category] === value);
+    const isKeep = secret[category] === value;
+    filterCharacters(isKeep);
+    charactersInPlay = charactersInPlay.filter((person) =>
+      isKeep ? person[category] === value : person[category] !== value
+    );
   } else if (category === "accessories" || category === "other") {
-    console.log("acc or others");
+    const isKeep = secret[category].includes(value);
+    filterCharacters(isKeep);
+    charactersInPlay = charactersInPlay.filter((person) =>
+      isKeep
+        ? person[category].includes(value)
+        : !person[category].includes(value)
+    );
   } else {
-    console.log("not selected");
+    console.error("cateogry does not exist");
+  }
+  removeOption();
+  generateBoard();
+};
+
+const removeOption = () => {
+  const { category, value } = currentQuestion;
+  const optgroupIndex = optgroupsLabel.indexOf(category);
+  const options = optgroups[optgroupIndex].children;
+  for (let option of options) {
+    if (option.value === value) {
+      option.remove();
+    }
   }
 };
 
@@ -293,18 +314,27 @@ const filterCharacters = (keep) => {
       );
     }
   } else if (category === "other") {
-    const message = keep
-      ? `Yes, the person has ${value} habit!`
-      : `No, the person does not have ${value} habit!`;
-    alert(message);
+    if (keep) {
+      alert(`Yes, the person has ${value} habit!`);
+    } else {
+      alert(`No, the person does not have ${value} habit!`);
+    }
+  } else if (category === "eyes") {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
+      );
+    } else {
+      alert(
+        `No, the person does not have ${value} eyes! Remove all people with ${value} eyes`
+      );
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(
         `Yes, the person has ${value} hair! Keep all people with ${value} hair`
       );
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(
         `No, the person does not have ${value} hair! Remove all people with ${value} hair`
       );

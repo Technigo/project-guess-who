@@ -276,18 +276,12 @@ const sweetAlert = (newTitle, newHTML) => {
     willClose: () => {
       clearInterval(timerInterval)
     }
-  // }).then((result) => {
-  //   if (result.dismiss === Swal.DismissReason.timer) {
-  //     console.log('I was closed by the timer')
-  //   }
+    // }).then((result) => {
+    //   if (result.dismiss === Swal.DismissReason.timer) {
+    //     console.log('I was closed by the timer')
+    //   }
   })
 }
-
-
-
-
-// annoying sound, it needs to be changed
-// const badGuess = () => new Audio('./assets/cat-hissing.wav').play()
 
 // Randomly select a cat from the characters array and set as the value of the variable called secret
 const setSecret = () => {
@@ -366,28 +360,24 @@ const filterCharacters = (keep) => {
 
     } else {
       sweetAlert(`No, the secret cat doesn't have a ${value} fur!`, `All cats with ${value} fur are now hidden.`)
-      // badGuess()
     }
   } else if (category === 'special') {
     if (keep) {
       sweetAlert(`Yes, the secret cat has a special feature: ${value}!`, `All cats without the feature "${value}" are now hidden.`)
     } else {
       sweetAlert(`No, the secret cat doesn't have the special feature: ${value}!`, `All cats with the feature "${value}" are now hidden.`)
-      // badGuess()
     }
   } else if (category === 'skin') {
     if (keep) {
       sweetAlert(`Yes, the secret cat has a ${value} skin!`, `All cats without ${value} skin are now hidden.`)
     } else {
       sweetAlert(`No, the secret cat doesn't have a ${value} skin!`, `All cats with ${value} skin are now hidden.`)
-      // badGuess()
     }
   } else if (category === 'claws') {
     if (keep) {
       sweetAlert(`Yes, the secret cat is ${value} claws!`, `All cats that aren't ${value} claws are now hidden.`)
     } else {
       sweetAlert(`No, the secret cat isn't ${value} claws!`, `All cats ${value} claws are now hidden.`)
-      // badGuess()
     }
   }
 
@@ -429,7 +419,30 @@ const guess = (catToConfirm) => {
     showCancelButton: true,
     confirmButtonColor: '#356879',
     cancelButtonColor: '#6B96A6',
-    confirmButtonText: 'Confirm'
+    confirmButtonText: 'Confirm',
+    backdrop: true,
+    allowEscapeKey: () => {
+      const popup = Swal.getPopup()
+      popup.classList.remove('swal2-show')
+      setTimeout(() => {
+        popup.classList.add('animate__animated', 'animate__headShake')
+      })
+      setTimeout(() => {
+        popup.classList.remove('animate__animated', 'animate__headShake')
+      }, 500)
+      return false
+    },
+    allowOutsideClick: () => {
+      const popup = Swal.getPopup()
+      popup.classList.remove('swal2-show')
+      setTimeout(() => {
+        popup.classList.add('animate__animated', 'animate__headShake')
+      })
+      setTimeout(() => {
+        popup.classList.remove('animate__animated', 'animate__headShake')
+      }, 500)
+      return false
+    }
   }).then((result) => {
     if (result.isConfirmed) {
       checkMyGuess(catToConfirm)
@@ -449,30 +462,31 @@ const checkMyGuess = (catToCheck) => {
   // 1. Check if the catToCheck is the same as the secret cat's name
   if (catToCheck === secret.name) {
     // 2. Set a Message to show in the win or lose section accordingly
-    document.getElementById('winOrLoseText').innerText = `You won! As you guessed, ${catToCheck} was the secret cat!`
+    document.getElementById('winOrLoseText').innerHTML = `You won!<br/>As you guessed, ${catToCheck} was the secret cat!`
     // 3. Show the win or lose section
     document.getElementById('winOrLose').style.display = 'flex'
     // 4. Hide the game board
     board.style.display = 'none'
-    // video not working well on iPhone, needs to be fixed, maybe the playsinline attribute
-    document.getElementById('winReward').innerHTML = `
-    <video src="./assets/cute-cat.mp4" type="video/mp4" autoplay muted loop playsinline>video</video>
-    <audio src="./assets/cat-purring.wav" type="audio/wav" autoplay loop></audio>
+    document.getElementById('wonOrLost').innerHTML = `
+    <audio src="./assets/cat-purr.wav" type="audio/wav" autoplay></audio>
     `
   } else {
     // 2. Set a Message to show in the win or lose section accordingly
-    document.getElementById('winOrLoseText').innerText = `You lost! Unfortunately, ${catToCheck} wasn't the secret cat, it was ${secret.name}...`
+    document.getElementById('winOrLoseText').innerHTML = `You lost!<br/>Unfortunately, ${catToCheck} wasn't the secret cat, it was ${secret.name}...`
     // 3. Show the win or lose section
     document.getElementById('winOrLose').style.display = 'flex'
     // 4. Hide the game board
     board.style.display = 'none'
+    document.getElementById('wonOrLost').innerHTML = `
+    <audio src="./assets/cat-meow.wav" type="audio/wav" autoplay></audio>
+    `
   }
 }
 
 const playAgain = () => {
   start()
   document.getElementById('winOrLose').style.display = 'none'
-  document.getElementById('winReward').innerHTML = ''
+  document.getElementById('wonOrLost').innerHTML = ''
   board.style.display = 'flex'
   countQuestions = 0
   counterQuestionsDisplay.innerText = countQuestions
@@ -500,13 +514,51 @@ window.addEventListener('load', () => {
   Swal.fire({
     imageUrl: './assets/cat-logo-small.svg',
     color: '#356879',
-    title: "What's your name?",
-    text: "Please type your name if you want to play.",
-    input: 'text',
+    title: `What's your name?`,
+    html: `<input type="text" id="playerName" class="swal2-input">`,
+    confirmButtonText: 'OK',
     confirmButtonColor: '#356879',
-}).then((result) => {
-    if (result.value) {
-        console.log("Result: " + result.value);
+    focusConfirm: false,
+    preConfirm: () => {
+      const playerName = Swal.getPopup().querySelector('#playerName').value
+      if (!playerName) {
+        Swal.showValidationMessage(`Please enter your name if you want to play`)
+      }
+      return { playerName: playerName }
+    },
+    // is there a way of not repeating the following twice, for both allowEscapeKey and allowOutsideClick (et dans 'const guess' aussi)
+    backdrop: true,
+    allowEscapeKey: () => {
+      const popup = Swal.getPopup()
+      popup.classList.remove('swal2-show')
+      setTimeout(() => {
+        popup.classList.add('animate__animated', 'animate__headShake')
+      })
+      setTimeout(() => {
+        popup.classList.remove('animate__animated', 'animate__headShake')
+      }, 500)
+      return false
+    },
+    allowOutsideClick: () => {
+      const popup = Swal.getPopup()
+      popup.classList.remove('swal2-show')
+      setTimeout(() => {
+        popup.classList.add('animate__animated', 'animate__headShake')
+      })
+      setTimeout(() => {
+        popup.classList.remove('animate__animated', 'animate__headShake')
+      }, 500)
+      return false
     }
-});
-});
+  }).then((result) => {
+    Swal.fire({
+      icon: "success",
+      iconColor: '#356879',
+      title: `Welcome ${result.value.playerName}!<br/>Have fun playing Guess Paw!`.trim(),
+      color: '#356879',
+      confirmButtonText: 'Play',
+      confirmButtonColor: '#356879',
+    })
+    document.getElementById('playerNameDiv').innerText = `Players's name: ${result.value.playerName}`
+  })
+})

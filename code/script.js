@@ -245,8 +245,21 @@ const renderTime = () => {
   `
 }
 
-let setTimer= '';
+const restart = () => {
+  if (stopTimer.called === true) {
+    //initialize time count to start from zero again
+    addSeconds = 0;
+    start();
+    //Important to set property back to false after a completed round 
+    //We want it to stopTimer.called to be true first when funciton is called
+    stopTimer.called = false;
+  } else {
+    alert('You have to finish the game before restarting!');
+  }
+}
+
 //Set displaying of time to increase with 1s intervals, invoked at start and restart
+let setTimer;
 const startTimer = () => {
   setTimer = setInterval(renderTime, 1000);
 }
@@ -254,7 +267,8 @@ const startTimer = () => {
 //Stops timer, invoked in guess function
 const stopTimer = () => {
   clearInterval(setTimer);
-  console.log(setTimer)
+  //enabling to check if stopTimer function has been called later on in restart function by adding property
+  stopTimer.called = true;
 }
 
 // This function to start (and restart) the game
@@ -355,7 +369,6 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  console.log(personToConfirm)
   let confirmChoice = confirm('Sure you wanna guess? It will be the last draw. Please confirm');
   if (confirmChoice === true) {
     checkMyGuess(personToConfirm);
@@ -395,6 +408,6 @@ const checkMyGuess = (personToCheck) => {
 start();
 
 // All the event listeners
-restartButton.addEventListener('click', start);
+restartButton.addEventListener('click', restart);
 findOutButton.addEventListener('click', checkQuestion);
 questions.addEventListener('change', selectQuestion)

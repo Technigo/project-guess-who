@@ -236,7 +236,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard(); //attach items in #board
   setSecret(); //assign the answer in the variable 'secret'
-  console.log(secret);
+  console.log("secret", secret);
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -245,12 +245,13 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value;
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   };
+  console.log("currentQuestion", currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -326,3 +327,4 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+questions.addEventListener("change", selectQuestion);

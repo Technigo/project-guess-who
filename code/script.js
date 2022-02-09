@@ -282,7 +282,6 @@ const checkQuestion = () => {
     //filterCharacters = true
   
   } else if (category === 'accessories' || category === 'other') {
-    console.log('testing testing')
     if (secret.accessories.includes(value) || secret.other.includes(value)) {
       filterCharacters(true)
     } else {

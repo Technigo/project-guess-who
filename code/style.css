@@ -18,7 +18,7 @@ body {
   /* Change font-family? */
   font-family: Italiana, serif;
   /* Changed the background color */
-  background-color: var(--third);
+  background-color: var(--secondary);
 }
 
 h1 {
@@ -32,6 +32,16 @@ h1 {
 /* Start-wrapper hidden as default */
 .start-wrapper {
   display: none;
+  background-color: var(--secondary);
+  width: 100%;
+  margin-top: 50px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.start-wrapper h1 {
+  margin: 30px 0;
 }
 
 .question-section {
@@ -69,6 +79,7 @@ select {
 
 .guess-who-icon {
   width: 126px;
+  margin-top: 30px;
 }
 
 .board-wrapper {
@@ -76,6 +87,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--third);
 }
 
 .game-board {
@@ -84,6 +96,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 /****** CARD ******/
@@ -207,6 +220,10 @@ button {
 /* Mobile media queries */
 @media (max-width: 768px) {
   body {
+    flex-direction: column;
+  }
+
+  .game-window {
     flex-direction: column;
   }
 

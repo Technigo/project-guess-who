@@ -252,6 +252,7 @@ const setSecret = () => {
 const start = () => {
   startWindow.style.display = 'none'
   gameWindow.style.display = 'flex'
+  
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
@@ -417,6 +418,7 @@ const checkMyGuess = (personToCheck) => {
     message = `You lost! The secret person was ${secret.name}.`
   }
   // Show the win-or-lose-section with the message above
+  gameWindow.style.display = 'none'
   winOrLoseSection.style.display = 'flex';
   winOrLoseText.innerHTML = message;
   

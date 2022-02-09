@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -325,3 +326,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOutButton.addEventListener('click', () => {
+checkQuestion()
+})

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
+    <title>Guess Who... Game of Thrones edition</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -20,24 +20,81 @@
         alt="Guess Who"
       />
 
-      <h1>Does the person have</h1>
+      <h1>Does the person have..?</h1>
 
       <select id="questions">
-        <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
+        <optgroup label="Hair" value="hair">
+          <option value="brown">Brown hair</option>
+          <option value="golden">Golden/yellow hair</option>
+          <option value="black">Black hair</option>
+          <option value="red">Red hair</option>
+          <option value="white">White hair</option>
+          <option value="green">Green hair</option>
+          <option value="hidden">Hidden hair</option>
+
           <!-- Add the rest of hair colors as options  -->
         </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
+        <optgroup label="Eyes" value="eyes">
+          <option value="grey">Grey eyes</option>
+          <option value="blue">Blue eyes</option>
+          <option value="purple">Purple eyes</option>
+          <option value="green">Green eyes</option>
+          <option value="red">Red eyes</option>
+          <option value="black">Black eyes</option>
+          <option value="hidden">Hidden eyes</option>
           <!-- Add the rest of eye colors as options  -->
         </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
+        <optgroup label="Accessories/personality"  value="accessories">
+          <option value="sword">Sword</option>
+          <option value="spear">Spear</option>
+          <option value="bow">Bow and arrow</option>
+          <option value="books">Books</option>
+          <option value="knowledge">Knowledge</option>
+          <option value="wheelchair">Wheelchair</option>
+          <option value="magic">Magical powers</option>
+          <option value="crown">Crown at one point</option>
+          <option value="badass">Badass</option>
+          <option value="terror">Terror</option>
+          <option value="none">None</option>
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+        <optgroup label="House"  value="house">
+          <option value="stark">House Stark</option>
+          <option value="lannister">House Lannister</option>
+          <option value="snow">House Snow</option>
+          <option value="tyrell">House Tyrell</option>
+          <option value="tarly">House Tarly</option>
+          <option value="tarth">House Tarth</option>
+          <option value="mormont">House Mormont</option>
+          <option value="targaryen">House Targaryen</option>
+          <option value="glegane">House Glegane</option>
+          <option value="freeFolk">Free Folk/wildlings</option>
+          <option value="unknown">Unknown</option>
+        </optgroup>
+
+        <optgroup label="Species" value="species">
+          <option value="human">Human</option>
+          <option value="whiteWalker">White walker</option>
+          <option value="direwolf">Direwolf</option>
+          <option value="dragon">Dragon</option>
+        </optgroup>
+
+        <optgroup label="Home" value="home">
+          <option value="winterfell">Winterfell</option>
+          <option value="dorne">Dorne</option>
+          <option value="braavos">Braavos</option>
+          <option value="asshai">Asshai</option>
+          <option value="kingsLanding">King's Landing</option>
+          <option value="asshai">Asshai</option>
+          <option value="theWall">The wall</option>
+          <option value="casterlyRock">Casterly Rock</option>
+          <option value="hornHill">Horn Hill</option>
+          <option value="bearIsland">Bear island</option>
+          <option value="evenfallHall">Evenfall Hall</option>
+          <option value="beyondTheWall">Beyond the Wall</option>
+          <option value="highgarden">Highgarden</option>
+          <option value="unknown">Unknown</option>
+
         </optgroup>
       </select>
 

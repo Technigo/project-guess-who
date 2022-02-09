@@ -62,7 +62,7 @@ select {
 /****** CARD ******/
 .card {
   width: 135px;
-  height: 165px;
+  height: 180px;
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;
@@ -75,9 +75,18 @@ select {
 
 .card p {
   text-align: center;
-  margin-bottom: 0;
-  font-size: 16px;
+  padding-top: 125px;
+  font-size: 15px;
   font-weight: 700;
+  text-shadow: 2px 2px 9px white;
+}
+
+
+
+.card img {
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
 }
 
 .card .guess {

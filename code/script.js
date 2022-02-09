@@ -6,198 +6,298 @@ const restartButton = document.getElementById('restart')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
+    name: 'Arya Stark',
+    img: 'images/arya.png  width="141px"',
     hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    eyes: 'grey',
+    accessories: 'sword', 
+    house: 'stark',
+    species: 'human',
+    home: 'winterfell'
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
+    name: 'Rob Stark',
+    img: 'images/rob.png width="135px"',
+    hair: 'brown',
+    eyes: 'blue',
+    accessories: ['sword', 'crown'], 
+    house: 'stark',
+    species: 'human',
+    home: 'winterfell'
+  },
+  {
+    name: 'Sansa Stark',
+    img: 'images/sansa.png width="135px"',
+    hair: 'red',
+    eyes: 'blue',
+    accessories: 'crown',
+    house: 'stark',
+    species: 'human',
+    home: 'winterfell'
+  },
+  {
+    name: 'Jon Snow',
+    img: 'images/jon.png width="135px"',
     hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    eyes: 'grey',
+    accessories: ['sword', 'crown'],
+    house: ['stark', 'snow', 'targaryen'],
+    species: 'human',
+    home: ['winterfell', 'theWall']
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Daenerys Targaryen',
+    img: 'images/dany2.jpg width="135px"',
+    hair: 'white',
+    eyes: 'purple',
+    accessories: 'none',
+    house: 'targaryen',
+    species: 'human',
+    home: 'unknown'
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
+    name: 'Tyrion Lannister',
+    img: 'images/tyrion.png width="140px"',
+    hair: 'golden',
     eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['books', 'knowledge'],
+    house: 'lannister',
+    species: 'human',
+    home: ['kingsLandning', 'casterlyRock']
+  },
+  {
+    name: 'Cercei Lannister',
+    img: 'images/cerci.png width="135px"',
+    hair: 'golden',
+    eyes: 'green',
+    accessories: ['terror', 'crown'],
+    house: 'lannister',
+    species: 'human',
+    home: ['kingsLandning', 'casterlyRock']
+  },
+  {
+    name: 'Jamie Lannister',
+    img: 'images/jamie.png width="135px"',
+    hair: 'golden',
+    eyes: 'green',
+    accessories: 'sword',
+    house: 'lannister',
+    species: 'human',
+    home: ['kingsLandning', 'casterlyRock']
+  },
+  {
+    name: 'Sandor Clegane',
+    img: 'images/sandor.png width="140px"',
+    hair: 'brown',
+    eyes: 'grey',
+    accessories: 'sword',
+    house: 'clegane',
+    species: 'human',
+    home: 'unknown'
+  },
+  {
+    name: 'Brandon Stark',
+    img: 'images/bran.png width="140px"',
+    hair: 'brown',
+    eyes: 'blue',
+    accessories: ['wheelchair', 'knowledge', 'magic'],
+    house: 'stark',
+    species: 'human',
+    home: 'winterfell'
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
+    name: 'Gregor Clegane',
+    img: 'images/gregor.png width="140px"',
+    hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    accessories: ['terror', 'sword'],
+    house: 'clegange',
+    species: 'human',
+    home: 'unknown'
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
+    name: 'Samwell Tarly',
+    img: 'images/sam.png width="135px"',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: ['books', 'knowledge'],
+    house: 'tarly',
+    species: 'human',
+    home: ['theWall', 'hornHill']
+  },
+  {
+    name: 'Jorah Mormont',
+    img: 'images/jorah.png width="138px"',
+    hair: 'golden',
     eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    accessories: 'sword',
+    house: 'mormont',
+    species: 'human',
+    home: 'bearIsland'
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
+    name: 'Brienne Tarth',
+    img: 'images/brienne.png width="135px"',
+    hair: 'golden',
+    eyes: 'blue',
+    accessories: 'sword',
+    house:'tarth',
+    species: 'human',
+    home: 'evenfallHall'
+  },
+  {
+    name: 'Tormund Giantsbane',
+    img: 'images/tormund.png width="135px"',
+    hair: 'red',
+    eyes: 'green',
+    accessories: 'sword',
+    house: 'freeFolk',
+    species: 'human',
+    home: 'beyondTheWall'
+  },
+  {
+    name: 'Melisandre',
+    img: 'images/melisandre.jpg width="135px"',
+    hair: 'red',
+    eyes: 'blue',
+    accessories: ['magic', 'terror'],
+    house: 'unknown',
+    species: 'human',
+    home: 'Asshai'
+  },
+  {
+    name: 'Ygritte',
+    img: 'images/ygritte.jpg width="135px"',
+    hair: 'red',
+    eyes: 'blue',
+    accessories: 'bow',
+    house: 'freeFolk',
+    species: 'human',
+    home: 'beyondTheWall'
+  },
+  {
+    name: 'Margaery Tyrell',
+    img: 'images/margaery.jpg width="135px"',
     hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    eyes: 'brown',
+    accessories: 'crown',
+    house: 'tyrell',
+    species: 'human',
+    home: ['kingsLandning', 'highgarden']
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Olenna Tyrell',
+    img: 'images/olenna.png width="135px"',
+    hair: 'hidden',
+    eyes: 'brown',
+    accessories: 'badass',
+    house: 'tyrell',
+    species: 'human',
+    home: 'highgarden'
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
+    name: 'Lyanna Mormont',
+    img: 'images/lyanna.jpg width="135px"',
+    hair: 'brown',
+    eyes: 'brown',
+    accessories: 'badass',
+    house: 'mormont',
+    species: 'human',
+    home: 'bearIsland'
+  },
+  {
+    name: 'Hodor',
+    img: 'images/hodor.jpg width="135px"',
     hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    eyes: 'blue',
+    accessories:'badass',
+    house: 'unknown',
+    species: 'human',
+    home: 'winterfell'
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
+    name: 'Night king',
+    img: 'images/nightking.jpg width="135px"',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    accessories:['terror', 'magic', 'spear'],
+    house: 'unknown',
+    species: 'WhiteWalker',
+    home: 'beyondTheWall'
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
+    name: "Jaqen H'ghar",
+    img: 'images/jaqen.jpg width="135px"',
+    hair: ['red', 'white'],
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    accessories:['sword', 'magic'],
+    house: 'unknown',
+    species: 'human',
+    home: 'braavos'
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
+    name: 'Oberyn Martell',
+    img: 'images/oberyn.jpg width="135px"',
     hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    eyes: 'black',
+    accessories: ['spear', 'badass'],
+    house: 'martell',
+    species: 'human',
+    home: 'dorne'
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Nymeria',
+    img: 'images/nymeria.png width="135px"',
+    hair: ['grey', 'white'],
+    eyes: 'hidden',
+    accessories: 'none',
+    house: 'stark',
+    species: 'direwolf',
+    home: ['unknown', 'winterfell']
   },
+  {
+    name: 'Ghost',
+    img: 'images/ghost.png width="135px"',
+    hair: 'white',
+    eyes: 'red',
+    house: ['stark', 'snow'],
+    species: 'direwolf',
+    home: ['theWall', 'winterfell']
+  },
+  {
+    name: 'Summer',
+    img: 'images/summer.jpg width="135px"',
+    hair: 'golden',
+    eyes: 'hidden',
+    house: 'stark',
+    species: 'direwolf',
+    home: 'winterfell'
+  },
+  {
+    name: 'Drogon',
+    img: 'images/drogon.png width="135px"',
+    hair: 'black',
+    eyes: 'hidden',
+    house: 'targaryen',
+    species: 'dragon'
+  },
+  {
+    name: 'Rhaegal',
+    img: 'images/rhaegal.png width="135px"',
+    hair: 'green',
+    eyes: 'hidden',
+    house: 'targaryen',
+    species: 'dragon'
+  },
+  {
+    name: 'Viserion',
+    img: 'images/viserion.png width="140px"',
+    hair: 'golden',
+    eyes: 'hidden',
+    house: 'targaryen',
+    species: 'dragon'
+  }
 ]
 
 // Global variables
@@ -231,6 +331,8 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  generateBoard()
+  setSecret()
   // What else should happen when we start the game?
 }
 
@@ -240,11 +342,11 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
 }
 
@@ -255,10 +357,56 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'hair') {
+    if (value === secret.hair) {
+      let keep = true
+      filercharacters(keep)
+    } else {
+      keep = false
+      filercharacters()
+    }
 
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'eyes') {
+    if (value === secret.eyes) {
+      let keep = true
+      filercharacters(keep)
+    } else {
+      keep = false
+      filercharacters()
+    }
 
+  } else if (category === 'house') {
+    if (value === secret.house) {
+      let keep = true
+      filercharacters(keep)
+    } else {
+      keep = false
+      filercharacters()
+    }
+  } else if (category === 'home') {
+    if (value === secret.home) {
+      let keep = true
+      filercharacters(keep)
+    } else {
+      keep = false
+      filercharacters()
+    }
+  } else if (category === 'species') {
+    if (value === secret.species) {
+      let keep = true
+      filercharacters(keep)
+    } else {
+      keep = false
+      filercharacters()
+    }
+  } else if (category === 'accessories') {
+    if (value === secret.accessories) {
+      let keep = true
+      filercharacters(keep)
+    } else {
+      keep = false
+      filercharacters()
+    }
   }
 }
 
@@ -266,48 +414,101 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'hair') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the character has ${value}! Keep all that has ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the character doesn't has ${value}. Remove all that has ${value}`
       )
     }
-  } else if (category === 'other') {
-    // Similar to the one above
+  } else if (category === 'eyes') {
+    if (keep) {
+      alert(
+        `Yes, the secret character has ${value}! Keep all that has ${value}`
+      )
+    } else {
+      alert(
+        `No, the secret character doesn't have ${value}. Remove all that has ${value}`
+      )
+    }
+  } else if (category === 'accessories') {
+    if (keep) {
+      alert(
+        `Yes, the secret character has/ or is ${value}! Keep all with these accessories/personality`
+      )
+    } else {
+      alert(
+        `No, the secret character does not have/ or are ${value}. Remove all with these accessories/personality`
+      )
+    }
+  } else if (category === 'house') {
+    if (keep) {
+      alert(
+        `Yes the secret character is in ${value}! Keep all that is in ${value}`
+      )
+    } else {
+      alert(
+        `No, the secret character is in ${value}. Remove all that is in ${value}.`
+      )
+    }
+  } else if (category === 'species') {
+    if (keep) {
+      alert(
+        `Yes, the secret character is a ${value}! Keep all ${value}s `
+      )
+    } else {
+      alert(
+        `No, the secret character is not a ${value}. Remove all ${value}s.`
+      )
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes the secret characters home is ${value}! Keep all that has ${value} as a home`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the secret characters home is not ${value}. Remove all that has ${value} as a home`
+      )
     }
   }
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+  
+    // for hair and eyes :
+    //   charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    //   or
+    //   charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+    // for accessories and other
+    //   charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    //   or
+    //   charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+  if (keep === true) {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] === value)
+  } else {
+    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] === !value)
+    generateBoard()
+  }
 
   // Invoke a function to redraw the board with the remaining people.
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  let letsGuess = confirm(`Do you want to guess on ${personToConfirm}?`)
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  if (letsGuess) {
+    checkMyGuess(personToConfirm)
+  } else {
+    alert('Make another guess!')
+  }
 }
 
 // If you confirm, this function is invoked

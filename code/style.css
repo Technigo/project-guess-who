@@ -73,6 +73,13 @@ select {
   justify-content: space-between;
 }
 
+/*image style
+img{
+  width: 135px;
+  height: 135px;
+  object-fit: cover;
+}*/
+
 .card p {
   text-align: center;
   margin-bottom: 0;

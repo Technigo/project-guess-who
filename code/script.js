@@ -3,7 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
-const questionsAsked = document.getElementById('questionsAsked')
+const gameTimer = document.getElementById('timer')
+const totalGuesses = document.getElementById('totalGuesses')
 const winOrLoseSection = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
@@ -209,7 +210,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-let numberOfQuestions = 0
+let numberOfGuesses
 
 // Draw the game board
 const generateBoard = () => {
@@ -228,12 +229,22 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Randomly select a person from the characters array 
+// and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
+const startTimer = () => {
+  let startTime = Date.now()
+  let elapsedTime = 0
+  setInterval(() => {
+    elapsedTime = Math.floor((Date.now() - startTime) / 1000)
+    gameTimer.innerHTML = ` ${elapsedTime} s`
+  }, 1000)
+}
+
+// This function starts and restarts the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
@@ -242,6 +253,8 @@ const start = () => {
   generateBoard()
   // Randomly select a secret person
   setSecret()
+  startTimer()
+  numberOfGuesses = 0
   // Console.log the secret person to see that it works correctly
   console.log(`The secret person is ${secret.name}`)
 }
@@ -265,7 +278,7 @@ const selectQuestion = () => {
   const value = questions.options[questions.selectedIndex].value
 
   currentQuestion = {
-    category: category,
+    category: category, //hair, eyes, ARRAYS: accessories, other
     value: value
   }
 }
@@ -273,9 +286,11 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+
   // Keeps track of how many questions the user has asked
-  numberOfQuestions++
-  questionsAsked.innerHTML = `Questions asked: ${numberOfQuestions}`
+  numberOfGuesses++
+
+  totalGuesses.innerHTML = `${numberOfGuesses}`
   // Compare the currentQuestion details with the secret person details in a
   // different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -295,7 +310,7 @@ const checkQuestion = () => {
   }
 }
 
-// It'll filter the characters array and redraw the game board.
+// This function filters the characters array and redraws the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
@@ -390,13 +405,13 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
   let message;
   if (personToCheck === secret.name) {
-    alert('Correctamundo!')
-    message = `You won!`
+    //alert('Correctamundo!')
+    message = `You won! The secret person was ${secret.name}.`
   } else {
-    alert('Nooooo!')
-    message = `You lost!`
+    //alert('Nooooo!')
+    message = `You lost! The secret person was ${secret.name}.`
   }
-  
+  // Show the win-or-lose-section with the message above
   winOrLoseSection.style.display = 'block';
   winOrLoseText.innerHTML = message;
   

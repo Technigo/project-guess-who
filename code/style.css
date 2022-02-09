@@ -1,7 +1,13 @@
 /* Global css variables used for colors */
-:root {
+/* :root {
   --primary: #a259ff;
   --secondary: #b0a6ff; 
+} */
+
+:root {
+  --primary: #FABB51;
+  --secondary: #008080; 
+  --third: #FAEDC6;
 }
 
 body {
@@ -9,6 +15,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  /* Changed the background color */
+  background-color: var(--third);
 }
 
 h1 {
@@ -38,6 +46,18 @@ select {
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  /* Added some extra padding */
+  padding: 3px;
+}
+
+.filled-button {
+  margin: 20px auto; /*Keep it centered or delete this?*/
+  cursor: help;
+}
+
+.question-section p {
+  color: white;
+  margin: 10px auto;
 }
 
 .guess-who-icon {

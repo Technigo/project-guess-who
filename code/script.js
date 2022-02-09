@@ -3,6 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -232,6 +235,8 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  winOrLose.style.display = 'none'
+  board.style.display = 'flex'
   // What else should happen when we start the game?
   generateBoard()
   //adding a secret person when the game starts
@@ -360,24 +365,36 @@ const filterCharacters = (keep) => {
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
+  let confirmation = confirm(`Are you sure you want to guess on ${personToConfirm}`)
+  if (confirmation === true){
   // If the player wants to guess, invoke the checkMyGuess function.
+  checkMyGuess(personToConfirm)
+  console.log('this worked!')
+  }
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+const checkMyGuess = (personToConfirm) => {
+  // Check if the personToConfirm is the same as the secret person's name
+  if (personToConfirm === secret.name){
+    // Show the win or lose section
+    // Set a Message to show in the win or lose section accordingly
+    winOrLoseText.innerHTML = `Yes! Good guess, it was ${secret.name} woohoooooo!!!`
+    winOrLose.style.display = 'block'
+  } else {
+    winOrLose.style.display = 'block'
+    winOrLoseText.innerHTML = `NA NA NA.....Sorry this is not ${personToConfirm}`
+  }
+  winOrLose.style.display = 'flex'
+   // Hide the game board
+  board.style.display = 'none'
 }
 
 // Invokes the start function when website is loaded
 start()
 
-//invokes when the player interacts
-//selectQuestion()
-
 // All the event listeners
 restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
+playAgainButton.addEventListener('click', start)

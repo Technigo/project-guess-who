@@ -213,6 +213,9 @@ let charactersInPlay
 let countQuestions = 0
 let countRounds = -1
 
+// for auto close alert
+let timerInterval
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -239,18 +242,47 @@ const generateBoard = () => {
 }
 
 
-const sweetAlert = (newTitle) => {
+// const sweetAlert = (newTitle) => {
+//   Swal.fire({
+//     title: newTitle,
+//     color: '#356879',
+//     confirmButtonColor: "#356879",
+//     showClass: {
+//       popup: 'animate__animated animate__fadeInDown'
+//     },
+//     hideClass: {
+//       popup: 'animate__animated animate__fadeOutUp'
+//     }
+//   })
+// }
+
+
+
+const sweetAlert = (newTitle, newHTML) => {
   Swal.fire({
     title: newTitle,
-    confirmButtonColor: "#356879",
-    showClass: {
-      popup: 'animate__animated animate__fadeInDown'
-    },
-    hideClass: {
-      popup: 'animate__animated animate__fadeOutUp'
+    color: '#356879',
+    html: newHTML,
+    timer: 5000,
+    timerProgressBar: true,
+    confirmButtonColor: '#356879',
+    // didOpen: () => {
+    //   Swal.hideLoading()
+    //   const b = Swal.getHtmlContainer().querySelector('b')
+    //   timerInterval = setInterval(() => {
+    //     b.textContent = Swal.getTimerLeft()
+    //   }, 100)
+    // },
+    willClose: () => {
+      clearInterval(timerInterval)
     }
+  // }).then((result) => {
+  //   if (result.dismiss === Swal.DismissReason.timer) {
+  //     console.log('I was closed by the timer')
+  //   }
   })
 }
+
 
 
 
@@ -273,7 +305,6 @@ const start = () => {
   counterQuestionsDisplay.innerText = countQuestions
   countRounds++
   counterRoundsDisplay.innerText = countRounds
-
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -331,31 +362,31 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'fur') {
     if (keep) {
-      sweetAlert(`Yes, the secret cat has a ${value} fur! Hide all cats without ${value} fur.`)
+      sweetAlert(`Yes, the secret cat has a ${value} fur!`, `All cats without ${value} fur are now hidden.`)
 
     } else {
-      sweetAlert(`No, the secret cat doesn't have a ${value} fur! Hide all cats with ${value} fur.`)
+      sweetAlert(`No, the secret cat doesn't have a ${value} fur!`, `All cats with ${value} fur are now hidden.`)
       // badGuess()
     }
   } else if (category === 'special') {
     if (keep) {
-      sweetAlert(`Yes, the secret cat has a special feature: ${value}! Hide all cats without the feature: ${value}.`)
+      sweetAlert(`Yes, the secret cat has a special feature: ${value}!`, `All cats without the feature "${value}" are now hidden.`)
     } else {
-      sweetAlert(`No, the secret cat doesn't have the special feature: ${value}! Hide all cats with the feature: ${value}.`)
+      sweetAlert(`No, the secret cat doesn't have the special feature: ${value}!`, `All cats with the feature "${value}" are now hidden.`)
       // badGuess()
     }
   } else if (category === 'skin') {
     if (keep) {
-      sweetAlert(`Yes, the secret cat has a ${value} skin! Hide all cats without ${value} skin.`)
+      sweetAlert(`Yes, the secret cat has a ${value} skin!`, `All cats without ${value} skin are now hidden.`)
     } else {
-      sweetAlert(`No, the secret cat doesn't have a ${value} skin! Hide all cats with ${value} skin.`)
+      sweetAlert(`No, the secret cat doesn't have a ${value} skin!`, `All cats with ${value} skin are now hidden.`)
       // badGuess()
     }
   } else if (category === 'claws') {
     if (keep) {
-      sweetAlert(`Yes, the secret cat is ${value} claws! Hide all cats that aren't ${value} claws.`)
+      sweetAlert(`Yes, the secret cat is ${value} claws!`, `All cats that aren't ${value} claws are now hidden.`)
     } else {
-      sweetAlert(`No, the secret cat isn't ${value} claws! Hide all cats ${value} claws.`)
+      sweetAlert(`No, the secret cat isn't ${value} claws!`, `All cats ${value} claws are now hidden.`)
       // badGuess()
     }
   }
@@ -365,22 +396,18 @@ const filterCharacters = (keep) => {
   if (category === 'skin' || category === 'claws') {
     if (value === secret.skin || value === secret.claws) {
       charactersInPlay = charactersInPlay.filter((cat) => cat[category] === value)
-      generateBoard()
     } else {
       charactersInPlay = charactersInPlay.filter((cat) => cat[category] !== value)
-      generateBoard()
     }
   } else if (category === 'fur' || category === 'special') {
     if (secret.fur.includes(value) || secret.special.includes(value)) {
       charactersInPlay = charactersInPlay.filter((cat) => cat[category].includes(value))
-      generateBoard()
     } else {
       charactersInPlay = charactersInPlay.filter((cat) => !cat[category].includes(value))
-      generateBoard()
     }
   }
-
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -456,6 +483,7 @@ const playAgain = () => {
 // Invokes the start function when website is loaded
 start()
 
+
 // CHARACTERS.forEach(({ name, skin, claws }) => {
 //   console.log(name)
 //   console.log(skin)
@@ -467,3 +495,18 @@ restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', playAgain)
+
+window.addEventListener('load', () => {
+  Swal.fire({
+    imageUrl: './assets/cat-logo-small.svg',
+    color: '#356879',
+    title: "What's your name?",
+    text: "Please type your name if you want to play.",
+    input: 'text',
+    confirmButtonColor: '#356879',
+}).then((result) => {
+    if (result.value) {
+        console.log("Result: " + result.value);
+    }
+});
+});

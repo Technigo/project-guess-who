@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -231,12 +232,18 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  generateBoard()
+  selectQuestion()
+  setSecret()
   // What else should happen when we start the game?
+  // JENNIES KOMMENTAR FRÅN FILMEN: set the secret person -> invoke setSecret function
+  // JENNIES KOMMENTAR FRÅN FILMEN: show the board on the screen -> invoke generateBoard funktion
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  const value = questions.value
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -244,22 +251,23 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
+  console.log('hej')
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    // JENNIES KOMMENTAR FRÅN FILMEN: check if secret person.hair === value (inte exakt så men liknande)
   } else if (category === 'accessories' || category === 'other') {
-
+    
   }
+
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -277,7 +285,15 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person does have ${value}! Keep all people that have ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that have ${value}`
+      )
+    }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
@@ -323,3 +339,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOutButton.addEventListener('click', checkQuestion)

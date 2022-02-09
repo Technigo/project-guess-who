@@ -289,16 +289,18 @@ const alertIncorrect = (message) => {
 }
 
 // Custom Confirm
-const customConfirm = (message, personToConfirm) => {
+const customConfirm = () => {
   areYouSure.style.display = "grid";
-  confirmText.innerText = message;
-  document.getElementById('cancelButton').addEventListener('click', () => {
-    areYouSure.style.display = "none";
-  })
-  document.getElementById('confirmButton').addEventListener('click', () => {
-    areYouSure.style.display = "none";
-    checkMyGuess(personToConfirm);
-  })
+  confirmText.innerText = `Are you sure you want to guess on ${personToConfirm}?`;
+  // document.getElementById('cancelButton').addEventListener('click', () => {
+  //   console.log(`Cancel: ${personToConfirm}`);
+  //   areYouSure.style.display = "none";
+  // })
+  // document.getElementById('confirmButton').addEventListener('click', () => {
+  //   areYouSure.style.display = "none";
+  //   console.log(`Confirm: ${personToConfirm}`);
+  //   checkMyGuess(personToConfirm);
+  // })
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -325,8 +327,8 @@ const selectQuestion = () => {
   const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
-    category: category,
-    value: value,
+    category, // category: category
+    value // value: value
   }
 }
 
@@ -440,12 +442,17 @@ const filterCharacters = (keep) => {
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
-  customConfirm(`Are you sure you want to guess ${personToConfirm}?`, personToConfirm);
+const guess = (guessing) => {
+  personToConfirm = guessing;
+  console.log('im about to guess on', personToConfirm)
+  customConfirm();
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  console.log('persooon personToCheck', personToCheck)
+  console.log('persooon personToConfirm,', personToConfirm)
+
   if (personToCheck === secret.name) {
     console.log(`Correct-start conditional: Person to check: ${personToCheck} and secret name ${secret.name}`);
     alertCorrect(`Congratulations! 🎉 ${secret.name} was the right villager. 🥳`);
@@ -455,11 +462,12 @@ const checkMyGuess = (personToCheck) => {
     console.log(`Correct-end conditional: Person to check: ${personToCheck} and secret name ${secret.name}`);
   }, 3000)
   } else if (personToCheck !== secret.name) {
+    console.log(`Incorrect-start: Person to check: ${personToCheck} and secret name ${secret.name}`);
     alertIncorrect(`I'm sorry. ${personToCheck} was incorrect 😓. ${secret.name} was the right villager.`);
     setTimeout(() => {
     winOrLose.style.display = "flex";
     winOrLoseText.innerText = "Boo-hoo! You lost!!!"
-    console.log(`Incorrect: Person to check: ${personToCheck} and secret name ${secret.name}`);
+    console.log(`Incorrect-end: Person to check: ${personToCheck} and secret name ${secret.name}`);
   }, 3000)
   }
 }
@@ -483,4 +491,17 @@ restartButton.addEventListener('click', () => {
   winOrLose.style.display = "none";
   counter = 0;
   counterText.innerText = counter;
+})
+
+document.getElementById('cancelButton').addEventListener('click', () => {
+  console.log(`Cancel: ${personToConfirm}`);
+  areYouSure.style.display = "none";
+  personToConfirm = "";
+  console.log(`have we removed it? ${personToConfirm}`);
+})
+
+document.getElementById('confirmButton').addEventListener('click', () => {
+  console.log(`Confirm: ${personToConfirm}`);
+  areYouSure.style.display = "none";
+  checkMyGuess(personToConfirm);
 })

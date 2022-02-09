@@ -241,10 +241,11 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
+console.log('select running')
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].parentNode.options
+  //To get the actaul value, we use the DOM selectors an add a value (select id = questions.property)
+  const value = questions.options[questions.selectedIndex].value
 
   currentQuestion = {
     category: category,
@@ -252,17 +253,28 @@ const selectQuestion = () => {
   }
 }
 
+
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
+console.log('this is happening')
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    //check if the secret person.hair ==== value.....
+    //secrets persons hair or secret persons eyes. secret.hair or 
+    //secret[category]
+    //console.log(secret[category])
+    if (secret[category] === value)
+    //filterCharacters = true 
+
+console.log(secret)
+console.log(category)
+console.log(value)
 
   } else if (category === 'accessories' || category === 'other') {
-
+//arrays includesmethod, similar approach
   }
 }
 
@@ -270,7 +282,27 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+if (category === 'hair') {
+  if (keep) {
+    alert(
+      `Yes,the person has ${value} ! Keep all people with ${value}`
+    )
+  } else {
+    alert(
+      `No,the person doesnt have ${value}! Remove all people with ${value}`
+    )
+    }
+    } else if (category === 'eyes') {
+      if (keep) {
+        alert(
+          `Yes,the person has ${value}! Keep all people with ${value}`
+        )
+      } else {
+        alert(
+          `No,the person doesnt have yellow hair! Remove all people with yellow hair`
+        )
+        }
+      } else if (category === 'accessories') {
     if (keep) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
@@ -282,13 +314,31 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     // Similar to the one above
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person is a ${value}! Keep all people that ${value}`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person is not a ${value}! Remove all people that ${value}`
+      )
     }
   }
+
+
+  /*} else if (category === 'hair') {
+    if (keep) {
+      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes,the person has yellow hair! Keep all people with yellow hair`
+      )
+    } else {
+      alert(
+        `No,the person doesnt have yellow hair! Remove all people with yellow hair`
+      )
+      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+    }
+  // */
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
@@ -324,8 +374,11 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
-//invokes ...
+
+//invokes when the player interacts
 //selectQuestion()
+
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOutButton.addEventListener('click', select)
+findOutButton.addEventListener('click', checkQuestion)
+questions.addEventListener('change', selectQuestion)

@@ -250,6 +250,8 @@ let currentQuestion
 let charactersInPlay
 let finalGuess
 let counter = 0
+let personToCheck
+let personToConfirm
 
 // Draw the game board
 const generateBoard = () => {
@@ -311,7 +313,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard();
   setSecret();
-  // console.log(secret);
+  console.log(secret);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -445,16 +447,19 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
+    console.log(`Correct-start conditional: Person to check: ${personToCheck} and secret name ${secret.name}`);
     alertCorrect(`Congratulations! 🎉 ${secret.name} was the right villager. 🥳`);
     setTimeout(() => {
     winOrLose.style.display = "flex";
     winOrLoseText.innerText = "Yay!!! You won!"
+    console.log(`Correct-end conditional: Person to check: ${personToCheck} and secret name ${secret.name}`);
   }, 3000)
-  } else {
+  } else if (personToCheck !== secret.name) {
     alertIncorrect(`I'm sorry. ${personToCheck} was incorrect 😓. ${secret.name} was the right villager.`);
     setTimeout(() => {
     winOrLose.style.display = "flex";
     winOrLoseText.innerText = "Boo-hoo! You lost!!!"
+    console.log(`Incorrect: Person to check: ${personToCheck} and secret name ${secret.name}`);
   }, 3000)
   }
 }
@@ -464,10 +469,13 @@ start()
 
 // All the event listeners
 playAgain.addEventListener('click', () => {
+  // personToCheck = "";
+  // personToConfirm = "";
   start();
   winOrLose.style.display = "none";
   counter = 0;
   counterText.innerText = counter;
+  console.log(`Restart game: Person to check: ${personToCheck} and person to confirm: ${personToConfirm} and secretname: ${secret.name}`)
 })
 
 restartButton.addEventListener('click', () => {
@@ -476,14 +484,3 @@ restartButton.addEventListener('click', () => {
   counter = 0;
   counterText.innerText = counter;
 })
-
-// Media Query JavaScript for Custom Alert
-
-// if (window.matchMedia("max-width: 768px")) {
-//   const height = document.querySelector('body').scrollHeight;
-//   console.log(height);
-//   let confirmTopMargin = (height / 2);
-//   console.log(confirmTopMargin);
-//   areYouSure.style.position = "absolute";
-//   areYouSure.style.marginTop = confirmTopMargin;
-// }

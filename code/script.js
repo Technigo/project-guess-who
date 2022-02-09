@@ -256,8 +256,6 @@ const selectQuestion = () => {
 
 // The checkQuestion is invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  //Invoke the selectQuestion first otherwise the currentQuestion will be empty
-  selectQuestion();
   const { category, value } = currentQuestion;
   console.log("Category: " + category);
   console.log("Value" + value);
@@ -268,24 +266,27 @@ const checkQuestion = () => {
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
     //for strings we can use === to see if something is included
-    //filterCharacters(secret[category].value === value)
-     if (secret[category] === value){
+    // Another way of writing: filterCharacters(secret[category] === value)
+    if (secret[category] === value){
        filterCharacters(true);
      } else {
        filterCharacters(false)
      }
-
-    
-
   } else if (category === 'accessories' || category === 'other') {
- //include-method to check if something is in an array
-  }
+//Want to look in the secret array. Includes is a function that takes one argument (value)
+    if (secret[category].includes(value)) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false)
+    }
+}
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
+  console.log("Keeep: " + keep);
 if (category === 'hair') {
   if (keep) {
     alert(`Yes, the person have ${value}! Keep all people with ${value}`)
@@ -298,18 +299,19 @@ if (category === 'hair') {
   } else {
     alert(`No, the person does not have ${value} eyes. Remove all people with ${value} eye color`)
   }
-} else if (category === 'accessories'){
+} else if (category === 'accessories') {
   if (keep) {
     alert(`Yes, the person wears ${value}! Keep all people with ${value}`)
   } else {
     alert(`No, the person does not wear ${value}. Remove all people that wears ${value}`)
   }
-} else (category === 'other') {
+} else if (category === 'other') {
   if (keep) {
     alert(`Yes, the person is a ${value}. Keep all the person who ${value}`)
   } else {
     alert(`No, the person does not ${value}. Remove all the people that ${value}`)
   }
+}
 }
 
 
@@ -331,7 +333,7 @@ if (category === 'hair') {
   */
 
   // Invoke a function to redraw the board with the remaining people.
-}
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {

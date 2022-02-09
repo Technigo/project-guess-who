@@ -266,8 +266,11 @@ console.log('this is happening')
     //secrets persons hair or secret persons eyes. secret.hair or 
     //secret[category]
     //console.log(secret[category])
-    if (secret[category] === value)
-    //filterCharacters = true 
+    if (secret[category] === value){ 
+    filterCharacters(true) 
+  } else { 
+    filterCharacters(false)
+  }
 
 console.log(secret)
 console.log(category)
@@ -275,9 +278,13 @@ console.log(value)
 
   } else if (category === 'accessories' || category === 'other') {
 //arrays includesmethod, similar approach
-  }
+if (secret[category].includes(value)) {
+  filterCharacters(true) 
+  } else { 
+    filterCharacters(false)
+} 
 }
-
+}
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion

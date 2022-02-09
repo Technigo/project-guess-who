@@ -99,6 +99,13 @@ select {
   display: none;
 }
 
+#game-guesses {
+  color:white;
+  font-size: 25px;
+  font-weight: 500;
+  padding-top:30px;
+}
+
 /* The div with the guess class is only shown on hover */
 .card:hover .guess {
   display: flex;
@@ -137,6 +144,7 @@ button {
 .outlined-button:hover {
   background-color: var(--primary);
   color: white;
+ 
 }
 
 .filled-button:hover {

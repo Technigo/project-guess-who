@@ -234,7 +234,9 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
-  generateBoard();
+  generateBoard(); //attach items in #board
+  setSecret(); //assign the answer in the variable 'secret'
+  console.log(secret);
 };
 
 // setting the currentQuestion object when you select something in the dropdown

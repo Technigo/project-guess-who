@@ -155,9 +155,9 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+let secret;
+let currentQuestion;
+let charactersInPlay;
 
 // Draw the game board
 const generateBoard = () => {
@@ -197,21 +197,6 @@ const renderTime = () => {
   `
 }
 
-const restart = () => {
-  if (stopTimer.called === true) {
-    //initialize counters to start from zero again
-    addSeconds = 0;
-    count = 0;
-    guessCounter.innerHTML = `<p>Guess counter: 0</p>`;
-    start();
-    //Important to set property back to false after a completed round 
-    //We want it to stopTimer.called to be true first when funciton is called
-    stopTimer.called = false;
-  } else {
-    alert('You have to finish the game before restarting!');
-  }
-}
-
 //Set displaying of time to increase with 1s intervals, invoked at start and restart
 let setTimer;
 const startTimer = () => {
@@ -227,7 +212,6 @@ const stopTimer = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
@@ -238,12 +222,24 @@ const start = () => {
   startTimer();
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+const restart = () => {
+  if (stopTimer.called === true) {
+    //initialize counters to start from zero again
+    addSeconds = 0;
+    count = 0;
+    guessCounter.innerHTML = `<p>Guess counter: 0</p>`;
+    start();
+    //Important to set property back to false after a completed round 
+    //We want it to stopTimer.called to be true first when funciton is called
+    stopTimer.called = false;
+  } else {
+    alert('You have to finish the game before restarting!');
+  }
+}
+
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
 
   currentQuestion = {
     category: category,
@@ -252,7 +248,6 @@ const selectQuestion = () => {
 }
 
 let count = 0;
-// This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   count += 1;
   console.log(count)
@@ -263,8 +258,6 @@ const checkQuestion = () => {
   console.log(value)
 
 let keep;
-
-
 
 if (category === 'hair' && value === secret.hair) {
     keep = true;
@@ -283,9 +276,7 @@ if (category === 'hair' && value === secret.hair) {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-
-
-  // Show the correct alert message for different categories
+  
   if (category === 'accessories') {
     if (keep) {
       alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
@@ -322,8 +313,6 @@ const filterCharacters = (keep) => {
   generateBoard();
 }
 
-
-// when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   let confirmChoice = confirm('Sure you wanna guess? It will be the last draw. Please confirm');
   if (confirmChoice === true) {
@@ -338,8 +327,6 @@ let guessStatus = {
   status: ''
 }
 
-
-// If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
     if (secret.name === personToCheck) {
     guessStatus.status = 'right';
@@ -360,7 +347,6 @@ const checkMyGuess = (personToCheck) => {
   </div>
 `
 }
-
 
 // Invokes the start function when website is loaded
 start();

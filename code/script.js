@@ -345,88 +345,88 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  const category = questions.options[questions.selectedIndex].parentNode.label;
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].value;
+  const value = questions.value;
 
   currentQuestion = {
     category: category,
     value: value,
-  }
-  checkQuestion()
-}
+  };
+};
 
 // This function should be invoked when you click on 'Find Out' button.
 
 guessBtn.addEventListener('click', () => {
   checkQuestion()
-  console.log('Hey')
 })
 
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
-
+  selectQuestion()
+  const { category, value } = currentQuestion;
+  
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair') {
     if (value === secret.hair) {
       let keep = true
-      filercharacters(keep)
+      filterCharacters(keep.hair)
     } else {
      keep = false
-      filercharacters()
+      filterCharacters()
     }
 
-  } else if (category === 'eyes') {
+  } else if (category === 'Eyes') {
     if (value === secret.eyes) {
       let keep = true
-      filercharacters(keep)
+      filterCharacters(keep)
     } else {
       keep = false
-      filercharacters()
+      filterCharacters()
     }
 
-  } else if (category === 'house') {
+  } else if (category === 'House') {
     if (value === secret.house) {
       let keep = true
-      filercharacters(keep)
+      filterCharacters(keep)
     } else {
       keep = false
-      filercharacters()
+      filterCharacters()
     }
-  } else if (category === 'home') {
+  } else if (category === 'Home') {
     if (value === secret.home) {
       let keep = true
-      filercharacters(keep)
+      filterCharacters(keep)
     } else {
       keep = false
-      filercharacters()
+      filterCharacters()
     }
-  } else if (category === 'species') {
+  } else if (category === 'Species') {
     if (value === secret.species) {
       let keep = true
-      filercharacters(keep)
+      filterCharacters(keep)
     } else {
       keep = false
-      filercharacters()
+      filterCharacters()
     }
-  } else if (category === 'accessories') {
-    if (value === secret.accessories) {
+  } else if (category === 'Accessories or Personality') {
+    if (value === secret.accessoriesOrPersonality) {
       let keep = true
-      filercharacters(keep)
+      filterCharacters(keep)
     } else {
       keep = false
-      filercharacters()
+      filterCharacters()
     }
   }
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
+  keep = true
+  const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
   if (category === 'hair') {
     if (keep) {
@@ -438,7 +438,7 @@ const filterCharacters = (keep) => {
         `No, the character doesn't has ${value}. Remove all that has ${value}`
       )
     }
-  } else if (category === 'eyes') {
+  } else if (category === 'Eyes') {
     if (keep) {
       alert(
         `Yes, the secret character has ${value}! Keep all that has ${value}`
@@ -448,7 +448,7 @@ const filterCharacters = (keep) => {
         `No, the secret character doesn't have ${value}. Remove all that has ${value}`
       )
     }
-  } else if (category === 'accessories') {
+  } else if (category === 'Accessories or Personality') {
     if (keep) {
       alert(
         `Yes, the secret character has/ or is ${value}! Keep all with these accessories/personality`
@@ -458,7 +458,7 @@ const filterCharacters = (keep) => {
         `No, the secret character does not have/ or are ${value}. Remove all with these accessories/personality`
       )
     }
-  } else if (category === 'house') {
+  } else if (category === 'House') {
     if (keep) {
       alert(
         `Yes the secret character is in ${value}! Keep all that is in ${value}`
@@ -468,7 +468,7 @@ const filterCharacters = (keep) => {
         `No, the secret character is in ${value}. Remove all that is in ${value}.`
       )
     }
-  } else if (category === 'species') {
+  } else if (category === 'Species') {
     if (keep) {
       alert(
         `Yes, the secret character is a ${value}! Keep all ${value}s `

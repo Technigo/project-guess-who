@@ -3,7 +3,7 @@
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
-
+const findOutButton = document.getElementById("filter");
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -251,18 +251,30 @@ const selectQuestion = () => {
     category: category,
     value: value,
   };
-  console.log("currentQuestion", currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  if (!currentQuestion) {
+    //prevent null selection
+    return;
+  }
   const { category, value } = currentQuestion;
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  console.log("currquestion", currentQuestion);
+  console.log(secret);
+  console.log(secret[category] === value);
   if (category === "hair" || category === "eyes") {
+    console.log("hair or eyes");
+    filterCharacters(secret[category] === value);
+    //  const selectedCharacters =  CHARACTERS.filter(character => character[category] === value);
   } else if (category === "accessories" || category === "other") {
+    console.log("acc or others");
+  } else {
+    console.log("not selected");
   }
 };
 
@@ -281,12 +293,21 @@ const filterCharacters = (keep) => {
       );
     }
   } else if (category === "other") {
-    // Similar to the one above
+    const message = keep
+      ? `Yes, the person has ${value} habit!`
+      : `No, the person does not have ${value} habit!`;
+    alert(message);
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+      );
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person does not have ${value} hair! Remove all people with ${value} hair`
+      );
     }
   }
 
@@ -328,3 +349,4 @@ start();
 // All the event listeners
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
+findOutButton.addEventListener("click", checkQuestion);

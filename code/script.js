@@ -273,18 +273,22 @@ const checkQuestion = () => {
       currentQuestion.value === winningCharacter.hair ||
       currentQuestion.value === winningCharacter.eyes
     ) {
-      console.log("true");
+      alert("yes it's true");
+      console.log("yes it's true");
     } else {
-      console.log("false");
+      console.log("no it's false");
+      alert("no it's false");
     }
   } else if (
     currentQuestion.category === "accessories" ||
     currentQuestion.category === "other"
   ) {
     if (winningCharacter.accessories.includes(currentQuestion.value)) {
-      console.log("the accessory is right");
+      console.log("yes it's true");
+      alert("yes it's true");
     } else {
-      console.log("false");
+      console.log("no it's false");
+      alert("no it's false");
     }
   }
 };

@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOut = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -320,7 +321,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       alert(
-        `No, the person doesn't have ${value} ${category}! Remove all people without ${value} ${category}`
+        `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
@@ -338,23 +339,29 @@ const filterCharacters = (keep) => {
     }
     
   }
-  
   // Invokes the function to redraw the board with the remaining people.
   generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  const madeGuess = confirm(`Do you want to guess on ${personToConfirm}?`) // store the interaction from the player in a variable.
+  console.log('Guess button is clicked')
+ if (madeGuess) {
+  checkMyGuess(personToConfirm)   // If the player wants to guess, invoke the checkMyGuess function
+} else {
+  alert('Chicken are we? Okay, guess again later')
+  }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    console.log('Win!')
+  }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
+  // 3. Show the win or lose section winOrLose.innerHTML etc.
   // 4. Hide the game board
 }
 

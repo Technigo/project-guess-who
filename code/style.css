@@ -1,7 +1,10 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #87BACD;
-  --secondary: #96C4D4;
+  --first: #356879;
+  --second: #678D9A;
+  --third: #6B96A6;
+  --fourth: #87BACD;
+  --fifth: #96C4D4;
 }
 
 body {
@@ -32,16 +35,10 @@ img.characters {
   height: 150px;
 }
 
-/* added */
-video {
-  width: 300px;
-  max-width: 90vw;
-}
-
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: var(--fourth);
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -54,7 +51,7 @@ select {
   border: none;
   font-size: 20px;
   font-family: 'Rubik', sans-serif;
-  color: var(--secondary);
+  color: var(--second);
   width: 100%;
   margin: 24px 0;
 }
@@ -83,7 +80,7 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid var(--fourth);
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -96,7 +93,7 @@ select {
   text-align: center;
   /* which font family is better? */
   font-family: 'Monoton', cursive;
-  color: #356879;
+  color: var(--first);
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
@@ -106,18 +103,18 @@ select {
   display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  color: #356879;
+  justify-content: center;
+  color: var(--first);
   text-align: center;
   height: inherit;
 }
 
 .card:hover {
-  background-color: white;
-  background-image: url("./assets/cat-guess.jpg");
-  background-size: contain;
+  background-color: var(--fourth);
+  /* background-image: url("./assets/cat-guess.jpg"); */
+  /* background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center; */
 }
 
 .card:hover img,
@@ -140,12 +137,11 @@ select {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
+  border: 2px solid var(--third);
   border-radius: 50px;
   font-size: 20px;
   font-family: 'Monoton', cursive;
-  /* font-weight: bold; */
-  padding: 17px 27px;
+  padding: 10px 20px;
   cursor: pointer;
 }
 
@@ -155,20 +151,20 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
+  color: var(--third);
+  align-self: center;
 }
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
+  background-color: var(--third);
   color: white;
 }
 
 .filled-button:hover {
   background-color: white;
   border-color: white;
-  color: var(--primary);
+  color: var(--third);
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -176,7 +172,7 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: var(--fourth);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -215,6 +211,12 @@ button {
   button {
     padding: 8px 16px;
   }
+
+  .small {
+    padding: 0;
+    width: 150px;
+  }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
@@ -258,7 +260,7 @@ button {
     padding: 6px 11px;
     margin-bottom: 1px;
     background: white;
-    color: var(--primary);
+    color: var(--third);
     border: none;
   }
 }

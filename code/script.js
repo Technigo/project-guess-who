@@ -4,10 +4,12 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter') // ???
 const playAgainButton = document.getElementById('playAgain')
-// for counterQuestions
+// Variables for counters
 let counterQuestionsDisplay = document.getElementById('counterQuestionsDisplay')
 let counterRoundsDisplay = document.getElementById('counterRoundsDisplay')
-
+let counterWinsDisplay = document.getElementById('counterWinsDisplay')
+// Variable for mobile device
+const resolution = window.matchMedia("(max-width: 768px)")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -209,55 +211,49 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-// for counterQuestions
+// Variables for counters
 let countQuestions = 0
-let countRounds = -1
-
-// for auto close alert
+let countRounds = 0
+let countWins = 0
+// Variable for auto closing alerts
 let timerInterval
 
-// Draw the game board
+// Function generating the board
 const generateBoard = () => {
   board.innerHTML = ''
   CHARACTERS.forEach((cat) => {
+    // Conditional with two different contents depending on screen size
     if (charactersInPlay.includes(cat)) {
-      board.innerHTML += `
-      <div class="card">
-        <p>${cat.name}</p>
-        <img class="characters" src=${cat.img} alt=${cat.name}>
-        <div class="guess">
-          <span>Guess on ${cat.name}?</span>
-          <button class="filled-button small" onclick="guess('${cat.name}')">Guess</button>
+      if (resolution.matches) {
+        board.innerHTML += `
+        <div class="card">
+          <button class="filled-button small" onclick="guess('${cat.name}')">${cat.name}?</button>
+          <img class="characters" src=${cat.img} alt=${cat.name}>
         </div>
-      </div>
-    `
+      `
+      } else {
+        board.innerHTML += `
+        <div class="card">
+          <p>${cat.name}</p>
+          <img class="characters" src=${cat.img} alt=${cat.name}>
+          <div class="guess">
+            <button class="filled-button small" onclick="guess('${cat.name}')">${cat.name}?</button>
+          </div>
+        </div>
+        `
+      }
+      // Image and name are replaced by logo when the cat is not kept
     } else {
       board.innerHTML += `
       <div class="card">
         <img class="characters" src="./assets/cat-logo-large.svg" alt="not this cat">
       </div>
-    `
+      `
     }
   })
 }
 
-
-// const sweetAlert = (newTitle) => {
-//   Swal.fire({
-//     title: newTitle,
-//     color: '#356879',
-//     confirmButtonColor: "#356879",
-//     showClass: {
-//       popup: 'animate__animated animate__fadeInDown'
-//     },
-//     hideClass: {
-//       popup: 'animate__animated animate__fadeOutUp'
-//     }
-//   })
-// }
-
-
-
+// Function for auto closing customised alerts
 const sweetAlert = (newTitle, newHTML) => {
   Swal.fire({
     title: newTitle,
@@ -283,81 +279,64 @@ const sweetAlert = (newTitle, newHTML) => {
   })
 }
 
-// Randomly select a cat from the characters array and set as the value of the variable called secret
-const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret)
-}
+// Function to randomly select a cat from the array and set as the value of the variable called secret
+const setSecret = () => secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 
-// This function to start (and restart) the game
+// Function to start and restart the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
   generateBoard()
   setSecret()
   counterQuestionsDisplay.innerText = countQuestions
-  countRounds++
   counterRoundsDisplay.innerText = countRounds
+  counterWinsDisplay.innerText = countWins
+  document.getElementById('questions').selectedIndex = 0
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// Function setting the currentQuestion object when you select a question in the dropdown
 const selectQuestion = () => {
+  // Variable for the category (option group) of the question
   const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  // Variable for the actual value of the question selected
   const value = questions.value
-  console.log('The selected category is', category, 'with this value:', value)
-
 
   currentQuestion = {
     category: category,
-    value: value // ???
+    value: value
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// Function to be invoked when clicking on 'Find Out' button
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  // for counterQuestions
+  // for questions counter
   countQuestions++
   counterQuestionsDisplay.innerText = countQuestions
 
-  // Compare the currentQuestion details with the secret cat details in a different manner based on category (skin/claws or fur/special).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Conditionals to compare the currentQuestion details with the secret cat details
   if (category === 'skin' || category === 'claws') {
-    // juste 'égal' ou non
     if (value === secret.skin || value === secret.claws) {
       filterCharacters(true)
-      console.log('skin/claws is right')
     } else {
       filterCharacters(false)
-      console.log('skin/claws is wrong')
     }
 
   } else if (category === 'fur' || category === 'special') {
-    // peut avoir plusieurs accessoires/autres en même temps (donc 'contient', pas 'égal à')
     if (secret.fur.includes(value) || secret.special.includes(value)) {
       filterCharacters(true)
-      console.log('fur/special is right')
     } else {
       filterCharacters(false)
-      console.log('fur/special is wrong')
     }
   }
 }
 
-// It'll filter the characters array and redraw the game board.
+// Function for filtering the characters array and redraw the board
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
+  // Conditionals to show the right alert for different categories
   if (category === 'fur') {
     if (keep) {
       sweetAlert(`Yes, the secret cat has a ${value} fur!`, `All cats without ${value} fur are now hidden.`)
-
     } else {
       sweetAlert(`No, the secret cat doesn't have a ${value} fur!`, `All cats with ${value} fur are now hidden.`)
     }
@@ -381,8 +360,7 @@ const filterCharacters = (keep) => {
     }
   }
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
+  // Conditionals for filtering by category to keep or remove based on the keep variable
   if (category === 'skin' || category === 'claws') {
     if (value === secret.skin || value === secret.claws) {
       charactersInPlay = charactersInPlay.filter((cat) => cat[category] === value)
@@ -396,21 +374,12 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((cat) => !cat[category].includes(value))
     }
   }
-  // Invoke a function to redraw the board with the remaining people.
   generateBoard()
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// Function for the player to confirm after clicking guess
 const guess = (catToConfirm) => {
-  // store the interaction from the player in a variable. // qu'est-ce que ca veut dire????
-  // remember the confirm() ?
-  //if (confirm(`Do you really want to make a guess on ${catToConfirm}?`) == true) {
-  // If the player wants to guess, invoke the checkMyGuess function.
-  //  checkMyGuess(catToConfirm) // à mettre dans le 'if confirm true' ou à la fin de la fonction?
-  //} else { // utile ou non?
-  //  false
-  //}
-
+  // Customised alerts
   if (Swal.fire({
     title: `Do you really want to make a guess on ${catToConfirm}?`,
     text: 'It will end this round.',
@@ -455,34 +424,26 @@ const guess = (catToConfirm) => {
 
 }
 
-// If you confirm, this function is invoked
+// Function checking if names are matching, displaying win-lose section with the right message and hide the board
 const checkMyGuess = (catToCheck) => {
-  console.log(catToCheck)
-
-  // 1. Check if the catToCheck is the same as the secret cat's name
   if (catToCheck === secret.name) {
-    // 2. Set a Message to show in the win or lose section accordingly
     document.getElementById('winOrLoseText').innerHTML = `You won!<br/>As you guessed, ${catToCheck} was the secret cat!`
-    // 3. Show the win or lose section
     document.getElementById('winOrLose').style.display = 'flex'
-    // 4. Hide the game board
     board.style.display = 'none'
     document.getElementById('wonOrLost').innerHTML = `
     <audio src="./assets/cat-purr.wav" type="audio/wav" autoplay></audio>
     `
+    countWins++
   } else {
-    // 2. Set a Message to show in the win or lose section accordingly
     document.getElementById('winOrLoseText').innerHTML = `You lost!<br/>Unfortunately, ${catToCheck} wasn't the secret cat, it was ${secret.name}...`
-    // 3. Show the win or lose section
     document.getElementById('winOrLose').style.display = 'flex'
-    // 4. Hide the game board
     board.style.display = 'none'
     document.getElementById('wonOrLost').innerHTML = `
     <audio src="./assets/cat-meow.wav" type="audio/wav" autoplay></audio>
     `
   }
 }
-
+//  Function 
 const playAgain = () => {
   start()
   document.getElementById('winOrLose').style.display = 'none'
@@ -490,75 +451,77 @@ const playAgain = () => {
   board.style.display = 'flex'
   countQuestions = 0
   counterQuestionsDisplay.innerText = countQuestions
+  countRounds++
   counterRoundsDisplay.innerText = countRounds
-  // je dois trouver comment faire reset pour la question aussi...
+  counterWinsDisplay.innerText = countWins
 }
 
-// Invokes the start function when website is loaded
+// Start function invoked when website is loaded
 start()
-
-
-// CHARACTERS.forEach(({ name, skin, claws }) => {
-//   console.log(name)
-//   console.log(skin)
-//   console.log(claws)
+// Alert asking for the name appearing when the page load
+// window.addEventListener('load', () => {
+Swal.fire({
+  imageUrl: './assets/cat-logo-small.svg',
+  color: '#356879',
+  title: `What's your name?`,
+  html: `<input type="text" id="playerName" class="swal2-input">`,
+  confirmButtonText: 'OK',
+  confirmButtonColor: '#356879',
+  focusConfirm: false,
+  preConfirm: () => {
+    const playerName = Swal.getPopup().querySelector('#playerName').value
+    if (!playerName) {
+      Swal.showValidationMessage(`Please enter your name if you want to play`)
+    }
+    return { playerName: playerName }
+  },
+  // is there a way of not repeating the following twice, for both allowEscapeKey and allowOutsideClick (and in 'const guess' as well)
+  backdrop: true,
+  allowEscapeKey: () => {
+    const popup = Swal.getPopup()
+    popup.classList.remove('swal2-show')
+    setTimeout(() => {
+      popup.classList.add('animate__animated', 'animate__headShake')
+    })
+    setTimeout(() => {
+      popup.classList.remove('animate__animated', 'animate__headShake')
+    }, 500)
+    return false
+  },
+  allowOutsideClick: () => {
+    const popup = Swal.getPopup()
+    popup.classList.remove('swal2-show')
+    setTimeout(() => {
+      popup.classList.add('animate__animated', 'animate__headShake')
+    })
+    setTimeout(() => {
+      popup.classList.remove('animate__animated', 'animate__headShake')
+    }, 500)
+    return false
+  }
+}).then((result) => {
+  Swal.fire({
+    icon: "success",
+    iconColor: '#356879',
+    title: `Welcome ${result.value.playerName}!<br/>Have fun playing Guess Paw!`.trim(),
+    color: '#356879',
+    confirmButtonText: 'Play',
+    confirmButtonColor: '#356879',
+  })
+  // afficher le nom ou pas?? ou le mettre dans l'écran de victoire ou défaite??
+  document.getElementById('playerNameDiv').innerText = `${result.value.playerName}`
+})
 // })
 
-// All the event listeners
+
+// Invokes the Function generateBoard when resizing the window
+window.onresize = generateBoard
+
+// Event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', playAgain)
 
-window.addEventListener('load', () => {
-  Swal.fire({
-    imageUrl: './assets/cat-logo-small.svg',
-    color: '#356879',
-    title: `What's your name?`,
-    html: `<input type="text" id="playerName" class="swal2-input">`,
-    confirmButtonText: 'OK',
-    confirmButtonColor: '#356879',
-    focusConfirm: false,
-    preConfirm: () => {
-      const playerName = Swal.getPopup().querySelector('#playerName').value
-      if (!playerName) {
-        Swal.showValidationMessage(`Please enter your name if you want to play`)
-      }
-      return { playerName: playerName }
-    },
-    // is there a way of not repeating the following twice, for both allowEscapeKey and allowOutsideClick (et dans 'const guess' aussi)
-    backdrop: true,
-    allowEscapeKey: () => {
-      const popup = Swal.getPopup()
-      popup.classList.remove('swal2-show')
-      setTimeout(() => {
-        popup.classList.add('animate__animated', 'animate__headShake')
-      })
-      setTimeout(() => {
-        popup.classList.remove('animate__animated', 'animate__headShake')
-      }, 500)
-      return false
-    },
-    allowOutsideClick: () => {
-      const popup = Swal.getPopup()
-      popup.classList.remove('swal2-show')
-      setTimeout(() => {
-        popup.classList.add('animate__animated', 'animate__headShake')
-      })
-      setTimeout(() => {
-        popup.classList.remove('animate__animated', 'animate__headShake')
-      }, 500)
-      return false
-    }
-  }).then((result) => {
-    Swal.fire({
-      icon: "success",
-      iconColor: '#356879',
-      title: `Welcome ${result.value.playerName}!<br/>Have fun playing Guess Paw!`.trim(),
-      color: '#356879',
-      confirmButtonText: 'Play',
-      confirmButtonColor: '#356879',
-    })
-    document.getElementById('playerNameDiv').innerText = `Players's name: ${result.value.playerName}`
-  })
-})
+
+console.log(secret)

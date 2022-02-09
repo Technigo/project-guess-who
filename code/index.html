@@ -18,15 +18,13 @@
 
 <body>
   <aside class="question-section">
-    <button id="restart" class="outlined-button">RESTART</button>
 
     <img class="guess-paw-icon" src="./assets/cat-logo-small.svg" alt="Guess Who" />
 
     <h1>How is the secret cat?</h1>
 
     <select id="questions">
-      <option value="" selected disabled>Select a feature <span role="img"
-          aria-label="curved downwards arrow">&#x21B4</span></option>
+      <option value="" selected disabled>Select a feature</option>
       <optgroup label="fur">
         <option value="brown">brown fur</option>
         <option value="yellow">yellow fur</option>
@@ -62,11 +60,14 @@
 
     <button id="filter" class="filled-button">FIND OUT</button>
 
-    <h2>Questions asked: <span id="counterQuestionsDisplay" </span></h2>
+    <h2>Questions asked: <span id="counterQuestionsDisplay"</span></h2>
 
-    <h2>Rounds played: <span id="counterRoundsDisplay" </span></h2>
+    <h2><span id="playerNameDiv">Hey</span>, you won <span id="counterWinsDisplay"></span>/<span id="counterRoundsDisplay"></span> rounds.</h2>
 
-    <h2 id="playerNameDiv"></h2>
+
+    <!-- <span id="playerNameDiv"></span> -->
+    <button id="restart" class="outlined-button">RESTART</button>
+
 
   </aside>
 

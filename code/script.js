@@ -227,6 +227,7 @@ const generateBoard = () => {
 const setWinningCharacter = () => {
   winningCharacter =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  console.log(winningCharacter);
 };
 
 // This function to start (and restart) the game
@@ -254,6 +255,7 @@ const selectQuestion = () => {
     category: category,
     value: value,
   };
+  console.log(currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -261,13 +263,29 @@ const selectQuestion = () => {
 // See if we should keep or remove people based on that
 // Then invoke filterCharacters
 const checkQuestion = () => {
-  console.log(currentQuestion);
   //const { category, value } = currentQuestion;
 
-  if (category === "hair" || category === "eyes") {
-    //do this
-  } else if (category === "accessories" || category === "other") {
-    //do this
+  if (
+    currentQuestion.category === "hair" ||
+    currentQuestion.category === "eyes"
+  ) {
+    if (
+      currentQuestion.value === winningCharacter.hair ||
+      currentQuestion.value === winningCharacter.eyes
+    ) {
+      console.log("true");
+    } else {
+      console.log("false");
+    }
+  } else if (
+    currentQuestion.category === "accessories" ||
+    currentQuestion.category === "other"
+  ) {
+    if (winningCharacter.accessories.includes(currentQuestion.value)) {
+      console.log("the accessory is right");
+    } else {
+      console.log("false");
+    }
   }
 };
 

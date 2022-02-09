@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -77,7 +78,6 @@ const CHARACTERS = [
     accessories: ['glasses'],
     other: []
   },
-
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
@@ -225,12 +225,15 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log('hell')
 }
 
-// This function to start (and restart) the game
+// This function to start (and restart) the game 
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  setSecret()
+  generateBoard()
+  // Here we're setting charactersInPlay array to be all the characters to start with
   // What else should happen when we start the game?
 }
 

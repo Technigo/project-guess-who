@@ -2,12 +2,13 @@
 /* :root {
   --primary: #a259ff;
   --secondary: #b0a6ff; 
+  --third: #FAEDC6;
 } */
 
 :root {
   --primary: #FABB51;
   --secondary: #008080; 
-  --third: #FAEDC6;
+  --third: #fffaf0;
 }
 
 body {
@@ -16,12 +17,14 @@ body {
   padding: 0;
   /* font-family: 'Montserrat', sans-serif; */
   /* Change font-family? */
-  font-family: Italiana, serif;
+  /* font-family: Italiana, serif; */
+  font-family: 'Poppins', sans-serif;
   /* Changed the background color */
   background-color: var(--secondary);
 }
 
 h1 {
+  font-family: 'Abril Fatface', cursive;
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
@@ -69,6 +72,9 @@ select {
 
 .filled-button {
   margin: 20px auto; /*Keep it centered or delete this?*/
+}
+
+.filter-button {
   cursor: help;
 }
 

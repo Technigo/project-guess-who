@@ -215,6 +215,7 @@ let currentQuestion
 let charactersInPlay
 let numberOfGuesses
 let elapsedTime
+const soundEffect = new Audio('./assets/zapsplat_multimedia_button_click_fast_wooden_organic_003_78837.mp3')
 
 // Draw the game board
 const generateBoard = () => {
@@ -424,7 +425,7 @@ const checkMyGuess = (personToCheck) => {
   
 }
 
-
+// Shows the start window and hides the game window when page is loaded
 window.onload = () => {
   startWindow.style.display = 'flex'
   gameWindow.style.display = 'none'
@@ -437,7 +438,11 @@ window.onload = () => {
 startButton.addEventListener('click', start)
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
-filterButton.addEventListener('click', checkQuestion)
+filterButton.addEventListener('click', () => {
+  soundEffect.currentTime = 0
+  soundEffect.play()
+  checkQuestion
+})
 playAgainButton.addEventListener('click', () => {
   winOrLoseSection.style.display = 'none'
   start()

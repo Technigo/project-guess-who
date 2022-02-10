@@ -409,21 +409,21 @@ const filterCharacters = (keep) => {
   } else if (category === 'face') {
     if (keep) {
       alert(
-        `Yes, the person wears ${text}! Keep all people that has ${text}.`
+        `Yes, the person has ${text}! Keep all people who have ${text}.`
       )
     } else {
        alert(
-         `No, the person doesn't wear ${text}! Remove all people that wears ${text}.`
+         `No, the person doesn't have ${text}! Remove all people who have ${text}.`
       )
     } 
   } else if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${text}! Keep all people that has ${text}.`
+        `Yes, the person has ${text}! Keep all people who have ${text}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${text}! Remove all people that wears ${text}.`
+        `No, the person doesn't have ${text}! Remove all people who have ${text}.`
       )
     }
     
@@ -479,7 +479,7 @@ const checkMyGuess = (personToCheck) => {
   } else {
     alert(`Oh, I´m sorry but it is not ${personToCheck}. It was ${secret.name} all the time.. Better luck next time!`)
     winOrLoose.style.display = 'flex'
-    winOrLoseText.innerText = 'Oh no, ${playerName} you lost! Play again?'
+    winOrLoseText.innerText = 'Oh no, you lost! Play again?'
     
   }
 }

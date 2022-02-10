@@ -5,7 +5,7 @@ const restartButton = document.getElementById('restart');
 const findOutButton = document.getElementById('filter');
 const gameOverWrapper = document.getElementById('winOrLose');
 const gameOverText = document.getElementById('winOrLoseText');
-const playAgain = document.getElementById('playAgain');
+const playAgainButton = document.getElementById('playAgain');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -233,6 +233,8 @@ const setWinningCharacter = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  gameOverWrapper.style.display = "none";
+  board.style.display = "flex";
   // Set charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // Generate the board of characters
@@ -320,6 +322,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start);
-playAgain.addEventListener('click', start);
+playAgainButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);

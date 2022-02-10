@@ -1,4 +1,5 @@
 /* Global css variables used for colors */
+/*Only changes I made was added styling for the footer and timer/counter-wrapper, changed the ':root'-colors and the border-radius on the cards*/
 :root {
   --primary: #997A92;
   --secondary: #eec451;

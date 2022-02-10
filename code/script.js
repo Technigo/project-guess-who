@@ -208,6 +208,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let guessCount = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -268,7 +269,7 @@ const selectQuestion = () => {
 // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
 // Then invoke filterCharacters
 const checkQuestion = () => {
-  //const { category, value } = currentQuestion;
+  
 
   if (
     currentQuestion.category === "hair" ||

@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #395F5F;
+  --secondary: #5F9DA0;
 }
 
 body {
@@ -110,6 +110,13 @@ select {
   font-weight: 600;
   margin-bottom: 8px;
   width: 90%;
+}
+
+.resultSquare {
+  width: 300px;
+  height: 300px;
+  background-color:#395F5F;
+  display: none;
 }
 
 /****** BUTTONS ******/

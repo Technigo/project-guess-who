@@ -244,7 +244,7 @@ const timerStart = () => {
   if (minutes < 10) {
     minutesString = "0" + minutes;
   };
-  
+
   timerDiv.innerHTML = `Time elapsed: ${minutesString}:${secondsString}`;
   seconds++;
   //It's not programmed to show hours because I thought it unlikely to be necessary 
@@ -338,41 +338,32 @@ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
 
   // Show the correct alert message for different categories
+  //I put the two if statements together so the filtering is done immediately after the alert is triggered
+  //This means there is a repeated line on lines 347 & 356 and 350 & 359 but I thought it was a little unnecessary with two conditionals after one another 
+  //the generateBoard is called at the end of the function at which point the charactersInPlay is already filtered
   if (category === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wear ${value}.`
-      );
+      alert(`Yes, the person wears ${value}! Keep all people that wear ${value}.`);
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wear ${value}.`
-      );
+      alert(`No, the person doesn't wear ${value}! Remove all people that wear ${value}.`);
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   } else if (category === 'other') {
     // Similar to the one above
     if (keep) {
-      alert(
-        `Yes, the person is a ${value}! Keep all ${value}s`
-      );
+      alert(`Yes, the person is a ${value}! Keep all ${value}s`);
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
-      alert(
-        `No, the person is not a ${value}! Remove all ${value}s`
-      );
+      alert(`No, the person is not a ${value}! Remove all ${value}s`);
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   } else { //invoked if the category is 'hair' or 'eyes'
     if (keep) {
-      alert(
-        `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`
-      );
+      alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
-      alert(
-        `No, the person doesn't have ${value} ${category}! Remove all the people with ${value} ${category}.`
-      );
+      alert(`No, the person doesn't have ${value} ${category}! Remove all the people with ${value} ${category}.`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   }
@@ -388,22 +379,14 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  winOrLoseWrapper.style.display = "flex";
-  board.style.display = "none";
+  winOrLoseWrapper.style.display = "flex"; //shows the finishd game screen
+  board.style.display = "none"; // hides the board
   if (personToCheck === secret.name) {
-    theResultsAreIn(personToCheck, "win");
+    soundEffect("win"); //triggers a winning type of sound
+    winOrLoseText.innerHTML = `Yay!! ${personToCheck} was correct! You used ${guessCounter} guesses and it took you ${minutes} minutes and ${seconds} seconds!`;
   } else {
-    theResultsAreIn(personToCheck, "lose");
-  }
-};
-
-const theResultsAreIn = (guessedPerson, result) => {
-  if (result === "win") {
-    soundEffect("win");
-    winOrLoseText.innerHTML = `Yay!! ${guessedPerson} was correct! You used ${guessCounter} guesses and it took you ${minutes} minutes and ${seconds} seconds!`;
-  } else {
-    soundEffect("lose");
-    winOrLoseText.innerHTML = `I'm sorry! ${guessedPerson} was not the right answer. The correct person was ${secret.name}!!`;
+    soundEffect("lose"); // triggers a sad losing sound
+    winOrLoseText.innerHTML = `I'm sorry! ${personToCheck} was not the right answer. The correct person was ${secret.name}!!`;
   }
 };
 

@@ -2,11 +2,12 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const findOut =  document.getElementById('filter')
+const findOutButton =  document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
+    //the name, img, hair, eyes, etc. are connected to the optgroup in the html
     name: 'Jabala',
     img: 'images/jabala.svg',
     hair: 'hidden',
@@ -232,81 +233,86 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-  generateBoard()
   setSecret()
+  generateBoard()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
   const value = questions.options[questions.selectedIndex].value
 
   currentQuestion = {
     category: category,
-    value: value
+    value: value,
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  //equals to const = currentQuestion.category
-  //const = currentQuestion.value
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-
-  } else if (category === 'accessories' || category === 'other') {
-
-  }
+    if (category === 'hair' && value === secret.hair) {
+      let keep = true
+      filterCharacters(keep)
+    } else if (category === 'eyes' && value === secret.eyes) {
+      keep = true
+      filterCharacters(keep)
+    } else if (category === 'accessories' && value === secret[accessories].includes(value)) {
+      keep = true
+      filterCharacters(keep)
+    } else if (category === 'other' && value === secret[other].includes(value)) {
+      keep = true
+      filterCharacters(keep)
+    } else {
+      keep = false
+      filterCharacters()
+    }
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
     } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      alert(
+        `Yes, the person is a ${value}! Keep all people who are a ${value}`
+      )
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      alert(
+        `No, the person is not a ${value}! Remove all people who are not a ${value}`
+      )
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      alert(
+        `Yes, the person has ${value}! Keep all people who have ${value}`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      alert(
+        `No, the person doesn't have ${value}! Remove all people who don't have ${value}`
+      )
     }
+    }
+    generateBoard()
   }
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-  // Invoke a function to redraw the board with the remaining people.
-}
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
@@ -328,4 +334,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOut.addEventListener('click', selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)

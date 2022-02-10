@@ -23,27 +23,28 @@
       <h1>Does the person have</h1>
 
       <select id="questions">
+        <option disabled selected>Choose your options</option>
         <optgroup label="hair">
           <option value="brown">Brown hair</option>
           <option value="yellow">Yellow hair</option>
-          <option value="Black">Black hair</option>
-          <option value="Orange">Orange hair</option>
-          <option value="Purple">Purple hair</option>
-          <option value="White">White hair</option>
-          <option value="Grey">Grey hair</option>
-          <option value="Hidden">Hair hidden</option>
+          <option value="black">Black hair</option>
+          <option value="orange">Orange hair</option>
+          <option value="purple">Purple hair</option>
+          <option value="white">White hair</option>
+          <option value="grey">Grey hair</option>
+          <option value="hidden">Hair hidden</option>
           <!-- Add the rest of hair colors as options  -->
         </optgroup>
         <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <option value="Blue">Blue eyes</option>
-          <option value="Brown">Brown eyes</option>
-          <option value="Green">Green eyes</option>
+          <option value="hidden">Hidden eyes</option>
+          <option value="blue">Blue eyes</option>
+          <option value="brown">Brown eyes</option>
+          <option value="green">Green eyes</option>
           <!-- Add the rest of eye colors as options  -->
         </optgroup>
         <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <option value="Hats">Hats</option>
+          <option value="glasses">Glasses</option>
+          <option value="hat">Hat</option>
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
         <optgroup label="other">
@@ -52,6 +53,7 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+     
     </aside>
 
     <section class="board-wrapper">
@@ -248,8 +250,9 @@
       <span>Guess on Julie?</span>
       <button class="filled-button small" onclick="guess('Julie')">Guess</button>
     </div>
+   
     </div>
-
+   
 
   </main>
 </section>

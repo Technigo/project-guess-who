@@ -59,6 +59,18 @@ select {
   align-content: center;
 }
 
+.question-counter {
+  color: white;
+  font-size: 22px;
+  margin-top: 1rem;
+}
+
+.timer {
+  margin-top: 1rem;
+  color: white;
+  font-size: 22px;
+}
+
 /****** CARD ******/
 .card {
   width: 135px;
@@ -156,7 +168,7 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  min-height: 100%;
 }
 
 .win-or-lose {

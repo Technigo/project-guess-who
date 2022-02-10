@@ -11,7 +11,7 @@
     />
   </head>
   <body>
-    <aside class="question-section">
+    <aside class="question-section" id="questionSection">
       <button id="restart" class="outlined-button">RESTART</button>
 
       <img
@@ -33,6 +33,7 @@
           <option value="hidden">hidden hair</option>
           <!-- Add the rest of hair colors as options  -->
         </optgroup>
+
         <optgroup label="eyes">
           <option value="blue">blue eyes</option>
           <option value="brown">brown eyes</option>
@@ -40,16 +41,28 @@
           <option value="hidden">hidden eyes</option>
           <!-- Add the rest of eye colors as options  -->
         </optgroup>
+
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
+
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+
+      <div class="player-name" id="playerName">
+        <input type="text" class="input" id="playerName" placeholder="Type your player name here?">
+      </div>
+
+      <div class="question-counter" id="questionCounter"></div>
+
+      <!--<div class="timer" id="timer">
+        <span id="hour">00</span>:<span id="minute">00</span>
+      </div> -->
     </aside>
 
     <section class="board-wrapper">

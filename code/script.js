@@ -4,7 +4,10 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
+const questionSection = document.getElementById('questionSection')
 const playAgain = document.getElementById('playAgain')
+const questionCounter = document.getElementById('questionCounter')
+const timer = document.getElementById('timer')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -207,6 +210,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion = {category: 'hair', value: 'brown'}
 let charactersInPlay
+let guessNumber
 
 // Draw the game board
 const generateBoard = () => {
@@ -247,7 +251,9 @@ const start = () => {
   console.log(secret)
   generateBoard()
   winOrLose.style.display = "none"
+  questionSection.style.display = "flex"
   board.style.display = "flex"
+  guessNumber = 0
 }
 
 
@@ -278,14 +284,20 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-    if (value === secret.hair || value === secret.eyes) {
+  if (category === 'hair') {
+    if (value === secret.hair) {
       filterCharacters(true)
     } else {
       filterCharacters(false)
     }
     //filterCharacters = true
   
+  } else if (category === 'eyes') {
+    if (value === secret.eyes) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
   } else if (category === 'accessories' || category === 'other') {
     if (secret.accessories.includes(value) || secret.other.includes(value)) {
       filterCharacters(true)
@@ -360,6 +372,11 @@ const filterCharacters = (keep) => {
   */
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
+  guessNumber++
+  questionCounter.innerHTML = `
+  Number of guesses: ${guessNumber}
+  `
+
 }
 
 
@@ -372,7 +389,8 @@ clicks OK to confirm their choice or CANCEL to close the window.
 const guess = (personToConfirm) => {
   let guessedPerson = confirm(`Do you want to guess ${personToConfirm}?`)
   if (guessedPerson) {
-    checkMyGuess()
+    checkMyGuess(personToConfirm)
+    //console.log(guessedPerson)
   } else {
     alert(`Okay, you can continue guessing!`)
   }
@@ -385,17 +403,25 @@ const guess = (personToConfirm) => {
 3. The function compares the players guess to the secret person and then shows either
   a winning or a losing message depending on their guess. */
 const checkMyGuess = (personToCheck) => {
+ // personToConfirm = personToCheck
+  //console.log(personToCheck)
+  //console.log(secret.name)
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `
     Yay! You guessed correctly! It is ${secret.name}!
     `
+    const audio = new Audio('assets/win-sound.wav')
+      audio.play()
   } else {
     winOrLoseText.innerHTML = `
     Oh no, your guess was wrong! The right answer would have been ${secret.name}!
     `
+    const audio = new Audio('assets/lose-sound.wav')
+      audio.play()
   }
   winOrLose.style.display = "flex"
   board.style.display = "none"
+  questionSection.style.display = "none"
 }
 
 

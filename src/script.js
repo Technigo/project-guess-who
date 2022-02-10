@@ -1,8 +1,8 @@
 const gameBoard = document.getElementById("board");
 const questions = document.getElementById("questions");
+const questionsAll = document.querySelectorAll(".questions-all");
 const totalGuesses = document.getElementById("totalGuesses");
 const restartButton = document.getElementById("restart");
-const filterButton = document.getElementById("filter");
 const playAgainButton = document.getElementById("playAgain");
 const winOrLoseWrapper = document.querySelector(".win-or-lose-wrapper");
 const winOrLoseText = document.getElementById("winOrLoseText");
@@ -51,10 +51,18 @@ const characters = [
     other: []
   },
   {
-    name: "James",
-    img: "images/james.svg",
+    name: "Jolee",
+    img: "images/jolee.svg",
     hair: "brown",
-    eyes: "green",
+    eyes: "blue",
+    accessories: ["headband"],
+    other: []
+  },
+  {
+    name: "Jia",
+    img: "images/jia.svg",
+    hair: "black",
+    eyes: "blue",
     accessories: ["glasses"],
     other: []
   },
@@ -164,6 +172,22 @@ const characters = [
     other: []
   },
   {
+    name: "Juan",
+    img: "images/juan.svg",
+    hair: "black",
+    eyes: "blue",
+    accessories: [],
+    other: []
+  },
+  {
+    name: "Jodi",
+    img: "images/jodi.svg",
+    hair: "yellow",
+    eyes: "blue",
+    accessories: ["hat"],
+    other: []
+  },
+  {
     name: "Jordan",
     img: "images/jordan.svg",
     hair: "yellow",
@@ -221,8 +245,7 @@ const generateBoard = () => {
         <p>${character.name}</p>
         <img src=${character.img} alt=${character.name}>
         <div class="guess">
-          <span>Guess on ${character.name}?</span>
-          <button class="filled-button small" onclick="guess('${character.name}')">Guess</button>
+          <button class="guess-button" onclick="guess('${character.name}')">Guess <span class="name-block">${character.name}?</span></button>
         </div>
       </div>
     `
@@ -238,6 +261,7 @@ const startGame = () => {
   charactersInPlay = characters;
   generateBoard();
   setSecretCharacter();
+  console.log(secretCharacter)
   guessCount = 0
   totalGuesses.innerText = "Number of guesses: 0"
   startTimer()
@@ -245,14 +269,19 @@ const startGame = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label;
-  const value = questions.options[questions.selectedIndex].value;
+  questionsAll.forEach(question => {
+    question.addEventListener("change", () => {
+      const category = question.options[question.selectedIndex].parentNode.label;
+      const value = question.options[question.selectedIndex].value;
+       
+      currentQuestion = {
+        category: category,
+        value: value
+      }
 
-  currentQuestion = {
-    category: category,
-    value: value
-  }
-  filterCharacters(currentQuestion);
+      filterCharacters(currentQuestion); 
+    })
+  })
 }
 
 // It will filter the characters array and redraw the game board.
@@ -296,8 +325,6 @@ const alertMessage = (keepCharacter) => {
       )
     }
   }
- 
-  // redraw the board with the remaining people.
   generateBoard()
 }
 
@@ -309,8 +336,6 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  console.log(secretCharacter.name)
-  console.log(personToCheck)
   if (secretCharacter.name === personToCheck) {
     winOrLoseWrapper.style.display = "flex";
     winOrLoseText.innerHTML = `Great Job! It was ${secretCharacter.name}.`
@@ -327,9 +352,10 @@ const startTimer = () => {
   let minutes = 0;
   let hours = 0;
 
-  // Set a interval every second
+
+  // Set a interval every 1000 ms
   timerInterval = setInterval(() => {
-    timer.innerHTML = `${minutes}:${seconds}`
+    timer.innerHTML = `Time elapsed: ${hours}${minutes}:${seconds}`
  
     if(hours) {
       hours + ":"
@@ -349,20 +375,27 @@ const startTimer = () => {
       seconds
     }
 
+    // Next, we add a new second since one second is passed
     seconds++;
 
-    // We check if the second equals 60 add one minute and reset seconds to 0
+    // if seconds equals 60 seconds reset seconds to 0
     if (seconds == 60) {
       minutes++;
       seconds = 0;
+    }
+
+    // if minutes equals 60 minutes reset minutes to 0
+    if (minutes == 60) {
+      hours++;
+      minutes = 0;
     }
   }, 1000);
 }
 
 // Invokes the start function when website is loaded
 startGame()
+selectQuestion()
 
 // All the event listeners
 restartButton.addEventListener("click", startGame);
-filterButton.addEventListener("click", selectQuestion);
 playAgainButton.addEventListener("click", () => window.location.reload())

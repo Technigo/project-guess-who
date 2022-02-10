@@ -1,47 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: rgb(247, 62, 207);
+  --secondary: rgb(255, 255, 255);
 }
 
 body {
-  display: flex;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
+  font-family: 'Titan One', cursive;
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+}
+
+h2 {
+  text-align: center;
+  text-shadow: 1px 1px 3px black;
+}
+
+.title-blue {
+  color: var(--primary);
+}
+
+.name-block {
+  display: block;
 }
 
 .question-section {
-  width: 30%;
-  min-height: 100vh;
-  background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
-  align-items: flex-start;
+  padding: 0 2vw 5vw 2vw;
   box-sizing: border-box;
+  color: white;
+  background-color: rgb(75, 75, 75);
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .total-guesses {
   align-items: flex-end;
-}
-
-select {
-  display: block;
-  border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
-  width: 100%;
-  margin: 24px 0;
 }
 
 .guess-who-icon {
@@ -49,23 +57,19 @@ select {
 }
 
 .board-wrapper {
-  width: 70%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(212, 212, 212);
 }
 
 .game-board {
-  width: 90%;
-  max-width: 882px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-}
-
-.wrapper {
-  color: white;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 /****** CARD ******/
@@ -73,13 +77,14 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid black;
   border-radius: 4px;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .card p {
@@ -94,13 +99,12 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
   text-align: center;
   height: inherit;
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: rgb(75, 75, 75);
 }
 
 .card:hover img,
@@ -113,45 +117,71 @@ select {
   display: flex;
 }
 
-.guess span {
-  font-size: 16px;
-  line-height: 18px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  width: 90%;
-}
-
 /****** BUTTONS ******/
-button {
+.button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
-}
-
-.small {
-  padding: 8px 16px;
-}
-
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
-}
-
-.filled-button,
-.outlined-button:hover {
   background-color: var(--primary);
-  color: white;
 }
 
-.filled-button:hover {
-  background-color: white;
-  border-color: white;
+.guess-button {
+  font-size: 16px;
+  border: 3px solid var(--secondary);
+  padding: 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--secondary);
+  line-height: 1.5;
+}
+
+.restart-button {
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  border-radius: 50px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  color: yellow;
+}
+
+.restart-button:hover {
+  text-decoration: underline;
+}
+
+.question-buttons-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.questions-all {
+  font-size: 20px;
+  font-family: 'Montserrat';
+  font-weight: 600;
   color: var(--primary);
+  border-radius: 50px;
+  padding: 15px 20px;
+  margin: 20px 10px 0 0;
+  border: 2px solid transparent;
+  width: 20%;
+  background-color: var(--secondary);
+}
+
+.questions-all:hover {
+  color:  var(--secondary);
+  background-color: var(--primary);
+   border: 2px solid transparent
+}
+
+select:focus {
+  outline: none;
 }
 
 /****** WIN OR LOSE SECTION ******/

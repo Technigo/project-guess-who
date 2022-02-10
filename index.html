@@ -14,60 +14,67 @@
 <body>
 
   <section class="board-wrapper">
+    <h1 class="board-title"><span class="title-blue">Guess</span> who?</h1>
     <main class="game-board" id="board"></main>
   </section>
 
   <section id="winOrLose" class="win-or-lose-wrapper">
     <div class="win-or-lose">
-      <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
       <h1 id="winOrLoseText"></h1>
       <button id="playAgain" class="filled-button">PLAY AGAIN</button>
     </div>
   </section>
 
   <aside class="question-section">
-    <button id="restart" class="outlined-button">RESTART</button>
+    <div class="question-header">
 
-    <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
+        <p class="total-guesses" id="totalGuesses"></p>
+        <p id="timer">Time elapsed: 00:00</p>
+  
+    <button id="restart" class="restart-button">Restart Game</button>
 
-    <h1>Does the person have</h1>
-
-    <select id="questions">
-      <optgroup label="hair">
-        <option value="brown">brown</option>
-        <option value="yellow">yellow</option>
-        <option value="black">black</option>
-        <option value="hidden">hidden</option>
-        <option value="grey">grey</option>
-        <option value="orange">orange</option>
-        <option value="purple">purple</option>
-        <option value="white">white</option>
-        <!-- Add the rest of hair colors as options  -->
-      </optgroup>
-      <optgroup label="eyes">
-        <option value="hidden">hidden</option>
-        <option value="blue">blue</option>
-        <option value="green">green</option>
-        <option value="brown">brown</option>
-        <!-- Add the rest of eye colors as options  -->
-      </optgroup>
-      <optgroup id="accessoriesWrapper" label="accessories">
-        <option value="glasses">glasses</option>
-        <option value="hat">hat</option>
-        <option value="necklace">necklace</option>
-        <!-- Add the other accessory option here. (hat)  -->
-      </optgroup>
-      <optgroup label="other">
-        <option value="smoker">smoker</option>
-      </optgroup>
-    </select>
-
-    <button id="filter" class="filled-button">FIND OUT</button>
-
-    <div class="wrapper">
-    <p class="total-guesses" id="totalGuesses"></p>
-    <p id="timer">00:00</p>
     </div>
+
+    <h2>Please choose a category to guess:</h2>
+
+    <div class="question-buttons-wrapper" id="buttonsWrapper">
+      <select name="hairOptions" class="questions-all button" id="questions">
+        <optgroup label="hair">
+          <option selected disabled>Hair color...</option>
+          <option value="brown">brown</option>
+          <option value="yellow">yellow</option>
+          <option value="black">black</option>
+          <option value="hidden">hidden</option>
+          <option value="grey">grey</option>
+          <option value="orange">orange</option>
+          <option value="purple">purple</option>
+          <option value="white">white</option>
+        </optgroup>
+      </select>
+      <select name="hairOptions" class="questions-all button" id="questions">
+        <optgroup label="eyes">
+          <option selected disabled>Eye color...</option>
+          <option value="hidden">hidden</option>
+          <option value="blue">blue</option>
+          <option value="green">green</option>
+          <option value="brown">brown</option>
+        </optgroup>
+      </select>
+      <select name="hairOptions" class="questions-all button" id="questions">
+        <optgroup id="accessoriesWrapper" label="accessories">
+          <option selected disabled>Accessories...</option>
+          <option value="glasses">glasses</option>
+          <option value="hat">hat</option>
+          <option value="necklace">necklace</option>
+        </optgroup>
+      </select>
+      <select name="hairOptions" class="questions-all button" id="questions">
+        <optgroup label="other">
+          <option selected disabled>Other...</option>
+          <option value="smoker">smoker</option>
+        </optgroup>
+      </select>
+   </div>
   </aside>
   <script src="./src/script.js"></script>
 </body>

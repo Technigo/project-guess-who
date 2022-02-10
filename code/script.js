@@ -9,7 +9,7 @@ let counterQuestionsDisplay = document.getElementById('counterQuestionsDisplay')
 let counterRoundsDisplay = document.getElementById('counterRoundsDisplay')
 let counterWinsDisplay = document.getElementById('counterWinsDisplay')
 // Variable for mobile device
-const resolution = window.matchMedia("(max-width: 768px)")
+// const resolution = window.matchMedia("(max-width: 768px)")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -224,24 +224,25 @@ const generateBoard = () => {
   CHARACTERS.forEach((cat) => {
     // Conditional with two different contents depending on screen size
     if (charactersInPlay.includes(cat)) {
-      if (resolution.matches) {
-        board.innerHTML += `
-        <div class="card">
-          <button class="filled-button small" onclick="guess('${cat.name}')">${cat.name}?</button>
-          <img class="characters" src=${cat.img} alt=${cat.name}>
-        </div>
-      `
-      } else {
+      // if (resolution.matches) {
+      //   board.innerHTML += `
+      //   <div class="card">
+      //     <button class="filled-button small" onclick="guess('${cat.name}')">${cat.name}?</button>
+      //     <img class="characters" src=${cat.img} alt=${cat.name}>
+      //   </div>
+      // `
+      // } else {
         board.innerHTML += `
         <div class="card">
           <p>${cat.name}</p>
           <img class="characters" src=${cat.img} alt=${cat.name}>
           <div class="guess">
+            <span>Guess on...</span>
             <button class="filled-button small" onclick="guess('${cat.name}')">${cat.name}?</button>
           </div>
         </div>
         `
-      }
+      // }
       // Image and name are replaced by logo when the cat is not kept
     } else {
       board.innerHTML += `
@@ -416,12 +417,7 @@ const guess = (catToConfirm) => {
     if (result.isConfirmed) {
       checkMyGuess(catToConfirm)
     }
-  }))
-
-
-    console.log(secret.name)
-  console.log(catToConfirm)
-
+  }));
 }
 
 // Function checking if names are matching, displaying win-lose section with the right message and hide the board
@@ -515,13 +511,11 @@ Swal.fire({
 
 
 // Invokes the Function generateBoard when resizing the window
-window.onresize = generateBoard
+// window.onresize = generateBoard
+// resolution.addEventListener(generateBoard)
 
 // Event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', playAgain)
-
-
-console.log(secret)

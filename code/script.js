@@ -232,6 +232,13 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+
+  //Set the secret person and invoke setSecret function
+  setSecret ()
+
+  // show the board on the screen -> invoke genererateBoard function
+  generateBoard ()
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -256,6 +263,8 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+
+    // Jennnie video : check if secret person.hair === value
 
   } else if (category === 'accessories' || category === 'other') {
 

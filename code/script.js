@@ -4,8 +4,8 @@ const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const filterButton = document.getElementById("filter");
 const counterBox = document.getElementById("counterBox");
-const questionsAsked = document.getElementById("questionAsked");
-const winOrLoseText = document.getElementById("winOrLOseText");
+const questionsAsked = document.getElementById("questionsAsked");
+const winOrLoseText = document.getElementById("winOrLOseText"); // maybe remove
 const winOrLoseSection = document.getElementById("winOrLose");
 const playAgainButton = document.getElementById("playAgain");
 
@@ -273,7 +273,7 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    value: value,
+    value: value, //,?
   }; // ;??
 };
 
@@ -408,8 +408,8 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  let confirmation = confirm("Do you really want to guess on this person?");
-  if (confirmation === true) {
+  let confirmChoice = confirm("Do you really want to guess on this person?");
+  if (confirmChoice === true) {
     // This invokes the checkMyGuess function
     checkMyGuess(personToConfirm);
   } else {
@@ -418,21 +418,30 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  let guessStatus = {
+    status: "",
+  };
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
-  if (personToCheck === secret.name) {
+  if (secret.name === personToCheck) {
     // 2. Set a Message to show in the win or lose section accordingly
-    winOrLoseText.innerHTML = `Yey! You won in ${counter} guesses!`;
+    //winOrLoseText.innerHTML = `Yey! You won in ${counter} guesses!`;
+    guessStatus.status = "right";
   } else {
-    winOrLoseText.innerHTML = `Oh no... You lost the game!`;
+    // winOrLoseText.innerHTML = `Oh no... You lost the game!`;
+    guessStatus.status = "wrong";
   }
   // 3. Show the win or lose section
-  winOrLoseSection.style.display = "block";
+  //winOrLoseSection.style.display = "block";
+  board.innerHTML = "";
   // 4. Hide the game board
-  board.style.display = "none";
+  //board.style.display = "none";
+  board.innerHTML += `
+
+`;
 };
 
 // Invokes the start function when website is loaded

@@ -7,6 +7,8 @@ const gameOverWrapper = document.getElementById('winOrLose');
 const gameOverText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
 
+const previousQuestion = document.getElementById('previous-question');
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -208,6 +210,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let questionCounter = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -261,11 +264,23 @@ const selectQuestion = () => {
 
 // Invoked when 'Find Out' button is clicked
 const checkQuestion = () => {
+  questionCounter++;
+
   // status will be boolean - true or false
   let status = winningCharacter[currentQuestion.category].includes(currentQuestion.value)
   alertMessage(status);   
   filterCharacters(status);
-  console.log(charactersInPlay);
+  
+  // if question counter = 1, display div with previous questions
+  if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
+    previousQuestion.innerText += `
+      Previously asked: ${currentQuestion.value} ${currentQuestion.category}  
+    ` 
+  } else {
+    previousQuestion.innerText += `
+      Previously asked: ${currentQuestion.value}  
+    `
+  }
 }
 
 // function for alerting the player

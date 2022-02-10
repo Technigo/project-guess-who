@@ -211,6 +211,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let maxQuestions = 2;
 let questionCounter = 0;
 
 // Draw the game board
@@ -218,14 +219,14 @@ const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((character) => {
     board.innerHTML += `
-      <div class="card">
-        <p>${character.name}</p>
-        <img src=${character.img} alt=${character.name}>
-        <div class="guess">
-          <span>Guess on ${character.name}?</span>
-          <button class="filled-button small" onclick="guess('${character.name}')">Guess</button>
-        </div>
-      </div>
+    <div class="card">
+    <p>${character.name}</p>
+    <img src=${character.img} alt=${character.name}>
+    <div class="guess">
+    <span>Guess on ${character.name}?</span>
+    <button class="filled-button small" onclick="guess('${character.name}')">Guess</button>
+    </div>
+    </div>
     `
   })
 }
@@ -240,23 +241,17 @@ const start = () => {
   gameOverWrapper.style.display = "none";
   board.style.display = "flex";
   questionCounter = 0
-  questionCountDisplay.innerText = `Questions asked: ${questionCounter}
-    `;
   charactersInPlay = CHARACTERS
   generateBoard();
   setWinningCharacter();
+  questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}
+    `;
 }
 
-// Set currentQuestion object when you select something in the dropdown
+// Set currentQuestion object selecting from dropdown
 const selectQuestion = () => {
-
-  // Stores what category the question belongs to.
   const questionCategory = questions.options[questions.selectedIndex].parentNode.label;
- 
-  // Stores the actual value of the question selected
   const questionValue = questions.options[questions.selectedIndex].value;
-
-  // Object with selected category and value
   currentQuestion = {
     category: questionCategory,
     value: questionValue,
@@ -266,25 +261,27 @@ const selectQuestion = () => {
 // Invoked when 'Find Out' button is clicked
 const checkQuestion = () => {
   questionCounter++;
+  questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}
+    `;
+  if (questionCounter === maxQuestions) {
+    questionCountDisplay.innerText = `No questions remaining. Time to make a guess!`;
+    findOutButton.disabled = true;
+  }
 
   // status will be boolean - true or false
   let status = winningCharacter[currentQuestion.category].includes(currentQuestion.value)
   alertMessage(status);   
   filterCharacters(status);
-  
-  // display number of questions
-  questionCountDisplay.innerText = `Questions asked: ${questionCounter}
-    `;
 
-  // if question counter = 1, display div with previous questions
+  // display question asked
   if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
     previousQuestion.innerText += `
       ${currentQuestion.value} ${currentQuestion.category}  
-    ` 
+    `;
   } else {
     previousQuestion.innerText += `
       ${currentQuestion.value}  
-    `
+    `;
   }
 }
 
@@ -311,6 +308,7 @@ const filterCharacters = (keep) => {
   }
   generateBoard()
 }
+
 
 const guess = (characterName) => {
   let playerGuess = confirm(`Are you sure you want to guess that it's ${characterName}?`);

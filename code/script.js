@@ -5,11 +5,9 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter') // ???
 const playAgainButton = document.getElementById('playAgain')
 // Variables for counters
-let counterQuestionsDisplay = document.getElementById('counterQuestionsDisplay')
-let counterRoundsDisplay = document.getElementById('counterRoundsDisplay')
-let counterWinsDisplay = document.getElementById('counterWinsDisplay')
-// Variable for mobile device
-// const resolution = window.matchMedia("(max-width: 768px)")
+let countAttemptsDisplay = document.getElementById('countAttemptsDisplay')
+let countRoundsDisplay = document.getElementById('countRoundsDisplay')
+let countWinsDisplay = document.getElementById('countWinsDisplay')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -212,38 +210,49 @@ let secret
 let currentQuestion
 let charactersInPlay
 // Variables for counters
-let countQuestions = 0
+let countAttempts = 0
 let countRounds = 0
 let countWins = 0
 // Variable for auto closing alerts
 let timerInterval
 
-// Function generating the board
+// Function for auto closing alerts
+const sweetAlert = (newTitle, newHTML) => {
+  Swal.fire({
+    title: newTitle,
+    color: '#356879',
+    html: newHTML,
+    timer: 4000,
+    timerProgressBar: true,
+    confirmButtonColor: '#356879',
+    willClose: () => clearInterval(timerInterval)
+  })
+}
+
+// Function for shaking alert if ESC is pressed or outside click
+const shakingAlert = () => {
+  const popup = Swal.getPopup()
+  popup.classList.remove('swal2-show')
+  setTimeout(() => popup.classList.add('animate__animated', 'animate__headShake'))
+  setTimeout(() => popup.classList.remove('animate__animated', 'animate__headShake'), 500)
+  return false
+}
+
+// Function generating the board with the characters in play
 const generateBoard = () => {
   board.innerHTML = ''
   CHARACTERS.forEach((cat) => {
-    // Conditional with two different contents depending on screen size
     if (charactersInPlay.includes(cat)) {
-      // if (resolution.matches) {
-      //   board.innerHTML += `
-      //   <div class="card">
-      //     <button class="filled-button small" onclick="guess('${cat.name}')">${cat.name}?</button>
-      //     <img class="characters" src=${cat.img} alt=${cat.name}>
-      //   </div>
-      // `
-      // } else {
-        board.innerHTML += `
+      board.innerHTML += `
         <div class="card">
           <p>${cat.name}</p>
           <img class="characters" src=${cat.img} alt=${cat.name}>
           <div class="guess">
             <span>Guess on...</span>
-            <button class="filled-button small" onclick="guess('${cat.name}')">${cat.name}?</button>
+            <button class="filled-button small" onclick="guess('${cat.name}')">${cat.name}</button>
           </div>
         </div>
         `
-      // }
-      // Image and name are replaced by logo when the cat is not kept
     } else {
       board.innerHTML += `
       <div class="card">
@@ -251,32 +260,6 @@ const generateBoard = () => {
       </div>
       `
     }
-  })
-}
-
-// Function for auto closing customised alerts
-const sweetAlert = (newTitle, newHTML) => {
-  Swal.fire({
-    title: newTitle,
-    color: '#356879',
-    html: newHTML,
-    timer: 5000,
-    timerProgressBar: true,
-    confirmButtonColor: '#356879',
-    // didOpen: () => {
-    //   Swal.hideLoading()
-    //   const b = Swal.getHtmlContainer().querySelector('b')
-    //   timerInterval = setInterval(() => {
-    //     b.textContent = Swal.getTimerLeft()
-    //   }, 100)
-    // },
-    willClose: () => {
-      clearInterval(timerInterval)
-    }
-    // }).then((result) => {
-    //   if (result.dismiss === Swal.DismissReason.timer) {
-    //     console.log('I was closed by the timer')
-    //   }
   })
 }
 
@@ -288,9 +271,9 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
-  counterQuestionsDisplay.innerText = countQuestions
-  counterRoundsDisplay.innerText = countRounds
-  counterWinsDisplay.innerText = countWins
+  countAttemptsDisplay.innerText = 0
+  countRoundsDisplay.innerText = countRounds
+  countWinsDisplay.innerText = countWins
   document.getElementById('questions').selectedIndex = 0
 }
 
@@ -310,9 +293,9 @@ const selectQuestion = () => {
 // Function to be invoked when clicking on 'Find Out' button
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  // for questions counter
-  countQuestions++
-  counterQuestionsDisplay.innerText = countQuestions
+  // for attempts counter
+  countAttempts++
+  countAttemptsDisplay.innerText = countAttempts
 
   // Conditionals to compare the currentQuestion details with the secret cat details
   if (category === 'skin' || category === 'claws') {
@@ -391,31 +374,14 @@ const guess = (catToConfirm) => {
     cancelButtonColor: '#6B96A6',
     confirmButtonText: 'Confirm',
     backdrop: true,
-    allowEscapeKey: () => {
-      const popup = Swal.getPopup()
-      popup.classList.remove('swal2-show')
-      setTimeout(() => {
-        popup.classList.add('animate__animated', 'animate__headShake')
-      })
-      setTimeout(() => {
-        popup.classList.remove('animate__animated', 'animate__headShake')
-      }, 500)
-      return false
-    },
-    allowOutsideClick: () => {
-      const popup = Swal.getPopup()
-      popup.classList.remove('swal2-show')
-      setTimeout(() => {
-        popup.classList.add('animate__animated', 'animate__headShake')
-      })
-      setTimeout(() => {
-        popup.classList.remove('animate__animated', 'animate__headShake')
-      }, 500)
-      return false
-    }
+    allowEscapeKey: () => shakingAlert(),
+    allowOutsideClick: () => shakingAlert()
   }).then((result) => {
     if (result.isConfirmed) {
       checkMyGuess(catToConfirm)
+      countRounds++
+      countRoundsDisplay.innerText = countRounds
+      countWinsDisplay.innerText = countWins
     }
   }));
 }
@@ -426,15 +392,15 @@ const checkMyGuess = (catToCheck) => {
     document.getElementById('winOrLoseText').innerHTML = `You won!<br/>As you guessed, ${catToCheck} was the secret cat!`
     document.getElementById('winOrLose').style.display = 'flex'
     board.style.display = 'none'
-    document.getElementById('wonOrLost').innerHTML = `
+    document.getElementById('resultAudio').innerHTML = `
     <audio src="./assets/cat-purr.wav" type="audio/wav" autoplay></audio>
     `
     countWins++
   } else {
-    document.getElementById('winOrLoseText').innerHTML = `You lost!<br/>Unfortunately, ${catToCheck} wasn't the secret cat, it was ${secret.name}...`
+    document.getElementById('winOrLoseText').innerHTML = `You lost!<br/>${catToCheck} wasn't the secret cat, it was ${secret.name}...`
     document.getElementById('winOrLose').style.display = 'flex'
     board.style.display = 'none'
-    document.getElementById('wonOrLost').innerHTML = `
+    document.getElementById('resultAudio').innerHTML = `
     <audio src="./assets/cat-meow.wav" type="audio/wav" autoplay></audio>
     `
   }
@@ -443,19 +409,16 @@ const checkMyGuess = (catToCheck) => {
 const playAgain = () => {
   start()
   document.getElementById('winOrLose').style.display = 'none'
-  document.getElementById('wonOrLost').innerHTML = ''
+  document.getElementById('resultAudio').innerHTML = ''
   board.style.display = 'flex'
-  countQuestions = 0
-  counterQuestionsDisplay.innerText = countQuestions
-  countRounds++
-  counterRoundsDisplay.innerText = countRounds
-  counterWinsDisplay.innerText = countWins
+  countAttempts = 0
+  countAttemptsDisplay.innerText = countAttempts
 }
 
 // Start function invoked when website is loaded
 start()
+
 // Alert asking for the name appearing when the page load
-// window.addEventListener('load', () => {
 Swal.fire({
   imageUrl: './assets/cat-logo-small.svg',
   color: '#356879',
@@ -471,30 +434,9 @@ Swal.fire({
     }
     return { playerName: playerName }
   },
-  // is there a way of not repeating the following twice, for both allowEscapeKey and allowOutsideClick (and in 'const guess' as well)
   backdrop: true,
-  allowEscapeKey: () => {
-    const popup = Swal.getPopup()
-    popup.classList.remove('swal2-show')
-    setTimeout(() => {
-      popup.classList.add('animate__animated', 'animate__headShake')
-    })
-    setTimeout(() => {
-      popup.classList.remove('animate__animated', 'animate__headShake')
-    }, 500)
-    return false
-  },
-  allowOutsideClick: () => {
-    const popup = Swal.getPopup()
-    popup.classList.remove('swal2-show')
-    setTimeout(() => {
-      popup.classList.add('animate__animated', 'animate__headShake')
-    })
-    setTimeout(() => {
-      popup.classList.remove('animate__animated', 'animate__headShake')
-    }, 500)
-    return false
-  }
+  allowEscapeKey: () => shakingAlert(),
+  allowOutsideClick: () => shakingAlert()
 }).then((result) => {
   Swal.fire({
     icon: "success",
@@ -504,15 +446,9 @@ Swal.fire({
     confirmButtonText: 'Play',
     confirmButtonColor: '#356879',
   })
-  // afficher le nom ou pas?? ou le mettre dans l'écran de victoire ou défaite??
-  document.getElementById('playerNameDiv').innerText = `${result.value.playerName}`
+  document.getElementById('playerNameInput').innerText = `${result.value.playerName}`
 })
-// })
 
-
-// Invokes the Function generateBoard when resizing the window
-// window.onresize = generateBoard
-// resolution.addEventListener(generateBoard)
 
 // Event listeners
 restartButton.addEventListener('click', start)

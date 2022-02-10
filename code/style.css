@@ -29,10 +29,27 @@ h2 {
   color: white;
 }
 
-/* added */
+.attempts-text {
+  align-self: flex-end;
+  margin-top: 20px;
+}
+
+a {
+  /* text-decoration: none; */
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* added => REMOVE if I change the file size */
 img.characters {
-  width: 150px;
-  height: 150px;
+  /* width: 150px;
+  height: 150px; */
+  width: 100%;
+  /* height: 100%; */
 }
 
 .question-section {
@@ -49,6 +66,7 @@ img.characters {
 select {
   display: block;
   border: none;
+  outline: none;
   font-size: 20px;
   font-family: 'Rubik', sans-serif;
   color: var(--second);
@@ -81,9 +99,10 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--fourth);
-  border-radius: 4px;
-  margin:15px;
+  background-color: var(--fifth);
+  border: 3px solid var(--fifth);
+  border-radius: 10px;
+  margin: 30px 15px 0 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,10 +111,11 @@ select {
 
 .card p {
   text-align: center;
-  /* which font family is better? */
   font-family: 'Monoton', cursive;
   color: var(--first);
   margin-bottom: 0;
+  margin-top: 0;
+
   font-size: 16px;
   font-weight: 700;
 }
@@ -111,11 +131,7 @@ select {
 }
 
 .card:hover {
-  background-color: var(--fourth);
-  /* background-image: url("./assets/cat-guess.jpg"); */
-  /* background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center; */
+  background-color: var(--fifth);
 }
 
 .card:hover img,
@@ -139,7 +155,7 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--third);
-  border-radius: 50px;
+  border-radius: 10px;
   font-size: 20px;
   font-family: 'Monoton', cursive;
   padding: 10px 20px;
@@ -152,8 +168,9 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--third);
+  color: var(--first);
   align-self: flex-end;
+  margin-bottom: 20px;
 }
 
 .filled-button,
@@ -165,7 +182,7 @@ button {
 .filled-button:hover {
   background-color: white;
   border-color: white;
-  color: var(--third);
+  color: var(--second);
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -215,8 +232,13 @@ button {
 
   .small {
     padding: 0;
-    width: 150px;
+    width: 100%;
+    border-radius: 0;
   }
+
+  .outlined-button {
+    margin-bottom: 0;
+  }  
 
   h1 {
     font-size: 24px;
@@ -229,7 +251,7 @@ button {
   }
 
   .guess-paw-icon {
-    width: 51px;
+    width: 75px;
   }
 
   .board-wrapper {
@@ -249,6 +271,7 @@ button {
   .card .guess {
     display: flex;
     top: 0;
+    width: 100%;
     position: absolute;
     justify-content: flex-end;
   }
@@ -262,9 +285,9 @@ button {
   }
 
   .card .guess .filled-button {
-    padding: 6px 11px;
-    margin-bottom: 1px;
-    background: white;
+    /* padding: 2px 2px; */
+    margin-bottom: 8px;
+    background: transparent;
     color: var(--third);
     border: none;
   }

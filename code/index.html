@@ -18,6 +18,7 @@
 
 <body>
   <aside class="question-section">
+    <button id="restart" class="outlined-button">RESTART</button>
 
     <img class="guess-paw-icon" src="./assets/cat-logo-small.svg" alt="Guess Who" />
 
@@ -60,9 +61,7 @@
 
     <button id="filter" class="filled-button">FIND OUT</button>
 
-    <h2>Questions asked: <span id="counterQuestionsDisplay"</span></h2>
-    <button id="restart" class="outlined-button">RESTART</button>
-
+    <h2 class="attempts-text">Attempts: <span id="countAttemptsDisplay"></span></h2>
 
   </aside>
 
@@ -74,10 +73,12 @@
     <div class="win-or-lose">
       <img class="guess-paw-icon" src="./assets/cat-logo-small.svg" alt="Guess Paw" />
       <h1 id="winOrLoseText"></h1>
-      <h2><span id="playerNameDiv">Hey</span>, you won <span id="counterWinsDisplay"></span>/<span id="counterRoundsDisplay"></span> rounds.</h2>
+      <h2><span id="playerNameInput"></span>, you won <span id="countWinsDisplay"></span>/<span id="countRoundsDisplay"></span> rounds.</h2>
+      
 
-      <span id="wonOrLost"></span>
+      <span id="resultAudio"></span>
       <button id="playAgain" class="filled-button">PLAY AGAIN</button>
+      <a href="https://www.freepik.com/">Cat paws created by rawpixel.com, pch.vector and macrovector</a>
     </div>
   </section>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

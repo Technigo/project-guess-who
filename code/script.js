@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOut = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -333,7 +334,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       alert(
-        `No, the person doesn't have ${value} ${category}! Remove all people without ${value} ${category}`
+        `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
@@ -356,10 +357,15 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  if (personToCheck === secret.name) {
+  if (personToCheck === secret.name) {       // 1. Check if the personToCheck is the same as the secret person's name
     console.log('Win!')
-  }
-  // 1. Check if the personToCheck is the same as the secret person's name
+    //winOrLose.innerHTML = 
+    //winOrLoseText.innerHTML =
+    //`<h1>You win!<h1>`
+
+  } else 
+  console.log('You lost the game')
+  
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section winOrLose.innerHTML etc.
   // 4. Hide the game board

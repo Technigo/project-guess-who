@@ -245,12 +245,13 @@ const start = () => {
   setWinningCharacter();
   questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}`;
   previousQuestion.innerHTML = '';
-  findOutButton.disabled = false;
   questions.disabled = false;
+  findOutButton.disabled = true;
 }
 
 // Set currentQuestion object selecting from dropdown
 const selectQuestion = () => {
+  findOutButton.disabled = false;
   const questionCategory = questions.options[questions.selectedIndex].parentNode.label;
   const questionValue = questions.options[questions.selectedIndex].value;
   currentQuestion = {

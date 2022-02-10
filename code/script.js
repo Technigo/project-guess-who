@@ -256,13 +256,13 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion
   if (category === "hair" || category === "eyes") {
-		if (secret[currentQuestion.category] === currentQuestion.value) {
+		if (secret.category === value) {
 			filterCharacters(true);
 		} else {
 			filterCharacters(false);
 		}
 	} else if (category === "accessories" || category === "other") {
-		if (secret[currentQuestion.category].includes(currentQuestion.value)) {
+		if (secret[category].includes(value)) {
 			filterCharacters(true);
 		} else {
 			filterCharacters(false);
@@ -274,41 +274,41 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   if (category === 'accessories') {
-    if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
-    } else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
-    }
-  } else if (category === 'other') {
-    if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      alert(
-        `Yes, the person is a ${value}! Keep all people who are a ${value}`
-      )
-    } else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      alert(
-        `No, the person is not a ${value}! Remove all people who are not a ${value}`
-      )
-    }
-  } else if (category === 'hair') {
-    if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value) 
-      alert(
-        `Yes, the person has ${value}! Keep all people who have ${value}`
-      )
-      } else {
-        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      if (keep) {
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
         alert(
-          `No, the person doesn't have ${value}! Remove all people who don't have ${value}`
+          `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        )
+      } else {
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+        alert(
+          `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
         )
       }
+  } else if (category === 'other') {
+      if (keep) {
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+        alert(
+          `Yes, the person is a ${value}! Keep all people who are a ${value}`
+        )
+      } else {
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+        alert(
+          `No, the person is not a ${value}! Remove all people who are not a ${value}`
+        )
+      }
+  } else if (category === 'hair') {
+      if (keep) {
+        charactersInPlay = charactersInPlay.filter((person) => person[category] === value) 
+        alert(
+          `Yes, the person has ${value}! Keep all people who have ${value}`
+        )
+        } else {
+          charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+          alert(
+            `No, the person doesn't have ${value}! Remove all people who don't have ${value}`
+          )
+        }
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       alert(

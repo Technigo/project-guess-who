@@ -479,7 +479,7 @@ const checkMyGuess = (personToCheck) => {
   } else {
     alert(`Oh, I´m sorry but it is not ${personToCheck}. It was ${secret.name} all the time.. Better luck next time!`)
     winOrLoose.style.display = 'flex'
-    winOrLoseText.innerText = 'Oh no, you lost! Play again?'
+    winOrLoseText.innerText = 'Oh no, ${playerName} you lost! Play again?'
     
   }
 }

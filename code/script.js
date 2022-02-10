@@ -280,9 +280,10 @@ const checkQuestion = () => {
       filterCharacters()
     }
   }
+  console.log('Hang in there, checking your questions')
 }
 
-// It'll filter the characters array and redraw the game board.fyll på med fler filter
+// It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories

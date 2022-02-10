@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton =  document.getElementById('filter')
+const winOrLose =  document.getElementById('winOrLose')
+const playAgainButton =  document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -324,17 +326,39 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  if (confirm('Are you sure you want to guess this person?')) {
+    checkMyGuess(personToConfirm)
+  } else {
+    generateBoard()
+  }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  if (secret.name === personToCheck) {
+      alert("You win!")
+      board.innerHTML = ` 
+      <p>Play again?</p>
+      <button id="big-restart-button" class="big-restart-button">RESTART</button>` 
+
+      document
+        .getElementById('big-restart-button')
+        .addEventListener('click', () => {
+          start()
+        })
+ } else {
+      alert("You lost!")
+      board.innerHTML = ` 
+      <p>Play again?</p>
+      <button id="big-restart-button" class="big-restart-button">RESTART</button>
+      `
+
+      document
+        .getElementById('big-restart-button')
+        .addEventListener('click', () => {
+          start()
+        })
+ }
 }
 
 // Invokes the start function when website is loaded
@@ -342,5 +366,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+playAgain.addEventListener("click", start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)

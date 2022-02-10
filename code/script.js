@@ -243,10 +243,8 @@ const timerStart = () => {
 
   if (minutes < 10) {
     minutesString = "0" + minutes;
-  } else if (seconds > 59) {
-    minutes = 0;
-    minutes++
-  }
+  };
+  
   timerDiv.innerHTML = `Time elapsed: ${minutesString}:${secondsString}`;
   seconds++;
   //It's not programmed to show hours because I thought it unlikely to be necessary 

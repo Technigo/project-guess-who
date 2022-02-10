@@ -255,7 +255,7 @@ const generateBoard = () => {
         `
     } else {
       board.innerHTML += `
-      <div class="card">
+      <div class="card mobile">
         <img class="characters" src="./assets/cat-logo-large.svg" alt="not this cat">
       </div>
       `
@@ -275,6 +275,7 @@ const start = () => {
   countRoundsDisplay.innerText = countRounds
   countWinsDisplay.innerText = countWins
   document.getElementById('questions').selectedIndex = 0
+  selectQuestion()
 }
 
 // Function setting the currentQuestion object when you select a question in the dropdown
@@ -293,9 +294,6 @@ const selectQuestion = () => {
 // Function to be invoked when clicking on 'Find Out' button
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  // for attempts counter
-  countAttempts++
-  countAttemptsDisplay.innerText = countAttempts
 
   // Conditionals to compare the currentQuestion details with the secret cat details
   if (category === 'skin' || category === 'claws') {
@@ -316,6 +314,9 @@ const checkQuestion = () => {
 
 // Function for filtering the characters array and redraw the board
 const filterCharacters = (keep) => {
+  // for attempts counter
+  countAttempts++
+  countAttemptsDisplay.innerText = countAttempts
   const { category, value } = currentQuestion
   // Conditionals to show the right alert for different categories
   if (category === 'fur') {
@@ -405,7 +406,8 @@ const checkMyGuess = (catToCheck) => {
     `
   }
 }
-//  Function 
+
+//  Function resetting board and attempts counter when user click play again button
 const playAgain = () => {
   start()
   document.getElementById('winOrLose').style.display = 'none'
@@ -430,7 +432,7 @@ Swal.fire({
   preConfirm: () => {
     const playerName = Swal.getPopup().querySelector('#playerName').value
     if (!playerName) {
-      Swal.showValidationMessage(`Please enter your name if you want to play`)
+      Swal.showValidationMessage(`Please type your name if you want to play.`)
     }
     return { playerName: playerName }
   },

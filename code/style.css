@@ -35,9 +35,10 @@ h2 {
 }
 
 a {
-  /* text-decoration: none; */
+  text-decoration: none;
   color: white;
   font-size: 12px;
+  padding-bottom: 12px;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -102,7 +103,7 @@ select {
   background-color: var(--fifth);
   border: 3px solid var(--fifth);
   border-radius: 10px;
-  margin: 30px 15px 0 15px;
+  margin: 0 15px 30px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -225,7 +226,9 @@ button {
   .question-section {
     width: 100%;
     min-height: 0;
+    margin-bottom: 30px;
   }
+
   button {
     padding: 8px 16px;
   }
@@ -290,5 +293,9 @@ button {
     background: transparent;
     color: var(--third);
     border: none;
+  }
+
+  .card.mobile {
+    display: none;
   }
 }

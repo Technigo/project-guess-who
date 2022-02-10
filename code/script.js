@@ -202,9 +202,9 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+let secret;
+let currentQuestion;
+let charactersInPlay;
 
 // Draw the game board
 const generateBoard = () => {
@@ -305,7 +305,7 @@ const filterCharacters = (keep) => {
     });
   } else {
     charactersInPlay = charactersInPlay.filter((character) => { 
-      return character[currentQuestion.category] !== currentQuestion.value;
+      return !character[currentQuestion.category].includes(currentQuestion.value);
     });
   }
   generateBoard()
@@ -316,6 +316,7 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  checkMyGuess(someArgument);
 }
 
 // If you confirm, this function is invoked

@@ -230,7 +230,7 @@ const generateBoard = () => {
 const setWinningCharacter = () => {
   winningCharacter =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  console.log(winningCharacter);
+    console.log(winningCharacter);
 };
 
 // This function to start (and restart) the game
@@ -262,7 +262,6 @@ const selectQuestion = () => {
     category: category,
     value: value,
   };
-  console.log(currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -305,7 +304,6 @@ const filterCharactersKeep = () => {
       charactersInPlay = charactersInPlay.filter((person) => {
         return person[currentQuestion.category].includes(currentQuestion.value)
       });
-    console.log(charactersInPlay);
     generateBoard();
   }
 
@@ -313,7 +311,6 @@ const filterCharactersRemove = () => {
     charactersInPlay = charactersInPlay.filter((person) => {
       return !person[currentQuestion.category].includes(currentQuestion.value)
     });
-    console.log(charactersInPlay);
     generateBoard();
   }
 
@@ -329,11 +326,11 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   if (winningCharacter.name === personToCheck) {
     winOrLose.style.display = "flex";
-    winOrLoseText.innerHTML = "right";
+    winOrLoseText.innerHTML = `Hurray, ${personToCheck} is absolutely right!`;
     board.style.display = "none";
   } else {
     winOrLose.style.display = "flex";
-    winOrLoseText.innerHTML = "Wrong";
+    winOrLoseText.innerHTML = `Dooh, ${personToCheck} is unfortunately not the one!`;
     board.style.display = "none";
   }
 };

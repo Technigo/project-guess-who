@@ -12,36 +12,20 @@ let countWinsDisplay = document.getElementById('countWinsDisplay')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
+    name: 'Bosse',
+    img: 'images/bosse.jpg',
+    fur: ['brown', 'orange'],
+    skin: 'white',
+    claws: 'without',
+    special: ['stripes']
+  },
+  {
     name: 'Doris',
     img: 'images/doris.jpg',
     fur: ['grey', 'beige'],
     skin: 'white',
     claws: 'without',
     special: ['stripes', 'bicoloured']
-  },
-  {
-    name: 'Simba',
-    img: 'images/simba.jpg',
-    fur: ['beige', 'brown'],
-    skin: 'pink',
-    claws: 'without',
-    special: ['spots', 'bicoloured']
-  },
-  {
-    name: 'Luna',
-    img: 'images/luna.jpg',
-    fur: 'beige',
-    skin: 'pink',
-    claws: 'without',
-    special: ['fuzzy']
-  },
-  {
-    name: 'Sigge',
-    img: 'images/sigge.jpg',
-    fur: ['white', 'blue'],
-    skin: 'brown',
-    claws: 'with',
-    special: ['fuzzy', 'bicoloured']
   },
   {
     name: 'Elsa',
@@ -52,100 +36,12 @@ const CHARACTERS = [
     special: ['spots', 'bicoloured']
   },
   {
-    name: 'Bosse',
-    img: 'images/bosse.jpg',
-    fur: ['brown', 'orange'],
-    skin: 'white',
-    claws: 'without',
-    special: ['stripes']
-  },
-  {
-    name: 'Zelda',
-    img: 'images/zelda.jpg',
-    fur: ['orange'],
-    skin: 'brown',
-    claws: 'without',
-    special: []
-  },
-  {
-    name: 'Morris',
-    img: 'images/morris.jpg',
-    fur: ['beige', 'white'],
-    skin: 'brown',
-    claws: 'without',
-    special: ['bicoloured', 'fuzzy']
-  },
-  {
-    name: 'Selma',
-    img: 'images/selma.jpg',
-    fur: ['orange', 'brown'],
-    skin: 'pink',
-    claws: 'with',
-    special: ['bicoloured']
-  },
-  {
-    name: 'Sixten',
-    img: 'images/sixten.jpg',
-    fur: ['black', 'white'],
-    skin: 'white',
-    claws: 'without',
-    special: ['bicoloured']
-  },
-  {
-    name: 'Sally',
-    img: 'images/sally.jpg',
-    fur: ['yellow', 'beige'],
-    skin: 'brown',
-    claws: 'without',
-    special: ['stripes', 'bicoloured']
-  },
-  {
     name: 'Findus',
     img: 'images/findus.jpg',
     fur: ['beige', 'white'],
     skin: 'pink',
     claws: 'with',
     special: ['bicoloured']
-  },
-  {
-    name: 'Smulan',
-    img: 'images/smulan.jpg',
-    fur: ['black', 'grey'],
-    skin: 'pink',
-    claws: 'without',
-    special: ['bicoloured']
-  },
-  {
-    name: 'Harry',
-    img: 'images/harry.jpg',
-    fur: ['white', 'brown', 'orange', 'beige'],
-    skin: 'brown',
-    claws: 'without',
-    special: ['multicoloured']
-  },
-  {
-    name: 'Maja',
-    img: 'images/maja.jpg',
-    fur: ['brown', 'beige'],
-    skin: 'pink',
-    claws: 'with',
-    special: ['bicoloured']
-  },
-  {
-    name: 'Nisse',
-    img: 'images/nisse.jpg',
-    fur: ['black'],
-    skin: 'grey',
-    claws: 'without',
-    special: []
-  },
-  {
-    name: 'Nala',
-    img: 'images/nala.jpg',
-    fur: ['orange', 'white'],
-    skin: 'beige',
-    claws: 'with',
-    special: ['fuzzy']
   },
   {
     name: 'Frasse',
@@ -156,20 +52,12 @@ const CHARACTERS = [
     special: ['fuzzy']
   },
   {
-    name: 'Siri',
-    img: 'images/siri.jpg',
-    fur: ['black', 'grey'],
-    skin: 'black',
-    claws: 'with',
-    special: ['bicoloured']
-  },
-  {
-    name: 'Sune',
-    img: 'images/sune.jpg',
-    fur: ['orange', 'brown'],
-    skin: 'black',
-    claws: 'with',
-    special: ['spots', 'bicoloured']
+    name: 'Harry',
+    img: 'images/harry.jpg',
+    fur: ['white', 'brown', 'orange', 'beige'],
+    skin: 'brown',
+    claws: 'without',
+    special: ['multicoloured']
   },
   {
     name: 'Iris',
@@ -188,6 +76,22 @@ const CHARACTERS = [
     special: []
   },
   {
+    name: 'Luna',
+    img: 'images/luna.jpg',
+    fur: 'beige',
+    skin: 'pink',
+    claws: 'without',
+    special: ['fuzzy']
+  },
+  {
+    name: 'Maja',
+    img: 'images/maja.jpg',
+    fur: ['brown', 'beige'],
+    skin: 'pink',
+    claws: 'with',
+    special: ['bicoloured']
+  },
+  {
     name: 'Mollie',
     img: 'images/mollie.jpg',
     fur: ['brown'],
@@ -196,12 +100,108 @@ const CHARACTERS = [
     special: []
   },
   {
+    name: 'Morris',
+    img: 'images/morris.jpg',
+    fur: ['beige', 'white'],
+    skin: 'brown',
+    claws: 'without',
+    special: ['bicoloured', 'fuzzy']
+  },
+  {
+    name: 'Nala',
+    img: 'images/nala.jpg',
+    fur: ['orange', 'white'],
+    skin: 'beige',
+    claws: 'with',
+    special: ['fuzzy']
+  },
+  {
+    name: 'Nisse',
+    img: 'images/nisse.jpg',
+    fur: ['black'],
+    skin: 'grey',
+    claws: 'without',
+    special: []
+  },
+  {
+    name: 'Sally',
+    img: 'images/sally.jpg',
+    fur: ['yellow', 'beige'],
+    skin: 'brown',
+    claws: 'without',
+    special: ['stripes', 'bicoloured']
+  },
+  {
+    name: 'Selma',
+    img: 'images/selma.jpg',
+    fur: ['orange', 'brown'],
+    skin: 'pink',
+    claws: 'with',
+    special: ['bicoloured']
+  },
+  {
+    name: 'Sigge',
+    img: 'images/sigge.jpg',
+    fur: ['white', 'blue'],
+    skin: 'brown',
+    claws: 'with',
+    special: ['fuzzy', 'bicoloured']
+  },
+  {
+    name: 'Simba',
+    img: 'images/simba.jpg',
+    fur: ['beige', 'brown'],
+    skin: 'pink',
+    claws: 'without',
+    special: ['spots', 'bicoloured']
+  },
+  {
+    name: 'Siri',
+    img: 'images/siri.jpg',
+    fur: ['black', 'grey'],
+    skin: 'black',
+    claws: 'with',
+    special: ['bicoloured']
+  },
+  {
+    name: 'Sixten',
+    img: 'images/sixten.jpg',
+    fur: ['black', 'white'],
+    skin: 'white',
+    claws: 'without',
+    special: ['bicoloured']
+  },
+  {
+    name: 'Smulan',
+    img: 'images/smulan.jpg',
+    fur: ['black', 'grey'],
+    skin: 'pink',
+    claws: 'without',
+    special: ['bicoloured']
+  },
+  {
+    name: 'Sune',
+    img: 'images/sune.jpg',
+    fur: ['orange', 'brown'],
+    skin: 'black',
+    claws: 'with',
+    special: ['spots', 'bicoloured']
+  },
+  {
     name: 'Tusse',
     img: 'images/tusse.jpg',
     fur: ['orange'],
     skin: 'brown',
     claws: 'with',
     special: ['hairy']
+  },
+  {
+    name: 'Zelda',
+    img: 'images/zelda.jpg',
+    fur: ['orange'],
+    skin: 'brown',
+    claws: 'without',
+    special: []
   },
 ]
 
@@ -321,27 +321,27 @@ const filterCharacters = (keep) => {
   // Conditionals to show the right alert for different categories
   if (category === 'fur') {
     if (keep) {
-      sweetAlert(`Yes, the secret cat has a ${value} fur!`, `All cats without ${value} fur are now hidden.`)
+      sweetAlert(`Yes, the secret cat has a ${value} fur!`, `All cats without ${value} fur are now gone.`)
     } else {
-      sweetAlert(`No, the secret cat doesn't have a ${value} fur!`, `All cats with ${value} fur are now hidden.`)
+      sweetAlert(`No, the secret cat doesn't have a ${value} fur!`, `All cats with ${value} fur are now gone.`)
     }
   } else if (category === 'special') {
     if (keep) {
-      sweetAlert(`Yes, the secret cat has a special feature: ${value}!`, `All cats without the feature "${value}" are now hidden.`)
+      sweetAlert(`Yes, the secret cat has a special feature: ${value}!`, `All cats without the feature "${value}" are now gone.`)
     } else {
-      sweetAlert(`No, the secret cat doesn't have the special feature: ${value}!`, `All cats with the feature "${value}" are now hidden.`)
+      sweetAlert(`No, the secret cat doesn't have the special feature: ${value}!`, `All cats with the feature "${value}" are now gone.`)
     }
   } else if (category === 'skin') {
     if (keep) {
-      sweetAlert(`Yes, the secret cat has a ${value} skin!`, `All cats without ${value} skin are now hidden.`)
+      sweetAlert(`Yes, the secret cat has a ${value} skin!`, `All cats without ${value} skin are now gone.`)
     } else {
-      sweetAlert(`No, the secret cat doesn't have a ${value} skin!`, `All cats with ${value} skin are now hidden.`)
+      sweetAlert(`No, the secret cat doesn't have a ${value} skin!`, `All cats with ${value} skin are now gone.`)
     }
   } else if (category === 'claws') {
     if (keep) {
-      sweetAlert(`Yes, the secret cat is ${value} claws!`, `All cats that aren't ${value} claws are now hidden.`)
+      sweetAlert(`Yes, the secret cat is ${value} claws!`, `All cats that aren't ${value} claws are now gone.`)
     } else {
-      sweetAlert(`No, the secret cat isn't ${value} claws!`, `All cats ${value} claws are now hidden.`)
+      sweetAlert(`No, the secret cat isn't ${value} claws!`, `All cats ${value} claws are now gone.`)
     }
   }
 
@@ -457,3 +457,4 @@ restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', playAgain)
+// Should find a way to use .stopPropagation when closing a swal alert since it select item behind at the same time

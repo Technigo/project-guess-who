@@ -219,6 +219,7 @@ let timerInterval
 // Function for auto closing alerts
 const sweetAlert = (newTitle, newHTML) => {
   Swal.fire({
+    position: 'top',
     title: newTitle,
     color: '#356879',
     html: newHTML,
@@ -271,6 +272,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
+  countAttempts = 0
   countAttemptsDisplay.innerText = 0
   countRoundsDisplay.innerText = countRounds
   countWinsDisplay.innerText = countWins
@@ -425,6 +427,7 @@ start()
 
 // Alert asking for the name appearing when the page load
 Swal.fire({
+  position: 'top',
   imageUrl: './assets/cat-logo-small.svg',
   color: '#356879',
   title: `What's your name?`,
@@ -444,6 +447,7 @@ Swal.fire({
   allowOutsideClick: () => shakingAlert()
 }).then((result) => {
   Swal.fire({
+    position: 'top',
     icon: "success",
     iconColor: '#356879',
     title: `Welcome ${result.value.playerName}!<br/>Have fun playing Guess Paw!`.trim(),

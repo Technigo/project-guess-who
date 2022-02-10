@@ -325,14 +325,14 @@ const checkMyGuess = (characterName) => {
   if (characterName === winningCharacter.name) {
     gameOverWrapper.style.display = "flex"
     gameOverText.innerText = `
-    Yes, ${characterName} was right! You win!
+    Yes, ${characterName} was right! Congratulations!
   `
   }
   else {
     gameOverWrapper.style.display = "flex";
     board.style.display = "none";
     gameOverText.innerText = `
-    Sorry, ${characterName} was wrong. ${winningCharacter.name} was the correct answer. Wa wa.
+    Sorry, it wasn't ${characterName}. ${winningCharacter.name} is the correct answer. Better luck next time!
   `;
   }
 }

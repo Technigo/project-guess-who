@@ -1,22 +1,35 @@
+
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%);
+  --secondary:linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%);
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Manrope', sans-serif;
+  background-image: linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%);
+  color: white;
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 35px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
   color: white;
+  margin-top: 3rem;
+}
+
+h2{
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 0;
+  font-style: italic;
+
 }
 
 .question-section {
@@ -26,8 +39,8 @@ h1 {
   display: flex;
   flex-direction: column;
   padding: 5vw;
-  align-items: flex-start;
   box-sizing: border-box;
+  color: white;
 }
 
 select {
@@ -35,13 +48,10 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: white;
   width: 100%;
   margin: 24px 0;
-}
-
-.guess-who-icon {
-  width: 126px;
+  background-color: pink;
 }
 
 .board-wrapper {
@@ -64,8 +74,6 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
   margin: 3px;
   display: flex;
   flex-direction: column;
@@ -113,6 +121,11 @@ select {
 }
 
 /****** BUTTONS ******/
+buttons{
+  display: flex;
+  flex-direction: column;
+ }
+
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
@@ -121,6 +134,7 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 .small {
@@ -128,20 +142,28 @@ button {
 }
 
 .outlined-button {
-  background-color: transparent;
+  background-color: pink;
   color: var(--primary);
   align-self: flex-end;
 }
 
-.filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
-  color: white;
+background-color: peachpuff;
+color: var(--primary);
+border-color: var(--primary);
 }
 
+
+.filled-button {
+  background-color: pink;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: peachpuff;
+  border-color: var(--primary);
   color: var(--primary);
 }
 
@@ -157,6 +179,7 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
+  color: white;
 }
 
 .win-or-lose {

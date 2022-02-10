@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -235,6 +236,7 @@ const start = () => {
 
   //Set the secret person and invoke setSecret function
   setSecret ()
+  console.log(secret) //TEST to see that this works in the console-REMOVE LATER
 
   // show the board on the screen -> invoke genererateBoard function
   generateBoard ()
@@ -246,17 +248,21 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
+
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+
+  const value = questions.options[questions.selectedIndex].value
+  console.log(value) // TEST to see it takes the value from the category - REMOVE later
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  selectQuestion()
   const { category, value } = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
@@ -332,3 +338,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+filterButton.addEventListener('click', checkQuestion)

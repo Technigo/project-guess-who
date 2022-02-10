@@ -270,6 +270,7 @@ const CHARACTERS = [
     img: 'images/ghost.png width="135px"',
     hair: 'white hair',
     eyes: 'red eyes',
+    accessories: 'none',
     house: ['House Stark', 'House Snow'],
     species: 'direwolf',
     home: ['The Wall', 'Winterfell']
@@ -279,33 +280,40 @@ const CHARACTERS = [
     img: 'images/summer.jpg width="135px"',
     hair: 'golden hair',
     eyes: 'hidden eyes',
+    accessories: 'none',
     house: 'House Stark',
     species: 'direwolf',
-    home: 'Winterfell'
+    home: 'Winterfell',
   },
   {
     name: 'Drogon',
     img: 'images/drogon.png width="135px"',
     hair: 'black hair',
     eyes: 'hidden eyes',
+    accessories: 'none',
     house: 'House Targaryen',
-    species: 'dragon'
+    species: 'dragon',
+    home: 'unknown',
   },
   {
     name: 'Rhaegal',
     img: 'images/rhaegal.png width="135px"',
     hair: 'green hair',
     eyes: 'hidden eyes',
+    accessories: 'none',
     house: 'House Targaryen',
-    species: 'dragon'
+    species: 'dragon',
+    home: 'unknown',
   },
   {
     name: 'Viserion',
     img: 'images/viserion.png width="140px"',
     hair: 'golden hair',
     eyes: 'hidden eyes',
+    accessories: 'none',
     house: 'House Targaryen',
-    species: 'dragon'
+    species: 'dragon',
+    home: 'unknown',
   }
 ]
 
@@ -369,7 +377,28 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'Hair') {
+  // let keep;
+  // if (category === 'Hair' && value === secret.hair.find(element => element === value)) {
+  //   keep = true;
+  // } else if (category === 'Eyes' && value === secret.eyes) {
+  //   keep = true
+  // } else if (category === 'House' && value === secret.house.find(element => element === value)) {
+  //   keep = true
+  // } else if (category === 'Home' && value === secret.home.find(element => element === value)) {
+  //   keep = true
+  // } else if (category === 'Species' && value === secret.species) {
+  //   keep = true
+  // } else if (category === 'Accessories' && value === secret.accessories.find(element => element === value)) {
+  //   keep = true
+  // } else {
+  //   keep = false
+  // }
+  // filterCharacters(keep);
+
+
+
+
+  if (category === 'hair') {
     if (value === secret.hair || secret.hair.includes(value)) {
       let keep = true
       filterCharacters(keep)
@@ -378,7 +407,7 @@ const checkQuestion = () => {
       filterCharacters()
     }
 
-  } else if (category === 'Eyes') {
+  } else if (category === 'eyes') {
     if (value === secret.eyes) {
       let keep = true
       filterCharacters(keep)
@@ -387,7 +416,7 @@ const checkQuestion = () => {
       filterCharacters()
     }
 
-  } else if (category === 'House') {
+  } else if (category === 'house') {
     if (value === secret.house || secret.house.includes(value)) {
       let keep = true
       filterCharacters(keep)
@@ -395,7 +424,7 @@ const checkQuestion = () => {
       keep = false
       filterCharacters()
     }
-  } else if (category === 'Home') {
+  } else if (category === 'home') {
     if (value === secret.home || secret.home.includes(value)) {
       let keep = true
       filterCharacters(keep)
@@ -403,7 +432,7 @@ const checkQuestion = () => {
       keep = false
       filterCharacters()
     }
-  } else if (category === 'Species') {
+  } else if (category === 'species') {
     if (value === secret.species) {
       let keep = true
       filterCharacters(keep)
@@ -411,7 +440,7 @@ const checkQuestion = () => {
       keep = false
       filterCharacters()
     }
-  } else if (category === 'Accessories') {
+  } else if (category === 'accessories') {
     if (value === secret.accessories || secret.accessories.includes(value)) {
       let keep = true
       filterCharacters(keep)
@@ -427,19 +456,30 @@ const filterCharacters = (keep) => {
   
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
-  if (category === 'Hair') {
+  // if (keep) {
+  //   charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+  //   alert(
+  //     `Yes, the person wears ${value}! Keep all people that wear ${value}`
+  //   )
+  // } else {
+  //   charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+  //   alert(
+  //     `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
+  //   )
+  // }
+  if (category === 'hair') {
     if (keep) {
       alert(
         `Yes, the character has ${value}! Keep all that has ${value}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person.hair === value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
         `No, the character doesn't has ${value}. Remove all that has ${value}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person.hair !== value);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) 
     }
-  } else if (category === 'Eyes') {
+  } else if (category === 'eyes') {
     if (keep) {
       alert(
         `Yes, the secret character has ${value}! Keep all that has ${value}`
@@ -451,34 +491,38 @@ const filterCharacters = (keep) => {
       )
       charactersInPlay = charactersInPlay.filter((person) => person.eyes !== value);
     }
-  } else if (category === 'Accessories') {
-    if (keep) {
+  } else if (category === 'accessories') {
+    if (keep === true) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
         `Yes, the secret character has ${value}! Keep all with ${value}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person.accessories.includes(value))
     } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) 
       alert(
         `No, the secret character does not have ${value}. Remove all with ${value}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person.accessories !== value);
+
+
  
     }
-  } else if (category === 'House') {
+  } else if (category === 'house') {
     if (keep) {
       alert(
         `Yes the secret character is in ${value}! Keep all that is in ${value}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person.house === value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+
 
     } else {
       alert(
         `No, the secret character is in ${value}. Remove all that is in ${value}.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person.house !== value);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) 
+
 
     }
-  } else if (category === 'Species') {
+  } else if (category === 'species') {
     if (keep) {
       alert(
         `Yes, the secret character is a ${value}! Keep all ${value}s `
@@ -497,13 +541,14 @@ const filterCharacters = (keep) => {
       alert(
         `Yes the secret characters home is ${value}! Keep all that has ${value} as a home`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person.home === value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+
 
     } else {
       alert(
         `No, the secret characters home is not ${value}. Remove all that has ${value} as a home`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person.home !== value);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) 
 
     }
   }

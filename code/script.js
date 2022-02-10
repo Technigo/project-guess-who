@@ -28,7 +28,7 @@ let counter = 0
 let personToCheck
 let personToConfirm
 
-// Array with all the characters, as objects
+// Array with all the villagers as objects
 const CHARACTERS = [
   {
     name: "Octavian",
@@ -257,7 +257,7 @@ const CHARACTERS = [
   }
 ]
 
-// Draw the game board
+// Function to draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -274,57 +274,35 @@ const generateBoard = () => {
   })
 }
 
-// Custom Alert Correct
-const alertCorrect = (message) => {
-  correct.style.display = "grid";
-  correctText.innerText = message;
-  correctButton.addEventListener('click', () => {
-    correct.style.display = "none";
-  })
-}
-
-// Custom Alert Incorrect
-const alertIncorrect = (message) => {
-  incorrect.style.display = "grid";
-  incorrectText.innerText = message;
-  incorrectButton.addEventListener('click', () => {
-    incorrect.style.display = "none";
-  })
-}
-
-// Custom Confirm Choice
-const customConfirm = () => {
-  areYouSure.style.display = "grid";
-  confirmText.innerText = `Are you sure you want to guess ${personToConfirm}?`;
-}
-
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Function to randomly select the secret character for the player to guess
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
+// Function to start and restart the game
 const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard();
   setSecret();
+  winOrLose.style.display = "none";
+  counter = 0;
+  counterText.innerText = counter;
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
+  // This variable stores the category of the question
   const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
+  // This variable stores the value within that category
   const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
-    category, // category: category
-    value // value: value
+    category, // shorthand for category: category
+    value // shorthand for value: value
   }
 }
 
-// Check if answer is correct, then pass it to filterCharacters
+// Function to check if answer is correct, then pass it to filterCharacters
 const checkQuestion = () => {
   const { category, value } = currentQuestion
   if (category === 'animal') {
@@ -362,7 +340,7 @@ const checkQuestion = () => {
   }
 }
 
-// It'll filter the characters array and redraw the game board.
+// Function to filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   if (category === 'animal') {
@@ -406,7 +384,6 @@ const filterCharacters = (keep) => {
       )
     }
   }
-
   if (keep === true) {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] === value)
     generateBoard();
@@ -414,6 +391,30 @@ const filterCharacters = (keep) => {
     charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] !== value)
     generateBoard();
   }
+}
+
+// Custom Alert Correct Guess
+const alertCorrect = (message) => {
+  correct.style.display = "grid";
+  correctText.innerText = message;
+  correctButton.addEventListener('click', () => {
+    correct.style.display = "none";
+  })
+}
+
+// Custom Alert Incorrect Guess
+const alertIncorrect = (message) => {
+  incorrect.style.display = "grid";
+  incorrectText.innerText = message;
+  incorrectButton.addEventListener('click', () => {
+    incorrect.style.display = "none";
+  })
+}
+
+// Custom Confirm Choice When Guessing
+const customConfirm = () => {
+  areYouSure.style.display = "grid";
+  confirmText.innerText = `Are you sure you want to guess ${personToConfirm}?`;
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -443,6 +444,13 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
+
+// Restart button 
+restartButton.addEventListener('click', () => {
+  start();
+})
+
+// Find out button from drop down
 findOut.addEventListener('click', () => {
   selectQuestion();
   checkQuestion();
@@ -450,27 +458,19 @@ findOut.addEventListener('click', () => {
   counterText.innerText = counter;
 })
 
+// Cancel button when guessing on a villager
 cancelButton.addEventListener('click', () => {
   areYouSure.style.display = "none";
   personToConfirm = "";
 })
 
+// Confirm button when guessing on a villager, sends their guess to checkMyGuess function
 confirmButton.addEventListener('click', () => {
   areYouSure.style.display = "none";
   checkMyGuess(personToConfirm);
 })
 
+// Play again button after game ends
 playAgain.addEventListener('click', () => {
   start();
-  winOrLose.style.display = "none";
-  counter = 0;
-  counterText.innerText = counter;
 })
-
-restartButton.addEventListener('click', () => {
-  start();
-  winOrLose.style.display = "none";
-  counter = 0;
-  counterText.innerText = counter;
-})
-

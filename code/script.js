@@ -11,7 +11,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['bright smile']
   },
   {
     name: 'Jack',
@@ -27,7 +27,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoking habit']
   },
   {
     name: 'Jai',
@@ -35,7 +35,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['bright smile']
   },
   {
     name: 'Jake',
@@ -43,7 +43,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['bright smile']
   },
   {
     name: 'James',
@@ -58,7 +58,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewellery'],
     other: []
   },
   {
@@ -74,8 +74,8 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['glasses', 'jewellery'],
+    other: ['bright smile']
   },
 
   {
@@ -84,7 +84,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['smoking habit']
   },
   {
     name: 'Jean',
@@ -92,7 +92,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoking habit', 'bright smile']
   },
   {
     name: 'Jeane',
@@ -108,7 +108,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoking habit']
   },
   {
     name: 'Jenni',
@@ -140,14 +140,14 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: ['bright smile']
   },
   {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses','jewellery'],
     other: []
   },
   {
@@ -156,14 +156,14 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['bright smile']
   },
   {
     name: 'Jordan',
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'jewellery'],
     other: []
   },
   {
@@ -171,8 +171,8 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
-    other: []
+    accessories: ['jewellery'],
+    other: ['bright smile']
   },
   {
     name: 'Josh',
@@ -180,7 +180,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['bright smile']
   },
   {
     name: 'Jude',
@@ -206,6 +206,7 @@ let secret
 // sparar i currentQuestion. Alternativt kan man sätta en förvald option tex "Välj kategori" och disablea "FIND OUT" knappen
 let currentQuestion = { guessCategory: "hair", value: "brown" }
 let charactersInPlay
+let guesses = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -237,7 +238,11 @@ const start = () => {
   winOrLose.style.display = 'none'
   generateBoard()
   setSecret()
-  
+  guesses = 0;
+  guessCounter.innerHTML =`
+    <p>Number of guesses: ${guesses}/5</p>
+    `
+  filter.disabled = false
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -256,95 +261,103 @@ const selectQuestion = () => {
   //console.log(currentQuestion)
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function should be invoked when you click on 'Find Out' button. This will also invoke the filterCharacters(). 
 const checkQuestion = () => {
   const { guessCategory, value } = currentQuestion
-  
-  //console.log(currentQuestion)
-  //console.log(category)
-  //console.log(value)
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (guessCategory === 'hair' || guessCategory === 'eyes') {
-    keep = value === secret[guessCategory]    
+    userGuess = value === secret[guessCategory]    
     //The user's guess (value) is compared with the secret person (secret). 
     //The [guessCategory] is the variable (see row 245) which saves the category the user chose its value from. 
     //If choosing category hair, secret[guessCategory] will then look into the same category for the secret person and extract the values from there.   
   
-    //alternativ 1: lösning keep = value === secret[guessCategory]
 
   } else if (guessCategory === 'accessories' || guessCategory === 'other') {
-    keep = secret[guessCategory].includes(value)
-    //alternativ 2: lösning med funktionen include()
+    userGuess = secret[guessCategory].includes(value)
   }
-filterCharacters(keep)
+  filterCharacters(userGuess)
+  guesses += 1;
+  //guesses = guesses + 1
+
+  if (guesses === 5){
+    alert('Your are out of guesses. Please make your final choice.')
+    filter.disabled = true
+  }
+  
+  guessCounter.innerHTML =`
+    <p>Number of guesses: ${guesses}/5</p>
+    `
 
 }
 
-// It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
+// It'll filter the characters array and redraw the game board.  
+const filterCharacters = (userGuess) => {
   const { guessCategory, value } = currentQuestion
   // Show the correct alert message for different categories
   if (guessCategory === 'accessories') {
 
-      if (keep === true) {
-        alert(`Correctamundo! The person wears ${value}! Keep all people that wears ${value}`)
+      if (userGuess === true) {
+        alert(`Correctamundo! The person wears ${value}! Keep all people that wears ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[guessCategory].includes(value))
 
       } else {
-        alert(`Not really, the person doesn't wear ${value}! Remove all people that wears ${value}`)
+        alert(`Computer says no, the person doesn't wear ${value}! Remove all people that wears ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => !person[guessCategory].includes(value))
       }
 
   } else if (guessCategory === 'other') {
 
-      if (keep === true) {
-        alert(`Yes, the person is a ${value}! Keep all people that is a ${value}.`)
+      if (userGuess === true) {
+        alert(`Way to go! Yes, the person has a ${value}! Keep all people that has a ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[guessCategory].includes(value))
 
       } else {
-        alert(`No, try again. The person isn't a ${value}! Remove all people that isn't a ${value}.`)
+        alert(`Nice guess but try again. The person hasn't a ${value}! Remove all people that has a ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => !person[guessCategory].includes(value))
 
       }  
 
   } else if (guessCategory === 'eyes') {
       
-      if (keep === true) {
-        alert(`Yes, the person has gorgeous ${value} eyes! Keep all people with ${value} eyes`)
+      if (userGuess === true) {
+        alert(`Well, look at you! Yes, the person has gorgeous ${value} eyes! Keep all people with ${value} eyes.`)
         charactersInPlay = charactersInPlay.filter((person) => person[guessCategory] === value)
 
       } else {
-        alert(`No, you guessed wrong. The person doesn't have ${value} eyes! Remove all people that doesn't spark ${value} eyes`)
+        alert(`No, you guessed wrong. The person doesn't have ${value} eyes! Remove all people with ${value} eyes.`)
         charactersInPlay = charactersInPlay.filter((person) => person[guessCategory] !== value)
       }
 
   } else if (guessCategory === 'hair') {
-     if (keep === true) {
-        alert(`You're right! The person is blessed with shiny ${value} hair! Keep all people that have ${value} hair`)
+     if (userGuess === true) {
+        alert(`You're right! The person is blessed with shiny ${value} hair! Keep all people that rock ${value} hair.`)
         charactersInPlay = charactersInPlay.filter((person) => person[guessCategory] === value)
 
       } else {
-       alert(`Incorrect, the person doesn't have ${value} hair! Remove all people that have ${value} hair.`)
+       alert(`Negative soldier, the person doesn't have ${value} hair! Remove all people that have ${value} hair.`)
        charactersInPlay = charactersInPlay.filter((person) => person[guessCategory] !== value)
 
        }
     }
     generateBoard()
+    
   }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// The guess() is invoked when clicking on guess button on the characters card (row 220). The parameter "personToConfirm" gets its value from the same row. 
+//When clicking guess, the player first have to confirm that they want to make a guess. 
 const guess = (personToConfirm) => {
 
-  //I tried ${personToConfirm} but it did not show the value
-
   if (confirm(`Is ${personToConfirm} your final guess?`)) {
-    personToCheck = personToConfirm
+    if (confirm(`Are you really sure with your answer?`)) {
+        personToCheck = personToConfirm
+        checkMyGuess(personToCheck)
+    }
   }
 
-  checkMyGuess(personToCheck)
+
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -355,9 +368,15 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alert("You win!")
     winOrLose.style.display = 'flex'
+    winOrLoseText.innerHTML =`
+    <p>Way to go, champ!</p>
+    `
   } else {
     alert(`Oh no! The secret person was ${secret.name}.`)
     winOrLose.style.display = 'flex'
+    winOrLoseText.innerHTML =`
+    <p>Sorry, you snooze, you lose!</p>
+    `
   }
   
   // 1. Check if the personToCheck is the same as the secret person's name

@@ -8,6 +8,7 @@ const gameOverText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
 
 const previousQuestion = document.getElementById('previous-question');
+const questionCountDisplay = document.getElementById('question-count');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -238,11 +239,11 @@ const setWinningCharacter = () => {
 const start = () => {
   gameOverWrapper.style.display = "none";
   board.style.display = "flex";
-  // Set charactersInPlay array to be all the characters to start with
+  questionCounter = 0
+  questionCountDisplay.innerText = `Questions asked: ${questionCounter}
+    `;
   charactersInPlay = CHARACTERS
-  // Generate the board of characters
   generateBoard();
-  // Assign winning character with setWinningCharacter
   setWinningCharacter();
 }
 
@@ -271,14 +272,18 @@ const checkQuestion = () => {
   alertMessage(status);   
   filterCharacters(status);
   
+  // display number of questions
+  questionCountDisplay.innerText = `Questions asked: ${questionCounter}
+    `;
+
   // if question counter = 1, display div with previous questions
   if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
     previousQuestion.innerText += `
-      Previously asked: ${currentQuestion.value} ${currentQuestion.category}  
+      ${currentQuestion.value} ${currentQuestion.category}  
     ` 
   } else {
     previousQuestion.innerText += `
-      Previously asked: ${currentQuestion.value}  
+      ${currentQuestion.value}  
     `
   }
 }

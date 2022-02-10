@@ -27,7 +27,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['hat', 'parrot'],
     other: []
   },
   {
@@ -214,7 +214,6 @@ let secret
 let currentQuestion
 let charactersInPlay
 let numberOfGuesses
-let elapsedTime
 const soundEffect = new Audio('./assets/zapsplat_multimedia_button_click_fast_wooden_organic_003_78837.mp3')
 
 // Draw the game board
@@ -240,31 +239,42 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// const startTimer = () => {
-//   let startTime = Date.now()
-//   elapsedTime = 0
-//   setInterval(() => {
-//     elapsedTime = Math.floor((Date.now() - startTime) / 1000)
-//     gameTimer.innerHTML = ` ${elapsedTime} s`
-//   }, 1000)
-// }
+// Also global variables
+let startTime
+let elapsedTime
+
+const startTimer = () => {
+  startTime = Date.now()
+  elapsedTime = 0
+  setInterval(() => {
+    elapsedTime = Math.floor((Date.now() - startTime) / 1000)
+    gameTimer.innerHTML = ` ${elapsedTime} s`
+  }, 1000)
+}
 
 // This function starts and restarts the game
 const start = () => {
-  startWindow.style.display = 'none'
-  gameWindow.style.display = 'flex'
+  startWindow.style.display = 'none' // Hide the start window
+  gameWindow.style.display = 'flex' // Show the game window
   
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+
   // Render the board on the screen
   generateBoard()
+
   // Randomly select a secret person
   setSecret()
-  // startTimer() - FIX THIS
+
+  //Resets the timer and number of guesses when the game starts or restarts
+  elapsedTime = 0 
+  startTimer()
   numberOfGuesses = 0
+  totalGuesses.innerHTML = ``
+  
   // Console.log the secret person to see that it works correctly
   console.log(`The secret person is ${secret.name}`)
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -366,9 +376,6 @@ const filterCharacters = (keep) => {
     }
   }
 
-  // CHECKS THE LENGTH OF THE CHARACTERSINPLAY - TO BE REMOVED
-  console.log(`Characters in play: ${charactersInPlay.length}`)
-
   // Generate the updated board with the remaining characters
   generateBoard();
 
@@ -441,7 +448,7 @@ questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', () => {
   soundEffect.currentTime = 0
   soundEffect.play()
-  checkQuestion
+  checkQuestion()
 })
 playAgainButton.addEventListener('click', () => {
   winOrLoseSection.style.display = 'none'

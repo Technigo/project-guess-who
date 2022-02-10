@@ -1,6 +1,6 @@
 # Guess who
 Guess who game!
-You play the game by changing the select menu and finding out if the 'secret person' has a certain characteristic. If they do the people that don't have that characteristic are filtered out. If the secret person doesn't have the thing you asked about, everyone that do are filtered out, eventually leading to only one person left. If you're feeling bold you can, however, take a guess at anytime during the game. But remember, you only get one guess!
+You play the game by changing the select menu and finding out if the 'secret person' has a certain characteristic. If they do, the people that don't have that characteristic are filtered out. If the secret person doesn't have the thing you asked about, everyone that do are filtered out, eventually leading to only one person left. If you're feeling bold you can, however, take a guess at anytime during the game. But remember, you only get one guess!
 
 ## The problem - setting a timer
 

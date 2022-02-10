@@ -284,28 +284,38 @@ const checkQuestion = () => {
 }
 
 // It'll filter the characters array and redraw the game board.
+// Show the correct alert message for different categories
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
     } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
+      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
     }
-  } else if (category === 'other') {
-    // Similar to the one above
-  } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+  } 
+  else if (category === 'other') {
+    if (keep){
+      alert(`Yes, the person have ${value}! Keep all people that has ${value}`)
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert (` No, the person is not a ${value}! Remove all people who is a ${value}`)
+    }
+  } 
+  else if (category === 'eyes') {
+    if (keep) {
+      alert(`Yes, the person has ${value} eyes! Keep all people with ${value} eyes`)
+    } else {
+      alert(`No, the person doesnt have ${value} eyes! Remove all people with ${value} eyes`)
     }
   }
+  else if (category === 'hair') {
+    if (keep){
+      alert(`Yes, the person has ${value} hair! Keep all people with ${value} hair`)
+    } else {
+      alert (`No, the person doesnt have ${value} hair! Remove all people with ${value} hair`)
+    }
+   }
+
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
@@ -316,8 +326,8 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
     for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or
+      //charactersInPlay = charactersInPlay.filter((person) => person[accessories].includes(value))
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
 

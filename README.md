@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week’s project is to create a your own digital version of the classic board game Guess Who.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I followed the steps closely and tried to keep the code as short and clean as possible. I have tried to understand the steps, which I still struggle with. 
+
+I had to redo the fork-clone process due to trouble with the terminal and changes that I couldn't merge between browser and local changes. I made a new clone and pasted in my code, therefore I have only one commit for the actual project steps.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://gggueswho.netlify.app/

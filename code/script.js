@@ -78,7 +78,7 @@ const CHARACTERS = [
   {
     name: 'Luna',
     img: 'images/luna.jpg',
-    fur: 'beige',
+    fur: 'white',
     skin: 'pink',
     claws: 'without',
     special: ['fuzzy']
@@ -94,10 +94,10 @@ const CHARACTERS = [
   {
     name: 'Mollie',
     img: 'images/mollie.jpg',
-    fur: ['brown'],
+    fur: ['brown', 'beige'],
     skin: 'beige',
     claws: 'with',
-    special: []
+    special: ['bicoloured']
   },
   {
     name: 'Morris',
@@ -198,7 +198,7 @@ const CHARACTERS = [
   {
     name: 'Zelda',
     img: 'images/zelda.jpg',
-    fur: ['orange'],
+    fur: ['orange', 'yellow'],
     skin: 'brown',
     claws: 'without',
     special: []

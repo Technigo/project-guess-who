@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const findOutButton = document.getElementById('filter') // ???
+const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
 // Variables for counters
 let countAttemptsDisplay = document.getElementById('countAttemptsDisplay')
@@ -294,7 +294,6 @@ const selectQuestion = () => {
 // Function to be invoked when clicking on 'Find Out' button
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
   // Conditionals to compare the currentQuestion details with the secret cat details
   if (category === 'skin' || category === 'claws') {
     if (value === secret.skin || value === secret.claws) {
@@ -316,52 +315,56 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   // for attempts counter
   countAttempts++
-  countAttemptsDisplay.innerText = countAttempts
-  const { category, value } = currentQuestion
-  // Conditionals to show the right alert for different categories
-  if (category === 'fur') {
-    if (keep) {
-      sweetAlert(`Yes, the secret cat has a ${value} fur!`, `All cats without ${value} fur are now gone.`)
-    } else {
-      sweetAlert(`No, the secret cat doesn't have a ${value} fur!`, `All cats with ${value} fur are now gone.`)
+  if (countAttempts > 4) {
+    sweetAlert(`Hey, you made enough attempts!`, `It's now time to guess.`)
+  } else {
+    // for attempts counter
+    countAttemptsDisplay.innerText = countAttempts
+    const { category, value } = currentQuestion
+    // Conditionals to show the right alert for different categories
+    if (category === 'fur') {
+      if (keep) {
+        sweetAlert(`Yes, the secret cat has a ${value} fur!`, `All cats without ${value} fur are now gone.`)
+      } else {
+        sweetAlert(`No, the secret cat doesn't have a ${value} fur!`, `All cats with ${value} fur are now gone.`)
+      }
+    } else if (category === 'special') {
+      if (keep) {
+        sweetAlert(`Yes, the secret cat has a special feature: ${value}!`, `All cats without the feature "${value}" are now gone.`)
+      } else {
+        sweetAlert(`No, the secret cat doesn't have the special feature: ${value}!`, `All cats with the feature "${value}" are now gone.`)
+      }
+    } else if (category === 'skin') {
+      if (keep) {
+        sweetAlert(`Yes, the secret cat has a ${value} skin!`, `All cats without ${value} skin are now gone.`)
+      } else {
+        sweetAlert(`No, the secret cat doesn't have a ${value} skin!`, `All cats with ${value} skin are now gone.`)
+      }
+    } else if (category === 'claws') {
+      if (keep) {
+        sweetAlert(`Yes, the secret cat is ${value} claws!`, `All cats that aren't ${value} claws are now gone.`)
+      } else {
+        sweetAlert(`No, the secret cat isn't ${value} claws!`, `All cats ${value} claws are now gone.`)
+      }
     }
-  } else if (category === 'special') {
-    if (keep) {
-      sweetAlert(`Yes, the secret cat has a special feature: ${value}!`, `All cats without the feature "${value}" are now gone.`)
-    } else {
-      sweetAlert(`No, the secret cat doesn't have the special feature: ${value}!`, `All cats with the feature "${value}" are now gone.`)
-    }
-  } else if (category === 'skin') {
-    if (keep) {
-      sweetAlert(`Yes, the secret cat has a ${value} skin!`, `All cats without ${value} skin are now gone.`)
-    } else {
-      sweetAlert(`No, the secret cat doesn't have a ${value} skin!`, `All cats with ${value} skin are now gone.`)
-    }
-  } else if (category === 'claws') {
-    if (keep) {
-      sweetAlert(`Yes, the secret cat is ${value} claws!`, `All cats that aren't ${value} claws are now gone.`)
-    } else {
-      sweetAlert(`No, the secret cat isn't ${value} claws!`, `All cats ${value} claws are now gone.`)
-    }
-  }
 
-  // Conditionals for filtering by category to keep or remove based on the keep variable
-  if (category === 'skin' || category === 'claws') {
-    if (value === secret.skin || value === secret.claws) {
-      charactersInPlay = charactersInPlay.filter((cat) => cat[category] === value)
-    } else {
-      charactersInPlay = charactersInPlay.filter((cat) => cat[category] !== value)
+    // Conditionals for filtering by category to keep or remove based on the keep variable
+    if (category === 'skin' || category === 'claws') {
+      if (value === secret.skin || value === secret.claws) {
+        charactersInPlay = charactersInPlay.filter((cat) => cat[category] === value)
+      } else {
+        charactersInPlay = charactersInPlay.filter((cat) => cat[category] !== value)
+      }
+    } else if (category === 'fur' || category === 'special') {
+      if (secret.fur.includes(value) || secret.special.includes(value)) {
+        charactersInPlay = charactersInPlay.filter((cat) => cat[category].includes(value))
+      } else {
+        charactersInPlay = charactersInPlay.filter((cat) => !cat[category].includes(value))
+      }
     }
-  } else if (category === 'fur' || category === 'special') {
-    if (secret.fur.includes(value) || secret.special.includes(value)) {
-      charactersInPlay = charactersInPlay.filter((cat) => cat[category].includes(value))
-    } else {
-      charactersInPlay = charactersInPlay.filter((cat) => !cat[category].includes(value))
-    }
+    generateBoard()
   }
-  generateBoard()
 }
-
 // Function for the player to confirm after clicking guess
 const guess = (catToConfirm) => {
   // Customised alerts
@@ -450,7 +453,6 @@ Swal.fire({
   })
   document.getElementById('playerNameInput').innerText = `${result.value.playerName}`
 })
-
 
 // Event listeners
 restartButton.addEventListener('click', start)

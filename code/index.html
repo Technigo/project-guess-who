@@ -5,7 +5,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guess Paw</title>
-  <!-- favicon needs to be changed/fixed -->
   <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -61,8 +60,7 @@
 
     <button id="filter" class="filled-button">FIND OUT</button>
 
-    <h2 class="attempts-text">Attempts: <span id="countAttemptsDisplay"></span></h2>
-
+    <h2 class="attempts-text">Attempts: <span id="countAttemptsDisplay"></span>/4</h2>
   </aside>
 
   <section class="board-wrapper">
@@ -74,13 +72,12 @@
       <img class="guess-paw-icon" src="./assets/cat-logo-small.svg" alt="Guess Paw" />
       <h1 id="winOrLoseText"></h1>
       <h2><span id="playerNameInput"></span>, you won <span id="countWinsDisplay"></span>/<span id="countRoundsDisplay"></span> rounds.</h2>
-      
-
       <span id="resultAudio"></span>
       <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       <a href="https://www.freepik.com/">Cat paws created by rawpixel.com, pch.vector and macrovector</a>
     </div>
   </section>
+  
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="script.js"></script>
 </body>

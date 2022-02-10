@@ -349,7 +349,9 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.value;
+  // const value = questions.value;
+  const value = questions.options[questions.selectedIndex].value
+
 
   currentQuestion = {
     category: category,
@@ -368,7 +370,7 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'Hair') {
-    if (value === secret.hair) {
+    if (value === secret.hair || secret.hair.includes(value)) {
       let keep = true
       filterCharacters(keep)
     } else {
@@ -386,7 +388,7 @@ const checkQuestion = () => {
     }
 
   } else if (category === 'House') {
-    if (value === secret.house) {
+    if (value === secret.house || secret.house.includes(value)) {
       let keep = true
       filterCharacters(keep)
     } else {
@@ -394,7 +396,7 @@ const checkQuestion = () => {
       filterCharacters()
     }
   } else if (category === 'Home') {
-    if (value === secret.home) {
+    if (value === secret.home || secret.home.includes(value)) {
       let keep = true
       filterCharacters(keep)
     } else {
@@ -410,7 +412,7 @@ const checkQuestion = () => {
       filterCharacters()
     }
   } else if (category === 'Accessories') {
-    if (value === secret.accessories) {
+    if (value === secret.accessories || secret.accessories.includes(value)) {
       let keep = true
       filterCharacters(keep)
     } else {
@@ -430,60 +432,79 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the character has ${value}! Keep all that has ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.hair === value);
     } else {
       alert(
         `No, the character doesn't has ${value}. Remove all that has ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.hair !== value);
     }
   } else if (category === 'Eyes') {
     if (keep) {
       alert(
         `Yes, the secret character has ${value}! Keep all that has ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.eyes === value);
     } else {
       alert(
         `No, the secret character doesn't have ${value}. Remove all that has ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.eyes !== value);
     }
   } else if (category === 'Accessories') {
     if (keep) {
       alert(
         `Yes, the secret character has ${value}! Keep all with ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.accessories.includes(value))
     } else {
       alert(
         `No, the secret character does not have ${value}. Remove all with ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.accessories !== value);
+ 
     }
   } else if (category === 'House') {
     if (keep) {
       alert(
         `Yes the secret character is in ${value}! Keep all that is in ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.house === value);
+
     } else {
       alert(
         `No, the secret character is in ${value}. Remove all that is in ${value}.`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.house !== value);
+
     }
   } else if (category === 'Species') {
     if (keep) {
       alert(
         `Yes, the secret character is a ${value}! Keep all ${value}s `
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.species === value);
+
     } else {
       alert(
         `No, the secret character is not a ${value}. Remove all ${value}s.`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.species !== value);
+
     }
   } else {
     if (keep) {
       alert(
         `Yes the secret characters home is ${value}! Keep all that has ${value} as a home`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.home === value);
+
     } else {
       alert(
         `No, the secret characters home is not ${value}. Remove all that has ${value} as a home`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.home !== value);
+
     }
   }
 
@@ -500,15 +521,20 @@ const filterCharacters = (keep) => {
     //   or
     //   charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   if (keep === true) {
-    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] === value)
-    CHARACTERS.shift()
+    generateBoard(charactersInPlay)
+    // charactersInPlay.filter(person => person.indexOf(`${value}`) === 0)
+    // charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
   } else {
-    charactersInPlay = charactersInPlay.filter((person) => person[currentQuestion.category] !== value)
-    CHARACTERS.shift()
-  }
+    // charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    // console.log('Dont keep')
+    generateBoard(charactersInPlay)
 
-  // Invoke a function to redraw the board with the remaining people.
+    // charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    // charactersInPlay.filter(person => person.indexOf(`${value}`) !== 0)
+  }
 }
+  // Invoke a function to redraw the board with the remaining people.
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {

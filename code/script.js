@@ -3,6 +3,9 @@ const board = document.getElementById('board');
 const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findOutButton = document.getElementById('filter');
+const gameOverWrapper = document.getElementById('winOrLose');
+const gameOverText = document.getElementById('winOrLoseText');
+const playAgain = document.getElementById('playAgain');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -209,14 +212,14 @@ let charactersInPlay;
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  charactersInPlay.forEach((character) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <p>${character.name}</p>
+        <img src=${character.img} alt=${character.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Guess on ${character.name}?</span>
+          <button class="filled-button small" onclick="guess('${character.name}')">Guess</button>
         </div>
       </div>
     `
@@ -255,30 +258,6 @@ const selectQuestion = () => {
 }
 
 // Invoked when 'Find Out' button is clicked
-// const checkQuestionOld = () => {
-
-//   if (currentQuestion.category === 'hair' || currentQuestion.category === 'eyes'){
-//     if (currentQuestion.value === winningCharacter.hair || currentQuestion.value === winningCharacter.eyes) {
-//       alertMessage('true');
-//       filterCharacters('keep');
-//     } else {
-//       alertMessage('false');
-//       filterCharacters('remove');
-//     }
-//   } else if (currentQuestion.category === 'accessories' || currentQuestion.category === 'other') {
-//     if (winningCharacter.accessories.includes(currentQuestion.value)){
-//       alertMessage('true');
-//       filterCharacters('keep');
-
-//     } else {
-//       alertMessage('false');
-//       filterCharacters('remove');
-//     }
-//   }
-// }
-
-
-// Invoked when 'Find Out' button is clicked
 const checkQuestion = () => {
   // status will be boolean - true or false
   let status = winningCharacter[currentQuestion.category].includes(currentQuestion.value)
@@ -311,24 +290,29 @@ const filterCharacters = (keep) => {
   generateBoard()
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (character) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  let playerGuess = confirm(`Are you sure you want to guess that it's ${character}?`);
-  // If the player wants to guess, invoke the checkMyGuess function.
+const guess = (characterName) => {
+  let playerGuess = confirm(`Are you sure you want to guess that it's ${characterName}?`);
   if (playerGuess) {
-    checkMyGuess(character);
-  } //else nothing
+    checkMyGuess(characterName);
+  } 
+  //else nothing
 }
 
-// If you confirm, this function is invoked
-const checkMyGuess = (character) => {
-  console.log("now I'll check if you're right");
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+// If confirmed, check function is invoked
+const checkMyGuess = (characterName) => {
+  if (characterName === winningCharacter.name) {
+    gameOverWrapper.style.display = "flex"
+    gameOverText.innerText = `
+    Yes, ${characterName} was right! You win!
+  `
+  }
+  else {
+    gameOverWrapper.style.display = "flex";
+    board.style.display = "none";
+    gameOverText.innerText = `
+    Sorry, ${characterName} was wrong. ${winningCharacter.name} was the correct answer. Wa wa.
+  `;
+  }
 }
 
 // Invokes the start function when website is loaded
@@ -336,5 +320,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start);
+playAgain.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);

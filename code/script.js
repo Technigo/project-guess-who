@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const filterButton = document.getElementById('filter')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -269,11 +269,15 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
-    // Jennnie video : check if secret person.hair === value
+  if (value === secret.hair || value === secret.eyes)
+  filterCharacters()
+    // Jennnie video : check if secret person.hair === (currentQuestion)value
+    // ..... so the value now is from the question, i need to take value from the secret too? how does the comparison work?
+    // so I got the values from the list, i need to compare it to secret and if they are the same === as secret i need to keep them
 
   } else if (category === 'accessories' || category === 'other') {
-
+   if (secret.accessories.includes(value) || secret.other.includes(value) )
+  filterCharacters()
   }
 }
 
@@ -338,4 +342,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-filterButton.addEventListener('click', checkQuestion)
+findOutButton.addEventListener('click', checkQuestion)

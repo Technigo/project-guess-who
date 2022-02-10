@@ -6,6 +6,9 @@ const playAgain = document.getElementById('playAgain')
 const findOutButton = document.getElementById('filter')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const winOrLoseWrapper = document.getElementById("winOrLose")
+const counterTimerWrapper = document.getElementById("counterTimerWrapper")
+const guessCounterDiv = document.getElementById("guessCounter")
+const timerDiv = document.getElementById("timer")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -14,7 +17,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['sunglasses', 'hat'],
     other: []
   },
   {
@@ -22,7 +25,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['hat', "a bird"],
     other: []
   },
   {
@@ -38,7 +41,7 @@ const CHARACTERS = [
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: [],
+    accessories: ["a collared shirt"],
     other: []
   },
   {
@@ -46,7 +49,7 @@ const CHARACTERS = [
     img: 'images/jake.svg',
     hair: 'yellow',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', "a collared shirt"],
     other: []
   },
   {
@@ -54,7 +57,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: []
   },
   {
@@ -62,7 +65,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses', 'jewelry'],
+    accessories: ['sunglasses', 'jewelry', "a collared shirt"],
     other: []
   },
   {
@@ -87,7 +90,7 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: ['smoker']
   },
   {
@@ -159,7 +162,7 @@ const CHARACTERS = [
     img: 'images/jon.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', "a collared shirt"],
     other: []
   },
   {
@@ -167,7 +170,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat', 'jewelry'],
+    accessories: ['sunglasses', 'hat', 'jewelry', "a collared shirt"],
     other: []
   },
   {
@@ -183,7 +186,7 @@ const CHARACTERS = [
     img: 'images/josh.svg',
     hair: 'yellow',
     eyes: 'green',
-    accessories: [],
+    accessories: ["a collared shirt"],
     other: []
   },
   {
@@ -191,7 +194,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
+    accessories: ["a collared shirt"],
     other: []
   },
   {
@@ -208,6 +211,52 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let guessCounter = 0
+let seconds = 1
+let secondsString = ""
+let minutes = 0
+let minutesString = ""
+const winningSound = new Audio('audio/fanfare.flac');
+const losingSound = new Audio('audio/wahwahwaaaaah.flac');
+
+//set up fanfare winning sound 
+const soundEffect = (result) => {
+  if (result === "win") {
+    winningSound.play()
+  } else {
+    losingSound.play()
+  }
+}
+
+//Set up timer
+const timerStart = () => {
+  if (seconds < 10) {
+    secondsString = "0" + seconds
+  } else if (seconds > 59) {
+    seconds = 0;
+    secondsString = "00"
+    minutes++
+  } else {
+    secondsString = seconds
+  }
+
+  if (minutes < 10) {
+    minutesString = "0" + minutes
+  } else if (seconds > 59) {
+    minutes = 0;
+    minutes++
+  }
+  timerDiv.innerHTML = `Time elapsed: ${minutesString}:${secondsString}`;
+  // console.log(seconds)
+  seconds++;
+} 
+
+//Set up guessCounter
+const updateGuesses = () => {
+  guessCounter++
+  guessCounterDiv.innerHTML = `Guesses made: ${guessCounter}`;
+}
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -233,6 +282,12 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  //reset the timer and the guesses
+  seconds = 0;
+  minutes = 0;
+  guessCounter = 0;
+  guessCounterDiv.innerHTML = `Guesses made: ${guessCounter}`;
+
   // Here we're setting charactersInPlay array to be all the characters to start with
   winOrLoseWrapper.style.display = "none"
   board.style.display = "flex"
@@ -258,6 +313,7 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  updateGuesses()
   selectQuestion()
   const { category, value } = currentQuestion
   // console.log(secret[category])
@@ -289,11 +345,11 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wear ${value}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wear ${value}.`
       )
     }
   } else if (category === 'other') {
@@ -385,15 +441,20 @@ const checkMyGuess = (personToCheck) => {
 }
 
 const theResultsAreIn = (guessedPerson, result) => {
+  
   if (result === "win") {
-    winOrLoseText.innerHTML = `Yay!! ${guessedPerson} was correct, you're so clever!!`
+    soundEffect("win");
+    winOrLoseText.innerHTML = `Yay!! ${guessedPerson} was correct! You used ${guessCounter} guesses and it took you ${minutes} minutes and ${seconds} seconds!`
   } else {
-    winOrLoseText.innerHTML = `I'm sorry! ${guessedPerson} was not the right answer. The correct guess would have been ${secret.name}!!`
+    soundEffect("lose");
+    winOrLoseText.innerHTML = `I'm sorry! ${guessedPerson} was not the right answer. The correct person was ${secret.name}!!`
   }
 }
 
 // Invokes the start function when website is loaded
 start()
+setInterval(timerStart, 1000)
+
 
 // All the event listeners
 restartButton.addEventListener('click', start)

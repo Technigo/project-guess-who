@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
+const findoutButton = document.getElementById('filter')
 /*
 More doms to possibly add:
 question-section
@@ -314,16 +314,18 @@ const start = () => {
   // What else should happen when we start the game?
 
   window.onload = () => {
-    generateBoard()
+  generateBoard() 
   }
 
+  setSecret()
+  
 
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const value = questions.options[questions.selectedIndex].childNode.value
+  const value = questions.options[questions.selectedIndex].value
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -333,19 +335,29 @@ const selectQuestion = () => {
     category: category,
     value: value,
   }
+
+
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
+  
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    if (currentQuestion.value === secret[category]) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[category].includes(value)){
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
   }
 }
 
@@ -354,26 +366,31 @@ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
-    if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
-    } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
-    }
-  } else if (category === 'other') {
-    // Similar to the one above
-  } else if (category === 'eyes'){
-    if (keep) {
-      alert(`correct, person has ${value} eyes.`)
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-    } else {
-      alert(`no, person dont have ${value} eyes. Remove?`)
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-    }
+    if (keep) {alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
+    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+  } 
+      else {alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)}
+  }     
+  else if (category === 'other') {
+    if (keep) {alert(`Yes, smoker. Keep all smokers.`);
+    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
   }
+      else {alert(`No, filter out all smokers`)}
+  }  
+  else if (category === 'eyes'){
+    if (keep) {alert(`correct, person has ${value} eyes.`)
+    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+  } 
+      else {alert(`no, person dont have ${value} eyes. Remove?`)}
+  } 
+  else if (category === 'hair'){
+    if (keep) {alert(`correct, person has ${value} hair.`)
+    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+  } 
+      else {alert(`no, person dont have ${value} hair. Remove?`)}
+  }
+
+  //Tomorrow: figure out difference in filtering between strings and arrays. Code the "discard" filtering.
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
@@ -412,3 +429,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+findoutButton.addEventListener('click', checkQuestion)
+

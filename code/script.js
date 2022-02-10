@@ -6,7 +6,6 @@ const findOutButton = document.getElementById('filter');
 const gameOverWrapper = document.getElementById('winOrLose');
 const gameOverText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
-
 const previousQuestion = document.getElementById('previous-question');
 const questionCountDisplay = document.getElementById('question-count');
 
@@ -211,7 +210,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
-let maxQuestions = 2;
+let maxQuestions = 5;
 let questionCounter = 0;
 
 // Draw the game board
@@ -236,7 +235,7 @@ const setWinningCharacter = () => {
   winningCharacter = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
+// Start (and restart) the game
 const start = () => {
   gameOverWrapper.style.display = "none";
   board.style.display = "flex";
@@ -244,8 +243,8 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard();
   setWinningCharacter();
-  questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}
-    `;
+  questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}`;
+  previousQuestion.innerHTML = '';
 }
 
 // Set currentQuestion object selecting from dropdown
@@ -275,12 +274,12 @@ const checkQuestion = () => {
 
   // display question asked
   if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
-    previousQuestion.innerText += `
-      ${currentQuestion.value} ${currentQuestion.category}  
+    previousQuestion.innerHTML += `
+      <p>${currentQuestion.value} ${currentQuestion.category}</p>  
     `;
   } else {
-    previousQuestion.innerText += `
-      ${currentQuestion.value}  
+    previousQuestion.innerHTML += `
+      <p>${currentQuestion.value}</p>  
     `;
   }
 }

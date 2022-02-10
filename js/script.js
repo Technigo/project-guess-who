@@ -465,6 +465,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
+  askName()
   sound()
   numberOfGuesses = 0
   totalGuesses.innerText = 0
@@ -479,6 +480,7 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value of the question we've selected.
 
   const value = questions.value
+
   if (category === 'hair') {
     currentQuestion = {
       attribute: 'hairColor',
@@ -515,7 +517,7 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out'.
 const checkQuestion = () => {
   const keep = currentQuestion.value === secret[currentQuestion.attribute]
-  
+  console.log(keep)
   filterCharacters(keep)
  // Compare the currentQuestion with the secret person.
 // See if we should keep or remove people based on that
@@ -618,10 +620,10 @@ const guess = (suspect) => {
 const checkMyGuess = (suspect) => {
 
   if (suspect === secret.name) {
-    sound()
+    soundWin()
     winOrLoseText.innerHTML = `You are a genius!! It was ${suspect}.`
   } else {
-    sound()
+   soundLoose()
     winOrLoseText.innerHTML = `It is not ${suspect}. It was ${secret.name}.`
   }
   
@@ -639,23 +641,46 @@ const sound = ()=>{
   audio.play();
 }
 
+const soundWin = ()=>{
+  let audio = new Audio('./audio/win.wav');
+  audio.play();
+}
+
+const soundLoose = ()=>{
+  let audio = new Audio('./audio/loose.wav');
+ audio.play();
+}
+
+//reload game 
 playAgain.addEventListener('click', () => {
   location.reload()
 })
+
+
+//add user name
+const askName = () => {
+    let username = prompt("Please enter your name:");
+    if (username) {
+        document.getElementById("name").innerHTML = `Welcome ${username}`;
+    } else {
+        document.getElementById("name").innerHTML = `You are playing as Guest`;
+    }
+}
 
 // Sets the timer
 setInterval(() => {
 
   timePassed++
-  /*
-  if(timePassed > 59){
-    mins++
-    timePassed = timePassed - 59
-    //time.innerText = `00:${mins}:${timePassed}`
-  }else if(mins > 59){
-    hrs++
-  }*/
-  time.innerText = timePassed
+  let minutes = Math.floor(timePassed / 60)
+  let seconds = timePassed - (minutes * 60)
+  if (minutes < 10) {
+    minutes = `0${minutes}`
+  }
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+
+  time.innerText = `${minutes}:${seconds}`
 
 }, 1000)
 

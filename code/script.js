@@ -255,7 +255,7 @@ const selectQuestion = () => {
 }
 
 // Invoked when 'Find Out' button is clicked
-// const checkQuestion = () => {
+// const checkQuestionOld = () => {
 
 //   if (currentQuestion.category === 'hair' || currentQuestion.category === 'eyes'){
 //     if (currentQuestion.value === winningCharacter.hair || currentQuestion.value === winningCharacter.eyes) {
@@ -280,7 +280,7 @@ const selectQuestion = () => {
 
 // Invoked when 'Find Out' button is clicked
 const checkQuestion = () => {
-  // status will be true or false (boolean)
+  // status will be boolean - true or false
   let status = winningCharacter[currentQuestion.category].includes(currentQuestion.value)
   alertMessage(status);   
   filterCharacters(status);
@@ -312,15 +312,19 @@ const filterCharacters = (keep) => {
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
+const guess = (character) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
+  let playerGuess = confirm(`Are you sure you want to guess that it's ${character}?`);
   // If the player wants to guess, invoke the checkMyGuess function.
-  checkMyGuess(someArgument);
+  if (playerGuess) {
+    checkMyGuess(character);
+  } //else nothing
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
+const checkMyGuess = (character) => {
+  console.log("now I'll check if you're right");
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

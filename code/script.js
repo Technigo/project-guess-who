@@ -210,7 +210,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
-let maxQuestions = 5;
+let maxQuestions = 4;
 let questionCounter = 0;
 
 // Draw the game board
@@ -245,6 +245,8 @@ const start = () => {
   setWinningCharacter();
   questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}`;
   previousQuestion.innerHTML = '';
+  findOutButton.disabled = false;
+  questions.disabled = false;
 }
 
 // Set currentQuestion object selecting from dropdown
@@ -265,6 +267,7 @@ const checkQuestion = () => {
   if (questionCounter === maxQuestions) {
     questionCountDisplay.innerText = `No questions remaining. Time to make a guess!`;
     findOutButton.disabled = true;
+    questions.disabled = true;
   }
 
   // status will be boolean - true or false

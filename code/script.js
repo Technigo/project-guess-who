@@ -5,6 +5,7 @@ const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
 const winOrLose = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
+const playAgainButton = document.getElementById("playAgain");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -242,6 +243,10 @@ const start = () => {
 
   // Assign the winner charachter with setWinningCharacter
   setWinningCharacter();
+
+  // Reset the pop-up window that appears when game over
+  winOrLose.style.display = "none";
+  board.style.display = "flex";
 };
 
 // Setting the currentQuestion object when you select something in the dropdown
@@ -340,3 +345,4 @@ start();
 restartButton.addEventListener("click", start);
 findOutButton.addEventListener("click", checkQuestion);
 questions.addEventListener("change", selectQuestion);
+playAgainButton.addEventListener("click", start);

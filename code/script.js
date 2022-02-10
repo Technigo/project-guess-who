@@ -215,10 +215,10 @@ let playAgainSound = new Audio('sounds/playgain.wav');
 playAgainSound.volume = 1
 let correctSound =  new Audio('sounds/correctanswer.wav');
 correctSound.volume = 1
-
-
+let wrongSound = new Audio('sounds/wronganswer.wav');
+wrongSound.volume = 1
 // Draw the game board
-function generateBoard() {
+const generateBoard =() => {
   board.innerHTML = '';
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
@@ -256,10 +256,9 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
     const value = questions.value
-
-  currentQuestion = {
-    category: category,
-     value: value,
+    currentQuestion = {
+      category: category,
+      value: value,
   };
 
 };
@@ -291,6 +290,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       
     } else {
+      wrongSound.play()
       alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
@@ -300,6 +300,7 @@ const filterCharacters = (keep) => {
       alert(`Yes, the person is a ${value}!`)
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
+      wrongSound.play()
       alert(`No, the person is not a ${value}!`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     } 
@@ -309,6 +310,7 @@ const filterCharacters = (keep) => {
       alert(`Yes, the person has ${value} hair! Keep all people that have ${value} hair `)
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
+      wrongSound.play()
       alert(`No, the person does not have ${value} hair! Remove all people that have ${value} hair`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       }
@@ -318,6 +320,7 @@ const filterCharacters = (keep) => {
         alert(`Yes, the person has ${value} eyes! keep all people that have ${value} eyes`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       } else {
+        wrongSound.play()
         alert(`No, the person does not have ${value} eyes! Remove all people that have ${value} eyes`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       }
@@ -336,9 +339,9 @@ const guess = (confirmPerson) => {
     checkMyGuess(confirmPerson);
   }
   else {
-    alert('Sorry! Keep on guessing 🤔');
+    alert('No! Try guessing again  🤔');
   }
-  numberOfGuesses++
+
   }
   // store the interaction from the player in a variable.
   // remember the confirm() ?

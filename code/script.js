@@ -313,7 +313,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
 
-  window.onload = function() {
+  window.onload = () => {
     generateBoard()
   }
 
@@ -323,7 +323,7 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const value = questions.options[questions.selectedIndex].childNode.label
+  const value = questions.options[questions.selectedIndex].childNode.value
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.

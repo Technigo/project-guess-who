@@ -3,7 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findoutButton = document.getElementById('filter')
-
+const winOrLooseText = document.getElementById('winOrLoseText')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -281,8 +281,8 @@ const filterCharacters = (keep) => {
   console.log('filter function')
   if (category === 'accessories') {
     if (keep) {
-      alert(
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+        alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
     } else {
@@ -309,12 +309,12 @@ const filterCharacters = (keep) => {
   } else if (category === 'eyes') {
     // added by me
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       alert(
         `Yes, the person has ${value}! Keep all people that has ${value}`
       )
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       alert(
         `No, the person doesn't have ${value}! Remove all people that has ${value}`
       )
@@ -322,18 +322,21 @@ const filterCharacters = (keep) => {
     //stop added by me
   } else if (category === 'hair') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       alert(
         `Yes, the person has ${value}! Keep all people that has ${value}`
       )
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       alert( 
       `No, the person doesn't have ${value}! Remove all people that has ${value}`
       )
-    }
+    } 
+    
   }  
-
+  generateBoard()
+ 
+  console.log('filtered characters')
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   /* 
@@ -352,15 +355,27 @@ const filterCharacters = (keep) => {
 } 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
+
 const guess = (personToConfirm) => {
+  let playerGuess = confirm
+if (confirm(`Are you sure about ${personToConfirm}?`)) {  // remember the confirm() ?
+    checkMyGuess(personToConfirm)
+  }  else {
+    alert ('Yes, think a bit more and try again!')
+  }
   // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+
+ 
+  console.log('checked')
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
+  if (personToCheck === secret.name) {// 1. Check if the personToCheck is the same as the secret person's name
+    winOrLooseText.innerHTML = 'You won!'
+  } else {
+    winOrLooseText.innerHTML = 'You looooost!!'
+  }
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board

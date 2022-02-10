@@ -260,7 +260,23 @@ const checkQuestion = () => {
 
   // Below we run the if statement to compare the entered value to the secret value
   if (category === "hair" || category === "eyes") {
-  } else if (category === "accessories" || category === "other") {
+    if (value === hair || value === eyes) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+  } else if (category === "accessories") {
+    if (secret.accessories.includes(value)) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+  } else if (category === "other") {
+    if (secret.other.includes(value)) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
   }
 };
 
@@ -368,7 +384,7 @@ start();
 restartButton.addEventListener("click", start);
 findOutButton.addEventListener("click", checkQuestion);
 questions.addEventListener("change", selectQuestion);
-playAgainBtn.addEventListener("click", () => {
+playAgainButton.addEventListener("click", () => {
   winOrLose.style.display = "none";
   board.style.display = "flex";
   start();

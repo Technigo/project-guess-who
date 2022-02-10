@@ -82,6 +82,7 @@ h2 {
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  background-color: white;
   box-shadow: 5px 5px var(--primary);
 }
 

@@ -263,12 +263,12 @@ const selectQuestion = () => {
 // Invoked when 'Find Out' button is clicked
 const checkQuestion = () => {
   questionCounter++;
+  findOutButton.disabled = true;
   questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}
     `;
   if (questionCounter === maxQuestions) {
     questionCountDisplay.innerText = `No questions remaining. Time to make a guess!`;
     findOutButton.disabled = true;
-    questions.disabled = true;
   }
 
   // status will be boolean - true or false

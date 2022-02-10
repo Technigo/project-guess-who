@@ -204,8 +204,12 @@ const CHARACTERS = [
 
 // Global variables
 let secret
-let currentQuestion
+let currentQuestion = {
+  category: 'hair',
+  value: 'brown'
+}
 let charactersInPlay
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -241,32 +245,29 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
-
+ console.log("selectQuestion is running!")
   currentQuestion = {
     category: category,
-    value: value,
+    value: value
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-    if (category === 'hair' && value === secret.hair) {
-      let keep = true
-      filterCharacters(keep)
-    } else if (category === 'eyes' && value === secret.eyes) {
-      keep = true
-      filterCharacters(keep)
-    } else if (category === 'accessories' && value === secret[accessories].includes(value)) {
-      keep = true
-      filterCharacters(keep)
-    } else if (category === 'other' && value === secret[other].includes(value)) {
-      keep = true
-      filterCharacters(keep)
-    } else {
-      keep = false
-      filterCharacters()
-    }
+  if (category === "hair" || category === "eyes") {
+		if (secret[currentQuestion.category] === currentQuestion.value) {
+			filterCharacters(true);
+		} else {
+			filterCharacters(false);
+		}
+	} else if (category === "accessories" || category === "other") {
+		if (secret[currentQuestion.category].includes(currentQuestion.value)) {
+			filterCharacters(true);
+		} else {
+			filterCharacters(false);
+		}
+	}
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -296,21 +297,28 @@ const filterCharacters = (keep) => {
         `No, the person is not a ${value}! Remove all people who are not a ${value}`
       )
     }
-  } else {
+  } else if (category === 'hair') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value) 
       alert(
         `Yes, the person has ${value}! Keep all people who have ${value}`
       )
+      } else {
+        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+        alert(
+          `No, the person doesn't have ${value}! Remove all people who don't have ${value}`
+        )
+      }
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       alert(
         `No, the person doesn't have ${value}! Remove all people who don't have ${value}`
       )
     }
-    }
     generateBoard()
-  }
+    }
+
+  
 
 
 
@@ -334,4 +342,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)

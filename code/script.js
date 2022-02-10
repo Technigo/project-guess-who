@@ -23,7 +23,7 @@ const CHARACTERS = [
     headgear: '',
     sweater: ['blue'],
     face: ['glasses', 'lipstick'],
-    accessories: ['dog', 'dog bone'],
+    accessories: ['dog', 'dogbone'],
   },
   {
     name: 'Bella',
@@ -34,7 +34,7 @@ const CHARACTERS = [
     headgear: '',
     sweater: ['striped'],
     face: ['mask', 'scarf'],
-    accessories: ['dog', 'dog bone'],
+    accessories: ['dog', 'dogbone'],
   },
   {
     name: 'Charlie',
@@ -56,7 +56,7 @@ const CHARACTERS = [
     headgear: '',
     sweater: ['white', 'yellow'],
     face: ['beard'],
-    accessories: ['baby', 'baby carrier'],
+    accessories: ['baby', 'babycarrier'],
   },
   {
     name: 'Emilio',
@@ -155,7 +155,7 @@ const CHARACTERS = [
     headgear: '',
     sweater: ['red'],
     face: [],
-    accessories: ['dog', 'hot dog'],
+    accessories: ['dog', 'hotdog'],
   },
   {
     name: 'Neville',
@@ -188,7 +188,7 @@ const CHARACTERS = [
     headgear: 'hat',
     sweater: ['blue'],
     face: ['glasses'],
-    accessories: ['hand cuffs'],
+    accessories: ['handcuffs'],
   },
   {
     name: 'Patrik',
@@ -221,7 +221,7 @@ const CHARACTERS = [
     headgear: '',
     sweater: ['gray', 'red'],
     face: ['glasses'],
-    accessories: ['dog', 'dog bone'],
+    accessories: ['dog', 'dogbone'],
   },
   {
     name: 'Tobias',
@@ -232,7 +232,7 @@ const CHARACTERS = [
     headgear: 'hat',
     sweater: ['green', 'white'],
     face: ['whiskers'],
-    accessories: ['hot dog'],
+    accessories: ['hotdog'],
   },
   {
     name: 'Tomten',
@@ -243,7 +243,7 @@ const CHARACTERS = [
     headgear: 'hat',
     sweater: ['red'],
     face: ['beard'],
-    accessories: ['teddy bear'],
+    accessories: ['teddybear'],
   },
   {
     name: 'Valter',
@@ -254,7 +254,7 @@ const CHARACTERS = [
     headgear: '',
     sweater: ['blue', 'white'],
     face: ['beard'],
-    accessories: ['surf board'],
+    accessories: ['surfboard'],
   },
   {
     name: 'Viking',
@@ -271,7 +271,7 @@ const CHARACTERS = [
     name: 'Wilhelm',
     img: 'images/WILHELM.jpg',
     hair: 'black',
-    pants: 'gray',
+    pants: 'black',
     profession: 'unknown',
     headgear: '',
     sweater: ['gray', 'black'],

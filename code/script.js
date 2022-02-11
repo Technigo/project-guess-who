@@ -205,6 +205,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let keep
 
 // Draw the game board
 const generateBoard = () => {
@@ -260,24 +261,26 @@ const selectQuestion = () => {
   }
 }
 
+
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   selectQuestion()
   const { category, value } = currentQuestion
+  console.log(currentQuestion) // TEST to see currentQuetion is working
+
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
   if (value === secret.hair || value === secret.eyes)
-  filterCharacters()
-    // Jennnie video : check if secret person.hair === (currentQuestion)value
-    // ..... so the value now is from the question, i need to take value from the secret too? how does the comparison work?
-    // so I got the values from the list, i need to compare it to secret and if they are the same === as secret i need to keep them
+  filterCharacters(keep)
+    // so I got the values from the list in value, & i need to compare it to secret and if they are the same === as secret i need to keep them
+    // KEEP I created global variable. In step 4 we should have true for keeping and false for not keeping?? connect the keep and the true?
 
   } else if (category === 'accessories' || category === 'other') {
    if (secret.accessories.includes(value) || secret.other.includes(value) )
-  filterCharacters()
+  filterCharacters(keep)
   }
 }
 
@@ -296,14 +299,33 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    alert(
+      `Yes the person has ${value}! Keep all people that has a ${value}`
+    ) 
   } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-    } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+    alert(
+      `No, the person doesn't have ${value}! Remove all people that does have ${value}`)
     }
-  }
+    /*
+    if (category === 'hair') {  
+    if (keep) {
+      alert(
+      `Yes, the person has ${value}! Keep all people with ${value}`
+      )
+    
+    } else {
+    alert(
+    `No, the person doesnt have ${value}! Remove all people with ${value}`
+    )
+    } else if (category === 'eyes') {
+     alert(
+     `Yes, the person has ${value}! Keep all people with ${value}`
+     )
+    } else { 
+    `No, the person doesnt have ${value}! Remove all people with ${value}`
+  )
+     */
+  
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.

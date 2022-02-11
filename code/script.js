@@ -264,27 +264,30 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    console.log('category',category)
-    console.log(secret[category])
-    console.log('this is current question', currentQuestion)
+    // console.log('category',category)
+    // console.log(secret[category])
+    // console.log('this is current question', currentQuestion)
     if (currentQuestion.value === secret[category]) {
-      console.log('same thing')
       filterCharacters(true)
+      // console.log('same thing')
     }
     else {
-      console.log('not same thing')
+      filterCharacters(false)
+      // console.log('not same thing')
     }
-  } else if (category === 'accessories' || category === 'other') {
+  } 
+  else if (category === 'accessories' || category === 'other') {
     console.log('more complex category is a string', category)
     console.log('more complex secret category is an array', secret[category])
     console.log('this is current question', currentQuestion)
     console.log('this is current question.value', currentQuestion.value)
     if (currentQuestion.value == secret[category]) {
-      console.log('same thing in other cat')
+      // console.log('same thing in other cat')
       filterCharacters(true)
     }
     else {
-      console.log('not same thing in other cat')
+      filterCharacters(false)
+      // console.log('not same thing in other cat')
     }
   }
 }
@@ -299,37 +302,53 @@ const filterCharacters = (keep) => {
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
     } else {
+      // console.log('alert for access is working')
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
     }
   } else if (category === 'other') {
     // Similar to the one above
-  } else {
     if (keep) {
+      alert(
+        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+      )
+    } else {
+      console.log('alert for other is working')
+
+      alert(
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+      )
+    }
+    // console.log('does this work?')
+  } else if (category ==='eyes' || category=== 'hair'){
+    // console.log('i am in the right category')
+    if (keep) {
+      // console.log('the alert is working')
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(
         `Yes, the person has ${value} ${category}! Keep all people that has ${value} ${category}!`
       )
     } else {
+      alert(`No, the person doesn't have ${value} ${category}! Remove all people that has ${value} ${category}!`
+      )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-      `No, the person doesn't have ${value} ${category}! Remove all people that has ${value} ${category}!`
     }
   }
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+    // for hair and eyes :
+    //   charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    //   or
+    //   charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+
+    // // for accessories and other
+    //   charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    //   or
+    //   charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+
 
   // Invoke a function to redraw the board with the remaining people.
 }
@@ -351,6 +370,7 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
+console.log(secret)
 
 // All the event listeners
 restartButton.addEventListener('click', start)

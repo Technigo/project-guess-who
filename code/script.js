@@ -3,7 +3,6 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOut = document.getElementById('filter')
-// const guessButton = document.querySelector('.filled-button')
 const winOrLose = document.querySelector('.win-or-lose-wrapper')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgain = document.getElementById('playAgain')
@@ -285,6 +284,7 @@ const start = () => {
   generateBoard();
   setSecret();
   winOrLose.style.display = "none";
+  board.style.display = "flex";
   counter = 0;
   counterText.innerText = counter;
 }
@@ -428,12 +428,14 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alertCorrect(`Congratulations! 🎉 ${secret.name} was the right villager. 🥳`);
     setTimeout(() => {
+    board.style.display = "none";
     winOrLose.style.display = "flex";
     winOrLoseText.innerText = "Yay!!! You won!"
   }, 2500)
   } else if (personToCheck !== secret.name) {
     alertIncorrect(`I'm sorry. ${personToCheck} was incorrect 😓. ${secret.name} was the right villager.`);
     setTimeout(() => {
+    board.style.display = "none";
     winOrLose.style.display = "flex";
     winOrLoseText.innerText = "Boo-hoo! You lost!!!"
   }, 2500)

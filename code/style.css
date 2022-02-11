@@ -1,14 +1,16 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #11b1df;
+  --secondary: #b8bebe;
+  
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Boogaloo', cursive;
+  
 }
 
 h1 {
@@ -18,6 +20,12 @@ h1 {
   margin: 10px 0;
   color: white;
 }
+
+p{
+  
+  font-size: 1.6rem;
+}
+
 
 .question-section {
   width: 30%;
@@ -30,25 +38,30 @@ h1 {
   box-sizing: border-box;
 }
 
-select {
+.question-aside{
+  display: none;
+}
+
+select, input{
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  border-radius: 50px;
 }
 
-.guess-who-icon {
-  width: 126px;
-}
+  
+
+
 
 .board-wrapper {
   width: 70%;
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .game-board {
@@ -57,6 +70,11 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
+}
+
+.GIF-style{
+  display: flex;
 }
 
 /****** CARD ******/
@@ -64,21 +82,35 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+  border-radius: 10px;
+  margin: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: #b8bebe;
+  
 }
 
-/*image style
+
+
+/*image style*/
 img{
   width: 135px;
   height: 135px;
   object-fit: cover;
-}*/
+}
+
+.logo-style{
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px){
+  .logo-style{
+    width: 50%;
+  }
+}
 
 .card p {
   text-align: center;
@@ -99,6 +131,7 @@ img{
 
 .card:hover {
   background-color: var(--secondary);
+  
 }
 
 .card:hover img,
@@ -124,7 +157,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Boogaloo', cursive;
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -163,7 +196,7 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  height: 100%;
 }
 
 .win-or-lose {
@@ -184,6 +217,7 @@ button {
   margin-bottom: 32px;
 }
 
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -202,7 +236,8 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width:126px;
+    height:auto;
   }
 
   .board-wrapper {
@@ -236,5 +271,8 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+  select, input{
+    width: 50%;
   }
 }

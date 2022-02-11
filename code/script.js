@@ -17,37 +17,37 @@ const CHARACTERS = [
   {
     name: 'Arya Stark',
     img: 'images/arya.png  width="141px"',
-    hair: 'brown hair',
+    hair: ['brown hair'],
     eyes: 'grey eyes',
-    accessories: 'a sword', 
-    house: 'House Stark',
+    accessories: ['a sword'], 
+    house: ['House Stark'],
     species: 'human',
-    home: 'Winterfell'
+    home: ['Winterfell']
   },
   {
     name: 'Rob Stark',
     img: 'images/rob.png width="135px"',
-    hair: 'brown hair',
+    hair: ['brown hair'],
     eyes: 'blue eyes',
     accessories: ['a sword', 'a crown at one point'], 
-    house: 'House Stark',
+    house: ['House Stark'],
     species: 'human',
-    home: 'Winterfell'
+    home: ['Winterfell']
   },
   {
     name: 'Sansa Stark',
     img: 'images/sansa.png width="135px"',
-    hair: 'red hair',
+    hair: ['red hair'],
     eyes: 'blue eyes',
-    accessories: 'a crown at one point',
-    house: 'House Stark',
+    accessories: ['a crown at one point'],
+    house: ['House Stark'],
     species: 'human',
-    home: 'Winterfell'
+    home: ['Winterfell']
   },
   {
     name: 'Jon Snow',
     img: 'images/jon.png width="135px"',
-    hair: 'black hair',
+    hair: ['black hair'],
     eyes: 'grey eyes',
     accessories: ['a sword', 'a crown at one point'],
     house: ['House stark', 'House Snow', 'House Targaryen'],
@@ -57,183 +57,183 @@ const CHARACTERS = [
   {
     name: 'Daenerys Targaryen',
     img: 'images/dany2.jpg width="135px"',
-    hair: 'white hair',
+    hair: ['white hair'],
     eyes: 'purple eyes',
-    accessories: 'none',
-    house: 'House Targaryen',
+    accessories: ['none'],
+    house: ['House Targaryen'],
     species: 'human',
-    home: 'unknown'
+    home: ['unknown']
   },
   {
     name: 'Tyrion Lannister',
     img: 'images/tyrion.png width="140px"',
-    hair: 'golden hair',
+    hair: ['golden hair'],
     eyes: 'green eyes',
     accessories: ['books', 'knowledge'],
-    house: 'House Lannister',
+    house: ['House Lannister'],
     species: 'human',
     home: ['kings Landning', 'Casterly Rock']
   },
   {
     name: 'Cercei Lannister',
     img: 'images/cerci.png width="135px"',
-    hair: 'golden hair',
+    hair: ['golden hair'],
     eyes: 'green eyes',
-    accessories: 'a crown at one point',
-    house: 'House Lannister',
+    accessories: ['a crown at one point'],
+    house: ['House Lannister'],
     species: 'human',
     home: ['kings Landning', 'Casterly Rock']
   },
   {
     name: 'Jamie Lannister',
     img: 'images/jamie.png width="135px"',
-    hair: 'golden hair',
+    hair: ['golden hair'],
     eyes: 'green eyes',
-    accessories: 'a sword',
-    house: 'House Lannister',
+    accessories: ['a sword'],
+    house: ['House Lannister'],
     species: 'human',
     home: ['Kings Landing', 'Casterly Rock']
   },
   {
     name: 'Sandor Clegane',
     img: 'images/sandor.png width="140px"',
-    hair: 'brown hair',
+    hair: ['brown hair'],
     eyes: 'grey eyes',
-    accessories: 'a sword',
-    house: 'House Clegane',
+    accessories: ['a sword'],
+    house: ['House Clegane'],
     species: 'human',
-    home: 'unknown'
+    home: ['unknown']
   },
   {
     name: 'Brandon Stark',
     img: 'images/bran.png width="140px"',
-    hair: 'brown hair',
+    hair: ['brown hair'],
     eyes: 'blue eyes',
     accessories: ['a wheelchair', 'knowledge', 'magic'],
-    house: 'House Stark',
+    house: ['House Stark'],
     species: 'human',
-    home: 'Winterfell'
+    home: ['Winterfell']
   },
 
   {
     name: 'Gregor Clegane',
     img: 'images/gregor.png width="140px"',
-    hair: 'hidden hair',
+    hair: ['hidden hair'],
     eyes: 'hidden eyes',
-    accessories:  'sword',
-    house: 'House Clegange',
+    accessories:  ['sword'],
+    house: ['House Clegange'],
     species: 'human',
-    home: 'unknown'
+    home: ['unknown']
   },
   {
     name: 'Samwell Tarly',
     img: 'images/sam.png width="135px"',
-    hair: 'black hair',
+    hair: ['black hair'],
     eyes: 'brown eyes',
     accessories: ['books', 'knowledge'],
-    house: 'House Tarly',
+    house: ['House Tarly'],
     species: 'human',
     home: ['The Wall', 'Horn Hill']
   },
   {
     name: 'Jorah Mormont',
     img: 'images/jorah.png width="138px"',
-    hair: 'golden hair',
+    hair: ['golden hair'],
     eyes: 'blue eyes',
-    accessories: 'a sword',
-    house: 'House Mormont',
+    accessories: ['a sword'],
+    house: ['House Mormont'],
     species: 'human',
-    home: 'Bear Island'
+    home: ['Bear Island']
   },
   {
     name: 'Brienne Tarth',
     img: 'images/brienne.png width="135px"',
-    hair: 'golden hair',
+    hair: ['golden hair'],
     eyes: 'blue eyes',
-    accessories: 'a sword',
-    house:'House Tarth',
+    accessories: ['a sword'],
+    house:['House Tarth'],
     species: 'human',
-    home: 'Evenfall Hall'
+    home: ['Evenfall Hall']
   },
   {
     name: 'Tormund Giantsbane',
     img: 'images/tormund.png width="135px"',
-    hair: 'red hair',
+    hair: ['red hair'],
     eyes: 'green eyes',
-    accessories: 'a sword',
-    house: 'the Free Folk',
+    accessories: ['a sword'],
+    house: ['the Free Folk'],
     species: 'human',
-    home: 'Beyond the Wall'
+    home: ['Beyond the Wall']
   },
   {
     name: 'Melisandre',
     img: 'images/melisandre.jpg width="135px"',
-    hair: 'red hair',
+    hair: ['red hair'],
     eyes: 'blue eyes',
-    accessories: 'magic',
-    house: 'unknown',
+    accessories: ['magic'],
+    house: ['unknown'],
     species: 'human',
-    home: 'Asshai'
+    home: ['Asshai']
   },
   {
     name: 'Ygritte',
     img: 'images/ygritte.jpg width="135px"',
-    hair: 'red hair',
+    hair: ['red hair'],
     eyes: 'blue eyes',
-    accessories: 'a bow',
-    house: 'the Free Folk',
+    accessories: ['a bow'],
+    house: ['the Free Folk'],
     species: 'human',
-    home: 'Beyond the Wall'
+    home: ['Beyond the Wall']
   },
   {
     name: 'Margaery Tyrell',
     img: 'images/margaery.jpg width="135px"',
-    hair: 'brown hair',
+    hair: ['brown hair'],
     eyes: 'brown eyes',
-    accessories: 'a crown at one point',
-    house: 'House Tyrell',
+    accessories: ['a crown at one point'],
+    house: ['House Tyrell'],
     species: 'human',
     home: ['kings Landning', 'Highgarden']
   },
   {
     name: 'Olenna Tyrell',
     img: 'images/olenna.png width="135px"',
-    hair: 'hidden hair',
+    hair: ['hidden hair'],
     eyes: 'brown eyes',
-    accessories: 'none',
-    house: 'House Tyrell',
+    accessories: ['none'],
+    house: ['House Tyrell'],
     species: 'human',
-    home: 'Highgarden'
+    home: ['Highgarden']
   },
   {
     name: 'Lyanna Mormont',
     img: 'images/lyanna.jpg width="135px"',
-    hair: 'brown hair',
+    hair: ['brown hair'],
     eyes: 'brown eyes',
-    accessories: 'a sword',
-    house: 'House Mormont',
+    accessories: ['a sword'],
+    house: ['House Mormont'],
     species: 'human',
-    home: 'Bear Island'
+    home: ['Bear Island']
   },
   {
     name: 'Hodor',
     img: 'images/hodor.jpg width="135px"',
-    hair: 'white hair',
+    hair: ['white hair'],
     eyes: 'blue eyes',
-    accessories: 'none',
-    house: 'unknown',
+    accessories: ['none'],
+    house: ['unknown'],
     species: 'human',
-    home: 'Winterfell'
+    home: ['Winterfell']
   },
   {
     name: 'Night king',
     img: 'images/nightking.jpg width="135px"',
-    hair: 'hidden hair',
+    hair: ['hidden hair'],
     eyes: 'blue eyes',
     accessories:['magic', 'a spear'],
-    house: 'unknown',
+    house: ['unknown'],
     species: 'White walker',
-    home: 'Beyond the Wall'
+    home: ['Beyond the Wall']
   },
   {
     name: "Jaqen H'ghar",
@@ -241,36 +241,36 @@ const CHARACTERS = [
     hair: ['red hair', 'white hair'],
     eyes: 'hidden eyes',
     accessories:['a sword', 'magic'],
-    house: 'unknown',
+    house: ['unknown'],
     species: 'human',
-    home: 'Braavos'
+    home: ['Braavos']
   },
   {
     name: 'Oberyn Martell',
     img: 'images/oberyn.jpg width="135px"',
-    hair: 'black hair',
+    hair: ['black hair'],
     eyes: 'black eyes',
-    accessories: 'a spear',
-    house: 'House Martell',
+    accessories: ['a spear'],
+    house: ['House Martell'],
     species: 'human',
-    home: 'Dorne'
+    home: ['Dorne']
   },
   {
     name: 'Nymeria',
     img: 'images/nymeria.png width="135px"',
     hair: ['grey hair', 'white hair'],
     eyes: 'hidden eyes',
-    accessories: 'none',
-    house: 'House Stark',
+    accessories: ['none'],
+    house: ['House Stark'],
     species: 'direwolf',
     home: ['unknown', 'Winterfell']
   },
   {
     name: 'Ghost',
     img: 'images/ghost.png width="135px"',
-    hair: 'white hair',
+    hair: ['white hair'],
     eyes: 'red eyes',
-    accessories: 'none',
+    accessories: ['none'],
     house: ['House Stark', 'House Snow'],
     species: 'direwolf',
     home: ['The Wall', 'Winterfell']
@@ -278,42 +278,42 @@ const CHARACTERS = [
   {
     name: 'Summer',
     img: 'images/summer.jpg width="135px"',
-    hair: 'golden hair',
+    hair: ['golden hair'],
     eyes: 'hidden eyes',
-    accessories: 'none',
-    house: 'House Stark',
+    accessories: ['none'],
+    house: ['House Stark'],
     species: 'direwolf',
-    home: 'Winterfell',
+    home: ['Winterfell'],
   },
   {
     name: 'Drogon',
     img: 'images/drogon.png width="135px"',
-    hair: 'black hair',
+    hair: ['black hair'],
     eyes: 'hidden eyes',
-    accessories: 'none',
-    house: 'House Targaryen',
+    accessories: ['none'],
+    house: ['House Targaryen'],
     species: 'dragon',
-    home: 'unknown',
+    home: ['unknown'],
   },
   {
     name: 'Rhaegal',
     img: 'images/rhaegal.png width="135px"',
-    hair: 'green hair',
+    hair: ['green hair'],
     eyes: 'hidden eyes',
-    accessories: 'none',
-    house: 'House Targaryen',
+    accessories: ['none'],
+    house: ['House Targaryen'],
     species: 'dragon',
-    home: 'unknown',
+    home: ['unknown'],
   },
   {
     name: 'Viserion',
     img: 'images/viserion.png width="140px"',
-    hair: 'golden hair',
+    hair: ['golden hair'],
     eyes: 'hidden eyes',
-    accessories: 'none',
-    house: 'House Targaryen',
+    accessories: ['none'],
+    house: ['House Targaryen'],
     species: 'dragon',
-    home: 'unknown',
+    home: ['unknown'],
   }
 ]
 
@@ -398,7 +398,7 @@ const checkQuestion = () => {
 
 
 
-  if (category === 'hair') {
+  if (category === 'Hair') {
     if (value === secret.hair || secret.hair.includes(value)) {
       let keep = true
       filterCharacters(keep)
@@ -407,7 +407,7 @@ const checkQuestion = () => {
       filterCharacters()
     }
 
-  } else if (category === 'eyes') {
+  } else if (category === 'Eyes') {
     if (value === secret.eyes) {
       let keep = true
       filterCharacters(keep)
@@ -416,7 +416,7 @@ const checkQuestion = () => {
       filterCharacters()
     }
 
-  } else if (category === 'house') {
+  } else if (category === 'House') {
     if (value === secret.house || secret.house.includes(value)) {
       let keep = true
       filterCharacters(keep)
@@ -424,7 +424,7 @@ const checkQuestion = () => {
       keep = false
       filterCharacters()
     }
-  } else if (category === 'home') {
+  } else if (category === 'Home') {
     if (value === secret.home || secret.home.includes(value)) {
       let keep = true
       filterCharacters(keep)
@@ -432,7 +432,7 @@ const checkQuestion = () => {
       keep = false
       filterCharacters()
     }
-  } else if (category === 'species') {
+  } else if (category === 'Species') {
     if (value === secret.species) {
       let keep = true
       filterCharacters(keep)
@@ -440,7 +440,7 @@ const checkQuestion = () => {
       keep = false
       filterCharacters()
     }
-  } else if (category === 'accessories') {
+  } else if (category === 'Accessories') {
     if (value === secret.accessories || secret.accessories.includes(value)) {
       let keep = true
       filterCharacters(keep)
@@ -467,7 +467,7 @@ const filterCharacters = (keep) => {
   //     `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
   //   )
   // }
-  if (category === 'hair') {
+  if (category === 'Hair') {
     if (keep) {
       alert(
         `Yes, the character has ${value}! Keep all that has ${value}`
@@ -479,7 +479,7 @@ const filterCharacters = (keep) => {
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) 
     }
-  } else if (category === 'eyes') {
+  } else if (category === 'Eyes') {
     if (keep) {
       alert(
         `Yes, the secret character has ${value}! Keep all that has ${value}`
@@ -491,7 +491,7 @@ const filterCharacters = (keep) => {
       )
       charactersInPlay = charactersInPlay.filter((person) => person.eyes !== value);
     }
-  } else if (category === 'accessories') {
+  } else if (category === 'Accessories') {
     if (keep === true) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
@@ -506,7 +506,7 @@ const filterCharacters = (keep) => {
 
  
     }
-  } else if (category === 'house') {
+  } else if (category === 'House') {
     if (keep) {
       alert(
         `Yes the secret character is in ${value}! Keep all that is in ${value}`
@@ -522,7 +522,7 @@ const filterCharacters = (keep) => {
 
 
     }
-  } else if (category === 'species') {
+  } else if (category === 'Species') {
     if (keep) {
       alert(
         `Yes, the secret character is a ${value}! Keep all ${value}s `

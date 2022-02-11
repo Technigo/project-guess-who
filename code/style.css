@@ -203,7 +203,9 @@ button {
   margin-bottom: 32px;
 }
 
-@media (min-width: 769px) and (max-width: 1025px)
+@media (min-width: 769px) and (max-width: 1025px) {
+  
+}
 
 @media (max-width: 768px) {
   body {

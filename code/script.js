@@ -8,6 +8,7 @@ const gameOverText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
 const previousQuestion = document.getElementById('previous-question');
 const questionCountDisplay = document.getElementById('question-count');
+const questionSection = document.getElementById('question-section');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -239,14 +240,17 @@ const setWinningCharacter = () => {
 const start = () => {
   gameOverWrapper.style.display = "none";
   board.style.display = "flex";
+  questionSection.style.display = "flex";
+
   questionCounter = 0
   charactersInPlay = CHARACTERS
-  generateBoard();
-  setWinningCharacter();
-  questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}`;
-  previousQuestion.innerHTML = '';
+
   questions.disabled = false;
   findOutButton.disabled = true;
+
+  generateBoard();
+  setWinningCharacter();
+  updateQuestionDisplay();
 }
 
 // Set currentQuestion object selecting from dropdown
@@ -266,31 +270,11 @@ const checkQuestion = () => {
   questionCounter++;
   findOutButton.disabled = true;
 
-  // status will be boolean - true or false
   let status = winningCharacter[currentQuestion.category].includes(currentQuestion.value)
+
   alertMessage(status);   
   filterCharacters(status);
   updateQuestionDisplay();
-}
-
-const updateQuestionDisplay = () => {
-  // display questions remaining
-  questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}
-  `;
-  if (questionCounter === maxQuestions) {
-    questionCountDisplay.innerText = `No questions remaining. Time to make a guess!`;
-    questions.disabled = true;
-  }
-  // display question(s) asked
-  if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
-    previousQuestion.innerHTML += `
-      <p>${currentQuestion.value} ${currentQuestion.category}</p>  
-    `;
-  } else {
-    previousQuestion.innerHTML += `
-      <p>${currentQuestion.value}</p>  
-    `;
-  }  
 }
 
 // function for alerting the player
@@ -318,6 +302,25 @@ const filterCharacters = (keep) => {
   generateBoard()
 }
 
+const updateQuestionDisplay = () => {
+  
+  questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}`;
+
+  if (questionCounter === 0) {
+    previousQuestion.innerHTML = '';
+  } else if (questionCounter === maxQuestions) {
+    questionCountDisplay.innerText = `No questions remaining. Time to make a guess!`;
+    questions.disabled = true;
+  } else if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
+      previousQuestion.innerHTML += `
+        <p>${currentQuestion.value} ${currentQuestion.category}</p>  
+      `;
+  } else {
+    previousQuestion.innerHTML += `
+      <p>${currentQuestion.value}</p>  
+    `;
+  }
+}
 
 const guess = (characterName) => {
   let playerGuess = confirm(`Are you sure you want to guess that it's ${characterName}?`);
@@ -331,6 +334,7 @@ const guess = (characterName) => {
 const checkMyGuess = (characterName) => {
   if (characterName === winningCharacter.name) {
     gameOverWrapper.style.display = "flex"
+    board.style.display = "none";
     gameOverText.innerText = `
     Yes, ${characterName} was right! Congratulations!
   `
@@ -338,6 +342,7 @@ const checkMyGuess = (characterName) => {
   else {
     gameOverWrapper.style.display = "flex";
     board.style.display = "none";
+    questionSection.style.display = "none";
     gameOverText.innerText = `
     Sorry, it wasn't ${characterName}. ${winningCharacter.name} is the correct answer. Better luck next time!
   `;

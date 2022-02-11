@@ -262,21 +262,26 @@ const selectQuestion = () => {
 
 // Invoked when 'Find Out' button is clicked
 const checkQuestion = () => {
+
   questionCounter++;
   findOutButton.disabled = true;
-  questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}
-    `;
-  if (questionCounter === maxQuestions) {
-    questionCountDisplay.innerText = `No questions remaining. Time to make a guess!`;
-    questions.disabled = true;
-  }
 
   // status will be boolean - true or false
   let status = winningCharacter[currentQuestion.category].includes(currentQuestion.value)
   alertMessage(status);   
   filterCharacters(status);
+  updateQuestionDisplay();
+}
 
-  // display question asked
+const updateQuestionDisplay = () => {
+  // display questions remaining
+  questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}
+  `;
+  if (questionCounter === maxQuestions) {
+    questionCountDisplay.innerText = `No questions remaining. Time to make a guess!`;
+    questions.disabled = true;
+  }
+  // display question(s) asked
   if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
     previousQuestion.innerHTML += `
       <p>${currentQuestion.value} ${currentQuestion.category}</p>  
@@ -285,7 +290,7 @@ const checkQuestion = () => {
     previousQuestion.innerHTML += `
       <p>${currentQuestion.value}</p>  
     `;
-  }
+  }  
 }
 
 // function for alerting the player

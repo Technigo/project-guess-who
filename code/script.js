@@ -235,39 +235,51 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard()
   setSecret()
+  console.log(`setSecret activated`)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
+  const value = questions.value
+  console.log(questions.value)
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  console.log(`Check question activated`)
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    if (value === secret.hair || value === secret.eyes) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
 
   } else if (category === 'accessories' || category === 'other') {
-
+    if (value === secret.accessories || value === secret.other) {
+    filterCharacters(true)
+  } else {
+    filterCharacters(false)
   }
+}
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+console.log(keep)
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -319,13 +331,12 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-}
 
+}
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOutButton.addEventListener('click', () => {
-checkQuestion()
-})
+questions.addEventListener('change', selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)

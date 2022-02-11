@@ -207,7 +207,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-let winSound = new Audio('sounds/win.wav');
+/* let winSound = new Audio('sounds/win.wav');
 winSound.volume = 1
 let loseSound = new Audio('sounds/lose.wav');
 loseSound.volume = 1
@@ -216,7 +216,7 @@ playAgainSound.volume = 1
 let correctSound =  new Audio('sounds/correctanswer.wav');
 correctSound.volume = 1
 let wrongSound = new Audio('sounds/wronganswer.wav');
-wrongSound.volume = 1
+wrongSound.volume = 1 */
 // Draw the game board
 const generateBoard =() => {
   board.innerHTML = '';
@@ -379,6 +379,3 @@ playAgain.addEventListener('click',() =>{
   playAgainSound.play();
   setTimeout(() => start(), 500)
 });
-questions.addEventListener("submit", (event) => {
-  event.preventDefault()
-})

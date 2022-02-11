@@ -39,7 +39,7 @@ const CHARACTERS = [
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['tie'],
     other: []
   },
   {
@@ -63,7 +63,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace'],
     other: []
   },
   {
@@ -79,7 +79,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings','necklace'],
     other: []
   },
 
@@ -152,7 +152,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings'],
     other: []
   },
   {
@@ -168,7 +168,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat','necklace'],
     other: []
   },
   {
@@ -176,7 +176,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -192,7 +192,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
+    accessories: ['tie'],
     other: []
   },
   {
@@ -243,14 +243,16 @@ const start = () => {
   winOrLose.style.display='none'
   board.style.display='flex'
   guessCounter.innerHTML = `0`
+  console.log(secret)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
-  const category = questions.options[questions.selectedIndex].parentNode.label;
+const category = questions.options[questions.selectedIndex].parentNode.label;
   // Variable that stores the actual value of the question we've selected.
-  const value = questions.value
+const value = questions.value
+  
 
   currentQuestion = {
     category: category,
@@ -268,7 +270,7 @@ const checkQuestion = () => {
     }else 
       filterCharacters(false)
   } else if (category === 'accessories' || category === 'other') {
-    if(secret[category].includes(value)) {
+      if(secret[category].includes(value)) {
       filterCharacters(true)
     } else {
       filterCharacters(false) 
@@ -292,6 +294,7 @@ const filterCharacters = (keep) => {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
+
       // Makes guesses grow with +1 after every question
       guesses++
       guessCounter.innerHTML = guesses
@@ -301,13 +304,13 @@ const filterCharacters = (keep) => {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
-        `Yes the person does have a ${value}! We will keep all people with ${value}.`
+        `Yes this person is a ${value}! We will keep all ${value}s.`
       )
       
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      alert(
-        `Sorry! This person does not have a ${value}. Let's remove everybody that does have a ${value}.`
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+        alert(
+          `Sorry! This person is not a ${value}. Let's remove every ${value}.`
       )
       guesses++
       guessCounter.innerHTML = guesses
@@ -316,15 +319,15 @@ const filterCharacters = (keep) => {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       alert(
-        `Indeed! The person does have ${value}. Let's keep all with ${value}.`
+        `Indeed! The person does have ${value} eyes. Let's keep all with ${value} eyes.`
       )
       guesses++
       guessCounter.innerHTML = guesses
       
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      alert(
-        `I'm afraid the person does not have ${value}. Let's remove all with ${value}.`
+        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+        alert(
+        `I'm afraid the person does not have ${value} eyes. Let's remove all with ${value} eyes.`
       )
       guesses++
       guessCounter.innerHTML = guesses
@@ -334,12 +337,12 @@ const filterCharacters = (keep) => {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       alert(
-        `Sure thing! The person does have ${value}. Let's keep all with ${value}.`
+        `Sure thing! The person does have ${value} hair. Let's keep all with ${value} hair.`
       )
-    } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      alert(
-        `I'm sorry but the person does not have ${value}. Let's remove all with ${value}.`
+    }  else {
+        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+        alert(
+        `I'm sorry but the person does not have ${value} hair. Let's remove all with ${value} hair.`
       )
     }
     guesses++
@@ -365,9 +368,19 @@ const guess = (personToCheck) => {
 // If the player confirms, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    winOrLoseText.innerHTML = `You won! What a mastermind! ${personToCheck}!`;
+   
+    winOrLoseText.innerHTML = `You won! What a mastermind! ${personToCheck} is correct!`;
+    document.getElementById('winAudio').innerHTML = `
+    <audio src="./audio/applause.wav" type="audio/wav" autoplay></audio>
+    `
+
   } else {
     winOrLoseText.innerHTML = ` So sorry, wrong guess. It was ${secret.name}.`;
+    document.getElementById('looseAudio').innerHTML = `
+    <audio src="./audio/loose.wav" type="audio/wav" autoplay></audio>
+    `
+
+   
   }
   // Shows the section of winner or looser 
   winOrLose.style.display = "flex";

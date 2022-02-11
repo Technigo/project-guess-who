@@ -209,7 +209,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-let CountFindOutClicks = 0   // How to reset counter with restart?
+let CountFindOutGuesses = 0  // How to reset counter with restart?
 //let CountFindOutClicksMaxLimit = 5 How to set max limit and also making the game end with win/lose?
 
 
@@ -238,18 +238,20 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-    console.log('Starts the game and generates board')
   if (winOrLose.style.display === 'block') {
     winOrLose.style.display = 'none'
     board.style.display = 'flex'
   } else {
     winOrLose.style.display = 'none' 
     board.style.display = 'flex'}
+  console.log('Starts the game and generates board')
      // Makes the page with win or lose go away when pressing Play Again
-  
   charactersInPlay = CHARACTERS    // Here we're setting charactersInPlay array to be all the characters to start with
   generateBoard()
   setSecret()
+  questions.selectedIndex = 0
+  CountFindOutGuesses = 0
+  counter.innerHTML = 0
 
 }
 
@@ -295,9 +297,15 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
+  CountFindOutGuesses += 1   // Adds number of guesses
+  console.log('Filtering characters and counting guesses')
 
-  console.log('Filtering characters')
+  if (CountFindOutGuesses > 5) {
+    alert(`No more chances, make a guess on a person now!`)
+  } else { 
+    counter.innerText = CountFindOutGuesses
+
+  const { category, value } = currentQuestion
   // Shows the correct alert message for different categories
   // Determine what is the category and filter by category to keep or remove based on the keep variable.
   if (category === 'accessories') {
@@ -347,8 +355,8 @@ const filterCharacters = (keep) => {
         `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-    }
-    
+    } 
+   }
   }
   // Invokes the function to redraw the board with the remaining people.
   generateBoard()
@@ -370,13 +378,13 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {                    // 1. Check if the personToCheck is the same as the secret person's name
     console.log('Win!')
     winOrLose.style.display = 'block',                    // 3. Show the win or lose section
-    winOrLoseText.innerHTML = 'You are the winner!'       // 2. Set a Message to show in the win or lose section accordingly
+    winOrLoseText.innerHTML = `You are the winner! ${secret.name} is correct!`       // 2. Set a Message to show in the win or lose section accordingly
     board.style.display = 'none'                          // 4. Hide the game board
   } else {
-  console.log('You lost the game')
-  winOrLose.style.display = 'block',
-  winOrLoseText.innerHTML = 'What a loser!'
-  board.style.display = 'none'
+    console.log('You lost the game')
+    winOrLose.style.display = 'block',
+    winOrLoseText.innerHTML = `What a loser! The secret person was ${secret.name}.`
+    board.style.display = 'none'
   }
 }
 
@@ -388,9 +396,4 @@ restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOut.addEventListener('click', checkQuestion)
 playAgain.addEventListener('click', start)
-findOut.addEventListener('click', () => {
-  CountFindOutClicks += 1
-  counter.innerHTML = CountFindOutClicks
-  console.log(CountFindOutClicks)
-})
 

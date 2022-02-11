@@ -238,7 +238,6 @@ const start = () => {
   // Invokes needed to start the game
   generateBoard ()
   setSecret ()
-  console.log(secret)
 }
 
 // Setting the currentQuestion object when you select something in the dropdown
@@ -333,7 +332,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
-  console.log(charactersInPlay)
  // Function to redraw the board with the remaining people.
  generateBoard ()
 }
@@ -343,7 +341,6 @@ const guess = (personToConfirm) => {
   if (confirm(`Hey, do you really want to make a guess at ${personToConfirm}?`) == true) {
     // Store the confirm in a variable and invoke checkMyGuess function
     let personToCheck = personToConfirm
-    console.log(personToCheck)
     checkMyGuess (personToCheck)
   }
 }

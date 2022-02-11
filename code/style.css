@@ -13,6 +13,7 @@ body {
   font-family: "Poppins", sans-serif;
   position: relative;
   border: 20px solid #395F5F;
+  min-height: 100vh;
 }
 
 /****** START OVERLAY SECTION ******/
@@ -289,9 +290,9 @@ button {
 
   .card .guess .filled-button {
     padding: 6px 11px;
-    margin-bottom: 1px;
+    margin-bottom: 11px;
     background: #FEFBF3;
     color: var(--primary);
-    border: none;
+    border: 1px solid #395F5F;
   }
 }

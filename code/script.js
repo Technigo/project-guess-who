@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
+const guessCounter = document.getElementById('guessCounter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -258,7 +259,12 @@ const selectQuestion = () => {
 }
 
 // This function should be invoked when you click on 'Find Out' button.
+let count = 0
 const checkQuestion = () => {
+  count+= 1
+  guessCounter.innerHTML = " "
+  guessCounter.innerHTML += `<p> Guesses made: ${count}</p>`
+
   const { category, value } = currentQuestion
   console.log('Let´s findout!')
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).

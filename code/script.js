@@ -83,7 +83,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewelry'],
     other: []
   },
 
@@ -156,7 +156,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewelry'],
     other: []
   },
   {
@@ -172,7 +172,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'jewelry'],
     other: []
   },
   {
@@ -180,7 +180,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['jewelry'],
     other: []
   },
   {
@@ -266,6 +266,8 @@ const start = () => {
   setSecret()
 
   // Resets the currentQuestion object at every start or restart
+  // Makes sure that it is not empty if the user clicks on the 
+  // find out button before selecting a question in the list
   currentQuestion = {
     category: 'hair',
     value: 'brown'
@@ -278,7 +280,7 @@ const start = () => {
   elapsedTime = 0 
   timer()
   numberOfGuesses = 0
-  totalGuesses.innerHTML = ``
+  totalGuesses.innerHTML = `0`
   
   // Console.log the secret person to see that it works correctly
   console.log(`The secret person is ${secret.name}`)
@@ -471,6 +473,14 @@ const checkMyGuess = (personToCheck) => {
   
 }
 
+const confirmRestart = () => {
+  let text = `Are you sure you want to restart the game?`
+
+  if (confirm(text) === true) {
+    start()
+  } 
+}
+
 // Shows the start window and hides the game window when page is loaded
 window.onload = () => {
   startWindow.style.display = 'flex'
@@ -479,7 +489,7 @@ window.onload = () => {
 
 // All the event listeners
 startButton.addEventListener('click', start)
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', confirmRestart)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', () => {
   soundEffect.currentTime = 0

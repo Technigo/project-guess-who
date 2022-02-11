@@ -87,6 +87,15 @@ select {
   margin: 10px auto;
 }
 
+.question-section a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.zapslat {
+  font-size: smaller;
+}
+
 .guess-who-icon {
   width: 126px;
   margin-top: 30px;

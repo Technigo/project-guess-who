@@ -244,8 +244,8 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-  const value = questions.options[questions.selectedIndex].value
+  const category = questions.options[questions.selectedIndex].parentNode.label;
+  const value = questions.options[questions.selectedIndex].value;
   console.log(category)
   console.log(value)
   // This variable stores what option group (category) the question belongs to.
@@ -253,8 +253,8 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    value: value
-  }
+    value: value,
+  };
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -268,11 +268,11 @@ const checkQuestion = () => {
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') { //these are looking for single strings
       if (value === secret.hair || value === secret.eyes) {
-        let keep = true
+        let keep = value === secret[category];
         filterCharacters(keep)
       } else {
         keep = false 
-        filterCharacters()
+        filterCharacters(keep)
       }
   } else if (category === 'accessories' || category === 'other') { // these are looking for arrays 
       if (secret.accessories.includes(value) || secret.other.includes(value)) {
@@ -280,7 +280,7 @@ const checkQuestion = () => {
        filterCharacters(keep)
       } else {
         keep = false 
-        filterCharacters()
+        filterCharacters(keep)
       }
   }
 }
@@ -324,7 +324,8 @@ const filterCharacters = (keep) => {
     }
   }
 
-
+  generateBoard()
+}
 
   // if (category === 'accessories') {
   //   if (keep) {
@@ -417,20 +418,19 @@ const filterCharacters = (keep) => {
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
-      generateBoard()
-}
+
   // Invoke a function to redraw the board with the remaining people.
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
-  const userGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`);
+function guess(personToConfirm) {
+  const userGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`)
 
   if (userGuess) {
     checkMyGuess(personToConfirm)
   } else {
     alert('okidoki, nevermind')
   }
-  
+
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.

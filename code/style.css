@@ -173,12 +173,12 @@ button {
 } */
 
 .filled-button,
-.outlined-button:hover {
+.outlined-button:hover:enabled {
   background-color: var(--primary);
   color: white;
 }
 
-.filled-button:hover {
+.filled-button:hover:enabled {
   background-color: white;
   border-color: white;
   color: var(--primary);

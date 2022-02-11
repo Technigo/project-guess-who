@@ -214,6 +214,8 @@ let secret
 let currentQuestion
 let charactersInPlay
 let numberOfGuesses
+let startTime
+let elapsedTime
 const soundEffect = new Audio('./assets/zapsplat_multimedia_button_click_fast_wooden_organic_003_78837.mp3')
 
 // Draw the game board
@@ -239,11 +241,7 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// Also global variables
-let startTime
-let elapsedTime
-
-// Timer
+// Timer  
 const timer = () => {
   startTime = Date.now()
   elapsedTime = 0
@@ -275,7 +273,6 @@ const start = () => {
   
   // Console.log the secret person to see that it works correctly
   console.log(`The secret person is ${secret.name}`)
-
 }
 
 // Sets the currentQuestion object when user selects a question in the dropdown list
@@ -303,7 +300,7 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a
   // different manner based on category type (string or array)
   
-  let keep;
+  let keep
 
   if (typeof category === 'string') { //instead of (category === 'hair' || category === 'eyes')
     secret[category] === value ? keep = true: keep = false 
@@ -320,8 +317,8 @@ const checkQuestion = () => {
   // Alert user and filter characters depending on if keep is true or false
   alertKeepOrNot(keep)
   filterCharacters(keep)
-
 }
+
 // Different alert messages to user
 const alertKeepOrNot = (keep) => {
   const { category, value } = currentQuestion
@@ -349,7 +346,7 @@ const alertKeepOrNot = (keep) => {
       )
     }
 
-  } else { // Category is hair or eyes
+  } else { // When category is hair or eyes
 
     if (keep) {
       alert(
@@ -368,7 +365,7 @@ const alertKeepOrNot = (keep) => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
 
-  if (category === 'accessories') { // Category is of array type
+  if (Array.isArray(category)) { // For categories of array type
     
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
@@ -376,27 +373,57 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
 
-  } else if (category === 'other') { // Category is of array type
+  } else if (typeof category === 'string') { // Category is of string type
     
-    if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    } else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-    }
-  
-  } else { // Category is of string type
-
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
+  
+  } else { // I don't know if this is necessary?
+
+    alert('Something went wrong here. Try again.')
   }
 
   // Generate the updated board with the remaining characters
   generateBoard();
 
 }
+
+// This function filters the characters array and redraws the game board.
+// const filterCharacters = (keep) => {
+//   const { category, value } = currentQuestion
+
+//   if (category === 'accessories') { // Category is of array type
+    
+//     if (keep) {
+//       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+//     } else {
+//       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+//     }
+
+//   } else if (category === 'other') { // Category is of array type
+    
+//     if (keep) {
+//       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+//     } else {
+//       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+//     }
+  
+//   } else { // Category is of string type
+
+//     if (keep) {
+//       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+//     } else {
+//       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+//     }
+//   }
+
+//   // Generate the updated board with the remaining characters
+//   generateBoard();
+
+// }
 
 // when clicking guess, the player first has to confirm that he/she wants to make a guess.
 const guess = (personToConfirm) => {

@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Week 5 of technigo bootcamp. Build a "guess who game". 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I tried to follow the pre-studies as much as possible and the steps on notion. 
+This was a good practice on arrays and objects! We hade good conversations about each step in our group. 
+If i had more time I would style it more and also add a counter. If I would start over I would plan it a bit more, maybe draw a timeline of my own, now i keept with the steps on notion as mentioned. 
+
+Also a problem I don't understand: when i go thrue the list and pick every hair color/style and lastly the 'hidden' one all the characters are gone but the game isn't over. Why is that? Can't figure it out.
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

@@ -208,7 +208,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
-let maxQuestions = 4;
+let maxQuestions = 5;
 let questionCounter = 0;
 
 const generateBoard = () => {
@@ -265,7 +265,7 @@ const checkQuestion = () => {
 
   alertMessage(status);   
   filterCharacters(status);
-  updateQuestionDisplay();
+  // updateQuestionDisplay();
 }
 
 // function for alerting the player
@@ -273,11 +273,33 @@ const checkQuestion = () => {
 const alertMessage = (correct) => {
   if (correct) {
     alert (`That's correct!`);
+    updateQuestionDisplay ('yes');
   } else {
     alert (`Nope, guess again!`);
+    updateQuestionDisplay ('no');
   };
 }
 
+const updateQuestionDisplay = (check) => {
+  
+  questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}`;
+
+  if (questionCounter === 0) {
+    previousQuestion.innerHTML = '';
+  } else if (questionCounter === maxQuestions) {
+    questionCountDisplay.innerText = `No questions remaining. Time to make a guess!`;
+    questions.disabled = true;
+    if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
+      previousQuestion.innerHTML += `<p>${currentQuestion.value} ${currentQuestion.category} - ${check}</p>`;
+    } else {
+      previousQuestion.innerHTML += `<p>${currentQuestion.value} - ${check}</p>`;
+    }
+  } else if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
+      previousQuestion.innerHTML += `<p>${currentQuestion.value} ${currentQuestion.category} - ${check}</p>`;
+  } else {
+    previousQuestion.innerHTML += `<p>${currentQuestion.value} - ${check}</p>`;
+  }
+}
 const filterCharacters = (keep) => {
   if (keep) {
     charactersInPlay = charactersInPlay.filter((character) => { 
@@ -292,21 +314,6 @@ const filterCharacters = (keep) => {
   generateBoard();
 }
 
-const updateQuestionDisplay = () => {
-  
-  questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}`;
-
-  if (questionCounter === 0) {
-    previousQuestion.innerHTML = '';
-  } else if (questionCounter === maxQuestions) {
-    questionCountDisplay.innerText = `No questions remaining. Time to make a guess!`;
-    questions.disabled = true;
-  } else if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
-      previousQuestion.innerHTML += `<p>${currentQuestion.value} ${currentQuestion.category}</p>`;
-  } else {
-    previousQuestion.innerHTML += `<p>${currentQuestion.value}</p>`;
-  }
-}
 
 const guess = (characterName) => {
   let playerGuess = confirm(`Are you sure you want to guess that it's ${characterName}?`);
@@ -319,6 +326,7 @@ const checkMyGuess = (characterName) => {
   if (characterName === winningCharacter.name) {
     gameOverWrapper.style.display = "flex";
     board.style.display = "none";
+    questionSection.style.display = "none";
     gameOverText.innerText = `Yes, ${characterName} was right! Congratulations!`;
   } else {
     gameOverWrapper.style.display = "flex";

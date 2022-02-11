@@ -205,7 +205,6 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-let keep
 
 // Draw the game board
 const generateBoard = () => {
@@ -247,13 +246,13 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
+  console.log('select is running') //TEST to see eventlisterner is working
   // This variable stores what option group (category) the question belongs to.
 
   // We also need a variable that stores the actual value of the question we've selected.
 
   const value = questions.options[questions.selectedIndex].value
-  console.log(value) // TEST to see it takes the value from the category - REMOVE later
+  console.log(value) // TEST to see it takes the value from the category
 
   currentQuestion = {
     category: category,
@@ -264,30 +263,45 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  selectQuestion()
   const { category, value } = currentQuestion
-  console.log(currentQuestion) // TEST to see currentQuetion is working
-
+  console.log('this is happening') // TEST to see currentQuestion is working
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+
+  let keep = true
   if (category === 'hair' || category === 'eyes') {
-  if (value === secret.hair || value === secret.eyes)
+   if (secret[category] === value){
+     keep = true   
+
+  //if (value === secret.hair || value === secret.eyes), I wrote this first but changed after Jennies video and worked better
+  
   filterCharacters(keep)
+   }
+   else {
+   keep = false
+   filterCharacters(keep)  
+   }
     // so I got the values from the list in value, & i need to compare it to secret and if they are the same === as secret i need to keep them
-    // KEEP I created global variable. In step 4 we should have true for keeping and false for not keeping?? connect the keep and the true?
+    // keep: I created global booleanvariable. In step 4 we should have true for keeping and false for not keeping..
 
   } else if (category === 'accessories' || category === 'other') {
-   if (secret.accessories.includes(value) || secret.other.includes(value) )
+    if (secret.accessories.includes(value) || secret.other.includes(value)){
+      keep = true
   filterCharacters(keep)
+    }else {
+      keep = false
+      filterCharacters(keep)
   }
+}
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
+  // issue - it shows both pop-ups, and also accessories and eyes are mixed up with the NO, and the smoker
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -306,25 +320,28 @@ const filterCharacters = (keep) => {
     alert(
       `No, the person doesn't have ${value}! Remove all people that does have ${value}`)
     }
-    /*
+    
     if (category === 'hair') {  
     if (keep) {
       alert(
-      `Yes, the person has ${value}! Keep all people with ${value}`
+      `Yes, the person has ${value} hair! Keep all people with ${value} hair`
       )
     
     } else {
     alert(
-    `No, the person doesnt have ${value}! Remove all people with ${value}`
+    `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
     )
+    }
     } else if (category === 'eyes') {
      alert(
-     `Yes, the person has ${value}! Keep all people with ${value}`
+     `Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
      )
     } else { 
-    `No, the person doesnt have ${value}! Remove all people with ${value}`
+    alert(
+    `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes`
   )
-     */
+    }
+     
   
 
   // Determine what is the category
@@ -365,3 +382,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', checkQuestion)
+questions.addEventListener('change', selectQuestion)

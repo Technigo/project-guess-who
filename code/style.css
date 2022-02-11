@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #079160;
+  --secondary: #a5e5cf;
 }
 
 body {
@@ -42,6 +42,7 @@ select {
 
 .guess-who-icon {
   width: 126px;
+  margin-top: 10px 0;
 }
 
 .board-wrapper {
@@ -58,6 +59,7 @@ select {
   flex-wrap: wrap;
   align-content: center;
 }
+
 
 /****** CARD ******/
 .card {
@@ -144,6 +146,8 @@ button {
   border-color: white;
   color: var(--primary);
 }
+ 
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -195,7 +199,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 130px;
   }
 
   .board-wrapper {

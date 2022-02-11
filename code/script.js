@@ -496,7 +496,6 @@ form.addEventListener('submit', e => {
       <button id="start-button" class="outlined-button">Start game</button>
   </div>
   `
-
   document.getElementById('start-button').addEventListener('click', () => {
     startGame.style.display = 'none'
     new Audio('./audio/intro.wav').play()
@@ -506,7 +505,6 @@ form.addEventListener('submit', e => {
 //click find out btn to start guessing and call the checkQuestion and add attempt to counter 
 findOutBtn.addEventListener('click', () => {
   checkQuestion()
-  flipCard()
   incrementOne++
   counter.innerText = incrementOne
 })

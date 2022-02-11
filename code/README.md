@@ -12,4 +12,4 @@ Also a problem I don't understand: when i go thrue the list and pick every hair 
 
 ## View it live
 
-
+https://guess-who-id4h4lling.netlify.app

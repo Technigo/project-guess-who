@@ -4,6 +4,9 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findoutButton = document.getElementById('filter')
 const winOrLooseText = document.getElementById('winOrLoseText')
+const playAgainbutton = document.getElementById('playAgain')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const winOrLoseWrapper = document.getElementById('winOrLose') 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -206,6 +209,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -357,29 +361,32 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 
 const guess = (personToConfirm) => {
-  let playerGuess = confirm
-if (confirm(`Are you sure about ${personToConfirm}?`)) {  // remember the confirm() ?
-    checkMyGuess(personToConfirm)
-  }  else {
-    alert ('Yes, think a bit more and try again!')
-  }
+  const confirmed = confirm(`Are you sure about ${personToConfirm}?`) // remember the confirm() ?
+// store the interaction from the player in a variable.
+if (confirmed) {
+  checkMyGuess(personToConfirm)
+}
   // store the interaction from the player in a variable.
-
+ 
  
   console.log('checked')
 }
 
-// If you confirm, this function is invoked
+// If you confirm, this function is invoked //make the 
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {// 1. Check if the personToCheck is the same as the secret person's name
     winOrLooseText.innerHTML = 'You won!'
   } else {
-    winOrLooseText.innerHTML = 'You looooost!!'
+    winOrLooseText.innerHTML = 'You looooost!!' // 2. Set a Message to show in the win or lose section accordingly
   }
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  winOrLoseWrapper.style.display = 'flex' // 3. Show the win or lose section
+  board.style.display = 'none'  // 4. Hide the game board
+
+  playAgainbutton.addEventListener('click', ()=>{
+    location.reload()})
+  console.log('end of checkmygyess')
 }
+
 
 // Invokes the start function when website is loaded
 start()
@@ -388,3 +395,4 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findoutButton.addEventListener('click', checkQuestion)
+playAgainbutton.addEventListener('click', start)

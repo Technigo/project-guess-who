@@ -282,21 +282,25 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(
+      Swal.fire(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
     } else {
-      alert(
+      Swal.fire(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
     }
-  } else if (category === 'other') {
+  } 
+  
+  
+  
+  else if (category === 'other') {
     if (keep) {
-    alert(
+      Swal.fire(
       `Yes, the person is a ${value}! Keep all people that are ${value}s`
     )
   } else {
-    alert(
+    Swal.fire(
       `No, the person isn´t a ${value}! Remove all people that are ${value}s`
     )
   }
@@ -306,11 +310,11 @@ const filterCharacters = (keep) => {
   
   
   } else {
-    if (keep) { alert(
+    if (keep) { Swal.fire(
       `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}`
     )
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-    } else { alert(
+    } else { Swal.fire(
       `No, the person doesn´t have ${value} ${category}! Remove all the person that have ${value} ${category}`
     )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"

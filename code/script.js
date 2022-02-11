@@ -252,10 +252,10 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
   // This variable stores what option group (category) the question belongs to.
+  const value = questions.value;
   // We also need a variable that stores the actual value of the question we've selected.
-    const value = questions.value
+    
     currentQuestion = {
       category: category,
       value: value,
@@ -324,6 +324,7 @@ const filterCharacters = (keep) => {
         wrongSound.play()
       }
     }
+      // Invokes the function to redraw the board with the remaining people.
     generateBoard();
   }
 
@@ -350,6 +351,8 @@ const guess = (confirmPerson) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (confirmPerson) => {
+  //Check if the personToCheck is the same as the secret person's name
+    // Set a Message to show in the win or lose section accordingly
   if (confirmPerson === secret.name) {
     winOrLoseText.innerHTML = `You guessed it right. ${confirmPerson} is the correct answer`
     winSound.play();
@@ -357,17 +360,10 @@ const checkMyGuess = (confirmPerson) => {
   else {
   winOrLoseText.innerHTML = `You guessed it wrong 😫. ${confirmPerson} is the correct answer`
   loseSound.play();
-}
-   
-
-  winOrLose.style.display = 'flex';
-  board.style.display = 'none';
-
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-};
+  }
+  winOrLose.style.display = 'flex';  // Show the win or lose section
+  board.style.display = 'none';   //  Hide the game board 
+  };
 
 // Invokes the start function when website is loaded
 start();
@@ -383,3 +379,6 @@ playAgain.addEventListener('click',() =>{
   playAgainSound.play();
   setTimeout(() => start(), 500)
 });
+questions.addEventListener("submit", (event) => {
+  event.preventDefault()
+})

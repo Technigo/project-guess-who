@@ -9,4 +9,8 @@ Since this is difficult to learn I planned to only do the basics / needs for the
 If I had more time I would have add a counter.
 
 ## View it live
+<<<<<<< HEAD
 https://dazzling-hodgkin-5ffd24.netlify.app
+=======
+https://dazzling-hodgkin-5ffd24.netlify.app
+>>>>>>> 3b714269e228a0909fe8f4d0f96a3a52b5e18f34

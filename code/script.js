@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById ('filter')
+const winOrLose = document.getElementById ('winOrLose')
+const winOrLoseText = document.getElementById ('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -355,6 +357,11 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  if (confirm(`Hey, do you really want to make a guess at ${personToConfirm}?`) == true) {
+    let personToCheck = personToConfirm
+    console.log(personToCheck)
+    checkMyGuess (personToCheck)
+  }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -362,6 +369,16 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  winOrLose.style.display='flex'
+  board.style.display='none'
+  if (secret.name === personToCheck) {
+    winOrLoseText.innerHTML =
+    `Yay, good job - ${personToCheck} is the secret person`
+  } else {
+    winOrLoseText.innerHTML =
+    `Sorry, ${personToCheck} isn't correct, ${secret.name} was the secret person`
+  }
+    // winOrLose.innerHTML =+ 
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

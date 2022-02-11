@@ -265,11 +265,8 @@ const checkQuestion = () => {
 
   alertMessage(status);   
   filterCharacters(status);
-  // updateQuestionDisplay();
 }
 
-// function for alerting the player
-// TO DO create alert messages for the different attributes to avoid weird grammer
 const alertMessage = (correct) => {
   if (correct) {
     alert (`That's correct!`);
@@ -298,8 +295,9 @@ const updateQuestionDisplay = (check) => {
       previousQuestion.innerHTML += `<p>${currentQuestion.value} ${currentQuestion.category} - ${check}</p>`;
   } else {
     previousQuestion.innerHTML += `<p>${currentQuestion.value} - ${check}</p>`;
-  }
+  };
 }
+
 const filterCharacters = (keep) => {
   if (keep) {
     charactersInPlay = charactersInPlay.filter((character) => { 
@@ -313,7 +311,6 @@ const filterCharacters = (keep) => {
   questions.selectedIndex = null;
   generateBoard();
 }
-
 
 const guess = (characterName) => {
   let playerGuess = confirm(`Are you sure you want to guess that it's ${characterName}?`);

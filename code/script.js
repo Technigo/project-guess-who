@@ -8,7 +8,6 @@ const winOrLoseText = document.getElementById('winOrLoseText')
 const boardWrapper = document.getElementById('boardWrapper')
 const playAgain = document.getElementById('playAgain')
 
-
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -33,7 +32,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker', 'beard']
+    other: ['cigarette/pipe', 'beard']
   },
   {
     name: 'Jai',
@@ -89,7 +88,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['sun-glasses'],
-    other: ['smoker']
+    other: ['cigarette/pipe']
   },
   {
     name: 'Jean',
@@ -97,7 +96,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['reading-glasses', 'hat'],
-    other: ['smoker']
+    other: ['cigarette/pipe']
   },
   {
     name: 'Jeane',
@@ -113,14 +112,14 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['reading-glasses', 'hat'],
-    other: ['smoker', 'beard', 'mustache']
+    other: ['cigarette/pipe', 'beard', 'mustache']
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat', 'ring', 'phone'],
+    accessories: ['hat', 'ring'],
     other: []
   },
   {
@@ -240,6 +239,8 @@ const start = () => {
   generateBoard()
   setSecret()
   selectQuestion()
+  winOrLose.style.display = "none"
+  boardWrapper.style.display = "flex"
 }
 
 // Setting the currentQuestion object when you select something in the dropdown.
@@ -337,7 +338,7 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `CONGRATS! ${secret.name} is the correct guess! Great job, well done!`
   } else {
-    winOrLoseText.innerHTML = `I'm sorry, that was incorrect. The right answer is ${secret.name}`
+    winOrLoseText.innerHTML = `I'm sorry, that was incorrect. The right answer is ${secret.name}!`
   }
   // 3. Show the win or lose section
   winOrLose.style.display = 'flex'

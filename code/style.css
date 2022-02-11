@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary:pink;
-  --secondary: #b0a6ff;
+  --primary: #BAABDA;
+  --secondary: #D77FA1;
 }
 
 body {
@@ -9,14 +9,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: #D6E5FA;
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 48px;
   font-weight: 500;
-  line-height: 48px;
+  line-height: 40px;
   margin: 10px 0;
-  color: white;
+  color: #6B4F4F;
 }
 
 .question-section {
@@ -33,7 +34,7 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 14px;
+  font-size: 12px;
   font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;
@@ -41,7 +42,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 100px;
 }
 
 .board-wrapper {

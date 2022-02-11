@@ -279,27 +279,27 @@ const filterCharacters = (keep) => {
   // ALERT MESSAGES
   if (category === 'accessories') {
     if (keep) {
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
+      alert(`Yes, the person wears ${value}! Keep all people with ${value}.`)
     } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
+      alert(`No, the person doesn't wear ${value}! Remove all people with ${value}.`)
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(`Yes, the person isn't a ${value}! Keep all people is a ${value}`)
+      alert(`Yes, the person is a ${value}! Keep all people that isn't a ${value}.`)
     } else {
-      alert(`No, the person is a ${value}! Remove all people that isn't a ${value}`)
+      alert(`No, the person isn't a ${value}! Remove all people that is a ${value}.`)
     }
   } else if (category === 'hair') {
     if (keep) {
-      alert(`Yes, the person has ${value} hair! Keep all people that has ${value} hair.`)
+      alert(`Yes, the person has ${value} hair! Keep all people with ${value} hair.`)
     } else {
-      alert(`No, the person doesn't have ${value} hair! Remove all people that have ${value} hair.`)
+      alert(`No, the person doesn't have ${value} hair! Remove all people with ${value} hair.`)
     }
   } else if (category === 'eyes') {
     if (keep) {
-      alert(`Yes, the person has ${value} eyes! Keep all people that has ${value} eyes.`)
+      alert(`Yes, the person has ${value} eyes! Keep all people with ${value} eyes.`)
     } else {
-      alert(`No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes.`)
+      alert(`No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes.`)
     }
   }
 

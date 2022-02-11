@@ -291,23 +291,23 @@ const filterCharacters = (attribute) => {
   if (category === 'accessories') {
     if (attribute) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      alert(`Yes, that's correct, the person wears ${value}!! Keep all people that wears ${value}.`)
+      alert(`Yes, that's correct, the person wears ${value}!! Keep all the people that wears ${value}.`)
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      alert(`No, to bad, the person doesn't wear ${value}! Remove all people that wears ${value}...`)
+      alert(`No, to bad, the person doesn't wear ${value}! Remove all the people that wears ${value}.`)
     }
   } else if (category === 'other') {
     if (attribute) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      alert(`Yeah! The person has a ${value}. Keep all the people with ${value}`)
+      alert(`Yeah! The person has a ${value}. Keep all the people with ${value}.`)
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      alert(`No, I'm sorry, the person dose not have ${value}. Remove all people with ${value}`)
+      alert(`No, I'm sorry, the person dosen't have ${value}. Remove all people with ${value}.`)
     }
   } else if (category === 'hair') {
     if (attribute) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-      alert(`Well done! The person has ${value} hair, Keep everyone with ${value} hair`)
+      alert(`Well done! The person has ${value} hair, Keep everyone with ${value} hair.`)
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       alert(`Noooo, the person do not have ${value} hair, remove all people with ${value} hair.`)

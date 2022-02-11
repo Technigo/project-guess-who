@@ -1,12 +1,14 @@
-# Project Name
+# Guess who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Make a guess who game adding the missing parts of JavaScript.
 
 ## The problem
+I followed the steps on Notion and in the JavaSript. 
+I trid to learn from this weeks videos, teaching and how other students solved the task.
+I struggled with the checkQuestion and did not understand in the begining that it was supposed to på an "if".
+I got some help from Stack Owerfrow and team mate Emma.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+If I had more time, I would liked to do more with the css and adding som sound effects.
 
 ## View it live
 

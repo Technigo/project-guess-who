@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
   --primary: #59ff67;
-  --secondary: #d5fcbf;
+  --secondary: #e2fcd4;
 }
 
 body {
@@ -33,9 +33,9 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
+  font-size: 30px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #59ff67;
   width: 100%;
   margin: 24px 0;
 }

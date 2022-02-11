@@ -6,6 +6,8 @@ const findoutButton = document.getElementById('filter')
 const guessButton = document.querySelectorAll('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const playagainButton = document.getElementById('playAgain')
+
 
 
 /*
@@ -323,7 +325,9 @@ const start = () => {
   }
 
   setSecret()
-  
+
+  winOrLose.style.display = 'none'
+  board.style.display = 'flex'
 
 }
 
@@ -450,7 +454,6 @@ const checkMyGuess = (personToCheck) => {
     }
 
     winOrLose.style.display = 'flex'
-
     board.style.display = 'none'
   
   // 1. Check if the personToCheck is the same as the secret person's name
@@ -462,8 +465,16 @@ const checkMyGuess = (personToCheck) => {
 // Invokes the start function when website is loaded
 start()
 
+const restart = () => {
+    window.location.reload();
+}
+
+
 // All the event listeners
-restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findoutButton.addEventListener('click', checkQuestion)
+playagainButton.addEventListener('click', start)
+restartButton.addEventListener('click', restart)
+
+
 

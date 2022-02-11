@@ -7,7 +7,7 @@ const questions = document.getElementById('questions')
 const findOutBtn = document.getElementById('filter')
 const counter = document.getElementById('counter') 
 const restart = document.getElementById('restart')
-const winOrLoose = document.querySelector('.win-or-lose-wrapper')
+const winOrLose = document.querySelector('.win-or-lose-wrapper')
 const winOrLoseText = document.getElementById('winOrLoseText') 
 const playAgain = document.getElementById('playAgain')
 
@@ -77,7 +77,7 @@ const CHARACTERS = [
     profession: 'villain',
     headgear: 'hat',
     sweater: ['striped', 'red'],
-    face: ['beard', 'pirate patch'],
+    face: ['beard', 'piratepatch'],
     accessories: ['binocular'],
   },
   {
@@ -285,6 +285,7 @@ let playerName
 let secret
 let currentQuestion
 let charactersInPlay
+let charactersToFlip
 let incrementOne = 0 //this variable is used to increment counter with one.
 
 
@@ -305,26 +306,25 @@ const generateBoard = () => {
   })
 }
 
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret)
 }
 
-// This function to start (and restart) the game
+// Function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  // if I want, I can have more characters and randomly choose to pick 24. It´s important that setSecret is randomly taking a person from the characters in play.
   charactersInPlay = CHARACTERS
+  charactersToFlip = []
   generateBoard()
   setSecret()
+  //Reset the counter
   incrementOne = 0
   counter.innerText = incrementOne
-  // What else should happen when we start the game?
 }
 
-
-// setting the currentQuestion object when you select something in the dropdown
+// setting the currentQuestion object when something is selected in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
@@ -339,63 +339,53 @@ const selectQuestion = () => {
   }
 }
 
-//on change in select list a new key value pair will be saved to currentQuestion.
+// When another selection is selected in the list, a new key value pair will be saved to currentQuestion.
 questions.addEventListener('change', () => {
   selectQuestion()
-  console.log(currentQuestion)
 })
 
-//Compare currentQuestion (our guess) with the details of the secret person.
-//If secret has what was guessed, keep people that have that detail by passing keep to filterfuntion.
-//If secret has not what was guessed, remove people that does not have the detail in filterfunction. 
+// CheckQuestion compare currentQuestion (our guess) with the details of the secret person.
+// If secret has what was guessed/selected, we keep people that have that detail by passing keep to filterfuntion.
+// If secret has not what was guessed/selected, we remove people that does not have the detail in filterfunction. 
 const checkQuestion = () => {
-  const { category, value, text } = currentQuestion
-  console.log(currentQuestion)
+  const { category, value } = currentQuestion
 
+  //Use an else-if statement for categorys where the value is a string.
   if (category === 'hair' || category === 'headgear') {
-    
+    //check if secret array of values includes selected value (returns true/false) and invoke filterCharacters
     if (value === secret.hair || value === secret.headgear) {
-      console.log(`secret has ${category} ${value}`)
       filterCharacters(value)
     } else {
-      console.log(`secret has not ${text}`)
       filterCharacters()
     }
   } else if (category === 'pants' || category === 'profession') {
       if (value === secret.pants || value === secret.profession) {
-        console.log(`secret has ${category} ${value}`)
         filterCharacters(value)
       } else {
-        console.log(`secret has not ${text}`)
         filterCharacters()
       }
-  } else if (category === 'sweater' || category === 'face' || category === 'accessories') {
-    //check if secret array of values includes selected value (returns true/false)
 
+  //Use an else-if statement for categorys where the value is an array.
+  } else if (category === 'sweater' || category === 'face' || category === 'accessories') {
+    //check if secret array of values includes selected value (returns true/false) and invoke filterCharacters
       if ((secret.sweater).includes(value)) {
-        console.log(`secret has sweater ${text}`)
         filterCharacters(value)
       } else if ((secret.face).includes(value)) {
-        console.log(`secret has face: ${text}`)
         filterCharacters(value)
       } else if ((secret.accessories).includes(value)) {
-        console.log(`secret has accessories: ${text}`)
         filterCharacters(value)
       } else {
-        console.log(`secret has not ${text}`)
         filterCharacters()
       }
   }
 }
 
-// It'll filter the characters array and redraw the game board.
+// The function filterCharacters filter the characters array with objects and redraw the game board.
 const filterCharacters = (keep) => {
-  //save current guess to compare what should be kept for different categories.
+  //Save current guess to compare what should be kept for different categories.
   const { category, value, text } = currentQuestion
-  console.log(currentQuestion)
-  console.log(text)
-  console.log(keep)
-  // Show the correct alert message for different categories
+  
+  // Show the correct alert message for different categories.
   if (category === 'sweater') {
     if (keep) {
       alert(
@@ -406,6 +396,7 @@ const filterCharacters = (keep) => {
         `No, the person doesn't wear ${text}! Remove all people that wears ${text}.`
       )
     }
+
   } else if (category === 'face') {
     if (keep) {
       alert(
@@ -416,6 +407,7 @@ const filterCharacters = (keep) => {
          `No, the person doesn't have ${text}! Remove all people who have ${text}.`
       )
     } 
+
   } else if (category === 'accessories') {
     if (keep) {
       alert(
@@ -435,15 +427,16 @@ const filterCharacters = (keep) => {
     }
   }
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
+  // Filter by category to keep or remove based on the argument passed from previous function.
+  // If selected value is a string
   if (category === 'hair' || category === 'pants' || category === 'profession' || category === 'headgear') {
     if (keep) {  
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
-    //for accessories and other we need check if the value is included in an array.
+  
+  // For accessories, sweater and face we need to check if the value is included in an array.
   } else {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
@@ -458,7 +451,6 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
-  // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
   const confirmGuess = confirm(`So, you want to make a guess?`)
   if (confirmGuess) {
@@ -473,14 +465,15 @@ const guess = (personToConfirm) => {
 // 4. Hide the game board
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    alert(`It is ${personToCheck}, good job!`)
-    winOrLoose.style.display = 'flex';
+    //alert(`It is ${personToCheck}, good job!`)
+    winOrLose.style.display = 'flex';
     winOrLoseText.innerText = 'Yay, you won! Play again?'
+    new Audio('./audio/Winning-game-sound-effect.mp3').play()
   } else {
-    alert(`Oh, I´m sorry but it is not ${personToCheck}. It was ${secret.name} all the time.. Better luck next time!`)
-    winOrLoose.style.display = 'flex'
+    //alert(`Oh, I´m sorry but it is not ${personToCheck}. It was ${secret.name} all the time.. Better luck next time!`)
+    winOrLose.style.display = 'flex';
     winOrLoseText.innerText = 'Oh no, you lost! Play again?'
-    
+    new Audio('./audio/Aww-sound-effect.mp3').play()
   }
 }
 
@@ -505,22 +498,26 @@ form.addEventListener('submit', e => {
       <button id="start-button" class="outlined-button">Start game</button>
   </div>
   `
-  console.log(playerName)
+
   document.getElementById('start-button').addEventListener('click', () => {
-      startGame.style.display = 'none'
+    startGame.style.display = 'none'
+    new Audio('./audio/intro.wav').play()
   })
 })
-
 
 //click find out btn to start guessing and call the checkQuestion and add attempt to counter 
 findOutBtn.addEventListener('click', () => {
   checkQuestion()
+  flipCard()
   incrementOne++
   counter.innerText = incrementOne
 })
 
 //click start game btn to restart the game during playing
-restart.addEventListener('click', start)
+restart.addEventListener('click', () => {
+  start()
+  new Audio('./audio/intro.wav').play()
+})
 
 //click play again btn to play again when game is over
 playAgain.addEventListener('click', () => {

@@ -268,7 +268,7 @@ const checkQuestion = () => {
     `;
   if (questionCounter === maxQuestions) {
     questionCountDisplay.innerText = `No questions remaining. Time to make a guess!`;
-    findOutButton.disabled = true;
+    questions.disabled = true;
   }
 
   // status will be boolean - true or false
@@ -292,7 +292,7 @@ const checkQuestion = () => {
 // TO DO create alert messages for the different attributes to avoid weird grammer
 const alertMessage = (correct) => {
   if (correct) {
-    alert (`Correct!`)
+    alert (`That's correct!`)
   } else {
     alert (`Nope, guess again!`)
   }
@@ -309,6 +309,7 @@ const filterCharacters = (keep) => {
       return !character[currentQuestion.category].includes(currentQuestion.value);
     });
   }
+  questions.selectedIndex = null;
   generateBoard()
 }
 

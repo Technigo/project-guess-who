@@ -379,13 +379,11 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   let guessPerson = personToCheck === secret.name;
 
-  if(guessPerson) {
-    //ADD SOUND???
-    winOrLoseText.innerHTML = 'Bravo! You guessed correctly!'
+  if (guessPerson) {
+    winOrLoseText.innerHTML = `Yaaay! <br><br>You guessed correctly, <br><br>it was ${personToCheck}!`
 
   } else {
-    // ADD SOUND??
-    winOrLoseText.innerHTML = 'Oh nooo! You guessed wrong and lost the game!'
+    winOrLoseText.innerHTML = `Oh noo! <br><br>It is not ${personToCheck}, it was ${secret.name}!`
   
 //  Shows the hidden section
   } winOrLoseSection.style.display = 'block'

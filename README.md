@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+With javaScript we had to make the Gusses Who? game work.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I approached this project with thinking that I would read up and go through all the leasons before starting. I feel like I needed alot of information and help form my co students to make this work.                 
+
+If i had more time I would change the picturs and made it more personal.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+

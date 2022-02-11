@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #ccc6b9;
-  --secondary: #0003c0;
+  --primary: #c25a22;
+  --secondary: #edb8cc;
   
 }
 
@@ -24,6 +24,7 @@ h1 {
 .win-or-lose h1 {
   border: 3 px solid black;
   font-size: 50px;
+  
 }
 
 .question-section {
@@ -235,8 +236,8 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
-    color: var(--primary);
+    background: transparent;
+    color: #c25a22;
     border: none;
   }
 }

@@ -283,45 +283,68 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
+  //Swal.fire for customising alerts
   if (category === 'accessories') {
     if (keep) {
       correctSound.play()
-      Swal.fire(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
+      Swal.fire({
+        background: '#d0c3e2',
+      title: `Yes, the person wears ${value}! Keep all people that wears ${value}`,
+      })
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       
     } else {
       wrongSound.play()
-      Swal.fire(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
+      Swal.fire({
+        background: '#d0c3e2',
+      title: `No, the person doesnot wear ${value}! Remove all people that wears ${value}`,
+      })
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'other') {
     if (keep) {
       correctSound.play()
-      Swal.fire(`Yes, the person is a ${value}!`)
+      Swal.fire({
+        background: '#d0c3e2',
+        title:`Yes, the person is a ${value}!`})
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       wrongSound.play()
-      Swal.fire(`No, the person is not a ${value}!`)
+      Swal.fire({
+        background: '#d0c3e2',
+        title:`No, the person is not a ${value}!`})
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     } 
   } else if (category === 'hair') {
     if (keep) {
       correctSound.play()
-      Swal.fire(`Yes, the person has ${value} hair! Keep all people that have ${value} hair `)
+      Swal.fire({
+        background: '#d0c3e2',
+        title:`Yes, the person has ${value} hair! Keep all people that have ${value} hair `
+      })
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       wrongSound.play()
-      Swal.fire(`No, the person does not have ${value} hair! Remove all people that have ${value} hair`)
+      Swal.fire({
+        background: '#d0c3e2',
+        title:`No, the person doesnot have ${value} hair! Remove all people that have ${value} hair `
+      })
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       }
      } else if (category === 'eyes') {
       if (keep) {
         correctSound.play()
-        Swal.fire(`Yes, the person has ${value} eyes! keep all people that have ${value} eyes`)
+        Swal.fire({
+          background: '#d0c3e2',
+          title:`Yes, the person has ${value} eyes! Keep all people that have ${value} eyes `
+        })
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       } else {
         wrongSound.play()
-        Swal.fire(`No, the person does not have ${value} eyes! Remove all people that have ${value} eyes`)
+        Swal.fire({
+          background: '#d0c3e2',
+          title:`No, the person doesnot ${value} eyes! Remove all people that have ${value} eyes `
+        })
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       }
     }
@@ -335,11 +358,14 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (confirmPerson) => {
   console.log('Guess correct')
-  let playerGuessConfirm = Swal.fire({  
+  let playerGuessConfirm = Swal.fire({    
    title: 'Do you want to confirm your choice or Try again?',
+   background: '#d0c3e2',
     showDenyButton: true,    
-    confirmButtonText: `Confirm`,  
-    denyButtonText: `Try Again`,
+    confirmButtonText: '👍 Confirm!',  
+    confirmButtonColor: '#a259ff',
+    denyButtonText: `Try Again 👎`,
+    denyButtonColor: '#a259ff',
   })
   .then((result) => {  
     /* Read more about isConfirmed, isDenied below */  

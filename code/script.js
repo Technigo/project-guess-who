@@ -3,6 +3,12 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const guessBtn = document.getElementById('filter')
+const winOrLose = document.querySelector('.win-or-lose-wrapper')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgain = document.getElementById('playAgain')
+const guessWhoIcon = document.getElementsByClassName('guess-who-icon')
+const myAudio = document.getElementById('my-audio')
+
 
 // Global variables
 let secret
@@ -50,7 +56,7 @@ const CHARACTERS = [
     hair: ['black hair'],
     eyes: 'grey eyes',
     accessories: ['a sword', 'a crown at one point'],
-    house: ['House stark', 'House Snow', 'House Targaryen'],
+    house: ['House Stark', 'House Snow', 'House Targaryen'],
     species: 'human',
     home: ['Winterfell', 'The Wall']
   },
@@ -161,7 +167,7 @@ const CHARACTERS = [
     hair: ['red hair'],
     eyes: 'green eyes',
     accessories: ['a sword'],
-    house: ['the Free Folk'],
+    house: ['the Free folk'],
     species: 'human',
     home: ['Beyond the Wall']
   },
@@ -181,7 +187,7 @@ const CHARACTERS = [
     hair: ['red hair'],
     eyes: 'blue eyes',
     accessories: ['a bow'],
-    house: ['the Free Folk'],
+    house: ['the Free folk'],
     species: 'human',
     home: ['Beyond the Wall']
   },
@@ -236,7 +242,7 @@ const CHARACTERS = [
     home: ['Beyond the Wall']
   },
   {
-    name: "Jaqen H'ghar",
+    name: 'Jaqen Haghar',
     img: 'images/jaqen.jpg width="135px"',
     hair: ['red hair', 'white hair'],
     eyes: 'hidden eyes',
@@ -317,8 +323,6 @@ const CHARACTERS = [
   }
 ]
 
-
-
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -343,21 +347,21 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
   selectQuestion()
-  // What else should happen when we start the game?
-}
+  document.getElementById('my-audio').innerHTML = `
+    <audio src="./images/music.mp3" type="audio/mpeg" autoplay loop></audio>
+    `
+  
+  }
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value = questions.value;
   const value = questions.options[questions.selectedIndex].value
 
 
@@ -377,221 +381,181 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  // let keep;
-  // if (category === 'Hair' && value === secret.hair.find(element => element === value)) {
-  //   keep = true;
-  // } else if (category === 'Eyes' && value === secret.eyes) {
-  //   keep = true
-  // } else if (category === 'House' && value === secret.house.find(element => element === value)) {
-  //   keep = true
-  // } else if (category === 'Home' && value === secret.home.find(element => element === value)) {
-  //   keep = true
-  // } else if (category === 'Species' && value === secret.species) {
-  //   keep = true
-  // } else if (category === 'Accessories' && value === secret.accessories.find(element => element === value)) {
-  //   keep = true
-  // } else {
-  //   keep = false
-  // }
-  // filterCharacters(keep);
-
-
-
-
-  if (category === 'Hair') {
-    if (value === secret.hair || secret.hair.includes(value)) {
-      let keep = true
-      filterCharacters(keep)
-    } else {
-     keep = false
-      filterCharacters()
-    }
-
-  } else if (category === 'Eyes') {
-    if (value === secret.eyes) {
-      let keep = true
-      filterCharacters(keep)
-    } else {
-      keep = false
-      filterCharacters()
-    }
-
-  } else if (category === 'House') {
-    if (value === secret.house || secret.house.includes(value)) {
-      let keep = true
-      filterCharacters(keep)
-    } else {
-      keep = false
-      filterCharacters()
-    }
-  } else if (category === 'Home') {
-    if (value === secret.home || secret.home.includes(value)) {
-      let keep = true
-      filterCharacters(keep)
-    } else {
-      keep = false
-      filterCharacters()
-    }
-  } else if (category === 'Species') {
-    if (value === secret.species) {
-      let keep = true
-      filterCharacters(keep)
-    } else {
-      keep = false
-      filterCharacters()
-    }
-  } else if (category === 'Accessories') {
-    if (value === secret.accessories || secret.accessories.includes(value)) {
-      let keep = true
-      filterCharacters(keep)
-    } else {
-      keep = false
-      filterCharacters()
-    }
+  let keep;
+  if (category === 'Hair' && value === secret.hair.find(element => element === value)) {
+    keep = true;
+  } else if (category === 'Eyes' && value === secret.eyes) {
+    keep = true
+  } else if (category === 'House' && value === secret.house.find(element => element === value)) {
+    keep = true
+  } else if (category === 'Home' && value === secret.home.find(element => element === value)) {
+    keep = true
+  } else if (category === 'Species' && value === secret.species) {
+    keep = true
+  } else if (category === 'Accessories' && value === secret.accessories.find(element => element === value)) {
+    keep = true
+  } else {
+    keep = false
   }
+  filterCharacters(keep);
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   
   const { category, value } = currentQuestion;
-  // Show the correct alert message for different categories
-  // if (keep) {
-  //   charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-  //   alert(
-  //     `Yes, the person wears ${value}! Keep all people that wear ${value}`
-  //   )
-  // } else {
-  //   charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  //   alert(
-  //     `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
-  //   )
-  // }
+ 
   if (category === 'Hair') {
     if (keep) {
-      alert(
-        `Yes, the character has ${value}! Keep all that has ${value}`
+      Swal.fire(
+        `Yes! The character have ${value}!`,
+        `Keeping all with ${value}.`,
+        'success'
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      charactersInPlay = charactersInPlay.filter((person) => person.hair.includes(value))
     } else {
-      alert(
-        `No, the character doesn't has ${value}. Remove all that has ${value}`
+      
+      Swal.fire(
+        `No, the character doesn't has ${value}.`,
+        `Let's remove all that has ${value}.`,
+        'error'
       )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) 
+      charactersInPlay = charactersInPlay.filter((person) => !person.hair.includes(value)) 
     }
   } else if (category === 'Eyes') {
     if (keep) {
-      alert(
-        `Yes, the secret character has ${value}! Keep all that has ${value}`
+      Swal.fire(
+        `Yes, the secret character has ${value}!`,
+        `Let's keep all that has ${value}`,
+        'success'
       )
       charactersInPlay = charactersInPlay.filter((person) => person.eyes === value);
     } else {
-      alert(
-        `No, the secret character doesn't have ${value}. Remove all that has ${value}`
+      Swal.fire(
+        `No, the secret character doesn't have ${value}.`,
+        `Let's remove all that has ${value}`,
+        'error'
       )
       charactersInPlay = charactersInPlay.filter((person) => person.eyes !== value);
     }
   } else if (category === 'Accessories') {
     if (keep === true) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      alert(
-        `Yes, the secret character has ${value}! Keep all with ${value}`
+      Swal.fire(
+        `Yes, the secret character has ${value}!`,
+        `Let's keep all with ${value}`,
+        'success'
       )
+      charactersInPlay = charactersInPlay.filter((person) => person.accessories.includes(value))
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) 
-      alert(
-        `No, the secret character does not have ${value}. Remove all with ${value}`
+      Swal.fire(
+        `No, the secret character does not have ${value}`,
+        `Let's remove all with ${value}`,
+        'error'
       )
-
+      charactersInPlay = charactersInPlay.filter((person) => !person.accessories.includes(value)) 
 
  
     }
   } else if (category === 'House') {
     if (keep) {
-      alert(
-        `Yes the secret character is in ${value}! Keep all that is in ${value}`
+      Swal.fire(
+        `Yes the secret character is in ${value}!`,
+        `Let's keep all that is in ${value}`,
+        'success'
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      
+      charactersInPlay = charactersInPlay.filter((person) => person.house.includes(value))
+      
 
 
     } else {
-      alert(
-        `No, the secret character is in ${value}. Remove all that is in ${value}.`
+      Swal.fire(
+        `No, the secret character is in ${value}`,
+        `Let's remove all that is in ${value}.`,
+        'error'
       )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) 
+      charactersInPlay = charactersInPlay.filter((person) => !person.house.includes(value)) 
 
 
     }
   } else if (category === 'Species') {
     if (keep) {
-      alert(
-        `Yes, the secret character is a ${value}! Keep all ${value}s `
+      Swal.fire(
+        `Yes, the secret character is a ${value}!`,
+        `Let's Keep all ${value}s.`,
+        'success'
       )
       charactersInPlay = charactersInPlay.filter((person) => person.species === value);
 
     } else {
-      alert(
-        `No, the secret character is not a ${value}. Remove all ${value}s.`
+      Swal.fire(
+        `No, the secret character is not a ${value}.`,
+        `Let's remove all ${value}s.`,
+        'error'
       )
       charactersInPlay = charactersInPlay.filter((person) => person.species !== value);
 
     }
   } else {
     if (keep) {
-      alert(
-        `Yes the secret characters home is ${value}! Keep all that has ${value} as a home`
+      Swal.fire(
+        `Yes the secret characters home is ${value}!`,
+        `Let's keep all that has ${value} as a home.`,
+        'success'
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      charactersInPlay = charactersInPlay.filter((person) => person.home.includes(value))
 
 
     } else {
-      alert(
-        `No, the secret characters home is not ${value}. Remove all that has ${value} as a home`
+      Swal.fire(
+        `No, the secret characters home is not ${value}`,
+        `Let's remove all that has ${value} as a home`,
+        'error'
       )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) 
+      
+      charactersInPlay = charactersInPlay.filter((person) => !person.home.includes(value)) 
 
     }
   }
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
   
-    // for hair and eyes :
-    //   charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    //   or
-    //   charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    // for accessories and other
-    //   charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    //   or
-    //   charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   if (keep === true) {
     generateBoard(charactersInPlay)
-    // charactersInPlay.filter(person => person.indexOf(`${value}`) === 0)
-    // charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
   } else {
-    // charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-    // console.log('Dont keep')
     generateBoard(charactersInPlay)
 
-    // charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-    // charactersInPlay.filter(person => person.indexOf(`${value}`) !== 0)
   }
 }
-  // Invoke a function to redraw the board with the remaining people.
+
+
+
+  
 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  let letsGuess = confirm(`Do you want to guess on ${personToConfirm}?`)
+  // let letsGuess = confirm(`Do you want to guess on ${personToConfirm}?`)
+  let letGuess = Swal.fire({
+    title: 'Are you sure?',
+    text: `Do you want to guess on ${personToConfirm}?`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      checkMyGuess(personToConfirm)
+    }
+  })
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-  if (letsGuess) {
-    checkMyGuess(personToConfirm)
-  } else {
-    alert('Make another guess!')
-  }
+  // if (letsGuess) {
+  //   checkMyGuess(personToConfirm)
+  // } else {
+  //   alert('Make another guess!') 
+  // }
 }
 
 // If you confirm, this function is invoked
@@ -601,15 +565,30 @@ const checkMyGuess = (personToCheck) => {
   // 3. Show the win or lose section
   // 4. Hide the game board
   if (personToCheck === secret.name) {
-    alert(
-      `Congratulations! You guessed right, the secret character is ${personToCheck}!`
-    )
-    start()
+    winOrLose.style.display = "flex"
+    winOrLoseText.style.display = "flex"
+    winOrLoseText.innerHTML = `Congratulations! <br><br> You guessed right, the secret character was ${personToCheck}!`
+
+    // alert(
+    //   `Congratulations! You guessed right, the secret character is ${personToCheck}!`
+    // )
+    playAgain.addEventListener('click', () => {
+      console.log('Clicked')
+      start()
+      winOrLose.style.display = "none"
+    } )
+
 
   } else {
-    alert(
-      `Sorry, ${personToCheck} is not the secret character. Please guess again.`
+   
+    Swal.fire(
+      `Sorry, ${personToCheck} is not the secret character.`,
+      `Please guess again.`,
+      'error'
     )
+    
+
+    
   }
 }
 
@@ -621,3 +600,5 @@ restartButton.addEventListener('click', start)
 guessBtn.addEventListener('click', () => {
   checkQuestion()
 })
+
+

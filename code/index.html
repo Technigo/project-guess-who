@@ -11,21 +11,52 @@
     />
   </head>
   <body>
+
+    <audio >
+      <source id="my-audio" src="./images/music.mp3" type="audio/mpeg">
+    </audio>
+
     <img id="backgroundImage" src="./images/got.jpg" width="2000px" alt="">
     <aside class="question-section">
       <button id="restart" class="outlined-button">RESTART</button>
-
       <img
         class="guess-who-icon"
         src="images/gotback.png"
         alt="Guess Who"
       />
 
-      <!-- <h1>Does the person have..?</h1> -->
+      <h1>Guess who..? <br> Game of Thrones edition</h1>
 <section class="myDiv">
       <select id="questions">
+        <option value="">Start guessing!</option>
+        <optgroup label="House"  value="house">
+          <option value="House Stark">House Stark</option>
+          <option value="House Lannister">House Lannister</option>
+          <option value="House Snow">House Snow</option>
+          <option value="House Tyrell">House Tyrell</option>
+          <option value="House Tarly">House Tarly</option>
+          <option value="House Tarth">House Tarth</option>
+          <option value="House Mormont">House Mormont</option>
+          <option value="House Targaryen">House Targaryen</option>
+          <option value="House Glegane">House Glegane</option>
+          <option value="the Free folk">Free Folk/wildlings</option>
+          <option value="unknown">Unknown</option>
+        </optgroup>
+
+        <optgroup label="Accessories" value="accessories">
+          <option value="a sword">Sword</option>
+          <option value="a spear">Spear</option>
+          <option value="a bow">Bow and arrow</option>
+          <option value="books">Books</option>
+          <option value="knowledge">Knowledge</option>
+          <option value="a wheelchair">Wheelchair</option>
+          <option value="magic">Magical powers</option>
+          <option value="a crown at one point">Crown at one point</option>
+          <option value="none">None</option>
+          <!-- Add the other accessory option here. (hat)  -->
+        </optgroup>
+
         <optgroup label="Hair" value="hair">
-          <option value="Start guessing!">Start guessing!</option>
           <option value="brown hair">Brown hair</option>
           <option value="golden hair">Golden/yellow hair</option>
           <option value="black hair">Black hair</option>
@@ -46,31 +77,6 @@
           <option value="black eyes">Black eyes</option>
           <option value="hidden eyes">Hidden eyes</option>
           <!-- Add the rest of eye colors as options  -->
-        </optgroup>
-        <optgroup label="Accessories" value="accessories">
-          <option value="a sword">Sword</option>
-          <option value="a spear">Spear</option>
-          <option value="a bow">Bow and arrow</option>
-          <option value="books">Books</option>
-          <option value="knowledge">Knowledge</option>
-          <option value="a wheelchair">Wheelchair</option>
-          <option value="magic">Magical powers</option>
-          <option value="a crown at one point">Crown at one point</option>
-          <option value="none">None</option>
-          <!-- Add the other accessory option here. (hat)  -->
-        </optgroup>
-        <optgroup label="House"  value="house">
-          <option value="House Stark">House Stark</option>
-          <option value="House Lannister">House Lannister</option>
-          <option value="House Snow">House Snow</option>
-          <option value="House Tyrell">House Tyrell</option>
-          <option value="House Tarly">House Tarly</option>
-          <option value="House Tarth">House Tarth</option>
-          <option value="House Mormont">House Mormont</option>
-          <option value="House Targaryen">House Targaryen</option>
-          <option value="House Glegane">House Glegane</option>
-          <option value="the Free folk">Free Folk/wildlings</option>
-          <option value="unknown">Unknown</option>
         </optgroup>
 
         <optgroup label="Species" value="species">
@@ -110,15 +116,19 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <img
+        <!-- <img
           class="guess-who-icon"
           src="images/guess-who-bubble.png"
           alt="Guess Who"
-        />
+        /> -->
         <h1 id="winOrLoseText"></h1>
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
-    <script src="script.js"></script>
+    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script src="script.js"></script>
   </body>
 </html>
+

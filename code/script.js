@@ -285,44 +285,43 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      correctSound.play()
       alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      
+      correctSound.play()
     } else {
-      wrongSound.play()
       alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      wrongSound.play()
     }
   } else if (category === 'other') {
     if (keep) {
-      correctSound.play()
       alert(`Yes, the person is a ${value}!`)
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      correctSound.play()
     } else {
-      wrongSound.play()
       alert(`No, the person is not a ${value}!`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      wrongSound.play()
     } 
   } else if (category === 'hair') {
     if (keep) {
-      correctSound.play()
       alert(`Yes, the person has ${value} hair! Keep all people that have ${value} hair `)
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      correctSound.play()
     } else {
-      wrongSound.play()
       alert(`No, the person does not have ${value} hair! Remove all people that have ${value} hair`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      wrongSound.play()
       }
      } else if (category === 'eyes') {
       if (keep) {
-        correctSound.play()
         alert(`Yes, the person has ${value} eyes! keep all people that have ${value} eyes`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+        correctSound.play()
       } else {
-        wrongSound.play()
         alert(`No, the person does not have ${value} eyes! Remove all people that have ${value} eyes`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+        wrongSound.play()
       }
     }
     generateBoard();

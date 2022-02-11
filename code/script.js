@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -11,7 +12,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['teeth']
   },
   {
     name: 'Jack',
@@ -19,7 +20,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['facial hair']
   },
   {
     name: 'Jacques',
@@ -27,7 +28,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker', 'facial hair']
   },
   {
     name: 'Jai',
@@ -35,7 +36,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['']
   },
   {
     name: 'Jake',
@@ -51,14 +52,14 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['facial hair']
   },
   {
     name: 'Jana',
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace'],
     other: []
   },
   {
@@ -74,7 +75,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace', 'earrings'],
     other: []
   },
 
@@ -92,7 +93,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'facial hair']
   },
   {
     name: 'Jeane',
@@ -108,7 +109,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'facial hair']
   },
   {
     name: 'Jenni',
@@ -147,7 +148,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings'],
     other: []
   },
   {
@@ -163,7 +164,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'necklace'],
     other: []
   },
   {
@@ -171,7 +172,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -188,7 +189,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['facial hair']
   },
   {
     name: 'Julie',
@@ -212,7 +213,7 @@ const generateBoard = () => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <img class= "card-img" src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
@@ -231,6 +232,9 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  generateBoard()
+  setSecret()
+  selectQuestion()
   // What else should happen when we start the game?
 }
 
@@ -240,11 +244,11 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
@@ -256,10 +260,34 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    if (secret[category] === value) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
 
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[category].includes(value)) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
   }
+}
+
+const keepHairEyes = (category, value) => {
+  charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+}
+const removeHairEyes = (category, value) => {
+  charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+}
+
+const keepAccessoriesOther = (category, value) => {
+  charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+}
+
+const removeAccessoriesOther = (category, value) => {
+  charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -268,23 +296,34 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+      keepAccessoriesOther(category, value)
+      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
     } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
+      removeAccessoriesOther(category, value)
+      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
     }
   } else if (category === 'other') {
     // Similar to the one above
-  } else {
+    if (keep) {
+      keepAccessoriesOther(category, value)
+      alert(`Yes, the person has ${value}! Keep all people with a ${value}`)
+    } else {
+      removeAccessoriesOther(category, value)
+      alert(`No, the person doesn't have ${value}! Remove all ${value}`)
+    }
+  } else if (category === 'hair') {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      keepHairEyes(category, value)
+      alert(`Yes, the person is a ${value} ${category}! Keep all people with ${value} ${category}`)
     } else {
+      removeHairEyes(category, value)
+      alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`)
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
+
+  generateBoard()
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
@@ -323,3 +362,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)

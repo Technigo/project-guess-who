@@ -11,8 +11,7 @@
     />
   </head>
   <body>
-    <aside class="question-section">
-      <button id="restart" class="outlined-button">RESTART</button>
+    <aside id="question-section" class="question-section">
 
       <img
         class="guess-who-icon"
@@ -20,10 +19,10 @@
         alt="Guess Who"
       />
 
-      <h1>Does the person have</h1>
+      <h1>Guess who?</h1>
 
       <select id="questions">
-        <option selected disabled>Choose an attribute</option>
+        <option selected disabled>Does the person have...</option>
         <optgroup label="hair">
           <option value="brown">brown hair</option>
           <option value="yellow">yellow hair</option>
@@ -49,8 +48,11 @@
         </optgroup>
       </select>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
-
+      <div class="buttons-wrapper">
+        <button id="filter" class="filled-button">FIND OUT</button>
+        <button id="restart" class="filled-button">RESTART</button>
+      </div>
+      
       <div class="previous-questions-wrapper">
         <div class="question-count">
           <h2 id="question-count"></h2>

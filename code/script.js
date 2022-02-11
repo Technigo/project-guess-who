@@ -1,4 +1,3 @@
-// All the DOM selectors stored as short variables
 const board = document.getElementById('board');
 const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
@@ -10,7 +9,6 @@ const previousQuestion = document.getElementById('previous-question');
 const questionCountDisplay = document.getElementById('question-count');
 const questionSection = document.getElementById('question-section');
 
-// Array with all the characters, as objects
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -205,18 +203,16 @@ const CHARACTERS = [
     accessories: ['glasses', 'hat'],
     other: []
   },
-]
+];
 
-// Global variables
 let secret;
 let currentQuestion;
 let charactersInPlay;
 let maxQuestions = 4;
 let questionCounter = 0;
 
-// Draw the game board
 const generateBoard = () => {
-  board.innerHTML = ''
+  board.innerHTML = '';
   charactersInPlay.forEach((character) => {
     board.innerHTML += `
     <div class="card">
@@ -227,33 +223,29 @@ const generateBoard = () => {
     <button class="filled-button small" onclick="guess('${character.name}')">Guess</button>
     </div>
     </div>
-    `
-  })
+    `;
+  });
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
 const setWinningCharacter = () => {
-  winningCharacter = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  winningCharacter = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 }
 
-// Start (and restart) the game
 const start = () => {
   gameOverWrapper.style.display = "none";
   board.style.display = "flex";
   questionSection.style.display = "flex";
-
-  questionCounter = 0
-  charactersInPlay = CHARACTERS
-
   questions.disabled = false;
   findOutButton.disabled = true;
+
+  questionCounter = 0;
+  charactersInPlay = CHARACTERS;
 
   generateBoard();
   setWinningCharacter();
   updateQuestionDisplay();
 }
 
-// Set currentQuestion object selecting from dropdown
 const selectQuestion = () => {
   findOutButton.disabled = false;
   const questionCategory = questions.options[questions.selectedIndex].parentNode.label;
@@ -261,16 +253,15 @@ const selectQuestion = () => {
   currentQuestion = {
     category: questionCategory,
     value: questionValue,
-  }
+  };
 }
 
-// Invoked when 'Find Out' button is clicked
 const checkQuestion = () => {
 
   questionCounter++;
   findOutButton.disabled = true;
 
-  let status = winningCharacter[currentQuestion.category].includes(currentQuestion.value)
+  let status = winningCharacter[currentQuestion.category].includes(currentQuestion.value);
 
   alertMessage(status);   
   filterCharacters(status);
@@ -281,13 +272,12 @@ const checkQuestion = () => {
 // TO DO create alert messages for the different attributes to avoid weird grammer
 const alertMessage = (correct) => {
   if (correct) {
-    alert (`That's correct!`)
+    alert (`That's correct!`);
   } else {
-    alert (`Nope, guess again!`)
-  }
+    alert (`Nope, guess again!`);
+  };
 }
 
-// Invoked after question is checked
 const filterCharacters = (keep) => {
   if (keep) {
     charactersInPlay = charactersInPlay.filter((character) => { 
@@ -299,7 +289,7 @@ const filterCharacters = (keep) => {
     });
   }
   questions.selectedIndex = null;
-  generateBoard()
+  generateBoard();
 }
 
 const updateQuestionDisplay = () => {
@@ -312,13 +302,9 @@ const updateQuestionDisplay = () => {
     questionCountDisplay.innerText = `No questions remaining. Time to make a guess!`;
     questions.disabled = true;
   } else if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
-      previousQuestion.innerHTML += `
-        <p>${currentQuestion.value} ${currentQuestion.category}</p>  
-      `;
+      previousQuestion.innerHTML += `<p>${currentQuestion.value} ${currentQuestion.category}</p>`;
   } else {
-    previousQuestion.innerHTML += `
-      <p>${currentQuestion.value}</p>  
-    `;
+    previousQuestion.innerHTML += `<p>${currentQuestion.value}</p>`;
   }
 }
 
@@ -326,33 +312,24 @@ const guess = (characterName) => {
   let playerGuess = confirm(`Are you sure you want to guess that it's ${characterName}?`);
   if (playerGuess) {
     checkMyGuess(characterName);
-  } 
-  //else nothing
+  }; 
 }
 
-// If confirmed, check function is invoked
 const checkMyGuess = (characterName) => {
   if (characterName === winningCharacter.name) {
-    gameOverWrapper.style.display = "flex"
+    gameOverWrapper.style.display = "flex";
     board.style.display = "none";
-    gameOverText.innerText = `
-    Yes, ${characterName} was right! Congratulations!
-  `
-  }
-  else {
+    gameOverText.innerText = `Yes, ${characterName} was right! Congratulations!`;
+  } else {
     gameOverWrapper.style.display = "flex";
     board.style.display = "none";
     questionSection.style.display = "none";
-    gameOverText.innerText = `
-    Sorry, it wasn't ${characterName}. ${winningCharacter.name} is the correct answer. Better luck next time!
-  `;
-  }
+    gameOverText.innerText = `Sorry, it wasn't ${characterName}. ${winningCharacter.name} is the correct answer. Better luck next time!`;
+  };
 }
 
-// Invokes the start function when website is loaded
-start()
+start();
 
-// All the event listeners
 restartButton.addEventListener('click', start);
 playAgainButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);

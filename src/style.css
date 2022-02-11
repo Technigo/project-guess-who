@@ -346,6 +346,10 @@ select:focus {
     font-size: 16px;
   }
 
+  .message {
+    width: 300px;
+  }
+
   .restart-button {
     position: relative;
     bottom: 72px;

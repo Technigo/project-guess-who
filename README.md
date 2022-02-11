@@ -1,13 +1,11 @@
-# Project Name
+# Guess Who
 
-Replace this readme with your own information about your project.
+Built a digital version of the classic board game Guess Who. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## The project
 
-## The problem
+I started this project thinking about how the game is played and then I planned the different parts and steps of the game. The biggest struggle I had this week was filtering out the character's based off specific attributes.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+## Demo
 
-## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://zen-villani-2b874f.netlify.app/

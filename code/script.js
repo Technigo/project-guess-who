@@ -220,7 +220,7 @@ const generateBoard = () => {
     <img src=${character.img} alt=${character.name}>
     <div class="guess">
     <span>Guess on ${character.name}?</span>
-    <button class="filled-button small" onclick="guess('${character.name}')">Guess</button>
+    <button class="filled-button small" onclick="guessCharacter('${character.name}')">Guess</button>
     </div>
     </div>
     `;
@@ -248,6 +248,7 @@ const start = () => {
 
 const selectQuestion = () => {
   findOutButton.disabled = false;
+
   const questionCategory = questions.options[questions.selectedIndex].parentNode.label;
   const questionValue = questions.options[questions.selectedIndex].value;
   currentQuestion = {
@@ -257,48 +258,46 @@ const selectQuestion = () => {
 }
 
 const checkQuestion = () => {
-
-  questionCounter++;
   findOutButton.disabled = true;
+  questionCounter++;
 
-  let status = winningCharacter[currentQuestion.category].includes(currentQuestion.value);
+  let characterHasAttribute = winningCharacter[currentQuestion.category].includes(currentQuestion.value);
 
-  alertMessage(status);   
-  filterCharacters(status);
+  alertMessage(characterHasAttribute);   
+  updateQuestionDisplay(characterHasAttribute);
+  filterCharacters(characterHasAttribute);
 }
 
-const alertMessage = (correct) => {
-  if (correct) {
-    alert (`That's correct!`);
-    updateQuestionDisplay ('yes');
+const alertMessage = (characterHasAttribute) => {
+  if (characterHasAttribute) {
+    alert (`Yes, that is true!`);
   } else {
     alert (`Nope, guess again!`);
-    updateQuestionDisplay ('no');
   };
 }
 
-const updateQuestionDisplay = (check) => {
-  
+const updateQuestionDisplay = (characterHasAttribute) => {
   questionCountDisplay.innerText = `Questions remaining: ${maxQuestions - questionCounter}`;
-
   if (questionCounter === 0) {
     previousQuestion.innerHTML = '';
   } else if (questionCounter === maxQuestions) {
     questionCountDisplay.innerText = `No questions remaining. Time to make a guess!`;
     questions.disabled = true;
     if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
-      previousQuestion.innerHTML += `<p>${currentQuestion.value} ${currentQuestion.category} - ${check}</p>`;
+      previousQuestion.innerHTML += `<p>${currentQuestion.value} ${currentQuestion.category} - ${characterHasAttribute}</p>`;
     } else {
-      previousQuestion.innerHTML += `<p>${currentQuestion.value} - ${check}</p>`;
+      previousQuestion.innerHTML += `<p>${currentQuestion.value} - ${characterHasAttribute}</p>`;
     }
   } else if (currentQuestion.category === "hair" || currentQuestion.category === "eyes") {
-      previousQuestion.innerHTML += `<p>${currentQuestion.value} ${currentQuestion.category} - ${check}</p>`;
+      previousQuestion.innerHTML += `<p>${currentQuestion.value} ${currentQuestion.category} - ${characterHasAttribute}</p>`;
   } else {
-    previousQuestion.innerHTML += `<p>${currentQuestion.value} - ${check}</p>`;
+    previousQuestion.innerHTML += `<p>${currentQuestion.value} - ${characterHasAttribute}</p>`;
   };
 }
 
 const filterCharacters = (keep) => {
+  questions.selectedIndex = null;
+  
   if (keep) {
     charactersInPlay = charactersInPlay.filter((character) => { 
       return character[currentQuestion.category].includes(currentQuestion.value);
@@ -308,18 +307,17 @@ const filterCharacters = (keep) => {
       return !character[currentQuestion.category].includes(currentQuestion.value);
     });
   }
-  questions.selectedIndex = null;
   generateBoard();
 }
 
-const guess = (characterName) => {
+const guessCharacter = (characterName) => {
   let playerGuess = confirm(`Are you sure you want to guess that it's ${characterName}?`);
   if (playerGuess) {
-    checkMyGuess(characterName);
+    checkGuess(characterName);
   }; 
 }
 
-const checkMyGuess = (characterName) => {
+const checkGuess = (characterName) => {
   if (characterName === winningCharacter.name) {
     gameOverWrapper.style.display = "flex";
     board.style.display = "none";

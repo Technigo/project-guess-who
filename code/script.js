@@ -2,6 +2,8 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filter = document.getElementById('filter')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -255,15 +257,35 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  // console.log(currentQuestion)
   const { category, value } = currentQuestion
-
+  console.log('secret=',secret)
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    console.log('category',category)
+    console.log(secret[category])
+    console.log('this is current question', currentQuestion)
+    if (currentQuestion.value === secret[category]) {
+      console.log('same thing')
+      filterCharacters(true)
+    }
+    else {
+      console.log('not same thing')
+    }
   } else if (category === 'accessories' || category === 'other') {
-
+    console.log('more complex category is a string', category)
+    console.log('more complex secret category is an array', secret[category])
+    console.log('this is current question', currentQuestion)
+    console.log('this is current question.value', currentQuestion.value)
+    if (currentQuestion.value == secret[category]) {
+      console.log('same thing in other cat')
+      filterCharacters(true)
+    }
+    else {
+      console.log('not same thing in other cat')
+    }
   }
 }
 
@@ -286,8 +308,12 @@ const filterCharacters = (keep) => {
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value} ${category}! Keep all people that has ${value} ${category}!`
+      )
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      `No, the person doesn't have ${value} ${category}! Remove all people that has ${value} ${category}!`
     }
   }
 
@@ -329,4 +355,6 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
+filter.addEventListener('click', checkQuestion)
+
 

@@ -50,10 +50,6 @@ select {
   
 }
 
-.guess-who-icon {
-  width: 126px;
-}
-
 .board-wrapper {
   width: 70%;
   display: flex;
@@ -228,11 +224,6 @@ button {
   }
   h1 {
     padding-top: 1rem;
-  }
-
-  .guess-who-icon {
-    /* width: 51px; */
-    display: none;
   }
 
   .board-wrapper {

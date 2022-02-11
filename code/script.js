@@ -6,6 +6,11 @@ const findOutButton = document.getElementById("filter");
 const winOrLose = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const playAgainButton = document.getElementById("playAgain");
+const popUp = document.getElementById("popUpQuestion");
+const popUpQuestionText = document.getElementById("popUpQuestionText");
+const popUpButton = document.getElementById("popUpButton");
+const startButton = document.getElementById("startButton");
+const wrapperOverlay = document.getElementById("startWrapperOverlay");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -234,6 +239,11 @@ const setWinningCharacter = () => {
     console.log(winningCharacter);
 };
 
+// remove start overlay
+const closeOverlay = () => {
+  wrapperOverlay.style.display = "none";
+}
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -270,7 +280,6 @@ const selectQuestion = () => {
 // Then invoke filterCharacters
 const checkQuestion = () => {
   
-
   if (
     currentQuestion.category === "hair" ||
     currentQuestion.category === "eyes"
@@ -279,11 +288,13 @@ const checkQuestion = () => {
       currentQuestion.value === winningCharacter.hair ||
       currentQuestion.value === winningCharacter.eyes
     ) {
-      alert("yes it's true");
+      popUp.style.display = "flex";
+      popUpQuestionText.innerHTML = "Yes, it's indeed the case.";
       filterCharactersKeep();
 
     } else {
-      alert("no it's false");
+      popUp.style.display = "flex";
+      popUpQuestionText.innerHTML = "Nix, it's not totally correct.";
       filterCharactersRemove();
     }
   } else if (
@@ -291,15 +302,21 @@ const checkQuestion = () => {
     currentQuestion.category === "other"
   ) {
     if (winningCharacter.accessories.includes(currentQuestion.value)) {
-      alert("yes it's true");
+      popUp.style.display = "flex";
+      popUpQuestionText.innerHTML = "Yes, it's indeed the case.";
       filterCharactersKeep();
 
     } else {
-      alert("no it's false");
+      popUp.style.display = "flex";
+      popUpQuestionText.innerHTML = "Nix, it's not totally correct.";
       filterCharactersRemove();
     }
   }
 };
+
+const closePopUp = () => {
+  popUp.style.display = "none";
+}
 
 const filterCharactersKeep = () => {
       charactersInPlay = charactersInPlay.filter((person) => {
@@ -327,7 +344,7 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   if (winningCharacter.name === personToCheck) {
     winOrLose.style.display = "flex";
-    winOrLoseText.innerHTML = `Hurray, ${personToCheck} is absolutely right!`;
+    winOrLoseText.innerHTML = `Excellent, ${personToCheck} is absolutely correct!`;
     board.style.display = "none";
   } else {
     winOrLose.style.display = "flex";
@@ -344,3 +361,5 @@ restartButton.addEventListener("click", start);
 findOutButton.addEventListener("click", checkQuestion);
 questions.addEventListener("change", selectQuestion);
 playAgainButton.addEventListener("click", start);
+popUpButton.addEventListener("click", closePopUp);
+startButton.addEventListener("click", closeOverlay);

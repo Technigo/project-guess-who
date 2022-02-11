@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@400;600&display=swap');
+
 /* Global css variables used for colors */
 :root {
   --primary: #395F5F;
@@ -8,7 +10,36 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  border: 20px solid #395F5F;
+}
+
+/****** START OVERLAY SECTION ******/
+.start-wrapper-overlay {
+  background-color: rgb(57, 95, 95, 0.9);
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  z-index: 10000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.start-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  text-align: center;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 20rem
 }
 
 h1 {
@@ -16,7 +47,17 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: #FEFBF3;
+}
+
+.guess-who {
+  font-size: 8vw;
+  margin-bottom: 2rem;
+  color: #DAA51F;
+}
+
+#startButton {
+  margin-top: 1rem;
 }
 
 .question-section {
@@ -34,14 +75,10 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: "Montserrat";
+  font-family: "Poppins";
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
-}
-
-.guess-who-icon {
-  width: 126px;
 }
 
 .board-wrapper {
@@ -49,6 +86,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #FEFBF3;
 }
 
 .game-board {
@@ -85,13 +123,14 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #FEFBF3;
   text-align: center;
   height: inherit;
 }
 
 .card:hover {
   background-color: var(--secondary);
+  transition: all 1.5s ease;
 }
 
 .card:hover img,
@@ -124,7 +163,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: "Montserrat";
+  font-family: "Poppins";
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -143,19 +182,44 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #FEFBF3;
+  transition: all 1.5s ease;
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: #DAA51F;
+  border: 1px solid #FEFBF3;
   color: var(--primary);
+  transition: all 1.5s ease;
+}
+
+/****** POP UP SECTION ******/
+.pop-up-question-wrapper {
+  display: none;
+  justify-content: center;
+  background-color: rgb(57, 95, 95, 0.9);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  z-index: 10000;
+}
+
+.pop-up-question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  margin-top: 20rem;
 }
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
-  align-items: center;
   justify-content: center;
   background: var(--secondary);
   position: absolute;
@@ -175,11 +239,6 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
-}
-
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
@@ -187,6 +246,7 @@ button {
 @media (max-width: 768px) {
   body {
     flex-direction: column;
+    border: 10px solid #395F5F;
   }
 
   .question-section {
@@ -201,10 +261,6 @@ button {
     line-height: 30px;
   }
 
-  .guess-who-icon {
-    width: 51px;
-  }
-
   .board-wrapper {
     width: 100%;
   }
@@ -212,6 +268,7 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    justify-content: center;
   }
 
   .card {
@@ -233,7 +290,7 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: #FEFBF3;
     color: var(--primary);
     border: none;
   }

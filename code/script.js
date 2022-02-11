@@ -4,7 +4,6 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
-// Variables for counters
 let countAttemptsDisplay = document.getElementById('countAttemptsDisplay')
 let countRoundsDisplay = document.getElementById('countRoundsDisplay')
 let countWinsDisplay = document.getElementById('countWinsDisplay')
@@ -209,12 +208,10 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-// Variables for counters
-let countAttempts = 0
-let countRounds = 0
-let countWins = 0
-// Variable for auto closing alerts
-let timerInterval
+let countAttempts = 0 // variable for attempts counter
+let countRounds = 0 // variable for rounds counter
+let countWins = 0 // variable for wins counter
+let timerInterval // variable for auto closing alerts
 
 // Function for auto closing alerts
 const sweetAlert = (newTitle, newHTML) => {
@@ -254,9 +251,9 @@ const generateBoard = () => {
           </div>
         </div>
         `
-    } else {
+    } else { // makes a card with logo take the place of a not matching cat card, but only on desktop
       board.innerHTML += `
-      <div class="card mobile">
+      <div class="card desktop">
         <img class="characters" src="./assets/cat-logo-large.svg" alt="not this cat">
       </div>
       `
@@ -272,21 +269,18 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
-  countAttempts = 0
+  countAttempts = 0 // resets the attempts count to 0
   countAttemptsDisplay.innerText = 0
   countRoundsDisplay.innerText = countRounds
   countWinsDisplay.innerText = countWins
-  document.getElementById('questions').selectedIndex = 0
+  document.getElementById('questions').selectedIndex = 0 // resets the question displayed in dropdown
   selectQuestion()
 }
 
 // Function setting the currentQuestion object when you select a question in the dropdown
 const selectQuestion = () => {
-  // Variable for the category (option group) of the question
-  const category = questions.options[questions.selectedIndex].parentNode.label
-  // Variable for the actual value of the question selected
-  const value = questions.value
-
+  const category = questions.options[questions.selectedIndex].parentNode.label // variable for the category (option group) of the question
+  const value = questions.value // variable for the actual value of the question selected
   currentQuestion = {
     category: category,
     value: value
@@ -303,7 +297,6 @@ const checkQuestion = () => {
     } else {
       filterCharacters(false)
     }
-
   } else if (category === 'fur' || category === 'special') {
     if (secret.fur.includes(value) || secret.special.includes(value)) {
       filterCharacters(true)
@@ -315,12 +308,11 @@ const checkQuestion = () => {
 
 // Function for filtering the characters array and redraw the board
 const filterCharacters = (keep) => {
-  // for attempts counter
-  countAttempts++
+  countAttempts++ // increments the attempts count
+  // Conditional to show an alert if more than 4 attempts
   if (countAttempts > 4) {
     sweetAlert(`Hey, you made enough attempts!`, `It's now time to guess.`)
   } else {
-    // for attempts counter
     countAttemptsDisplay.innerText = countAttempts
     const { category, value } = currentQuestion
     // Conditionals to show the right alert for different categories
@@ -367,6 +359,7 @@ const filterCharacters = (keep) => {
     generateBoard()
   }
 }
+
 // Function for the player to confirm after clicking guess
 const guess = (catToConfirm) => {
   // Customised alerts
@@ -385,7 +378,7 @@ const guess = (catToConfirm) => {
   }).then((result) => {
     if (result.isConfirmed) {
       checkMyGuess(catToConfirm)
-      countRounds++
+      countRounds++ // increments the rounds count
       countRoundsDisplay.innerText = countRounds
       countWinsDisplay.innerText = countWins
     }
@@ -401,7 +394,7 @@ const checkMyGuess = (catToCheck) => {
     document.getElementById('resultAudio').innerHTML = `
     <audio src="./assets/cat-purr.wav" type="audio/wav" autoplay></audio>
     `
-    countWins++
+    countWins++ // increments the wins count
   } else {
     document.getElementById('winOrLoseText').innerHTML = `You lost!<br/>${catToCheck} wasn't the secret cat, it was ${secret.name}...`
     document.getElementById('winOrLose').style.display = 'flex'
@@ -412,13 +405,13 @@ const checkMyGuess = (catToCheck) => {
   }
 }
 
-//  Function resetting board and attempts counter when user click play again button
+//  Function resetting board and attempts count when user click play again button
 const playAgain = () => {
   start()
   document.getElementById('winOrLose').style.display = 'none'
   document.getElementById('resultAudio').innerHTML = ''
   board.style.display = 'flex'
-  countAttempts = 0
+  countAttempts = 0 // resets the attempts count to 0
   countAttemptsDisplay.innerText = countAttempts
 }
 
@@ -463,4 +456,4 @@ restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', playAgain)
-// Should find a way to use .stopPropagation when closing a swal alert since it select item behind at the same time
+// Should find a way to use .stopPropagation when closing a swal alert since it selects the item behind at the same time

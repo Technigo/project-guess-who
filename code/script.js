@@ -11,6 +11,10 @@ const popUpQuestionText = document.getElementById("popUpQuestionText");
 const popUpButton = document.getElementById("popUpButton");
 const startButton = document.getElementById("startButton");
 const wrapperOverlay = document.getElementById("startWrapperOverlay");
+const confirmOverlay = document.getElementById("confirmWrapper");
+const confirmText = document.getElementById("confirmText");
+const confirmButton = document.getElementById("confirmButton");
+const noConfirmButton = document.getElementById("noConfirmButton");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -214,6 +218,7 @@ let secret;
 let currentQuestion;
 let charactersInPlay;
 let guessCount = 0;
+let personToConfirm;
 
 // Draw the game board
 const generateBoard = () => {
@@ -239,20 +244,18 @@ const setWinningCharacter = () => {
     console.log(winningCharacter);
 };
 
-// remove start overlay
+// Remove start overlay
 const closeOverlay = () => {
   wrapperOverlay.style.display = "none";
 }
 
-// This function to start (and restart) the game
+// This function start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
 
-  // Generate board
   generateBoard();
 
-  // Assign the winner charachter with setWinningCharacter
   setWinningCharacter();
 
   // Reset the pop-up window that appears when game over
@@ -260,26 +263,21 @@ const start = () => {
   board.style.display = "flex";
 };
 
-// Setting the currentQuestion object when you select something in the dropdown
+// Setting the currentQuestion object when something is selected in the dropdown menu
 const selectQuestion = () => {
   // This variable stores what category the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label;
-
   // Stores the actual value of the question selected.
   const value = questions.options[questions.selectedIndex].value;
 
-  // Create the object with
   currentQuestion = {
     category: category,
     value: value,
   };
 };
 
-// This function should be invoked when you click on 'Find Out' button.
-// Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-// Then invoke filterCharacters
+// Function invoked when you click on 'Find Out' button --> Compare the currentQuestion with the secret person 
 const checkQuestion = () => {
-  
   if (
     currentQuestion.category === "hair" ||
     currentQuestion.category === "eyes"
@@ -294,13 +292,15 @@ const checkQuestion = () => {
 
     } else {
       popUp.style.display = "flex";
-      popUpQuestionText.innerHTML = "Nix, it's not totally correct.";
+      popUpQuestionText.innerHTML = "Nix, it's totally incorrect.";
       filterCharactersRemove();
     }
+
   } else if (
     currentQuestion.category === "accessories" ||
     currentQuestion.category === "other"
   ) {
+
     if (winningCharacter.accessories.includes(currentQuestion.value)) {
       popUp.style.display = "flex";
       popUpQuestionText.innerHTML = "Yes, it's indeed the case.";
@@ -308,14 +308,20 @@ const checkQuestion = () => {
 
     } else {
       popUp.style.display = "flex";
-      popUpQuestionText.innerHTML = "Nix, it's not totally correct.";
+      popUpQuestionText.innerHTML = "Nix, it's totally incorrect.";
       filterCharactersRemove();
     }
   }
 };
 
+// Remove pop up overlay
 const closePopUp = () => {
   popUp.style.display = "none";
+}
+
+// Remove pop up overlay
+const closeConfirm = () => {
+  confirmOverlay.style.display = "none";
 }
 
 const filterCharactersKeep = () => {
@@ -332,15 +338,13 @@ const filterCharactersRemove = () => {
     generateBoard();
   }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
-  const playerGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`);
-  if (playerGuess) {
-    checkMyGuess(personToConfirm);
-  } 
-};
+const guess = (guessing) => {
+  personToConfirm = guessing;
+  confirmOverlay.style.display = "flex";
+  confirmText.innerHTML = `Are you sure you want to guess on ${personToConfirm}?`;
+}
 
-// If you confirm, this function is invoked
+// Function invoked if the user want to make a guess 
 const checkMyGuess = (personToCheck) => {
   if (winningCharacter.name === personToCheck) {
     winOrLose.style.display = "flex";
@@ -353,7 +357,7 @@ const checkMyGuess = (personToCheck) => {
   }
 };
 
-// Invokes the start function when website is loaded
+// Invokes the start function when website is loaded or the game is restarted
 start();
 
 // All the event listeners
@@ -363,3 +367,8 @@ questions.addEventListener("change", selectQuestion);
 playAgainButton.addEventListener("click", start);
 popUpButton.addEventListener("click", closePopUp);
 startButton.addEventListener("click", closeOverlay);
+noConfirmButton.addEventListener("click", closeConfirm);
+confirmButton.addEventListener('click', () => {
+  confirmOverlay.style.display = "none";
+  checkMyGuess(personToConfirm);
+})

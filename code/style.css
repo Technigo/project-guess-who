@@ -36,8 +36,8 @@ select {
   background-color: white;
   border: none;
   border-radius: 4px;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
   font-family: 'Montserrat';
   color: var(--primary);
   width: 100%;
@@ -185,7 +185,7 @@ button {
 }
 
 .filled-button:disabled {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 /****** WIN OR LOSE SECTION ******/

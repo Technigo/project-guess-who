@@ -114,7 +114,7 @@ const CHARACTERS = [
     hair: 'redish',
     eyes: 'green',
     accessories: ['glasses','headgear',],
-    other: ['smoking','moody'],
+    other: ['smoking','moody','bearded'],
   },
   {
     name: 'Jenni',
@@ -221,8 +221,8 @@ const generateBoard = () => {
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Dare to guess on ${person.name}?</span>
+          <button class="filled-button small" onclick="guess('${person.name}')">Yeah!</button>
         </div>
       </div>
     `
@@ -420,10 +420,18 @@ const checkMyGuess = (personToCheck) => {
 
   if (personToCheck === secret.name) {
     // alert(`YOU SURE ARE RIGHT!`) 
-  winOrLoseText.innerHTML = `Sweet as! Your guess was right!` 
+  winOrLoseText.innerHTML = `You're perfect. It was ${personToCheck}!
+  <audio autoplay>
+  <source src="media/win.mp3" type="audio/mp3">
+  looks like your browser doesnt support audio
+  </audio>`
   } else {
-    alert(`Eh no.`)
-    winOrLoseText.innerHTML = `Haha loser, try again!`
+    // alert(`Eh no.`)
+    winOrLoseText.innerHTML = `Rain and tears. It was actually ${secret.name}. Try again!
+    <audio autoplay>
+  <source src="media/lose2.mp3" type="audio/mp3">
+  looks like your browser doesnt support audio
+  </audio>`
   }
 
 

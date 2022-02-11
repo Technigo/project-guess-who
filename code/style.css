@@ -1,16 +1,17 @@
 /* Global css variables used for colors */
-:root {
+/* :root {
   --primary: #c25a22;
   --secondary: #edb8cc;
   
-}
+} */
 
 body {
-  background-color: rgba(165, 101, 42, 0.589);
+  /* background-color: rgba(255, 217, 0, 0.276); */
+  background-color: rgba(240, 230, 191, 0.619);
   display: flex;
   margin: 0;
   padding: 0;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family:monospace;
 }
 
 h1 {
@@ -27,29 +28,34 @@ h1 {
   
 }
 
+
 .question-section {
-  width: 30%;
+  width: 32%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  border: 2px solid #0000ce;
+  background-color: #fcebf2c6;
   display: flex;
   flex-direction: column;
   padding: 5vw;
-  align-items: flex-start;
+  align-items: center;
   box-sizing: border-box;
 }
 
 select {
-  display: block;
-  border: none;
-  font-size: 22px;
-  
-  color: var(--secondary);
-  width: 100%;
-  margin: 24px 0;
+  display: flex;
+  border: 1px solid #0000ce;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 20px;
+  color:#0000ce;
+  font-family: monospace;
+  text-transform: uppercase;
+  width: 90%;
+  margin: 24px 0 40px 0;
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 100%;
 }
 
 .board-wrapper {
@@ -69,10 +75,10 @@ select {
 
 /****** CARD ******/
 .card {
-  width: 135px;
-  height: 165px;
+  width: 140px;
+  height: 170px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 1px solid #0000ce;
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -82,14 +88,16 @@ select {
 }
 
 .card p {
+  font-family: 'Work Sans', sans-serif;
   text-align: center;
   margin-bottom: 0;
   font-size: 16px;
-  font-weight: 120;
+  font-weight: bolder;
+  color: #0000ce;
   text-transform: uppercase;
 }
 
-.card .guess {
+.card:hover .guess {
   display: none;
   flex-direction: column;
   align-items: center;
@@ -115,16 +123,18 @@ select {
 
 .guess span {
   font-size: 16px;
+  font-family: monospace;
   line-height: 18px;
-  font-weight: 600;
   margin-bottom: 8px;
   width: 90%;
+  color: #0000ce;
 }
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
+  border: 2px solid #0000ce;
   border-radius: 50px;
+  font-family: monospace;
   font-size: 16px;
   font-weight: 100;
   padding: 17px 27px;
@@ -132,26 +142,44 @@ button {
 }
 
 .small {
+  width: 100px;
+  height: 100px;
+  border: none;
   padding: 8px 16px;
+}
+
+.butts {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+ 
+
+}
+
+.filled-button {
+  background-color: #fcebf2c6;
+  color: #0000ce;
+  margin: 0 20px 0 20px;
+
 }
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
+  color: #0000ce;
+  margin: 0 20px 0 20px;
+  
+  
 }
 
-
-.filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
-  color: white;
+  background-color: rgba(240, 230, 191, 0.619);
+ 
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
+  background-color: rgba(240, 230, 191, 0.619);
+  border: 2px dotted #c25a22;
+  color: #0000ce;
 }
 
 
@@ -160,7 +188,7 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background:#0000ce;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -179,12 +207,14 @@ button {
 }
 
 .win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+  align-self: center;
+  
 }
 
 .win-or-lose h1 {
+  font-family: monospace;
   margin-bottom: 32px;
+  color:rgb(245, 213, 188);
 }
 
 @media (max-width: 768px) {
@@ -205,7 +235,12 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 100%;
+  }
+
+  .guess span {
+    font-size: 90%;
+    width: 70%;
   }
 
   .board-wrapper {
@@ -223,21 +258,21 @@ button {
   }
 
   .card .guess {
-    display: flex;
+    display: none;
     top: 0;
     position: absolute;
     justify-content: flex-end;
   }
 
-  .card .guess span {
-    display: none;
-  }
-
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: transparent;
-    color: #c25a22;
-    border: none;
+
   }
+
+  .win-or-lose h1 {
+    font-size: 40px;
+    line-height: 35px;
+  }
+
 }

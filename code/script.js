@@ -6,6 +6,10 @@ const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
 const guessCounter = document.getElementById('guessCounter')
 
+
+   
+    
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -217,8 +221,8 @@ const generateBoard = () => {
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+        <span>Guess on ${person.name}?</span>
+        <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
@@ -270,7 +274,6 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  // check if secret person.hair===va (step2-3)
 
   if (category === 'hair' || category === 'eyes') {
     if(value === secret.hair || value === secret.eyes){
@@ -339,7 +342,6 @@ const filterCharacters = (keep) => {
     }
    }
 
-   // sätta tillbaka gissningsinex till 0
    // Invoke a function to redraw the board with the remaining people.
    generateBoard()
 }

@@ -285,44 +285,44 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
       correctSound.play()
+      Swal.fire(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       
     } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       wrongSound.play()
+      Swal.fire(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(`Yes, the person is a ${value}!`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       correctSound.play()
+      Swal.fire(`Yes, the person is a ${value}!`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
-      alert(`No, the person is not a ${value}!`)
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       wrongSound.play()
+      Swal.fire(`No, the person is not a ${value}!`)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     } 
   } else if (category === 'hair') {
     if (keep) {
-      alert(`Yes, the person has ${value} hair! Keep all people that have ${value} hair `)
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       correctSound.play()
+      Swal.fire(`Yes, the person has ${value} hair! Keep all people that have ${value} hair `)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
-      alert(`No, the person does not have ${value} hair! Remove all people that have ${value} hair`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       wrongSound.play()
+      Swal.fire(`No, the person does not have ${value} hair! Remove all people that have ${value} hair`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       }
      } else if (category === 'eyes') {
       if (keep) {
-        alert(`Yes, the person has ${value} eyes! keep all people that have ${value} eyes`)
-        charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
         correctSound.play()
+        Swal.fire(`Yes, the person has ${value} eyes! keep all people that have ${value} eyes`)
+        charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       } else {
-        alert(`No, the person does not have ${value} eyes! Remove all people that have ${value} eyes`)
-        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
         wrongSound.play()
+        Swal.fire(`No, the person does not have ${value} eyes! Remove all people that have ${value} eyes`)
+        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       }
     }
       // Invokes the function to redraw the board with the remaining people.
@@ -335,15 +335,23 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (confirmPerson) => {
   console.log('Guess correct')
-  let playerGuessConfirm = confirm(`Do you want to confirm your choice on ${confirmPerson}?`);
-  if (playerGuessConfirm) {
-    checkMyGuess(confirmPerson);
-  }
-  else {
-    alert('No! Try guessing again  🤔');
-  }
+  let playerGuessConfirm = Swal.fire({  
+   title: 'Do you want to confirm your choice or Try again?',
+    showDenyButton: true,    
+    confirmButtonText: `Confirm`,  
+    denyButtonText: `Try Again`,
+  })
+  .then((result) => {  
+    /* Read more about isConfirmed, isDenied below */  
+      if ((result.isConfirmed)) {    
+        checkMyGuess(confirmPerson);
+      } else if (result.isDenied) {    
+        Swal.fire('Good Luck! Keep guessing 🤔');
+        setTimeout(() => playAgainSound.play(), 200);
+     }
+  });
 
-  }
+}
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.

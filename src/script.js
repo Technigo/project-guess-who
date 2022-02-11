@@ -1,5 +1,6 @@
 const gameBoard = document.getElementById("board");
 const questions = document.getElementById("questions");
+const questionSection = document.getElementById("questionSection")
 const questionsOptions = document.querySelectorAll(".questions-options");
 const totalGuesses = document.getElementById("totalGuesses");
 const restartButton = document.getElementById("restart");
@@ -343,9 +344,13 @@ const checkMyGuess = (personToCheck) => {
   if (secretCharacter.name === personToCheck) {
     winOrLoseWrapper.style.display = "flex";
     winOrLoseText.innerHTML = `<span class="emoji"> 🥳 </span> Great Job! It was ${secretCharacter.name}.`
+    gameBoard.innerHTML = ``
+    questionSection.innerHTML = ""
   } else {
     winOrLoseWrapper.style.display = "flex";
     winOrLoseText.innerHTML = `<span class="emoji"> 😓 </span> It is not ${personToCheck}. It was ${secretCharacter.name}.`
+    gameBoard.innerHTML = ``
+    questionSection.innerHTML = ""
   }
 }
 

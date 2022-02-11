@@ -233,6 +233,7 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    padding-left: 12%;
   }
 
   .card {

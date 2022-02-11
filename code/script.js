@@ -202,13 +202,11 @@ const CHARACTERS = [
 
 // Global variables
 let secret
-// Vi har inte sparat något värde i currentQuestion från början utan det sparas endast när man väljer en option i drop down menyn. Menyn har ett förvalt värde som vi nu
-// sparar i currentQuestion. Alternativt kan man sätta en förvald option tex "Välj kategori" och disablea "FIND OUT" knappen
-let currentQuestion = { guessCategory: "hair", value: "brown" }
+let currentQuestion = { guessCategory: "hair", value: "brown" }   //This is optional but the value is saved in the variable(s) just so it works with the 'Find out' button from start. 
 let charactersInPlay
-let guesses = 0;
+let guesses = 0;    //The game has a counter which shows the amount of guesses you do. The counter ('guessCounter') has a variable which is declared to start from 0.  
 
-// Draw the game board
+// Draw the game board.
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -225,16 +223,14 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and sets as the value of the variable called secret
+// Randomly select a person from the characters array and sets as the value of the variable called secret.
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
+// This function to start (and restart) the game. Here we're setting charactersInPlay array to be all the characters to start with.
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
   winOrLose.style.display = 'none'
   generateBoard()
   setSecret()
@@ -242,82 +238,70 @@ const start = () => {
   guessCounter.innerHTML =`
     <p>Number of guesses: ${guesses}/5</p>
     `
+  //This enables the 'Find out' button when game starts.
   filter.disabled = false
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// This function saves our questions in two variables 'guessCategory' and 'value' which is the stored in an array of an object ('currentQuestion'). 
 const selectQuestion = () => {
-  const guessCategory = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (guessCategory) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.value;
+  
+  const guessCategory = questions.options[questions.selectedIndex].parentNode.label  //  What option group ('guessCategory') the value belongs to.
+  const value = questions.value; // Actual value of the option group we've selected stored in a variable ('value').
  
-  // when the two variables have been declared they are stored in an array of an object called (currentQuestion).
-  currentQuestion = {
+  currentQuestion = {   
     guessCategory: guessCategory,
     value: value
   }
-  //console.log(currentQuestion)
 }
 
-// This function should be invoked when you click on 'Find Out' button. This will also invoke the filterCharacters(). 
+// This function should be invoked when you click on 'Find Out' button. The checkQuestion() then invokes the filterCharacters(). 
 const checkQuestion = () => {
   const { guessCategory, value } = currentQuestion
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (guessCategory === 'hair' || guessCategory === 'eyes') {
-    userGuess = value === secret[guessCategory]    
-    //The user's guess (value) is compared with the secret person (secret). 
-    //The [guessCategory] is the variable (see row 245) which saves the category the user chose its value from. 
-    //If choosing category hair, secret[guessCategory] will then look into the same category for the secret person and extract the values from there.   
-  
-
+  // Here our guess ('value) is compared with the secret person ('secret[guessCategory]').  
+  // The 'guessCategory' inside the brackets is telling us that the computer should extract the value according to what optgroup we chose. 
+  // The values are then saved in a variable called userGuess which is to be used later in 'filterCharacters()'.
+  if (guessCategory === 'hair' || guessCategory === 'eyes') { 
+    userGuess = value === secret[guessCategory]
   } else if (guessCategory === 'accessories' || guessCategory === 'other') {
     userGuess = secret[guessCategory].includes(value)
   }
+  
   filterCharacters(userGuess)
-  guesses += 1;
-  //guesses = guesses + 1
-
+  guesses += 1;   //Every guess is adding a +1 to the counter. If the amount of guesses has reached 5 the following will happen: 
+  
   if (guesses === 5){
     alert('Your are out of guesses. Please make your final choice.')
-    filter.disabled = true
+    filter.disabled = true  //The 'Find out' button is disabled (compare this status in start()).
   }
   
   guessCounter.innerHTML =`
     <p>Number of guesses: ${guesses}/5</p>
     `
-
 }
 
-// It'll filter the characters array and redraw the game board.  
+// This function will filter the characters array and redraw the game board.  
 const filterCharacters = (userGuess) => {
   const { guessCategory, value } = currentQuestion
-  // Show the correct alert message for different categories
+  
   if (guessCategory === 'accessories') {
 
       if (userGuess === true) {
-        alert(`Correctamundo! The person wears ${value}! Keep all people that wears ${value}.`)
+        alert(`Correctamundo! The person wears ${value}! Keep all people that wear ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[guessCategory].includes(value))
-
       } else {
-        alert(`Computer says no, the person doesn't wear ${value}! Remove all people that wears ${value}.`)
+        alert(`Computer says no, the person doesn't wear ${value}! Remove all people that wear ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => !person[guessCategory].includes(value))
       }
 
   } else if (guessCategory === 'other') {
 
       if (userGuess === true) {
-        alert(`Way to go! Yes, the person has a ${value}! Keep all people that has a ${value}.`)
+        alert(`Way to go! Yes, the person has a ${value}! Keep all people that have a ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[guessCategory].includes(value))
-
       } else {
-        alert(`Nice guess but try again. The person hasn't a ${value}! Remove all people that has a ${value}.`)
+        alert(`Nice guess but try again. The person hasn't a ${value}! Remove all people that have a ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => !person[guessCategory].includes(value))
-
       }  
 
   } else if (guessCategory === 'eyes') {
@@ -325,29 +309,27 @@ const filterCharacters = (userGuess) => {
       if (userGuess === true) {
         alert(`Well, look at you! Yes, the person has gorgeous ${value} eyes! Keep all people with ${value} eyes.`)
         charactersInPlay = charactersInPlay.filter((person) => person[guessCategory] === value)
-
       } else {
         alert(`No, you guessed wrong. The person doesn't have ${value} eyes! Remove all people with ${value} eyes.`)
         charactersInPlay = charactersInPlay.filter((person) => person[guessCategory] !== value)
       }
 
   } else if (guessCategory === 'hair') {
-     if (userGuess === true) {
+     
+      if (userGuess === true) {
         alert(`You're right! The person is blessed with shiny ${value} hair! Keep all people that rock ${value} hair.`)
         charactersInPlay = charactersInPlay.filter((person) => person[guessCategory] === value)
-
       } else {
        alert(`Negative soldier, the person doesn't have ${value} hair! Remove all people that have ${value} hair.`)
        charactersInPlay = charactersInPlay.filter((person) => person[guessCategory] !== value)
+      }
 
-       }
     }
-    generateBoard()
-    
+    generateBoard()  
   }
 
-// The guess() is invoked when clicking on guess button on the characters card (row 220). The parameter "personToConfirm" gets its value from the same row. 
-//When clicking guess, the player first have to confirm that they want to make a guess. 
+// The guess() is invoked when clicking on guess button on the character's card (row 221). The parameter "personToConfirm" gets its value from the same row. 
+// When clicking guess button the 'guess()' will execute the following: a 'confirm()', store the guess in a variable and lastly start 'checkMyGuess()' 
 const guess = (personToConfirm) => {
 
   if (confirm(`Is ${personToConfirm} your final guess?`)) {
@@ -356,33 +338,21 @@ const guess = (personToConfirm) => {
         checkMyGuess(personToCheck)
     }
   }
-
-
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 }
 
-// If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alert("You win!")
-    winOrLose.style.display = 'flex'
     winOrLoseText.innerHTML =`
-    <p>Way to go, champ!</p>
+    <p>Way to go, champ! ${personToCheck} was the secret person!</p>
     `
   } else {
-    alert(`Oh no! The secret person was ${secret.name}.`)
-    winOrLose.style.display = 'flex'
+    alert(`Oh no! The secret person was ${secret.name}.`) 
     winOrLoseText.innerHTML =`
-    <p>Sorry, you snooze, you lose!</p>
+    <p>Sorry, you snooze, you lose! </p>
     `
   }
-  
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  winOrLose.style.display = 'flex'
 }
 
 // Invokes the start function when website is loaded

@@ -269,7 +269,7 @@ const checkQuestion = () => { console.log("checkquestion working")
   if (category === 'hair' || category === 'eyes') { if ( value===secret.hair || value===secret.eyes) {filterCharacters(true)}//compares string
   else{filterCharacters(false)}
 
-  } else if (category === 'accessories' || category === 'other') { if (secret.accessories.includes( value ) || secret.other.includes(value)){filterCharacters(true)}
+  } else if (category === 'accessories' || category === 'other') { if (secret.accessories.includes(value ) || secret.other.includes(value)){filterCharacters(true)}
  //compare as array
  else{filterCharacters(false)}
   }

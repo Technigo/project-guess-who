@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const findOut = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -234,10 +235,16 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  console.log('Starts the game and generates board')
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+    console.log('Starts the game and generates board')
+  if (winOrLose.style.display === 'block') {
+    winOrLose.style.display = 'none'
+    board.style.display = 'flex'
+  } else {
+    winOrLose.style.display = 'none' 
+    board.style.display = 'flex'}
+     // Makes the page with win or lose go away when pressing Play Again
+  
+  charactersInPlay = CHARACTERS    // Here we're setting charactersInPlay array to be all the characters to start with
   generateBoard()
   setSecret()
 
@@ -264,9 +271,9 @@ const checkQuestion = () => {
   const { category, value } = currentQuestion
   
   console.log('Checking question', currentQuestion)
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Compares the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+  // Checking if to keep or remove people based on that
+  // Then invokes filterCharacters
   if (category === 'hair' || category === 'eyes')  {
     if (value === secret.hair || value === secret.eyes) {
       filterCharacters(true)
@@ -288,8 +295,8 @@ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
 
   console.log('Filtering characters')
-  // Show the correct alert message for different categories
-  //Determine what is the category and filter by category to keep or remove based on the keep variable.
+  // Shows the correct alert message for different categories
+  // Determine what is the category and filter by category to keep or remove based on the keep variable.
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -346,7 +353,7 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const madeGuess = confirm(`Do you want to guess on ${personToConfirm}?`) // store the interaction from the player in a variable.
+  const madeGuess = confirm(`Are you brave enough to guess on ${personToConfirm}?`) // store the interaction from the player in a variable.
   console.log('Guess button is clicked')
  if (madeGuess) {
   checkMyGuess(personToConfirm)   // If the player wants to guess, invoke the checkMyGuess function
@@ -357,18 +364,17 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  if (personToCheck === secret.name) {       // 1. Check if the personToCheck is the same as the secret person's name
+  if (personToCheck === secret.name) {                    // 1. Check if the personToCheck is the same as the secret person's name
     console.log('Win!')
-    //winOrLose.innerHTML = 
-    //winOrLoseText.innerHTML =
-    //`<h1>You win!<h1>`
-
-  } else 
+    winOrLose.style.display = 'block',                    // 3. Show the win or lose section
+    winOrLoseText.innerHTML = 'You are the winner!'       // 2. Set a Message to show in the win or lose section accordingly
+    board.style.display = 'none'                          // 4. Hide the game board
+  } else {
   console.log('You lost the game')
-  
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section winOrLose.innerHTML etc.
-  // 4. Hide the game board
+  winOrLose.style.display = 'block',
+  winOrLoseText.innerHTML = 'What a loser!'
+  board.style.display = 'none'
+  }
 }
 
 // Invokes the start function when website is loaded
@@ -378,4 +384,5 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOut.addEventListener('click', checkQuestion)
+playAgain.addEventListener('click', start)
 

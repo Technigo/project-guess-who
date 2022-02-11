@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
 /* Global css variables used for colors */
 :root {
-  --primary: #D5EEFF;
-  --secondary: #26459b;
+  --primary: #ffffff;
+  --secondary: #000;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'cursive'
+  font-family: 'Montserrat'
 }
 
 h1 {
@@ -52,6 +52,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #1439BC;
 }
 
 .game-board {
@@ -60,6 +61,8 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  background-color: #52a161d4;
+  border-radius: 7px;
 }
 
 /****** CARD ******/
@@ -115,6 +118,11 @@ select {
   width: 90%;
 }
 
+p#name {
+  font-family: 'Montserrat';
+  margin-bottom: 35px;
+}
+
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
@@ -143,16 +151,18 @@ button {
 }
 
 .filled-button:hover {
-  background-color: #F99F48;
+  background-color: #c20b0bec;
   border-color: #F99F48;
   color: var(--primary);
 }
 
+#counter{
+  margin-top: 35px;
+}
 
 .counter span {
   font-size: 20px;
   color: var(--primary);
-  font-family: 'Acme', sans-serif;
 }
 
 .counter {

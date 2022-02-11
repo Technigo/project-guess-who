@@ -428,7 +428,7 @@ const filterCharacters = (keep) => {
   }
 
   // Filter by category to keep or remove based on the argument passed from previous function.
-  // If selected value is a string
+  // If statement for when the selected value is a string
   if (category === 'hair' || category === 'pants' || category === 'profession' || category === 'headgear') {
     if (keep) {  
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
@@ -436,7 +436,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   
-  // For accessories, sweater and face we need to check if the value is included in an array.
+  // else statement for accessories, sweater and face we need to check if the value is included in an array.
   } else {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
@@ -451,28 +451,26 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
-  // If the player wants to guess, invoke the checkMyGuess function.
   const confirmGuess = confirm(`So, you want to make a guess?`)
+  // If the player wants to guess, invoke the checkMyGuess function.
   if (confirmGuess) {
     checkMyGuess(personToConfirm)
   } 
 }
 
 // If you confirm, this function is invoked
-// 1. Check if the personToCheck is the same as the secret person's name
-// 2. Set a Message to show in the win or lose section accordingly
 // 3. Show the win or lose section
 // 4. Hide the game board
 const checkMyGuess = (personToCheck) => {
+  // 1. Check if the personToCheck is the same as the secret person's name
   if (personToCheck === secret.name) {
-    //alert(`It is ${personToCheck}, good job!`)
+    // 2. Set a Message to show in the win or lose section accordingly
     winOrLose.style.display = 'flex';
     winOrLoseText.innerText = 'Yay, you won! Play again?'
     new Audio('./audio/Winning-game-sound-effect.mp3').play()
   } else {
-    //alert(`Oh, I´m sorry but it is not ${personToCheck}. It was ${secret.name} all the time.. Better luck next time!`)
     winOrLose.style.display = 'flex';
-    winOrLoseText.innerText = 'Oh no, you lost! Play again?'
+    winOrLoseText.innerText = `Oh, I´m sorry but it is not ${personToCheck}. It was ${secret.name} all the time.. Better luck next time!Play again?`
     new Audio('./audio/Aww-sound-effect.mp3').play()
   }
 }

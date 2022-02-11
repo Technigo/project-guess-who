@@ -232,6 +232,7 @@ const setSecret = () => {
 const start = () => {
   charactersInPlay = CHARACTERS
   winOrLose.style.display = 'none'
+  board.style.display = 'flex'
   generateBoard()
   setSecret()
   guesses = 0;
@@ -353,6 +354,7 @@ const checkMyGuess = (personToCheck) => {
     `
   }
   winOrLose.style.display = 'flex'
+  board.style.display = 'none'
 }
 
 // Invokes the start function when website is loaded

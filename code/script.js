@@ -336,10 +336,8 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (secret.name === personToCheck) {
-      alert("You win!")
-      board.innerHTML = ` 
-      <p>Play again?</p>
-      <button id="big-restart-button" class="big-restart-button">RESTART</button>` 
+      alert(`Yayyyyy the right person is ${secret.name}!`)
+      board.innerHTML = ""
 
       document
         .getElementById('big-restart-button')
@@ -347,11 +345,8 @@ const checkMyGuess = (personToCheck) => {
           start()
         })
  } else {
-      alert("You lost!")
-      board.innerHTML = ` 
-      <p>Play again?</p>
-      <button id="big-restart-button" class="big-restart-button">RESTART</button>
-      `
+      alert(`Oh noooooo!!! Today is just not your day! The right person is ${secret.name}!`)
+      board.innerHTML = ""
 
       document
         .getElementById('big-restart-button')

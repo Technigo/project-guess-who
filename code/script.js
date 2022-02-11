@@ -265,6 +265,15 @@ const start = () => {
   // Randomly select a secret person
   setSecret()
 
+  // Resets the currentQuestion object at every start or restart
+  currentQuestion = {
+    category: 'hair',
+    value: 'brown'
+  }
+
+  // Not sure about this one
+  questions.selectedIndex = 0
+
   //Resets the timer and number of guesses when the game starts or restarts
   elapsedTime = 0 
   timer()
@@ -277,6 +286,7 @@ const start = () => {
 
 // Sets the currentQuestion object when user selects a question in the dropdown list
 const selectQuestion = () => {
+
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label
   
@@ -287,10 +297,14 @@ const selectQuestion = () => {
     category: category, 
     value: value
   }
+
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+
+  console.log(currentQuestion.category)
+
   const { category, value } = currentQuestion
 
   // Keeps track of how many questions the user has asked
@@ -302,7 +316,7 @@ const checkQuestion = () => {
   
   let keep
 
-  if (typeof category === 'string') { //instead of (category === 'hair' || category === 'eyes')
+  if (typeof secret[category] === 'string') { //instead of (category === 'hair' || category === 'eyes')
     secret[category] === value ? keep = true: keep = false 
     /* Ternary operator, same as:
     if (secret[category] === value) {
@@ -310,7 +324,7 @@ const checkQuestion = () => {
     } else {
       filterCharacters(false)
     }*/
-  } else if (Array.isArray(category)) { //instead of (category === 'accessories' || category === 'other')
+  } else if (Array.isArray(secret[category])) { //instead of (category === 'accessories' || category === 'other')
     secret[category].includes(value) ? keep = true : keep = false
   }
 
@@ -326,11 +340,11 @@ const alertKeepOrNot = (keep) => {
 
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wear ${value}`
+        `Yes, the person wears ${value}!\r\nKeep all people that wear ${value}`
       );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
+        `No, the person doesn't wear ${value}!\r\nRemove all people that wear ${value}`
       )
     }
 
@@ -338,11 +352,11 @@ const alertKeepOrNot = (keep) => {
     
     if (keep) {
       alert(
-        `Yes, the person is a ${value}! Keep all people that are ${value}s`
+        `Yes, the person is a ${value}!\r\nKeep all people that are ${value}s`
       )
     } else {
       alert(
-        `No, the person is not a ${value}! Remove all people that are ${value}s`
+        `No, the person is not a ${value}!\r\nRemove all people that are ${value}s`
       )
     }
 
@@ -350,11 +364,11 @@ const alertKeepOrNot = (keep) => {
 
     if (keep) {
       alert(
-        `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}.`
+        `Yes, the person has ${value} ${category}!\r\nKeep all people that have ${value} ${category}.`
       )
     } else {
       alert(
-        `No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}.`
+        `No, the person doesn't have ${value} ${category}!\r\nRemove all people that have ${value} ${category}.`
       )
     }
   }
@@ -365,7 +379,7 @@ const alertKeepOrNot = (keep) => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
 
-  if (Array.isArray(category)) { // For categories of array type
+  if (Array.isArray(secret[category])) { // For category values of array type
     
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
@@ -373,7 +387,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
 
-  } else if (typeof category === 'string') { // Category is of string type
+  } else if (typeof secret[category] === 'string') { // For category values of string type
     
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
@@ -381,9 +395,10 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   
-  } else { // I don't know if this is necessary?
-
+  } else { 
+    // I don't know if this is necessary?
     alert('Something went wrong here. Try again.')
+
   }
 
   // Generate the updated board with the remaining characters

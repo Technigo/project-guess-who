@@ -294,7 +294,7 @@ const selectQuestion = () => {
   // This variable stores the category of the question
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable stores the value within that category
-  const value = questions.options[questions.selectedIndex].value;
+  const value = questions.value;
 
   currentQuestion = {
     category, // shorthand for category: category

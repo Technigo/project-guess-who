@@ -6,76 +6,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guess Who</title>
   <link rel="stylesheet" href="./src/style.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
 </head>
 
 <body>
+  <main>
+    <section class="board-wrapper">
+      <h1 class="board-title"><span class="title-blue">Guess</span> Who?</h1>
+      <main class="game-board" id="board"></main>
+    </section>
 
-  <section class="board-wrapper">
-    <h1 class="board-title"><span class="title-blue">Guess</span> who?</h1>
-    <main class="game-board" id="board"></main>
-  </section>
+    <section id="winOrLose" class="win-or-lose-wrapper">
+      <div class="win-or-lose">
+        <h2 id="winOrLoseText"></h2>
+        <button id="playAgain" class="transparent-button">PLAY AGAIN</button>
+      </div>
+    </section>
 
-  <section id="winOrLose" class="win-or-lose-wrapper">
-    <div class="win-or-lose">
-      <h1 id="winOrLoseText"></h1>
-      <button id="playAgain" class="filled-button">PLAY AGAIN</button>
-    </div>
-  </section>
+    <section class="message-wrapper">
+      <div class="message" id="message">
+        <img class="image" id="icon" src="./images/cancel.png">
+        <p class="alert-message" id="alertMessage"></p>
+      </div>
+    </section>
 
-  <aside class="question-section">
-    <div class="question-header">
-
+    <aside class="question-section">
+      <div class="question-header">
         <p class="total-guesses" id="totalGuesses"></p>
         <p id="timer">Time elapsed: 00:00</p>
-  
-    <button id="restart" class="restart-button">Restart Game</button>
+        <button id="restart" class="restart-button">Restart Game</button>
+      </div>
 
-    </div>
+      <h2>Please choose a category to guess:</h2>
 
-    <h2>Please choose a category to guess:</h2>
-
-    <div class="question-buttons-wrapper" id="buttonsWrapper">
-      <select name="hairOptions" class="questions-all button" id="questions">
-        <optgroup label="hair">
-          <option selected disabled>Hair color...</option>
+      <div class="question-buttons-wrapper" id="buttonsWrapper">
+        <select name="hairOptions" class="questions-options button" id="questions">
+          <option selected disabled value="hair">Hair color...</option>
           <option value="brown">brown</option>
           <option value="yellow">yellow</option>
           <option value="black">black</option>
           <option value="hidden">hidden</option>
           <option value="grey">grey</option>
           <option value="orange">orange</option>
-          <option value="purple">purple</option>
-          <option value="white">white</option>
-        </optgroup>
-      </select>
-      <select name="hairOptions" class="questions-all button" id="questions">
-        <optgroup label="eyes">
-          <option selected disabled>Eye color...</option>
-          <option value="hidden">hidden</option>
+        </select>
+        <select name="hairOptions" class="questions-options button" id="questions">
+          <option selected disabled value="eyes">Eye color...</option>
+          <option value="covered">covered</option>
           <option value="blue">blue</option>
           <option value="green">green</option>
           <option value="brown">brown</option>
-        </optgroup>
-      </select>
-      <select name="hairOptions" class="questions-all button" id="questions">
-        <optgroup id="accessoriesWrapper" label="accessories">
-          <option selected disabled>Accessories...</option>
+        </select>
+        <select name="hairOptions" class="questions-options button" id="questions">
+          <option selected disabled value="accessories">Accessories...</option>
           <option value="glasses">glasses</option>
-          <option value="hat">hat</option>
-          <option value="necklace">necklace</option>
-        </optgroup>
-      </select>
-      <select name="hairOptions" class="questions-all button" id="questions">
-        <optgroup label="other">
-          <option selected disabled>Other...</option>
+          <option value="sunglasses">sunglasses</option>
+        </select>
+        <select name="hairOptions" class="questions-options button" id="questions">
+          <option selected disabled value="other">Other...</option>
           <option value="smoker">smoker</option>
-        </optgroup>
-      </select>
-   </div>
-  </aside>
+        </select>
+      </div>
+    </aside>
+
+  </main>
   <script src="./src/script.js"></script>
 </body>
 

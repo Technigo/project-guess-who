@@ -1,21 +1,28 @@
 const gameBoard = document.getElementById("board");
 const questions = document.getElementById("questions");
-const questionsAll = document.querySelectorAll(".questions-all");
+const questionsOptions = document.querySelectorAll(".questions-options");
 const totalGuesses = document.getElementById("totalGuesses");
 const restartButton = document.getElementById("restart");
 const playAgainButton = document.getElementById("playAgain");
 const winOrLoseWrapper = document.querySelector(".win-or-lose-wrapper");
 const winOrLoseText = document.getElementById("winOrLoseText");
-const timer = document.getElementById("timer");
-
+const alertMessageText = document.getElementById("alertMessage")
 
 const characters = [
   {
-    name: "Jabala",
-    img: "images/jabala.svg",
+    name: "Jaqueline",
+    img: "images/jaqueline.svg",
+    hair: "orange",
+    eyes: "green",
+    accessories: ["glasses"],
+    other: []
+  },
+  {
+    name: "Jerry",
+    img: "images/jerry.svg",
     hair: "hidden",
-    eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    eyes: "blue",
+    accessories: ["hats"],
     other: []
   },
   {
@@ -23,7 +30,15 @@ const characters = [
     img: "images/jack.svg",
     hair: "hidden",
     eyes: "blue",
-    accessories: ["hat"],
+    accessories: ["hats"],
+    other: []
+  },
+  {
+    name: "Jess",
+    img: "images/jess.svg",
+    hair: "black",
+    eyes: "blue",
+    accessories: ["glasses"],
     other: []
   },
   {
@@ -31,7 +46,7 @@ const characters = [
     img: "images/jacques.svg",
     hair: "grey",
     eyes: "blue",
-    accessories: ["hat"],
+    accessories: ["hats"],
     other: ["smoker"]
   },
   {
@@ -43,6 +58,14 @@ const characters = [
     other: []
   },
   {
+    name: "Jabala",
+    img: "images/jabala.svg",
+    hair: "hidden",
+    eyes: "covered",
+    accessories: ["sunglasses", "hats"],
+    other: []
+  },
+  {
     name: "Jake",
     img: "images/jake.svg",
     hair: "yellow",
@@ -51,26 +74,18 @@ const characters = [
     other: []
   },
   {
-    name: "Jolee",
-    img: "images/jolee.svg",
-    hair: "brown",
+    name: "Jodi",
+    img: "images/jodi.svg",
+    hair: "yellow",
     eyes: "blue",
-    accessories: ["headband"],
+    accessories: ["hats"],
     other: []
   },
   {
     name: "Jia",
     img: "images/jia.svg",
     hair: "black",
-    eyes: "blue",
-    accessories: ["glasses"],
-    other: []
-  },
-  {
-    name: "Jana",
-    img: "images/jana.svg",
-    hair: "black",
-    eyes: "hidden",
+    eyes: "brown",
     accessories: ["glasses"],
     other: []
   },
@@ -78,25 +93,16 @@ const characters = [
     name: "Jane",
     img: "images/jane.svg",
     hair: "yellow",
-    eyes: "hidden",
-    accessories: ["glasses"],
+    eyes: "covered",
+    accessories: ["sunglasses"],
     other: []
   },
-  {
-    name: "Jaqueline",
-    img: "images/jaqueline.svg",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses", "necklace"],
-    other: []
-  },
-
   {
     name: "Jazebelle",
     img: "images/jazebelle.svg",
     hair: "purple",
     eyes: "hidden",
-    accessories: ["glasses"],
+    accessories: ["sunglasses"],
     other: ["smoker"]
   },
   {
@@ -104,8 +110,16 @@ const characters = [
     img: "images/jean.svg",
     hair: "brown",
     eyes: "blue",
-    accessories: ["glasses", "hat"],
+    accessories: ["glasses", "hats"],
     other: ["smoker"]
+  },
+  {
+    name: "Jolee",
+    img: "images/jolee.svg",
+    hair: "brown",
+    eyes: "blue",
+    accessories: [],
+    other: []
   },
   {
     name: "Jeane",
@@ -120,15 +134,23 @@ const characters = [
     img: "images/jed.svg",
     hair: "orange",
     eyes: "green",
-    accessories: ["glasses", "hat"],
+    accessories: ["glasses", "hats"],
     other: ["smoker"]
   },
   {
     name: "Jenni",
     img: "images/jenni.svg",
-    hair: "white",
+    hair: "grey",
+    eyes: "covered",
+    accessories: ["hats"],
+    other: []
+  },
+  {
+    name: "Jana",
+    img: "images/jana.svg",
+    hair: "black",
     eyes: "hidden",
-    accessories: ["hat"],
+    accessories: ["sunglasses"],
     other: []
   },
   {
@@ -140,19 +162,11 @@ const characters = [
     other: []
   },
   {
-    name: "Jerry",
-    img: "images/jerry.svg",
-    hair: "hidden",
-    eyes: "blue",
-    accessories: ["hat"],
-    other: []
-  },
-  {
-    name: "Jess",
-    img: "images/jess.svg",
+    name: "Juan",
+    img: "images/juan.svg",
     hair: "black",
     eyes: "blue",
-    accessories: ["glasses"],
+    accessories: [],
     other: []
   },
   {
@@ -172,27 +186,11 @@ const characters = [
     other: []
   },
   {
-    name: "Juan",
-    img: "images/juan.svg",
-    hair: "black",
-    eyes: "blue",
-    accessories: [],
-    other: []
-  },
-  {
-    name: "Jodi",
-    img: "images/jodi.svg",
-    hair: "yellow",
-    eyes: "blue",
-    accessories: ["hat"],
-    other: []
-  },
-  {
     name: "Jordan",
     img: "images/jordan.svg",
     hair: "yellow",
-    eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    eyes: "covered",
+    accessories: ["sunglasses", "hats"],
     other: []
   },
   {
@@ -224,7 +222,7 @@ const characters = [
     img: "images/julie.svg",
     hair: "black",
     eyes: "brown",
-    accessories: ["glasses", "hat"],
+    accessories: ["glasses", "hats"],
     other: []
   },
 ]
@@ -235,6 +233,13 @@ let currentQuestion;
 let charactersInPlay;
 let timerInterval;
 
+const message = document.getElementById("message");
+const icon = document.getElementById("icon");
+
+
+icon.onclick = function () {
+  message.style.display = "none";
+};
 
 // Draw the game board
 const generateBoard = () => {
@@ -242,10 +247,10 @@ const generateBoard = () => {
   charactersInPlay.forEach((character) => {
     board.innerHTML += `
       <div class="card">
-        <p>${character.name}</p>
+        <p class="name">${character.name}</p>
         <img src=${character.img} alt=${character.name}>
         <div class="guess">
-          <button class="guess-button" onclick="guess('${character.name}')">Guess <span class="name-block">${character.name}?</span></button>
+          <button class="transparent-button" onclick="guess('${character.name}')">Guess <span class="name-block">${character.name}?</span></button>
         </div>
       </div>
     `
@@ -261,7 +266,6 @@ const startGame = () => {
   charactersInPlay = characters;
   generateBoard();
   setSecretCharacter();
-  console.log(secretCharacter)
   guessCount = 0
   totalGuesses.innerText = "Number of guesses: 0"
   startTimer()
@@ -269,17 +273,18 @@ const startGame = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  questionsAll.forEach(question => {
+  questionsOptions.forEach(question => {
     question.addEventListener("change", () => {
-      const category = question.options[question.selectedIndex].parentNode.label;
+      const category = question.options[0].value;
       const value = question.options[question.selectedIndex].value;
-       
+
       currentQuestion = {
-        category: category,
-        value: value
+        category,
+        value,
       }
 
       filterCharacters(currentQuestion); 
+      question.selectedIndex = 0;
     })
   })
 }
@@ -294,43 +299,42 @@ const filterCharacters = (currentQuestion) => {
   } else {
     charactersInPlay = charactersInPlay.filter((character) => (character[currentQuestion.category] === currentQuestion.value) === secretCharacterValues);
   }
-  alertMessage(secretCharacterValues, currentQuestion.value, currentQuestion.category )
+
+  alertMessage(secretCharacterValues, currentQuestion.value, currentQuestion.category);
   generateBoard();
   guessCount++
   totalGuesses.innerHTML = `Number of guesses: ${guessCount}`
+  message.style.display = "block";
 }
 
 const alertMessage = (keepCharacter) => {
   const { category, value } = currentQuestion;
+  
   if (category === 'accessories') {
     if (keepCharacter) {
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
+      alertMessageText.innerHTML = `Yes, the person wears ${value}! Keep all people that wear ${value}.`;
     } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
+      alertMessageText.innerHTML = `No, the person doesn't wear ${value}! Remove all people that wear ${value}.`;
     }
   } else if (category === 'other') {
     if (keepCharacter) {
-      alert(`Yes, the person is ${value}! Keep all people that are ${value}s`)
+      alertMessageText.innerHTML = `Yes, the person is a ${value}! Keep all people that are ${value}s.`;
     } else {
-      alert(`No, the person is not a ${value}! Remove all people that are not ${value}s`)
+      alertMessageText.innerHTML = `No, the person is not a ${value}! Remove all people that are ${value}s.`;
     }
   } else {
     if (keepCharacter) {
-      alert(
-        `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`
-      )
+      alertMessageText.innerHTML = 
+        `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`;
     } else {
-      alert(
-        `No, the person doesnt have ${value} ${category}! Remove all people with ${value} ${category}`
-      )
+      alertMessageText.innerHTML = 
+        `No, the person doesnt have ${value} ${category}! Remove all people with ${value} ${category}.`;
     }
   }
   generateBoard()
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  confirm(`Are you sure you want to guess ${personToConfirm}?`);
   checkMyGuess(personToConfirm)
 }
 
@@ -338,59 +342,43 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   if (secretCharacter.name === personToCheck) {
     winOrLoseWrapper.style.display = "flex";
-    winOrLoseText.innerHTML = `Great Job! It was ${secretCharacter.name}.`
+    winOrLoseText.innerHTML = `<span class="emoji"> 🥳 </span> Great Job! It was ${secretCharacter.name}.`
   } else {
     winOrLoseWrapper.style.display = "flex";
-    winOrLoseText.innerHTML = `It is not ${personToCheck}. It was ${secretCharacter.name}.`
+    winOrLoseText.innerHTML = `<span class="emoji"> 😓 </span> It is not ${personToCheck}. It was ${secretCharacter.name}.`
   }
 }
 
 const startTimer = () => {
   clearInterval(timerInterval);
 
-  let seconds = 0;
-  let minutes = 0;
-  let hours = 0;
+  let seconds = 0; minutes = 0; hours = 0;
 
+    // Set a interval every 1000 ms
+    timerInterval = setInterval(() => {
+      timer.innerHTML =
+        "Time elapsed: " +
+        (hours ? hours + ':' : '') +
+        (minutes < 10 ? '0' + minutes : minutes) +
+        ':' +
+        (seconds < 10 ? '0' + seconds : seconds);
 
-  // Set a interval every 1000 ms
-  timerInterval = setInterval(() => {
-    timer.innerHTML = `Time elapsed: ${hours}${minutes}:${seconds}`
- 
-    if(hours) {
-      hours + ":"
-    } else {
-      ""
-    }
+      // Then, we add a second since one second has passed
+      seconds++;
 
-    if(minutes < 10) {
-      0 + minutes
-    } else {
-      minutes
-    }
+      // if seconds equals 60 seconds reset seconds to 0 and add a minute
+      if (seconds == 60) {
+        minutes++;
+        seconds = 0;
+      }
 
-    if (seconds < 10) {
-      0 + seconds
-    } else {
-      seconds
-    }
-
-    // Next, we add a new second since one second is passed
-    seconds++;
-
-    // if seconds equals 60 seconds reset seconds to 0
-    if (seconds == 60) {
-      minutes++;
-      seconds = 0;
-    }
-
-    // if minutes equals 60 minutes reset minutes to 0
-    if (minutes == 60) {
-      hours++;
-      minutes = 0;
-    }
-  }, 1000);
-}
+      // if minutes equals 60 minutes reset minutes to 0 and add 1 hour
+      if (minutes == 60) {
+        hours++;
+        minutes = 0;
+      }
+    }, 1000);
+};
 
 // Invokes the start function when website is loaded
 startGame()

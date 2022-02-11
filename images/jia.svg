@@ -126,15 +126,17 @@
 	</g>
 	<circle
    class="st5"
-   cx="53.1"
-   cy="42.3"
-   r="0.8"
-   id="circle153" />
+   cx="53.099998"
+   cy="42.299999"
+   r="0.80000001"
+   id="circle153"
+   style="fill:#6c5353" />
 	<circle
    class="st5"
    cx="72.1"
    cy="42.3"
    r="0.8"
-   id="circle155" />
+   id="circle155"
+   style="fill:#6c5353" />
 </g>
 </svg>

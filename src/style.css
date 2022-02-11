@@ -1,10 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 
 /* Global css variables used for colors */
 :root {
   --primary: rgb(247, 62, 207);
   --secondary: rgb(255, 255, 255);
+}
+
+.image {
+    width: 40px;
+    height: 40px;
+    float: right;
+    margin-top: -35px;
+    margin-right: -35px;
 }
 
 body {
@@ -28,6 +37,12 @@ h2 {
 
 .title-blue {
   color: var(--primary);
+}
+
+.emoji {
+  display: block;
+  font-size: 50px;
+  margin-bottom: 20px;
 }
 
 .name-block {
@@ -67,9 +82,60 @@ h2 {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   align-content: center;
   justify-content: center;
   margin-bottom: 20px;
+  min-height: 55vh;
+}
+
+.message-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  font-size: 22px;
+  color: white;
+  background-color: rgb(0, 0, 0,  0.9);
+  padding: 20px;
+  border-radius:30px;
+  width: 350px; 
+  position: absolute;
+  text-align: center;
+  margin-bottom: 250px;
+  z-index:1;
+  display:none;
+  transition: 1s;
+}
+
+.message:before,
+.message:after {
+  content:"";
+  background-color:rgb(0, 0, 0,  0.9);
+  border-radius:50%;
+  display:block;
+  position:absolute;
+  z-index:-1;
+}
+.message:before {
+  width:44px;
+  height:44px;
+  top:-12px;
+  left:28px;
+  box-shadow:-50px 30px 0 -12px rgb(0, 0, 0,  0.9);
+}
+.message:after {
+  bottom:-10px;
+  right:26px;
+  width:30px;
+  height:30px;
+  box-shadow:40px -34px 0 0 rgb(0, 0, 0,  0.9),
+             -28px -6px 0 -2px rgb(0, 0, 0,  0.9),
+             -24px 17px 0 -6px rgb(0, 0, 0,  0.9),
+             -5px 25px 0 -10px rgb(0, 0, 0,  0.9);
+  
 }
 
 /****** CARD ******/
@@ -128,7 +194,7 @@ h2 {
   background-color: var(--primary);
 }
 
-.guess-button {
+.transparent-button {
   font-size: 16px;
   border: 3px solid var(--secondary);
   padding: 10px;
@@ -161,7 +227,7 @@ h2 {
   justify-content: center;
 }
 
-.questions-all {
+.questions-options {
   font-size: 20px;
   font-family: 'Montserrat';
   font-weight: 600;
@@ -174,10 +240,10 @@ h2 {
   background-color: var(--secondary);
 }
 
-.questions-all:hover {
+.questions-options:hover {
   color:  var(--secondary);
   background-color: var(--primary);
-   border: 2px solid transparent
+  border: 2px solid transparent
 }
 
 select:focus {
@@ -189,7 +255,8 @@ select:focus {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: var(--primary);
+  color: var(--secondary);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -207,34 +274,26 @@ select:focus {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
-}
-
-.win-or-lose h1 {
+.win-or-lose h2 {
   margin-bottom: 32px;
 }
 
 @media (max-width: 768px) {
-  body {
-    flex-direction: column;
+  main {
+    flex-direction: column-reverse;
   }
 
   .question-section {
     width: 100%;
     min-height: 0;
   }
-  button {
-    padding: 8px 16px;
-  }
-  h1 {
-    font-size: 24px;
-    line-height: 30px;
+
+  .questions-options {
+    width: 46%;
   }
 
-  .guess-who-icon {
-    width: 51px;
+  .question-buttons-wrapper {
+    flex-wrap: wrap;
   }
 
   .board-wrapper {
@@ -251,6 +310,10 @@ select:focus {
     position: relative;
   }
 
+  .card .name {
+    display: none;
+  } 
+
   .card .guess {
     display: flex;
     top: 0;
@@ -258,15 +321,39 @@ select:focus {
     justify-content: flex-end;
   }
 
-  .card .guess span {
-    display: none;
-  }
-
-  .card .guess .filled-button {
+  .transparent-button {
     padding: 6px 11px;
+    line-height: 1;
     margin-bottom: 1px;
     background: white;
-    color: var(--primary);
-    border: none;
+    border: transparent;
+    border-radius: 0;
+    color: black;
+    background-color: transparent;
+  }
+
+  .transparent-button:hover {
+    color: var(--secondary);
+  }
+}
+
+@media (max-width: 500px) {
+  .question-header {
+    flex-direction: column;
+  }
+
+  .questions-options {
+    font-size: 16px;
+  }
+
+  .restart-button {
+    position: relative;
+    bottom: 72px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .total-guesses {
+    margin-bottom: 0;
   }
 }

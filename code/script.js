@@ -372,7 +372,9 @@ const guess = (confirmPerson) => {
       if ((result.isConfirmed)) {    
         checkMyGuess(confirmPerson);
       } else if (result.isDenied) {    
-        Swal.fire('Good Luck! Keep guessing 🤔');
+        Swal.fire({
+          title: 'Good Luck! Keep guessing 🤔',
+          background: '#d0c3e2',});
         setTimeout(() => playAgainSound.play(), 200);
      }
   });

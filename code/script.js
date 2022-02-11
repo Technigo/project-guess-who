@@ -240,6 +240,7 @@ const start = () => { console.log("start working")
   // 4. Hide the game board
   board.style.display = 'flex'
   // What else should happen when we start the game?
+  introsound()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -254,6 +255,7 @@ const selectQuestion = () => { console.log("selectworking")
     category: category,
     value: value,
   }
+  
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -271,6 +273,7 @@ const checkQuestion = () => { console.log("checkquestion working")
  //compare as array
  else{filterCharacters(false)}
   }
+  sound()
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -365,9 +368,10 @@ const checkMyGuess = (answer) => {
 
   if (answer === secret.name) {
     winOrLoseText.innerHTML = `${answer} is correct, You are a winner baby!`
+    winningsound()
   } else {
     winOrLoseText.innerHTML = `Sorry, ${answer} is not the one. It was ${secret.name} you should have been looking for!!`
-
+    loosingsound()
     // 2. Set a Message to show in the win or lose section accordingly
   }
   // 3. Show the win or lose section
@@ -377,6 +381,25 @@ const checkMyGuess = (answer) => {
 
 }
 
+const sound = ()=>{
+  let audio = new Audio('./blipp.mp3');
+  audio.play();
+}
+
+const introsound = ()=>{
+  let audio = new Audio('./introsound.mp3');
+  audio.play();
+}
+
+const loosingsound = ()=>{
+  let audio = new Audio('./loosingsound.mp3');
+  audio.play();
+}
+
+const winningsound = ()=>{
+  let audio = new Audio('./winningsound.mp3');
+  audio.play();
+}
 
 
 // Invokes the start function when website is loaded

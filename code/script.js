@@ -6,6 +6,7 @@ const findOut = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgain = document.getElementById('playAgain')
+const counter = document.getElementById('counter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -208,6 +209,8 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let CountFindOutClicks = 0   // How to reset counter with restart?
+//let CountFindOutClicksMaxLimit = 5 How to set max limit and also making the game end with win/lose?
 
 
 // Draw the game board
@@ -385,4 +388,9 @@ restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOut.addEventListener('click', checkQuestion)
 playAgain.addEventListener('click', start)
+findOut.addEventListener('click', () => {
+  CountFindOutClicks += 1
+  counter.innerHTML = CountFindOutClicks
+  console.log(CountFindOutClicks)
+})
 

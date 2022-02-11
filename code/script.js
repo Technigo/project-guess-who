@@ -29,192 +29,192 @@ const CHARACTERS = [
     img: 'images/ben.png',
     hair: 'blonde',
     eyes: 'green',
-    hasDatedWith: [],
-    isRelativeOf: ['Monica', 'Ross']
+    dates: [],
+    relatives: ['Monica', 'Ross']
   },
   {
     name: 'Carol',
     img: 'images/carol.png',
     hair: 'blonde',
     eyes: 'blue',
-    hasDatedWith: ['Ross'],
-    isRelativeOf: []
+    dates: ['Ross'],
+    relatives: []
   },
   {
     name: 'Chandler',
     img: 'images/chandler.png',
     hair: 'brown',
     eyes: 'blue',
-    hasDatedWith: ['Monica'],
-    isRelativeOf: []
+    dates: ['Monica'],
+    relatives: ['Chandler']
   },
   {
     name: 'Charlie',
     img: 'images/charlie.png',
     hair: 'brown',
     eyes: 'brown',
-    hasDatedWith: ['Joey', 'Ross'],
-    isRelativeOf: []
+    dates: ['Joey', 'Ross'],
+    relatives: []
   },
   {
     name: 'David',
     img: 'images/david.png',
     hair: 'brown',
     eyes: 'brown',
-    hasDatedWith: ['Phoebe'],
-    isRelativeOf: []
+    dates: ['Phoebe'],
+    relatives: []
   },
   {
     name: 'Dina',
     img: 'images/dina.png',
     hair: 'brown',
     eyes: 'green',
-    hasDatedWith: [],
-    isRelativeOf: ['Joey']
+    dates: [],
+    relatives: ['Joey']
   },
   {
     name: 'Emily',
     img: 'images/emily.png',
     hair: 'brown',
     eyes: 'brown',
-    hasDatedWith: ['Ross'],
-    isRelativeOf: []
+    dates: ['Ross'],
+    relatives: []
   },
   {
     name: 'Emma',
     img: 'images/emma.png',
     hair: 'golden-blonde',
     eyes: 'blue',
-    hasDatedWith: [],
-    isRelativeOf: ['Monica', 'Rachel', 'Ross']
+    dates: [],
+    relatives: ['Monica', 'Rachel', 'Ross']
   },
   {
     name: 'Frank Jr',
     img: 'images/frank.png',
     hair: 'brown',
     eyes: 'blue',
-    hasDatedWith: [],
-    isRelativeOf: ['Phoebe']
+    dates: [],
+    relatives: ['Phoebe']
   },
   {
     name: 'Gunther',
     img: 'images/gunther.png',
     hair: 'blonde',
     eyes: 'blue',
-    hasDatedWith: [],
-    isRelativeOf: []
+    dates: [],
+    relatives: []
   },
   {
     name: 'Jack',
     img: 'images/jack.png',
     hair: 'grey',
     eyes: 'brown',
-    hasDatedWith: [],
-    isRelativeOf: ['Monica', 'Ross']
+    dates: [],
+    relatives: ['Monica', 'Ross']
   },
   {
     name: 'Janice',
     img: 'images/janice.png',
     hair: 'brown',
     eyes: 'brown',
-    hasDatedWith: ['Chandler', 'Ross'],
-    isRelativeOf: []
+    dates: ['Chandler', 'Ross'],
+    relatives: []
   },
   {
     name: 'Joey',
     img: 'images/joey.png',
     hair: 'black',
     eyes: 'brown',
-    hasDatedWith: ['Rachel'],
-    isRelativeOf: []
+    dates: ['Rachel'],
+    relatives: ['Joey']
   },
   {
     name: 'Judy',
     img: 'images/judy.png',
-    hair: 'blonde',
+    hair: 'grey',
     eyes: 'blue',
-    hasDatedWith: [],
-    isRelativeOf: ['Monica', 'Ross']
+    dates: [],
+    relatives: ['Monica', 'Ross']
   },
   {
     name: 'Kathy',
     img: 'images/kathy.png',
     hair: 'red',
     eyes: 'brown',
-    hasDatedWith: ['Chandler', 'Joey'],
-    isRelativeOf: []
+    dates: ['Chandler', 'Joey'],
+    relatives: []
   },
   {
     name: 'Monica',
     img: 'images/monica.png',
     hair: 'black',
     eyes: 'blue',
-    hasDatedWith: ['Chandler'],
-    isRelativeOf: ['Ross']
+    dates: ['Chandler'],
+    relatives: ['Ross, Monica']
   },
   {
     name: 'Mike',
     img: 'images/mike.png',
-    hair: 'black',
+    hair: 'brown',
     eyes: 'green',
-    hasDatedWith: ['Phoebe'],
-    isRelativeOf: []
+    dates: ['Phoebe'],
+    relatives: []
   },
   {
     name: 'Nora',
     img: 'images/nora.png',
     hair: 'blonde',
     eyes: 'blue',
-    hasDatedWith: [],
-    isRelativeOf: ['Chandler']
+    dates: [],
+    relatives: ['Chandler']
   },
   {
     name: 'Paolo',
     img: 'images/paolo.png',
-    hair: 'black',
+    hair: 'brown',
     eyes: 'brown',
-    hasDatedWith: ['Rachel'],
-    isRelativeOf: []
+    dates: ['Rachel'],
+    relatives: []
   },
   {
     name: 'Phoebe',
     img: 'images/phoebe.png',
     hair: 'blonde',
     eyes: 'green',
-    hasDatedWith: [],
-    isRelativeOf: []
+    dates: [],
+    relatives: ['Phoebe']
   },
   {
     name: 'Rachel',
     img: 'images/rachel.png',
     hair: 'golden-blonde',
     eyes: 'blue',
-    hasDatedWith: ['Joey', 'Ross'],
-    isRelativeOf: []
+    dates: ['Joey', 'Ross'],
+    relatives: ['Rachel']
   },
   {
     name: 'Richard',
     img: 'images/richard.png',
     hair: 'brown',
     eyes: 'brown',
-    hasDatedWith: ['Monica'],
-    isRelativeOf: []
+    dates: ['Monica'],
+    relatives: []
   },
   {
     name: 'Ross',
     img: 'images/ross.png',
     hair: 'black',
     eyes: 'brown',
-    hasDatedWith: ['Rachel'],
-    isRelativeOf: ['Monica']
+    dates: ['Rachel'],
+    relatives: ['Monica', 'Ross']
   },
   {
     name: 'Ursula',
     img: 'images/ursula.png',
     hair: 'blonde',
     eyes: 'green',
-    hasDatedWith: ['Joey'],
-    isRelativeOf: ['Phoebe']
+    dates: ['Joey'],
+    relatives: ['Phoebe']
   },
 ]
 
@@ -319,13 +319,10 @@ const start = () => {
 const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label
-  console.log(`guessed category is ${category}`)
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value
-  console.log(`guessed value is ${value}`)
 
   currentQuestion = {category: category, value: value}
-  console.log('currentQuestion is', currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -334,7 +331,6 @@ const checkQuestion = () => {
   numberOfGuesses++ //here we want to increase the numberOfGuesses with one
   questionsAsked.innerHTML=`Question counter: ${numberOfGuesses}`
   //for testing:
-  console.log(`secret person ${category} is ${secret[category]}`)
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -347,7 +343,16 @@ const checkQuestion = () => {
     }
 
   } 
-  else if (category === 'hasDatedWith' || category === 'isRelativeOf') {
+  else if (category === 'eyes') {
+    if (value === secret[category]){
+      keep = true
+    }
+    else{
+      keep = false
+    }
+
+  } 
+  else if (category === 'dates') {
     if(secret[category].includes(value)){
       keep = true
     }
@@ -355,7 +360,14 @@ const checkQuestion = () => {
       keep = false
     }
   }
-  console.log(`the guess was ${keep}`)
+  else if (category === 'relatives') {
+    if(secret[category].includes(value)){
+      keep = true
+    }
+    else{
+      keep = false
+    }
+  }
   filterCharacters(keep)
 }
 
@@ -363,7 +375,7 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'hasDatedWith') {
+  if (category === 'dates') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       correctOrIncorrectText.innerHTML = `Yes, the person has dated with ${value}! Keep all people that have dated with ${value}`
@@ -373,11 +385,11 @@ const filterCharacters = (keep) => {
       correctOrIncorrectText.innerHTML = `No, the person has not dated with ${value}! Remove all people that have dated with ${value}`
     }
   } 
-  else if (category === 'isRelativeOf') {
+  else if (category === 'relatives') {
     // Similar to the one above
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      correctOrIncorrectText.innerHTML = `Yes, the person is a relative of${value}! Keep all people that relative of ${value}`
+      correctOrIncorrectText.innerHTML = `Yes, the person is a relative of ${value}! Keep all people that relative of ${value}`
     } 
     else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
@@ -417,7 +429,7 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  console.log(personToConfirm) //this is activated already when you click the guess button
+
   // store the interaction from the player in a variable.
   // remember the confirm() ?
 
@@ -429,7 +441,6 @@ const guess = (personToConfirm) => {
 
   cancelButton.addEventListener('click', hideConfirmAndShowBoard)
   confirmButton.addEventListener('click', () => {
-    console.log(personToConfirm)
     checkMyGuess(personToConfirm)
     confirmGuess.style.display = 'none'
   })
@@ -444,7 +455,6 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  console.log('chechMyGuess function')
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   if (personToCheck === secret.name){
@@ -452,7 +462,9 @@ const checkMyGuess = (personToCheck) => {
     winningAudio.play()
     winOrLoseText.innerHTML = `YAY! ⭐️ You guessed on ${personToCheck} and it was correct! You did it in only ${numberOfGuesses} questions.`
     
-  } else {
+  }
+  
+  else {
     losingAudio.currentTime = 0
     losingAudio.play()
     winOrLoseText.innerHTML = `Sorry, it's not ${personToCheck}. The correct answer is ${secret.name}!`

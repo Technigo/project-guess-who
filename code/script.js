@@ -280,7 +280,7 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-
+  document.getElementById("questions").value = ""; // This clears the select attribute option between guesses
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -408,40 +408,35 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  let confirmChoice = confirm("Do you really want to guess on this person?");
-  if (confirmChoice === true) {
+  // store the interaction from the player in a variable.
+  const confirmGuess = confirm(
+    `Do you really want to guess on ${personToConfirm}?`
+  );
+  // If the player wants to guess, invoke the checkMyGuess function.
+  if (confirmGuess) {
     // This invokes the checkMyGuess function
     checkMyGuess(personToConfirm);
-  } else {
-    console.log("pressed cancel"); // is this right???
-  }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-  let guessStatus = {
-    status: "",
-  };
+  } //else {
+  //alert("Keep guessing...");
+  //}
 };
 
 // If you confirm, this function is invoked
+//const checkMyGuess = (personToCheck) => {
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
-  if (secret.name === personToCheck) {
+  if (personToCheck === secret.name) {
     // 2. Set a Message to show in the win or lose section accordingly
-    //winOrLoseText.innerHTML = `Yey! You won in ${counter} guesses!`;
-    guessStatus.status = "right";
+    winOrLoseText.innerHTML = `Yey! ${personToCheck} was right! You won in ${counter} guesses!`;
+    // guessStatus.status = "right";
   } else {
-    // winOrLoseText.innerHTML = `Oh no... You lost the game!`;
-    guessStatus.status = "wrong";
+    winOrLoseText.innerHTML = `Oh no... You lost the game! it's not ${personToCheck} The right person is ${secret.person}!`;
+    //guessStatus.status = "wrong";
   }
   // 3. Show the win or lose section
-  //winOrLoseSection.style.display = "block";
-  board.innerHTML = "";
+  winOrLoseSection.style.display = "block";
   // 4. Hide the game board
-  //board.style.display = "none";
-  board.innerHTML += `
-
-`;
+  board.style.display = "none";
 };
 
 // Invokes the start function when website is loaded

@@ -12,9 +12,10 @@ body {
 }
 
 h1 {
-  font-size: 42px;
-  font-weight: 600;
+  font-size: 48px;
+  font-weight: 800;
   line-height: 48px;
+  text-transform: uppercase;
   margin: 10px 0;
   color: white;
 }
@@ -25,21 +26,23 @@ h1 {
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding: 4vw;
   align-items: flex-start;
   box-sizing: border-box;
 }
 
 select {
   display: block;
+  background-color: white;
   border: none;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
   font-family: 'Montserrat';
   color: var(--primary);
   width: 100%;
   margin: 24px 0;
   padding: 0.25rem;
+  
 }
 
 .guess-who-icon {
@@ -68,6 +71,8 @@ select {
   margin: 1rem 0;
   width: 100%;
   color: var(--primary);
+  font-weight: 600;
+  /* color: white; */
 }
 
 h2 {
@@ -79,11 +84,12 @@ h2 {
 .question-count, 
 .previously-asked {
   border: 2px var(--primary) solid;
+  border-radius: 4px;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  background-color: white;
-  box-shadow: 5px 5px var(--primary);
+  /* background-color: white; */
+  /* box-shadow: 5px 5px var(--primary); */
 }
 
 .previous-question {
@@ -150,7 +156,7 @@ button {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
-  padding: 17px 27px;
+  padding: 12px 20px;
   cursor: pointer;
 }
 
@@ -158,11 +164,12 @@ button {
   padding: 8px 16px;
 }
 
-.outlined-button {
+/* .outlined-button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
-}
+  padding: 7px 17px;
+} */
 
 .filled-button,
 .outlined-button:hover {
@@ -225,7 +232,7 @@ button {
     padding: 8px 16px;
   }
   h1 {
-    font-size: 24px;
+    font-size: 36px;
     line-height: 30px;
   }
 

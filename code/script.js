@@ -344,7 +344,7 @@ const filterCharacters = (keep) => {
      // Invoke a function to redraw the board with the remaining people.
 generateBoard()
   }
-  
+
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
  // store the interaction from the player in a variable.
@@ -391,3 +391,6 @@ findOutButton.addEventListener('click', checkQuestion)
 
 //Select question
 questionsButton.addEventListener('change', selectQuestion)
+
+//PlayAgainButton restarts the game
+playAgainButton.addEventListener("click", () => window.location.reload())

@@ -120,7 +120,7 @@ const CHARACTERS = [
     img: 'image/character-10.png',
     hair: 'black',
     eyes: 'hidden',
-    accessories: [],
+    accessories: ["hat],
     job: [ "nurse"]
   },
   {

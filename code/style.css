@@ -56,6 +56,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #faf7f7;
 }
 
 .game-board {
@@ -64,6 +65,10 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+}
+
+footer {
+  color: var(--primary);
 }
 
 /****** CARD ******/
@@ -194,13 +199,13 @@ button {
     min-height: 0;
   }
   button {
-    padding: 8px 10px;
+    padding: 14px 10px;
   }
 
   h1 {
     font-size: 54px;
     line-height: 50px;
-    margin: 10px;
+    margin: 20px 0 10px 0;
   }
 
   .guess-who-icon {

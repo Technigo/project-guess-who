@@ -284,27 +284,27 @@ console.log(keep)
   if (category === 'accessories') {
     if (keep) {
       Swal.fire(
-        `Yes, the person wears ${value}! Lets keep all the people that wears ${value}`)
+        `Yes, the person wears ${value}! Let's keep all the people that wears ${value}`)
     } else {
-      Swal.fire(`No, the person doesn't wear ${value}! Now we're removing all the people that wears ${value}`)
+      Swal.fire(`No, the person doesn't wear ${value}! Let's remove all the people that wears ${value}`)
     }
   } else if (category === 'other') {
     if (keep) {
-      Swal.fire(`Yes, the person is a ${value}! Lets keep all the people that is a ${value}`)
+      Swal.fire(`Yes, the person is a ${value}! Let's keep all the smokers`)
     } else {
-      Swal.fire(`No, the person is'nt ${value}! We're removing all the people who is a ${value}`)
+      Swal.fire(`No, the person is'nt a ${value}! We're removing all the smokers!`)
     }
   }
     else if (category === 'hair') {
       if (keep) {
-        Swal.fire(`Yes, the person has ${value} hair! Lets keep all the people that have ${value} hair`)
+        Swal.fire(`Yes, the person has ${value} hair! Let's keep all the people with ${value} hair`)
       } else {
        Swal.fire(`No, the person doesn't have ${value} hair! Now we're removing all people with ${value} hair`)
       }
     }
     else {
       if (keep) {
-        Swal.fire(`Yes, the person has ${value} eyes. Lets keep all the people that have ${value} eyes`)
+        Swal.fire(`Yes, the person has ${value} eyes. Let's keep all the people that have ${value} eyes`)
       } else {
         Swal.fire(`No, the person doesn't have ${value} eyes. Now we're removing all people with ${value} eyes`)
       }

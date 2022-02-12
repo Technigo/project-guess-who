@@ -232,6 +232,20 @@ button {
   transition: all 1.5s ease;
 }
 
+.pop-up-button {
+  background-color: #DAA51F;
+  border: 1px solid #395F5F;
+  color: #395F5F;
+  transition: all 1.5s ease;
+}
+
+.pop-up-button:hover {
+  background-color: #395F5F;
+  border: 1px solid #DAA51F;
+  color: #FEFBF3;
+  transition: all 1.5s ease;
+}
+
 /****** STYLING OF POP UPS ******/
 
 /* Questions */
@@ -256,6 +270,11 @@ button {
   align-items: center;
   max-width: 700px;
   margin-top: 20rem;
+}
+
+.pop-up-question {
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 /* Confirms */
@@ -312,6 +331,9 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+  margin-left: 10px;
+  margin-right: 10px;
+
 }
 
 /****** SMALL SCREENS ******/

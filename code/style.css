@@ -248,9 +248,11 @@ video {
   button {
     padding: 8px 16px;
   }
+
   h1 {
-    font-size: 24px;
+    font-size: 3rem;
     line-height: 30px;
+    margin-top: 1.5rem;
   }
 
   .guess-who-icon {

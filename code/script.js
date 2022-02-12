@@ -5,6 +5,8 @@ const restartButton = document.getElementById('restart')
 const findOutButton =  document.getElementById('filter')
 const winOrLose =  document.getElementById('winOrLose')
 const playAgainButton =  document.getElementById('playAgain')
+const winOrLosePage =  document.getElementById('winOrLose')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -211,7 +213,7 @@ let currentQuestion = {
   value: 'brown'
 }
 let charactersInPlay
-
+let count = 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -247,7 +249,6 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
- console.log("selectQuestion is running!")
   currentQuestion = {
     category: category,
     value: value
@@ -257,6 +258,7 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  document.getElementById('count').innerHTML = count += 1
   if (category === "hair" || category === "eyes") {
 		if (secret.category === value) {
 			filterCharacters(true);
@@ -337,22 +339,30 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   if (secret.name === personToCheck) {
       alert(`Yayyyyy the right person is ${secret.name}!`)
-      board.innerHTML = ""
-
+      board.innerHTML = ` 
+      <div style="width:100%;height:0;padding-bottom:56%;margin-bottom:20px;position:relative;"><iframe src="https://giphy.com/embed/ToMjGpyO2OVfPLpoxu8" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/cartoonhangover-animated-artists-on-tumblr-illustration-ToMjGpyO2OVfPLpoxu8"></a></p>
+      <button id="play-again">PLAY AGAIN</button>
+      `
       document
-        .getElementById('big-restart-button')
-        .addEventListener('click', () => {
-          start()
-        })
+      .getElementById('play-again')
+      .addEventListener('click', () => {
+        start()
+      })
+
+
+
  } else {
       alert(`Oh noooooo!!! Today is just not your day! The right person is ${secret.name}!`)
-      board.innerHTML = ""
-
+      board.innerHTML = `
+      <div style="width:100%;height:0;padding-bottom:75%;margin-bottom:20px;position:relative;"><iframe src="https://giphy.com/embed/3ofSB3aKv6CxUluyAw" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/spongebob-season-4-spongebob-squarepants-3ofSB3aKv6CxUluyAw"></a></p>
+      <button id="play-again">PLAY AGAIN</button>
+      `
       document
-        .getElementById('big-restart-button')
-        .addEventListener('click', () => {
-          start()
-        })
+      .getElementById('play-again')
+      .addEventListener('click', () => {
+        start()
+      })
+
  }
 }
 
@@ -361,6 +371,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-playAgain.addEventListener("click", start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
+

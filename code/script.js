@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const guessButton = document.querySelector('filled-button small')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -382,8 +383,8 @@ if (personToConfirm === secret.name) {
   winOrLoseText.innerHTML+= "You lost the game! ❌🙅"
 }
 
-winOrLose.style.display = "block";
-gameBoard.style.display = "none";
+winOrLose.style.display = "block"
+board.style.display = "none"
 
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
@@ -393,9 +394,13 @@ gameBoard.style.display = "none";
 
 // Invokes the start function when website is loaded
 start()
+/*
+winOrLose.style.display = "none"
+generateBoard()*/ //TEST 
 
 // All the event listeners
 restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
 guessButton.addEventListener('click', confirm)
+playAgainButton.addEventListener('click', start)

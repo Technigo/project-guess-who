@@ -14,7 +14,7 @@ body {
 h1 {
   font-size: 52px;
   font-weight: 500;
-  line-height: 48px;
+  line-height: 58px;
   margin: 40px 0;
   color: #ffffff;
   font-family: "Chela One", cursive;
@@ -196,9 +196,11 @@ button {
   button {
     padding: 8px 10px;
   }
+
   h1 {
     font-size: 54px;
-    line-height: 30px;
+    line-height: 50px;
+    margin: 20px;
   }
 
   .guess-who-icon {
@@ -212,6 +214,10 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+  }
+
+  .win-or-lose h1 {
+    margin: 10p;
   }
 
   .card {

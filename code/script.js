@@ -3,6 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const winOrLose = document.querySelector('.win-or-lose-wrapper')
+const playAgain = document.getElementById('playAgain')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -301,7 +304,7 @@ console.log(keep)
         (`Yes, the person has ${value} hair! Lets keep all the people that have ${value} hair`)
       } else {
         alert
-        (`No, the person has not ${value} hair! Now we're removing all people that have ${value} hair`)
+        (`No, the person doesn't have ${value} hair! Now we're removing all people that have ${value} hair`)
       }
     }
     else {
@@ -310,7 +313,7 @@ console.log(keep)
         (`Yes, the person has ${value} eyes. Lets keep all the people that have ${value} eyes`)
       } else {
         alert
-        (`No, the person has ${value} eyes. Now we're keeping all the people that have ${value} eyes`)
+        (`No, the person doesn't have ${value} eyes. Now we're removing all people with ${value} eyes`)
       }
     }
 
@@ -344,19 +347,20 @@ const guess = (personToConfirm) => {
 
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    board.innerHTML = ''
-    alert(`HURRAY YOU WIN!`)
+    winOrLose.style.display = 'flex'
+    winOrLoseText.innerText = 'Yay, you won! Play again?'
   } else {
-    board.innerHTML = ''
-    alert(`Better luck next time buddy..`)
+    winOrLose.style.display = 'flex'
+    winOrLoseText.innerText = `Sorry, it's not ${personToCheck}. It was ${secret.name}. Play again?`
   }
-  console.log(personToCheck)
+
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
 
 }
+console.log(winOrLose)
 // Invokes the start function when website is loaded
 start()
 
@@ -364,3 +368,7 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
+playAgain.addEventListener('click', () => {
+  start()
+  winOrLose.style.display = 'none'
+} )

@@ -233,16 +233,13 @@ button {
 }
 
 .win-or-lose-wrapper-active{
-  display:block;
+  display:flex;
 }
 
 .win-or-lose-wrapper-active h1 {
   color: black;
 }
 
-.game-board-inactive {
-  display: none;
-}
 
 .board-wrapper-inactive{
   display:none;

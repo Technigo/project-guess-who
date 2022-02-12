@@ -4,7 +4,10 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filter = document.getElementById('filter')
 const winOrLose= document.getElementById('winOrLose')
+const winOrLoseH1=document.getElementById('winOrLoseText')
 const boardWrapper=document.getElementById('board-wrapper')
+const playAgain = document.querySelector('#playAgain')
+
 
 
 // Array with all the characters, as objects
@@ -203,7 +206,6 @@ const CHARACTERS = [
     other: []
   },
 ]
-
 // Global variables
 let secret
 let currentQuestion
@@ -234,6 +236,7 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+   ('start function worked')
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   //ADDED BY FAY 
@@ -241,7 +244,9 @@ const start = () => {
   // What else should happen when we start the game?
   // ADDED setSecret to call next function
   setSecret()
-  // console.log(secret)
+  boardWrapper.classList.remove('board-wrapper-inactive')
+  winOrLose.classList.remove('win-or-lose-wrapper-active')
+ 
 }
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -265,31 +270,22 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    // console.log('category',category)
-    // console.log(secret[category])
-    // console.log('this is current question', currentQuestion)
+  
     if (value === secret[category]) {
-      // console.log('same thing')
 
       filterCharacters(true)
     }
     else {
-      // console.log('not same thing')
 
       filterCharacters(false)
     }
   }
   else if (category === 'accessories' || category === 'other') {
-    // console.log('more complex category is a string', category)
-    // console.log('more complex secret category is an array', secret[category])
-    // console.log('this is current question', currentQuestion)
-    // console.log('this is current question.value', currentQuestion.value)
+   
     if (secret[category].includes(value)) {
-      // console.log('same thing in other cat')
       filterCharacters(true)
     }
     else {
-      // console.log('not same thing in other cat')
       filterCharacters(false)
     }
   }
@@ -373,63 +369,43 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first has to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const userAnswer = confirm(`are you sure you want to guess ${personToConfirm} bro?`)
+  const userAnswer = confirm(`Are you sure you want to guess ${personToConfirm}?`)
   if (userAnswer == true) {
-    // console.log(personToConfirm)
     checkMyGuess(personToConfirm)
   }
   else {
-    console.log("false")
-    alert('OKIDOKI')
+    alert(`That's ok! Feel free to guess again later`)
   }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // console.log('i am here now')
-  // console.log(secret)
-  // console.log(personToCheck)
+  let message = ""
   if (secret.name === personToCheck) {
-    // console.log('this works')
-    const changeClassToActive =()=> {
-      winOrLose.className='win-or-lose-wrapper-active'
-      boardWrapper.className="board-wrapper-inactive"
-      console.log('i am after changing class name')
-
-    }
-    changeClassToActive();
-
-      const messageToUser=()=>{
-        winOrLose.innerHTML= `
-        <div class="win-or-lose">
-        <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who">
-        <h1 id="winOrLoseText">YAY FAY YOU ROCK</h1>
-        <button id="playAgain" class="filled-button">PLAY AGAIN</button>
-      </div>`
-      }
-      messageToUser();
-     
+    message = "YAY YOU ROCK!"
+  } else {
+    message = `Oops, wrong guess. It was ${secret.name}`
   }
-  else {
-    console.log('doesnt Work')
 
-    // 1. Check if the personToCheck is the same as the secret person's name
-    // 2. Set a Message to show in the win or lose section accordingly
-    // 3. Show the win or lose section
-    // 4. Hide the game board
-  }
+  winOrLoseH1.innerText = message
+  boardWrapper.classList.add('board-wrapper-inactive')
+  winOrLose.classList.add('win-or-lose-wrapper-active')
+
 }
 
 // Invokes the start function when website is loaded
 start()
-console.log(secret)
 
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filter.addEventListener('click', checkQuestion)
+playAgain.addEventListener('click', start)
+
+
+
+
+
+
 
 

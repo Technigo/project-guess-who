@@ -6,6 +6,7 @@
   --secondary: #5F9DA0;
 }
 
+/* General styling */
 body {
   display: flex;
   margin: 0;
@@ -16,7 +17,21 @@ body {
   min-height: 100vh;
 }
 
-/****** START OVERLAY SECTION ******/
+h1 {
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 10px 0;
+  color: #FEFBF3;
+  text-align: center;
+}
+
+p {
+  font-family: 'poppins';
+  color: var(--primary);
+}
+
+/* Styling for start overlay */
 .start-wrapper-overlay {
   background-color: rgb(57, 95, 95, 0.9);
   width: 100%;
@@ -40,27 +55,41 @@ body {
   text-align: center;
   margin-left: 8px;
   margin-right: 8px;
-  margin-top: 20rem
-}
-
-h1 {
-  font-size: 42px;
-  font-weight: 500;
-  line-height: 48px;
-  margin: 10px 0;
-  color: #FEFBF3;
+  margin-top: 18rem
 }
 
 .guess-who {
-  font-size: 8vw;
-  margin-bottom: 2rem;
+  font-size: 7vw;
+  margin-bottom: 15px;
   color: #DAA51F;
+  border-bottom: 5px solid #FEFBF3;
+  padding-bottom: 39px;
 }
 
-#startButton {
-  margin-top: 1rem;
+.big-intro-text {
+  font-size: 35px;
+  font-weight: lighter;
 }
 
+.small-intro-text {
+  font-family: 'poppins';
+  color: #FEFBF3;
+  text-align: center;
+  font-weight: lighter;
+}
+
+/* Styling for start overlay */
+.question-text {
+  font-size: 20px;
+  margin-top: 20px;
+  font-family: 'poppins';
+}
+
+.question-header {
+  text-align: left;
+}
+
+/* Styling for the question section */
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -72,16 +101,22 @@ h1 {
   box-sizing: border-box;
 }
 
+.questionsDisplay {
+  width: 100%;
+  display: flex;
+}
+
 select {
   display: block;
   border: none;
-  font-size: 22px;
+  font-size: 17px;
   font-family: "Poppins";
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
 }
 
+/* Styling for the board section */
 .board-wrapper {
   width: 70%;
   display: flex;
@@ -98,13 +133,14 @@ select {
   align-content: center;
 }
 
-/****** CARD ******/
+/****** CARDS ******/
+
 .card {
   width: 135px;
   height: 165px;
   overflow: hidden;
   border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border-radius: 10px;
   margin: 3px;
   display: flex;
   flex-direction: column;
@@ -152,14 +188,8 @@ select {
   width: 90%;
 }
 
-.resultSquare {
-  width: 300px;
-  height: 300px;
-  background-color:#395F5F;
-  display: none;
-}
-
 /****** BUTTONS ******/
+
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
@@ -168,6 +198,14 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+}
+
+.pop-up-button {
+  margin-top: 16px;
+}
+
+#startButton {
+  margin-top: 1rem;
 }
 
 .small {
@@ -194,7 +232,9 @@ button {
   transition: all 1.5s ease;
 }
 
-/****** POP UP SECTION ******/
+/****** STYLING OF POP UPS ******/
+
+/* Questions */
 .pop-up-question-wrapper {
   display: none;
   justify-content: center;
@@ -218,7 +258,7 @@ button {
   margin-top: 20rem;
 }
 
-/****** CONFIRM SECTION ******/
+/* Confirms */
 .confirm-wrapper {
   display: none;
   justify-content: center;
@@ -248,7 +288,7 @@ button {
   flex-direction: row;
 }
 
-/****** WIN OR LOSE SECTION ******/
+/* Win or loose */
 .win-or-lose-wrapper {
   display: none;
   justify-content: center;
@@ -274,7 +314,10 @@ button {
   margin-bottom: 32px;
 }
 
+/****** SMALL SCREENS ******/
+
 @media (max-width: 768px) {
+
   body {
     flex-direction: column;
     border: 10px solid #395F5F;
@@ -284,12 +327,29 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
+  }
+
+  h3 {
+    font-size: 15px;
+    color: #DAA51F;
+  }
+
+  .big-intro-text {
+    font-size: 23px;
+  }
+
+  .guess-who {
+    font-size: 13vw;
+    margin-bottom: 7px;
+    padding-bottom: 25px;
   }
 
   .board-wrapper {

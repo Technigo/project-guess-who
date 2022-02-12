@@ -15,15 +15,16 @@
     <!-- start overlay  -->
     <section id="startWrapperOverlay" class="start-wrapper-overlay">
       <div class="start-overlay" id="wrapperOverlay">
-        <h1 class="guess-who">GUESS WHO</h1>
-        <h1>Play the short but oh so sweet game?</h1>
+        <h1 class="guess-who">GUESS WHO?</h1>
+        <h1 class="big-intro-text">Play the short but oh so sweet game?</h1>
+        <p class= small-intro-text>5 questions - 1 guess</p>
         <button id="startButton" class="filled-button">START</button>
       </div>
     </section>
 
     <aside class="question-section">
       <button id="restart" class="outlined-button">RESTART</button>
-      <h1>Does the person have</h1>
+      <h1 class="question-header">Does the person have</h1>
 
       <select id="questions">
         <option selected disabled>Choose the attribute</option>
@@ -51,17 +52,14 @@
 
         </optgroup>
         <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+          <option value="a smoking habit">a smoking habit</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
 
-      <div class="resultSquare">
-        <h3>Your previous guesses</h3>
-        <p class="guesses">here comes the guesses</p>
-        <h3>Guesses lefts</h3>
-        <p class="counter">here comes the guesses left</p>
+      <div class="questionsDisplay">
+        <p class="question-text">Questions asked: <span id="guessCounter"></span>/5</p>
       </div>
 
     </aside>
@@ -74,7 +72,7 @@
     <section id="popUpQuestion" class="pop-up-question-wrapper">
       <div class="pop-up-question">
         <h1 id="popUpQuestionText"></h1>
-        <button id="popUpButton" class="filled-button">GUESS AGAIN</button>
+        <button id="popUpButton" class="filled-button" class="pop-up-button">ALRIGHT</button>
       </div>
     </section>
 
@@ -83,8 +81,8 @@
       <div class="confirm">
         <h1 id="confirmText"></h1>
         <div class= "button-wrapper">
-          <button id="confirmButton" class="filled-button">I'M READY</button>
-          <button id="noConfirmButton" class="filled-button">OH NO</button>
+          <button id="confirmButton" class="filled-button" class="pop-up-button">I'M READY</button>
+          <button id="noConfirmButton" class="filled-button" class="pop-up-button">OH NO</button>
         </div>
       </div>
     </section>
@@ -93,7 +91,7 @@
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
         <h1 id="winOrLoseText"></h1>
-        <button id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <button id="playAgain" class="filled-button" class="pop-up-button">ALRIGHT</button>
       </div>
     </section>
     <script src="script.js"></script>

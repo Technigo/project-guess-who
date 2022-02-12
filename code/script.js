@@ -240,7 +240,11 @@ const finalGuesses = () => {
   numberOfGuesses.innerHTML = `Number of Guesses:  ${guessesNumber}/5`;
   if (guessesNumber === 5) {
     findOutButton.disabled = true; //to stop findout button once 5 attempts are done
-    Swal.fire("Your Guessing Attempts are done. Please choose a character");
+    setTimeout(
+      () =>
+        Swal.fire("Your Guessing Attempts are done. Please choose a character"),
+      1000
+    );
   }
 };
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -277,7 +281,6 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  finalGuesses();
   const { category, value } = currentQuestion;
   let keep = false;
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
@@ -293,6 +296,7 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
+  finalGuesses();
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
   //Swal.fire for customising alerts

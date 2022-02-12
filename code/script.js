@@ -176,7 +176,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['happy']
   },
   {
     name: 'Josh',
@@ -292,10 +292,10 @@ console.log(keep)
   } else if (category === 'other') {
     if (keep) {
       alert
-      (`Yes, the person wears ${value}! Lets keep all the people that wears ${value}`)
+      (`Yes, the person is a ${value}! Lets keep all the people that is a ${value}`)
     } else {
       alert
-      (`No, the person is'nt a ${value}! We're removing all the people who isn't a ${value}`)
+      (`No, the person is'nt ${value}! We're removing all the people who is a ${value}`)
     }
   }
     else if (category === 'hair') {
@@ -304,7 +304,7 @@ console.log(keep)
         (`Yes, the person has ${value} hair! Lets keep all the people that have ${value} hair`)
       } else {
         alert
-        (`No, the person doesn't have ${value} hair! Now we're removing all people that have ${value} hair`)
+        (`No, the person doesn't have ${value} hair! Now we're removing all people with ${value} hair`)
       }
     }
     else {

@@ -303,10 +303,10 @@ const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card">
+      <div class="card" onmouseover="playSound()">
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
-        <div class="guess" onmouseover="playSound()">
+        <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small guess-btn" onclick="guess('${person.name}')" >Guess</button>
         </div>

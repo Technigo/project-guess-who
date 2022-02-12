@@ -58,8 +58,8 @@ p {
   align-items: center;
   max-width: 700px;
   text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 19px;
+  margin-right: 19px;
   margin-top: 17rem
 }
 
@@ -197,7 +197,7 @@ select {
 
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
+  border-radius: 10px;
   font-size: 16px;
   font-family: "Poppins";
   font-weight: bold;
@@ -315,7 +315,7 @@ button {
 /* Win or loose */
 .win-or-lose-wrapper {
   display: none;
-  justify-content: center;
+  justify-content: center; 
   background: var(--secondary);
   position: absolute;
   top: 0;
@@ -329,16 +329,15 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   max-width: 700px;
   text-align: center;
+  margin-top: 300px;
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
   margin-left: 10px;
   margin-right: 10px;
-
 }
 
 /****** SMALL SCREENS ******/
@@ -356,7 +355,7 @@ button {
   }
 
   .start-overlay {
-    margin-top: 15rem;
+    margin-top: 13rem;
   }
 
   .big-intro-text span {
@@ -369,6 +368,10 @@ button {
 
   .confirm {
     margin-top: 15rem;
+  }
+
+  .win-or-lose {
+    margin-top: 240px;
   }
 
   .big-intro-text {

@@ -316,7 +316,6 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  charactersToFlip = []
   generateBoard()
   setSecret()
   //Reset the counter

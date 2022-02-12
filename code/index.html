@@ -16,17 +16,19 @@
     <section id="startWrapperOverlay" class="start-wrapper-overlay">
       <div class="start-overlay" id="wrapperOverlay">
         <h1 class="guess-who">GUESS WHO?</h1>
-        <h1 class="big-intro-text">Play the short but oh so sweet game?</h1>
+        <h1 class="big-intro-text">Play the short but <span>oh</span> so sweet game?</h1>
         <p class= small-intro-text>5 questions - 1 guess</p>
         <button id="startButton" class="filled-button">START</button>
       </div>
     </section>
 
+    <!-- aside starts here  -->
     <aside class="question-section">
       <button id="restart" class="outlined-button">RESTART</button>
       <h1 class="question-header">Does the person have</h1>
 
       <select id="questions">
+
         <option selected disabled>Choose the attribute</option>
         <optgroup label="hair">
           <option value="brown">brown hair</option>
@@ -58,17 +60,18 @@
 
       <button id="filter" class="filled-button">FIND OUT</button>
 
+      <!-- area for the question counter -->
       <div class="questionsDisplay">
         <p class="question-text">Questions asked: <span id="guessCounter"></span>/5</p>
       </div>
-
     </aside>
 
+    <!-- the game board -->
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
     </section>
 
-    <!-- pop up overlay  -->
+    <!-- popup overlay  -->
     <section id="popUpQuestion" class="pop-up-question-wrapper">
       <div class="pop-up-question">
         <h1 id="popUpQuestionText"></h1>
@@ -87,11 +90,11 @@
       </div>
     </section>
 
-    <!-- game over overlay  -->
+    <!-- gameover overlay  -->
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
         <h1 id="winOrLoseText"></h1>
-        <button id="playAgain" class="filled-button" class="pop-up-button">ALRIGHT</button>
+        <button id="playAgain" class="filled-button" class="pop-up-button">PLAY AGAIN</button>
       </div>
     </section>
     <script src="script.js"></script>

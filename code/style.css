@@ -31,9 +31,14 @@ p {
   color: var(--primary);
 }
 
+.big-intro-text span {
+  color:#DAA51F;
+  font-size: 65px;
+} 
+
 /* Styling for start overlay */
 .start-wrapper-overlay {
-  background-color: rgb(57, 95, 95, 0.9);
+  background-color: #5F9DA0;
   width: 100%;
   height: 100%;
   min-height: 100%;
@@ -53,9 +58,9 @@ p {
   align-items: center;
   max-width: 700px;
   text-align: center;
-  margin-left: 8px;
-  margin-right: 8px;
-  margin-top: 18rem
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 17rem
 }
 
 .guess-who {
@@ -269,7 +274,7 @@ button {
   flex-direction: column;
   align-items: center;
   max-width: 700px;
-  margin-top: 20rem;
+  margin-top: 17rem;
 }
 
 .pop-up-question {
@@ -298,7 +303,7 @@ button {
   flex-direction: column;
   align-items: center;
   max-width: 700px;
-  margin-top: 20rem;
+  margin-top: 17rem;
 }
 
 .button-wrapper {
@@ -345,23 +350,25 @@ button {
     border: 10px solid #395F5F;
   }
 
-  .question-section {
-    width: 100%;
-    min-height: 0;
-  }
-
-  button {
-    padding: 8px 16px;
-  }
-
   h1 {
     font-size: 24px;
     line-height: 30px;
   }
 
-  h3 {
-    font-size: 15px;
-    color: #DAA51F;
+  .start-overlay {
+    margin-top: 15rem;
+  }
+
+  .big-intro-text span {
+    font-size: 41px;
+  } 
+
+  .pop-up-question {
+    margin-top: 15rem;
+  }
+
+  .confirm {
+    margin-top: 15rem;
   }
 
   .big-intro-text {
@@ -372,6 +379,11 @@ button {
     font-size: 13vw;
     margin-bottom: 7px;
     padding-bottom: 25px;
+  }
+
+  .question-section {
+    width: 100%;
+    min-height: 0;
   }
 
   .board-wrapper {
@@ -407,4 +419,9 @@ button {
     color: var(--primary);
     border: 1px solid #395F5F;
   }
+
+  button {
+    padding: 8px 16px;
+  }
+  
 }

@@ -115,9 +115,9 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
+  border-radius: 75px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'sans-serif';
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;

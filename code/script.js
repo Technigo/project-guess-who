@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
+//const card = document.getElementById('card') måste ha korten i klassen card? 
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
@@ -203,7 +204,7 @@ const CHARACTERS = [
 // Global variables
 let secret
 let currentQuestion
-let charactersInPlay
+let charactersInPlay 
 
 // Draw the game board
 const generateBoard = () => {
@@ -227,12 +228,20 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
-const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
+// Function for starting and restarting the game. All charactersInPlay is shown, 
+//we call the functions for generating the board, showing the characters in play fro the array and 
+//setting the secret person and making the select question function available
+const start = () => { 
   charactersInPlay = CHARACTERS
+  generateBoard()
+  setSecret()
+  selectQuestion()
+
   // What else should happen when we start the game?
+
 }
+
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -323,3 +332,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOutButton.addEventListener('click', checkQuestion) 

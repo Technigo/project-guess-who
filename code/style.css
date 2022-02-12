@@ -19,6 +19,11 @@ h1 {
   color: white;
 }
 
+h3 {
+  font-size: 16px;
+  color: #079160;
+ }
+
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -61,6 +66,7 @@ select {
 }
 
 
+
 /****** CARD ******/
 .card {
   width: 135px;
@@ -91,6 +97,8 @@ select {
   text-align: center;
   height: inherit;
 }
+
+
 
 .card:hover {
   background-color: var(--secondary);
@@ -197,6 +205,10 @@ button {
     font-size: 24px;
     line-height: 30px;
   }
+  h3 {
+    font-size: 13px;
+   }
+  
 
   .guess-who-icon {
     width: 130px;

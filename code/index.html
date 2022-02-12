@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guess who!</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="images/favicon.png">
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -12,7 +13,7 @@
   </head>
   <body>
     <aside class="question-section">
-      <button id="restart" class="outlined-button">RESTART</button>
+      <button id="restart" class="outlined-button" onclick="resetCounter()">RESTART</button>
 
       <img
         class="guess-who-icon"
@@ -32,7 +33,6 @@
           <option value="orange">orange hair</option>
           <option value="purple">purple hair</option>
           <option value="white">white hair</option>
-          <!-- Add the rest of hair colors as options  -->
         </optgroup>
         <optgroup label="eyes">
           <option value="brown">brown eyes</option>
@@ -44,6 +44,8 @@
           <option value="glasses">glasses</option>
           <option value="a hat">hat</option>
           <option value="jewellery">jewellery</option>
+          <option value="a turtleneck">turtleneck</option>
+          <option value="a collared shirt">collared shirt</option>
         </optgroup>
         <optgroup label="other">
           <option value="smoking">a smoking habit</option>
@@ -51,10 +53,12 @@
         </optgroup>
       </select>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
-      <div class="counter">
-        <div id="guessCounter">Guesses made: 0</div>
-      </div>
+      <button id="filter" class="filled-button" onclick="incrementClick()">FIND OUT</button>
+
+      <h3 class="counter">
+        Guesses made: 
+        <span id="counter-label">0</span>
+      </h3>
     </aside>
 
     <section class="board-wrapper">

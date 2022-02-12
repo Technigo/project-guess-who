@@ -216,7 +216,7 @@ const start = () => {
 	board.style.display = 'flex'
 	//soundfunction
 	introsound()
-	Swal.fire("Oh no!! <br> Yesterday some one left a Döner in the park, now it´s gone! Which dog ate it?")//customed alertbox from sweetalert
+	Swal.fire("Oh no!! <br> Yesterday someone left a Döner in the park, now it´s gone! Which dog ate it?")//customed alertbox from sweetalert
 }
 
 // setting the currentQuestion object when you select something in the dropdown

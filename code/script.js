@@ -238,7 +238,7 @@ const generateBoard = () => {
 const finalGuesses = () => {
   guessesNumber++;
   numberOfGuesses.innerHTML = `Number of Guesses:  ${guessesNumber}/5`;
-  if (guessesNumber == 5) {
+  if (guessesNumber === 5) {
     findOutButton.disabled = true; //to stop findout button once 5 attempts are done
     Swal.fire("Your Guessing Attempts are done. Please choose a character");
   }

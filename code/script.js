@@ -283,37 +283,30 @@ console.log(keep)
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(
+      Swal.fire(
         `Yes, the person wears ${value}! Lets keep all the people that wears ${value}`)
     } else {
-      alert
-      (`No, the person doesn't wear ${value}! Now we're removing all the people that wears ${value}`)
+      Swal.fire(`No, the person doesn't wear ${value}! Now we're removing all the people that wears ${value}`)
     }
   } else if (category === 'other') {
     if (keep) {
-      alert
-      (`Yes, the person is a ${value}! Lets keep all the people that is a ${value}`)
+      Swal.fire(`Yes, the person is a ${value}! Lets keep all the people that is a ${value}`)
     } else {
-      alert
-      (`No, the person is'nt ${value}! We're removing all the people who is a ${value}`)
+      Swal.fire(`No, the person is'nt ${value}! We're removing all the people who is a ${value}`)
     }
   }
     else if (category === 'hair') {
       if (keep) {
-        alert
-        (`Yes, the person has ${value} hair! Lets keep all the people that have ${value} hair`)
+        Swal.fire(`Yes, the person has ${value} hair! Lets keep all the people that have ${value} hair`)
       } else {
-        alert
-        (`No, the person doesn't have ${value} hair! Now we're removing all people with ${value} hair`)
+       Swal.fire(`No, the person doesn't have ${value} hair! Now we're removing all people with ${value} hair`)
       }
     }
     else {
       if (keep) {
-        alert
-        (`Yes, the person has ${value} eyes. Lets keep all the people that have ${value} eyes`)
+        Swal.fire(`Yes, the person has ${value} eyes. Lets keep all the people that have ${value} eyes`)
       } else {
-        alert
-        (`No, the person doesn't have ${value} eyes. Now we're removing all people with ${value} eyes`)
+        Swal.fire(`No, the person doesn't have ${value} eyes. Now we're removing all people with ${value} eyes`)
       }
     }
 
@@ -339,10 +332,20 @@ console.log(keep)
 
 // When clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const confirmGuess = confirm(`Would you like to guess on ${personToConfirm}?`)
-    if (confirmGuess) {
-      checkMyGuess(personToConfirm)
+
+  let letGuess = Swal.fire({
+    title: 'Are you sure?',
+    text: `Do you want to guess on ${personToConfirm}?`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d4b4b2',
+    cancelButtonColor: '#9a2323',
+    confirmButtonText: 'Yes!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      checkMyGuess (personToConfirm)
     }
+  })
   }
 
 const checkMyGuess = (personToCheck) => {

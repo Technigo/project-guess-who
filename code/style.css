@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #f2ae18;
-  --secondary: #3f6aac;
+  --primary: #d4b4b2;
+  --secondary: #7570ad;
 }
 
 body {
@@ -200,7 +200,7 @@ button {
   h1 {
     font-size: 54px;
     line-height: 50px;
-    margin: 20px;
+    margin: 10px;
   }
 
   .guess-who-icon {

@@ -374,12 +374,16 @@ checkMyGuess(personToConfirm)
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToConfirm) => {
-console.log('now we are here')
+console.log('now we are here') //TEST to see that we are being directed here
 
 if (personToConfirm === secret.name) {
-  
+  winOrLoseText.innerHTML+= "You won the game! 🕵️✨"
+} else {
+  winOrLoseText.innerHTML+= "You lost the game! ❌🙅"
 }
 
+winOrLose.style.display = "block";
+gameBoard.style.display = "none";
 
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly

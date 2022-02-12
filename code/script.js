@@ -255,7 +255,7 @@ const start = () => {
   winOrLose.style.display = "none"
   questionSection.style.display = "flex"
   board.style.display = "flex"
-  let guessNumber = 0
+  guessNumber = 0
 }
 
 

@@ -58,10 +58,6 @@ select {
   flex-wrap: wrap;
   align-content: center;
 }
-#guessP {
-  color: white;
-  font-weight: bolder;
-}
 
 /****** CARD ******/
 .card {

@@ -60,7 +60,8 @@
 
       <button id="filter" class="filled-button">FIND OUT</button>
       <div>
-        <p>Counter: <a id="counter">0</a>/5</p>
+        <p class="counter">Number of guesses: <a id="counter">0</a>/5</p>
+        <p class="counter" id="timer">Time elapsed: <label id="hours">00</label>:<label id="minutes">00</label>:<label id="seconds">00</label></p>
         </div>
     </aside>
 
@@ -76,6 +77,7 @@
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
+        <span id="winOrLoseAudio"></span>
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>

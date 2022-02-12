@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #2c7da0; /*#a259ff */
+  --secondary: #61a5c2;   /*#b0a6ff*/
 }
 
 body {
@@ -57,6 +57,10 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+}
+
+.counter {
+  color: white;
 }
 
 /****** CARD ******/

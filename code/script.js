@@ -7,6 +7,10 @@ const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgain = document.getElementById('playAgain')
 const counter = document.getElementById('counter')
+const hours = document.getElementById('hours')
+const minutes = document.getElementById('minutes')
+const seconds = document.getElementById('seconds')
+const winOrLoseAudio = document.getElementById('winOrLoseAudio')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -209,8 +213,8 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-let CountFindOutGuesses = 0  // How to reset counter with restart?
-//let CountFindOutClicksMaxLimit = 5 How to set max limit and also making the game end with win/lose?
+let CountFindOutGuesses = 0  
+let timerInterval
 
 
 // Draw the game board
@@ -235,11 +239,11 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-
 // This function to start (and restart) the game
 const start = () => {
   if (winOrLose.style.display === 'block') {
     winOrLose.style.display = 'none'
+    winOrLoseAudio.innerHTML = ''
     board.style.display = 'flex'
   } else {
     winOrLose.style.display = 'none' 
@@ -252,7 +256,36 @@ const start = () => {
   questions.selectedIndex = 0
   CountFindOutGuesses = 0
   counter.innerHTML = 0
+  startTimer()
+}
 
+const startTimer = () => {
+  clearInterval(timerInterval);
+
+  let seconds = 0 
+  let minutes = 0 
+  let hours = 0
+
+    
+  timerInterval = setInterval(() => {
+    timer.innerHTML =
+      "Time elapsed: " +
+      (hours ? hours + ':' : '') +
+      (minutes < 10 ? '0' + minutes : minutes) +
+      ':' +
+      (seconds < 10 ? '0' + seconds : seconds)
+    seconds++
+
+      if (seconds == 60) {
+        minutes++
+        seconds = 0
+      }
+
+      if (minutes == 60) {
+        hours++
+        minutes = 0
+      }
+    }, 1000)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -378,12 +411,14 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {                    // 1. Check if the personToCheck is the same as the secret person's name
     console.log('Win!')
     winOrLose.style.display = 'block',                    // 3. Show the win or lose section
-    winOrLoseText.innerHTML = `You are the winner! ${secret.name} is correct!`       // 2. Set a Message to show in the win or lose section accordingly
+    winOrLoseText.innerHTML = `You are the winner! ${secret.name} is correct!`      // 2. Set a Message to show in the win or lose section accordingly
+    winOrLoseAudio.innerHTML = `<audio src="./sounds/short-choir-6116.mp3" type="audio/mp3" autoplay></audio>`     // Playing winning sound. 
     board.style.display = 'none'                          // 4. Hide the game board
   } else {
     console.log('You lost the game')
     winOrLose.style.display = 'block',
     winOrLoseText.innerHTML = `What a loser! The secret person was ${secret.name}.`
+    winOrLoseAudio.innerHTML = `<audio src="./sounds/crash-glass-sound-effect-24-11503.mp3" type="audio/mp3" autoplay></audio>`
     board.style.display = 'none'
   }
 }

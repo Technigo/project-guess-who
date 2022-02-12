@@ -13,202 +13,202 @@ const timer = document.getElementById('timer')
 const CHARACTERS = [
   {
     name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    img: 'images/1.svg',
+    mostly: 'blue',
+    looking: 'angry',
+    a: 'one-eyed',
+    having: ['fangs']
   },
   {
     name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    img: 'images/2.svg',
+    mostly: 'green',
+    looking: 'excited-or-happy',
+    a: 'two-eyed',
+    having: ['horns']
   },
   {
     name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    img: 'images/3.svg',
+    mostly: 'orange',
+    looking: 'disgruntled',
+    a: 'one-eyed',
+    having: []
   },
   {
     name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    img: 'images/4.svg',
+    mostly: 'pink',
+    looking: 'angry',
+    a: 'two-eyed',
+    having: ['horns', 'fangs']
   },
   {
     name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    img: 'images/5.svg',
+    mostly: 'purple',
+    looking: 'angry',
+    a: 'four-eyed',
+    having: []
   },
   {
     name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    img: 'images/6.svg',
+    mostly: 'blue',
+    looking: 'confused',
+    a: 'two-eyed',
+    having: ['fangs', 'wings']
   },
   {
     name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    img: 'images/7.svg',
+    mostly: 'purple',
+    looking: 'excited-or-happy',
+    a: 'four-eyed',
+    having: []
   },
   {
     name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    img: 'images/8.svg',
+    mostly: 'blue',
+    looking: 'excited-or-happy',
+    a: 'three-eyed',
+    having: ['fangs', 'wings']
   },
   {
     name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    img: 'images/9.svg',
+    mostly: 'orange',
+    looking: 'excited-or-happy',
+    a: 'two-eyed',
+    having: ['horns']
   },
 
   {
     name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    img: 'images/10.svg',
+    mostly: 'green',
+    looking: 'excited-or-happy',
+    a: 'three-eyed',
+    having: ['fangs']
   },
   {
     name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    img: 'images/11.svg',
+    mostly: 'purple',
+    looking: 'angry',
+    a: 'two-eyed',
+    having: ['horns', 'fangs', 'wings']
   },
   {
     name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    img: 'images/12.svg',
+    mostly: 'blue',
+    looking: 'excited-or-happy',
+    a: 'two-eyed',
+    having: ['horns']
   },
   {
     name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    img: 'images/13.svg',
+    mostly: 'green',
+    looking: 'excited-or-happy',
+    a: 'three-eyed',
+    having: ['horns']
   },
   {
     name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    img: 'images/14.svg',
+    mostly: 'pink',
+    looking: 'excited-or-happy',
+    a: 'one-eyed',
+    having: []
   },
   {
     name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    img: 'images/15.svg',
+    mostly: 'blue',
+    looking: 'excited-or-happy',
+    a: 'three-eyed',
+    having: []
   },
   {
     name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    img: 'images/16.svg',
+    mostly: 'purple',
+    looking: 'excited-or-happy',
+    a: 'two-eyed',
+    having: ['horns']
   },
   {
     name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
+    img: 'images/17.svg',
+    mostly: 'blue',
+    looking: 'excited-or-happy',
+    a: 'one-eyed',
+    having: ['wings']
   },
   {
     name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    img: 'images/18.svg',
+    mostly: 'yellow',
+    looking: 'confused',
+    a: 'two-eyed',
+    having: ['fangs']
   },
   {
     name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    img: 'images/19.svg',
+    mostly: 'blue',
+    looking: 'excited-or-happy',
+    a: 'two-eyed',
+    having: ['horns']
   },
   {
     name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    img: 'images/20.svg',
+    mostly: 'red',
+    looking: 'excited-or-happy',
+    a: 'two-eyed',
+    having: ['fangs']
   },
   {
     name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    img: 'images/21.svg',
+    mostly: 'orange',
+    looking: 'confused',
+    a: 'one-eyed',
+    having: ['horns']
   },
   {
     name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    img: 'images/22.svg',
+    mostly: 'pink',
+    looking: 'excited-or-happy',
+    a: 'two-eyed',
+    having: ['horns']
   },
   {
     name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    img: 'images/23.svg',
+    mostly: 'green',
+    looking: 'disgruntled',
+    a: 'two-eyed',
+    having: ['fangs']
   },
   {
     name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    img: 'images/24.svg',
+    mostly: 'blue',
+    looking: 'excited-or-happy',
+    a: 'one-eyed',
+    having: ['fangs']
   },
 ]
 
 // Global variables
 let secret
-let currentQuestion = {category: 'hair', value: 'brown'}
+let currentQuestion = {category: 'mostly', value: 'blue'}
 let charactersInPlay
 let guessNumber
 
@@ -284,22 +284,14 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair') {
-    if (value === secret.hair) {
+  if (category === 'mostly' || category === 'looking' || category === 'a') {
+    if (value === secret.mostly || value === secret.looking || value === secret.a) {
       filterCharacters(true)
     } else {
       filterCharacters(false)
-    }
-    //filterCharacters = true
-  
-  } else if (category === 'eyes') {
-    if (value === secret.eyes) {
-      filterCharacters(true)
-    } else {
-      filterCharacters(false)
-    }
-  } else if (category === 'accessories' || category === 'other') {
-    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+    }  
+  } else if (category === 'having') {
+    if (secret.having.includes(value)) {
       filterCharacters(true)
     } else {
       filterCharacters(false)
@@ -317,44 +309,44 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'having') {
     console.log(value)
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       console.log(charactersInPlay)
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
+      alert(`Yes, the monster does have ${value}! Keep all monsters that have ${value}`)
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
+      alert(`No, the monster doesn't have ${value}! Remove all monsters with ${value}`)
     }
-  } else if (category === 'other') {
-    console.log(value)
-    if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      alert(`Yes, the person does have ${value}! Keep all people that have ${value}`)
-    } else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      alert(`No, the person doesn't have ${value}! Remove all people that don't have ${value}`)
-    }
-  } else if (category === 'hair') {
+  } else if (category === 'a') {
     console.log(value)
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-      alert(`Yes! The person has ${value} hair! Keep all people with ${value} hair`)
+      alert(`Yes, the monster is ${value}! Keep all monsters that are ${value}`)
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      alert(`No, the person does not have ${value} hair. Remove all people with ${value} hair`)
+      alert(`No, the monster isn't ${value}! Remove all monsters that are ${value}`)
     }
-  } else if (category === 'eyes') {
+  } else if (category === 'mostly') {
+    console.log(value)
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      alert(`Yes! The monster is ${value}! Keep all monsters that are ${value}`)
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      alert(`No, the monster is not ${value}. Remove all monsters that are ${value}`)
+    }
+  } else if (category === 'looking') {
     console.log(value)
     if (keep) {
       console.log(`test`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-      alert(`Yes, the person has ${value} eyes! Keep all people with ${value} eyes`)
+      alert(`Yes, the monster is looking ${value}! Keep all monsters that look ${value}`)
     } else {
       console.log(`test`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      alert(`No, the person does not have ${value} eyes. Remove all people with ${value} eyes`)
+      alert(`No, the monster is not looking ${value}. Remove all monsters that look ${value}`)
     }
   }
   // Determine what is the category
@@ -376,7 +368,6 @@ const filterCharacters = (keep) => {
   questionCounter.innerHTML = `
   Number of guesses: ${guessNumber}
   `
-
 }
 
 
@@ -408,15 +399,15 @@ const checkMyGuess = (personToCheck) => {
   //console.log(secret.name)
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `
-    Yay! You guessed correctly! It is ${secret.name}!
+    Or in human words: Yay! You guessed correctly! It is ${secret.name}!
     `
     const audio = new Audio('assets/win-sound.wav')
       audio.play()
   } else {
     winOrLoseText.innerHTML = `
-    Oh no, your guess was wrong! The right answer would have been ${secret.name}!
+    Or in human words: Noo! The right answer would have been ${secret.name}! But no worries, you can try again! 
     `
-    const audio = new Audio('assets/lose-sound.wav')
+    const audio = new Audio('assets/monster-lose-growl.mp3')
       audio.play()
   }
   winOrLose.style.display = "flex"

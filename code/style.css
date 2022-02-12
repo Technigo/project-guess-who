@@ -1,14 +1,22 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #0F292F;
+  /*#9b45b2;*/
+  /*#a259ff;*/
+  --secondary: #0F292F;
+  /*#A1C3D1;*/
+  /*#b0a6ff;*/
+  --tertiary: #14A098;
+  /* #B39BC8;*/
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  /*background-color: #f0a3bc;*/
 }
 
 h1 {
@@ -22,12 +30,16 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background: linear-gradient(288deg, rgba(80,31,58,1) 0%, rgba(203,45,111,1) 65%, rgba(80,31,58,1) 100%);
+  /*background: linear-gradient(288deg, rgba(230,67,152,1) 0%, rgba(241,114,161,1) 65%, rgba(230,67,152,1) 100%);
+  /*background: linear-gradient(288deg, rgba(139,58,242,1) 0%, rgba(176,166,255,1) 65%, rgba(139,58,242,1) 100%);*/
+  /*background-color: var(--secondary);*/
   display: flex;
   flex-direction: column;
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  /*box-shadow: 5px 3px 3px 3px #397754be;*/
 }
 
 select {
@@ -38,14 +50,23 @@ select {
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  border-radius: 8px;
+  padding: 3px;
+}
+
+select:hover {
+  outline: none;
+  border: 2px solid var(--tertiary);
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 200px;
+  margin-top: 1rem;
+  margin-bottom: 0,5rem;
 }
 
 .board-wrapper {
-  width: 70%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,6 +78,8 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .question-counter {
@@ -69,6 +92,19 @@ select {
   margin-top: 1rem;
   color: white;
   font-size: 22px;
+}
+
+.input {
+  font-size: 22px;
+  width: 80%;
+  margin-top: 1rem;
+  border-radius: 8px;
+  border: none;
+  padding: 3px;
+}
+
+.input:hover {
+  border: 2px solid var(--tertiary);
 }
 
 /****** CARD ******/
@@ -90,6 +126,11 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+  color: #181a18;
+}
+
+.card img {
+  padding: 8px;
 }
 
 .card .guess {
@@ -103,7 +144,8 @@ select {
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background: linear-gradient(288deg, rgba(15,41,47,1) 0%, rgba(14,70,69,1) 50%, rgba(15,41,47,1) 100%);
+  /*background-color: var(--secondary);*/
 }
 
 .card:hover img,
@@ -126,7 +168,7 @@ select {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
+  border: 2px solid var(--tertiary);
   border-radius: 50px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -140,21 +182,23 @@ button {
 }
 
 .outlined-button {
-  background-color: transparent;
-  color: var(--primary);
+  border: 2px solid white;
+  background: transparent;
+  /*background-color: var(--primary);*/
+  color: white;
   align-self: flex-end;
 }
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
+  background-color: var(--tertiary);
   color: white;
 }
 
 .filled-button:hover {
   background-color: white;
   border-color: white;
-  color: var(--primary);
+  color: var(--tertiary);
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -162,7 +206,9 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: linear-gradient(288deg, rgba(80,31,58,1) 0%, rgba(203,45,111,1) 65%, rgba(80,31,58,1) 100%);
+  /*background: radial-gradient(circle, rgba(139,58,242,1) 0%, rgba(176,166,255,1) 100%);*/
+  /*background: var(--secondary);*/
   position: absolute;
   top: 0;
   bottom: 0;
@@ -178,6 +224,7 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  margin-left: 2rem;
 }
 
 .win-or-lose img {
@@ -187,6 +234,11 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+video {
+  border-radius: 50%;
+  margin-right: 2rem;
 }
 
 @media (max-width: 768px) {
@@ -207,7 +259,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 160px;
   }
 
   .board-wrapper {
@@ -217,6 +269,7 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    padding: 0;
   }
 
   .card {
@@ -241,5 +294,11 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+  video {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 2rem;
   }
 }

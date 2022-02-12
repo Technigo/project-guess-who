@@ -2,6 +2,10 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOut = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -204,6 +208,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let keep = false
 
 // Draw the game board
 const generateBoard = () => {
@@ -225,26 +230,26 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+
 }
 
-// This function to start (and restart) the game
+//Function to start and restart the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  generateBoard()
+  setSecret()
+  selectQuestion()
+  board.style.display = "flex";
+  winOrLose.style.display = "none";
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
+  const value = questions.options[questions.selectedIndex].value
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
 }
 
@@ -253,14 +258,24 @@ const checkQuestion = () => {
   const { category, value } = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  //See if we should keep or remove people based on that 
+  //then invoke filterCharacters
+
   if (category === 'hair' || category === 'eyes') {
-
+    if (secret[category] === value) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
   }
 }
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -268,58 +283,104 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+      Swal.fire(`Yes, the person wears ${value}!`)
     } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
+      Swal.fire(`No, the person doesn't wear ${value}!`)
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      Swal.fire(`Yes, the person is a ${value}!`)
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      Swal.fire(`No, the person is not a ${value}!`)
+    }
+  } else if (category === 'hair') {
+    if (keep) {
+      Swal.fire(`Yes, the person has ${value} hair!`)
+    } else {
+      Swal.fire(`No, the person doesn't have ${value} hair!`)
+    }
+  } else if (category === 'eyes') {
+    if (keep) {
+      Swal.fire(`Yes, the person has ${value} eyes!`)
+    } else {
+      Swal.fire(`No, the person doesn't have ${value} eyes!`)
     }
   }
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
+  if (category === 'hair' || category === 'eyes') {
+    if (secret[category] === value) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+    }
+  } else if (category === 'accessories' || category === 'other') {
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
+    } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
+    }
+  }
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  Swal.fire({
+    title: 'Are you sure?',
+    text: `Are you sure you want to guess ${personToConfirm}?`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: "Yes, let's go!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      checkMyGuess(personToConfirm);
+    }
+  })
 }
+
+
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  if (personToCheck === secret.name) {
+  //alert for win or lose
+    winOrLoseText.innerHTML = `Yeeey! You did it!`
+  } else {
+    winOrLoseText.innerHTML = `Noooo.. Try again!`
+  }
+  //Show win or lose section
+  winOrLose.style.display = 'flex' 
+  //Hide the game board
+  board.style.display = 'none'
 }
 
+//If you press restart button this function is invoked.
+const restart = () => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: `You really want to restart the game?`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: "Yes, please!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      start();
+    }
+  })
+}
 // Invokes the start function when website is loaded
 start()
 
+
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', restart)
+findOut.addEventListener('click', checkQuestion)
+questions.addEventListener('change', selectQuestion)
+playAgain.addEventListener('click', start)

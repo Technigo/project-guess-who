@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #4FBDBA;
+  --secondary: #35858B;
 }
 
 body {
@@ -9,14 +9,22 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background: #F2F5C8;
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 55px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
   color: white;
+  font-family: 'Rowdies', cursive;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: #495371;
+  margin-bottom: 0;
 }
 
 .question-section {
@@ -71,6 +79,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: aliceblue;
 }
 
 .card p {
@@ -121,6 +130,8 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  width: 140px;
+  margin-bottom: 10px;
 }
 
 .small {
@@ -231,3 +242,54 @@ button {
     border: none;
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .question-section {
+    width: 100%;
+    min-height: 0;
+  }
+  button {
+    padding: 8px 16px;
+  }
+  h1 {
+    padding-top: 1rem;
+  }
+
+  .board-wrapper {
+    width: 100%;
+  }
+
+  .game-board {
+    width: 100%;
+    max-width: 750px;
+  }
+
+  .card {
+    width: 113px;
+    position: relative;
+  }
+
+  .card .guess {
+    display: flex;
+    top: 0;
+    position: absolute;
+    justify-content: flex-end;
+  }
+
+  .card .guess span {
+    display: none;
+  }
+
+  .card .guess .filled-button {
+    padding: 6px 11px;
+    margin-bottom: 1px;
+    background: white;
+    color: var(--primary);
+    border: none;
+  }
+}
+

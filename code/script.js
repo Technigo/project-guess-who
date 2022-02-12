@@ -270,29 +270,28 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
 
-  let keep = true
+  
   if (category === 'hair' || category === 'eyes') {
    if (secret[category] === value){
-     keep = true   
-
+     let keep = true;   
   //if (value === secret.hair || value === secret.eyes), I wrote this first but changed after Jennies video and worked better
   
   filterCharacters(keep)
    }
    else {
-   keep = false
-   filterCharacters(keep)  
+   keep = false;
+   filterCharacters()  
    }
     // so I got the values from the list in value, & i need to compare it to secret and if they are the same === as secret i need to keep them
-    // keep: I created global booleanvariable. In step 4 we should have true for keeping and false for not keeping..
+    // keep: booleanvariable. should be true for keeping and false for not keeping?
 
   } else if (category === 'accessories' || category === 'other') {
     if (secret.accessories.includes(value) || secret.other.includes(value)){
-      keep = true
+      keep = true;
   filterCharacters(keep)
-    }else {
-      keep = false
-      filterCharacters(keep)
+    } else {
+      keep = false;
+      filterCharacters()
   }
 }
 }
@@ -313,26 +312,29 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
+    if (keep) {
     alert(
       `Yes the person has ${value}! Keep all people that has a ${value}`
     ) 
   } else {
     alert(
-      `No, the person doesn't have ${value}! Remove all people that does have ${value}`)
+      `No, the person doesn't have ${value}! Remove all people that does have ${value}`
+      )
     }
     
-    if (category === 'hair') {  
+  } else if (category === 'hair') {  
     if (keep) {
       alert(
       `Yes, the person has ${value} hair! Keep all people with ${value} hair`
       )
-    
+      
     } else {
     alert(
     `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
     )
     }
     } else if (category === 'eyes') {
+      if (keep) {
      alert(
      `Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
      )
@@ -341,6 +343,7 @@ const filterCharacters = (keep) => {
     `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes`
   )
     }
+  }
      
   
 

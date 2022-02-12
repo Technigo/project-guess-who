@@ -249,9 +249,9 @@ video {
     padding: 8px 16px;
   }
 
-  h1 {
+  aside h1 {
     font-size: 2.5rem;
-    line-height: 30px;
+    line-height: 35px;
     margin-top: 2rem;
   }
 
@@ -292,6 +292,13 @@ video {
     color: var(--primary);
     border: none;
   }
+
+  .win-or-lose h1 {
+    font-size: 1.5rem;
+    line-height: 35px;
+    margin-top: 1rem;
+  }
+
   video {
     width: 150px;
     height: auto;

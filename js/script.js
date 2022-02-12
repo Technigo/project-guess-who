@@ -439,6 +439,7 @@ let secret, currentQuestion, charactersInPlay
 
 // Draws the game board
 const generateBoard = () => {
+  
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
@@ -520,55 +521,40 @@ const checkQuestion = () => {
 }
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-// Show the correct alert message for different categories
+// Show the correctSwal.fire message for different categories
 const { attribute, category, value } = currentQuestion
 
 if (category === 'accessories') {
   if (keep) {
     sound()
-    alert(
-      `Yes! Guess is correct, secrect person wears ${attribute}! Keep all who wears ${attribute}.`
-    )
+    Swal.fire(`Yes! Guess is correct, secrect person wears ${attribute}!`, `Keep all who wears ${attribute}.`)
   } else {
     sound()
-    alert(
-      `Wrong guess, the person doesn't wear ${attribute}! Remove all who wears ${attribute}.`
-    )
+    Swal.fire(`Wrong guess, the person doesn't wear ${attribute}`,`Remove all who wears ${attribute}.`)
   }
 } else if (category === 'hair') {
   if (keep) {
     sound()
-    alert(`Yes! Guess is correct, the person has ${value} hair! Keep all who has ${value} hair.`
-    )  
+    Swal.fire(`Yes, the person has ${value} hair!`) 
   } else {
     sound()
-    alert(
-    `Wrong guess, the person doesn't have ${value} hair. Remove all who has ${value} hair.`
-    )
+    Swal.fire(`No, the person hasn't ${value} hair!`)
   }
 } else if (category === 'eye') {
   if (keep) {
     sound()
-    alert(
-      `Yes! Guess is correct, the person has ${value} eyes! Keep all who has ${value} eyes.`
-    )
+    Swal.fire(`Yes! Guess is correct, the person has ${value} eyes!`, `Keep all who has ${value} eyes.`)
   } else {
     sound()
-    alert(
-      `Wrong guess, the person doesn't have ${value} eyes. Remove all that has ${value} eyes.`
-      )
+   Swal.fire(`Wrong guess, the person doesn't have ${value} eyes.`, `Remove all that has ${value} eyes.`)
   }
 } else if (category === 'other') {
   if (keep) {
     sound()
-    alert(
-      `Yes! Guess is correct, the person has a ${attribute}. Keep all who has a ${attribute}.`
-    )
+   Swal.fire(`Yes! Guess is correct, the person has a ${attribute}.`, `Keep all who has a ${attribute}.`)
 } else {
   sound()
-    alert(
-      `Wrong guess, the person doesn't have a ${attribute}. Remove all that has a ${attribute}.`
-    )
+   Swal.fire(`Wrong guess, the person doesn't have a ${attribute}.`, `Remove all that has a ${attribute}.`)
   } 
 }
   // filter to keep or remove based on the keep variable.
@@ -586,11 +572,20 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
     // remember the confirm() ?
     // If the player wants to guess, invoke the checkMyGuess function.
-  const confirmed = confirm(`Do you think the secret person is ${personToConfirm} ?`)
-
-  if (confirmed) {
-    checkMyGuess(personToConfirm)
-  }
+ 
+  Swal.fire({
+    title: 'Are you sure?',
+    text: `Secrect person is ${personToConfirm}!`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: "Yes, let's go!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      checkMyGuess(personToConfirm);
+    }
+  })
 };
 
 // If you confirm, this function is invoked
@@ -600,7 +595,7 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerHTML = `You are a genius!!  ${personToCheck} is a secrect person.`
   } else {
    soundLoose()
-    winOrLoseText.innerHTML = `Wrong guess! ${personToCheck}. It was ${secret.name}.`
+    winOrLoseText.innerHTML = `${personToCheck} is wrong guess. It was ${secret.name}.`
   }
   //display the win/looser message
   winOrLose.style.display = 'flex'
@@ -626,12 +621,19 @@ const soundLoose = ()=>{
 
 //add user name
 const askName = () => {
-    let username = prompt("Please enter your name:");
-    if (username) {
-        document.getElementById("name").innerHTML = `Welcome ${username}`;
-    } else {
-        document.getElementById("name").innerHTML = `You are playing as Guest`;
+  Swal.fire({
+    title: 'Enter username:',
+    input: 'text', 
+    confirmButtonText: 'OK',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      if(result.value == ""){
+        document.getElementById("name").innerHTML = `Player name: Guest`;
+      }else{
+        document.getElementById("name").innerHTML = `Player name: ${result.value}`;
+      }
     }
+  })
 }
 
 // Sets the timer
@@ -654,7 +656,7 @@ setInterval(() => {
 
 // Invokes the start function when website is loaded
 
-start()
+ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)

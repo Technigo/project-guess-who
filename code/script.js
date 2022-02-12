@@ -231,16 +231,16 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to START (and RESTART) the game.
+// This function to START (and RESTART) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-  generateBoard()
-  setSecret()
-  selectQuestion()
-  winOrLose.style.display = "none"
-  boardWrapper.style.display = "flex"
+  generateBoard() 
+  setSecret() 
+  selectQuestion() 
+  winOrLose.style.display = "none" // Hides the 'Win or Lose' section
+  boardWrapper.style.display = "flex" // Shows the game board
 }
 
 // Setting the currentQuestion object when you select something in the dropdown.
@@ -248,7 +248,7 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable above stores what option group (category) the question belongs to.
   
-  // We also need a variable that stores the actual value of the question we've selected, see line below.
+  // A variable that stores the actual value of the question we've selected, see line below.
   const value = questions.options[questions.selectedIndex].value 
 
   currentQuestion = {
@@ -274,26 +274,26 @@ const checkQuestion = () => {
   filterCharacters(keep);
 }
 
-// It'll filter the characters array and redraw the game board.
+// This function filters the characters array and redraws the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}.`)
+      alert(`Correctamundo! The person wears ${value}! Keep all people that wears ${value}.`)
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      alert(`No, the person does not wear ${value}... Remove all people that wears ${value}.`)
+      alert(`Nope, the person does not wear ${value}! Remove all people that wears ${value}.`)
     }
 
   } else if (category === 'other') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      alert(`Yes, the person has a ${value}! Keep all people that have ${value}.`)
+      alert(`Sí, the person has a ${value}! Keep all people that have a ${value}.`)
     } else { 
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      alert(`No, the person does not have a ${value}... Remove all people that have a ${value}.`)
+      alert(`Nooo, the person does not have a ${value}.. Remove all people that have a ${value}.`)
     }
 
   } else if (category === 'hair') {
@@ -318,12 +318,11 @@ const filterCharacters = (keep) => {
   generateBoard(keep)
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// When clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
+  // Stores the interaction from the player in a variable.
   let thePlayerGuess = confirm(`Would you like to guess on ${personToConfirm}?`)
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+ 
   if (thePlayerGuess) {
     checkMyGuess(personToConfirm)
   } else {
@@ -349,7 +348,7 @@ const checkMyGuess = (personToCheck) => {
 // Invokes the start function when website is loaded
 start()
 
-// All the event listeners
+// Event Listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)

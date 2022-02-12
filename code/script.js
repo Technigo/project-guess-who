@@ -371,4 +371,7 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOut.addEventListener('click', checkQuestion)
-playAgain.addEventListener('click', start)
+playAgain.addEventListener('click', () => {
+start()
+winOrLose.style.display ='none'
+})

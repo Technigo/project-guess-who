@@ -1,13 +1,16 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Week 5 project was creating a guess-who game. Super fun and learnt a lot.
+The game is about guessing a secret character based on options in the select menu indicating the characterstics of the game characters in the game board . When a particular characterstic of the person is selected it is filtered out/kept, based on if it matches the secret person. If you are confident about your choice you can guess the person directly from the game board.
+I customised the game by minimising the guesses to maximum of five attempts, once five attempts are done, the player must make a choice and select a character.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+It was hard but leant a lot about how to invoke functions, add properties to a function etc.
+Learnt how to customise alerts using sweetalerts.
+learnt about math.random function.
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guess-the-secretcharacter.netlify.app/

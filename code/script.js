@@ -322,7 +322,7 @@ console.log(keep)
       if (value === secret.accessories || value === secret.other) {
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       } else {
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       }
   
       } else if (category === 'hair' || category === 'eyes') {

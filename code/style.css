@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #6ECB63;
+  --secondary: #B1E693;
 }
 
 body {
@@ -57,6 +57,12 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+}
+
+#game-time, #game-guess {
+  color: white;
+  padding-top: 24px;
+  font-size: 22px;
 }
 
 /****** CARD ******/

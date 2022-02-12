@@ -17,6 +17,7 @@ let charactersInPlay
 let personToGuess
 let personToCheck
 let personToConfirm
+let keep
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -348,22 +349,19 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   charactersInPlay = CHARACTERS
+  myAudio.innerHTML = `
+  <audio src="./images/music.mp3" type="audio/mpeg" autoplay loop></audio>
+  `
   generateBoard()
   setSecret()
   selectQuestion()
-  document.getElementById('my-audio').innerHTML = `
-    <audio src="./images/music.mp3" type="audio/mpeg" autoplay loop></audio>
-    `
-  
   }
 
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
-
   const value = questions.options[questions.selectedIndex].value
-
 
   currentQuestion = {
     category: category,
@@ -371,17 +369,12 @@ const selectQuestion = () => {
   };
 };
 
-// This function should be invoked when you click on 'Find Out' button.
-
-
+// Check question
 const checkQuestion = () => {
   selectQuestion()
   const { category, value } = currentQuestion;
-  
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  let keep;
+
+ 
   if (category === 'Hair' && value === secret.hair.find(element => element === value)) {
     keep = true;
   } else if (category === 'Eyes' && value === secret.eyes) {
@@ -400,7 +393,7 @@ const checkQuestion = () => {
   filterCharacters(keep);
 }
 
-// It'll filter the characters array and redraw the game board.
+// Filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   
   const { category, value } = currentQuestion;
@@ -453,8 +446,6 @@ const filterCharacters = (keep) => {
         'error'
       )
       charactersInPlay = charactersInPlay.filter((person) => !person.accessories.includes(value)) 
-
- 
     }
   } else if (category === 'House') {
     if (keep) {
@@ -518,7 +509,7 @@ const filterCharacters = (keep) => {
     }
   }
 
-  
+  // Generate board
   if (keep === true) {
     generateBoard(charactersInPlay)
   } else {
@@ -527,14 +518,9 @@ const filterCharacters = (keep) => {
   }
 }
 
-
-
-  
-
-
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// Confirmation
 const guess = (personToConfirm) => {
-  // let letsGuess = confirm(`Do you want to guess on ${personToConfirm}?`)
+
   let letGuess = Swal.fire({
     title: 'Are you sure?',
     text: `Do you want to guess on ${personToConfirm}?`,
@@ -548,47 +534,26 @@ const guess = (personToConfirm) => {
       checkMyGuess(personToConfirm)
     }
   })
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-  // if (letsGuess) {
-  //   checkMyGuess(personToConfirm)
-  // } else {
-  //   alert('Make another guess!') 
-  // }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
   if (personToCheck === secret.name) {
     winOrLose.style.display = "flex"
     winOrLoseText.style.display = "flex"
     winOrLoseText.innerHTML = `Congratulations! <br><br> You guessed right, the secret character was ${personToCheck}!`
 
-    // alert(
-    //   `Congratulations! You guessed right, the secret character is ${personToCheck}!`
-    // )
     playAgain.addEventListener('click', () => {
       console.log('Clicked')
       start()
       winOrLose.style.display = "none"
     } )
-
-
   } else {
-   
     Swal.fire(
       `Sorry, ${personToCheck} is not the secret character.`,
       `Please guess again.`,
       'error'
     )
-    
-
-    
   }
 }
 

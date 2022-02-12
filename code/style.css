@@ -15,7 +15,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Work Sans', 'Montserrat', sans-serif;
   /*background-color: #f0a3bc;*/
 }
 
@@ -61,7 +61,7 @@ select:hover {
 
 .guess-who-icon {
   width: 200px;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   margin-bottom: 0,5rem;
 }
 
@@ -80,12 +80,13 @@ select:hover {
   align-content: center;
   justify-content: center;
   padding: 2rem;
+  gap: 0.5rem;
 }
 
 .question-counter {
   color: white;
   font-size: 22px;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .timer {
@@ -95,6 +96,8 @@ select:hover {
 }
 
 .input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   font-size: 22px;
   width: 80%;
   margin-top: 1rem;
@@ -119,6 +122,13 @@ select:hover {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+}
+
+.card:hover {
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.03);
+  transform: scale(1.03);
+  -webkit-transition: transform 0.4s ease-in-out;
 }
 
 .card p {
@@ -259,7 +269,7 @@ video {
   }
 
   .guess-who-icon {
-    width: 160px;
+    width: 180px;
   }
 
   .board-wrapper {

@@ -7,7 +7,7 @@ const winOrLose = document.getElementById('winOrLose')
 const questionSection = document.getElementById('questionSection')
 const playAgain = document.getElementById('playAgain')
 const questionCounter = document.getElementById('questionCounter')
-const timer = document.getElementById('timer')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -206,18 +206,20 @@ const CHARACTERS = [
   },
 ]
 
+
 // Global variables
 let secret
 let currentQuestion = {category: 'mostly', value: 'blue'}
 let charactersInPlay
 let guessNumber
 
-// Draw the game board
+
+// This function draws the game board
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card">
+      <div class="card" onmouseenter='playSound()'>
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
@@ -229,61 +231,53 @@ const generateBoard = () => {
   })
 }
 
-/*
-1. This function chooses a random person from the CHARACTERS array once the game starts and
-sets that person as the variable called secret. */
+
+// This function chooses a random person from the CHARACTERS array once the game starts and sets that person as the variable called secret.
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
 
-/*
-1. This function starts the game when the page loads for the first time and also
-  when the player restarts the game.
-2. Inside the function the all the game characters are chosen for the beginning of the game.
-3. The board is generated with those characters.
-4. The win or lose-board is hidden and the game board is unhidden (functions which were
-  invoked in the ened of the game). */
+// 1. This function starts the game when the page loads for the first time and also when the player restarts the game.
 const start = () => {
-// Here we're setting charactersInPlay array to be all the characters to start with
+
+  // 2. Inside the function the all the game characters are chosen for the beginning of the game.
   charactersInPlay = CHARACTERS
+
+  // 3. Here the secret person is set for the game.
   setSecret()
-  console.log(secret)
+
+  // 4. The board is generated with the chosen characters, in this case all of them.
   generateBoard()
+
+  // 5. The win or lose-board is hidden and the game board and question section are unhidden (functions which were invoked in the end of the game).
+  // The number of guesses is first set to 0.
   winOrLose.style.display = "none"
   questionSection.style.display = "flex"
   board.style.display = "flex"
-  guessNumber = 0
+  let guessNumber = 0
 }
 
 
-/*
-1. This function stores the information of the question when the player chooses
-  it from the dropdown.
-2. The currentQuestion variable stores the category and the value of the question. */
+// 1. This function stores the information of the question when the player chooses it from the dropdown.
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
 
+  // 2. The currentQuestion variable stores the category and the value of the question.
   currentQuestion = {
     category,
     value
   }
-  console.log('This is the answer information') 
-  console.log(currentQuestion)
 }
 
 
-/*
-1. This function is invoked by clicking the Find Out- button.
-2. The function compares the category and value stored in the currentQuestion object
-  to the category and value of the chosen secret person. */
+// 1. This function is invoked by clicking the Find Out- button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-    console.log('clicking the find out-button after choosing the value')
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+
+  /* 2. The function compares the category and value stored in the currentQuestion object
+  to the category and value of the chosen secret person. */
   if (category === 'mostly' || category === 'looking' || category === 'a') {
     if (value === secret.mostly || value === secret.looking || value === secret.a) {
       filterCharacters(true)
@@ -302,13 +296,12 @@ const checkQuestion = () => {
 
 /*
 1. This function filters out game characters (keeps or removes them) based on the questions
-  chosen by the player and how they match the secret person.
-2. The function will also give alerts to the player which include information about whether the
-  question value was matching the secret person or not.
-3. The function will also generate the board with selected characters according to the filtering process. */
+  chosen by the player and how they match the secret person. */
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
+
+  /* 2. The function will also give alerts to the player which include information about whether the
+  question value was matching the secret person or not. */
   if (category === 'having') {
     console.log(value)
     if (keep) {
@@ -349,20 +342,9 @@ const filterCharacters = (keep) => {
       alert(`No, the monster is not looking ${value}. Remove all monsters that look ${value}`)
     }
   }
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-  // Invoke a function to redraw the board with the remaining people.
+  /* 3. The function will also generate the board with selected characters according to the filtering process and
+  count how many guesses the player has used and prints it as text on the page. */
   generateBoard()
   guessNumber++
   questionCounter.innerHTML = `
@@ -371,14 +353,15 @@ const filterCharacters = (keep) => {
 }
 
 
-/*
-1. This function stores the players guess into a variable.
-2. The function confirms the players guess with the confirm() method by showing a window where the player either
-clicks OK to confirm their choice or CANCEL to close the window.
-3. If the player confirms their guess the checkMyGuess function is invoked, otherwise an alert is shown for the player
-  which tells that they can keep playing. */
+// 1. This function stores the players guess into a variable.
 const guess = (personToConfirm) => {
+
+  /* 2. The function confirms the players guess with the confirm() method by showing a window
+  where the player either clicks OK to confirm their choice or CANCEL to close the window. */
   let guessedPerson = confirm(`Do you want to guess ${personToConfirm}?`)
+
+  /* 3. If the player confirms their guess the checkMyGuess function is invoked, otherwise an
+  alert is shown for the player which tells that they can keep playing. */
   if (guessedPerson) {
     checkMyGuess(personToConfirm)
     //console.log(guessedPerson)
@@ -388,15 +371,11 @@ const guess = (personToConfirm) => {
 }
 
 
-/*
-1. This function is invoked when the player confirms their guess.
-2. The function hides the game board and shows the win or lose - section.
-3. The function compares the players guess to the secret person and then shows either
-  a winning or a losing message depending on their guess. */
+// 1. This function is invoked when the player confirms their guess.
 const checkMyGuess = (personToCheck) => {
- // personToConfirm = personToCheck
-  //console.log(personToCheck)
-  //console.log(secret.name)
+
+  /* 2. The function compares the players guess to the secret person and then shows either
+  a winning or a losing message and plays a sound depending on their guess. */
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `
     Or in human words: Yay! You guessed correctly! It is ${secret.name}!
@@ -410,18 +389,51 @@ const checkMyGuess = (personToCheck) => {
     const audio = new Audio('assets/monster-lose-growl.mp3')
       audio.play()
   }
+  // 3. The function shows the win or lose - section and hides the game board and the question section.
   winOrLose.style.display = "flex"
   board.style.display = "none"
   questionSection.style.display = "none"
 }
 
 
-// Invokes the start function when website is loaded
+// This function plays a sound when the player moves their mouse cursor over the character card.
+const playSound = () => {
+  const audio = new Audio('assets/card-sound.mp3')
+    audio.play()
+    audio.autoplay = true
+    audio.volume = 0.5
+}
+
+
+// This function plays a sound when the player moves their mouse cursor over the find out- and restart- buttons.
+const playButtonSound = () => {
+  const audio = new Audio('assets/monster-growl-button.mp3')
+    audio.play()
+    sound.autoplay = true
+    audio.volume = 0.5
+}
+
+
+// This invokes the start function when website is loaded
 start()
 
 
-// All the event listeners
+// All the event listeners:
+
+// 1. This invokes the start function when the player clicks on restart-button
 restartButton.addEventListener('click', start)
+
+// 2. This invokes the function selectQuestion when the player chooses an option from the select input
 questions.addEventListener('change', selectQuestion)
+
+// 3. This invokes the function checkQuestion when the player clicks on the find out-button
 findOutButton.addEventListener('click', checkQuestion)
+
+// 4. This invokes the start function when the player clicks on the play again-button
 playAgain.addEventListener('click', start)
+
+// 5. This invokes the playButtonSound function when the player moves over the find out-button with the mouse cursor
+findOutButton.addEventListener('mouseenter', playButtonSound)
+
+// 6. This invokes the playButtonSound function when the player moves over the restart-button with the mouse cursor
+restartButton.addEventListener('mouseenter', playButtonSound)

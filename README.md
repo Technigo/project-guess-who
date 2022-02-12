@@ -8,4 +8,4 @@ I struggled a lot with javascript but thanks to my team i could finish my projec
 If i had more time i would add sound effect, counter and change the cards.
 
 ## View it live
-
+https://elated-mestorf-972a84.netlify.app

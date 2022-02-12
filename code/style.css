@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #fff349;
-  --secondary: #fffed2;
+  --primary: #4fff49;
+  --secondary: #1b1b19;
 }
 
 body {
@@ -62,7 +62,7 @@ select {
 /****** CARD ******/
 .card {
   width: 135px;
-  height: 165px;
+  height: 185px;
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;

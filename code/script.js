@@ -13,7 +13,6 @@ const CHARACTERS = [
     name: "Doge",
     img: "images-2/doge.png",
     creature: "dog",
-    gender: "unspecified",
     hair: "fur",
     eyes: "black",
     expression: ["serious"],
@@ -23,17 +22,15 @@ const CHARACTERS = [
     name: "Boris",
     img: "images-2/boris-throws.png",
     creature: "hooman",
-    gender: "male",
     hair: "white",
     eyes: "blue",
     expression: ["angry"],
     background: ["kitten"],
   },
   {
-    name: "Side eye Chloe",
+    name: "Side Eye Chloe",
     img: "images-2/side-eye-chloe.png",
     creature: "hooman",
-    gender: "female",
     hair: "blonde",
     eyes: "blue",
     expression: ["grimace"],
@@ -43,148 +40,190 @@ const CHARACTERS = [
     name: "Trex",
     img: "images-2/trex.png",
     creature: "cartoon",
-    gender: "unspecified",
     hair: "bold",
     eyes: "black",
     expression: ["serious"],
     background: [],
   },
   {
-    name: "Jake",
-    img: "images/jake.svg",
-    hair: "yellow",
-    eyes: "green",
-    expression: ["glasses"],
-    other: [],
-  },
-  {
-    name: "James",
-    img: "images/james.svg",
-    hair: "brown",
-    eyes: "green",
-    expression: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Jana",
-    img: "images/jana.svg",
-    hair: "black",
+    name: "Blinking Guy",
+    img: "images-2/blinking-guy.png",
+    creature: "hooman",
+    hair: "red",
     eyes: "hidden",
-    expression: ["glasses"],
-    other: [],
+    expression: ["awkward"],
+    background: [],
   },
   {
-    name: "Jane",
-    img: "images/jane.svg",
-    hair: "yellow",
-    eyes: "hidden",
-    expression: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Jaqueline",
-    img: "images/jaqueline.svg",
-    hair: "orange",
-    eyes: "green",
-    expression: ["glasses"],
-    other: [],
-  },
-
-  {
-    name: "Jazebelle",
-    img: "images/jazebelle.svg",
-    hair: "purple",
-    eyes: "hidden",
-    expression: ["glasses"],
-    other: ["smoker"],
-  },
-  {
-    name: "Jean",
-    img: "images/jean.svg",
+    name: "Success Kid",
+    img: "images-2/success-kid.png",
+    creature: "hooman",
     hair: "brown",
     eyes: "blue",
-    expression: ["glasses", "hat"],
-    other: ["smoker"],
+    expression: ["serious"],
+    background: ["beach"],
   },
   {
-    name: "Jeane",
-    img: "images/jeane.svg",
+    name: "Grumpy Cat",
+    img: "images-2/grumpy-cat.png",
+    creature: "cat",
+    hair: "grey",
+    eyes: "blue",
+    expression: ["angry"],
+    background: [],
+  },
+  {
+    name: "Distracted Boyfriend",
+    img: "images-2/distracted-boyfriend.png",
+    creature: "hooman",
     hair: "brown",
-    eyes: "green",
-    expression: ["glasses"],
-    other: [],
+    eyes: "blue",
+    expression: ["grimace"],
+    background: ["women"],
   },
   {
-    name: "Jed",
-    img: "images/jed.svg",
-    hair: "orange",
-    eyes: "green",
-    expression: ["glasses", "hat"],
-    other: ["smoker"],
-  },
-  {
-    name: "Jenni",
-    img: "images/jenni.svg",
-    hair: "white",
+    name: "Dark Kermit",
+    img: "images-2/dark-kermit.png",
+    creature: "puppet",
+    hair: "green",
     eyes: "hidden",
-    expression: ["hat"],
-    other: [],
+    expression: ["serious"],
+    background: [],
   },
   {
-    name: "Jeri",
-    img: "images/jeri.svg",
-    hair: "orange",
-    eyes: "green",
-    expression: ["glasses"],
-    other: [],
+    name: "Disaster Girl",
+    img: "images-2/disaster-girl.png",
+    creature: "hooman",
+    hair: "brown",
+    eyes: "blue",
+    expression: ["smile"],
+    background: ["house"],
   },
   {
-    name: "Jerry",
-    img: "images/jerry.svg",
+    name: "Ricardo",
+    img: "images-2/ricardo.png",
+    creature: "hooman",
     hair: "hidden",
     eyes: "blue",
-    expression: ["hat"],
-    other: [],
+    expression: ["smile"],
+    background: [],
   },
   {
-    name: "Jess",
-    img: "images/jess.svg",
-    hair: "black",
-    eyes: "blue",
-    expression: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Jocelyn",
-    img: "images/jocelyn.svg",
-    hair: "black",
-    eyes: "brown",
-    expression: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Jon",
-    img: "images/jon.svg",
-    hair: "brown",
-    eyes: "green",
-    expression: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Jordan",
-    img: "images/jordan.svg",
-    hair: "yellow",
-    eyes: "hidden",
-    expression: ["glasses", "hat"],
-    other: [],
-  },
-  {
-    name: "Josephine",
-    img: "images/josephine.svg",
+    name: "Dog Gets Attention",
+    img: "images-2/dog-gets-attention.png",
+    creature: "dog",
     hair: "grey",
+    eyes: "blue",
+    expression: ["smile"],
+    background: ["crown"],
+  },
+  {
+    name: "Hide the Pain Harold",
+    img: "images-2/hide-the-pain-harold.jpeg",
+    creature: "hooman",
+    hair: "white",
+    eyes: "blue",
+    expression: ["smile"],
+    background: [],
+  },
+  {
+    name: "Scumbag Steve",
+    img: "images-2/scumbag-steve.png",
+    creature: "hooman",
+    hair: "hidden",
     eyes: "brown",
-    expression: [],
-    other: [],
+    expression: ["serious"],
+    background: [],
+  },
+  {
+    name: "Side Eye Monkey",
+    img: "images-2/side-eye-monkey.png",
+    creature: "puppet",
+    hair: "red",
+    eyes: "black",
+    expression: ["awkward"],
+    background: [],
+  },
+  {
+    name: "Woman Yelling",
+    img: "images-2/woman-yelling-at-cat.png",
+    creature: "hooman",
+    hair: "blonde",
+    eyes: "blue",
+    expression: ["angry"],
+    background: ["women"],
+  },
+  {
+    name: "Dark Kermit",
+    img: "images-2/dark-kermit.png",
+    creature: "puppet",
+    hair: "green",
+    eyes: "black",
+    expression: ["serious"],
+    background: ["tea"],
+  },
+  {
+    name: "Liam Neeson",
+    img: "images-2/liam-neeson.jpeg",
+    creature: "hooman",
+    hair: "brown",
+    eyes: "blue",
+    expression: ["serious"],
+    background: ["phone"],
+  },
+  {
+    name: "Cat Being Yelled At",
+    img: "images-2/cat-being-yelled-at.png",
+    creature: "cat",
+    hair: "white",
+    eyes: "blue",
+    expression: ["grimace"],
+    background: ["salad"],
+  },
+  {
+    name: "Bad Luck Brian",
+    img: "images-2/bad-luck-brian.jpeg",
+    creature: "hooman",
+    hair: "red",
+    eyes: "blue",
+    expression: ["smile"],
+    background: [],
+  },
+  {
+    name: "Eyebrows Dog",
+    img: "images-2/eyebrows-dog.jpeg",
+    creature: "dog",
+    hair: "white",
+    eyes: "black",
+    expression: ["smile"],
+    background: [],
+  },
+  {
+    name: "Stonks Guy",
+    img: "images-2/stonks-guy.png",
+    creature: "cartoon",
+    hair: "bold",
+    eyes: "blue",
+    expression: ["serious"],
+    background: [],
+  },
+  {
+    name: "Overly Attached Ex",
+    img: "images-2/overly-attached-ex.png",
+    creature: "hooman",
+    hair: "brown",
+    eyes: "blue",
+    expression: ["smile"],
+    background: [],
+  },
+  {
+    name: "Tuxedo Winnie",
+    img: "images-2/tuxedo-winnie.png",
+    creature: "cartoon",
+    hair: "bold",
+    eyes: "black",
+    expression: ["smile"],
+    background: [],
   },
 ];
 
@@ -192,6 +231,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let guessCount = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -222,6 +262,7 @@ const start = () => {
   generateBoard();
   setSecret();
   selectQuestion();
+  guessCount = 0;
   // What else should happen when we start the game?
   // Here maybe add some music or something----?
 };
@@ -240,99 +281,147 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  const { name, img, hair, creature, eyes, expression, other } = secret;
 
   // Below we run the if statement to compare the entered value to the secret value
-  if (category === "hair" || category === "eyes") {
-    if (value === hair || value === eyes) {
+  if (
+    category === "hair" ||
+    category === "eyes" ||
+    category === "creature" ||
+    category === "expression"
+  ) {
+    if (
+      value === secret.hair ||
+      value === secret.eyes ||
+      value === secret.creature ||
+      value === secret.expression
+    ) {
       filterCharacters(true);
+      s;
     } else {
       filterCharacters(false);
     }
-  } else if (category === "accessories") {
+  } else if (category === "background") {
     if (secret.expression.includes(value)) {
       filterCharacters(true);
     } else {
       filterCharacters(false);
     }
-  } else if (category === "other") {
-    if (secret.other.includes(value)) {
-      filterCharacters(true);
-    } else {
-      filterCharacters(false);
-    }
   }
+  // if (category === "hair" || category === "eyes") {
+  //   if (value === hair || value === eyes) {
+  //     filterCharacters(true);
+  //   } else {
+  //     filterCharacters(false);
+  //   }
+  // } else if (category === "creature") {
+  //   if (secret.creature.includes(value)) {
+  //     filterCharacters(true);
+  //   } else {
+  //     filterCharacters(false);
+  //   }
+  // } else if (category === "gender") {
+  //   if (secret.gender.includes(value)) {
+  //     filterCharacters(true);
+  //   } else {
+  //     filterCharacters(false);
+  //   }
+  // } else if (category === "expression") {
+  //   if (secret.expression.includes(value)) {
+  //     filterCharacters(true);
+  //   } else {
+  //     filterCharacters(false);
+  //   }
+  // } else if (category === "background") {
+  //   if (secret.background.includes(value)) {
+  //     filterCharacters(true);
+  //   } else {
+  //     filterCharacters(false);
+  //   }
+  // }
 };
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
-  if (category === "expression") {
+  if (category === "hair") {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}!`
+        `Yes, the meme persona has ${value} hair! Keep only meme personas that have ${value} hair!`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}!`
+        `Ooopsie! Sorry, the meme persona doesn't have ${value} hari! Remove all meme personas that have ${value} hair!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
-      );
-    }
-  } else if (category === "other") {
-    if (keep) {
-      alert(
-        `Yes, that person is ${value}. Byebye all people who aren't ${value}!`
-      );
-      charactersInPlay = charactersInPlay.filter((person) =>
-        person[category].includes(value)
-      );
-    } else {
-      alert(
-        `Noooope, ${value} is not correct! Byebye all people who are ${value}!`
-      );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => !person[category].includes(value)
-      );
-    }
-  } else if (category === "hair") {
-    if (keep) {
-      alert(
-        `How did you know!?! That person has ${value} hair. Lets keep 'em ${value}haired!`
-      );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] === value
-      );
-    } else {
-      alert(
-        `No, wrong! ${value} is not correct, toss all the ${value}haired people!`
-      );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] !== value
       );
     }
   } else if (category === "eyes") {
     if (keep) {
       alert(
-        `Yes, our secret person does have ${value} eyes. So long to all the other ones!`
+        `Niceeee! The meme persona has ${value} eyes. Let's remove all that don't!`
+      );
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
+    } else {
+      alert(
+        `Yikes! No, the meme persona doesn't have ${value} eyes! Let's remove all that do!`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
+    }
+  } else if (category === "creature") {
+    if (keep) {
+      alert(
+        `Nice guess! We are dealing with a ${value} here. Keep all ${value}s!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
     } else {
       alert(
-        `Wrong! Our secret person does not have ${value} eyes. Say godbye to all people with ${value} eyes!`
+        `Close but not quite, ${value} is incorrect, all ${value}s must go!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
     }
+  } else if (category === "expression") {
+    if (keep) {
+      alert(`Yesh! Our meme persona is ${value}. Keep all ${value} faces!`);
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+    } else {
+      alert(
+        `Nah, our meme persona is not ${value}, remove all ${value} faces!`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
+    }
+  } else if (category === "background") {
+    if (keep) {
+      alert(
+        `Spot on, you can see ${value} in the background. This should make it easy!`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+    } else {
+      alert(`No ${value} co-star for this meme persona! Let's remove it!`);
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
+    }
   }
+
   // Invoke a function to redraw the board with the remaining people.
   generateBoard();
 };
@@ -354,10 +443,10 @@ const checkMyGuess = (personToCheck) => {
   board.style.display = "none";
   winOrLose.style.display = "flex";
   if (personToCheck === name) {
-    winOrLoseText.innerText = `Amazeballs, that's correct! Do it again!`;
+    winOrLoseText.innerText = `WOWWWWWWZA! Yes it was ${name}! Congrats! `;
   } else {
     guess !== secret;
-    winOrLoseText.innerText = `Noooo, that's wrong! Do it again!`;
+    winOrLoseText.innerText = `WRONG! Better luck next time!`;
   }
 };
 

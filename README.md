@@ -1,4 +1,4 @@
-# Project Name
+# Guess who-project
 
 The assigment for this project was to build a Guess Who-game using objects and arrays to store info about the charachters in the game, and to filter the board according to the players questions.
 
@@ -8,4 +8,5 @@ In this project i found it most difficult know how to pass the right arguments t
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://nifty-tesla-0fdd38.netlify.app/
+

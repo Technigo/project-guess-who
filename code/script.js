@@ -10,43 +10,51 @@ const winOrLoseText = document.getElementById("winOrLoseText");
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: "Jabala",
-    img: "images/jabala.svg",
-    hair: "hidden",
-    eyes: "hidden",
-    accessories: ["glasses", "hat"],
-    other: [],
+    name: "Doge",
+    img: "images-2/doge.png",
+    creature: "dog",
+    gender: "unspecified",
+    hair: "fur",
+    eyes: "black",
+    expression: ["serious"],
+    background: [],
   },
   {
-    name: "Jack",
-    img: "images/jack.svg",
-    hair: "hidden",
+    name: "Boris",
+    img: "images-2/boris-throws.png",
+    creature: "hooman",
+    gender: "male",
+    hair: "white",
     eyes: "blue",
-    accessories: ["hat"],
-    other: [],
+    expression: ["angry"],
+    background: ["kitten"],
   },
   {
-    name: "Jacques",
-    img: "images/jacques.svg",
-    hair: "grey",
+    name: "Side eye Chloe",
+    img: "images-2/side-eye-chloe.png",
+    creature: "hooman",
+    gender: "female",
+    hair: "blonde",
     eyes: "blue",
-    accessories: ["hat"],
-    other: ["smoker"],
+    expression: ["grimace"],
+    background: [],
   },
   {
-    name: "Jai",
-    img: "images/jai.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: [],
-    other: [],
+    name: "Trex",
+    img: "images-2/trex.png",
+    creature: "cartoon",
+    gender: "unspecified",
+    hair: "bold",
+    eyes: "black",
+    expression: ["serious"],
+    background: [],
   },
   {
     name: "Jake",
     img: "images/jake.svg",
     hair: "yellow",
     eyes: "green",
-    accessories: ["glasses"],
+    expression: ["glasses"],
     other: [],
   },
   {
@@ -54,7 +62,7 @@ const CHARACTERS = [
     img: "images/james.svg",
     hair: "brown",
     eyes: "green",
-    accessories: ["glasses"],
+    expression: ["glasses"],
     other: [],
   },
   {
@@ -62,7 +70,7 @@ const CHARACTERS = [
     img: "images/jana.svg",
     hair: "black",
     eyes: "hidden",
-    accessories: ["glasses"],
+    expression: ["glasses"],
     other: [],
   },
   {
@@ -70,7 +78,7 @@ const CHARACTERS = [
     img: "images/jane.svg",
     hair: "yellow",
     eyes: "hidden",
-    accessories: ["glasses"],
+    expression: ["glasses"],
     other: [],
   },
   {
@@ -78,7 +86,7 @@ const CHARACTERS = [
     img: "images/jaqueline.svg",
     hair: "orange",
     eyes: "green",
-    accessories: ["glasses"],
+    expression: ["glasses"],
     other: [],
   },
 
@@ -87,7 +95,7 @@ const CHARACTERS = [
     img: "images/jazebelle.svg",
     hair: "purple",
     eyes: "hidden",
-    accessories: ["glasses"],
+    expression: ["glasses"],
     other: ["smoker"],
   },
   {
@@ -95,7 +103,7 @@ const CHARACTERS = [
     img: "images/jean.svg",
     hair: "brown",
     eyes: "blue",
-    accessories: ["glasses", "hat"],
+    expression: ["glasses", "hat"],
     other: ["smoker"],
   },
   {
@@ -103,7 +111,7 @@ const CHARACTERS = [
     img: "images/jeane.svg",
     hair: "brown",
     eyes: "green",
-    accessories: ["glasses"],
+    expression: ["glasses"],
     other: [],
   },
   {
@@ -111,7 +119,7 @@ const CHARACTERS = [
     img: "images/jed.svg",
     hair: "orange",
     eyes: "green",
-    accessories: ["glasses", "hat"],
+    expression: ["glasses", "hat"],
     other: ["smoker"],
   },
   {
@@ -119,7 +127,7 @@ const CHARACTERS = [
     img: "images/jenni.svg",
     hair: "white",
     eyes: "hidden",
-    accessories: ["hat"],
+    expression: ["hat"],
     other: [],
   },
   {
@@ -127,7 +135,7 @@ const CHARACTERS = [
     img: "images/jeri.svg",
     hair: "orange",
     eyes: "green",
-    accessories: ["glasses"],
+    expression: ["glasses"],
     other: [],
   },
   {
@@ -135,7 +143,7 @@ const CHARACTERS = [
     img: "images/jerry.svg",
     hair: "hidden",
     eyes: "blue",
-    accessories: ["hat"],
+    expression: ["hat"],
     other: [],
   },
   {
@@ -143,7 +151,7 @@ const CHARACTERS = [
     img: "images/jess.svg",
     hair: "black",
     eyes: "blue",
-    accessories: ["glasses"],
+    expression: ["glasses"],
     other: [],
   },
   {
@@ -151,7 +159,7 @@ const CHARACTERS = [
     img: "images/jocelyn.svg",
     hair: "black",
     eyes: "brown",
-    accessories: ["glasses"],
+    expression: ["glasses"],
     other: [],
   },
   {
@@ -159,7 +167,7 @@ const CHARACTERS = [
     img: "images/jon.svg",
     hair: "brown",
     eyes: "green",
-    accessories: ["glasses"],
+    expression: ["glasses"],
     other: [],
   },
   {
@@ -167,7 +175,7 @@ const CHARACTERS = [
     img: "images/jordan.svg",
     hair: "yellow",
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    expression: ["glasses", "hat"],
     other: [],
   },
   {
@@ -175,31 +183,7 @@ const CHARACTERS = [
     img: "images/josephine.svg",
     hair: "grey",
     eyes: "brown",
-    accessories: [],
-    other: [],
-  },
-  {
-    name: "Josh",
-    img: "images/josh.svg",
-    hair: "yellow",
-    eyes: "green",
-    accessories: [],
-    other: [],
-  },
-  {
-    name: "Jude",
-    img: "images/jude.svg",
-    hair: "black",
-    eyes: "green",
-    accessories: [],
-    other: [],
-  },
-  {
-    name: "Julie",
-    img: "images/julie.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: ["glasses", "hat"],
+    expression: [],
     other: [],
   },
 ];
@@ -256,7 +240,7 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  const { name, img, hair, eyes, accessories, other } = secret;
+  const { name, img, hair, creature, eyes, expression, other } = secret;
 
   // Below we run the if statement to compare the entered value to the secret value
   if (category === "hair" || category === "eyes") {
@@ -266,7 +250,7 @@ const checkQuestion = () => {
       filterCharacters(false);
     }
   } else if (category === "accessories") {
-    if (secret.accessories.includes(value)) {
+    if (secret.expression.includes(value)) {
       filterCharacters(true);
     } else {
       filterCharacters(false);
@@ -284,7 +268,7 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
-  if (category === "accessories") {
+  if (category === "expression") {
     if (keep) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}!`

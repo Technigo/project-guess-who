@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #e5fd0d;
-  --secondary: #303628;
+  --primary: #fff349;
+  --secondary: #fffed2;
 }
 
 body {
@@ -78,6 +78,11 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+}
+.card img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .card .guess {

@@ -258,23 +258,24 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
+  let keep = false
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    if (value === secret.hair || value === secret.eyes) {
-      filterCharacters(true)
+    if (value === secret[category]) {
+      keep = true
     } else {
-      filterCharacters(false)
+      keep = false
     }
   } else if (category === 'accessories' || category === 'other') {
-    if (value === secret.accessories || value === secret.other) {
-    filterCharacters(true)
+    if (secret[category].includes(value)) {
+    keep = true
   } else {
-    filterCharacters(false)
+    keep = false
   }
 }
+filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -312,34 +313,19 @@ const filterCharacters = (keep) => {
     }
 
     // Conditionals for filtering by category to keep or remove based on keep variable
-  
-    // if (category === 'hair' || category === 'eyes') {
-    //   if (keep) {
-    //     charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-    //   } else {
-    //     charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-    //   }
-    // } else if (category === 'accessories' || category === 'other') {
-    //   if (keep) {
-    //     charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    //   } else {
-    //     charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-    //   }
-    // }
-
-
-    if (category === 'accessories' || category === 'hair') {
-      if (value === secret.accessories || value === secret.other) {
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    if (category === 'hair' || category === 'eyes') {
+      if (keep) {
+        charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       } else {
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       }
   
-      } else if (category === 'other' || category === 'eyes') {
-        if (value === secret.hair || value === secret.eyes) {
-          charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      } else if (category === 'accessories' || category === 'other') {
+        if (keep) {
+
+          charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
         } else {
-          charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+          charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
         }
       }
 

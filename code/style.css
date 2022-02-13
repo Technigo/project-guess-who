@@ -238,6 +238,11 @@ button {
     display: none;
   }
 
+  .card:hover img,
+  .card:hover p {
+    display: flex;
+  }
+
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;

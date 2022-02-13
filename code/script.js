@@ -9,12 +9,12 @@ const playAgain = document.getElementById('playAgain');
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
+    name: 'Fish of the day',
     img: 'images/fish1.svg',
     scale: 'greens',
     expression: ['expressionless'],
     shape: 'average',
-    other: []
+    age: 'middleage',
   },
   {
     name: 'Billie EiFish',
@@ -23,15 +23,15 @@ const CHARACTERS = [
     expression: 'sad',
     shape: 'average',
     accessories: ['hat'],
-    other: []
+    age: 'young',
   },
   {
-    name: 'Leonardi Di carp rio',
+    name: 'Leonardo Di carp rio',
     img: 'images/fish3.svg',
     scale: 'blue',
     expression: 'sad',
     shape: 'average',
-    other: ['smoker']
+    age: 'middleage',
   },
   {
     name: 'Legend',
@@ -39,7 +39,7 @@ const CHARACTERS = [
     scale: 'grey',
     expression: 'expressionless',
     shape: 'long',
-    other: []
+    age: 'old',
   },
   {
     name: 'Gammelgäddan Jr',
@@ -47,7 +47,7 @@ const CHARACTERS = [
     scale: 'green',
     expression: 'sneaky',
     shape: 'long',
-    other: []
+    age: 'middleage',
   },
   {
     name: 'Flounder',
@@ -55,112 +55,112 @@ const CHARACTERS = [
     scale: 'yellow',
     expression: 'happy',
     shape: 'round',
-    other: []
+    age: 'young',
   },
   {
-    name: 'Jana',
+    name: 'Rust',
     img: 'images/fish7.svg',
     scale: 'red',
     expression: 'astonished',
     shape: 'average',
-    other: []
+    age: 'old',
   },
   {
-    name: 'Jane',
+    name: 'Berra',
     img: 'images/fish8.svg',
     scale: 'yellow',
     expression: 'sad',
     shape: 'round',
-    other: []
+    age: 'middleage',
   },
   {
-    name: 'Jaqueline',
+    name: 'Skippy',
     img: 'images/fish9.svg',
     scale: 'black',
     expression: 'expressionless',
     shape: 'average',
-    other: []
+    age: 'middleage',
   },
 
   {
-    name: 'Jazebelle',
+    name: 'SeaBastian',
     img: 'images/fish10.svg',
     scale: 'green',
     expression: 'expressionless',
     shape: 'averages',
-    other: ['smoker']
+    age: 'middleage',
   },
   {
-    name: 'Jean',
+    name: 'Bingo',
     img: 'images/fish11.svg',
     scale: 'yellow',
     expression: 'happy',
     shape: 'round',
-    other: ['smoker']
+    age: 'middleage',
   },
   {
-    name: 'Jeane',
+    name: 'Gradient',
     img: 'images/fish12.svg',
     scale: 'red',
     expression: 'happy',
     shape: 'average',
-    other: []
+    age: 'middleage',
   },
   {
-    name: 'Jed',
+    name: 'Balloon',
     img: 'images/fish13.svg',
     scale: 'blue',
     expression: 'expressionless',
     shape: 'round',
-    other: ['smoker']
+    age: 'middleage',
   },
   {
-    name: 'Jenni',
+    name: 'Gordon',
     img: 'images/fish14.svg',
     scale: 'yellow',
     expression: 'sad',
     shape: 'average',
-    other: []
+    age: 'middleage',
   },
   {
-    name: 'Jeri',
+    name: 'Pixelfish',
     img: 'images/fish15.svg',
     scale: 'orange',
     expression: 'experssionless',
     shape: 'average',
-    other: []
+    age: 'old',
   },
   {
-    name: 'Jerry',
+    name: 'Legfish',
     img: 'images/fish16.svg',
     scale: 'yellow',
     expression: 'experssionless',
     shape: 'long',
-    other: []
+    age: 'middleage',
   },
   {
-    name: 'Jess',
+    name: 'Bubble Bob',
     img: 'images/fish17.svg',
     scale: 'blue',
     expression: 'sneaky',
     shape: 'round',
-    other: []
+    age: 'middleage',
   },
   {
-    name: 'Jocelyn',
+    name: 'Seabra',
     img: 'images/fish18.svg',
     scale: 'black',
     expression: 'expressionless',
     shape: 'average',
-    other: []
+    age: 'middleage',
   },
   {
-    name: 'Jon',
+    name: 'Lurk',
     img: 'images/fish19.svg',
     scale: 'green',
     expression: 'astonished',
     shape: 'round',
-    other: []
+    age: 'old',
   },
   {
     name: 'Tuna Turner',
@@ -168,7 +168,7 @@ const CHARACTERS = [
     scale: 'blue',
     expression: 'expresionless',
     shape: 'long',
-    other: []
+    age: 'old',
   },
   {
     name: 'Gammelgäddan',
@@ -176,31 +176,31 @@ const CHARACTERS = [
     scale: 'green',
     expression: 'sneaky',
     shape: 'long',
-    other: []
+    age: 'old',
   },
   {
-    name: 'Josh',
+    name: 'Mega Pirana',
     img: 'images/fish22.svg',
     scale: 'blue',
     expression: 'sneaky',
     shape: ['round'],
-    other: []
+    age: 'old',
   },
   {
-    name: 'Jude',
+    name: 'Orangina',
     img: 'images/fish23.svg',
     scale: 'orange',
     expression: 'astonished',
     shape: ['round'],
-    other: []
+    age: 'young',
   },
   {
-    name: 'Julie',
+    name: 'Nemo',
     img: 'images/fish24.svg',
     scale: 'orange',
     expression: 'sad',
     shape: 'average',
-    other: []
+    age: 'young',
   },
 ]
 
@@ -266,7 +266,7 @@ const checkQuestion = () => {
 
 	// Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
 	// See if we should keep or remove people based on that and then invokes filterCharacters
-	if (category === "scale" || "expression" || "shape" || "other") {
+	if (category === "scale" || "expression" || "shape" || "age") {
 		if (secret[currentQuestion.category].includes(currentQuestion.value)) {
 			//true
 			filterCharacters(true);
@@ -301,7 +301,7 @@ const filterCharacters = (keep) => {
     }
 
     
-  } else if (category === "other") {
+  } else if (category === "age") {
     // Similar to the one above
     if (keep) {
 			alert(`Yes, the fish is ${label}! Keep all fish that is ${label}`);

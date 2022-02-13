@@ -16,15 +16,18 @@
 
       <img
         class="guess-who-icon"
-        src="images/guess-who-bubble.png"
+        src="images/reed.svg"
         alt="Guess Who"
       />
 
-      <h1>Does the fish have</h1>
+      <h1>Which fish <br> is hiding <br> in the reed?</h1>
 
       <select id="questions">
+        
+        <option selected="true" disabled="disabled">Does the fish...</option>    
 
         <optgroup id="optscale" class="options" label="scale">
+        
           
           <option value="black">black</option>
           <option value="yellow">yellow</option>
@@ -63,6 +66,15 @@
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
 
+        <optgroup id="optage" class="options" label="age">
+
+          <option value="young">young</option>
+          <!-- Add the other accessory option here. (hat)  -->
+          <option value="middleage">middleage</option>
+          <option value="old">old as the sea</option>
+          <!-- Add the other accessory option here. (hat)  -->
+        </optgroup>
+
 
       </select>
 
@@ -81,7 +93,7 @@
       <div class="win-or-lose">
         <img
           class="guess-who-icon"
-          src="images/guess-who-bubble.png"
+          src="images/reed.svg"
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>

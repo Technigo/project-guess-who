@@ -42,7 +42,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 300px;
 }
 
 .board-wrapper {
@@ -92,6 +92,7 @@ select {
 }
 
 .card:hover {
+
   box-shadow: 0 0 5px #1c77e0, 0 0 5px #1c77e0, 0 0 10px #1c77e0;
 }
 
@@ -130,8 +131,8 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
+  color: white;
+  
 }
 
 .filled-button,
@@ -171,7 +172,7 @@ button {
 
 .win-or-lose img {
   align-self: flex-start;
-  margin-left: 15%;
+  margin-left: 30%;
 }
 
 .win-or-lose h1 {

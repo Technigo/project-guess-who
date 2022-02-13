@@ -8,14 +8,6 @@
   --secondary: rgb(255, 255, 255);
 }
 
-.image {
-    width: 40px;
-    height: 40px;
-    float: right;
-    margin-top: -35px;
-    margin-right: -35px;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -37,6 +29,14 @@ h2 {
 
 .title-blue {
   color: var(--primary);
+}
+
+.cross-mark {
+  width: 40px;
+  height: 40px;
+  float: right;
+  margin-top: -35px;
+  margin-right: -35px;
 }
 
 .emoji {
@@ -210,16 +210,15 @@ h2 {
   justify-content: center;
   align-items: center;
   font-weight: 600;
-  border-radius: 50px;
   background-color: transparent;
-  border: none;
   cursor: pointer;
+  border: none;
   font-size: 17px;
   color: yellow;
 }
 
 .restart-button:hover {
-  text-decoration: underline;
+  color: rgb(250, 238, 74);
 }
 
 .question-buttons-wrapper {

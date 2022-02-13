@@ -1,27 +1,36 @@
 const gameBoard = document.getElementById("board");
-const questions = document.getElementById("questions");
-const questionSection = document.getElementById("questionSection")
+const questionSection = document.getElementById("questionSection");
 const questionsOptions = document.querySelectorAll(".questions-options");
 const totalGuesses = document.getElementById("totalGuesses");
 const restartButton = document.getElementById("restart");
 const playAgainButton = document.getElementById("playAgain");
 const winOrLoseWrapper = document.querySelector(".win-or-lose-wrapper");
 const winOrLoseText = document.getElementById("winOrLoseText");
-const alertMessageText = document.getElementById("alertMessage")
+const alertMessageText = document.getElementById("alertMessage");
+const messageWrapper = document.getElementById("message");
+const crossMark = document.getElementById("crossMark");
 
 const characters = [
   {
+    name: "Joe",
+    img: "images/joe.svg",
+    hair: "brunette",
+    eyes: "brown",
+    accessories: ["hats"],
+    other: []
+  },
+  {
     name: "Jaqueline",
     img: "images/jaqueline.svg",
-    hair: "orange",
+    hair: "red",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["glasses", "jewelry"],
     other: []
   },
   {
     name: "Jerry",
     img: "images/jerry.svg",
-    hair: "hidden",
+    hair: "covered",
     eyes: "blue",
     accessories: ["hats"],
     other: []
@@ -29,7 +38,7 @@ const characters = [
   {
     name: "Jack",
     img: "images/jack.svg",
-    hair: "hidden",
+    hair: "covered",
     eyes: "blue",
     accessories: ["hats"],
     other: []
@@ -45,9 +54,9 @@ const characters = [
   {
     name: "Jacques",
     img: "images/jacques.svg",
-    hair: "grey",
+    hair: "white",
     eyes: "blue",
-    accessories: ["hats"],
+    accessories: [],
     other: ["smoker"]
   },
   {
@@ -61,15 +70,15 @@ const characters = [
   {
     name: "Jabala",
     img: "images/jabala.svg",
-    hair: "hidden",
-    eyes: "covered",
-    accessories: ["sunglasses", "hats"],
+    hair: "covered",
+    eyes: "hidden",
+    accessories: ["sunglasses"],
     other: []
   },
   {
     name: "Jake",
     img: "images/jake.svg",
-    hair: "yellow",
+    hair: "blonde",
     eyes: "green",
     accessories: ["glasses"],
     other: []
@@ -77,7 +86,7 @@ const characters = [
   {
     name: "Jodi",
     img: "images/jodi.svg",
-    hair: "yellow",
+    hair: "blonde",
     eyes: "blue",
     accessories: ["hats"],
     other: []
@@ -93,8 +102,8 @@ const characters = [
   {
     name: "Jane",
     img: "images/jane.svg",
-    hair: "yellow",
-    eyes: "covered",
+    hair: "blonde",
+    eyes: "hidden",
     accessories: ["sunglasses"],
     other: []
   },
@@ -109,7 +118,7 @@ const characters = [
   {
     name: "Jean",
     img: "images/jean.svg",
-    hair: "brown",
+    hair: "brunette",
     eyes: "blue",
     accessories: ["glasses", "hats"],
     other: ["smoker"]
@@ -117,15 +126,15 @@ const characters = [
   {
     name: "Jolee",
     img: "images/jolee.svg",
-    hair: "brown",
+    hair: "brunette",
     eyes: "blue",
-    accessories: [],
+    accessories: ["jewelry"],
     other: []
   },
   {
     name: "Jeane",
     img: "images/jeane.svg",
-    hair: "brown",
+    hair: "brunette",
     eyes: "green",
     accessories: ["glasses"],
     other: []
@@ -133,7 +142,7 @@ const characters = [
   {
     name: "Jed",
     img: "images/jed.svg",
-    hair: "orange",
+    hair: "red",
     eyes: "green",
     accessories: ["glasses", "hats"],
     other: ["smoker"]
@@ -141,8 +150,8 @@ const characters = [
   {
     name: "Jenni",
     img: "images/jenni.svg",
-    hair: "grey",
-    eyes: "covered",
+    hair: "white",
+    eyes: "hidden",
     accessories: ["hats"],
     other: []
   },
@@ -151,13 +160,13 @@ const characters = [
     img: "images/jana.svg",
     hair: "black",
     eyes: "hidden",
-    accessories: ["sunglasses"],
+    accessories: ["sunglasses", "jewelry"],
     other: []
   },
   {
     name: "Jeri",
     img: "images/jeri.svg",
-    hair: "orange",
+    hair: "red",
     eyes: "green",
     accessories: ["glasses"],
     other: []
@@ -175,37 +184,29 @@ const characters = [
     img: "images/jocelyn.svg",
     hair: "black",
     eyes: "brown",
-    accessories: ["glasses"],
-    other: []
-  },
-  {
-    name: "Jon",
-    img: "images/jon.svg",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["glasses", "jewelry"],
     other: []
   },
   {
     name: "Jordan",
     img: "images/jordan.svg",
-    hair: "yellow",
-    eyes: "covered",
-    accessories: ["sunglasses", "hats"],
+    hair: "blonde",
+    eyes: "hidden",
+    accessories: ["sunglasses", "hats", "jewelry"],
     other: []
   },
   {
     name: "Josephine",
     img: "images/josephine.svg",
-    hair: "grey",
+    hair: "white",
     eyes: "brown",
-    accessories: [],
+    accessories: ["jewelry"],
     other: []
   },
   {
     name: "Josh",
     img: "images/josh.svg",
-    hair: "yellow",
+    hair: "blonde",
     eyes: "green",
     accessories: [],
     other: []
@@ -233,14 +234,6 @@ let secretCharacter;
 let currentQuestion;
 let charactersInPlay;
 let timerInterval;
-
-const message = document.getElementById("message");
-const icon = document.getElementById("icon");
-
-
-icon.onclick = function () {
-  message.style.display = "none";
-};
 
 // Draw the game board
 const generateBoard = () => {
@@ -305,7 +298,7 @@ const filterCharacters = (currentQuestion) => {
   generateBoard();
   guessCount++
   totalGuesses.innerHTML = `Number of guesses: ${guessCount}`
-  message.style.display = "block";
+  messageWrapper.style.display = "block";
 }
 
 const alertMessage = (keepCharacter) => {
@@ -391,4 +384,5 @@ selectQuestion()
 
 // All the event listeners
 restartButton.addEventListener("click", startGame);
-playAgainButton.addEventListener("click", () => window.location.reload())
+playAgainButton.addEventListener("click", () => window.location.reload());
+crossMark.addEventListener("click", () => messageWrapper.style.display = "none");

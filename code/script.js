@@ -243,6 +243,8 @@ const start = () => {
   charactersInPlay = CHARACTERS
   setSecret()
   generateBoard()
+  count = 0
+  document.getElementById('count').innerHTML = `${count}`
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -258,7 +260,8 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  document.getElementById('count').innerHTML = count += 1
+  count+=1
+  document.getElementById('count').innerHTML = `${count}`
   if (category === "hair" || category === "eyes") {
 		if (secret.category === value) {
 			filterCharacters(true);
@@ -367,10 +370,11 @@ const checkMyGuess = (personToCheck) => {
 }
 
 // Invokes the start function when website is loaded
-start()
+start() 
 
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
+
 

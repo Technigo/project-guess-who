@@ -393,6 +393,9 @@ const checkMyGuess = (personToCheck) => {
   winOrLose.style.display = "flex"
   board.style.display = "none"
   questionSection.style.display = "none"
+  questionCounter.innerHTML = `
+  Number of guesses: 0
+  `
 }
 
 

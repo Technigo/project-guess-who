@@ -243,15 +243,15 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
-  const value = questions.options[questions.selectedIndex].value
+  const category = questions.options[questions.selectedIndex].parentNode.label
 
   // We also need a variable that stores the actual value of the question we've selected.
-  const label = questions.options[questions.selectedIndex].label
+  const value = questions.options[questions.selectedIndex].value
 
   // Storing the label for the value to be used in the alerts later. 
+  const label = questions.options[questions.selectedIndex].label
 
   currentQuestion = {
     category: category,

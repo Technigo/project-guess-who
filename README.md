@@ -1,15 +1,13 @@
-# Project Name
+# Project Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week's assignment was to create a digital version of the classic board game Guess Who.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Most of the CSS and HTML code was already set up for us when we started working with this project, so we could focus more on the JavaScript part which included creating objects and using array methods like filter() and include(), among other things.
+
+If I had more time, I would add some more sound effects, for example when the player wins or loses. I would also try to make the "Time played" show hours, minutes and seconds instead of just seconds.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
-
-https://cranky-turing-e017a1.netlify.app
+https://jessicas-guess-who-project.netlify.app

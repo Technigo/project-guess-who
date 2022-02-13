@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Poppins:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -26,8 +27,7 @@
       <!-- </div> -->
     </section>
 
-    <!-- FIX THIS? OK TO HAVE THE MAIN ELEMENT IN TWO PLACES? -->
-    <main id="gameWindow" class="game-window">
+    <section id="gameWindow" class="game-window">
 
      <!-- QUESTION SECTION WITH RESTART BUTTON -->  
     <aside class="question-section">
@@ -42,7 +42,6 @@
       <h1>Does the person have</h1>
 
       <select id="questions">
-
         <!-- HAIR COLOR -->
         <optgroup label="hair">
           <option value="brown">brown hair?</option>
@@ -65,22 +64,22 @@
 
         <!-- ACCESSORIES -->
         <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <option value="hat">hat</option>
-          <option value="parrot">a parrot</option>
-          <option value="jewelry">jewelry</option>
+          <option value="glasses">glasses?</option>
+          <option value="hat">hat?</option>
+          <option value="jewelry">jewelry?</option>
         </optgroup>
 
         <!-- OTHER ATTRIBUTES -->
         <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+          <option value="smoker">a smoking habit?</option>
+          <option value="parrot">a parrot?</option>
         </optgroup>
       </select>
 
       <!-- FIND OUT BUTTON, GUESS COUNTER AND TIMER -->
 
       <button id="filter" class="filled-button filter-button">FIND OUT</button>
-      <p>Number of questions asked: <span id="totalGuesses"></span></p>
+      <p>Questions asked: <span id="totalQuestions"></span></p>
       <p>Time played: <span id="timer"></span></p>
 
       <!-- Position this one better -->
@@ -94,7 +93,7 @@
       <main class="game-board" id="board"></main>
     </section>
 
-    </main>
+    </section>
 
     <!-- WIN OR LOSE WRAPPER-->
 

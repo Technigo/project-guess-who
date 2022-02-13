@@ -1,10 +1,4 @@
 /* Global css variables used for colors */
-/* :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff; 
-  --third: #FAEDC6;
-} */
-
 :root {
   --primary: #FABB51;
   --secondary: #008080; 
@@ -15,11 +9,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  /* font-family: 'Montserrat', sans-serif; */
-  /* Change font-family? */
-  /* font-family: Italiana, serif; */
   font-family: 'Poppins', sans-serif;
-  /* Changed the background color */
   background-color: var(--secondary);
 }
 
@@ -65,17 +55,16 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: 'Poppins';
+  font-size: 20px;
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
-  /* Added some extra padding */
   padding: 3px;
 }
 
 .filled-button {
-  margin: 20px auto; /*Keep it centered or delete this?*/
+  margin: 20px auto;
 }
 
 .filter-button {
@@ -94,6 +83,7 @@ select {
 
 .zapslat {
   font-size: smaller;
+  padding-top: 80px;
 }
 
 .guess-who-icon {
@@ -176,8 +166,8 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bolder;
   padding: 17px 27px;
   cursor: pointer;
 }
@@ -260,6 +250,11 @@ button {
 
   .guess-who-icon {
     width: 51px;
+  }
+
+  .zapslat {
+    padding-top: 20px;
+    font-size: x-small;
   }
 
   .board-wrapper {

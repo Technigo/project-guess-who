@@ -1,13 +1,11 @@
 # Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Guess Who Game
 
 ## The problem
+The task was to create our own digital version of the classic board game Guess Who. In order to achieve the requirements to the website should be able to:
+Set a secret person for each round that you should guess on. Dependent on which attributes you chose, the game should filter out possible candidates that could be the secret person. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
-
+If I would do this again I would start earlier and put more time to make it responsive and look good in all devices. 
+ 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Netlify link: https://keen-poincare-339909.netlify.app/

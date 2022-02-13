@@ -240,9 +240,8 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the winningCharacter (the secret one)
 const setWinningCharacter = () => {
-  winningCharacter =
-    charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-};
+  winningCharacter = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+}
 
 // Function that close the start overlay
 const closeOverlay = () => {
@@ -262,25 +261,23 @@ const start = () => {
   findOutButton.disabled = false;
   guessCount = 0;
   guessCounter.innerHTML = guessCount;
-};
+}
 
 // Setting the currentQuestion object when something is selected in the dropdown menu
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.options[questions.selectedIndex].value;
-
   currentQuestion = {
     category: category,
     value: value,
   };
 };
 
-// Function invoked when you click on 'Find Out' button --> A function that first update guesses and see if the player still has guesses left
+// Function invoked when you click on 'Find Out' button --> A function that first update guesses and see if the player still has guesses left and then invoke the checkQuestion-function
 const updateGuesses = () => {
   guessCount++ //increments the guess count
-  // guessCounter.innerHTML = `Guesses made: ${guessCount}`;
 
-  if (guessCount > 5) {
+  if (guessCount > 4) {
     popUp.style.display = "flex";
     popUp.style.background = "#5F9DA0";
     popUpQuestionText.innerHTML = "OH, you have made your questions. <br/>You have to guess now!";
@@ -294,8 +291,6 @@ const updateGuesses = () => {
 
 // Function invoked if the user still has guesses left --> Compare the currentQuestion object with the secret person
 const checkQuestion = () => {
-  // guessCount++ //increments the guess count
-  // guessCounter.innerHTML = `Guesses made: ${guessCount}`;
   
   if (
     currentQuestion.category === "hair" ||

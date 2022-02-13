@@ -349,7 +349,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        `No, ${value} was wrong! Remove all people that accessory.`
+        `No, ${value} was wrong! Remove all people with that accessory.`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }

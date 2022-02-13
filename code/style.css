@@ -163,9 +163,10 @@ select:hover {
   width: 90%;
 }
 
+
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--tertiary);
+  border: 2px solid var(--secondary);
   border-radius: 50px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -181,7 +182,6 @@ button {
 .outlined-button {
   border: 2px solid white;
   background: transparent;
-  /*background-color: var(--primary);*/
   color: white;
   align-self: flex-end;
 }
@@ -195,8 +195,9 @@ button {
 .filled-button:hover {
   background-color: white;
   border-color: white;
-  color: var(--tertiary);
+  color: var(--secondary);
 }
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -236,6 +237,8 @@ video {
   margin-right: 2rem;
 }
 
+
+/****** MEDIA QUERY FOR MOBILE ******/
 @media (max-width: 768px) {
   body {
     flex-direction: column;

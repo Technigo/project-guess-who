@@ -4,7 +4,7 @@ The assigment for this project was to build a Guess Who-game using objects and a
 
 ## The problem
 
-In this project i found it most difficult know how to pass the right arguments to to nextcoming function. If i would have had more time I would have trie to add a counterfunction.
+In this project i found it most difficult how how to pass the right arguments to to nextcoming function, i understood it better by "trial and error". I used sweetalert to replace the wimndows alert function, howevere i couldn´t make it work for the confirmboxes, if i would have had more time i would have worked on that.
 
 ## View it live
 

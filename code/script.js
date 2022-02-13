@@ -6,6 +6,7 @@ const findOutButton = document.getElementById('filter')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const winOrLoseWrapper = document.getElementById('winOrLose')
 const playAgainButton = document.getElementById('playAgain')
+const gussesMade= document.getElementById('counter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [{
@@ -182,6 +183,9 @@ const CHARACTERS = [{
 let secret
 let currentQuestion
 let charactersInPlay
+let counterVal = 0
+
+
 
 // Draw the game board
 
@@ -205,6 +209,20 @@ const setSecret = () => {
 	secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+//function for counting questions, reseting them and updating the counter
+function incrementClick() {
+	updateDisplay(++counterVal)
+  }
+  
+  function resetCounter() {
+	counterVal = 0;
+	updateDisplay(counterVal)
+  }
+  
+  function updateDisplay(val) {
+	gussesMade.innerHTML = val
+  }
+
 // This function to start (and restart) the game
 const start = () => {
 	console.log("start working")
@@ -217,6 +235,8 @@ const start = () => {
 	//soundfunction
 	introsound()
 	Swal.fire("Oh no!! <br> Yesterday someone left a Döner in the park, now it´s gone! Which dog ate it?")//customed alertbox from sweetalert
+    // function to reset counter
+	resetCounter()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -233,7 +253,9 @@ const selectQuestion = () => {
 }
 // Function invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+	incrementClick()
 	console.log("checkquestion working")
+
 	const {
 		category,
 		value
@@ -329,7 +351,7 @@ const guess = (personPicked) => {
 	}
 
 }
-// Checks the answer, sends a message to player and hides the board.
+// Checks the answer, sends a message to player 
 const checkMyGuess = (answer) => {
 	
 	if (answer === secret.name) {
@@ -340,9 +362,9 @@ const checkMyGuess = (answer) => {
 		loosingsound()
 		
 	}
-	
+	//shows winning message
 	winOrLose.style.display = 'flex'
-	
+	//hides board
 	board.style.display = 'none'
 }
 

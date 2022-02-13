@@ -31,8 +31,8 @@ const CHARACTERS = [
     img: 'images/Bane.jpg width="135px"',
     hair: 'bald',
     eyes: 'blue',
-    superpower: [''],
-    other: ['villian']
+    superpower: ['feerless','super-sanity'],
+    other: ['villain']
   },
   {
     name: 'Batman',
@@ -277,7 +277,7 @@ const checkQuestion = () => {
   if (category === 'hair' || category === 'eyes') {
       keep = secret[category] === value
   } else if (category === 'superpower' || category === 'other') {
-      keep = secret[category].includes(value)
+      keep = secret[category] === value
   }
   filterCharacters(keep);
 }
@@ -310,10 +310,10 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'superpower') {
     if (keep) {
-      alert(`Good choice, the person wears ${value}! Keep all that wears ${value}.`
+      alert(`Good choice, the person has ${value}! Keep all that has ${value}.`
       )
     } else {
-      alert(`Sorry, the person doesn't wears ${value}. Remove all that wears ${value}.`
+      alert(`Sorry, the person doesn't has ${value}. Remove all that has ${value}.`
       )
     }
   } else if (category === 'other') {

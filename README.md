@@ -1,12 +1,10 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Developing the Guess who game with further style and apply the neccesary code to rebuild the game
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I used several methods and functions to make the game as wanted. Got some ideas from fellow students
 
 ## View it live
 

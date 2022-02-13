@@ -1,13 +1,13 @@
-# Project Name
+# Guess Who Game
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Second week with Javascript on the course. Week 5 assignment was to create a boardgame of the classical "Guess Who" game. 
+We got all the characters in an array and starting code.  
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The hardest part was to connect all the functions to each other and figure out what kind of information the game needed next to be able to move forward in the structure. The keep function that keeps the characters in play if you guessed right and the setup for how to hide the last screen (You won/You lost) if player wants to restart the game where extra tricky. If I had more time I would haveadded some styling, used other characters and take a deep dive in the media queries for the drowpdown menu (Select). 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Here you can see the game on Netlify
+https://guess-who-week5.netlify.app/

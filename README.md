@@ -1,13 +1,13 @@
-# Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+# Project 'Guess Who'
+The assignment was to build a website with the classic game 'Guess Who'. We had default HTML and CSS to begin with so the focus was to continue with the javaScript-file. The website should at least include the following: Generating game-board, randomly selecting secret person, dropdown with attributes that player can choose from, feedback with alerts and ability to guess on a person and getting response if it's the right person or not.
 
 ## The problem
+I started with reading through the existing code and figuring out what it did and what features it included in the actual website. Then I followed the recommended steps one by one starting with generating the board and ending with making the player able to play again after a completed game.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I used a lot of conditionals, since it is a game where people will be filtered out depending on attributes. I stored the players choices in variables, added functions that for example filtered people and keeped depending on conditionals. I added some eventlisteners for buttons and some alerts to give the player feedback.
+
+If I had more time, I would add a welcome-screen with a hello-message and a form where the player can write their name. I would also add a timer and a number of guesses. Lastly I would add some personal design and change the images, and add some sound effects.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://eager-dijkstra-7a4c8b.netlify.app/

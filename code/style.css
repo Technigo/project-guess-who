@@ -222,7 +222,11 @@ button {
   }
 
   .win-or-lose h1 {
-    margin: 10p;
+    margin: 8p;
+  }
+
+  .win-or-lose-wrapper {
+    position: sticky;
   }
 
   .card {

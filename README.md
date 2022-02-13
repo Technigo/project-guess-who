@@ -1,13 +1,10 @@
-# Project Name
+# Guess who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks peoject was to learn more about javaScript. The project was to make a game that workes like the classic game guess who with help of different functions and conditional statments etc.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I used the code and layout we got with the assignment and concentrated on learning more about the javaScript, the functions,objects,arrays,loops and scopes etc. I google a lot and asked for help in my team and at townhall session.
 
-## View it live
+## View it live on Netlify
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

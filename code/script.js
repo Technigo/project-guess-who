@@ -377,7 +377,7 @@ const checkMyGuess = (personToConfirm) => {
   
 }
 
-// Invokes the start function when website is loaded
+// Invokes the start function when website is loade
 start()
 
 // All the event listeners

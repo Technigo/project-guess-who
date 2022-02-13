@@ -260,19 +260,17 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  count+=1
-  document.getElementById('count').innerHTML = `${count}`
   if (category === "hair" || category === "eyes") {
-		if (secret.category === value) {
-			filterCharacters(false);
-		} else {
+		if (secret[category] === value) {
 			filterCharacters(true);
+		} else {
+			filterCharacters(false);
 		}
 	} else if (category === "accessories" || category === "other") {
-		if (secret[category].includes(value) === value) {
-			filterCharacters(false);
-		} else {
+		if (secret[category].includes(value)) {
 			filterCharacters(true);
+		} else {
+			filterCharacters(false);
 		}
 	}
 }
@@ -316,7 +314,7 @@ const filterCharacters = (keep) => {
             `No, the person doesn't have ${value} hair! Remove all people who don't have ${value} hair`
           )
         }
-    } else if (category === 'eyes') {
+    } else {
       if (keep) {
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value) 
         alert(

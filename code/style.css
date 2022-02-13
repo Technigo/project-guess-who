@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  position: relative;
 }
 
 h1 {
@@ -40,8 +41,14 @@ select {
   margin: 24px 0;
 }
 
-.guess-who-icon {
+.guess-who-icon,
+.win-or-lose .guess-who-icon {
   width: 126px;
+  margin-left: 15%;
+}
+
+.counter-text {
+  margin-top: 24px;
 }
 
 .board-wrapper {
@@ -145,6 +152,31 @@ button {
   color: var(--primary);
 }
 
+/******* POP UP *******/
+.pop-up {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  background-color: var(--secondary);
+  color: #FFF;
+  border: 3px solid #000;
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 10;
+  display: none;
+  text-align: center;
+  width: 24rem;
+  margin-left: -12rem;
+}
+
+.overlay {
+  background-color: rgba(51, 51, 51, 0.644);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
@@ -157,6 +189,7 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
+  position: fixed;
 }
 
 .win-or-lose {
@@ -170,11 +203,22 @@ button {
 
 .win-or-lose img {
   align-self: flex-start;
-  margin-left: 15%;
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+.win-or-lose p {
+  font-size: 20px;
+  font-weight: 300;
+  color: #FFF;
+  margin: 0 0 10px;
+}
+
+.secret-person-image {
+  height: 200px;
+  margin: 0 auto 24px;
 }
 
 @media (max-width: 768px) {

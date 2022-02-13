@@ -354,7 +354,6 @@ const checkMyGuess = (personToCheck) => {
     top: 0,
     behavior: "smooth",
   })
-  resultWrapper.style.height = document.body.scrollHeight + "px"
   resultWrapper.classList.add("active")
   if (personToCheck === secret.name) {
     winOrLose.style.display = 'flex'

@@ -8,4 +8,4 @@ I used several methods and functions to make the game as wanted. Got some ideas 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://determined-ptolemy-96de77.netlify.app

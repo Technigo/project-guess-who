@@ -1,12 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Project for week number 5 at Technigo Bootcamp - to make a Guess who game!
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This is our second project with Javascript and I struggled a lot with it. I've been reading a lot and watching a lot of videos about Javascript. I'm so proud I made it!
+If I would have had more time I would have changed the images etc but with the time I had I'm glad anyway. 
 
 ## View it live
 

@@ -163,7 +163,7 @@ button {
   align-items: center;
   justify-content: center;
   background: var(--secondary);
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -247,10 +247,6 @@ button {
     background: white;
     color: var(--primary);
     border: none;
-  }
-
-  .win-or-lose-wrapper {
-    position: fixed;
   }
 
   /* Remove the hover effect that automatically selects card nr 2 */

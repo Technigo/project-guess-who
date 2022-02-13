@@ -8,3 +8,4 @@ I used the code and layout we got with the assignment and concentrated on learni
 
 ## View it live on Netlify
 
+https://gameboard-guess-who.netlify.app/

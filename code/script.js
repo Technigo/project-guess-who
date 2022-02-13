@@ -336,7 +336,7 @@ const checkQuestion = () => {
       filterCharacters(false);
     }
   } else if (category === "background") {
-    if (secret.expression.includes(value)) {
+    if (secret.background.includes(value)) {
       filterCharacters(true);
     } else {
       filterCharacters(false);

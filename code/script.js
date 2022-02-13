@@ -22,7 +22,7 @@ const CHARACTERS = [
   {
     name: "Jabala",
     img: "images/jabala.svg",
-    hair: "hidden",
+    hair: "covered",
     eyes: "hidden",
     accessories: ["glasses", "hat"],
     other: [],
@@ -30,7 +30,7 @@ const CHARACTERS = [
   {
     name: "Jack",
     img: "images/jack.svg",
-    hair: "hidden",
+    hair: "covered",
     eyes: "blue",
     accessories: ["hat"],
     other: [],
@@ -143,7 +143,7 @@ const CHARACTERS = [
   {
     name: "Jerry",
     img: "images/jerry.svg",
-    hair: "hidden",
+    hair: "covered",
     eyes: "blue",
     accessories: ["hat"],
     other: [],

@@ -248,4 +248,8 @@ button {
     color: var(--primary);
     border: none;
   }
+
+  .win-or-lose-wrapper {
+    position: fixed;
+  }
 }

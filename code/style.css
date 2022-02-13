@@ -252,4 +252,14 @@ button {
   .win-or-lose-wrapper {
     position: fixed;
   }
+
+  /* Remove the hidden picture that automatically selects card nr 2 */
+  .card:active,
+  .card:focus {
+    background-color: var(--secondary);
+  }
+  .card:hover img,
+  .card:hover p {
+    display: flex;
+  }
 }

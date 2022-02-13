@@ -279,7 +279,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-console.log(keep)
+
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {

@@ -1,13 +1,11 @@
-# Project Name
+# Guess who game
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week the assignment was to make a Guess who game with the use of JavaScript.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started with reading code from some of the earlier students. After that I went through the given code step by step to make each part work. When the basics worked I added a counter of guesses and a timer for each round. I also added sounds for when the player wins or loses. If I had more time I would have styled the game board to be something of my own and I would have changed the alerts. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://musing-northcutt-d395a1.netlify.app/

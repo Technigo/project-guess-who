@@ -163,12 +163,12 @@ button {
   align-items: center;
   justify-content: center;
   background: var(--secondary);
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  height: 100%;
 }
 
 .win-or-lose {
@@ -223,10 +223,6 @@ button {
 
   .win-or-lose h1 {
     margin: 8p;
-  }
-
-  .win-or-lose-wrapper {
-    position: sticky;
   }
 
   .card {

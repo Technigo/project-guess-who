@@ -6,7 +6,6 @@ const filterButton = document.getElementById('filter');
 const playAgain = document.getElementById('playAgain');
 const winOrLose = document.querySelector('.win-or-lose-wrapper');
 const winOrLoseText = document.getElementById('winOrLoseText');
-const guessConfirmation = document.querySelector('.confirm-guess-wrapper');
 
 
 // Array with all the characters, as objects
@@ -15,58 +14,52 @@ const CHARACTERS = [
   {
     name: 'Fishermens friend',
     img: 'images/fish_1.svg',
-    color: 'green',
-    fishmood: 'expressionless',
-    dorsalfin: 'yes',
-    shape: 'average',
-    age: ['middleage'],
+    hair: "hidden",
+		eyes: "hidden",
+		accessories: ["glasses", "hat"],
+		other: ["teeth"],
 
   },
   {
     name: 'Billie EiFish',
     img: 'images/fish_2.svg',
     color: 'black',
-    fishmood: 'sad',
-    dorsalfin: ['yes'],
-    shape: 'average',
-    age: 'middleage',
-    
+    hair: "hidden",
+		eyes: "blue",
+		accessories: ["hat"],
+		other: ["teeth", "facialHair"],
   },
   {
-    name: 'Leonardo <br>Di carp rio',
+    name: 'Leonardo Di carp rio',
     img: 'images/fish_3.svg',
-    color: 'blue',
-    fishmood: 'sad',
-    dorsalfin: ['yes'],
-    shape: 'long',
-    age: 'middleage',
+    hair: "grey",
+		eyes: "blue",
+		accessories: ["hat"],
+		other: ["smoker", "teeth", "facialHair"],
   },
   {
     name: 'The Legend',
     img: 'images/fish_4.svg',
-    color: 'grey',
-    fishmood: 'expressionless',
-    dorsalfin: ['no'],
-    shape: 'long',
-    age: 'old',
+    hair: "black",
+		eyes: "brown",
+		accessories: [],
+		other: ["teeth"],
   },
   {
     name: 'Grandpa Jr',
     img: 'images/fish_5.svg',
-    color: 'green',
-    fishmood: 'astonished',
-    dorsalfin: ['yes'],
-    shape: 'round',
-    age: 'middleage',
+    hair: "yellow",
+		eyes: "green",
+		accessories: ["glasses"],
+		other: ["teeth"],
   },
   {
     name: 'Flounder',
     img: 'images/fish_6.svg',
-    color: 'yellow',
-    fishmood: 'happy',
-    dorsalfin: ['yes'], 
-    shape: 'round',
-    age: 'young',
+    hair: "brown",
+		eyes: "green",
+		accessories: ["glasses"],
+		other: ["facialHair"],
   },
   {
     name: 'Sashimi  ',
@@ -80,156 +73,139 @@ const CHARACTERS = [
   {
     name: 'Sushi',
     img: 'images/fish_8.svg',
-    color: 'Yellow',
-    fishmood: 'sad',
-    dorsalfin: ['yes'], 
-    shape: 'round',
-    age: 'middleage',
+    hair: "black",
+		eyes: "hidden",
+		accessories: ["glasses", "jewelry"],
+		other: [],
   },
   {
     name: 'Skippy',
     img: 'images/fish_9.svg',
-    color: 'black',
-    fishmood: 'sneaky',
-    dorsalfin: 'yes', 
-    shape: 'average',
-    age: 'young',
+    hair: "yellow",
+		eyes: "hidden",
+		accessories: ["glasses"],
+		other: ["teeth"],
   },
 
   {
     name: 'SeaBastian',
     img: 'images/fish_10.svg',
-    color: 'green',
-    fishmood: 'astonished',
-    dorsalfin: 'yes', 
-    shape: 'short',
-    age: 'young',
+    hair: "orange",
+		eyes: "green",
+		accessories: ["glasses", "jewelry"],
+		other: ["teeth"],
   },
   {
     name: 'Bingo',
     img: 'images/fish_11.svg',
-    color: 'yellow',
-    fishmood: 'happy',
-    dorsalfin: ['yes'], 
-    shape: 'round',
-    age: 'young',
+    hair: "orange",
+		eyes: "green",
+		accessories: ["glasses", "jewelry"],
+		other: ["teeth"],
   },
   {
     name: 'Gradient',
     img: 'images/fish_12.svg',
-    color: 'red',
-    fishmood: 'happy',
-    dorsalfin: ['yes'], 
-    shape: 'round',
-    age: 'middleage',
+    hair: "purple",
+		eyes: "hidden",
+		accessories: ["glasses"],
+		other: ["smoker"],
   },
   {
     name: 'Balloon',
     img: 'images/fish_13.svg',
-    color: 'blue',
-    fishmood: 'expressionless',
-    dorsalfin: ['no'], 
-    shape: 'round',
-    age: 'young',
+    hair: "brown",
+		eyes: "blue",
+		accessories: ["glasses", "hat"],
+		other: ["smoker", "facialHair"],
   },
   {
     name: 'Master Chef',
     img: 'images/fish_14.svg',
-    color: 'yellow',
-    fishmood: 'sad',
-    dorsalfin: ['yes'], 
-    shape: 'average',
-    age: 'middleage',
+    hair: "brown",
+		eyes: "green",
+		accessories: ["glasses"],
+		other: ["teeth"],
   },
   {
     name: 'Pixelfish',
     img: 'images/fish_15.svg',
-    color: 'green',
-    fishmood: 'expressionless',
-    dorsalfin: ['no'], 
-    shape: 'average',
-    age: 'old',
+    hair: "orange",
+		eyes: "green",
+		accessories: ["glasses", "hat"],
+		other: ["smoker", "facialHair"],
   },
   {
     name: 'Legfish',
     img: 'images/fish_16.svg',
-    color: 'yellow',
-    fishmood: 'sneaky',
-    dorsalfin: ['no'], 
-    shape: 'average',
-    age: 'middleage',
+    hair: "white",
+		eyes: "hidden",
+		accessories: ["hat", "jewelry"],
+		other: ["teeth"],
   },
   {
     name: 'Bubble bob',
     img: 'images/fish_17.svg',
-    color: 'blue',
-    fishmood: 'sneaky',
-    dorsalfin: ['yes'], 
-    shape: 'round',
-    age: 'middleage',
+    hair: "orange",
+		eyes: "green",
+		accessories: ["glasses"],
+		other: ["teeth"],
   },
   {
     name: 'Deb',
     img: 'images/fish_18.svg',
-    color: 'black',
-    fishmood: 'astonished',
-    dorsalfin: ['no'], 
-    shape: 'round',
-    age: 'middleage',
+    hair: "hidden",
+		eyes: "blue",
+		accessories: ["hat"],
+		other: [],
   },
   {
     name: 'Lurk',
     img: 'images/fish_19.svg',
-    color: 'red',
-    fishmood: 'astonished',
-    dorsalfin: ['no'], 
-    shape: 'average',
-    age: 'middleage',
+    hair: "black",
+		eyes: "blue",
+		accessories: ["glasses"],
+		other: ["teeth"],
   },
   {
     name: 'Tuna Turner',
     img: 'images/fish_20.svg',
-    color: 'blue',
-    fishmood: 'expressionless',
-    dorsalfin: ['yes'], 
-    shape: 'long',
-    age: 'middleage',
+    hair: "black",
+		eyes: "brown",
+		accessories: ["glasses", "jewelry"],
+		other: ["teeth"],
   },
   {
     name: 'Grandpa',  
     img: 'images/fish_21.svg',
-    color: 'blue',
-    fishmood: 'sneaky',
-    dorsalfin: ['yes'], 
-    shape: 'long',
-    age: 'old',
+    hair: "brown",
+		eyes: "green",
+		accessories: ["glasses"],
+		other: ["teeth"],
   },
   {
     name: 'Mega Pirana',
     img: 'images/fish_22.svg',
-    color: ['blue'],
-    fishmood: 'expressionless',
-    dorsalfin: ['yes'], 
-    shape: 'round',
-    age: 'old',
+    hair: "yellow",
+		eyes: "hidden",
+		accessories: ["glasses", "hat", "jewelry"],
+		other: [],
   },
   {
     name: 'Orangina',
     img: 'images/fish_23.svg',
-    color: 'orange',
-    fishmood: 'astonished',
-    dorsalfin: 'no', 
-    shape: 'round',
-    age: 'young',
+    hair: "grey",
+		eyes: "brown",
+		accessories: ["jewelry"],
+		other: ["teeth"],
   },
   {
     name: 'Nemo',
     img: 'images/fish_24.svg',
-    color: 'orange',
-    fishmood: 'sad',
-    dorsalfin: ['yes'], 
-    shape: 'short',
-    age: 'young',
+    hair: "grey",
+		eyes: "brown",
+		accessories: ["jewelry"],
+		other: ["teeth"],
   },
 ];
 
@@ -239,10 +215,7 @@ let currentQuestion;
 let charactersInPlay;
 
 // Draw the game board
-const generateBoard = () => {
-  board.innerHTML = '';
-  charactersInPlay.forEach((person) => {
-    board.innerHTML += `
+const generateBoard = () => { board.innerHTML = ''; charactersInPlay.forEach((person) => { board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
@@ -256,8 +229,7 @@ const generateBoard = () => {
 };
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
-  const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  const setSecret = () => { secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
   console.log(secret);
 }
 
@@ -290,6 +262,7 @@ const generateBoard = () => {
     value: value,
     label: label,
   };
+  
 };
 
 
@@ -300,8 +273,7 @@ const checkQuestion = () => {
 
 	// Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
 	// See if we should keep or remove people based on that and then invokes filterCharacters
-
-	if (category === "color" || category === "fishmood") {
+	if (category === "hair" || category === "eyes") {
 		if (secret[currentQuestion.category] === currentQuestion.value) {
 			//true
 			filterCharacters(true);
@@ -309,7 +281,7 @@ const checkQuestion = () => {
 			//false
 			filterCharacters(false);
 		}
-	} else if (category === "dorsalfin" || category === "shape") {
+	} else if (category === "accessories" || category === "other") {
 		if (secret[currentQuestion.category].includes(currentQuestion.value)) {
 			// true
 			filterCharacters(true);
@@ -323,28 +295,29 @@ const checkQuestion = () => {
 
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
+const filterCharacters = (keep) => { 
   const { category, value, label } = currentQuestion;
   // Show the correct alert message for different categories
   
-  if (category === 'color') {
+  if (category === "accessories") {
     if (keep) {
       alert(
         `Yes, the main color of the fish is ${label}! Keep all fish that has ${label}`
-      )
+      );
     } else {
       alert(
         `No, the fish doesn't have ${label} as main color! Remove all fish that has ${label} as main color`
-      )
+      );
     }
-  
-  } else if (category === 'fishmood') {
+
+  } else if (category === "other") {
     // Similar to the one above
     if (keep) {
 			alert(`Yes, the fish is ${label}! Keep all fish that is ${label}`);
+
 			charactersInPlay = charactersInPlay.filter((person) =>
 				person[category].includes(value)
-			)
+			);
   } else {
     alert(`No, the fish isn't ${label}! Remove all fish that are ${label}`);
 			charactersInPlay = charactersInPlay.filter(
@@ -353,39 +326,43 @@ const filterCharacters = (keep) => {
     }
 
 
-  } else if (category === "dorsalfin"){
+  } else if (category === "hair"){
       if (keep) {
       alert(`Yes, the fish has ${label}! Keep all fish that has ${label}`);
 			charactersInPlay = charactersInPlay.filter((person) =>
 				person[category].includes(value)
 			)
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+    
     } else {
       alert(
 				`No, the fish doesn't have ${label}! Keep all fish that has ${label}`
-			)
+			);
 			charactersInPlay = charactersInPlay.filter(
 				(person) => !person[category].includes(value)
-			)
+			);
+
     }
-  } else if (category === "shape") {
+  } else if (category === "eyes") {
 		if (keep) {
 			alert(`Yes, the fish is ${label}! Keep all fish that is ${label}`);
 			charactersInPlay = charactersInPlay.filter((person) =>
 				person[category].includes(value)
 			);
-		} else {
+		
+    } else {
 			alert(
 				`No, the persons doesn't have ${label}! Remove all people that has ${label}`
 			);
 			charactersInPlay = charactersInPlay.filter(
 				(person) => !person[category].includes(value)
-			)
+			);
     }
   }
   // Invokes the function to redraw the board with the remaining people.
+
 	generateBoard(keep);
-  };
+};
 
 
 // Determine what is the category
@@ -416,7 +393,6 @@ const guess = (personToCheck) => {
   }
   guessConfirmation.style.display = "flex";
   board.style.display = "none";
-
 };
 
   // store the interaction from the player in a variable.
@@ -446,7 +422,7 @@ start();
 
 // All the event listeners
 restartButton.addEventListener('click', start => location.reload());
-questions.addEventListener("change", () => selectQuestion);
+questions.addEventListener("change", selectQuestion);
 filterButton.addEventListener('click', checkQuestion);
-playAgain.addEventListener("click", start => location.reload());
+playAgain.addEventListener("click", start);
 

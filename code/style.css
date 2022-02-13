@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
   --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --secondary: #1c77e0;
   --background: rgb(110, 173, 255);
 }
 
@@ -92,7 +92,7 @@ select {
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  box-shadow: 0 0 5px #1c77e0, 0 0 5px #1c77e0, 0 0 10px #1c77e0;
 }
 
 .card:hover img,

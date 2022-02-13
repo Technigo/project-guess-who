@@ -15,7 +15,7 @@ const CHARACTERS = [
     creature: "dog",
     hair: "fur",
     eyes: "black",
-    expression: ["serious"],
+    expression: "serious",
     background: [],
   },
   {
@@ -24,8 +24,8 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "white",
     eyes: "blue",
-    expression: ["angry"],
-    background: ["kitten"],
+    expression: "angry",
+    background: "kitten",
   },
   {
     name: "Side Eye Chloe",
@@ -33,7 +33,7 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "blonde",
     eyes: "blue",
-    expression: ["grimace"],
+    expression: "grimacing",
     background: [],
   },
   {
@@ -42,7 +42,7 @@ const CHARACTERS = [
     creature: "cartoon",
     hair: "bold",
     eyes: "black",
-    expression: ["serious"],
+    expression: "serious",
     background: [],
   },
   {
@@ -51,7 +51,7 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "red",
     eyes: "hidden",
-    expression: ["awkward"],
+    expression: "awkward",
     background: [],
   },
   {
@@ -60,8 +60,8 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "brown",
     eyes: "blue",
-    expression: ["serious"],
-    background: ["beach"],
+    expression: "serious",
+    background: "beach",
   },
   {
     name: "Grumpy Cat",
@@ -69,7 +69,7 @@ const CHARACTERS = [
     creature: "cat",
     hair: "grey",
     eyes: "blue",
-    expression: ["angry"],
+    expression: "angry",
     background: [],
   },
   {
@@ -78,8 +78,8 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "brown",
     eyes: "blue",
-    expression: ["grimace"],
-    background: ["women"],
+    expression: "grimacing",
+    background: "women",
   },
   {
     name: "Dark Kermit",
@@ -87,7 +87,7 @@ const CHARACTERS = [
     creature: "puppet",
     hair: "green",
     eyes: "hidden",
-    expression: ["serious"],
+    expression: "serious",
     background: [],
   },
   {
@@ -96,8 +96,8 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "brown",
     eyes: "blue",
-    expression: ["smile"],
-    background: ["house"],
+    expression: "smiling",
+    background: "house",
   },
   {
     name: "Ricardo",
@@ -105,7 +105,7 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "hidden",
     eyes: "blue",
-    expression: ["smile"],
+    expression: "smiling",
     background: [],
   },
   {
@@ -114,8 +114,8 @@ const CHARACTERS = [
     creature: "dog",
     hair: "grey",
     eyes: "blue",
-    expression: ["smile"],
-    background: ["crown"],
+    expression: "smiling",
+    background: "crown",
   },
   {
     name: "Hide the Pain Harold",
@@ -123,7 +123,7 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "white",
     eyes: "blue",
-    expression: ["smile"],
+    expression: "smiling",
     background: [],
   },
   {
@@ -132,7 +132,7 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "hidden",
     eyes: "brown",
-    expression: ["serious"],
+    expression: "serious",
     background: [],
   },
   {
@@ -141,7 +141,7 @@ const CHARACTERS = [
     creature: "puppet",
     hair: "red",
     eyes: "black",
-    expression: ["awkward"],
+    expression: "awkward",
     background: [],
   },
   {
@@ -150,17 +150,17 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "blonde",
     eyes: "blue",
-    expression: ["angry"],
-    background: ["women"],
+    expression: "angry",
+    background: "women",
   },
   {
-    name: "Dark Kermit",
-    img: "images-2/dark-kermit.png",
+    name: "Tea Kermit",
+    img: "images-2/tea-kermit.png",
     creature: "puppet",
     hair: "green",
     eyes: "black",
-    expression: ["serious"],
-    background: ["tea"],
+    expression: "serious",
+    background: "tea",
   },
   {
     name: "Liam Neeson",
@@ -168,8 +168,8 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "brown",
     eyes: "blue",
-    expression: ["serious"],
-    background: ["phone"],
+    expression: "serious",
+    background: "phone",
   },
   {
     name: "Cat Being Yelled At",
@@ -177,8 +177,8 @@ const CHARACTERS = [
     creature: "cat",
     hair: "white",
     eyes: "blue",
-    expression: ["grimace"],
-    background: ["salad"],
+    expression: "grimacing",
+    background: "salad",
   },
   {
     name: "Bad Luck Brian",
@@ -186,7 +186,7 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "red",
     eyes: "blue",
-    expression: ["smile"],
+    expression: "smiling",
     background: [],
   },
   {
@@ -195,7 +195,7 @@ const CHARACTERS = [
     creature: "dog",
     hair: "white",
     eyes: "black",
-    expression: ["smile"],
+    expression: "smiling",
     background: [],
   },
   {
@@ -204,7 +204,7 @@ const CHARACTERS = [
     creature: "cartoon",
     hair: "bold",
     eyes: "blue",
-    expression: ["serious"],
+    expression: "serious",
     background: [],
   },
   {
@@ -213,7 +213,7 @@ const CHARACTERS = [
     creature: "hooman",
     hair: "brown",
     eyes: "blue",
-    expression: ["smile"],
+    expression: "smiling",
     background: [],
   },
   {
@@ -222,7 +222,7 @@ const CHARACTERS = [
     creature: "cartoon",
     hair: "bold",
     eyes: "black",
-    expression: ["smile"],
+    expression: "smiling",
     background: [],
   },
 ];
@@ -231,7 +231,11 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
-let guessCount = 0;
+let timerInterval;
+let startSound = new Audio("sounds/start-sound.mp3");
+let loseSound = new Audio("sounds/lose-sound.mp3");
+let winSound = new Audio("sounds/win-sound.mp3");
+let alertSound = new Audio("sounds/alert-sound.mp3");
 
 // Draw the game board
 const generateBoard = () => {
@@ -262,12 +266,43 @@ const start = () => {
   generateBoard();
   setSecret();
   selectQuestion();
-  guessCount = 0;
-  // What else should happen when we start the game?
-  // Here maybe add some music or something----?
+  startSound.play();
+  startTimer();
+
+  // Resets the selected element to the placeholder value
+  questions.selectedIndex = 0;
 };
 
-// setting the currentQuestion object when you select something in the dropdown
+// Game timer
+const startTimer = () => {
+  clearInterval(timerInterval);
+
+  let seconds = 0;
+  let minutes = 0;
+  let hours = 0;
+
+  timerInterval = setInterval(() => {
+    timer.innerHTML =
+      "Time elapsed: " +
+      (hours ? hours + ":" : "") +
+      (minutes < 10 ? "0" + minutes : minutes) +
+      ":" +
+      (seconds < 10 ? "0" + seconds : seconds);
+    seconds++;
+
+    if (seconds == 60) {
+      minutes++;
+      seconds = 0;
+    }
+
+    if (minutes == 60) {
+      hours++;
+      minutes = 0;
+    }
+  }, 1000);
+};
+
+// Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.value;
@@ -307,118 +342,97 @@ const checkQuestion = () => {
       filterCharacters(false);
     }
   }
-  // if (category === "hair" || category === "eyes") {
-  //   if (value === hair || value === eyes) {
-  //     filterCharacters(true);
-  //   } else {
-  //     filterCharacters(false);
-  //   }
-  // } else if (category === "creature") {
-  //   if (secret.creature.includes(value)) {
-  //     filterCharacters(true);
-  //   } else {
-  //     filterCharacters(false);
-  //   }
-  // } else if (category === "gender") {
-  //   if (secret.gender.includes(value)) {
-  //     filterCharacters(true);
-  //   } else {
-  //     filterCharacters(false);
-  //   }
-  // } else if (category === "expression") {
-  //   if (secret.expression.includes(value)) {
-  //     filterCharacters(true);
-  //   } else {
-  //     filterCharacters(false);
-  //   }
-  // } else if (category === "background") {
-  //   if (secret.background.includes(value)) {
-  //     filterCharacters(true);
-  //   } else {
-  //     filterCharacters(false);
-  //   }
-  // }
 };
 
-// It'll filter the characters array and redraw the game board.
+// This function filters the characters based on the selected value.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
   if (category === "hair") {
     if (keep) {
-      alert(
+      Swal.fire(
         `Yes, the meme persona has ${value} hair! Keep only meme personas that have ${value} hair!`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
+      alertSound.play();
     } else {
-      alert(
-        `Ooopsie! Sorry, the meme persona doesn't have ${value} hari! Remove all meme personas that have ${value} hair!`
+      Swal.fire(
+        `Ooopsie! Sorry, the meme persona doesn't have ${value} hair! Remove all meme personas that have ${value} hair!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
+      alertSound.play();
     }
   } else if (category === "eyes") {
     if (keep) {
-      alert(
+      Swal.fire(
         `Niceeee! The meme persona has ${value} eyes. Let's remove all that don't!`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
+      alertSound.play();
     } else {
-      alert(
+      Swal.fire(
         `Yikes! No, the meme persona doesn't have ${value} eyes! Let's remove all that do!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
+      alertSound.play();
     }
   } else if (category === "creature") {
     if (keep) {
-      alert(
+      Swal.fire(
         `Nice guess! We are dealing with a ${value} here. Keep all ${value}s!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
+      alertSound.play();
     } else {
-      alert(
+      Swal.fire(
         `Close but not quite, ${value} is incorrect, all ${value}s must go!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
+      alertSound.play();
     }
   } else if (category === "expression") {
     if (keep) {
-      alert(`Yesh! Our meme persona is ${value}. Keep all ${value} faces!`);
+      Swal.fire(`Yesh! Our meme persona is ${value}. Keep all ${value} faces!`);
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
+      alertSound.play();
     } else {
-      alert(
+      Swal.fire(
         `Nah, our meme persona is not ${value}, remove all ${value} faces!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
+      alertSound.play();
     }
   } else if (category === "background") {
     if (keep) {
-      alert(
+      Swal.fire(
         `Spot on, you can see ${value} in the background. This should make it easy!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
+      alertSound.play();
     } else {
-      alert(`No ${value} co-star for this meme persona! Let's remove it!`);
+      Swal.fire(`No ${value} co-star for this meme persona! Let's remove it!`);
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
+      alertSound.play();
     }
   }
 
@@ -426,27 +440,36 @@ const filterCharacters = (keep) => {
   generateBoard();
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// When clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  guessedPerson = confirm(`Are you sure you want to guess ${personToConfirm}?`);
-  if (guessedPerson) {
-    // If the player wants to guess, invoke the checkMyGuess function.
-    checkMyGuess(personToConfirm);
-  } else {
-    alert("Ok, go back at it!");
-  }
+  let letGuess = Swal.fire({
+    title: "Are you sure?",
+    text: `Do you want to guess on ${personToConfirm}?`,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "var(--secondary)",
+    cancelButtonColor: "var(--primary)",
+    confirmButtonText: "Yes!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      checkMyGuess(personToConfirm);
+    }
+  });
+  alertSound.play();
 };
 
-// If you confirm, this function is invoked
+// If player confirms, this function is invoked
 const checkMyGuess = (personToCheck) => {
   const { name } = secret;
   board.style.display = "none";
   winOrLose.style.display = "flex";
   if (personToCheck === name) {
     winOrLoseText.innerText = `WOWWWWWWZA! Yes it was ${name}! Congrats! `;
+    winSound.play();
   } else {
     guess !== secret;
-    winOrLoseText.innerText = `WRONG! Better luck next time!`;
+    winOrLoseText.innerText = `WRONG! The secret person was ${secret.name}. Better luck next time!`;
+    loseSound.play();
   }
 };
 
@@ -460,5 +483,8 @@ questions.addEventListener("change", selectQuestion);
 playAgainButton.addEventListener("click", () => {
   winOrLose.style.display = "none";
   board.style.display = "flex";
+  // Here I stop the wining / losing sound when player presses "Play Again"
+  loseSound.pause();
+  winSound.pause();
   start();
 });

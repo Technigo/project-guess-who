@@ -240,7 +240,7 @@ button {
 
   .card:active,
   .card:focus {
-    background-color: pink;
+    background-color: var(--secondary);
   }
 
   .card:hover img,

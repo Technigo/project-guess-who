@@ -5,14 +5,12 @@
   margin: 0;
   box-sizing: border-box;
 }
-
 :root {
   --primary: #0f29ac;
-  --secondary: #dc23d8;
+  --secondary: #dc2323;
 }
-
 body {
-  background-image: url();
+  background: linear-gradient(180deg, #faf574, #d17d24, #da0b0b) fixed;
   display: flex;
   margin: 0;
   padding: 0;
@@ -24,13 +22,14 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: rgb(148, 36, 36);
 }
 
 .question-section {
+  background: linear-gradient(180deg, #faf574, #d17d24, #da0b0b) fixed;
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: ;
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -42,10 +41,11 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: Montserrat;
   color: var(--secondary);
   width: 100%;
-  margin: 24px 0;
+  margin: 24px 0px;
+  border-radius: 10px;
 }
 
 .guess-who-icon {
@@ -69,10 +69,11 @@ select {
 
 /****** CARD ******/
 .card {
-  width: 135px;
+  background-color: black;
+  width: 145px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 2px solid white;
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -82,6 +83,7 @@ select {
 }
 
 .card p {
+  color: white;
   text-align: center;
   margin-bottom: 0;
   font-size: 16px;
@@ -129,6 +131,7 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  margin: 10px;
 }
 
 .small {
@@ -143,14 +146,13 @@ button {
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
+  background-color: black;
   color: white;
 }
 
 .filled-button:hover {
-  background-color: white;
+  background-color: black;
   border-color: white;
-  color: var(--primary);
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -158,7 +160,10 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background-image: url(images/Bang!.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -175,19 +180,15 @@ button {
   max-width: 700px;
   text-align: center;
 }
-
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
-}
-
 .win-or-lose h1 {
+  color: black;
   margin-bottom: 32px;
 }
 
 @media (max-width: 768px) {
   body {
     flex-direction: column;
+    justify-content: center;
   }
 
   .question-section {

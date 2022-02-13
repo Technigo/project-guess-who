@@ -12,45 +12,50 @@
   </head>
   <body>
     <aside class="question-section">
-      <button id="restart" class="outlined-button">RESTART</button>
-
       <img
         class="guess-who-icon"
-        src="images/guess-who-bubble.png"
+        src="images/guess-who-bubble.png"++.
         alt="Guess Who"
       />
 
-      <h1>Can u</h1>
+      <h1>Can you find the secret person?</h1>
 
       <select id="questions">
         <optgroup label="hair">
-          <option value="hidden">hidden hair</option>
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <option value="orange">orange hair</option>
-          <option value="grey">grey hair</option>
-          <option value="black">black hair</option>
-          <option value="purple">purple hair</option>
-         <!-- Add the rest of hair colors as options  -->
+            <option value="">Start guessing!</option>
+          <option value="bald">Bald</option>
+          <option value="hidden">Hidden hair</option>
+          <option value="white">White hair</option>
+          <option value="gold">Gold hair</option>
+          <option value="brown">Brown hair</option>
+          <option value="red">Red hair</option>
+          <option value="grey">Grey hair</option>
+          <option value="black">Black hair</option>
+          <option value="ginger">Ginger hair</option>
         </optgroup>
         <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <option value="blue">blue eyes</option>
-          <option value="brown">brown eyes</option>      
-          <option value="green">green eyes</option>                                        <!-- Add the rest of eye colors as options  -->
+          <option value="hidden">Hidden eyes</option>
+          <option value="blue">Blue eyes</option>
+          <option value="brown">Brown eyes<option>
         </optgroup>
-        <optgroup label="accessories">
-          <option value="hat">hat</option>
-          <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
+        <optgroup label="superpower">
+          <option value="strength">Strength</option>
+          <option value="speed">Speed</option>
+          <option value="tech">Tech</option>
+          <option value="immortality">Immortality</option>
+          <option value="magic">Magic</option>
+          <option value="feerless">Feerless</option> 
+          <option value="super-sanity">Super sanity</option> 
         </optgroup>
         <optgroup label="other">
-          <option value="smoker">a smoker</option>
-          <option value="gunman">have a handgun</option>
-        </optgroup>
+          <option value="hero">Hero</option>
+          <option value="villain">Villain</option>
+         </optgroup>
       </select>
-
-      <button id="filter" class="filled-button">FIND OUT</button>
+      <div class="button">
+        <button id="filter" class="filled-button">FIND OUT</button>
+      <button id="restart" class="outlined-button">RESTART</button>
+    </div>
     </aside>
 
     <section class="board-wrapper">
@@ -59,11 +64,7 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
+
         <h1 id="winOrLoseText"></h1>
         <button id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>

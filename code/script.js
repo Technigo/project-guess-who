@@ -7,212 +7,209 @@ const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
 const boardWrapper = document.getElementById('boardWrapper')
- 
-
-
-
-
-//Aduio sound effect
-//const audio = new audio("evilLaugh.mp3");
-// Audio
-// audio.currentTime = 0;
-// audio.play();
-
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
+    name: 'Antman',
+    img: 'images/Antman.jpg height="165px"',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    superpower: ['strength'],
+    other: ['hero']
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
+    name: 'Aquaman',
+    img: 'images/Aquaman.jpg width="135px"',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    superpower: ['strength','speed'],
+    other: ['hero']
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
+    name: 'Bane',
+    img: 'images/Bane.jpg width="135px"',
+    hair: 'bald',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    superpower: [''],
+    other: ['villian']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
+    name: 'Batman',
+    img: 'images/Batman.jpg width="135px"',
+    hair: 'hidden',
     eyes: 'brown',
-    accessories: [],
-    other: []
+    superpower: ['tech'],
+    other: ['hero']
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
+    name: 'Black Panther',
+    img: 'images/black-panter.jpg height="165px"',
+    hair: 'hidden',
+    eyes: 'hidden',
+    superpower: ['strength','tech'],
+    other: ['hero']
+  },
+  {
+    name: 'Black Widow',
+    img: 'images/Black-Widow.jpg height="165px"',
+    hair: 'red',
     eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    superpower: ['speed','tech'],
+    other: ['hero']
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
+    name: 'Captin America',
+    img: 'images/Captin-america.jpg height="165px"',
     hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    eyes: 'blue',
+    superpower: ['strength','speed'],
+    other: ['hero']
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
+    name: 'Captin Marvel',
+    img: 'images/Captin-marvel.jpg width="165px"',
+    hair: 'gold',
+    eyes: 'blue',
+    superpower: ['strength'],
+    other: ['hero']
+  },
+  {
+    name: 'Dr Strange',
+    img: 'images/dr-strange.jpg height="165px"',
     hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    superpower: ['magic'],
+    other: ['hero']
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['gun'],
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
+    name: 'Flash',
+    img: 'images/Flash.jpg height="165px"',
     hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    superpower: ['speed'],
+    other: ['hero']
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: 'Harley Quinn',
+    img: 'images/harley-Quinn.jpg height="165px"',
+    hair: 'white',
+    eyes: 'black',
+    superpower: ['super-sanity','feerless'],
+    other: ['villain']
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
+    name: 'Hulk',
+    img: 'images/hulk.jpg height="165px"',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
-    other: []
+    superpower: ['strength'],
+    other: ['hero']
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
+    name: 'Joker',
+    img: 'images/joker.jpg height="165px"',
+    hair: 'black',
+    eyes: 'green',
+    superpower: ['super-sanity','feerless'],
+    other: ['villain']
+  },
+  {
+    name: 'Spiderman',
+    img: 'images/spiderman.jpg height="165px"',
+    hair: 'hidden',
+    eyes: 'hidden',
+    superpower: ['strength','speed'],
+    other: ['hero']
+  },
+  {
+    name: 'Star Lord',
+    img: 'images/star-lord.jpg height="165px"',
+    hair: 'ginger',
+    eyes: 'green',
+    superpower: ['tech'],
+    other: ['hero']
+  },
+  {
+    name: 'Superman',
+    img: 'images/superman.jpg height="165px"',
     hair: 'black',
     eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: []
+    superpower: ['immortality','speed','strength'],
+    other: ['hero']
+  },
+  {
+    name: 'Thor',
+    img: 'images/Thor.jpg width="135px"',
+    hair: 'grey',
+    eyes: 'blue',
+    superpower: ['strength'],
+    other: ['hero']
+  },
+  {
+    name: 'Wolverine',
+    img: 'images/wolverine.jpg height="165px"',
+    hair: 'brown',
+    eyes: 'brown',
+    superpower: ['strength','immortality'],
+    other: ['hero']
+  },
+  {
+    name: 'Wonder Woman',
+    img: 'images/wonder-woman.jpg height="165px"',
+    hair: 'black',
+    eyes: 'green',
+    superpower: ['speed'],
+    other: ['hero']
+  },
+  {
+    name: 'Loki',
+    img: 'images/Loki.jpg height="165px"',
+    hair: 'black',
+    eyes: 'blue',
+    superpower: ['magic'],
+    other: ['villain']
+  },
+  {
+    name: 'Iron Man',
+    img: 'images/Iron-man.jpg height="165px" ',
+    hair: 'hidden',
+    eyes: 'hidden',
+    superpower: ['tech'],
+    other: ['hero']
+  },
+  {
+    name: 'Thanos',
+    img: 'images/Thanos.jpg  height="165px"',
+    hair: 'bald',
+    eyes: 'green',
+    superpower: ['strength','immortality'],
+    other: ['villain']
+  },
+  {
+    name: 'Deadpool',
+    img: 'images/Deadpool.jpeg  width="135px"',
+    hair: 'hidden',
+    eyes: 'hidden',
+    superpower: ['immortality'],
+    other: ['hero']
+  },
+  {
+    name: 'Venom',
+    img: 'images/Venom.jpg height="165px"',
+    hair: 'bald',
+    eyes: 'white',
+    superpower: ['immortality','strength'],
+    other: ['villain']
+  },
+  {
+    name: 'Ghost Rider',
+    img: 'images/Ghost_Rider.jpg width="135px"',
+    hair: 'bald',
+    eyes: 'red',
+    superpower: ['immortality','magic'],
+    other: ['villain']
   },
 ]
 
@@ -274,12 +271,12 @@ const checkQuestion = () => {
   const { category, value } = currentQuestion
 
     let keep = false
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or superpower/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
       keep = secret[category] === value
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'superpower' || category === 'other') {
       keep = secret[category].includes(value)
   }
   filterCharacters(keep);
@@ -311,7 +308,7 @@ const filterCharacters = (keep) => {
         `Nope, the person doesn't have ${value} eyes. Remove all that have ${value} eyes.`
       )
     }
-  } else if (category === 'accessories') {
+  } else if (category === 'superpower') {
     if (keep) {
       alert(`Good choice, the person wears ${value}! Keep all that wears ${value}.`
       )
@@ -335,11 +332,12 @@ const filterCharacters = (keep) => {
       alert(`No, the person doesnt have ${value}! Remove all people that in fact are not the secret person.`
       )
     }
+  
   }
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   
-  if (category === `hair` || category === 'eyes') {
+  if (category === 'hair' || category === 'eyes') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category] === value)
@@ -349,14 +347,11 @@ const filterCharacters = (keep) => {
         person[category] !== value)
     }
   }
-  else if (category === 'accessories' || category === 'other') {
-    if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) =>
-        person[category] === value)
-    }
-    else {
-      charactersInPlay = charactersInPlay.filter((person) =>
-        person[category] !== value)
+  else if (category === 'superpower' || category === 'other') {
+    if (value === secret.superpower || value === secret.other) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   }  // Invoke a function to redraw the board with the remaining people.
   generateBoard()
@@ -370,17 +365,29 @@ const guess = (personToConfirm) => {
   const guessed = confirm(`Do you want to guess who the person is?`)
   if (guess) {
     checkMyGuess(personToConfirm)
-  }
+  } 
 }
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `Holycrap you are a mind reader! It was ${secret.name}!`
+    
+    var audio = new Audio('wand.mp3');
+    audio.play();
+
+
   } else {
     winOrLoseText.innerHTML = `Im sorry you guessed at the wrong person. The secret person was ${secret.name}. I hope you do better next time you play!`
+
+       
+    var audio = new Audio('evilLaugh.mp3');
+    audio.play();
+
   }
+
+  
   winOrLose.style.display = 'flex'
-  boardWrapper.style.display = 'none'
+
 }
     
   // 1. Check if the personToCheck is the same as the secret person's name

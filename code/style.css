@@ -256,7 +256,7 @@ button {
   /* Remove the hidden picture that automatically selects card nr 2 */
   .card:active,
   .card:focus {
-    background-color: #faf7f7;
+    background: #faf7f7;
   }
   .card:hover img,
   .card:hover p {

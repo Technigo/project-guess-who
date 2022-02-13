@@ -1,13 +1,10 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+Guess Who- game. It was really interesting, fun but mostly difficult to do this project. But I tried to follow all the steps that was given to us which was a great way to learn.
 
 Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
+I struggled a lot hence second time with Java script, but I asked for help in our channels and googled and watched videos a lot.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
 
-## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

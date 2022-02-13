@@ -158,6 +158,9 @@ button {
   right: 0;
   height: 100vh;
 }
+.show-win-or-lose {
+  display: flex;
+}
 
 .win-or-lose {
   display: flex;

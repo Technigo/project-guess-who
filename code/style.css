@@ -7,10 +7,12 @@
 }
 :root {
   --primary: #0f29ac;
-  --secondary: #dc2323;
+  --secondary: rgb(233, 148, 20);
 }
 body {
-  background: linear-gradient(180deg, #faf574, #d17d24, #da0b0b) fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   margin: 0;
   padding: 0;
@@ -26,10 +28,9 @@ h1 {
 }
 
 .question-section {
-  background: linear-gradient(180deg, #faf574, #d17d24, #da0b0b) fixed;
+  background-color: rgb(233, 148, 20);
   width: 30%;
   min-height: 100vh;
-  background-color: ;
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -53,10 +54,12 @@ select {
 }
 
 .board-wrapper {
+  background-color: rebeccapurple;
   width: 70%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: r;
 }
 
 .game-board {
@@ -160,11 +163,8 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background-image: url(images/Bang!.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  position: absolute;
+  background-image: url(images/bakgrund-vinorlose.jpg);
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -181,7 +181,10 @@ button {
   text-align: center;
 }
 .win-or-lose h1 {
+  background-color: white;
   color: black;
+  padding: 10px;
+  border-radius: 10px;
   margin-bottom: 32px;
 }
 
@@ -212,6 +215,7 @@ button {
   }
 
   .game-board {
+    justify-content: center;
     width: 100%;
     max-width: 750px;
   }
@@ -219,13 +223,6 @@ button {
   .card {
     width: 113px;
     position: relative;
-  }
-
-  .card .guess {
-    display: flex;
-    top: 0;
-    position: absolute;
-    justify-content: flex-end;
   }
 
   .card .guess span {
@@ -238,5 +235,13 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+  .win-or-lose h1 {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    margin: 40px;
+    border-radius: 10px;
+    margin-bottom: 32px;
   }
 }

@@ -283,7 +283,7 @@ const startTimer = () => {
 
   timerInterval = setInterval(() => {
     timer.innerHTML =
-      "Time elapsed: " +
+      "⌛ Time elapsed: " +
       (hours ? hours + ":" : "") +
       (minutes < 10 ? "0" + minutes : minutes) +
       ":" +

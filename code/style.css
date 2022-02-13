@@ -141,12 +141,6 @@ button {
   padding: 8px 16px;
 }
 
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
-}
-
 .filled-button,
 .outlined-button:hover {
   background-color: black;
@@ -170,6 +164,13 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
+}
+.guesses {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 10px 0;
+  color: rgb(148, 36, 36);
 }
 
 .win-or-lose {

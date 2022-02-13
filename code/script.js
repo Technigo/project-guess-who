@@ -217,6 +217,8 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let counter = 0
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -239,16 +241,23 @@ const generateBoard = () => {
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
+// Counter conected to the HTML
+let btncounter = document.querySelector("#filter")
+
+btncounter.addEventListener('click', function () {
+  counter++  // The ++ and one more per click the player does on findOut button
+  document.querySelector("#result").innerHTML = counter})
+
 // The game starts here
 // This function to start (and restart) the game
 const start = () => {
   console.log('start function is called')
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  generateBoard()
-  setSecret ()
-
+  charactersInPlay = CHARACTERS 
+  generateBoard() // We are setting up the board
+  setSecret() // We set a secret person :)
 }
+
 // where u selectingen the questions in the dropdown
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -264,21 +273,21 @@ const selectQuestion = () => {
   }
 }
 
-
 // when we ask the qusetion the checkqusetion 
-// This function should be invoked when you click on 'Find Out' button.
+
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
-    let keep = false
- // Then invoke filterCharacters
+  let keep = false
+  
+ // Then we invoke it
+  
  if (category === 'hair' || category === 'eyes') {
   keep = secret[category] === value
 } else if (category === 'accessories' || category === 'other') {
   keep = secret[category].includes(value)
 }
-
-filterCharacters(keep)
+//The filterCharacters tells us what to keep
+  filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -339,10 +348,10 @@ if (category === 'superpower') {
   }
 }
 
-// Determine what is the category
-// filter by category to keep or remove based on the keep variable.
+// Determine what is the category are, filter to keep and remove based on the variables from keep
 
-// // for hair and eyes :
+
+// for hair and eyes
 if (category === 'hair' || category === 'eyes') {
   if (keep) {
     charactersInPlay = charactersInPlay.filter(
@@ -373,33 +382,31 @@ generateBoard()
 
 // when clicking guess, the player first have to confirm that they want to make a guess.'
  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+ 
 const guess = (personToConfirm) => {
   const guessed = confirm(`Do you want to guess who the person is?`)
   if (guess) {
     checkMyGuess(personToConfirm)
   } 
 }
-// If you confirm, this function is invoked
+// If you confirm, this function is invoked if its right guess
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `Holycrap you are a mind reader! It was ${secret.name}!`
-    
+    // The sound if they are right
     var audio = new Audio('wand.mp3');
     audio.play();
 
-
+// If the person guessed wrong
   } else {
     winOrLoseText.innerHTML = `Im sorry you guessed at the wrong person. The secret person was ${secret.name}. I hope you do better next time you play!`
 
-       
+ // The sound if the are wrong :) 
     var audio = new Audio('evilLaugh.mp3');
     audio.play();
 
   }
 
-  
   winOrLose.style.display = 'flex'
 
 }

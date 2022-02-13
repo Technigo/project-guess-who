@@ -312,14 +312,30 @@ const filterCharacters = (keep) => {
     }
 
     // Conditionals for filtering by category to keep or remove based on keep variable
-    if (category === 'accessories' || category === 'other') {
+  
+    // if (category === 'hair' || category === 'eyes') {
+    //   if (keep) {
+    //     charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+    //   } else {
+    //     charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+    //   }
+    // } else if (category === 'accessories' || category === 'other') {
+    //   if (keep) {
+    //     charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    //   } else {
+    //     charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    //   }
+    // }
+
+
+    if (category === 'accessories' || category === 'hair') {
       if (value === secret.accessories || value === secret.other) {
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       } else {
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       }
   
-      } else if (category === 'hair' || category === 'eyes') {
+      } else if (category === 'other' || category === 'eyes') {
         if (value === secret.hair || value === secret.eyes) {
           charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
         } else {

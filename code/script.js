@@ -325,11 +325,11 @@ const filterCharacters = (keep) => {
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes the person is ${value}! Keep all people that smokes!`
+        `Yes the person is a ${value}! Keep all people that smokes!`
       )
     } else {
       alert(
-        `No the person aren't ${value}. Remove all people that smokes.`
+        `No the person aren't a ${value}. Remove all people that smokes.`
       )
     }
   }

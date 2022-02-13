@@ -240,13 +240,14 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the winningCharacter (the secret one)
 const setWinningCharacter = () => {
-  winningCharacter = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-}
+  winningCharacter =
+    charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+};
 
 // Function that close the start overlay
 const closeOverlay = () => {
   wrapperOverlay.style.display = "none";
-}
+};
 
 // Function that start (and restart) the game
 const start = () => {
@@ -261,7 +262,7 @@ const start = () => {
   findOutButton.disabled = false;
   guessCount = 0;
   guessCounter.innerHTML = guessCount;
-}
+};
 
 // Setting the currentQuestion object when something is selected in the dropdown menu
 const selectQuestion = () => {
@@ -275,23 +276,22 @@ const selectQuestion = () => {
 
 // Function invoked when you click on 'Find Out' button --> A function that first update guesses and see if the player still has guesses left and then invoke the checkQuestion-function
 const updateGuesses = () => {
-  guessCount++ //increments the guess count
+  guessCount++; //increments the guess count
 
   if (guessCount > 4) {
     popUp.style.display = "flex";
     popUp.style.background = "#5F9DA0";
-    popUpQuestionText.innerHTML = "OH, you have made your questions. <br/>You have to guess now!";
+    popUpQuestionText.innerHTML =
+      "OH, you have made your questions. <br/>You have to guess now!";
     findOutButton.disabled = true;
-
   } else {
     guessCounter.innerHTML = guessCount;
-    checkQuestion()
+    checkQuestion();
   }
 };
 
 // Function invoked if the user still has guesses left --> Compare the currentQuestion object with the secret person
 const checkQuestion = () => {
-  
   if (
     currentQuestion.category === "hair" ||
     currentQuestion.category === "eyes"
@@ -303,23 +303,19 @@ const checkQuestion = () => {
       popUp.style.display = "flex";
       popUpQuestionText.innerHTML = `Yes the secret person has ${currentQuestion.value} ${currentQuestion.category}!`;
       filterCharactersKeep();
-
     } else {
       popUp.style.display = "flex";
       popUpQuestionText.innerHTML = `Nix the secret person has not ${currentQuestion.value} ${currentQuestion.category}!`;
       filterCharactersRemove();
     }
-
   } else if (
     currentQuestion.category === "accessories" ||
     currentQuestion.category === "other"
   ) {
-
     if (winningCharacter.accessories.includes(currentQuestion.value)) {
       popUp.style.display = "flex";
       popUpQuestionText.innerHTML = `Yes the secret person has ${currentQuestion.value}!`;
       filterCharactersKeep();
-
     } else {
       popUp.style.display = "flex";
       popUpQuestionText.innerHTML = `Nix, the secret person has not ${currentQuestion.value}!`;
@@ -331,37 +327,37 @@ const checkQuestion = () => {
 // Function that closes the pop up overlay
 const closePopUp = () => {
   popUp.style.display = "none";
-}
+};
 
 // Function that filters characters to keep and redraw the board with them
 const filterCharactersKeep = () => {
-      charactersInPlay = charactersInPlay.filter((person) => {
-        return person[currentQuestion.category].includes(currentQuestion.value)
-      });
-    generateBoard();
-  }
+  charactersInPlay = charactersInPlay.filter((person) => {
+    return person[currentQuestion.category].includes(currentQuestion.value);
+  });
+  generateBoard();
+};
 
 // Function that filters characters to remove and redraw the board with them
 const filterCharactersRemove = () => {
-    charactersInPlay = charactersInPlay.filter((person) => {
-      return !person[currentQuestion.category].includes(currentQuestion.value)
-    });
-    generateBoard();
-  }
+  charactersInPlay = charactersInPlay.filter((person) => {
+    return !person[currentQuestion.category].includes(currentQuestion.value);
+  });
+  generateBoard();
+};
 
 // When clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (guessing) => {
   personToConfirm = guessing;
   confirmOverlay.style.display = "flex";
   confirmText.innerHTML = `Are you sure you want to guess on ${personToConfirm}?`;
-}
+};
 
 // Function that closes the confirm overlay
 const closeConfirm = () => {
   confirmOverlay.style.display = "none";
-}
+};
 
-// Function invoked if the user want to make a guess 
+// Function invoked if the user want to make a guess
 const checkMyGuess = (personToCheck) => {
   if (winningCharacter.name === personToCheck) {
     winOrLose.style.display = "flex";
@@ -385,7 +381,7 @@ playAgainButton.addEventListener("click", start);
 popUpButton.addEventListener("click", closePopUp);
 startButton.addEventListener("click", closeOverlay);
 noConfirmButton.addEventListener("click", closeConfirm);
-confirmButton.addEventListener('click', () => {
+confirmButton.addEventListener("click", () => {
   confirmOverlay.style.display = "none";
   checkMyGuess(personToConfirm);
-})
+});

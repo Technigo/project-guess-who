@@ -159,7 +159,6 @@ button {
   top: 35%;
   background-color: var(--secondary);
   color: #FFF;
-  border: 3px solid #000;
   border-radius: 12px;
   padding: 20px;
   z-index: 10;

@@ -6,6 +6,7 @@ const findOutButton = document.getElementById('filter')
 const winOrLose = document.querySelector('.win-or-lose-wrapper')
 const playAgain = document.getElementById('playAgain')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const resultWrapper = document.getElementById('winOrLose')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -349,6 +350,12 @@ const guess = (personToConfirm) => {
   }
 
 const checkMyGuess = (personToCheck) => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  })
+  resultWrapper.style.height = document.body.scrollHeight + "px"
+  resultWrapper.classList.add("active")
   if (personToCheck === secret.name) {
     winOrLose.style.display = 'flex'
     winOrLoseText.innerText = 'Yay, you won! Play again?'
@@ -363,7 +370,7 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
 
 }
-console.log(winOrLose)
+
 // Invokes the start function when website is loaded
 start()
 

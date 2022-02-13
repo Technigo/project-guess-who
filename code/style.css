@@ -1,28 +1,32 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #6f896e;
+  --secondary: #d8c172;
 }
 
 body {
   display: flex;
+  background-color:#272739;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family:'Bebas Neue';
+
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 64px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
   color: white;
+  font-family:'Bebas Neue';
 }
 
 .question-section {
+  background-image: url(https://images.unsplash.com/photo-1634320714682-ae8b9c9cee60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDd8fGxlZ298ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60);
+  background-size: cover;
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -31,17 +35,18 @@ h1 {
 }
 
 select {
+  padding: 5px;
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family:'Bebas Neue';
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 150px;
 }
 
 .board-wrapper {
@@ -71,6 +76,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  color: #d8c172;
 }
 
 .card p {
@@ -116,8 +122,8 @@ select {
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
-  font-size: 16px;
-  font-family: 'Montserrat';
+  font-size: 20px;
+  font-family:'Bebas Neue';
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -131,6 +137,7 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  font-family:'Bebas Neue';
 }
 
 .filled-button,
@@ -188,6 +195,7 @@ button {
   }
   button {
     padding: 8px 16px;
+    font-family:'Bebas Neue';
   }
   h1 {
     font-size: 24px;
@@ -229,5 +237,7 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+    font-family:'Bebas Neue';
   }
 }
+

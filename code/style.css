@@ -131,7 +131,7 @@ select {
 }
 
 /****** BUTTONS ******/
-button {
+/* button {
   border: 2px solid #0000ce;
   border-radius: 50px;
   font-family: monospace;
@@ -139,7 +139,7 @@ button {
   font-weight: 100;
   padding: 17px 27px;
   cursor: pointer;
-}
+} */
 
 .small {
   width: 100px;
@@ -150,32 +150,59 @@ button {
 
 .butts {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
- 
-
 }
 
 .filled-button {
   background-color: #fcebf2c6;
   color: #0000ce;
-  margin: 0 20px 0 20px;
+  margin: 0 20px 40px 20px;
+  border: 2px solid #0000ce;
+  border-radius: 50px;
+  font-family: monospace;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 17px 27px;
+  cursor: pointer;
 
 }
+
+
 
 .outlined-button {
   background-color: transparent;
   color: #0000ce;
   margin: 0 20px 0 20px;
+  border: 2px solid #0000ce;
+  border-radius: 50px;
+  font-family: monospace;
+  font-size: 25px;
+  font-weight: 100;
+  padding: 17px 27px;
+  cursor: pointer;
+
+}
+
+.filled-button-small {
+  background-color: transparent;
+  color: #0000ce;
+  height: 100px;
+  border: 2px solid #0000ce;
+  border-radius: 50%;
+  font-family: monospace;
+  font-size: 16px;
+  padding: 5px 20px;
+  cursor: pointer;
   
-  
+
 }
 
 .outlined-button:hover {
   background-color: rgba(240, 230, 191, 0.619);
  
 }
-
+.filled-button-small,
 .filled-button:hover {
   background-color: rgba(240, 230, 191, 0.619);
   border: 2px dotted #c25a22;
@@ -217,7 +244,22 @@ button {
   color:rgb(245, 213, 188);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1031px) {
+  .butts {
+  flex-direction: column;
+  }
+
+  .filled-button {
+    width: 180px;
+    margin-bottom: 20px;
+  }
+/* .outlined-button {
+  width: 120px;
+  
+} */
+}
+
+@media (max-width: 767px) {
   body {
     flex-direction: column;
   }
@@ -226,6 +268,7 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
@@ -264,11 +307,6 @@ button {
     justify-content: flex-end;
   }
 
-  .card .guess .filled-button {
-    padding: 6px 11px;
-    margin-bottom: 1px;
-
-  }
 
   .win-or-lose h1 {
     font-size: 40px;

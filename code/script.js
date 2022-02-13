@@ -11,7 +11,7 @@ const CHARACTERS = [
   {
     name: 'Fish of the day',
     img: 'images/fish1.svg',
-    scale: 'greens',
+    scale: 'black',
     expression: ['expressionless'],
     shape: 'average',
     age: 'middleage',
@@ -254,9 +254,9 @@ const generateBoard = () => { board.innerHTML = ''; charactersInPlay.forEach((pe
         category: category,
         value: value,
         label: label
-  };
+  }
   
-};
+}
 
 
 
@@ -275,7 +275,7 @@ const checkQuestion = () => {
 			filterCharacters(false);
 		}
 	}
-};
+}
 
 
 // It'll filter the characters array and redraw the game board.
@@ -311,7 +311,7 @@ const filterCharacters = (keep) => {
     } else {
     alert(`No, the fish isn't ${label}! Remove all fish that are ${label}`);
 			charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
-			);
+			)
     }
 
 
@@ -326,7 +326,7 @@ const filterCharacters = (keep) => {
       alert(
 				`No, the fish doesn't have ${label} scale! Remove all fish that has ${label} scale`);
 			charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
-			);
+			)
 
     }
   } else if (category === "expression") {
@@ -338,14 +338,14 @@ const filterCharacters = (keep) => {
     } else {
 			alert(
 				`No, the fish is not ${label}! Remove all fish that are ${label}`
-			);
+			)
 			charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
-			);
+			)
     }
   }
   // Invokes the function to redraw the board with the remaining people.
 
-	generateBoard()
+	generateBoard();
 }
 
 
@@ -377,7 +377,7 @@ const guess = (personToCheck) => {
   }
   guessConfirmation.style.display = "flex";
   board.style.display = "none";
-};
+}
 
   // store the interaction from the player in a variable.
   // remember the confirm() ?
@@ -386,7 +386,7 @@ const guess = (personToCheck) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    winOrLoseText.innerHTML = `You won! You guessed on the correct fish - ${personToCheck}!`;
+    winOrLoseText.innerHTML = `You won! You guessed on the correct fish <br> - ${personToCheck}!`;
   } else {
     winOrLoseText.innerHTML = ` Bad guess! this was not the right fish. It was ${secret.name}.`;
   }
@@ -394,7 +394,7 @@ const checkMyGuess = (personToCheck) => {
   winOrLose.style.display = "flex";
   // Hides the game board
   board.style.display = "none";
-};
+}
 
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
@@ -406,6 +406,8 @@ start();
 
 // All the event listeners
 restartButton.addEventListener('click', start => location.reload());
+playAgain.addEventListener("click", start => location.reload() );
+
 questions.addEventListener("change", selectQuestion);
 filterButton.addEventListener('click', checkQuestion);
-playAgain.addEventListener("click", start => location.reload() );
+

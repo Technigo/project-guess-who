@@ -264,15 +264,15 @@ const checkQuestion = () => {
   document.getElementById('count').innerHTML = `${count}`
   if (category === "hair" || category === "eyes") {
 		if (secret.category === value) {
-			filterCharacters(true);
-		} else {
 			filterCharacters(false);
+		} else {
+			filterCharacters(true);
 		}
 	} else if (category === "accessories" || category === "other") {
-		if (secret[category].includes(value)) {
-			filterCharacters(true);
-		} else {
+		if (secret[category].includes(value) === value) {
 			filterCharacters(false);
+		} else {
+			filterCharacters(true);
 		}
 	}
 }
@@ -308,20 +308,27 @@ const filterCharacters = (keep) => {
       if (keep) {
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value) 
         alert(
-          `Yes, the person has ${value}! Keep all people who have ${value}`
+          `Yes, the person has ${value} hair! Keep all people who have ${value} hair`
         )
         } else {
           charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
           alert(
-            `No, the person doesn't have ${value}! Remove all people who don't have ${value}`
+            `No, the person doesn't have ${value} hair! Remove all people who don't have ${value} hair`
           )
         }
-    } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      alert(
-        `No, the person doesn't have ${value}! Remove all people who don't have ${value}`
-      )
-    }
+    } else if (category === 'eyes') {
+      if (keep) {
+        charactersInPlay = charactersInPlay.filter((person) => person[category] === value) 
+        alert(
+          `Yes, the person has ${value} eyes! Keep all people who have ${value} eyes!`
+        )
+        } else {
+          charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+          alert(
+            `No, the person doesn't have ${value} eyes! Remove all people have ${value} eyes!`
+          )
+        }
+      }   
     generateBoard()
     }
 
@@ -376,5 +383,3 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
-
-

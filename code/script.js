@@ -130,7 +130,7 @@ const CHARACTERS = [
     name: "Scumbag Steve",
     img: "images-2/scumbag-steve.png",
     creature: "hooman",
-    hair: "hidden",
+    hair: "brown",
     eyes: "brown",
     expression: "serious",
     background: [],

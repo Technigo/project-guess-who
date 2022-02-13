@@ -1,13 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week was about creating a digital version of the board game Guess who.
+Focus was on the arrays and objects.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started this week with reading up on all the material and preparing for the labs as much as I could in order to prepare myself for the project.
+
+This weeks townhall helped me a lot, since I was stuck on the same steps as those who asked for help. Stack overflow was also very helpful to me when feeling stuck or didn't know how to move forward.
+If I had more time, I would finish the restart part of the code because I didn't have time to complete that part. I would also add more styling to it and other pictures to make it more personal.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

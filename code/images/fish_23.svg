@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1"
+	 id="svg2" inkscape:version="0.91 r13725" sodipodi:docname="Super Fish.svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 125 125"
+	 style="enable-background:new 0 0 125 125;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#path4149_1_);}
+	.st1{fill:#FF9B00;fill-opacity:0.9882;}
+	.st2{fill:#FF7000;fill-opacity:0.9882;}
+	.st3{fill:url(#path4140_1_);}
+	.st4{fill:none;stroke:#000000;stroke-width:5.541;stroke-linecap:round;stroke-linejoin:round;}
+	.st5{fill:#090504;}
+	.st6{fill:#FF8D00;fill-opacity:0.9882;}
+</style>
+<sodipodi:namedview  bordercolor="#666666" borderopacity="1.0" id="base" inkscape:current-layer="layer1" inkscape:cx="335.01959" inkscape:cy="614.05961" inkscape:document-units="px" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:window-height="705" inkscape:window-maximized="1" inkscape:window-width="1366" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:zoom="0.76015625" pagecolor="#ffffff" showgrid="false">
+	</sodipodi:namedview>
+<g>
+	<g>
+		
+			<linearGradient id="path4149_1_" gradientUnits="userSpaceOnUse" x1="-6.2696" y1="67.1086" x2="11.9091" y2="87.1432" gradientTransform="matrix(1.4747 0 0 -1.4747 77.1023 173.2659)">
+			<stop  offset="0" style="stop-color:#FF0E00"/>
+			<stop  offset="1" style="stop-color:#B40E04;stop-opacity:0.9882"/>
+		</linearGradient>
+		<path id="path4149" inkscape:connector-curvature="0" sodipodi:nodetypes="ccscccccccc" class="st0" d="M77.8,20.6
+			c-4.5-0.2-9,0.3-13.3,1.5c-19.6,5.2-33.1,23-33.1,43.2c0,20.2,13.6,38,33.1,43.2c19.6,5.2,40.2-3.3,50.3-20.8L76,65.3l40-16.8
+			c-2.2-3.7-6.1-12.7-9.2-15.6C103.3,35.4,99,36.2,95,35c-5.9-1.7-10.1-7.1-10.6-13.6C82.2,21,80,20.7,77.8,20.6L77.8,20.6z"/>
+		
+			<path id="path4193" inkscape:flatsided="false" inkscape:randomized="0" inkscape:rounded="0" inkscape:transform-center-x="-16.062195" sodipodi:arg1="0.9537395" sodipodi:arg2="2.896129" sodipodi:cx="-45.929741" sodipodi:cy="338.03537" sodipodi:r1="119.19163" sodipodi:r2="64.704689" sodipodi:sides="3" sodipodi:type="star" class="st1" d="
+			M9,96.7l23.5-25.1l10-1.4L18.1,47.6l-5.7-14.2l0.8,47.6L9,96.7z"/>
+		
+			<path id="path4195" inkscape:flatsided="false" inkscape:randomized="0" inkscape:rounded="0" inkscape:transform-center-x="-8.493115" sodipodi:arg1="0.9537395" sodipodi:arg2="2.896129" sodipodi:cx="-45.929741" sodipodi:cy="338.03537" sodipodi:r1="119.19163" sodipodi:r2="64.704689" sodipodi:sides="3" sodipodi:type="star" class="st2" d="
+			M25.5,74.4l12.4-7.3l5.3-0.4l-12.9-6.5l-3-4.1l0.4,13.8L25.5,74.4z"/>
+		
+			<radialGradient id="path4140_1_" cx="56.5465" cy="7.6127" r="28.295" gradientTransform="matrix(0.6729 -0.7562 -0.9752 -0.8678 42.8311 114.7031)" gradientUnits="userSpaceOnUse">
+			<stop  offset="0" style="stop-color:#FAEA02;stop-opacity:0.9882"/>
+			<stop  offset="1" style="stop-color:#F18D0D;stop-opacity:0.9922"/>
+		</radialGradient>
+		<path id="path4140" inkscape:connector-curvature="0" class="st3" d="M78.2,20.6c-4.5-0.2-9,0.3-13.3,1.5
+			c-19.6,5.2-33.1,23-33.1,43.2c0,20.2,13.6,38,33.1,43.2c19.6,5.2,40.2-3.3,50.3-20.8l-0.4-0.2c-3.8,3.1-13.7,1.7-23.4-3.4
+			c-10.2-5.3-17-12.9-15.8-17.7c0,0,0-0.1-0.1-0.1c-1.5-3.6,8.1-11.1,21.4-16.8c0,0,0,0,0,0c5.4-2.3,10.9-4.1,15.5-5l2.7-1.6
+			c-2.2-3.7-4.9-7.1-8-10.1c-3.5,2.5-7.8,3.3-11.8,2.2c-5.9-1.7-10.1-7.1-10.6-13.6C82.6,21,80.4,20.8,78.2,20.6z"/>
+		<ellipse id="path4145" class="st4" cx="98" cy="24.5" rx="9.9" ry="9.5"/>
+		<ellipse id="path4147" class="st5" cx="95.4" cy="27.5" rx="3.8" ry="3.6"/>
+		<circle id="path4165" class="st6" cx="65.9" cy="74.6" r="3"/>
+		<g id="use4167" transform="translate(-53.350315,-77.600458)">
+			<circle id="path4165_1_" class="st6" cx="57" cy="61.7" r="3"/>
+		</g>
+		<g>
+			<g id="use4169" transform="translate(70.325415,-60.625358)">
+				<circle id="path4165_2_" class="st6" cx="68.8" cy="51.6" r="3"/>
+			</g>
+			<g>
+				<g>
+					<g id="use4171" transform="translate(16.9751,-82.450486)">
+						<circle id="path4165_3_" class="st6" cx="71.6" cy="37.8" r="3"/>
+					</g>
+					<g>
+						<g>
+							<g>
+								<g id="use4173" transform="translate(-113.97567,48.500286)">
+									<circle id="path4165_4_" class="st6" cx="52.6" cy="45.9" r="3"/>
+								</g>
+								<g>
+									<g>
+										<g>
+											<g>
+												<g id="use4175" transform="translate(-63.050372,72.750429)">
+													<circle id="path4165_5_" class="st6" cx="42" cy="58.1" r="3"/>
+												</g>
+												<g>
+													<g>
+														<g>
+															<g>
+																<g>
+																	<g id="use4177" transform="translate(36.375215,111.55066)">
+																		<circle id="path4165_6_" class="st6" cx="48.1" cy="76.7" r="3"/>
+																	</g>
+																	<g>
+																		<g>
+																			<g>
+																				<g>
+																					<g>
+																						<g>
+																							<g id="use4179" transform="translate(60.625358,77.600458)">
+																								<circle id="path4165_7_" class="st6" cx="58.2" cy="89.6" r="3"/>
+																							</g>
+																							<g>
+																								<g>
+																									<g>
+																										<g>
+																											<g id="layer1" inkscape:groupmode="layer" inkscape:label="Layer 1">
+																												<g id="g4231">
+																													<circle id="path4165_8_" class="st6" cx="77.7" cy="91.6" r="3"/>
+																													<circle id="path4165_9_" class="st6" cx="86.6" cy="43.9" r="3"/>
+																												</g>
+																											</g>
+																										</g>
+																									</g>
+																								</g>
+																							</g>
+																						</g>
+																					</g>
+																				</g>
+																			</g>
+																		</g>
+																	</g>
+																</g>
+															</g>
+														</g>
+													</g>
+												</g>
+											</g>
+										</g>
+									</g>
+								</g>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

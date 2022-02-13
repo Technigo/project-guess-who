@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #c93b3b;
+  --secondary: #00CAFF;
 }
 
 body {
@@ -36,12 +36,16 @@ select {
   font-size: 22px;
   font-family: 'Montserrat';
   color: var(--secondary);
-  width: 100%;
+  width: 80%;
   margin: 24px 0;
+  border-radius: 1rem;
+  padding: 0.4rem;
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 200px;
+  position: relative;
+  right: 2rem;
 }
 
 .board-wrapper {
@@ -131,6 +135,7 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  color: #fff;
 }
 
 .filled-button,

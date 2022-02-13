@@ -12,15 +12,16 @@ const CHARACTERS = [
     name: 'Jabala',
     img: 'images/fish1.svg',
     scale: 'greens',
-    mood: 'expressionless',
-    accessories: ['glasses', 'hat'],
+    expression: ['expressionless'],
+    shape: 'average',
     other: []
   },
   {
     name: 'Billie EiFish',
     img: 'images/fish2.svg',
-    mood: 'sad',
-    eyes: 'blue',
+    scale: 'greens',
+    expression: 'sad',
+    shape: 'average',
     accessories: ['hat'],
     other: []
   },
@@ -28,56 +29,56 @@ const CHARACTERS = [
     name: 'Leonardi Di carp rio',
     img: 'images/fish3.svg',
     scale: 'blue',
-    mood: 'sad',
-    accessories: ['hat'],
+    expression: 'sad',
+    shape: 'average',
     other: ['smoker']
   },
   {
     name: 'Legend',
     img: 'images/fish4.svg',
     scale: 'grey',
-    mood: 'expressionless',
-    accessories: [],
+    expression: 'expressionless',
+    shape: 'long',
     other: []
   },
   {
     name: 'Gammelgäddan Jr',
     img: 'images/fish5.svg',
     scale: 'green',
-    mood: 'sneaky',
-    accessories: ['glasses'],
+    expression: 'sneaky',
+    shape: 'long',
     other: []
   },
   {
     name: 'Flounder',
     img: 'images/fish6.svg',
     scale: 'yellow',
-    mood: 'happy',
-    accessories: ['glasses'],
+    expression: 'happy',
+    shape: 'round',
     other: []
   },
   {
     name: 'Jana',
     img: 'images/fish7.svg',
     scale: 'red',
-    mood: 'astonished',
-    accessories: ['glasses'],
+    expression: 'astonished',
+    shape: 'average',
     other: []
   },
   {
     name: 'Jane',
     img: 'images/fish8.svg',
     scale: 'yellow',
-    mood: 'sad',
-    accessories: ['glasses'],
+    expression: 'sad',
+    shape: 'round',
     other: []
   },
   {
     name: 'Jaqueline',
     img: 'images/fish9.svg',
     scale: 'black',
-    mood: 'expressionless',
-    accessories: ['glasses'],
+    expression: 'expressionless',
+    shape: 'average',
     other: []
   },
 
@@ -85,120 +86,120 @@ const CHARACTERS = [
     name: 'Jazebelle',
     img: 'images/fish10.svg',
     scale: 'green',
-    mood: 'expressionless',
-    accessories: ['glasses'],
+    expression: 'expressionless',
+    shape: 'averages',
     other: ['smoker']
   },
   {
     name: 'Jean',
     img: 'images/fish11.svg',
     scale: 'yellow',
-    mood: 'happy',
-    accessories: ['glasses', 'hat'],
+    expression: 'happy',
+    shape: 'round',
     other: ['smoker']
   },
   {
     name: 'Jeane',
     img: 'images/fish12.svg',
     scale: 'red',
-    mood: 'happy',
-    accessories: ['glasses'],
+    expression: 'happy',
+    shape: 'average',
     other: []
   },
   {
     name: 'Jed',
     img: 'images/fish13.svg',
     scale: 'blue',
-    mood: 'expressionless',
-    accessories: ['glasses', 'hat'],
+    expression: 'expressionless',
+    shape: 'round',
     other: ['smoker']
   },
   {
     name: 'Jenni',
     img: 'images/fish14.svg',
     scale: 'yellow',
-    mood: 'sad',
-    accessories: ['hat'],
+    expression: 'sad',
+    shape: 'average',
     other: []
   },
   {
     name: 'Jeri',
     img: 'images/fish15.svg',
     scale: 'orange',
-    mood: 'experssionless',
-    accessories: ['glasses'],
+    expression: 'experssionless',
+    shape: 'average',
     other: []
   },
   {
     name: 'Jerry',
     img: 'images/fish16.svg',
     scale: 'yellow',
-    mood: 'experssionless',
-    accessories: ['hat'],
+    expression: 'experssionless',
+    shape: 'long',
     other: []
   },
   {
     name: 'Jess',
     img: 'images/fish17.svg',
     scale: 'blue',
-    mood: 'sneaky',
-    accessories: ['glasses'],
+    expression: 'sneaky',
+    shape: 'round',
     other: []
   },
   {
     name: 'Jocelyn',
     img: 'images/fish18.svg',
     scale: 'black',
-    mood: 'expressionless',
-    accessories: ['glasses'],
+    expression: 'expressionless',
+    shape: 'average',
     other: []
   },
   {
     name: 'Jon',
     img: 'images/fish19.svg',
     scale: 'green',
-    mood: 'astonished',
-    accessories: ['glasses'],
+    expression: 'astonished',
+    shape: 'round',
     other: []
   },
   {
     name: 'Tuna Turner',
     img: 'images/fish20.svg',
     scale: 'blue',
-    mood: 'expresionless',
-    accessories: ['glasses', 'hat'],
+    expression: 'expresionless',
+    shape: 'long',
     other: []
   },
   {
     name: 'Gammelgäddan',
     img: 'images/fish21.svg',
     scale: 'green',
-    mood: 'sneaky',
-    accessories: [],
+    expression: 'sneaky',
+    shape: 'long',
     other: []
   },
   {
     name: 'Josh',
     img: 'images/fish22.svg',
     scale: 'blue',
-    mood: 'sneaky',
-    accessories: [],
+    expression: 'sneaky',
+    shape: ['round'],
     other: []
   },
   {
     name: 'Jude',
     img: 'images/fish23.svg',
     scale: 'orange',
-    mood: 'astonished',
-    accessories: [],
+    expression: 'astonished',
+    shape: ['round'],
     other: []
   },
   {
     name: 'Julie',
     img: 'images/fish24.svg',
     scale: 'orange',
-    mood: 'sad',
-    accessories: ['glasses', 'hat'],
+    expression: 'sad',
+    shape: 'average',
     other: []
   },
 ]
@@ -265,7 +266,7 @@ const checkQuestion = () => {
 
 	// Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
 	// See if we should keep or remove people based on that and then invokes filterCharacters
-	if (category === "scale" || "mood" || "accessories" || "other") {
+	if (category === "scale" || "expression" || "shape" || "other") {
 		if (secret[currentQuestion.category].includes(currentQuestion.value)) {
 			//true
 			filterCharacters(true);
@@ -282,22 +283,20 @@ const filterCharacters = (keep) => {
   const { category, value, label } = currentQuestion;
   // Show the correct alert message for different categories
   
-  if (category === "accessories") {
+  if (category === "shape") {
 
     if (keep) {
       alert(
-        `Yes, the main color of the fish is ${label}! Keep all fish that has ${label}`
-        );charactersInPlay = charactersInPlay.filter((person) =>
-				person[category].includes(value)
+        `Yes, the shape of the fish is ${label}! Keep all fish that has ${label} shape.`
+        );charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)
         );
 
         
     } else {
       alert(
-        `No, the fish doesn't have ${label} as main color! Remove all fish that has ${label} as main color`
+        `No, the fish doesn't have ${label} shape! Remove all fish that has ${label} shape.`
       )
-      charactersInPlay = charactersInPlay.filter(
-				(person) => !person[category].includes(value)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
       )
     }
 
@@ -307,47 +306,40 @@ const filterCharacters = (keep) => {
     if (keep) {
 			alert(`Yes, the fish is ${label}! Keep all fish that is ${label}`);
 
-			charactersInPlay = charactersInPlay.filter((person) =>
-			person[category].includes(value)
-			);
-  } else {
+			charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+  
+    } else {
     alert(`No, the fish isn't ${label}! Remove all fish that are ${label}`);
-			charactersInPlay = charactersInPlay.filter(
-				(person) => !person[category].includes(value)
+			charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
 			);
     }
 
 
   } else if (category === "scale"){
       if (keep) {
-      alert(`Yes, the fish has ${label}! Keep all fish that has ${label}`);
-			charactersInPlay = charactersInPlay.filter((person) =>
-				person[category].includes(value)
+      alert(`Yes, the fish has ${label} scale! Keep all fish that has ${label} scale`);
+			charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)
 			)
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     
     } else {
       alert(
-				`No, the fish doesn't have ${label}! Keep all fish that has ${label}`
-			);
-			charactersInPlay = charactersInPlay.filter(
-				(person) => !person[category].includes(value)
+				`No, the fish doesn't have ${label} scale! Remove all fish that has ${label} scale`);
+			charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
 			);
 
     }
-  } else if (category === "mood") {
+  } else if (category === "expression") {
 		if (keep) {
-			alert(`Yes, the fish is ${label}! Keep all fish that is ${label}`);
-			charactersInPlay = charactersInPlay.filter((person) =>
-				person[category].includes(value)
+			alert(`Yes, the fish is ${label}! Keep all fish that are ${label}`);
+			charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)
 			);
 		
     } else {
 			alert(
-				`No, the persons doesn't have ${label}! Remove all people that has ${label}`
+				`No, the fish is not ${label}! Remove all fish that are ${label}`
 			);
-			charactersInPlay = charactersInPlay.filter(
-				(person) => !person[category].includes(value)
+			charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
 			);
     }
   }

@@ -31,4 +31,4 @@ I laid out what needed to happen for the game to work, then focused on JavaScrip
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://naughty-mestorf-91e477.netlify.app/

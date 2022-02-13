@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #FF9E00;
+  --secondary: #fad08d; 
 }
 
 body {
@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background: #f0daf1;
 }
 
 h1 {
@@ -16,13 +17,12 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: #63458A;
 }
 
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -35,13 +35,24 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: #63458A;
   width: 100%;
   margin: 24px 0;
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 150px;
+}
+
+.question-counter {
+  color: #63458A;
+  font-size: 20px;
+  border: 1px solid var(--primary);
+  border-radius: 50px;
+  padding: 10px;
+
 }
 
 .board-wrapper {
@@ -64,7 +75,8 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  background-color: #FFFFFF;
+  border: 3px solid #A06CD5;
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -78,6 +90,7 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+  color: #63458A;
 }
 
 .card .guess {
@@ -85,13 +98,13 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
   text-align: center;
   height: inherit;
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: #FFD670;
+  color: #63458A;
 }
 
 .card:hover img,
@@ -121,6 +134,7 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  color: #63458A;
 }
 
 .small {
@@ -129,20 +143,18 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
   align-self: flex-end;
 }
 
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: #63458A;
   color: var(--primary);
+  border: 2px solid #FFFFFF;
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -226,7 +238,7 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: #FFFFFF;
     color: var(--primary);
     border: none;
   }

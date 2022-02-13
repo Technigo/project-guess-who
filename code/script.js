@@ -67,7 +67,7 @@ const CHARACTERS = [
   {
     name: 'Dina',
     img: 'images/dina.png',
-    hair: 'brown',
+    hair: 'red',
     eyes: 'green',
     dates: [],
     relatives: ['Joey']

@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #d14d79;
+  --secondary: #ffa6a6;
 }
 
 body {
@@ -184,7 +184,10 @@ button {
   body {
     flex-direction: column;
   }
-
+  select{
+    font-size: 18px;
+    width: 100%;
+  }
   .question-section {
     width: 100%;
     min-height: 0;

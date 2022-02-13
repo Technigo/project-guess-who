@@ -36,7 +36,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['pipe']
   },
   {
     name: 'Jai',
@@ -86,14 +86,13 @@ const CHARACTERS = [
     accessories: ['glasses', 'earrings'],
     other: []
   },
-
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['sunglasses'],
-    other: ['smoker']
+    other: ['cigarette']
   },
   {
     name: 'Jean',
@@ -101,7 +100,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['cigarette']
   },
   {
     name: 'Jeane',
@@ -117,7 +116,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['cigarette']
   },
   {
     name: 'Jenni',
@@ -172,7 +171,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['sunglasses', 'hat'],
     other: []
   },
   {
@@ -209,7 +208,7 @@ const CHARACTERS = [
   },
 ]
 
-// The Game Board is being renderede with every character from the cards and the buttons and stuff.
+// The Game Board is being rendered with every characters card with a guess button
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -226,14 +225,13 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// This function randomly selects a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// Function for starting and restarting the game. All charactersInPlay is shown, 
-//we call the functions for generating the board, showing the characters in play fro the array and 
-//setting the secret person and making the select question function available
+// Function for starting and restarting the game. All charactersInPlay are shown, the secret person is set. 
+// If restarting the win or loose screen will be hidden
 const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
@@ -241,8 +239,7 @@ const start = () => {
   selectQuestion()
   winOrLose.classList.remove("show-win-or-lose");
 }
-// Variable that stores the category (option group/in the dropdown menu) the question belongs to. 
-// Plus the variable that stores the value of the question selected. If I select category hair, the value is the color of the hair, eg red.
+// Variable that stores the category (option group/in the dropdown menu) and value for the question 
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
@@ -253,12 +250,8 @@ const selectQuestion = () => {
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
-
-// Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-// See if we should keep or remove people based on that
-// Then invoke filterCharacters
-
+// After selecting a category, player chooses to Find out. This function compares the question with information about the secret person
+// If the answer is true, it keeps the characters. Others will be filtered out. 
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
@@ -276,19 +269,15 @@ const checkQuestion = () => {
     }
   }
 }
-// It'll filter the characters array and redraw the game board.
+// This function filters the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
 
-  // Alert message that tells the player if they were right in their guesses for accessories and other on the secret person. 
-  // If the guess is right, they get a message that we remove the others that does not have this acc/other from the board.
-  // If the guess is wrong, they get a message that all characters remain on the board. 
-
+  // Alert message that tells the player if they were right in their guesses for category accessories and other on the secret person. 
   if (category === 'accessories') {
     if (keep) {
-      //charactersInPlay
       alert(
-        `Yes, the person wears ${value}! We will keep all people that wears ${value} on the board`
+      `Yes, the person wears ${value}! We will keep all people that wears ${value} on the board`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
 
@@ -303,18 +292,17 @@ const filterCharacters = (keep) => {
   else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person has ${value}! We will keep all persons that has ${value} on the board.`
+        `Yes, the person has a ${value}! We will keep all persons that has a ${value} on the board.`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
-        `No, the person do not have ${value}! We will remove all people that has ${value} from the board`
+        `No, the person does not have a ${value}! We will remove all people that has a ${value} from the board`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   } else if (category === 'hair' || category === 'eyes') {
-
-    if (keep) {
+      if (keep) {
       alert(
         `Yes, the person has ${value} ${category}! We will keep all persons that has ${value} ${category} on the board.`
       )
@@ -322,7 +310,7 @@ const filterCharacters = (keep) => {
 
     } else {
       alert(
-        `No, the person do not have ${value} ${category}! We will remove all people that has ${value} ${category} from the board`
+        `No, the person does not have  ${value} ${category}! We will remove all people that has ${value} ${category} from the board`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
@@ -334,14 +322,13 @@ const filterCharacters = (keep) => {
 const guess = (personToConfirm) => {
 let confirmYourGuess = confirm(`Do you want to guess it is ${personToConfirm}?`)
   
-  //If the player confirms they want to guess
-  if (confirmYourGuess){
+if (confirmYourGuess){
     checkMyGuess(personToConfirm)
     } else{
       alert('Ok, continue game')
     }
   }
-// If player confirm the guess the person they guessed on will be compared to the secret persons name. 
+// If player confirm, the guessed persons name will be compared to the secret persons name. 
 const checkMyGuess = (personToCheck) => {
 
   //If the personToCheck is the same as the secret person's name a winning or loosing message will be shown. 
@@ -353,8 +340,7 @@ const checkMyGuess = (personToCheck) => {
   let winOrLose= document.getElementById('winOrLose'); 
   winOrLose.classList.add("show-win-or-lose");
   }
-
-  //When the player has seen the winning/loosing message, they can choose to play again
+  //When the player has seen the winning/loosing message, they can choose to play again and the restart hides the Win/Loose screen
 
 
 // Invokes the start function when website is loaded

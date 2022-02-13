@@ -2,9 +2,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
-const winOrLose = document.getElementById ('winOrLose')
-const winOrLoseText = document.getElementById ('winOrLoseText')
-const playAgainButton = document.getElementById ('playAgain')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
 const questionsAsked = document.getElementById('questionsAsked')
 
 let secret
@@ -245,7 +245,7 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.value
-  
+
   currentQuestion = {
     category: category,
     value: value
@@ -323,10 +323,10 @@ const filterCharacters = (keep) => {
 // Function to let the player confirm they want to make a guess
 const guess = (personToConfirm) => {
   //The confirm function creates two options
-  let confirmation = confirm (`Are you sure you want to guess on ${personToConfirm}?`)
-  if (confirmation === true){ 
+  let confirmation = confirm(`Are you sure you want to guess on ${personToConfirm}?`)
+  if (confirmation === true) {
     checkMyGuess(personToConfirm);
-  } 
+  }
 }
 
 // If player confirms, this function is invoked

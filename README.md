@@ -1,13 +1,18 @@
-# Project Name
+# Guessing game
 
-Replace this readme with your own information about your project.
+For this weeks assignment my main objective was to set up and understand all the javascript functionalities. Therefore I kept the template as is.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Once I finished that, I decided to try and make my own version. In the spirit of valentine's day I made a 'guess who' of my exes 😅
+I'm having trouble getting it to work, though, which is why I decided to upload both.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I think the issue has to do with how I structured the options. I have only two question categories, one of which has three options and are either/or. The other category is unnamed and have only boolean questions. I think I've messed up how to reference them. 
+
+The select-values needs to replace the select-labels when filtering my characters, and the select-values needs to be replaced by true/false. Each value also needs its own if/else statement and custom alert, testing for true or false. I tried to declare them as "attributes" unsuccessfully. The relationship-category promts the alert but doesn't filter characters. The "---" doesn't function at all. Hopefully I can revisit the project in a couple of weeks and identify the problem, or get some feedback on how to solve it in my code review. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Standard game: https://affectionate-jones-30cd8d.netlify.app/
+
+My version: https://guess-my-ex.netlify.app/

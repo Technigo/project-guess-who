@@ -332,7 +332,7 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseSection.style.display = "block";
     board.style.display = "none";
     loseAudio.play();
-    winOrLoseText.innerHTML = "Sorry 🙁 inspector this is not the secret person, but don't give up and try again";
+    winOrLoseText.innerHTML = "Sorry 🙁 inspector this is not the secret person, try again";
   }
 };
 // 3. Show the win or lose section

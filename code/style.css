@@ -143,7 +143,7 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: #8bbee8ff;
+  color: white;
   align-self: flex-end;
 }
 
@@ -243,7 +243,7 @@ button {
   }
 
   .card .guess .filled-button {
-    padding: 6px 11px;
+    padding: 0px 5px;
     margin-bottom: 1px;
     background: white;
     color: #8bbee8ff;

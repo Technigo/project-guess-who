@@ -259,6 +259,8 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  count +=1
+  document.getElementById('count').innerHTML = `${count}`
   const { category, value } = currentQuestion
   if (category === "hair" || category === "eyes") {
 		if (secret[category] === value) {

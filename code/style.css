@@ -156,7 +156,7 @@ button {
 .filled-button:hover {
   background-color: #a8d5baff;
   border-color: #8bbee8ff;
-  color: #8bbee8ff;
+  color: white;
 }
 
 /****** WIN OR LOSE SECTION ******/

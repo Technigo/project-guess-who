@@ -8,6 +8,7 @@ const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playagainButton = document.getElementById('playAgain')
 
+console.log = () => {};
 
 
 /*

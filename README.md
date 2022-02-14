@@ -7,7 +7,7 @@ This project was about creating a virtual version of the game Guess Who. The mai
 
 I started my process with getting to know the starter code and the project instructions. I drafted the steps and the logic of the game using Figma which helped me in forming the actual functions for the game.
 
-The game characters were listed as objects inside an array. The filtering of the game characters during the game was done by using the filter() and includes() methods. To invoke different commands inside the functions was done by using conditional statements. The guesses of the game player were handled with the confirm() method and the player was given alert messages during the game according to the guesses they made. 
+The game characters were listed as objects inside an array. The filtering of the game characters during the game was done by using the filter() and includes() methods. Invoking different commands inside the functions was done by using conditional statements. The guesses of the player were handled with the confirm() method and the player was given alert messages during the game according to the guesses they made. 
 
 I added audio effects to the buttons, character cards and for the win or lose message that the player receives in the end of the game. I also added a video effect to the end of the game.
 

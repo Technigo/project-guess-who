@@ -7,7 +7,7 @@ The project was to build a Guess Who Game and to pratice using array methods, if
 
 Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
 
- - Throughout the project, I learn how to read, analyze and develop the code from Technigo's code template. The core challenge was to understand how to get a value from an array which is based inside an object. For example:
+ - Through the project, I learned how to read, analyze and develop the code from Technigo's code template. The core challenge was to understand how to get a value from an array which is based inside an object. For example:
  
  const CHARACTERS = [
   {

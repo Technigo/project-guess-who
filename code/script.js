@@ -237,7 +237,6 @@ const start = () => {
   document.getElementById('winOrLose').style.display = "none"; // this clears the winOrLose display after the last step
   generateBoard()
   setSecret()
-  console.log(secret)
 }
 
 // setting the currentQuestion object when you select something in the dropdown

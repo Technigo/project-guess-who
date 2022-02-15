@@ -33,7 +33,7 @@ const CHARACTERS = [
     accessories: ['hat'],
     other: ['smoker']
   },
-  {
+    {
     name: 'Jai',
     img: 'images/jai.svg',
     hair: 'black',
@@ -237,6 +237,7 @@ const start = () => {
   document.getElementById('winOrLose').style.display = "none"; // this clears the winOrLose display after the last step
   generateBoard()
   setSecret()
+  console.log(secret)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -253,34 +254,38 @@ const selectQuestion = () => {
   // Compares the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
 const checkQuestion = () => {
   const { category, value } = currentQuestion; 
-  let keep = value === secret[category];
-  if (category === 'hair' || category === 'eyes') { //these are looking for single strings
-      if (value === secret.hair || value === secret.eyes) {
-        keep = true
-        filterCharacters(keep)
-      } else {
-        keep = false 
-        filterCharacters(keep)
-      }
-  } else if (category === 'accessories' || category === 'other') { // these are looking for arrays 
-      if (secret.accessories.includes(value) || secret.other.includes(value)) {
-        keep = true
-       filterCharacters(keep)
-      } else {
-        keep = false 
-        filterCharacters(keep)
-      }
+  if (category === 'eyes') {
+    if (value === secret.eyes) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+  } else if (category === 'hair') {
+    if (value === secret.hair) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+  } else if (category === 'accessories' || category === 'other') {
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+      filterCharacters(true);
+    } else {
+      keep = false; 
+      filterCharacters(keep);
+    }
   }
 }
 
 //This function filters the characters array and alerts a message accordingly. 
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-
+  console.log(keep)
   if (category === 'hair') {
     if (keep) {
       alert(`Yes, the person has ${value} hair! Keep all people that has ${value} hair`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      console.log(value)
+      console.log(charactersInPlay)
     } else {
       alert(`No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)

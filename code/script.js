@@ -270,8 +270,7 @@ const checkQuestion = () => {
     if (secret.accessories.includes(value) || secret.other.includes(value)) {
       filterCharacters(true);
     } else {
-      keep = false; 
-      filterCharacters(keep);
+      filterCharacters(false);
     }
   }
 }

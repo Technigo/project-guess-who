@@ -406,7 +406,7 @@ start();
 
 // All the event listeners
 restartButton.addEventListener('click', start => location.reload());
-playAgain.addEventListener("click", start => location.reload() );
+playAgain.addEventListener("click", start => location.reload());
 
 questions.addEventListener("change", selectQuestion);
 filterButton.addEventListener('click', checkQuestion);

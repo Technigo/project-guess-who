@@ -261,7 +261,7 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   // This variable stores what option group (category) the question belongs to.
   // variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].parentNode.label;
+  const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
     category: category,

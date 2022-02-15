@@ -25,7 +25,7 @@ Describe how you approached to problem, and what tools and techniques you used t
  
 - Next, I had not played the game before, I spent time on playing the game to understand how it structures, how the user interacts and how I can make the game more interesting.
    -- I managed to add the sound effect to all the buttons, and the character cards whenever the user hover the mouse on them. The solution for this was creating a      function which plays the sound and add it to the buttons and character cards.
-   -- I added background music to the game and with the mute/unmute button for the users to control. During the process, I recognised that Safari does not support autoplay and require first interaction from the user to activate the sound. In the end, after I created a greeting modal to acquire user's name, the browser got the interaction from the user and enale the music to play. 
+   -- I added background music to the game and with the mute/unmute button for the users to control. During the process, I recognised that Safari does not support autoplay and require first interaction from the user to activate the sound. In the end, after I created a greeting modal to acquire user's name, the browser got the interaction from the user and enable the music to play. 
    -- I added sparkle animation, card hover effect to the game board
    -- I added time counter and guess-made counter 
    -- After the user guessed the character, it will show a modal to confirm if the user win or lose, together with the secret person's image.

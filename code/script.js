@@ -22,46 +22,46 @@ const CHARACTERS = [
     name: "Jack",
     img: "images/jack.svg",
     hair: "hidden",
-    eyes: "blue eyes",
+    eyes: "eyes",
     accessories: ["hat"],
     other: ["beard", "parrot"],
   },
   {
     name: "Jacques",
     img: "images/jacques.svg",
-    hair: "grey hair",
-    eyes: "blue eyes",
+    hair: "grey",
+    eyes: "blue",
     accessories: ["hat"],
     other: ["smoking habit", "beard"],
   },
   {
     name: "Jai",
     img: "images/jai.svg",
-    hair: "black hair",
-    eyes: "brown eyes",
+    hair: "black",
+    eyes: "brown",
     accessories: [],
     other: [],
   },
   {
     name: "Jake",
     img: "images/jake.svg",
-    hair: "yellow hair",
-    eyes: "green eyes",
+    hair: "yellow",
+    eyes: "green",
     accessories: ["glasses"],
     other: [],
   },
   {
     name: "James",
     img: "images/james.svg",
-    hair: "brown hair",
-    eyes: "green eyes",
+    hair: "brown",
+    eyes: "green",
     accessories: ["glasses"],
     other: [],
   },
   {
     name: "Jana",
     img: "images/jana.svg",
-    hair: "black hair",
+    hair: "black",
     eyes: "hidden",
     accessories: ["glasses", "jewelry"],
     other: [],
@@ -69,7 +69,7 @@ const CHARACTERS = [
   {
     name: "Jane",
     img: "images/jane.svg",
-    hair: "yellow hair",
+    hair: "yellow",
     eyes: "hidden",
     accessories: ["glasses"],
     other: [],
@@ -77,8 +77,8 @@ const CHARACTERS = [
   {
     name: "Jaqueline",
     img: "images/jaqueline.svg",
-    hair: "orange hair",
-    eyes: "green eyes",
+    hair: "orange",
+    eyes: "green",
     accessories: ["glasses", "jewelry"],
     other: [],
   },
@@ -86,7 +86,7 @@ const CHARACTERS = [
   {
     name: "Jazebelle",
     img: "images/jazebelle.svg",
-    hair: "purple hair",
+    hair: "purple",
     eyes: "hidden",
     accessories: ["glasses"],
     other: ["smoking habit"],
@@ -94,31 +94,31 @@ const CHARACTERS = [
   {
     name: "Jean",
     img: "images/jean.svg",
-    hair: "brown hair",
-    eyes: "blue eyes",
+    hair: "brown",
+    eyes: "blue",
     accessories: ["glasses", "hat"],
     other: ["smoking habit"],
   },
   {
     name: "Jeane",
     img: "images/jeane.svg",
-    hair: "brown hair",
-    eyes: "green eyes",
+    hair: "brown",
+    eyes: "green",
     accessories: ["glasses"],
     other: [],
   },
   {
     name: "Jed",
     img: "images/jed.svg",
-    hair: "orange hair",
-    eyes: "green eyes",
+    hair: "orange",
+    eyes: "green",
     accessories: ["glasses", "hat"],
     other: ["smoking habit", "beard"],
   },
   {
     name: "Jenni",
     img: "images/jenni.svg",
-    hair: "white hair",
+    hair: "white",
     eyes: "hidden",
     accessories: ["hat"],
     other: [],
@@ -126,8 +126,8 @@ const CHARACTERS = [
   {
     name: "Jeri",
     img: "images/jeri.svg",
-    hair: "orange hair",
-    eyes: "green eyes",
+    hair: "orange",
+    eyes: "green",
     accessories: ["glasses"],
     other: [],
   },
@@ -135,38 +135,38 @@ const CHARACTERS = [
     name: "Jerry",
     img: "images/jerry.svg",
     hair: "hidden",
-    eyes: "blue eyes",
+    eyes: "blue",
     accessories: ["hat"],
     other: [],
   },
   {
     name: "Jess",
     img: "images/jess.svg",
-    hair: "black hair",
-    eyes: "blue eyes",
+    hair: "black",
+    eyes: "blue",
     accessories: ["glasses"],
     other: [],
   },
   {
     name: "Jocelyn",
     img: "images/jocelyn.svg",
-    hair: "black hair",
-    eyes: "brown eyes",
+    hair: "black",
+    eyes: "brown",
     accessories: ["glasses", "jewelry"],
     other: [],
   },
   {
     name: "Jon",
     img: "images/jon.svg",
-    hair: "brown hair",
-    eyes: "green eyes",
+    hair: "brown",
+    eyes: "green",
     accessories: ["glasses"],
     other: [],
   },
   {
     name: "Jordan",
     img: "images/jordan.svg",
-    hair: "yellow hair",
+    hair: "yellow",
     eyes: "hidden",
     accessories: ["glasses", "hat", "jewelry"],
     other: [],
@@ -174,32 +174,32 @@ const CHARACTERS = [
   {
     name: "Josephine",
     img: "images/josephine.svg",
-    hair: "grey hair",
-    eyes: "brown eyes",
+    hair: "grey",
+    eyes: "brown",
     accessories: ["jewelry"],
     other: [],
   },
   {
     name: "Josh",
     img: "images/josh.svg",
-    hair: "yellow hair",
-    eyes: "green eyes",
+    hair: "yellow",
+    eyes: "green",
     accessories: [],
     other: [],
   },
   {
     name: "Jude",
     img: "images/jude.svg",
-    hair: "black hair",
-    eyes: "green eyes",
+    hair: "black",
+    eyes: "green",
     accessories: [],
     other: ["beard"],
   },
   {
     name: "Julie",
     img: "images/julie.svg",
-    hair: "black hair",
-    eyes: "brown eyes",
+    hair: "black",
+    eyes: "brown",
     accessories: ["glasses", "hat"],
     other: [],
   },
@@ -294,7 +294,7 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value, secret } = currentQuestion;
+  const { category, value, text } = currentQuestion;
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
@@ -328,13 +328,15 @@ const filterCharacters = (keep) => {
     }
   } else if (category === "hair") {
     if (keep) {
-      alert(`Yes, the person has ${value}! Keep all people with ${value}`);
+      alert(
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+      );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
     } else {
       alert(
-        `No, the person don't have ${value}. Remove all people with ${value}.`
+        `No, the person don't have ${value} hair. Remove all people with ${value} hair.`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
@@ -343,13 +345,15 @@ const filterCharacters = (keep) => {
   } else if (category === "eyes") {
     if (keep) {
       alert(
-        `Yes, the person have ${value}! Keep all the people with ${value}.`
+        `Yes, the person have ${value} eyes! Keep all the people with ${value} eyes.`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
     } else {
-      alert(`No, the person doesn't have ${value}. Remove all with ${value}.`);
+      alert(
+        `No, the person doesn't have ${value} eyes. Remove all with ${value} eyes.`
+      );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );

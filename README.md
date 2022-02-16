@@ -10,4 +10,4 @@ This weeks task was to make a guess who game.
 I followed the instruction given and got tips from old students work and from our studentgroup to find the solution to some problems.
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://brave-turing-685af0.netlify.app/

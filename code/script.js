@@ -181,7 +181,7 @@ const CHARACTERS = [{
 // Global variables
 
 let secret
-let currentQuestion
+let currentQuestion = { category: 'fur', value: 'long' }
 let charactersInPlay
 let counterVal = 0
 

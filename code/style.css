@@ -211,6 +211,10 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+
   }
 
   .card {

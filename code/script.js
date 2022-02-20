@@ -211,20 +211,21 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let count = 0
 
 // Draw the game board
-const generateBoard = () => {
+function generateBoard() {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
-        <div class="guess">
-        <span>Guess on ${person.name}?</span>
-        <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
-        </div>
-      </div>
+    <div class="card">
+    <p>${person.name}</p>
+    <img src=${person.img} alt=${person.name}>
+    <div class="guess">
+    <span>Guess on ${person.name}?</span>
+    <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+    </div>
+    </div>
     `
   })
 }
@@ -232,45 +233,41 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log('secret person selected')
-  console.log(secret)
 }
 
 // This function to start (and restart) the game
+// Here we're setting charactersInPlay array to be all the characters to start with
+// What else should happen when we start the game?
+// set the secret person -> invoke set Secret funktion
+//show the board on the screen -> invoking generateboard funktion. 
 const start = () => {
-  console.log('start funktion is called!')
-  // Here we're setting charactersInPlay array to be all the characters to start with
+  count = 0 
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-  // set the secret person -> invoke set Secret funktion
   setSecret()
-  //show the board on the screen -> invoking generateboard funktion. 
   generateBoard()
+  winOrLose.style.display = 'none'
+  board.style.display = 'flex'
 }
 
 // setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label  
+function selectQuestion() {
+  const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  
   currentQuestion = {
     category: category,
     value: value,
   }
-  console.log('question asked', currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
-let count = 0
 const checkQuestion = () => {
-  count+= 1
+  count++
   guessCounter.innerHTML = " "
   guessCounter.innerHTML += `<p> Guesses made: ${count}</p>`
 
   const { category, value } = currentQuestion
-  console.log('Let´s findout!')
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -294,7 +291,6 @@ const checkQuestion = () => {
       filterCharacters()
     }
   }
-  console.log('Hang in there, checking your questions')
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -354,10 +350,8 @@ const guess = (personToConfirm) => {
   // If the player wants to guess, invoke the checkMyGuess function.
   if (playerGuess === true){
     checkMyGuess(personToConfirm)
-    console.log('a guess is made')
   }else {
     alert('Okey, lets keep guessing')
-    console.log('No guess made, keep playing')
   }
 }
 
@@ -380,16 +374,11 @@ const checkMyGuess = (personToConfirm) => {
 // Invokes the start function when website is loaded
 start()
 
-//restart game
-const newGame = () =>{
-winOrLose.style.display = 'none'
-board.style.display = 'flex'
-start()
-}
+
 
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
-playAgainButton.addEventListener('click', newGame)
+playAgainButton.addEventListener('click', start)
 

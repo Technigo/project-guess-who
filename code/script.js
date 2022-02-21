@@ -242,6 +242,7 @@ const setSecret = () => {
 //show the board on the screen -> invoking generateboard funktion. 
 const start = () => {
   count = 0 
+  guessCounter.innerHTML = `<p> Guesses made: ${count}</p>`
   charactersInPlay = CHARACTERS
   setSecret()
   generateBoard()

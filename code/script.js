@@ -243,7 +243,6 @@ const start = () => {
   winOrLose.style.display='none'
   board.style.display='flex'
   guessCounter.innerHTML = `0`
-  console.log(secret)
 }
 
 // setting the currentQuestion object when you select something in the dropdown

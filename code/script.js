@@ -233,7 +233,7 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  console.log('start function is called')
+
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   // set the secret person -> invoke the setSecret function
@@ -263,7 +263,7 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  //console.log(value) = test
+
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters

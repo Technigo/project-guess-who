@@ -146,6 +146,8 @@ button {
   color: var(--primary);
 }
 
+
+
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
@@ -171,13 +173,14 @@ button {
 
 .win-or-lose img {
   align-self: flex-start;
-  margin-left: 15%;
+  margin: 20% ;
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
 
+/* ---------------Tablet-------------------- */
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -196,7 +199,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 90px;
   }
 
   .board-wrapper {
@@ -231,4 +234,11 @@ button {
     color: var(--primary);
     border: none;
   }
+
+  .win-or-lose img {
+    align-self: flex-start;
+    width: 190px;
+    margin: 20% ;
+  }
+
 }

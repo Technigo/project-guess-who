@@ -1,13 +1,16 @@
-# Project Name
+# Guess Who Game
 
-In this week's project, I have created my own digital version of the old character guessing board game Guess Who?
+This weeks project was about building the classic game "Guess Who" using JavaScript. In this project I did this:
 
-## The problem
+- Created and manipulated objects
+- Created and manipulated arrays
+- Used array methods such as forEach() and filter()
+- Manipulated the DOM using Javascript
+- Structured code in functions
+- Worked with game logic
 
-I struggled during this project on implementing all the steps for the javascript file. It was challenging, first understanding the code I was giving and then, figuring out what to code in order to make this game work well. 
-In the end, I made it work and I am so proud of it.
 
 ## View it live
 
-https://guess-who-game-board.netlify.app/
+Take a look on my project here: https://guess-who-game-board.netlify.app/
 

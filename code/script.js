@@ -26,7 +26,7 @@ const CHARACTERS = [
     img: 'images/arya.png  width="141px"',
     hair: ['brown hair'],
     eyes: 'grey eyes',
-    accessories: ['a sword'], 
+    accessories: ['a sword', 'magic'], 
     house: ['House Stark'],
     species: 'human',
     home: ['Winterfell']
@@ -127,7 +127,7 @@ const CHARACTERS = [
     img: 'images/gregor.png width="140px"',
     hair: ['hidden hair'],
     eyes: 'hidden eyes',
-    accessories:  ['sword'],
+    accessories:  ['a sword'],
     house: ['House Clegange'],
     species: 'human',
     home: ['unknown']
@@ -237,7 +237,7 @@ const CHARACTERS = [
     img: 'images/nightking.jpg width="135px"',
     hair: ['hidden hair'],
     eyes: 'blue eyes',
-    accessories:['magic', 'a spear'],
+    accessories:['magic', 'a spear', 'a sword'],
     house: ['unknown'],
     species: 'White walker',
     home: ['Beyond the Wall']

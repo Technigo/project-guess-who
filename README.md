@@ -1,6 +1,7 @@
 # Project Name
 
-Week 5 of the Technigo Bootcamp. This week I made a digital version of the boardgame Guess Who?
+Week 5 @ Technigo Bootcamp. 
+This week I made a digital version of the boardgame Guess Who?
 To make it more fun I decided to make a Game if Thrones edition!
 
 ## The problem

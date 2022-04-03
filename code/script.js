@@ -11,197 +11,148 @@ const winOrLosePage =  document.getElementById('winOrLose')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    //the name, img, hair, eyes, etc. are connected to the optgroup in the html
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    name: 'Descartes',
+    img: 'images/descartes.jpg',
+    era: '17th',
+    school: 'rationalism',
+    interests: ['mathematics','physics'],
     other: []
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
+    name: 'Voltaire',
+    img: 'images/voltaire.jpg',
+    era: '18th',
+    school: 'classical liberalism',
+    interests: ['political philosophy','literature'],
     other: []
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
+    name: 'Montesquieu',
+    img: 'images/montesquieu.jpg',
+    era: '18th',
+    school: 'classical liberalism',
+    interests: ['political philosophy'],
     other: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
+    name: 'Diderot',
+    img: 'images/diderot.png',
+    era: '18th',
+    school: 'epicureanism',
+    interests: ['political philosophy'],
     other: []
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    name: 'Rousseau',
+    img: 'images/rousseau.jpg',
+    era: '18th',
+    school: 'romanticism',
+    interests: ['political philosophy'],
     other: []
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
+    name: 'Proudhon',
+    img: 'images/proudhon.jpg',
+    era: '19th',
+    school: 'socialism',
+    interests: ['political philosophy'],
     other: []
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
+    name: 'Tocqueville',
+    img: 'images/tocqueville.jpg',
+    era: '19th',
+    school: 'liberalism',
+    interests: ['political philosophy'],
     other: []
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses','earrings'],
+    name: 'Comte',
+    img: 'images/comte.jpg',
+    era: '19th',
+    school: 'positivism',
+    interests: ['political philosophy'],
+    other: []
+  },
+  {
+    name: 'Fourier',
+    img: 'images/fourier.jpg',
+    era: '20th',
+    school: 'socialism',
+    interests: ['political philosophy'],
+    other: []
+  },
+  {
+    name: 'Sartre',
+    img: 'images/sartre.jpg',
+    era: '20th',
+    school: 'existentialism',
+    accessories: ['political philosophy','literature', 'ethics'],
     other: []
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
+    name: 'Camus',
+    img: 'images/camus.jpg',
+    era: '20th',
+    school: 'existentialism',
+    interests: ['political philosophy','literature'],
+    other: []
+  },
+  {
+    name: 'De Beauvoir',
+    img: 'images/beauvoir.jpg',
+    era: '20th',
+    school: 'feminism',
+    interests: ['political philosophy','ethics'],
+    other: []
+  },
+  {
+    name: 'Deleuze',
+    img: 'images/deleuze.jpg',
+    era: '20th',
+    school: 'post-structuralism',
+    interests: ['semiotics','metaphysics', 'literary theory'],
+    other: []
+  },
+  {
+    name: 'Baudrillard',
+    img: 'images/baudrillard.png',
+    era: '20th',
+    school: 'postmodernism',
+    interests: ['semiotics'],
     other: ['smoker']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    name: 'Lyotard',
+    img: 'images/lyotard.jpg',
+    era: '20th',
+    school: 'postmodernism',
+    interests: ['semiotics','sociology'],
     other: []
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
+    name: 'Lacan',
+    img: 'images/lacan.jpg',
+    era: '20th',
+    school: 'psychoanalysis',
+    interests: ['semiotics','literary theory'],
     other: []
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
+    name: 'Foucault',
+    img: 'images/foucault.jpg',
+    era: '20th',
+    school: 'postmodernism',
+    interests: ['ethics','political philosophy'],
     other: []
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses','earrings'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: ['earrings'],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    name: 'Derrida',
+    img: 'images/derrida.png',
+    era: '20th',
+    school: 'deconstruction',
+    interests: ['semiotics','deconstruction'],
     other: []
   },
 ]
@@ -209,8 +160,8 @@ const CHARACTERS = [
 // Global variables
 let secret
 let currentQuestion = {
-  category: 'hair',
-  value: 'brown'
+  category: 'era',
+  value: '17th'
 }
 let charactersInPlay
 let count = 0
@@ -257,12 +208,12 @@ const selectQuestion = () => {
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+
 const checkQuestion = () => {
   count +=1
   document.getElementById('count').innerHTML = `${count}`
   const { category, value } = currentQuestion
-  if (category === "hair" || category === "eyes") {
+  if (category === "era" || category === "school") {
 		if (secret[category] === value) {
 			filterCharacters(true);
 		} else {
@@ -304,11 +255,11 @@ const filterCharacters = (keep) => {
           `No, the person is not a ${value}! Remove all people who are not a ${value}`
         )
       }
-  } else if (category === 'hair') {
+  } else if (category === 'era') {
       if (keep) {
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value) 
         alert(
-          `Yes, the person has ${value} hair! Keep all people who have ${value} hair`
+          `Yes, I'm from the ${value} century! Keep all philosophers who are from the ${value} century`
         )
         } else {
           charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)

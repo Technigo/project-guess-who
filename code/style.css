@@ -2,6 +2,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
+  font-family: 'Parisienne', cursive;
 }
 
 h1 {
@@ -9,13 +10,12 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
 }
 
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: green;
+  background-image: url(images/swing.jpg);
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -56,6 +56,9 @@ select:focus {
   align-content: center;
 }
 
+.description {
+  font-size: .5em;
+}
 
 /****** CARD ******/
 .card {
@@ -73,7 +76,6 @@ select:focus {
 .container p {
   text-align: center;
   margin-bottom: 0;
-  font-family: 'Parisienne', cursive;
   font-size: 25px;
   
 }
@@ -91,7 +93,6 @@ select:focus {
 .guesses {
   color: white;
   font-size: 20px;
-  font-family: 'Parisienne', cursive;
   margin-left: 10px;
 }
 

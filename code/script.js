@@ -190,6 +190,21 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+//introduction page
+
+const intro = () => {
+  board.innerHTML = `
+  <div>
+    <h1> Welcome to Guess Who game: French philosophers edition!<h1>
+    <p class="description"> Filter out philosophers based on their eras, schools and main interests.
+      Have fun! </p>
+
+    <button onclick="start()"> Play </button>
+    </div>
+
+  `
+}
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -199,6 +214,7 @@ const start = () => {
   count = 0
   document.getElementById('count').innerHTML = `${count}`
 }
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -329,10 +345,11 @@ const checkMyGuess = (personToCheck) => {
   }
 }
 
-// Invokes the start function when website is loaded
-start()
+// Invokes the intro page
+intro()
+
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', intro)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)

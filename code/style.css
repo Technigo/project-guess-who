@@ -194,9 +194,26 @@ select {
   font-size: 16px;
   padding: 5px 20px;
   cursor: pointer;
-  
-
 }
+
+.outlined-button-swedish {
+  background-color: rgba(240, 230, 191, 0.619);
+  color: #0000cea2;
+  border: 1px dotted #0000cea2;
+  border-radius: 50px;
+  font-family: monospace;
+  text-transform: lowercase;
+  font-size: 15px;
+  margin-top: 40px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.outlined-button-swedish:hover {
+  filter: hue-rotate(50deg);
+}
+
+
 
 .outlined-button:hover {
   background-color: rgba(240, 230, 191, 0.619);
@@ -244,7 +261,7 @@ select {
   color:rgb(245, 213, 188);
 }
 
-@media (min-width: 768px) and (max-width: 1031px) {
+@media (min-width: 768px) {
   .butts {
   flex-direction: column;
   }
@@ -253,10 +270,20 @@ select {
     width: 180px;
     margin-bottom: 20px;
   }
-/* .outlined-button {
-  width: 120px;
-  
-} */
+
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+
+  .filled-button {
+    font-size: 20px;
+    width: 110%;
+  }
+
+  .outlined-button {
+    font-size: 20px;
+    width: 100%;
+  }
 }
 
 @media (max-width: 767px) {

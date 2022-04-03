@@ -231,16 +231,16 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  if (category === 'accessories') {
+  if (category === 'interests') {
       if (keep) {
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
         alert(
-          `Yes, the person wears ${value}! Keep all people that wears ${value}`
+          `Yes, one of my main interests is ${value}! Keep all philosophers who are interested in ${value}`
         )
       } else {
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
         alert(
-          `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+          `${value} sounds interesting but that's not one of my top interests. Remove all philosophers whose main interest is not ${value}`
         )
       }
   } else if (category === 'other') {
@@ -264,19 +264,19 @@ const filterCharacters = (keep) => {
         } else {
           charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
           alert(
-            `No, the person doesn't have ${value} hair! Remove all people who don't have ${value} hair`
+            `No, I'm not from the ${value} century! Remove all philosophers who are not from the ${value} century`
           )
         }
     } else {
       if (keep) {
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value) 
         alert(
-          `Yes, the person has ${value} eyes! Keep all people who have ${value} eyes!`
+          `Yes, I'm best known as ${value}! Keep all philosophers in this category.`
         )
         } else {
           charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
           alert(
-            `No, the person doesn't have ${value} eyes! Remove all people have ${value} eyes!`
+            `No, I'm best known as ${value}! Remove all philosophers in this category`
           )
         }
       }   

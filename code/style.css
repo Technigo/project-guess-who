@@ -187,7 +187,7 @@ select {
 .filled-button-small {
   background-color: transparent;
   color: #0000ce;
-  height: 100px;
+  height: 100%;
   border: 2px solid #0000ce;
   border-radius: 50%;
   font-family: monospace;
@@ -267,9 +267,13 @@ select {
   }
 
   .filled-button {
-    width: 180px;
+    width: 100%;
     margin-bottom: 20px;
   }
+
+  .outlined-button-swedish { 
+    margin-top: 100px;
+}
 
 }
 

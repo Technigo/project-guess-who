@@ -1,14 +1,7 @@
-/* Global css variables used for colors */
-:root {
-  --primary: #09a07a;
-  --secondary: #9ee9b0;
-}
-
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
@@ -22,7 +15,7 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: green;
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -35,14 +28,14 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: black;
   width: 100%;
   margin: 24px 0;
 }
 
 select:focus {
   outline: none;
-  border: 2px solid var(--primary);
+  border: 2px solid grey;
 }
 .guess-who-icon {
   width: 126px;
@@ -69,8 +62,7 @@ select:focus {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border: 2px solid rgb(43, 42, 42);
   margin: 3px;
   display: flex;
   flex-direction: column;
@@ -78,11 +70,12 @@ select:focus {
   justify-content: space-between;
 }
 
-.card p {
+.container p {
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
-  font-weight: 700;
+  font-family: 'Parisienne', cursive;
+  font-size: 25px;
+  
 }
 
 .card .guess {
@@ -98,12 +91,12 @@ select:focus {
 .guesses {
   color: white;
   font-size: 20px;
-  font-weight: 600;
+  font-family: 'Parisienne', cursive;
   margin-left: 10px;
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: black;
 }
 
 .card:hover img,

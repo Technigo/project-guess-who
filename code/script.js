@@ -2,10 +2,10 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const findOutButton =  document.getElementById('filter')
-const winOrLose =  document.getElementById('winOrLose')
-const playAgainButton =  document.getElementById('playAgain')
-const winOrLosePage =  document.getElementById('winOrLose')
+const findOutButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const playAgainButton = document.getElementById('playAgain')
+const winOrLosePage = document.getElementById('winOrLose')
 
 
 // Array with all the characters, as objects
@@ -15,7 +15,7 @@ const CHARACTERS = [
     img: 'images/descartes.jpg',
     era: '17th',
     school: 'rationalism',
-    interests: ['mathematics','physics'],
+    interests: ['mathematics', 'physics'],
     other: []
   },
   {
@@ -23,7 +23,7 @@ const CHARACTERS = [
     img: 'images/voltaire.jpg',
     era: '18th',
     school: 'classical liberalism',
-    interests: ['political philosophy','literature'],
+    interests: ['political philosophy', 'literature'],
     other: []
   },
   {
@@ -87,7 +87,7 @@ const CHARACTERS = [
     img: 'images/sartre.jpg',
     era: '20th',
     school: 'existentialism',
-    accessories: ['political philosophy','literature', 'ethics'],
+    accessories: ['political philosophy', 'literature', 'ethics'],
     other: []
   },
 
@@ -96,7 +96,7 @@ const CHARACTERS = [
     img: 'images/camus.jpg',
     era: '20th',
     school: 'existentialism',
-    interests: ['political philosophy','literature'],
+    interests: ['political philosophy', 'literature'],
     other: []
   },
   {
@@ -104,7 +104,7 @@ const CHARACTERS = [
     img: 'images/beauvoir.jpg',
     era: '20th',
     school: 'feminism',
-    interests: ['political philosophy','ethics'],
+    interests: ['political philosophy', 'ethics'],
     other: []
   },
   {
@@ -112,7 +112,7 @@ const CHARACTERS = [
     img: 'images/deleuze.jpg',
     era: '20th',
     school: 'post-structuralism',
-    interests: ['semiotics','metaphysics', 'literary theory'],
+    interests: ['semiotics', 'metaphysics', 'literary theory'],
     other: []
   },
   {
@@ -128,7 +128,7 @@ const CHARACTERS = [
     img: 'images/lyotard.jpg',
     era: '20th',
     school: 'postmodernism',
-    interests: ['semiotics','sociology'],
+    interests: ['semiotics', 'sociology'],
     other: []
   },
   {
@@ -136,7 +136,7 @@ const CHARACTERS = [
     img: 'images/lacan.jpg',
     era: '20th',
     school: 'psychoanalysis',
-    interests: ['semiotics','literary theory'],
+    interests: ['semiotics', 'literary theory'],
     other: []
   },
   {
@@ -144,7 +144,7 @@ const CHARACTERS = [
     img: 'images/foucault.jpg',
     era: '20th',
     school: 'postmodernism',
-    interests: ['ethics','political philosophy'],
+    interests: ['ethics', 'political philosophy'],
     other: []
   },
   {
@@ -152,7 +152,7 @@ const CHARACTERS = [
     img: 'images/derrida.png',
     era: '20th',
     school: 'deconstruction',
-    interests: ['semiotics','deconstruction'],
+    interests: ['semiotics', 'deconstruction'],
     other: []
   },
 ]
@@ -171,13 +171,15 @@ const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
+    <div class="container">
+    <p>${person.name}</p>
       <div class="card">
-        <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
+      </div>
       </div>
     `
   })
@@ -210,80 +212,80 @@ const selectQuestion = () => {
 
 
 const checkQuestion = () => {
-  count +=1
+  count += 1
   document.getElementById('count').innerHTML = `${count}`
   const { category, value } = currentQuestion
   if (category === "era" || category === "school") {
-		if (secret[category] === value) {
-			filterCharacters(true);
-		} else {
-			filterCharacters(false);
-		}
-	} else if (category === "accessories" || category === "other") {
-		if (secret[category].includes(value)) {
-			filterCharacters(true);
-		} else {
-			filterCharacters(false);
-		}
-	}
+    if (secret[category] === value) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+  } else if (category === "interests" || category === "other") {
+    if (secret[category].includes(value)) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+  }
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   if (category === 'interests') {
-      if (keep) {
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-        alert(
-          `Yes, one of my main interests is ${value}! Keep all philosophers who are interested in ${value}`
-        )
-      } else {
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-        alert(
-          `${value} sounds interesting but that's not one of my top interests. Remove all philosophers whose main interest is not ${value}`
-        )
-      }
-  } else if (category === 'other') {
-      if (keep) {
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-        alert(
-          `Yes, the person is a ${value}! Keep all people who are a ${value}`
-        )
-      } else {
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-        alert(
-          `No, the person is not a ${value}! Remove all people who are not a ${value}`
-        )
-      }
-  } else if (category === 'era') {
-      if (keep) {
-        charactersInPlay = charactersInPlay.filter((person) => person[category] === value) 
-        alert(
-          `Yes, I'm from the ${value} century! Keep all philosophers who are from the ${value} century`
-        )
-        } else {
-          charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-          alert(
-            `No, I'm not from the ${value} century! Remove all philosophers who are not from the ${value} century`
-          )
-        }
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      alert(
+        `Yes, one of my main interests is ${value}! Keep all philosophers who are interested in ${value}`
+      )
     } else {
-      if (keep) {
-        charactersInPlay = charactersInPlay.filter((person) => person[category] === value) 
-        alert(
-          `Yes, I'm best known as ${value}! Keep all philosophers in this category.`
-        )
-        } else {
-          charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-          alert(
-            `No, I'm best known as ${value}! Remove all philosophers in this category`
-          )
-        }
-      }   
-    generateBoard()
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      alert(
+        `${value} sounds interesting but that's not one of my top interests. Remove all philosophers whose main interest is not ${value}`
+      )
     }
+  } else if (category === 'other') {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      alert(
+        `Yes, the person is a ${value}! Keep all people who are a ${value}`
+      )
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      alert(
+        `No, the person is not a ${value}! Remove all people who are not a ${value}`
+      )
+    }
+  } else if (category === 'era') {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      alert(
+        `Yes, I'm from the ${value} century! Keep all philosophers who are from the ${value} century`
+      )
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      alert(
+        `No, I'm not from the ${value} century! Remove all philosophers who are not from the ${value} century`
+      )
+    }
+  } else {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      alert(
+        `Yes, I'm best known as ${value}! Keep all philosophers in this category.`
+      )
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      alert(
+        `No, I'm not best known as ${value}! Remove all philosophers in this category`
+      )
+    }
+  }
+  generateBoard()
+}
 
-  
+
 
 
 
@@ -299,12 +301,12 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (secret.name === personToCheck) {
-      alert(`Yayyyyy the right person is ${secret.name}!`)
-      board.innerHTML = ` 
+    alert(`Yayyyyy the right person is ${secret.name}!`)
+    board.innerHTML = ` 
       <div style="width:100%;height:0;padding-bottom:56%;margin-bottom:20px;position:relative;"><iframe src="https://giphy.com/embed/ToMjGpyO2OVfPLpoxu8" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/cartoonhangover-animated-artists-on-tumblr-illustration-ToMjGpyO2OVfPLpoxu8"></a></p>
       <button id="play-again">PLAY AGAIN</button>
       `
-      document
+    document
       .getElementById('play-again')
       .addEventListener('click', () => {
         start()
@@ -312,23 +314,23 @@ const checkMyGuess = (personToCheck) => {
 
 
 
- } else {
-      alert(`Oh noooooo!!! Today is just not your day! The right person is ${secret.name}!`)
-      board.innerHTML = `
+  } else {
+    alert(`Oh noooooo!!! Today is just not your day! The right person is ${secret.name}!`)
+    board.innerHTML = `
       <div style="width:100%;height:0;padding-bottom:75%;margin-bottom:20px;position:relative;"><iframe src="https://giphy.com/embed/3ofSB3aKv6CxUluyAw" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/spongebob-season-4-spongebob-squarepants-3ofSB3aKv6CxUluyAw"></a></p>
       <button id="play-again">PLAY AGAIN</button>
       `
-      document
+    document
       .getElementById('play-again')
       .addEventListener('click', () => {
         start()
       })
 
- }
+  }
 }
 
 // Invokes the start function when website is loaded
-start() 
+start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)

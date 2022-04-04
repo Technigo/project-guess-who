@@ -18,12 +18,19 @@ body {
   font-size: 1.5em;
 }
 
+.result-text {
+  font-size: 2em;
+}
 
 h1 {
   font-size: 2em;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
+  color: white;
+}
+
+h2 {
   color: white;
 }
 

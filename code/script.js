@@ -3,7 +3,6 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const findOutButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
-const playAgainButton = document.getElementById('playAgain')
 const winOrLosePage = document.getElementById('winOrLose')
 
 
@@ -245,12 +244,12 @@ const filterCharacters = (keep) => {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
-        `Yes, one of my main interests is ${value}! Keep all philosophers who are interested in ${value}`
+        `Correct! Keep all philosophers who are interested in ${value}`
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       alert(
-        `${value} sounds interesting but that's not one of my top interests. Remove all philosophers whose main interest is not ${value}`
+        `${value} sounds interesting but that's not one of the philosopher's top interests. Remove all philosophers whose main interest is not ${value}`
       )
     }
   } else if (category === 'other') {
@@ -269,24 +268,24 @@ const filterCharacters = (keep) => {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       alert(
-        `Yes, I'm from the ${value} century! Keep all philosophers who are from the ${value} century`
+        `Yes! Keep all philosophers who are from the ${value} century`
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       alert(
-        `No, I'm not from the ${value} century! Remove all philosophers who are not from the ${value} century`
+        `No! Remove all philosophers who are not from the ${value} century`
       )
     }
   } else {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       alert(
-        `Yes, I'm best known as ${value}! Keep all philosophers in this category.`
+        `Yes! Keep all philosophers in this category.`
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       alert(
-        `No, I'm not best known as ${value}! Remove all philosophers in this category`
+        `No! Remove all philosophers in this category`
       )
     }
   }
@@ -304,15 +303,17 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (secret.name === personToCheck) {
-    alert(`Yayyyyy the right person is ${secret.fullname}!`)
+    alert(`Bravo! The right philosopher is ${secret.fullname}!`)
     board.innerHTML = ` 
-      <div style="width:100%;height:0;padding-bottom:56%;margin-bottom:20px;position:relative;"><iframe src="https://giphy.com/embed/ToMjGpyO2OVfPLpoxu8" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/cartoonhangover-animated-artists-on-tumblr-illustration-ToMjGpyO2OVfPLpoxu8"></a></p>
+      <p class="result-text"> Félicitations! </p>
+      <button onclick="start()" class="outlined-button filled-button"> Play again </button>
       `
 
   } else {
-    alert(`Oh noooooo!!! Today is just not your day! The right person is ${secret.fullname}!`)
+    alert(`Today is just not your day! The right philsopher is ${secret.fullname}!`)
     board.innerHTML = `
-      <div style="width:100%;height:0;padding-bottom:75%;margin-bottom:20px;position:relative;"><iframe src="https://giphy.com/embed/3ofSB3aKv6CxUluyAw" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/spongebob-season-4-spongebob-squarepants-3ofSB3aKv6CxUluyAw"></a></p>
+      <p class="result-text"> Come back and try again next time!</p>
+      <button onclick="start()" class="outlined-button filled-button"> Play again</button>
       `
   }
 }

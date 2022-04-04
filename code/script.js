@@ -182,13 +182,13 @@ const intro = () => {
   board.innerHTML = `
   <div class="intro">
     <p class="welcome-text"> Welcome to Guess Who game: French philosophers edition!<p>
-    <p class="description"> You have 3 chances to ask questions and filter out philosophers based on their eras, schools and main interests.
+    <p class="description"> You have 5 chances to ask questions and filter out philosophers based on their eras, schools and main interests.
       Bonne chance! </p>
 
     <button onclick="start()" class="outlined-button filled-button"> Play </button>
     </div>
   `
-  count = 3
+  count = 5
   document.getElementById('count').innerHTML = `${count}`
   findOutButton.disabled = true
 }
@@ -268,24 +268,24 @@ const filterCharacters = (keep) => {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       alert(
-        `Yes! Keep all philosophers who are from the ${value} century`
+        `Yes, you're on the right track! Keep all philosophers who are from the ${value} century`
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       alert(
-        `No! Remove all philosophers who are not from the ${value} century`
+        `No, sorry! Remove all philosophers who are not from the ${value} century`
       )
     }
   } else {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       alert(
-        `Yes! Keep all philosophers in this category.`
+        `Yes you're on the right track! Keep all philosophers in this category.`
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       alert(
-        `No! Remove all philosophers in this category`
+        `No, sorry! Remove all philosophers in this category`
       )
     }
   }

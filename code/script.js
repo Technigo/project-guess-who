@@ -1,7 +1,6 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const playAgainButton = document.getElementById('playAgain')
@@ -151,7 +150,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion = {
   category: 'era',
-  value: '17th'
+  value: ''
 }
 let charactersInPlay
 let count = 0
@@ -182,10 +181,10 @@ const setSecret = () => {
 
 const intro = () => {
   board.innerHTML = `
-  <div>
-    <h1> Welcome to Guess Who game: French philosophers edition!<h1>
+  <div class="intro">
+    <p class="welcome-text"> Welcome to Guess Who game: French philosophers edition!<p>
     <p class="description"> You have 3 chances to ask questions and filter out philosophers based on their eras, schools and main interests.
-      Have fun! </p>
+      Bonne chance! </p>
 
     <button onclick="start()" class="outlined-button filled-button"> Play </button>
     </div>
@@ -224,7 +223,7 @@ const checkQuestion = () => {
     findOutButton.disabled = true
     document.getElementById('count').innerHTML = `No questions left. Time to make a guess! Bonne chance!`
   }
-   else if (category === "era" || category === "school") {
+  else if (category === "era" || category === "school") {
     if (secret[category] === value) {
       filterCharacters(true);
     } else {
@@ -293,11 +292,6 @@ const filterCharacters = (keep) => {
   }
   generateBoard()
 }
-
-
-
-
-
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   if (confirm('Are you sure you want to guess this person?')) {
@@ -313,28 +307,13 @@ const checkMyGuess = (personToCheck) => {
     alert(`Yayyyyy the right person is ${secret.fullname}!`)
     board.innerHTML = ` 
       <div style="width:100%;height:0;padding-bottom:56%;margin-bottom:20px;position:relative;"><iframe src="https://giphy.com/embed/ToMjGpyO2OVfPLpoxu8" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/cartoonhangover-animated-artists-on-tumblr-illustration-ToMjGpyO2OVfPLpoxu8"></a></p>
-      <button id="play-again">PLAY AGAIN</button>
       `
-    document
-      .getElementById('play-again')
-      .addEventListener('click', () => {
-        start()
-      })
-
-
 
   } else {
     alert(`Oh noooooo!!! Today is just not your day! The right person is ${secret.fullname}!`)
     board.innerHTML = `
       <div style="width:100%;height:0;padding-bottom:75%;margin-bottom:20px;position:relative;"><iframe src="https://giphy.com/embed/3ofSB3aKv6CxUluyAw" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/spongebob-season-4-spongebob-squarepants-3ofSB3aKv6CxUluyAw"></a></p>
-      <button id="play-again">PLAY AGAIN</button>
       `
-    document
-      .getElementById('play-again')
-      .addEventListener('click', () => {
-        start()
-      })
-
   }
 }
 
@@ -343,6 +322,5 @@ intro()
 
 
 // All the event listeners
-restartButton.addEventListener('click', intro)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)

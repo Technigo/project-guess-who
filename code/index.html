@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
-    <link rel="stylesheet" href="style.css" />
 
-  </head>
-  <body>
-    <aside class="question-section">
-      <button id="restart" class="outlined-button filled-button">RESTART</button>
-      <div class="select-card">
-      <h2>Guess the philosopher!</h2>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Name</title>
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+  <aside class="question-section">
+    <div class="select-card">
+      <h1>Guess Who?!</h1>
+      <p class="count"> Questions left : <span class="count" id="count">3</span></p>
       <select id="questions">
         <optgroup label="era">
-          <option value="" disabled>The philosopher is from ...</option>
+          <option value="" disabled selected>From what era?</option>
           <option value="17th">17th century</option>
           <option value="18th">18th century</option>
           <option value="19th">19th century</option>
@@ -22,7 +24,7 @@
         </optgroup>
 
         <optgroup label="school">
-          <option value="" disabled>The philosopher is best known as...</option>
+          <option value="" disabled>Is the philosopher best known as...?</option>
           <option value="existentialism">an existentialist</option>
           <option value="rationalism">a rationalist</option>
           <option value="romanticism">a romanticist</option>
@@ -38,34 +40,27 @@
         </optgroup>
 
         <optgroup label="interests">
-          <option value="" disabled>One of the philosopher's main interests is...</option>
-          <option value="political philosophy">Political philosophy</option>
-          <option value="metaphysics">Metaphysics</option>
-          <option value="ethics">Ethics</option>
-          <option value="semiotics">Semiotics</option>
-          <option value="psychoanalysis">Psychoanalysis</option>
-          <option value="literature">Literature</option>
+          <option value="" disabled>Is ... one of the philosopher's main interests</option>
+          <option value="political philosophy">political philosophy</option>
+          <option value="metaphysics">metaphysics</option>
+          <option value="ethics">ethics</option>
+          <option value="semiotics">semiotics</option>
+          <option value="psychoanalysis">psychoanalysis</option>
+          <option value="literature">literature</option>
         </optgroup>
       </select>
       <button id="filter" class="filled-button">FIND OUT</button>
     </div>
-    <p class="count"> Questions left : <span class="count" id="count">3</span></p>
+    <p>Not many female philosophers on this board, I know. I'm glad the world is a better place for women now a day but
+      things can still be improved!</p>
+  </aside>
 
-    </aside>
-    
 
-    <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
-    </section>
+  <section class="board-wrapper">
+    <main class="game-board" id="board"></main>
+  </section>
 
-    <!-- //popups -->
+  <script src="script.js"></script>
+</body>
 
-    <div class="yes-popup">
-    </div>
-
-    <div class="no-popup">
-    </div>
-
-    <script src="script.js"></script>
-  </body>
 </html>

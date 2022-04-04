@@ -2,25 +2,31 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Parisienne', cursive;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-
-/* Hidden classes */
-.yes-popup, .no-popup {
-  display: none;
+.intro {
+  background-color: antiquewhite;
+  padding: 20px;
 }
+
+.welcome-text {
+  font-size: 2em;
+}
+
+.description {
+  font-size: 1.5em;
+}
+
 
 h1 {
-  font-size: 42px;
+  font-size: 2em;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-}
-
-h2 {
   color: white;
 }
+
 
 .question-section {
   width: 30%;
@@ -28,7 +34,6 @@ h2 {
   background-image: url(images/swing.jpg);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
@@ -36,14 +41,16 @@ h2 {
 
 .select-card {
   background-color: rgba(0, 0, 0, 0.6);
-  padding: 30px;
+  padding: 3vw;
+  display: flex;
+  flex-direction: column;
 }
 
 select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: inherit;
   color: black;
   width: 100%;
   margin: 24px 0;
@@ -53,6 +60,7 @@ select:focus {
   outline: none;
   border: 2px solid grey;
 }
+
 .guess-who-icon {
   width: 126px;
 }
@@ -70,10 +78,7 @@ select:focus {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-}
-
-.description {
-  font-size: .5em;
+  justify-content: space-evenly;
 }
 
 /****** CARD ******/
@@ -108,12 +113,16 @@ select:focus {
 }
 
 .card:hover {
-  background-color: black;
+  background-color: rgba(8, 8, 8, 0.712);
 }
 
 .card:hover img,
 .card:hover p {
   display: none;
+}
+
+.card p {
+  font-weight: 600;
 }
 
 /* The div with the guess class is only shown on hover */
@@ -138,6 +147,7 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .small {
@@ -157,7 +167,6 @@ button {
 
 .filled-button:hover {
   background-color: brown;
-  border-color: white;
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -193,7 +202,7 @@ button {
 }
 
 .count {
-  color: var(--primary);
+  color: white;
   font-weight: 600;
   font-size: 25px;
 }
@@ -206,10 +215,13 @@ button {
   .question-section {
     width: 100%;
     min-height: 0;
+    align-items: center;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
@@ -247,8 +259,6 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
-    color: var(--primary);
     border: none;
   }
 

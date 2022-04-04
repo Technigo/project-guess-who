@@ -5,11 +5,21 @@ body {
   font-family: 'Parisienne', cursive;
 }
 
+
+/* Hidden classes */
+.yes-popup, .no-popup {
+  display: none;
+}
+
 h1 {
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
+}
+
+h2 {
+  color: white;
 }
 
 .question-section {
@@ -18,9 +28,15 @@ h1 {
   background-image: url(images/swing.jpg);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+}
+
+.select-card {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 30px;
 }
 
 select {
@@ -65,19 +81,14 @@ select:focus {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 2px solid rgb(43, 42, 42);
+  border: .5px solid rgb(43, 42, 42);
+  background-color: rgb(245, 241, 223);
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-}
-
-.container p {
-  text-align: center;
-  margin-bottom: 0;
-  font-size: 25px;
-  
+  padding: 10px 10px 50px 10px;
 }
 
 .card .guess {
@@ -108,6 +119,7 @@ select:focus {
 /* The div with the guess class is only shown on hover */
 .card:hover .guess {
   display: flex;
+  justify-content: space-around;
 }
 
 .guess span {
@@ -120,10 +132,9 @@ select:focus {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
+  border: 2px solid transparent;
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -135,20 +146,18 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
   align-self: flex-end;
 }
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
+  background-color: rgb(136, 66, 66);
   color: white;
 }
 
 .filled-button:hover {
-  background-color: white;
+  background-color: brown;
   border-color: white;
-  color: var(--primary);
 }
 
 /****** WIN OR LOSE SECTION ******/

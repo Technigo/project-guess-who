@@ -5,18 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project Name</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+
   </head>
   <body>
     <aside class="question-section">
-      <button id="restart" class="outlined-button">RESTART</button>
-
-      <h2>Who am I ?</h2>
+      <button id="restart" class="outlined-button filled-button">RESTART</button>
+      <div class="select-card">
+      <h2>Guess the philosopher!</h2>
       <select id="questions">
         <optgroup label="era">
-          <option value="" disabled>I'm from ...</option>
+          <option value="" disabled>The philosopher is from ...</option>
           <option value="17th">17th century</option>
           <option value="18th">18th century</option>
           <option value="19th">19th century</option>
@@ -24,11 +22,11 @@
         </optgroup>
 
         <optgroup label="school">
-          <option value="" disabled>I'm best known as...</option>
+          <option value="" disabled>The philosopher is best known as...</option>
           <option value="existentialism">an existentialist</option>
           <option value="rationalism">a rationalist</option>
           <option value="romanticism">a romanticist</option>
-          <option value="epicureanism">an epicurean</option>
+          <option value="epicureanism">an encyclopedist</option>
           <option value="classical liberalism">a classical liberalist</option>
           <option value="liberalism">a liberalist</option>
           <option value="feminism">a feminist </option>
@@ -40,7 +38,7 @@
         </optgroup>
 
         <optgroup label="interests">
-          <option value="" disabled>One of my main interests is...</option>
+          <option value="" disabled>One of the philosopher's main interests is...</option>
           <option value="political philosophy">Political philosophy</option>
           <option value="metaphysics">Metaphysics</option>
           <option value="ethics">Ethics</option>
@@ -49,16 +47,24 @@
           <option value="literature">Literature</option>
         </optgroup>
       </select>
-
       <button id="filter" class="filled-button">FIND OUT</button>
-      <p class="count">Number of guesses</p>
-      <p class="count" id="count"></p>
+    </div>
+    <p class="count"> Questions left : <span class="count" id="count">3</span></p>
+
     </aside>
     
 
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
     </section>
+
+    <!-- //popups -->
+
+    <div class="yes-popup">
+    </div>
+
+    <div class="no-popup">
+    </div>
 
     <script src="script.js"></script>
   </body>

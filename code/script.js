@@ -12,6 +12,7 @@ const winOrLosePage = document.getElementById('winOrLose')
 const CHARACTERS = [
   {
     name: 'Descartes',
+    fullname: 'René Descartes',
     img: 'images/descartes.jpg',
     era: '17th',
     school: 'rationalism',
@@ -20,6 +21,7 @@ const CHARACTERS = [
   },
   {
     name: 'Voltaire',
+    fullname: 'Voltaire',
     img: 'images/voltaire.jpg',
     era: '18th',
     school: 'classical liberalism',
@@ -28,6 +30,7 @@ const CHARACTERS = [
   },
   {
     name: 'Montesquieu',
+    fullname: 'Montesquieu',
     img: 'images/montesquieu.jpg',
     era: '18th',
     school: 'classical liberalism',
@@ -36,6 +39,7 @@ const CHARACTERS = [
   },
   {
     name: 'Diderot',
+    fullname: 'Denis Diderot',
     img: 'images/diderot.png',
     era: '18th',
     school: 'epicureanism',
@@ -44,6 +48,7 @@ const CHARACTERS = [
   },
   {
     name: 'Rousseau',
+    fullname: 'Jean-Jacques Rousseau',
     img: 'images/rousseau.jpg',
     era: '18th',
     school: 'romanticism',
@@ -52,6 +57,7 @@ const CHARACTERS = [
   },
   {
     name: 'Proudhon',
+    fullname: 'Pierre-Joseph Proudhon',
     img: 'images/proudhon.jpg',
     era: '19th',
     school: 'socialism',
@@ -60,6 +66,7 @@ const CHARACTERS = [
   },
   {
     name: 'Tocqueville',
+    fullname: 'Alexis de Tocqueville',
     img: 'images/tocqueville.jpg',
     era: '19th',
     school: 'liberalism',
@@ -68,6 +75,7 @@ const CHARACTERS = [
   },
   {
     name: 'Comte',
+    fullname: 'Auguste Comte',
     img: 'images/comte.jpg',
     era: '19th',
     school: 'positivism',
@@ -76,6 +84,7 @@ const CHARACTERS = [
   },
   {
     name: 'Fourier',
+    fullname: 'Charles Fourier',
     img: 'images/fourier.jpg',
     era: '20th',
     school: 'socialism',
@@ -84,15 +93,16 @@ const CHARACTERS = [
   },
   {
     name: 'Sartre',
+    fullname: 'Jean-Paul Sartre',
     img: 'images/sartre.jpg',
     era: '20th',
     school: 'existentialism',
-    accessories: ['political philosophy', 'literature', 'ethics'],
+    interests: ['political philosophy', 'literature', 'ethics'],
     other: []
   },
-
   {
     name: 'Camus',
+    fullname: 'Albert Camus',
     img: 'images/camus.jpg',
     era: '20th',
     school: 'existentialism',
@@ -101,6 +111,7 @@ const CHARACTERS = [
   },
   {
     name: 'De Beauvoir',
+    fullname: 'Simone De Beauvoir',
     img: 'images/beauvoir.jpg',
     era: '20th',
     school: 'feminism',
@@ -109,6 +120,7 @@ const CHARACTERS = [
   },
   {
     name: 'Deleuze',
+    fullname: 'Gilles Deleuze',
     img: 'images/deleuze.jpg',
     era: '20th',
     school: 'post-structuralism',
@@ -116,15 +128,8 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Baudrillard',
-    img: 'images/baudrillard.png',
-    era: '20th',
-    school: 'postmodernism',
-    interests: ['semiotics'],
-    other: ['smoker']
-  },
-  {
     name: 'Lyotard',
+    fullname: 'Jean-François Lyotard',
     img: 'images/lyotard.jpg',
     era: '20th',
     school: 'postmodernism',
@@ -132,27 +137,12 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Lacan',
-    img: 'images/lacan.jpg',
-    era: '20th',
-    school: 'psychoanalysis',
-    interests: ['semiotics', 'literary theory'],
-    other: []
-  },
-  {
     name: 'Foucault',
+    fullname: 'Michel Foucault',
     img: 'images/foucault.jpg',
     era: '20th',
     school: 'postmodernism',
     interests: ['ethics', 'political philosophy'],
-    other: []
-  },
-  {
-    name: 'Derrida',
-    img: 'images/derrida.png',
-    era: '20th',
-    school: 'deconstruction',
-    interests: ['semiotics', 'deconstruction'],
     other: []
   },
 ]
@@ -171,15 +161,13 @@ const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-    <div class="container">
-    <p>${person.name}</p>
       <div class="card">
         <img src=${person.img} alt=${person.name}>
+        <p>${person.name}</p>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
+          <span>Guess on ${person.fullname}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
-      </div>
       </div>
     `
   })
@@ -196,13 +184,15 @@ const intro = () => {
   board.innerHTML = `
   <div>
     <h1> Welcome to Guess Who game: French philosophers edition!<h1>
-    <p class="description"> Filter out philosophers based on their eras, schools and main interests.
+    <p class="description"> You have 3 chances to ask questions and filter out philosophers based on their eras, schools and main interests.
       Have fun! </p>
 
-    <button onclick="start()"> Play </button>
+    <button onclick="start()" class="outlined-button filled-button"> Play </button>
     </div>
-
   `
+  count = 3
+  document.getElementById('count').innerHTML = `${count}`
+  findOutButton.disabled = true
 }
 
 // This function to start (and restart) the game
@@ -211,8 +201,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   setSecret()
   generateBoard()
-  count = 0
-  document.getElementById('count').innerHTML = `${count}`
+  findOutButton.disabled = false
 }
 
 
@@ -228,10 +217,14 @@ const selectQuestion = () => {
 
 
 const checkQuestion = () => {
-  count += 1
+  count -= 1
   document.getElementById('count').innerHTML = `${count}`
   const { category, value } = currentQuestion
-  if (category === "era" || category === "school") {
+  if (count === -1) {
+    findOutButton.disabled = true
+    document.getElementById('count').innerHTML = `No questions left. Time to make a guess! Bonne chance!`
+  }
+   else if (category === "era" || category === "school") {
     if (secret[category] === value) {
       filterCharacters(true);
     } else {
@@ -317,7 +310,7 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (secret.name === personToCheck) {
-    alert(`Yayyyyy the right person is ${secret.name}!`)
+    alert(`Yayyyyy the right person is ${secret.fullname}!`)
     board.innerHTML = ` 
       <div style="width:100%;height:0;padding-bottom:56%;margin-bottom:20px;position:relative;"><iframe src="https://giphy.com/embed/ToMjGpyO2OVfPLpoxu8" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/cartoonhangover-animated-artists-on-tumblr-illustration-ToMjGpyO2OVfPLpoxu8"></a></p>
       <button id="play-again">PLAY AGAIN</button>
@@ -331,7 +324,7 @@ const checkMyGuess = (personToCheck) => {
 
 
   } else {
-    alert(`Oh noooooo!!! Today is just not your day! The right person is ${secret.name}!`)
+    alert(`Oh noooooo!!! Today is just not your day! The right person is ${secret.fullname}!`)
     board.innerHTML = `
       <div style="width:100%;height:0;padding-bottom:75%;margin-bottom:20px;position:relative;"><iframe src="https://giphy.com/embed/3ofSB3aKv6CxUluyAw" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/spongebob-season-4-spongebob-squarepants-3ofSB3aKv6CxUluyAw"></a></p>
       <button id="play-again">PLAY AGAIN</button>

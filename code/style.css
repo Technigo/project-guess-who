@@ -2,7 +2,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 .intro {
@@ -56,7 +56,7 @@ h2 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
+  font-size: 20px;
   font-family: inherit;
   color: black;
   width: 100%;
@@ -211,7 +211,7 @@ button {
 .count {
   color: white;
   font-weight: 600;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 @media (max-width: 768px) {
@@ -248,7 +248,7 @@ button {
   }
 
   .card {
-    width: 113px;
+    width: 150px;
     position: relative;
   }
 

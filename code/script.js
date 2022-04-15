@@ -183,7 +183,7 @@ const intro = () => {
   <div class="intro">
     <p class="welcome-text"> Welcome to Guess Who game: French philosophers edition!<p>
     <p class="description"> You have 5 chances to ask questions and filter out philosophers based on their eras, schools and main interests.
-      Bonne chance! </p>
+     Click "play" to start the game and  bonne chance! </p>
 
     <button onclick="start()" class="outlined-button filled-button"> Play </button>
     </div>
@@ -202,6 +202,7 @@ const start = () => {
   findOutButton.disabled = false
 }
 
+console.log(count)
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -306,14 +307,14 @@ const checkMyGuess = (personToCheck) => {
     alert(`Bravo! The right philosopher is ${secret.fullname}!`)
     board.innerHTML = ` 
       <p class="result-text"> Félicitations! </p>
-      <button onclick="start()" class="outlined-button filled-button"> Play again </button>
+      <button onclick="intro()" class="outlined-button filled-button"> Play again </button>
       `
 
   } else {
     alert(`Today is just not your day! The right philsopher is ${secret.fullname}!`)
     board.innerHTML = `
       <p class="result-text"> Come back and try again next time!</p>
-      <button onclick="start()" class="outlined-button filled-button"> Play again</button>
+      <button onclick="intro()" class="outlined-button filled-button"> Play again</button>
       `
   }
 }

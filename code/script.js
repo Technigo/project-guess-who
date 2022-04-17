@@ -207,13 +207,13 @@ const CHARACTERS = [
   },
 ]
 
-// Global variables
+
 let secret
 let currentQuestion
 let charactersInPlay
 let guesses = 0
 
-// Draw the game board
+
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -230,15 +230,15 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
   console.log(`kukkuu`)
 }
 
-// This function to start (and restart) the game
+
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
+
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
@@ -257,13 +257,10 @@ const startTimer = () => {
   }, 1000)
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+
 const selectQuestion = () => {
   const guessCategory = questions.options[questions.selectedIndex].parentNode.label
 console.log(`hei`)
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
   const guessValue = questions.value
   
   currentQuestion = {
@@ -272,13 +269,10 @@ console.log(`hei`)
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-console.log(`moi`)
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (Hair/Eyes or Accessories/Others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+
   if (category === 'Hair' || category === 'Eyes') {
     if (secret[category] === value) {
       filterCharacters(true)
@@ -294,10 +288,10 @@ console.log(`moi`)
   }
 }
 
-// It'll filter the characters array and redraw the game board.
+
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
+
   if (category === 'Accessories') {
     if (keep) {
       alert(
@@ -352,44 +346,18 @@ const filterCharacters = (keep) => {
   generateBoard()
   } 
   
-  
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for Hair and Eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for Accessories and Other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-  // Invoke a function to redraw the board with the remaining people.
-
-
-// when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   const player = confirm(`Are you sure you want to guess?`)
    if (player) {
      checkMyGuess(personToConfirm)
    }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 }
 
-// If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    console.log(`toimii`)
     winOrLoseText.innerHTML = `<h1>Your guess is correct!</h1>`
 
   } else {
-    console.log(`toimii2`)
     winOrLoseText.innerHTML = `<h1>Sorry, wrong answer!</h1>`
   }
   board.innerHTML = ''
@@ -400,17 +368,9 @@ const checkMyGuess = (personToCheck) => {
   gameGuess.style.display = 'none'
 }
 
-
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-
-
-// Invokes the start function when website is loaded
 start()
 
-// All the event listeners
+
 restartButton.addEventListener('click', () => {
   start()
 })

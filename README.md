@@ -12,4 +12,4 @@ We helped each other a lot in  our team as well.
 
 ## View it live
 
-https://thee-guesswho.netlify.app
+https://thereese-guesswhogame.netlify.app

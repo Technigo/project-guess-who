@@ -5,8 +5,8 @@ This week’s project was create digital version of the classic board game Guess
 
 ## The problem
 
-I had issues with JS in general so I went back and praticed. 
+I had some problems with the filtering the arrays, but manage to solve it. 
 
 ## View it live
 
-https://eloquent-mestorf-9d5b43.netlify.app/
+https://w5-guess-who-game.netlify.app/

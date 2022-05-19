@@ -1,13 +1,10 @@
-# Project Name
+# Guess Who-game
 
-Replace this readme with your own information about your project.
+A practice in how to work with objects and arrays in JavaScript, and to use array methods such as `forEach()` and `filter()`.
+Knowledge about closures and scope in JavaScript and about manipulating the DOM using Javascript.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I was handed most of the styling and HTML structure as well as some functions to start with.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://festive-mccarthy-65252f.netlify.app/

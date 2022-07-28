@@ -8,7 +8,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 h1 {
@@ -34,7 +34,7 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -118,7 +118,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -128,10 +128,15 @@ button {
   padding: 8px 16px;
 }
 
-.outlined-button {
+.outlined-button,
+.outlined-button2 {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+}
+
+.outlined-button2 {
+  display: none;
 }
 
 .filled-button,

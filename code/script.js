@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
+//New project
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {

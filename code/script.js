@@ -2,210 +2,272 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const winOrLose = document.getElementById('winOrLose')
+const playAgain = document.getElementById('playAgain')
+const filterButton = document.getElementById('filter')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Boo',
+    img: 'images/boo.png',
+    hair: [''],
+    eyes: 'black',
+    accessories:[''],
+    headgear: [''],
+    sweaterordress: [''],
+    shoes: 'barefoot',
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
+    name: 'Luigi',
+    img: 'images/luigi.png',
     hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    eyes: 'blue',
+    accessories:['gloves', 'mustache'],
+    headgear: 'hat',
+    sweaterordress: 'green',
+    shoes: 'brown',
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Mario',
+    img: 'images/mario.png',
+    hair: 'brown',
+    eyes: 'blue',
+    accessories:['gloves', 'mustache'],
+    headgear: 'hat',
+    sweaterordress: 'red',
+    shoes: 'brown',
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
+    name: 'Princess Peach',
+    img: 'images/princesspeach.png',
     hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    eyes: 'blue',
+    accessories:['gloves', 'earings'],
+    headgear: 'crown',
+    sweaterordress: 'pink',
+    shoes: [],
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
+    name: 'toad',
+    img: 'images/toad.png',
+    hair: [],
+    eyes: 'black',
+    accessories:[],
+    headgear: 'mushroom',
+    sweaterordress: 'blue',
+    shoes: 'barefoot',
+  },
+  {
+    name: 'Yoshi',
+    img: 'images/yoshi.png',
+    hair: [],
+    eyes: 'black',
+    accessories: [],
+    headgear: [],
+    sweaterordress: [],
+    shoes: 'yellow',
+  },
+  {
+    name: 'Daisy',
+    img: 'images/daisy.png',
+    hair: 'brown',
+    eyes: 'blue',
+    accessories: ['gloves'],
+    headgear: ['crown'],
+    sweaterordress: ['yellow'],
+    shoes: 'yellow',
+  },
+  {
+    name: 'Bowser Jr',
+    img: 'images/bowser-jr.png',
     hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    eyes: 'black',
+    accessories: ['bracelet', 'bib'],
+    headgear: [],
+    sweaterordress: [],
+    shoes: 'barefoot',
+  },
+  {
+    name: 'Chief Chilly',
+    img: 'images/ChiefChilly.png',
+    hair: [],
+    eyes: 'blue',
+    accessories: [],
+    headgear: 'crown',
+    sweaterordress: [],
+    shoes: 'green',
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
+    name: 'Waluigi',
+    img: 'images/waluigi.png',
     hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    eyes: 'black',
+    accessories: ['gloves', 'mustache'],
+    headgear: 'hat',
+    sweaterordress: 'purple',
+    shoes: 'yellow',
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
+    name: 'Toadette',
+    img: 'images/toadette.png',
+    hair: [],
+    eyes: 'black',
+    accessories: [],
+    headgear: 'mushroom',
+    sweaterordress: 'pink',
+    shoes: 'brown',
+  },
+  // {
+  //   name: 'Petey Piranha',
+  //   img: 'images/PeteyPiranha.png',
+  //   hair: 'brown',
+  //   eyes: 'green',
+  //   accessories: ['glasses'],
+  //   headgear: 'mushroom',
+  //   sweaterordress: 'pink',
+  //   shoes: 'brown',
+  // },
+  {
+    name: 'Diddy Kong',
+    img: 'images/diddy-kong.png',
     hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    eyes: 'black',
+    accessories: [],
+    headgear: 'hat',
+    sweaterordress: 'red',
+    shoes: 'barefoot',
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
+    name: 'Star Luma',
+    img: 'images/starluma.png',
+    hair: [],
+    eyes: 'black',
+    accessories: [],
+    headgear: [],
+    sweaterordress: [],
+    shoes: 'barefoot',
+  },
+  {
+    name: 'Wario',
+    img: 'images/wario.png',
+    hair: 'brown',
+    eyes: 'black',
+    accessories: ['gloves', 'mustache'],
+    headgear: 'hat',
+    sweaterordress: 'yellow',
+    shoes: 'green',
+  },
+  {
+    name: 'Bowser',
+    img: 'images/bowser.png',
     hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    eyes: 'red',
+    accessories: 'bracelet',
+    headgear: [],
+    sweaterordress: [],
+    shoes: 'barefoot',
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
+    name: 'Kamek',
+    img: 'images/kamek.png',
+    hair: [],
     eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    accessories: 'glasses',
+    headgear: 'hat',
+    sweaterordress: 'blue',
+    shoes: 'brown',
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Birdo',
+    img: 'images/birdo.png',
+    hair: [],
+    eyes: 'black',
+    accessories: [],
+    headgear: 'bow',
+    sweaterordress: [],
+    shoes: 'barefoot',
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
+    name: 'Rosalina',
+    img: 'images/rosalina.png',
+    hair: 'yellow',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    accessories: [],
+    headgear: 'crown',
+    sweaterordress: 'blue',
+    shoes: [],
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
+    name: 'Donkey Kong',
+    img: 'images/donkey-kong.png',
     hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    eyes: 'black',
+    accessories: 'tie',
+    headgear: [],
+    sweaterordress: [],
+    shoes: 'barefoot',
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
+    name: 'Antasma',
+    img: 'images/antasma.png',
+    hair: [],
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    accessories: ['glasses', 'gloves'],
+    headgear: [],
+    sweaterordress: 'purple',
+    shoes: 'barefoot',
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
+    name: 'Tiny Kong',
+    img: 'images/tinykong.png',
     hair: 'yellow',
-    eyes: 'green',
+    eyes: 'blue',
     accessories: [],
-    other: []
+    headgear: [],
+    sweaterordress: 'white',
+    shoes: 'white',
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: 'King Bob Omb',
+    img: 'images/kingbobomb.png',
+    hair: [],
+    eyes: 'white',
+    accessories: ['gloves', 'mustache'],
+    headgear: 'crown',
+    sweaterordress: [],
+    shoes: 'yellow',
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
+    name: 'Shy Guy',
+    img: 'images/shyguy.png',
+    hair: [],
+    eyes: 'hidden',
+    accessories: 'facemask',
+    headgear: [],
+    sweaterordress: 'red',
+    shoes: 'blue',
+  },
+  {
+    name: 'Dark Bowser',
+    img: 'images/darkbowser.png',
     hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    eyes: 'red',
+    accessories: 'bracelet',
+    headgear: [],
+    sweaterordress: [],
+    shoes: 'barefoot',
   },
 ]
 
-// Global variables
+// OK   Global variables
 let secret
 let currentQuestion
 let charactersInPlay
 
-// Draw the game board
+// OK   Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -222,25 +284,25 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// OK   Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
+// OK  This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  generateBoard();
+  setSecret();
 }
+
+
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const category = questions.options[questions.selectedIndex].parentNode.label // This variable stores what option group (category) the question belongs to.
+  const value = questions.options[questions.selectedIndex].parentNode.label // Variable that stores the actual value of the question we've selected.
 
   currentQuestion = {
     category: category,
@@ -256,9 +318,11 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
-  } else if (category === 'accessories' || category === 'other') {
-
+    console.log(filterCharacters)
+  } else if (category === 'accessories' || category === 'headgrear') {
+    console.log(filterCharacters)
+  } else if (category === 'sewaterordress' || category === 'shoes') {
+    console.log(filterCharacters)
   }
 }
 
@@ -319,7 +383,15 @@ const checkMyGuess = (personToCheck) => {
 }
 
 // Invokes the start function when website is loaded
+startBtn.onclick = () => {
+  startPage.style.display = "none"
+  setTimeout(start, 500)
+}
+
 start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+filterButton.addEventListener('click', () => {
+  selectQuestion()
+});

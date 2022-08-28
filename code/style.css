@@ -1,7 +1,35 @@
 /* Global css variables used for colors */
+.start-page {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  background-color: #e52521;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-page button {
+  height: 300px;
+  width: 700px;
+  line-height: 50px;
+  font-family: 'Netflix sans','Helvetica Neue',Helvetica,Arial, sans-serif;
+  font-size: 35px;
+  border-radius: 50px;
+  background-color: tomato;
+  background-image: url ("ravi.jpg");
+}
+
+.start-page button img {
+  
+  width: 100%;
+  margin: none;
+}
+
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #e52521;
+  --secondary: #43B047;
 }
 
 body {
@@ -40,6 +68,7 @@ select {
   margin: 24px 0;
 }
 
+/* pratbubblan */
 .guess-who-icon {
   width: 126px;
 }
@@ -78,6 +107,10 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+}
+
+.card img {
+  height: 130px;
 }
 
 .card .guess {

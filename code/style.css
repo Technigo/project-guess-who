@@ -49,6 +49,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid darkblue; /*REMOVE LATER*/
 }
 
 .game-board {
@@ -57,6 +58,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  border: 2px solid rgb(139, 0, 107); /*REMOVE LATER*/
 }
 
 /****** CARD ******/
@@ -157,6 +159,7 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
+  border: 2px solid rgb(0, 139, 28); /*REMOVE LATER*/
 }
 
 .win-or-lose {
@@ -166,6 +169,7 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  border: 2px solid rgb(139, 0, 2); /*REMOVE LATER*/
 }
 
 .win-or-lose img {

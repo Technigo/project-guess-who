@@ -232,6 +232,7 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard() // J: set the board whit all characters 
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -318,8 +319,11 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
 }
 
-// Invokes the start function when website is loaded
+// Invokes the start function when website is loaded  // fill up with characters?
 start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)  // J: dropdown with selections 
+
+

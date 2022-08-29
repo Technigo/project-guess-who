@@ -232,6 +232,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard(); //ANNIKA 1. calling the function show the board
+  setSecret();    // ANNIKA 2. setting a secret person at start
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -240,11 +242,11 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value;  //ANNIKA 5. Variable that stores the value of the question we've selected.
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value //ANNIKA 4. set the value to value
   }
 }
 
@@ -322,4 +324,5 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start);
+questions.addEventListener('change', selectQuestion); // ANNIKA 3. adding an event listener to the question option list

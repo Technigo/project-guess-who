@@ -281,24 +281,22 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-//Startpage & startbutton
+//Startpage & startbutton before enter the game page
 startBtn.onclick = () => {
   startPage.style.display = "none"
   setTimeout(start, 500)
 }
 
-//Start (and restart) the game
+//Start (and restart) the game on Find out & restart button
 const start = () => {
   charactersInPlay = CHARACTERS     // Here we're setting charactersInPlay array to be all the characters to start with
-  generateBoard()                   // Continue to const setSecret
-  setSecret()                       // Continue to const generateBoard
+  generateBoard()                   
+  setSecret()
     if (winOrLose.style.display === 'block') {
-      winOrLose.style.display = 'none'  // Makes play again work
+      winOrLose.style.display = 'none'  
       winOrLoseAudio.innerHTML = ''
-                                      // board.style.display = 'flex'
     } else {
       winOrLose.style.display = 'none'     
-                                      // board.style.display = 'flex'
     }  
 }
 

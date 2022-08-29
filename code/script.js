@@ -227,12 +227,16 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
+
+// THIS FUNCTION STARTS ** AND ** RESTARTS THE GAME 
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-}
+    generateBoard()
+    restartButton()
+
+} 
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {

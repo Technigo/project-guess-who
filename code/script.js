@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')   // filters the answer
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -225,8 +226,10 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-}
+  console.log(secret);
+} 
 
+// ***********************************************************
 
 // THIS FUNCTION STARTS ** AND ** RESTARTS THE GAME 
 const start = () => {
@@ -234,33 +237,30 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
     generateBoard()
-    restartButton()
-
+   //sets secret person   
+    setSecret()  
+    
 } 
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
+  const value = questions.options[questions.selectedIndex].value;
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
+  document.getElementById("questions").value = "";  // clears inputvalue of dropdown in the little box 
+  
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
   } else if (category === 'accessories' || category === 'other') {
 
   }
@@ -322,8 +322,10 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
 }
 
-// Invokes the start function when website is loaded
+// Invokes the start function when website is loaded/ restarted 
 start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion);
+findOutButton.addEventListener('click', checkQuestion)  // filter button 

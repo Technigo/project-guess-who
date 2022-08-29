@@ -1,3 +1,10 @@
+# Weekly project for Technigo's bootcamp, week 5
+Task: build a game
+
+Tech: HTML, CSS and JavaScript
+
+----
+
 # Week 5: Guess Who
 
 The project is to create my own digital version of the classic board game Guess Who in order to practice creating objects and arrays with all focus on the JavaScript part.

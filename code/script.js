@@ -381,10 +381,10 @@ const filterCharacters = (keep) => {
 }
 
 
-// startBtn.onclick = () => {
-//   startPage.style.display = "none"
-//   setTimeout(start, 500)
-// }
+startBtn.onclick = () => {
+  startPage.style.display = "none"
+  setTimeout(start, 500)
+}
 
 start()
 

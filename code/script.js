@@ -24,7 +24,7 @@ const CHARACTERS = [
   {
     name: 'Luigi',
     img: 'images/luigi.png',
-    hair: 'brown',
+    hair: 'brown hair',
     eyes: 'blue',
     accessories:['gloves', 'mustache'],
     headgear: ['hat'],
@@ -281,22 +281,26 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-      //This function to start (and restart) the game
-const start = () => {
-    charactersInPlay = CHARACTERS     // Here we're setting charactersInPlay array to be all the characters to start with
-    generateBoard()                   // Continue to const setSecret
-    setSecret()                       // Continue to const generateBoard
-  if (winOrLose.style.display === 'block') {
-    winOrLose.style.display = 'none'  // Makes play again work
-    winOrLoseAudio.innerHTML = ''
-                                      // board.style.display = 'flex'
-  } else {
- winOrLose.style.display = 'none'     
-                                      // board.style.display = 'flex'
-}  
+//Startpage & startbutton
+startBtn.onclick = () => {
+  startPage.style.display = "none"
+  setTimeout(start, 500)
 }
 
-
+//Start (and restart) the game
+const start = () => {
+  charactersInPlay = CHARACTERS     // Here we're setting charactersInPlay array to be all the characters to start with
+  generateBoard()                   // Continue to const setSecret
+  setSecret()                       // Continue to const generateBoard
+    if (winOrLose.style.display === 'block') {
+      winOrLose.style.display = 'none'  // Makes play again work
+      winOrLoseAudio.innerHTML = ''
+                                      // board.style.display = 'flex'
+    } else {
+      winOrLose.style.display = 'none'     
+                                      // board.style.display = 'flex'
+    }  
+}
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -335,15 +339,14 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
   if (category === 'hair' || category === 'eyes') {
     if (keep) {
       alert(
-        `Yes, the person have ${value} hair! Keep all people that have ${value} hair`
+        `Yes, the person have ${value}! Keep all people that have ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`
+        `No, the person doesn't have ${value}! Remove all people that have ${value} hair`
       )
     }
   } 
@@ -359,14 +362,12 @@ const filterCharacters = (keep) => {
     }
   }
 
-
   if (category === 'hair' || category === 'eyes') {
     if (keep) {  
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
-
 
   // else statement for accessories, sweater and face we need to check if the value is included in an array.
   } else {
@@ -376,14 +377,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   }
-
   generateBoard()
-}
-
-
-startBtn.onclick = () => {
-  startPage.style.display = "none"
-  setTimeout(start, 500)
 }
 
 start()

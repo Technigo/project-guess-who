@@ -7,8 +7,6 @@ const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgain = document.getElementById('playAgain')
 
-
-
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -52,7 +50,7 @@ const CHARACTERS = [
     shoes: [],
   },
   {
-    name: 'toad',
+    name: 'Toad',
     img: 'images/toad.png',
     hair: '',
     eyes: 'black',
@@ -276,20 +274,20 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Randomly select a person from the CHARACTERS array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-//Startpage & startbutton before enter the game page
+//Gametime button & startpage before enter the game page
 startBtn.onclick = () => {
   startPage.style.display = "none"
   setTimeout(start, 500)
 }
 
-//Start (and restart) the game on Find out & restart button
+//Find out & Restart button that start and restart the game on 
 const start = () => {
-  charactersInPlay = CHARACTERS     // Here we're setting charactersInPlay array to be all the characters to start with
+  charactersInPlay = CHARACTERS
   generateBoard()                   
   setSecret()
     if (winOrLose.style.display === 'block') {
@@ -337,25 +335,45 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'hair') {
     if (keep) {
       alert(
-        `Yes, the person have ${value}! Keep all people that have ${value}`
+        `Yes, the person have ${value} hair! Keep all people that have ${value} hair`
       )
     } else {
       alert(
-        `No, the person doesn't have ${value}! Remove all people that have ${value} hair`
+        `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`
+      )
+    }
+  } if (category === 'eyes') {
+    if (keep) {
+      alert(
+        `Yes, the person have ${value} eyes! Keep all people that have ${value} eyes`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
       )
     }
   } 
-  if (category === 'accessories' || category === 'headgear' || category === 'clothes' || category === 'shoes') {
+  if (category === 'accessories' || category === 'headgear' || category === 'clothes') {
     if (keep) {
       alert(
-        `Yes, the person have ${value}! Keep all people that have ${value}`
+        `Yes, the person wear ${value}! Keep all people that wears ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't have ${value}! Remove all people that have ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
+      )
+    }
+  } if (category === 'shoes') {
+    if (keep) {
+      alert(
+        `Yes, the person wear ${value} shoes! Keep all people that wears ${value} shoes`
+      )
+    } else {
+      alert(
+        `No, the person doesn't wear ${value} shoes! Remove all people that wears ${value} shoes`
       )
     }
   }
@@ -380,29 +398,28 @@ const filterCharacters = (keep) => {
 
 start()
 
+
+// This function happens when user want to make a guess
+// If the player wants to guess, invoke the checkMyGuess function
 const guess = (personToConfirm) => {
-  const madeGuess = confirm(`Are you brave enough to guess on ${personToConfirm}?`) // store the interaction from the player in a variable.
-  console.log('Guess button is clicked')
+  const madeGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`) 
  if (madeGuess) {
-  checkMyGuess(personToConfirm)   // If the player wants to guess, invoke the checkMyGuess function
-} else {
-  alert('Chicken are we? Okay, guess again later')
-  }
+  checkMyGuess(personToConfirm)   
+}
 }
 
 // If you confirm, this function is invoked
+
 const checkMyGuess = (personToCheck) => {
-  if (personToCheck === secret.name) {                    // 1. Check if the personToCheck is the same as the secret person's name
-    console.log('Win!')
-    winOrLose.style.display = 'block',                    // 3. Show the win or lose section
+  if (personToCheck === secret.name) {                                              // 1. Check if the personToCheck is the same as the secret person's name
     winOrLoseText.innerHTML = `You are the winner! ${secret.name} is correct!`      // 2. Set a Message to show in the win or lose section accordingly
-    winOrLoseAudio.innerHTML = `<audio src="./sounds/short-choir-6116.mp3" type="audio/mp3" autoplay></audio>`     // Playing winning sound. 
-    board.style.display = 'none'                          // 4. Hide the game board
+    winOrLose.style.display = 'block',                                              // 3. Show the win or lose section
+    winOrLoseAudio.innerHTML = `<audio src="./02" autoplay></audio>`     // Playing winning sound. 
+    board.style.display = 'none'                                                    // 4. Hide the game board
   } else {
-    console.log('You lost the game')
     winOrLose.style.display = 'block',
-    winOrLoseText.innerHTML = `What a loser! The secret person was ${secret.name}.`
-    winOrLoseAudio.innerHTML = `<audio src="./sounds/crash-glass-sound-effect-24-11503.mp3" type="audio/mp3" autoplay></audio>`
+    winOrLoseText.innerHTML = `GAME OVER! The secret person was ${secret.name}. Try again`
+    winOrLoseAudio.innerHTML = `<audio src="fanfare.mp3" type="audio/mp3" autoplay></audio>`
     board.style.display = 'none'
   }
 }

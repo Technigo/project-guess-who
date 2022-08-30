@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const board = document.getElementById('board')
   const questions = document.getElementById('questions')
   const restartButton = document.getElementById('restart')
+  const findOutButton = document.getElementById('filter');
 
 
   // Array with all the characters, as objects
@@ -236,6 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
   charactersInPlay = CHARACTERS
   console.log('start')
   generateBoard()
+  //input.value = '';
   setSecret()
 
     // What else should happen when we start the game?
@@ -243,7 +245,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // setting the currentQuestion object when you select something in the dropdown
   const selectQuestion = () => {
+    console.log('test')
+
     const category = questions.options[questions.selectedIndex].parentNode.label
+
+    //const value = questions.options[questions.selectedIndex].value; //(copied from others)
 
     // This variable stores what option group (category) the question belongs to.
     // We also need a variable that stores the actual value of the question we've selected.
@@ -251,9 +257,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     currentQuestion = {
       category: category,
-      // value: value
+      //value: value
     }
   }
+
+  selectQuestion()
+  
 
   // This function should be invoked when you click on 'Find Out' button.
   const checkQuestion = () => {
@@ -330,6 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // All the event listeners
   restartButton.addEventListener('click', start);
-
+  findOutButton.addEventListener('click', checkQuestion)
+  //questions.addEventListener('change');
 
 });

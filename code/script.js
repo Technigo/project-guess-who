@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter') // ANNIKA
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -224,8 +225,9 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-}
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  console.log(secret);
+};
 
 // This function to start (and restart) the game
 const start = () => {
@@ -234,6 +236,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard(); //ANNIKA 1. calling the function show the board
   setSecret();    // ANNIKA 2. setting a secret person at start
+  selectQuestion(); //ANNIKA
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -243,12 +246,13 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value;  //ANNIKA 5. Variable that stores the value of the question we've selected.
+  //const value = questions.value;
 
   currentQuestion = {
     category: category,
     value: value //ANNIKA 4. set the value to value
-  }
-}
+  };
+};
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
@@ -258,9 +262,17 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    if (secret[category].includes(value)) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[category].includes(value)) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }  
   }
 }
 
@@ -268,15 +280,17 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'hair') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person has ${value} hair! Keep all people that has ${value} hair`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   } else if (category === 'other') {
     // Similar to the one above
@@ -290,7 +304,7 @@ const filterCharacters = (keep) => {
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
+/*
     for hair and eyes :
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
@@ -303,6 +317,7 @@ const filterCharacters = (keep) => {
   */
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard();
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -326,3 +341,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion); // ANNIKA 3. adding an event listener to the question option list
+filterButton.addEventListener('click', checkQuestion); // ANNIKA

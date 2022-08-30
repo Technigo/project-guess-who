@@ -253,19 +253,28 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  console.log(category)
+  console.log(value)
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-    keep = secret[category] === value
-  } else if (category === 'accessories' || category === 'other') {
-    keep = secret[category].includes(value)
+  let keep
+  if (category === 'hair' && value === secret.hair) {
+    keep = true
+  } else if (category === 'eyes' && value === secret.eyes) {
+    keep = true
+  } else if (category === 'other' && value === secret.other.find(element => element === value)) {
+    keep = true
+  } else if (category === 'other' && value === secret.accessories.find(element => element === value)) {
+    keep = true
+  } else {
+    keep = false
   }
-  filterCharacters(keep);
+
+  filterCharacters(keep)
 }
 
-// It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   if (category === 'accessories') {
@@ -326,6 +335,6 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start);
-questions.addEventListener('change', selectQuestion);
-FindOutBtn.addEventListener('click', checkQuestion);
+restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+FindOutBtn.addEventListener('click', checkQuestion)

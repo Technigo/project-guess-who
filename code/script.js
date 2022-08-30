@@ -204,9 +204,10 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let numberOfGuesses = 0; //It shows the amount of guesses you do.
 
 // Draw the game board
-const generateBoard = () => {
+function generateBoard() {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `

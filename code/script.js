@@ -1,7 +1,12 @@
-// All the DOM selectors stored as short variables
+document.addEventListener("DOMContentLoaded", () => {
+  // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const questionSelector = document.getElementById('questions')
+const findOutBtn = document.getElementById('filter')
+
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -232,35 +237,40 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  //1. The Board is loaded when site is loaded/reloaded. 
+  generateBoard();
+  selectQuestion();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
+  console.log(category);
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value;
+  console.log(value);
 
-  currentQuestion = {
+  let currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
+ 
 }
-
 // This function should be invoked when you click on 'Find Out' button.
-const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  function checkQuestion() {
+    const { category, value } = currentQuestion
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-
-  } else if (category === 'accessories' || category === 'other') {
-
+    // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+    // See if we should keep or remove people based on that
+    // Then invoke filterCharacters
+    if (category === 'hair' || category === 'eyes') {
+      //do something (call the filterCharacters funtion on line 279??)
+    } else if (category === 'accessories' || category === 'other') {
+      //do something else... (call the filterCharacters funtion on line 279??)
+    }
   }
-}
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -323,3 +333,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+})

@@ -2,8 +2,14 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const questionSection = document.getElementById('question-section')
+const filterBtn = document.getElementById('filter')
+const boardWrapper = document.getElementById('board-wrapper')
+const winOrLose = document.getElementById('winOrLose')
+const playAgain = document.getElementById('playAgain')
 
-// Array with all the characters, as objects
+
+// Array with all the characters, as objects (ciccikommentar: som Damien visar)
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -201,7 +207,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
+let secret 
 let currentQuestion
 let charactersInPlay
 
@@ -223,15 +229,22 @@ const generateBoard = () => {
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
+//Ciccikommentar: Jag tror man då ska använda [0] tex, för att nå Jabala. setSecret[0]?
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length - 1 - 0 + 1) + 0]
+  selectedCharacter = CHARACTERS[setSecret];
+  console.log(setSecret)
 }
+
+
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard()
+setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown

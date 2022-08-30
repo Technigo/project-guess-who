@@ -223,8 +223,10 @@ const generateBoard = () => {
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
+// return Math.floor(Math.random() * (max - min + 1) + min)
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[Math.floor(Math.random() * (charactersInPlay.length -1 - 0 + 1) + 0)];
+  console.log(secret);
 }
 
 // This function to start (and restart) the game
@@ -240,11 +242,11 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = '';
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
@@ -321,5 +323,8 @@ const checkMyGuess = (personToCheck) => {
 // Invokes the start function when website is loaded
 start()
 generateBoard()
+setSecret()
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('onclick', () => {
+  location,reload()
+})

@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filter = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -232,23 +233,23 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard()
+  setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const category = questions.options[questions.selectedIndex].parentNode.label // This variable stores what option group (category) the question belongs to.
+  const value = questions.options[questions.selectedIndex].value  // This variable stores the actual value of the question we've selected.
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+filter.document.addEventListener('click',checkQuestion) // This eventListener triggers checkQuestion function when user click on 'Find Out' button
+
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 

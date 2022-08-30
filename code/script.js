@@ -1,7 +1,7 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const board = document.getElementById('board') // a class within the section where the charachters will show. 
+const questions = document.getElementById('questions') // where you do your guesse (the roll-down input section)
+const restartButton = document.getElementById('restart') // the restart button
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -320,6 +320,7 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
+generateBoard()
 
 // All the event listeners
 restartButton.addEventListener('click', start)

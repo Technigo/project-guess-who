@@ -11,7 +11,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['greenClothes']
   },
   {
     name: 'Jack',
@@ -19,7 +19,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['facialHair']
   },
   {
     name: 'Jacques',
@@ -27,7 +27,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker', 'facialHair']
   },
   {
     name: 'Jai',
@@ -43,7 +43,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['greenClothes']
   },
   {
     name: 'James',
@@ -51,7 +51,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['facialHair']
   },
   {
     name: 'Jana',
@@ -59,7 +59,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: ['greenClothes']
   },
   {
     name: 'Jane',
@@ -75,7 +75,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['greenClothes']
   },
 
   {
@@ -100,7 +100,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['facialHair']
   },
   {
     name: 'Jed',
@@ -108,7 +108,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'greenClothes', 'facialHair']
   },
   {
     name: 'Jenni',
@@ -124,7 +124,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['greenClothes']
   },
   {
     name: 'Jerry',
@@ -148,7 +148,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
-    other: []
+    other: ['greenClothes']
   },
   {
     name: 'Jon',
@@ -164,7 +164,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['greenClothes']
   },
   {
     name: 'Josephine',
@@ -188,7 +188,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['facialHair']
   },
   {
     name: 'Julie',
@@ -196,7 +196,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['greenClothes']
   },
 ]
 
@@ -231,7 +231,6 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
   generateBoard();
   setSecret();
 }
@@ -239,14 +238,11 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
 }
 
@@ -325,3 +321,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+
+questions.addEventListener('change', selectQuestion)

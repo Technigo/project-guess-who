@@ -133,6 +133,11 @@ button {
   align-self: flex-end;
 }
 
+.guesses {
+  font-weight: bold;
+  font-size: 12px;
+}
+
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);

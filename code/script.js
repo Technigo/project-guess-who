@@ -211,6 +211,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -229,11 +230,12 @@ const generateBoard = () => {
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
-//Ciccikommentar: Jag tror man då ska använda [0] tex, för att nå Jabala. setSecret[0]?
+
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length - 1 - 0 + 1) + 0]
-  selectedCharacter = CHARACTERS[setSecret];
-  console.log(setSecret)
+  //secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length - 1 - 0 + 1) + 0]
+  const randomNumber = Math.floor(Math.random() * (CHARACTERS.length - 1 - 0 + 1) + 0);
+  selectedCharacter = CHARACTERS[randomNumber];
+  console.log(selectedCharacter);
 }
 
 
@@ -243,8 +245,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-  generateBoard()
-setSecret()
+  generateBoard();
+  setSecret();
 }
 
 // setting the currentQuestion object when you select something in the dropdown

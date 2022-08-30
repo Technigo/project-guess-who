@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #76b5c5;
+  --secondary: #abdbe3;
 }
 
 body {
@@ -22,7 +22,7 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: #154c79;
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -35,7 +35,7 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: #154c79;
   width: 100%;
   margin: 24px 0;
 }
@@ -57,6 +57,8 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+
+
 }
 
 /****** CARD ******/
@@ -92,12 +94,19 @@ select {
 
 .card:hover {
   background-color: var(--secondary);
+  background-position: 0;
+  color: black;
+  
 }
 
 .card:hover img,
 .card:hover p {
   display: none;
+  
 }
+
+
+
 
 /* The div with the guess class is only shown on hover */
 .card:hover .guess {
@@ -121,6 +130,8 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  color: white;
+  
 }
 
 .small {
@@ -135,14 +146,18 @@ button {
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
-  color: white;
+  background-color: #0c283f;
+  
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
+  background-color:#76b5c5;
+  border-color: #0c283f;
+  color: white;
+
+
+  
+
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -176,6 +191,7 @@ button {
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
+
 
 @media (max-width: 768px) {
   body {

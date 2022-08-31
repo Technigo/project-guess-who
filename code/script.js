@@ -2,7 +2,8 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const filterButton = document.getElementById('filter')
+const findOutButton = document.getElementById('filter')
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -233,34 +234,42 @@ const start = () => {
   charactersInPlay = CHARACTERS // Here we're setting charactersInPlay array to be all the characters to start with
   generateBoard(); //call/invoke function generateBoard on row 210
   setSecret() //call/invoke function setSecret on row 227
+  console.log('show secret', secret)
   selectQuestion() //call/invoke function selectQuestion just below
-  // What else should happen when we start the game?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label // This variable stores what option group (category) the question belongs to.
-
+  const category = questions.options[questions.selectedIndex].parentNode.label /*  This variable stores what option group (category) the question belongs to. */
+  const value = questions.options[questions.selectedIndex].value
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  console.log('current question:', currentQuestion)
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
-
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  const { category, value } = currentQuestion
   if (category === 'hair' || category === 'eyes') {
-
+  if  ( value === secret.hair || value === secret.eyes){
+  filterCharacters (true) 
+  }
+  else {filterCharacters(false)
+  }
   } else if (category === 'accessories' || category === 'other') {
-
+  if (value === secret.accessories || value === secret.other )  
+    if  ( value === secret.accessories || value === secret.other){
+      filterCharacters (true)
+    }
+    else {filterCharacters(false)
+    }
   }
 }
 
@@ -325,3 +334,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)

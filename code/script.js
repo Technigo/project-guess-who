@@ -248,10 +248,11 @@ const selectQuestion = () => {
     category: category,
     value: value
   }
+  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
-const checkQuestion = () => {
+const checkQuestion = (currentQuestion) => {
   const { category, value } = currentQuestion
   console.log(category)
   console.log(value)
@@ -291,7 +292,7 @@ const filterCharacters = (keep) => {
       alert(`Yes the person is ${value}! Remove all people that wears ${value}`)
         charactersInPlay = charactersInPlay.filter((person) => person.other.include(value))
     } else {
-      alert (`No, the person is not ${value}! Remove all people that are ${value}`)
+      alert (`No, the person is not ${value}! Remove all people that are ${value}!`)
         charactersInPlay = charactersInPlay.filter((person) => !person.other.includes (value))
     }
 
@@ -331,10 +332,9 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
 }
 
-// Invokes the start function when website is loaded
 start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
-FindOutBtn.addEventListener('click', checkQuestion)
+findOutBtn.addEventListener('click', checkQuestion)

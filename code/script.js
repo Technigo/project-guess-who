@@ -78,14 +78,14 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewellry'],
     other: []
   },
 
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
-    hair: 'purple',
+    hair: 'pink',
     eyes: 'hidden',
     accessories: ['glasses'],
     other: ['smoker']
@@ -151,7 +151,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewellry'],
     other: []
   },
   {
@@ -167,7 +167,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'jewellry'],
     other: []
   },
   {
@@ -175,7 +175,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['jewellry'],
     other: []
   },
   {
@@ -375,7 +375,7 @@ const checkMyGuess = (personToCheck) => {
   }
 }
 
-// Restart the game
+// RESTART
 const playAgain = () => {
   board.style.display = 'flex'
   winOrLose.style.display = 'none'

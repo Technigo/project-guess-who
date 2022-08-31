@@ -2,6 +2,11 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
+const gameBoard = document.getElementById('board')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const winOrLoseSection = document.getElementById('winOrLose')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -201,9 +206,13 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
+let secret = 'setSecret'
+let currentQuestion = {
+	category: 'hair', // <-- Based on the optgroup
+	value: 'yellow', // <-- Comes from the selected option
+}
 let charactersInPlay
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -232,18 +241,21 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard ();
+  alert ('Hello, lets start this game!');
+  setSecret ();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
 
   currentQuestion = {
     category: category,
+    value: value,
     // value: value
   }
 }
@@ -319,7 +331,9 @@ const checkMyGuess = (personToCheck) => {
 }
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOutButton.addEventListener('click', checkQuestion)
+questions.addEventListener('click', selectQuestion)

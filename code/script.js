@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart');
 const playAgainButton = document.getElementById('playAgain');
 const findOutButton = document.getElementById('filter');
 const winOrLoseText = document.getElementById('winOrLoseText');
+const guessCounter = document.getElementById('guess-counter');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -21,7 +22,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['a hat'],
     other: ['beard', 'striped shirt'],
   },
   {
@@ -207,6 +208,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let counter;
 
 // Draw the game board
 const generateBoard = () => {
@@ -241,6 +243,10 @@ const start = () => {
   board.classList.remove('hide-board');
   winOrLose.classList.remove('show-win-lose', 'bg-lose');
 
+  // Guess counter set to 0 when the game starts/restarts
+  counter = 0;
+  guessCounter.innerHTML = `<h2>Guesses: </h2">`;
+
   setSecret();
   generateBoard();
   selectQuestion();
@@ -263,6 +269,10 @@ const selectQuestion = () => {
 // This function is invoked when player click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
+
+  //Adds 1 to counter for every guess
+  counter++;
+  guessCounter.innerHTML = `<h2>Guesses: ${counter}</h2">`;
 
   // currentQuestion details is being compared with the secret character's
   // and based on that we're deciding what characters to keep or remove
@@ -351,9 +361,9 @@ const guess = (personToConfirm) => {
 // If player confirms, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    winOrLoseText.innerText = `🎉CORRECT!🎉 \n \n It is ${personToCheck}. \n \n 🏆You won!🏆`;
+    winOrLoseText.innerText = `Correct! \n\n It was ${personToCheck}. \n\n Guesses: ${counter}`;
   } else {
-    winOrLoseText.innerText = `Wrong! \n \n It was ${secret.name}, \n not ${personToCheck}. \n \n ☠️ Game Over ☠️`;
+    winOrLoseText.innerText = `Wrong! \n\n It was ${secret.name}, \n not ${personToCheck}. \n\n ☠️ Game Over ☠️`;
   }
   board.classList.add('hide-board');
   winOrLose.classList.add('show-win-lose');

@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #5f59ff;
-  --secondary: rgb(0, 0, 0);
+  --primary: #ff4d00;
+  --secondary: rgb(0, 0, 46);
 }
 
 body {
@@ -11,12 +11,19 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
+h1,
+h2 {
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
   color: white;
+}
+
+h2 {
+  font-size: 22px;
+  margin-top: 70px;
+  color: var(--primary);
 }
 
 .question-section {
@@ -132,6 +139,7 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  margin-bottom: 1rem;
 }
 
 .filled-button,

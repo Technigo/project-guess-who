@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
   --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --secondary: black;
 }
 
 body {
@@ -125,6 +125,7 @@ button {
 
 .small {
   padding: 8px 16px;
+  opacity: 85%;
 }
 
 .outlined-button {
@@ -183,12 +184,12 @@ button {
   display: flex;
 }
 
-.hide-board {
-  display: none;
-}
-
 .bg-lose {
   background-color: black;
+}
+
+.hide-board {
+  display: none;
 }
 
 @media (max-width: 768px) {

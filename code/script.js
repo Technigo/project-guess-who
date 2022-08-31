@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
  
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -207,6 +208,7 @@ let charactersInPlay
 
 // This function generates the game board. Due to the forEach(person) method, it creates a new "card" for every individual in the CHARACTERS array, along with a guess button.
 const generateBoard = () => {
+  console.log("generateBoard invoked")
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
@@ -226,6 +228,7 @@ const generateBoard = () => {
 //I've added a console.log message here to check that the function assigned a new random person to the game with every refresh (Iteration 2 of the assignment).
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log("setSecret invoked:")
   console.log(secret.name)
 }
 
@@ -234,23 +237,23 @@ const setSecret = () => {
 //It then invokes the above setSecret function, which randomly selects one of those characters to be the target of the game. 
 //Finally, it invokes the generateBoard function to render the board with all the characters.
   const start = () => {
+    console.log("start invoked")
     charactersInPlay = CHARACTERS
     setSecret()
     generateBoard()
   }  
 
-// setting the currentQuestion object when you select something in the dropdown
+//This function defines the currentQuestion object when you select something in the dropdown menu, storing the category the question belongs to as well as the specific question (value).
 const selectQuestion = () => {
+  console.log("selectQuestion invoked")
   const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
+  const value = questions.options[questions.selectedIndex].value
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+  console.log("currentQuestion invoked")
+  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -323,8 +326,16 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
 }
 
-// Invokes the start function when website is loaded
+// This function is the one that kicks everything else off. It's invoked as soon as the browser has read through all the rest of the code and makes it down to here.
+//It's at the bottom because we want the browser to read all the 'game rules' first before kicking off.
 start()
 
 // All the event listeners
+
+//This EL invokes the start function whenever the user clicks on the Restart button.
 restartButton.addEventListener('click', start)
+
+//This EL invokes the selectQuestion function whenever the user clicks on the Find Out button.
+findOutButton.addEventListener('click', selectQuestion)
+
+

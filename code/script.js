@@ -248,10 +248,11 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  const category = questions.options[questions.selectedIndex].parentNode.label;
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
+  const value = questions.value;
 
   currentQuestion = {
     category: category,
@@ -262,17 +263,32 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  const { category, value } = currentQuestion;
+  const {name, img, hair, eyes, accessories, other} = secret;
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
-  } else if (category === 'accessories' || category === 'other') {
-
+   if (category === 'accessories' || category === 'other') {
+    filterCharacters (true);
+  } else {
+    filterCharacters (false);
   }
-}
+}  else if (category === 'accessories'){
+  if (secret.accessories.includes(value)) {
+  filterCharacters (true);
+} else {
+    filterCharacters (false);
+  }  
+} else if (category === 'other'){
+    if (secret.others.includes(value)) {
+    filterCharacters (true);
+} else {
+      filterCharacters (false);
+    }   
+  }
+};
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {

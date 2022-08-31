@@ -1,7 +1,13 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const board = document.getElementById('board') //This gets the main element that works as the board
+const questions = document.getElementById('questions') //Gets the different options of character variations
+const winOrLoseSection = document.getElementById('winOrLose') // This gets the section
+const winOrLoseText = document.getElementById('winOrLoseText') // This gets the section h1
+
+//All the button selectors
+const restartButton = document.getElementById('restart'); // This gets the restart button
+const findOutButton = document.getElementById('filter'); // This gets the findOut button
+const playAgainButton = document.getElementById('playAgain'); //This gets the playAgain button
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -200,9 +206,9 @@ const CHARACTERS = [
   },
 ]
 
-// Global variables
-let secret
-let currentQuestion
+// Global variables: These are undefined in order to be filled with a value later on
+let secret // It will store a random object from the character array. Function is at row 232
+let currentQuestion // It will store an object with the category and its value that the user has selected by asking. 
 let charactersInPlay
 
 // Draw the game board
@@ -222,7 +228,7 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Function that randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
@@ -230,9 +236,10 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-}
+  charactersInPlay = CHARACTERS;
+  generateBoard(); //Triggers the generateBoard function
+  setSecret(); //Triggers the setSecret function
+};
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {

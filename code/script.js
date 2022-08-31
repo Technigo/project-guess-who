@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const playAgain = document.getElementById('playAgain')
 
 
 // Array with all the characters, as objects
@@ -316,7 +318,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
 
-  } else if (category === 'hair') {
+  } else if (attribute === 'hair') {
     if (keep) {
       alert(
         `Yes, the person has ${value} hair! Keep all people with ${value} hair`
@@ -329,7 +331,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
 
-  } else if (category === 'eyes') {
+  } else if (attribute === 'eyes') {
     if (keep) {
       alert(
         `Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
@@ -351,18 +353,27 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-}
+  const confirmedAnswer = confirm('Do you want to make a guess?')
+  if (confirmedAnswer === true)
+  checkMyGuess(personToConfirm)
+  
+  console.log('person to confirm')
+};
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-}
+  if(personToCheck === secret.name) {
+    winOrLoseText.innerHTML = `
+    <p>Cool! You won the game!</p>`
+  } else {
+    winOrLoseText.innerHTML = `
+    <p>Game over!</p>`
+  }
+  winOrLose.style.display = 'flex'
+  board.style.display = 'none'
+
+  console.log('winner or loser')
+};
 
 // Invokes the start function when website is loaded
 start();
@@ -371,3 +382,4 @@ start();
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 filterButton.addEventListener('click', checkQuestion);
+//playAgain.addEventListener('click', start);

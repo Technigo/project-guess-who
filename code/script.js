@@ -208,45 +208,60 @@ let charactersInPlay
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  charactersInPlay.map((person) => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button id="guessButton" class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
+    // board.addEventListener('click', () => {
+    //   if (person.name === secret.name) {
+    //       window.alert('Wohoo! You guess right!');
+    //       console.log(person.name)
+    //   }
+  
+    // });
   })
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+
 }
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS;
+  generateBoard ();
+  setSecret();
   // What else should happen when we start the game?
+  
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
+
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
 
-  currentQuestion = {
-    category: category,
-    // value: value
-  }
+  const value = selectQuestion.value;
+
+//   currentQuestion = {
+//     category: category, value:value
+//   }
 }
+questions.addEventListener('change', () => {
+  console.log(questions.value);  
+});   
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
@@ -319,7 +334,9 @@ const checkMyGuess = (personToCheck) => {
 }
 
 // Invokes the start function when website is loaded
-start()
+start();
+
+console.log('selected person', secret.name);
 
 // All the event listeners
 restartButton.addEventListener('click', start)

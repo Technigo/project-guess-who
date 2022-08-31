@@ -1,3 +1,4 @@
+
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
@@ -232,6 +233,10 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  board.style.display ='flex' // Board will be visibel at the page. 
+  generateBoard() // start game w/ all characters shown. 
+  setSecret() // choose the secret person. 
+  questions.selectedIndex = 0
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -323,3 +328,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+

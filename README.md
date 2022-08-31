@@ -10,4 +10,4 @@ If I had more time I would try to do the project without the instructions and I 
 
 ## View it live
 
-Here's my Netlify-link to my Guess Who-game: https://zealous-pike-d250f6.netlify.app/ 
+Here's my Netlify-link to my Guess Who-game: guess-who-by-camilla.netlify.app

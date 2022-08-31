@@ -3,6 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter') // ANNIKA
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -237,6 +240,9 @@ const start = () => {
   generateBoard(); //ANNIKA 1. calling the function show the board
   setSecret();    // ANNIKA 2. setting a secret person at start
   selectQuestion(); //ANNIKA
+
+  winOrLose.style.display = "none" // ANNIKA Adding flexbox to this id 
+  board.style.display = "flex" // ANNIKA hiding the game board
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -292,8 +298,19 @@ const filterCharacters = (keep) => {
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
-  } else if (category === 'other') {
+  } else if (category === 'eyes') {
     // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people that has ${value} eyes`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+    } else {
+      alert(
+        `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
+    }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
@@ -322,9 +339,15 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  const confirmation = confirm(`Are you sure you want to make a guess on this ${personToConfirm}?`);
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  if (confirmation === true) {
+    checkMyGuess(personToConfirm);
+  } else {
+    alert ('Okay, keep guessing then.')
+  }
 }
 
 // If you confirm, this function is invoked
@@ -333,12 +356,20 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  winOrLose.style.display = "flex" // ANNIKA Adding flexbox to the win or lose section 
+  board.style.display = "none" // ANNIKA hiding the game board
+  if (personToCheck === secret.name) {
+    winOrLoseText.innerHTML = "Correct answer!";  
+  } else {
+    winOrLoseText.innerHTML = `Wrong answer! The correct answer is ${secret.name}`;
+  }
 }
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion); // ANNIKA 3. adding an event listener to the question option list
 filterButton.addEventListener('click', checkQuestion); // ANNIKA
+playAgainButton.addEventListener('click', start);

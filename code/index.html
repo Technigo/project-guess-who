@@ -23,21 +23,38 @@
       <h1>Does the person have</h1>
 
       <select title="questions" id="questions">
-        <optgroup label="hair">
+        <option disabled>...</option>
+        <optgroup id='hair' label='Hair'>
           <option value="brown">Brown hair</option>
           <option value="yellow">Yellow hair</option>
+          <option value='black'>Black hair</option>
+          <option value='white'>White/Gray hair</option>
+          <option value='orange'>Orange hair</option>
+          <option value='purple'>Purple hair</option>
+          <option value='hidden'>No visible hair</option>
           <!-- Add the rest of hair colors as options  -->
         </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
+
+        <optgroup label="Eyes">
+          <option value="hidden">Hidden eyes</option>
+          <option value="blue">Blue eyes</option>
+          <option value="brown">Brown eyes</option>
+          <option value="green">Green eyes</option>
           <!-- Add the rest of eye colors as options  -->
         </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
+        <optgroup label="Accessories">
+          <option value="glasses">Glasses</option>
+          <option value="hat">Head wear</option>
+          <option value="face-hair">Facial hair</option>
+          <option value="jewlery">Jewlery</option>
+          
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+        <optgroup label="Other">
+          <option value="smoker">Has a smoking habit</option>
+          <option value="haddok">Looks a little like Captain Haddok</option>
+          <option value="artsy">Probably likes art</option>
+          <option value="bad-day">Seems to have a bad day</option>
         </optgroup>
       </select>
 

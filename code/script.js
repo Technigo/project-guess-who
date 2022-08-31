@@ -2,6 +2,9 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
+const playAgainButton = document.getElementById('playAgain')
+const boardWrapper = document.querySelector('.board-wrapper');
 
 // Array with all the people, as objects
 const people = [
@@ -200,12 +203,6 @@ const people = [
 ]
 
 // Global variables
-const boardWrapper = document.querySelector('.board-wrapper');
-// const hairSelect = document.getElementById('hair-select');
-// const beardSelect = document.getElementById('beard-select');
-// const eyesSelect = document.getElementById('eyes-select');
-// const accessoriesSelect = document.getElementById('accessories-select');
-// const otherSelect = document.getElementById('other-select');
 let secretPerson;
 let secret;
 let currentQuestion;
@@ -248,7 +245,7 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const value = questions.value[questions.selectedIndex].parentNode.label
+  const value = questions.options[questions.selectedIndex].value
 
 
   // This variable stores what option group (category) the question belongs to.
@@ -269,14 +266,23 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterPeople
   if (category === 'hair' || category === 'eyes') {
+    if (value === secretPerson[category]) {
+      filterPeople(true)
+    } else
+      filterPeople(false)
 
   } else if (category === 'accessories' || category === 'other') {
+    if (secretPerson[category].includes(value)) {
+      filterPeople(true)
+    } else if
+      (filterPeople(false)) {
+    }
 
   }
 }
 
 // It'll filter the people array and redraw the game board.
-const People = (keep) => {
+const filterPeople = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
@@ -284,35 +290,39 @@ const People = (keep) => {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
+      peopleInPlay = peopleInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        "No, the person doesn't wear ${value}! Remove all people that wears ${value}"
       )
+      peopleInPlay = peopleInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person has ${value}! Keep all people that has ${value}`
+      )
+      peopleInPlay = peopleInPlay.filter((person) => person[category].includes(value))
+    } else {
+      alert(
+        "No, the person doesn't have ${value}! Remove all people that have ${value}"
+      )
+      peopleInPlay = peopleInPlay.filter((person) => !person[category].includes(value))
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value}! Keep all people with ${value}`
+      )
+      peopleInPlay = peopleInPlay.filter((person) => person[attribute] === value)
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        "No, the person doesn't have ${value}! Remove all people that have ${value}"
+      )
+      peopleInPlay = peopleInPlay.filter((person) => person[attribute] !== value)
     }
   }
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      peopleInPlay = peopleInPlay.filter((person) => person[attribute] === value)
-      or
-      peopleInPlay = peopleInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      peopleInPlay = peopleInPlay.filter((person) => person[category].includes(value))
-      or
-      peopleInPlay = peopleInPlay.filter((person) => !person[category].includes(value))
-  */
-
+  generateBoard()
   // Invoke a function to redraw the board with the remaining people.
 }
 
@@ -336,3 +346,7 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+
+findOutButton.addEventListener('click', checkQuestion)
+
+//playAgainButton.addEventListener('click', )

@@ -1,0 +1,13 @@
+.tilesSheet {
+ height: 1000px;
+ width: 1000px;
+ display: flex;
+ flex-wrap: wrap;
+
+}
+.tile {
+ width: 220px;
+ margin: 5px;
+ border: 1px solid tomato;
+}
+

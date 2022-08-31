@@ -258,7 +258,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * (charactersInPlay.length - 1 - 0 + 1) + 0)];
-  console.log('Secret person', secret.name); 
+  console.log('The secret person is', secret.name); 
 
 
 };
@@ -279,30 +279,73 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].parentNode.value //parentNode??? what does it do?
-
+  
+  //currentQuestion is "Does the person have "category, value"?"
   currentQuestion = {
-    category: category,
-    value: value,
+    category: category, // Based on the optgroup
+    value: value,       // Comes from the selected option
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
-const checkQuestion = () => {
-  const { category, value } = currentQuestion
+/* const checkQuestion = () => {
+  const { category, value } = currentQuestion;
+  // This was tricky to understand, but this site was helpful. https://stackoverflow.com/c/technigo/questions/2114
 
   // Compare the currentQuestion details with the secret person 
   // details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    //here I want to check if 
+    
     window.alert('Hurray!');
 
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'accessories' || category === 'other' || category === 'gender') {
     window.alert('Nay!');
+  }
+  filterCharacters(keep) //Filters to keep the valid characters on the board 
+} */
+
+const checkQuestion = (selectQuestion) => {
+  let keep
+
+  // We check in the object category hair, if the selected value matches matches the hair category of the secret person.
+  if (currentQuestion.category === 'hair' ) {
+    keep = currentQuestion.value === secret.hair
+    console.log('Hair color', secret.hair);
+  }
+  else if (currentQuestion.category === 'eyes' ) {
+    keep = currentQuestion.value === secret.eyes
+    console.log('Eye color', secret.eyes);
+  }
+  else if (currentQuestion.category === 'accessories' ) {
+    keep = currentQuestion.value === secret.accessories
+    console.log('Accessories:', secret.accessories);
+  }
+  else if (currentQuestion.category === 'gender' ) {
+    keep = currentQuestion.value === secret.gender
+    console.log('Gender:', secret.gender);
+  }
+  else if (currentQuestion.category === 'other' ) {
+    keep = currentQuestion.value === secret.other
+    console.log('Other:', secret.other);
   }
 }
 
-// It'll filter the characters array and redraw the game board.
+
+
+
+
+
+
+
+
+
+
+
+
+
+// It'll filter the characters array and redraw the game board. 
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
@@ -311,6 +354,7 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
+    
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
@@ -365,5 +409,5 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion) // The questions is selected in the drop down menu. selectQuestion function is invoked and different answer change depedign on the selected item.
 findOutButton.addEventListener('click', () => {
-  checkQuestion ();
-}) // The checkQuestion function will be declared when clicking the find out button.
+  checkQuestion (); // The checkQuestion function will be declared when clicking the find out button.
+}) 

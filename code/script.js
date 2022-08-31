@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
+ 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -200,12 +200,12 @@ const CHARACTERS = [
   },
 ]
 
-// Global variables
+// GLOBAL VARIABLES: These start out as undefined variables that get assigned (new) values in the functions below.
 let secret
 let currentQuestion
 let charactersInPlay
 
-// Draw the game board
+// This function generates the game board. Due to the forEach(person) method, it creates a new "card" for every individual in the CHARACTERS array, along with a guess button.
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -222,17 +222,20 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// This function randomly selects a person from the characters array and sets that person as the value of the 'secret' variable.
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
-const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-}
+// This function starts (and restarts) the game. 
+//It starts by adding all the characters (and their characteristics) in the CHARACTERS array to the charactersInPlay variable. 
+//It then invokes the above setSecret function, which randomly selects one of those characters to be the target of the game. 
+//Finally, it invokes the generateBoard function to render the board with all the characters.
+  const start = () => {
+    charactersInPlay = CHARACTERS
+    setSecret()
+    generateBoard()
+  }  
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {

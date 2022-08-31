@@ -25,17 +25,17 @@ const CHARACTERS = [
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
-    hair: 'grey',
+    hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker', 'beard'],
+    accessories: [],
+    other: ['smoking habit', 'beard'],
   },
   {
     name: 'Jai',
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['tie'],
+    accessories: ['a tie'],
     other: [],
   },
   {
@@ -85,15 +85,15 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['sunglasses'],
-    other: ['smoker', 'turtleneck sweater'],
+    other: ['smoking habit', 'turtleneck sweater'],
   },
   {
     name: 'Jean',
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker'],
+    accessories: ['glasses', 'a hat'],
+    other: ['smoking habit'],
   },
   {
     name: 'Jeane',
@@ -101,22 +101,22 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['turleneck sweater'],
+    other: ['turtleneck sweater'],
   },
   {
     name: 'Jed',
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker', 'beard'],
+    accessories: ['glasses', 'a hat'],
+    other: ['smoking habit', 'beard'],
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
+    accessories: ['a hat'],
     other: [],
   },
   {
@@ -132,7 +132,7 @@ const CHARACTERS = [
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['a hat'],
     other: [],
   },
   {
@@ -164,7 +164,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['sunglasses', 'hat', 'necklace'],
+    accessories: ['sunglasses', 'a hat', 'necklace'],
     other: [],
   },
   {
@@ -188,7 +188,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
+    accessories: ['a tie'],
     other: ['beard'],
   },
   {
@@ -196,7 +196,7 @@ const CHARACTERS = [
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     other: [],
   },
 ];
@@ -239,9 +239,40 @@ const start = () => {
   setSecret();
   generateBoard();
 
-  //The reason for calling selectQuestion when the game starts is because
-  // otherwise you would get an error if you pick "brown hair" as your first guess
+  // Invoke selectQuestion already when the game starts to avoid error when
+  // player makes brown hair their first guess
   selectQuestion();
+};
+
+// This function is used for filtering the characters array when the player makes a guess:
+
+const keepOrRemove = (keep) => {
+  const { category, value } = currentQuestion;
+
+  if (category === 'hair' || category === 'eyes') {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+    } else {
+      const { category, value } = currentQuestion;
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
+    }
+  } else if (category === 'accessories' || category === 'other') {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
+    } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
+    }
+  }
+  // This function is invoked again, now to redraw the board with the remaining people.
+  generateBoard();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -252,8 +283,8 @@ const selectQuestion = () => {
   const value = questions.value;
 
   currentQuestion = {
-    category: category, // category comes from the optgroup label in the DOM
-    value: value, // value comes from the option value in the DOM
+    category: category,
+    value: value,
   };
 };
 
@@ -321,27 +352,21 @@ const filterCharacters = (keep) => {
       );
     }
   }
+
+  //Invoke the function for keeping or removing tiles based on the player's guess
+  if (keep) {
+    keepOrRemove(keep);
+  } else {
+    keepOrRemove();
+  }
 };
-
-// Determine what is the category
-// filter by category to keep or remove based on the keep variable.
-
-// for hair and eyes :
-/*  
-const charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-    or
-    charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-
-  for accessories and other
-    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    or
-    charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-*/
-
-// Invoke a function to redraw the board with the remaining people.
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  let guessClick = personToConfirm;
+  console.log(guessClick);
+
+  alert(`You sure you wanna guess on ${personToConfirm}?`);
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.

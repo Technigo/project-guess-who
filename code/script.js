@@ -247,8 +247,8 @@ const selectQuestion = () => {
   const value = questions.value
 
   currentQuestion = {
-    category: 'hair', // <-- Based on the optgroup
-    value: 'yellow', // <-- Comes from the selected option
+    category: category, // <-- Based on the optgroup
+    value: value // <-- Comes from the selected option
   }
 }
 
@@ -260,10 +260,20 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    if (value === secret[category]) {
+      keep = true
+    } else {
+      keep = false
+    }
+  
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[category].includes(value)) {
+      keep = true
+    } else {
+      keep = false
+    }
   }
+  filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -281,30 +291,61 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person has ${value}! Keep all people that has ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that have ${value}`
+      )
+    }
+  } else if (category === 'eyes') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people that has ${value} eyes`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
+      )
+    }
   } else {
     if (keep) {
+      alert(
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+      )
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
+      alert(
+        `No, the person doesnt have ${value} hair! Remove all people with ${value} hair`
+      )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
+}
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
+  // for hair and eyes:
+    if (category === 'hair' || category === 'eyes') {
+      if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+    }
+
+  // for accessories and other:
+    } else if (category === 'accessories' || category === 'other') {
+      if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
+    } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+    }
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

@@ -1,13 +1,8 @@
-# Project Name
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+# Guess Who?
+The assigment was to create a digital version of the classic board game Guess Who and to practice creating objects and arrays and also connect it to the DOM. 
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I remember playing the game as a kid and since the game logic is pretty simple I didn't think it was going to be as challenging as it turned out to be. At first I had a hard time trying to understand the code that was given to us. I went on GitHub to see how others had solved it and when I had seen a few different approaches I understood how it worked and then I could start making my own decisions. I guess you can say that I worked my way backwards, but it was still a great learning process by the end of the day.
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://vem-dar.netlify.app/

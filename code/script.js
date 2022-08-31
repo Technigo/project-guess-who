@@ -248,8 +248,9 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  // These variables stores what optgroup/category (hair, eyes, accessories, other) the question belongs to
-  // and the actual value of the question selected.
+  // These variables stores what optgroup (hair, accessories etc.)
+  // the question  belongs to" and value stores the actual value (brown, green etc.)
+  // of the question selected.
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.value;
 
@@ -262,10 +263,9 @@ const selectQuestion = () => {
 // This function is invoked when player click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  console.log(currentQuestion);
 
   // currentQuestion details is being compared with the secret character's
-  // and based on that we're deciding what characters to keep/remove
+  // and based on that we're deciding what characters to keep or remove
   // Then invoke filterCharacters
 
   if (
@@ -308,7 +308,7 @@ const checkQuestion = () => {
   }
 };
 
-// This function is used for filtering the characters array when the player makes a guess:
+// This function is used for filtering the characters array after the player makes a guess.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
 
@@ -334,30 +334,29 @@ const filterCharacters = (keep) => {
       );
     }
   }
-  // This function is invoked again, now to redraw the board with the remaining characters
+  // After the filtering we invoke this function again,
+  // now to redraw the board with the remaining characters
   generateBoard();
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// when clicking guess, the player first have to confirm that they want to make the guess.
 const guess = (personToConfirm) => {
   if (
     confirm(`You are about to make ${personToConfirm} your guess?`) === true
   ) {
     checkMyGuess(personToConfirm);
-  } else {
   }
 };
 
-// If player confirm, this function is invoked
+// If player confirms, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winOrLoseText.innerText = `🎉CORRECT!🎉 \n \n It is ${personToCheck}. \n \n 🏆You won!🏆`;
-    winOrLose.classList.add('show-win-lose');
   } else {
     winOrLoseText.innerText = `Wrong! \n \n It was ${secret.name}, \n not ${personToCheck}. \n \n ☠️ Game Over ☠️`;
-    winOrLose.classList.add('show-win-lose', 'bg-lose');
   }
   board.classList.add('hide-board');
+  winOrLose.classList.add('show-win-lose');
 };
 
 // Invokes the start function when website is loaded

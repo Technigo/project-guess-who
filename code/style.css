@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: black;
+  --primary: #5f59ff;
+  --secondary: rgb(0, 0, 0);
 }
 
 body {
@@ -64,7 +64,7 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid var(--primary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -178,14 +178,10 @@ button {
   margin-bottom: 32px;
 }
 
-/* For showing the win/lose screen and hiding the board*/
+/* For showing the win/lose screen and hiding the board */
 
 .show-win-lose {
   display: flex;
-}
-
-.bg-lose {
-  background-color: black;
 }
 
 .hide-board {

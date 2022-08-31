@@ -208,8 +208,8 @@ const CHARACTERS = [
 // Global variables
 let secret = 'setSecret'
 let currentQuestion = {
-	category: 'hair', // <-- Based on the optgroup
-	value: 'yellow', // <-- Comes from the selected option
+/*	category: 'hair', // <-- Based on the optgroup
+	value: 'yellow', // <-- Comes from the selected option*/
 }
 let charactersInPlay
 
@@ -270,7 +270,7 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-   if (category === 'accessories' || category === 'other') {
+    if (value === hair || value === eyes) {
     filterCharacters (true);
   } else {
     filterCharacters (false);
@@ -348,7 +348,7 @@ if (category === 'hair') {
     alert(
       `no, the person doesn't have ${value} hair, Remove all people with ${value} hair!`
     );
-    charactersInPlay = charactersInPlay.filter((person) => !person[attribute] === value)
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
   }
 }
 else if (category === 'eyes') {
@@ -361,31 +361,29 @@ else if (category === 'eyes') {
     alert(
     `no, the person doesn't have ${value} eyes! Let's remove all people with ${value} eyes!`
     );
-    charactersInPlay = charactersInPlay.filter((person) => !person[attribute] === value)
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
   }
 }
+
 else if (category === 'acessories') {
-  if (keep)
+  if (keep) {
   alert(
-//FORTSÄTT HÄR MED RESTERANDE KATEGORIER    
-  )
+`yes the person has ${value}, Let's keep all people with ${value}!`  
+  );
+  charactersInPlay = charactersInPlay.filter ((person) => person[category].includes(value))
+} else {
+  alert(
+`no, the person doesn't have ${value}, let's remove everybody with ${value}!`
+  );
+  charactersInPlay = charactersInPlay.filter ((person) => !person [attribute].includes(value))
 }
 
-
-
-
-  charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-  
-  charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-
-  charactersInPlay = charactersInPlay.filter((person) => person [attribute].includes(value))
-
-  charactersInPlay = charactersInPlay.filter ((person) => !person [attribute].includes(value))
-
-
+}
+generateBoard ()
   // Invoke a function to redraw the board with the remaining people.
 }
+
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
@@ -409,3 +407,4 @@ start();
 restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', checkQuestion)
 questions.addEventListener('click', selectQuestion)
+

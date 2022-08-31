@@ -177,6 +177,20 @@ button {
   margin-bottom: 32px;
 }
 
+/* For showing the win/lose screen and hiding the board*/
+
+.show-win-lose {
+  display: flex;
+}
+
+.hide-board {
+  display: none;
+}
+
+.bg-lose {
+  background-color: black;
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;

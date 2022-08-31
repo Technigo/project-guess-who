@@ -241,6 +241,16 @@ const start = () => {
   setSecret(); //Triggers the setSecret function
 };
 
+//function to play again
+const playAgain = () => {
+  charactersInPlay = CHARACTERS;
+  generateBoard();
+  setSecret();
+  winOrLoseSection.style.display = 'none'; // Hiddes the section that shows the win or lose messages.
+  board.style.display = "flex"; // Shows again the board game
+  //OR board.style.display = "" // Shows again the board game
+}
+
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
@@ -250,8 +260,8 @@ const selectQuestion = () => {
   // const value =
 
   currentQuestion = {
-    category: category,
-    // value: value
+    category: category, // hair, eyes, accessories, others
+    value: value,       // value from the categories
   }
 }
 

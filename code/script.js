@@ -2,9 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const guessCounter = document.getElementById('guess-counter')
 const findOutButton = document.getElementById('filter')
-const guessButton = document.getElementById('guess-btn')
 const winOrLoseWrapper = document.getElementById('WinOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
@@ -12,197 +10,220 @@ const playAgainButton = document.getElementById('playAgain')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Bertram',
+    img: 'images/kid.png',
+    hair: 'orange',
+    eyes: 'black',
+    wears: ['orange', 'purple'],
+    accessories: [],
+    other: ['']
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
+    name: 'Adam West',
+    img: 'images/adamwest.png',
     hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: 'none',
-    other: []
-  },
-  {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    wears: ['grey'],
+    accessories: ['weapon'],
     other: []
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
+    name: 'Brian',
+    img: 'images/brian.png',
     hair: 'white',
+    eyes: 'black',
+    wears: ['nothing'],
+    accessories: ['collar'],
+    other: []
+  },
+  {
+    name: 'Chris',
+    img: 'images/chris.png',
+    hair: 'blonde',
     eyes: 'hidden',
+    wears: ['blue', 'black'],
     accessories: ['hat'],
-    other: []
+    other: ['fat']
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
+    name: 'Cleveland',
+    img: 'images/cleveland.png',
     hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: 'none',
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
+    eyes: 'black',
+    wears: ['red', 'blue'],
     accessories: [],
     other: []
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: ['none'],
+    name: 'Vinnie',
+    img: 'images/dogvinnie.png',
+    hair: 'blonde',
+    eyes: 'black',
+    wears: ['nothing'],
+    accessories: ['collar'],
     other: []
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
+    name: 'Cleveland Jr',
+    img: 'images/clevelendjr.png',
+    hair: 'black',
+    eyes: 'hidden',
+    wears: ['red', 'blue'],
+    accessories: ['glasses'],
+    other: ['fat']
+  },
+  {
+    name: 'Jerome',
+    img: 'images/heyguy.png',
+    hair: 'black',
+    eyes: 'hidden',
+    wears: ['red', 'black'],
+    accessories: [],
+    other: ['beard']
+  },
+  {
+    name: 'Quagmire',
+    img: 'images/jiggedy.png',
+    hair: 'black',
+    eyes: 'green',
+    wears: ['red', 'blue'],
+    accessories: [''],
+    other: []
+  },
+
+  {
+    name: 'Joe',
+    img: 'images/joe.png',
+    hair: 'brown',
+    eyes: 'hidden',
+    accessories: [''],
+    other: ['disabled']
+  },
+  {
+    name: 'Rallo',
+    img: 'images/kidafro.png',
+    hair: 'black',
+    eyes: 'blue',
+    wears: ['blue'],
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Lois',
+    img: 'images/lois.png',
+    hair: 'orange',
+    eyes: 'green',
+    wears: ['blue'],
+    accessories: [],
+    other: ['singer']
+  },
+  {
+    name: 'Big Lois',
+    img: 'images/loisbig.png',
+    hair: 'orange',
+    eyes: 'green',
+    wears: ['blue', 'grey'],
+    accessories: [],
+    other: ['fat']
+  },
+  {
+    name: 'Meg',
+    img: 'images/meggriffin.png',
+    hair: 'brown',
+    eyes: 'hidden',
+    wears: ['pink', 'blue'],
+    accessories: ['hat'],
+    other: []
+  },
+  {
+    name: 'Herbert',
+    img: 'images/oldguy.png',
+    hair: 'grey',
+    eyes: 'green',
+    wears: ['blue'],
+    accessories: [],
+    other: ['disabled']
+  },
+  {
+    name: 'News Anchor',
+    img: 'images/newsanchor.png',
+    hair: 'hidden',
+    eyes: 'blue',
+    wears: ['pink'],
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Peter',
+    img: 'images/peter.png',
+    hair: 'brown',
+    eyes: 'blue',
+    wears: ['white', 'green'],
+    accessories: ['glasses'],
+    other: ['fat']
+  },
+  {
+    name: 'Pirate',
+    img: 'images/pirate.png',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    wears: ['red', 'white'],
+    accessories: ['hat'],
+    other: ['disabled']
+  },
+  {
+    name: 'Blonde Lois',
+    img: 'images/loisblonde.png',
+    hair: 'yellow',
+    eyes: 'green',
+    wears: [],
+    accessories: ['glasses'],
     other: []
+  },
+  {
+    name: 'Rock Peter',
+    img: 'images/peterrock.png',
+    hair: 'brown',
+    eyes: 'hidden',
+    wears: ['black', 'purple'],
+    accessories: [],
+    other: ['singer', 'fat']
+  },
+  {
+    name: 'Angry Peter',
+    img: 'images/peterangry.png',
+    hair: 'brown',
+    eyes: 'brown',
+    wears: ['green', 'white'],
+    accessories: ['glasses'],
+    other: ['fat']
+  },
+  {
+    name: 'Chewie Brian',
+    img: 'images/starwarsbrian.png',
+    hair: 'brown',
+    eyes: 'green',
+    wears: ['nothing'],
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Stewie',
+    img: 'images/stevie.png',
+    hair: 'black',
+    eyes: 'green',
+    wears: ['red', 'yellow'],
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Consuela',
+    img: 'images/consuela.png',
+    hair: 'black',
+    eyes: 'brown',
+    wears: ['pink'],
+    accessories: ['glasses'],
+    other: ['fat']
   },
 ]
 
@@ -210,7 +231,7 @@ const CHARACTERS = [
 let secretCharacter
 let currentQuestion
 let charactersInPlay
-let numberOfGuesses = 5
+let numberOfGuesses = 0
 
 // Draws the game board
 const generateBoard = () => {
@@ -243,6 +264,8 @@ const setSecretCharacter = () => {
 
 // This function is to start (and restart) the game
 const start = () => {
+  numberOfGuesses = 5
+  document.getElementById('guess-counter').innerHTML = `${numberOfGuesses}`
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecretCharacter();
@@ -266,10 +289,16 @@ const selectQuestion = () => {
 // Sees if we should keep or remove people based on that
 // Then invokes filterCharacters true or false
 const checkQuestion = () => {
+  numberOfGuesses -= 1
+  document.getElementById('guess-counter').innerHTML = `${numberOfGuesses}`
   const { category,value } = currentQuestion
   console.log('current question', currentQuestion)
   
-  if (category === 'accessories') {
+  if (numberOfGuesses === -1) {
+    findOutButton.style.display = 'none'
+    document.getElementById('guess-counter').innerHTML = `No guesses left. Time to make a guess!`
+
+  } else if (category === 'accessories') {
     if (secretCharacter[category].includes(value)) {
       filterCharacters(true)
     }

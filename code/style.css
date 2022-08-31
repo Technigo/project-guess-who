@@ -54,7 +54,11 @@ select {
 .counter {
   display: flex;
   width: 200px;
-  color: black;
+}
+
+.counter p {
+  font-size: 20px;
+
 }
 
 .game-board {
@@ -94,6 +98,10 @@ select {
   color: white;
   text-align: center;
   height: inherit;
+}
+.card img {
+  width: 130px;
+  height: 160px;
 }
 
 .card:hover {

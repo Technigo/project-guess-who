@@ -226,6 +226,14 @@ const generateBoard = () => {
         </div>
       </div>
     `
+    board.addEventListener('click'), () => {
+    if (charactersInPlay.name === selectedCharacter.name) {
+       window.alert('You are a mindreader!')
+      } else {
+        window.alert('nope, nope, nope - guess again!')
+      }
+
+    }
   })
 }
 

@@ -200,6 +200,43 @@ const CHARACTERS = [
   },
 ]
 
+/*const tilesSheet = document.querySelector('board');
+
+const generateTiles = () => {
+  CHARACTERS.map(singleCharacter => {
+    const tile = document.createElement('div');
+    tile.classList.add('tile');
+    tile.innerHTML = `<p>${singleCharacter.name}<p>`;
+    tilesSheet.appendChild(tile); //we need to know the parent which is the tileSheet in html
+    console.log(singleCharacter);
+  });
+};
+
+generateTiles();
+console.log(CHARACTERS);
+//generateTiles()*/
+
+//yourversion of mapping the tiles
+/*for(let i=0; i < CHARACTERS.length; i++){
+  console.log(CHARACTERS[i]);
+};*/
+
+//const tilesSheet = 
+//looping through the array of objects
+
+  const tilesSheet = document.querySelector('#board');
+
+  let generateTiles = CHARACTERS.map((character) => {
+    const tile = document.createElement('div');   //creating a div element
+    tile.classList.add('tile');                  //adding a classlist for the div
+    tile.innerHTML = `<p>${character.name}<p>`; // 
+    tilesSheet.appendChild(tile);              //appending to the container
+    console.log(character);
+
+  });
+
+//generateTiles();
+
 // Global variables
 let secret
 let currentQuestion
@@ -222,10 +259,15 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
-const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+const guessWho = () => {          //Guess the character randomizer
+  let secret = Math.floor(Math.random() * CHARACTERS.length -1 -0 +1) +0;
+  selectedCharacter = CHARACTERS[secret];
+  console.log(selectedCharacter);
 }
+guessWho();
+
+
+
 
 // This function to start (and restart) the game
 const start = () => {

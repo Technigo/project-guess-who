@@ -59,6 +59,19 @@ select {
   align-content: center;
 }
 
+.tilesSheet {        /*the tiles*/
+  height: 1000px;
+  width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+ 
+ }
+ .tile {
+  width: 220px;     /*change the size of the tile here*/
+  margin: 5px;
+  border: 1px solid tomato;
+ }
+ 
 /****** CARD ******/
 .card {
   width: 135px;

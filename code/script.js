@@ -3,6 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')   // filters the answer
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -218,7 +221,7 @@ const generateBoard = () => {
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
-      </div>
+      </div>  
     `
   })
 }
@@ -229,6 +232,8 @@ const setSecret = () => {
   console.log(secret);
 } 
 
+
+
 // ***********************************************************
 
 // THIS FUNCTION STARTS ** AND ** RESTARTS THE GAME 
@@ -236,11 +241,16 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-    generateBoard();
+    generateBoard()
    //sets secret person   
-    setSecret();  
-    
-} 
+   setSecret()
+   // If game is won or lost, play again button triggers;
+   if (winOrLose.style.display === 'block') {
+     winOrLose.style.display = 'none'  
+   } else {
+     winOrLose.style.display = 'none'     
+   }  
+}
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -257,7 +267,7 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  document.getElementById("questions").value = "";  // clears inputvalue of dropdown in the little box 
+  
   
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -344,8 +354,8 @@ start()
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable// remember the confirm(message+person)
   // If the player wants to guess, invoke the checkMyGuess function.
-  const madeGuess = confirm(`Do you really want to guess on ${personToConfirm}?`) 
-  if (madeGuess) {
+  const theGuess = confirm(`Do you really want to guess on ${personToConfirm}?`) 
+  if (theGuess) {
    checkMyGuess(personToConfirm)   
  }
 }
@@ -365,12 +375,20 @@ const checkMyGuess = (personToCheck) => {
   }
 }
 
+// Restart the game
+const playAgain = () => {
+  board.style.display = 'flex'
+  winOrLose.style.display = 'none'
+  start()
+}
 
 
 // Invokes the start function when website is loaded/ restarted 
-start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);  // filter button 
+playAgainButton.addEventListener('click', playAgain); //why doesnt board show 
+
+

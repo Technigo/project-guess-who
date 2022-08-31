@@ -2,7 +2,9 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
+const filter = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const playAgain = document.getElementById('playAgain')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -207,20 +209,31 @@ let charactersInPlay
 
 // Draw the game board
 const generateBoard = () => {
-  board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
-    board.innerHTML += `
-      <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
-        <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
-        </div>
-      </div>
-    `
+  CHARACTERS.map(charactersInPlay => {
+    console.log(charactersInPlay)
+  });
+    board.innerHTML = ''
+    charactersInPlay.forEach((person) => {
+        board.innerHTML += `
+          <div class="card">
+            <p>${person.name}</p>
+            <img src=${person.img} alt=${person.name}>
+            <div class="guess">
+              <span>Guess on ${person.name}?</span>
+              <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+            </div>
+          </div>
+        `
+        
+      
   })
-}
+  
+  
+  /*for (let i=0; i < CHARACTERS.length; i++ ) {
+    console.log(CHARACTERS[i])
+  }*/
+};
+ 
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
@@ -232,7 +245,9 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard(); //calling in generateBoard function
 }
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -319,6 +334,7 @@ const checkMyGuess = (personToCheck) => {
 }
 
 // Invokes the start function when website is loaded
+
 start()
 
 // All the event listeners

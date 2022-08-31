@@ -258,7 +258,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * (charactersInPlay.length - 1 - 0 + 1) + 0)];
-  console.log(setSecret); // the is only logging the function code of setSecret
+  console.log('Secret person', secret.name); 
 
 
 };

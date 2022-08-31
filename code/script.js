@@ -335,7 +335,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
 
-  // else statement for accessories, sweater and face we need to check if the value is included in an array.
+  
   } else {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))

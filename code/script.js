@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -11,7 +12,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['happy']
   },
   {
     name: 'Jack',
@@ -19,7 +20,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['angry']
   },
   {
     name: 'Jacques',
@@ -27,7 +28,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker', 'angry']
   },
   {
     name: 'Jai',
@@ -35,7 +36,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['happy']
   },
   {
     name: 'Jake',
@@ -43,7 +44,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['happy']
   },
   {
     name: 'James',
@@ -51,7 +52,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['neutral']
   },
   {
     name: 'Jana',
@@ -59,7 +60,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: ['happy']
   },
   {
     name: 'Jane',
@@ -67,15 +68,15 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: ['angry']
   },
   {
     name: 'Jaqueline',
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['glasses', 'earrings'],
+    other: ['happy']
   },
 
   {
@@ -84,7 +85,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['smoker', 'angry']
   },
   {
     name: 'Jean',
@@ -92,7 +93,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'angry']
   },
   {
     name: 'Jeane',
@@ -100,7 +101,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['happy']
   },
   {
     name: 'Jed',
@@ -108,7 +109,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'angry']
   },
   {
     name: 'Jenni',
@@ -116,7 +117,7 @@ const CHARACTERS = [
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],
-    other: []
+    other: ['angry']
   },
   {
     name: 'Jeri',
@@ -124,7 +125,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['neutral']
   },
   {
     name: 'Jerry',
@@ -132,7 +133,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['happy']
   },
   {
     name: 'Jess',
@@ -140,15 +141,15 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: ['happy']
   },
   {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['glasses', 'earrings'],
+    other: ['angry']
   },
   {
     name: 'Jon',
@@ -156,7 +157,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['happy']
   },
   {
     name: 'Jordan',
@@ -164,15 +165,15 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['happy']
   },
   {
     name: 'Josephine',
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
-    other: []
+    accessories: ['earrings'],
+    other: ['happy']
   },
   {
     name: 'Josh',
@@ -180,7 +181,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['happy']
   },
   {
     name: 'Jude',
@@ -188,7 +189,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['neutral']
   },
   {
     name: 'Julie',
@@ -196,7 +197,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['neutral']
   },
 ]
 
@@ -253,18 +254,18 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
 
-  const value = selectQuestion.value;
+  const value = questions.options[questions.selectedIndex].parentNode.value
 
-//   currentQuestion = {
-//     category: category, value:value
-//   }
+  currentQuestion = {
+    category: category, 
+    value: value
+   }
 }
-questions.addEventListener('change', () => {
-  console.log(questions.value);  
-});   
+  
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  console.log ('yay, button works')
   const { category, value } = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
@@ -340,3 +341,9 @@ console.log('selected person', secret.name);
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', () => {
+  console.log(questions.value);  }); 
+findOutButton.addEventListener('click', () => checkQuestion() )
+
+
+

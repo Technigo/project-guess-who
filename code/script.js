@@ -2,6 +2,9 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
+const playAgainButton = document.getElementById ('winOrLoseText')
+
 
 //New project
 
@@ -13,14 +16,16 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
+    gender: 'female',
     other: []
   },
   {
     name: 'Jack',
     img: 'images/jack.svg',
-    hair: 'hidden',
+    hair: 'brown',
     eyes: 'blue',
     accessories: ['hat'],
+    gender: 'male',
     other: []
   },
   {
@@ -29,6 +34,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
+    gender: 'male',
     other: ['smoker']
   },
   {
@@ -37,6 +43,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
+    gender: 'male',
     other: []
   },
   {
@@ -45,6 +52,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
+    gender: 'male',
     other: []
   },
   {
@@ -53,6 +61,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
+    gender: 'male',
     other: []
   },
   {
@@ -61,6 +70,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
+    gender: 'female',
     other: []
   },
   {
@@ -69,14 +79,16 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    gender: 'female',
+    other: ['hairBun']
   },
   {
     name: 'Jaqueline',
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewelries'],
+    gender: 'female',
     other: []
   },
 
@@ -86,6 +98,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
+    gender: 'female',
     other: ['smoker']
   },
   {
@@ -94,6 +107,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
+    gender: 'male',
     other: ['smoker']
   },
   {
@@ -102,6 +116,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
+    gender: 'female',
     other: []
   },
   {
@@ -110,6 +125,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
+    gender: 'male',
     other: ['smoker']
   },
   {
@@ -117,7 +133,8 @@ const CHARACTERS = [
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
+    accessories: ['hat', 'jewelries'],
+    gender: 'female',
     other: []
   },
   {
@@ -126,7 +143,8 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    gender: 'female',
+    other: ['hairBun']
   },
   {
     name: 'Jerry',
@@ -134,6 +152,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
+    gender: 'male',
     other: []
   },
   {
@@ -142,6 +161,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
+    gender: 'female',
     other: []
   },
   {
@@ -149,8 +169,9 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['glasses', 'jewelries'],
+    gender: 'female',
+    other: ['hairBun']
   },
   {
     name: 'Jon',
@@ -158,6 +179,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
+    gender: 'male',
     other: []
   },
   {
@@ -165,7 +187,8 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'jewelries'],
+    gender: 'female',
     other: []
   },
   {
@@ -173,7 +196,8 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['jewelries'],
+    gender: 'female',
     other: []
   },
   {
@@ -182,6 +206,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
+    gender: 'male',
     other: []
   },
   {
@@ -190,6 +215,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
+    gender: 'male',
     other: []
   },
   {
@@ -198,6 +224,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
+    gender: 'female',
     other: []
   },
 ]
@@ -207,9 +234,13 @@ let secret
 let currentQuestion
 let charactersInPlay
 
+
+
+
+
 // Draw the game board
 const generateBoard = () => {
-  board.innerHTML = ''
+  board.innerHTML = '';
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
@@ -220,33 +251,38 @@ const generateBoard = () => {
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
-    `
-  })
+    `;
+  });
 }
-
+  
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-}
+  secret = charactersInPlay[Math.floor(Math.random() * (charactersInPlay.length - 1 - 0 + 1) + 0)];
+  console.log(setSecret); // the is only logging the function code of setSecret
+
+
+};
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  //If i want a time function, set it here
+  generateBoard();
+  setSecret();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
   // This variable stores what option group (category) the question belongs to.
+  const category = questions.options[questions.selectedIndex].parentNode.label
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].parentNode.value //parentNode??? what does it do?
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
 }
 
@@ -254,13 +290,15 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+  // Compare the currentQuestion details with the secret person 
+  // details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    window.alert('Hurray!');
 
   } else if (category === 'accessories' || category === 'other') {
-
+    window.alert('Nay!');
   }
 }
 
@@ -325,3 +363,7 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion) // The questions is selected in the drop down menu. selectQuestion function is invoked and different answer change depedign on the selected item.
+findOutButton.addEventListener('click', () => {
+  checkQuestion ();
+}) // The checkQuestion function will be declared when clicking the find out button.

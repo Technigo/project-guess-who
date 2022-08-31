@@ -223,8 +223,10 @@ const generateBoard = () => {
 }
 
 // This function randomly selects a person from the characters array and sets that person as the value of the 'secret' variable.
+//I've added a console.log message here to check that the function assigned a new random person to the game with every refresh (Iteration 2 of the assignment).
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret.name)
 }
 
 // This function starts (and restarts) the game. 

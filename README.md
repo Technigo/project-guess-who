@@ -1,4 +1,5 @@
 # Project Name
+This is just a tiny modification to the Readme file to test whether I've set up the repo properly in GitHub Desktop.
 
 Replace this readme with your own information about your project.
 

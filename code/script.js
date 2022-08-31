@@ -10,11 +10,11 @@ const guessCounter = document.getElementById('guess-counter');
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['sunglasses'],
+    name: 'Jodi',
+    img: 'images/jodi.svg',
+    hair: 'yellow',
+    eyes: 'blue',
+    accessories: ['a hat'],
     other: [],
   },
   {
@@ -26,19 +26,19 @@ const CHARACTERS = [
     other: ['beard', 'striped shirt'],
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: [],
-    other: ['smoking habit', 'beard'],
+    name: 'Josephine',
+    img: 'images/josephine.svg',
+    hair: 'grey',
+    eyes: 'brown',
+    accessories: ['earrings'],
+    other: [],
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
+    name: 'Joe',
+    img: 'images/joe.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['a tie'],
+    accessories: ['a hat', 'a tie'],
     other: [],
   },
   {
@@ -58,11 +58,11 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
+    name: 'Jabala',
+    img: 'images/jabala.svg',
+    hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['sunglasses', 'a necklace'],
+    accessories: ['sunglasses'],
     other: [],
   },
   {
@@ -81,7 +81,6 @@ const CHARACTERS = [
     accessories: ['glasses', 'a necklace', 'earrings'],
     other: [],
   },
-
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
@@ -131,16 +130,16 @@ const CHARACTERS = [
     other: ['striped shirt'],
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
+    name: 'Jolee',
+    img: 'images/jolee.svg',
+    hair: 'black',
     eyes: 'blue',
-    accessories: ['a hat'],
+    accessories: ['earrings'],
     other: [],
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
+    name: 'Jia',
+    img: 'images/jia.svg',
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
@@ -171,12 +170,12 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: ['earrings'],
-    other: [],
+    name: 'Jacques',
+    img: 'images/jacques.svg',
+    hair: 'hidden',
+    eyes: 'blue',
+    accessories: [],
+    other: ['smoking habit', 'beard'],
   },
   {
     name: 'Josh',
@@ -231,7 +230,6 @@ const generateBoard = () => {
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  console.log(secret);
 };
 
 // This function starts (and restarts) the game
@@ -276,7 +274,7 @@ const checkQuestion = () => {
 
   // currentQuestion details is being compared with the secret character's
   // and based on that we're deciding what characters to keep or remove
-  // Then invoke filterCharacters
+  // then invoke filterCharacters
 
   if (
     currentQuestion.category === 'hair' ||

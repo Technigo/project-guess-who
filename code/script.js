@@ -311,11 +311,29 @@ const filterCharacters = (keep) => {
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
+  } else if (category === 'accessories') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value}! Keep all people that has ${value}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)); // ANNIKA includes since can have several accessories
+    } else {
+      alert(
+        `No, the person doesn't have ${value}. Remove all people with ${value}`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person is a ${value}! Keep all people that has a smoking habit`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)); // ANNIKA includes since can have several accessories
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person is not a ${value}. Remove all people that has a smoking habit`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   }
 

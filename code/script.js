@@ -9,9 +9,9 @@ const CHARACTERS = [
   {
     name: 'Jabala',
     img: 'images/jabala.svg',
-    hair: 'hair-cover',
+    hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hair-cover'],
+    accessories: ['glasses','hat'],
     other: []
   },
   {
@@ -57,7 +57,7 @@ const CHARACTERS = [
   {
     name: 'Jana',
     img: 'images/jana.svg',
-    hair: 'black',
+    hair: 'brown',
     eyes: 'hidden',
     accessories: ['glasses'],
     other: []
@@ -73,7 +73,7 @@ const CHARACTERS = [
   {
     name: 'Jaqueline',
     img: 'images/jaqueline.svg',
-    hair: 'orange',
+    hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
@@ -82,7 +82,7 @@ const CHARACTERS = [
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
-    hair: 'purple',
+    hair: [],
     eyes: 'hidden',
     accessories: ['glasses'],
     other: ['smoker']
@@ -106,7 +106,7 @@ const CHARACTERS = [
   {
     name: 'Jed',
     img: 'images/jed.svg',
-    hair: 'orange',
+    hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
@@ -114,7 +114,7 @@ const CHARACTERS = [
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
-    hair: 'white',
+    hair: 'grey',
     eyes: 'hidden',
     accessories: ['hat'],
     other: []
@@ -122,7 +122,7 @@ const CHARACTERS = [
   {
     name: 'Jeri',
     img: 'images/jeri.svg',
-    hair: 'orange',
+    hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
@@ -186,7 +186,7 @@ const CHARACTERS = [
   {
     name: 'Jude',
     img: 'images/jude.svg',
-    hair: 'black',
+    hair: 'brown',
     eyes: 'green',
     accessories: [],
     other: []
@@ -194,9 +194,9 @@ const CHARACTERS = [
   {
     name: 'Julie',
     img: 'images/julie.svg',
-    hair: 'black',
+    hair: 'brown',
     eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses'],
     other: []
   },
 ]
@@ -230,8 +230,10 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS // Here we're setting charactersInPlay array to be all the characters to start with
+  generateBoard(); //call/invoke function generateBoard on row 210
+  setSecret() //call/invoke function setSecret on row 227
+  selectQuestion() //call/invoke function selectQuestion just below
   // What else should happen when we start the game?
 }
 

@@ -243,11 +243,12 @@ const setSecret = () => {
     generateBoard()
   }  
 
-//This function defines the currentQuestion object when you select something in the dropdown menu, storing the category the question belongs to as well as the specific question (value).
+//This function starts out by defining two new variables: category and value, based on what you select in the drop-down menu. 
 const selectQuestion = () => {
   console.log("selectQuestion invoked")
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
+//It then adds these as properties to the currentQuestion object.
   currentQuestion = {
     category: category,
     value: value
@@ -256,23 +257,39 @@ const selectQuestion = () => {
   console.log(currentQuestion)
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function filters out characters based on the properties of the currentQuestion object.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  console.log("checkQuestion invoked")
+  const {category, value} = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+
+  //IF the user picked the categories hair OR eyes...
   if (category === 'hair' || category === 'eyes') {
-
+  //AND if the values match that of the secret person's hair OR eyes...
+    if (value === secret.hair || value === secret.eyes) {
+  //invoke the filterCharacters function with either a true or false statement (true if the user picked hair or eyes AND the values match the secret person's hair or eyes)
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
+ //invoke the filterCharacters function with either a true or false statement (same as above, just for the other two categories)
   } else if (category === 'accessories' || category === 'other') {
-
+    if ((secret.accessories).includes(value)) {
+      filterCharacters(true)
+    } else if ((secret.other).includes(value)) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
   }
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
+  const {category, value} = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -335,7 +352,10 @@ start()
 //This EL invokes the start function whenever the user clicks on the Restart button.
 restartButton.addEventListener('click', start)
 
-//This EL invokes the selectQuestion function whenever the user clicks on the Find Out button.
+//The next two ELs invoke the selectQuestion AND checkQuestion functions whenever the user clicks on the Find Out button.
+
 findOutButton.addEventListener('click', selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)
+
 
 

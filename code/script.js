@@ -312,7 +312,7 @@ const filterCharacters = (keep) => {
       alert(
         `No, the person does not have ${value} eyes! Remove all the people that have ${value} eyes`
       )
-      charactersInPlay = charactersInPlay.filter(person => person[category].includes(value)
+      charactersInPlay = charactersInPlay.filter(person => !person[category].includes(value)
       );
     }
     }
@@ -327,7 +327,7 @@ const filterCharacters = (keep) => {
         alert(
           `No, the person does not have ${value}! Remove all the people that have ${value}`
         )
-        charactersInPlay = charactersInPlay.filter(person => person[category].includes(value)
+        charactersInPlay = charactersInPlay.filter(person => !person[category].includes(value)
         );}
       }
 
@@ -342,7 +342,7 @@ const filterCharacters = (keep) => {
           alert(
             `No, the person is not a ${value}! Remove all the people that is a ${value}`
           )
-          charactersInPlay = charactersInPlay.filter(person => person[category].includes(value)
+          charactersInPlay = charactersInPlay.filter(person => !person[category].includes(value)
           );
         }
         }

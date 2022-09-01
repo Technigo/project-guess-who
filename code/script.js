@@ -229,6 +229,19 @@ const generateBoard = () => {
   })
 }
 
+
+// Sound effect when guessing wrong :(
+const loserSound = () => {
+  let audio = new Audio("/audio/peter-griffin-sneaky-laugh.mp3")
+  audio.play();
+}
+
+// Sound effect when guessing right! :)
+const winnerSound = () => {
+  let audio = new Audio("http://soundfxcenter.com/television/family-guy/8d82b5_Family_Guy_Glenn_Quagmire_Giggidy_Sound_Effect.mp3")
+  audio.play();
+}
+
 // This is the timer function
 startTimer = () => {
 
@@ -265,6 +278,7 @@ startTimer = () => {
   },1000);
 }
 
+
 // Randomly selects a person from the characters array and sets as the value of the variable called secretCharacter
 const setSecretCharacter = () => {
   secretCharacter = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -280,7 +294,8 @@ const start = () => {
   generateBoard();
   setSecretCharacter();
   selectQuestion();
-  alert('lets play!')
+  alert('Lets play!');
+  startTimer()
 }
 
 // Sets the currentQuestion object when you select something in the dropdown
@@ -382,7 +397,7 @@ const filterCharacters = (keep) => {
       alert(`Yes, the person has wears ${value}! Keep all people that wears ${value}.`)
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
   } else {
-      alert(`No, the person doesn't have ${value}-Remove all people wearing ${value}.`)
+      alert(`No, the person doesn't wear ${value}. Remove all people wearing ${value}.`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   }
 }
@@ -446,11 +461,13 @@ const checkMyGuess = (personToCheck) => {
   board.style.display = 'none'
 
   if (personToCheck === secretCharacter.name) {
+    winnerSound();
      winOrLose.style.display = "flex"
      winOrLoseText.innerHTML += `
     Yey! ${personToCheck} was correct. You Win. Want to play again?
      `
     } else {
+    loserSound();
     winOrLose.style.display = "flex"
     winOrLoseText.innerHTML += `
    Sorry, ${personToCheck} was not correct. Want to play again?

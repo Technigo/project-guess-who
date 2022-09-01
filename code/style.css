@@ -78,6 +78,7 @@ select {
 }
 
 /****** CARD ******/
+
 .card {
   width: 135px;
   height: 165px;
@@ -168,6 +169,7 @@ button {
   border-color: white;
   color: var(--primary);
 }
+
 /*** Timer **/
 
 .timer-container {
@@ -189,6 +191,7 @@ button {
 
 
 /****** WIN OR LOSE SECTION ******/
+
 .win-or-lose-wrapper {
   display: none;
   align-items: center;
@@ -220,18 +223,26 @@ button {
   margin-bottom: 32px;
 }
 
+/*** Media queries ***/
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
+  }
+
+  .game-board {
+    width: 100%;
   }
 
   .question-section {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
@@ -281,6 +292,11 @@ button {
     color: var(--primary);
     border: none;
   }
+
+  .win-or-lose img {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 
@@ -288,6 +304,10 @@ button {
 
   body {
     flex-direction: column;
+  }
+
+  .game-board {
+    width: 100%;
   }
 
   .question-section {

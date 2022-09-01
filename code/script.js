@@ -210,8 +210,8 @@ let charactersInPlay
 
 // Draw the game board
 const generateBoard = () => {
-  board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  board.innerHTML = '';
+  charactersInPlay.forEach(person => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
@@ -221,9 +221,9 @@ const generateBoard = () => {
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
-    `
-  })
-}
+    `;
+  });
+};
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
@@ -266,7 +266,7 @@ const checkQuestion = () => {
   if (category === 'hair' || category === 'eyes') {
     keep = value === secret[category];
   } else if (category === 'accessories' || category === 'other') {
-    keep = (secret[category].includes(value));
+    keep = secret[category].includes(value); //I dont completly understand this
   }
   //Invoke next function filterCharacters and passing along keep 
   filterCharacters(keep);
@@ -305,27 +305,16 @@ const filterCharacters = (keep) => {
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
       }
     }
-    generateBoard();
+    //redraw the board 
+    generateBoard(); // Why don't I need to pass along a value/attribute ex:charactersInPlay? 
   }
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-  // Invoke a function to redraw the board with the remaining people.
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  const confirmGuess = confirm(`Are you sure you want to guess ${personToConfirm}?`);
+    if (confirmGuess) {
+       checkMyGuess(personToCheck);
+    }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -334,13 +323,15 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
+  //if (personToCheck === secret.name)
+  //alert('WIN')
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
 }
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
 restartButton.addEventListener('click', start)

@@ -1,9 +1,16 @@
 /* Global css variables used for colors */
-/* offwite #24D590 */
+
+/* Offwite #d8faf4
+   Light teal #B9FFF8
+   Teal #6FEDD6
+   Orange #FF9551
+   Red coral #FF4A4A
+   light pink  #fbd7d7
+    */
 
 :root {
   --primary: #FF4A4A;
-  --secondary: #6fedd6;
+  --secondary:  #6FEDD6;
   
 }
 
@@ -11,21 +18,27 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Bangers', 'Boogaloo';
+ 
 }
 
+/******  ******/
+
 h1 {
-  font-size: 30px;
-  font-weight: 500;
+  font-size: 45px;
+  /* font-weight: 500; */
   line-height: 48px;
-  margin: 10px 0;
-  color: white;
+  letter-spacing: 1.5px;
+  margin: 20px 0;
+  color: var(--secondary);
+  text-shadow: 3px 3px 8px #326c61;
+
 }
 
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color:  #fbd7d7;
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -36,70 +49,80 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
+  font-size: 28px;
+  font-family: 'Boogaloo', 'Montserrat', sans-serif;
   color: var(--secondary);
+  text-shadow: 3px 3px 8px #1e423b;
   width: 100%;
   margin: 24px 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .guess-who-icon {
   width: 1fr;
+  /* z-index: 1; */
+  
 }
+
+/****** BOARD ******/
 
 .board-wrapper {
   width: 70%;
+  background-color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .game-board {
-  width: 90%;
-  max-width: 882px;
+  max-width: 1400px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 /****** CARD ******/
+
 .card {
-  width: 135px;
-  height: 165px;
+  width: 160px;
+  height: 160px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+  /* border-radius: 4px; */
+  margin: 1rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: #eee;
+  border-radius: 50%;
 }
 
 .card p {
+  font-size: 1.2rem;
+  /* font-weight: 700; */
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
-  font-weight: 700;
 }
 
 .card .guess {
-  display: none;
+  /* display: none; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  /* color: white; */
   text-align: center;
   height: inherit;
 }
 
-.card:hover {
-  background-color: var(--secondary);
-}
-
-.card:hover img,
 .card:hover p {
   display: none;
+}
+
+.card:hover img {
+  width: 40%;
+  padding-top: 1rem;
 }
 
 /* The div with the guess class is only shown on hover */
@@ -108,47 +131,73 @@ select {
 }
 
 .guess span {
-  font-size: 16px;
+  font-size: 1.2rem;
   line-height: 18px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  width: 90%;
+  /* font-weight: 600; */
+  margin-bottom: 0.5rem;
+  /* width: 90%; */
 }
 
 /****** BUTTONS ******/
-button {
-  border: 2px solid var(--primary);
-  border-radius: 50px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: bold;
-  padding: 17px 27px;
-  cursor: pointer;
+
+
+.btn-section {
+  width: 100%;
+  /* height: 50px; */
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
 }
 
-.small {
-  padding: 8px 16px;
+button {
+  border-radius: 12px;
+  font-size: 25px;
+  font-family: 'Boogaloo', 'Montserrat'; 
+  cursor: pointer;
+  margin-left: 1rem;
+  background-color: var(--primary);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #eee;
+  border: none;
+}
+
+#filter, #restart {
+  width: 75%;
+  height: 50px;
+  margin: 10px 0px;
+}
+
+.filled-button-small {
+  width: 96px;
+  height: 32px;
+  border-radius: 16px;
+  margin: 0;
 }
 
 .outlined-button {
+  /* width: 50%; */
+  border: 2px solid var(--primary);
   background-color: transparent;
   color: var(--primary);
-  align-self: flex-end;
+  /* align-self: flex-end; */
+  /* width: 150px; */
 }
 
-.filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
-  color: white;
+  background-color:  var(--primary);
+  color: #eee;
+  border: none;
 }
 
-.filled-button:hover {
-  background-color: white;
-  border-color: white;
+button:hover {
+  border: 2px solid var(--primary);
+  background-color: transparent;
   color: var(--primary);
 }
 
 /****** WIN OR LOSE SECTION ******/
+
 .win-or-lose-wrapper {
   display: none;
   align-items: center;
@@ -167,18 +216,36 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  max-width: 800px;
   text-align: center;
 }
 
 .win-or-lose img {
+  width: 40%;
   align-self: flex-start;
-  margin-left: 15%;
+  margin: 5%;
+  /* margin-left: 15%; */
 }
 
 .win-or-lose h1 {
-  margin-bottom: 32px;
+  color:  #B9FFF8;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  font-family: 'Boogaloo', 'Montserrat';
+  font-size: 56px;
+  line-height: 70px;
+  letter-spacing: 2px;
 }
+
+#playAgain {
+  width: 200px;
+  height: 50px;
+ margin: 20px;
+}
+
+
+
+/****** MEDIA QUERY ******/
 
 @media (max-width: 768px) {
   body {
@@ -189,40 +256,92 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
-    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 25px;
+    height: 44px;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 1rem;
   }
+
+  .btn-section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  #filter, #restart {
+    width: 50%;
+    margin: 0px 10px;
+  }
+
+  .filled-button-small {
+    width: 72px;
+    border-radius: 15px;
+  }
+
   h1 {
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 40px;
+    /* line-height: 30px; */
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 300px;
+    padding: 0;
+    margin-top: 1rem;
   }
 
   .board-wrapper {
     width: 100%;
+    padding-left:0;
+    padding-right: 0;
   }
 
   .game-board {
     width: 100%;
     max-width: 750px;
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
   }
 
   .card {
-    width: 113px;
+    /* width: 113px;
+    position: relative; */
+    width: 140px;
+    height: 140px;
+    border: 70px;
+    margin: 0%;
+    /* padding: 0.5rem 1rem 2rem 1rem; */
+  }
+
+  .card p {
+    display: none;
+    background-color: #eee;
+    padding-top: 0.5rem;
+  }
+
+  img {
+    width: 50%;
+    height: 50%;
     position: relative;
+    margin-top: 0.5rem;
   }
 
   .card .guess {
     display: flex;
+    
     top: 0;
-    position: absolute;
-    justify-content: flex-end;
+    position: relative;
+    margin-bottom: 0;
+    width: 100%;
   }
 
-  .card .guess span {
+  /* .card .guess span {
     display: none;
   }
 
@@ -232,5 +351,27 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  } */
+  .win-or-lose {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* .win-or-lose.footer {
+  display: none;
+  } */
+
+  .win-or-lose h1 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+}
+
+@media (min-width: 1500px) {
+  .game-board {
+    width: 90%;
+  }
+  #filter, #restart {
+    width: 65%;
   }
 }

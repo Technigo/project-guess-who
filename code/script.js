@@ -262,11 +262,11 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  let keep
+  let keep 
   if (category === 'hair' || category === 'eyes') {
     keep = value === secret[category];
   } else if (category === 'accessories' || category === 'other') {
-    keep = [secret[category].includes(value)];
+    keep = (secret[category].includes(value));
   }
   //Invoke next function filterCharacters and passing along keep 
   filterCharacters(keep);
@@ -276,49 +276,33 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
-  if (category === 'hair') {
-    if (keep) {
-      alert(`Yes, the person have ${value} hair! Keep all people that have ${value} hair`)
-    } else {
-    alert(`No, the person does not have ${value} hair. Remove all people with ${value} hair`)
-    }
-  }
-    if (category === 'eyes') {
-    if (keep) {
-      alert(`Yes, the person have ${value} eyes! Keep all people that have ${value} eyes`)
-    } else {
-      alert(`No, the person don't have ${value} eyes! remove all people that have ${value} eyes`)
-    }
-  }
-
+  // Show the correct alert message for different categories and filter away characters due to question
     if (category === 'accessories') {
-    if (keep) {
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
-    } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
-    }
-  }
-  
-    if (category === 'other') {
-    if (keep) {
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
-    } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
-    }
-  }
-
-  if (category === 'hair' || category === 'eyes') {
-    if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
-    } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
-    }
-  } else if (category === 'accessories' || category === 'others') {
       if (keep) {
+        alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
       } else {
+        alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+      }
+   }
+    else if (category === 'other') {
+      if (keep) {
+        alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+      } else {
+        alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+      }
+    }
+
+    else {
+      if (keep) {
+        alert(`Yes, the person have ${value} ${category}! Keep all people that have ${value} ${category}`);
+        charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+      } else {
+        alert(`No, the person does not have ${value} ${category}. Remove all people with ${value} ${category}`)
+        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
       }
     }
     generateBoard();

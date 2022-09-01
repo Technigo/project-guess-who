@@ -241,7 +241,7 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   generateBoard ();
   setSecret();
-  // What else should happen when we start the game?
+  console.log('secret person', secret);
   
 }
 
@@ -251,7 +251,6 @@ const selectQuestion = () => {
   const value = questions.options[questions.selectedIndex].value
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-
 
   currentQuestion = {
     category: category, 
@@ -382,12 +381,10 @@ const loseSection = () => {
 }
 
 
-// Invokes the start function when website is loaded
 start();
-console.log('secret person', secret);
 
 // All the event listeners
-restartButton.addEventListener('click', () => location.reload())
+restartButton.addEventListener('click', start)
 anotherTryButton.addEventListener('click', () => location.reload())
 playAgainButton.addEventListener('click',  () => location.reload());
 questions.addEventListener('change', () => { selectQuestion(questions.value);}); 

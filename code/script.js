@@ -373,6 +373,15 @@ const checkMyGuess = (personToCheck) => {
   board.style.display = 'none'
 
   console.log('winner or loser')
+
+};
+
+const playingAgain = () => {
+  board.style.display = 'flex'
+  winOrLose.style.display = 'none'
+  start()
+
+  console.log('play again')
 };
 
 // Invokes the start function when website is loaded
@@ -382,4 +391,4 @@ start();
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 filterButton.addEventListener('click', checkQuestion);
-//playAgain.addEventListener('click', start);
+playAgain.addEventListener('click', playingAgain);

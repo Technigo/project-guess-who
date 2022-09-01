@@ -1,4 +1,5 @@
 
+
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
@@ -318,11 +319,11 @@ const filterCharacters = (keep) => {
 
   } else if (category === 'other') {
    if (keep) { 
-    charactersInPlay = charactersInPlay.filter((person) => person [category] === value);
+    charactersInPlay = charactersInPlay.filter((person) => person [category].includes(value));
     alert(`Woho, this person is a ${value}.  `);
 
     } else {
-    charactersInPlay = charactersInPlay.filter((person) => person [category] !== value);
+    charactersInPlay = charactersInPlay.filter((person) => !person [category].includes(value));
     alert(`this person is not a ${value}, remove done. `);
     } 
 
@@ -343,10 +344,11 @@ const filterCharacters = (keep) => {
       alert(`Correct, this person has lovely ${value} eyes. Keeeeep them! `);
     }
 
-  } else {
+  else {
     charactersInPlay = charactersInPlay.filter((person) => person [category] !== value);
     alert(`Nooo, this person has not ${value} eyes. Lets remove and keep going.`);
   }
+}
  
     // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
@@ -361,7 +363,7 @@ if (category === 'accessories') {
 
 } else if (category === 'other') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     }
     else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
@@ -386,7 +388,7 @@ if (category === 'accessories') {
     
   }
   // Invoke a function to redraw the board with the remaining people.
-  generateBoard();
+  generateBoard(keep);
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -398,18 +400,19 @@ const guess = (personToConfirm) => {
 
   if(guessUser) {
     checkMyGuess(personToConfirm)
-  } //else {
-   // alert(`keep guessing`) // change mind to guess, keep playing
-  //}
+  } else {
+    alert(`keep guessing hero`) // change mind to guess, keep playing
+  }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-
+console.log(count)
   board.style.display = 'none' // hides the game board to show last message 
   if (personToCheck === secret.name) {
     finish.style.display = 'flex'
-    finishText.innerHTML += `Winner Winner, chicken dinner!  The secret person is ${personToCheck}`
+    finishText.innerHTML += `Winner Winner, chicken dinner! ${count} guesses, you are a champ ! 
+    The secret person is ${personToCheck} `
   } else {
     finish.style.display = 'flex'
     finishText.innerHTML += `Close, but no cigar ! Better luck next time, it was ${secret.name}`
@@ -435,6 +438,8 @@ function resetDisplay (){
   counterDisplayElem.innerHTML = 0; 
 }
 
+
+
 // Invokes the start function when website is loaded
 start()
 resetDisplay()
@@ -450,7 +455,6 @@ findOut.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
 playAgainBtn.addEventListener('click', reload)
 restartButton.addEventListener('click', resetDisplay)
-
 
 
 

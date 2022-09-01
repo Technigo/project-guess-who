@@ -203,9 +203,9 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
+let secretPlayer
 let currentQuestion
-let charactersInPlay
+let charactersInPlay 
 
 // Draw the game board
 const generateBoard = () => {
@@ -225,10 +225,10 @@ const generateBoard = () => {
           </div>
         `
         
-      
+
   })
   
-  
+  //I am using .map so for is not necessery
   /*for (let i=0; i < CHARACTERS.length; i++ ) {
     console.log(CHARACTERS[i])
   }*/
@@ -236,17 +236,28 @@ const generateBoard = () => {
  
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
-const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+
+const setSecretPlayer = () => {
+  
+  secretPlayer = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log('secret character is ready to play', secretPlayer)
 }
+
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS;
+
   // What else should happen when we start the game?
   generateBoard(); //calling in generateBoard function
+  setSecretPlayer(); /*calling in setSecret function, 
+                when  play with computer*/
+  checkQuestion();
+
 }
+  
+
 
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -255,11 +266,11 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+   const value = questions.value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
@@ -275,7 +286,10 @@ const checkQuestion = () => {
   } else if (category === 'accessories' || category === 'other') {
 
   }
+  //selectQuestion.addEventListener("click", checkQuestion);
+  
 }
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -316,6 +330,7 @@ const filterCharacters = (keep) => {
   */
 
   // Invoke a function to redraw the board with the remaining people.
+  filterCharacters()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

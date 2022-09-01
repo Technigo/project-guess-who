@@ -2,7 +2,8 @@
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
-const select = document.getElementById("questions"); //rename??
+const select = document.getElementById("questions");
+const winOrLose = document.getElementById("winOrLose");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -238,6 +239,7 @@ const start = () => {
   setSecret();
   // Check to see if setSecret is run by logging the name of the person
   console.log(`Secret person is set to: ${secret.name}`);
+  // winOrLose.style.display = "none";
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -340,13 +342,24 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  if (window.confirm(`Are you sure you want to guess ${personToConfirm}?`)) {
+    console.log("user wanted to guess");
+    checkMyGuess(personToConfirm);
+  } else {
+    console.log("user chickened out");
+  }
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck == secret.name) {
+    winOrLoseText.innerHTML += `Congratulations, you won!`;
+  } else {
+    winOrLoseText.innerHTML += `Game over :C`;
+  }
+
+  winOrLose.style.display = "flex";
+
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

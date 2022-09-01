@@ -1,7 +1,19 @@
+
+/*colors:
+98DDCA - turkos
+D5ECC2 - päron
+FFD3B4 - beigerosa
+FFAAA7 - rosa
+
+B9F9FF - ljusblått
+DAFDFF - vitblå
+F7E590 - ljusgul
+F5CD6D - ljus senap
+
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #D5ECC2;
+  --secondary: #98DDCA;
 }
 
 body {
@@ -9,7 +21,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: #DAFDFF;
 }
+
 
 h1 {
   font-size: 42px;

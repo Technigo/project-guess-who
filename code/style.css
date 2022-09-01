@@ -22,21 +22,21 @@
 }
 
 .start-button {
-  border: 1px solid #F9F7E1;
+  border: 1px solid #F99C17;
   border-radius: 50px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
-  background-color: #F9F7E1;
-  color:#F99C17;
+  background-color: #F99C17;
+  color: #F9F7E1;
 }
 
 .start-button:hover {
-  border: 1px solid #F99C17;
-  background-color: #F99C17;
-  color: var(--primary);
+  border: 1px solid  #F9F7E1;
+  background-color: #F9F7E1;
+  color: #F99C17;
 }
 
 body {
@@ -187,6 +187,13 @@ button {
   color: var(--primary);
 }
 
+.side-footer{
+  padding: 10px;
+  font-size: 10px;
+  padding-top: 280px;
+  color: #5c652c;
+}
+
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
@@ -220,6 +227,7 @@ button {
   margin-bottom: 32px;
 }
 
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -229,27 +237,42 @@ button {
     width: 100%;
     min-height: 0;
   }
+
+  select{
+    width: 90%;
+    margin: 20px auto;
+  }
+
   button {
     padding: 8px 16px;
-    margin: 0 auto;
+    margin: 10px auto;
   }
   h1 {
-    font-size: 24px;
+    padding-top: 10px;
+    font-size: 28px;
     line-height: 30px;
     margin: 0 auto;
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 80px;
+    padding-top: 10px;
   }
 
   .board-wrapper {
     width: 100%;
+    padding-bottom: 5px;
   }
 
+ 
   .game-board {
     width: 100%;
     max-width: 750px;
+  }
+  
+  .side-footer{
+    padding-top: 10px;
+    margin: 0 auto;
   }
 
   .card {
@@ -275,4 +298,11 @@ button {
     color: var(--primary);
     border: none;
   }
+
+  .win-or-lose{
+    padding: 20px;
+    padding-top: 180px;
+  }
+
 }
+

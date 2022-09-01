@@ -206,7 +206,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-let keep
+//let keep
 
 // Draw the game board
 const generateBoard = () => {
@@ -268,7 +268,6 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    console.log(category, value)
     if(value === secret[category]){
       keep = true
     } else {
@@ -276,7 +275,6 @@ const checkQuestion = () => {
     } 
   }
   else if (category === 'accessories' || category === 'other'){
-      console.log(category, value)
       if(secret[category].includes(value)){
         keep = true
       } else {
@@ -305,39 +303,48 @@ const filterCharacters = (keep) => {
     if(keep){
     alert(
       `Yes, the person has ${value}! Keep all people that doesn't have ${value}`
-    )
+    );
+    charactersInPlay = charactersInPlay.filter(person => person[category].includes(value)
+      );
   } else {
     alert(
       `No, the person doesn't have ${value}! Remove all people that doesn't have ${value}`
-    )
+    );
+    charactersInPlay = charactersInPlay.filter( person => !person[category].includes(value)
+      );
   }
 }
    else if (category === 'accessories') {
     if(keep){
       alert(
         `Yes, the person has ${value}! Keep all people that has ${value}`
-      )
-      
+      );
+      charactersInPlay = charactersInPlay.filter(person => person[category].includes(value)
+      ); 
     } else {
       alert(
         `No, the person does not have ${value}! Remove all the people that have ${value}`
-      )
+      );
+      charactersInPlay = charactersInPlay.filter(person => !person[category].includes(value)
+      );
     }
   } 
   else if (category === 'other') {
     if (keep) {
       alert(
         `Yes, the person is a ${value}! Keep all people that is a ${value}`
-      )
+      );
+      charactersInPlay = charactersInPlay.filter(person => person[category].includes(value)
+          );
     } else {
       alert(
         `No, the person is not a ${value}! Remove all the people that is a ${value}`
-      )  
+      );
+      charactersInPlay = charactersInPlay.filter(person => !person[category].includes(value)
+          );  
     }
   }
   generateBoard()
-charactersInPlay = charactersInPlay.filter(person => !person[category].includes(value)
-);
 } 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

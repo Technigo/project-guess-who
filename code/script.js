@@ -1,7 +1,3 @@
-// All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -200,47 +196,59 @@ const CHARACTERS = [
   },
 ]
 
-/*const tilesSheet = document.querySelector('board');
 
-const generateTiles = () => {
-  CHARACTERS.map(singleCharacter => {
-    const tile = document.createElement('div');
-    tile.classList.add('tile');
-    tile.innerHTML = `<p>${singleCharacter.name}<p>`;
-    tilesSheet.appendChild(tile); //we need to know the parent which is the tileSheet in html
-    console.log(singleCharacter);
-  });
-};
+const tilesSheet = document.querySelector('#board');   
+const count = document.getElementById('counter');
 
-generateTiles();
-console.log(CHARACTERS);
-//generateTiles()*/
-
-//yourversion of mapping the tiles
-/*for(let i=0; i < CHARACTERS.length; i++){
-  console.log(CHARACTERS[i]);
-};*/
-
-//const tilesSheet = 
-//looping through the array of objects
-
-  const tilesSheet = document.querySelector('#board');
-
-  let generateTiles = CHARACTERS.map((character) => {
-    const tile = document.createElement('div');   //creating a div element
-    tile.classList.add('tile');                  //adding a classlist for the div
-    tile.innerHTML = `<p>${character.name}<p>`; // 
-    tilesSheet.appendChild(tile);              //appending to the container
-    console.log(character);
-
-  });
-
-//generateTiles();
+const hair = document.getElementById('hair');
+// All the DOM selectors stored as short variables
+const board = document.getElementById('board')
+const questions = document.getElementById('questions')
+const restartButton = document.getElementById('restart')
 
 // Global variables
-let secret
+let selectedCharacter;    //the secret character
+let guessCount = 5;       //tries for guessing
+let newCharacterSheet = [];
+// Global variables
+let secret              //for generating random character
 let currentQuestion
 let charactersInPlay
+
+
+/*hair.onchange = () => {
+  const newCharacterSheet = CHARACTERS.filter(character =>{          //filter work for every character it will only return in request 
+    return character.hair.includes(hair.value);                 //returning the ones specified that were chosen in browser option,rest filtered out.
+  });
+}*/
+                                                              
+  const generateTiles = () => {                               //CONNECTING OBJECT TO HTML
+    CHARACTERS.map(character => {                            //MAPPING
+      const tile = document.createElement('div');           //creating a div element
+      tile.classList.add('tile');                          //adding a classlist for the div
+      tile.innerHTML = `<p>${character.name}<p>`;         //tag to show 
+      tilesSheet.appendChild(tile);                      //appending to the container
+      
+      tile.addEventListener('click', () => {
+        if( guessCount < 1){
+          window.alert("You lost.")
+          return;
+        }
+        else if ( character === selectedCharacter){
+          window.alert("Correct guess") //perhaps check for break
+        }
+        else{
+          guessCount--;      //counting from 5 to 0. 
+          counter.innerText = guessCount;
+          window.alert("Try again!")
+        }
+      })
+    });
+//tile.addEventListener('click', () => { character === selectedCharacter ? guessCount < 1 ? window.alert("Hurray"): window.alert("Guess again");});
+
+};
+generateTiles();
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -257,13 +265,18 @@ const generateBoard = () => {
       </div>
     `
   })
-}
+};
 
-const guessWho = () => {          //Guess the character randomizer
-  let secret = Math.floor(Math.random() * CHARACTERS.length -1 -0 +1) +0;
-  selectedCharacter = CHARACTERS[secret];
-  console.log(selectedCharacter);
-}
+//generateBoard();
+
+//Selecting randoncharacter , status: ACTIVATE
+//let secret = Math.floor(Math.random() * CHARACTERS.length -1 -0 +1) +0; 
+const guessWho = () => {        
+  let secret = Math.floor(Math.random() * CHARACTERS.length+1);  //generate random
+  selectedCharacter = CHARACTERS[secret];                                 //to variable
+  console.log("Generated a secret character,ready?" , selectedCharacter);                                        //console check
+};
+
 guessWho();
 
 
@@ -307,6 +320,8 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+
+  
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {

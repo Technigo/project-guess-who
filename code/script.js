@@ -2,6 +2,8 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutBtn = document.getElementById('filter') 
+const playAgainBtn = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -205,6 +207,8 @@ let secret
 let currentQuestion
 let charactersInPlay
 
+      //lägga ljud här med let winAudio, looseAudio?
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -229,22 +233,21 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  generateBoard()
+  setSecret()
+      // timer and or counter?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  const value = questions.options[questions.selectedIndex].parentNode.value
 
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
@@ -305,21 +308,44 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  const confirmGuess = confirm(`So, you think it´s ${personToConfirm}, are you sure?`)
+  if (confirmGuess) {
+    checkMyGuess(personToConfirm)
+  }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  if (personToCheck === secret.name) {
+    winOrLooseText.innerHTML = (`Super!, ${personToCheck} is the one we are looking for, well played YOU WIN!`)
+  }
+  // let winAudio = new Audio(filformat.mp3)
+  // winAudio.play() NB
+   else {
+    winOrLooseText.innerHTML = (`ooh noo I'sorry, ${personToCheck} is not the one we are looking for, ${secret.name} was the one we were looking for.`)
+   }
+   // let loosAudio = new Audio(filformat.mp3)
+   // loosAudio.play() NB
+  winOrLoose.style.display = 'flex'
+  board.style.display = 'none'
+        // OK 1. Check if the personToCheck is the same as the secret person's name
+        // OK 2. Set a Message to show in the win or lose section accordingly
+        // OK 3. Show the win or lose section
+        // OK 4. Hide the game board 
 }
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+// playAgainBtn.addEventListener('click', () => {
+//   start()
+//   winOrLose.style.display = 'none'
+//   board.style.display = 'flex'
+// })
+playAgainButton.addEventListener('click',() => { 
+  start()
+  document.getElementById('winOrLose').style.display='none'; 
+  //This ivokes play again button and draws the board 
+})

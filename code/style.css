@@ -177,6 +177,10 @@ button {
   margin-bottom: 32px;
 }
 
+h2{
+  display: none;
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;

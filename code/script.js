@@ -206,7 +206,6 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-//let keep
 
 // Draw the game board
 const generateBoard = () => {

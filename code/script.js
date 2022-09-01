@@ -206,6 +206,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let personToConfirm;
 
 // Draw the game board
 const generateBoard = () => {
@@ -383,18 +384,19 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
-  const Guess = confirm(`Are you sure you want to guess?`);
-  if (confirmGuess) checkMyGuess();
+  const confirmGuess = confirm(`Are you sure you want to guess?`);
+  if (confirmGuess) checkMyGuess(personToConfirm);
 };
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  if (personToConfirm === secret.name) {
+const checkMyGuess = (suspectCharacter) => {
+  if (suspectCharacter === secret.name) {
     winOrLoseText.innerHTML = `You won! Congratulations!`;
   } else {
     personToConfirm !== secret.name;
     winOrLoseText.innerHTML = `Sorry you lost...`;
   }
+  winOrLose.style.display = "flex";
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

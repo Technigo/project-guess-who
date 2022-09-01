@@ -228,9 +228,12 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 }
 
+    // counter, timer? 
+
+    
 // This function to start (and restart) the game
 const start = () => {
   charactersInPlay = CHARACTERS
@@ -343,9 +346,9 @@ restartButton.addEventListener('click', start)
 //   start()
 //   winOrLose.style.display = 'none'
 //   board.style.display = 'flex'
+// })       playAgainbutton, ovan eller nedan?
+// playAgainButton.addEventListener('click',() => { 
+//   start()
+//   document.getElementById('winOrLose').style.display='none'; 
+//   //This ivokes play again button and draws the board 
 // })
-playAgainButton.addEventListener('click',() => { 
-  start()
-  document.getElementById('winOrLose').style.display='none'; 
-  //This ivokes play again button and draws the board 
-})

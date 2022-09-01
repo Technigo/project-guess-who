@@ -253,6 +253,7 @@ const start = () => {
   generateBoard(); //calling in generateBoard function
   setSecretPlayer(); /*calling in setSecret function, 
                 when  play with computer*/
+  selectQuestion() // invoke function selectQuestion
   checkQuestion();
 
 }
@@ -270,8 +271,10 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    value: value
+    value: value,
   }
+
+  //console.log('here is ', category)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -281,12 +284,31 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'hair') {
+    if(secretPlayer.hair === value) {
+      keep = true
+      //console.log(`this person has ${value}`);
+    } else  {
+      keep = false
+      //console.log(`this person does not have ${value}`);
+    }
+    if(category === 'eyes') {
+      if (secretPlayer.eyes === value) {
+        keep = true
+      } else {
+        keep = false
+      }
+    }
 
   } else if (category === 'accessories' || category === 'other') {
+    if (secretPlayer.category === value) {
+      keep = true
+    } else {
+      keep = false
+    }
 
   }
-  //selectQuestion.addEventListener("click", checkQuestion);
+  filter.addEventListener("click", checkQuestion);//event listener for the Find Out button
   
 }
 
@@ -354,3 +376,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.onchange = selectQuestion;

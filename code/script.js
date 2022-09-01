@@ -15,7 +15,8 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: [],
+    gender: ['woman']
   },
   {
     name: 'Jack',
@@ -23,7 +24,8 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: [],
+    gender: ['man']
   },
   {
     name: 'Jacques',
@@ -31,7 +33,8 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker'],
+    gender: ['man']
   },
   {
     name: 'Jai',
@@ -39,7 +42,8 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: [],
+    gender: ['man']
   },
   {
     name: 'Jake',
@@ -47,7 +51,8 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    gender: ['man']
   },
   {
     name: 'James',
@@ -55,7 +60,8 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    gender: ['man']
   },
   {
     name: 'Jana',
@@ -63,7 +69,8 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    gender: ['non binary individual']
   },
   {
     name: 'Jane',
@@ -71,7 +78,8 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    gender: ['woman']
   },
   {
     name: 'Jaqueline',
@@ -79,7 +87,8 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'jewellry'],
-    other: []
+    other: [],
+    gender: ['woman']
   },
 
   {
@@ -88,7 +97,8 @@ const CHARACTERS = [
     hair: 'pink',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['smoker'],
+    gender: ['non binary individual']
   },
   {
     name: 'Jean',
@@ -96,7 +106,8 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker'],
+    gender: ['man']
   },
   {
     name: 'Jeane',
@@ -104,7 +115,8 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    gender: ['woman']
   },
   {
     name: 'Jed',
@@ -112,7 +124,8 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker'],
+    gender: ['man']
   },
   {
     name: 'Jenni',
@@ -120,7 +133,8 @@ const CHARACTERS = [
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],
-    other: []
+    other: [],
+    gender: ['woman']
   },
   {
     name: 'Jeri',
@@ -128,7 +142,8 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    gender: ['woman']
   },
   {
     name: 'Jerry',
@@ -136,7 +151,8 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: [],
+    gender: ['man']
   },
   {
     name: 'Jess',
@@ -144,7 +160,8 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    gender: ['woman']
   },
   {
     name: 'Jocelyn',
@@ -152,7 +169,8 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'jewellry'],
-    other: []
+    other: [],
+    gender: ['woman']
   },
   {
     name: 'Jon',
@@ -160,7 +178,8 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    gender: ['man']
   },
   {
     name: 'Jordan',
@@ -168,7 +187,8 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat', 'jewellry'],
-    other: []
+    other: [],
+    gender: ['man']
   },
   {
     name: 'Josephine',
@@ -176,7 +196,8 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'brown',
     accessories: ['jewellry'],
-    other: []
+    other: [],
+    gender: ['woman']
   },
   {
     name: 'Josh',
@@ -184,7 +205,8 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: [],
+    gender: ['man']
   },
   {
     name: 'Jude',
@@ -192,7 +214,8 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: [],
+    gender: ['man']
   },
   {
     name: 'Julie',
@@ -200,7 +223,8 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: [],
+    gender: ['non binary individual']
   },
 ]
 
@@ -279,7 +303,7 @@ const checkQuestion = () => {
       filterCharacters(false)
     }
   
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'accessories' || category === 'other' || category === 'gender') {
     if ( secret.accessories.includes(value) || secret.other.includes(value)) {
       filterCharacters(true)
     } else {
@@ -313,7 +337,7 @@ const filterCharacters = (keep) => {
       )
     }
   } 
-  if (category === 'accessories' || category === 'other') {
+  if (category === 'accessories') {
     if (keep) {
       alert(
         `Yes, the person wear ${value}! Keep all people that wears ${value}`
@@ -321,6 +345,17 @@ const filterCharacters = (keep) => {
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
+      )
+    }
+  } 
+  if (category === 'other' || category === 'gender') {
+    if (keep) {
+      alert(
+        `Yes, the person is a ${value}! Keep all people that are a ${value}`
+      )
+    } else {
+      alert(
+        `No, the person is not a ${value}! Remove all people that are a ${value}`
       )
     }
   } 

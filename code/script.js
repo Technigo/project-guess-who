@@ -15,7 +15,7 @@ const people = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['sunglasses', 'hat'],
     other: []
   },
   {
@@ -23,7 +23,7 @@ const people = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['a hat', 'a beard'],
     other: []
   },
   {
@@ -32,7 +32,7 @@ const people = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker', 'a beard']
   },
   {
     name: 'Jai',
@@ -55,7 +55,7 @@ const people = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: []
   },
   {
@@ -63,7 +63,7 @@ const people = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses', 'a necklace'],
     other: []
   },
   {
@@ -71,7 +71,7 @@ const people = [
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: []
   },
   {
@@ -79,7 +79,7 @@ const people = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'a necklace'],
     other: []
   },
   {
@@ -87,7 +87,7 @@ const people = [
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: ['smoker']
   },
   {
@@ -112,7 +112,7 @@ const people = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'a beard']
   },
   {
     name: 'Jenni',
@@ -147,11 +147,43 @@ const people = [
     other: []
   },
   {
+    name: 'Jia',
+    img: 'images/jia.svg',
+    hair: 'black',
+    eyes: 'blue',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings'],
+    other: []
+  },
+  {
+    name: 'Jodi',
+    img: 'images/jodi.svg',
+    hair: 'yellow',
+    eyes: 'blue',
+    accessories: ['a hat'],
+    other: []
+  },
+  {
+    name: 'Joe',
+    img: 'images/joe.svg',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: ['a hat'],
+    other: []
+  },
+  {
+    name: 'Jolee',
+    img: 'images/jolee.svg',
+    hair: 'black',
+    eyes: 'blue',
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -167,7 +199,7 @@ const people = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['sunglasses', 'hat', 'a necklace'],
     other: []
   },
   {
@@ -175,7 +207,7 @@ const people = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -192,7 +224,7 @@ const people = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['a beard']
   },
   {
     name: 'Julie',
@@ -267,20 +299,14 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterPeople
-  if (category === 'hair') {
-    if (value === secretPerson.hair) {
+  if (category === 'hair' || category === 'eyes') {
+      if (value === secretPerson[category]) {
       filterPeople(true)
       } else
       filterPeople(false)
 
-    } else if (category === 'eyes') {
-        if (value === secretPerson.eyes) {
-          filterPeople(true)
-          } else
-          filterPeople(false)
-
-  } else if (category === 'accessories' || category === 'other') {
-    if (secretPerson[category].includes(value)) {
+    } else if (category === 'accessories' || category === 'other') {
+         if (secretPerson[category].includes(value)) {
       filterPeople(true)
     } else
       filterPeople(false) 
@@ -300,7 +326,7 @@ const filterPeople = (keep) => {
       peopleInPlay = peopleInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        "No, the person doesn't wear ${value}! Remove all people that wears ${value}"
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
       peopleInPlay = peopleInPlay.filter((person) => !person[category].includes(value))
     }
@@ -312,23 +338,35 @@ const filterPeople = (keep) => {
       peopleInPlay = peopleInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        "No, the person doesn't have ${value}! Remove all people that have ${value}"
+        `No, the person doesn't have ${value}! Remove all people that have ${value}`
       )
       peopleInPlay = peopleInPlay.filter((person) => !person[category].includes(value))
     }
-  } else {
+  } else if (category === 'hair') {
     if (keep) {
       alert(
-        `Yes, the person has ${value}! Keep all people with ${value}`
+        `Yes, the person has ${value}! Keep all people that has ${value}`
       )
-      peopleInPlay = peopleInPlay.filter((person) => person[value] === value)
+      peopleInPlay = peopleInPlay.filter((person) => person[category] === value)
     } else {
       alert(
-        "No, the person doesn't have ${value}! Remove all people that have ${value}"
+        `No, the person doesn't have ${value}! Remove all people that have ${value}`
       )
-      peopleInPlay = peopleInPlay.filter((person) => person[value] !== value)
+      peopleInPlay = peopleInPlay.filter((person) => person[category] !== value)
     }
-  }
+  } else if (category === 'eyes') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value}! Keep all people that has ${value}`
+      )
+      peopleInPlay = peopleInPlay.filter((person) => person[category] === value)
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that have ${value}`
+      )
+      peopleInPlay = peopleInPlay.filter((person) => person[category] !== value)
+    }
+  } 
   generateBoard()
   // Invoke a function to redraw the board with the remaining people.
 }
@@ -351,7 +389,7 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerText = "You're right! Great job!"
   } else{
     winOrLose.style.display = 'flex';
-    winOrLoseText.innerText = "Sorry, you guessed wrong. It was ${secret.name}. "
+    winOrLoseText.innerText = `Sorry, you guessed wrong. It was ${secretPerson.name}.`
   }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly

@@ -301,11 +301,11 @@ const filterCharacters = (keep) => {
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person has ${value}! Keep all people that has ${value}`
+        `Yes, the person is a ${value}! Keep all people that isn't a ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't have ${value}! Remove all people that have ${value}`
+        `No, the person isn't a ${value}! Remove all people that is a ${value}`
       )
     }
 
@@ -367,33 +367,39 @@ const guess = (personToConfirm) => {
     checkMyGuess(personToConfirm)
   } else {
     alert(
-      "Okay! Keep on guessing!"
+      "Okay! Keep on playing!"
     )
   }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+// 1. Check if the personToCheck is the same as the secret person's name
   if (personToCheck === secret.name) {
-    winOrLose.style.display = 'flex'
+// 2. Set a Message to show in the win or lose section accordingly
     winOrLoseText.innerText = 'Yay, you won! Play again?'
   } else {
     alert(
       `Sorry, it's not ${personToCheck}. It is ${secret.name}.`
     )
   }
+// 3. Show the win or lose section
+winOrLose.style.display = 'flex'
 
+// 4. Hide the game board
+board.style.display = 'none' 
 }
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-
 
 // Invokes the start function when website is loaded
 start()
+
+// Reload after pressing playAgain-button
+reload = () => {
+  window.location.reload()
+}
 
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('load', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', reload)

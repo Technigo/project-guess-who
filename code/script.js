@@ -1,11 +1,10 @@
-// All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const findOutBtn = document.getElementById('filter');
+const findOutBtn = document.getElementById('filter')
+const WinOrLoseText = document.getElementById('WinOrLoseText');
 
 
-// Array with all the characters, as objects
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -211,12 +210,10 @@ const CHARACTERS = [
   },
 ]
 
-// Global variables
 let secret
 let currentQuestion
 let charactersInPlay
 
-// Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -243,6 +240,10 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+
+  board.classList.remove('hide-board')
+  WinOrLose.classList.remove('show-win-lose')
+
   generateBoard()
   setSecret()
   selectQuestion()
@@ -340,20 +341,33 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  if (
+    confirm(`You are about to make ${personToConfirm} your guess?`) === true
+  ) {
+    checkMyGuess(personToConfirm)
+  }
+}
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-}
+
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    WinOrLoseText.innerText = `It's correct! \n\n it was ${personToCheck}!`
+  } else {
+    WinOrLoseText.innerText = `Wrong! \n\n it was ${secret.name}, \n not ${personToCheck}.`
+  }
+  board.classList.add('hide-board')
+  WinOrLose.classList.add('show-win-lose')
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
 }
 
-start()
+start();
 
 // All the event listeners
 restartButton.addEventListener('click', start)

@@ -73,6 +73,7 @@ select {
   align-items: center;
   justify-content: space-between;
   background: #8e989d;
+  animation: fadeIn 5s;
 }
 
 .card p {
@@ -232,5 +233,14 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

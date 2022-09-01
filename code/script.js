@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -205,6 +206,8 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let guessedPerson
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -216,7 +219,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button id="guessButton" class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
@@ -341,18 +344,39 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  guessedPerson = personToConfirm
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+ 
+  if (window.confirm(`Do you really think that this is the secret person?`)) {
+    console.log('guess is', guessedPerson )
+    checkMyGuess();
+  }
 }
+
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  console.log('check my guess', guessedPerson,)
+if (guessedPerson === secret.name) {
+
+    winOrLoseSection()
+    }
 }
+
+const winOrLoseSection = () => {
+  board.innerHTML = '';
+  const winOrLose = document.getElementById('winOrLose').style.display = "flex"
+
+
+}
+//   // 1. Check if the personToCheck is the same as the secret person's name
+//   // 2. Set a Message to show in the win or lose section accordingly
+
+//   // 3. Show the win or lose section
+//   // 4. Hide the game board
+// }
 
 // Invokes the start function when website is loaded
 start();

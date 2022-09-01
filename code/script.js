@@ -322,7 +322,6 @@ const filterCharacters = (keep) => {
       )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
-  }
 }
 
   // Determine what is the category
@@ -331,9 +330,9 @@ const filterCharacters = (keep) => {
   // for hair and eyes:
     if (category === 'hair' || category === 'eyes') {
       if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
 
   // for accessories and other:
@@ -344,7 +343,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
 
-  // Invoke a function to redraw the board with the remaining people.
+  }// Invoke a function to redraw the board with the remaining people.
   generateBoard()
 }
 

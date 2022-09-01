@@ -77,7 +77,7 @@ const CHARACTERS = [
     img: "images/jaqueline.svg",
     hair: "orange",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["glasses", "earrings"],
     other: [],
   },
 
@@ -150,7 +150,7 @@ const CHARACTERS = [
     img: "images/jocelyn.svg",
     hair: "black",
     eyes: "brown",
-    accessories: ["glasses"],
+    accessories: ["glasses", "earrings"],
     other: [],
   },
   {
@@ -174,7 +174,7 @@ const CHARACTERS = [
     img: "images/josephine.svg",
     hair: "grey",
     eyes: "brown",
-    accessories: [],
+    accessories: ["earrings"],
     other: [],
   },
   {
@@ -297,14 +297,14 @@ const filterCharacters = (keep) => {
         person[category].includes(value)
       );
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person is wearing ${value}! Keep all people with ${value}`
       );
     } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person is not wearing ${value}! Remove all people with ${value}`
       );
     }
   } else if (category === "other") {
@@ -312,27 +312,43 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
-      alert(`Yes, the person does smoke! Keep all people the smokers!`);
+      alert(`Yes, the person is a smoker! Keep all the smokers!`);
     } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
-      alert(`No, the person doesn't not smoke! Remove all the smokers!`);
+      alert(`No, the person does not smoke! Remove all the smokers!`);
     }
-  } else {
+  } else if (category === "hair") {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[attribute] === value
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
       );
       alert(
-        "Yes, the person has yellow hair! Keep all people with yellow hair"
+        `Yes, the person has got ${value} hair! Keep all people with ${value} hair`
       );
     } else {
       charactersInPlay = charactersInPlay.filter(
-        (person) => person[attribute] !== value
+        (person) => !person[category].includes(value)
       );
       alert(
-        "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+        `No, the person does not have ${value} hair! Remove all people with ${value} hair`
+      );
+    }
+  } else if (category === "eyes") {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
+      alert(
+        `Yes, the person has got ${value} eyes! Keep all people with ${value} eyes`
+      );
+    } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
+      alert(
+        `No, the person does not have ${value} eyes! Remove all people with ${value} eyes`
       );
     }
   }

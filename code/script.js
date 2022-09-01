@@ -248,7 +248,8 @@ const start = () => {
 // bot is playing with user.
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  const attribute = questions.options[questions.selectedIndex].parentNode.label // This variable stores what option group (category) the question belongs to.
+  const attribute = questions.options[questions.selectedIndex].parentNode.label 
+  // This variable stores what option group (category) the question belongs to.
   const value = questions.value
   // This variable stores the actual value of the question we've selected.
   currentQuestion = {

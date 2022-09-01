@@ -4,6 +4,7 @@ const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const select = document.getElementById("questions");
 const winOrLose = document.getElementById("winOrLose");
+const playAgainButton = document.getElementById("playAgain");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -239,7 +240,7 @@ const start = () => {
   setSecret();
   // Check to see if setSecret is run by logging the name of the person
   console.log(`Secret person is set to: ${secret.name}`);
-  // winOrLose.style.display = "none";
+  winOrLose.style.display = "none";
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -372,6 +373,7 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+playAgainButton.addEventListener("click", start);
 select.addEventListener("change", () => {});
 document.getElementById("filter").addEventListener("click", () => {
   selectQuestion();

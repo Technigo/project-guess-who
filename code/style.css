@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #ff4d00;
+  --secondary: rgb(0, 0, 46);
 }
 
 body {
@@ -11,12 +11,19 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
+h1,
+h2 {
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
   color: white;
+}
+
+h2 {
+  font-size: 22px;
+  margin-top: 70px;
+  color: var(--primary);
 }
 
 .question-section {
@@ -64,7 +71,7 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid var(--primary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -131,6 +138,7 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  margin-bottom: 1rem;
 }
 
 .filled-button,
@@ -175,6 +183,16 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+/* For showing the win/lose screen and hiding the board */
+
+.show-win-lose {
+  display: flex;
+}
+
+.hide-board {
+  display: none;
 }
 
 @media (max-width: 768px) {

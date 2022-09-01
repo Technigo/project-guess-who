@@ -5,6 +5,8 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
 const boardWrapper = document.querySelector('.board-wrapper');
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the people, as objects
 const people = [
@@ -204,7 +206,6 @@ const people = [
 
 // Global variables
 let secretPerson;
-let secret;
 let currentQuestion;
 let peopleInPlay;
 
@@ -238,8 +239,10 @@ const start = () => {
   // Here we're setting peopleInPlay array to be all the people to start with
   peopleInPlay = people
   // What else should happen when we start the game?
+  winOrLose.style.display = 'none';
   generateBoard();
   setSecret();
+  selectQuestion();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -254,31 +257,35 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    value: value
+    value: value,
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
-
+  const {category, value } = currentQuestion
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterPeople
-  if (category === 'hair' || category === 'eyes') {
-    if (value === secretPerson[category]) {
+  if (category === 'hair') {
+    if (value === secretPerson.hair) {
       filterPeople(true)
-    } else
+      } else
       filterPeople(false)
+
+    } else if (category === 'eyes') {
+        if (value === secretPerson.eyes) {
+          filterPeople(true)
+          } else
+          filterPeople(false)
 
   } else if (category === 'accessories' || category === 'other') {
     if (secretPerson[category].includes(value)) {
       filterPeople(true)
-    } else if
-      (filterPeople(false)) {
+    } else
+      filterPeople(false) 
+    
     }
-
-  }
 }
 
 // It'll filter the people array and redraw the game board.
@@ -314,12 +321,12 @@ const filterPeople = (keep) => {
       alert(
         `Yes, the person has ${value}! Keep all people with ${value}`
       )
-      peopleInPlay = peopleInPlay.filter((person) => person[attribute] === value)
+      peopleInPlay = peopleInPlay.filter((person) => person[value] === value)
     } else {
       alert(
         "No, the person doesn't have ${value}! Remove all people that have ${value}"
       )
-      peopleInPlay = peopleInPlay.filter((person) => person[attribute] !== value)
+      peopleInPlay = peopleInPlay.filter((person) => person[value] !== value)
     }
   }
   generateBoard()
@@ -328,6 +335,10 @@ const filterPeople = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  const confirmGuess = confirm(`Are you ready to make a guess?`)
+  if (confirmGuess) {
+    checkMyGuess(personToConfirm)
+  }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -335,6 +346,13 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secretPerson.name) {
+    winOrLose.style.display = 'flex';
+    winOrLoseText.innerText = "You're right! Great job!"
+  } else{
+    winOrLose.style.display = 'flex';
+    winOrLoseText.innerText = "Sorry, you guessed wrong. It was ${secret.name}. "
+  }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -346,7 +364,9 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+playAgainButton.addEventListener('click', start)
 
-findOutButton.addEventListener('click', checkQuestion)
-
-//playAgainButton.addEventListener('click', )
+findOutButton.addEventListener('click', () => {
+  selectQuestion()
+  checkQuestion()
+})

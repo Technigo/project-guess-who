@@ -6,8 +6,9 @@ const findOutButton = document.getElementById('filter')
 const winOrLoseWrapper = document.getElementById('WinOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
+const timer = document.getElementById('timer')
 
-// Array with all the characters, as objects
+// Array with all the family guy-characters, as objects
 const CHARACTERS = [
   {
     name: 'Bertram',
@@ -209,6 +210,7 @@ let secretCharacter
 let currentQuestion
 let charactersInPlay
 let numberOfGuesses = 0
+let timerInterval
 
 // Draws the game board
 const generateBoard = () => {
@@ -225,6 +227,42 @@ const generateBoard = () => {
       </div>
     `
   })
+}
+
+// This is the timer function
+startTimer = () => {
+
+  // Starts by clearing the existing timer, in case of a restart
+  clearInterval(timerInterval);
+  let second = 0, // Clear the variables
+    minute = 0,
+    hour = 0;
+
+   timerInterval = setInterval(function () {  // Sets an interval every 1000 ms
+    timer.classList.toggle('odd');   // Toggle the odd class every interval
+
+    // Sets the timer text to include a two digit representation
+    timer.innerHTML =
+      (hour ? hour + ":" : "") +
+      (minute < 10 ? "0" + minute : minute) +
+      ":" +
+      (second < 10 ? "0" + second : second);
+
+    // Adds a new second since when every second is passed
+    second++;
+  
+    // Check if second equals 60 -> "one minute". If so, we add a minute and reset our seconds to 0.
+    if (second == 60) {
+      minute++;
+      second = 0;
+    }
+    // If it hits 60 minutes -> "one hour" we reset the minutes and add an hour.
+    if (minute == 60) {
+      hour++;
+      minute = 0;
+    }
+
+  },1000);
 }
 
 // Randomly selects a person from the characters array and sets as the value of the variable called secretCharacter
@@ -254,6 +292,7 @@ const selectQuestion = () => {
     category: category,
     value: value,
   }
+
 }
 
 // This function will be invoked when you click on 'Find Out' button.
@@ -343,12 +382,12 @@ const filterCharacters = (keep) => {
       alert(`Yes, the person has wears ${value}! Keep all people that wears ${value}.`)
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
   } else {
-      alert(`No, the person doesn't wear ${value}. Remove all people wearing ${value}.`)
+      alert(`No, the person doesn't have ${value}-Remove all people wearing ${value}.`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   }
 }
 
- // Determine what is the category
+ // Determines what is the category
 // Filters by category to keep or remove based on if the keep variable is true or false.
 
   if (category === 'accessories') {

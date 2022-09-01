@@ -40,12 +40,19 @@ select {
   margin: 24px 0;
 }
 
+.images {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10%;
+}
+
 .guess-who-icon {
-  width: 126px;
+  width: 40%;
 }
 
 .family-guy-logo {
-  width: 200px;
+  width: 60%;
 }
 
 .board-wrapper {
@@ -82,6 +89,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  box-shadow: rgb(121, 116, 116) 3px 4px;
 }
 
 .card p {
@@ -102,7 +110,8 @@ select {
 }
 .card img {
   width: 100px;
-  height: 160px;
+  height: 150px;
+  padding: 5px;
 }
 
 .card:hover {
@@ -145,9 +154,11 @@ button {
   padding: 8px 16px;
 }
 
+
 .restart-button {
   background-color: var(--primary);
   color: white;
+  margin: 0 0 20% 0;
   align-self: flex-end;
 }
 
@@ -157,6 +168,25 @@ button {
   border-color: white;
   color: var(--primary);
 }
+/*** Timer **/
+
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  border: solid white 2px;
+  flex-direction: column;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.timer {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  }
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -208,20 +238,24 @@ button {
   }
 
   .guess-who-icon {
-    width: 20px;
+    width: 80px;
   }
 
   .family-guy-logo {
-    width: 100px;
+    width: 30%;
   }
 
   .board-wrapper {
     width: 100%;
   }
 
-  .game-board {
-    width: 100%;
-    max-width: 750px;
+  .counter {
+    margin-left: 30%;
+  }
+
+  .timer-container {
+    margin-left: 25%;
+    width: 50%;
   }
 
   .card {
@@ -248,3 +282,71 @@ button {
     border: none;
   }
 }
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  body {
+    flex-direction: column;
+  }
+
+  .question-section {
+    width: 100%;
+    min-height: 0;
+  }
+  button {
+    padding: 8px 16px;
+  }
+  h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .guess-who-icon {
+    width: 80px;
+  }
+
+  .family-guy-logo {
+    width: 30%;
+  }
+
+  .board-wrapper {
+    width: 100%;
+  }
+
+  .counter {
+    width: 33%;
+    font-size: 25px;
+    margin-left: 33%;
+  }
+
+  .timer-container {
+    margin-left: 25%;
+    width: 50%;
+  }
+
+  .card {
+    width: 113px;
+    position: relative;
+  }
+
+  .card .guess {
+    display: flex;
+    top: 0;
+    position: absolute;
+    justify-content: flex-end;
+  }
+
+  .card .guess span {
+    display: none;
+  }
+
+  .card .guess .filled-button {
+    padding: 6px 11px;
+    margin-bottom: 1px;
+    background: white;
+    color: var(--primary);
+    border: none;
+  }
+}
+

@@ -226,12 +226,12 @@ const generateBoard = () => {
       </div>
     `
   })
-}
+};
 
 // Function that randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-}
+};
 
 // This function to start (and restart) the game
 const start = () => {
@@ -249,11 +249,12 @@ const playAgain = () => {
   winOrLoseSection.style.display = 'none'; // Hiddes the section that shows the win or lose messages.
   board.style.display = "flex"; // Shows again the board game
   //OR board.style.display = "" // Shows again the board game
-}
+};
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  const value = questions.value;
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -381,17 +382,17 @@ const guess = (personToConfirm) => {
 // If the payer confirms, this function is invoked
 const checkMyGuess = (personToCheck) => {
   let guessPerson =  personToCheck === secret.name;
- 
+
   if(guessPerson) {
     winOrLoseText.innerHTML = 'Bravo! &#128079 &#128079 <br><br>You guessed correctly! &#128515;';
-    
+
   }else {
     winOrLoseText.innerHTML = 'Oh nooo!<br><br>You lost the game! &#128557;';
   }
- 
+
   winOrLoseSection.style.display = 'block'; // Shows the hidden section
   board.style.display = "none"; // Hide the game board
- };
+};
 
 // Invokes the start function when website is loaded
 start();

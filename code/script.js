@@ -2,6 +2,7 @@
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
+const playAgainButton = document.getElementById("playAgain");
 const filter = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText"); // Behövs denna???
 
@@ -240,6 +241,7 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
+  winOrLose.style.display = "none";
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
@@ -405,11 +407,11 @@ const checkMyGuess = (suspectCharacter) => {
 
 // Invokes the start function when website is loaded
 start();
-console.log(secret);
 
 // All the event listeners
 
 restartButton.addEventListener("click", start);
+playAgainButton.addEventListener("click", start);
 filter.addEventListener("click", checkQuestion);
 // lyssnar på change-eventet hos/på select elementet(questions)
 questions.addEventListener("change", selectQuestion);

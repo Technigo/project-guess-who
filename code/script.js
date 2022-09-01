@@ -261,7 +261,7 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
 
-  let keep
+  let keep = false
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -292,10 +292,14 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value}! Keep all people that has ${value}`
       );
+      charactersInPlay = charactersInPlay.filter(person => person[category].includes(value)
+      );
     } else {
       alert(
         `No, the person doesn't have ${value}! Remove all people that doesn't have ${value}`
       )
+      charactersInPlay = charactersInPlay.filter( person => !person[category].includes(value)
+      );
     }
   } 
   else if (category === 'eyes') {

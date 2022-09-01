@@ -117,6 +117,22 @@ select {
 
 .card:hover {
   background-color: var(--secondary);
+  animation: nudge 0.5s;
+}
+
+@keyframes nudge {
+  
+  0% {
+    transform: rotate(-5deg);
+  }
+  
+  33% {
+    transform: rotate(5deg);
+  }
+  
+  66% {
+    transform: rotate(-5deg);
+  }
 }
 
 .card:hover img,

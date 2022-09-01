@@ -87,7 +87,7 @@ select {     /*Text inside the box while wating*/
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #EAE4E1;
+  background-color: #F9F7E1;
 }
 
 .game-board {
@@ -110,7 +110,7 @@ select {     /*Text inside the box while wating*/
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
+  background-color: #f4f3ec ;
 }
 
 .card p {
@@ -231,10 +231,12 @@ button {
   }
   button {
     padding: 8px 16px;
+    margin: 0 auto;
   }
   h1 {
     font-size: 24px;
     line-height: 30px;
+    margin: 0 auto;
   }
 
   .guess-who-icon {
@@ -269,7 +271,7 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: #F99C17;
     color: var(--primary);
     border: none;
   }

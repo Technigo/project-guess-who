@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a189c2;
-  --secondary: #f5ea89;
+  --primary: #48b3dd;
+  --secondary: #eb4f4a;
 }
 
 body {
@@ -35,13 +35,17 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: black;
   width: 100%;
   margin: 24px 0;
 }
 
 .guess-who-icon {
   width: 126px;
+}
+
+.family-guy-logo {
+  width: 200px;
 }
 
 .board-wrapper {
@@ -54,11 +58,8 @@ select {
 .counter {
   display: flex;
   width: 200px;
-}
-
-.counter p {
-  font-size: 20px;
-
+  color: black;
+  font-size: 25px;
 }
 
 .game-board {
@@ -100,7 +101,7 @@ select {
   height: inherit;
 }
 .card img {
-  width: 130px;
+  width: 100px;
   height: 160px;
 }
 
@@ -129,30 +130,28 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
+  background-color: var(--primary);
+  color: white;
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: Montserrat;
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  margin-bottom: 15px;
 }
 
 .small {
   padding: 8px 16px;
 }
 
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
+.restart-button {
+  background-color: var(--primary);
+  color: white;
   align-self: flex-end;
 }
 
-.filled-button,
-.outlined-button:hover {
-  background-color: var(--primary);
-  color: white;
-}
-
+.restart-button:hover,
 .filled-button:hover {
   background-color: white;
   border-color: white;
@@ -209,7 +208,11 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 20px;
+  }
+
+  .family-guy-logo {
+    width: 100px;
   }
 
   .board-wrapper {

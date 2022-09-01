@@ -12,216 +12,193 @@ const CHARACTERS = [
   {
     name: 'Bertram',
     img: 'images/kid.png',
-    hair: 'orange',
-    eyes: 'black',
-    wears: ['orange', 'purple'],
+    hair: 'orange hair',
+    clothing: ['orange', 'purple'],
     accessories: [],
-    other: ['']
+    other: []
   },
   {
     name: 'Adam West',
     img: 'images/adamwest.png',
-    hair: 'grey',
-    eyes: 'hidden',
-    wears: ['grey'],
-    accessories: ['weapon'],
+    hair: 'grey hair',
+    clothing: ['grey'],
+    accessories: ['a weapon'],
     other: []
   },
   {
     name: 'Brian',
     img: 'images/brian.png',
-    hair: 'white',
-    eyes: 'black',
-    wears: ['nothing'],
-    accessories: ['collar'],
+    hair: 'white hair',
+    clothing: ['nothing'],
+    accessories: ['a collar'],
     other: []
   },
   {
     name: 'Chris',
     img: 'images/chris.png',
-    hair: 'blonde',
-    eyes: 'hidden',
-    wears: ['blue', 'black'],
+    hair: 'blonde hair',
+    clothing: ['blue', 'black'],
     accessories: ['hat'],
     other: ['fat']
   },
   {
     name: 'Cleveland',
     img: 'images/cleveland.png',
-    hair: 'black',
-    eyes: 'black',
-    wears: ['red', 'blue'],
+    hair: 'black hair',
+    clothing: ['red', 'blue'],
     accessories: [],
     other: []
   },
   {
     name: 'Vinnie',
     img: 'images/dogvinnie.png',
-    hair: 'blonde',
-    eyes: 'black',
-    wears: ['nothing'],
-    accessories: ['collar'],
+    hair: 'blonde hair',
+    clothing: ['nothing'],
+    accessories: ['a collar'],
     other: []
   },
   {
     name: 'Cleveland Jr',
     img: 'images/clevelendjr.png',
-    hair: 'black',
-    eyes: 'hidden',
-    wears: ['red', 'blue'],
+    hair: 'black hair',
+    clothing: ['red', 'blue'],
     accessories: ['glasses'],
     other: ['fat']
   },
   {
     name: 'Jerome',
     img: 'images/heyguy.png',
-    hair: 'black',
-    eyes: 'hidden',
-    wears: ['red', 'black'],
+    hair: 'black hair',
+    clothing: ['red', 'black'],
     accessories: [],
-    other: ['beard']
+    other: []
   },
   {
     name: 'Quagmire',
     img: 'images/jiggedy.png',
-    hair: 'black',
-    eyes: 'green',
-    wears: ['red', 'blue'],
-    accessories: [''],
+    hair: 'black hair',
+    clothing: ['red', 'blue'],
+    accessories: [],
     other: []
   },
 
   {
     name: 'Joe',
     img: 'images/joe.png',
-    hair: 'brown',
-    eyes: 'hidden',
-    accessories: [''],
+    hair: 'brown hair',
+    clothing: ['grey', 'blue'],
+    accessories: [],
     other: ['disabled']
   },
   {
     name: 'Rallo',
     img: 'images/kidafro.png',
-    hair: 'black',
-    eyes: 'blue',
-    wears: ['blue'],
+    hair: 'black hair',
+    clothing: ['blue'],
     accessories: [],
     other: []
   },
   {
     name: 'Lois',
     img: 'images/lois.png',
-    hair: 'orange',
-    eyes: 'green',
-    wears: ['blue'],
+    hair: 'orange hair',
+    clothing: ['blue'],
     accessories: [],
-    other: ['singer']
+    other: ['a singer']
   },
   {
     name: 'Big Lois',
     img: 'images/loisbig.png',
-    hair: 'orange',
-    eyes: 'green',
-    wears: ['blue', 'grey'],
+    hair: 'orange hair',
+    clothing: ['blue', 'grey'],
     accessories: [],
     other: ['fat']
   },
   {
     name: 'Meg',
     img: 'images/meggriffin.png',
-    hair: 'brown',
-    eyes: 'hidden',
-    wears: ['pink', 'blue'],
-    accessories: ['hat'],
+    hair: 'brown hair',
+    clothing: ['pink', 'blue'],
+    accessories: ['hat', 'glasses'],
     other: []
   },
   {
     name: 'Herbert',
     img: 'images/oldguy.png',
-    hair: 'grey',
-    eyes: 'green',
-    wears: ['blue'],
+    hair: 'grey hair',
+    clothing: ['blue'],
     accessories: [],
     other: ['disabled']
   },
   {
-    name: 'News Anchor',
+    name: 'Diane',
     img: 'images/newsanchor.png',
-    hair: 'hidden',
-    eyes: 'blue',
-    wears: ['pink'],
+    hair: 'brown hair',
+    clothing: ['pink'],
     accessories: [],
     other: []
   },
   {
     name: 'Peter',
     img: 'images/peter.png',
-    hair: 'brown',
-    eyes: 'blue',
-    wears: ['white', 'green'],
+    hair: 'brown hair',
+    clothing: ['white', 'green'],
     accessories: ['glasses'],
     other: ['fat']
   },
   {
-    name: 'Pirate',
+    name: 'Seamus',
     img: 'images/pirate.png',
-    hair: 'black',
-    eyes: 'brown',
-    wears: ['red', 'white'],
+    hair: 'white hair',
+    clothing: ['red', 'white'],
     accessories: ['hat'],
     other: ['disabled']
   },
   {
-    name: 'Blonde Lois',
+    name: 'Blonde Meg',
     img: 'images/loisblonde.png',
-    hair: 'yellow',
-    eyes: 'green',
-    wears: [],
-    accessories: ['glasses'],
+    hair: 'blonde hair',
+    clothing: ['pink', 'blue'],
+    accessories: [],
     other: []
   },
   {
     name: 'Rock Peter',
     img: 'images/peterrock.png',
-    hair: 'brown',
-    eyes: 'hidden',
-    wears: ['black', 'purple'],
+    hair: 'brown hair',
+    clothing: ['black', 'purple'],
     accessories: [],
-    other: ['singer', 'fat']
+    other: ['a singer', 'fat']
   },
   {
     name: 'Angry Peter',
     img: 'images/peterangry.png',
-    hair: 'brown',
-    eyes: 'brown',
-    wears: ['green', 'white'],
+    hair: 'brown hair',
+    clothing: ['green', 'white'],
     accessories: ['glasses'],
     other: ['fat']
   },
   {
     name: 'Chewie Brian',
     img: 'images/starwarsbrian.png',
-    hair: 'brown',
-    eyes: 'green',
-    wears: ['nothing'],
-    accessories: [],
+    hair: 'brown hair',
+    clothing: ['nothing'],
+    accessories: ['a collar'],
     other: []
   },
   {
     name: 'Stewie',
     img: 'images/stevie.png',
-    hair: 'black',
-    eyes: 'green',
-    wears: ['red', 'yellow'],
+    hair: 'black hair',
+    clothing: ['red', 'yellow'],
     accessories: [],
     other: []
   },
   {
     name: 'Consuela',
     img: 'images/consuela.png',
-    hair: 'black',
-    eyes: 'brown',
-    wears: ['pink'],
+    hair: 'black hair',
+    clothing: ['pink', 'yellow'],
     accessories: ['glasses'],
     other: ['fat']
   },
@@ -256,11 +233,6 @@ const setSecretCharacter = () => {
   console.log('Secret character chosen:', secretCharacter);
 }
 
-//Gametime button & startpage before enter the game page
-//startBtn.onclick = () => {
- // startPage.style.display = "none"
-  //setTimeout(start, 500)
-//}
 
 // This function is to start (and restart) the game
 const start = () => {
@@ -307,7 +279,7 @@ const checkQuestion = () => {
     }
 
   } else if (category === 'other') {
-    if (secretCharacter[category].includes(value) ) {
+    if (secretCharacter[category].includes(value)) {
           filterCharacters(true)
       }
     else {
@@ -321,8 +293,8 @@ const checkQuestion = () => {
         filterCharacters(false)
      }
 
-   } else if (category === 'eyes') {
-      if (secretCharacter[category] === value) {
+   } else if (category === 'clothing') {
+      if (secretCharacter[category].includes(value)) {
         filterCharacters(true)
       }
       else {
@@ -350,29 +322,29 @@ const filterCharacters = (keep) => {
   } else if (category === 'other') {
     if (keep) {
       alert(`Yes, the person is ${value}. Keep all peoople that is ${value}`)   
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     }
     else {
-      alert(`No, the person's not ${value}. Remove all people that's not ${value}`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      alert(`No, the person is not ${value}. Remove all people that is ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   
   } else if (category === 'hair') {
       if (keep) {
-        alert(`Yes, the person has ${value} hair! Keep all people with ${value} hair.`)
+        alert(`Yes, the person has ${value}! Keep all people with ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
-        alert(`No, the person doesn't have ${value} hair. Remove all people with ${value} hair.`)
+        alert(`No, the person doesn't have ${value}. Remove all people with ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
 
-  } else if (category === 'eyes') {
+  } else if (category === 'clothing') {
     if (keep) {
-      alert(`Yes, the person has ${value} eyes! Keep all people with ${value} eyes.`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      alert(`Yes, the person has wears ${value}! Keep all people that wears ${value}.`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
   } else {
-      alert(`No, the person doesn't have ${value} eyes. Remove all people with ${value} eyes.`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      alert(`No, the person doesn't wear ${value}. Remove all people wearing ${value}.`)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   }
 }
 
@@ -389,7 +361,7 @@ const filterCharacters = (keep) => {
 
   } else if (category === 'other') {
       if (keep) {
-        charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       }
       else {
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
@@ -400,18 +372,18 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     }
     else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
 
-  } else if (category === 'eyes') {
+  } else if (category === 'clothing') {
       if (keep) {
-        charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       }
       else {
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       }
 
-  };
+  }
 
   //Generates new board with filtered characters
   generateBoard();

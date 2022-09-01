@@ -212,6 +212,13 @@ let currentQuestion
 let charactersInPlay
 
 
+questionSection.onchange = () => {
+  const rearrangeBoard = CHARACTERS.filter(charactersInPlay => {
+return charactersInPlay.hair.includes(questionSection.value)
+  })
+  generateBoard(rearrangeBoard)
+}
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -226,15 +233,13 @@ const generateBoard = () => {
         </div>
       </div>
     `
-    board.addEventListener('click'), () => {
+    
     if (charactersInPlay.name === selectedCharacter.name) {
        window.alert('You are a mindreader!')
       } else {
         window.alert('nope, nope, nope - guess again!')
       }
-
-    }
-  })
+  }) 
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -263,12 +268,33 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
+  
+  const value = question.value
+  console.log(value)
+  if (category === 'hair') {
   currentQuestion = {
-    category: category,
-    // value: value
+    category: 'hair',
+    value: 'brown', 'yellow',
+    }
+
+  } else if (category === 'eyes') {
+    currentQuestion = {
+      category: 'eyes',
+      value: 'hidden',
+    }
+  } else if (category === 'accessories') {
+    currentQuestion = {
+     category: 'accessories',
+     value: 'glasses',
+    }
+  } else if (category === 'other'){
+    currentQuestion = {
+      category: 'other',
+      value: true,
+      
+    }
   }
+  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -291,11 +317,11 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(
+      window.alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
     } else {
-      alert(
+      window.alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
     }
@@ -326,8 +352,12 @@ const filterCharacters = (keep) => {
   // Invoke a function to redraw the board with the remaining people.
 }
 
+
+
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  const confirm = confirm(`Do you really think it's ${personToConfirm}?`)
+  if (confirm) checkMyGuess(personToCheck)
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -335,14 +365,23 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === selectedCharacter.name) {
+    alert("You're a winner baby!")
+  } 
+  else {
+    alert("Sorry, try again")
+  }
+    
+}
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-}
+
 
 // Invokes the start function when website is loaded
 start()
-
 // All the event listeners
 restartButton.addEventListener('click', start)
+board.addEventListener('click')
+filterBtn.addEventListener('click', filterCharacters)

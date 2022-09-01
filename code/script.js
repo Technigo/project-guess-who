@@ -256,7 +256,10 @@ const setSecret = () => {
   console.log(secret);
 } 
 
-
+startButton.onclick = () => {
+  startPage.style.display = "none"
+  setTimeout(start, 1000)
+}
 
 // ***********************************************************
 
@@ -292,7 +295,7 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  document.getElementById("questions").value = "";  // clears inputvalue of dropdown in the little box 
+  document.getElementById("questions").value = "";  // Makes placeholder bounce back after a choice or restart the game 
   
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that

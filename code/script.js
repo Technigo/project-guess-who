@@ -351,21 +351,7 @@ const filterCharacters = (keep) => {
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /*
-    if (category === 'hair' || category === 'eyes') {
-      if (value === secret.hair || secret.eyes) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-      } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      }
-    } else if (category === 'accessories' || category === 'other') {
-      if (value === secret.accessories || secret.other) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      }
-      else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      }
-    } */
+
 
     if (category === 'hair' || category === 'eyes') {
       if (keep) {

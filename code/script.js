@@ -34,7 +34,7 @@ const CHARACTERS = [
     name: 'Jai',
     img: 'images/jai.svg',
     hair: 'black',
-    eyes: 'brown',
+    eyes: 'browneyes',
     accessories: [],
     other: ['happy']
   },
@@ -147,7 +147,7 @@ const CHARACTERS = [
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
     hair: 'black',
-    eyes: 'brown',
+    eyes: 'browneyes',
     accessories: ['glasses'],
     other: []
   },
@@ -171,7 +171,7 @@ const CHARACTERS = [
     name: 'Josephine',
     img: 'images/josephine.svg',
     hair: 'grey',
-    eyes: 'brown',
+    eyes: 'browneyes',
     accessories: [],
     other: ['happy']
   },
@@ -195,7 +195,7 @@ const CHARACTERS = [
     name: 'Julie',
     img: 'images/julie.svg',
     hair: 'black',
-    eyes: 'brown',
+    eyes: 'browneyes',
     accessories: ['glasses', 'hat'],
     other: []
   },
@@ -205,6 +205,7 @@ const CHARACTERS = [
 let secret 
 let currentQuestion
 let charactersInPlay
+let keep 
 
 // Draw the game board
 const generateBoard = () => {
@@ -260,7 +261,7 @@ const selectQuestion = () => {
       console.log('accessories:', value)
       currentQuestion = { 
         category: category,
-        value: value //At first, I thought it would be a boolean value, but perhaps not? 
+        value: value 
       }
     }
 
@@ -268,35 +269,44 @@ const selectQuestion = () => {
       console.log('other:', value)
       currentQuestion = {
         category: category,
-        value: value //same as above
+        value: value 
       }
      }
   }
 
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function is invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   console.log('Please check if the secret person has these attributes!')
   const { category, value } = currentQuestion 
+  
   let keep
 
   if (category === 'hair' || category === 'eyes') {
-    if (secret[category] === value) {
-      filterCharacters(true) //This keeps everyone who has that hair/eye color
+    console.log(category, value) // Daniels förslag 
+    if (value === secret.hair || value === secret.eyes) {
+      keep = true
+      filterCharacters(true) // vad ska man ha inom dessa paranteser? 
       console.log('You are on the right track!')
     }
     else {
-      filterCharacters() //This removes everyone who don't have that hair/eye color
+      keep = false
+      filterCharacters() //samma som ovan
+      console.log('You are not on the right track!')
     }
   } 
   
   else if (category === 'accessories' || category === 'other') {
-    if (secret[category].includes(value)) { //this says includes instead of === since you either have the accessories/other or you don't. 
-      filterCharacters(true) //This keeps everyone who has that accessory/other thing. 
+    console.log(category, value) // Daniels förslag 
+    if (secret.accessories.includes(value) || secret.other.includes(value)) { //this says includes instead of === since you either have the accessories/other or you don't. 
+      keep = true
+      filterCharacters(true) //vad ska man ha inom dessa paranteser? 
       console.log('You are not on the right track')
     }
     else {
-      filterCharacters() //This filters out everyone who don't have
+      keep = false
+      filterCharacters() //samma som ovan 
+      console.log('You are not on the right track!')
     }
   }
   
@@ -313,22 +323,22 @@ const filterCharacters = (keep) => {
   if (category === 'hair') {
     if (keep) {
       alert(`Yes, the person has ${value} hair! Keep all people that has ${value} hair.`)
-      charactersInPlay = charactersInPlay.filter((person) => person[value] === value) // I changed attributes to CHARACHTERS since I did not understand where attributes came from
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value) // I changed attributes to CHARACHTERS since I did not understand where attributes came from
     }  
     else {
       alert(`No, the person doesn't have ${value} hair! Remove all people that have ${value} hair.`)
-      charactersInPlay = charactersInPlay.filter((person) => person[value] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
   
   else if (category === 'eyes') {
     if (keep) {
       alert(`Yes, the person has ${value} eyes! Keep all people that have ${value} eyes.`)
-        charactersInPlay = charactersInPlay.filter((person) => person[value] === value)
+        charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } 
     else {
       alert(`No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes.`)
-        charactersInPlay = charactersInPlay.filter((person) => person[value] !== value)
+        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
 
@@ -355,7 +365,8 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } 
-
+  console.log(charactersInPlay)
+  generateBoard()
   // Invoke a function to redraw the board with the remaining people.
 }
 

@@ -15,7 +15,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Jack',
@@ -23,7 +23,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['angry']
   },
   {
     name: 'Jacques',
@@ -39,7 +39,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Jake',
@@ -47,7 +47,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['smile']
   },
   {
     name: 'James',
@@ -63,7 +63,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: ['']
   },
   {
     name: 'Jane',
@@ -71,7 +71,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: ['angry']
   },
   {
     name: 'Jaqueline',
@@ -79,7 +79,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'jewellery'],
-    other: []
+    other: ['smile']
   },
 
   {
@@ -104,7 +104,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Jed',
@@ -128,7 +128,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['angry']
   },
   {
     name: 'Jerry',
@@ -144,7 +144,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Jocelyn',
@@ -152,7 +152,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'jewellery'],
-    other: []
+    other: ['angry']
   },
   {
     name: 'Jon',
@@ -160,7 +160,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Jordan',
@@ -176,7 +176,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'brown',
     accessories: ['jewellery'],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Josh',
@@ -184,7 +184,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['smile']
   },
   {
     name: 'Jude',
@@ -200,7 +200,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['smile']
   },
 ]
 

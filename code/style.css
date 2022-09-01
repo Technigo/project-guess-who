@@ -39,6 +39,8 @@ h1 {
 select {
   display: block;
   border: none;
+  border-radius: 60px;
+  padding: 8px 18px;
   font-size: 20px;
   font-family: 'Fredoka One', cursive;
   color: var(--thirdly);

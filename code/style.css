@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #F27370;
+  --secondary: #2162c3;
 }
 
 body {
@@ -17,6 +17,15 @@ h1 {
   line-height: 48px;
   margin: 10px 0;
   color: white;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+.guess-counter {
+  height: 50px;
 }
 
 .question-section {
@@ -45,6 +54,7 @@ select {
 }
 
 .board-wrapper {
+  background-color: var(--primary);
   width: 70%;
   display: flex;
   align-items: center;
@@ -61,6 +71,7 @@ select {
 
 /****** CARD ******/
 .card {
+  background-color: #fff;
   width: 135px;
   height: 165px;
   overflow: hidden;
@@ -75,7 +86,7 @@ select {
 
 .card p {
   text-align: center;
-  margin-bottom: 0;
+  margin: 0 0 6px;
   font-size: 16px;
   font-weight: 700;
 }
@@ -88,19 +99,19 @@ select {
   color: white;
   text-align: center;
   height: inherit;
+  background-color: rgba(33, 98, 195, 0.8);
+  width: inherit;
 }
 
 .card:hover {
-  background-color: var(--secondary);
-}
-
-.card:hover img,
-.card:hover p {
-  display: none;
+  /* background-color: var(--secondary) */
+  opacity: 95%;
+  
 }
 
 /* The div with the guess class is only shown on hover */
 .card:hover .guess {
+  position: absolute;
   display: flex;
 }
 
@@ -143,6 +154,10 @@ button {
   background-color: white;
   border-color: white;
   color: var(--primary);
+}
+
+.restart-button {
+  margin-bottom: 8px;
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -200,6 +215,7 @@ button {
 
   .board-wrapper {
     width: 100%;
+    padding-bottom: 30px;
   }
 
   .game-board {
@@ -214,8 +230,9 @@ button {
 
   .card .guess {
     display: flex;
-    top: 0;
+    bottom: 30px;
     position: absolute;
+    background-color:transparent;
     justify-content: flex-end;
   }
 
@@ -226,8 +243,11 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
-    color: var(--primary);
+    background: var(--primary);
+    color: var(--secondary);
     border: none;
   }
+
+
+  
 }

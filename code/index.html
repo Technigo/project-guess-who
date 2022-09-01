@@ -12,7 +12,17 @@
   </head>
   <body>
     <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
+      <div class="game-timer">
+        <p>
+          <span id="minutes">00</span>:
+          <span id="seconds">00</span>:
+          <span id="tenths">00</span> 
+          since game started.</p>
+      </div>
+      <div class="question-counter">
+        <p>Questions asked: <span id="number-of-questions">0</span></p>
+      </div>
+      <button type="button" id="restart" class="outlined-button restart-button">RESTART</button>
 
       <img
         class="guess-who-icon"
@@ -23,7 +33,6 @@
       <h1>Does the person have</h1>
 
       <select title="questions" id="questions">
-        <option disabled>...</option>
         <optgroup id='hair' label='hair'>
           <option value="brown">Brown hair</option>
           <option value="yellow">Yellow hair</option>
@@ -32,7 +41,6 @@
           <option value='orange'>Orange hair</option>
           <option value='purple'>Purple hair</option>
           <option value='hidden'>No visible hair</option>
-          <!-- Add the rest of hair colors as options  -->
         </optgroup>
 
         <optgroup label="eyes">
@@ -40,17 +48,16 @@
           <option value="blue">Blue eyes</option>
           <option value="brown">Brown eyes</option>
           <option value="green">Green eyes</option>
-          <!-- Add the rest of eye colors as options  -->
         </optgroup>
+
         <optgroup label="accessories">
           <option value="glasses">Glasses</option>
           <option value="hat">Head wear</option>
           <option value="face-hair">Facial hair</option>
           <option value="jewlery">Jewlery</option>
           <option value="no-accessories">No accessories</option>
-          
-          <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
+
         <optgroup label="other">
           <option value="smoker">Has a smoking habit</option>
           <option value="haddok">Looks a little like Captain Haddok</option>

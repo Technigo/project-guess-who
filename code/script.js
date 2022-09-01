@@ -1,11 +1,13 @@
-//document.addEventListener('DOMContentLoaded', () => {
+
 
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const board = document.getElementById('board');
+const questions = document.getElementById('questions');
+const restartButton = document.getElementById('restart');
 const findOutBtn = document.getElementById('filter');
-const winLoseScreen = document.getElementById('winOrLose')
+const winLoseScreen = document.getElementById('winOrLose');
+const playAgainBtn = document.getElementById('playAgain');
+const questionCounter = document.getElementById('number-of-questions');
 //const guessButton = document.getElementById
 
 
@@ -211,6 +213,7 @@ let secretPerson;
 let currentQuestion;
 let charactersInPlay;
 let keep;
+let questionsAsked;
 
 // 'Randomly' select a person from the characters array and set as the value of the variable called secret
 const setSecretPerson = () => {
@@ -218,38 +221,40 @@ const setSecretPerson = () => {
   console.log(secretPerson.name)
 }
 
-// This function to start (and restart) the game
+
+// Makes characters appear on the board
+const generateBoard = () => {
+  board.innerHTML = ''
+  charactersInPlay.forEach((person) => {
+    board.innerHTML += `
+    <div class="card">
+    <img src=${person.img} alt=${person.name}>
+    <p>${person.name}</p>
+    <div class="guess">
+    <span>Guess on ${person.name}?</span>
+    <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+    </div>
+    </div>
+    `
+  })
+}
+
+// This function will start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  //Assign pre-selected value to make it possible to ask for brown haie without selecting another options first.
+  //Assign pre-selected value to make it possible to ask for brown hair without selecting another options first.
   currentQuestion = {
     category: 'hair',
     value: 'brown'
   };
   setSecretPerson();
-  // What else should happen when we start the game?
+  generateBoard();
+  questionsAsked = 0;
+  questionCounter.innerHTML = questionsAsked;
+  
 }
 start();
-
-const generateBoard = () => {
-  board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
-     board.innerHTML += `
-      <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
-        <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
-        </div>
-      </div>
-    `
-  })
-}
-generateBoard();
-
-
 
 
 
@@ -267,6 +272,7 @@ const selectQuestion = () => {
 }
 //when question is changed, assign category and value to currentQuestion variable
 questions.addEventListener('change', selectQuestion);
+
 
 
 ///////////////////TO DO!! Lägg till alert om huvuvida det man valt stämmer överens med hemlisen och vilka som plockas bort
@@ -339,6 +345,7 @@ const checkQuestion = () => {
  console.log(keep);
  filterCharacters(keep);
 }
+
 
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
@@ -422,83 +429,15 @@ const checkMyGuess = (personToCheck) => {
 }
 
 // All the event listeners
-restartButton.addEventListener('click', start)
-findOutBtn.addEventListener('click', checkQuestion);
+restartButton.addEventListener('click', start);
+findOutBtn.addEventListener('click', () => {
+  questionsAsked++;
+  checkQuestion();
+  questionCounter.innerHTML = questionsAsked;
+})
+playAgainBtn.addEventListener('click', () => {
+  winLoseScreen.style.display='none';
+  start();
+})
 
-
-///////////////////////////////BORDER TO THE UNKNOWN/////////////////////////////////////////////////////////
-/* FRÅN DANIELS FÖRELÄSNING
-const tilesSheet = document.querySelector('.tilesSheet');
-const counter = document.getElementById('counter');
-const hairSelect = document.getElementById('hair-select');
-const eyeSelect = document.getElementById('eye-select');
-let displayedCharacters = characters;
-let selectedCharacter;  
-// let numberOfGuesses = 0;
-let numberOfGuesses = 5;
-
-
-hairSelect.onchange = () => {
-    const newCharacters = displayedCharacters.filter(singleCharacter => {
-        return singleCharacter.hair_color.includes(hairSelect.value);
-    });
-    displayedCharacters = newCharacters;
-    generateTiles(displayedCharacters);
-}
-eyeSelect.onchange = () => {
-    const newCharacters = displayedCharacters.filter(singleCharacter => {
-        return singleCharacter.eye_color.includes(eyeSelect.value);
-    });
-    displayedCharacters = newCharacters;
-    generateTiles(displayedCharacters);
-}
-
-const generateTiles = (arrayToMapThroughAndGenerateTiles) => {
-    tilesSheet.innerHTML= '';
-    arrayToMapThroughAndGenerateTiles.map(singleCharacter => {
-        const tile = document.createElement('div');
-        tile.classList.add('tile');
-        tile.innerHTML = `<p>${singleCharacter.name}</p>`;
-        tilesSheet.appendChild(tile);
-        tile.addEventListener('click', () => {
-            if (numberOfGuesses < 1) {
-                window.alert('you lost, please refresh');
-                return;
-            }
-            /// important can only compare object properties, not whole objects with themselves
-            if (singleCharacter.name === selectedCharacter.name) {
-                window.alert('Hurray!');
-            } else {
-                // numberOfGuesses++;
-                // counter.innerText = numberOfGuesses;\
-                // numberOfGuesses = numberOfGuesses - 1
-                // numberOfGuesses -= 1 
-                numberOfGuesses--;
-                counter.innerText = numberOfGuesses;
-                window.alert('try again');
-            }
-        });
-        // tilesSheet.innerHTML += `
-        // <div class="tile">
-        //     <p>${singleCharacter.name}</p>
-        // </div>
-        // `;
-    });
-    // for(let i =0; i < characters.length; i++) {
-    //     characters[i];
-    // }
-}
-
-const selectRandomCharacter = () => {
-    // min and max are the range of ints  
-    // Math.floor(Math.random() * (max - min + 1) + min) 
-    // []
-    const randomNumber = Math.floor(Math.random() * (characters.length - 1 - 0 + 1) + 0);
-    selectedCharacter = characters[randomNumber];
-    console.log(selectedCharacter);
-}
-
-generateTiles(characters);
-selectRandomCharacter();*/
-
-//}) BELONG TO 
+ //Belongs to eventlistner on top of script document 

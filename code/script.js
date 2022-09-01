@@ -246,20 +246,24 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value
 
+  console.log(value)
   currentQuestion = {
     category: category, // <-- Based on the optgroup
     value: value // <-- Comes from the selected option
   }
 }
 
+questions.onchange = selectQuestion
+
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
+  let keep
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+   console.log(category, value)
     if (value === secret[category]) {
       keep = true
     } else {
@@ -267,6 +271,7 @@ const checkQuestion = () => {
     }
   
   } else if (category === 'accessories' || category === 'other') {
+    console.log(category, value)
     if (secret[category].includes(value)) {
       keep = true
     } else {
@@ -279,6 +284,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+  
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -290,6 +296,7 @@ const filterCharacters = (keep) => {
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
     }
+
   } else if (category === 'other') {
     if (keep) {
       alert(
@@ -300,6 +307,7 @@ const filterCharacters = (keep) => {
         `No, the person doesn't have ${value}! Remove all people that have ${value}`
       )
     }
+
   } else if (category === 'eyes') {
     if (keep) {
       alert(
@@ -310,6 +318,7 @@ const filterCharacters = (keep) => {
         `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
       )
     }
+
   } else {
     if (keep) {
       alert(

@@ -3,6 +3,10 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const guessButton = document.getElementById('guess-button')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
  
 // Array with all the characters, as objects. The 'accessories' and 'other' properties are nested arrays.
 const CHARACTERS = [
@@ -201,7 +205,8 @@ const CHARACTERS = [
   },
 ]
 
-// GLOBAL VARIABLES: These start out as undefined variables that get assigned (new) values in the functions below.
+// GLOBAL VARIABLES
+// These start out as undefined variables that get assigned (new) values in the functions below.
 let secret
 let currentQuestion
 let charactersInPlay
@@ -217,7 +222,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button small" id="guess-button" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
@@ -225,7 +230,7 @@ const generateBoard = () => {
 }
 
 // This function randomly selects a person from the characters array and sets that person as the value of the 'secret' variable.
-//I've added a console.log message here to check that the function assigned a new random person to the game with every refresh (Iteration 2 of the assignment).
+// I've added a console.log message here to check that the function assigned a new random person to the game with every refresh (Iteration 2 of the assignment).
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
   console.log("setSecret invoked:")
@@ -233,22 +238,25 @@ const setSecret = () => {
 }
 
 // This function starts (and restarts) the game. 
-//It starts by adding all the characters (and their properties) in the CHARACTERS array to the charactersInPlay variable. 
-//It then invokes the above setSecret function, which randomly selects one of those characters to be the target of the game. 
-//Finally, it invokes the generateBoard function to render the board with all the characters.
+// It starts by adding all the characters (and their properties) in the CHARACTERS array to the charactersInPlay variable. 
+// It then invokes the above setSecret function, which randomly selects one of those characters to be the target of the game. 
+// It then invokes the generateBoard function to render the board with all the characters.
+// Finally, if this function is invoked by the user restarting the game, it clears the win/lose CSS settings and restores the board.
   const start = () => {
     console.log("start invoked")
     charactersInPlay = CHARACTERS
     setSecret()
     generateBoard()
+    winOrLose.style.display = 'none'
+    board.style.display = 'flex'
   }  
 
-//This function starts out by defining two new variables: category and value, based on what you select in the drop-down menu. 
+// This function starts out by defining two new variables: category and value, based on what you select in the drop-down menu. 
 const selectQuestion = () => {
   console.log("selectQuestion invoked")
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
-//It then adds these as properties to the currentQuestion object.
+// It then adds these as properties to the currentQuestion object.
   currentQuestion = {
     category: category,
     value: value
@@ -262,36 +270,24 @@ const checkQuestion = () => {
   console.log("checkQuestion invoked")
   const {category, value} = currentQuestion
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-
-//IF the user picked the categories 'hair colour' OR 'eye colour'...
-  if (category === 'hair' || category === 'eyes') {
-//AND if the values match that of the secret person's hair OR eyes...
-    if (value === secret.hair || value === secret.eyes) {
-//invoke the filterCharacters function. Don't invoke it if false.
-      filterCharacters(true)
+  if (category === 'hair' || category === 'eyes') { // IF the user selected a value in the categories 'hair' OR 'eyes'...
+    if (value === secret.hair || value === secret.eyes) { // AND if the selection matched that of the secret person's hair OR eyes...
+      filterCharacters(true) // invoke the filterCharacters function. 
     } else {
-      filterCharacters(false)
+      filterCharacters(false) // Otherwise, don't invoke it.
     }
-//IF the user picked the categories 'accessories' OR 'other'...
-} else if (category === 'accessories' || category === 'other') {
-//AND if the secret person has a value in 'accessories' corresponding to what the user selected...
-  if ((secret.accessories).includes(value)) {
-//invoke the filterCharacters function. 
-    filterCharacters(true)
-//Otherwise, IF the secret person has a value in 'other' corresponding to what the user selected...
-  } else if ((secret.other).includes(value)) {
-//invoke the filterCharacters function. Don't invoke it if false.    
-    filterCharacters(true)
+} else if (category === 'accessories' || category === 'other') { // IF the user selected a value in the categories 'accessories' OR 'other'...
+  if ((secret.accessories).includes(value)) { // AND if the secret person has a value in 'accessories' corresponding to what the user selected...
+    filterCharacters(true) // invoke the filterCharacters function. 
+  } else if ((secret.other).includes(value)) { // Alternatively, IF the secret person has a value in 'other' corresponding to what the user selected...
+    filterCharacters(true) // invoke the filterCharacters function.
   } else {
-    filterCharacters(false)
+    filterCharacters(false) // Otherwise, don't invoke it.
   }
 }
 }
 
-// This function filters out the characters we want to keep and redraws the game board.
+// This function filters out the characters we want to keep and redraws the game board. 
 const filterCharacters = (keep) => {
   console.log("filterCharacters invoked")
   const { category, value } = currentQuestion
@@ -331,31 +327,37 @@ const filterCharacters = (keep) => {
   generateBoard()
 } 
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// Upon clicking any Guess button, the player will by prompted to confirm their choice. If they do (confirm === true), they invoke the checkMyGuess function below.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  console.log("guess invoked")
+  if (confirm(`You're about to select ${personToConfirm}. Are you sure?`) === true) {
+  checkMyGuess(personToConfirm)
+  } else {
+  alert("No problem! Keep playing then.")
+  }
 }
 
-// If you confirm, this function is invoked
+// By confirming, the player invokes the checkMyGuess function.
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  console.log("checkMyGuess invoked")
+  if (personToCheck === secret.name) { 
+    winOrLoseText.innerHTML = `Well done! It was indeed ${personToCheck}!`
+    } else {
+      winOrLoseText.innerHTML = `You fool! It was ${secret.name}.`
+    }
+  winOrLose.style.display = 'flex'
+  board.style.display = 'none'
 }
 
 // This function is the one that kicks everything else off. It's invoked as soon as the browser has read through all the rest of the code and makes it down to here.
 //It's at the bottom because we want the browser to read all the 'game rules' first before kicking off.
 start()
 
-// All the event listeners
+// EVENT LISTENERS
 
-//This EL invokes the start function whenever the user clicks on the Restart button.
+// This EL invokes the start function whenever the user clicks on the Restart button.
 restartButton.addEventListener('click', start)
-
-//The next two ELs invoke the selectQuestion AND checkQuestion functions whenever the user clicks on the Find Out button.
-
+// The next two ELs invoke the selectQuestion AND checkQuestion functions whenever the user clicks on the Find Out button.
 findOutButton.addEventListener('click', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', start)

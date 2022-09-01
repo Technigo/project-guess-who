@@ -249,6 +249,7 @@ const start = () => {
   // Check to see if setSecret is run by logging the name of the person
   console.log(`Secret person is set to: ${secret.name}`);
   winOrLose.style.display = "none";
+  winOrLoseText.innerHTML = "";
 };
 
 // Set the currentQuestion object when you select something in the dropdown
@@ -368,8 +369,14 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   if (personToCheck == secret.name) {
     winOrLoseText.innerHTML += `Congratulations, you won!`;
+    // Display confetti if user wins
+    const jsConfetti = new JSConfetti();
+    jsConfetti.addConfetti({ emojis: ["✨", "💫", "🌸"], confettiNumber: 50 });
   } else {
-    winOrLoseText.innerHTML += `Game over :C`;
+    winOrLoseText.innerHTML += `Game over... Better luck next time!`;
+    // Display sympathy confetti if user loses
+    const jsConfetti = new JSConfetti();
+    jsConfetti.addConfetti({ emojis: ["🦄"], confettiNumber: 5 });
   }
 
   winOrLose.style.display = "flex";

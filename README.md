@@ -1,6 +1,6 @@
 # Project Guess Who
 
-My task was to build a digital version of the classic board game Guess Who, in order to practice creating objects and arrays in JavaScript, and connecting these to the dom.
+My task was to build a browser version of the old school board game Guess Who, in order to practice creating objects and arrays in JavaScript, and connecting these to the dom.
 
 ## The problem
 
@@ -19,6 +19,8 @@ Describe how you approached to problem, and what tools and techniques you used t
 - CSS
 - Flexbox
 - JavaScript
+
+- [JSConfetti](https://github.com/loonywizard/js-confetti) for confetti effects user wins or loses
 
 - [Prettier](https://www.prettier.io/) for code linting
 - [Netlify](https://www.netlify.com/) for deployment

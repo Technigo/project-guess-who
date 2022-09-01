@@ -4,14 +4,14 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
  
-// Array with all the characters, as objects
+// Array with all the characters, as objects. The 'accessories' and 'other' properties are nested arrays.
 const CHARACTERS = [
   {
     name: 'Jabala',
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     other: []
   },
   {
@@ -19,7 +19,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['a hat'],
     other: []
   },
   {
@@ -27,7 +27,7 @@ const CHARACTERS = [
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['a hat'],
     other: ['smoker']
   },
   {
@@ -92,7 +92,7 @@ const CHARACTERS = [
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     other: ['smoker']
   },
   {
@@ -108,7 +108,7 @@ const CHARACTERS = [
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     other: ['smoker']
   },
   {
@@ -116,7 +116,7 @@ const CHARACTERS = [
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
+    accessories: ['a hat'],
     other: []
   },
   {
@@ -132,7 +132,7 @@ const CHARACTERS = [
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['a hat'],
     other: []
   },
   {
@@ -164,7 +164,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     other: []
   },
   {
@@ -196,7 +196,7 @@ const CHARACTERS = [
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     other: []
   },
 ]
@@ -233,7 +233,7 @@ const setSecret = () => {
 }
 
 // This function starts (and restarts) the game. 
-//It starts by adding all the characters (and their characteristics) in the CHARACTERS array to the charactersInPlay variable. 
+//It starts by adding all the characters (and their properties) in the CHARACTERS array to the charactersInPlay variable. 
 //It then invokes the above setSecret function, which randomly selects one of those characters to be the target of the game. 
 //Finally, it invokes the generateBoard function to render the board with all the characters.
   const start = () => {
@@ -266,67 +266,70 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
 
-  //IF the user picked the categories hair OR eyes...
+//IF the user picked the categories 'hair colour' OR 'eye colour'...
   if (category === 'hair' || category === 'eyes') {
-  //AND if the values match that of the secret person's hair OR eyes...
+//AND if the values match that of the secret person's hair OR eyes...
     if (value === secret.hair || value === secret.eyes) {
-  //invoke the filterCharacters function with either a true or false statement (true if the user picked hair or eyes AND the values match the secret person's hair or eyes)
+//invoke the filterCharacters function. Don't invoke it if false.
       filterCharacters(true)
     } else {
       filterCharacters(false)
     }
- //invoke the filterCharacters function with either a true or false statement (same as above, just for the other two categories)
-  } else if (category === 'accessories' || category === 'other') {
-    if ((secret.accessories).includes(value)) {
-      filterCharacters(true)
-    } else if ((secret.other).includes(value)) {
-      filterCharacters(true)
-    } else {
-      filterCharacters(false)
-    }
+//IF the user picked the categories 'accessories' OR 'other'...
+} else if (category === 'accessories' || category === 'other') {
+//AND if the secret person has a value in 'accessories' corresponding to what the user selected...
+  if ((secret.accessories).includes(value)) {
+//invoke the filterCharacters function. 
+    filterCharacters(true)
+//Otherwise, IF the secret person has a value in 'other' corresponding to what the user selected...
+  } else if ((secret.other).includes(value)) {
+//invoke the filterCharacters function. Don't invoke it if false.    
+    filterCharacters(true)
+  } else {
+    filterCharacters(false)
   }
 }
+}
 
-// It'll filter the characters array and redraw the game board.
+// This function filters out the characters we want to keep and redraws the game board.
 const filterCharacters = (keep) => {
-  const {category, value} = currentQuestion
-  // Show the correct alert message for different categories
+  console.log("filterCharacters invoked")
+  const { category, value } = currentQuestion
   if (category === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      alert(`Yep! The person wears ${value}! Removing everyone who doesn't wear ${value}...`)
     } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      alert(`Nope! The person doesn't wear ${value}! Removing everyone who wears ${value}...`)
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      alert(`Yep! The person's a ${value}. Removing everyone who's not a ${value}...`)
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      alert(`Nope! The person's not a ${value}. Removing everyone who's a ${value}...`)
+    }
+  } else if (category === 'hair') {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      alert(`Yep! The person's hair colour is ${value}. Removing everyone who's hair colour isn't ${value}...`)
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      alert(`Nope! The person's hair colour isn't ${value}. Removing everyone with ${value} hair...`)
+    }
+  } else if (category === 'eyes') {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      alert(`Yep! The person has ${value} eyes. Removing everyone who doesn't have ${value} eyes...`)
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      alert(`Nope! The person's eye colour isn't ${value}. Removing everyone who's eye colour is ${value}...`)
     }
   }
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-  // Invoke a function to redraw the board with the remaining people.
-}
+  generateBoard()
+} 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
@@ -356,6 +359,3 @@ restartButton.addEventListener('click', start)
 
 findOutButton.addEventListener('click', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
-
-
-

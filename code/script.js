@@ -325,7 +325,7 @@ const filterCharacters = (keep) => {
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   
-    for hair and eyes :
+    /* for hair and eyes :
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
@@ -334,7 +334,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
- 
+  */
 
   // Invoke a function to redraw the board with the remaining people.
 }

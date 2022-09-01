@@ -239,7 +239,7 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
-// This function to start (and restart) the game
+// Start (or restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
@@ -251,27 +251,19 @@ const start = () => {
   winOrLose.style.display = "none";
 };
 
-// setting the currentQuestion object when you select something in the dropdown
+// Set the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value;
-
-  // changed from category to questions above - made any difference?? someone had question withouth an s = i have TWO things with id wuestions - maybe causing issues??
 
   currentQuestion = {
     category: category,
     value: value,
   };
-  // Check to see that my guess is being received
-  console.log(
-    `I'm making this guess for ${currentQuestion.category}: ${currentQuestion.value}`
-  );
 };
 
-// This function should be invoked when you click on 'Find Out' button.
+// Runs when user clicks "Find Out" button
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   let keep;
@@ -291,14 +283,11 @@ const checkQuestion = () => {
   filterCharacters(keep);
 };
 
-// It'll filter the characters array and redraw the game board.
+// Filter out the character array and redraw the game board
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-
-  console.log("Time to filter");
   const attribute = category;
   console.log({ category, value });
-  // Show the correct alert message for different categories
   if (category === "hair") {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) =>
@@ -361,21 +350,21 @@ const filterCharacters = (keep) => {
     }
   }
 
-  // Invoke a function to redraw the board with the remaining people.
+  // Redraw the board with the remaining people
   generateBoard();
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// Have user confirm their guess before continuing
 const guess = (personToConfirm) => {
   if (window.confirm(`Are you sure you want to guess ${personToConfirm}?`)) {
-    console.log("user wanted to guess");
     checkMyGuess(personToConfirm);
   } else {
-    console.log("user chickened out");
+    //@TODO Change this??
+    console.log("User chickened out");
   }
 };
 
-// If you confirm, this function is invoked
+// If user presses OK, the game checks they were right or not
 const checkMyGuess = (personToCheck) => {
   if (personToCheck == secret.name) {
     winOrLoseText.innerHTML += `Congratulations, you won!`;
@@ -384,12 +373,6 @@ const checkMyGuess = (personToCheck) => {
   }
 
   winOrLose.style.display = "flex";
-
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  //@TODO CONFETTI IF WIN
-  // 4. Hide the game board
 };
 
 // Invokes the start function when website is loaded

@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/jabala.svg',
       hair: 'hidden',
       eyes: 'hidden',
-      accessories: ['glasses', 'hat'],
+      accessories: ['glasses', 'a hat'],
       other: []
     },
     {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/jack.svg',
       hair: 'hidden',
       eyes: 'blue',
-      accessories: ['hat'],
+      accessories: ['a hat'],
       other: []
     },
     {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/jacques.svg',
       hair: 'grey',
       eyes: 'blue',
-      accessories: ['hat'],
+      accessories: ['a hat'],
       other: ['smoking']
     },
     {
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/jean.svg',
       hair: 'brown',
       eyes: 'blue',
-      accessories: ['glasses', 'hat'],
+      accessories: ['glasses', 'a hat'],
       other: ['smoking']
     },
     {
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/jed.svg',
       hair: 'orange',
       eyes: 'green',
-      accessories: ['glasses', 'hat'],
+      accessories: ['glasses', 'a hat'],
       other: ['smoking']
     },
     {
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/jenni.svg',
       hair: 'white',
       eyes: 'hidden',
-      accessories: ['hat'],
+      accessories: ['a hat'],
       other: []
     },
     {
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/jerry.svg',
       hair: 'hidden',
       eyes: 'blue',
-      accessories: ['hat'],
+      accessories: ['a hat'],
       other: []
     },
     {
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/jordan.svg',
       hair: 'yellow',
       eyes: 'hidden',
-      accessories: ['glasses', 'hat'],
+      accessories: ['glasses', 'a hat'],
       other: []
     },
     {
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/julie.svg',
       hair: 'black',
       eyes: 'brown',
-      accessories: ['glasses', 'hat'],
+      accessories: ['glasses', 'a hat'],
       other: []
     },
   ]
@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alert(
           `No, the person doesn't wear ${value}! \n Remove all people that wears ${value}`
         );
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].value);
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
       }
     } else if (category === 'hair') {
       if (keep) {
@@ -352,7 +352,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Show the win or lose section
     // 4. Hide the game board
 
-    board.innerHTML = '';                          
+    // board.innerHTML = '';      
+    // charactersInPlay.forEach((person) => {      
+    //   const name = person.name;
+    //   document.getElementById(`${name}Btn`).addEventListener('click', () => {
+    //       guess(name);
+    //   });
+  // });                    
 
 
   }

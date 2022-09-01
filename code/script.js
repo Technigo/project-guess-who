@@ -2,6 +2,7 @@
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
+const select = document.getElementById("questions");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -239,23 +240,25 @@ const start = () => {
   console.log(secret);
 };
 
-// setting the currentQuestion object when you select something in the dropdown
+// Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
+  // These variables stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label;
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
   currentQuestion = {
     category: category,
-    // value: value
+  };
+
+  const value = value.options[value.selectedIndex].parentNode.label;
+  currentQuestion = {
+    value: value,
   };
 };
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
+
+  selectQuestion();
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -326,3 +329,8 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+// document.getElementById("filter").addEventListener("click", () => {
+// });
+select.addEventListener("change", () => {
+  console.log(select.value);
+});

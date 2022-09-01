@@ -3,6 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const playAgainButton = document.getElementById('playAgain')
+const anotherTryButton = document.getElementById('anotherTry')
+
 
 
 // Array with all the characters, as objects
@@ -359,39 +362,33 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   console.log('check my guess', guessedPerson,)
-if (guessedPerson === secret.name) {
+  if (guessedPerson === secret.name) {
 
-    winOrLoseSection()
-    }
+    winSection()
+
+  } else if (guessedPerson !== secret.name) {
+    loseSection()
+  }
 }
 
-const winOrLoseSection = () => {
+
+const winSection = () => {
   board.innerHTML = '';
-  const winOrLose = document.getElementById('winOrLose').style.display = "flex"
-
-
+  const win = document.getElementById('win').style.display = "flex"
 }
-//   // 1. Check if the personToCheck is the same as the secret person's name
-//   // 2. Set a Message to show in the win or lose section accordingly
+const loseSection = () => {
+  board.innerHTML = '';
+  const lost = document.getElementById('lose').style.display = "flex"
+}
 
-//   // 3. Show the win or lose section
-//   // 4. Hide the game board
-// }
 
 // Invokes the start function when website is loaded
 start();
-
-console.log('selected person', secret);
+console.log('secret person', secret);
 
 // All the event listeners
-restartButton.addEventListener('click', start)
-questions.addEventListener('change', () => {
-  selectQuestion(questions.value);
-  console.log(questions.value)}); 
+restartButton.addEventListener('click', () => location.reload())
+anotherTryButton.addEventListener('click', () => location.reload())
+playAgainButton.addEventListener('click',  () => location.reload());
+questions.addEventListener('change', () => { selectQuestion(questions.value);}); 
 findOutButton.addEventListener('click', () => checkQuestion() )
-
-
-
-// const newBoard = charactersInPlay.filter(person=> {
-//   return person.hair.includes(currentQuestion.value)
-//

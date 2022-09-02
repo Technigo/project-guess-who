@@ -358,7 +358,7 @@ function guess(personToConfirm) {
   if (userGuess) {
     checkMyGuess(personToConfirm)
   } else {
-    alert('nevermind!')
+    alert('Upsie! You are a bit shaky there!')
   }
 }
 
@@ -366,10 +366,10 @@ function guess(personToConfirm) {
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     let displayWinOrLose = () => {
-      document.getElementById('winOrLose').style.display = "flex"; // this display the winOrLose wrapper
+      document.getElementById('winOrLose').style.display = "flex"; // this displays the winOrLose wrapper
       winOrLoseText.innerHTML = `Hurray! You win! ${personToCheck} was correct!`
     }
-      board.innerHTML ='' // this cleard the board
+      board.innerHTML ='' // this cleared the board
       displayWinOrLose()
   } else {
     let displayWinOrLose = () => {
@@ -381,11 +381,7 @@ const checkMyGuess = (personToCheck) => {
   }
 }
 
-  
-
   start()
-
-  
 
   // All the event listeners
   restartButton.addEventListener("click", start);

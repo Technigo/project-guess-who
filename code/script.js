@@ -234,14 +234,13 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
+  // What else should happen when we start the game?
   numberOfGuesses = 5
   document.getElementById('guess-counter').innerHTML = `${numberOfGuesses}`
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
   generateBoard() 
   setSecret()
   console.log(secret.name);
-
 }
 
 
@@ -263,19 +262,21 @@ const selectQuestion = () => {
 }
 
 // This function should be invoked when you click on 'Find Out' button.
+// Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+  // See if we should keep or remove people based on that
+  // Then invoke filterCharacters
 const checkQuestion = () => {
   numberOfGuesses -= 1
   document.getElementById('guess-counter').innerHTML = `${numberOfGuesses}`
+  
   const { category, value } = currentQuestion;
 
   let keep 
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  
   if (numberOfGuesses === -1) {
     findOutButton.style.display = 'none'
-    document.getElementById('guess-counter').innerHTML = `No guesses left. Time to make a guess!`
+    document.getElementById('guess-counter').innerHTML = `You cannot try to find out more. Please pick a person.`
   }
   else if (category === 'hair' || category === 'eyes') {
     if(value === secret[category]){
@@ -293,9 +294,6 @@ const checkQuestion = () => {
     }
     filterCharacters(keep)
 }
-
-
-
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -326,7 +324,7 @@ const filterCharacters = (keep) => {
     );
     
   }
-}
+  }
    else if (category === 'accessories') {
     if(keep){
       alert(
@@ -349,8 +347,7 @@ const filterCharacters = (keep) => {
     } else {
       alert(
         `No, the person is not a ${value}! Remove all the people that is a ${value}`
-      );
-        
+      );   
     }
   }
   if (category === 'hair' || category === 'eyes') {
@@ -366,15 +363,14 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   }
-
   generateBoard()
 } 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
+// store the interaction from the player in a variable.
+// remember the confirm() ?
+// If the player wants to guess, invoke the checkMyGuess function.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
   const guessed = confirm(`Is ${personToConfirm} your choice?`)
   if(guessed){
     checkMyGuess(personToConfirm)
@@ -390,7 +386,7 @@ const checkMyGuess = (personToCheck) => {
     winOrLose.style.display = 'block'
     board.style.display = 'none'
   }else {
-    winOrLoseText.innerText = `Sorry, The correct person is ${secret.name}`
+    winOrLoseText.innerText = `Sorry, the correct person is ${secret.name}`
     winOrLose.style.display = 'block'
     board.style.display = 'none'
   }
@@ -423,5 +419,18 @@ findOutButton.addEventListener('click', () => {
 
 
 /* 
- 
+ restartButton.addEventListener('click', start) //Reloads the page
+
+restartButton.addEventListener('click', () => {
+  counter= 0
+  document.querySelector("#result").innerHTML = counter //For every guess the counter ticks up
+})
+
+
+findOutButton.addEventListener('click', () => {
+  selectQuestion()
+  checkQuestion()
+  counter++
+  document.querySelector("#result").innerHTML = counter //For every guess the counter ticks up
+})
 */

@@ -365,20 +365,16 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  let win = true
   if(personToCheck === secret.name){
-    win = true
-  }
-  // 2. Set a Message to show in the win or lose section accordingly
-  if(win){
     winOrLoseText.innerHTML = `Good job! It is ${personToCheck}!`
+    winOrLose.style.display = 'block'
     board.style.display = 'none'
-  } else {
+  }else {
     winOrLoseText.innerText = `Sorry, The correct person is ${secret.name}`
+    winOrLose.style.display = 'block'
     board.style.display = 'none'
   }
-}
+  }
 
 // Invokes the start function when website is loaded
 start()

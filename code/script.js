@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hair: "hidden",
       eyes: "blue",
       accessories: ["hat"],
-      other: [],
+      other: ["beard"],
     },
     {
       name: "Jacques",
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hair: "grey",
       eyes: "blue",
       accessories: ["hat"],
-      other: ["smoker"],
+      other: ["smoker", "beard"],
     },
     {
       name: "Jai",
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hair: "orange",
       eyes: "green",
       accessories: ["glasses", "hat"],
-      other: ["smoker"],
+      other: ["smoker", "beard"],
     },
     {
       name: "Jenni",
@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hair: "black",
       eyes: "green",
       accessories: [],
-      other: [],
+      other: ["beard"],
     },
     {
       name: "Julie",
@@ -207,7 +207,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let secret;
   let currentQuestion;
   let charactersInPlay;
-  let keep;
 
   // Draw the game board
   const generateBoard = () => {
@@ -245,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectQuestion = () => {
     const category =
       questions.options[questions.selectedIndex].parentNode.label; // This variable stores what option group (category) the question belongs to.
-    const value = questions.options[questions.selectedIndex].value;
+    const value = questions.options[questions.selectedIndex].value; // Could be written as: const value = questions.value;
 
     currentQuestion = {
       category: category,
@@ -259,25 +258,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const { category, value } = currentQuestion;
     console.log("Guess on", category, value);
     console.log("This is", secret[category].includes(value));
-
-    if (currentQuestion.category === "hair") {
-      if (currentQuestion.value === secret.hair) {
+    let keep = false;
+    if (category === "hair" || category === "eyes") {
+      if (value === secret[category]) {
         keep = true;
-      } else {
-        keep = false;
       }
-    } else if (currentQuestion.category === "eyes") {
-      if (currentQuestion.value === secret.eyes) {
+    } /* else if (category === "eyes") {
+      if (value === secret.eyes) {
         keep = true;
-      } else {
-        keep = false;
-      }
-    } else if (currentQuestion.category === "accessories") {
-      if (secret.accessories.includes(currentQuestion.value)) {
+      } */ else if (category === "accessories" || category === "other") {
+      if (secret[category].includes(value)) {
         keep = true;
-      } else {
-        keep = false;
       }
+      /* } else if (category === "other") {
+      if (secret.other.includes(value)) {
+        keep = true;
+      } */
     }
     filterCharacters(keep);
   };
@@ -291,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const { category, value } = currentQuestion;
     // Hair filter
     if (category === "hair") {
-      if (keep === true) {
+      if (keep) {
         charactersInPlay = charactersInPlay.filter(
           (person) => person[category] === value
         );
@@ -309,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // Eyes filter
     else if (category === "eyes") {
-      if (keep === true) {
+      if (keep) {
         charactersInPlay = charactersInPlay.filter(
           (person) => person[category] === value
         );
@@ -327,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // Accessories filter
     else if (category === "accessories") {
-      if (keep === true) {
+      if (keep) {
         charactersInPlay = charactersInPlay.filter((person) =>
           person[category].includes(value)
         );
@@ -345,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // Other filter
     else if (category === "other") {
-      if (keep === true) {
+      if (keep) {
         charactersInPlay = charactersInPlay.filter((person) =>
           person[category].includes(value)
         );
@@ -357,7 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
           (person) => !person[category].includes(value)
         );
         alert(
-          `No, the person doesn't have ${value}! Remove all people that has a ${value}`
+          `No, the person is not a ${value}! Remove all people that are a ${value}`
         );
       }
     }
@@ -384,7 +380,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // All the event listeners
   restartButton.addEventListener("click", start);
-  // findOut.addEventListener("click", filterCharacters);
   questions.addEventListener("change", selectQuestion); // could be written "questions.onchange = selectQuestion"
   findOut.addEventListener("click", checkQuestion);
   playAgain.addEventListener("click", start);

@@ -18,6 +18,13 @@ h1 {
   margin: 10px 0;
   color: white;
 }
+h2 {
+  font-size: 19px;
+  font-weight: 200;
+  line-height: 27px;
+  margin: 20px 0;
+  color: white;
+}
 
 .question-section {
   width: 30%;

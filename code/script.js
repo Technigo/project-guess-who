@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
 const anotherTryButton = document.getElementById('anotherTry')
+const counter = document.getElementById('counter')
 
 
 
@@ -210,6 +211,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 let guessedPerson
+let numberOfGuesses = 5;
 
 
 // Draw the game board
@@ -241,7 +243,7 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   generateBoard ();
   setSecret();
-  console.log('secret person', secret);
+  console.log('The secret person is', secret);
   
 }
 
@@ -296,7 +298,9 @@ const filterCharacters = (keep) => {
         `No, the person doesn't have ${value} hair! Remove all people with ${value} hair!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      
+      if (numberOfGuesses <1) {
+        loseSection()
+      }
     }
   } else if (category === 'eyes') {
     if (keep) {
@@ -309,6 +313,9 @@ const filterCharacters = (keep) => {
       alert(
         `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes!`
       )
+      if (numberOfGuesses <1) {
+        loseSection()
+      }
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   } else if (category === 'accessories') {
@@ -323,7 +330,9 @@ const filterCharacters = (keep) => {
           `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
         )
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-
+        if (numberOfGuesses <1) {
+          loseSection()
+        }
       }
   } else if (category === 'other') {
       if (keep) {
@@ -337,6 +346,9 @@ const filterCharacters = (keep) => {
           `No, the person is not ${value}! Remove all people who is ${value}`
         )
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+        if (numberOfGuesses <1) {
+          loseSection()
+        }
 
     }
     
@@ -388,4 +400,10 @@ restartButton.addEventListener('click', start)
 anotherTryButton.addEventListener('click', () => location.reload())
 playAgainButton.addEventListener('click',  () => location.reload());
 questions.addEventListener('change', () => { selectQuestion(questions.value);}); 
-findOutButton.addEventListener('click', () => checkQuestion() )
+findOutButton.addEventListener('click', () => {
+    numberOfGuesses --;
+    counter.innerText = numberOfGuesses;
+    checkQuestion() 
+});
+
+

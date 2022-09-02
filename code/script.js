@@ -244,7 +244,6 @@ const start = () => {
   // invokes the generateBoard with names and pictures when website is loaded
   generateBoard()
   selectQuestion()
-  console.log(secret)
   numberOfGuesses = 3;
 
 }
@@ -416,7 +415,6 @@ const checkMyGuess = (personToCheck) => {
 
 //Playagain when win or lose the game
 playAgainButton.addEventListener('click', () => {
-  console.log('playagain')
   winOrLose.style.display = "none"
   board.style.display = 'flex'
   generateBoard()

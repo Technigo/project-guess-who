@@ -50,6 +50,7 @@ select {
 
 .guess-who-icon {
   width: 126px;
+  margin: 5px;
 }
 
 .board-wrapper {

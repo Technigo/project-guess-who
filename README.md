@@ -1,13 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project is about creating a Guess Who game by using objects, arrays and methos in JavaScript.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+1. I could not generate the board when the page loaded. I added generateBoard() at the end of the codes and that makes the problem so when I add a console.log then I undrestand that it should work somewhere else in my code. So I add it under const start instead.
+2. I could not win the game at the end because all the characters disappeared so I checked the StackOverFlow and found out that I need to add square bracket around the category in const checkQuestion:  if (value === secret[category])
+3. The style of the winORLose did not work in css in order to add or delete their display after Guess button. In StackOverFlow found that I can add style i JS instead: winOrLose.style.display = 'flex'
+board.style.display = 'none'
+4. After Live sessions find out that it is the best if I always use console.log in order to find the problems in console when I see that the game does not work even if I thought I follow the instructions and steps.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

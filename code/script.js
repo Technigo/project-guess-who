@@ -404,13 +404,4 @@ findOutButton.addEventListener('click', () => {
 
 
 /* 
-const winOrLose = document.getElementById('winOrLose')
-
-const playAgain = () => {
-  board.style.display = 'flex'
-  winOrLose.style.display = 'none'
-  start()
-}
-
-playAgainButton.addEventListener('click', playAgain)
 */

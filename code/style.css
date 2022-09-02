@@ -266,10 +266,12 @@ button {
   }
   
 
-
   .card {
-    width: 113px;
+    max-width: 113px;
     position: relative;
+    margin: 5px auto;
+    
+
   }
 
   .card .guess {

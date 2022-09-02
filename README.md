@@ -1,13 +1,16 @@
-# Project Name
+# Project "Guess Who?"-game
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week we were to make an online game with the classic Guess Who? where you ask questions and try to guess who the secret person is.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+To do this I approached the problem by going through all reading material on the different javascript arrays/objects/methods/functions to use and tried
+to understand. We did the team tasks together in a small group and asked the rest of the team for help when we got stuck.
+When I got stuck on the project I looked in StackOverflow to see if any others had the same issue and that helped a lot. I also googled a lot and discussed with my other teammates. 
+The main issue I had was to make the filtering work properly and that took some time to solve.
+
+If I had more time I would style the site a bit more. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://project-guesswho-sofierydmark.netlify.app/

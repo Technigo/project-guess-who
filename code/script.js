@@ -231,21 +231,26 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  // Display the board with characters
   generateBoard()
+
+  // A secret person gets randomly selected
+  setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
+  
+  
   // This variable stores what option group (category) the question belongs to.
+  const questionCategory = questions.options[questions.selectedIndex].parentNode.label
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const questionValue = questions.value
+  
 
   currentQuestion = {
-    category: category,
-    // value: value
+    category: questionCategory, // optgroup in HTML
+    value: questionValue // Selected option in HTML
   }
 }
 
@@ -324,3 +329,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+// Change the default value for each time we select a value in the dropdown
+questions.addEventListener("change", () => selectQuestion())

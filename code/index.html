@@ -47,10 +47,19 @@
         </optgroup>
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
+          <option value="sassy pants">an attitude</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <h2 class="label-guesses">
+        💯 Guesses:
+        <span class="guesses">0</span>
+      </h2>
+      <h2 class="label-highscore">
+        🥇 Highscore:
+        <span class="highscore">0</span>
+      </h2>
     </aside>
 
     <section class="board-wrapper">
@@ -65,6 +74,7 @@
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
+        <p class="game-time">This game took:</p>
         <button type="button" id="playAgain" class="filled-button">
           PLAY AGAIN
         </button>

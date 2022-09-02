@@ -4,19 +4,15 @@ const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findOut = document.getElementById('filter');
 const playAgain = document.getElementById('playAgain');
-const Message = document.getElementById('winOrLoseText');
+const message = document.getElementById('winOrLoseText');
 const wrapper = document.querySelector('.win-or-lose-wrapper');
+const guesses = document.querySelector('.guesses');
+const highscore = document.querySelector('.highscore');
+const startTime = new Date();
+const gameTimeParagraph = document.querySelector('.game-time');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
-  // {
-  //   name: 'Test guy',
-  //   img: '',
-  //   hair: 'yellow',
-  //   eyes: 'brown',
-  //   accessories: ['glasses', 'hat'],
-  //   other: [],
-  // },
   {
     name: 'Jabala',
     img: 'images/jabala.svg',
@@ -31,7 +27,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: [],
+    other: ['sassy pants'],
   },
   {
     name: 'Jacques',
@@ -39,7 +35,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker'],
+    other: ['smoker', 'sassy pants'],
   },
   {
     name: 'Jai',
@@ -79,7 +75,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: [],
+    other: ['sassy pants'],
   },
   {
     name: 'Jaqueline',
@@ -96,7 +92,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker'],
+    other: ['smoker', 'sassy pants'],
   },
   {
     name: 'Jean',
@@ -104,7 +100,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker'],
+    other: ['smoker', 'sassy pants'],
   },
   {
     name: 'Jeane',
@@ -120,7 +116,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker'],
+    other: ['smoker', 'sassy pants'],
   },
   {
     name: 'Jenni',
@@ -128,7 +124,7 @@ const CHARACTERS = [
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],
-    other: [],
+    other: ['sassy pants'],
   },
   {
     name: 'Jeri',
@@ -136,7 +132,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: [],
+    other: ['sassy pants'],
   },
   {
     name: 'Jerry',
@@ -160,7 +156,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
-    other: [],
+    other: ['sassy pants'],
   },
   {
     name: 'Jon',
@@ -208,7 +204,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: [],
+    other: ['sassy pants'],
   },
 ];
 
@@ -240,12 +236,39 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
+const increaseGuesses = () => guesses.innerHTML++;
+
+const setHighscore = score => {
+  if (score < highscore.innerHTML || highscore.innerHTML === '0') {
+    highscore.innerHTML = score;
+  }
+};
+
+const checkGameTime = finishTime => {
+  const gameTime = (finishTime - startTime) / 1000;
+
+  // Stolen function from stack overflow
+  const secondsToHms = d => {
+    d = Number(d);
+    const h = Math.floor(d / 3600);
+    const m = Math.floor((d % 3600) / 60);
+    const s = Math.floor((d % 3600) % 60);
+
+    const hDisplay = h > 0 ? h + (h == 1 ? ' hour, ' : ' hours, ') : '';
+    const mDisplay = m > 0 ? m + (m == 1 ? ' minute, ' : ' minutes, ') : '';
+    const sDisplay = s > 0 ? s + (s == 1 ? ' second' : ' seconds') : '';
+    return hDisplay + mDisplay + sDisplay;
+  };
+  gameTimeParagraph.innerHTML += ' ' + secondsToHms(gameTime);
+};
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
   wrapper.style.display = 'none';
+  guesses.innerHTML = 0;
   generateBoard();
   setSecret();
   questions.selectedIndex = 0;
@@ -276,7 +299,7 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   // Destructuring category and value from the currentQuestion object
-  const { category, value } = currentQuestion;
+  const { category } = currentQuestion;
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   let keep, filteredCharacters;
@@ -284,26 +307,13 @@ const checkQuestion = () => {
     keep = secret[category] === currentQuestion.value;
     // console.log('secret[category]:', secret[category]);
     // console.log('currentQuestion.value:', currentQuestion.value);
-    // console.log('bajs', keep);
   } else if (category === 'accessories' || category === 'other') {
     keep = secret[category].includes(currentQuestion.value);
     // console.log('secret[category]:', secret[category]);
     // console.log('currentQuestion.value:', currentQuestion.value);
-    // console.log('bajs', keep);
   }
 
-  // See if we should keep or remove people based on that
-  // if (category === 'hair' || category === 'eyes') {
-  //   filteredCharacters = CHARACTERS.filter(
-  //     character => character[category] === value
-  //   );
-  // } else if (category === 'accessories' || category === 'other') {
-  //   filteredCharacters = CHARACTERS.filter(character =>
-  //     character[category].includes(value)
-  //   );
-  // }
-
-  // charactersInPlay = filteredCharacters;
+  increaseGuesses();
 
   // Then invoke filterCharacters
   filterCharacters(keep);
@@ -326,21 +336,23 @@ const filterCharacters = keep => {
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person is a ${value}! Keep all people that are ${value}s`
+        `Yes, the person is a ${value}! Keep all people that are ${
+          value === 'sassy pants' ? value : value + 's'
+        }`
       );
     } else {
       alert(
-        `No, the person is not a ${value}! Remove all people that are ${value}s`
+        `No, the person is not a ${value}! Remove all people that are ${
+          value === 'sassy pants' ? value : value + 's'
+        }`
       );
     }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(
         `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`
       );
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(
         `No, the person doesnt have ${value} ${category}! Remove all people with ${value} ${category}`
       );
@@ -349,17 +361,6 @@ const filterCharacters = keep => {
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
   if (category === 'hair' || category === 'eyes') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter(
@@ -396,17 +397,22 @@ const guess = personToConfirm => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = personToCheck => {
+  increaseGuesses();
   // 1. Check if the personToCheck is the same as the secret person's name
   if (personToCheck === secret.name) {
+    checkGameTime(new Date());
+
     // 2. Set a Message to show in the win or lose section accordingly
-    Message.innerHTML = 'YOU WON YOU BEAUTIFUL SACK OF SHIT! 💩';
+    message.innerHTML = 'YOU WIN! 🥳';
     // 3. Show the win or lose section
     wrapper.style.display = 'flex';
     // 4. Hide the game board
     charactersInPlay = [];
     generateBoard([]);
+    // 5. Set highscore
+    setHighscore(guesses.innerHTML);
   } else {
-    console.log('losah');
+    alert('Sadly that was not the correct guess 😢');
   }
   playAgain.addEventListener('click', start);
 };
@@ -418,3 +424,5 @@ start();
 restartButton.addEventListener('click', start);
 findOut.addEventListener('click', checkQuestion);
 questions.addEventListener('change', selectQuestion);
+
+console.log(startTime);

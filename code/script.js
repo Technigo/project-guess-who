@@ -311,7 +311,7 @@
         alert(`Yes, the person is a ${value}! Keep all the ${value}s then.`);
       } else {
         alert(
-          `No, the person isn't a ${value}! Remove all people that ${value}`
+          `No, the person isn't a ${value}! Remove all people that smoke`
         );
       }
     }

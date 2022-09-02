@@ -11,12 +11,19 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
-h1 {
+.logo {
+  font-family: "GoodGirl", sans-serif;
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
   color: white;
+}
+
+h2 {
+  color: white;
+  font-weight: 300;
+  font-size: 20px;
 }
 
 .question-section {
@@ -40,9 +47,13 @@ select {
   margin: 24px 0;
 }
 
-.guess-who-icon {
-  width: 126px;
+.counter {
+  color: white;
 }
+
+/* .guess-who-icon {
+  width: 126px;
+} */
 
 .board-wrapper {
   width: 70%;
@@ -117,7 +128,7 @@ select {
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
-  font-size: 16px;
+  font-size: 14px;
   font-family: "Montserrat";
   font-weight: bold;
   padding: 17px 27px;

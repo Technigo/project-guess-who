@@ -16,7 +16,6 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
-    styling: []
   },
   {
     name: 'Jack',
@@ -24,8 +23,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
-    styling: ['beard']
+    other: ['beard']
   },
   {
     name: 'Jacques',
@@ -33,8 +31,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
-    styling: ['beard']
+    other: ['beard']
   },
   {
     name: 'Jai',
@@ -43,7 +40,6 @@ const CHARACTERS = [
     eyes: 'brown',
     accessories: [],
     other: []
-    styling: []
   },
   {
     name: 'Jake',
@@ -52,7 +48,6 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses'],
     other: []
-    styling: []
   },
   {
     name: 'James',
@@ -61,7 +56,6 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses'],
     other: []
-    styling: []
   },
   {
     name: 'Jana',
@@ -70,7 +64,6 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['glasses'],
     other: []
-    styling: []
   },
   {
     name: 'Jane',
@@ -78,8 +71,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
-    styling: ['bun']
+    other: ['bun']
   },
   {
     name: 'Jaqueline',
@@ -88,7 +80,6 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses'],
     other: []
-    styling: []
   },
 
   {
@@ -98,7 +89,6 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['glasses'],
     other: ['smoker']
-    styling: []
   },
   {
     name: 'Jean',
@@ -107,7 +97,6 @@ const CHARACTERS = [
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
-    styling: []
   },
   {
     name: 'Jeane',
@@ -116,7 +105,6 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses'],
     other: []
-    styling: []
   },
   {
     name: 'Jed',
@@ -125,7 +113,6 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
-    styling: []
   },
   {
     name: 'Jenni',
@@ -134,7 +121,6 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['hat'],
     other: []
-    styling: []
   },
   {
     name: 'Jeri',
@@ -142,8 +128,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
-    styling: ['bun']
+    other: ['bun']
   },
   {
     name: 'Jerry',
@@ -152,7 +137,7 @@ const CHARACTERS = [
     eyes: 'blue',
     accessories: ['hat'],
     other: []
-    styling: []
+    
   },
   {
     name: 'Jess',
@@ -161,7 +146,7 @@ const CHARACTERS = [
     eyes: 'blue',
     accessories: ['glasses'],
     other: []
-    styling: []
+    
   },
   {
     name: 'Jocelyn',
@@ -169,8 +154,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
-    other: []
-    styling: ['bun']
+    other: ['bun']
   },
   {
     name: 'Jon',
@@ -179,7 +163,6 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses'],
     other: []
-    styling: []
   },
   {
     name: 'Jordan',
@@ -188,7 +171,6 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
-    styling: []
   },
   {
     name: 'Josephine',
@@ -197,7 +179,6 @@ const CHARACTERS = [
     eyes: 'brown',
     accessories: [],
     other: []
-    styling: []
   },
   {
     name: 'Josh',
@@ -206,7 +187,6 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: [],
     other: []
-    styling: []
   },
   {
     name: 'Jude',
@@ -214,8 +194,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
-    styling: ['beard']
+    other: ['beard']
   },
   {
     name: 'Julie',
@@ -224,7 +203,6 @@ const CHARACTERS = [
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
     other: []
-    styling: []
   },
 ]
 
@@ -262,6 +240,7 @@ const start = () => {
   generateBoard();
   setSecret();
   selectQuestion();
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -276,7 +255,7 @@ const selectQuestion = () => {
     category: category,
     value: value
   };
-};
+}
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
@@ -309,62 +288,62 @@ const filterCharacters = (keep) => {
       alert(
         `Good guess! The person have ${value} hair! Keep all people with ${value}hair`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
       alert(
         `Sorry! The person doesn't have ${value} hair! Remove all people with ${value}hair`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   } else if (category === 'eyes') {
     
     if (keep) {
       alert(
-        `Good guess! The person have ${value} eyes! Keep all people that have ${value} eyes`
+        `Good guess! The person have ${value} eyes!`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
       alert(
-        `Sorry! The person doesn't have ${value} eyes! Remove all people have ${value} eyes`
+        `Sorry! The person doesn't have ${value} eyes!`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   } else if (category === 'accessories') {
    
     if (keep) {
       alert(
-        `Good guess! The person wears ${value}! Keep all people that wears ${value}`
+        `Good guess! The person wears ${value}!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
-        `Sorry! The person doesn't wear ${value}! Remove all people that wears ${value}`
+        `Sorry! The person doesn't wear ${value}!`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
-  } else if (category === 'other') {
+  // } else if (category === 'other') {
    
-    if (keep) {
-      alert(
-        `Good guess! The person is a ${value}! Keep all people that is a ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
-    } else {
-      alert(
-        `Sorry! The person is not a ${value}! Remove all people that is a ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
-    }
-  } else if (category === 'styling') {
+  //   if (keep) {
+  //     alert(
+  //       `Good guess! The person is a ${value}!`
+  //     )
+  //     charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+  //   } else {
+  //     alert(
+  //       `Sorry! The person is not a ${value}!`
+  //     )
+  //     charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+  //   }
+  } else if (category === 'other') {
     
     if (keep) {
       alert(
-        `Good guess! The person has a ${value}! Keep all people with a ${value}`
+        `Good guess! The person has a ${value}!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
-        `Sorry! The person does not have a ${value}! Remove all people with a ${value}`
+        `Sorry! The person does not have a ${value}!`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
@@ -422,7 +401,6 @@ start();
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion); 
 filter.addEventListener('click', checkQuestion); 
 playAgain.addEventListener('click', start);

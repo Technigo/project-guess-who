@@ -1,14 +1,14 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: rgb(233, 38, 181);
+  --secondary: rgb(244, 160, 221);
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat;
 }
 
 h1 {
@@ -16,7 +16,7 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: rgb(249, 229, 3);
 }
 
 .question-section {
@@ -205,6 +205,7 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    background-color: rgb(252, 234, 247);
   }
 
   .card {

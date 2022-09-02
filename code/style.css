@@ -187,12 +187,7 @@ button {
   color: var(--primary);
 }
 
-.side-footer{
-  padding: 10px;
-  font-size: 10px;
-  padding-top: 280px;
-  color: #5c652c;
-}
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -270,10 +265,7 @@ button {
     max-width: 750px;
   }
   
-  .side-footer{
-    padding-top: 10px;
-    margin: 0 auto;
-  }
+
 
   .card {
     width: 113px;

@@ -59,7 +59,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'hat'],
     other: [],
     gender: ['man']
   },
@@ -70,7 +70,7 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['glasses'],
     other: [],
-    gender: ['non binary individual']
+    gender: ['woman']
   },
   {
     name: 'Jane',
@@ -98,7 +98,7 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['glasses'],
     other: ['smoker'],
-    gender: ['non binary individual']
+    gender: ['woman']
   },
   {
     name: 'Jean',
@@ -224,7 +224,7 @@ const CHARACTERS = [
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
     other: [],
-    gender: ['non binary individual']
+    gender: ['woman']
   },
 ]
 
@@ -250,25 +250,23 @@ const generateBoard = () => {
   })
 }
 
+startButton.onclick = () => {
+  startPage.style.display = "none"
+}
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
   console.log(secret);
 } 
 
-startButton.onclick = () => {
-  startPage.style.display = "none"
-  setTimeout(start, 1000)
-}
-
-// ***********************************************************
 
 // THIS FUNCTION STARTS ** AND ** RESTARTS THE GAME 
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-    generateBoard()
+  generateBoard()
    //sets secret person   
    setSecret()
    // If game is won or lost, play again button triggers;
@@ -308,7 +306,7 @@ const checkQuestion = () => {
     }
   
   } else if (category === 'accessories' || category === 'other' || category === 'gender') {
-    if ( secret.accessories.includes(value) || secret.other.includes(value)) {
+    if ( secret.accessories.includes(value) || secret.other.includes(value) || secret.gender.includes(value)) {
       filterCharacters(true)
     } else {
       filterCharacters(false)
@@ -403,13 +401,13 @@ const guess = (personToConfirm) => {
 // If you confirm the choice = this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {                                          
-    winOrLoseText.innerHTML = `You are the winner! ${secret.name} is correct!`     
+    winOrLoseText.innerHTML = `You are a WINNER! 🏆  ${secret.name} is correct!`     
     winOrLose.style.display = 'block', // shows wrapper
     board.style.display = 'none'   // hides board behind wrapper
 
   } else {
     winOrLose.style.display = 'block',
-    winOrLoseText.innerHTML = `GAME OVER - The secret person was ${secret.name}. Want to try again?`
+    winOrLoseText.innerHTML = `GAME OVER 💀 The secret person was ${secret.name}. Want to try again?`
     board.style.display = 'none'
   }
 }

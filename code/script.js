@@ -343,24 +343,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // If you confirm, this function is invoked otherwise you're returned to the board
   const checkMyGuess = (personToCheck) => {
     if (personToCheck === randomCharacter.name) {
-      alert(`Yaaay, you got it!`);
+      winOrLoseText.innerHTML = `<p>Yaaay, you got it!</p>`;
+      winOrLose.style.display = 'flex';
+
+      playAgainBtn.addEventListener('click', () => {
+      winOrLose.style.display = 'none';
+      board.style.display = 'flex';
+      start();
+      })
     } else {
-      alert(`Naaaw, the correct answer was ${randomCharacter.name}. Please try again!`);
+      alert(`Naaaw, not quite right. \n Please try again!`);
+      charactersInPlay = charactersInPlay.filter(person => person.name !== personToCheck);
     }
-    // 1. Check if the personToCheck is the same as the secret person's name
-    // 2. Set a Message to show in the win or lose section accordingly
-    // 3. Show the win or lose section
-    // 4. Hide the game board
-
-    // board.innerHTML = '';      
-    // charactersInPlay.forEach((person) => {      
-    //   const name = person.name;
-    //   document.getElementById(`${name}Btn`).addEventListener('click', () => {
-    //       guess(name);
-    //   });
-  // });                    
-
-
+    generateBoard(); 
+            
   }
 
   // Invokes the start function when website is loaded
@@ -373,10 +369,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   filterBtn.addEventListener('click', selectQuestion);
 
-  playAgainBtn.addEventListener('click', start);
-
 });  
-
-
-
-const tile = document.createElement('div');             // de två viktiga för oss; the element & index

@@ -215,6 +215,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let numberOfQuestionsAsked = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -243,14 +244,18 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  // What else should happen when we start the game?
   generateBoard();
   setSecret();
-  // Check to see if setSecret is run by logging the name of the person
-  console.log(`Secret person is set to: ${secret.name}`);
+  setNumberOfQuestionsAsked(0);
   winOrLose.style.display = "none";
   winOrLoseText.innerHTML = "";
 };
+
+// Count how many of questions the user has asked during the current game
+function setNumberOfQuestionsAsked(count) {
+  numberOfQuestionsAsked = count;
+  questionCounter.innerText = numberOfQuestionsAsked;
+}
 
 // Set the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -288,7 +293,6 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   const attribute = category;
-  console.log({ category, value });
   if (category === "hair") {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) =>
@@ -350,6 +354,8 @@ const filterCharacters = (keep) => {
       alert(`No, the person does not have ${value}. Remove all that do`);
     }
   }
+
+  setNumberOfQuestionsAsked(numberOfQuestionsAsked + 1);
 
   // Redraw the board with the remaining people
   generateBoard();

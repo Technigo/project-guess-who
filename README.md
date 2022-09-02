@@ -1,12 +1,13 @@
 # Project Name
+The task was to create a "Gusse who"-game with focus on the JS.
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had problem with getting the SelectQuestion to work, meaning - when choosing for example "Brown hair" the alert would say "Sorry, the person doesn't have brown hair" and then filter these people. But after asking the question in Stack overflow I got some great help, I updated the eventListener from "Click" to "Change" and also uodated the HTML with a "disabled selected".
+
+If I had more time I would add some more attributes to the people and also replace the "alert-box" with a new screen-view instead. 
+
 
 ## View it live
 

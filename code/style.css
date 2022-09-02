@@ -13,16 +13,14 @@ body {
 }
 
 h1 {
-  font-size: 42px;
-  font-family: helvetica;
-  font-weight: 500;
+  font-size: 38px;
+  font-family: Helvetica;
+  font-weight: bolder;
   line-height: 48px;
   margin: 10px 0;
   color:  #f4f0d8;
 
 }
-
-
 
 .question-section {
   width: 30%;
@@ -188,11 +186,28 @@ button {
 .win-or-lose img {
   align-self: flex-start;
   margin-left: 15%;
+  padding: 20px; 
 }
 
 .win-or-lose h1 {
-  margin-bottom: 32px;
+  margin-bottom: 15px;
+  font-size: 60px;
+  font-family: Helvetica;
 }
+
+.win-or-lose h2 {
+  font-size: 35px;
+  font-family: Helvetica;
+  line-height: 48px;
+  margin-bottom: 15px;
+  font-weight: lighter;
+  color:  #f4f0d8;
+}
+
+.guess-who-icon {
+  width: 150px;
+}
+
 
 @media (max-width: 768px) {
   body {
@@ -211,9 +226,6 @@ button {
     line-height: 30px;
   }
 
-  .guess-who-icon {
-    width: 51px;
-  }
 
   .board-wrapper {
     width: 100%;

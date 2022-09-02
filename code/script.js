@@ -2,11 +2,11 @@
 const board = document.getElementById('board') //this is the game board
 const questions = document.getElementById('questions') // this is the navigation area for questions
 const restartButton = document.getElementById('restart') //this is to restart the game, left side in nav menu
-const findOutButton = document.getElementById('filter')
-const guessButton = document.getElementsByClassName('guess-button')
-const playAgainButton = document.getElementById('playAgain')
+const findOutButton = document.getElementById('filter') //The find out button
+const guessButton = document.getElementsByClassName('guess-button') //The button to guess the character
+const playAgainButton = document.getElementById('playAgain') //Play again
 
-// Array with all the characters, as objects shows up in the game board
+// Array with all the characters available on the board
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -210,7 +210,7 @@ let charactersInPlay
 let keep
 let counter = 0
 
-// Draw the game board
+// Draws the game board
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -227,17 +227,15 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Randomly selects a person from the characters array and sets the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
 
-// This function to start (and restart) the game
+// This function starts (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
   generateBoard();
   setSecret();
   selectQuestion();
@@ -247,7 +245,7 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label
 
-  // We also need a variable that stores the actual value of the question we've selected.
+  //This variable stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value
   console.log(value);
 
@@ -257,6 +255,7 @@ const selectQuestion = () => {
   }
 }
 
+//Checks what option hasd been chosen
 const checkQuestion = () => {
   const { category, value } = currentQuestion
   let keep 
@@ -282,7 +281,7 @@ const checkQuestion = () => {
 }
   
 
-// It'll filter the characters array and redraw the game board.
+// This function filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   if (category === 'hair') {
@@ -346,14 +345,14 @@ const filterCharacters = (keep) => {
           );
         }
         }
-        generateBoard()
+        generateBoard() //redraws the board with the characters left
   } 
 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   const guessedPerson = confirm(`Are you sure you want to guess on ${personToConfirm}?`) //Sends an 
-  // If the player wants to guess, invoke the checkMyGuess function.
+  // If the player wants to guess, it invokes the checkMyGuess function.
   if (guessedPerson) {
     checkMyGuess(personToConfirm)  //sends the information and invokes the next function
   } else {
@@ -361,11 +360,10 @@ const guess = (personToConfirm) => {
   }
 }
 
-
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    winOrLoseText.innerHTML = `You got it!`
+    winOrLoseText.innerHTML = `Yes, you got it right!`
     winOrLose.style.display = 'block'
     board.style.display = 'none'
   } else {winOrLoseText.innerHTML = `Nope, you lose. Better luck next time!`
@@ -382,13 +380,12 @@ document.getElementById("playAgain").addEventListener("click", () => {
 
 start()
 
-// All the event listeners
-restartButton.addEventListener('click', start)
+//Event listeners
+restartButton.addEventListener('click', start) //Reloads the page
 findOutButton.addEventListener('click', () => {
   selectQuestion()
   checkQuestion()
-  
   counter++
-  document.querySelector("#result").innerHTML = counter
+  document.querySelector("#result").innerHTML = counter //For every guess the counter ticks up
 })
-guessButton.addEventListener('click', personToConfirm())
+guessButton.addEventListener('click', personToConfirm()) //Compares the guessed person to set secret

@@ -356,7 +356,7 @@ const guess = (personToConfirm) => {
   if (guessedPerson) {
     checkMyGuess(personToConfirm)  //sends the information and invokes the next function
   } else {
-    window.alert('Sorry, try again!')
+    window.alert('Maybe that is for the best. Or is it?')
   }
 }
 

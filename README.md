@@ -4,13 +4,14 @@ My task was to build a browser version of the old school board game Guess Who, i
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Since my JavaScript abilities are limited I made sure to follow the steps given in the instructions.
 
-### If more time
+### If I had more time
 
+- Change the styling (make it mobile first because easier to follow) and then move the sections around
 - Improve filter alerts, i.e. customise them better and not have the exact option values being displayed in them
-- Add new categories for clothes, hairstyles och facial expressions etc
-- Replace the cards with something cute like Pokemons or cats and then also re-doing the categories and filters from scratch to better fit the new characters (and improve my JavaScript skills, of course)
+- Replace the cards with something cute like Pokemons or cats and then also re-doing the categories to better fit the new characters
+- Add Guess counter that counts down from 3
 
 ### Technologies used:
 

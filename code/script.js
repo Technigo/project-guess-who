@@ -2,6 +2,7 @@
 
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board');
+const namePlaceholder = document.getElementById('player-name');
 const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findOutBtn = document.getElementById('filter');
@@ -9,6 +10,7 @@ const winLoseScreen = document.getElementById('winOrLose');
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainBtn = document.getElementById('playAgain');
 const questionCounter = document.getElementById('number-of-questions');
+
 //const guessButton = document.getElementById
 
 
@@ -217,6 +219,7 @@ let keep;
 let questionsAsked;
 let minutes;
 let seconds; 
+let playerName;
 
 // 'Randomly' select a person from the characters array and set as the value of the variable called secret
 const setSecretPerson = () => {
@@ -242,6 +245,7 @@ const generateBoard = () => {
   })
 }
 
+//Timer function
 window.onload = () => {
   minutes = 00;
   seconds = 00; 
@@ -270,6 +274,11 @@ window.onload = () => {
   }
 }
 
+//player is prompted to enter name
+const setName = () => {
+playerName = prompt(`Lets play a game of Guess who! Who is guessing, whom is Who? (What is your name?)`);
+namePlaceholder.innerHTML = playerName;}
+
 // This function will start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -284,11 +293,9 @@ const start = () => {
   //reset counter
   questionsAsked = 5;
   questionCounter.innerHTML = questionsAsked;
-  
+  setTimeout(setName, 500);
 }
-start();
-
-
+  start();
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -439,12 +446,15 @@ const checkMyGuess = (personToCheck) => {
     console.log(minutes + seconds);
     // Changing winLoseScreens display attribute from none to flex, makes it visible, 
     winLoseScreen.style.display='flex';
-    winOrLoseText.innerHTML = `You win! In ${minutes} minutes and ${seconds} seconds, with ${questionsAsked} questions remaining, you guessed Who!`;
+    winOrLoseText.innerHTML = `You win, ${playerName}! In ${minutes} minutes and ${seconds} seconds, with ${questionsAsked} questions remaining, you guessed Who!`;
+
   } else {
     alert(`Sorry, ${personToCheck} is not the secret person.`)
     board.innerHTML = ''
     winLoseScreen.style.display='flex';
-    winOrLoseText.innerHTML = `You Lose! In ${minutes} minutes and ${seconds} seconds, with ${questionsAsked} questions remaining, you couldn't guess Who!`;
+    winOrLoseText.innerHTML = `You lose, ${playerName}! In ${minutes} minutes and ${seconds} seconds, with ${questionsAsked} questions remaining, you couldn't guess Who!`;
+    let applause = new Audio('https://freesound.org/people/Sandermotions/sounds/277021/');
+    applause.play();
   }
 }
 

@@ -258,7 +258,7 @@ const selectQuestion = () => {
 }
 
 // This function should be invoked when you click on 'Find Out' button.
-const checkQuestion = (currentQuestion) => {
+/*const checkQuestion = (currentQuestion) => {
   const { category, value } = currentQuestion
   console.log(category)
   console.log(value)
@@ -276,45 +276,68 @@ const checkQuestion = (currentQuestion) => {
   } else if (category === 'accessories' && value === secret.accessories.find(element => element === value)) {
     keep = true
   }
-  filterCharacters(keep)
-}
+  filterCharacters(keep)*/
+
+   // This function invokes when the player click on ‘Find Out’ button.
+    const checkQuestion = () => {
+      const { category, value } = currentQuestion
+      // Compares the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+      // Sees if we should keep or remove people based on that
+      // Then invokes filterCharacters
+      if (category === 'hair' || category === 'eyes') {
+        if (secret[category] === value) {
+          filterCharacters(true);
+        }
+        else {
+          filterCharacters(false);
+        }
+      }
+      else if (category === 'accessories' || category === 'other') {
+        if (secret[category].includes(value)) {
+        filterCharacters(true);
+      }
+        else {
+        filterCharacters(false);
+      }
+    }
+  }
 
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   if (category === 'accessories') {
     if (keep) {
       alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
-        charactersInPlay = charactersInPlay.filter((person) => person.accessories.includes(value))
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
-        charactersInPlay = charactersInPlay.filter((person) => !person.accessories.includes(value))
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
 
   } else if (category === 'other') {
     if (keep) {
       alert(`Yes the person is ${value}! Remove all people that wears ${value}`)
-        charactersInPlay = charactersInPlay.filter((person) => person.other.includes(value))
-    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+        } else {
       alert (`No, the person is not ${value}! Remove all people that are ${value}!`)
-        charactersInPlay = charactersInPlay.filter((person) => !person.other.includes(value))
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
 
   } else if (category === 'hair') {
     if (keep) {
       alert (`Yes, the person has ${value} hair! Remove all people that are ${value}`)
-        charactersInPlay = charactersInPlay.filter((person) => person.hair.includes(value))
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(`No, the person does not have ${value} hair! Remove all people that has ${value} hair.`)
-        charactersInPlay = charactersInPlay.filter((person) => !person.hair.includes(value))
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
 
   } else if (category === 'eyes') {
     if (keep) {
       alert (`Yes the person has ${value} eyes! Remove all people that has ${value}`)
-      charactersInPlay = charactersInPlay.filter ((person) => person.eyes.includes(value))
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(`No, the person does not have ${value} eyes! Remove all people that have ${value} eyes!`)
-      charactersInPlay = charactersInPlay.filter ((person) => !person.eyes.includes(value))
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } 
   generateBoard()

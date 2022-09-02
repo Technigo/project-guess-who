@@ -8,8 +8,8 @@ As it was an individual project I first made a schedule for when to work on it a
 After beginning with the project I approached my classmates both with questions on stack overflow but also by programming together to be able to share ideas live and troubleshoot more efficiently.
 
 If I had more time (and I definitely needed more time) I would like to start with programming the bot a bit more from scratch to really understand what the starter code did.
-I would also like to add a timer as well as an area where the user can fill in a nick name before starting the game. 
+I would also like to add a timer as well as an area where the user can fill in a nickname before starting the game. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://jolly-pastelito-4c9c84.netlify.app/

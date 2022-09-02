@@ -110,7 +110,7 @@ const CHARACTERS = [
     name: "Emma",
     img: "images/emma.png",
     hair: "red",
-    eyes: "green",
+    eyes: "brown",
     accessories: [],
     other: [],
   },
@@ -279,15 +279,32 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  let keep;
-  if (category === "hair" || category === "eyes") {
-    keep = secret[category] === value;
-  } else if (category === "accessories" || category === "other") {
-    keep = secret[category] === value;
-  }
 
-  filterCharacters(keep);
-  console.log(keep);
+  keep = true;
+
+  if (category === "hair" || category === "eyes") {
+    if (secret[category].includes(value)) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+  } else if (category === "accessories" || category === "other") {
+    if (secret[category].includes(value)) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+  }
+  // keep = true;
+  // if (category === "hair" || category === "eyes") {
+  //   keep = secret[category] === value;
+  // } else if (category === "accessories" || category === "other") {
+  //   keep = secret[category] === value;
+  // } else {
+  // }
+
+  // filterCharacters(keep);
+  // console.log(keep);
 };
 
 // if(currentQuestion === Secret)?????? = keep????

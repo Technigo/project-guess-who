@@ -4,9 +4,9 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 //const questionSection = document.getElementById('question-section')
 const filterBtn = document.getElementById('filter')
-const boardWrapper = document.getElementById('board-wrapper')
-const winOrLose = document.getElementById('winOrLose')
-const playAgain = document.getElementById('playAgain')
+//const boardWrapper = document.getElementById('board-wrapper')
+//const winOrLose = document.getElementById('winOrLose')
+//const playAgain = document.getElementById('playAgain')
 
 
 const CHARACTERS = [
@@ -211,12 +211,12 @@ let currentQuestion
 let charactersInPlay
 
 
-questions.onchange = () => {
+//questions.onchange = () => {
   const rearrangeBoard = CHARACTERS.filter(charactersInPlay => {
 return charactersInPlay.hair.includes(questions.value)
   })
-  generateBoard(rearrangeBoard)
-}
+ // generateBoard(rearrangeBoard)
+//}
 
 // Draw the game board
 const generateBoard = () => {
@@ -257,44 +257,30 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-  //generateBoard();
+  generateBoard();
   
 }
 
 // setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+//const selectQuestion = () => {
+  //const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   
-  const value = question.value
-  console.log(value)
-  if (category === 'hair') {
-  currentQuestion = {
-    category: 'hair',
-    value: ['brown', 'yellow']
-    }
+ 
+const selectQuestion = () => {
+  // This variable stores what option group (category) the question belongs to.
+  const category = questions.options[questions.selectedIndex].parentNode.label
 
-  } else if (category === 'eyes') {
-    currentQuestion = {
-      category: 'eyes',
-      value: 'hidden'
-    }
-  } else if (category === 'accessories') {
-    currentQuestion = {
-     category: 'accessories',
-     value: 'glasses'
-    }
-  } else if (category === 'other'){
-    currentQuestion = {
-      category: 'other',
-      value: true
-      
-    }
+  //This variable stores the actual value of the question we've selected.
+  const value = questions.options[questions.selectedIndex].value
+  console.log(value);
+
+  currentQuestion = {
+    category: category,
+    value: value,
   }
-  selectQuestion()
-  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -305,13 +291,13 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
- if (value === selectedCharacter[category]) {
+ if (value === secret[category]) {
   filterCharacters(true)
  } else
  filterCharacters(false)
 
   } else if (category === 'accessories' || category === 'other') {
- if (selectedCharacter[category].includes(value)) {
+ if (secret[category].includes(value)) {
   filterCharacters(true)
  } else 
  filterCharacters(false)
@@ -376,7 +362,7 @@ const filterCharacters = (keep) => {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
 
-    rearrangeBoard()
+    //rearrangeBoard()
   }
   
  
@@ -405,11 +391,12 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  if (personToCheck === selectedCharacter.name) {
+  if (personToCheck === secret.name) {
     alert("You're a winner baby!")
   } 
   else {
@@ -430,5 +417,9 @@ setSecret();
 // All the event listeners
 restartButton.addEventListener('click', start)
 //board.addEventListener('click')
-filterBtn.addEventListener('click', filterCharacters)
-questions.addEventListener('click', checkQuestion)
+filterBtn.addEventListener('click', checkQuestion)
+questions.addEventListener('change', selectQuestion)
+
+
+
+

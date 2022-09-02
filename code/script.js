@@ -26,7 +26,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat', 'face-hair'],
+    accessories: ['hat', 'beard'],
     other: []
   },
   {
@@ -34,7 +34,7 @@ const CHARACTERS = [
     img: 'images/jacques.svg',
     hair: 'white',
     eyes: 'blue',
-    accessories: ['hat', 'face-hair'],
+    accessories: ['hat', 'beard'],
     other: ['smoker', 'haddok']
   },
   {
@@ -58,7 +58,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses', 'face-hair'],
+    accessories: ['glasses', 'beard'],
     other: ['bad-day']
   },
   {
@@ -66,8 +66,8 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['jewlery']
+    accessories: ['glasses', 'jewlery'],
+    other: []
   },
   {
     name: 'Jane',
@@ -99,7 +99,7 @@ const CHARACTERS = [
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'hat', 'face-hair'],
+    accessories: ['glasses', 'hat', 'beard'],
     other: ['smoker', 'artsy', 'bad-day']
   },
   {
@@ -115,7 +115,7 @@ const CHARACTERS = [
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'hat', 'face-hair'],
+    accessories: ['glasses', 'hat', 'beard'],
     other: ['smoker']
   },
   {
@@ -195,7 +195,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: ['face-hair'],
+    accessories: ['beard'],
     other: []
   },
   {
@@ -250,6 +250,7 @@ const start = () => {
   };
   setSecretPerson();
   generateBoard();
+  //reset counter
   questionsAsked = 0;
   questionCounter.innerHTML = questionsAsked;
   
@@ -270,10 +271,6 @@ const selectQuestion = () => {
     value: value,
   }
 }
-//when question is changed, assign category and value to currentQuestion variable
-questions.addEventListener('change', selectQuestion);
-
-
 
 ///////////////////TO DO!! Lägg till alert om huvuvida det man valt stämmer överens med hemlisen och vilka som plockas bort
 // This function should be invoked when you click on 'Find Out' button.
@@ -314,93 +311,56 @@ questions.addEventListener('change', selectQuestion);
 
 
 const checkQuestion = () => {
-  if (currentQuestion.category === 'hair') {
-   //if selected question has category hair, check if selected value is the same as secretPersons
-   if (currentQuestion.value === secretPerson.hair) {
-     keep = true;
-   } else {
-     keep = false;
-   }
- } else if (currentQuestion.category === 'eyes') {
-   if (currentQuestion.value === secretPerson.eyes) {
-     keep = true;
-   } else {
-     keep = false;
-   }
- } else if (currentQuestion.category === 'accessories') {
-     //TO DO! tom array är samma som no accessories
-   if (secretPerson.accessories.includes(currentQuestion.value)) {
+  const { category, value } = currentQuestion
+  if (category === 'hair'|| category === 'eyes') {
+   //Per category, check if selected question has the same value as secretPersons. If so, variable keep gets the value of true
+   if (secretPerson[category] === value) {
      keep = true;
    } else {
      keep = false;
    }
  } else {
-   //TO DO! tom array är samma som no other
-   if (secretPerson.other.includes(currentQuestion.value)) {
-    keep = true
+     //TO DO! tom array är samma som no accessories
+   if (secretPerson[category].includes(value)) {
+     keep = true;
    } else {
-     keep = false
+     keep = false;
    }
- }
- console.log(keep);
+ } 
  filterCharacters(keep);
 }
 
 
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
-  if (category === 'hair') {
+  const { category, value } = currentQuestion;
+  if (category === 'hair'|| category === 'eyes') {
     if (keep === true) {
       alert(
-        `Yes, the person has ${value} hair! Keep all people with ${value} hair.`
+        `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`
       );
-      charactersInPlay = charactersInPlay.filter(character => character.hair.includes(value));
+      // If keep is true charactersInPlay are filtered so only characters who have the same value for current category are kept.
+      charactersInPlay = charactersInPlay.filter(character => character[category] === value);
     }  else {
       alert(
-        `No, the person doesn't have ${value} hair! Remove all people with ${value} hair.`
+        `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`
       )
-      charactersInPlay = charactersInPlay.filter(character => !character.hair.includes(value));
+      // If keep is false charactersInPlay are filtered so all characters with the same value for selected category as the question asked are filterd from the array. 
+      charactersInPlay = charactersInPlay.filter(character => character[category] !== value);
     }
-  } else if (category === 'eyes') {
-    if (keep === true) {
-      alert(
-        `Yes, the person has ${value} eyes! Keep all people with ${value} eyes.`
-      );
-      charactersInPlay = charactersInPlay.filter(character => character.eyes.includes(value));
-    }  else {
-      alert(
-        `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes.`
-      )
-      charactersInPlay = charactersInPlay.filter(character => !character.eyes.includes(value));
-    }
-  } else if (category === 'accessories') {
+  } else {
     if (keep === true) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}.`
       );
-      charactersInPlay = charactersInPlay.filter(character => character.accessories.includes(value));
+      charactersInPlay = charactersInPlay.filter(character => character[category].includes(value));
     }  else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
       )
-      charactersInPlay = charactersInPlay.filter(character => !character.accessories.includes(value));
+      charactersInPlay = charactersInPlay.filter(character => !character[category].includes(value));
     }
-  } else if (category === 'other') {
-    if (keep === true) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
-      );
-      charactersInPlay = charactersInPlay.filter(character => character.other.includes(value));
-    } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value},`
-      )
-      charactersInPlay = charactersInPlay.filter(character => !character.other.includes(value));
-    }
-  } else {
-   console.log('invalid category'); 
-  }
+  } 
+  // Run function to refresh board with removed characters
   generateBoard();
 }
 
@@ -414,12 +374,13 @@ const guess = (personToConfirm) => {
   }
 }
 
-
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secretPerson.name) {
     alert(`You're right! ${personToCheck} is the secret person! You win!`)
+    //clear the board
     board.innerHTML = ''
+    // Changing winLoseScreens display attribute from none to flex, makes it visible, 
     winLoseScreen.style.display='flex';
   } else {
     alert(`Sorry, ${personToCheck} is not the secret person. You lose!`)
@@ -430,6 +391,7 @@ const checkMyGuess = (personToCheck) => {
 
 // All the event listeners
 restartButton.addEventListener('click', start);
+questions.addEventListener('change', selectQuestion);
 findOutBtn.addEventListener('click', () => {
   questionsAsked++;
   checkQuestion();
@@ -439,5 +401,3 @@ playAgainBtn.addEventListener('click', () => {
   winLoseScreen.style.display='none';
   start();
 })
-
- //Belongs to eventlistner on top of script document 

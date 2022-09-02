@@ -15,7 +15,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['sunglasses', 'hat'],
+    accessories: ['hat'],
     other: []
   },
   {
@@ -55,7 +55,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['sunglasses'],
+    accessories: [],
     other: []
   },
   {
@@ -63,7 +63,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['sunglasses'],
+    accessories: [],
     other: []
   },
   {
@@ -71,7 +71,7 @@ const CHARACTERS = [
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['sunglasses'],
+    accessories: [],
     other: []
   },
   {
@@ -79,7 +79,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'necklace'],
+    accessories: ['glasses'],
     other: []
   },
 
@@ -88,7 +88,7 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    accessories: ['sunglasses'],
+    accessories: [],
     other: ['smoker']
   },
   {
@@ -168,7 +168,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['sunglasses', 'hat'],
+    accessories: ['hat'],
     other: []
   },
   {
@@ -286,7 +286,7 @@ const checkQuestion = () => {
   }
 
   else if (category === 'accessories' || category === 'other') {
-    if (value === secret[category]) {
+    if (secret[category].includes(value)) {
       filterCharacters(true)
     }
     else {

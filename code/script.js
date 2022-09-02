@@ -240,8 +240,8 @@ const start = () => {
   setSecret();      // invokes the function that sets a secret person
   selectQuestion(); // invokes the function to be able to select questions
 
-  winOrLose.style.display = "none"  // hiding the game board 
   board.style.display = "flex"      // adding flexbox to this id 
+  winOrLose.style.display = "none"  // hiding the winOrLose section when a game is restarted 
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -250,12 +250,12 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].value;  // Variable that stores the value of the question we've selected.
-  //const value = questions.value;
+  //const value = questions.options[questions.selectedIndex].value;  // Variable that stores the value of the question we've selected.
+  const value = questions.value;
 
   currentQuestion = {
     category: category,
-    value: value //ANNIKA 4. set the value to value
+    value: value // setting value as value
   };
 };
 
@@ -315,7 +315,7 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value}! Keep all people that has ${value}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)); // ANNIKA includes since can have several accessories
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)); // includes since can have several accessories
     } else {
       alert(
         `No, the person doesn't have ${value}. Remove all people with ${value}`
@@ -327,7 +327,7 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person is a ${value}! Keep all people that has a smoking habit`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)); // ANNIKA includes since can have several accessories
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)); // includes since can have several accessories
     } else {
       alert(
         `No, the person is not a ${value}. Remove all people that has a smoking habit`
@@ -373,8 +373,8 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-  winOrLose.style.display = "flex" // ANNIKA Adding flexbox to the win or lose section 
-  board.style.display = "none" // ANNIKA hiding the game board
+  winOrLose.style.display = "flex" // Adding flexbox to the win or lose section 
+  board.style.display = "none" // hiding the game board when winOrLose section is showing
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = "Correct answer!";  
   } else {
@@ -387,6 +387,6 @@ start();
 
 // All the event listeners
 restartButton.addEventListener('click', start);
-questions.addEventListener('change', selectQuestion); // ANNIKA 3. adding an event listener to the question option list
-filterButton.addEventListener('click', checkQuestion); // ANNIKA
+questions.addEventListener('change', selectQuestion); // event listener to the question option list
+filterButton.addEventListener('click', checkQuestion); 
 playAgainButton.addEventListener('click', start);

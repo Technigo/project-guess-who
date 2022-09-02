@@ -4,8 +4,8 @@ const restartButton = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
-const playAgainBtn = document.getElementById('playAgain');
-
+const playAgainBtn = document.getElementById('playAgain')
+const guessCounter = document.getElementById('guess-counter')
 
 const CHARACTERS = [
   {
@@ -257,9 +257,15 @@ const selectQuestion = () => {
   }
   console.log('Question selected', currentQuestion)
 }
+
    // This function invokes when the player click on ‘Find Out’ button. 
    //Compares the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+    let count = 0
     const checkQuestion = () => {
+      count++
+
+      guessCounter.innerHTML = ''
+      guessCounter.innerHTML += `<p>Guess counter: ${count}</p>`
       const { category, value } = currentQuestion 
       if (category === 'hair' || category === 'eyes') {
         if (secret[category] === value) {

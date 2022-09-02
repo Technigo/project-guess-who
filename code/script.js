@@ -245,6 +245,7 @@ const start = () => {
   generateBoard()
   selectQuestion()
   console.log(secret)
+  numberOfGuesses = 3;
 
 }
 
@@ -276,11 +277,11 @@ const checkQuestion = () => {
     if (value === secret[category]) {
       // Invoke filterCharacters
       filterCharacters(true)
-      console.log('true')
+      
     }
     else {
       filterCharacters(false)
-      console.log('false')
+      
     }
   }
 
@@ -299,7 +300,7 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   if (numberOfGuesses < 1) {
     //counter for numberOfGuesses
-    window.alert('you lost, please try again!');
+    window.alert('No more choices, please try again or make a guess!');
     return;
   }
 
@@ -313,49 +314,49 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wears ${value}. !YOU HAVE 3 CHOICES!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person['accessories'].includes(value))
 
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.  !YOU HAVE 3 CHOICES!`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person['accessories'].includes(value))
     }
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person is a ${value}! Keep all people that are ${value}`
+        `Yes, the person is a ${value}! Keep all people that are ${value}. !YOU HAVE 3 CHOICES!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person['other'].includes(value))
     } else {
       alert(
-        `No, the person is not a ${value}! Remove all people that are ${value}`
+        `No, the person is not a ${value}! Remove all people that are ${value}.  !YOU HAVE 3 CHOICES!`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person['other'].includes(value))
     }
   } else if (category === 'hair') {
     if (keep) {
       alert(
-        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair. !YOU HAVE 3 CHOICES!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person['hair'] === value)
     } else {
       alert(
-        `No, the person doesnt have ${value} hair! Remove all people with ${value} hair`
+        `No, the person doesnt have ${value} hair! Remove all people with ${value} hair.  !YOU HAVE 3 CHOICES!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person['hair'] !== value)
     }
   } else if (category === 'eyes') {
     if (keep) {
       alert(
-        `Yes, the person has ${value} eye! Keep all people with ${value} eye`
+        `Yes, the person has ${value} eye! Keep all people with ${value} eye. !YOU HAVE 3 CHOICES!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person['eyes'] === value)
     } else {
       alert(
-        `No, the person doesnt have ${value} eye! Remove all people with ${value} eye`
+        `No, the person doesnt have ${value} eye! Remove all people with ${value} eye.  !YOU HAVE 3 CHOICES!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person['eyes'] !== value)
     }
@@ -388,18 +389,34 @@ const checkMyGuess = (personToCheck) => {
     winOrLose.style.display = 'flex'
     //  Hide the game board
     board.style.display = 'none'
+    //Audiowin
+    winOrLoseText.innerHTML += `
+    <div class= "audio">
+  <audio controls autoplay class="audio"
+    source src="./videosound/win.wav" type="audio/wav">
+  </audio> 
+  </div> `
+
   } else {
     winOrLoseText.innerHTML = `Oh noooo! You lose! 😮 The correct answer is ${secret.name}`;
     // Show the win or lose section
     winOrLose.style.display = 'flex'
     //  Hide the game board
     board.style.display = 'none'
-
-  }
+   //AudioLose
+    winOrLoseText.innerHTML += `
+    <div class= "audio">
+  <audio controls autoplay
+    source src="./videosound/lose.wav" type="audio/wav">
+  </audio> 
+  </div> `
+   }
 
 }
 
+//Playagain when win or lose the game
 playAgainButton.addEventListener('click', () => {
+  console.log('playagain')
   winOrLose.style.display = "none"
   board.style.display = 'flex'
   generateBoard()
@@ -407,6 +424,7 @@ playAgainButton.addEventListener('click', () => {
   start()
   selectQuestion()
 })
+
 
 // Invokes the start function when website is loaded
 start()
@@ -416,4 +434,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 filterButton.addEventListener('click', checkQuestion)
-questions.addEventListener('change', selectQuestion)
+questions.addEventListener('change', selectQuestion) 

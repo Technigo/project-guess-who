@@ -14,23 +14,23 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['happy person']
   },
   {
     name: 'Jack',
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat', 'beard', 'angry-face'],
-    other: [],
+    accessories: ['hat', 'beard'],
+    other: ['angry person'],
   },
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
-    accessories: ['hat', 'beard', 'angry-face'],
-    other: ['smoker'],
+    accessories: ['hat', 'beard'],
+    other: ['smoker', 'angry person'],
   },
   {
     name: 'Jai',
@@ -38,7 +38,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['happy person']
   },
   {
     name: 'Jake',
@@ -46,7 +46,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['happy person']
   },
   {
     name: 'James',
@@ -62,7 +62,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: ['happy person']
   },
   {
     name: 'Jane',
@@ -94,8 +94,8 @@ const CHARACTERS = [
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'hat', 'angry-face'],
-    other: ['smoker']
+    accessories: ['glasses', 'hat'],
+    other: ['smoker', 'angry person']
   },
   {
     name: 'Jeane',
@@ -103,15 +103,15 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['happy person']
   },
   {
     name: 'Jed',
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'hat', 'beard', 'angry-face'],
-    other: ['smoker']
+    accessories: ['glasses', 'hat', 'beard'],
+    other: ['smoker', 'angry person']
   },
   {
     name: 'Jenni',
@@ -135,7 +135,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['happy person']
   },
   {
     name: 'Jess',
@@ -143,15 +143,15 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: ['happy person']
   },
   {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'angry-face'],
-    other: []
+    accessories: ['glasses'],
+    other: ['angry person']
   },
   {
     name: 'Jon',
@@ -159,7 +159,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['happy person']
   },
   {
     name: 'Jordan',
@@ -167,7 +167,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['happy person']
   },
   {
     name: 'Josephine',
@@ -183,7 +183,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['happy person']
   },
   {
     name: 'Jude',

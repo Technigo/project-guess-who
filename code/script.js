@@ -6,6 +6,7 @@ const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findOutBtn = document.getElementById('filter');
 const winLoseScreen = document.getElementById('winOrLose');
+const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainBtn = document.getElementById('playAgain');
 const questionCounter = document.getElementById('number-of-questions');
 //const guessButton = document.getElementById
@@ -214,6 +215,8 @@ let currentQuestion;
 let charactersInPlay;
 let keep;
 let questionsAsked;
+let minutes;
+let seconds; 
 
 // 'Randomly' select a person from the characters array and set as the value of the variable called secret
 const setSecretPerson = () => {
@@ -239,6 +242,34 @@ const generateBoard = () => {
   })
 }
 
+window.onload = () => {
+  minutes = 00;
+  seconds = 00; 
+  let addMinutes = document.getElementById('minutes');
+  let addSeconds = document.getElementById("seconds")
+  let Interval ;
+
+  clearInterval(Interval);
+  Interval = setInterval(timerFunction, 1000);
+  
+  function timerFunction () {
+    seconds++; 
+    if(seconds <= 9){
+      addSeconds.innerHTML = "0" + seconds;
+    } else if (seconds > 9 && seconds <= 59){
+      addSeconds.innerHTML = seconds;
+    } else if (seconds > 59) {
+      console.log("minute");
+      minutes++;
+      addMinutes.innerHTML = "0" + minutes;
+      seconds = 0;
+      addSeconds.innerHTML = "0" + 0;
+    } else if (minutes > 9){
+      addMinutes.innerHTML = minutes;
+    }
+  }
+}
+
 // This function will start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -251,7 +282,7 @@ const start = () => {
   setSecretPerson();
   generateBoard();
   //reset counter
-  questionsAsked = 0;
+  questionsAsked = 5;
   questionCounter.innerHTML = questionsAsked;
   
 }
@@ -383,6 +414,10 @@ const filterCharacters = (keep) => {
   }
   // Run function to refresh board with removed characters
   generateBoard();
+  if (questionsAsked === 0) {
+    alert('That was you last question. Guess now or forfeit the game!');
+    document.getElementById('question-wrapper').style.display='none';
+  }
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -398,27 +433,33 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secretPerson.name) {
-    alert(`You're right! ${personToCheck} is the secret person! You win!`)
+    alert(`You're right! ${personToCheck} is the secret person!`)
     //clear the board
     board.innerHTML = ''
+    console.log(minutes + seconds);
     // Changing winLoseScreens display attribute from none to flex, makes it visible, 
     winLoseScreen.style.display='flex';
+    winOrLoseText.innerHTML = `You win! In ${minutes} minutes and ${seconds} seconds, with ${questionsAsked} questions remaining, you guessed Who!`;
   } else {
-    alert(`Sorry, ${personToCheck} is not the secret person. You lose!`)
+    alert(`Sorry, ${personToCheck} is not the secret person.`)
     board.innerHTML = ''
     winLoseScreen.style.display='flex';
+    winOrLoseText.innerHTML = `You Lose! In ${minutes} minutes and ${seconds} seconds, with ${questionsAsked} questions remaining, you couldn't guess Who!`;
   }
 }
 
 // All the event listeners
-restartButton.addEventListener('click', start);
+restartButton.addEventListener('click', () => {
+  location.reload();
+  start();
+});
 questions.addEventListener('change', selectQuestion);
 findOutBtn.addEventListener('click', () => {
-  questionsAsked++;
+  questionsAsked--;
   checkQuestion();
   questionCounter.innerHTML = questionsAsked;
 })
 playAgainBtn.addEventListener('click', () => {
-  winLoseScreen.style.display='none';
+  location.reload();
   start();
 })

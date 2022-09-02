@@ -14,14 +14,14 @@
     <aside class="question-section">
       <div class="game-timer">
         <p>
-          <span id="minutes">00</span>:
-          <span id="seconds">00</span>:
-          <span id="tenths">00</span> 
-          since game started.</p>
+          Timer:
+          <span id="minutes">00</span>:<span id="seconds">00</span>
+        </p>
       </div>
       <div class="question-counter">
-        <p>Questions asked: <span id="number-of-questions">0</span></p>
+        <p>Questions remaining: <span id="number-of-questions">5</span></p>
       </div>
+      
       <button type="button" id="restart" class="outlined-button restart-button">RESTART</button>
 
       <img
@@ -30,6 +30,7 @@
         alt="Guess Who"
       />
 
+      <div id="question-wrapper">
       <h1>Does the person have</h1>
 
       <select title="questions" id="questions">
@@ -66,8 +67,9 @@
           <option value="no-other">No other attributes</option>
         </optgroup>
       </select>
-
+      
       <button id="filter" class="filled-button">FIND OUT</button>
+    </div>
     </aside>
 
     <section class="board-wrapper">

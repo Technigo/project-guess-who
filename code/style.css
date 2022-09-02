@@ -189,7 +189,7 @@ button {
 }
 
 .win-or-lose h1 {
-  margin-bottom: 32px;
+  margin: 32px;
 }
 
 @media (max-width: 768px) {

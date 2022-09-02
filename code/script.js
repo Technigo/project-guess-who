@@ -14,7 +14,6 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     other: ['smiling'],
-    clothes: 'green'
   },
   {
     name: 'Jack',
@@ -47,7 +46,6 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: 'glasses',
     other: ['smiling'],
-    clothes: 'green'
   },
   {
     name: 'James',
@@ -64,7 +62,6 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: 'glasses',
     other: ['smiling'],
-    clothes: 'green'
   },
   {
     name: 'Jane',
@@ -81,7 +78,6 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: 'glasses',
     other: ['smiling'],
-    clothes: 'green'
   },
 
   {
@@ -90,7 +86,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: 'glasses',
-    other: 'smoker'
+    other: ['smoker']
   },
   {
     name: 'Jean',
@@ -98,7 +94,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: 'smoker'
+    other: ['smoker']
   },
   {
     name: 'Jeane',
@@ -114,8 +110,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: 'smoker',
-    clothes: 'green'
+    other: ['smoker']
   },
   {
     name: 'Jenni',
@@ -131,8 +126,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: 'glasses',
-    other: [],
-    clothes: 'green'
+    other: []
   },
   {
     name: 'Jerry',
@@ -156,8 +150,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: 'glasses',
-    other: [],
-    clothes: 'green'
+    other: []
   },
   {
     name: 'Jon',
@@ -173,8 +166,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: ['smiling'],
-    clothes: 'green'
+    other: ['smiling']
   },
   {
     name: 'Josephine',
@@ -206,8 +198,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: ['smiling'],
-    clothes: 'green'
+    other: ['smiling']
   },
 ]
 
@@ -284,8 +275,6 @@ const checkQuestion = (currentQuestion) => {
     keep = true
   } else if (category === 'accessories' && value === secret.accessories.find(element => element === value)) {
     keep = true
-  } else if (category === 'clothes' && value === secret.clothes.find(element => element === value)) {
-    keep = true
   }
   filterCharacters(keep)
 }
@@ -327,16 +316,7 @@ const filterCharacters = (keep) => {
       alert(`No, the person does not have ${value} eyes! Remove all people that have ${value} eyes!`)
       charactersInPlay = charactersInPlay.filter ((person) => !person.eyes.includes(value))
     }
-
-  } else if (category === 'clothes') {
-    if (keep) {
-      alert (`Yes, the person has ${value} clothes! Remove all people that has ${value} clothes!`)
-      charactersInPlay = charactersInPlay.filter((person) => person.clothes.includes(value))
-    } else {
-      alert (`No, the person does not have ${value} clothes! Remove all that has ${value} clothes!`)
-      charactersInPlay = charactersInPlay.filter((person) => !person.clothes.includes(value))
-    }
-  }
+  } 
   generateBoard()
 }
 

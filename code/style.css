@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--primary)
 }
 
 h1 {
@@ -54,7 +55,6 @@ select {
 }
 
 .board-wrapper {
-  background-color: var(--primary);
   width: 70%;
   display: flex;
   align-items: center;

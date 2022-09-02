@@ -335,31 +335,52 @@ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   if (category === 'hair'|| category === 'eyes') {
     if (keep === true) {
-      alert(
-        `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`
-      );
+      alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`);
       // If keep is true charactersInPlay are filtered so only characters who have the same value for current category are kept.
       charactersInPlay = charactersInPlay.filter(character => character[category] === value);
     }  else {
-      alert(
-        `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`
-      )
+      alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`)
       // If keep is false charactersInPlay are filtered so all characters with the same value for selected category as the question asked are filterd from the array. 
       charactersInPlay = charactersInPlay.filter(character => character[category] !== value);
     }
-  } else {
+  } else if (category === 'accessories') {
     if (keep === true) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
-      );
+      alert(`Yes, the person has a ${value}! Keep all people with a ${value}.`);
       charactersInPlay = charactersInPlay.filter(character => character[category].includes(value));
     }  else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
-      )
+      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}.`)
       charactersInPlay = charactersInPlay.filter(character => !character[category].includes(value));
     }
-  } 
+  } else {
+    if (keep === true) {
+      //This is to make the alert text more gramaticly accurate.
+      if (value === 'smoker') {
+        alert('Correct! The person has a smoking habit. Keep all characters with a smoking habit')
+      } else if( value === 'haddok') {
+        alert('Correct! The person looks somewhat like Captain Haddok. Keep all characters that looks like him.');
+      } else if (value === 'artsy') {
+        alert('Correct! Based on the creators prejudices, the person probably likes art. Keep all artsy-looking characters.');
+      } else if (value === 'bad-day') {
+        alert('Correct! It looks like the person is having a bad day. Keep all characters that seems to have a bad day.');
+      } else {
+        alert('Correct! The person has no "other" attributes. Keep all characters without "other" attributes.');
+      }
+    charactersInPlay = charactersInPlay.filter(character => character[category].includes(value));
+    }  else {
+      if (value === 'smoker') {
+        alert('No, the person does not have a smoking habit. Remove all characters with a smoking habit')
+      } else if( value === 'haddok') {
+        alert('No, the person does not look like Captain Haddok. Remove all characters that looks like him.');
+      } else if (value === 'artsy') {
+        alert('No, based on the creators prejudices, the person is probably not that into art. Remove all artsy-looking characters.');
+      } else if (value === 'bad-day') {
+        alert('No, the person seems to be having a pretty okay day. Remove all characters that seems to have a bad day.');
+      } else {
+        alert('Incorrect! The person does have some "other" attributes. Remove all characters without "other" attributes.');
+      }
+    charactersInPlay = charactersInPlay.filter(character => !character[category].includes(value));
+    }
+  }
   // Run function to refresh board with removed characters
   generateBoard();
 }

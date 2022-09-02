@@ -281,7 +281,7 @@ const checkQuestion = () => {
 }
   
 
-// This function filter the characters array and redraw the game board.
+// This function filter the characters array and redraws the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   if (category === 'hair') {
@@ -351,16 +351,15 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const guessedPerson = confirm(`Are you sure you want to guess on ${personToConfirm}?`) //Sends an 
-  // If the player wants to guess, it invokes the checkMyGuess function.
+  const guessedPerson = confirm(`Are you sure you want to guess on ${personToConfirm}?`) 
   if (guessedPerson) {
-    checkMyGuess(personToConfirm)  //sends the information and invokes the next function
+    checkMyGuess(personToConfirm) 
   } else {
-    window.alert('Maybe that is for the best. Or is it?')
+    window.alert('Maybe that is for the best. Or is it?') //If clicking cancel
   }
 }
 
-// If you confirm, this function is invoked
+// If you confirm, this function is invoked and tells you if you are right or wrong
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `Yes, you got it right!`
@@ -381,11 +380,16 @@ document.getElementById("playAgain").addEventListener("click", () => {
 start()
 
 //Event listeners
-restartButton.addEventListener('click', start) //Reloads the page
+
+restartButton.addEventListener('click', () => {
+  start() //reloads the board
+  counter = 0
+    document.querySelector("#result").innerHTML = counter //resets the counter
+  })
 findOutButton.addEventListener('click', () => {
   selectQuestion()
   checkQuestion()
-  counter++
-  document.querySelector("#result").innerHTML = counter //For every guess the counter ticks up
+   counter++
+  document.querySelector("#result").innerHTML = counter  //For every guess the counter ticks up
 })
 guessButton.addEventListener('click', personToConfirm()) //Compares the guessed person to set secret

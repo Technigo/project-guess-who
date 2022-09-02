@@ -148,6 +148,12 @@ button {
   color: var(--primary);
 }
 
+#countdown {
+  color: aliceblue;
+  font-size: 50px;
+  font-family: "Times New Roman", Times, serif;
+}
+
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;

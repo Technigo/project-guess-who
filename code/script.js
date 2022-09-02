@@ -5,142 +5,143 @@ const restartButton = document.getElementById("restart");
 const playAgainButton = document.getElementById("playAgain");
 const filter = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText"); // Behövs denna???
+const counter = document.getElementById("counter");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
     name: "Amanda",
     img: "images/amanda.png",
-    hair: "hidden",
+    hair: "blonde",
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
-    other: [],
+    accessories: ["earrings"],
+    other: ["hat"],
   },
   {
     name: "Lily",
     img: "images/lily.png",
-    hair: "hidden",
-    eyes: "blue",
-    accessories: ["hat"],
-    other: [],
-  },
-  {
-    name: "Elsa",
-    img: "images/elsa.png",
-    hair: "grey",
-    eyes: "blue",
-    accessories: ["hat"],
-    other: ["smoker"],
-  },
-  {
-    name: "Tina",
-    img: "images/tina.png",
     hair: "black",
     eyes: "brown",
     accessories: [],
     other: [],
   },
   {
-    name: "Anna",
-    img: "images/anna.png",
-    hair: "yellow",
-    eyes: "green",
-    accessories: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Belle",
-    img: "images/belle.png",
+    name: "Elsa",
+    img: "images/elsa.png",
     hair: "brown",
     eyes: "green",
     accessories: ["glasses"],
     other: [],
   },
   {
-    name: "Bob",
-    img: "images/bob.png",
+    name: "Tina",
+    img: "images/tina.png",
+    hair: "black",
+    eyes: "brown",
+    accessories: ["earrings"],
+    other: [],
+  },
+  {
+    name: "Anna",
+    img: "images/anna.png",
+    hair: "hidden",
+    eyes: "brown",
+    accessories: [],
+    other: [],
+  },
+  {
+    name: "Belle",
+    img: "images/belle.png",
     hair: "black",
     eyes: "hidden",
-    accessories: ["glasses"],
-    other: [],
+    accessories: ["earrings"],
+    other: ["hat"],
+  },
+  {
+    name: "Bob",
+    img: "images/bob.png",
+    hair: "red",
+    eyes: "green",
+    accessories: [],
+    other: ["hat"],
   },
   {
     name: "Charlie",
     img: "images/charlie.png",
-    hair: "yellow",
+    hair: "blonde",
     eyes: "hidden",
-    accessories: ["glasses"],
+    accessories: ["glasses", "tie"],
     other: [],
   },
   {
     name: "Christina",
     img: "images/christina.png",
-    hair: "orange",
+    hair: "blonde",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: [""],
     other: [],
   },
 
   {
     name: "Daisy",
     img: "images/daisy.png",
-    hair: "purple",
+    hair: "blonde",
     eyes: "hidden",
     accessories: ["glasses"],
-    other: ["smoker"],
+    other: [],
   },
   {
     name: "Daniel",
     img: "images/daniel.png",
     hair: "brown",
     eyes: "blue",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
-  },
-  {
-    name: "Dave",
-    img: "images/dave.png",
-    hair: "brown",
-    eyes: "green",
     accessories: ["glasses"],
     other: [],
   },
   {
+    name: "Dave",
+    img: "images/dave.png",
+    hair: "hidden",
+    eyes: "green",
+    accessories: ["glasses"],
+    other: ["hat"],
+  },
+  {
     name: "Emma",
     img: "images/emma.png",
-    hair: "orange",
+    hair: "red",
     eyes: "green",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    accessories: [],
+    other: [],
   },
   {
     name: "Hailey",
     img: "images/hailey.png",
-    hair: "white",
+    hair: "brown",
     eyes: "hidden",
-    accessories: ["hat"],
+    accessories: [],
     other: [],
   },
   {
     name: "Hanna",
     img: "images/hanna.png",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses"],
+    hair: "red",
+    eyes: "blue",
+    accessories: [],
     other: [],
   },
   {
     name: "Hilary",
     img: "images/hilary.png",
-    hair: "hidden",
-    eyes: "blue",
-    accessories: ["hat"],
+    hair: "black",
+    eyes: "green",
+    accessories: [],
     other: [],
   },
   {
     name: "Karen",
     img: "images/karen.png",
-    hair: "black",
+    hair: "red",
     eyes: "blue",
     accessories: ["glasses"],
     other: [],
@@ -150,13 +151,13 @@ const CHARACTERS = [
     img: "images/kim.png",
     hair: "black",
     eyes: "brown",
-    accessories: ["glasses"],
+    accessories: ["earrings"],
     other: [],
   },
   {
     name: "Nina",
     img: "images/nina.png",
-    hair: "brown",
+    hair: "black",
     eyes: "green",
     accessories: ["glasses"],
     other: [],
@@ -164,41 +165,41 @@ const CHARACTERS = [
   {
     name: "Sam",
     img: "images/sam.png",
-    hair: "yellow",
+    hair: "black",
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    accessories: [],
     other: [],
   },
   {
     name: "Steve",
     img: "images/steve.png",
-    hair: "grey",
+    hair: "blonde",
     eyes: "brown",
-    accessories: [],
-    other: [],
+    accessories: ["tie"],
+    other: ["hat"],
   },
   {
     name: "Tiffany",
     img: "images/tiffany.png",
-    hair: "yellow",
+    hair: "blonde",
     eyes: "green",
-    accessories: [],
+    accessories: ["glasses", "earrings"],
     other: [],
   },
   {
     name: "Tom",
     img: "images/tom.png",
-    hair: "black",
+    hair: "brown",
     eyes: "green",
-    accessories: [],
+    accessories: ["tie"],
     other: [],
   },
   {
     name: "Adam",
     img: "images/adam.png",
-    hair: "black",
+    hair: "brown",
     eyes: "brown",
-    accessories: ["glasses", "hat"],
+    accessories: ["glasses"],
     other: [],
   },
 ];
@@ -208,6 +209,7 @@ let secret;
 let currentQuestion;
 let charactersInPlay;
 let personToConfirm;
+let numberOfGuesses = 7;
 
 // Draw the game board
 const generateBoard = () => {
@@ -220,7 +222,9 @@ const generateBoard = () => {
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          
         </div>
+        
       </div>
     `;
   });
@@ -246,6 +250,8 @@ const start = () => {
   generateBoard();
   setSecret();
   selectQuestion();
+  console.log(secret);
+
   // What else should happen when we start the game?
 };
 
@@ -281,6 +287,7 @@ const checkQuestion = () => {
   }
 
   filterCharacters(keep);
+  console.log(keep);
 };
 
 // if(currentQuestion === Secret)?????? = keep????
@@ -296,6 +303,7 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
+
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
@@ -309,7 +317,9 @@ const filterCharacters = (keep) => {
     }
   } else if (category === "other") {
     if (keep) {
-      alert(`Yes, the person .... ${value}! Keep all people that ... ${value}`);
+      alert(
+        `Yes, the person wear a ${value}! Keep all people that wear ${value}`
+      );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
@@ -415,3 +425,21 @@ playAgainButton.addEventListener("click", start);
 filter.addEventListener("click", checkQuestion);
 // lyssnar på change-eventet hos/på select elementet(questions)
 questions.addEventListener("change", selectQuestion);
+
+// -------count down------// glöm inte Stop,annars fortsätter timern
+// const countDown = document.getElementById("countdown");
+// const startingMinutes = 5;
+// let time = startingMinutes * 60;
+
+// function updateCountdown() {
+//   const minutes = Math.floor(time / 60);
+//   let seconds = time % 60;
+
+//   if (seconds < 10) {
+//     seconds = `0${seconds}`;
+//   }
+
+//   countDown.innerHTML = `0${minutes}:${seconds}`;
+//   time--;
+// }
+// setInterval(updateCountdown, 1000);

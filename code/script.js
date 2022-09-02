@@ -295,14 +295,14 @@ const filterCharacters = (keep) => {
         person[category].includes(value)
       );
       alert(
-        `Yes, the person has got ${value} hair! Keep all people with ${value} hair`
+        `Yes, the person has got ${value} hair. Keep all people with ${value} hair`
       );
     } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
       alert(
-        `No, the person does not have ${value} hair! Remove all people with ${value} hair`
+        `No, the person does not have ${value} hair. Remove all people with ${value} hair`
       );
     }
   } else if (category === "eyes") {
@@ -311,14 +311,14 @@ const filterCharacters = (keep) => {
         person[category].includes(value)
       );
       alert(
-        `Yes, the person has got ${value} eyes! Keep all people with ${value} eyes`
+        `Yes, the person has got ${value} eyes. Keep all people with ${value} eyes`
       );
     } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
       alert(
-        `No, the person does not have ${value} eyes! Remove all people with ${value} eyes`
+        `No, the person does not have ${value} eyes. Remove all people with ${value} eyes`
       );
     }
   } else if (category === "accessories") {
@@ -327,14 +327,14 @@ const filterCharacters = (keep) => {
         person[category].includes(value)
       );
       alert(
-        `Yes, the person is wearing ${value}! Keep all people with ${value}`
+        `Yes, the person is wearing ${value}. Keep all people with ${value}`
       );
     } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
       alert(
-        `No, the person is not wearing ${value}! Remove all people with ${value}`
+        `No, the person is not wearing ${value}. Remove all people with ${value}`
       );
     }
   } else if (category === "other") {
@@ -342,12 +342,12 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
-      alert(`Yes, the person has got ${value}! Keep all that do`);
+      alert(`Yes, the person has got ${value}. Keep all that do`);
     } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
-      alert(`No, the person does not have ${value}! Remove all that do`);
+      alert(`No, the person does not have ${value}. Remove all that do`);
     }
   }
 
@@ -368,15 +368,21 @@ const guess = (personToConfirm) => {
 // If user presses OK, the game checks they were right or not
 const checkMyGuess = (personToCheck) => {
   if (personToCheck == secret.name) {
-    winOrLoseText.innerHTML += `Congratulations, you won!`;
+    winOrLoseText.innerHTML += `Congratulations, you won! 🥳`;
     // Display confetti if user wins
     const jsConfetti = new JSConfetti();
-    jsConfetti.addConfetti({ emojis: ["✨", "💫", "🌸"], confettiNumber: 50 });
+    jsConfetti.addConfetti({
+      emojis: ["⭐️"],
+      emojiSize: 35,
+      confettiNumber: 10,
+    });
+    jsConfetti.addConfetti({ confettiNumber: 500, confettiRadius: 5 });
   } else {
-    winOrLoseText.innerHTML += `Game over... Better luck next time!`;
+    winOrLoseText.innerHTML += `Game over... 😢<br>
+    Better luck next time! `;
     // Display sympathy confetti if user loses
     const jsConfetti = new JSConfetti();
-    jsConfetti.addConfetti({ emojis: ["🦄"], confettiNumber: 5 });
+    jsConfetti.addConfetti({ confettiNumber: 4, confettiRadius: 3 });
   }
 
   winOrLose.style.display = "flex";

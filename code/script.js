@@ -208,6 +208,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 let keep
+let counter = 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -230,6 +231,7 @@ const generateBoard = () => {
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
+
 
 // This function to start (and restart) the game
 const start = () => {
@@ -385,5 +387,8 @@ restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', () => {
   selectQuestion()
   checkQuestion()
+  
+  counter++
+  document.querySelector("#result").innerHTML = counter
 })
 guessButton.addEventListener('click', personToConfirm())

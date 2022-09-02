@@ -13,7 +13,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Jack',
@@ -21,7 +21,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Jacques',
@@ -29,7 +29,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['open mouth', 'smoking habit']
+    other: ['smoker']
   },
   {
     name: 'Jai',
@@ -37,7 +37,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Jake',
@@ -45,7 +45,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'James',
@@ -69,7 +69,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Jaqueline',
@@ -77,7 +77,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Jazebelle',
@@ -85,7 +85,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoking habit']
+    other: ['smoker']
   },
   {
     name: 'Jean',
@@ -93,7 +93,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoking habit']
+    other: ['smoker']
   },
   {
     name: 'Jeane',
@@ -101,7 +101,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Jed',
@@ -109,7 +109,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoking habit']
+    other: ['smoker']
   },
   {
     name: 'Jenni',
@@ -117,7 +117,7 @@ const CHARACTERS = [
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Jeri',
@@ -125,7 +125,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Jerry',
@@ -141,7 +141,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Jocelyn',
@@ -149,7 +149,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Jon',
@@ -157,7 +157,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Jordan',
@@ -173,7 +173,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'brown',
     accessories: [],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Josh',
@@ -181,7 +181,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: ['open mouth']
+    other: []
   },
   {
     name: 'Jude',
@@ -197,7 +197,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: ['open mouth']
+    other: []
   },
 ];
 
@@ -283,31 +283,31 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category].includes(value)
+      charactersInPlay = charactersInPlay.filter((person) => 
+        person[category].includes(value)
       );
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => !person[category].includes(value)
+      charactersInPlay = charactersInPlay.filter((person) => 
+        !person[category].includes(value)
       );
     };
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person has a ${value}! Keep all people that has a ${value}`
+        `Yes, the person is a ${value}! Keep all people that are ${value}'s`
       );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category].includes(value)
+      charactersInPlay = charactersInPlay.filter((person) => 
+        person[category].includes(value)
       );
     } else {
       alert(
-        `No, the person doesen't have a ${value}! Remove all people that has a ${value}`
+        `No, the person isn't a ${value}! Remove all people that are ${value}'s`
       );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => !person[category].includes(value)
+      charactersInPlay = charactersInPlay.filter((person) => 
+      !person[category].includes(value)
       );
     };
   } else {
@@ -315,15 +315,15 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} ${category}! Keep all the people that has ${value} ${category}`
       ); 
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] === value
+      charactersInPlay = charactersInPlay.filter((person) => 
+        person[category] === value
       );
     } else {
       alert (
         `No, the person doesn't have ${value} ${category}! Remove all people that has ${value} ${category}`
       );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] !== value
+      charactersInPlay = charactersInPlay.filter((person) => 
+        person[category] !== value
       );
     };
   };
@@ -333,7 +333,7 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player have to confirm that they want to make a guess.
 const guess = (personToConfirm) => { 
   let userConfirm = confirm(`Do you think the secret person is ${personToConfirm}?`)
-  if (confirm) {
+  if (userConfirm) {
     checkMyGuess(personToConfirm)
   };
 };
@@ -341,7 +341,7 @@ const guess = (personToConfirm) => {
 // If player confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    winOrLoseText.innerHTML = `You guessed right, §{personToCheck} is the secret person!! Good job!`
+    winOrLoseText.innerHTML = `You guessed right, ${personToCheck} is the secret person!! Good job!`
   } else {
     winOrLoseText.innerHTML = `Ooh noo! You guessed wrong :( ${personToCheck} is not the secret person, ${secret.name} is!`
   }

@@ -205,7 +205,6 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
-    background-color: rgb(252, 234, 247);
   }
 
   .card {

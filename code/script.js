@@ -3,9 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filter = document.getElementById('filter')
-const playAgain = document.getElementById('playAgain')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -371,30 +371,49 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const confirmation = confirm(`Is your final guess ${personToConfirm}?`);
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-  if (confirmation === true) {
-    checkMyGuess(personToConfirm);
-  } else {
-    alert ('Continue guessing')
-  }
-}
+  const result = window.confirm(`Are you sure this is your choice?`);
 
-// If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-  board.style.display = "none" 
-  if (personToCheck === secret.name) {
-    winOrLose.innerHTML = `Wohoo! ${secret.name} is correct!`;  
-  } else {
-    winOrLose.innerHTML = `Oh no! Your guess is wrong! The correct answer is ${secret.name}`;
+  if (result) {
+    checkMyGuess(personToConfirm);
   }
-}
+};
+
+// If confirm, this function follows
+const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    alert("Wohoo that's correct! You Win!");
+    board.innerHTML = "";
+    winOrLose.style.display = "block";
+  } else {
+    alert(`Oh no! Your guess is wrong! The correct answer is ${secret.name}`);
+    reset();
+  }
+};
+
+//   const confirmation = confirm(`Is your final guess ${personToConfirm}?`);
+//   // store the interaction from the player in a variable.
+//   // remember the confirm() ?
+//   // If the player wants to guess, invoke the checkMyGuess function.
+//   if (confirmation === true) {
+//     checkMyGuess(personToConfirm);
+//   } else {
+//     alert ('Continue guessing')
+//   }
+// }
+
+// // If you confirm, this function is invoked
+// const checkMyGuess = (personToCheck) => {
+//   // 1. Check if the personToCheck is the same as the secret person's name
+//   // 2. Set a Message to show in the win or lose section accordingly
+//   // 3. Show the win or lose section
+//   // 4. Hide the game board
+//   board.style.display = "none" 
+//   if (personToCheck === secret.name) {
+//     winOrLose.innerHTML = `Wohoo! ${secret.name} is correct!`;  
+//   } else {
+//     winOrLose.innerHTML = `Oh no! Your guess is wrong! The correct answer is ${secret.name}`;
+//   }
+// }
 
 // Invokes the start function when website is loaded
 start();
@@ -403,4 +422,4 @@ start();
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion); 
 filter.addEventListener('click', checkQuestion); 
-playAgain.addEventListener('click', start);
+playAgain.addEventListener("click", start);

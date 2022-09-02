@@ -1,14 +1,16 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary:  #dc6d54;  
+  --secondary: #94B49F;
 }
+
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: #FCF8E8; 
 }
 
 h1 {
@@ -198,6 +200,11 @@ button {
   h1 {
     font-size: 24px;
     line-height: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+    line-height: 25px;
   }
 
   .guess-who-icon {

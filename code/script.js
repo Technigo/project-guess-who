@@ -1,6 +1,6 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board');
-const questions = document.getElementById('questions'); // This is an object
+const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findOutButton = document.getElementById('filter');
 const winOrLoseText = document.getElementById('winOrLoseText');
@@ -65,7 +65,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace'],
     other: []
   },
   {
@@ -81,7 +81,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace', 'earrings'],
     other: []
   },
 
@@ -154,7 +154,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings'],
     other: []
   },
   {
@@ -170,7 +170,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'necklace'],
     other: []
   },
   {
@@ -178,7 +178,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -211,7 +211,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
-let counter = 0;
+let counter;
 
 // Draw the game board
 const generateBoard = () => {
@@ -237,19 +237,25 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  winOrLoseSection.style.display = 'none';
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS;
 
-  // Load the board of characters
-  generateBoard();
-  
-  // Set secret person
-  setSecret();
+  // Hide win or lose section is visible from previous game
+  winOrLoseSection.style.display = 'none';
+
+  // This is so the that the first visible value in the select dropdown is not 'brown hair' but 'select'
+  questions.value="";
 
   // Reset counter and remove number of guesses from previous game
   counter = 0;
   numberOfguesses.innerHTML = `<h2>Number of guesses: </h2">`
+
+  // Set charactersInPlay array to be all the characters to start with
+  charactersInPlay = CHARACTERS;
+
+  // Load the board of characters
+  generateBoard();
+
+  // Set secret person
+  setSecret();  
 }
 
 // Setting the currentQuestion object when you select something in the dropdown
@@ -282,8 +288,7 @@ const checkQuestion = () =>
       filterCharacters(); // Remove everyone with that hair/eye colour
     }
   } 
-  else if (category === 'accessories' || category === 'other') 
-  {
+  else if (category === 'accessories' || category === 'other') {
     if (secret[category].includes(value)) {
       filterCharacters(true);
     }
@@ -294,7 +299,7 @@ const checkQuestion = () =>
 
   // Increment counter for number of guesses/questions the player makes
   counter++;
-  numberOfguesses.innerHTML = `<h2>Number of guesses: ${counter}</h2">`
+  numberOfguesses.innerHTML = `<h2>Number of guesses: ${counter}</h2">`;
 }
 
 // Filter the characters array and redraw the game board.
@@ -323,12 +328,10 @@ const filterCharacters = (keep) => {
   } 
   else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } 
     else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
@@ -340,8 +343,10 @@ const filterCharacters = (keep) => {
 
 // When clicking guess, the player first has to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+
   // Store the interaction from the player in a variable
   const playersGuess = confirm(`Do you want to guess ${personToConfirm}?`);
+  
   // If the player wants to guess, invoke the checkMyGuess function
   if (playersGuess) {
     checkMyGuess(personToConfirm);
@@ -357,17 +362,14 @@ const checkMyGuess = (personToCheck) => {
   }
   else {
     winOrLoseText.innerText = `That's incorrect!\n\n It is not ${personToCheck}, the secret person is ${secret.name}.`;
-    winOrLoseSection.style.display = 'flex';
-    //setTimeout(() => {winOrLoseSection.style.display = 'none'}, 3000);
-    // Go back to the same board if user doesn't click restart in 3 seconds:
   }
+
   winOrLoseSection.style.display = 'flex';
 }
 
 // Start function invoked when website is loaded
 start()
 
-console.log(secret)
 
 // All the event listeners
 restartButton.addEventListener('click', start);

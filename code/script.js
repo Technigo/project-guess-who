@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const filterButton = document.getElementById('filter') // ANNIKA
+const filterButton = document.getElementById('filter') //Added
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
@@ -229,7 +229,6 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  console.log(secret);
 };
 
 // This function to start (and restart) the game
@@ -238,8 +237,8 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard(); //ANNIKA 1. calling the function show the board
-  setSecret();    // ANNIKA 2. setting a secret person at start
-  selectQuestion(); //ANNIKA
+  setSecret();    // ANNIKA 2. invokes the function that sets a secret person
+  selectQuestion(); //ANNIKA 3. invokes the function to be able to select questions
 
   winOrLose.style.display = "none" // ANNIKA Adding flexbox to this id 
   board.style.display = "flex" // ANNIKA hiding the game board
@@ -364,7 +363,7 @@ const guess = (personToConfirm) => {
   if (confirmation === true) {
     checkMyGuess(personToConfirm);
   } else {
-    alert ('Okay, keep guessing then.')
+    alert ('Okay, you can keep guessing')
   }
 }
 

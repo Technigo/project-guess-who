@@ -230,12 +230,10 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  // What else should happen when we start the game?
-  numberOfGuesses = 5
+  //this connects to the counter id on HTML
+  numberOfGuesses = 5 
   document.getElementById('guess-counter').innerHTML = `${numberOfGuesses}`
   charactersInPlay = CHARACTERS
   generateBoard() 
@@ -253,7 +251,6 @@ const selectQuestion = () => {
 
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value
-  console.log(secret)
 
   currentQuestion = {
     category: category,
@@ -262,9 +259,6 @@ const selectQuestion = () => {
 }
 
 // This function should be invoked when you click on 'Find Out' button.
-// Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
 const checkQuestion = () => {
   numberOfGuesses -= 1
   document.getElementById('guess-counter').innerHTML = `${numberOfGuesses}`
@@ -309,33 +303,28 @@ const filterCharacters = (keep) => {
       alert(
         `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`
       )
-      
     }
   } 
   else if (category === 'eyes') {
     if(keep){
     alert(
       `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`
-    );
-    
+    ); 
   } else {
     alert(
       `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
     );
-    
   }
   }
    else if (category === 'accessories') {
     if(keep){
       alert(
         `Yes, the person has ${value}! Keep all people that have ${value}`
-      );
-       
+      ); 
     } else {
       alert(
         `No, the person does not have ${value}! Remove all the people that have ${value}`
-      );
-      
+      ); 
     }
   } 
   else if (category === 'other') {
@@ -343,7 +332,6 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person is a ${value}! Keep all people that is a ${value}`
       );
-      
     } else {
       alert(
         `No, the person is not a ${value}! Remove all the people that is a ${value}`
@@ -367,8 +355,6 @@ const filterCharacters = (keep) => {
 } 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-// store the interaction from the player in a variable.
-// remember the confirm() ?
 // If the player wants to guess, invoke the checkMyGuess function.
 const guess = (personToConfirm) => {
   const guessed = confirm(`Is ${personToConfirm} your choice?`)
@@ -395,6 +381,7 @@ const checkMyGuess = (personToCheck) => {
 // Invokes the start function when website is loaded
 start()
 
+//this connects to play again button because i want it to display the board game again
 const playAgain = () => {
   document.getElementById('winOrLose').style.display = 'none'
   board.style.display = 'flex'
@@ -407,30 +394,14 @@ restartButton.addEventListener('click', () => {
   board.style.display = 'flex'
   board.style.flexDirection = 'row-reverse'
 })
-//playAgainButton.addEventListener('click', playAgain)
+
+//I make sure that the find out button & board start
 playAgainButton.addEventListener('click', () => {
   playAgain()
   findOutButton.style.display = 'block'
 })
-findOutButton.addEventListener('click', () => {
-  selectQuestion()
-  checkQuestion()
-})
-
-
-/* 
- restartButton.addEventListener('click', start) //Reloads the page
-
-restartButton.addEventListener('click', () => {
-  counter= 0
-  document.querySelector("#result").innerHTML = counter //For every guess the counter ticks up
-})
-
 
 findOutButton.addEventListener('click', () => {
   selectQuestion()
   checkQuestion()
-  counter++
-  document.querySelector("#result").innerHTML = counter //For every guess the counter ticks up
 })
-*/

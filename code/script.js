@@ -240,7 +240,11 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard ()
   setSecret ()
+  winOrLose.style.display = 'none';
+  board.style.display = "flex";
+
 }
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -272,8 +276,11 @@ const checkQuestion = () => {
       filterCharacters(false)
     }
 
+
+
   } else if (category === 'accessories' || category === 'other') {
-    if (value === secret.accessories || value === secret.other ) {
+    //if (value === secret.accessories || value === secret.other ) {
+      if (secret.accessories.includes(value) || secret.other.includes(value)) {
       filterCharacters(true)
     } else {
       filterCharacters(false)
@@ -350,7 +357,7 @@ const guess = (personToConfirm) => {
   if (playerGuess) {
     checkMyGuess(personToConfirm)
   } else {
-    alert('Ok, keep playing!')
+    alert('Got it, keep playing!')
   }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
@@ -362,7 +369,7 @@ const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   if (personToCheck === secret.name) {
-   winOrLoseText.innerHTML = "Congrats, you are right.  Well played!"
+   winOrLoseText.innerHTML = "Congrats, ${personToCheck} is right.  Well played!"
    
   }
   else {
@@ -370,9 +377,9 @@ const checkMyGuess = (personToCheck) => {
  
   }
   // 3. Show the win or lose section
-  winOrLoseSection.style.display = "flex"
+  winOrLoseSection.style.display = 'flex'
   // 4. Hide the game board
-  board.innerHTML =''
+  board.style.display = 'none'
   
   
 }
@@ -384,3 +391,4 @@ start()
 restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
+playAgainButton.addEventListener('click', start)

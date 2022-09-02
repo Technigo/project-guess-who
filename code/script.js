@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
 
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -20,16 +21,16 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    accessories: ['hat', 'beard', 'angry-face'],
+    other: [],
   },
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    accessories: ['hat', 'beard', 'angry-face'],
+    other: ['smoker'],
   },
   {
     name: 'Jai',
@@ -93,7 +94,7 @@ const CHARACTERS = [
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'angry-face'],
     other: ['smoker']
   },
   {
@@ -109,7 +110,7 @@ const CHARACTERS = [
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'beard', 'angry-face'],
     other: ['smoker']
   },
   {
@@ -149,7 +150,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'angry-face'],
     other: []
   },
   {
@@ -189,7 +190,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
+    accessories: ['beard'],
     other: []
   },
   {
@@ -233,12 +234,17 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
+  numberOfGuesses = 5
+  document.getElementById('guess-counter').innerHTML = `${numberOfGuesses}`
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard() 
   setSecret()
   console.log(secret.name);
+
 }
+
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -258,6 +264,8 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  numberOfGuesses -= 1
+  document.getElementById('guess-counter').innerHTML = `${numberOfGuesses}`
   const { category, value } = currentQuestion;
 
   let keep 
@@ -265,7 +273,11 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  if (numberOfGuesses === -1) {
+    findOutButton.style.display = 'none'
+    document.getElementById('guess-counter').innerHTML = `No guesses left. Time to make a guess!`
+  }
+  else if (category === 'hair' || category === 'eyes') {
     if(value === secret[category]){
       keep = true
     } else {
@@ -282,6 +294,9 @@ const checkQuestion = () => {
     filterCharacters(keep)
 }
 
+
+
+
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
@@ -289,12 +304,12 @@ const filterCharacters = (keep) => {
   if (category === 'hair') {
     if (keep) {
       alert(
-        `Yes, the person has ${value}! Keep all people that have ${value}`
+        `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
       );
       
     } else {
       alert(
-        `No, the person doesn't have ${value}! Remove all people that have ${value}`
+        `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`
       )
       
     }
@@ -302,12 +317,12 @@ const filterCharacters = (keep) => {
   else if (category === 'eyes') {
     if(keep){
     alert(
-      `Yes, the person has ${value}! Keep all people that have ${value}`
+      `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`
     );
     
   } else {
     alert(
-      `No, the person doesn't have ${value}! Remove all people that have ${value}`
+      `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
     );
     
   }
@@ -396,7 +411,11 @@ restartButton.addEventListener('click', () => {
   board.style.display = 'flex'
   board.style.flexDirection = 'row-reverse'
 })
-playAgainButton.addEventListener('click', playAgain)
+//playAgainButton.addEventListener('click', playAgain)
+playAgainButton.addEventListener('click', () => {
+  playAgain()
+  findOutButton.style.display = 'block'
+})
 findOutButton.addEventListener('click', () => {
   selectQuestion()
   checkQuestion()
@@ -404,4 +423,5 @@ findOutButton.addEventListener('click', () => {
 
 
 /* 
+ 
 */

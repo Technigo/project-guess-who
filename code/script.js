@@ -3,7 +3,8 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
-const winOrLoseText = document.getElementById('winOrLoseText');
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainBtn = document.getElementById('playAgain');
 
 
 const CHARACTERS = [
@@ -256,34 +257,10 @@ const selectQuestion = () => {
   }
   console.log('Question selected', currentQuestion)
 }
-
-// This function should be invoked when you click on 'Find Out' button.
-/*const checkQuestion = (currentQuestion) => {
-  const { category, value } = currentQuestion
-  console.log(category)
-  console.log(value)
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  let keep
-  if (category === 'hair' && value === secret.hair) {
-    keep = true
-  } else if (category === 'eyes' && value === secret.eyes) {
-    keep = true
-  } else if (category === 'other' && value === secret.other.find(element => element === value)) {
-    keep = true
-  } else if (category === 'accessories' && value === secret.accessories.find(element => element === value)) {
-    keep = true
-  }
-  filterCharacters(keep)*/
-
-   // This function invokes when the player click on ‘Find Out’ button.
+   // This function invokes when the player click on ‘Find Out’ button. 
+   //Compares the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
     const checkQuestion = () => {
-      const { category, value } = currentQuestion
-      // Compares the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-      // Sees if we should keep or remove people based on that
-      // Then invokes filterCharacters
+      const { category, value } = currentQuestion 
       if (category === 'hair' || category === 'eyes') {
         if (secret[category] === value) {
           filterCharacters(true);
@@ -351,12 +328,8 @@ const guess = (personToConfirm) => {
     checkMyGuess(personToConfirm)
   }
 }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 
-
-// If you confirm, this function is invoked
+// When you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     console.log('Win!')
@@ -369,15 +342,11 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerText = `Wrong! It was ${secret.name}.`
     board.style.display = 'none'
   }
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 }
 
 start();
 
-// All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutBtn.addEventListener('click', checkQuestion)
+playAgainBtn.addEventListener('click', start)

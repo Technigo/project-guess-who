@@ -211,8 +211,7 @@
   let secret;
   let currentQuestion;
   let charactersInPlay;
-  let keep;
-  //assigned a global variable
+  
 
   // Draw the game board
   const generateBoard = () => {
@@ -267,19 +266,23 @@
 
   // This function should be invoked when you click on 'Find Out' button.
   const checkQuestion = () => {
-    const { category, value } = currentQuestion;
-
-    if (category === "hair" || category === "eyes") {
-      if (value === secret[category]) {
-        keep = true;
-      }
-    } else if (category === "accessories" || category === "other") {
-      if (secret[category].includes(value)) {
-        keep = true;
-      }
+    const { category, value } = currentQuestion
+  let keep = false
+  if (category === 'hair' || category === 'eyes') {
+    if (value === secret[category]) {
+      keep = true
+    } else {
+      keep = false
     }
-    filterCharacters(keep);
-  };
+  } else if (category === 'accessories' || category === 'other') {
+    if (secret[category].includes(value)) {
+    keep = true
+  } else {
+    keep = false
+  }
+}
+filterCharacters(keep)
+}
 
   // It'll filter the characters array and redraw the game board.
   const filterCharacters = (keep) => {

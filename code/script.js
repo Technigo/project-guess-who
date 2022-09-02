@@ -235,10 +235,13 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  winOrLose.style.display = 'none';
+  board.style.display = "flex";
   generateBoard();
   setSecret();
   console.log(secret.name);
   selectQuestion();
+  
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -273,10 +276,10 @@ const checkQuestion = () => {
   console.log(`choosed ${value} and then pressed find out: keep= ${keep}`);
 }
 
-// It'll filter the characters array and redraw the game board.
+// It'll filter the characters array and redraw the game board and show the correct alert message for different categories and filter away characters due to question
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories and filter away characters due to question
+  
     if (category === 'accessories') {
       if (keep) {
         alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
@@ -288,10 +291,10 @@ const filterCharacters = (keep) => {
    }
     else if (category === 'other') {
       if (keep) {
-        alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
+        alert(`Yes, the person is a ${value}! Keep all the ${value}s`);
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
       } else {
-        alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
+        alert(`No, the person isn't a ${value}! Remove all the ${value}s`);
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
       }
     }
@@ -315,20 +318,23 @@ const guess = (personToConfirm) => {
   const confirmGuess = confirm(`Are you sure you want to guess ${personToConfirm}?`);
   // If the player wants to guess, invoke the checkMyGuess function.   
   if (confirmGuess) { //confirm  = true if user click yes
-       checkMyGuess(personToConfirm); //Why not passing personToCheck?!
+       checkMyGuess(personToConfirm); //Why not passing personToCheck?!And why do I have to pass personToConfirm
     }
-}
+} //Does not need to add an else, because if the user don't confirm, checkMyGUess is not invoked and user can continue ask questions.
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
-  if (personToCheck === secret.name)
+  if (personToCheck === secret.name) {
   // 2. Set a Message to show in the win or lose section accordingly
   winOrLoseText.innerHTML = `Correct, you win!`; 
+  } else {
+    winOrLoseText.innerHTML = `Wrong, you loose!`;
+  }
   // 3. Show the win or lose section
   winOrLose.style.display = 'flex'; 
   // 4. Hide the game board
-  board.style.display = 'none'; //NOT WORKING
+  board.style.display = 'none'; 
 };
 
 // Invokes the start function when website is loaded

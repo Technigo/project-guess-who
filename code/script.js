@@ -22,7 +22,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['beard']
+    other: ['bearded']
   },
   {
     name: 'Jacques',
@@ -30,7 +30,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker', 'beard']
+    other: ['smoking', 'bearded']
   },
   {
     name: 'Jai',
@@ -77,7 +77,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings'],
     other: []
   },
 
@@ -87,7 +87,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['smoking']
   },
   {
     name: 'Jean',
@@ -95,7 +95,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoking']
   },
   {
     name: 'Jeane',
@@ -111,7 +111,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker', 'beard']
+    other: ['smoking', 'bearded']
   },
   {
     name: 'Jenni',
@@ -150,7 +150,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings'],
     other: []
   },
   {
@@ -174,7 +174,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -191,7 +191,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: ['beard']
+    other: ['bearded']
   },
   {
     name: 'Julie',
@@ -332,13 +332,13 @@ const filterCharacters = (keep) => {
       else if (category === 'other') {
         if (keep) {
           alert(
-            `Yes, the person is a ${value}! Keep all people that is a ${value}`
+            `Yes, the person is ${value}! Keep all people that is ${value}`
           )
           charactersInPlay = charactersInPlay.filter(person => person[category].includes(value)
           );
         } else {
           alert(
-            `No, the person is not a ${value}! Remove all the people that is a ${value}`
+            `No, the person is not ${value}! Remove all the people that are ${value}`
           )
           charactersInPlay = charactersInPlay.filter(person => !person[category].includes(value)
           );
@@ -358,9 +358,6 @@ const guess = (personToConfirm) => {
     window.alert('Sorry, try again!')
   }
 }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 
 
 // If you confirm, this function is invoked
@@ -375,11 +372,13 @@ const checkMyGuess = (personToCheck) => {
   }
 }
 
-start()
+//Reloads the page after clicking Play again button
+document.getElementById("playAgain").addEventListener("click", () => {
+  location.reload(console.log("event triggered"))
+  return false
+})
 
- reload = () => {
-  window.location.reload()
-}
+start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
@@ -388,5 +387,3 @@ findOutButton.addEventListener('click', () => {
   checkQuestion()
 })
 guessButton.addEventListener('click', personToConfirm())
-playAgainButton.addEventListener('click', reload)
-//playAgainButton.addEventListener('click', alert('abc'))

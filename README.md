@@ -1,5 +1,5 @@
 # Project Name
-The task was to create a "Gusse who"-game with focus on the JS.
+The task was to create a "Guess who"-game with focus on the JS.
 
 
 ## The problem

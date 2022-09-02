@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', ()=> {
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOut = document.getElementById('filter')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -311,24 +311,25 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const confirmGuess = confirm(`Are you sure you want to guess ${personToConfirm}?`);
-    if (confirmGuess) {
-       checkMyGuess(personToCheck);
-    }
   // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  const confirmGuess = confirm(`Are you sure you want to guess ${personToConfirm}?`);
+  // If the player wants to guess, invoke the checkMyGuess function.   
+  if (confirmGuess) { //confirm  = true if user click yes
+       checkMyGuess(personToConfirm); //Why not passing personToCheck?!
+    }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
-  //if (personToCheck === secret.name)
-  //alert('WIN')
+  if (personToCheck === secret.name)
   // 2. Set a Message to show in the win or lose section accordingly
+  winOrLoseText.innerHTML = `Correct, you win!`; 
   // 3. Show the win or lose section
+  winOrLose.style.display = 'flex'; 
   // 4. Hide the game board
-}
+  board.style.display = 'none'; //NOT WORKING
+};
 
 // Invokes the start function when website is loaded
 start();
@@ -337,4 +338,5 @@ start();
 restartButton.addEventListener('click', start)
 findOut.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
-});
+playAgain.addEventListener('click', start)
+

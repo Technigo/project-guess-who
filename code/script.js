@@ -1,10 +1,14 @@
 // All the DOM selectors stored as short variables
-document.addEventListener("DOMContentLoaded", () => {
+
   const board = document.getElementById("board");
   const questions = document.getElementById("questions");
   const restartButton = document.getElementById("restart");
-  const findOutButton = document.getElementById("filter");
-  const guessButton = document.getElementById("guess-button");
+  const findOutButton = document.getElementById('filter');
+  const winOrLose = document.getElementById('winOrLose');
+  const winOrLoseText = document.getElementById('winOrLoseText');
+  const playAgain = document.getElementById('playAgain')
+  
+
 
   // Array with all the characters, as objects
   const CHARACTERS = [
@@ -220,10 +224,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <img src=${person.img} alt=${person.name}>
           <div class="guess">
             <span>Guess on ${person.name}?</span>
-            <button class="filled-button small" id="guess-button" onclick="guess('${person.name}')">Guess</button>
+            <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
           </div>
         </div>
-      `;
+      `;  
     });
   };
 
@@ -236,6 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // This function to start (and restart) the game
   const start = () => {
     charactersInPlay = CHARACTERS; // Here we're setting charactersInPlay array to be all the characters to start with
+    document.getElementById('winOrLose').style.display = "none";
     generateBoard(); //call/invoke function generateBoard on row 210
     setSecret(); //call/invoke function setSecret on row 227
     console.log("secret:", secret);
@@ -346,28 +351,47 @@ document.addEventListener("DOMContentLoaded", () => {
     generateBoard();
   };
 
-  // when clicking guess, the player first have to confirm that they want to make a guess.
-  const guess = (personToConfirm) => {
-    /*  confirm(window.alert(Are you sure you want to guess?) =>) */
-    // store the interaction from the player in a variable.
-    // remember the confirm() ?
-    // If the player wants to guess, invoke the checkMyGuess function.
-  };
+// when clicking guess, the player first have to confirm that they want to make a guess.
+function guess(personToConfirm) {
+  const userGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`)
 
-  // If you confirm, this function is invoked
-  const checkMyGuess = (personToCheck) => {
-    // 1. Check if the personToCheck is the same as the secret person's name
-    // 2. Set a Message to show in the win or lose section accordingly
-    // 3. Show the win or lose section
-    // 4. Hide the game board
-  };
+  if (userGuess) {
+    checkMyGuess(personToConfirm)
+  } else {
+    alert('nevermind!')
+  }
+}
 
-  // Invokes the start function when website is loaded
-  start();
+// If you confirm in the previous step, this function is invoked
+const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    let displayWinOrLose = () => {
+      document.getElementById('winOrLose').style.display = "flex"; // this display the winOrLose wrapper
+      winOrLoseText.innerHTML = `Hurray! You win! ${personToCheck} was correct!`
+    }
+      board.innerHTML ='' // this cleard the board
+      displayWinOrLose()
+  } else {
+    let displayWinOrLose = () => {
+      document.getElementById('winOrLose').style.display = "flex";
+      winOrLoseText.innerHTML = `Sorry, too bad! ${personToCheck} was incorrect! ${secret.name} was the correct answer. You lost`
+    }
+    board.innerHTML =''
+    displayWinOrLose()
+  }
+}
+
+  
+
+  start()
+
+  
 
   // All the event listeners
   restartButton.addEventListener("click", start);
+  playAgain.addEventListener('click', start)
   questions.addEventListener("change", selectQuestion);
   findOutButton.addEventListener("click", checkQuestion);
-  /* guessButton.addEventListener('click', guess) */
-});
+  
+    
+

@@ -1,12 +1,10 @@
-# Project Name
+# Project Guess Who game 
 
-Replace this readme with your own information about your project.
+Week 2 project in Technigo Bootcamp. I need to make the popular game "Guess Who" to work using JS, HTML and CSS. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## The main problem was to understand how to make filtering in the game, as well how to use functions and event listeners in proper time in the code. 
 
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I went many times for documantation and videos that we got with the project to understand how different things work in JS. It was a difficult assigment for week 2 for me, without previous knowledge about programming language. However, will many tries, help from classmates and coding mentors it works in the end. 
 
 ## View it live
 

@@ -209,7 +209,7 @@ let currentQuestion
 let charactersInPlay
 let keep 
 
-// Draw the game board
+// Function: generateBoard draws the game board
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -226,18 +226,18 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Function: setSecret randomly selects a person from the charachter array (this is the secret person).
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
   console.log('secret person;', secret) //This console.log allows me to see who the secret person is for each game. 
 }
 
-// This function to start (and restart) the game
+// Function: starts the game. 
 const start = () => {
   charactersInPlay = CHARACTERS // Here we're setting charactersInPlay array to be all the characters to start with
 }
 
-// This function sets the currentQuestion when the user selects something in the dropdow. The function is invoked when selecting an item in the dropdown.
+// Function: selectQuestion sets the currentQuestion when the user selects something in the dropdown (ie when the user formulates his/her question).
 const selectQuestion = () => {
   console.log('This is the question that I want answered')
   const category = questions.options[questions.selectedIndex].parentNode.label // This variable stores what option group (category) the question belongs to.
@@ -276,8 +276,7 @@ const selectQuestion = () => {
      }
   }
 
-
-// This function is invoked when you click on 'Find Out' button.
+// Function: checkQuestion is invoked when pressing the findOutButton, and leads to the filter function. 
 const checkQuestion = () => {
   console.log('Please check if the secret person has these attributes!')
   const { category, value } = currentQuestion 
@@ -288,12 +287,12 @@ const checkQuestion = () => {
     console.log(category, value) // Daniels förslag 
     if (value === secret.hair || value === secret.eyes) {
       keep = true
-      filterCharacters(true) // vad ska man ha inom dessa paranteser? 
+      filterCharacters(true) 
       console.log('You are on the right track!')
     }
     else {
       keep = false
-      filterCharacters() //samma som ovan
+      filterCharacters() 
       console.log('You are not on the right track!')
     }
   } 
@@ -313,7 +312,7 @@ const checkQuestion = () => {
   }
 }
 
-// It'll filter the characters array and redraw the game board.
+// Function: filterCharachters filters the charachters in the array and redraws the board. The redraw will depend on the user's question.
 const filterCharacters = (keep) => {
   console.log('Filtering')
   const { category, value } = currentQuestion
@@ -367,13 +366,13 @@ const filterCharacters = (keep) => {
   generateBoard()
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// Function: the user confirms his/her guess and the function checkMyGuess is invoked. 
 const guess = (personToConfirm) => {
-  confirm(`So you think it is ${personToConfirm}? If you are wrong, it is game over 🙀`) //the user has to confirm his/her choice
-  checkMyGuess(personToConfirm) //invoking the checkMyGuess-function
+  confirm(`So you think it is ${personToConfirm}? If you are wrong, it is game over 🙀`) 
+  checkMyGuess(personToConfirm) 
 }
 
-// This function checks whether the users guess equals the secret person chosen in the setSecret-function
+// Function: checkMyGuess checks whether the user's guess equals the secret person chosen in the setSecret-function
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) { // if the guess=the secret person, the msg below shows
     winOrLoseText.innerHTML = `Are you Sherlock Holmes? Cause that sure was some impressive detective work!`
@@ -387,33 +386,25 @@ const checkMyGuess = (personToCheck) => {
   board.style.display = 'none'  //Hide the game board
 }
 
-
-
-
 //The following functions are called when the website is loaded:
 start() // Invokes the start function when website is loaded
 generateBoard() // Invokes the generateBoard function when the website is loaded
 setSecret() // Invokes the setSecrets function when website is loaded (i.e. a new secret person is chosen)
 
 // ALL EVENTLISTENERS
-//This eventListener makes sure that the page relodes when the button Restart is clicked. 
-restartButton.addEventListener('click', start)
+//Function: when the dropdown is changed, the selectQuestion-function is invoked. 
+questions.addEventListener('change', selectQuestion)
 
-//This eventListener is activeted when the dropdown is changed. I am not sure that it is needed, and what it should be connected to. 
-questions.addEventListener('change', (event) => {
-  selectQuestion()
-}) 
+//Function: when the findOutButton is clicked, the checkQuestion-function is invoked. 
+findOutButton.addEventListener('click', checkQuestion)
 
-//This eventListener is supposed to check whether my question is right or not (thus activate an alert message). I have not made it work yet.
-findOutButton.addEventListener('click', (event) => {
-  checkQuestion()
-})
-
+//Function: when the playAgainButton is clicked, the window returns to the start page after 0,5 seconds. 
 playAgainBtn.addEventListener('click', (event) => {
   setTimeout (() => location.reload(console.log("event triggered")), 500)
     return false // lägg in förklaring om detta https://stackoverflow.com/c/technigo/questions/3983 
 })
 
+//Function: when the restartButton is clicked, the window returns to the start page after 0,5 seconds. 
 restartButton.addEventListener('click', (event) => {
   setTimeout (() => location.reload(console.log("event triggered")), 500)
     return false // lägg in förklaring om detta https://stackoverflow.com/c/technigo/questions/3983 

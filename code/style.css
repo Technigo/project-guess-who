@@ -13,14 +13,14 @@ body {
 
 .logo {
   font-family: "GoodGirl", sans-serif;
-  font-size: 42px;
+  font-size: 55px;
   font-weight: 500;
-  line-height: 48px;
+  line-height: 80px;
   margin: 10px 0;
   color: white;
 }
 
-h2 {
+.does-the-person {
   color: white;
   font-weight: 300;
   font-size: 20px;
@@ -40,7 +40,7 @@ h2 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
+  font-size: 20px;
   font-family: "Montserrat";
   color: var(--secondary);
   width: 100%;
@@ -50,10 +50,6 @@ select {
 .counter {
   color: white;
 }
-
-/* .guess-who-icon {
-  width: 126px;
-} */
 
 .board-wrapper {
   width: 70%;
@@ -112,6 +108,7 @@ select {
 }
 
 /* The div with the guess class is only shown on hover */
+
 .card:hover .guess {
   display: flex;
 }
@@ -125,13 +122,14 @@ select {
 }
 
 /****** BUTTONS ******/
+
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 14px;
   font-family: "Montserrat";
   font-weight: bold;
-  padding: 17px 27px;
+  padding: 12px 20px;
   cursor: pointer;
 }
 
@@ -158,6 +156,7 @@ button {
 }
 
 /****** WIN OR LOSE SECTION ******/
+
 .win-or-lose-wrapper {
   display: none;
   align-items: center;
@@ -180,14 +179,12 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+.win-or-lose h2 {
+  margin-bottom: 32px;
+  color: white;
 }
 
-.win-or-lose h1 {
-  margin-bottom: 32px;
-}
+/*------------- MOBILE -------------------------------------------------------------- */
 
 @media (max-width: 768px) {
   body {
@@ -197,17 +194,6 @@ button {
   .question-section {
     width: 100%;
     min-height: 0;
-  }
-  button {
-    padding: 8px 16px;
-  }
-  h1 {
-    font-size: 24px;
-    line-height: 30px;
-  }
-
-  .guess-who-icon {
-    width: 51px;
   }
 
   .board-wrapper {

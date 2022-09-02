@@ -226,8 +226,8 @@ const generateBoard = () => {
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Guess ${person.name}?</span>
+          <button class="filled-button small" onclick="guess('${person.name}')">GUESS</button>
         </div>
       </div>
     `;

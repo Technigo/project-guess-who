@@ -413,3 +413,8 @@ playAgainBtn.addEventListener('click', (event) => {
   setTimeout (() => location.reload(console.log("event triggered")), 500)
     return false // lägg in förklaring om detta https://stackoverflow.com/c/technigo/questions/3983 
 })
+
+restartButton.addEventListener('click', (event) => {
+  setTimeout (() => location.reload(console.log("event triggered")), 500)
+    return false // lägg in förklaring om detta https://stackoverflow.com/c/technigo/questions/3983 
+})

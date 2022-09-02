@@ -23,7 +23,7 @@ const people = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['a hat', 'a beard'],
+    accessories: ['hat', 'beard'],
     other: []
   },
   {
@@ -32,7 +32,7 @@ const people = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker', 'a beard']
+    other: ['smoker', 'beard']
   },
   {
     name: 'Jai',
@@ -63,7 +63,7 @@ const people = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['sunglasses', 'a necklace'],
+    accessories: ['sunglasses', 'necklace'],
     other: []
   },
   {
@@ -79,7 +79,7 @@ const people = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'a necklace'],
+    accessories: ['glasses', 'necklace'],
     other: []
   },
   {
@@ -112,7 +112,7 @@ const people = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker', 'a beard']
+    other: ['smoker', 'beard']
   },
   {
     name: 'Jenni',
@@ -167,7 +167,7 @@ const people = [
     img: 'images/jodi.svg',
     hair: 'yellow',
     eyes: 'blue',
-    accessories: ['a hat'],
+    accessories: ['hat'],
     other: []
   },
   {
@@ -175,7 +175,7 @@ const people = [
     img: 'images/joe.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['a hat'],
+    accessories: ['hat'],
     other: []
   },
   {
@@ -199,7 +199,7 @@ const people = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['sunglasses', 'hat', 'a necklace'],
+    accessories: ['sunglasses', 'hat', 'necklace'],
     other: []
   },
   {
@@ -224,7 +224,7 @@ const people = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: ['a beard']
+    other: ['beard']
   },
   {
     name: 'Julie',

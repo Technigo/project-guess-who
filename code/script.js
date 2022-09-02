@@ -271,6 +271,7 @@ const start = () => {
   //If i want a time function, set it here
   generateBoard();
   setSecret();
+  selectQuestion();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -278,7 +279,7 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].parentNode.value //parentNode??? what does it do?
+  const value = questions.options[questions.selectedIndex].value
   
   //currentQuestion is "Does the person have "category, value"?"
   currentQuestion = {
@@ -287,80 +288,56 @@ const selectQuestion = () => {
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
-/* const checkQuestion = () => {
-  const { category, value } = currentQuestion;
-  // This was tricky to understand, but this site was helpful. https://stackoverflow.com/c/technigo/questions/2114
+questions.onChange = selectQuestion // From thursday lesson to make it possible to select..
 
+// This was tricky to understand, but this site was helpful. https://stackoverflow.com/c/technigo/questions/2884
+// This function should be invoked when you click on 'Find Out' button.
+const checkQuestion = () => {
+  const { category, value } = currentQuestion;
+  // let keep // = false; is this needed? was in stackoverflow 
+  console.log('Guess on',category, value);
+  console.log('This is', secret[category].includes(value)); // Let us know if true or false
   // Compare the currentQuestion details with the secret person 
   // details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
-  if (category === 'hair' || category === 'eyes') {
-    //here I want to check if 
-    
-    window.alert('Hurray!');
 
-  } else if (category === 'accessories' || category === 'other' || category === 'gender') {
-    window.alert('Nay!');
-  }
-  filterCharacters(keep) //Filters to keep the valid characters on the board 
-} */
-
-const checkQuestion = (selectQuestion) => {
-  let keep
-
-  // We check in the object category hair, if the selected value matches matches the hair category of the secret person.
-  if (currentQuestion.category === 'hair' ) {
-    keep = currentQuestion.value === secret.hair
-    console.log('Hair color', secret.hair);
-  }
-  else if (currentQuestion.category === 'eyes' ) {
-    keep = currentQuestion.value === secret.eyes
-    console.log('Eye color', secret.eyes);
-  }
-  else if (currentQuestion.category === 'accessories' ) {
-    keep = currentQuestion.value === secret.accessories
-    console.log('Accessories:', secret.accessories);
-  }
-  else if (currentQuestion.category === 'gender' ) {
-    keep = currentQuestion.value === secret.gender
-    console.log('Gender:', secret.gender);
-  }
-  else if (currentQuestion.category === 'other' ) {
-    keep = currentQuestion.value === secret.other
-    console.log('Other:', secret.other);
+  // Hair, eyes and gender are strings
+  if (category === 'hair' || category === 'eyes'|| category === 'gender') {
+    if (secret[category] === value) {
+      filterCharacters(true);
+    }
+    else {
+      filterCharacters(false);
+    }
+  // Accessories and other are arrays
+  } else if (category === 'accessories' || category === 'other') {
+    if (secret[category] === value) {
+      filterCharacters(true);
+    }
+    else {
+      filterCharacters(false);
+    }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // It'll filter the characters array and redraw the game board. 
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'hair' || category === 'eyes'|| category === 'gender') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person has ${value}! Keep all people that have ${value}`
       )
-    
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
-  } else if (category === 'other') {
+  } else if (category === 'accessories' || category === 'other') {
     // Similar to the one above
   } else {
     if (keep) {
@@ -374,9 +351,7 @@ const filterCharacters = (keep) => {
   // filter by category to keep or remove based on the keep variable.
   /* 
     for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
     for accessories and other
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))

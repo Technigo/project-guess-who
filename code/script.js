@@ -7,6 +7,10 @@ const winOrLoseWrapper = document.getElementById('WinOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
 const timer = document.getElementById('timer')
+const closePopup = document.getElementById('closeX')
+const nameInput = document.getElementById('nameEntry')
+const startScreen = document.getElementById('startScreen')
+const nameBtn = document.getElementById('nameBtn')
 
 // Array with all the family guy-characters, as objects
 const CHARACTERS = [
@@ -241,9 +245,17 @@ const winnerSound = () => {
   let audio = new Audio("http://soundfxcenter.com/television/family-guy/8d82b5_Family_Guy_Glenn_Quagmire_Giggidy_Sound_Effect.mp3")
   audio.play();
 }
+const startScreenAway = (event) => {
+  event.preventDefault()
+  const nickName = nameInput.value
+  startScreen.style.display = 'none', 
+  setTimeout(() => 
+  Swal.fire(`Hello ${nickName}, lets play!`)
+    ,500);
+}
 
 // This is the timer function
-startTimer = () => {
+const startTimer = () => {
 
   // Starts by clearing the existing timer, in case of a restart
   clearInterval(timerInterval);
@@ -251,7 +263,7 @@ startTimer = () => {
     minute = 0,
     hour = 0;
 
-   timerInterval = setInterval(function () {  // Sets an interval every 1000 ms
+   timerInterval = setInterval (() => {  // Sets an interval every 1000 ms
     timer.classList.toggle('odd');   // Toggle the odd class every interval
 
     // Sets the timer text to include a two digit representation
@@ -294,9 +306,9 @@ const start = () => {
   generateBoard();
   setSecretCharacter();
   selectQuestion();
-  alert('Lets play!');
   startTimer()
-}
+ }
+
 
 // Sets the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -307,7 +319,6 @@ const selectQuestion = () => {
     category: category,
     value: value,
   }
-
 }
 
 // This function will be invoked when you click on 'Find Out' button.
@@ -366,38 +377,38 @@ const filterCharacters = (keep) => {
   // Shows the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
+      Swal.fire(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
+      Swal.fire(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
 
   } else if (category === 'other') {
     if (keep) {
-      alert(`Yes, the person is ${value}. Keep all peoople that is ${value}`)   
+      Swal.fire(`Yes, the person is ${value}. Keep all peoople that is ${value}`)   
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     }
     else {
-      alert(`No, the person is not ${value}. Remove all people that is ${value}`)
+      Swal.fire(`No, the person is not ${value}. Remove all people that is ${value}`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   
   } else if (category === 'hair') {
       if (keep) {
-        alert(`Yes, the person has ${value}! Keep all people with ${value}.`)
+        Swal.fire(`Yes, the person has ${value}! Keep all people with ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
-        alert(`No, the person doesn't have ${value}. Remove all people with ${value}.`)
+        Swal.fire(`No, the person doesn't have ${value}. Remove all people with ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
 
   } else if (category === 'clothing') {
     if (keep) {
-      alert(`Yes, the person has wears ${value}! Keep all people that wears ${value}.`)
+      Swal.fire(`Yes, the person has wears ${value}! Keep all people that wears ${value}.`)
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
   } else {
-      alert(`No, the person doesn't wear ${value}. Remove all people wearing ${value}.`)
+      Swal.fire(`No, the person doesn't wear ${value}. Remove all people wearing ${value}.`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   }
 }
@@ -447,12 +458,18 @@ const filterCharacters = (keep) => {
 
 // When clicking guess, the player first have to confirm/press ok that they want to make a guess. If cancel, nothing happens.
 const guess = (personToConfirm) => {
-  const userGuess = confirm(`Are you sure you want to guess ${personToConfirm}?`)
-
-  if (userGuess) {
+  Swal.fire({
+    title: 'Guess',
+    text: `Are you sure you want to guess ${personToConfirm}?`,
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#48b3dd',
+    confirmButtonText: 'Yes!'
+  }).then((result) => {
+    if (result.isConfirmed) {
     checkMyGuess(personToConfirm);
-  } 
-  
+    } 
+  })
 }
 
 // If player confirms that they want to guess, this function is invoked
@@ -485,6 +502,9 @@ reload = () => {
 }
 
 // All the event listeners
+
+nameForm.addEventListener('submit', startScreenAway)
+closePopup.addEventListener('click', startScreenAway)
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)

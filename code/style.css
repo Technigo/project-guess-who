@@ -6,10 +6,91 @@
 
 body {
   display: flex;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
 }
+
+/** POPUP NICKNAME **/
+
+.start-screen {
+  z-index: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-image: linear-gradient(120deg, #48b3dd 0%, #83cef1 100%);
+  border: 1px solid black;
+  box-shadow: rgba(177, 172, 172, 0.781) 16px 15px;
+  border-radius: 4%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3%;
+  cursor: pointer;
+}
+
+.start-screen h2 {
+  width: 65%;
+  text-align: center;
+  font-size: 25px;
+  stroke: black;
+}
+
+.name-button {
+  border: 2px solid var(--secondary);
+  background-color: var(--secondary);
+  color: white;
+  border-radius: 50px;
+  font-size: 16px;
+  font-family: Montserrat;
+  font-weight: bold;
+  padding: 17px 27px;
+  cursor: pointer;
+  margin: 15px;
+}
+
+.start-screen p {
+  width: 65%;
+  text-align: center;
+  font-size: 20px;
+  stroke: black;
+}
+
+#nameForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#nameForm input {
+  font-size: 17px;
+  outline: none;
+  padding: 15px;
+  border: none;
+  border-radius: 13px;
+}
+
+.close {
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  left: 92%;
+  top: 0;
+}
+
+.close:hover,
+.close:focus {
+  color: rgba(0, 0, 0, 0.466);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/**/
 
 h1 {
   font-size: 42px;
@@ -77,7 +158,7 @@ select {
   align-content: center;
 }
 
-/****** CARD ******/
+/****** CARDS ******/
 
 .card {
   width: 135px;
@@ -140,7 +221,8 @@ select {
   display: none;
 }
 
-/* The div with the guess class is only shown on hover */
+/*** The div with the guess class is only shown on hover ***/
+
 .card:hover .guess {
   display: flex;
 }
@@ -164,7 +246,7 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
-  margin-bottom: 15px;
+  margin: 15px;
 }
 
 .small {
@@ -186,7 +268,7 @@ button {
   color: var(--primary);
 }
 
-/*** Timer **/
+/*** TIMER **/
 
 .timer-container {
   display: flex;
@@ -239,11 +321,21 @@ button {
   margin-bottom: 32px;
 }
 
-/*** Media queries ***/
+/*** MEDIA QUERIES ***/
 
 @media (max-width: 768px) {
+
   body {
     flex-direction: column;
+  }
+
+  .start-screen h2 {
+    font-size: 20px;
+  }
+
+  .close {
+    font-size: 35px;
+    left: 85%;
   }
 
   .game-board {

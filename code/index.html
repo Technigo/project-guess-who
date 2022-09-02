@@ -9,9 +9,23 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
   </head>
   <body>
-    <aside class="question-section">
+
+  <div class="start-screen" id="startScreen">
+      <span class="close" id="closeX">&times;</span>
+      <h2>Let's play Guess Who?  Family Guy Edition</h2>
+      <p>Please enter your nickname.</p>
+    <form id="nameForm">
+      <input type="text" placeholder="Nickname.." id="nameEntry">
+      <button type="submit" class="name-button" id="nameBtn">OK</button>
+    </form>
+  </div>
+
+    <aside class="question-section" id="aside-board">
       <button type="button" id="restart" class="restart-button">RESTART</button>
 
          <div class="images">
@@ -70,6 +84,7 @@
       <main class="game-board" id="board"></main>
     </section>
 
+
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
         <img class="familyguy-family" src="images/familyguy.png" alt="familyguy"/>
@@ -79,5 +94,6 @@
     </section>
   
     <script src="script.js"></script>
+    
   </body>
 </html>

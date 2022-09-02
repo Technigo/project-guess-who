@@ -136,7 +136,7 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: blue;
 }
 
 .filled-button:hover {

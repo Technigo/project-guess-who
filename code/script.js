@@ -3,6 +3,8 @@ const board = document.getElementById('board') // a class within the section whe
 const questions = document.getElementById('questions') // where you do your guesse (the roll-down input section)
 const restartButton = document.getElementById('restart') // the restart button
 const findOutButton = document.getElementById('filter') // the find-out button
+const winOrLoseSection = document.getElementById('winOrLose')
+const playAgainBtn = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -309,21 +311,17 @@ const checkQuestion = () => {
       console.log('You are not on the right track!')
     }
   }
-  
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   console.log('Filtering')
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
+  
   if (category === 'hair') {
     if (keep) {
       alert(`Yes, the person has ${value} hair! Keep all people that has ${value} hair.`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value) // I changed attributes to CHARACHTERS since I did not understand where attributes came from
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value) 
     }  
     else {
       alert(`No, the person doesn't have ${value} hair! Remove all people that have ${value} hair.`)
@@ -367,36 +365,30 @@ const filterCharacters = (keep) => {
   } 
   console.log(charactersInPlay)
   generateBoard()
-  // Invoke a function to redraw the board with the remaining people.
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  confirm(`So you think it is ${personToConfirm}? If you are wrong, it is game over 🙀`) //the user has to confirm his/her choice
+  checkMyGuess(personToConfirm) //invoking the checkMyGuess-function
 }
 
-// If you confirm, this function is invoked
+// This function checks whether the users guess equals the secret person chosen in the setSecret-function
 const checkMyGuess = (personToCheck) => {
-  /*Here I could put my count down(or up) if-statement. Perhaps look something like this? (First I need to define count) 
-  if (count === 0) {
-    alert('Game over! Refresh the page to try again.')
-  }*/
-  /*
-  if (personToCheck === personToConfim) {
-    alert('Are you Sherlock Holmes? Cause that sure was impressive detective work!')
+  if (personToCheck === secret.name) { // if the guess=the secret person, the msg below shows
+    winOrLoseText.innerHTML = `Are you Sherlock Holmes? Cause that sure was some impressive detective work!`
   }
-  else {
-    alert('Not the sharpest tool in the tool box? Give it another go!')
-    
+  
+  else { //if the guess does not equal the secret person, this message shows
+    winOrLoseText.innerHTML = `Not the sharpest tool in the toolbox, ey?`
   }
-  */
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+
+  winOrLoseSection.style.display = 'flex'  //Show the win or lose section
+  board.style.display = 'none'  //Hide the game board
 }
+
+
+
 
 //The following functions are called when the website is loaded:
 start() // Invokes the start function when website is loaded
@@ -415,4 +407,9 @@ questions.addEventListener('change', (event) => {
 //This eventListener is supposed to check whether my question is right or not (thus activate an alert message). I have not made it work yet.
 findOutButton.addEventListener('click', (event) => {
   checkQuestion()
+})
+
+playAgainBtn.addEventListener('click', (event) => {
+  setTimeout (() => location.reload(console.log("event triggered")), 500)
+    return false // lägg in förklaring om detta https://stackoverflow.com/c/technigo/questions/3983 
 })

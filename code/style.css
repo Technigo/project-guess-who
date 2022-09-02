@@ -55,7 +55,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 260px;
 }
 
 .board-wrapper {
@@ -209,7 +209,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 190px;
   }
 
   .board-wrapper {

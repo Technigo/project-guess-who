@@ -2,10 +2,10 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const filterButton = document.getElementById('filter') //Added
-const winOrLose = document.getElementById('winOrLose')
-const winOrLoseText = document.getElementById('winOrLoseText')
-const playAgainButton = document.getElementById('playAgain')
+const filterButton = document.getElementById('filter') // the button with id: filter
+const winOrLose = document.getElementById('winOrLose') // the section with id: winOrLose
+const winOrLoseText = document.getElementById('winOrLoseText') // the h1 with id: winOrLoseText
+const playAgainButton = document.getElementById('playAgain') // the button with id: playAgain (inside the wineOrLose section)
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -236,12 +236,12 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-  generateBoard(); //ANNIKA 1. calling the function show the board
-  setSecret();    // ANNIKA 2. invokes the function that sets a secret person
-  selectQuestion(); //ANNIKA 3. invokes the function to be able to select questions
+  generateBoard();  // invokes the function show the board
+  setSecret();      // invokes the function that sets a secret person
+  selectQuestion(); // invokes the function to be able to select questions
 
-  winOrLose.style.display = "none" // ANNIKA Adding flexbox to this id 
-  board.style.display = "flex" // ANNIKA hiding the game board
+  winOrLose.style.display = "none"  // hiding the game board 
+  board.style.display = "flex"      // adding flexbox to this id 
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -250,7 +250,7 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].value;  //ANNIKA 5. Variable that stores the value of the question we've selected.
+  const value = questions.options[questions.selectedIndex].value;  // Variable that stores the value of the question we've selected.
   //const value = questions.value;
 
   currentQuestion = {

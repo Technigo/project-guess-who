@@ -340,12 +340,12 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     console.log('Win!')
     winOrLose.style.display = 'block',
-    winOrLoseText.innerHTML = `It's correct! It was ${personToCheck}!`
+    winOrLoseText.innerHTML = `🥳Hurray!🥳 It's correct! The secret person was ${personToCheck}!`
     board.style.display = 'none'
   } else {
     console.log('You lost the game')
     winOrLose.style.display = 'block',
-    winOrLoseText.innerText = `Wrong! It was ${secret.name}.`
+    winOrLoseText.innerText = `Oh no... that is wrong! 😔 The secret person was ${secret.name}.`
     board.style.display = 'none'
   }
 }

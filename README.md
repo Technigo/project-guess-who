@@ -9,7 +9,6 @@ Describe how you approached to problem, and what tools and techniques you used t
 ### If more time
 
 - Improve filter alerts, i.e. customise them better and not have the exact option values being displayed in them
-- Confetti upon win!
 - Add new categories for clothes, hairstyles och facial expressions etc
 - Replace the cards with something cute like Pokemons or cats and then also re-doing the categories and filters from scratch to better fit the new characters (and improve my JavaScript skills, of course)
 

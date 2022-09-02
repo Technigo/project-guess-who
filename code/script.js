@@ -207,7 +207,6 @@ let secret
 let currentQuestion
 let charactersInPlay
 
-      //lägga ljud här med let winAudio, looseAudio?
 
 // Draw the game board
 const generateBoard = () => {
@@ -230,16 +229,12 @@ const generateBoard = () => {
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 }
-
-    // counter? NB
-
     
 // This function to start (and restart) the game
 const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
-      // timer and or counter?NB
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -247,7 +242,7 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
 
-  // This variable stores what option group (category) the question belongs to.
+// This variable stores what option group (category) the question belongs to.
   currentQuestion = {
     category: category,
     value: value
@@ -324,26 +319,18 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `SUPER! , ${personToCheck} is the one we're looking for, well played YOU WIN!`
-  }
-  // let winAudio = new Audio(filformat.mp3)
-  // winAudio.play() NB
-   else {
+  } else {
     winOrLoseText.innerHTML = `Ooh no, I'sorry it's not ${personToCheck}, we were looking for ${secret.name}, play again?.`
    }
-   // let loosAudio = new Audio(filformat.mp3)
-   // loosAudio.play() NB
+  
   winOrLose.style.display = 'flex'
-  board.style.display = 'none'
-        // OK 1. Check if the personToCheck is the same as the secret person's name
-        // OK 2. Set a Message to show in the win or lose section accordingly
-        // OK 3. Show the win or lose section
-        // OK 4. Hide the game board 
+  board.style.display = 'none'    
 }
 
 // Invokes the start function when website is loaded
 start();
 
-// All the event listeners
+// event listeners
 restartBtn.addEventListener('click', start)
 findOutBtn.addEventListener('click', selectQuestion)
 playAgainBtn.addEventListener('click', () => {
@@ -352,11 +339,3 @@ playAgainBtn.addEventListener('click', () => {
   board.style.display = 'flex'
 })       
 
-//playAgainbutton, ovan eller nedan?
-//This ivokes play again button and draws the board 
-// playAgainBtn.addEventListener('click',() => { 
-//   start()
-//   document.getElementById('winOrLose').style.display='none';  
-// })
-
-// playAgainBtn.addEventListener('click', start)

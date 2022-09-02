@@ -257,8 +257,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-  generateBoard();
-  setSecret();
+  //generateBoard();
+  
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -293,6 +293,7 @@ const selectQuestion = () => {
       
     }
   }
+  selectQuestion()
   console.log(currentQuestion)
 }
 
@@ -344,14 +345,14 @@ const filterCharacters = (keep) => {
     alert (
     `No, the person doesn't have ${value}! Remove all people that have ${value}`
     )
-    charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
   }
    if (category === 'hair') {
     if (keep) {
       alert(
         `Yes, the person has ${value}! Keep all people that has ${value}`
       )
-      charactersInPlay = charactersInPlay.filter((person) =>[category] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       alert(
         `No, the person doesn't have ${value}! Remove all people that have ${value}`
@@ -365,7 +366,7 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value}! Keep all people that has ${value}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => [category] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       alert(
         `No, the person doesn't have ${value}! Remove all people that have ${value}`
@@ -374,8 +375,11 @@ const filterCharacters = (keep) => {
     }
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
+
+    rearrangeBoard()
   }
-  generateBoard() 
+  
+ 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
    /*
@@ -389,7 +393,6 @@ const filterCharacters = (keep) => {
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
-
   // Invoke a function to redraw the board with the remaining people.
 
 
@@ -422,8 +425,10 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
+generateBoard() 
+setSecret();
 // All the event listeners
 restartButton.addEventListener('click', start)
 //board.addEventListener('click')
 filterBtn.addEventListener('click', filterCharacters)
-checkQuestion.addEventListener('click', charactersInPlay)
+questions.addEventListener('click', checkQuestion)

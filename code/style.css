@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #D198C5FF;
+  --secondary: #E0C568FF;
 }
 
 body {
@@ -230,4 +230,9 @@ button {
     color: var(--primary);
     border: none;
   }
+}
+
+/****** SWEET ALERT ******/
+.swal-button {
+  background-color: #D198C5FF !important;
 }

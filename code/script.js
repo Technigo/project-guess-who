@@ -289,45 +289,45 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
-      alert(
+      swal(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
     } else {
-      alert(
+      swal(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
     }
 
   } else if (category === 'other') {
     if (keep) {
-      alert(
+      swal(
         `Yes, the person is a ${value}! Keep all people that isn't a ${value}`
       )
     } else {
-      alert(
+      swal(
         `No, the person isn't a ${value}! Remove all people that is a ${value}`
       )
     }
 
   } else if (category === 'eyes') {
     if (keep) {
-      alert(
+      swal(
         `Yes, the person has ${value} eyes! Keep all people that has ${value} eyes`
       )
     } else {
-      alert(
+      swal(
         `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
       )
     }
 
   } else {
     if (keep) {
-      alert(
+      swal(
         `Yes, the person has ${value} hair! Keep all people with ${value} hair`
       )
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
-      alert(
+      swal(
         `No, the person doesnt have ${value} hair! Remove all people with ${value} hair`
       )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
@@ -366,7 +366,7 @@ const guess = (personToConfirm) => {
   if (playerGuess === true) {
     checkMyGuess(personToConfirm)
   } else {
-    alert(
+    swal(
       "Okay! Keep on playing!"
     )
   }
@@ -379,7 +379,7 @@ const checkMyGuess = (personToCheck) => {
 // 2. Set a Message to show in the win or lose section accordingly
     winOrLoseText.innerText = 'Yay, you won! Play again?'
   } else {
-    alert(
+    swal(
       `Sorry, it's not ${personToCheck}. It is ${secret.name}.`
     )
   }
@@ -393,7 +393,7 @@ board.style.display = 'none'
 // Invokes the start function when website is loaded
 start()
 
-// Reload after pressing playAgain-button
+// Reload after pressing playAgain button
 reload = () => {
   window.location.reload()
 }

@@ -378,7 +378,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     }
     else {
-      alert(`No, the person doesn't have a ${value}! Remove all people that have a ${value}`)
+      alert(`No, the person doesn't HAPPY a ${value}! Remove all people that have a ${value}`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   }

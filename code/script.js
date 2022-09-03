@@ -3,7 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
-const winOrLose = document.getElementById('win-or-lose')
+const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
 
@@ -305,28 +305,34 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  let confirmation = confirm(`Are you sure it is ${personToConfirm}?`)
+  const confirmation = confirm(`Are you sure it is ${personToConfirm}?`)
   if (confirmation === true) {
-    checkMyGuess (personToConfirm)
+    checkMyGuess(personToConfirm)
   }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  if (personToCheck === secret.name) { //Check if the personToCheck is the same as the secret person's name
+  board.style.display = 'none'
+  winOrLose.style.display = 'flex'
+  if (personToCheck === secret.name){ //Check if the personToCheck is the same as the secret person's name
     winOrLoseText.innerHTML = `Yey! You are right, Congratulations!`
   } else {
-    winOrLoseText.innerHTML = `I am sorry, that is not correct. The secret person was ${secret.name}`;
+    winOrLoseText.innerHTML = `I am sorry, that is not correct. The secret person was ${secret.name}`
   } //Set a Message to show in the win or lose section accordingly
-  winOrLose.style.display = 'flex' //Show the win or lose section
-  board.style.display = 'none'//Hide the game board 
+  //Show the win or lose section
+  //Hide the game board 
 }
 
 // Invokes the start function when website is loaded
 start()
 
+reload = () => {
+  window.location.reload()
+}
+
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
-playAgainButton.addEventListener('click', start);
+playAgainButton.addEventListener('click', reload);

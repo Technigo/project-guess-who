@@ -1,12 +1,11 @@
 # Project Guess Who 
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks assignment was to create a Guess Who game using JavaScript, practising objects, arrays and functions.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This week I tried to take myself through the project step by step, I have tested a lot of different solutions and managed to finally make the game work as intended. If I had more time I would create a timer for the game, add some sound effects or animations for each answer and also I would have changed the characters to a completely different theme.
+
 
 ## View it live
 

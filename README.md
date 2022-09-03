@@ -10,3 +10,4 @@ with my own images and characters, as well as new attributes, now that I know ho
 
 
 ## View it live
+https://guezzwho.netlify.app/

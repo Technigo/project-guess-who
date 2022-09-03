@@ -9,6 +9,8 @@ const finishMessage = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
 const numberOfGuesses = document.getElementById('numberOfGuesses')
 
+// testing git 
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {

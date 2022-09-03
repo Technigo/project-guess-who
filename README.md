@@ -1,12 +1,13 @@
-# Project Name
+# Guess who gameboard 
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The game Guess Who, created by using forEach, loops, arrays and if else.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had a problem with getting the "checkQuestion" to work properly. When selecting accessories, it still filterd out the people wearing them. I had a hard time figuring out what was wrong, even with help from teammate, stackOverflow and google. So I decided to go with another solution and changed my approash and code completly - and it worked. I decided, after many hours trying to figure out what was wrong because I wanted to understand, to amitt defete to that particular part of the code. 
+
+Overall I worked from top to bottom, following instructions in notion. 
+If i had more time i'd add a timer, style the board more and add more attributes to the characters. 
 
 ## View it live
 

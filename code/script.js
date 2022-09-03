@@ -4,6 +4,7 @@ const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findOutButton = document.getElementById('filter');
 const playAgainButton = document.getElementById('playAgain')
+const guessCounter = document.getElementById('guesses');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -205,6 +206,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let numberOfGuesses = 0;
 
 // Draw's the game board 
 const generateBoard = () => {
@@ -249,7 +251,6 @@ const selectQuestion = () => {
     category: category,
     value: value,
   };
-  console.log(currentQuestion)
 };
 
 // This function invokes when you click on 'Find Out' button and compares
@@ -257,20 +258,15 @@ const selectQuestion = () => {
 // depending och true and false 
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
+  console.log(currentQuestion);
+  let keep = false;
 
   if (category === 'hair' || category === 'eyes') {
-    if (secret[category] === value) {
-      filterCharacters(true);
-    } else {
-      filterCharacters(false);
-    };
+    keep = secret[category] === value;
   } else if (category === 'accessories' || category === 'other') {
-      if (secret[category] === value) {
-        filterCharacters(true);
-      } else {
-        filterCharacters(false);
-      };
-  };
+    keep = secret[category].includes(value);
+  }
+  filterCharacters(keep);
 };
 
 // This filter's the characters array and redraw the game board. 
@@ -341,10 +337,10 @@ const guess = (personToConfirm) => {
 // If player confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    winOrLoseText.innerHTML = `You guessed right, ${personToCheck} is the secret person!! Good job!`
+    winOrLoseText.innerHTML = `You guessed ${numberOfGuesses} times and got it right, ${personToCheck} is the secret person!! Good job!`
   } else {
-    winOrLoseText.innerHTML = `Ooh noo! You guessed wrong :( ${personToCheck} is not the secret person, ${secret.name} is!`
-  }
+    winOrLoseText.innerHTML = `Ooh noo! You guessed ${numberOfGuesses} times but got it wrong :( ${personToCheck} is not the secret person, ${secret.name} is!`
+  };
   winOrLose.style.display = 'flex';
 };
 
@@ -352,15 +348,18 @@ const checkMyGuess = (personToCheck) => {
 start();
 
 // All the event listeners
-restartButton.addEventListener('click', start);
-
+restartButton.addEventListener('click', () => {
+  location.reload();
+  start();
+});
 questions.addEventListener('change', selectQuestion);
 
 findOutButton.addEventListener('click', () => { 
-  checkQuestion()
+  checkQuestion();
+  numberOfGuesses += 1;
+  guessCounter.innerHTML = `${numberOfGuesses}`;
 });
-
 playAgainButton.addEventListener('click', () => {
   start ();
   winOrLose.style.display = 'none';
-  });
+});

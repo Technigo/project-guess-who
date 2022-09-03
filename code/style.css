@@ -1,14 +1,14 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #d0c9c0;
+  --secondary: #5f7161;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 h1 {
@@ -34,7 +34,7 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: "Montserrat";
+  font-family: "Arial";
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -117,7 +117,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: "Montserrat";
+  font-family: "Arial";
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;

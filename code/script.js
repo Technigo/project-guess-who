@@ -207,13 +207,14 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret /* = 'setSecret'*/
-let currentQuestion = {
+
+//let charactersInPlay
+//let questionsAsked
+//let secret
+//let currentQuestion = {
 /*	category: 'hair', // <-- Based on the optgroup
 	value: 'yellow', // <-- Comes from the selected option*/
-}
-let charactersInPlay
-let questionsAsked;
+//}
 
 
 // Draw the game board
@@ -244,13 +245,10 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard ();
-  /*alert ('Hello, lets start this game!');*/
   setSecret ();
   selectQuestion();
   questionsAsked = 0;
   questionCounter.innerHTML = `Questions asked: ${questionsAsked}`;
-  console.log ('all characters'), charactersInPlay;
-  console.log ('questions', questionsAsked);
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -289,6 +287,7 @@ const checkQuestion = () => {
     filterCharacters (false);
   }  
   }
+  // Make the counter show next number of question, after every new question asked.
   questionsAsked++;
   questionCounter.innerHTML = `Questions asked: ${questionsAsked}`;
 };
@@ -300,13 +299,13 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `ACC Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
       charactersInPlay = charactersInPlay.filter((person) => person [category].includes(value)
       );
     } else {
       alert(
-        `ACC No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
       charactersInPlay = charactersInPlay.filter ((person) => !person [category].includes(value)
       );
@@ -318,14 +317,12 @@ const filterCharacters = (keep) => {
       );
       charactersInPlay = charactersInPlay.filter((person) => person [category].includes(value)
       );
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
       alert(
         `No, the person doesn't seem to have ${value} Remove all people with ${value}`
       );
       charactersInPlay = charactersInPlay.filter ((person) => !person [category].includes(value)
       );
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   } if (category === 'hair') {
     if (keep) {
@@ -360,8 +357,8 @@ const filterCharacters = (keep) => {
 };
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
+  
+  /*  for hair and eyes :
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
@@ -369,9 +366,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-  // Invoke a function to redraw the board with the remaining people.
-
+   Invoke a function to redraw the board with the remaining people.*/
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
@@ -387,7 +382,6 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
@@ -419,5 +413,3 @@ playAgainButton.addEventListener('click', () => {
   board.style.display = 'flex';
   start();
 });
-
-

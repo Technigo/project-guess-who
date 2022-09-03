@@ -24,7 +24,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jacques',
+    name: 'Amanda',
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
@@ -32,7 +32,7 @@ const CHARACTERS = [
     other: ['smoker']
   },
   {
-    name: 'Jai',
+    name: 'Carlos',
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
@@ -40,7 +40,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jake',
+    name: 'Clara',
     img: 'images/jake.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -56,7 +56,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jana',
+    name: 'Koala',
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
@@ -72,7 +72,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jaqueline',
+    name: 'Teresa',
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
@@ -121,7 +121,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jeri',
+    name: 'Marta',
     img: 'images/jeri.svg',
     hair: 'orange',
     eyes: 'green',
@@ -145,7 +145,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jocelyn',
+    name: 'Kaja',
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
@@ -153,7 +153,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jon',
+    name: 'Jon_Travolta',
     img: 'images/jon.svg',
     hair: 'brown',
     eyes: 'green',
@@ -177,7 +177,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Josh',
+    name: 'Joshua',
     img: 'images/josh.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -185,7 +185,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jude',
+    name: 'Judyta',
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
@@ -410,16 +410,17 @@ const checkMyGuess = (personToCheck) => {
 }
 reload = () => {
   window.location.reload()
+  
 }
 
 // Invokes the start function when website is loaded
 
 start()
-//checkMyGuess()
+
 // All the event listeners
 restartButton.addEventListener('click', start)
 // filter.addEventListener("click", checkQuestion);//event listener for the Find Out button
 filter.addEventListener("click", checkQuestion);//event listener for the Find Out button
 questions.onchange = selectQuestion;
 //guess.addEventListener('click', checkMyGuess)
-playAgain.addEventListener("click", start)
+//playAgain.addEventListener("click", start)

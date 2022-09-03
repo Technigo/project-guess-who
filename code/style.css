@@ -68,6 +68,7 @@ select {
   color: var(--primary);
   font-family: 'Indie Flower', cursive;
   font-size: 13px;
+  text-align: center;
 }
 
 .game-instructions:hover {
@@ -79,9 +80,11 @@ select {
   background: #AC7D88;
   display: none;
   font-family: 'Indie Flower', cursive;
-  font-size: 12px;
+  font-size: 13px;
   padding: 3px;
   border-radius: 20px;
+  margin-top: 3px;
+  color: var(--primary);
 }
 
 .active + .game-instructions-extended {

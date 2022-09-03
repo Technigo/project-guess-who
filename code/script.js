@@ -1,12 +1,11 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board') // a class within the section where the charachters will show. 
+const board = document.getElementById('board') // where the characters appear 
 const questions = document.getElementById('questions') // where the user asks the questions (the select/drop down)
 const restartButton = document.getElementById('restart') // the restart button
 const findOutButton = document.getElementById('filter') // the findout button
-const winOrLoseSection = document.getElementById('winOrLose') 
+const winOrLoseSection = document.getElementById('winOrLose') // the section that appears after the user has made his/her guess
 const playAgainBtn = document.getElementById('playAgain') //the play again-button
-const instructions = document.getElementById('gameInstructions')
-const instructionsExtended = document.getElementById('gameInstructionsExtended')
+const instructions = document.getElementById('gameInstructions') //the div where the instructions are found
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -32,7 +31,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker', 'beard']
+    other: ['smoking habit', 'beard']
   },
   {
     name: 'Jai',
@@ -89,7 +88,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['smoking habit']
   },
   {
     name: 'Jean',
@@ -97,7 +96,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoking habit']
   },
   {
     name: 'Jeane',
@@ -113,7 +112,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker', 'beard']
+    other: ['smoking habit', 'beard']
   },
   {
     name: 'Jenni',
@@ -370,7 +369,7 @@ const filterCharacters = (keep) => {
 
 // Function: the user confirms his/her guess and the function checkMyGuess is invoked. 
 const guess = (personToConfirm) => {
-  confirm(`So you think it is ${personToConfirm}? If you are wrong, it is game over 🙀`) 
+  confirm(`So you think it is ${personToConfirm}? Press OK to find out.`) 
   checkMyGuess(personToConfirm) 
 }
 
@@ -381,7 +380,7 @@ const checkMyGuess = (personToCheck) => {
   }
   
   else { //if the guess does not equal the secret person, this message shows
-    winOrLoseText.innerHTML = `Not the sharpest tool in the toolbox, ey?`
+    winOrLoseText.innerHTML = `Not the sharpest tool in the shed, ey? The correct answer was ${secret.name}. `
   }
 
   winOrLoseSection.style.display = 'flex'  //Show the win or lose section
@@ -402,17 +401,15 @@ findOutButton.addEventListener('click', checkQuestion)
 
 //Function: when the playAgainButton is clicked, the window returns to the start page after 0,5 seconds. 
 playAgainBtn.addEventListener('click', (event) => {
-  setTimeout (() => location.reload(console.log("event triggered")), 500)
-    return false // lägg in förklaring om detta https://stackoverflow.com/c/technigo/questions/3983 
+  setTimeout (() => location.reload(), 500) //the location.reload() reloads the current url
 })
 
 //Function: when the restartButton is clicked, the window returns to the start page after 0,5 seconds. 
 restartButton.addEventListener('click', (event) => {
-  setTimeout (() => location.reload(console.log("event triggered")), 500)
-    return false // lägg in förklaring om detta https://stackoverflow.com/c/technigo/questions/3983 
+  setTimeout (() => location.reload(), 500) //the location.reload() reloads the current url
 })
 
-//
+//Function: when the instructions-div is clicked, the instructions appear beneath 
 instructions.addEventListener('click', (event) => {
   instructions.classList.toggle("active")
 })

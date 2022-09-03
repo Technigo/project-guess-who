@@ -71,7 +71,7 @@ select#questions {
   padding: 0 20px 0 20px;
   background: url("images/chevron.svg") no-repeat right #fff;
   -webkit-appearance: none;
-  background-position-x: 200px;
+  background-position-x: 92%;
 }
 
 /****** CARD ******/
@@ -185,13 +185,12 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
-}
-
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+button#playAgain {
+  width: auto;
 }
 
 @media (max-width: 768px) {
@@ -251,6 +250,6 @@ button {
   }
 
   select#questions {
-    background-position-x: 310px;
+    background-position-x: 92%;
   }
 }

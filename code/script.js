@@ -389,7 +389,7 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerHTML = 'Oh nooo!<br><br>You lost the game! &#128557;';
   }
 
-  winOrLoseSection.style.display = 'block'; // Shows the hidden section
+  winOrLoseSection.style.display = 'flex'; // Shows the hidden section
   board.style.display = "none"; // Hide the game board
 };
 

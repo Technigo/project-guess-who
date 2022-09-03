@@ -51,16 +51,13 @@ select {
   color: white;
   background-color: var(--secondary);
   width: 100%;
-  max-width: 270px;
+  max-width: 230px;
   padding: 2px;
   margin-top: 5px;
   margin-bottom: 15px;
   align-self: center;
   appearance: none;
   text-align: center;
-  text-align-last: center;
-  -ms-text-align-last: center;
-  -moz-text-align-last: center;
 }
 
 .counters {
@@ -100,7 +97,7 @@ select {
 /****** CARD ******/
 
 .card {
-  width: 85px;
+  width: 83px;
   height: 115px;
   overflow: hidden;
   border: 2px solid var(--secondary);

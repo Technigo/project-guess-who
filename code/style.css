@@ -60,6 +60,29 @@ select {
   align-content: center;
 }
 
+.game-instructions {
+  background: #AC7D88;
+  margin-top: 15px;
+  padding: 5px;
+  border-radius: 20px;
+  color: var(--primary);
+  font-family: 'Indie Flower', cursive;
+  font-size: 13px;
+}
+
+.game-instructions:hover {
+  cursor: pointer;
+  border: 2px solid #F8ECD1;
+}
+
+.game-instructions-extended {
+  background: #AC7D88;
+  display: none;
+  font-family: 'Indie Flower', cursive;
+  font-size: 12px;
+  padding: 3px;
+  border-radius: 20px;
+}
 /****** CARD ******/
 .card {
   width: 135px;

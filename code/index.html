@@ -11,8 +11,10 @@
     />
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Seymour+One&display=swap');
-      </style>
+      @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Seymour+One&display=swap');
+    </style>
   </head>
+
   <body>
     <aside class="question-section">
       <button type="button" id="restart" class="outlined-button">RESTART</button>
@@ -26,9 +28,11 @@
       <h1>Does the person have</h1>
 
       <select title="questions" id="questions">
+        <optgroup></optgroup>
+          <option>...</option>
         <optgroup label="hair">
-          <option value="brown">Brown hair</option>
           <option value="yellow">Yellow hair</option>
+          <option value="brown">Brown hair</option>
           <option value="grey">Grey hair</option>
           <option value="purple">Purple hair</option>
           <option value="black">Black hair</option>
@@ -39,7 +43,7 @@
         <optgroup label="eyes">
           <option value="hidden">Hidden eyes</option>
           <option value="blue">Blue eyes</option>
-          <option value="browneyes">Brown eyes</option>
+          <option value="brown">Brown eyes</option>
           <option value="green">Green eyes</option>
         </optgroup>
         <optgroup label="accessories">
@@ -49,12 +53,23 @@
         <optgroup label="other">
           <option value="smoker">A smoking habit</option>
           <option value="beard">Beard</option>
-          <option value="happy">A seemingly happy outlook on life</option>
+          <option value="happy outlook on life">A seemingly happy outlook on life</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+
+      <section>
+        <div class="game-instructions" id="gameInstructions">
+          <p>Are you in need of some guidelines?</p>
+        </div>
+        <div class="game-instructions-extended" id="gameInstructionsExtended">
+          <p>The aim of the game is to find out who the secret person is. You do this by asking questions using the dropdown above. <a href="https://www.ultraboardgames.com/guess-who/game-rules.php" target="_blank">Read more.</a></p>
+        </div>
+      </section>
     </aside>
+
+    
 
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>

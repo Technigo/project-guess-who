@@ -1,10 +1,12 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board') // a class within the section where the charachters will show. 
-const questions = document.getElementById('questions') // where you do your guesse (the roll-down input section)
+const questions = document.getElementById('questions') // where the user asks the questions (the select/drop down)
 const restartButton = document.getElementById('restart') // the restart button
-const findOutButton = document.getElementById('filter') // the find-out button
-const winOrLoseSection = document.getElementById('winOrLose')
-const playAgainBtn = document.getElementById('playAgain')
+const findOutButton = document.getElementById('filter') // the findout button
+const winOrLoseSection = document.getElementById('winOrLose') 
+const playAgainBtn = document.getElementById('playAgain') //the play again-button
+const instructions = document.getElementById('gameInstructions')
+const instructionsExtended = document.getElementById('gameInstructionsExtended')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -36,7 +38,7 @@ const CHARACTERS = [
     name: 'Jai',
     img: 'images/jai.svg',
     hair: 'black',
-    eyes: 'browneyes',
+    eyes: 'brown',
     accessories: [],
     other: ['happy']
   },
@@ -78,7 +80,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['happy']
+    other: ['happy outlook on life']
   },
 
   {
@@ -103,7 +105,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['happy']
+    other: ['happy outlook on life']
   },
   {
     name: 'Jed',
@@ -135,7 +137,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['happy']
+    other: ['happy outlook on life']
   },
   {
     name: 'Jess',
@@ -143,7 +145,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: ['happy']
+    other: ['happy outlook on life']
   },
   {
     name: 'Jocelyn',
@@ -159,7 +161,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['happy']
+    other: ['happy outlook on life']
   },
   {
     name: 'Jordan',
@@ -167,15 +169,15 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: ['happy']
+    other: ['happy outlook on life']
   },
   {
     name: 'Josephine',
     img: 'images/josephine.svg',
     hair: 'grey',
-    eyes: 'browneyes',
+    eyes: 'brown',
     accessories: [],
-    other: ['happy']
+    other: ['happy outlook on life']
   },
   {
     name: 'Josh',
@@ -183,7 +185,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: ['happy']
+    other: ['happy outlook on life']
   },
   {
     name: 'Jude',
@@ -191,13 +193,13 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: ['beard', 'happy']
+    other: ['beard', 'happy outlook on life']
   },
   {
     name: 'Julie',
     img: 'images/julie.svg',
     hair: 'black',
-    eyes: 'browneyes',
+    eyes: 'brown',
     accessories: ['glasses', 'hat'],
     other: []
   },
@@ -408,4 +410,9 @@ playAgainBtn.addEventListener('click', (event) => {
 restartButton.addEventListener('click', (event) => {
   setTimeout (() => location.reload(console.log("event triggered")), 500)
     return false // lägg in förklaring om detta https://stackoverflow.com/c/technigo/questions/3983 
+})
+
+//
+instructions.addEventListener('click', (event) => {
+  instructionsExtended.style.display = 'block'
 })

@@ -206,7 +206,7 @@ const CHARACTERS = [
 let secretPlayer
 let currentQuestion
 let charactersInPlay 
-
+let personToCheck
 // Draw the game board
 const generateBoard = () => {
   CHARACTERS.map(charactersInPlay => {
@@ -372,14 +372,38 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
+  const playerGuess = confirm('Are you sure you want to make a guess?')  // storing the interaction from the player in a variable.
+                                                                      //display window with question if player is ready to guess
+  //console.log('players guess', personToConfirm);
+  if (playerGuess) {
+    checkMyGuess(personToConfirm)
+  }// invoke the checkMyGuess function.
+  //document.getElementById("guess").innerHTML = text;
+
+  console.log('confirm works?') //concole log only for dev purposes 
+  
+ 
   // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
+  //Check if the personToCheck is the same as the secret person's name
+  if (personToCheck === secretPlayer.name) {
+    console.log('check my guess', winOrLose)
+    winOrLose.style.display = 'flex',
+    winOrLose.innerHTML = `Congratulation! You won!`
+    board.style.display = 'none'
+  } else {
+    winOrLose.style.display = 'flex',
+    winOrLose.innerHTML = `Oh no! It was not ${personToCheck}. The secret player is ${secretPlayer.name}`
+    board.style.display = 'none'
+  }
+   console.log('secret ', secretPlayer.name)
+   
+  
+  
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
@@ -388,9 +412,10 @@ const checkMyGuess = (personToCheck) => {
 // Invokes the start function when website is loaded
 
 start()
-
+//checkMyGuess()
 // All the event listeners
 restartButton.addEventListener('click', start)
 // filter.addEventListener("click", checkQuestion);//event listener for the Find Out button
 filter.addEventListener("click", checkQuestion);//event listener for the Find Out button
 questions.onchange = selectQuestion;
+//guess.addEventListener('click', checkMyGuess)

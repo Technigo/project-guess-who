@@ -12,3 +12,4 @@ board.style.display = 'none'
 
 ## View it live
 
+https://guesswhonaghmeh.netlify.app/

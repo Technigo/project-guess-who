@@ -8,4 +8,4 @@ I had some problems with filtering, but got it to work with some help from team 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://singular-parfait-a295c7.netlify.app/

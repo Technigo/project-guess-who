@@ -191,6 +191,7 @@ button {
 .win-or-lose img {
   align-self: flex-start;
   margin-left: 15%;
+  width: 200px;
 }
 
 .win-or-lose h1 {
@@ -206,16 +207,18 @@ button {
     width: 100%;
     min-height: 0;
   }
+  
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 100px;
   }
 
   .board-wrapper {
@@ -246,13 +249,9 @@ button {
   }
 
   .card .guess .filled-button {
-    padding: 6px 11px;
-    margin-bottom: 1px;
+    padding: 4px 8px;
     background: var(--primary);
     color: var(--secondary);
     border: none;
   }
-
-
-  
 }

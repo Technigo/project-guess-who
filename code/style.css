@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #fa7b44;
+  --secondary: #fdbe97;
 }
 
 body {
@@ -17,6 +17,15 @@ h1 {
   line-height: 48px;
   margin: 10px 0;
   color: white;
+}
+
+.number-of-questions {
+ font-size: 14px;
+ font-weight: bold;
+ color: rgb(196, 42, 0);
+ border: 2px solid var(--primary);
+ border-radius: 50px;
+ padding: 10px;
 }
 
 .question-section {
@@ -230,4 +239,3 @@ button {
     color: var(--primary);
     border: none;
   }
-}

@@ -7,7 +7,7 @@ const gameBoard = document.getElementById('board')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const winOrLoseSection = document.getElementById('winOrLose')
 const playAgainButton = document.getElementById('playAgain')
-const questionsAsked = document.getElementById('questions-asked')
+const questionCounter = document.getElementById('questionsAsked')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -213,6 +213,7 @@ let currentQuestion = {
 	value: 'yellow', // <-- Comes from the selected option*/
 }
 let charactersInPlay
+let questionsAsked;
 
 
 // Draw the game board
@@ -243,13 +244,13 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard ();
-  alert ('Hello, let's start this game!');
+  /*alert ('Hello, lets start this game!');*/
   setSecret ();
   selectQuestion();
- /* questionsAsked = 0;
-  quesAsked.innerHTML = `Questions asked: ${questionsAsked}`;
+  questionsAsked = 0;
+  questionCounter.innerHTML = `Questions asked: ${questionsAsked}`;
   console.log ('all characters'), charactersInPlay;
-  console.log ('frågor', questionsAsked);*/
+  console.log ('questions', questionsAsked);
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -289,7 +290,7 @@ const checkQuestion = () => {
   }  
   }
   questionsAsked++;
-  questionsAsked.innerHTML = `Questions asked: ${questionsAsked}`;
+  questionCounter.innerHTML = `Questions asked: ${questionsAsked}`;
 };
 
 // It'll filter the characters array and redraw the game board.
@@ -299,13 +300,13 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `ACC Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
       charactersInPlay = charactersInPlay.filter((person) => person [category].includes(value)
       );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `ACC No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
       charactersInPlay = charactersInPlay.filter ((person) => !person [category].includes(value)
       );
@@ -335,7 +336,7 @@ const filterCharacters = (keep) => {
       );
     } else {
       alert(
-        `No, the person doesn't seem to have ${value} hair! Remove all people with ${value}`
+        `No, the person doesn't seem to have ${value} hair! Remove all people with ${value} hair`
       );
       charactersInPlay = charactersInPlay.filter ((person) => person [category] !== (value)
       );
@@ -370,7 +371,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
   // Invoke a function to redraw the board with the remaining people.
-
 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

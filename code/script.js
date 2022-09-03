@@ -33,7 +33,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker', 'angry']
+    other: ['a smoker', 'angry']
   },
   {
     name: 'Jai',
@@ -90,7 +90,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker', 'angry']
+    other: ['a smoker', 'angry']
   },
   {
     name: 'Jean',
@@ -98,7 +98,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker', 'angry']
+    other: ['a smoker', 'angry']
   },
   {
     name: 'Jeane',
@@ -114,7 +114,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker', 'angry']
+    other: ['a smoker', 'angry']
   },
   {
     name: 'Jenni',
@@ -396,7 +396,7 @@ const loseSection = () => {
 start();
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', () => location.reload())
 anotherTryButton.addEventListener('click', () => location.reload())
 playAgainButton.addEventListener('click',  () => location.reload());
 questions.addEventListener('change', () => { selectQuestion(questions.value);}); 

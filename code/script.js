@@ -209,6 +209,8 @@ const CHARACTERS = [
 let secret 
 let currentQuestion
 let charactersInPlay
+let personToCheck
+
 
 
 //questions.onchange = () => {
@@ -258,6 +260,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard();
+  selectQuestion()
   
 }
 
@@ -293,15 +296,16 @@ const checkQuestion = () => {
   if (category === 'hair' || category === 'eyes') {
  if (value === secret[category]) {
   filterCharacters(true)
- } else
+ } else {
  filterCharacters(false)
-
+}
   } else if (category === 'accessories' || category === 'other') {
  if (secret[category].includes(value)) {
   filterCharacters(true)
- } else 
+ } else {
  filterCharacters(false)
   }
+}
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -313,11 +317,12 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     } 
   } else if (category === 'other') {
     if (keep) {
@@ -325,15 +330,15 @@ const filterCharacters = (keep) => {
         `Yes, the person has ${value}! Keep all people that has ${value}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    }
+    
     // Similar to the one above
   } else {
-    alert (
+    alert(
     `No, the person doesn't have ${value}! Remove all people that have ${value}`
     )
-    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   }
-   if (category === 'hair') {
+} else if(category === 'hair') {
     if (keep) {
       alert(
         `Yes, the person has ${value}! Keep all people that has ${value}`
@@ -345,7 +350,7 @@ const filterCharacters = (keep) => {
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
-    
+  
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
    } else  if (category === 'eyes') {
     if (keep) {
@@ -362,7 +367,7 @@ const filterCharacters = (keep) => {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
 
-    //rearrangeBoard()
+generateBoard()
   }
   
  
@@ -386,12 +391,12 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const confirm = confirm(`Do you really think it's ${personToConfirm}?`)
-  if (confirm) checkMyGuess(personToCheck)
+  const playerGuess = confirm(`Do you really think it's ${personToConfirm}?`)
+  if (playerGuess) 
+  checkMyGuess(personToCheck)
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-  
 }
 
 // If you confirm, this function is invoked

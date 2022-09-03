@@ -1,4 +1,4 @@
-# Project Name
+# Guess who game
 
 Replace this readme with your own information about your project.
 

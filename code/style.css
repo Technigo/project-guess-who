@@ -12,15 +12,15 @@ body {
 }
 
 h1 {
-  font-size: 42px;
-  font-weight: 500;
+  font-size: 52px;
+  font-weight: 900;
   line-height: 48px;
   margin: 10px 0;
   color: white;
 }
 
 .question-section {
-  width: 30%;
+  width: 35%;
   min-height: 100vh;
   background-color: var(--secondary);
   display: flex;
@@ -112,6 +112,10 @@ select {
   width: 90%;
 }
 
+.questions {
+font-size: 17px;
+padding: 4px;
+}
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
@@ -131,6 +135,8 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  margin-bottom: 70px;
+
 }
 
 .filled-button,
@@ -144,6 +150,8 @@ button {
   border-color: white;
   color: var(--primary);
 }
+
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {

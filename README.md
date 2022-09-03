@@ -10,5 +10,4 @@ Overall I worked from top to bottom, following instructions in notion.
 If i had more time i'd add a timer, style the board more and add more attributes to the characters. 
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://aesthetic-monstera-25b1d7.netlify.app 

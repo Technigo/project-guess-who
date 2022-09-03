@@ -248,7 +248,6 @@ const playAgain = () => {
   setSecret();
   winOrLoseSection.style.display = 'none'; // Hiddes the section that shows the win or lose messages.
   board.style.display = "flex"; // Shows again the board game
-  //OR board.style.display = "" // Shows again the board game
 };
 
 // setting the currentQuestion object when you select something in the dropdown

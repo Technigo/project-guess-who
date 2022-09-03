@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #14672a;
+  --secondary: #85b788;
 }
 
 body {
@@ -42,6 +42,7 @@ select {
 
 .guess-who-icon {
   width: 126px;
+  border-radius: 70px;
 }
 
 .board-wrapper {
@@ -151,6 +152,7 @@ button {
   align-items: center;
   justify-content: center;
   background: var(--secondary);
+  background-color: #6bc46e;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -168,13 +170,36 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+video {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  border-radius: 70px;
+  width: 100%;
+  height: 700px;
+  
+
 }
+
+.video{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.audio{
+  display: none;
+}
+
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+h2{
+  display: none;
 }
 
 @media (max-width: 768px) {

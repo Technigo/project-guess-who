@@ -148,10 +148,12 @@ button {
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  background: var(--secondary);
-  position: absolute;
+  /*background:#C6F1A2;*/
+  background-image: url("./images/pexels-thái-huỳnh-3998365_small.jpg");
+  position:relative;
+  min-width: 100%;
   top: 0;
   bottom: 0;
   left: 0;

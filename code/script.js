@@ -408,6 +408,9 @@ const checkMyGuess = (personToCheck) => {
   // 3. Show the win or lose section
   // 4. Hide the game board
 }
+reload = () => {
+  window.location.reload()
+}
 
 // Invokes the start function when website is loaded
 
@@ -419,3 +422,4 @@ restartButton.addEventListener('click', start)
 filter.addEventListener("click", checkQuestion);//event listener for the Find Out button
 questions.onchange = selectQuestion;
 //guess.addEventListener('click', checkMyGuess)
+playAgain.addEventListener("click", start)

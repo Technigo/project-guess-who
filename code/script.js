@@ -80,7 +80,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses','earrings'],
     other: []
   },
 
@@ -153,7 +153,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses','earrings'],
     other: []
   },
   {
@@ -177,7 +177,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -299,13 +299,13 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person [category].includes(value)
       );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
       );
       charactersInPlay = charactersInPlay.filter ((person) => !person [category].includes(value)
       );
@@ -313,13 +313,13 @@ const filterCharacters = (keep) => {
   } else if (category === 'other') {
     if (keep) {
       alert (
-        `Yes, the person has ${value}! Keep all people with ${value}`
+        `Yes, the person has ${value}! Keep all people with ${value}.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person [category].includes(value)
       );
     } else {
       alert(
-        `No, the person doesn't seem to have ${value} Remove all people with ${value}`
+        `No, the person doesn't seem to have ${value} Remove all people with ${value}.`
       );
       charactersInPlay = charactersInPlay.filter ((person) => !person [category].includes(value)
       );
@@ -333,7 +333,7 @@ const filterCharacters = (keep) => {
       );
     } else {
       alert(
-        `No, the person doesn't seem to have ${value} hair! Remove all people with ${value} hair`
+        `No, the person doesn't seem to have ${value} hair! Remove all people with ${value} hair.`
       );
       charactersInPlay = charactersInPlay.filter ((person) => person [category] !== (value)
       );
@@ -347,7 +347,7 @@ const filterCharacters = (keep) => {
       );
     }else {
       alert(
-       `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes`
+       `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes.`
       );
       charactersInPlay = charactersInPlay.filter ((person) => person [category] !== (value)
       );

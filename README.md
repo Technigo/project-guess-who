@@ -1,13 +1,12 @@
-# Project Name
+# Project Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week's brief was to create a Guess Who game, focusing entirely in JavaScript.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I found it very difficult to make this project wor, but looking at other people's solutions on GitHub as well as speaking 
+to people in my team really made the difference. It is very simple as of right now, but I am aiming to modify it later 
+with my own images and characters, as well as new attributes, now that I know how everything works. I did begin to modify the CSS aswell, which I will continue to do to make it more my own. 
+
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

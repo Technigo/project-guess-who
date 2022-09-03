@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #fac76f;
+  --secondary: #cd3d4e;
 }
 
 body {
@@ -230,4 +230,4 @@ button {
     color: var(--primary);
     border: none;
   }
-}
+  }

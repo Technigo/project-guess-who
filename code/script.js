@@ -1,11 +1,13 @@
-document.addEventListener("DOMContentLoaded", () => {
+//document.addEventListener("DOMContentLoaded", () => {
 
   // All the DOM selectors stored as short variables
   const board = document.getElementById('board')
   const questions = document.getElementById('questions')
   const restartButton = document.getElementById('restart')
   const findOutButton = document.getElementById('filter')
-  
+  const winOrLose = document.getElementById('winOrLose')
+  const playAgainButton = document.getElementById('playAgain')
+  const winOrLoseText = document.getElementById('winOrLoseText')
 
 
   // Array with all the characters, as objects
@@ -226,6 +228,8 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `
     })
+
+    
   }
 
   // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -357,42 +361,47 @@ document.addEventListener("DOMContentLoaded", () => {
   }
  
 
-  // when clicking guess, the player first have to confirm that they want to make a guess.
-  const guess = (personToConfirm) => {
-    console.log('trying to confirm')
-    let confirmPerson = confirm(`Do you really want to make a guess on ${personToConfirm}?`);
-    if (confirmPerson === true) {
-      checkMyGuess(personToConfirm)
- 
-    }
+    // when clicking guess, the player first have to confirm that they want to make a guess.
     // store the interaction from the player in a variable.
     // remember the confirm() ?
     // If the player wants to guess, invoke the checkMyGuess function.
 
+  const guess = (personToConfirm) => {
+    console.log('trying to confirm')
+    let confirmPerson = confirm(`Do you really want to make a guess on ${personToConfirm}?`);
+    if (confirmPerson === true) {
+      checkMyGuess (personToConfirm)
+    }
+
   }
   // If you confirm, this function is invoked
-  const checkMyGuess = (personToCheck) => {
 
-    if (personToCheck === secret.name) {
-      alert(`You're right!`);
-      board.innerHTML = winLose.classList.add("active");
-      winLoseText.innerHTML = `
-      <h5>You're a WINNER!!</h5> 
-      <h6>You completed the game in ${counterValue} attempts and ${totalSeconds} seconds. Do you wanna play again?</h6>`;
+  const checkMyGuess = (personToCheck) => {
+    board.style.display = 'none'
+    winOrLose.style.display = 'flex'
+
+    if (personToCheck === secret.name){
+      winOrLoseText.innerHTML = `
+        Congratulations, You won! ${secret.name} is the person we were looking for. `
     } else {
-      alert(`Sorry, this is not your character. It is ${secret.name}.`);
-      board.innerHTML = "";
-      winLose.classList.add("active");
-      winLoseText.innerHTML = `
-      <h5>Better luck next time!</h5> 
-      <h6>Would you like to try again?</h6>`;
-    }
+      winOrLoseText.innerHTML = `
+        Unfortunately, that is the wrong answer. It is ${secret.name} 
+        that we were looking for. `
+    }    
+  };
+  
+
+
+
+  
+
+    
     
     // 1. Check if the personToCheck is the same as the secret person's name
     // 2. Set a Message to show in the win or lose section accordingly
     // 3. Show the win or lose section
     // 4. Hide the game board
-  }
+ 
 
   // Invokes the start function when website is loaded
   start()
@@ -403,14 +412,14 @@ document.addEventListener("DOMContentLoaded", () => {
   restartButton.addEventListener('click', start);
   findOutButton.addEventListener('click', checkQuestion)
   questions.addEventListener('change', selectQuestion)
-  
-  
+  playAgainButton.addEventListener('click', () => {
+  winOrLose.style.display = 'none';
+  board.style.display = 'flex'
+  location.reload();
+  })
 
 
-  
- 
-
-});
+//});
 
 
 

@@ -83,6 +83,11 @@ select {
   padding: 3px;
   border-radius: 20px;
 }
+
+.active + .game-instructions-extended {
+  display: block;
+}
+
 /****** CARD ******/
 .card {
   width: 135px;

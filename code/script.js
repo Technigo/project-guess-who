@@ -414,5 +414,5 @@ restartButton.addEventListener('click', (event) => {
 
 //
 instructions.addEventListener('click', (event) => {
-  instructionsExtended.style.display = 'block'
+  instructions.classList.toggle("active")
 })

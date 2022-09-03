@@ -1,9 +1,9 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
-const findOutButton = document.getElementById('filter')
-const playAgainButton = document.getElementById('playAgain')
+const board = document.getElementById('board') //connected to the board
+const questions = document.getElementById('questions') //connected to the selection of different characteristic of the characters
+const restartButton = document.getElementById('restart') //connected to the restart button
+const findOutButton = document.getElementById('filter') //connected to the find out button
+const playAgainButton = document.getElementById('playAgain') //connected to the play again button
 
 
 // Array with all the characters, as objects
@@ -204,7 +204,7 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
+let secret 
 let currentQuestion
 let charactersInPlay
 
@@ -233,10 +233,10 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   //this connects to the counter id on HTML
-  numberOfGuesses = 5 
+  numberOfGuesses = 5 //max guess is 5 times
   document.getElementById('guess-counter').innerHTML = `${numberOfGuesses}`
   charactersInPlay = CHARACTERS
-  generateBoard() 
+  generateBoard() //what happens here is when user opens website, it will shows both the game board and the secret question
   setSecret()
   console.log(secret.name);
 }
@@ -260,19 +260,19 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  numberOfGuesses -= 1
+  numberOfGuesses -= 1 //everytime user click find out button, the number of guess go down from max guess to min guess
   document.getElementById('guess-counter').innerHTML = `${numberOfGuesses}`
   
   const { category, value } = currentQuestion;
 
-  let keep 
+  let keep //will take an effect when user guess correct characteristic
 
   
   if (numberOfGuesses === -1) {
     findOutButton.style.display = 'none'
-    document.getElementById('guess-counter').innerHTML = `You cannot try to find out more. Please pick a person.`
+    document.getElementById('guess-counter').innerHTML = `You cannot try to find out more. Please pick a person.` //shows up when the min guess is reached
   }
-  else if (category === 'hair' || category === 'eyes') {
+  else if (category === 'hair' || category === 'eyes') { //if chosen value is the same as secret value, then keep the cards, else remove cards
     if(value === secret[category]){
       keep = true
     } else {
@@ -280,7 +280,7 @@ const checkQuestion = () => {
     } 
   }
   else if (category === 'accessories' || category === 'other'){
-      if(secret[category].includes(value)){
+      if(secret[category].includes(value)){ //use includes() method because 1 character can have several accessories & other
         keep = true
       } else {
         keep = false
@@ -296,7 +296,7 @@ const filterCharacters = (keep) => {
   if (category === 'hair') {
     if (keep) {
       alert(
-        `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
+        `Yes, the person has ${value} hair! Keep all people that have ${value} hair` //alert user and keep or remove the cards depending on which category they use
       );
       
     } else {
@@ -340,7 +340,7 @@ const filterCharacters = (keep) => {
   }
   if (category === 'hair' || category === 'eyes') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value) //this is where the filtering happens
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
@@ -366,11 +366,11 @@ const guess = (personToConfirm) => {
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
+const checkMyGuess = (personToCheck) => { //depend on correct/incorrect, this new screen will show
   if(personToCheck === secret.name){
     winOrLoseText.innerHTML = `Good job! It is ${personToCheck}!`
     winOrLose.style.display = 'block'
-    board.style.display = 'none'
+    board.style.display = 'none' //hide game board
   }else {
     winOrLoseText.innerText = `Sorry, the correct person is ${secret.name}`
     winOrLose.style.display = 'block'
@@ -392,7 +392,7 @@ const playAgain = () => {
 restartButton.addEventListener('click', () => {
   start()
   board.style.display = 'flex'
-  board.style.flexDirection = 'row-reverse'
+  board.style.flexDirection = 'row-reverse' //when restart button is clicked, it will change position of the character once
 })
 
 //I make sure that the find out button & board start

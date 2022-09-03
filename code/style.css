@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Montserrat;
+  background-color: rgb(254, 253, 253);
 }
 
 h1 {
@@ -16,13 +17,18 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: rgb(249, 229, 3);
+  color: rgb(253, 253, 5);
 }
 
 .question-section {
   width: 30%;
   min-height: 100vh;
   background-color: var(--secondary);
+  background-image: url("images/gw.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 5vw;

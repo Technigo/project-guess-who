@@ -1,5 +1,4 @@
-# Project Name
-Guess Who Game
+# Project Name : Guess Who Game
 
 I created a Guess Who game for the 2nd week of sprint 1 project.
 

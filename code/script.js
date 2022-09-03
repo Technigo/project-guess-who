@@ -240,9 +240,10 @@ const start = () => {
   generateBoard ();
   setSecret();
   console.log('The secret person is', secret);
+  
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// Setting the currentQuestion object when the player select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.options[questions.selectedIndex].value
@@ -259,11 +260,11 @@ const checkQuestion = () => {
   let keep = false
 
   if (category === "hair" || category === "eyes") {
-    keep = value === secret[category];
-    
+    keep = value === secret[category] 
   } else if (category === "accessories" || category === "other") {
     keep = secret[category].includes(value);
   }
+
   filterCharacters(keep);
 }
 
@@ -284,7 +285,7 @@ const filterCharacters = (keep) => {
         `No, the person doesn't have ${value} hair! Remove all people with ${value} hair!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      if (numberOfGuesses <1) {
+      if (numberOfGuesses < 1) {
         loseSection()
       }
     }
@@ -345,23 +346,22 @@ const filterCharacters = (keep) => {
 const guess = (personToConfirm) => {
   // stores the interaction from the player in a variable.
   guessedPerson = personToConfirm
-  if (window.confirm(`Do you really think that this is the secret person?`)) {
+  if (window.confirm(`Do you really think that ${guessedPerson} is the secret person?`)) {
     checkMyGuess();
   }
 }
-const checkMyGuess = (personToCheck) => {
-  console.log('check my guess', guessedPerson,)
-  if (guessedPerson === secret.name) {
-    winSection()
-  } else if (guessedPerson !== secret.name) {
-    loseSection()
-  }
+
+const checkMyGuess = () => {
+  console.log('check my guess', guessedPerson)
+  guessedPerson === secret.name ? winSection () : loseSection()
 }
+
 //what's shown if the player guesses correct
 const winSection = () => {
   board.innerHTML = '';
   const win = document.getElementById('win').style.display = "flex"
 }
+
 //what's shown if the player guesses wrong
 const loseSection = () => {
   board.innerHTML = '';
@@ -376,7 +376,7 @@ anotherTryButton.addEventListener('click', () => location.reload())
 playAgainButton.addEventListener('click',  () => location.reload());
 questions.addEventListener('change', () => { selectQuestion(questions.value);}); 
 findOutButton.addEventListener('click', () => {
-    numberOfGuesses --;
+    numberOfGuesses--;
     counter.innerText = numberOfGuesses;
     checkQuestion() 
 });

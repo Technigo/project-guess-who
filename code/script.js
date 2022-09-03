@@ -76,7 +76,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings'],
     other: []
   },
 
@@ -110,7 +110,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'beard']
   },
   {
     name: 'Jenni',
@@ -149,7 +149,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings'],
     other: []
   },
   {
@@ -173,7 +173,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -239,7 +239,7 @@ const start = () => {
   selectQuestion()
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
@@ -254,6 +254,7 @@ const selectQuestion = () => {
   }
 }
 
+// Let the game move forward from the first alternative ('brown hair')
 questions.onchange = selectQuestion
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -290,47 +291,45 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       swal(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
       )
     } else {
       swal(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
       )
     }
 
   } else if (category === 'other') {
     if (keep) {
       swal(
-        `Yes, the person is a ${value}! Keep all people that isn't a ${value}`
+        `Yes, the person is a ${value}! Keep all people that isn't a ${value}.`
       )
     } else {
       swal(
-        `No, the person isn't a ${value}! Remove all people that is a ${value}`
+        `No, the person isn't a ${value}! Remove all people that is a ${value}.`
       )
     }
 
   } else if (category === 'eyes') {
     if (keep) {
       swal(
-        `Yes, the person has ${value} eyes! Keep all people that has ${value} eyes`
+        `Yes, the person has ${value} eyes! Keep all people that has ${value} eyes.`
       )
     } else {
       swal(
-        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
+        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes.`
       )
     }
 
   } else {
     if (keep) {
       swal(
-        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair.`
       )
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
       swal(
-        `No, the person doesnt have ${value} hair! Remove all people with ${value} hair`
+        `No, the person doesnt have ${value} hair! Remove all people with ${value} hair.`
       )
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
 }
 
@@ -357,8 +356,8 @@ const filterCharacters = (keep) => {
   generateBoard()
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
+// When clicking guess, the player first have to confirm that they want to make a guess.
+const guess = (personToConfirm) => {  
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   let playerGuess = confirm("Are you sure?")
@@ -369,7 +368,7 @@ const guess = (personToConfirm) => {
     swal(
       "Okay! Keep on playing!"
     )
-  }
+  } 
 }
 
 // If you confirm, this function is invoked
@@ -380,7 +379,7 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerText = 'Yay, you won! Play again?'
   } else {
     swal(
-      `Sorry, it's not ${personToCheck}. It is ${secret.name}.`
+      `Sorry, it's not ${personToCheck}. It was ${secret.name}.`
     )
   }
 // 3. Show the win or lose section

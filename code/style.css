@@ -20,13 +20,13 @@ h1 {
   color: white;
 }
 
+p {
+  margin: 0;
+}
+
 main {
   display: flex;
   justify-content: center;
-}
-
-.guess-counter {
-  height: 50px;
 }
 
 .question-section {
@@ -38,6 +38,11 @@ main {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+}
+
+.aside-text {
+  margin: 4px 0;
+  color: #F27370;
 }
 
 select {
@@ -157,7 +162,7 @@ button {
 }
 
 .restart-button {
-  margin-bottom: 8px;
+  margin: 8px 0;
 }
 
 /****** WIN OR LOSE SECTION ******/

@@ -12,27 +12,17 @@
   </head>
   <body>
     <aside class="question-section">
-      <div class="name-container">
-        <p>
-          Player name:
-          <span id="player-name"></span>
-        </p>
-      </div>
-      <div class="game-timer">
-        <p>
-          Timer:
-          <span id="minutes">00</span>:<span id="seconds">00</span>
-        </p>
-      </div>
-      <div class="question-counter">
-        <p>Questions remaining: <span id="number-of-questions">5</span></p>
+      <div class="counter-wrapper">
+        <p class="aside-text" id="katt">Player name: <span id="player-name"></span></p>
+        <p class="aside-text">Timer: <span id="minutes">00</span>:<span id="seconds">00</span></p>
+        <p class="aside-text">Questions remaining: <span id="number-of-questions">5</span></p>
       </div>
       
       <button type="button" id="restart" class="outlined-button restart-button">RESTART</button>
 
       <img
         class="guess-who-icon"
-        src="images/guess-who-bubble.png"
+        src="./images/pixel-speech-bubble.gif"
         alt="Guess Who"
       />
 

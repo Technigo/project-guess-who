@@ -223,7 +223,8 @@ let playerName;
 
 // 'Randomly' select a person from the characters array and set as the value of the variable called secret
 const setSecretPerson = () => {
-  secretPerson = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  secretPerson = charactersInPlay[0];
+  //secretPerson = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
   console.log(secretPerson.name)
 }
 
@@ -263,7 +264,6 @@ window.onload = () => {
     } else if (seconds > 9 && seconds <= 59){
       addSeconds.innerHTML = seconds;
     } else if (seconds > 59) {
-      console.log("minute");
       minutes++;
       addMinutes.innerHTML = "0" + minutes;
       seconds = 0;
@@ -359,7 +359,16 @@ const checkQuestion = () => {
    }
  } else {
      //TO DO! tom array är samma som no accessories
-   if (secretPerson[category].includes(value)) {
+     //fråga no accessories ska checka för secretperson array lenght 0
+     if(value === 'no-accessories' || value === 'no-other') {
+      if ( !secretPerson[category].length ) {
+            keep = true;
+
+          } else {
+            keep = false;
+          }
+     }
+   else if (secretPerson[category].includes(value)) {
      keep = true;
    } else {
      keep = false;
@@ -371,6 +380,7 @@ const checkQuestion = () => {
 
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
+  console.log(charactersInPlay);
   if (category === 'hair'|| category === 'eyes') {
     if (keep === true) {
       alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`);
@@ -383,18 +393,28 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'accessories') {
     if (keep === true) {
-      alert(`Yes, the person has a ${value}! Keep all people with a ${value}.`);
-      charactersInPlay = charactersInPlay.filter(character => character[category].includes(value));
-    }  else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}.`)
-      charactersInPlay = charactersInPlay.filter(character => !character[category].includes(value));
+      alert(`Yes, the person wears ${value}! Keep all people with a ${value}.`);
+      if (value === 'no-accessories') {
+        charactersInPlay = charactersInPlay.filter(character => !character[category].length);
+      } else if (value !== 'no-accessories') {
+        charactersInPlay = charactersInPlay.filter(character => character[category].includes(value))
+      }
+    } else {
+      //SP har accessories. Man frågar efter no-accessories. keep = false
+      if (value === 'no-accessories') {
+        charactersInPlay = charactersInPlay.filter(character => character[category].length)
+        alert(`No, the person does wear some accessories! Remove all people without accessories.`)
+      } else if (value !== 'no-accessories') {
+        charactersInPlay = charactersInPlay.filter(character => !character[category].includes(value));
+        alert(`No, the person doesn't wear ${value}! Remove all people with ${value}.`)
+      }
     }
   } else {
     if (keep === true) {
-      //This is to make the alert text more gramaticly accurate.
+      //This is to make the alert text more grammatically accurate.
       if (value === 'smoker') {
         alert('Correct! The person has a smoking habit. Keep all characters with a smoking habit')
-      } else if( value === 'haddok') {
+      } else if (value === 'haddok') {
         alert('Correct! The person looks somewhat like Captain Haddok. Keep all characters that looks like him.');
       } else if (value === 'artsy') {
         alert('Correct! Based on the creators prejudices, the person probably likes art. Keep all artsy-looking characters.');
@@ -419,6 +439,7 @@ const filterCharacters = (keep) => {
     charactersInPlay = charactersInPlay.filter(character => !character[category].includes(value));
     }
   }
+  console.log(charactersInPlay);
   // Run function to refresh board with removed characters
   generateBoard();
   if (questionsAsked === 0) {
@@ -453,8 +474,6 @@ const checkMyGuess = (personToCheck) => {
     board.innerHTML = ''
     winLoseScreen.style.display='flex';
     winOrLoseText.innerHTML = `You lose, ${playerName}! In ${minutes} minutes and ${seconds} seconds, with ${questionsAsked} questions remaining, you couldn't guess Who!`;
-    let applause = new Audio('https://freesound.org/people/Sandermotions/sounds/277021/');
-    applause.play();
   }
 }
 

@@ -23,13 +23,23 @@
       <h1>Does the person have</h1>
 
       <select title="questions" id="questions">
-        <optgroup label="hair">
+        <optgroup label="hair" id="hair">
           <option value="brown">brown hair</option>
           <option value="yellow">yellow hair</option>
+          <option value="black">black hair</option>
+          <option value="grey">grey hair</option>
+          <option value="purple">purple hair</option>
+          <option value="orange">orange hair</option>
+          <option value="hidden">hidden hair</option>
           <!-- Add the rest of hair colors as options  -->
         </optgroup>
-        <optgroup label="eyes">
+        <optgroup label="eyes" id="eyes">
           <option value="hidden">hidden eyes</option>
+          <option value="blue">blue</option> 
+          <option value="brown">brown</option> 
+          <option value="green">green</option> 
+          
+          
           <!-- Add the rest of eye colors as options  -->
         </optgroup>
         <optgroup label="accessories">
@@ -42,6 +52,7 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <button class="filled-button"><p>Nr of Try : <span id="counter"> 0 </span> </p></button>
     </aside>
 
     <section class="board-wrapper">
@@ -59,6 +70,10 @@
         <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
-    <script src="script.js"></script>
+    
+
+    <script src="app.js"></script>
+
+   
   </body>
 </html>

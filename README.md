@@ -1,12 +1,10 @@
-# Project Name
+# Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A digital version of the classic board game Guess Who.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had some problems with filtering, but got it to work with some help from team mates and teachers. As a last thing I changed the alerts to sweet alerts. If I had more time I would try to put in a counter to keep track of how many guesses a player does.
 
 ## View it live
 

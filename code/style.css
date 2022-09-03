@@ -187,9 +187,11 @@ button {
 }
 
 .outlined-button {
+  border: 1px solid;
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  font-weight: 500;
 }
 
 .filled-button,

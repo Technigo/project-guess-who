@@ -26,7 +26,7 @@ I would also worke more on the css counter/time and sound.
 
 ## View it live
 
-Netlify link:
+Netlify link: guesswho-nina-berggren.netlify.app
 
 Guess Who logo was made by me in Illustrator.
 Using Color hunt for the colorpalett.

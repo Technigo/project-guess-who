@@ -1,6 +1,6 @@
 # Project Name
+Guess Who Game
 
-Replace this readme with your own information about your project.
 I created a Guess Who game for the 2nd week of sprint 1 project.
 
 ## The problem

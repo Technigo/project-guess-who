@@ -41,7 +41,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 200px;
+  width: 220px;
 }
 
 .board-wrapper {
@@ -226,7 +226,7 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: black;
     color: var(--primary);
     border: none;
   }

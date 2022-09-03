@@ -16,218 +16,218 @@ let charactersInPlay
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Lion',
+    img: 'images/Lion.svg',
+    color: ['brown'],
+    eat: 'carnivore',
+    habitat: 'savanah',
+    moves: ['climb']
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Giraffe',
+    img: 'images/Giraffe.svg',
+    color: ['brown'],
+    eat: 'herbivore',
+    habitat: 'savanah',
+    moves: []
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    name: 'Elephant',
+    img: 'images/Elephant.svg',
+    color: ['grey'],
+    eat: 'herbivore',
+    habitat: 'savanah',
+    moves: ['swim']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: 'Rhinoceros',
+    img: 'images/Rhinoceros.svg',
+    color: ['grey'],
+    eat: 'herbivore',
+    habitat: 'savanah',
+    moves: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Zebra',
+    img: 'images/Zebra.svg',
+    color: ['black', 'white'],
+    eat: 'herbivore',
+    habitat: 'savanah',
+    moves: []
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Hippo',
+    img: 'images/Hippo.svg',
+    color: ['grey'],
+    eat: 'omnivore',
+    habitat: 'savanah',
+    moves: ['swim']
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Gorilla',
+    img: 'images/Gorilla.svg',
+    color: ['black'],
+    eat: 'herbivore',
+    habitat: 'jungle',
+    moves: ['climb']
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Panther',
+    img: 'images/Panther.svg',
+    color: ['black'],
+    eat: 'carnivore',
+    habitat: 'jungle',
+    moves: ['climb']
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Tucan',
+    img: 'images/Tucan.svg',
+    color: ['black', 'yellow', 'orange'],
+    eat: 'herbivore',
+    habitat: 'jungle',
+    moves: ['fly']
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    name: 'Snake',
+    img: 'images/Snake.svg',
+    color: ['black', 'yellow'],
+    eat: 'carnivore',
+    habitat: 'jungle',
+    moves: ['climb']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Chimpanzee',
+    img: 'images/Chimpanzee.svg',
+    color: ['black',],
+    eat: 'omnivore',
+    habitat: 'jungle',
+    moves: ['climb']
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Parrot',
+    img: 'images/Parrot.svg',
+    color: ['yellow', 'black'],
+    eat: 'omnivore',
+    habitat: 'jungle',
+    moves: ['climb', 'fly']
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Cow',
+    img: 'images/Cow.svg',
+    color: ['white', 'black'],
+    eat: 'herbivore',
+    habitat: 'farm',
+    moves: []
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    name: 'Horse',
+    img: 'images/Horse.svg',
+    color: ['brown', 'black'],
+    eat: 'herbivore',
+    habitat: 'farm',
+    moves: []
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Pig',
+    img: 'images/Pig.svg',
+    color: ['pink'],
+    eat: 'herbivore',
+    habitat: 'farm',
+    moves: []
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Sheep',
+    img: 'images/Sheep.svg',
+    color: ['white', 'black'],
+    eat: 'herbivore',
+    habitat: 'farm',
+    moves: []
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
+    name: 'Chicken',
+    img: 'images/Chicken.svg',
+    color: ['white', 'black'],
+    eat: 'herbivore',
+    habitat: 'farm',
+    moves: []
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    name: 'Duck',
+    img: 'images/Duck.svg',
+    color: ['yellow'],
+    eat: 'herbivore',
+    habitat: 'farm',
+    moves: ['swim', 'fly']
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Deer',
+    img: 'images/Deer.svg',
+    color: ['brown'],
+    eat: 'herbivore',
+    habitat: 'forest',
+    moves: []
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Rabbit',
+    img: 'images/Rabbit.svg',
+    color: ['brown'],
+    eat: 'herbivore',
+    habitat: 'forest',
+    moves: []
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: 'Fox',
+    img: 'images/Fox.svg',
+    color: ['brown', 'black'],
+    eat: 'omnivore',
+    habitat: 'forest',
+    moves: ['climb']
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: 'Squirrel',
+    img: 'images/Squirrel.svg',
+    color: ['brown'],
+    eat: 'herbivore',
+    habitat: 'forest',
+    moves: ['climb']
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: 'Raccoon',
+    img: 'images/Raccoon.svg',
+    color: ['grey', 'black', 'white'],
+    eat: 'omnivore',
+    habitat: 'forest',
+    moves: ['climb']
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Sparrow',
+    img: 'images/Sparrow.svg',
+    color: ['brown', 'black', 'white'],
+    eat: 'omnivore',
+    habitat: 'forest',
+    moves: ['fly']
   },
 ]
 
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  charactersInPlay.forEach((animal) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <p>${animal.name}</p>
+        <img src=${animal.img} alt=${animal.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Guess on ${animal.name}?</span>
+          <button class="filled-button small" onclick="guess('${animal.name}')">Guess</button>
         </div>
       </div>
     `
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Randomly select an animal from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
@@ -255,9 +255,9 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'eat' || category === 'habitat') {
     keep = value === secret [category];
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'color' || category === 'moves') {
     keep = secret[category].includes(value);
   }
   filterCharacters(keep);
@@ -267,58 +267,58 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
 // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'color') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person [category].includes(value))
-      alert(`Yes, the person wears ${value}! Keep all people that wear ${value}`)
+      charactersInPlay = charactersInPlay.filter((animal) => animal [category].includes(value))
+      alert(`Yes, the animal is ${value}! Keep all the animals that are ${value}`)
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      alert(`No, the person doesn't wear ${value}! Remove all people that wear ${value}`)
+      charactersInPlay = charactersInPlay.filter((animal) => !animal[category].includes(value))
+      alert(`No, the animal is not ${value}! Remove all the animals that are ${value}`)
     } 
-  } else if (category === 'other') {
+  } else if (category === 'moves') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person [category].includes(value))
-      alert(`Yes, the person has a ${value}! Keep all people that have a ${value}`)
+      charactersInPlay = charactersInPlay.filter((animal) => animal [category].includes(value))
+      alert(`Yes, the animal can ${value}! Keep all the animals that can ${value}`)
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      alert(`No, the person has not a ${value}! Remove all people that have a ${value}`)
+      charactersInPlay = charactersInPlay.filter((animal) => !animal[category].includes(value))
+      alert(`No, the animal can not ${value}! Remove all the animals that can ${value}`)
     }
-  } else if (category === 'eyes') {
+  } else if (category === 'habitat') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person [category] === value)
-      alert(`Yes, the person has ${value}! Keep all people that have ${value}`)
+      charactersInPlay = charactersInPlay.filter((animal) => animal [category] === value)
+      alert(`Yes, the animal lives in the ${value}! Keep all the animals that live in the ${value}`)
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person [category] !== value)
-      alert(`No, the person doesn't have ${value}! Remove all people that have ${value}`)
+      charactersInPlay = charactersInPlay.filter((animal) => animal [category] !== value)
+      alert(`No, the animal does not live in the ${value}! Remove all the animals that live in the ${value}`)
     }
-  } else if (category === 'hair') {
+  } else if (category === 'eat') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person [category] === value)
-      alert(`Yes, the person has ${value}! Keep all people that have ${value}`)
+      charactersInPlay = charactersInPlay.filter((animal) => animal [category] === value)
+      alert(`Yes, the animal is a ${value}! Keep all the animals that are ${value}`)
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person [category] !== value)
-      alert(`No, the person doesn't have ${value}! Remove all people that have ${value}`)
+      charactersInPlay = charactersInPlay.filter((animal) => animal [category] !== value)
+      alert(`No, the animal is not a ${value}! Remove all the animals that are ${value}`)
     }
   }
   generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
-  const confirmation = confirm(`Are you sure it is ${personToConfirm}?`)
+const guess = (animalToConfirm) => {
+  const confirmation = confirm(`Are you sure it is ${animalToConfirm}?`)
   if (confirmation === true) {
-    checkMyGuess(personToConfirm)
+    checkMyGuess(animalToConfirm)
   }
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
+const checkMyGuess = (animalToCheck) => {
   board.style.display = 'none'
   winOrLose.style.display = 'flex'
-  if (personToCheck === secret.name){ //Check if the personToCheck is the same as the secret person's name
+  if (animalToCheck === secret.name){ //Check if the animal ToCheck is the same as the secret animals's name
     winOrLoseText.innerHTML = `Yey! You are right, Congratulations!`
   } else {
-    winOrLoseText.innerHTML = `I am sorry, that is not correct. The secret person was ${secret.name}`
+    winOrLoseText.innerHTML = `I am sorry, that is not correct. The secret animal was ${secret.name}`
   } //Set a Message to show in the win or lose section accordingly
   //Show the win or lose section
   //Hide the game board 

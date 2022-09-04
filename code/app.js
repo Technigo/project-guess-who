@@ -203,8 +203,9 @@ const questions = document.getElementById('questions')
 const restartBtn = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
 const playAgainBtn = document.getElementById('playAgain');
+const guessBtn= document.getElementById
 const winerOrloserText = document.getElementById('winOrLoseText');
-const winerOrloserDiv = document.getElementById('winOrLose')
+const winerOrLoserDiv = document.getElementById('winOrLose')
 const showSecretCard = document.getElementById('showSecret')
 const numberOfGuesses = document.getElementById('counter')
 
@@ -221,10 +222,7 @@ charactersInPlay = CHARACTERS
 questions.onChange = () => {
   // const resArrangeBoard= charactersInPlay.filter(character =>{
   //   return character.hair=== 'black';
-
   // }) 
-
-
 
   // generateBoard(resArrangeBoard)
 }
@@ -260,8 +258,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
 
 
-  // this clears the winOrLose display after the last step
-  document.getElementById('winOrLose').style.display = "none";
+  // // this clears the winOrLose display after the last step
+
 
   // Fetch Rendom character
   setSecret()
@@ -377,24 +375,43 @@ const checkMyGuess = (personToCheck) => {
 
   // Check if the personToCheck is the same as the secret person's name
 if(personToCheck.name === secret.name) {
-window.alert('Yes! YOu Won !!! ' )
-
+  window.alert('Yes! YOu Won 😊!!! ' );
+  winOrLose.style.display='block'
+  winerOrloserText.innerHTML = 'Yes! YOu Won 😊!!! ' ;
+  board.style.display='none'
 }else{
   personToCheck.name !== secret.name
-  window.alert("No! Guess anothe one... ")
+  window.alert("No! Guess anothe Person... ");
+  winOrLose.style.display = 'block'
+  winerOrloserText.innerHTML = 'No! Guess another Person...  ';
+  board.style.display='none'; 
+}
+  // reStart()
 }
   // 3. Show the win or lose section
   // 4. Hide the game board
-  winerOrLoserPlayer()
+  // winerOrLoserPlayer()
+
+
+// const reStart= ()=>{
+//   // location.reload
+//   // console.log('Restart the Game')
+//   // return false
+//   dispatch(game.action.restart())
+//   return game;
+
+
+// }
+playAgainBtn.addEventListener('click', function(){
+alert('Start again');
+ 
+  return board;
+ 
 }
 
-const winerOrLoserPlayer=()=>{
- board.appendChild(winerOrloserDiv)
- winerOrloserDiv.appendChild(winerOrloserText)
- winerOrloserText.innerHTML =`<h3>You WON!!! </h3>`
+)
 
-}
-winerOrLoserPlayer()
+
 // Invokes the start function when website is loaded
 start()
 

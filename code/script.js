@@ -14,7 +14,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['sunglasses', 'hat'],
     other: []
   },
   {
@@ -54,7 +54,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: []
   },
   {
@@ -62,7 +62,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: []
   },
   {
@@ -87,7 +87,7 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: ['smoker']
   },
   {
@@ -167,7 +167,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'cap', 'jewelry'],
+    accessories: ['sunglasses', 'cap', 'jewelry'],
     other: []
   },
   {
@@ -266,7 +266,7 @@ const checkQuestion = () => {
   }
   else if (category === 'accessories' || category === 'other') 
   {
-    if (secret[category].includes(value)) {  //says includes instead of === since you either have the accessories/other or you don't. 
+    if (secret[category].includes(value)) {  //says includes instead of === since you either have the accessories/other or not 
       keep = true
       filterCharacters(true); // Keep everyone with that accessory
     }
@@ -349,12 +349,12 @@ setSecret() // Invokes the setSecrets function (i.e. a new secret person is chos
 // When the click event is triggered, the start function is invoked
 restartButton.addEventListener('click', start) 
 
-//Function: when the dropdown is changed, the selectQuestion-function is invoked. 
+//When the dropdown is changed, the selectQuestion-function is invoked. 
 questions.addEventListener('change', selectQuestion);
 
 filter.addEventListener('click', checkQuestion);
 
-//Function: when the findOutButton is clicked, the checkQuestion-function is invoked. 
+//When the findOutButton is clicked, the checkQuestion-function is invoked. 
 findOutButton.addEventListener('click', checkQuestion)
 
 //When the "Play again" button is clicked, the window returns to the start page

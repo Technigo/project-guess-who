@@ -4,15 +4,6 @@
   --secondary: #94B49F;
 }
 
-/* orginal, lila 
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
-
-  version 1
-  --primary: #54BAB9;
-  --secondary: #E9DAC1
-  */
-
 body {
   display: flex;
   margin: 0;
@@ -197,6 +188,10 @@ button {
   }
 
   .question-section {
+    border: none;
+  }
+
+  .question-section {
     width: 100%;
     min-height: 0;
   }
@@ -240,7 +235,7 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: #94B49F;
     color: var(--primary);
     border: none;
   }

@@ -10,4 +10,4 @@ If I had more time I would try to find a way to write some of the codes differen
 
 ## View it live
 
-https://app.netlify.com/sites/zippy-dango-d9f93d/overview
+https://dreamy-profiterole-6f4935.netlify.app

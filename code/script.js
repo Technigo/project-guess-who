@@ -1,5 +1,5 @@
 
- // All the DOM selectors stored as short variables
+// All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
@@ -232,7 +232,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret); //Writes out the randomly selected secret person
+  console.log(secret); //Writes out the randomly selected secret person in the console for test
 }
 
 // This function to start (and restart) the game
@@ -243,7 +243,7 @@ const start = () => {
   //1. The Board is loaded when site is loaded/reloaded. 
   generateBoard(); // shows the playing board
   setSecret();// chose a random character and set as secret
-  selectQuestion();
+  selectQuestion(); //this will save the selected values into variables in the next function.
 
 ;}
 
@@ -262,16 +262,17 @@ const selectQuestion = () => {
     value: value,
   };
   console.log(currentQuestion);
+  //writes out the selcted category and value in console just for test
 };
 
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  // Compare the currentQuestion details with the secret person details
-  // in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Compares the currentQuestion details with the secret person details
+  // in a different manner based on category (hair/eyes or accessories/others) since they are of different data types. 
+
+  // After that we see if a charcter should be kept or removed.
   if (
     category === 'hair' ||
     category === 'eyes'
@@ -290,10 +291,10 @@ const checkQuestion = () => {
   }
 };
   
-// It'll filter the characters array and redraw the game board.
+// This will filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // This if shows the correct alert message for different categories of questions. 
+  // This "if-statement" shows the correct alert message for different categories of questions. 
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -308,7 +309,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    
     if (keep) {
       alert(
         `Yes, the person is a ${value}! Keep all people that are ${value}s.`
@@ -336,45 +337,29 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)    
     }
   }
-    //This function invokes the board to reload with the filtered result from above. 
+    //This function invokes the board toreload with the filtered result from above. 
     generateBoard();
 }
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  //This was added to the if-statement below so that the correct cards were filtered out, depending on the alert-message 
-  //(i.e depening on the things that were similar or not to the secret person)
-  
-  /*   for hair && eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories && other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
- */
-
 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  //if played clicks yes
   let guessed = confirm(`Are you sure you want to guess on ${personToConfirm}?`)
   if (guessed){
-    let personToCheck = personToConfirm;
+    let personToCheck = personToConfirm; //variable that saves the character the player has guessed on. 
     checkMyGuess(personToCheck);
   }
+  //if player clicks cancel
   else {
     alert("Ok, not sure yet? Let's continue playing!")
 
   }
 
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+
 }
 
-// If you confirm, this function is invoked
+// If you confirm the guess, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name){
     winOrLoseText.innerHTML = `${secret.name}  was totally correct! 😃 <br>Well done! <br><img class="secret-revealed-img" src="${secret.img}"/>`;
@@ -394,17 +379,14 @@ const checkMyGuess = (personToCheck) => {
   board.style.display = 'none';
 
 }  
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+
 }
 
 // Invokes the start function when website is loaded
 start()
 
 
-//Will have to fix... 
+//This makes the site reload when player clicks on "try again" 
 const refreshPage = () => {
   //Hide the winOrLose and show generate board... 
   winOrLose.style.display = 'none';
@@ -415,7 +397,7 @@ const refreshPage = () => {
 
 // All the event listeners
 restartButton.addEventListener('click', start);
-refreshBtn.addEventListener('click', refreshPage); //This part does not work.... 
+refreshBtn.addEventListener('click', refreshPage);
 questions.addEventListener('change', selectQuestion); //this calls the selectQuestion function as soon as the player changes option in dropdown.
 findOutBtn.addEventListener('click', () => {
   checkQuestion()

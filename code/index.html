@@ -11,11 +11,6 @@
     />
   </head>
   <body>
-    <!--HTML element represents a portion of a 
-      document whose content is only indirectly
-       related to the document's main content. 
-       Asides are frequently presented as sidebars 
-       or call-out boxes-->
     <aside class="question-section">
 
       <!-- restart button-->
@@ -28,7 +23,7 @@
       />
 
       <h1>Does the person have</h1>
-
+<!--here is the dropdown with the different values of the category group Hair-->
       <select class = "attributeQuestions" title="questions" id="questions">
         <optgroup label="hair">
           <option value="brown">brown hair</option>
@@ -42,6 +37,7 @@
           <!-- above here I added all the hair color options from the charcters array -->
         </optgroup>
 
+        <!--here is the dropdown with the different values of the category eyes-->
         <optgroup label="eyes">
           <option value="hidden">hidden eyes</option>
           <option value="blue">blue eyes</option>
@@ -50,17 +46,20 @@
           <!-- above here I added all the rest of eye colors options from the characters array  -->
         </optgroup>
 
+        <!--here is the dropdown with the different values of the category accessories-->
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
           <option value="hat">hat</option>
           <!-- above here I added all the other accessory options (hat)  -->
         </optgroup>
-
+       
+        <!--here is the dropdown with the different values of the category other-->
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
         </optgroup>
       </select>
 
+     <!--This is the button for finding out if the secret character matches the chosen value-->
       <button id="filter" class="filled-button">Let's see!</button>
     </aside>
 
@@ -68,6 +67,7 @@
       <main class="game-board" id="board"></main>
     </section>
 
+ <!--This section will appear when player has places a guess-->
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
         <img

@@ -12,5 +12,7 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
 
-https://aquamarine-caramel-104052.netlify.app
+Here's a new link to the project: https://relaxed-torrone-ae2e07.netlify.app/
+
+
 

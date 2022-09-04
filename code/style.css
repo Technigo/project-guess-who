@@ -181,10 +181,24 @@ button {
   max-width: 700px;
   text-align: center;
 }
-
-.win-or-lose img {
+.win-or-lose img:first-child {
   align-self: flex-start;
   margin-left: 15%;
+  width: 200px;
+  height: 100px;
+}
+
+.win-or-lose img {
+height: 100px;
+width: 250px;
+margin:0;
+
+}
+
+.win-or-lose img:last-child {
+ height: 200px;
+ Width: 200px;
+ margin: 0;
 }
 
 .win-or-lose h1 {

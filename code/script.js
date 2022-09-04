@@ -1,10 +1,11 @@
 
-  // All the DOM selectors stored as short variables
+ // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
-const guessBtn = document.querySelector(".guess")
+/* const guessBtn = document.querySelector(".guess") */
+const refreshBtn = document.getElementById('refreshBtn')
 
 
 
@@ -210,6 +211,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -240,7 +242,6 @@ const start = () => {
   // What else should happen when we start the game?
   //1. The Board is loaded when site is loaded/reloaded. 
   generateBoard(); // shows the playing board
-  //selectQuestion(); //saves the category chosen by the player
   setSecret();// chose a random character and set as secret
   selectQuestion();
 
@@ -263,27 +264,6 @@ const selectQuestion = () => {
   console.log(currentQuestion);
 };
 
-/* let reloadValues = () => {
-  questions.options
-} */
-
-// setting the currentQuestion object when you select something in the dropdown
-/* const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-  console.log(category); // this print out the category of question in the console just for test. 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].value;
-  console.log(value); // this prints out the value of the question categroy in the console, just for test. 
-
-  //Object that holds both chosen category and value
-  const currentQuestion = {
-    category: category,
-    value: value,
-  }
-
-
-} */
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
@@ -353,9 +333,12 @@ const filterCharacters = (keep) => {
       alert(
         `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)    }
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)    
+    }
   }
-
+    //This function invokes the board to reload with the filtered result from above. 
+    generateBoard();
+}
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   //This was added to the if-statement below so that the correct cards were filtered out, depending on the alert-message 
@@ -373,9 +356,6 @@ const filterCharacters = (keep) => {
  */
 
 
-  //This function invokes the board to reload with the filtered result from above. 
-  generateBoard();
-}
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
@@ -397,18 +377,22 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name){
-    alert("YOU WIN!! \nWow, that is totally correct! How did you know?!")
-    start();
+    winOrLoseText.innerHTML = `${secret.name}  was totally correct! 😃 <br>Well done! <br><img class="secret-revealed-img" src="${secret.img}"/>`;
+    // Show the win or lose section
+    winOrLose.style.display = 'flex'
+    //  Hide the game board
+    board.style.display = 'none'
   }
+  
   else {
-    let newGame = confirm("Sorry, wrong guess!\n\nWould you like to restart the game?")
-    if (newGame){
-      start();
-    }
-    else {
-   alert("GAME OVER. \nSee you soon! ☺️");
-  }
-    
+  winOrLoseText.innerHTML = `Sorry, wrong guess!! 😣 Right answer was ${secret.name}.<br><img id="revelation-bubble-img" src="images/secretRevealed_img.png"><img class="secret-revealed-img" src="${secret.img}"/>
+  <br>
+   Better luck next time! `;
+  // Show the win or lose section
+  winOrLose.style.display = 'flex'
+  //  Hide the game board
+  board.style.display = 'none';
+
 }  
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
@@ -419,11 +403,20 @@ const checkMyGuess = (personToCheck) => {
 // Invokes the start function when website is loaded
 start()
 
+
+//Will have to fix... 
+const refreshPage = () => {
+  //Hide the winOrLose and show generate board... 
+  winOrLose.style.display = 'none';
+  //  Hide the game board
+  board.style.display = 'flex';
+  start();
+} 
+
 // All the event listeners
 restartButton.addEventListener('click', start);
-questions.addEventListener('change', selectQuestion);
+refreshBtn.addEventListener('click', refreshPage); //This part does not work.... 
+questions.addEventListener('change', selectQuestion); //this calls the selectQuestion function as soon as the player changes option in dropdown.
 findOutBtn.addEventListener('click', () => {
   checkQuestion()
 });
-guessBtn.addEventListener('click', guess);
-

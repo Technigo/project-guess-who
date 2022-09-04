@@ -1,15 +1,13 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
 const questions = document.getElementById("questions"); //the select dropdown
-const questionSection = document.getElementById('question-section');
+const questionSection = document.getElementById("question-section");
 const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
-const finishWrapper = document.getElementById('winOrLose');
-const finishMessage = document.getElementById('winOrLoseText');
-const playAgainButton = document.getElementById('playAgain');
-const numberOfGuesses = document.getElementById('numberOfGuesses')
-
-// testing git 
+const finishWrapper = document.getElementById("winOrLose");
+const finishMessage = document.getElementById("winOrLoseText");
+const playAgainButton = document.getElementById("playAgain");
+const counter = document.getElementById("counter");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -84,7 +82,7 @@ const CHARACTERS = [
     eyes: "green",
     accessories: ["glasses"],
     other: [],
-  }, 
+  },
 
   {
     name: "Jazebelle",
@@ -210,13 +208,14 @@ const CHARACTERS = [
 
 // Global variables
 let secretCharacter;
-let currentQuestion; 
+let currentQuestion;
 let charactersInPlay;
+let numberOfGuesses = 5;
 
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = "";
-  charactersInPlay.forEach((person) => { 
+  charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
@@ -226,138 +225,151 @@ const generateBoard = () => {
           <button class="filled-button small" id="best-guess" onclick="guessOnThisCharacter('${person.name}')">Guess</button>
         </div>
       </div>`;
-     });
+  });
+
+  console.log("numberOfGuesses", numberOfGuesses);
+
+  if (numberOfGuesses === 5) {
+    counter.innerText = `You have ${numberOfGuesses} guesses!`;
+  } else if (numberOfGuesses < 5 && numberOfGuesses > 1) {
+    counter.innerText = `You have ${numberOfGuesses} guesses left!`;
+  } else if (numberOfGuesses === 1) {
+    counter.innerText = `This is your last chance, make a guess!`;
+    findOutButton.style.display = "none";
+    questions.style.display = "none";
+  }
+
+  numberOfGuesses = numberOfGuesses - 1;
 };
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
-const setSecret = () => {
-  secretCharacter = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  console.log(secretCharacter);
-};
+function setSecret() {
+  secretCharacter =
+    charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+}
 
 // This function will start (and restart) the game
 const start = () => {
+  charactersInPlay = CHARACTERS;
+  setSecret();
+  numberOfGuesses = 5;
+  generateBoard();
 
-charactersInPlay = CHARACTERS;
-setSecret();
-generateBoard();
-finishWrapper.style.display = 'none';
-board.style.display = "flex";
-questionSection.style.display = "flex";
-findOutButton.disabled = true; 
+  finishWrapper.style.display = "none";
+  board.style.display = "flex";
+  questionSection.style.display = "flex";
+  findOutButton.style.display = "flex";
+  questions.style.display = "flex";
+  findOutButton.disabled = true;
+  questions.value = "";
 };
-
 // setting the currentQuestion object when you select something in the dropdown
+
 const selectQuestion = () => {
   findOutButton.disabled = false;
-  
-// These variables stores what option group (category) the question belongs to and the option value.
-const questCategory = questions.options[questions.selectedIndex].parentNode.label;
-const questValue = questions.options[questions.selectedIndex].value;
 
-  console.log("category from option", questCategory)
-  console.log("value from option", questValue)
+  // These variables stores what option group (category) the question belongs to and the option value.
+  const questCategory =
+    questions.options[questions.selectedIndex].parentNode.label;
+  const questValue = questions.options[questions.selectedIndex].value;
 
-//this is an object that I store the properties category and value in
-currentQuestion = { 
+  //this is an object that I store the properties category and value in
+  currentQuestion = {
     category: questCategory,
     value: questValue,
   };
-}
+};
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-
-let matchingAttribute = secretCharacter[currentQuestion.category].includes(currentQuestion.value);
-console.log('testa ' + matchingAttribute); //true or false
-filterCharacters(matchingAttribute);
-}
+  let matchingAttribute = secretCharacter[currentQuestion.category].includes(
+    currentQuestion.value
+  );
+  filterCharacters(matchingAttribute);
+};
 
 const filterCharacters = (match) => {
   const { category, value } = currentQuestion;
-  if (category === "hair" || category === "eyes" ){
-    if(match){
-      alert(`Yes, the secret person does have ${value} ${category}!`)
-    charactersInPlay = charactersInPlay.filter((person) => { 
-      return person[currentQuestion.category].includes(currentQuestion.value);
-    });
-    } else {
-      alert(`No, the secret person does not have ${value} ${category}!`)
-      charactersInPlay = charactersInPlay.filter((person) => { 
-        return !person[currentQuestion.category].includes(currentQuestion.value);
-      });
-      }
-  } else if (category === "accessories"){
-    if(match){
-      alert(`Yes, the secret person does have ${value}!`)
-      charactersInPlay = charactersInPlay.filter((person) => { 
+  if (category === "hair" || category === "eyes") {
+    if (match) {
+      alert(`Yes, the secret person does have ${value} ${category}!`);
+      charactersInPlay = charactersInPlay.filter((person) => {
         return person[currentQuestion.category].includes(currentQuestion.value);
       });
-      } else {
-        alert(`No, the secret person does not have ${value}!`)
-        charactersInPlay = charactersInPlay.filter((person) => { 
-          return !person[currentQuestion.category].includes(currentQuestion.value);
-        });
-      }
+    } else {
+      alert(`No, the secret person does not have ${value} ${category}!`);
+      charactersInPlay = charactersInPlay.filter((person) => {
+        return !person[currentQuestion.category].includes(
+          currentQuestion.value
+        );
+      });
+    }
+  } else if (category === "accessories") {
+    if (match) {
+      alert(`Yes, the secret person does have ${value}!`);
+      charactersInPlay = charactersInPlay.filter((person) => {
+        return person[currentQuestion.category].includes(currentQuestion.value);
+      });
+    } else {
+      alert(`No, the secret person does not have ${value}!`);
+      charactersInPlay = charactersInPlay.filter((person) => {
+        return !person[currentQuestion.category].includes(
+          currentQuestion.value
+        );
+      });
+    }
   } else {
-    if(match){
-      alert(`Its a smoker indeed!`)
-  charactersInPlay = charactersInPlay.filter((person) => { 
-    return person[currentQuestion.category].includes(currentQuestion.value);
-  });
-      } else {
-        alert('No, its a non-smoker. Try again!')
-        charactersInPlay = charactersInPlay.filter((person) => { 
-          return !person[currentQuestion.category].includes(currentQuestion.value);
-        });      
-      }
+    if (match) {
+      alert(`Its a smoker indeed!`);
+      charactersInPlay = charactersInPlay.filter((person) => {
+        return person[currentQuestion.category].includes(currentQuestion.value);
+      });
+    } else {
+      alert("No, its a non-smoker.");
+      charactersInPlay = charactersInPlay.filter((person) => {
+        return !person[currentQuestion.category].includes(
+          currentQuestion.value
+        );
+        if ((numberOfGuesses = 0)) {
+        }
+      });
+    }
   }
-  
   generateBoard();
-}
+};
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// When clicking guess, the player first have to confirm that they want to make a guess.
 const guessOnThisCharacter = (charactersName) => {
-  let playersBestGuess = confirm(`Are you sure you want to guess on ${charactersName}?`); {
-       
-         if (playersBestGuess){ //if this is true, the player is clicking on the ok button
-          checkPlayersGuess(charactersName);
-         }
+  let playersBestGuess = confirm(
+    `Are you sure you want to guess on ${charactersName}?`
+  );
+  {
+    if (playersBestGuess) {
+      //if this is true, (the player is clicking on the ok button) we need to check the guess
+      checkPlayersGuess(charactersName);
+    }
   }
 };
 
 // If the player confirms, this function is invoked
 const checkPlayersGuess = (characterToCheck) => {
-  if (characterToCheck === secretCharacter.name){
-    console.log('Hurra');
+  if (characterToCheck === secretCharacter.name) {
     finishWrapper.style.display = "flex";
     board.style.display = "none";
     questionSection.style.display = "none";
-    finishMessage.innerText = `Yes, ${characterToCheck} is correct! Congratulations!`;//styla det med innerHTML sen
-    
-     }else{
-    console.log('Try again');
+    finishMessage.innerText = `Yes, ${characterToCheck} is correct! Congratulations!`;
+  } else {
     finishWrapper.style.display = "flex";
     board.style.display = "none";
     questionSection.style.display = "none";
-      finishMessage.innerText = `I am sorry, ${characterToCheck} was not the secret person. Let's play again!`;
-   //numberOfGuesses ++;
-    }
+    finishMessage.innerText = `I am sorry, ${characterToCheck} was not the secret person. Let's play again!`;
+  }
 };
-
 // Invokes the start function when website is loaded
 start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
-findOutButton.addEventListener("click", (checkQuestion)); //This works. Check if the option you chose is the same as the secret persons
-questions.addEventListener("change", () => selectQuestion(questions.value)); //H why change and not select? 
-playAgainButton.addEventListener('click', start);
-
-console.log('findOutButton',findOutButton)
-
-//com shift 7 för att kommentera bort
-//option shift pil dublicerar
-//option pil för att flytta saker
-//array har inbygda metoder. En metod är en funktion.
-//kolla prettier hur man formatera, shift option f?? svensk
+findOutButton.addEventListener("click", checkQuestion); //Check if the option you chose is the same as the secret persons
+questions.addEventListener("change", () => selectQuestion(questions.value));
+playAgainButton.addEventListener("click", start);

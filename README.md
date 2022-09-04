@@ -1,4 +1,4 @@
-# Project Name
+## Project Name
 
 R# Project Guess who
 
@@ -18,7 +18,7 @@ DI followed the instructions from the Technigo course to break down the problem.
 If I had time I would have spent more time on css and trying out different ways of solving the problems.
 
 
-### Technologies used:
+Technologies used:
 
 - HTML
 - CSS
@@ -27,6 +27,6 @@ If I had time I would have spent more time on css and trying out different ways 
 - [Netlify](https://www.netlify.com/) for deployment
 
 
-#### View it live
+## View it live
 
-XXX
+https://ornate-starship-ccb80d.netlify.app/

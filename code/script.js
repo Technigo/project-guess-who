@@ -216,6 +216,7 @@ let secret;
 let currentQuestion;
 let charactersInPlay;
 let numberOfQuestionsAsked = 0;
+let guessesLeftToMake = 3;
 
 // Draw the game board
 const generateBoard = () => {
@@ -247,6 +248,7 @@ const start = () => {
   generateBoard();
   setSecret();
   setNumberOfQuestionsAsked(0);
+  setNumberOfGuessesLeftToMake(3);
   winOrLose.style.display = "none";
   winOrLoseText.innerHTML = "";
 };
@@ -255,6 +257,12 @@ const start = () => {
 function setNumberOfQuestionsAsked(count) {
   numberOfQuestionsAsked = count;
   questionCounter.innerText = numberOfQuestionsAsked;
+}
+
+// Count how many guesses the user has got left
+function setNumberOfGuessesLeftToMake(count) {
+  numberOfGuessesLeftToMake = count;
+  guessCounter.innerText = numberOfGuessesLeftToMake;
 }
 
 // Set the currentQuestion object when you select something in the dropdown
@@ -364,16 +372,14 @@ const filterCharacters = (keep) => {
 // Have user confirm their guess before continuing
 const guess = (personToConfirm) => {
   if (window.confirm(`Are you sure you want to guess ${personToConfirm}?`)) {
+    setNumberOfGuessesLeftToMake(numberOfGuessesLeftToMake - 1);
     checkMyGuess(personToConfirm);
-  } else {
-    //@TODO Change this??
-    console.log("User chickened out");
   }
 };
 
 // If user presses OK, the game checks they were right or not
 const checkMyGuess = (personToCheck) => {
-  if (personToCheck == secret.name) {
+  if (personToCheck === secret.name) {
     winOrLoseText.innerHTML += `Congratulations, you won! 🥳`;
     // Display confetti if user wins
     const jsConfetti = new JSConfetti();
@@ -384,14 +390,20 @@ const checkMyGuess = (personToCheck) => {
     });
     jsConfetti.addConfetti({ confettiNumber: 500, confettiRadius: 5 });
   } else {
-    winOrLoseText.innerHTML += `Game over... 😢<br>
-    Better luck next time! `;
-    // Display sympathy confetti if user loses
-    const jsConfetti = new JSConfetti();
-    jsConfetti.addConfetti({ confettiNumber: 4, confettiRadius: 3 });
+    // Wrong guess - check if the user still has guesses left to make
+    window.alert(
+      `Not quite right unfortunately 🙁 You now have ${numberOfGuessesLeftToMake} guesses left to make`
+    );
+    if (numberOfGuessesLeftToMake < 1) {
+      winOrLoseText.innerHTML += `Game over... 😢<br>
+      Better luck next time! `;
+      // Display sympathy confetti if user loses
+      const jsConfetti = new JSConfetti();
+      jsConfetti.addConfetti({ confettiNumber: 4, confettiRadius: 3 });
+      board.style.display = "hidden";
+      winOrLose.style.display = "flex";
+    }
   }
-  board.style.display = "hidden";
-  winOrLose.style.display = "flex";
 };
 
 // Invokes the start function when website is loaded

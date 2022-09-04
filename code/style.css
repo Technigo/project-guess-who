@@ -1,14 +1,19 @@
 /* Global css variables used for colors */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+} 
+
 :root {
   --primary: #a259ff;
   --secondary: #b0a6ff;
-}
+} 
 
 body {
   display: flex;
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  background-color: #ffe9e3;
 }
 
 h1 {
@@ -110,6 +115,12 @@ select {
   font-weight: 600;
   margin-bottom: 8px;
   width: 90%;
+}
+
+.count{
+  font-size: 25px;
+  color: white;
+  padding-top: 50px;
 }
 
 /****** BUTTONS ******/

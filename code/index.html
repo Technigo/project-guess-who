@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Who!</title>
+    <link rel="stylesheet" href="style.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet">
   </head>
+
   <body>
     <aside class="question-section">
       <button type="button" id="restart" class="outlined-button">RESTART</button>
 
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
+      <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who Icon">
 
-      <h1>Does the person have</h1>
+      <h1>Is this person ... </h1>
 
       <select title="questions" id="questions">
-        <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
+        <optgroup label="HAIR">
+          <option value="brown">Brown Hair</option>
+          <option value="yellow">Yellow Hair</option>
+          <option value="hidden">Hidden Hair</option>
+          <option value="grey">Grey Hair</option>
+          <option value="black">Black Hair</option>
+          <option value="orange">Orange Hair</option>
+          <option value="purple">Purple Hair</option>
+          <option value="white">White Hair</option>
         </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+
+        <optgroup label="EYES">
+          <option value="hidden">Hidden Eyes</option>
+          <option value="blue">Blue Eyes</option>
+          <option value="brown">Brown Eyes</option>
+          <option value="green">Green Eyes</option>
         </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
+
+        <optgroup label="ACCESSORIES">
+          <option value="glasses">Glasses</option>
+          <option value="hat">Hat</option>
         </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+
+        <optgroup label="OCCUPATION">
+          <option value="developer">A Developer</option>
+          <option value="hairdresser">A Hair Dresser</option>
+          <option value="student">A Student</option>
+          <option value="teacher">A Teacher</option>
+          <option value="artist">An Artist</option>
+          <option value="barista">A Barista</option>
+          <option value="retired">Retired</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <p class ="count">Chances left: <span id="count">5</span> </p>
     </aside>
 
     <section class="board-wrapper">
@@ -50,15 +63,13 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
+        <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who">
         <h1 id="winOrLoseText"></h1>
         <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
+
+
     <script src="script.js"></script>
   </body>
 </html>

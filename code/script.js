@@ -209,7 +209,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay; 
-let numberOfGuesses = 5;
+//slet numberOfGuesses = 5;
 
 // Draw the game board
 const generateBoard = () => {
@@ -332,7 +332,7 @@ const filterCharacters = (keep) => {
   } 
 
   // Invoke a function to redraw the board with the remaining people.
-  generateBoard(keep);
+  generateBoard( );
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

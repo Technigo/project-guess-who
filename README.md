@@ -1,6 +1,7 @@
 # Guess Who by Saralie
 
-Sprint 1, week 2 assignment at Technigo. Focus on javascript to make a guess who game.
+Sprint 1, week 2 assignment at Technigo. Focus on javascript to make a digital version of the classical board game Guess Who.
+Requirements were to: Set a secret person for each round that you should guess on. Dependent on which attributes you chose, the game should filter out possible candidates that could be the secret person. 
 
 ## The problem
 

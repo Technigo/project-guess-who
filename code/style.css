@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #efebeae0;
+  --secondary: #ffa6c3;
 }
 
 body {
@@ -9,6 +9,21 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
 
 h1 {
@@ -28,6 +43,10 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  border-radius: 65px;
+  background: linear-gradient(-45deg, #f06d45, #e33075, #1f96c2, #1bac8a);
+  background-size: 400% 400%;
+  animation: gradient 13s ease infinite;
 }
 
 select {
@@ -38,6 +57,12 @@ select {
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+}
+
+.option {
+  background: linear-gradient(-45deg, #f06d45, #e33075, #1f96c2, #1bac8a);
+  background-size: 400% 400%;
+  animation: gradient 13s ease infinite;
 }
 
 .guess-who-icon {
@@ -64,13 +89,16 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
   border-radius: 4px;
   margin: 3px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background: linear-gradient(-45deg, #f06d45, #e33075, #1f96c2, #1bac8a);
+  background-size: 400% 400%;
+  animation: gradient 12s ease infinite;
 }
 
 .card p {
@@ -91,7 +119,10 @@ select {
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  /*background-color: var(--secondary);*/
+  background: linear-gradient(-45deg, #f06d45, #e33075, #1f96c2, #1bac8a);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
 }
 
 .card:hover img,
@@ -129,28 +160,31 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
+  color: var(--secondary);
   align-self: flex-end;
 }
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
-  color: white;
+  background-color: transparent;
+  color: var(--secondary);
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 5s ease infinite;
 }
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   position: absolute;
   top: 0;
   bottom: 0;

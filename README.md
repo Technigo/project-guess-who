@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week’s project was to create oue own digital version of the classic board game Guess Who. Task was to practice creating objects and arrays and also connect this to the DOM. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had trouble figuring out the filtering function and how to refactor it properly. I took help from my team mates and we figured it out together. I also had trouble with my inner.HTML text not working and by searching on Stackoverflow it turned out that it was the " document.addEventListener('DOMContentLoaded', () => {} " that made the 'onclick' to not work. I do not understand why and did not have time to find the answer so decided to remove the event listener this time. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guess-who-julia-ostedt.netlify.app/

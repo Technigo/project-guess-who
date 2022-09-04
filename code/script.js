@@ -263,11 +263,11 @@ const selectQuestion = () => {
   console.log(currentQuestion);
 }
 
-
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  selectQuestion()
+  selectQuestion();
   const {category, value} = currentQuestion 
+  let keep;
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -276,19 +276,24 @@ const checkQuestion = () => {
   if (category === "hair" || category === "eyes" ) {
     // if the secret person's hair value matches with the question's value
     if (secret[category] === value){
-      filterCharacters(true);
+      //filterCharacters(true);
+      keep = true;
     } else {
-      filterCharacters(false);
+      //filterCharacters(false);
+      keep = false;
     }
   } else if (category === "accessories" || category === "occupation") {    
     if (secret[category].includes(value)) {
-      filterCharacters(true);
+      //filterCharacters(true);
+      keep = true;
     } else {
-      filterCharacters(false);
+      //filterCharacters(false);
+      keep = false;
     } 
   }
-}
 
+  filterCharacters(keep);
+}
 
 
 // It'll filter the characters array AND redraw the game board.

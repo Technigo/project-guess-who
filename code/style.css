@@ -1,14 +1,14 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #dee9dc;
+  --secondary: #792121;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 h1 {
@@ -28,13 +28,14 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  border-right: 10px solid  #91c199;
 }
 
 select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: 'Josefin Sans', sans-serif;
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -49,6 +50,8 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url(./images/back.jpg);
+  background-size: cover;
 }
 
 .game-board {
@@ -64,20 +67,26 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 2px solid  #dee9dc;
   border-radius: 4px;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: #792121;
+  box-shadow: 0 4px 8px 0 rgba(37, 36, 36, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card p {
   text-align: center;
-  margin-bottom: 0;
+  /*margin-bottom: 0;*/
+  margin: 10px 0 0 0;
+  padding: 0 10px 0 10px;
   font-size: 16px;
   font-weight: 700;
+  color: white;
+  
 }
 
 .card .guess {
@@ -112,12 +121,16 @@ select {
   width: 90%;
 }
 
+.counter p{
+  color: aliceblue;
+}
+
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Josefin Sans', sans-serif;
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -136,7 +149,7 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #792121;
 }
 
 .filled-button:hover {
@@ -144,6 +157,7 @@ button {
   border-color: white;
   color: var(--primary);
 }
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -164,17 +178,23 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  max-width: 100%;
+  height: 100%;
   text-align: center;
 }
 
 .win-or-lose img {
   align-self: flex-start;
-  margin-left: 15%;
+  margin-left: 45%;
+  margin-bottom: 30px;
+  /*margin-left: 15%;*/
+  padding: 20px;
 }
 
 .win-or-lose h1 {
-  margin-bottom: 32px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  font-size: 60px;
 }
 
 @media (max-width: 768px) {

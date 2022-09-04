@@ -14,16 +14,14 @@
 
 <body>
   <aside class="question-section">
-    <button type="button" id="restart" class="outlined-button">RESTART</button>
 
     <h1 class="logo">Guess Who?</h1>
 
-    <h2 class="does-the-person">Does the secret person have... </h2>
+    <p class="does-the-person">Does the secret person have... </p>
 
     <select title="questions" id="questions">
-
+      <option style="display:none;" selected>👉 click here to pick a question 👈 </option>
       <optgroup label="hair">
-        <option value="placeholder" style="display:none;" selected>👉 click here to pick a question 👈 </option>
         <option value="brown">brown hair?</option>
         <option value="yellow">yellow hair?</option>
         <option value="white">white hair?</option>
@@ -64,6 +62,8 @@
   <section class="board-wrapper">
     <main class="game-board" id="board"></main>
   </section>
+
+  <button type="button" id="restart" class="reset-button">RESTART GAME</button>
 
   <section id="winOrLose" class="win-or-lose-wrapper">
     <div class="win-or-lose">

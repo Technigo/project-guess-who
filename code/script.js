@@ -226,7 +226,7 @@ const generateBoard = () => {
         <p>${person.name}</p>
         <img class="character-image" src=${person.img} alt=${person.name}>
         <div class="guess">
-          <span>Guess ${person.name}?</span>
+          <span>Could it be ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">GUESS</button>
         </div>
       </div>
@@ -390,7 +390,7 @@ const checkMyGuess = (personToCheck) => {
     const jsConfetti = new JSConfetti();
     jsConfetti.addConfetti({ confettiNumber: 4, confettiRadius: 3 });
   }
-
+  board.style.display = "hidden";
   winOrLose.style.display = "flex";
 };
 

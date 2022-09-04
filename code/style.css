@@ -17,9 +17,9 @@ body {
   font-family: "GoodGirl", sans-serif;
   font-size: 45px;
   font-weight: 500;
-  line-height: 60px;
+  line-height: 40px;
   margin: 10px 0;
-  color: rgb(253, 11, 11);
+  color: rgb(255, 255, 255);
   letter-spacing: 1px;
   align-self: center;
 }
@@ -29,7 +29,7 @@ body {
   font-weight: 300;
   line-height: 0px;
   align-self: center;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .question-section {
@@ -37,46 +37,45 @@ body {
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 10px 15px 2px 15px;
+  padding: 10px 10px 0 10px;
   align-items: flex-start;
   box-sizing: border-box;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 
 select {
   display: block;
   border: white;
   font-weight: 300;
+  font-size: 14px;
   font-family: "Roboto", sans-serif;
   color: white;
   background-color: var(--secondary);
-  width: 100%;
-  max-width: 250px;
-  padding: 2px;
-  margin-top: 5px;
+  width: 250px;
   margin-bottom: 15px;
   align-self: center;
   appearance: none;
   text-align: center;
-  font-size: 16px;
+}
+
+select:focus {
+  outline: none;
 }
 
 .counters {
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content: space-around;
-  padding-top: 4px;
+  justify-content: space-between;
+  padding-top: 1px;
 }
 
+.guess-counter,
 .question-counter {
   color: white;
   font-size: 14px;
-}
-
-.guess-counter {
-  color: white;
-  font-size: 14px;
+  line-height: 6px;
+  padding-top: 3px;
 }
 
 .board-wrapper {
@@ -103,7 +102,7 @@ select {
   overflow: hidden;
   border: 2px solid var(--secondary);
   border-radius: 4px;
-  margin: 3px;
+  margin: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,7 +117,7 @@ select {
 
 .card p {
   text-align: center;
-  margin: 7px 0 0 0;
+  margin: 8px 0 2px 0;
   font-size: 14px;
   font-weight: 600;
 }
@@ -163,7 +162,7 @@ select {
 }
 
 .guess span {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 18px;
   font-weight: 600;
   margin-bottom: 8px;
@@ -179,31 +178,37 @@ button {
   letter-spacing: 1px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  padding: 8px 13px;
+  padding: 4px 10px;
   cursor: pointer;
   align-self: center;
+}
+
+button:focus {
+  outline: none;
 }
 
 .small {
   padding: 5px 10px;
 }
 
-.outlined-button {
+.reset-button {
   border: 1px solid;
-  font-size: 15px;
+  font-size: 14px;
   background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
+  color: var(--secondary);
+  align-self: center;
   font-weight: 400;
+  margin-top: 15px;
+  margin-bottom: 44px;
 }
 
 .filled-button,
-.outlined-button:hover {
+.reset-button:hover {
   background-color: var(--primary);
   color: white;
 }
 
-.filled-button:hover {
+.rest-button:hover {
   background-color: white;
   border-color: white;
   color: var(--primary);
@@ -241,6 +246,10 @@ button {
 /*------------- TABLET -------------------------------------------------------------- */
 
 @media (min-width: 668px) {
+  .question-section {
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+  }
   .logo {
     font-family: "GoodGirl", sans-serif;
     font-size: 70px;
@@ -248,6 +257,17 @@ button {
     line-height: 80px;
     margin: 15px 25px 35px 25px;
   }
+
+  select {
+    margin-bottom: 30px;
+  }
+
+  .counters {
+    justify-content: space-between;
+    align-self: center;
+    width: 90%;
+  }
+
   .card {
     width: 135px;
     height: 165px;
@@ -268,8 +288,15 @@ button {
 /*------------- DESKTOP -------------------------------------------------------------- */
 
 @media (min-width: 1025px) {
-  .question-section {
-    margin-bottom: 20px;
+  select {
+    margin-bottom: 30px;
+  }
+
+  .counters {
+    justify-content: space-between;
+    align-self: center;
+    width: 70%;
+    max-width: 800px;
   }
 
   .card {

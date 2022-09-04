@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #ef7538;
+  --secondary: #e9cde0;
 }
 
 body {
@@ -16,7 +16,9 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: rgb(7, 8, 52);
+  font-family: 'arial black', sans-serif;
+  
 }
 
 .question-section {
@@ -35,7 +37,7 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: var(--primary);
   width: 100%;
   margin: 24px 0;
 }
@@ -140,9 +142,9 @@ button {
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
+  background-color: rgb(7, 8, 52);
+  border-color: rgb(7, 8, 52);
+  color: var(--secondary);
 }
 
 /****** WIN OR LOSE SECTION ******/

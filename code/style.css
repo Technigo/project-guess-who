@@ -247,16 +247,15 @@ button:focus {
 /*------------- TABLET -------------------------------------------------------------- */
 
 @media (min-width: 668px) {
+  .logo {
+    font-size: 70px;
+    line-height: 80px;
+    margin: 15px 25px 35px 25px;
+  }
+
   .question-section {
     margin-bottom: 20px;
     padding-bottom: 5px;
-  }
-  .logo {
-    font-family: "GoodGirl", sans-serif;
-    font-size: 70px;
-    font-weight: 500;
-    line-height: 80px;
-    margin: 15px 25px 35px 25px;
   }
 
   select {
@@ -289,6 +288,11 @@ button:focus {
 /*------------- DESKTOP -------------------------------------------------------------- */
 
 @media (min-width: 1025px) {
+  .logo {
+    font-family: "GoodGirl", sans-serif;
+    line-height: 120px;
+  }
+
   .does-the-person {
     font-size: 16px;
   }

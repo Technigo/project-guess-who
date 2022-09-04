@@ -11,4 +11,4 @@ If I had more time i would like to add more functions, like animation effects or
 
 ## View it live
 
-
+https://clever-dolphin-80c4bd.netlify.app/

@@ -301,7 +301,7 @@ const checkQuestion = () =>  {
     keep = false
   }
   } 
-  filterCharacters ()
+  filterCharacters (keep)
 } 
   
 // FILTER  REDRAW the game board and alert messege

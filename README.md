@@ -1,13 +1,13 @@
-# Project Name
+# 'Guess who?' Game
+A simple, mildly entertaining 'guess who?' - game with a start/ welcome screen, game and winning/loosing screen and also a restart-button and play again button included! 
 
-Replace this readme with your own information about your project.
+## The aim of the game
+The aim of the project was to create a guess who game while focusing on objects. How to use objects in JS and how to manipulate them using arrays and loops. Every object has attributes unique to their appearance and a loop was created to filter through each object, scanning for values set by a filter. If they were matched with the filter, or not, they were sorted out. Leaving a few or one at the end to guess on. The game was playtestet throughout. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+### Next time
+A goal would have been to add sound to the winning/loosing screen but this time it didn't work. Also figure out how to style the alerts nicer. 
 
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+View it live here 
+https://guess-who-ceciliaf.netlify.app

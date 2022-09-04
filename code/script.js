@@ -8,13 +8,13 @@ const message = document.getElementById('winOrLoseText');
 const wrapper = document.querySelector('.win-or-lose-wrapper');
 const guesses = document.querySelector('.guesses');
 const highscore = document.querySelector('.highscore');
-const startTime = new Date();
 const gameTimeParagraph = document.querySelector('.game-time');
+let startTime;
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
+    name: 'Binfy Moanigold',
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
@@ -22,7 +22,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Jack',
+    name: 'Binpants Noodlefeet',
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
@@ -30,7 +30,7 @@ const CHARACTERS = [
     other: ['sassy pants'],
   },
   {
-    name: 'Jacques',
+    name: 'Bittymoo FudgeSmittens',
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
@@ -38,7 +38,7 @@ const CHARACTERS = [
     other: ['smoker', 'sassy pants'],
   },
   {
-    name: 'Jai',
+    name: 'Borebo Madworthy',
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
@@ -46,7 +46,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Jake',
+    name: 'Bugbs Woolkins',
     img: 'images/jake.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -54,7 +54,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'James',
+    name: 'Buzzlu Boombag',
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
@@ -62,7 +62,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Jana',
+    name: 'Chewspitz Snotborn',
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
@@ -70,7 +70,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Jane',
+    name: 'Fartmoo PimpleFadden',
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
@@ -78,7 +78,7 @@ const CHARACTERS = [
     other: ['sassy pants'],
   },
   {
-    name: 'Jaqueline',
+    name: 'Figitt Tootson',
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
@@ -87,7 +87,7 @@ const CHARACTERS = [
   },
 
   {
-    name: 'Jazebelle',
+    name: 'Flapbuns WiggleFadden',
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
@@ -95,7 +95,7 @@ const CHARACTERS = [
     other: ['smoker', 'sassy pants'],
   },
   {
-    name: 'Jean',
+    name: 'Foobug Swamprider',
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
@@ -103,7 +103,7 @@ const CHARACTERS = [
     other: ['smoker', 'sassy pants'],
   },
   {
-    name: 'Jeane',
+    name: 'Fuzzman Pottyman',
     img: 'images/jeane.svg',
     hair: 'brown',
     eyes: 'green',
@@ -111,7 +111,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Jed',
+    name: 'Gooster Bobohair',
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
@@ -119,7 +119,7 @@ const CHARACTERS = [
     other: ['smoker', 'sassy pants'],
   },
   {
-    name: 'Jenni',
+    name: 'Gootu Messyhall',
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
@@ -127,7 +127,7 @@ const CHARACTERS = [
     other: ['sassy pants'],
   },
   {
-    name: 'Jeri',
+    name: 'Hickwee Roachworth',
     img: 'images/jeri.svg',
     hair: 'orange',
     eyes: 'green',
@@ -135,7 +135,7 @@ const CHARACTERS = [
     other: ['sassy pants'],
   },
   {
-    name: 'Jerry',
+    name: 'Madaloo Snotseed',
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
@@ -143,7 +143,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Jess',
+    name: 'Monipants Woofkins',
     img: 'images/jess.svg',
     hair: 'black',
     eyes: 'blue',
@@ -151,7 +151,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Jocelyn',
+    name: 'Pea-a-boo Moanihill',
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
@@ -159,7 +159,7 @@ const CHARACTERS = [
     other: ['sassy pants'],
   },
   {
-    name: 'Jon',
+    name: 'Peaster Beeman',
     img: 'images/jon.svg',
     hair: 'brown',
     eyes: 'green',
@@ -167,7 +167,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Jordan',
+    name: 'Ratbuns Wigglefish',
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
@@ -175,7 +175,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Josephine',
+    name: 'Shoospitz Droopyface',
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
@@ -183,7 +183,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Josh',
+    name: 'Stinkroid Noodlebrain',
     img: 'images/josh.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -191,7 +191,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Jude',
+    name: 'Subo Doozyton',
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
@@ -199,7 +199,7 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: 'Julie',
+    name: 'Zoowee Beeham',
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
@@ -259,7 +259,7 @@ const checkGameTime = finishTime => {
     const sDisplay = s > 0 ? s + (s == 1 ? ' second' : ' seconds') : '';
     return hDisplay + mDisplay + sDisplay;
   };
-  gameTimeParagraph.innerHTML += ' ' + secondsToHms(gameTime);
+  gameTimeParagraph.innerHTML += secondsToHms(gameTime);
 };
 
 // This function to start (and restart) the game
@@ -267,7 +267,9 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
+  startTime = new Date();
   wrapper.style.display = 'none';
+  gameTimeParagraph.innerHTML = 'This game took: ';
   guesses.innerHTML = 0;
   generateBoard();
   setSecret();

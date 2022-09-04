@@ -18,6 +18,12 @@ h1 {
   margin: 10px 0;
   color: white;
 }
+h2 {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 10px 0;
+  color: white;
+}
 
 .question-section {
   width: 30%;
@@ -42,6 +48,10 @@ select {
 
 .guess-who-icon {
   width: 126px;
+}
+
+.label-guesses {
+  margin-top: 100px;
 }
 
 .board-wrapper {
@@ -176,6 +186,13 @@ button {
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
+
+.game-time {
+  color: white;
+  font-size: 20px;
+}
+
+/****** MEDIA QUERIES ******/
 
 @media (max-width: 768px) {
   body {

@@ -1,4 +1,4 @@
-# Project Name
+# Guess who
 
 The assignment (in the 2nd week of the Javascript Spring in Technigo) was to build a digital version of the board game Guess who. 
 

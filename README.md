@@ -1,13 +1,12 @@
-# Project Name
+# Project - Guess Who?
 
-Replace this readme with your own information about your project.
+The project was to create an own digital version of the classic board game "Guess who", using JavaScript. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## The working progress
 
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+For this project, I had to study a lot about JavaScript. I looked at videos, read articles and looked on forums - but what helped me the most was to discuss the coding with my teammates. Helping each other out was truly the key to make the site work!
+This project was a good start on my journey to learn JavaScript, I'm happy about the result and that I also had time to do a little styling. If I had more time, I would've added a counter of the number of guesses.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://theguesswhogame.netlify.app/

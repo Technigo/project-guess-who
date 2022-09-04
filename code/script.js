@@ -78,7 +78,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewelry'],
     other: []
   },
 
@@ -135,7 +135,7 @@ const CHARACTERS = [
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['cap'],
     other: []
   },
   {
@@ -151,7 +151,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewelry'],
     other: []
   },
   {
@@ -167,7 +167,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'cap', 'jewelry'],
     other: []
   },
   {
@@ -175,7 +175,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['jewelry'],
     other: []
   },
   {
@@ -199,7 +199,7 @@ const CHARACTERS = [
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'cap'],
     other: []
   },
 ]
@@ -209,9 +209,6 @@ let secret
 let currentQuestion
 let charactersInPlay
 let keep
-//let guessedPerson
-//let numberOfGuesses = 5;
-
 
 // Draw the game board
 const generateBoard = () => {
@@ -233,12 +230,12 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)] 
- console.log('Secret person;', secret) //Allows me to see who the secret person is. 
+ console.log('secret person;', secret)  
 }
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
+  //Setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS 
 }
 
@@ -248,8 +245,8 @@ const selectQuestion = () => {
   const value = questions.options[questions.selectedIndex].value; // This variable stores the actual value of the question we've selected in the dropdown.
 
   currentQuestion = {
-    category: category, //Based on the optgroup, stores what option group (category) the question belongs to
-    value: value //Comes from the selected option, stores the value of the question selected in the dropdown.
+    category: category, 
+    value: value 
   }
 }
 
@@ -257,7 +254,6 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion
   
-
   if (category === 'hair' || category === 'eyes') {
     if (secret[category]===value) {
       keep = true
@@ -323,7 +319,7 @@ const filterCharacters = (keep) => {
   generateBoard();
 }
 
-// Function: the user confirms his/her guess (stored in a variable and) the function checkMyGuess is invoked. 
+// Function: the user confirms its guess (stored in a variable ) and the function checkMyGuess is invoked. 
 const guess = (personToConfirm) => {
   const playerGuess = confirm(`Are you sure you want to guess on ${personToConfirm}...? 🤔`) 
   if (playerGuess) {
@@ -331,25 +327,7 @@ const guess = (personToConfirm) => {
  }
 }
 
-
- /*// If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-  if (personToCheck === secret.name) {
-    alert(`Correct -  the secret person is ${secret.name}!`)
-  } else {
-    alert(`Incorrect, try again!`)
-  }
-  
- 
-} 
-*/
-
-
- // Check if player's guess is correct, show message in the win or lose section accordingly
+ // Check if player's guess is correct, show message in the win-or-lose section accordingly
 const checkMyGuess = (personToCheck) => { 
   if (personToCheck === secret.name) {
     winOrLoseText.innerText = `...you got it! The secret person is indeed ${personToCheck} 👏`;
@@ -382,5 +360,5 @@ findOutButton.addEventListener('click', checkQuestion)
 //When the "Play again" button is clicked, the window returns to the start page
 playAgain.addEventListener('click', (event) => {
   setTimeout (() => location.reload(console.log("event triggered")))
-    return false // lägg in förklaring om detta https://stackoverflow.com/c/technigo/questions/3983 
+    return false 
 })

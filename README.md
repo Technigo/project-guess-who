@@ -11,4 +11,4 @@ If I had more time I would try to find a way to write some of the codes differen
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://app.netlify.com/sites/zippy-dango-d9f93d/overview

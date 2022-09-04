@@ -6,6 +6,7 @@ const findOutButton = document.getElementById('filter');
 const winOrLose = document.getElementById('winOrLose');
 const winOrLoseText = document.getElementById('winOrLoseText');
 const playAgainButton = document.getElementById('playAgain');
+const attemptsCounter = document.getElementById('attempts');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -209,6 +210,7 @@ const CHARACTERS = [
 let currentQuestion;
 let charactersInPlay;
 let secret;
+let attemptsLeft;
 //let secretCharacter; // This can be used if second aproach in setSecret (line 238) is active.
 
 // Draw the game board
@@ -249,6 +251,8 @@ const start = () => {
   console.log('setting secret character')
   setSecret()
   selectQuestion();
+  attemptsLeft = 5;
+  attemptsCounter.innerHTML = attemptsLeft;
 };
 
 // Setting the currentQuestion object when you select something in the dropdown
@@ -263,11 +267,11 @@ const selectQuestion = () => {
   }
 };
 
+// Compare the currentQuestion details with the secret person details based on category (hair/eyes or accessories/others).
+  // Then we invoke a filter if true or false
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  
-  // Compare the currentQuestion details with the secret person details based on category (hair/eyes or accessories/others).
-  // Then we invoke a filter if true or false
+
   if (category === 'hair' || category === 'eyes') {
     if (value === secret.hair || value === secret.eyes) {
       console.log('correct')
@@ -294,71 +298,56 @@ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   if (category === 'hair') {
     if (keep) {
-      alert(
-        `Yes, the person have ${value} hair! Keep all people that have ${value} hair`
-      )
-    } 
-    else {
-      alert(
-        `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`
-      )
+      alert(`Yes, the person have ${value} hair! Keep all people that have ${value} hair`)
+    } else {
+      alert(`No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`)
     }
-  }
-  else if (category === 'eyes') {
-    if (keep) {
-      alert(
-        `Yes, the person have ${value} eyes! Keep all people that have ${value} eyes`
-      )
-    } 
-    else {
-      alert(
-        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
-      )
-    }
-  } 
-  else if (category === 'accessories'){
-    if (keep) {
-      alert(
-        `Yes, the person wear ${value}! Keep all people that wear ${value}`
-      )
-    } 
-    else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
-      )
-    }
-  } 
-  else {
-    if (keep) {
-      alert(
-        `Yes, the person is a ${value}! Keep all people that are ${value}s`
-      )
-    } 
-    else {
-      alert(
-        `No, the person is not a ${value}! Keep all people that aren't ${value}s`
-      )
-    }
+  } else if (category === 'eyes') {
+      if (keep) {
+      alert(`Yes, the person have ${value} eyes! Keep all people that have ${value} eyes`)
+      } else {
+        alert(`No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`)
+      }
+  } else if (category === 'accessories'){
+      if (keep) {
+      alert(`Yes, the person wear ${value}! Keep all people that wear ${value}`)
+      } else {
+        alert(`No, the person doesn't wear ${value}! Remove all people that wear ${value}`)
+      }
+  } else {
+      if (keep) {
+        alert(`Yes, the person is a ${value}! Keep all people that are ${value}s`)
+      } else {
+        alert(`No, the person is not a ${value}! Keep all people that aren't ${value}s`)
+      }
   };
+  
 
   // This will determine what is the category and filter by category to keep or remove based on the keep variable.
   if (category === 'hair' || category ==='eyes') {
     if (keep){
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-    } 
-    else {
+    } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
-  } 
-  else /* (category === 'accessories' || category === 'other') */ {
-    if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    }
-    else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-    }
+  } else /* (category === 'accessories' || category === 'other') */ {
+      if (keep) {
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      } else {
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      }
   }
   generateBoard() // Invokes the function to redraw the board with the remaining people.
+
+  //counter if statement
+  if (attemptsLeft === 1) {
+    alert('1 attempt left!');
+  } else if (attemptsLeft === 0) {
+    alert('Time to guess!')
+    //If time to guess hide section to prevent player finding out more.
+    findOutButton.style.display = 'none' 
+    questions.style.display = 'none'
+  }
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -374,18 +363,27 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) { 
     winOrLose.style.display = 'flex' //This will show the win or lose section
-    winOrLoseText.innerHTML = `You win! ${secret.name} was the right guess!` //Message to show if player win
+    winOrLoseText.innerHTML = `
+    <iframe src="https://giphy.com/embed/Y3qaJQjDcbJPyK7kGk" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <p>${secret.name} was the right guess!</p>
+    ` //Message to show if player win
     board.style.display = 'none' //This will hide the game board
   } else {
     winOrLose.style.display = 'flex'
-    winOrLoseText.innerHTML = `You loose! ${secret.name} wasn't the right guess!` //Message to show if player loose
+    winOrLoseText.innerHTML = `
+    <iframe src="https://giphy.com/embed/eJ4j2VnYOZU8qJU3Py" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <p>${secret.name} wasn't the right guess!</p>
+    ` //Message to show if player loose
     board.style.display = 'none'
   }
 };
 
 const playAgain = () => {
+  //We hide or redraw the sections
   winOrLose.style.display = 'none'
   board.style.display = ''
+  findOutButton.style.display = ''
+  questions.style.display = ''
   start()
 };
 
@@ -395,5 +393,9 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
-findOutButton.addEventListener('click', checkQuestion)
+findOutButton.addEventListener('click', () => {
+  attemptsLeft-- //-1 in the counter
+  attemptsCounter.innerHTML = attemptsLeft;
+  checkQuestion();
+});
 playAgainButton.addEventListener('click', playAgain)

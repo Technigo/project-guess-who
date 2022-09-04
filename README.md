@@ -1,6 +1,4 @@
-## Project Name
-
-R# Project Guess who
+## Project Guess who
 
 Our task was to create a guess who game using HTML, CSS and JavaScript.
 

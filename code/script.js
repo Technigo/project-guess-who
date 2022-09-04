@@ -236,10 +236,14 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+  
 // This function to start (and restart) the game
 const start = () => {
   count = 0
   counter.innerHTML = `Count: 0`
+  
+  
+
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
@@ -249,6 +253,7 @@ const start = () => {
   winOrLose.classList.remove('active');
   selectQuestion();
 }
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -266,9 +271,7 @@ const selectQuestion = () => {
 }
 
 // This function should be invoked when you click on 'Find Out' button.
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+ 
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   if (category === 'eyes') {
@@ -331,19 +334,6 @@ const filterCharacters = (keep) => {
   generateBoard()
   
   
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-   
-    // for hair and eyes :
-    //   charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    //   or
-    //   charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    // for accessories and other
-    //   charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    //   or
-    //   charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   
 
   // Invoke a function to redraw the board with the remaining people.
@@ -360,7 +350,7 @@ const filterCharacters = (keep) => {
    if (userGuess) {
    checkMyGuess(personToConfirm)
    } else {
-     alert('Ok, then dont')
+     alert('Ok, let`s go back')
      
    }
   }
@@ -394,7 +384,10 @@ const increaseCount = () => {
 }
 
 // Invokes the start function when website is loaded
+
 start()
+
+
 
 
 

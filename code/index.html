@@ -11,9 +11,20 @@
     />
   </head>
   <body>
+    <section id="startWrapperOverlay" class="start-wrapper-overlay">
+      <div class="start-overlay" id="wrapperOverlay">
+        <h1 class="guess-who">Guess Who?</h1>
+        <h1 class="intro-text"> Type your name and press play!
+        </h1>
+        <form class ="user-name">
+           <input class ="nameInput" id="user" type="text" placeHolder="My name: " > 
+          <button type="button" id="play" class="filled-button">Play now</button> 
+        </div> </form>
+    </section> 
+    
+    <!--Game starts here-->
     <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
-
+      <button type="button" id="restart" class="outlined-button">Restart</button>
       <img
         class="guess-who-icon"
         src="images/guess-who-bubble.png"
@@ -22,8 +33,8 @@
 
       <h1>Does the person have...</h1>
 
-      <select title="questions" id="questions">  <!-- J: reffers function question-->
-        <optgroup label="hair">
+      <select title="questions" id="questions">  
+        <optgroup label="hair"> 
           <option value="brown">brown hair</option>
           <option value="yellow">yellow hair</option>
           <option value="grey">grey hair</option>
@@ -31,19 +42,18 @@
           <option value="black">black hair</option>
           <option value="hidden">hidden hair </option>
          
-          <!-- Add the rest of hair colors as options  -->
         </optgroup>
         <optgroup label="eyes">
           <option value="hidden">hidden eyes</option>
           <option value="blue">blue eyes </option>
           <option value="brown">brown eyes</option>
           <option value="green">green eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+         
         </optgroup>
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
           <option value="hat">hat</option>
-          <!-- Add the other accessory option here. (hat)  -->
+          <option value="earrings">earrings</option>
         </optgroup>
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
@@ -51,23 +61,37 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
-    </aside>
+      
 
-    <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
-    </section>
+    <!--Counting questions alerts-->
+    <section class = "questionsDisplay">
+      <p class = "counting-text">
+        Number of guesses made: <span id ="guessCounter"></span>
+      </section>
+        
+     
+        
 
+    </aside> 
+   
+    <!--the board-->
+   <section class="board-wrapper">
+    <main class="game-board" id="board"></main>
+  </section>
+  
+ <!--Game ends here-->
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
         <img
           class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
+          src="images/guess-who-bubble.png" alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <button type="button" id="playAgain" class="filled-button" onClick="window.location.reload()">PLAY AGAIN</button>  
       </div>
-    </section>
+    </section> 
     <script src="script.js"></script>
   </body>
 </html>
+
+

@@ -216,16 +216,16 @@ document.addEventListener('DOMContentLoaded', () => {
   let timeLeft;
   let countDown;
   
-
+  // Function to make the countdown alway show dubbel-numbers, adds a 0 infront when it goes into into single digits
   const paddedNumber = (number, length) => {
     let str = number + '';
     while(str.length < length)
       str = '0' + str;
     return str;
   }
-
+  // The countdown-function and the reset for the countdown everytime there's a reload of the game
   const resetCountdown = () => {  
-    timeLeft = 120;
+    timeLeft = 120;   // two minutes countdown 
 
     countDown = setInterval(() => {
       if(timeLeft <= 0){
@@ -233,12 +233,14 @@ document.addEventListener('DOMContentLoaded', () => {
         winOrLoseText.innerHTML = `<p>Time's run out!</p>`;
         winOrLose.style.display = 'flex';
       } else {
+        // to show the countdown in minutes and seconds instead of the default setting that is just seconds
         let minutes = Math.floor(timeLeft / 60 ) % 60;
         let seconds = timeLeft % 60;
         countDownTimer.innerHTML = paddedNumber(minutes, 2) + ":" + paddedNumber(seconds, 2) + ' remaining';
       }
       timeLeft -= 1;
     }, 1000);
+
   }
 
   // Draw the game board
@@ -268,7 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Randomly select a person from the characters array and set as the value of the variable called secret
   const setRandomCharacter = () => {
     randomCharacter = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-    console.log('chosen:', randomCharacter);
   }
 
   // This function to start (and restart) the game
@@ -303,6 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (category === 'accessories' || category === 'other') {
       keep = randomCharacter[category].includes(value);
     }
+
     filterCharacters(keep); // Invokes the filterCharacters-function
   }  
 
@@ -312,60 +314,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (category === 'accessories') {
       if (keep) {
-        alert(
-          `Yes, the person wears ${value}! \n Keep all people that wears ${value}`   
-        );
+        alert(`Yes, the person wears ${value}! \n Keep all people that wears ${value}`);
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
       } else {
-        alert(
-          `No, the person doesn't wear ${value}! \n Remove all people that wears ${value}`
-        );
+        alert(`No, the person doesn't wear ${value}! \n Remove all people that wears ${value}`);
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
       }
     } else if (category === 'hair') {
       if (keep) {
-        alert(
-          `Yes, the person has ${value} hair! \n Keep all people with ${value} hair`
-          );
-          charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+        alert(`Yes, the person has ${value} hair! \n Keep all people with ${value} hair`);
+        charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
       } else {
-        alert(
-          `No, the person doesn't have ${value} hair! \n Remove all people with ${value} hair`
-        );
+        alert(`No, the person doesn't have ${value} hair! \n Remove all people with ${value} hair`);
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
       }
     } else if (category === 'eyes') {
       if (keep) {
-        alert(
-          `Yes, the person has ${value} eyes! \n Keep all people with ${value} eyes`
-          );
-          charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+        alert(`Yes, the person has ${value} eyes! \n Keep all people with ${value} eyes`);
+        charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
       } else {
-        alert(
-          `No, the person doesn't have ${value} eyes! \n Remove all people with ${value} eyes`
-        );
+        alert(`No, the person doesn't have ${value} eyes! \n Remove all people with ${value} eyes`);
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
       }  
     } else {
       if (keep) {
-        alert(
-          `Yes, the person is ${value}! \n Keep all people that's ${value}`
-          );
-          charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+        alert(`Yes, the person is ${value}! \n Keep all people that's ${value}`);
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
       } else {
-        alert(
-          `No, the person isn't ${value}! \n Remove all people that's ${value}`
-        );
+        alert(`No, the person isn't ${value}! \n Remove all people that's ${value}`);
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
       }
     }
+
     generateBoard();    // Invokes the generateBoard-function, so the board is redrawn with the remaining cards
   }
 
   // When clicking guess, the player first have to confirm that they want to make a guess
   const guess = (personToCheck) => {
     const confirmGuess = confirm(`Do you want to guess on ${personToCheck}?`);
-    if (confirmGuess) checkMyGuess(personToCheck);
+    if (confirmGuess) 
+      checkMyGuess(personToCheck);
   }
 
   // If you confirm, this function is invoked otherwise you're returned to the board
@@ -384,19 +372,19 @@ document.addEventListener('DOMContentLoaded', () => {
   start();
 
   // All the event listeners
-  restartBtn.addEventListener('click', () => {
+  restartBtn.addEventListener('click', () => {      // The restart that is always present at the top of the page
     clearInterval(countDown);
     start();
   });
 
-  playAgainBtn.addEventListener('click', () => {
+  playAgainBtn.addEventListener('click', () => {   // The restart at the end page, if you've won or lost the game
     winOrLose.style.display = 'none';
     board.style.display = 'flex';
     start();
   });
 
-  filterBtn.addEventListener('click', () => {
-    numberOfGuesses --;
+  filterBtn.addEventListener('click', () => {       // The 'Find out'-button that activates the filtering is used to count the amount of filterings, the user only has 5 attempts then it's game over
+    numberOfGuesses--;
     counter.innerHTML = `${numberOfGuesses}`;
     
     if (numberOfGuesses < 1) {
@@ -405,5 +393,8 @@ document.addEventListener('DOMContentLoaded', () => {
       start();
     } else {
       selectQuestion();
-    }});
+    }
+
+  });
+
 });  

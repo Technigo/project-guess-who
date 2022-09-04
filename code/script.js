@@ -4,9 +4,10 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const guessButton = document.getElementById('guess-button')
+const playAgainButton = document.getElementById('playAgain')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
-const playAgainButton = document.getElementById('playAgain')
+
  
 // Array with all the characters, as objects. The 'accessories' and 'other' properties are nested arrays.
 const CHARACTERS = [
@@ -327,7 +328,7 @@ const filterCharacters = (keep) => {
   generateBoard()
 } 
 
-// Upon clicking any Guess button, the player will by prompted to confirm their choice. If they do (confirm === true), they invoke the checkMyGuess function below.
+// Upon clicking any Guess button, the player will be prompted to confirm their choice. If they do (confirm === true), they invoke the checkMyGuess function below.
 const guess = (personToConfirm) => {
   console.log("guess invoked")
   if (confirm(`You're about to select ${personToConfirm}. Are you sure?`) === true) {
@@ -341,9 +342,9 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   console.log("checkMyGuess invoked")
   if (personToCheck === secret.name) { 
-    winOrLoseText.innerHTML = `Well done! It was indeed ${personToCheck}!`
+    winOrLoseText.innerHTML = `Well done detective! The murderer was indeed ${personToCheck}!`
     } else {
-      winOrLoseText.innerHTML = `You fool! It was ${secret.name}.`
+      winOrLoseText.innerHTML = `You fool! The murderer was ${secret.name}.`
     }
   winOrLose.style.display = 'flex'
   board.style.display = 'none'

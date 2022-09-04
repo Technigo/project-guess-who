@@ -207,25 +207,19 @@ const guessBtn= document.getElementById
 const winerOrloserText = document.getElementById('winOrLoseText');
 const winerOrLoserDiv = document.getElementById('winOrLose')
 const showSecretCard = document.getElementById('showSecret')
-const numberOfGuesses = document.getElementById('counter')
+// const numberOfGuesses = document.getElementById('counter')
+const counter = document.getElementById('counter')
+const nrOfTryBtn= document.getElementById('nrOfTry')
+
 
 // Global variables
 let secret
 let currentQuestion
 let charactersInPlay
 let secretValue
-let startNumber = 0;
+let numberOfGuess = 0;
 
 charactersInPlay = CHARACTERS
-
-
-questions.onChange = () => {
-  // const resArrangeBoard= charactersInPlay.filter(character =>{
-  //   return character.hair=== 'black';
-  // }) 
-
-  // generateBoard(resArrangeBoard)
-}
 
 // Draw the game board
 const generateBoard = () => {
@@ -253,17 +247,21 @@ const setSecret = () => {
   console.log('The secret person is: ', secret);
 };
 
+const reStart = () => {
+  console.log('Restart the Game from the beginning');
+  winOrLose.style.display = 'none'
+  winerOrloserText.innerHTML = " ";
+  board.style.display = 'flex';
+
+}
+
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
 
-
-  // // this clears the winOrLose display after the last step
-
-
   // Fetch Rendom character
   setSecret()
-
   // Calls for the board to be generated
   generateBoard();
 
@@ -282,7 +280,7 @@ const selectQuestion = () => {
   console.log('Current Question is :', currentQuestion);
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function invoked on 'Find Out' button.
 
 // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -370,55 +368,53 @@ const guess = (personToConfirm) => {
   checkMyGuess(confirm)
 }
 
+ // Show the win or lose section & Hide the game board
 // If the player confirm, this function will invoked
 const checkMyGuess = (personToCheck) => {
-
   // Check if the personToCheck is the same as the secret person's name
+
+  numberOfGuess++;
+
 if(personToCheck.name === secret.name) {
   window.alert('Yes! YOu Won 😊!!! ' );
   winOrLose.style.display='block'
   winerOrloserText.innerHTML = 'Yes! YOu Won 😊!!! ' ;
   board.style.display='none'
+ 
 }else{
   personToCheck.name !== secret.name
   window.alert("No! Guess anothe Person... ");
-  winOrLose.style.display = 'block'
-  winerOrloserText.innerHTML = 'No! Guess another Person...  ';
-  board.style.display='none'; 
+  winOrLose.style.display = 'none'
+  winerOrloserText.innerHTML = " ";
+  board.style.display = 'flex';
+
+  if (numberOfGuess > 5) {
+    window.alert('You LOST! Refresh the browser and try again. ')
+    return start
+  }
+  else{
+    counter.innerText = numberOfGuess;
+  }
 }
-  // reStart()
-}
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-  // winerOrLoserPlayer()
-
-
-// const reStart= ()=>{
-//   // location.reload
-//   // console.log('Restart the Game')
-//   // return false
-//   dispatch(game.action.restart())
-//   return game;
-
-
-// }
-playAgainBtn.addEventListener('click', function(){
-alert('Start again');
- 
-  return board;
- 
 }
 
-)
-
+const playAgain= ()=>{
+alert('Refresh your browser');
+   board.style.display = 'flex'; 
+}
 
 // Invokes the start function when website is loaded
 start()
 
 // All event listeners
 restartBtn.addEventListener('click', start);
-playAgainBtn.addEventListener('click', start);
+// playAgainBtn.addEventListener('click', playAgain);
+playAgainBtn.addEventListener('click',start)
+
+playAgainBtn.addEventListener('click',start);
 findOutBtn.addEventListener('click', () => {
   selectQuestion()
   checkQuestion()
 })
+
+nrOfTryBtn.addEventListener('click', start)

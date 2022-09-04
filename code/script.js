@@ -318,8 +318,17 @@ const filterCharacters = (keep) => {
     } else {
       alert(`the person doesnt have ${value} hair Remove all people with ${value} hair`)
     }
+  }  else if (category === 'eyes') {
+    if (keep) {
+      alert(
+        `Yes, the person ${value}s! Keep all people that has the eyecolor of ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't ${value} eyecolor ! Remove all people that has ${value}`
+      )
+    }
   }
-
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
 
@@ -355,13 +364,14 @@ const guess = (personToConfirm) => {
   const confirmGuess = confirm (
     `Oh confident are we, are you sure about ${personToConfirm}?`
   ) 
+  if (confirmGuess){
+    checkMyGuess(personToConfirm)
+  }
   // If the player wants to guess, invoke the checkMyGuess function.
-  checkMyGuess(confirmGuess)
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  console.log('hejhejhej')
   if (personToCheck === secret.name) {
     winOrLoseWrapper.style.display = 'flex';
     winOrLoseText.innerHTML = (`you won :D it was ${secret.name} all along `)

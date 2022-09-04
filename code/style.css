@@ -9,8 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-image: url("images/background.jpg");
-  background-size: contain;
+  background-color: #a259ff;
 }
 
 h1 {
@@ -31,7 +30,7 @@ h2 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: #cd884f;
+  background-color: sandybrown;
   display: flex;
   flex-direction: column;
   padding: 5vw;

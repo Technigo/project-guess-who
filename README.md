@@ -1,13 +1,14 @@
-# Project Name
+# Project Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The aim for this project was to create a webpage where you can play the boardgame Guess Who digitally. The main focus was to practice javascript by creating objects, arrays and connect this with the DOM.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I used google, stackOverflow and my teammates to solve my problems. The live sessions where really useful as well. The biggest problem I faced was how to target the value inside an array inside another array and get it to be true/false as a boolean value. But thanks to stackOverflow I managed to solve it and this experience will be useful for future projects. 
+
+If I had more time i would like to add more functions, like animation effects or sound effects when pressing buttons for example. 
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+

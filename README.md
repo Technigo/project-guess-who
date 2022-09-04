@@ -4,14 +4,9 @@ My task was to build a browser version of the old school board game Guess Who, i
 
 ## The problem
 
-Since my JavaScript abilities are limited I made sure to follow the steps given in the instructions.
+Since my JavaScript abilities are limited I made sure to follow the steps given in the instructions. Once I had completed those, I began adding things beyond that, which contrary to what I had imagined actually felt a lot easier than going through those basic steps.
 
-### If I had more time
-
-- Add sound
-- Improve filter alerts, i.e. customise them better and not have the exact option values being displayed in them
-- Replace the cards with something cute like Pokemons or cats and then also re-doing the categories to better fit the new characters
-- Add Guess counter that counts down from 3
+If I had more time I would have liked to add a little how to play modal, some sound effects, and have the messages that currectly show up as alerts appear directly on the page instead. I would also have liked to improve the quality of those messages, i.e. customise the text in them better to not have the exact option values being displayed in them etc. Ensuring the user really wanted to reset the game before doing so would probably also be a good thing to do, perhaps with a modal.
 
 ### Technologies used:
 

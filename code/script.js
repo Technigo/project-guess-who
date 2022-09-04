@@ -283,7 +283,7 @@ const checkQuestion = () => {
   keep = true;
 
   if (category === "hair" || category === "eyes") {
-    if (secret[category].includes(value)) {
+    if (secret[category] === value) {
       filterCharacters(true);
     } else {
       filterCharacters(false);

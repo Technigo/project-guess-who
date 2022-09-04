@@ -1,3 +1,24 @@
+@keyframes color {
+  0% {
+    background: #3b3345;
+  }
+  20% {
+    background: #595077;
+  }
+  40% {
+    background: #87528e;
+  }
+  60% {
+    background: #7c536c;
+  }
+  80% {
+    background: #764c79;
+  }
+  100% {
+    background: #5b5f90;
+  }
+}
+
 body {
   display: flex;
   margin: 0;
@@ -6,10 +27,11 @@ body {
   justify-content: space-around;
   padding-top: 200px;
   background-color: #3b3345;
+  animation: color 9s infinite linear;
 }
 
 .wrapper {
-  width: 1000px;
+  width: 800px;
   height: 500px;
   display: flex;
   align-items: center;

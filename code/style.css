@@ -117,7 +117,7 @@ select {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
+  border: 2px solid #f1f1f1;
   border-radius: 50px;
   font-size: 16px;
   font-family: "Montserrat";
@@ -132,13 +132,13 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
+  color: white;
+  margin-top: 40px;
 }
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
+  background-color: #b0a9b8;
   color: white;
 }
 
@@ -159,7 +159,7 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: #2c2a3b;
   position: absolute;
   top: 0;
   bottom: 0;

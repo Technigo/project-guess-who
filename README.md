@@ -8,7 +8,7 @@ Since my JavaScript abilities are limited I made sure to follow the steps given 
 
 ### If I had more time
 
-- Change the styling (make it mobile first because easier to follow) and then move the sections around
+- Add sound
 - Improve filter alerts, i.e. customise them better and not have the exact option values being displayed in them
 - Replace the cards with something cute like Pokemons or cats and then also re-doing the categories to better fit the new characters
 - Add Guess counter that counts down from 3

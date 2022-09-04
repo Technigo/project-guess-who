@@ -112,6 +112,19 @@ select {
   width: 90%;
 }
 
+.countdown {
+border: 2px solid var(--primary);
+background-color: transparent;
+color: var(--primary);
+border-radius: 30px;
+font-size: 12px;
+font-family: 'Montserrat';
+font-weight: bold;
+padding: 17px 27px;
+margin-top: 10px;
+align-self: center;
+}
+
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);

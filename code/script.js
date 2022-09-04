@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const playAgainBtn = document.getElementById('playAgain');
   const winOrLose = document.getElementById('winOrLose');
   const winOrLoseText = document.getElementById('winOrLoseText');
+  const countDownTimer = document.getElementById('countdown');
+  const counter = document.getElementById("counter");
 
   // Array with all the characters, as objects
   const CHARACTERS = [
@@ -25,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hair: 'hidden',
       eyes: 'blue',
       accessories: ['a hat'],
-      other: []
+      other: ['bearded']
     },
     {
       name: 'Jacques',
@@ -33,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hair: 'grey',
       eyes: 'blue',
       accessories: ['a hat'],
-      other: ['smoking']
+      other: ['smoking', 'bearded']
     },
     {
       name: 'Jai',
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/jana.svg',
       hair: 'black',
       eyes: 'hidden',
-      accessories: ['glasses'],
+      accessories: ['glasses', 'a necklace'],
       other: []
     },
     {
@@ -80,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/jaqueline.svg',
       hair: 'orange',
       eyes: 'green',
-      accessories: ['glasses'],
+      accessories: ['glasses', 'a necklace', 'earings'],
       other: []
     },
 
@@ -114,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hair: 'orange',
       eyes: 'green',
       accessories: ['glasses', 'a hat'],
-      other: ['smoking']
+      other: ['smoking', 'bearded']
     },
     {
       name: 'Jenni',
@@ -153,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/jocelyn.svg',
       hair: 'black',
       eyes: 'brown',
-      accessories: ['glasses'],
+      accessories: ['glasses', 'earings'],
       other: []
     },
     {
@@ -169,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/jordan.svg',
       hair: 'yellow',
       eyes: 'hidden',
-      accessories: ['glasses', 'a hat'],
+      accessories: ['glasses', 'a hat', 'a necklace'],
       other: []
     },
     {
@@ -177,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img: 'images/josephine.svg',
       hair: 'grey',
       eyes: 'brown',
-      accessories: [],
+      accessories: ['earings'],
       other: []
     },
     {
@@ -194,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hair: 'black',
       eyes: 'green',
       accessories: [],
-      other: []
+      other: ['bearded']
     },
     {
       name: 'Julie',
@@ -210,10 +212,32 @@ document.addEventListener('DOMContentLoaded', () => {
   let randomCharacter;
   let currentQuestion;
   let charactersInPlay;
+  let numberOfGuesses
+
+  // let timeLeft = 20;
+  // let countDown = setInterval(() => {
+  //   if(timeLeft <= 0){
+  //     clearInterval(countDown);
+  //     winOrLoseText.innerHTML = `<p>Time's run out!</p>`;
+  //     winOrLose.style.display = 'flex';
+
+  //     playAgainBtn.addEventListener('click', () => {
+  //     winOrLose.style.display = 'none';
+  //     board.style.display = 'flex';
+  //     })
+  //     document.body.onclick = () => {
+  //       clearTimeout(countDown)
+  //     }
+  //     start();
+  //   } else {
+  //     countDownTimer.innerHTML = timeLeft + ' seconds remaining';
+  //   }
+  //   timeLeft -= 1;
+  // }, 1000);
 
   // Draw the game board
   const generateBoard = () => {
-    board.innerHTML = '';    
+    board.innerHTML = '';
     charactersInPlay.forEach((person) => {      
       board.innerHTML += `
         <div class="card">
@@ -243,7 +267,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // This function to start (and restart) the game
   const start = () => {
-    charactersInPlay = CHARACTERS;    
+    charactersInPlay = CHARACTERS;   
+    numberOfGuesses = 5; 
+    counter.innerHTML = `${numberOfGuesses}`;
     setRandomCharacter();             // Invokes the function that randomly selects the secret character that the user are looking for
     generateBoard(charactersInPlay);  // Invokes the function that sets the bord with the character-cards
   }
@@ -367,6 +393,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // All the event listeners
   restartBtn.addEventListener('click', start);
 
-  filterBtn.addEventListener('click', selectQuestion);
+  filterBtn.addEventListener('click', () => {
+    numberOfGuesses --;
+    counter.innerHTML = `${numberOfGuesses}`;
+    
+    if (numberOfGuesses < 1) {
+      alert('you lost, please refresh');
+      start();
+    } else {
+      selectQuestion();
+    }})
 
 });  

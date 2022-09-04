@@ -6,7 +6,6 @@ const filterButton = document.getElementById('filter') // the button with id: fi
 const winOrLose = document.getElementById('winOrLose') // the section with id: winOrLose
 const winOrLoseText = document.getElementById('winOrLoseText') // the h1 with id: winOrLoseText
 const playAgainButton = document.getElementById('playAgain') // the button with id: playAgain (inside the wineOrLose section)
-const counter = document.getElementById('counter');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -209,7 +208,6 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-let numberOfGuesses = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -380,8 +378,6 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = "Correct answer!";  
   } else {
-    numberOfGuesses++;
-    counter++;
     winOrLoseText.innerHTML = `Wrong answer! The correct answer is ${secret.name}`;
   }
 }

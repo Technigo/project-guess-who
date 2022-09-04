@@ -112,7 +112,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['beard']
   },
   {
     name: 'Jenni',
@@ -240,7 +240,6 @@ const start = () => {
   generateBoard();
   setSecret();
   selectQuestion();
-  // winOrLose.style.display = "none";
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -286,12 +285,12 @@ const filterCharacters = (keep) => {
   if (category === 'hair') {
     if (keep) {
       alert(
-        `Good guess! The person have ${value} hair! Keep all people with ${value}hair`
+        `Good guess! The person have ${value} hair!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
       alert(
-        `Sorry! The person doesn't have ${value} hair! Remove all people with ${value}hair`
+        `Sorry! The person doesn't have ${value} hair!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
@@ -321,19 +320,7 @@ const filterCharacters = (keep) => {
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
-  // } else if (category === 'other') {
-   
-  //   if (keep) {
-  //     alert(
-  //       `Good guess! The person is a ${value}!`
-  //     )
-  //     charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
-  //   } else {
-  //     alert(
-  //       `Sorry! The person is not a ${value}!`
-  //     )
-  //     charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
-  //   }
+  
   } else if (category === 'other') {
     
     if (keep) {
@@ -348,28 +335,13 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   }
-    
-  
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
 
   // Invoke a function to redraw the board with the remaining people.
   generateBoard();
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// When clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   const result = window.confirm(`Are you sure this is your choice?`);
 
@@ -378,7 +350,7 @@ const guess = (personToConfirm) => {
   }
 };
 
-// If confirm, this function follows
+// If confirm, this function follows to unveal if the guess is right or wrong
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alert("Wohoo that's correct! You Win!");
@@ -386,34 +358,11 @@ const checkMyGuess = (personToCheck) => {
     winOrLose.style.display = "block"; // show the end game overlay
   } else {
     alert(`Oh no! Your guess is wrong! The correct answer is ${secret.name}`);
-    reset();
+    board.innerHTML = "";
+    winOrLose.style.display = "block"; // show the end game overlay
   }
 };
 
-//   const confirmation = confirm(`Is your final guess ${personToConfirm}?`);
-//   // store the interaction from the player in a variable.
-//   // remember the confirm() ?
-//   // If the player wants to guess, invoke the checkMyGuess function.
-//   if (confirmation === true) {
-//     checkMyGuess(personToConfirm);
-//   } else {
-//     alert ('Continue guessing')
-//   }
-// }
-
-// // If you confirm, this function is invoked
-// const checkMyGuess = (personToCheck) => {
-//   // 1. Check if the personToCheck is the same as the secret person's name
-//   // 2. Set a Message to show in the win or lose section accordingly
-//   // 3. Show the win or lose section
-//   // 4. Hide the game board
-//   board.style.display = "none" 
-//   if (personToCheck === secret.name) {
-//     winOrLose.innerHTML = `Wohoo! ${secret.name} is correct!`;  
-//   } else {
-//     winOrLose.innerHTML = `Oh no! Your guess is wrong! The correct answer is ${secret.name}`;
-//   }
-// }
 
 // Invokes the start function when website is loaded
 start();

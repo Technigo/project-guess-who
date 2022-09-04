@@ -13,15 +13,9 @@
   <body>
     <aside class="question-section">
       <button type="button" id="restart" class="outlined-button">RESTART</button>
-
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
-
-      <h1>Does the person have</h1>
-
+      <h1>Guess Who?</h1>
+      <h2>Choose a question ⬇</h2>
+      
       <select title="questions" id="questions">
         <optgroup label="hair">
           <option value="brown">brown hair</option>
@@ -47,8 +41,9 @@
           <option value="smoker">a smoking habit</option>
         </optgroup>
       </select>
-      <button id="filter" class="filled-button">FIND OUT</button>
       <p class="questions-text">Attempts left: <span id="attempts">5</span></p>
+      <button id="filter" class="filled-button">FIND OUT</button>
+      
     </aside>
 
     <section class="board-wrapper">
@@ -63,5 +58,7 @@
       </div>
     </section>
     <script src="script.js"></script>
+    <!-- <script src="sweetalert2.all.min.js"></script> -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

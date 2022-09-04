@@ -245,7 +245,7 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // Functions below invokes when the game starts
+  // Functions below are invoked when the game starts
   generateBoard()
   console.log('Generating Board')
   console.log('setting secret character')
@@ -293,32 +293,82 @@ const checkQuestion = () => {
   };
 };
 
-// It'll filter the characters array and redraw the game board.
+// This will filter the characters array and redraw the game board.
+//Swal comes from Sweet Alert. Is a Script for styling alerts. 
+//Commented out the normal window.alert in case we want to use it
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   if (category === 'hair') {
     if (keep) {
-      alert(`Yes, the person have ${value} hair! Keep all people that have ${value} hair`)
+      Swal.fire({
+        title: 'NICE!',
+        text: `The person have ${value} hair! Keeping all people that have ${value} hair`,
+        icon: 'success',
+        confirmButtonText: 'Cool'
+      })
+      //alert(`Yes, the person have ${value} hair! Keeping all people that have ${value} hair`)
     } else {
-      alert(`No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`)
+      Swal.fire({
+        title: `No, the person doesn't have ${value} hair!`,
+        text: `Removing all people that have ${value} hair`,
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
+      //alert(`No, the person doesn't have ${value} hair! Removing all people that have ${value} hair`)
     }
   } else if (category === 'eyes') {
       if (keep) {
-      alert(`Yes, the person have ${value} eyes! Keep all people that have ${value} eyes`)
+        Swal.fire({
+          title: 'NICE!',
+          text: `The person have ${value} eyes! Keeping all people that have ${value} eyes`,
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+      //alert(`Yes, the person have ${value} eyes! Keeping all people that have ${value} eyes`)
       } else {
-        alert(`No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`)
+        Swal.fire({
+          title: `No, the person doesn't have ${value} eyes!`,
+          text: `Removing all people that have ${value} eyes`,
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
+        //alert(`No, the person doesn't have ${value} eyes! Removing all people that have ${value} eyes`)
       }
   } else if (category === 'accessories'){
       if (keep) {
-      alert(`Yes, the person wear ${value}! Keep all people that wear ${value}`)
+        Swal.fire({
+          title: 'NICE!',
+          text: `The person wear ${value}! Keeping all people that wear ${value}`,
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+      //alert(`Yes, the person wear ${value}! Keeping all people that wear ${value}`)
       } else {
-        alert(`No, the person doesn't wear ${value}! Remove all people that wear ${value}`)
+        Swal.fire({
+          title: `No, the person doesn't wear ${value}!`,
+          text: `Removing all people that wear ${value}!`,
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
+        //alert(`No, the person doesn't wear ${value}! Removing all people that wear ${value}`)
       }
   } else {
       if (keep) {
-        alert(`Yes, the person is a ${value}! Keep all people that are ${value}s`)
+        Swal.fire({
+          title: 'NICE!',
+          text: `The person is a ${value}! Keeping all people that are ${value}s`,
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+        //alert(`Yes, the person is a ${value}! Keeping all people that are ${value}s`)
       } else {
-        alert(`No, the person is not a ${value}! Keep all people that aren't ${value}s`)
+        Swal.fire({
+          title: `No, the person is not a ${value}!`,
+          text: `Removing all people that aren't ${value} hair`,
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
+        //alert(`No, the person is not a ${value}! Keeping all people that aren't ${value}s`)
       }
   };
   
@@ -341,22 +391,54 @@ const filterCharacters = (keep) => {
 
   //counter if statement
   if (attemptsLeft === 1) {
-    alert('1 attempt left!');
+    Swal.fire({
+      title: 'WARNING!',
+      text: `Only 1 attempt left!`,
+      icon: 'info',
+      confirmButtonText: 'Cool'
+    })
+    //alert('1 attempt left!');
   } else if (attemptsLeft === 0) {
-    alert('Time to guess!')
+    Swal.fire({
+      title: 'WARNING!',
+      text: `Time to guess!`,
+      icon: 'warning',
+      confirmButtonText: 'Cool'
+    })
+    //alert('Time to guess!')
     //If time to guess hide section to prevent player finding out more.
     findOutButton.style.display = 'none' 
     questions.style.display = 'none'
   }
 };
 
+// APROACH 1 - NORMAL ALERT
+
 // when clicking guess, the player first have to confirm that they want to make a guess.
 //confirm() gives the player the option to confirm or not as an alert
-const guess = (personToConfirm) => {
+
+/* const guess = (personToConfirm) => {
   const confirmGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`); 
   if (confirmGuess) {
     checkMyGuess(personToConfirm)
   }
+}; */
+
+// APROACH 2 - SWEET ALERT
+const guess = (personToConfirm) => {
+  Swal.fire({
+    title: `Are you sure you want to guess on ${personToConfirm}?`,
+    text: "You can lose the game!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, YOLO!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+    checkMyGuess(personToConfirm)  
+    }
+  })
 };
 
 // If the player confirm, this function is invoked
@@ -364,22 +446,22 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) { 
     winOrLose.style.display = 'flex' //This will show the win or lose section
     winOrLoseText.innerHTML = `
-    <iframe src="https://giphy.com/embed/Y3qaJQjDcbJPyK7kGk" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-    <p>${secret.name} was the right guess!</p>
+    <iframe class="gif" src="https://giphy.com/embed/Y3qaJQjDcbJPyK7kGk" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <p class="final-text">${secret.name} was the right guess!</p>
     ` //Message to show if player win
     board.style.display = 'none' //This will hide the game board
   } else {
     winOrLose.style.display = 'flex'
     winOrLoseText.innerHTML = `
-    <iframe src="https://giphy.com/embed/eJ4j2VnYOZU8qJU3Py" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-    <p>${secret.name} wasn't the right guess!</p>
+    <iframe class="gif" src="https://giphy.com/embed/eJ4j2VnYOZU8qJU3Py" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <p class="final-text">${secret.name} wasn't the right guess!</p>
     ` //Message to show if player loose
     board.style.display = 'none'
   }
 };
 
+//We hide or redraw the sections and invoke start funktion again
 const playAgain = () => {
-  //We hide or redraw the sections
   winOrLose.style.display = 'none'
   board.style.display = ''
   findOutButton.style.display = ''

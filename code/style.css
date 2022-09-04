@@ -30,6 +30,16 @@ h1 {
   box-sizing: border-box;
 }
 
+.questions-text {
+  color: #a5a5a5;
+  margin-top: 0;
+  font-weight: 600;
+}
+h2 {
+  color: #a5a5a5;
+  margin-bottom: 0;
+} 
+
 select {
   display: block;
   border: none;
@@ -38,10 +48,6 @@ select {
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
-}
-
-.guess-who-icon {
-  width: 126px;
 }
 
 .board-wrapper {
@@ -130,7 +136,8 @@ button {
 .outlined-button {
   background-color: transparent;
   color: var(--primary);
-  align-self: flex-end;
+  align-self: flex-start;
+  margin-bottom: 20px;
 }
 
 .filled-button,
@@ -186,18 +193,31 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
-    font-size: 24px;
+    font-size: 40px;
     line-height: 30px;
   }
 
-  .guess-who-icon {
-    width: 51px;
+  h2 {
+    font-size: 20px;
   }
 
+  .win-or-lose {
+    margin: 25px;
+  }
+
+  .gif {
+    width: auto;
+  }
+  .final-text {
+    font-size: 30px;
+    margin: 100px;
+  }
   .board-wrapper {
     width: 100%;
   }

@@ -332,7 +332,6 @@ const filterCharacters = (keep) => {
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
         alert(`Yesbox! the secret person looks amazing with ${value} hair. Keep it`);
       
-      
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person [category] !== value);
       alert(`No, this person is not rocking ${value} hair! remove plzzz`);
@@ -342,50 +341,44 @@ const filterCharacters = (keep) => {
     if(keep) {
       charactersInPlay = charactersInPlay.filter((person) => person [category] === value);
       alert(`Correct, this person has lovely ${value} eyes. Keeeeep them! `);
-    }
+    } 
 
-  else {
+    else {
     charactersInPlay = charactersInPlay.filter((person) => person [category] !== value);
     alert(`Nooo, this person has not ${value} eyes. Lets remove and keep going.`);
   }
 }
  
-    // Determine what is the category
+
   // filter by category to keep or remove based on the keep variable.
 
 if (category === 'accessories') {
   if (keep) {
     charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-  } 
-  else {
+  } else {
     charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   }
 
 } else if (category === 'other') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    }
-    else {
+    } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
 
 } else if (category === 'hair') {
   if (keep) {
     charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-  }
-  else {
+  } else {
     charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   }
 
 } else if (category === 'eyes') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-    }
-    else {
+    } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
-
-    
   }
   // Invoke a function to redraw the board with the remaining people.
   generateBoard(keep);
@@ -393,15 +386,13 @@ if (category === 'accessories') {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  
   const guessUser = confirm(`${personToConfirm} is this you finall answer?`);
 
   if(guessUser) {
     checkMyGuess(personToConfirm)
   } else {
-    alert(`keep guessing hero`) // change mind to guess, keep playing
+    alert(`Okay, keep guessing hero`) // change mind to guess, keep playing
   }
 }
 
@@ -439,10 +430,9 @@ function resetDisplay (){
 }
 
 
-
 // Invokes the start function when website is loaded
 start()
-resetDisplay()
+resetDisplay() // reset the counter to 0 guesses
 
 
 reload = () => {
@@ -458,4 +448,5 @@ restartButton.addEventListener('click', resetDisplay)
 
 
 
+// test
 

@@ -228,6 +228,11 @@ button {
     flex-direction: column;
   }
 
+  .welcome-text {
+    padding: 10px;
+
+  }
+
   .question-section {
     width: 100%;
     min-height: 0;

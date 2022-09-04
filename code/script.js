@@ -240,7 +240,7 @@ const start = () => {
   generateBoard();
   setSecret();
   selectQuestion();
-
+  // winOrLose.style.display = "none";
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -383,7 +383,7 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alert("Wohoo that's correct! You Win!");
     board.innerHTML = "";
-    winOrLose.style.display = "block";
+    winOrLose.style.display = "block"; // show the end game overlay
   } else {
     alert(`Oh no! Your guess is wrong! The correct answer is ${secret.name}`);
     reset();
@@ -422,4 +422,7 @@ start();
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion); 
 filter.addEventListener('click', checkQuestion); 
-playAgain.addEventListener("click", start);
+playAgain.addEventListener("click", (event) => {
+  start();
+  winOrLose.style.display = "none"; //hide the end game overlay
+});

@@ -55,7 +55,7 @@ const CHARACTERS = [
     hair: "brown",
     eyes: "green",
     accessories: ["glasses"],
-    other: [],
+    other: ["beard"],
   },
   {
     name: "Jana",
@@ -96,7 +96,7 @@ const CHARACTERS = [
     hair: "brown",
     eyes: "blue",
     accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    other: ["smoker", "beard"],
   },
   {
     name: "Jeane",
@@ -112,7 +112,7 @@ const CHARACTERS = [
     hair: "orange",
     eyes: "green",
     accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    other: ["smoker", "beard"],
   },
   {
     name: "Jenni",
@@ -254,7 +254,7 @@ const selectQuestion = () => {
   console.log("Question selected", currentQuestion); // Shows what question the player choose.
 };
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function is invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   console.log("Guess on", category, value);
@@ -264,25 +264,15 @@ const checkQuestion = () => {
     if (value === secret[category]) {
       keep = true;
     }
-  } /* else if (category === "eyes") {
-      if (value === secret.eyes) {
-        keep = true;
-      } */ else if (category === "accessories" || category === "other") {
+  } else if (category === "accessories" || category === "other") {
     if (secret[category].includes(value)) {
       keep = true;
     }
-    /* } else if (category === "other") {
-      if (secret.other.includes(value)) {
-        keep = true;
-      } */
   }
   filterCharacters(keep);
 };
-// Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-// See if we should keep or remove people based on that
-// Then invoke filterCharacters
 
-// It'll filter the characters array and redraw the game board.
+// Filters the characters array and redraws the game board.
 const filterCharacters = (keep) => {
   console.log("Filtering");
   const { category, value } = currentQuestion;
@@ -336,7 +326,7 @@ const filterCharacters = (keep) => {
         (person) => !person[category].includes(value)
       );
       alert(
-        `No, the person is not a ${value}! Press OK to remove all people that are a ${value}`
+        `No, the person does not have a ${value}! Press OK to remove all people that has a ${value}`
       );
     }
   }
@@ -353,12 +343,9 @@ const guess = (personToConfirm) => {
   } else {
     alert("Keep guessing! You can do it! 💪");
   }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 };
 
-// If you confirm, this function is invoked
+// If the player confirms, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     let displayWinOrLose = () => {

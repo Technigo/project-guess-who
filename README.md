@@ -1,8 +1,6 @@
-# Project Name
+# Project Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a digital version of the board game Guess Who.
 
 ## The problem
 

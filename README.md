@@ -2,11 +2,12 @@
 
 Replace this readme with your own information about your project.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
+Created a guess who game, where a player will be guessing the secret person.
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The plan at first was to get familiar with the given draft. Checked where I could use possible loops, functions and in built functions. Took a longer time to make the filtering work correctly. Checked different options how to excecute this. 
+
+If I had more time I would try to find a way to write some of the codes differently. Even shorter, precise. 
 
 ## View it live
 

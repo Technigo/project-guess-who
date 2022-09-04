@@ -16,18 +16,22 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: black;
 }
 
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: white;
   display: flex;
   flex-direction: column;
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+}
+
+.questions{
+  color: black;
 }
 
 select {
@@ -49,6 +53,8 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  
 }
 
 .game-board {
@@ -58,19 +64,6 @@ select {
   flex-wrap: wrap;
   align-content: center;
 }
-
-.tilesSheet {        /*the tiles*/
-  height: 1000px;
-  width: 1000px;
-  display: flex;
-  flex-wrap: wrap;
- 
- }
- .tile {
-  width: 220px;     /*change the size of the tile here*/
-  margin: 5px;
-  border: 1px solid tomato;
- }
  
 /****** CARD ******/
 .card {
@@ -84,6 +77,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  border-color: black;
 }
 
 .card p {

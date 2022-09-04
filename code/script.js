@@ -313,10 +313,10 @@ const filterCharacters = (keep) => {
   } else if (category === 'hair') {
     if (keep) {
       alert(
-        ` Yes, the person has ${value} Keep all people with ${value}`
+        ` Yes, the person has ${value} hair Keep all people with ${value} hair`
         )
     } else {
-      alert(`the person doesnt have ${value} Remove all people with ${value}`)
+      alert(`the person doesnt have ${value} hair Remove all people with ${value} hair`)
     }
   }
 

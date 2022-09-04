@@ -252,35 +252,7 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label // This variable stores what option group (category) the question belongs to.
   const value = questions.value //stores the actual value of the questions selected in the dropdown
- 
-  /*if (category === 'hair') {
-    console.log('hair:', value)
-    currentQuestion = {
-      category: category,
-      value: value
-    }
-  }
-  else if (category === 'eyes') {
-    console.log('eyes:', value)
-    currentQuestion = {
-      category: category,
-      value: value
-    }
-  }
-  else if (category === 'accessories') {
-    console.log('accessories:', value)
-    currentQuestion = {
-      category: category,
-      value: value
-    }
-  }
-  else if (category === 'other') {
-    console.log('other:', value)
-    currentQuestion = {
-      category: category,
-      value: value
-    }
-   }*/
+
    currentQuestion = {
     category: category,
     value: value

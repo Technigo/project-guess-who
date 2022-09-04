@@ -3,7 +3,9 @@
   --primary: #efebeae0;
   --secondary: #ffa6c3;
 }
-
+/* made the "theme" changing background with and animation(all cred to Alison Quaglia, who created the basics). 
+What this does is it creates a radiant of four colors making a progressive transition from one corner to another running diagonally. 
+ i put on diffrent "speeds" on the animation for the body, question-section and so on.*/
 body {
   display: flex;
   margin: 0;
@@ -13,7 +15,7 @@ body {
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
-
+/* keyframes makes the element (gradient) move*/
 @keyframes gradient {
   0% {
       background-position: 0% 50%;
@@ -119,7 +121,6 @@ select {
 }
 
 .card:hover {
-  /*background-color: var(--secondary);*/
   background: linear-gradient(-45deg, #f06d45, #e33075, #1f96c2, #1bac8a);
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;

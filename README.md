@@ -1,13 +1,13 @@
 # Guess who game
 
-Replace this readme with your own information about your project.
+Produce a complete guessWho game that you can restart and play again
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I took alot frm the Q&A, used stackoverflow for all my ongoing concerns and also watched the (tuesday) lecture on repeat. If I had more time I would do the extra ssignments
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+

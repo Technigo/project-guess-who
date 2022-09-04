@@ -114,7 +114,7 @@ select {
 
 .countdown {
 border: 2px solid var(--primary);
-background-color: transparent;
+background-color:  #eddfff;
 color: var(--primary);
 border-radius: 30px;
 font-size: 12px;
@@ -124,6 +124,19 @@ padding: 17px 27px;
 margin-top: 10px;
 align-self: center;
 }
+
+.counter {
+  border: 2px solid var(--primary);
+  background-color:  #eddfff;
+  color: var(--primary);
+  border-radius: 30px;
+  font-size: 12px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  padding: 17px 27px;
+  margin-top: 10px;
+  align-self: center;
+  }
 
 /****** BUTTONS ******/
 button {

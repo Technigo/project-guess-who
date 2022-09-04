@@ -212,28 +212,34 @@ document.addEventListener('DOMContentLoaded', () => {
   let randomCharacter;
   let currentQuestion;
   let charactersInPlay;
-  let numberOfGuesses
+  let numberOfGuesses;
+  let timeLeft;
+  let countDown;
+  
 
-  // let timeLeft = 20;
-  // let countDown = setInterval(() => {
-  //   if(timeLeft <= 0){
-  //     clearInterval(countDown);
-  //     winOrLoseText.innerHTML = `<p>Time's run out!</p>`;
-  //     winOrLose.style.display = 'flex';
+  const paddedNumber = (number, length) => {
+    let str = number + '';
+    while(str.length < length)
+      str = '0' + str;
+    return str;
+  }
 
-  //     playAgainBtn.addEventListener('click', () => {
-  //     winOrLose.style.display = 'none';
-  //     board.style.display = 'flex';
-  //     })
-  //     document.body.onclick = () => {
-  //       clearTimeout(countDown)
-  //     }
-  //     start();
-  //   } else {
-  //     countDownTimer.innerHTML = timeLeft + ' seconds remaining';
-  //   }
-  //   timeLeft -= 1;
-  // }, 1000);
+  const resetCountdown = () => {  
+    timeLeft = 120;
+
+    countDown = setInterval(() => {
+      if(timeLeft <= 0){
+        clearInterval(countDown);
+        winOrLoseText.innerHTML = `<p>Time's run out!</p>`;
+        winOrLose.style.display = 'flex';
+      } else {
+        let minutes = Math.floor(timeLeft / 60 ) % 60;
+        let seconds = timeLeft % 60;
+        countDownTimer.innerHTML = paddedNumber(minutes, 2) + ":" + paddedNumber(seconds, 2) + ' remaining';
+      }
+      timeLeft -= 1;
+    }, 1000);
+  }
 
   // Draw the game board
   const generateBoard = () => {
@@ -270,6 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
     charactersInPlay = CHARACTERS;   
     numberOfGuesses = 5; 
     counter.innerHTML = `${numberOfGuesses}`;
+    resetCountdown();
     setRandomCharacter();             // Invokes the function that randomly selects the secret character that the user are looking for
     generateBoard(charactersInPlay);  // Invokes the function that sets the bord with the character-cards
   }
@@ -283,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
       category: category,
       value: value
     }
-
     checkQuestion();    // Invokes the checkQuestion-function
   }
 
@@ -297,9 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (category === 'accessories' || category === 'other') {
       keep = randomCharacter[category].includes(value);
     }
-  
     filterCharacters(keep); // Invokes the filterCharacters-function
-
   }  
 
   // the function that filters out cards with the true/false values and redraw the game board.
@@ -355,9 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
       }
     }
-
     generateBoard();    // Invokes the generateBoard-function, so the board is redrawn with the remaining cards
-
   }
 
   // When clicking guess, the player first have to confirm that they want to make a guess
@@ -371,27 +373,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (personToCheck === randomCharacter.name) {
       winOrLoseText.innerHTML = `<p>Yaaay, you got it!</p>`;
       winOrLose.style.display = 'flex';
-
-      playAgainBtn.addEventListener('click', () => {
-      winOrLose.style.display = 'none';
-      board.style.display = 'flex';
-      start();
-      })
+      clearInterval(countDown);
     } else {
       alert(`Naaaw, not quite right. \n Please try again!`);
       charactersInPlay = charactersInPlay.filter(person => person.name !== personToCheck);
-    }
-    generateBoard(); 
-            
+    }        
   }
 
   // Invokes the start function when website is loaded
   start();
 
-  setTimeout(generateBoard, 3000);
-
   // All the event listeners
-  restartBtn.addEventListener('click', start);
+  restartBtn.addEventListener('click', () => {
+    clearInterval(countDown);
+    start();
+  });
+
+  playAgainBtn.addEventListener('click', () => {
+    winOrLose.style.display = 'none';
+    board.style.display = 'flex';
+    start();
+  });
 
   filterBtn.addEventListener('click', () => {
     numberOfGuesses --;
@@ -399,9 +401,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (numberOfGuesses < 1) {
       alert('you lost, please refresh');
+      clearInterval(countDown);
       start();
     } else {
       selectQuestion();
-    }})
-
+    }});
 });  

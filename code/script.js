@@ -234,23 +234,23 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  
+  //Clears the game board fron the winOrLose-page
   winOrLose.style.display = 'none';
   board.style.display = "flex";
+
   generateBoard();
   setSecret();
   console.log(secret.name);
-  selectQuestion();
-  
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
+    // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
 
-  const value = questions.options[questions.selectedIndex].value
+  // This variable stores the actual value of the question we've selected.
+  const value = questions.options[questions.selectedIndex].value //not sure why questions.value also work, or does it? 
 
   currentQuestion = {
     category: category,
@@ -258,25 +258,23 @@ const selectQuestion = () => {
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function is invoked when you click on the 'Find Out' button.
 const checkQuestion = () => {
+  // Compare the currentQuestion details with the secret person details 
   const { category, value } = currentQuestion
   
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  //Saving the value in the variable keep
   let keep 
   if (category === 'hair' || category === 'eyes') {
     keep = value === secret[category];
   } else if (category === 'accessories' || category === 'other') {
-    keep = secret[category].includes(value); //I dont completly understand this
+    keep = secret[category].includes(value); 
   }
   //Invoke next function filterCharacters and passing along keep 
   filterCharacters(keep);
-  console.log(`choosed ${value} and then pressed find out: keep= ${keep}`);
 }
 
-// It'll filter the characters array and redraw the game board and show the correct alert message for different categories and filter away characters due to question
+// Alert correct message after question is asked and redraw the game board with the new set of character.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   

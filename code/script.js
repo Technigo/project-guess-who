@@ -257,7 +257,6 @@ startButton.onclick = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret);
 } 
 
 
@@ -287,7 +286,6 @@ const selectQuestion = () => {
     value: value
   }
 
-  console.log ('Question selected', currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.

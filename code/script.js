@@ -7,6 +7,7 @@
   const winOrLose = document.getElementById('winOrLose');
   const winOrLoseText = document.getElementById('winOrLoseText');
   const playAgain = document.getElementById('playAgain')
+  const guessCounter = document.getElementById('guesses')
   
 
 
@@ -211,6 +212,8 @@
   let secret;
   let currentQuestion;
   let charactersInPlay;
+  let numberOfGuesses = 0;
+  
   
 
   // Draw the game board
@@ -239,7 +242,7 @@
   // This function to start (and restart) the game
   const start = () => {
     charactersInPlay = CHARACTERS; // Here we're setting charactersInPlay array to be all the characters to start with
-    document.getElementById('winOrLose').style.display = "none";
+    winOrLose.style.display = "none";
     generateBoard(); //call/invoke function generateBoard on row 210
     setSecret(); //call/invoke function setSecret on row 227
     console.log("secret:", secret);
@@ -271,14 +274,10 @@
   if (category === 'hair' || category === 'eyes') {
     if (value === secret[category]) {
       keep = true
-    } else {
-      keep = false
     }
   } else if (category === 'accessories' || category === 'other') {
     if (secret[category].includes(value)) {
     keep = true
-  } else {
-    keep = false
   }
 }
 filterCharacters(keep)
@@ -355,17 +354,16 @@ filterCharacters(keep)
   };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-function guess(personToConfirm) {
-  const userGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`)
+const guess = (personToConfirm) => { 
+  const userConfirm = confirm(`Are you sure you want to guess on ${personToConfirm}?`)
 
-  if (userGuess) {
+  if (userConfirm) {
     checkMyGuess(personToConfirm)
-  } else {
-    alert('Upsie! You are a bit shaky there!')
-  }
+  } 
 }
 
-// If you confirm in the previous step, this function is invoked
+ // If you confirm in the previous step, this function is invoked
+ /*
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     let displayWinOrLose = () => {
@@ -382,15 +380,34 @@ const checkMyGuess = (personToCheck) => {
     board.innerHTML =''
     displayWinOrLose()
   }
+} */
+
+const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    winOrLoseText.innerHTML = `Hurray! You guess ${numberOfGuesses} times & win! ${personToCheck} was correct!`
+  } else {
+    winOrLoseText.innerHTML = `Sorry, too bad!  You guessed ${numberOfGuesses} times but ${personToCheck} was incorrect! ${secret.name} was the correct answer. You lost`
+  }
+  winOrLose.style.display = 'flex';
 }
+
+
 
   start()
 
   // All the event listeners
-  restartButton.addEventListener("click", start);
-  playAgain.addEventListener('click', start)
+  restartButton.addEventListener("click", start)
+  playAgain.addEventListener('click', () => {
+    start();
+    numberOfGuesses = 0
+    guessCounter.innerHTML =`${numberOfGuesses}`;
+  })
   questions.addEventListener("change", selectQuestion);
-  findOutButton.addEventListener("click", checkQuestion);
+  findOutButton.addEventListener("click", () => {
+    checkQuestion();
+    numberOfGuesses += 1;
+    guessCounter.innerHTML =`${numberOfGuesses}`;
+  });
   
     
 

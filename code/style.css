@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #FCF8E8;
+  --secondary: #94B49F;
 }
 
 body {
@@ -28,6 +28,7 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  border-right: solid 2px #5a6b5b;
 }
 
 select {
@@ -38,6 +39,7 @@ select {
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  color: var(--secondary);
 }
 
 .guess-who-icon {
@@ -64,13 +66,15 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 2px solid var(--secondary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  border-color: #365939;
+  border-radius: 10px;
 }
 
 .card p {
@@ -114,7 +118,7 @@ select {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
+  border: #FED2AA;
   border-radius: 50px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -131,18 +135,19 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  border: 2px solid #ECB390;
 }
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
+  background-color: #ECB390;
   color: white;
 }
 
 .filled-button:hover {
   background-color: white;
   border-color: white;
-  color: var(--primary);
+  color: #a3bea5;
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -180,6 +185,10 @@ button {
 @media (max-width: 768px) {
   body {
     flex-direction: column;
+  }
+
+  .question-section {
+    border: none;
   }
 
   .question-section {
@@ -226,7 +235,7 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: #94B49F;
     color: var(--primary);
     border: none;
   }

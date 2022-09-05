@@ -239,6 +239,7 @@ const generateBoard = () => {
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  console.log(secret.name);
 };
 
 // Start (or restart) the game
@@ -282,9 +283,8 @@ const checkQuestion = () => {
   const { category, value } = currentQuestion;
   let keep;
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Compares the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+  // The checks if we should keep or remove people based on that
 
   if (category === "hair" || category === "eyes") {
     keep = value === secret[category];
@@ -306,7 +306,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
-      alert(`Yes, the person has got ${value} hair!`);
+      alert(`Yes, the person has got ${value} hair! 😀`);
     } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
@@ -318,7 +318,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
-      alert(`Yes, the person has got ${value} eyes!`);
+      alert(`Yes, the person has got ${value} eyes! 😊`);
     } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
@@ -330,7 +330,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
-      alert(`Yes, the person is wearing ${value}!`);
+      alert(`Yes, the person is wearing ${value}! 🙂`);
     } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
@@ -342,7 +342,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
-      alert(`Yes, the person has got ${value}!`);
+      alert(`Yes, the person has got ${value}! 😃`);
     } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
@@ -369,7 +369,8 @@ const guess = (personToConfirm) => {
 // If user presses OK, the game checks they were right or not
 const checkMyGuess = (personToCheck) => {
   if (personToCheck == secret.name) {
-    winOrLoseText.innerHTML += `Congratulations, you won! 🥳`;
+    winOrLoseText.innerHTML += `That's right, it was ${secret.name}! Well done! 🥳<br>
+    This round you asked ${numberOfQuestionsAsked} before figuring it out.`;
     // Display confetti if user wins
     const jsConfetti = new JSConfetti();
     jsConfetti.addConfetti({
@@ -383,14 +384,15 @@ const checkMyGuess = (personToCheck) => {
   } else {
     // Wrong guess - check if the user still has guesses left to make
     window.alert(
-      `Not quite right unfortunately 🙁 You now have ${numberOfGuessesLeftToMake} guesses left to make`
+      `Not quite right 🙁 You can make ${numberOfGuessesLeftToMake} guesses!`
     );
     if (numberOfGuessesLeftToMake < 1) {
-      winOrLoseText.innerHTML += `Game over... 😢<br><br>
-      The secret person was ${secret.name}. Better luck next time! `;
+      winOrLoseText.innerHTML += `Game over... 😢<br>
+      The secret person was ${secret.name}.<br>
+      Better luck next time! `;
       // Display sympathy confetti if user loses
       const jsConfetti = new JSConfetti();
-      jsConfetti.addConfetti({ confettiNumber: 4, confettiRadius: 3 });
+      jsConfetti.addConfetti({ confettiNumber: 5, confettiRadius: 4 });
       board.style.display = "hidden";
       winOrLose.style.display = "flex";
     }

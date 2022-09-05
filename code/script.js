@@ -209,7 +209,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay; 
-//slet numberOfGuesses = 5;
+//let numberOfGuesses = 5;
 
 // Draw the game board
 const generateBoard = () => {
@@ -261,12 +261,13 @@ const selectQuestion = () => {
     value: value
   }
   console.log(currentQuestion);
+  console.log(category,value);
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   selectQuestion();
-  const {category, value} = currentQuestion 
+  const {category, value} = currentQuestion;
   let keep;
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
@@ -276,8 +277,7 @@ const checkQuestion = () => {
   if (category === "hair" || category === "eyes" ) {
     // if the secret person's hair value matches with the question's value
     if (secret[category] === value){
-      //filterCharacters(true);
-      keep = true;
+      filterCharacters(true);
     } else {
       //filterCharacters(false);
       keep = false;
@@ -298,7 +298,7 @@ const checkQuestion = () => {
 
 // It'll filter the characters array AND redraw the game board.
 const filterCharacters = (keep) => {
-  //selectQuestion();
+  console.log(keep);
   const {category, value} = currentQuestion;
 
   // Determine what is the category
@@ -319,20 +319,30 @@ const filterCharacters = (keep) => {
     } else {
       alert (`Oh no 😫 The person isn't a ${value}! We will remove everyone that work as a ${value}`)
     }
-  } else if (category === "hair" || category === "eyes") {
+  } else if (category === "hair") {
     if (keep) {
-      alert(`Great 😎 The person has ${value}! Keeping everyone that have ${value}`);
+      alert(`Great 😎 The person has ${value} hair! Keeping everyone that have ${value} hair`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
       console.log(value);
       console.log(charactersInPlay);
     } else {
-      alert(`Oh no 😫 The person doesn't have ${value}! We will remove everyone that has ${value}`);
+      alert(`Oh no 😫 The person doesn't have ${value} hair! We will remove everyone that has ${value} hair`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
-  } 
+  } else if (category ==="eyes") {
+    if (keep) {
+      alert(`Great 😎 The person has ${value} eyes! Keeping everyone that have ${value} eyes`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+      console.log(value);
+      console.log(charactersInPlay);
+    } else {
+      alert(`Oh no 😫 The person doesn't have ${value} eyes! We will remove everyone that has ${value} eyes`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
+    }
+  }
 
   // Invoke a function to redraw the board with the remaining people.
-  generateBoard( );
+  generateBoard(keep);
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -367,15 +377,13 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start();
-generateBoard();
-setSecret();
+
 
 // All the event listeners
 restartBtn.addEventListener('click', start);
 playAgainBtn.addEventListener("click", start);
-questions.addEventListener("change", selectQuestion);
-findOutBtn.addEventListener("click", checkQuestion,filterCharacters);
-
+//questions.addEventListener("change", selectQuestion);
+findOutBtn.addEventListener("click", checkQuestion);
 
 //which number did we pick 
 //const selectedQuestionIndex = questions.selectedIndex;

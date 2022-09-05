@@ -239,7 +239,6 @@ const generateBoard = () => {
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  console.log(secret.name);
 };
 
 // Start (or restart) the game

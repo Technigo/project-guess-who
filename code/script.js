@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
     counter.innerHTML = `${numberOfGuesses}`;
     
     if (numberOfGuesses < 1) {
-      alert('you lost, please refresh');
+      alert('You lost 😩 please try again!');
       clearInterval(countDown);
       start();
     } else {

@@ -256,9 +256,9 @@ button:focus {
 
 @media (min-width: 668px) {
   .logo {
-    font-size: 70px;
-    line-height: 80px;
-    margin: 15px 25px 35px 25px;
+    font-size: 65px;
+    line-height: 75px;
+    margin: 15px 25px 20px 25px;
   }
 
   .question-section {
@@ -305,6 +305,7 @@ button:focus {
 
 @media (min-width: 1025px) {
   .logo {
+    font-size: 70px;
     font-family: "GoodGirl", sans-serif;
     line-height: 120px;
   }

@@ -308,11 +308,11 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `You're on fire! Of course the person has ${value}! That means we'll keep all people with ${value} `
+        `You're on fire! Of course the person has ${value}! That means we'll keep all people that do. `
       )
     } else {
       alert(
-        `Sorry no ... the person doesn't have ${value}. Remove all people that have ${value}`
+        `Sorry no ... the person has no ${value}. Remove all people that have.`
       )
     }
   } 

@@ -9,4 +9,4 @@ I started to plann how the game should work and then started with the start code
 I have been using stackoverflow, google and youtube to help me solve the problems. 
 
 ## View it live
-You can play the game at https://6314ec0867c58a1e0aaa7cbd--aesthetic-sprite-0946a9.netlify.app/ 
+You can play the game at https://guesswho-amanda-elvkull.netlify.app/

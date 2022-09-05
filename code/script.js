@@ -81,7 +81,6 @@ const CHARACTERS = [
     accessories: ['glasses', 'jewelry'],
     other: []
   },
-
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
@@ -235,8 +234,9 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  //Setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS 
+  charactersInPlay = CHARACTERS  //Setting charactersInPlay array to be all the characters to start with
+  generateBoard() //Load the board of characters
+  setSecret() // Sets the secret person
 }
 
 // This function sets the currentQuestion when the user selects something in the dropdow. The function is invoked when selecting an item in the dropdown.
@@ -276,7 +276,6 @@ const checkQuestion = () => {
     }
   }
 }
-
 
 
 // This will filter the characters array and redraw the game board.
@@ -340,14 +339,13 @@ const checkMyGuess = (personToCheck) => {
   board.style.display = 'none'  //Hide the game board
 }
 
-//The following functions are called when the website is loaded:
+
 start() // Invokes the start function 
-generateBoard() // Invokes the generateBoard function
-setSecret() // Invokes the setSecrets function (i.e. a new secret person is chosen)
+
 
 // ALL THE EVENTLISTENERS
 // When the click event is triggered, the start function is invoked
-restartButton.addEventListener('click', start) 
+restartButton.addEventListener('click', start);
 
 //When the dropdown is changed, the selectQuestion-function is invoked. 
 questions.addEventListener('change', selectQuestion);

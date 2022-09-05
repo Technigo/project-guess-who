@@ -11,5 +11,4 @@ If I had more time:
 I did the css last and I wanted to make it look like the cards were flipping on a table. But when I started to look into it I realised I would have to change the structure of the code and I didn't have time for it. 
 
 ## View it live
-
-https://effulgent-heliotrope-78d9b9.netlify.app
+https://linneaw-project-guess-who.netlify.app/

@@ -1,4 +1,4 @@
-# Project Name
+# Guess Who!
 
 This project is absout creating my own digital version of the classic board game Guess Who. I have practice creating objects and arrays and also connect this to the DOM.
 

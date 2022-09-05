@@ -19,3 +19,4 @@ Struggles a lot with filters and to get the buttons to work. Have not spend that
 
 ## View it live
 
+https://charlotte-johansson-guess-who.netlify.app/

@@ -202,10 +202,8 @@ const questions = document.getElementById('questions')
 const restartBtn = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
 const playAgainBtn = document.getElementById('playAgain');
-const guessBtn= document.getElementById
 const winerOrloserText = document.getElementById('winOrLoseText');
 const winerOrLoserDiv = document.getElementById('winOrLose')
-const showSecretCard = document.getElementById('showSecret')
 const counter = document.getElementById('counter')
 const nrOfTryBtn= document.getElementById('nrOfTry')
 
@@ -232,7 +230,9 @@ const generateBoard = () => {
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
+      
     `
+    numberOfGuess=0;
   })
 }
 
@@ -375,7 +375,7 @@ if(personToCheck.name === secret.name) {
 
   if (numberOfGuess > 5) {
     window.alert('You LOST! Refresh the browser and try again. ')
-    return start
+    return start();
   }
   else{
     counter.innerText = numberOfGuess;

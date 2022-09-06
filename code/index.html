@@ -1,64 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
 
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guess Who?</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+  <link href="//fonts.cdnfonts.com/css/good-girl" rel="stylesheet">
+</head>
 
-      <h1>Does the person have</h1>
+<body>
+  <aside class="question-section">
 
-      <select title="questions" id="questions">
-        <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
-        </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
-        </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
-        </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
-        </optgroup>
-      </select>
+    <h1 class="logo">Guess Who?</h1>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
-    </aside>
+    <p class="does-the-person">Does the secret person have... </p>
 
-    <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
-    </section>
+    <select title="questions" id="questions">
+      <option style="display:none;" selected>👉 click here to pick a question 👈 </option>
+      <optgroup label="hair">
+        <option value="brown">brown hair?</option>
+        <option value="yellow">yellow hair?</option>
+        <option value="white">white hair?</option>
+        <option value="black">black hair?</option>
+        <option value="orange">orange hair?</option>
+        <option value="purple">purple hair?</option>
+      </optgroup>
+      <optgroup label="eyes">
+        <option value="green">green eyes?</option>
+        <option value="blue">blue eyes?</option>
+        <option value="brown">brown eyes?</option>
+        <option value="hidden">hidden eyes?</option>
+      </optgroup>
+      <optgroup label="accessories">
+        <option value="glasses">glasses?</option>
+        <option value="a hat">a hat?</option>
+        <option value="earrings">earrings?</option>
+        <option value="a necklace">a necklace?</option>
+        <option value="a tie">a tie?</option>
+      </optgroup>
+      <optgroup label="other">
+        <option value="a smoking habit">a smoking habit?</option>
+        <option value="30+ years of boating experience">30+ years of boating experience?</option>
+        <option value="an impressive beard">an impressive beard?</option>
+        <option value="freckles">freckles?</option>
+        <option value="a little green animal on them">a little green animal on them?</option>
+      </optgroup>
+    </select>
 
-    <section id="winOrLose" class="win-or-lose-wrapper">
-      <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
-        <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
-      </div>
-    </section>
-    <script src="script.js"></script>
-  </body>
+    <button id="filter" class="filled-button">ASK
+    </button>
+
+    <div class="counters">
+      <p class="question-counter">Questions asked: <span id="questionCounter">0</span></p>
+      <p class="guess-counter">Guesses left to make: <span id="guessCounter">3</span></p>
+    </div>
+  </aside>
+
+  <section class="board-wrapper">
+    <main class="game-board" id="board"></main>
+  </section>
+
+  <button type="button" id="restart" class="reset-button">RESTART GAME</button>
+
+  <section id="winOrLose" class="win-or-lose-wrapper">
+    <div class="win-or-lose">
+      <h1 class="logo game-over">Guess Who?</h1>
+      <p id="winOrLoseText" class="game-over-message"></p>
+      <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+    </div>
+  </section>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+</body>
+
 </html>

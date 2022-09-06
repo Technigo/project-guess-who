@@ -6,88 +6,150 @@
 
 body {
   display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
 }
 
-h1 {
-  font-size: 42px;
+.logo {
+  font-family: "GoodGirl", sans-serif;
+  font-size: 45px;
   font-weight: 500;
-  line-height: 48px;
+  line-height: 40px;
   margin: 10px 0;
+  color: rgb(255, 255, 255);
+  letter-spacing: 1px;
+  align-self: center;
+}
+
+.does-the-person {
   color: white;
+  font-weight: 300;
+  line-height: 0px;
+  align-self: center;
+  font-size: 14px;
 }
 
 .question-section {
-  width: 30%;
-  min-height: 100vh;
+  width: 100%;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding: 10px 10px 0 10px;
   align-items: flex-start;
   box-sizing: border-box;
+  margin-bottom: 7px;
 }
 
 select {
   display: block;
-  border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
-  width: 100%;
-  margin: 24px 0;
+  border: white;
+  font-weight: 300;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  background-color: var(--secondary);
+  width: 250px;
+  margin-bottom: 15px;
+  align-self: center;
+  appearance: none;
+  text-align: center;
+  cursor: pointer;
 }
 
-.guess-who-icon {
-  width: 126px;
+select:focus {
+  outline: none;
+}
+
+.counters {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding-top: 1px;
+}
+
+.guess-counter,
+.question-counter {
+  color: white;
+  font-size: 14px;
+  line-height: 6px;
+  padding-top: 3px;
 }
 
 .board-wrapper {
-  width: 70%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .game-board {
-  width: 90%;
-  max-width: 882px;
+  width: 100%;
+  max-width: 1000px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 /****** CARD ******/
+
 .card {
-  width: 135px;
-  height: 165px;
+  width: 83px;
+  height: 115px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 2px solid var(--secondary);
   border-radius: 4px;
-  margin: 3px;
+  margin: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.character-image {
+  min-height: 100px;
+  width: 90px;
 }
 
 .card p {
   text-align: center;
-  margin-bottom: 0;
-  font-size: 16px;
-  font-weight: 700;
+  margin: 8px 0 2px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card .guess {
+  display: flex;
+  top: 0;
+  position: absolute;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  text-align: center;
+  height: inherit;
+}
+
+.card .guess .filled-button {
+  padding: 6px 11px;
+  margin-bottom: 1px;
+  background: white;
+  color: var(--primary);
+  border: none;
+}
+
+.card .guess span {
+  display: none;
 }
 
 .card .guess {
   display: none;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  color: white;
-  text-align: center;
-  height: inherit;
 }
 
 .card:hover {
@@ -100,12 +162,13 @@ select {
 }
 
 /* The div with the guess class is only shown on hover */
+
 .card:hover .guess {
   display: flex;
 }
 
 .guess span {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 18px;
   font-weight: 600;
   margin-bottom: 8px;
@@ -113,45 +176,58 @@ select {
 }
 
 /****** BUTTONS ******/
+
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: bold;
-  padding: 17px 27px;
+  border-radius: 30px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  padding: 4px 10px;
   cursor: pointer;
+  align-self: center;
+}
+
+button:focus {
+  outline: none;
 }
 
 .small {
-  padding: 8px 16px;
+  padding: 5px 10px;
 }
 
-.outlined-button {
+.reset-button {
+  border: 1px solid;
+  font-size: 14px;
   background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
+  color: var(--secondary);
+  align-self: center;
+  font-weight: 400;
+  margin-top: 15px;
+  margin-bottom: 44px;
 }
 
 .filled-button,
-.outlined-button:hover {
+.reset-button:hover {
   background-color: var(--primary);
   color: white;
 }
 
-.filled-button:hover {
+.rest-button:hover {
   background-color: white;
   border-color: white;
   color: var(--primary);
 }
 
 /****** WIN OR LOSE SECTION ******/
+
 .win-or-lose-wrapper {
   display: none;
   align-items: center;
   justify-content: center;
   background: var(--secondary);
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -168,66 +244,117 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+.game-over-message {
+  font-size: 16px;
+  line-height: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: white;
 }
 
-.win-or-lose h1 {
-  margin-bottom: 32px;
-}
+/*------------- TABLET -------------------------------------------------------------- */
 
-@media (max-width: 768px) {
-  body {
-    flex-direction: column;
+@media (min-width: 668px) {
+  .logo {
+    font-size: 65px;
+    line-height: 75px;
+    margin: 15px 25px 20px 25px;
   }
 
   .question-section {
-    width: 100%;
-    min-height: 0;
-  }
-  button {
-    padding: 8px 16px;
-  }
-  h1 {
-    font-size: 24px;
-    line-height: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
   }
 
-  .guess-who-icon {
-    width: 51px;
+  select {
+    margin-bottom: 30px;
   }
 
-  .board-wrapper {
-    width: 100%;
-  }
-
-  .game-board {
-    width: 100%;
-    max-width: 750px;
+  .counters {
+    justify-content: space-between;
+    align-self: center;
+    width: 90%;
   }
 
   .card {
-    width: 113px;
-    position: relative;
+    width: 135px;
+    height: 165px;
+    border: 3px solid var(--secondary);
+    border-radius: 4px;
+    margin: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .card .guess {
+  .character-image {
+    min-height: 150px;
+    min-width: 140px;
+  }
+
+  .logo.game-over {
+    line-height: 40px;
+  }
+
+  .game-over-message {
+    font-size: 17px;
+  }
+}
+
+/*------------- DESKTOP -------------------------------------------------------------- */
+
+@media (min-width: 1025px) {
+  .logo {
+    font-size: 70px;
+    font-family: "GoodGirl", sans-serif;
+    line-height: 120px;
+  }
+
+  .does-the-person {
+    font-size: 16px;
+    line-height: 7px;
+  }
+
+  select {
+    margin-bottom: 30px;
+    font-size: 16px;
+  }
+
+  .counters {
+    justify-content: space-between;
+    align-self: center;
+    width: 70%;
+    max-width: 800px;
+  }
+
+  .guess-counter,
+  .question-counter {
+    font-size: 16px;
+  }
+
+  .card {
+    width: 135px;
+    height: 165px;
+    border: 3px solid var(--secondary);
+    border-radius: 4px;
+    margin: 3px;
     display: flex;
-    top: 0;
-    position: absolute;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .character-image {
+    min-height: 150px;
+    min-width: 140px;
+  }
+
+  .card p {
+    margin: 19px 0 0 0;
+    font-size: 16px;
+    font-weight: 600;
   }
 
   .card .guess span {
-    display: none;
-  }
-
-  .card .guess .filled-button {
-    padding: 6px 11px;
-    margin-bottom: 1px;
-    background: white;
-    color: var(--primary);
-    border: none;
+    display: flex;
   }
 }

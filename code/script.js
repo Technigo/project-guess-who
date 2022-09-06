@@ -268,7 +268,7 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   selectQuestion();
   const {category, value} = currentQuestion;
-  let keep;
+  //let keep;
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -277,7 +277,8 @@ const checkQuestion = () => {
   if (category === "hair" || category === "eyes" ) {
     // if the secret person's hair value matches with the question's value
     if (secret[category] === value){
-      filterCharacters(true);
+      //filterCharacters(true);
+      keep = true;
     } else {
       //filterCharacters(false);
       keep = false;
@@ -342,7 +343,7 @@ const filterCharacters = (keep) => {
   }
 
   // Invoke a function to redraw the board with the remaining people.
-  generateBoard(keep);
+  generateBoard();
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -382,7 +383,7 @@ start();
 // All the event listeners
 restartBtn.addEventListener('click', start);
 playAgainBtn.addEventListener("click", start);
-//questions.addEventListener("change", selectQuestion);
+questions.addEventListener("change", selectQuestion);
 findOutBtn.addEventListener("click", checkQuestion);
 
 //which number did we pick 

@@ -293,6 +293,9 @@ const checkQuestion = () => {
     keep = false;
   }
 
+  // Resets the select efter user asks a question
+  document.getElementById("questions").selectedIndex = 0;
+
   filterCharacters(keep);
 };
 
@@ -354,6 +357,7 @@ const filterCharacters = (keep) => {
   }
 
   // Redraw the board with the remaining people
+
   generateBoard();
 };
 

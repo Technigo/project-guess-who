@@ -242,16 +242,17 @@ const start = () => {
 
   board.style.display = "flex"      // adding flexbox to this id 
   winOrLose.style.display = "none"  // hiding the winOrLose section when a game is restarted 
+  questions.value = "";
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  const category = questions.options[questions.selectedIndex].parentNode.label // from section id questions
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   //const value = questions.options[questions.selectedIndex].value;  // Variable that stores the value of the question we've selected.
-  const value = questions.value;
+  const value = questions.value
 
   currentQuestion = {
     category: category,

@@ -214,6 +214,14 @@ button {
     flex-direction: column;
   }
 
+  .win-or-lose h1 {
+    font-size: 45px;
+  }
+
+  .win-or-lose h2 {
+    font-size: 30px;
+  }
+
   .question-section {
     width: 100%;
     min-height: 0;

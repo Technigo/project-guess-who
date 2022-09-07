@@ -1,7 +1,6 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
-const questionsHair = document.getElementById('hair')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
@@ -297,7 +296,7 @@ const filterCharacters = (keep) => {
   } if (category === 'eyes') {
     if (keep) {
       alert(
-        `Yo're good! Of course the person have ${value} eyes! Keep all people that have ${value} eyes`
+        `You're good! Of course the person have ${value} eyes! Keep all people that have ${value} eyes`
       )
     } else {
       alert(

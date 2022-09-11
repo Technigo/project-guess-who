@@ -263,14 +263,8 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: #ba4622;
-    color: #f4f0d8;
+    /*background: #ba4622;
+    color: #f4f0d8;*/
     border: none;
-  }
-
-  .filled-button:hover {
-    background-color: hotpink;
-    border-color: hotpink;
-    color: #f4f0d8;
   }
 }

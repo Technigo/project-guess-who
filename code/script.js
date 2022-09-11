@@ -369,14 +369,29 @@ const checkMyGuess = (personToConfirm) => {
   if (personToConfirm === secret.name) {
    winOrLoseText1.innerHTML = `🥇 Hurray! 🥇`
    winOrLoseText2.innerHTML = `You guessed the correct person, ${secret.name}!`
+//Can't get the confetti to work...
+  //  const jsConfetti = new JSConfetti();
+  //  jsConfetti.addConfetti({
+  //    emojis: ["⭐️"],
+  //    emojiSize: 35,
+  //    confettiNumber: 10,
+  //  });
+  //  jsConfetti.addConfetti({ confettiNumber: 500, confettiRadius: 5 });
+ 
+
   } else { winOrLoseText1.innerHTML = `Oh, bummer 🤷‍♀️ ...`
-            winOrLoseText2.innerHTML = `I'm sorry, but the correct person is ${secret.name}`
+     winOrLoseText2.innerHTML = `I'm sorry, but the correct person is ${secret.name}`
+            
+      //Can't get the confetti to work...
+      // const jsConfetti = new JSConfetti();
+      // jsConfetti.addConfetti({ confettiNumber: 5, confettiRadius: 4 });
   }
 
 
 winOrLose.style.display = "flex"
 board.style.display = "none"
 }
+
 
 
 const playAgain = () => {
@@ -391,4 +406,5 @@ restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', playAgain)
+
 

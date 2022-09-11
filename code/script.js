@@ -379,11 +379,11 @@ board.style.display = "none"
 }
 
 
-  const playAgain = () => {
+const playAgain = () => {
     winOrLose.style.display = "none"
     board.style.display = "flex"
     start ()
-  }
+}
 
 
 // All the event listeners

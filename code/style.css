@@ -267,4 +267,10 @@ button {
     color: #f4f0d8;
     border: none;
   }
+
+  .filled-button:hover {
+    background-color: hotpink;
+    border-color: hotpink;
+    color: #f4f0d8;
+  }
 }

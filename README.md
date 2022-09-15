@@ -11,3 +11,4 @@ A goal would have been to add sound to the winning/loosing screen but this time 
 ## View it live
 View it live here 
 https://guess-who-ceciliaf.netlify.app
+![Guesswho_mockup](https://user-images.githubusercontent.com/105229808/190386148-c3a9d325-6119-4904-bcc5-f292bdb1e2a4.png)

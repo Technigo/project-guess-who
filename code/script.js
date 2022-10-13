@@ -227,8 +227,6 @@ const generateBoard = () => {
       </div>`;
   });
 
-  console.log("numberOfGuesses", numberOfGuesses);
-
   if (numberOfGuesses === 5) {
     counter.innerText = `You have ${numberOfGuesses} guesses!`;
   } else if (numberOfGuesses < 5 && numberOfGuesses > 1) {

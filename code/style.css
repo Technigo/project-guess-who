@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #FA9C91;
+  --secondary: #895ADB;
 }
 
 body {
@@ -60,6 +60,7 @@ select {
 }
 
 /****** CARD ******/
+
 .card {
   width: 135px;
   height: 165px;
@@ -130,7 +131,7 @@ button {
   font-size: 16px;
   font-family: "Montserrat";
   font-weight: bold;
-  padding: 17px 27px;
+  padding: 14px 27px;
   cursor: pointer;
 }
 

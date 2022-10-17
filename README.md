@@ -1,11 +1,12 @@
-# Project Name
+# Project Name 
 
-This project is to create my own digital version of the classic board game Guess Who. Practice creating objects and arrays and also connect this to the DOM. 
+In this project I have created my own digital version of the classic board game Guess Who. 
+I made my own version- Super Mario edition! 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This was the second week with JavaScript learning how to make functions, use arrays and objects in JavaScript.
 
 ## View it live
 
-https://incomparable-pie-2c94c1.netlify.app
+https://guesswho-supermario.netlify.app/

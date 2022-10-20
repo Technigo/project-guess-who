@@ -27,4 +27,4 @@ Technologies used:
 
 ## View it live
 
-https://ornate-starship-ccb80d.netlify.app/
+https://petrasguesswhogame.netlify.app/

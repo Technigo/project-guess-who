@@ -3,7 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
-const winOrLose = document.getElementById('winOrLoseText')
+const winOrLose = document.getElementById('winOrLose')
 
 
 
@@ -243,14 +243,13 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard();
   selectQuestion()
-  
 }
 
  
 const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label
-
+  console.log(category)
   //This variable stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value
   console.log(value);
@@ -338,30 +337,36 @@ const filterCharacters = (keep) => {
     }
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
-
+console.log(charactersInPlay)
 generateBoard()
   }
   
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const playerGuess = confirm(`Do you really think it's ${personToConfirm}?`)
-  if (playerGuess) {
-  checkMyGuess(personToCheck)
+  console.log(guess)
+  console.log(personToConfirm)
+confirm(`Do you really think it's ${personToConfirm}?`)
+  checkMyGuess(personToConfirm)
+
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-}}
+}
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  //board.style.display = 'none'
-  //winOrLose.style.display = 'flex'
+  console.log(checkMyGuess)
+  console.log(personToCheck)
   if (personToCheck === secret.name) {
    winOrLose.innerHTML = "You're a winner baby!"
   } 
   else {
-    winOrLose.innerHTML = "Sorry, try again"
+    winOrLose.innerHTML = `Sorry, it was ${secret.name}`
   }
+
+  winOrLose.style.display = 'flex'
+  board.style.display = 'none'
+  
     
 }
   // 1. Check if the personToCheck is the same as the secret person's name

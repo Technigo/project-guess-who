@@ -330,17 +330,35 @@ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   if (category === 'hair'|| category === 'eyes') {
     if (keep === true) {
-      alert(`Yes, the person has ${value} ${category}! Characters without ${value} ${category} will be removed.`);
+      Swal.fire({
+        title: 'YES!',
+        text: `The person has ${value} ${category}! Characters without ${value} ${category} will be removed.`,
+        icon: 'success',
+        confirmButtonText: 'Continue',
+        confirmButtonColor: 'var(--secondary)',
+      })
       // If keep is true charactersInPlay are filtered so only characters who have the same value for current category are kept.
       charactersInPlay = charactersInPlay.filter(character => character[category] === value);
     } else {
-      alert(`No, the person doesn't have ${value} ${category}! Characters with ${value} ${category} will be removed.`)
+      Swal.fire({
+        title: `No!`,
+        text: `The person doesn't have ${value} ${category}! Characters with ${value} ${category} will be removed.`,
+        icon: 'error',
+        confirmButtonText: 'Continue',
+        confirmButtonColor: 'var(--secondary)'
+      })
       // If keep is false charactersInPlay are filtered so all characters with the same value for selected category as the question asked are filterd from the array. 
       charactersInPlay = charactersInPlay.filter(character => character[category] !== value);
     }
   } else if (category === 'accessories') {
     if (keep === true) {
-      alert(`Yes, the person wears ${value}! Keep all people with a ${value}.`);
+      Swal.fire({
+        title: 'YES!',
+        text: `The person wears ${value}! Characters without ${value} will be removed.`,
+        icon: 'success',
+        confirmButtonText: 'Continue',
+        confirmButtonColor: 'var(--secondary)'
+      })
       if (value === 'no-accessories') {
         charactersInPlay = charactersInPlay.filter(character => !character[category].length);
       } else if (value !== 'no-accessories') {
@@ -349,30 +367,78 @@ const filterCharacters = (keep) => {
     } else {
       if (value === 'no-accessories') {
         //SecretPerson has some accessories and question has value "no-accessories". 
-        alert(`No, the person does wear some accessories! Remove all people without accessories.`)
+        Swal.fire({
+          title: `No!`,
+          text: `The person does wear some accessories! Remove all people without accessories`,
+          icon: 'error',
+          confirmButtonText: 'Continue',
+          confirmButtonColor: 'var(--secondary)'
+        })
         charactersInPlay = charactersInPlay.filter(character => character[category].length)
       } else if (value !== 'no-accessories') {
         charactersInPlay = charactersInPlay.filter(character => !character[category].includes(value));
-        alert(`No, the person doesn't wear ${value}! Remove all people with ${value}.`)
-      }
+        Swal.fire({
+          title: `No!`,
+          text: `The person doesn't wear ${value}! Remove all people with ${value}.`,
+          icon: 'error',
+          confirmButtonText: 'Continue',
+          confirmButtonColor: 'var(--secondary)'
+        })
+        }
     }
   } else {
     if (keep === true) {
       //Here I use individual statements for each value to make the alert text more grammatically accurate.
       if (value === 'no-other') {
-        alert('Correct! The person has no "other" attributes. Characters with "other" attributes will be removed.');
+        Swal.fire({
+          title: 'Yes!',
+          text: `The person has no "other" attributes. Characters with "other" attributes will be removed..`,
+          icon: 'success',
+          confirmButtonText: 'Continue',
+          confirmButtonColor: 'var(--secondary)'
+        })
         charactersInPlay = charactersInPlay.filter(character => !character[category].length);
       } else {
       if (value === 'smoker') {
-        alert('Correct! The person has a smoking habit. Characters without a smoking habit will be removed.')
+        Swal.fire({
+          title: 'YES!',
+          text: `The person has a smoking habit. Characters without a smoking habit will be removed.`,
+          icon: 'success',
+          confirmButtonText: 'Continue',
+          confirmButtonColor: 'var(--secondary)'
+        })
       } else if (value === 'haddok') {
-        alert('Correct! The person looks a bit like Captain Haddok. Characters that does not look like him will be removed.');
+        Swal.fire({
+          title: 'YES!',
+          text: `The person looks a bit like Captain Haddok. Characters that does not look like him will be removed.`,
+          icon: 'success',
+          confirmButtonText: 'Continue',
+          confirmButtonColor: 'var(--secondary)'
+        })
       } else if (value === 'artsy') {
-        alert('Correct! Based on the creators prejudices, the person probably likes art. Characters that does not look like they have an interest in art will be removed.');
+        Swal.fire({
+          title: 'YES!',
+          text: `Based on the creators prejudices, the person probably likes art. Characters that does not look like they have an interest in art will be removed.`,
+          icon: 'success',
+          confirmButtonText: 'Continue',
+          confirmButtonColor: 'var(--secondary)'
+        })
       } else if (value === 'parrot') {
-        alert('Correct! The person has a parrot. Characters without a parrot will be removed.');
+        Swal.fire({
+          title: 'YES!',
+          text: `The person has a parrot. Characters without a parrot will be removed.`,
+          icon: 'success',
+          confirmButtonText: 'Continue',
+          confirmButtonColor: 'var(--secondary)'
+        })
       } else {
-        alert('Correct! It looks like the person is having a bad day. Characters that seems to have an okay day will be removed.');
+        Swal.fire({
+          title: 'YES!',
+          text: `It looks like the person is having a bad day. Characters that seems to have an okay day will be removed.`,
+          icon: 'success',
+          confirmButtonText: 'Continue',
+          confirmButtonColor: 'var(--secondary)'
+        })
       } 
       charactersInPlay = charactersInPlay.filter(character => character[category].includes(value));
       }
@@ -380,45 +446,99 @@ const filterCharacters = (keep) => {
       if (value === 'no-other') {
         //SecretPerson has some "other" attributes and question has value "no-other". 
         // If value is 'no-other', alert special messages and keep all characters with no lenght on other-array.
-        alert(`No, the person does have other attrbutes! Characters with no "other" attributes will be removed.`)
+        Swal.fire({
+          title: `No!`,
+          text: `The person does have other attrbutes! Characters with no "other" attributes will be removed.`,
+          icon: 'error',
+          confirmButtonText: 'Continue',
+          confirmButtonColor: 'var(--secondary)'
+        })
         charactersInPlay = charactersInPlay.filter(character => character[category].length)
       } else {  
-      if (value === 'smoker') {
-        alert('No, the person does not have a smoking habit. Characters with a smoking habit will be removed.')
-      } else if( value === 'haddok') {
-        alert('No, the person does not look like Captain Haddok. Characters that looks like him will be removed.');
-      } else if (value === 'artsy') {
-        alert('No, based on the creators prejudices, the person is probably not that into art. Characters that looks like they are interested in art will be removed.');
-      } else if (value === 'parrot') {
-        alert('No, the person does not have a parrot. Characters with a parrot will be removed.');
-      } else {
-        alert('No, the person seems to be having a pretty okay day. Characters that seems to have a bad day will be removed.');
-      } 
+        if (value === 'smoker') {
+          Swal.fire({
+            title: `No!`,
+            text: `The person does not have a smoking habit. Characters with a smoking habit will be removed.`,
+            icon: 'error',
+            confirmButtonText: 'Continue',
+            confirmButtonColor: 'var(--secondary)'
+          })
+        } else if( value === 'haddok') {
+          Swal.fire({
+            title: `No!`,
+            text: `The person does not look like Captain Haddok. Characters that looks like him will be removed.`,
+            icon: 'error',
+            confirmButtonText: 'Continue',
+            confirmButtonColor: 'var(--secondary)'
+          })
+        } else if (value === 'artsy') {
+          Swal.fire({
+            title: `No!`,
+            text: `Based on the creators prejudices, the person is probably not that into art. Characters that looks like they are interested in art will be removed.`,
+            icon: 'error',
+            confirmButtonText: 'Continue',
+            confirmButtonColor: 'var(--secondary)'
+          })
+        } else if (value === 'parrot') {
+          Swal.fire({
+            title: `No!`,
+            text: `The person does not have a parrot. Characters with a parrot will be removed.`,
+            icon: 'error',
+            confirmButtonText: 'Continue',
+            confirmButtonColor: 'var(--secondary)'
+          })
+        } else {
+          Swal.fire({
+            title: `No!`,
+            text: `The person seems to be having a pretty okay day. Characters that seems to have a bad day will be removed.`,
+            icon: 'error',
+            confirmButtonText: 'Continue',
+            confirmButtonColor: 'var(--secondary)'
+          })
+        } 
       charactersInPlay = charactersInPlay.filter(character => !character[category].includes(value));
       }
     }
   }
   // For all cases, run function to refresh board with filtered characters
   generateBoard();
-  // Ceck is player has any cuestions left to use, otherwise prevent further guesses by removing question-wrapper
+  // Check is player has any cuestions left to use, otherwise prevent further guesses by removing question-wrapper
   if (questionsAsked === 0) {
-    alert('That was you last question. Guess now or forfeit the game!');
-    document.getElementById('question-wrapper').style.display='none';
+    Swal.fire({
+      title: `You're out of guesses!`,
+      text: `That was you last question. Guess now or forfeit the game!`,
+      icon: 'info',
+      confirmButtonText: 'Continue'
+    })
+  document.getElementById('question-wrapper').style.display='none';
   }
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess. If so, run checkMyGuess
 const guess = (personToConfirm) => {
-  if (confirm(`Do you want to confirm your guess?`) === true) {
-    checkMyGuess(personToConfirm);
-  } else {
-    alert('Okay, guess again!')
-  }
+  Swal.fire({
+      title: "Confirm your guess?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: 'Confirm',
+      confirmButtonColor: 'var(--secondary)',
+      cancelButtonColor: 'var(--primary)'
+  }).then((result) => {
+    if (result.isConfirmed) {
+    checkMyGuess(personToConfirm)  
+    }
+  })
 }
 
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secretPerson.name) {
-    alert(`You're right! ${personToCheck} is the secret person!`)
+    Swal.fire({
+      title: `Correct!`,
+      text: `${personToCheck} is the secret person!`,
+      icon: 'success',
+      confirmButtonText: 'Continue',
+      confirmButtonColor: 'var(--secondary)'
+    })
     //clear the board
     board.innerHTML = ''
     // Changing winLoseScreens display attribute from none to flex, making it visible.
@@ -426,7 +546,13 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerHTML = `You win, ${playerName}! In ${minutes} minutes and ${seconds} seconds, with ${questionsAsked} questions remaining, you guessed Who!`;
 
   } else {
-    alert(`Sorry, ${personToCheck} is not the secret person.`)
+    Swal.fire({
+      title: `Wrong!`,
+      text: `Too bad! ${personToCheck} is not the secret person!`,
+      icon: 'error',
+      confirmButtonText: 'Continue',
+      confirmButtonColor: 'var(--secondary)'
+    })
     board.innerHTML = ''
     winLoseScreen.style.display='flex';
     winOrLoseText.innerHTML = `You lose, ${playerName}! In ${minutes} minutes and ${seconds} seconds, with ${questionsAsked} questions remaining, you couldn't guess Who!`;

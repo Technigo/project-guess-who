@@ -11,4 +11,4 @@ If I had more time I would've attempted to add a timer and some sound effects fo
 
 ## View it live
 
-https://relaxed-kitsune-a77a0b.netlify.app/
+https://guess-who.brucette.com/

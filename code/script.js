@@ -19,7 +19,7 @@ const CHARACTERS = [
   },
   {
     name: 'Gordon Freeman',
-    img: './code/images/GF2.png',
+    img: './images/GF2.png',
     hair: 'brown',
     eyes: 'black',
     accessories: ['glasses'],
@@ -27,7 +27,7 @@ const CHARACTERS = [
   },
   {
     name: 'Bayek',
-    img: './code/images/beyek.png',
+    img: './images/beyek.png',
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['hat'],
@@ -35,7 +35,7 @@ const CHARACTERS = [
   },
   {
     name: 'Clementine',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/Clementine.png',
+    img: './images/Clementine.png',
     hair: 'brown',
     eyes: 'brown',
     accessories: ['hat'],
@@ -43,7 +43,7 @@ const CHARACTERS = [
   },
   {
     name: '2B',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/2B.png',
+    img: './images/2B.png',
     hair: 'white',
     eyes: 'hidden',
     accessories: [''],
@@ -51,7 +51,7 @@ const CHARACTERS = [
   },
   {
     name: 'Samus Aran',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/SamusAran.png',
+    img: './images/SamusAran.png',
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['hat'],
@@ -59,7 +59,7 @@ const CHARACTERS = [
   },
   {
     name: 'Bayonetta',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/Bayonetta.png',
+    img: './images/Bayonetta.png',
     hair: 'black',
     eyes: 'black',
     accessories: ['glasses'],
@@ -67,7 +67,7 @@ const CHARACTERS = [
   },
   {
     name: 'Leon S. Kennedy',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/Leon.png',
+    img: './images/Leon.png',
     hair: 'yellow',
     eyes: 'blue',
     accessories: [],
@@ -75,7 +75,7 @@ const CHARACTERS = [
   },
   {
     name: 'The Boss',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/Boss.png',
+    img: './images/Boss.png',
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
@@ -84,7 +84,7 @@ const CHARACTERS = [
 
   {
     name: 'Link',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/Link.png',
+    img: './images/Link.png',
     hair: 'yellow',
     eyes: 'blue',
     accessories: ['hat'],
@@ -92,7 +92,7 @@ const CHARACTERS = [
   },
   {
     name: 'John Marston',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/JohnMarston.png',
+    img: './images/JohnMarston.png',
     hair: 'brown',
     eyes: 'brown',
     accessories: ['hat'],
@@ -100,7 +100,7 @@ const CHARACTERS = [
   },
   {
     name: 'Joel',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/Joel.png',
+    img: './images/Joel.png',
     hair: 'black',
     eyes: 'black',
     accessories: [],
@@ -124,7 +124,7 @@ const CHARACTERS = [
   },
   {
     name: 'Dante',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/Dante.png',
+    img: './images/Dante.png',
     hair: 'white',
     eyes: 'blue',
     accessories: [],
@@ -132,7 +132,7 @@ const CHARACTERS = [
   },
   {
     name: 'BJ Blazkowicz',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/bj.png',
+    img: './images/bj.png',
     hair: 'yellow',
     eyes: 'blue',
     accessories: ['hat'],
@@ -140,7 +140,7 @@ const CHARACTERS = [
   },
   {
     name: 'Ezio',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/ezio.png',
+    img: './images/ezio.png',
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['hat'],
@@ -148,7 +148,7 @@ const CHARACTERS = [
   },
   {
     name: 'Lara Croft',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/lara-croft-icon.png',
+    img: './images/lara-croft-icon.png',
     hair: 'brown',
     eyes: 'brown',
     accessories: ['glasses'],
@@ -156,7 +156,7 @@ const CHARACTERS = [
   },
   {
     name: 'Geralt',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/geralt.png',
+    img: './images/geralt.png',
     hair: 'white',
     eyes: 'yellow',
     accessories: [],
@@ -164,7 +164,7 @@ const CHARACTERS = [
   },
   {
     name: 'Shepard',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/shepard.png',
+    img: './images/shepard.png',
     hair: 'orange',
     eyes: 'blue',
     accessories: [],
@@ -172,7 +172,7 @@ const CHARACTERS = [
   },
   {
     name: 'Aloy',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/aloy.png',
+    img: './images/aloy.png',
     hair: 'orange',
     eyes: 'green',
     accessories: [],
@@ -180,7 +180,7 @@ const CHARACTERS = [
   },
   {
     name: 'Nathatn Drake',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/Nathan.png',
+    img: './images/Nathan.png',
     hair: 'black',
     eyes: 'blue',
     accessories: [],
@@ -188,7 +188,7 @@ const CHARACTERS = [
   },
   {
     name: 'Ellie',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/ellie.png',
+    img: './images/ellie.png',
     hair: 'brown',
     eyes: 'green',
     accessories: [],
@@ -196,7 +196,7 @@ const CHARACTERS = [
   },
   {
     name: 'Solid Snake',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/solidsnake.png',
+    img: './images/solidsnake.png',
     hair: 'hidden',
     eyes: 'hidden',
     accessories: [],

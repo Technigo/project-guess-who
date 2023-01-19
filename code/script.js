@@ -116,7 +116,7 @@ const CHARACTERS = [
   },
   {
     name: 'Mario',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/Mario.png',
+    img: './images/Mario.png',
     hair: 'brown',
     eyes: 'blue',
     accessories: ['hat'],

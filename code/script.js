@@ -19,7 +19,7 @@ const CHARACTERS = [
   },
   {
     name: 'Gordon Freeman',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/GF2.png',
+    img: './code/images/GF2.png',
     hair: 'brown',
     eyes: 'black',
     accessories: ['glasses'],
@@ -27,7 +27,7 @@ const CHARACTERS = [
   },
   {
     name: 'Bayek',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/beyek.png',
+    img: './code/images/beyek.png',
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['hat'],
@@ -52,9 +52,9 @@ const CHARACTERS = [
   {
     name: 'Samus Aran',
     img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/SamusAran.png',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    hair: 'hidden',
+    eyes: 'hidden',
+    accessories: ['hat'],
     other: []
   },
   {
@@ -108,7 +108,7 @@ const CHARACTERS = [
   },
   {
     name: 'Master Chief',
-    img: '/Users/arnau/Desktop/technigo-projects/project-guess-who/code/images/MasterChief.png',
+    img: './images/MasterChief.png',
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['hat'],
@@ -237,7 +237,6 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
 
-  // What else should happen when we start the game?
   winOrLose.style.display = 'none'
   board.style.display = 'flex' 
   questionSection.style.display = 'flex'
@@ -253,7 +252,6 @@ const selectQuestion = () => {
   const value = questions.value
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  //const value = ...
 
   currentQuestion = {
     category: category,
@@ -446,8 +444,6 @@ const checkMyGuess = (personToCheck) => {
   winOrLose.style.display = 'flex'
   board.style.display = 'none' 
   questionSection.style.display = 'none'
-  //board.classList.add('hide-board');
-  //winOrLose.classList.add('show-win-lose');
   
 }
 

@@ -160,7 +160,7 @@ button {
   align-items: center;
   justify-content: center;
   background: var(--secondary);
-  position: absolute;
+  position: relative;
   top: 0;
   bottom: 0;
   left: 0;
@@ -224,7 +224,7 @@ button {
   .card .guess {
     display: flex;
     top: 0;
-    position: absolute;
+    position: relative;
     justify-content: flex-end;
   }
 

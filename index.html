@@ -3,12 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
+    <title>Project Guess Who</title>
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   </head>
   <body>
     <aside class="question-section">
@@ -23,25 +22,38 @@
       <h1>Does the person have</h1>
 
       <select title="questions" id="questions">
-        <optgroup label="hair">
+        <optgroup label="hair" id="hair-select">
           <option value="brown">brown hair</option>
           <option value="yellow">yellow hair</option>
+          <option value="orange">orange hair</option>
+          <option value="white">white hair</option>
+          <option value="hidden">hidden</option>
+          <option value="grey">grey hair</option>
+          <option value="black">black hair</option>
           <!-- Add the rest of hair colors as options  -->
         </optgroup>
-        <optgroup label="eyes">
+        <optgroup label="eyes" id="eyes-select">
           <option value="hidden">hidden eyes</option>
+          <option value="green">green eyes</option>
+          <option value="blue">blue eyes</option>
+          <option value="brown">brown eyes</option>
           <!-- Add the rest of eye colors as options  -->
         </optgroup>
-        <optgroup label="accessories">
+        <optgroup label="accessories" id="accessories-select">
           <option value="glasses">glasses</option>
+          <option value="jewellery">jewellery</option>
+          <option value="hat">hat</option>
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
-        <optgroup label="other">
+        <optgroup label="other" id="other-select">
           <option value="smoker">a smoking habit</option>
+          <option value="angry">angry face</option>
+          <option value="smile">smile</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <p class="guesses" id="guessCounter"></p>
     </aside>
 
     <section class="board-wrapper">
@@ -56,7 +68,7 @@
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <button type="button" id="playAgain" class="filled-button-play">PLAY AGAIN</button>
       </div>
     </section>
     <script src="script.js"></script>

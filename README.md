@@ -1,13 +1,12 @@
-# Project Name
+# Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The goal for this project was to start getting comfortable with Js using Arrays, Objects and DOM Elements.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had problems making the if/ else if statements to work for the filterCharacters() because the characters didn't dissapear when they have to do it. But then, I realized that I needed to add one more parameters inside of local scope called currentQuestion. In this case, the parameter was named 'attribute' which maps to the properties of the hair and eyes.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+You can see my project here: 
+https://guess-who-antonella-cardozo-technigo.netlify.app/

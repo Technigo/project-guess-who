@@ -1,18 +1,24 @@
 /* Global css variables used for colors */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  /*--primary: #a259ff;
+  --secondary: #b0a6ff;*/
+  --primary: #C6D57E;
+  --secondary: #D57E7E;
+  --thirdly: #A2CDCD;
+  --fourthly: #FFE1AF;
+
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Fredoka One', cursive;
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 65px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
@@ -33,9 +39,11 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
+  border-radius: 60px;
+  padding: 8px 18px;
+  font-size: 20px;
+  font-family: 'Fredoka One', cursive;
+  color: var(--thirdly);
   width: 100%;
   margin: 24px 0;
 }
@@ -64,7 +72,7 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid var(--primary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -91,7 +99,7 @@ select {
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: var(--thirdly);
 }
 
 .card:hover img,
@@ -117,7 +125,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Fredoka One', cursive;
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -131,6 +139,11 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+}
+
+.guesses {
+  font-weight: bold;
+  font-size: 12px;
 }
 
 .filled-button,

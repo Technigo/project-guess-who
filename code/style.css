@@ -36,6 +36,7 @@ select {
   font-size: 22px;
   font-family: 'Quicksand';
   color: var(--secondary);
+  background-color: black;
   width: 100%;
   margin: 24px 0;
 }

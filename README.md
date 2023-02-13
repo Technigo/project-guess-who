@@ -1,13 +1,11 @@
-# Project Name
+# Project: Guess Who?!
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+For week two of the Technigo bootcamp (week two of the JavaScript sprint) our assignment was to create a version of the classic board game Guess who?. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We were given an array of "character" objects. At game start a random character is generated and the player has a number of guesses to figure out who the seret character is. I've used the array filter method together with if/else statements to update the characters possible to guess on. Using method setInverval method I've created a timer that keeps track of the time spent playing the game.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://aesthetic-cat-671dc8.netlify.app

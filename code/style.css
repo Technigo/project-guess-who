@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #F27370;
+  --secondary: #2162c3;
 }
 
 body {
@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--primary)
 }
 
 h1 {
@@ -17,6 +18,15 @@ h1 {
   line-height: 48px;
   margin: 10px 0;
   color: white;
+}
+
+p {
+  margin: 0;
+}
+
+main {
+  display: flex;
+  justify-content: center;
 }
 
 .question-section {
@@ -28,6 +38,11 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+}
+
+.aside-text {
+  margin: 4px 0;
+  color: #F27370;
 }
 
 select {
@@ -61,6 +76,7 @@ select {
 
 /****** CARD ******/
 .card {
+  background-color: #fff;
   width: 135px;
   height: 165px;
   overflow: hidden;
@@ -75,7 +91,7 @@ select {
 
 .card p {
   text-align: center;
-  margin-bottom: 0;
+  margin: 0 0 6px;
   font-size: 16px;
   font-weight: 700;
 }
@@ -88,19 +104,19 @@ select {
   color: white;
   text-align: center;
   height: inherit;
+  background-color: rgba(33, 98, 195, 0.8);
+  width: inherit;
 }
 
 .card:hover {
-  background-color: var(--secondary);
-}
-
-.card:hover img,
-.card:hover p {
-  display: none;
+  /* background-color: var(--secondary) */
+  opacity: 95%;
+  
 }
 
 /* The div with the guess class is only shown on hover */
 .card:hover .guess {
+  position: absolute;
   display: flex;
 }
 
@@ -145,6 +161,10 @@ button {
   color: var(--primary);
 }
 
+.restart-button {
+  margin: 8px 0;
+}
+
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
@@ -171,10 +191,11 @@ button {
 .win-or-lose img {
   align-self: flex-start;
   margin-left: 15%;
+  width: 200px;
 }
 
 .win-or-lose h1 {
-  margin-bottom: 32px;
+  margin: 32px;
 }
 
 @media (max-width: 768px) {
@@ -186,20 +207,23 @@ button {
     width: 100%;
     min-height: 0;
   }
+  
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 100px;
   }
 
   .board-wrapper {
     width: 100%;
+    padding-bottom: 30px;
   }
 
   .game-board {
@@ -214,8 +238,9 @@ button {
 
   .card .guess {
     display: flex;
-    top: 0;
+    bottom: 30px;
     position: absolute;
+    background-color:transparent;
     justify-content: flex-end;
   }
 
@@ -224,10 +249,9 @@ button {
   }
 
   .card .guess .filled-button {
-    padding: 6px 11px;
-    margin-bottom: 1px;
-    background: white;
-    color: var(--primary);
+    padding: 4px 8px;
+    background: var(--primary);
+    color: var(--secondary);
     border: none;
   }
 }

@@ -2,7 +2,10 @@
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
+const playAgainButton = document.getElementById("playAgain");
 const filterButton = document.getElementById("filter");
+const winOrLose = document.getElementById("winOrLose");
+const winOrLoseText = document.getElementById("winOrLoseText");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -235,6 +238,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
+  board.style.display = "flex";
+  winOrLose.style.display = "none";
   generateBoard();
   setSecret();
 };
@@ -265,9 +270,9 @@ const checkQuestion = () => {
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
     if (value === secret.hair || value === secret.eyes) {
-      console.log("stämmer!");
+      filterCharacters(true);
     } else {
-      console.log("stämmer inte!");
+      filterCharacters(false);
     }
   } else if (category === "accessories" || category === "other") {
   }
@@ -276,15 +281,23 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
+  console.log(category);
+  console.log(value);
   // Show the correct alert message for different categories
-  if (category === "accessories") {
+  if (category === "hair") {
     if (keep) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
       );
     }
   } else if (category === "other") {
@@ -312,6 +325,7 @@ const filterCharacters = (keep) => {
   */
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard();
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -319,6 +333,11 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  if (confirm(`You sure you want to guess ${personToConfirm}?`) == true) {
+    checkMyGuess(personToConfirm);
+  } else {
+    return;
+  }
 };
 
 // If you confirm, this function is invoked
@@ -327,6 +346,15 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  winOrLose.style.display = "flex";
+  board.style.display = "none";
+  if (personToCheck === secret.name) {
+    console.log("Korrekt!");
+    winOrLoseText.innerHTML = `Congratulations! It was ${personToCheck}!`;
+  } else {
+    console.log("Nope!");
+    winOrLoseText.innerHTML = `Too bad! The correct answer was ${personToCheck}!`;
+  }
 };
 
 // Invokes the start function when website is loaded
@@ -334,5 +362,6 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+playAgainButton.addEventListener("click", start);
 filterButton.addEventListener("click", checkQuestion);
 questions.addEventListener("change", selectQuestion);

@@ -275,6 +275,11 @@ const checkQuestion = () => {
       filterCharacters(false);
     }
   } else if (category === "accessories" || category === "other") {
+    if (value === secret.accessories || value === secret.other) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
   }
 };
 
@@ -284,29 +289,51 @@ const filterCharacters = (keep) => {
   console.log(category);
   console.log(value);
   // Show the correct alert message for different categories
-  if (category === "hair") {
+  if (category === "hair" || category === "eyes") {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person hasn't ${value} ${category}! Remove all people that have ${value} ${category}`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
     }
-  } else if (category === "other") {
-    // Similar to the one above
-  } else {
+  } else if (category === "accessories") {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person wears ${value} ! Keep all people that wear ${value}!`
+      );
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person does not wear ${value} ! Remove all people who wear ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
+    }
+  } else if (category === "other") {
+    if (keep) {
+      alert(`Yes, the person is ${value} ! Keep all people that are ${value}!`);
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
+    } else {
+      alert(
+        `No, the person isn't ${value} ! Remove all people who is ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
     }
   }
 

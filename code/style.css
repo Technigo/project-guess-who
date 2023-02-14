@@ -22,7 +22,7 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: #5F7161;
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -35,7 +35,7 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: #5F7161;
   width: 100%;
   margin: 24px 0;
 }
@@ -46,6 +46,7 @@ select {
 
 .board-wrapper {
   width: 70%;
+  background-color: #EFEAD8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,13 +65,14 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid #5F7161;
   border-radius: 4px;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: #EFEAD8;
 }
 
 .card p {
@@ -85,13 +87,13 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #EFEAD8;
   text-align: center;
   height: inherit;
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: #5F7161;
 }
 
 .card:hover img,
@@ -121,6 +123,7 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  color: #FBC687;
 }
 
 .small {
@@ -136,12 +139,12 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #FBC687;
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: #FBC687;
+  border-color: #FBC687;
   color: var(--primary);
 }
 
@@ -150,7 +153,7 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: #5F7161;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -226,7 +229,7 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: #FBC687;
     color: var(--primary);
     border: none;
   }

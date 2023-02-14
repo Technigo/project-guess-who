@@ -1,6 +1,6 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+This is project for the week 2 of the Technigo Bootcamp - The simple game Guess who, made with Java Script. 
 
 Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 

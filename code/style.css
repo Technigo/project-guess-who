@@ -36,10 +36,13 @@ h1 {
 select {
   display: block;
   border: none;
+  border-radius: 5px;
+  padding: 5px;
   font-size: 22px;
   font-family: var(--paragraph-font-family);
   width: 100%;
   margin: 24px 0;
+  box-shadow: var(--box-shadow);
 }
 
 .guess-who-icon {
@@ -73,6 +76,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  box-shadow: var(--box-shadow);
 }
 
 .card p {
@@ -123,6 +127,7 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  box-shadow: var(--box-shadow);
 }
 
 .small {

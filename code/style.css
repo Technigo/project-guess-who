@@ -49,8 +49,9 @@ select {
   box-shadow: var(--box-shadow);
 }
 
-.guess-who-icon {
+.question-mark-icon {
   width: 126px;
+  border-radius: 50%;
 }
 
 .board-wrapper {
@@ -73,7 +74,7 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary-bg-color);
+  border: 3px inset var(--secondary-bg-color);
   border-radius: 4px;
   margin: 3px;
   display: flex;

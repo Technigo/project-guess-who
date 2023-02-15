@@ -216,7 +216,8 @@ const questionsAllowed = 4
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  CHARACTERS.forEach((person) => {
+    if (charactersInPlay.includes(person)) {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
@@ -227,6 +228,13 @@ const generateBoard = () => {
         </div>
       </div>
     `
+    } else {
+      board.innerHTML += `
+      <div class = "card back">
+        <img class = "card-back" src="images/card-back.png" alt = "Suspect is innocent".
+      </div>
+      `
+    }
   })
 }
 

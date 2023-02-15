@@ -1,8 +1,11 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
-const filterButton = document.getElementById('filter')
+const filterButton = document.getElementById('filter') // This is the "Find out"-button
+const winOrLose = document.getElementById('winOrLose') 
+const winOrLoseText = document.getElementById('winOrLoseText') 
 const restartButton = document.getElementById('restart')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -240,34 +243,46 @@ const start = () => {
 // Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
-  const category = questions.options[questions.selectedIndex].parentNode.label 
+  const category= questions.options[questions.selectedIndex].parentNode.label 
   // This variable stores the actual value of the question we've selected.
   const value = questions.value
 
+  // This is an object that stores the key: and its value
   currentQuestion = {
-    category: category,
-    value: value
+    category: category, // hair, eyes or accessories
+    value: value     // blue or brown etc
   }
-}
+
+
+
+
+
+// category === "accessories" && value === secret[currentQuestion.category].includes(currentQuestion.value)
+
+
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  const { category, value } = currentQuestion // This is to destruct the currentQuestion object to be able to use these variables more easily
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    currentQuestion = {
-      value: value,
-      category: category
-    }
+    const keep = currentQuestion.value === secret[currentQuestion.attribute]
+   // Something will happen
+   filterCharacters(keep)
+}
+
+// category === "accessories" && value === secret[currentQuestion.category].includes(currentQuestion.value)
     
-
   } else if (category === 'accessories' || category === 'other') {
-
+     // Something else will happen
   }
 }
+
+
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -276,23 +291,46 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears a ${value}! Keep all people that wears a ${value}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear a ${value}! Remove all people that wears a ${value}.`
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person is a ${value}! Keep all people that are ${value}s.`
+      )
+    } else {
+      alert(
+        `No, the person isn't a ${value}! Remove all people that are ${value}s.`
+      )
+    }
+  } else if (category === 'eyes') {
+    if (keep) {
+      alert(`Yes, the person has ${value} eyes! Keep all people with ${value} eyes.`
+      )
+    } else {
+      alert(`No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes.`
+      )
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(`Yes, the person has ${value} hair! Keep all people with ${value} hair.`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(`No, the person doesnt have ${value} hair! Remove all people with ${value} hair.`
+      )
     }
+    // Add a filter to keep or remove. Array method .filter?
+
+
+    // Generate the board again but filtered, things removed from the array? 
   }
 
+  
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   /* 

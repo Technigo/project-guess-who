@@ -205,7 +205,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 
-// Draw the game board
+// Draws the game board, shows characters 
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -222,7 +222,7 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// **KLAR** Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
@@ -230,7 +230,11 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS; //Reset characters, all are shown
+  winOrLose.style.display = 'none'; //Removes win or lose display
+  board.style.display = 'flex';//***EJ HELT SÄKER PÅ VAD DENNA GÖR ÄNNU */
+  setSecret(); //Sets new secret person
+  generateBoard(); //shows the gameboard
   // What else should happen when we start the game?
 }
 

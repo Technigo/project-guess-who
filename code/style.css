@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #dba03a;
+  --secondary: #ffdaa6;
 }
 
 body {
@@ -17,6 +17,14 @@ h1 {
   line-height: 48px;
   margin: 10px 0;
   color: white;
+}
+
+main {
+  background-color: rgb(235, 149, 20);
+}
+
+section {
+  background-color: rgb(235, 149, 20);
 }
 
 .question-section {

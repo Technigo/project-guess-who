@@ -9,6 +9,10 @@ const winOrLoseText = document.getElementById("winOrLoseText");
 const log = document.getElementById("gameLog");
 const guessCounter = document.getElementById("guesses");
 
+// save the entire list of guesses to another array
+// because when you remove guesses later on,
+// you want to use this to reset the list of guesses
+// when starting a new game!
 let oldQuestions = questions.innerHTML;
 
 // Array with all the characters, as objects
@@ -286,6 +290,10 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  if (questions.options[questions.selectedIndex].index === 0) {
+    return;
+  }
+
   const { category, value } = currentQuestion;
   numberOfGuesses++;
   updateGuessCounter();
@@ -293,8 +301,14 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === "hair" || category === "eyes") {
-    if (value === secret.hair || value === secret.eyes) {
+  if (category === "hair") {
+    if (value === secret.hair) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+  } else if (category === "eyes") {
+    if (value === secret.eyes) {
       filterCharacters(true);
     } else {
       filterCharacters(false);
@@ -338,24 +352,24 @@ const filterCharacters = (keep) => {
     }
   } else if (category === "accessories") {
     if (keep) {
-      addToLog(`Yes, the person wears ${value}!`);
+      addToLog(`The person wears ${value}!`);
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
-      addToLog(`No, the person does not wear ${value}!`);
+      addToLog(`The person does not wear ${value}!`);
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
     }
   } else if (category === "other") {
     if (keep) {
-      addToLog(`Yes, the person is a ${value}! `);
+      addToLog(`The person is a ${value}! `);
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
-      addToLog(`No, the person isn't a ${value}! `);
+      addToLog(`The person isn't a ${value}! `);
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
@@ -391,6 +405,9 @@ const filterCharacters = (keep) => {
       o.remove();
     }
   });
+
+  //automatically select the first option
+  questions.options[0].selected = true;
 
   // Invoke a function to redraw the board with the remaining people.
   generateBoard();

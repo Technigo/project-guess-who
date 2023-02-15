@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -19,7 +20,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['pirate']
   },
   {
     name: 'Jacques',
@@ -225,13 +226,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-}
-
-// This function to start (and restart) the game
-const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  console.log(secret)
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -249,22 +244,23 @@ const selectQuestion = () => {
 }
 
 // This function should be invoked when you click on 'Find Out' button.
-const checkQuestion = () => {
-  const { category, value } = currentQuestion
+ const checkQuestion = () => {
+ const { category, value } = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+
+  /* if (category === 'hair' || category === 'eyes') {
 
   } else if (category === 'accessories' || category === 'other') {
 
-  }
-}
+  } */
+ } 
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
+  const { attribute, category, value } = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -277,31 +273,46 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
+      alert(
+        `Yes, the person is a ${attribute}! Keep all that are ${attribute}s`
+      )
+    } else {
+      alert(
+        `No, the person isn't a ${attribute}! Remove all that aren't ${attribute}s`
+      )
+    }  } 
+    else {
+      if (keep) {
+      alert (
+        `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`
+      )
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
+      alert (
+        `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
+      )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
+  
+    if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
+    } else {
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+    }
 
-    for accessories and other
+  if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
+     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+     }
 
   // Invoke a function to redraw the board with the remaining people.
-}
+} 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
@@ -318,8 +329,20 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
 }
 
+// This function to start (and restart) the game
+const start = () => {
+  // Here we're setting charactersInPlay array to be all the characters to start with
+  charactersInPlay = CHARACTERS
+  setSecret()
+  generateBoard()
+  // What else should happen when we start the game?
+}
+
+
 // Invokes the start function when website is loaded
 start()
+setSecret()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start) 
+filterButton.addEventListener('click', checkQuestion)

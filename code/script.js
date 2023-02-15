@@ -15,7 +15,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: [],
     gender: ['female']
   },
   {
@@ -24,7 +24,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: [],
     gender: ['male']
   },
   {
@@ -33,7 +33,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker'],
     gender: ['male']
   },
   {
@@ -42,7 +42,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: [],
     gender: ['male']
   },
   {
@@ -51,7 +51,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
     gender: ['male']
   },
   {
@@ -60,7 +60,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
     gender: ['male']
   },
   {
@@ -69,7 +69,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: [],
     gender: ['female']
   },
   {
@@ -78,7 +78,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: [],
     gender: ['female']
   },
   {
@@ -87,7 +87,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
     gender: ['female']
   },
 
@@ -97,7 +97,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['smoker'],
     gender: ['female']
   },
   {
@@ -106,7 +106,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker'],
     gender: ['male']
   },
   {
@@ -115,7 +115,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
     gender: ['female']
   },
   {
@@ -124,7 +124,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker'],
     gender: ['male']
   },
   {
@@ -133,7 +133,7 @@ const CHARACTERS = [
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],
-    other: []
+    other: [],
     gender: ['female']
   },
   {
@@ -142,7 +142,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
     gender: ['female']
   },
   {
@@ -151,7 +151,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: [],
     gender: ['male']
   },
   {
@@ -160,7 +160,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: [],
     gender: ['female']
   },
   {
@@ -169,7 +169,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
-    other: []
+    other: [],
     gender: ['female']
   },
   {
@@ -178,7 +178,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
     gender: ['male']
   },
   {
@@ -187,7 +187,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: [],
     gender: ['male']
   },
   {
@@ -196,7 +196,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: [],
     gender: ['female']
   },
   {
@@ -205,7 +205,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: [],
     gender: ['male']
   },
   {
@@ -214,7 +214,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: [],
     gender: ['male']
   },
   {
@@ -223,7 +223,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: [],
     gender: ['female']
   },
 ]
@@ -253,6 +253,8 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+// console.log('charactersInPlay:', charactersInPlay)
+// console.log('secret', secret.name) //Random Character is working
 
 }
 
@@ -261,20 +263,24 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  setSecret()
+  generateBoard()//The board looks good
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-  //HÄR SKA DU SÄTTA CONST VALUE =
+const value = questions.options[questions.selectedIndex].value
+  //const value =
 //parentNode.label = hair, eyes etc
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  
 
   currentQuestion = {
     category: category,
-    // value: value = FYLL I
+    value: value
+    // value
   }
 }
 
@@ -286,8 +292,17 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-//SOMETHING WILL HAPPEN
-  } else if (category === 'accessories' || category === 'other') {
+    if (value === 'secret.hair' || value === 'secret.eyes') {//VET EJ OM '' SKA VARA DÄR??
+filterCharacters(true)
+} else {
+  filterCharacters(false)
+}
+  } else if (category === 'accessories' || category === 'other' || category === 'gender') {
+    if (secret.accessories.includes(value) || secret.other.includes(value) || secret.gender.includes(value)) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
 //NEED TO FILL THIS IN MORE SO SOMETHING ELSE IS HAPPENING HERE
   }
 }
@@ -352,7 +367,14 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 
+
+
+
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', start)
+
 
 //ADD ON MORE

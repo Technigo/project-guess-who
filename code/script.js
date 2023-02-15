@@ -1,6 +1,8 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
+const playAgainButton = document.getElementById('playAgain')
 const restartButton = document.getElementById('restartBtn')
+const filterButton = document.getElementById('filter')
 
 //Array with all the characters as objects
 const CHARACTERS = [
@@ -229,32 +231,47 @@ const start = () => {
     charactersInPlay = CHARACTERS; //everyone is in play at the beginning
     setSecret(); //Set secret person
     generateBoard(); //Draws the board
-    }
+}
 
-//setting the current question in the dropdown
+//Setting the current question in the dropdown
 const selectQuestion = () => {
     const category = questions.options[questions.selectedIndex].parentNode.label
-    const value = questions.options[questions.selectedIndex].value
+    const value = questions.value
 
-    currentQuestion = {
-        category: category, 
-        value: value
+    if (category === 'hair') {
+        currentQuestion = {
+            attribute: 'hair',
+            value: value,
+            category: category,
+        }
+    } else if (category === 'eyes') {
+        currentQuestion = {
+            attribute: 'eyes',
+            value: value,
+            category: category,
+        }
+    } else if (category === 'accessories') {
+        currentQuestion = {
+            attribute: value,
+            value: value,
+            category: category,
+        }
+    } else {
+        currentQuestion = {
+            attribute: value,
+            value: value,
+            category: category,
+        }
     }
 }
 
 const checkQuestion = () => {
-    const { category , value } = currentQuestion
-
-if (category === 'hair' || category === 'eyes') {
-    filterCharacters(true)
-} else if (category === 'accessories') {
-    filterCharacters(false)
+    const keep = currentQuestion.value === secret[currentQuestion.attribute]
+    filterCharacters(keep)
 }
-}
-
 
 const filterCharacters = (keep) => {
-    const { category , value } = currentQuestion
+    const { attribute, category , value } = currentQuestion
     if (category === 'accessories') {
         if(keep) {
             alert(`Yes, the person is rocking ${value}! Keeping everyone wearing ${value}.`)
@@ -264,31 +281,53 @@ const filterCharacters = (keep) => {
 
     } else if (category === 'other') { 
         if (keep) {
-            alert(`Yes, the person wears ${value}! Keeping everyone wearing ${value}.`)
+            alert(`Yes, the person isn't a ${value}! Keeping everyone who is a ${value}.`)
         } else {
-            alert(`No, the person doesn't wear ${value}! Removing everyone wearing ${value}.`)
+            alert(`No, the person isn't a ${value}! Removing everyone who is a ${value}.`)
         }
     }
     else { (category === 'hair' || category === 'eyes') 
         if (keep) {
-            alert(`Yes, the person is rocking ${value}! Keeping everyone wearing ${value}.`)
+            alert(`Yes, the person has ${value} ${category}! Keeping everyone with ${value} ${category}.`)
         } else {
-            alert(`No, the person doesn't wear ${value}! Removing everyone wearing ${value}.`)
+            alert(`No, the person doesn't have ${value} ${category}! Removing everyone with ${value} ${category}.`)
         }
-    }
+    } 
+//filter that keeps or removes the people
+if (keep) {
+    charactersInPlay = charactersInPlay.filter(
+        (person) => person[attribute] === value
+    )
+} else {
+    charactersInPlay = charactersInPlay.filter(
+        (person) => person[attribute] !== value
+    )
+}
+generateBoard()
 }
 
-const guess = (personToConfirm) => {
-
+const guess = (suspect) => {
+const makeAGuess = confirm(`Are you sure you want to guess ${suspect}?`)
+if (makeAGuess) {
+    checkMyGuess(suspect)
+}
 }
 
-const checkMyGuess = (oersonToCheck) => {
-
+const checkMyGuess = (personToCheck) => {
+if (personToCheck === secret.name) {
+    winOrLoseText.innerHTML = `NICE JOB! You guessed correct! The person was ${secret.name}.`
+} else {
+    winOrLoseText.innerHTML = `Oh no, your guess was not correct. The person was ${secret.name}. Game over!`
+}
+winOrLose.style.display = 'flex'
+board.style.display = 'none'
 }
 
 //starts the game
 start()
 
 //Eventlisteners
-
 restartButton.addEventListener('click', start)
+playAgainButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+filterButton.addEventListener('click', checkQuestion)

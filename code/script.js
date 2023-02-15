@@ -231,6 +231,19 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+
+  charactersInPlay.forEach((person) => {
+    board.innerHTML += `
+    <div class="card">
+    <p>${person.name}</p>
+    <img src=${person.img} alt=${person.name}/>
+    <div class="guess">
+    <span>Guess on ${person.name}?</span>
+    <button class="filled-button-small">Guess</button>
+    </div>
+    </div>
+    `
+  })
   // What else should happen when we start the game?
 }
 

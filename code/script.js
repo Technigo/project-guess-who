@@ -232,6 +232,9 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  board.style.display = 'flex' // show the cards to start the game
+  setSecret() // setting up a new person to be guessed
+  generateBoard() // draw the board with all the people
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -240,11 +243,32 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value
 
-  currentQuestion = {
-    category: category,
-    // value: value
+  if (category === "hair color") {
+    currentQuestion = {
+      category: category,
+      value: value,
+      attribute: "hair color",
+    } 
+  } else if (category === "eye color") {
+      currentQuestion = {
+        category: category,
+        value: true,
+        attribute: value,
+      } 
+  } else if (category === "accessories") {
+      currentQuestion = {
+        category: category,
+        value: value,
+        attribute: "eye color",
+      }
+  } else {
+      currentQuestion = {
+        value: true,
+        category: category,
+        attribute: value,
+      }
   }
 }
 

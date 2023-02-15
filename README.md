@@ -1,8 +1,7 @@
-# Project Name
+# Guess who!
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+"This week you will be digging deeper into JavaScript: objects, arrays and functions. After this week you will be able to create
+objects and arrays and loops through your arrays. You will also know more about functions."
 
 ## The problem
 

@@ -201,7 +201,7 @@ const CHARACTERS = [
 ];
 
 // Global variables
-let secret;
+let secretCharacter;
 let currentQuestion;
 let charactersInPlay;
 
@@ -223,8 +223,8 @@ const generateBoard = () => {
 };
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
-const setSecret = () => {
-  secret =
+const setSecretCharacter = () => {
+  secretCharacter =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
@@ -233,19 +233,20 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
+  generateBoard();
+  setSecretCharacter();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
-
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value;
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   };
 };
 
@@ -256,14 +257,23 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === "hair" || category === "eyes") {
-  } else if (category === "accessories" || category === "other") {
+  if (category === "hair") {
+    keep = secretCharacter.hair === value;
+  } else if (category === "eyes") {
+    keep = secretCharacter.eyes === value;
+  } else if (category === "accessories") {
+    keep = secretCharacter.accessories.includes(value);
+  } else if (category === other) {
+    keep = secretCharacter.other === value;
   }
+
+  filterCharacters(keep); // Invokes filterCharacters
 };
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
+
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {

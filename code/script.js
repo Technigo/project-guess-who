@@ -1,6 +1,7 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
+const filterButton = document.getElementById('filter')
 const restartButton = document.getElementById('restart')
 
 // Array with all the characters, as objects
@@ -231,20 +232,21 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  generateBoard()
+  setSecret()
   // What else should happen when we start the game?
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const category = questions.options[questions.selectedIndex].parentNode.label 
+  // This variable stores the actual value of the question we've selected.
+  const value = questions.value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
@@ -256,6 +258,11 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    currentQuestion = {
+      value: value,
+      category: category
+    }
+    
 
   } else if (category === 'accessories' || category === 'other') {
 
@@ -323,3 +330,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+filterButton.addEventListener('select', checkQuestion)

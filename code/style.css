@@ -75,6 +75,11 @@ select {
   justify-content: space-between;
 }
 
+.card img {
+  width: 95%;
+  height: 100%;
+}
+
 .card p {
   text-align: center;
   margin-bottom: 0;

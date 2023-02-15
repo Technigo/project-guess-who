@@ -258,12 +258,9 @@ const checkQuestion = () => {
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
+  const keep = currentQuestion === secret[currentQuestion.value]
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-
-  } else if (category === 'accessories' || category === 'other') {
-
-  }
+  filterCharacters()
 }
 
 // It'll filter the characters array and redraw the game board.

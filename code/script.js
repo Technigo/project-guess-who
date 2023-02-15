@@ -6,6 +6,7 @@ const winOrLoseText = document.getElementById('winOrLoseText')
 const winOrLoseSection = document.getElementById('winOrLose')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
+const questionsAskedDisplay = document.getElementById('questionsAsked')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -209,6 +210,8 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let countQuestionsAsked = 0
+const questionsAllowed = 4
 
 // Draw the game board
 const generateBoard = () => {
@@ -236,9 +239,10 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
   generateBoard();
   setSecret();
+  countQuestionsAsked = 0 //reset counter for new game
+  questionsAskedDisplay.innerText = 0
   
 }
 
@@ -286,51 +290,59 @@ const checkQuestion = () => {
 
 // Filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-
- // const { category, value } = currentQuestion
- const category = currentQuestion.category
- const value = currentQuestion.value
+  countQuestionsAsked++
+  // const { category, value } = currentQuestion
+  const category = currentQuestion.category
+  const value = currentQuestion.value
 
   // Show the correct alert message for different categories
-  if (category === 'hair') {
-    if (keep) {
-      alert(
-        `Yes, the suspect has ${value} hair! Keep all suspects that have ${value} hair.`
-      )
-    } else {
-      alert(
-        `No, the suspect doesn't have ${value} hair! Remove all suspects that have ${value} hair.`
-      )
-    }
-  } else if (category === 'eyes') {
-    if (keep) {
-      alert(
-        `Yes the suspect has ${value} eyes! Keep all suspects with ${value} eyes.`
-      )
-    } else[
-      alert(
-        `No, the suspect doesn't have ${value} eyes! Remove all suspects with ${value} eyes.`
-      )
-    ]
-  } else if (category === 'accessories') {
-    if (keep) {
-      alert(
-        `Yes, the suspect has ${value}! Keep all suspects that have ${value}.`
-      )
-    } else {
-      alert(
-        `No, the suspect doesn't have ${value}! Remove all suspects that have ${value}.`
-      )
-    }
-  } else if (category === 'other') {
-    if (keep) {
-      alert(
-        `Yes, the suspect is a ${value}! Keep all suspects that are ${value}s.`
-      )
-    } else {
-      alert(
-        `No, the suspect isn't a ${value}! Remove all suspects that are ${value}s.`
-      )
+  if (countQuestionsAsked > questionsAllowed) {
+    alert(
+      `You have run out of questions to ask. It's time to make an accusation.`
+    )
+  } else {
+    questionsAskedDisplay.innerText = countQuestionsAsked
+
+    if (category === 'hair') {
+      if (keep) {
+        alert(
+          `Yes, the suspect has ${value} hair! Keep all suspects that have ${value} hair.`
+        )
+      } else {
+        alert(
+          `No, the suspect doesn't have ${value} hair! Remove all suspects that have ${value} hair.`
+        )
+      }
+    } else if (category === 'eyes') {
+      if (keep) {
+        alert(
+          `Yes the suspect has ${value} eyes! Keep all suspects with ${value} eyes.`
+        )
+      } else[
+        alert(
+          `No, the suspect doesn't have ${value} eyes! Remove all suspects with ${value} eyes.`
+        )
+      ]
+    } else if (category === 'accessories') {
+      if (keep) {
+        alert(
+          `Yes, the suspect has ${value}! Keep all suspects that have ${value}.`
+        )
+      } else {
+        alert(
+          `No, the suspect doesn't have ${value}! Remove all suspects that have ${value}.`
+        )
+      }
+    } else if (category === 'other') {
+      if (keep) {
+        alert(
+          `Yes, the suspect is a ${value}! Keep all suspects that are ${value}s.`
+        )
+      } else {
+        alert(
+          `No, the suspect isn't a ${value}! Remove all suspects that are ${value}s.`
+        )
+      }
     }
   }
 
@@ -369,9 +381,9 @@ const guess = (suspect) => {
 const checkMyGuess = (suspectToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   if(suspectToCheck === secret.name) {
-    winOrLoseText.innerHTML = `YOU WON! ${secret.name} was the killer!`
+    winOrLoseText.innerHTML = `YOU WON! ${secret.name} was the murderer!`
   } else {
-    winOrLoseText.innerHTML = `YOU LOST! ${suspectToCheck} is innocent.  ${secret.name} was the killer!`
+    winOrLoseText.innerHTML = `YOU LOST! ${suspectToCheck} is innocent.  ${secret.name} was the murderer!`
   }
   winOrLoseSection.style.display = 'flex';
   board.style.display = 'none';
@@ -381,6 +393,8 @@ const playAgain = () => {
   start()
   winOrLoseSection.style.display = 'none'
   board.style.display = 'flex'
+  countQuestionsAsked = 0 // resets counter to 0 
+  questionsAskedDisplay.innerText = countQuestionsAsked //and displays it
 }
 
 // Invokes the start function when website is loaded

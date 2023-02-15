@@ -277,42 +277,47 @@ const selectQuestion = () => {
     }
   }}
 
-
-
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-
-  } else if (category === 'accessories' || category === 'other') {
-
-  }
+  //This variable will compare the currentQuestion details with the secret person details
+  const keep = currentQuestion.value === secret[currentQuestion.attribute]
+  //Below the function filterCharacters is invoked with param keep.
+  filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
+  const { attribute, category, value } = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${attribute}! Keep all people that wears ${attribute}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${attribute}! Remove all people that wears ${attribute}`
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+     if (keep) {
+      alert(
+        `Yes, the person have is a ${attribute}! Keep all people that are ${attribute}`
+      )
+     } else {
+      alert(
+        `No, the person is not a ${attribute}! Remove all people that are ${attribute}`
+      )
+     } 
     } else {
+    if (keep) {
+      alert(
+        `Yes, the person have ${attribute} ${category}! Keep all people that have ${attribute} ${category}`
+      )
+    } else {
+      alert(
+        `No, the person doesnt have ${attribute} ${category}! Remove all people with ${attribute} ${category}`
+      )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }

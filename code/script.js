@@ -1,7 +1,8 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const restartBtn = document.getElementById('restart')
+const findOutBtn = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -325,5 +326,8 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start);
+restartBtn.addEventListener('click', start);
+// When selecting a question, invoke the selectQuestion
 questions.addEventListener('change', selectQuestion);
+// When clicking on the 'Find out' button, invoke the checkQuestion 
+findOutBtn.addEventListener('click', checkQuestion);

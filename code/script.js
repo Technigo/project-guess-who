@@ -201,37 +201,45 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+let secret //Will be the secret person
+let currentQuestion //Will be the current question object
+let charactersInPlay //After filtering the array, ex does not have black hair, all the people left in the game
+
 
 // Draw the game board
+
 const generateBoard = () => {
-  board.innerHTML = ''
+  board.innerHTML = '' //empty string to start fresh
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <img src=${person.img} alt=${person.name}/>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span> Guess on ${person.name}?</span>
+          <button class="filled-button small" onClick="guess('${person.name})">Guess</button>
         </div>
       </div>
     `
+   
   })
+  //console.log(charactersInPlay)
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  //console.log(secret)
 }
+
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  setSecret()
+  generateBoard()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -244,7 +252,7 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    // value: value
+    // value: value (const value above)
   }
 }
 
@@ -256,9 +264,9 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    //something happens
   } else if (category === 'accessories' || category === 'other') {
-
+    //something else happens
   }
 }
 

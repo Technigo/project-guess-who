@@ -1,7 +1,12 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
+const findOutButton = document.getElementById('filter')
 const restartButton = document.getElementById('restart')
+
+
+
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -200,6 +205,7 @@ const CHARACTERS = [
   },
 ]
 
+
 // Global variables
 let secret
 let currentQuestion
@@ -231,6 +237,9 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  generateBoard();
+  setSecret();
+
   // What else should happen when we start the game?
 }
 
@@ -323,3 +332,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOutButton.addEventListener('click', category, value)

@@ -8,6 +8,7 @@ A randomly selected person is set as the secret when the game starts.
 You can select questions to ask about the people and filter the board based on those questions, by clicking on the corresponding buttons.
 The player receives feedback with alerts, indicating whether the current selection of people matches the secret person, or if the game is over (i.e. the secret person was found or all the options were eliminated).
 You can guess the secret person at any time, by clicking on the "Guess" button and entering the corresponding name in the input field. The game will display a message indicating whether the guess was correct or not, and if the game is over.
+Illustration: https://undraw.co/illustrations
 
 ## How to Play
 To start the game, simply open the index.html file in your browser. The game will display a board with 24 different characters, along with a set of buttons to select questions about the people (e.g. "Does the person have glasses?", "Is the person smiling?", etc.).

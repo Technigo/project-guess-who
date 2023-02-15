@@ -2,7 +2,9 @@
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
+const filter = document.getElementById("filter");
 
+//
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -224,8 +226,8 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret =
-    charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  secret = CHARACTERS[4]; //Just to test if filterCharacters works as i want. Remove this value!
+  // charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
   console.log(secret);
 };
 
@@ -233,40 +235,61 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
+
   // What else should happen when we start the game?
+
+  //Start value of question
+  currentQuestion = { category: "hair", value: "brown" };
   generateBoard();
   setSecret();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
+  // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label;
 
-  // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value;
 
+  //Object storing th category and question (value)
   currentQuestion = {
     category: category,
-    // value: value
+    value: value, //Value from questions dropdown
   };
+  console.log(currentQuestion); //prints the current Question
 };
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-
+  console.log("checkQuestion value:", value);
+  console.log("checkQuestion cat:", category);
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
-  } else if (category === "accessories" || category === "other") {
+    if (category === "hair") {
+      if (value == secret.hair) filterCharacters(value); //should keep or not keep}
+      // else {
+      //   console.log("not same hair");
+      // }
+      if (category === "eyes") {
+        if (value == secret.eyes) console.log("same eyes");
+      }
+      // else {
+      //   console.log("not same eyes");
+      // }
+    } else if (category === "accessories" || category === "other") {
+      // filterCharacters(); // should keep or not keep
+    }
   }
 };
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
+  // console.log(questions);
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
@@ -278,13 +301,50 @@ const filterCharacters = (keep) => {
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
     }
+  }
+  if (category === "hair") {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+      );
+    } else {
+      alert(
+        `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
+      );
+    }
+  }
+  if (category === "eyes") {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
+      );
+    } else {
+      alert(
+        `No, the person doesn't have ${value} eyes! Remove all people with ${value} eyes`
+      );
+    }
   } else if (category === "other") {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} as a habit! Keep all people with ${value} as a habit`
+      );
+    } else {
+      alert(
+        `No, the person doesn't have ${value} as a habit! Remove all people with ${value} as a habit`
+      );
+    }
     // Similar to the one above
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+      );
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
+      );
     }
   }
 
@@ -325,3 +385,13 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+
+filter.addEventListener("click", () => {
+  // console.log("the selected question is: ", currentQuestion);
+  // console.log("the secret is: ", secret);
+  checkQuestion();
+});
+
+questions.addEventListener("click", () => {
+  selectQuestion();
+});

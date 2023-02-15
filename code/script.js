@@ -231,6 +231,8 @@ const start = () => {
     charactersInPlay = CHARACTERS; //everyone is in play at the beginning
     setSecret(); //Set secret person
     generateBoard(); //Draws the board
+    winOrLose.style.display = 'none';
+    board.style.display = 'flex';
 }
 
 //Setting the current question in the dropdown

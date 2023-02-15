@@ -6,21 +6,23 @@ const playAgainButton = document.getElementById("playAgain");
 const filterButton = document.getElementById("filter");
 const winOrLose = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
+const log = document.getElementById("gameLog");
+const guessCounter = document.getElementById("guesses");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
     name: "Jabala",
     img: "images/jabala.svg",
-    hair: "hidden",
-    eyes: "hidden",
+    hair: "covered",
+    eyes: "covered",
     accessories: ["glasses", "hat"],
     other: [],
   },
   {
     name: "Jack",
     img: "images/jack.svg",
-    hair: "hidden",
+    hair: "covered",
     eyes: "blue",
     accessories: ["hat"],
     other: [],
@@ -61,7 +63,7 @@ const CHARACTERS = [
     name: "Jana",
     img: "images/jana.svg",
     hair: "black",
-    eyes: "hidden",
+    eyes: "covered",
     accessories: ["glasses"],
     other: [],
   },
@@ -69,7 +71,7 @@ const CHARACTERS = [
     name: "Jane",
     img: "images/jane.svg",
     hair: "yellow",
-    eyes: "hidden",
+    eyes: "covered",
     accessories: ["glasses"],
     other: [],
   },
@@ -86,7 +88,7 @@ const CHARACTERS = [
     name: "Jazebelle",
     img: "images/jazebelle.svg",
     hair: "purple",
-    eyes: "hidden",
+    eyes: "covered",
     accessories: ["glasses"],
     other: ["smoker"],
   },
@@ -118,7 +120,7 @@ const CHARACTERS = [
     name: "Jenni",
     img: "images/jenni.svg",
     hair: "white",
-    eyes: "hidden",
+    eyes: "covered",
     accessories: ["hat"],
     other: [],
   },
@@ -133,7 +135,7 @@ const CHARACTERS = [
   {
     name: "Jerry",
     img: "images/jerry.svg",
-    hair: "hidden",
+    hair: "covered",
     eyes: "blue",
     accessories: ["hat"],
     other: [],
@@ -166,7 +168,7 @@ const CHARACTERS = [
     name: "Jordan",
     img: "images/jordan.svg",
     hair: "yellow",
-    eyes: "hidden",
+    eyes: "covered",
     accessories: ["glasses", "hat"],
     other: [],
   },
@@ -208,6 +210,8 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+// reset the number of guesses
+let numberOfGuesses = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -226,21 +230,39 @@ const generateBoard = () => {
   });
 };
 
+/* I though getting popup alerts with every guess was annoying, 
+so I made a container in the HTML for a log, styled it in CSS,
+and used this addToLog-function instead of alert() to put the messages there instead */
+
+const addToLog = (message) => {
+  log.innerHTML += `<p class="log-entry">${message}</p>`;
+};
+
+const updateGuessCounter = () => {
+  guessCounter.innerHTML = `${parseInt(numberOfGuesses)}`;
+};
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  console.log("the secret person is set to " + secret.name);
+  console.log("the person is set to " + secret.name);
 };
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  // What else should happen when we start the game?
+  // making the board visible and the winOrLose-part not visible
   board.style.display = "flex";
   winOrLose.style.display = "none";
+  // clearing the log
+  log.innerHTML = "";
+  // reset the number of guesses showing
+  updateGuessCounter();
+  // showing the game board on the screen
   generateBoard();
+  // randomizing the person you're looking for
   setSecret();
 };
 
@@ -249,11 +271,8 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.options[questions.selectedIndex].value;
 
-  console.log(`category is set to ${category} and value is ${value}`);
-
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
 
   currentQuestion = {
     category: category,
@@ -264,6 +283,8 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
+  numberOfGuesses++;
+  updateGuessCounter();
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -275,7 +296,7 @@ const checkQuestion = () => {
       filterCharacters(false);
     }
   } else if (category === "accessories" || category === "other") {
-    if (value === secret.accessories || value === secret.other) {
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {
       filterCharacters(true);
     } else {
       filterCharacters(false);
@@ -286,51 +307,39 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-  console.log(category);
-  console.log(value);
   // Show the correct alert message for different categories
   if (category === "hair" || category === "eyes") {
     if (keep) {
-      alert(
-        `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}`
-      );
+      addToLog(`The person has ${value} ${category}!`);
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
       );
     } else {
-      alert(
-        `No, the person hasn't ${value} ${category}! Remove all people that have ${value} ${category}`
-      );
+      addToLog(`The person doesn't have ${value} ${category}!`);
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
     }
   } else if (category === "accessories") {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value} ! Keep all people that wear ${value}!`
-      );
+      addToLog(`Yes, the person wears ${value}!`);
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
-      alert(
-        `No, the person does not wear ${value} ! Remove all people who wear ${value}`
-      );
+      addToLog(`No, the person does not wear ${value}!`);
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
     }
   } else if (category === "other") {
     if (keep) {
-      alert(`Yes, the person is ${value} ! Keep all people that are ${value}!`);
+      addToLog(`Yes, the person is a ${value}! `);
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
-      alert(
-        `No, the person isn't ${value} ! Remove all people who is ${value}`
-      );
+      addToLog(`No, the person isn't a ${value}! `);
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
@@ -350,6 +359,10 @@ const filterCharacters = (keep) => {
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
+
+  // remove the option from the select element, because you don't want the player to be able to guess it again
+  // I got this code from https://stackoverflow.com/questions/41112624/remove-select-option-with-specific-value
+  questions.querySelector("option[value=" + value + "").remove();
 
   // Invoke a function to redraw the board with the remaining people.
   generateBoard();
@@ -376,11 +389,9 @@ const checkMyGuess = (personToCheck) => {
   winOrLose.style.display = "flex";
   board.style.display = "none";
   if (personToCheck === secret.name) {
-    console.log("Korrekt!");
     winOrLoseText.innerHTML = `Congratulations! It was ${personToCheck}!`;
   } else {
-    console.log("Nope!");
-    winOrLoseText.innerHTML = `Too bad! The correct answer was ${personToCheck}!`;
+    winOrLoseText.innerHTML = `Too bad! The correct answer was ${secret.name}!`;
   }
 };
 

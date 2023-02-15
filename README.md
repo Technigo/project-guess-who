@@ -1,13 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The aim of the project was to create a Guess Who game using javascript arrays and objects, and their methods to manipulate the code. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started by going through the starter code and understanding what every part of it did. The methods I didn't understand, e.g. filter(), I spent some time looking into on w3schools and stack overflow.
+I then followed the step by step instructions for the project and listed in which order best to complete all the different functions. I also played a similar game online to get a feel for how exactly the game should function. 
+
+If I had more time I would've attempted to add a timer and some sound effects for when the player wins the game. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guess-who.brucette.com/

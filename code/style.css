@@ -22,8 +22,8 @@ h1 {
 
 h2 {
   font-size: 22px;
-  font-weight: 600;
-  color: #66ccff;
+  font-weight: 700;
+  color: #4682b4;
   margin-top: 60px;
 }
 
@@ -129,11 +129,13 @@ select {
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
+  color: pink;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  background-color: #4682b4;
 }
 
 .small {
@@ -150,6 +152,7 @@ button {
 .outlined-button:hover {
   background-color: var(--primary);
   color: #adf0db;
+  margin-top: 40px;
 }
 
 .filled-button:hover {
@@ -205,6 +208,10 @@ button {
   h1 {
     font-size: 24px;
     line-height: 30px;
+  }
+
+  h2 {
+    font-size: 22px;
   }
 
   .guess-who-icon {

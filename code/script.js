@@ -249,13 +249,35 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value
 
-  currentQuestion = {
-    category: category,
-    // value: value
-  }
-}
+  if (category === 'hair color') {
+    currentQuestion = {
+      attribute: 'hairColor',
+      value: value,
+      category: category,
+    }
+  } else if (category === 'eye color') {
+    currentQuestion = {
+      attribute: 'eyeColor',
+      value: value,
+      category: category,
+    }
+  } else if (category === 'accessories') {
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    }
+  } else {
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    }
+  }}
+
+
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
@@ -332,3 +354,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+filterButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', start)

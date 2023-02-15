@@ -261,22 +261,28 @@ const selectQuestion = () => {
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function should be invoked when you click on 'Find Out=filter' button.
 const checkQuestion = () => {
-  const {category,value} = currentQuestion
+  console.log(currentQuestion)
+  
+  const {category, value} = currentQuestion
+  
+
 
   if (category === 'hair' || category === 'eyes') {
+  
+    if (value === secret[category]) {
 
-    if (value=== secret[category]) {
       filterCharacters(true)
     }
     else {
-      filterCharacters(false)
-      
-    }
 
-  } else if (category === 'accessories' || category === 'other') {
-    if (secret[category].includes(value)){
+      filterCharacters(false)
+    }
+  }
+  else if (category === 'accessories' || category === 'other') {
+   
+    if (secret[category].includes(value)) {
       filterCharacters(true)
     }
     else {
@@ -284,7 +290,7 @@ const checkQuestion = () => {
     }
   }
 }
-
+console.log(currentQuestion)
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
@@ -309,9 +315,25 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   }
+ else if (category === 'eyes' || category === 'hair') {
+  console.log('i am in the right category')
+  if (keep) {
+    // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+    alert(
+      `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}!`
+    )
+    charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
 
+  } else {
+    // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+    alert(`No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}!`
+    )
+    charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+
+  }}
   generateBoard();
 }
+
 
 // confirming the player would like to make a guess.
 const guess = (personToConfirm) => {

@@ -234,12 +234,12 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-  selectQuestion()
   //The first thing that happens when you load the website is that the game board should be rendered on the screen
   generateBoard()
   //Make sure to set a secret person when the game starts.
   setSecret()
+  // What else should happen when we start the game?
+  selectQuestion()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -247,7 +247,7 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label;
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].parentNode.value;
+  const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
     category: category,
@@ -278,7 +278,7 @@ const checkQuestion = () => {
 }
 
 
-// It'll filter the characters array and redraw the game board.
+// Function to filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
@@ -304,13 +304,13 @@ const filterCharacters = (keep) => {
     }
   }
 
-  // filter to keep or remove based on the keep variable.
+  // filter to keep or remove based on the keep variable, goes for all categories.
   if (keep) {
     charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
   } else {
     charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   }
-  
+
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
 }
@@ -319,7 +319,11 @@ const filterCharacters = (keep) => {
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
+  const playerGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`)
   // If the player wants to guess, invoke the checkMyGuess function.
+  if (playersGuess) {
+    checkMyGuess(personToConfirm)
+  }
 }
 
 // If you confirm, this function is invoked

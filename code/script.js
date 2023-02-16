@@ -63,7 +63,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewellery'],
     other: []
   },
   {
@@ -79,7 +79,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewellery'],
     other: []
   },
 
@@ -120,7 +120,7 @@ const CHARACTERS = [
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
+    accessories: ['hat', 'jewellery'],
     other: []
   },
   {
@@ -152,7 +152,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewellery'],
     other: []
   },
   {
@@ -168,7 +168,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'jewellery'],
     other: []
   },
   {
@@ -176,7 +176,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['jewellery'],
     other: []
   },
   {
@@ -246,6 +246,8 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label; 
   const value = questions.options[questions.selectedIndex].value;  
+
+  
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
@@ -314,15 +316,13 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
      if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all people that wear ${attribute}`); 
+        `Yes, the person wears ${attribute}! Keep all people that wear ${attribute}.`); 
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)); 
  
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all people that wear ${attribute}`)
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-
-   
+        `No, the person doesn't wear ${attribute}! Remove all people that wear ${attribute}.`)
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))   
     }
   } else if (category === 'other') {
       if (keep) {
@@ -339,11 +339,11 @@ const filterCharacters = (keep) => {
   } else {
       if (keep) {
       alert(
-        `Yes, the person has ${value} ${category} ! Keep all people with ${value} ${category}"`)
+        `Yes, the person has ${value} ${category} ! Keep all people with ${value} ${category}".`)
         charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       alert (
-        `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category} hair`)
+        `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
    } 
@@ -362,12 +362,23 @@ generateBoard ()
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  const playersGuess = confirm (`Do you really think it's ${personToConfirm}?`); 
+   // remember the confirm() ?
+  
+   // If the player wants to guess, invoke the checkMyGuess function.
+   if (playersGuess) {
+    checkMyGuess (personToConfirm); 
+   }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+
+  if (personToCheck ===secret.name) {
+    winOrLose.innerText = `You're absolutely right! ${personToCheck} is the one!`; 
+  }
+  else
+    winOrLose.innerText = `Gaaah! Wrong guess! It wasn't ${personToCheck}.`; 
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

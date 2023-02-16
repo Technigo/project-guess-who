@@ -13,19 +13,28 @@ body {
 }
 
 h1 {
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 48px;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 40px;
   margin: 10px 0;
-  color: purple;
-  padding-top: 20px;
+  color: #ff69b4;
+  margin-bottom: 5px;
 }
 
 h2 {
   font-size: 26px;
-  font-weight: 700;
+  font-weight: 600;
   color: purple;
-  margin-top: 60px;
+  margin-top: 40px;
+  animation-name: gradient_text;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes gradient_text {
+  0% {color: #ba55d3 ;}
+  50% {color: #ff69b4;}
+  100% {color: purple;}
 }
 
 .question-section {
@@ -53,6 +62,8 @@ select {
 
 .guess-who-icon {
   width: 126px;
+  /*align-self: flex-end;*/
+  margin-bottom: 50px;
 }
 
 .board-wrapper {
@@ -146,14 +157,20 @@ button {
 .outlined-button {
   background-color: transparent;
   color: var(--primary);
-  align-self: flex-end;
+  margin-bottom: 40px;
+  /*align-self: flex-end;*/
 }
 
-.filled-button,
+.filled-button {
+  background-color: var(--primary);
+  color: #adf0db;
+  margin-top: 40px;
+}
+
 .outlined-button:hover {
   background-color: var(--primary);
-  margin-top: 40px;
-  color: white;
+  color: #adf0db;
+  border-color: white;
 }
 
 .filled-button:hover {

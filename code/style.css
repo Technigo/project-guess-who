@@ -9,7 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-color: #adf0db;
+  background-color: #5f7161;
 }
 
 h1 {
@@ -18,12 +18,13 @@ h1 {
   line-height: 48px;
   margin: 10px 0;
   color: purple;
+  padding-top: 20px;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
-  color: #4682b4;
+  color: purple;
   margin-top: 60px;
 }
 
@@ -135,7 +136,7 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
-  background-color: #4682b4;
+  background-color: #5f7161;
 }
 
 .small {
@@ -151,8 +152,8 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: #adf0db;
   margin-top: 40px;
+  color: white;
 }
 
 .filled-button:hover {

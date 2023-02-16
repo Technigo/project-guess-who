@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -234,7 +235,6 @@ const start = () => {
   // What else should happen when we start the game?
   setSecret() // Sets up random person to guess
   generateBoard() // Create the board!
- 
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -250,7 +250,7 @@ const selectQuestion = () => {
     category: category,
     value: value
   }
-
+  checkQuestion();
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -265,7 +265,8 @@ const checkQuestion = () => {
   } else if (category === 'accessories' || category === 'other') {
 
   }
-  filterCharacters(keep)
+  
+  filterCharacters()
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -286,9 +287,10 @@ const filterCharacters = (keep) => {
     // Similar to the one above
   } else {
     if (keep) {
+      alert(`Yes! This person has ${value}! Keep everyone with ${value}`)
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
-      alert(`No this person doesn't have ${value}!`)
+      alert(`No this person doesn't have ${value}! Remove everyone with ${value}`)
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
@@ -330,6 +332,8 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-playAgainButton.addEventListener('click', start)
-questions.addEventListener('click', selectQuestion)
+questions.addEventListener('change', selectQuestion)
 
+
+// Wait on this one
+// playAgainButton.addEventListener('click', start)

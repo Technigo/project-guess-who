@@ -239,6 +239,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard();
   setSecret();
+  console.log(secret.name);
 
   // What else should happen when we start the game?
 }
@@ -289,8 +290,14 @@ const filterCharacters = (keep) => {
     // Similar to the one above
   } else {
     if (keep) {
+      alert(
+        `Yes, the person is a ${value}! Keep all that is ${value}.`
+      )
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
+      alert(
+        `No, the person is not ${value}. Remove all people that is ${value}.`
+      )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
@@ -332,4 +339,8 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOutButton.addEventListener('click', category, value)
+questions.addEventListener("change", selectQuestion);
+findOutButton.addEventListener('click', () => {
+  checkQuestion();
+    });
+

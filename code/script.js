@@ -105,7 +105,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['freckles']
   },
   {
     name: 'Jed',
@@ -236,6 +236,8 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
+  winOrLose.style.display = 'none'
+  board.style.display = 'flex' 
   charactersInPlay = CHARACTERS
   setSecret()
   generateBoard()
@@ -374,16 +376,21 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
 
-  if (personToCheck ===secret.name) {
-    winOrLose.innerText = `You're absolutely right! ${personToCheck} is the one!`; 
+  if (personToCheck === secret.name) {
+    winOrLoseText.innerHTML = `You're absolutely right! ${personToCheck} is the one!`; 
   }
-  else
-    winOrLose.innerText = `Gaaah! Wrong guess! It wasn't ${personToCheck}.`; 
+  else {
+    winOrLoseText.innerHTML = `Gaaah! Wrong guess! It wasn't ${personToCheck}.`; 
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
+ 
   // 4. Hide the game board
 }
+winOrLose.style.display = 'flex'
+board.style.display = 'none'
+}
+
 
 // Invokes the start function when website is loaded
 start()

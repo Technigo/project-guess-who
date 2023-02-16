@@ -300,7 +300,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
       alert(
-        `Sorry! The person doesn't have ${value} hair!`
+        `Sorry! The person doesn't has not ${value} hair!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
@@ -308,7 +308,7 @@ const filterCharacters = (keep) => {
     
     if (keep) {
       alert(
-        `Good guess! The person have ${value} eyes!`
+        `Good guess! The person has ${value} eyes!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {

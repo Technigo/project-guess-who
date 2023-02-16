@@ -1,8 +1,12 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
+const boardWrapper = document.querySelector(".board-wrapper");
+const winOrLoseWrapper = document.querySelector(".win-or-lose-wrapper");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutBtn = document.getElementById("filter");
+const winOrLoseText = document.getElementById("winOrLoseText");
+const playAgainBtn = document.getElementById("playAgain");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -264,6 +268,8 @@ const CategoryOptions = () =>
   });
 CategoryOptions();
 
+console.log(hairArr, eyesArr, accessoriesArr, otherArr);
+
 //Creating HTML element OptGroups and Options
 const createCategories = () => {
   categoryArray.forEach((category) => {
@@ -302,6 +308,8 @@ const createCategories = () => {
 // This function to start (and restart) the game
 const start = () => {
   charactersInPlay = CHARACTERS;
+  winOrLoseWrapper.style.display = "none";
+  boardWrapper.style.display = "flex";
   generateBoard();
   setSecret();
   createCategories();
@@ -401,18 +409,23 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-  checkMyGuess();
+  checkMyGuess(personToConfirm);
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  boardWrapper.style.display = "none";
   if (personToCheck === secret.name) {
     alert("Match!");
+    // winOrLoseText.innerText("Congrats!");
+    winOrLoseWrapper.style.display = "flex";
+    winOrLoseText.textContent = "Hurray! You won! Do you want to play again?";
   } else {
-    alert("Wrong!");
+    alert(`Your answer is wrong!`);
+    winOrLoseWrapper.style.display = "flex";
+    winOrLoseText.textContent = `Your answer is wrong! The correct solution was ${secret.name}! Play again?`;
   }
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
+
   // 3. Show the win or lose section
   // 4. Hide the game board
 };
@@ -424,4 +437,4 @@ start();
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutBtn.addEventListener("click", checkQuestion);
-personToCheck.addEventListener("click");
+playAgainBtn.addEventListener("click", start);

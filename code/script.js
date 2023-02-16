@@ -224,7 +224,7 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)] //charactersInPlay.length = all the characters in const CHARACTERS, not less and not more
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)] //charactersInPlay.length = all the number of persons in const CHARACTERS, not less and not more
 }
 
 // This function to start (and restart) the game
@@ -243,12 +243,13 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
+  console.log("Question selected", currentQuestion);
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -326,3 +327,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)

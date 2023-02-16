@@ -24,7 +24,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Jacques',
@@ -32,7 +32,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker','beard']
   },
   {
     name: 'Jai',
@@ -79,7 +79,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses','earring'],
+    accessories: ['glasses','earrings'],
     other: []
   },
 
@@ -113,7 +113,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker','beard']
   },
   {
     name: 'Jenni',
@@ -152,7 +152,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses','earring'],
+    accessories: ['glasses','earrings'],
     other: []
   },
   {
@@ -176,7 +176,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: ['earring'],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -193,7 +193,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Julie',
@@ -369,9 +369,9 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    alert("Wohoo thats correct! You win!");
+    alert(`Good job! Your guess on ${personToCheck} is correct! You win!`);
     board.innerHTML = "";
-    winOrLose.stylr.display = "block";
+    winOrLose.style.display = "block";
 } else {
     alert(`Oh no! Your guess is wrong! The correct answer is ${secret.name}`);
     board.innerHTML = "";

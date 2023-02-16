@@ -23,7 +23,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Jacques',
@@ -31,7 +31,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker','beard']
   },
   {
     name: 'Jai',
@@ -112,7 +112,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'beard']
   },
   {
     name: 'Jenni',
@@ -192,7 +192,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Julie',
@@ -254,76 +254,66 @@ const selectQuestion = () => {
   console.log("Question selected", currentQuestion);
 }
 
-// This function is invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-    const {category, value} = currentQuestion
-    console.log("This is", secret[category].includes(value));
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-   // Then invoke filterCharacters
+  const { category, value } = currentQuestion
+
   if (category === 'hair' || category === 'eyes') {
     if (secret[category] === value) {
       keep = true
-      filterCharacters (true); 
-    } else{
+      filterCharacters(true); 
+    }
+    else {
       keep = false
       filterCharacters(false); 
     }
-  } else if (category === 'accessories' || category === 'other') {
-    if (secret[category].includes(value)) {
+  }
+  else if (category === 'accessories' || category === 'other') {
+    if (secret[category].includes(value)) {  
       keep = true
       filterCharacters(true); 
-    } else {
+    }
+    else {
       keep = false
-      filterCharacters(false);
+      filterCharacters(false); 
     }
   }
 }
 
-// It'll filter the characters array and redraw the game board.
+// This will filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
-    // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  if (category === 'accessories') {
+  const {category, value } = currentQuestion
+
+  if (category === 'accessories') { 
     if (keep) {
-      alert(
-        `Yay! The person wears ${attribute}! Keep all that wears ${attribute}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value);
-    } else {
-      alert(
-        `Nope, the person doesn't wear ${attribute}! Remove all that wears ${attribute}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value);
+      alert(`Yes, the person wears ${value}! Keep all that wears ${value}`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     }
-  } else if (category === 'other') {
-    if (keep) {
-      alert(
-        `Yay! The person is a ${attribute}! Keep all that are ${attribute}s`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
-    } else {
-      alert(
-        `Nope, the person isn't a ${attribute}! Remove all that aren't ${attribute}s`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
+    else {
+      alert(`No, the person doesn't wear ${value}! Remove all that wears ${value}`);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
-  } else {
+  }
+  else if (category === 'other') {
     if (keep) {
-      alert(
-        `Yay! The person has ${value} ${category}! Keep all that has ${value} ${category}`
-      )
+      alert(`Yes, the person has a ${value}! Keep all people that has a ${value}s`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+    }
+    else {
+      alert(`No, the person doesn't have a ${value}! Remove all people that has a ${value}s`)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+    }
+  }
+  else {
+    if (keep) {
+      alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
-    } else {
-      alert(
-        `Nope, the person doesn't have ${value} ${category}! Remove all that has ${value} ${category}`
-      )
+    }
+    else {
+      alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   }
-  // Invoke a function to redraw the board with the remaining people.
+  // Function: redraw the board with the remaining people.
   generateBoard();
 }
 
@@ -339,23 +329,19 @@ const guess = (personToConfirm) => {
   }
 }
 
-
-
-
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-  if (personToCheck === secret.name) {
-    alert("Wohoo that's correct! You Win!");
-    board.innerHTML = "";
-    winOrLose.style.display = "block"; 
+
+   if (personToCheck === secret.name) {
+    winOrLose.style.display = "block";
+     winOrLoseText.innerText = `Wohoo that's correct! You Win!`
   } else {
-    alert(`Oh no! Your guess is wrong! The correct answer is ${secret.name}`);
-    board.innerHTML = "";
-    winOrLose.style.display = "block"; 
+    winOrLose.style.display = "block";
+    winOrLoseText.innerText = `Oh no! Your guess is wrong! The correct answer is ${secret.name}`
   }
 }
 

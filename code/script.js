@@ -2,6 +2,9 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter')
+
+//Set up all the varibles
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -201,9 +204,10 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+let secret //Secret person object
+let currentQuestion // The current question object
+let charactersInPlay //The people that are left in the game
+let keep
 
 // Draw the game board
 const generateBoard = () => {
@@ -231,34 +235,48 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+
+  generateBoard();  //Loads the board of characters
+  setSecret();  //Generates a new secret person on start
+  console.log("The secret person is", secret.name);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
+  const category = questions.options[questions.selectedIndex].parentNode.label// This variable stores what option group (category) the question belongs to.
+  const value = questions.options[questions.selectedIndex].value; // This variable stores the value of the question from the dropdown.
+  
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+  console.log("Question selected", currentQuestion);
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function is invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
-
+    const {category, value} = currentQuestion
+    console.log("This is", secret[category].includes(value));
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    if (secret[category] === value) {
+      keep = true
+      filterCharacters (true); 
+    } else{
+      keep = false
+      filterCharacters(false); 
+    }
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[category].includes(value)) {
+      keep = true
+      filterCharacters(true); 
+    } else {
+      keep = false
+      filterCharacters(false);
+    }
   }
 }
 
@@ -269,11 +287,11 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yay! The person wears ${value}! Keep all people that wears ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `Nope the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
     }
   } else if (category === 'other') {
@@ -293,7 +311,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
     for accessories and other
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or
@@ -322,4 +339,6 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start) 
+questions.addEventListener('change', selectQuestion)
+filterButton.addEventListener('click', checkQuestion) 

@@ -1,13 +1,12 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Project guess-who.
+Project is about making a digital "board-game" where you guess who the random person is by asking questions. Week 2 in learning javascript, especially about arrays, object, loops.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Started with going through the material in technigo, then working in the group on the sandbox exercises. Then watching the code along and starting to work on the github repo. Watched former students projects to get a hang of it. Worked on the code on my own folder a bit before doing it here, just to see what happens and to be able to make mistakes and learn from them.
+Then doing some extra fun stuff like making my own "persons" to the board game cards.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

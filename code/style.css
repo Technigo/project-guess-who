@@ -3,8 +3,8 @@
   --headings-font-family: "Rye", cursive;
   --paragraph-font-family: "Newsreader", serif;
   --border-color: #94b1aa;
-  --primary-bg-color: #94b1aa;
-  --secondary-bg-color: #e6f3f0;
+  --primary-bg-color: #e6f3f0;
+  --secondary-bg-color: #94b1aa;
   --tertiary-bg-color: #fff;
   --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

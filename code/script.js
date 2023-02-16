@@ -229,6 +229,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  alert(secret.name);
 }
 
 // This function to start (and restart) the game
@@ -249,12 +250,12 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value
-  
+
   currentQuestion = {
     category: category,
     value: value
   }
- 
+
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -265,25 +266,25 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    if(value === secret.hair || value === secret.eyes){
-      let keep = true
-      filterCharacters(keep)
-    }else{
-      keep = false 
-      filterCharacters()
+    if (value === secret.hair || value === secret.eyes) {
+      let keep1 = true
+      filterCharacters(keep1)
+    } else {
+      keep1 = false
+      filterCharacters(keep1)
     }
 
   } else if (category === 'accessories' || category === 'other') {
-    if(value === secret.accessories || value === secret.other){
-      keep = true
-      filterCharacters(keep)
-    }else{
-      keep = false 
-      filterCharacters()
+    if (value === secret.accessories || value === secret.other) {
+      keep1 = true
+      filterCharacters(keep1)
+    } else {
+      keep1 = false
+      filterCharacters(keep1)
     }
   }
- 
-  //alert(category);
+
+  alert(category);
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -302,68 +303,70 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     // Similar to the one above
-  //   if(keep){
-  //     alert(
-  //       `Yes, the person has a ${value}! Keep all people that has ${value} `
-  //     )
-  //   }else{
-  //     alert(
-  //       `No, the people doesn't have a  ${value}! Remove all people that has a ${value}`
-  //     )
-  //   }
-
-
-  // }else if (category === 'eyes'){
-  //   if(keep){
-  //     alert(
-  //       `Yes, the person has ${value}! Keep all people that has ${value} eye color`
-  //     )
-  //   }else{
-  //     alert(
-  //       `No, the people doesn't have ${value}! Remove all people that has ${value} eye color`
-  //     )
-  //   }
-
-  // }else if (category === 'hair'){
-  //   if(keep){
-  //     alert(
-  //       `Yes, the person has ${value} hair color! Keep all people that has ${value} hair color`
-  //     )
-  //   }else{
-  //     alert(
-  //       `No, the people doesn't have ${value} hair color! Remove all people that has ${value} hair color`
-  //     )
-  //   }
-
-
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(
-        `Yes, the person has yellow hair! Keep all people with yellow hair`
+        `Yes, the person has a ${value}! Keep all people that has ${value} `
       )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(
-        `No, the person doesnt have yellow hair! Remove all people with yellow hair` 
+        `No, the people doesn't have a  ${value} habit! Remove all people that has a ${value} habit`
+      )
+    }
+
+
+  } else if (category === 'eyes') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people that has ${value} eyes`
+      )
+    } else {
+      alert(
+        `No, the people doesn't have ${value} eyes! Remove all people that has ${value} eyes`
+      )
+    }
+
+  } else if (category === 'hair') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} hair! Keep all people that has ${value}`
+      )
+    } else {
+      alert(
+        `No, the people doesn't have ${value} hair! Remove all people that has ${value}`
       )
     }
   }
 
+
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
+  //for hair and eyes :
+  if (category === 'hair' || category === 'eyes') {
+   
+    if (keep) {
+      alert("keep hair")
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value) // keep
+
+    } else {
+      alert(charactersInPlay)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) //remove
+      alert(charactersInPlay)                               // person[attribute] !== value
+    }
+  } else if (category === 'accessories' || category === 'other') {
+    //for accessories and other
+    if (keep) {
+      alert("keep accessories")
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+      
 
+    } else {
+      
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      
+    }
+  }
+  generateBoard();
   // Invoke a function to redraw the board with the remaining people.
 }
 

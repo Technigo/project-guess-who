@@ -1,22 +1,40 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: rgba(20, 60, 172, 0.744);
+  --secondary: #677fd6;
+  --tertiary: #1e1d19;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Architects Daughter'
 }
 
+.guess-counter {
+   width: 100%;
+   background-color: var(--secondary);
+   text-align: left;
+   font-size: 16px;
+   font-family: 'Arhitects Daughter';
+   font-weight: bold;
+   padding: 5% 2% 2% 0%;
+  }
+ 
+  .counter-text {
+   display: inline-block;
+   color: var(--primary);
+   margin: 0% 5% 0% 5%;
+  }
+
 h1 {
-  font-size: 42px;
+  font-size: 50px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: rgba(20, 60, 172, 0.744);
+  
 }
 
 .question-section {
@@ -34,8 +52,8 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
+  font-family: 'Architects Daughter';
+  color: var(--primary);
   width: 100%;
   margin: 24px 0;
 }
@@ -49,6 +67,8 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url("images/game-background.webp");
+  background-size: cover;
 }
 
 .game-board {
@@ -57,6 +77,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  background-color: rgba(95, 171, 247, 0.51);
 }
 
 /****** CARD ******/
@@ -64,19 +85,20 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 2px solid var(--secondary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  border-color: #677fd6;
 }
 
 .card p {
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 700;
 }
 
@@ -116,11 +138,15 @@ select {
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
-  font-size: 16px;
-  font-family: 'Montserrat';
-  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Architects Daughter'
   padding: 17px 27px;
   cursor: pointer;
+  outline: none;
+  background-repeat: no-repeat;
+  background-position: -120px -120px, 0 0;
+  background: linear-gradient(45deg, yellow, purple, red, blue);
+  background-size: 250% 250%, 100% 100%;
 }
 
 .small {
@@ -129,20 +155,46 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
+  color: white;
   align-self: flex-end;
+  
 }
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
-  color: white;
+  background:linear-gradient(35deg, brown, pink, green);
+  background-position: 0 0;
+  transition: 0.5s;
 }
 
 .filled-button:hover {
   background-color: white;
   border-color: white;
   color: var(--primary);
+}
+
+/* START WINDOW */
+.start-wrapper {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index:1;
+  height: 100vh;
+}
+
+.start-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  text-align: center;
 }
 
 /****** WIN OR LOSE SECTION ******/

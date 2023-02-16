@@ -239,17 +239,36 @@ start();
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
+  const value = questions.value; //stores the value of the question we selected
   const category = questions.options[questions.selectedIndex].parentNode.label; //parentNode.label stands for the optgroup label (dvs hair or eyes ets.)
-  // Här måste vi själva skapa en const function for "värdet/value" för "category" alltså om "hair" är kategori så är värdet "yellow" tex.)
+  // Här måste vi själva skapa en const function for "värdet/value" för "category" alltså om "hair" är kategori så är värdet "yellow" tex. (DONE)
 
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
-  currentQuestion = {
-    category: category,
-    // value: value (utkommenterat för att den inte är skapad än ^^)
-  };
+  if (category === "hair color") {
+    currentQuestion = {
+      attribute: "hairColor",
+      value: value,
+      category: category,
+    };
+  } else if (category === "eye color") {
+    currentQuestion = {
+      attribute: "eyeColor",
+      value: value,
+      category: category,
+    };
+  } else if (category === "accessories") {
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    };
+  } else {
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    };
+  }
 };
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -329,3 +348,4 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+questions.addEventListener("change", selectQuestion);

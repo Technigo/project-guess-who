@@ -375,7 +375,7 @@ const checkMyGuess = (personToConfirm) => {
 console.log("nu är du i checkMyGuess-funktionen!")
 
 if (personToConfirm === secret.name){
-winOrLoseText.innerHTML = `Grattiiiis!! The right answer was ${secret.name}
+winOrLoseText.innerHTML = `Congratulations, you won! &#129395 The right answer was ${secret.name}!
 <audio autoplay>
     <source src="ES_Applause.mp3" type="audio/mp3">
     Your browser does not support the audio element.
@@ -383,7 +383,7 @@ winOrLoseText.innerHTML = `Grattiiiis!! The right answer was ${secret.name}
 }
 
 else {
-winOrLoseText.innerHTML = `Du förlorade!! The right answer was ${secret.name}
+winOrLoseText.innerHTML = `Oh no! You lost! &#128543 The right answer was ${secret.name}.
 <audio autoplay>
 <source src="ES_sad-melody.mp3" type="audio/mp3">
 Your browser does not support the audio element.

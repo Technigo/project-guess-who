@@ -10,7 +10,7 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
-const filterButton = document.getElementById("restart");
+const findOutButton = document.getElementById("filter");
 const restartButton = document.getElementById("restart");
 
 // Array with all the characters, as objects
@@ -34,7 +34,7 @@ const CHARACTERS = [
   {
     name: "Jacques",
     img: "images/jacques.svg",
-    hair: "grey",
+    hair: "gray",
     eyes: "blue",
     accessories: ["hat"],
     other: ["smoker"],
@@ -179,7 +179,7 @@ const CHARACTERS = [
   {
     name: "Josephine",
     img: "images/josephine.svg",
-    hair: "grey",
+    hair: "gray",
     eyes: "brown",
     accessories: [],
     other: [],
@@ -258,11 +258,11 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   //Retrieve the value of the selected question option
-  const categoryValue = questions.options[questions.selectedIndex].value;
+  const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
     category: category,
-    categoryValue: categoryValue,
+    value: value,
   };
 };
 
@@ -274,9 +274,21 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
-    //something will happen
+    //Check if the attributes in the currentQuestion matches the attributes in the secret or not
+    //If the guess is true for the secret person, keep all the people with that value, e.g. yellow hair.
+    //If the guess is false for the secret person, remove all people with that value e.g. yellow hair.
+    if (value === secret.hair || value === secret.eyes) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
   } else if (category === "accessories" || category === "other") {
-    //something else will happen
+    //Check if the attributes in the currentQuestion matches the attributes in the secret or not
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
   }
 };
 
@@ -296,12 +308,34 @@ const filterCharacters = (keep) => {
     }
   } else if (category === "other") {
     // Similar to the one above
+    if (keep) {
+      alert(`Yes, the person is a ${value}`);
+    }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+      );
     } else {
       // alert popup that says something like: "No, the person doesn't have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
+      );
     }
+  }
+
+  if (category === "hair" || category === "eyes") {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
+    } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
+    }
+    generateBoard();
   }
 
   // Determine what is the category
@@ -341,5 +375,5 @@ start();
 
 // All the event listeners
 questions.addEventListener("change", selectQuestion);
-filterButton.addEventListener("click", setSecret);
+findOutButton.addEventListener("click", checkQuestion);
 restartButton.addEventListener("click", start);

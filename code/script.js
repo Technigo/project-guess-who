@@ -232,20 +232,25 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  setSecret() // Sets up random person to guess
+  generateBoard() // Create the board!
+ 
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
+  const value = questions.value
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -260,6 +265,7 @@ const checkQuestion = () => {
   } else if (category === 'accessories' || category === 'other') {
 
   }
+  filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -282,6 +288,7 @@ const filterCharacters = (keep) => {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
+      alert(`No this person doesn't have ${value}!`)
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
@@ -323,3 +330,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+playAgainButton.addEventListener('click', start)
+questions.addEventListener('click', selectQuestion)
+

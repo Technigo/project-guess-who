@@ -24,7 +24,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['facial hair', 'pet']
   },
   {
     name: 'Jacques',
@@ -32,7 +32,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker', 'facial hair']
   },
   {
     name: 'Jai',
@@ -63,7 +63,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace'],
     other: []
   },
   {
@@ -79,7 +79,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace', 'earring'],
     other: []
   },
 
@@ -113,7 +113,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker', 'facial hair']
   },
   {
     name: 'Jenni',
@@ -152,7 +152,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earring'],
     other: []
   },
   {
@@ -176,7 +176,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earring'],
     other: []
   },
   {
@@ -193,7 +193,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['facial hair']
   },
   {
     name: 'Julie',
@@ -231,11 +231,13 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[10]   //[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
 // This function to start (and restart) the game
 const start = () => {
+  board.style.display = 'flex'
+  winOrLose.style.display = 'none'
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
@@ -258,7 +260,7 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  const {category, value} = currentQuestion
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -275,7 +277,6 @@ const checkQuestion = () => {
       filterCharacters(); //Remove all with acc or other, I really hope it will look into all array index
     }
   }
-  console.log()
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -292,10 +293,10 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(`Yes, the person is a ${value}! Keep all people that are ${value}`);
+      alert(`Yes, some ${value}s coming up! Keep all ${value}s`);
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
-      alert(`No, the person is not a ${value}! Remove all people that are ${value}`);
+      alert(`No, ${value}s here! Remove all ${value}s`);
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   } else {
@@ -303,7 +304,7 @@ const filterCharacters = (keep) => {
       alert(`Yes, the person have ${value} ${category}! Keep all people that have ${value} ${category}`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
-      alert(`No, the person doesnt have ${value} ${category}! Remove all people with ${value} ${category}`);
+      alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   }
@@ -326,15 +327,15 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   if (personToCheck === secret.name) {
+  // 2. Set a Message to show in the win or lose section accordingly  
     winOrLoseText.innerHTML= `Wihuuuu that is correct, the secret person is ${personToCheck}`
   } else {
     winOrLoseText.innerHTML= `Sorry, but your guess ${personToCheck} is not correct`
   }
-  winOrLose.style.display= 'flex'
-  board.style.display = 'none'
-  // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
+  winOrLose.style.display= 'flex'
   // 4. Hide the game board
+  board.style.display = 'none'
 }
 
 // Invokes the start function when website is loaded

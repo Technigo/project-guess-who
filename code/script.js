@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartBtn = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const playAgainBtn = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -233,6 +235,7 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  selectQuestion()
   //The first thing that happens when you load the website is that the game board should be rendered on the screen
   generateBoard()
   //Make sure to set a secret person when the game starts.
@@ -244,24 +247,37 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label;
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.value;
+  const value = questions.options[questions.selectedIndex].parentNode.value;
 
   currentQuestion = {
     category: category,
-    value: value,
+    value: value
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
-  const keep = currentQuestion === secret[currentQuestion.value]
   // Then invoke filterCharacters
-  filterCharacters()
+  if (category === 'hair' || category === 'eyes') {
+    if (secret[category] === value) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+  } else if (category  === 'accessories' || category === 'other') {
+    if (secret[category].includes(value)) {
+      filterCharacters(true);
+      } else {
+        filterCharacters(false);
+      }
+  }
 }
+
+  // Determine what is the category
+  // filter by category to keep or remove based on the keep variable.
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {

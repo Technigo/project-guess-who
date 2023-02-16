@@ -271,32 +271,68 @@ const checkQuestion = () => {
   } else if (category === 'accessories' || category === 'other') {
     keep = secret[category].includes(value)
   }
-  console.log("This is the comparaison:" + value === secret[category])
+  filterCharacters(keep) 
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+  console.log(category)
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wear ${value} `
       )
     } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category].includes(value)
+      )
+      alert(
+        `Yes, the person is a ${value}! Keep all people that are ${value}s`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      alert(
+        `No, the person is not a ${value}! Remove all people that are ${value}s`
+      )
+    }
+  } else if (category === 'hair') { //for other categories: hair
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+      alert(
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+      )
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      alert(
+        `No, the person doesnt have ${value} hair! Remove all people with ${value} hair`
+      )
+    }
+  } else { // for eyes 
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
+      )
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      alert(
+        `No, the person doesnt have ${value} eyes! Remove all people with ${value} eyes`
+      )
     }
   }
+  generateBoard()
+}
+ 
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
@@ -313,10 +349,11 @@ const filterCharacters = (keep) => {
   */
 
   // Invoke a function to redraw the board with the remaining people.
-}
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  console.log("Hej hej!")
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.

@@ -97,7 +97,6 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
   text-align: center;
   height: inherit;
 }
@@ -126,9 +125,11 @@ select {
 
 /****** BUTTONS ******/
 button {
+  display: flex;
   border: 2px solid var(--primary-bg-color);
   border-radius: 50px;
-  font-size: 20px;
+  font-size: 15px;
+  justify-content: center;
   font-family: var(--paragraph-font-family);
   font-weight: bold;
   padding: 17px 27px;
@@ -156,7 +157,6 @@ button {
 .filled-button:hover {
   background-color: white;
   border-color: var(--primary-bg-color);
-  color: var(--primary);
 }
 
 /****** WIN OR LOSE SECTION ******/

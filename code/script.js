@@ -244,7 +244,7 @@ const addToLog = (message) => {
 };
 
 const updateGuessCounter = () => {
-  guessCounter.innerHTML = `${parseInt(numberOfGuesses)}`;
+  guessCounter.innerHTML = `Guesses: ${parseInt(numberOfGuesses)}`; // converting the int numberOfGuesses to a string. not sure this is needed actually?
 };
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -261,6 +261,7 @@ const start = () => {
   // making the board visible and the winOrLose-part not visible
   board.style.display = "flex";
   winOrLose.style.display = "none";
+  document.querySelector(".question-section").style.display = "flex"; // making sure this section is visible because its hidden when you win or lose
 
   questions.innerHTML = oldQuestions;
   // clearing the log
@@ -290,13 +291,14 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  // if the "make a guess" option is selected, pressing "find out" should not do anything
   if (questions.options[questions.selectedIndex].index === 0) {
     return;
   }
 
   const { category, value } = currentQuestion;
-  numberOfGuesses++;
-  updateGuessCounter();
+  numberOfGuesses++; // update the number of guesses
+  updateGuessCounter(); // and make sure to update the guess counter showing on the page also :)
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -390,23 +392,26 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
 
-  // remove the option from the select element, because you don't want the player to be able to guess it again
+  // remove the guessed option from the select element, because you don't want the player to be able to guess it again
   // I got this code from https://stackoverflow.com/questions/41112624/remove-select-option-with-specific-value
   // and also https://stackoverflow.com/questions/55062159/find-select-index-by-valuetext
+  const optionsToRemove = questions.querySelectorAll(
+    "option[value=" + value + "]" // using a query selector to get all options with the same value, for example "covered"
+  );
   // because the value for both "covered hair" and "covered eyes" is "covered"
   // I needed to find a way to see if the category was the same as the guess
   // otherwise when you guessed "covered eyes" it removed the "covered hair" option :-/
-  const optionsToRemove = questions.querySelectorAll(
-    "option[value=" + value + "]"
-  );
 
-  optionsToRemove.forEach((o) => {
-    if (questions.options[o.index].parentNode.label === category) {
+  optionsToRemove.forEach((option) => {
+    // putting all of the options we got from querySelectorAll in a forEach-loop
+    // making sure that we are selecting the ones with the right category ie "hair"
+    // and then removing it
+    if (questions.options[option.index].parentNode.label === category) {
       o.remove();
     }
   });
 
-  //automatically select the first option
+  //automatically select the first option in the select element after removing option
   questions.options[0].selected = true;
 
   // Invoke a function to redraw the board with the remaining people.
@@ -433,6 +438,9 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
   winOrLose.style.display = "flex";
   board.style.display = "none";
+  // hiding the entire question section because it was still visible when scrolling down
+  document.querySelector(".question-section").style.display = "none";
+
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `Congratulations! It was ${personToCheck}!`;
   } else {

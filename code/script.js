@@ -6,12 +6,12 @@ const restartButton = document.getElementById('restart')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Whiskers',
-    img: 'images/cat1.png',
+    name: 'Jabala',
+    img: 'images/jabala.svg',
     color: 'hidden',
     eyes: 'hidden',
-    stature: ['sitting', 'standing'],
-    age: ['adult', 'kitten']
+    accessories: ['glasses'],
+    other: []
   },
   {
     name: 'Jack',
@@ -199,14 +199,15 @@ const CHARACTERS = [
     other: []
   },
 ]
-//Behöver inte göra något med nedan.
+
+
 // Global variables
 let secret
 let currentQuestion
 let charactersInPlay
 
 
-//Behöver inte göra något med nedan.
+//Behöver inte ändras.
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -225,7 +226,7 @@ const generateBoard = () => {
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
-// Nedan gjord men inte som på deras. Kolla om funktionen fungerar.
+//Kolla om funktionen fungerar.
 //Deras startkod: secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 const setSecret = () => {
 
@@ -253,10 +254,12 @@ const start = () => {
   board.style.display = 'flex';
 }
 
+//Klar?
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
+  log.console(selectQuestion);
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
@@ -268,23 +271,55 @@ const selectQuestion = () => {
 }
 
 // This function should be invoked when you click on 'Find Out' button.
+//Bör inte behöva ändras. 
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
+
+  //Kolla denna! Börjat ändra. 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  //börjat ändra denna. Kolla så det stämmer. 
 
-  } else if (category === 'accessories' || category === 'other') {
+//Klar
+const selectQuestion = () => {
+  const value = questions.value
+  const category = questions.options[questions.selectedIndex].parentNode.label
 
+//Kolla om denna stämmer. Om så, fortsätt.
+  if (category === 'hair') {
+    currentQuestion = {
+      attribute: 'hair',
+      value: value,
+      category: category,
+    }
   }
-}
+  else if (category === 'eyes') {
+    currentQuestion = {
+      
+    }
+  }
+  else if (category === 'accessories') {
+    currentQuestion = {
+      
+    }
+  }
+    else if (category === 'smoker') {
+      currentQuestion = {
+        
+      }
+  }
+  else (category === 'gender') 
+    }
+  }
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
+  //Börjat ändra denna. Kolla så allt stämmer.
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -295,7 +330,7 @@ const filterCharacters = (keep) => {
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
     }
-  } else if (category === 'other') {
+  } else if (category === 'otherThanAccessories') {
    if (keep) {
     alert(
       `Yes, the person wears ${value}! Keep all people that wears ${value}`
@@ -306,6 +341,18 @@ const filterCharacters = (keep) => {
     )
   }
   } else {
+    if (keep) {
+      alert(
+        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+      )
+
+    } else {
+      alert(
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+      )
+      }
+          }
+
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
@@ -313,27 +360,25 @@ const filterCharacters = (keep) => {
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+	      `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
    )
-  }
-  }
+}
+}
+  
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+  
+  //Nedan har jag skrivit om, kolla om det stämmer.
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
+    }
 
   // Invoke a function to redraw the board with the remaining people.
-
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
@@ -355,6 +400,19 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+filterButtoon.addEventListener('click', checkQuestion)
+
+//Kolla om nedan kan stämma?
+Questions.addEventListener('change', selectQuestion)
+
+
+
+
+
+
+
+
+
 
 //Daniels lektion
 
@@ -510,3 +568,149 @@ kolla skillnad forEach & filter.
 
 Fokusera på foreach & filter. Men om man föredrar for functions loop är det OK.
 Filtret är en benefit. Rekommenderas för att slippa skriva sjukt mkt kod.*/
+
+//Daniels lektion 16/02
+
+/*
+
+Most used array method is the .map function.
+Similar to forEach.
+
+ex. for Each:
+
+const numbersArray = hardbracket1,2, 3harbracket;
+numbersArray.forEach(singleNumber) => (singleNumber += 1));
+console.log(numbersArray);
+
+with map:
+
+numbersArray.map((singleNumber) => singleNumber += 1));
+console.log(numbersArray);
+
+gör funktion av det (nu blir det skillnad, därför att map returnerar ny array som skapas.)
+const mappedArray = numbersArray.map((singleNumber) => singleNumber += 1));
+console.log(numbersArray);
+
+gör man function med forEach blir det undefined. ForEach gör baraen function på varje array element. den returnerar inte en ny array när man assign to varibael.
+
+skillnaden mellan de två är denna skillnad i funktionalitet. Detta frågas ofta om i intervjuer.
+Om man vill skapa en ny variabel.
+
+Om mna vill skapa en ny array baserad på en tidigare function använd map.
+
+Javascript bryr sig inte om vad man benämnervariablerna, men gör det descriptive.
+
+Map lägger till en siffra på varje specific siffra i arrayen. Lägger inte till på slutet.
+
+There is another method. Var försiktig, den tar bara tillbaka ett elemtn.
+.find()
+
+const foundNumber = numbersArray.find((singleNumber)=> singleNumber === 2);
+console.log(foundNumber);
+
+find FIRST number that is even in the array.
+
+const firstEvenNumber = numbersArray.find((singleNumber) => singleNumber % 2 === 0);
+console.log(firstEvenNumber);
+
+Hade 8 stått först i arrayen så hade svaret blivit 8. TÄNK PÅ att du får bara ett resultat med find och bara det som kommer först i arrayen.
+
+callback functions är anonyma funktioner, fungerar som om du har en function som är deklarerad någon annanstans.
+ex.
+const checkIfEven = (number) => {
+if (number % 2 === 0) {
+  return true 
+} else {
+  return false
+}
+
+ovan samma som detta nedan.
+  return number % 2 === 0;
+}
+
+const firstEvenNumber = numbersArray.find(checkIfEven);
+console.log("first even number", firstEvenNumber);
+
+//// dealing with named functions as arguments.
+const firstEvenNumber2 = numbersArray.find((item) => checkIfEven(item));
+console.log("second time first even number", firstEvenNumber2);
+
+Googla callback functions.
+
+()=>{} <- detta är redan en function och den är anonym.
+console.log("hello there!");
+}();
+Används nästan aldrig eftersom man enbart kan använda den en gång. Den kan inte bli acessed av någon annan och kan inte bli repeated. Frågas om i intervjuer.
+
+/////some (en väldigt nichad funktion)
+some - kollar om åtminstone ett element meets the condition.
+Skickar tillbaka true or false.
+(()=>{}
+const evenNumberPresent = numbersArray.some((item) => checkIfEven(item))
+if (evenNumberPresent) {
+  console.log("Yay, an even number is here!");
+ } else {
+console.log("Sorry, no even number here.");
+  }
+})();
+
+//// every function - checks if all elements in the array meets the condition.
+
+(()=>{}
+const allAreEven = numbersArray.every((item) => checkIfEven(item))
+if (allAreEven) {
+  console.log("Yay, all numbers are even!");
+ } else {
+console.log("Sorry, there is at least 1 non even number.");
+  }
+})();
+Ger error om åtminstone ett element är off.
+Använd för att kolla om every object har en specific property.
+
+////// reduce function
+svår att förstå för att den tar in andra argument in i den. Är bra för att lägga till sum of all elemnts. Bra till accumulation, matte
+const sum = numbersArray.reduce(hardbracketacc, singleNumberhardbracket => + singleNumber);
+// start first element is 1
+// acc i 0
+// add first element to acc
+// second element is 2
+// acc is 1 
+// add second element to acc
+// third element is 3
+// acc is 3 also
+// add third element to acc = 3 + 3
+console.log(sum);
+frågas om i intervjuer för att den är svårast.
+
+/////  sort - mestadels för siffror, skit i att göra det för strings.
+const secondNumbersArray = hardbracket2, 34, 56, 0, 4, 7, 4, 43hardbracket;
+
+//Ascending
+secondNumbersArray.sort((firstItem, secondItem) => firstItem - secondItem);
+console.log("sorted", secondNumbersArray);
+//descending
+secondNumbersArray.sort((firstItem, secondItem) => secondItem - firstItem);
+console.log("sorted",secondNumbersArray);
+
+sort ascending or descending. kan ge error, använd inte där man ska vara precis. T ex. räkna pengar.
+
+w3 school är bra att kolla för array methods och mdn web docs är också bra.
+
+lättast sätt att jämföra två personer är id, t ex namnen är unika.
+
+(() => {
+  console.log(person1.name === person2.name);
+ ))();
+}
+svar blir true.
+
+de visar i frågorna hur man gör för att jämföra innehållet i array och se om det finns ngt där. T edx om de har glasögon.
+
+frågar också om hur man lägger till audio när man går in på sidan och hur man lägger till audio när man vinner.
+
+Gör så katten jamar om man har rätt och fräser om man gissat på fel. Kolla i Daniels sista lektion så ser du hur han gör.
+
+installera prettier extension.
+
+Ta bort console.log när du deploy i netlify.
+ES Lint kan man lägga till som extension.*/

@@ -32,7 +32,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker','beard']
+    other: ['cigarette','beard']
   },
   {
     name: 'Jai',
@@ -89,7 +89,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['cigarette']
   },
   {
     name: 'Jean',
@@ -97,7 +97,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['cigarette']
   },
   {
     name: 'Jeane',
@@ -113,7 +113,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker','beard']
+    other: ['cigarette','beard']
   },
   {
     name: 'Jenni',
@@ -292,6 +292,7 @@ const filterCharacters = (keep) => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  
   if (category === 'hair') {
     if (keep) {
       alert(
@@ -353,16 +354,13 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  const result = window.confirm(`Are you sure`);
+  const result = window.confirm(`Are you sure?`);
 
   if (result) {
       checkMyGuess(personToConfirm);
   }
 };
 
-
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 
 

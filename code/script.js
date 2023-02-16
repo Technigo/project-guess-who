@@ -294,7 +294,6 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  let keep = false;
 
   if (category === "hair" || category === "eyes" || category === "gender") {
     keep = value === secret[category];
@@ -387,7 +386,7 @@ if (keep) {
       }
       
      // Invoke a function to redraw the board with the remaining people.
-     generateBoard() //BEHÖVER DENNA VARA HÄR OCKSÅ???
+     generateBoard() 
 }
 start()
 

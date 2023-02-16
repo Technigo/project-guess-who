@@ -2,6 +2,8 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const dropdownQuestion = document.getElementById("questions")
+const findOutButton = document.getElementById("filter")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -235,23 +237,24 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-  // Yu: to call the  generateBoard and charactersInPlay function 
+  // Answer: to call the generateBoard and setSecret function to show all the characters and set a secret character.
   generateBoard();
+  setSecret();
 }
 
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
+  const value = questions.options[questions.selectedIndex].value
+  
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+ 
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -262,10 +265,25 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    if(value === secret.hair || value === secret.eyes){
+      let keep = true
+      filterCharacters(keep)
+    }else{
+      keep = false 
+      filterCharacters()
+    }
 
   } else if (category === 'accessories' || category === 'other') {
-
+    if(value === secret.accessories || value === secret.other){
+      keep = true
+      filterCharacters(keep)
+    }else{
+      keep = false 
+      filterCharacters()
+    }
   }
+ 
+  //alert(category);
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -284,11 +302,51 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     // Similar to the one above
+  //   if(keep){
+  //     alert(
+  //       `Yes, the person has a ${value}! Keep all people that has ${value} `
+  //     )
+  //   }else{
+  //     alert(
+  //       `No, the people doesn't have a  ${value}! Remove all people that has a ${value}`
+  //     )
+  //   }
+
+
+  // }else if (category === 'eyes'){
+  //   if(keep){
+  //     alert(
+  //       `Yes, the person has ${value}! Keep all people that has ${value} eye color`
+  //     )
+  //   }else{
+  //     alert(
+  //       `No, the people doesn't have ${value}! Remove all people that has ${value} eye color`
+  //     )
+  //   }
+
+  // }else if (category === 'hair'){
+  //   if(keep){
+  //     alert(
+  //       `Yes, the person has ${value} hair color! Keep all people that has ${value} hair color`
+  //     )
+  //   }else{
+  //     alert(
+  //       `No, the people doesn't have ${value} hair color! Remove all people that has ${value} hair color`
+  //     )
+  //   }
+
+
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has yellow hair! Keep all people with yellow hair`
+      )
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesnt have yellow hair! Remove all people with yellow hair` 
+      )
     }
   }
 
@@ -329,3 +387,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOutButton.addEventListener("click", checkQuestion)
+dropdownQuestion.addEventListener("change", selectQuestion)

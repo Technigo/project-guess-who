@@ -15,7 +15,7 @@ const CHARACTERS = [
     hair: "brown",
     eyes: "blue",
     accessories: [],
-    other: "beard",
+    other: true,
   },
   {
     name: "Legolas",
@@ -23,7 +23,7 @@ const CHARACTERS = [
     hair: "blonde",
     eyes: "blue",
     accessories: [],
-    other: "",
+    other: false,
   },
   {
     name: "Boromir",
@@ -31,7 +31,7 @@ const CHARACTERS = [
     hair: "red",
     eyes: "brown",
     accessories: [],
-    other: "beard",
+    other: true,
   },
   {
     name: "Gimli",
@@ -39,7 +39,7 @@ const CHARACTERS = [
     hair: "red",
     eyes: "brown",
     accessories: ["weapon"],
-    other: "beard",
+    other: true,
   },
   {
     name: "Gandalf",
@@ -47,7 +47,7 @@ const CHARACTERS = [
     hair: "grey",
     eyes: "blue",
     accessories: ["staff", "hat"],
-    other: "beard",
+    other: true,
   },
   {
     name: "Elrond",
@@ -55,7 +55,7 @@ const CHARACTERS = [
     hair: "black",
     eyes: "blue",
     accessories: ["crown"],
-    other: "",
+    other: false,
   },
   {
     name: "Frodo",
@@ -63,7 +63,7 @@ const CHARACTERS = [
     hair: "brown",
     eyes: "blue",
     accessories: ["ring"],
-    other: "",
+    other: false,
   },
   {
     name: "Sam",
@@ -71,7 +71,7 @@ const CHARACTERS = [
     hair: "red",
     eyes: "brown",
     accessories: [],
-    other: "",
+    other: false,
   },
   {
     name: "Arwen",
@@ -79,7 +79,7 @@ const CHARACTERS = [
     hair: "black",
     eyes: "blue",
     accessories: ["evenstar"],
-    other: "",
+    other: false,
   },
   {
     name: "Merry",
@@ -87,7 +87,7 @@ const CHARACTERS = [
     hair: "blonde",
     eyes: "blue",
     accessories: [],
-    other: "",
+    other: false,
   },
   {
     name: "Pippin",
@@ -95,7 +95,7 @@ const CHARACTERS = [
     hair: "brown",
     eyes: "blue",
     accessories: [],
-    other: "",
+    other: false,
   },
   {
     name: "Theoden",
@@ -103,7 +103,7 @@ const CHARACTERS = [
     hair: "blonde",
     eyes: "blue",
     accessories: [],
-    other: "beard",
+    other: true,
   },
   {
     name: "Eowyn",
@@ -111,7 +111,7 @@ const CHARACTERS = [
     hair: "blonde",
     eyes: "blue",
     accessories: [],
-    other: "",
+    other: false,
   },
   {
     name: "Gollum",
@@ -119,7 +119,7 @@ const CHARACTERS = [
     hair: "barely any",
     eyes: "blue",
     accessories: ["ring"],
-    other: "",
+    other: false,
   },
   {
     name: "Bilbo",
@@ -127,7 +127,7 @@ const CHARACTERS = [
     hair: "grey",
     eyes: "blue",
     accessories: ["ring"],
-    other: "",
+    other: false,
   },
   {
     name: "Galadriel",
@@ -135,7 +135,7 @@ const CHARACTERS = [
     hair: "blonde",
     eyes: "blue",
     accessories: ["crown"],
-    other: "",
+    other: false,
   },
   {
     name: "Faramir",
@@ -143,68 +143,68 @@ const CHARACTERS = [
     hair: "red",
     eyes: "blue",
     accessories: [],
-    other: "beard",
+    other: true,
   },
-  {
-    name: "Jocelyn",
-    img: "images/jocelyn.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: ["glasses"],
-    other: ["jewelleries"],
-  },
-  {
-    name: "Jon",
-    img: "images/jon.svg",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Jordan",
-    img: "images/jordan.svg",
-    hair: "blonde",
-    eyes: "hidden",
-    accessories: ["sunglasses", "hat"],
-    other: ["jewelleries"],
-  },
-  {
-    name: "Josephine",
-    img: "images/josephine.svg",
-    hair: "different",
-    eyes: "brown",
-    accessories: [],
-    other: ["jewelleries"],
-  },
-  {
-    name: "Josh",
-    img: "images/josh.svg",
-    hair: "blonde",
-    eyes: "green",
-    accessories: [],
-    other: [],
-  },
-  {
-    name: "Jude",
-    img: "images/jude.svg",
-    hair: "black",
-    eyes: "green",
-    accessories: ["tie"],
-    other: ["beard"],
-  },
-  {
-    name: "Julie",
-    img: "images/julie.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: ["glasses", "hat"],
-    other: [],
-  },
+  // {
+  //   name: "Jocelyn",
+  //   img: "images/jocelyn.svg",
+  //   hair: "black",
+  //   eyes: "brown",
+  //   accessories: ["glasses"],
+  //   other: ["jewelleries"],
+  // },
+  // {
+  //   name: "Jon",
+  //   img: "images/jon.svg",
+  //   hair: "brown",
+  //   eyes: "green",
+  //   accessories: ["glasses"],
+  //   other: [],
+  // },
+  // {
+  //   name: "Jordan",
+  //   img: "images/jordan.svg",
+  //   hair: "blonde",
+  //   eyes: "hidden",
+  //   accessories: ["sunglasses", "hat"],
+  //   other: ["jewelleries"],
+  // },
+  // {
+  //   name: "Josephine",
+  //   img: "images/josephine.svg",
+  //   hair: "different",
+  //   eyes: "brown",
+  //   accessories: [],
+  //   other: ["jewelleries"],
+  // },
+  // {
+  //   name: "Josh",
+  //   img: "images/josh.svg",
+  //   hair: "blonde",
+  //   eyes: "green",
+  //   accessories: [],
+  //   other: [],
+  // },
+  // {
+  //   name: "Jude",
+  //   img: "images/jude.svg",
+  //   hair: "black",
+  //   eyes: "green",
+  //   accessories: ["tie"],
+  //   other: ["beard"],
+  // },
+  // {
+  //   name: "Julie",
+  //   img: "images/julie.svg",
+  //   hair: "black",
+  //   eyes: "brown",
+  //   accessories: ["glasses", "hat"],
+  //   other: [],
+  // },
 ];
 
 // Global variables
-let secretCharacter;
+let secret;
 let currentQuestion;
 let charactersInPlay;
 
@@ -225,147 +225,191 @@ const generateBoard = () => {
   });
 };
 
-// A person is randomly selected a person from the characters array and set as the value of the variable called secret
-const setsecretCharacter = () => {
-  secretCharacter =
+// Randomly select a person from the characters array and set as the value of the variable called secret
+const setSecret = () => {
+  secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
-// This function starts (and restarts) the game
+// This function to start (and restart) the game
 const start = () => {
-  // Generates a new board of characters and a new secret person is selected
+  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
+  // What else should happen when we start the game?
   generateBoard();
-  setsecretCharacter();
+  setSecret();
+  selectQuestion();
 };
 
 // Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
-  const value = questions.value; // This variable stores what option group (category) the question belongs to.
 
-  // Each question is related to category and values,
+  // This variable stores what option group (category) the question belongs to.
+  // We also need a variable that stores the actual value of the question we've selected.
+  const value = questions.value;
+
+  console.log(value);
   currentQuestion = {
-    category: category,
-    value: value,
+    category: category, // <-- Based on the optgroup
+    value: value, // <-- Comes from the selected option
   };
 };
+
+// Let the game move forward from the first alternative ('brown hair')
+questions.onchange = selectQuestion;
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  let keep = false;
-
-  // Invoking filterCharacters
-  if (category === "hair") {
-    keep = secretCharacter.hair === value;
-  } else if (category === "eyes") {
-    keep = secretCharacter.eyes === value;
+  let keep;
+  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+  // See if we should keep or remove people based on that
+  // Then invoke filterCharacters
+  if (category === "hair" || category === "eyes" || category === "other") {
+    console.log(category, value);
+    if (value === secret[category]) {
+      keep = true;
+    } else {
+      keep = false;
+    }
   } else if (category === "accessories") {
-    keep = secretCharacter.accessories.includes(value);
-  } else if (category === "other") {
-    keep = secretCharacter.other.includes(value);
+    console.log(category, value);
+    if (secret[category].includes(value)) {
+      keep = true;
+    } else {
+      keep = false;
+    }
   }
-  filterCharacters(keep); // Invokes filterCharacters
+  filterCharacters(keep);
 };
 
-// Filters the characters array and redraw the game board.
+// It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
 
-  // Show the correct alert message for different categories dependent if they match the value of the secret person
-
+  // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
-      alert(`Yes! The person has a ${value}! Keep everyone with a ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) =>
-        person[category].includes(value)
+      swal(
+        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
       );
     } else {
-      alert(
-        `No! The person does not have a ${value}! Remove everyone with a ${value}`
-      );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => !person[category].includes(value)
+      swal(
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
       );
     }
   } else if (category === "other") {
     if (keep) {
-      alert(`Yes! The person has a ${value}! Keep everyone with a ${value}`);
+      swal(
+        `Yes, the person is a ${value}! Keep all people that isn't a ${value}.`
+      );
+    } else {
+      swal(
+        `No, the person isn't a ${value}! Remove all people that is a ${value}.`
+      );
+    }
+  } else if (category === "eyes") {
+    if (keep) {
+      swal(
+        `Yes, the person has ${value} eyes! Keep all people that has ${value} eyes.`
+      );
+    } else {
+      swal(
+        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes.`
+      );
+    }
+  } else {
+    if (keep) {
+      swal(
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair.`
+      );
+    } else {
+      swal(
+        `No, the person doesnt have ${value} hair! Remove all people with ${value} hair.`
+      );
+    }
+  }
+
+  // Determine what is the category
+  // filter by category to keep or remove based on the keep variable.
+
+  // for hair and eyes:
+  if (category === "hair" || category === "eyes") {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+    } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
+    }
+
+    // for accessories:
+  } else if (category === "accessories") {
+    if (keep) {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
-    } else if (keep) {
     } else {
-      alert(
-        `No! The person does not have a ${value}! Remove all people with a ${value}`
-      );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
     }
-  }
-  if (category === "hair") {
+
+    //for other:
+  } else if (category === "other") {
     if (keep) {
-      alert(
-        `Yes! The person has ${value} hair! Keep everyone with ${value} hair.`
-      );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] === value
-      );
+      charactersInPlay = charactersInPlay.filter((person) => person[category]);
     } else {
-      alert(
-        `No! The person does not have ${value} hair! Remove everyone with ${value} hair.`
-      );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] !== value
-      );
+      charactersInPlay = charactersInPlay.filter((person) => !person[category]);
     }
-  }
-  if (category === "eyes") {
-    if (keep) {
-      alert(
-        `Yes! The person has ${value} eyes! Keep everyone with ${value} eyes.`
-      );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] === value
-      );
-    } else {
-      alert(
-        `No! The person does not have ${value} eyes! Remove everyone with ${value} eyes.`
-      );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => person[category] !== value
-      );
-    }
-  }
+  } // Invoke a function to redraw the board with the remaining people.
   generateBoard();
 };
 
-// Player has to confirm before guessing whom the secret person is
-const guess = (suspectCharacter) => {
-  const confirmGuess = confirm(`Are you sure you want to guess?`);
-  if (confirmGuess) checkMyGuess(suspectCharacter);
+// When clicking guess, the player first have to confirm that they want to make a guess.
+const guess = (personToConfirm) => {
+  // store the interaction from the player in a variable.
+  // remember the confirm() ?
+  let playerGuess = confirm("Are you sure you want to guess?");
+  // If the player wants to guess, invoke the checkMyGuess function.
+  if (playerGuess === true) {
+    checkMyGuess(personToConfirm);
+  } else {
+    swal("Okay! Keep on playing!");
+  }
 };
 
-// If you confirm, this function is invoked and different text is shown dependent of guess is right or wrong
-const checkMyGuess = (suspectCharacter) => {
-  if (suspectCharacter === secretCharacter.name) {
-    winOrLoseText.innerHTML = `Well done! The right person was ${secretCharacter.name} Congratulations!`;
+// If you confirm, this function is invoked
+const checkMyGuess = (personToCheck) => {
+  // 1. Check if the personToCheck is the same as the secret person's name
+  if (personToCheck === secret.name) {
+    // 2. Set a Message to show in the win or lose section accordingly
+    winOrLoseText.innerText = "Yay, you won! Wanna play again?";
   } else {
-    winOrLoseText.innerHTML = `Oh no, you lost... The right person was actually ${secretCharacter.name}.`;
+    swal(
+      `Oh no! The secret person wasnt ${personToCheck}. It was ${secret.name}.`
+    );
   }
+  // 3. Show the win or lose section
   winOrLose.style.display = "flex";
+
+  // 4. Hide the game board
+  board.style.display = "none";
 };
 
 // Invokes the start function when website is loaded
 start();
 
+// Reload after pressing playAgain button
+reload = () => {
+  window.location.reload();
+};
+
 // All the event listeners
 restartButton.addEventListener("click", start);
+questions.addEventListener("load", selectQuestion);
 findOutButton.addEventListener("click", checkQuestion);
-questions.addEventListener("change", selectQuestion);
-playAgainButton.addEventListener("click", () => {
-  start();
-  window.location.reload();
-});
+playAgainButton.addEventListener("click", reload);

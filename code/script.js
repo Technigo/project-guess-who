@@ -292,7 +292,7 @@ const filterCharacters = (keep) => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  
+
   if (category === 'hair') {
     if (keep) {
       alert(
@@ -301,7 +301,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
       alert(
-        `Sorry! The person doesn't has not ${value} hair!`
+        `Sorry! The person doesn't have ${value} hair!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }

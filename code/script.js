@@ -226,8 +226,9 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = CHARACTERS[4]; //Just to test if filterCharacters works as i want. Remove this value!
-  // charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  secret =
+    charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  // CHARACTERS[4]; //Just to test if filterCharacters works as i want. Remove this value!
   console.log(secret);
 };
 
@@ -250,11 +251,11 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
 
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.value;
+  const value = questions.options[questions.selectedIndex].value;
 
   //Object storing th category and question (value)
   currentQuestion = {
-    category: category,
+    category: category, //Cat from questions dropdown
     value: value, //Value from questions dropdown
   };
   console.log(currentQuestion); //prints the current Question
@@ -269,20 +270,30 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
-    if (category === "hair") {
-      if (value == secret.hair) filterCharacters(value); //should keep or not keep}
-      // else {
-      //   console.log("not same hair");
-      // }
-      if (category === "eyes") {
-        if (value == secret.eyes) console.log("same eyes");
-      }
-      // else {
-      //   console.log("not same eyes");
-      // }
-    } else if (category === "accessories" || category === "other") {
-      // filterCharacters(); // should keep or not keep
+    if (value === secret.hair || value === secret.eyes) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
     }
+  } else if (category === "accessories" || category === "other") {
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+      //Include: The includes() method determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+    // filterCharacters(); // should keep or not keep
+    // if (category === "hair") {
+    //   if (value === secret.hair) filterCharacters(value); //should keep or not keep}
+    //   // else {
+    //   //   console.log("not same hair");
+    //   // }
+    //   if (category === "eyes") {
+    //     if (value === secret.eyes) filterCharacters(value); //should keep or not keep}
+    //   }
+    // else {
+    //   console.log("not same eyes");
+    // }
   }
 };
 
@@ -340,11 +351,12 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} hair! Keep all people with ${value} hair`
       );
-    } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-      alert(
-        `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
-      );
+      // } else {
+      //   // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      //   alert(
+      //     `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
+      //   );
+      // }
     }
   }
 

@@ -7,7 +7,8 @@ const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
 
-// Array with all the characters, as objects
+// Array with all the characters, as 
+// Change array values for accessories and other to booleans?
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -234,8 +235,13 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  winOrLose.style.display = 'none'
+  board.style.display = 'flex'
+  setSecret()
+  generateBoard()
   // What else should happen when we start the game?
 }
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -268,6 +274,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -308,6 +315,7 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  const makeAGuess = confirm(`Are you really sure you want to guess on ${personToConfirm}?`)
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -326,3 +334,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('click', selectQuestion)

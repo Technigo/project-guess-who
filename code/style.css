@@ -72,8 +72,8 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border: 3px dashed #274e13;
+  border-radius: 10px;
   margin: 3px;
   display: flex;
   flex-direction: column;

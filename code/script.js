@@ -387,5 +387,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-findOutButton.addEventListener("click", checkQuestion)
 dropdownQuestion.addEventListener("change", selectQuestion)
+findOutButton.addEventListener("click", checkQuestion)
+

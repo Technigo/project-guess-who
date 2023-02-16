@@ -1,8 +1,12 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #ff59fc;
+  --secondary: #ffa6d7;
 }
+
+/* --primary: #a259ff;
+  --secondary: #b0a6ff; */
+
 
 body {
   display: flex;

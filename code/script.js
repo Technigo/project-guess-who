@@ -3,6 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
+const playAgain = document.getElementById('playAgain')
+/*const winOrLoseText = document.getElementById('winOrLoseText')
+const winOrLose = document.getElementById('winOrLose')*/
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -225,7 +228,7 @@ const generateBoard = () => {
 
 // **KLAR** Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]//Set a person in the array as the secret
   console.log(secret);
   //secret = charactersInPlay[0] **Sätter den hemliga personen till nr 1 i arrayen**
 }
@@ -233,9 +236,9 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS; //Reset characters, all are shown
-  winOrLose.style.display = 'none'; //Removes win or lose display
-  board.style.display = 'flex';//***EJ HELT SÄKER PÅ VAD DENNA GÖR ÄNNU */
+  charactersInPlay = CHARACTERS //Reset characters, all are shown
+  winOrLose.style.display = 'none' //Removes win or lose display
+  board.style.display = 'flex'//Shows the boardgame
   setSecret(); //Sets new secret person
   generateBoard(); //shows the gameboard
   // What else should happen when we start the game?
@@ -243,7 +246,7 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  const category = questions.options[questions.selectedIndex].parentNode.label //randomizes a secret person
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -353,14 +356,43 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  console.log("Hej hej!")
+  let userGuess = confirm(`Do you want to guess on ${personToConfirm}?`)
+
+  if (userGuess) {
+    checkMyGuess(personToConfirm)
+  }
+  else {
+    alert("Make more guesses if you want! :)")
+  }
+
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
+const checkMyGuess = (personToConfirm) => {
+console.log("nu är du i checkMyGuess-funktionen!")
+
+if (personToConfirm === secret.name){
+winOrLoseText.innerHTML = `Grattiiiis!! The right answer was ${secret.name}
+<audio autoplay>
+    <source src="ES_Applause.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+    </audio>`
+}
+
+else {
+winOrLoseText.innerHTML = `Du förlorade!! The right answer was ${secret.name}
+<audio autoplay>
+<source src="ES_sad-melody.mp3" type="audio/mp3">
+Your browser does not support the audio element.
+</audio>`
+
+}
+
+winOrLose.style.display = 'flex'
+board.style.display = 'none'
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -373,3 +405,4 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutBtn.addEventListener('click', checkQuestion)
+playAgain.addEventListener('click', start)

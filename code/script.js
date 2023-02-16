@@ -307,9 +307,15 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       );
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
       );
     }
   }
@@ -318,9 +324,15 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} hair! Keep all people with ${value} hair`
       );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
     } else {
       alert(
         `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
       );
     }
   }
@@ -339,26 +351,37 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} as a habit! Keep all people with ${value} as a habit`
       );
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
     } else {
       alert(
         `No, the person doesn't have ${value} as a habit! Remove all people with ${value} as a habit`
       );
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
     }
     // Similar to the one above
-  } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-      alert(
-        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
-      );
-      // } else {
-      //   // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-      //   alert(
-      //     `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
-      //   );
-      // }
-    }
   }
+  //else {
+  //   if (keep) {
+  //     // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+  //     alert(
+  //       `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+  //     );
+  //     charactersInPlay = charactersInPlay.filter(
+  //       (person) => person[category] === value
+  //     );
+  //     // } else {
+  //     //   // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+  //     //   alert(
+  //     //     `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
+  //     //   );
+  //     // }
+  //   }
+  // }
+  generateBoard();
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.

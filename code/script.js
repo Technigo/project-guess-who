@@ -251,6 +251,7 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   const value = questions.options[questions.selectedIndex].value;
+
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
@@ -264,6 +265,29 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+
+  if (category === 'hair' || category === 'eyes') {
+    if(secret[category].includes(value)) {
+        filterCharacters(true)
+    } else {
+        filterCharacters(false)
+    }
+
+  } else if (category === 'accessories' || category === 'other') {
+    if (secret[category].includes(value)) {
+        filterCharacters(true)
+    } else {
+        filterCharacters(false)
+    }
+  }
+}
+
+
+
+// It'll filter the characters array and redraw the game board.
+const filterCharacters = (keep) => {
+  const { category, value } = currentQuestion
+
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that

@@ -1,7 +1,29 @@
 /* Global css variables used for colors */
+.start-page {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;  
+  background-image: url("images/backgroundimg.jpg");
+}
+
+.start-page button {
+  height: 300px;
+  width: 700px;
+  line-height: 50px;
+  font-family: "Audiowide", sans-serif;
+  font-size: 35px;
+  border-radius: 50px;
+  color: #e52521;
+  border: #43B047 solid 10px;
+}
+
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #e52521;
+  --secondary: #43B047;
 }
 
 body {
@@ -9,6 +31,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-image: url("images/mmario.jpg");
 }
 
 h1 {
@@ -40,6 +63,7 @@ select {
   margin: 24px 0;
 }
 
+/* pratbubblan */
 .guess-who-icon {
   width: 126px;
 }
@@ -61,6 +85,7 @@ select {
 
 /****** CARD ******/
 .card {
+  background-color: rgb(255, 255, 255);
   width: 135px;
   height: 165px;
   overflow: hidden;
@@ -78,6 +103,10 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+}
+
+.card img {
+  height: 130px;
 }
 
 .card .guess {
@@ -160,12 +189,18 @@ button {
 }
 
 .win-or-lose {
+  margin: auto;
+  margin-top: 200px;
   display: flex;
+  height: 400px;
+  width: 600px;
+  background-color: #5cbe5f;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  border-radius: 50px;
 }
 
 .win-or-lose img {

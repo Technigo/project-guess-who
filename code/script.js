@@ -241,6 +241,7 @@ const start = () => {
   // Answer: to call the generateBoard and setSecret function to show all the characters and set a secret character.
   generateBoard();
   setSecret();
+  selectQuestion(); //fix bug
 }
 
 
@@ -261,6 +262,7 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  alert("checkquestion")
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -305,11 +307,11 @@ const filterCharacters = (keep) => {
     // Similar to the one above
     if (keep) {
       alert(
-        `Yes, the person has a ${value}! Keep all people that has ${value} `
+        `Yes, the person is a ${value}! Keep all people are ${value}s `
       )
     } else {
       alert(
-        `No, the people doesn't have a  ${value} habit! Remove all people that has a ${value} habit`
+        `No, the people isn't a ${value} ! Remove all people are ${value}s`
       )
     }
 
@@ -346,7 +348,7 @@ const filterCharacters = (keep) => {
    
     if (keep) {
       alert("keep hair")
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value) // keep
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)) // keep
 
     } else {
       alert(charactersInPlay)
@@ -374,11 +376,20 @@ const filterCharacters = (keep) => {
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-}
+  const a =  confirm("Confirm guess?")
+  
+ if(a){
 
+  checkMyGuess(personToConfirm);
+
+ }
+// If the player wants to guess, invoke the checkMyGuess function.
+ 
+}
 // If you confirm, this function is invoked
+
 const checkMyGuess = (personToCheck) => {
+  alert("go to next function")
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

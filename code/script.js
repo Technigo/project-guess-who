@@ -225,7 +225,6 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)] //charactersInPlay.length = all the characters in const CHARACTERS, not less and not more
-  console.log(secret)
 }
 
 // This function to start (and restart) the game
@@ -233,6 +232,9 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard(); //Calling generateBoard function when enter the site
+  setSecret(); //Calling setSecret function so that a random character gets chosen
+  console.log(secret); //<- to check if secret character is set
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -257,9 +259,9 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+      //something will happen
   } else if (category === 'accessories' || category === 'other') {
-
+      //something else will happen
   }
 }
 
@@ -321,7 +323,6 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
-setSecret()
 
 // All the event listeners
 restartButton.addEventListener('click', start)

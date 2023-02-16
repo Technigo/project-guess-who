@@ -22,7 +22,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['pirate']
   },
   {
     name: 'Jacques',
@@ -259,8 +259,7 @@ const selectQuestion = () => {
       category: 'other',
       value: value
     }
-  } 
-  
+  }   
 }
 
 
@@ -271,19 +270,20 @@ const checkQuestion = () => {
     if (value === secret.eyes) {
       filterCharacters(true);
     } else {
-      filterCharacters(false);
+      filterCharacters();
     }
   } else if (category === 'hair') {
     if (value === secret.hair) {
       filterCharacters(true);
     } else {
-      filterCharacters(false);
+      filterCharacters();
     }
-  } else if (category === 'accessories' || category === 'other') {
+  } 
+  else if (category === 'accessories' || category === 'other') {
     if (secret.accessories.includes(value) || secret.other.includes(value)) {
       filterCharacters(true);
     } else {
-      filterCharacters(false);
+      filterCharacters();
     }
   }
 }

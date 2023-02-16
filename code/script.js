@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -207,7 +208,7 @@ let charactersInPlay
 
 // Draw the game board
 const generateBoard = () => {
-  board.innerHTML = ''
+  board.innerHTML = '' // sets the inner HTML to an empty string when you re-start it, to start afresh
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
@@ -222,9 +223,11 @@ const generateBoard = () => {
   })
 }
 
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret); //to check that a new secret person has been selected //
 }
 
 // This function to start (and restart) the game
@@ -232,6 +235,12 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  winOrLose.style.display = 'none' // we dont want to show the win/lose screen here //
+  board.style.display = 'flex' // this shows the game board again //
+  setSecret() // this sets a new secret person  //
+  generateBoard() // draw the board with all the people //
+
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -239,27 +248,86 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  // We also need a variable that stores the actual value ('yellow' if hair colour, for example) of the question we've selected.
+  const value = questions.value // 
 
-  currentQuestion = {
+  if (category === 'hair color') {
+    currentQuestion = {
+      attribute: 'hair',
+      value: value,
+      category: category,
+    }
+  }
+
+else if (category === 'eyes'){
+   currentQuestion = {
+    attribute: 'eyes',
+    value: value,
     category: category,
-    // value: value
+  }
+}
+else if (category === 'accessories'){
+    currentQuestion = {
+      attribute: 'accessories',
+      value: value,
+      category: category,
+    }
+  }
+else if (category === 'other'){
+    currentQuestion = {
+      attribute: 'accessories',
+      value: value, //not sure what to use for this 
+      category: category,
+    }
+}
+else { // not sure why there is no category used for last one
+  currentQuestion = {
+    attribute: value,
+    value: true,
+    category: category,
   }
 }
 
+console.log("selectQuestion");// to check if it's running
+
+}
+
+selectQuestion(); // I added this to invoke the function
+
+console.log("filter-button-click"); // The Find Out(filter) button takes you to checkQuestion.
+
+
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  const { category, value } = currentQuestion.value === secret[currentQuestion.category.value] //need to fix this
+  const keep = currentQuestion.value === secret[currentQuestion.attribute] // THIS IS NEEDED
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+
+filterCharacters(keep); // NEED THIS TO SAY KEEP TO RECOGNISE WHAT NEEDS KEEPING
+//Not sure how this section makes a difference yet ... 
   if (category === 'hair' || category === 'eyes') {
-
-  } else if (category === 'accessories' || category === 'other') {
-
+    if (value ===secret[category]) {
+      filterCharacters(true);
+      }
+      else {
+        filterCharacters(false);
+      }
+    
   }
+  else if (category === 'accessories' || category === 'other') {
+      if (secret[category].includes(value)){
+      filterCharacters(true);    
+      }
+      else {
+        filterCharacters(false);
+      }
+  }
+
+  console.log("secret-compare");
+ 
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -269,20 +337,31 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wear ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    // Similar to the one above // My addition is below 
+    if (keep) {
+      alert(
+        `Yes, the person has ${value}! Keep all people that have a ${value}`
+      )
+  } else {
+    alert (
+      `No, the person doesn't have ${value}. Remove all people that have ${value}`
+    )
+  }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+    alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`)
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+    alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`)
     }
   }
 
@@ -320,6 +399,7 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
-
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion) // I added
+filterButton.addEventListener('click', checkQuestion) // The Find Out button will invoke the checkQuestion function 

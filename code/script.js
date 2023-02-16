@@ -1,6 +1,16 @@
+// for (let i = myArray.length - 1; i > 0; i++) {
+// if (i!= 1) {
+// console.log(myArray[i]);
+// }
+// }
+
+// filter to make a selection
+// foreach to modify or console log or display html for every character
+
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
+const filterButton = document.getElementById("restart");
 const restartButton = document.getElementById("restart");
 
 // Array with all the characters, as objects
@@ -201,9 +211,9 @@ const CHARACTERS = [
 ];
 
 // Global variables
-let secret;
-let currentQuestion;
-let charactersInPlay;
+let secret; //Will be the secret person object
+let currentQuestion; //Will be the current question object
+let charactersInPlay; //Will be an array of all people left in the game
 
 // Draw the game board
 const generateBoard = () => {
@@ -214,18 +224,23 @@ const generateBoard = () => {
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
+          <span>Guess on ${person.name}</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `;
   });
+  setSecret();
 };
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret =
-    charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  // Select a random index from the charactersInPlay array
+  const randomIndex = Math.floor(Math.random() * charactersInPlay.length);
+
+  // Set the value of secret to the character at the randomly selected index
+  secret = charactersInPlay[randomIndex];
+  selectQuestion();
 };
 
 // This function to start (and restart) the game
@@ -233,6 +248,7 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
+  generateBoard();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -241,11 +257,12 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  //Retrieve the value of the selected question option
+  const categoryValue = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
     category: category,
-    // value: value
+    categoryValue: categoryValue,
   };
 };
 
@@ -257,7 +274,9 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
+    //something will happen
   } else if (category === "accessories" || category === "other") {
+    //something else will happen
   }
 };
 
@@ -321,4 +340,6 @@ const checkMyGuess = (personToCheck) => {
 start();
 
 // All the event listeners
+questions.addEventListener("change", selectQuestion);
+filterButton.addEventListener("click", setSecret);
 restartButton.addEventListener("click", start);

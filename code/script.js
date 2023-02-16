@@ -3,6 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton= document.getElementById('filter')
+const winnerLooser= document.getElementById('winOrLose')
+const winnerLooserText = document.getElementById ('winOrLoseText')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -247,8 +250,7 @@ const generateBoard = () => {
 
 //Random selection of a charatcer
 const setSecret = () => {
-  secret = charactersInPlay[0]
-  //[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
 const selectQuestion = () => {
@@ -320,16 +322,16 @@ const filterCharacters = (keep) => {
 
 
 //Player have to confirm guess
-const guess = (choise) => {
-  const sendGuess = confirm (`Do you choose to guess on ${choise}?`)
+const guess = (confirmGuess) => {
+  let sendGuess = confirm (`Are you really really REALLY sure you want to set you guess to ${confirmGuess}?`)
 
   if (sendGuess) {
-    checkGuess(choise)
+    checkTheGuess(confirmGuess)
   }
 }
 //Confirming the guess will trigger
-const checkGuess = (choise) => {
-  if (choise === secret.name) {
+const checkTheGuess = (personToConfirm) => {
+  if (personToConfirm === secret.name) {
     winnerLooserText.innerHTML = `CONGRATULATIONS <br> - you did <span role="img"></span>` //Modifierad LOGO2
   } else {
     winnerLooserText.innerHTML = `Oh sorry! You didn´t <br> <span role="img"></span>` //LOGO2
@@ -339,67 +341,11 @@ const checkGuess = (choise) => {
 }
 
 
-
-
-//   // This variable stores what option group (category) the question belongs to.
-//   // We also need a variable that stores the actual value of the question we've selected.
-//   // 
-// }
-
-// // This function should be invoked when you click on 'Find Out' button.
-// const checkQuestion = () => {
-//   const { category, value } = currentQuestion
-
-//   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-//   // See if we should keep or remove people based on that
-//   // Then invoke filterCharacters
-//   if (category === 'hair' || category === 'eyes') {
-
-//   } else if (category === 'accessories' || category === 'other') {
-
-//   }
-// }
-
-
-//   // Determine what is the category
-//   // filter by category to keep or remove based on the keep variable.
-//   /* 
-//     for hair and eyes :
-//       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-//       or
-//       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-//     for accessories and other
-//       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-//       or
-//       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-//   */
-
-//   // Invoke a function to redraw the board with the remaining people.
-// }
-
-// // when clicking guess, the player first have to confirm that they want to make a guess.
-// const guess = (personToConfirm) => {
-//   // store the interaction from the player in a variable.
-//   // remember the confirm() ?
-//   // If the player wants to guess, invoke the checkMyGuess function.
-// }
-
-// // If you confirm, this function is invoked
-// const checkMyGuess = (personToCheck) => {
-//   // 1. Check if the personToCheck is the same as the secret person's name
-//   // 2. Set a Message to show in the win or lose section accordingly
-//   // 3. Show the win or lose section
-//   // 4. Hide the game board
-// }
-
-
-// // Invokes the start function when website is loaded
-
 //Start and restart game
 const play = () => {
+  board.style.display ='flex'
+  winnerLooser.style.display = 'none'
   charactersInPlay = CHARACTERS
-//   board.style.display ='flex'
   setSecret()
   generateBoard()
 }
@@ -411,3 +357,4 @@ questions.addEventListener('change', selectQuestion)
 restartButton.addEventListener('click', play)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
+playAgain.addEventListener ('click' , play)

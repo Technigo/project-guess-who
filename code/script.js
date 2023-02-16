@@ -5,6 +5,7 @@ const restartBtn = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const playAgainBtn = document.getElementById('playAgain')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -240,6 +241,8 @@ const start = () => {
   setSecret()
   // What else should happen when we start the game?
   selectQuestion()
+  winOrLose.style.display = 'none'
+  board.style.display = 'flex'
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -249,6 +252,7 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value;
 
+  // This changes the value of currentQuestion object
   currentQuestion = {
     category: category,
     value: value
@@ -277,30 +281,27 @@ const checkQuestion = () => {
   }
 }
 
-
 // Function to filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'hair' || category === 'eyes') {
+    if (keep) {
+    alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`)
+    } else {
+      alert(`No, the person doesn't have ${value} ${category}! Remove all peole with ${value} ${category}`)
+    }
+  } else if (category === 'accessories') {
     if (keep) {
       alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
     } else {
       alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
     }
-
-  } else if (category === 'other') {
+  } else {
     if (keep) {
       alert(`Yes, the person is a ${value}! Keep all that are ${value}s`)
     } else {
       alert(`No, the person isn't a ${value}! Remove all that aren't ${value}s`)
-    }
-
-  } else if (category === 'hair' || category === 'eyes') {
-    if (keep) {
-      alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`)
-    } else {
-      alert(`No, the person doesn't have ${value} ${category}! Remove all peole with ${value} ${category}`)
     }
   }
 
@@ -316,22 +317,32 @@ const filterCharacters = (keep) => {
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
+const guess = (theGuess) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
-  const playerGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`)
+  const playersGuess = confirm(`So you're guessing on ${theGuess} - are you sure?`);
   // If the player wants to guess, invoke the checkMyGuess function.
   if (playersGuess) {
-    checkMyGuess(personToConfirm)
+    checkMyGuess(theGuess)
   }
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+const checkMyGuess = (theGuess) => {
+ // Show the win or lose section
+ winOrLose.style.display = 'flex';
+ // Hide the game board
+ board.style.display = 'none';
+ // Check if the personToCheck is the same as the secret person's name
+ if (theGuess === secret.name) {
+  console.log('you win')
+  // Set a Message to show in the win or lose section accordingly
+  winOrLoseText.innerHTML = `Ding ding ding! We got a winner!🥳`;
+ } else {
+  console.log('you loose')
+  winOrLoseText.innerHTML = `Oh no.. that's not correct!`;
+ }
+
 }
 
 // Invokes the start function when website is loaded
@@ -343,3 +354,5 @@ restartBtn.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 // When clicking on the 'Find out' button, invoke the checkQuestion 
 findOutBtn.addEventListener('click', checkQuestion);
+//
+playAgainBtn.addEventListener('click', start)

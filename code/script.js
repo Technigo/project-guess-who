@@ -6,6 +6,8 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
 const questionCounter = document.getElementById('questionsAsked')
+const playAgain = document.getElementById('playAgain')
+
 
 ////////////////////////////ARRAY WITH CARACTERS OBJECTS///////////////////////////////
 
@@ -240,6 +242,8 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  winOrLose.style.display = 'none'
+  board.style.display = 'flex'
   generateBoard()
   setSecret()
 }
@@ -367,6 +371,14 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  let userGuess = confirm(`Do you want to make a guess ${personToConfirm}?`)
+
+  if (userGuess) {
+    checkMyGuess(personToConfirm)
+  }
+  else {
+    alert("Make mor guesses if you want!")
+  }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -376,6 +388,13 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+if (personToCheck === secret.name) {
+  winOrLoseText.innerHTML = `Sorry its not ${personToCheck} the correct answer is ${secret.name}!`
+} else {
+  winOrLoseText.innerHTML = `Sorry its not ${personToCheck} the correct answer is ${secret.name}!`
+  winOrLose.style.display = 'flex'
+  board.style.display = 'none'
+}
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -393,6 +412,8 @@ start()
   // All the event listeners
 
 questions.addEventListener('change', selectQuestion)
-findOutBtn.addEventListener('click', checkQuestion) 
+findOutBtn.addEventListener('click', checkQuestion)
+restartButton.addEventListener('click', start)
+playAgain.addEventListener('click', start)
 
 

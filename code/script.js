@@ -271,11 +271,16 @@ const selectQuestion = () => {
   }
 };
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function should be invoked when you click on 'Find Out' button. Denna function assigns resultatet av jämförelsen mellan "currentQuestion.value" och "secret[currentQuestion.attribute]" till variabeln "keep". ALltså de gubbar vi vill behålla baserat på val. 
 const checkQuestion = () => {
-  const { category, value } = currentQuestion;
+  const keep = currentQuestion.value === secret
+  [currentQuestion.attribute];
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+//Then, the function calls another function called filterCharacters, passing in the value of keep as an argument.
+  filterCharacters(keep);
+}
+
+ // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
@@ -288,6 +293,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
+  
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {

@@ -82,6 +82,11 @@ select {
   font-weight: 700;
 }
 
+.card img {
+  width: 95%;
+  height: 100%;
+}
+
 .card .guess {
   display: none;
   flex-direction: column;

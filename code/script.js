@@ -201,9 +201,9 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+let secret //Will be the secret person object
+let currentQuestion //Will be the current questions object
+let charactersInPlay //Will be an array of all the people left in the game 
 
 // Draw the game board
 const generateBoard = () => {
@@ -224,7 +224,8 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)] //charactersInPlay.length = all the characters in const CHARACTERS, not less and not more
+  console.log(secret)
 }
 
 // This function to start (and restart) the game
@@ -320,6 +321,7 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
+setSecret()
 
 // All the event listeners
 restartButton.addEventListener('click', start)

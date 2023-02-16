@@ -231,7 +231,7 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[0]   //[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[10]   //[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
 // This function to start (and restart) the game
@@ -270,7 +270,7 @@ const checkQuestion = () => {
     }
   } else if (category === 'accessories' || category === 'other') {
     if (secret[category].includes(value)) {
-      filterCharacters(true); //Keep everyone with some kind of accessorie or other
+      filterCharacters(true); //Keep everyone with some kind of accessories or other
     } else {
       filterCharacters(); //Remove all with acc or other, I really hope it will look into all array index
     }
@@ -310,33 +310,28 @@ const filterCharacters = (keep) => {
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
 }
-// Determine what is the category
-// filter by category to keep or remove based on the keep variable.
-/* 
-  for hair and eyes :
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-  for accessories and other
-    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    or
-    charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-*/
-
-
-
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  //Here I store the interaction from the player in a variable
+  let playerGuess = confirm(`Do you wish to guess on ${personToConfirm}?`);
+  // If the player wants to guess, invoke the checkMyGuess function. 
+  //I pass playerGuess as param, if the player confirmed yes in the pop-up playerGuess = true and the codeblock runs
+  if (playerGuess){
+    checkMyGuess(personToConfirm);
+  }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
+  if (personToCheck === secret.name) {
+    winOrLoseText.innerHTML= `Wihuuuu that is correct, the secret person is ${personToCheck}`
+  } else {
+    winOrLoseText.innerHTML= `Sorry, but your guess ${personToCheck} is not correct`
+  }
+  winOrLose.style.display= 'flex'
+  board.style.display = 'none'
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board

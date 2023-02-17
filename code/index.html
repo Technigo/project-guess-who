@@ -6,9 +6,11 @@
     <title>Project Name</title>
     <link rel="stylesheet" href="style.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;400&display=swap">
+    rel="stylesheet">
+  
   </head>
   <body>
     <aside class="question-section">
@@ -20,37 +22,55 @@
         alt="Guess Who"
       />
 
-      <h1>Does the person have</h1>
+      <h1>Is the person</h1>
 
-      <select title="questions" id="questions">
-        <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <option value="black">black hair</option>
-          <option value="orange">orange hair</option>
-          <option value="grey">grey hair</option>
-          <option value="hidden">hidden hair</option>
-          <option value="white">white hair</option>
-          <option value="purple">purple hair</option>
-        <!-- Add the rest of hair colors as options  -->
+      <select title="questions" class= "questions" id="questions">
+        <optgroup label="vices" class= "optgroup">
+          <option value="a nose picker">a nose picker</option>
+          <option value="a binge drinker">a binge drinker</option>
+          <option value="a freeloader">a freeloader </option>
+          <option value="a litterer">a litterer</option>
+          <option value="laughing loudly at everything">laughing loudly at everything</option>
+          <option value="a toilet seat terrorist">leaving the toilet seat up</option>
+          <option value="talking in baby voice">talking in baby voice</option>
+          <option value="a whiner">a whiner</option>
+        <!-- Add the rest of vices colors as options  -->
         </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <option value="blue">blue eyes</option>
-          <option value="brown">brown eyes</option>
-          <option value="green">green eyes</option>
+        <optgroup label="odors">
+          <option value="reeking of fart">reeking of fart</option>
+          <option value="reeking of poo">reeking of poo</option>
+          <option value="having a really bad breath">having a really bad breath</option>
+          <option value="reeking of sweat">reeking of sweat</option>
+          <option value="reeking of burp">reeking of burp</option>
+          <option value="reeking of loo">reeking of loo</option>
+          <option value="reeking of rotten eggs">reeking of rotten eggs</option>
+          
+          
+
 
           <!-- Add the rest of eye colors as options  -->
         </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <option value="hat">hat</option>
-          <option value="jewellery">jewellery</option>
+        <optgroup label="traits">
+          <option value="a paranoid hipster">paranoid</option>
+          <option value="a greedy grandma">greedy</option>
+          <option value="a narcissistic aspiring model">narcissistic</option>
+          <option value="a crazy frog">crazy</option>
+          <option value="an arrogant a-hole">arrogant</option>
+          <option value="a pessimistic smock">pessimistic</option>
+          <option value="an egocentric douchebag">egocentric</option>
+          <option value="a vindictive dork">vindictive</option>
+          <option value="a lazy lunatic">lazy</option>
 
-          <!-- Add the other accessory option here. (hat)  -->
+
+
+
+
+
+          <!-- Add the other accessory option here. (greedy)  -->
         </optgroup>
         <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+          <option value="a bad friend">a bad friend</option>
+          <option value="a cheater">a cheater</option>
         </optgroup>
       </select>
 

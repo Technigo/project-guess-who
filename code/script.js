@@ -13,194 +13,194 @@ const CHARACTERS = [
   {
     name: 'Jabala',
     img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    vices: 'a toilet seat terrorist',
+    odors: 'having a really bad breath',
+    traits: ['a paranoid hipster', 'a greedy grandma'],
     other: []
   },
   {
     name: 'Jack',
     img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
+    vices: 'a toilet seat terrorist',
+    odors: 'reeking of poo',
+    traits: ['a greedy grandma'],
     other: []
   },
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    vices: 'laughing loudly at everything',
+    odors: 'reeking of poo',
+    traits: ['a greedy grandma'],
+    other: ['a bad friend']
   },
   {
     name: 'Jai',
     img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
+    vices: 'a freeloader',
+    odors: 'nose picker',
+    traits: ['a crazy frog'],
     other: []
   },
   {
     name: 'Jake',
     img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
+    vices: 'a binge drinker',
+    odors: 'reeking of sweat',
+    traits: ['a paranoid hipster'],
     other: []
   },
   {
     name: 'James',
     img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    vices: 'a nose picker',
+    odors: 'reeking of sweat',
+    traits: ['a vindictive dork'],
     other: []
   },
   {
     name: 'Jana',
     img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses', 'jewellery'],
+    vices: 'a freeloader',
+    odors: 'having a really bad breath',
+    traits: ['a paranoid hipster', 'a narcissistic aspiring model'],
     other: []
   },
   {
     name: 'Jane',
     img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
+    vices: 'a binge drinker',
+    odors: 'reeking of burp',
+    traits: ['an arrogant a-hole'],
     other: []
   },
   {
     name: 'Jaqueline',
     img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'jewellery'],
+    vices: 'a litterer',
+    odors: 'reeking of sweat',
+    traits: ['an egocentric douchebag', 'a narcissistic aspiring model'],
     other: []
   },
 
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    vices: 'a whiner',
+    odors: 'reeking of loo',
+    traits: ['a crazy frog'],
+    other: ['a bad friend']
   },
   {
     name: 'Jean',
     img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    vices: 'a nose picker',
+    odors: 'reeking of poo',
+    traits: ['a pessimistic smock', 'a greedy grandma'],
+    other: ['a bad friend']
   },
   {
     name: 'Jeane',
     img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: ['freckles']
+    vices: 'a nose picker',
+    odors: 'reeking of sweat',
+    traits: ['a vindictive dork'],
+    other: ['a cheater']
   },
   {
     name: 'Jed',
     img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    vices: 'a litterer',
+    odors: 'reeking of sweat',
+    traits: ['a paranoid hipster', 'a greedy grandma'],
+    other: ['a bad friend']
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat', 'jewellery'],
+    vices: 'talking in baby voice',
+    odors: 'reeking of burp',
+    traits: ['a greedy grandma', 'a pessimistic smock'],
     other: []
   },
   {
     name: 'Jeri',
     img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
+    vices: 'a litterer',
+    odors: 'reeking of sweat',
+    traits: ['a paranoid hipster'],
     other: []
   },
   {
     name: 'Jerry',
     img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
+    vices: 'a toilet seat terrorist',
+    odors: 'reeking of poo',
+    traits: ['a greedy grandma'],
     other: []
   },
   {
     name: 'Jess',
     img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
+    vices: 'a freeloader',
+    odors: 'reeking of poo',
+    traits: ['an arrogant a-hole', 'a lazy lunatic'],
     other: []
   },
   {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'jewellery'],
+    vices: 'a freeloader',
+    odors: 'reeking of rotten eggs',
+    traits: ['a lazy lunatic', 'a narcissistic aspiring model'],
     other: []
   },
   {
     name: 'Jon',
     img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    vices: 'a nose picker',
+    odors: 'reeking of sweat',
+    traits: ['a lazy lunatic'],
     other: []
   },
   {
     name: 'Jordan',
     img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat', 'jewellery'],
+    vices: 'a binge drinker',
+    odors: 'reeking of rotten eggs',
+    traits: ['a paranoid hipster', 'a greedy grandma', 'a narcissistic aspiring model'],
     other: []
   },
   {
     name: 'Josephine',
     img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: ['jewellery'],
+    vices: 'laughing loudly at everything',
+    odors: 'reeking of reeking of loo',
+    traits: ['a narcissistic aspiring model', 'an egocentric douchebag'],
     other: []
   },
   {
     name: 'Josh',
     img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
+    vices: 'a binge drinker',
+    odors: 'reeking of sweat',
+    traits: ['a lazy lunatic'],
     other: []
   },
   {
     name: 'Jude',
     img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
+    vices: 'a freeloader',
+    odors: 'reeking of sweat',
+    traits: ['an arrogant a-hole'],
     other: []
   },
   {
     name: 'Julie',
     img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    vices: 'a freeloader',
+    odors: 'reeking of fart',
+    traits: ['a paranoid hipster', 'a greedy grandma'],
     other: []
   },
 ]
@@ -255,28 +255,28 @@ const selectQuestion = () => {
   // const value =
 
 
-  if (category === 'hair') {
+  if (category === 'vices') {
     currentQuestion = {
-      attribute: 'hair', 
+      attribute: 'vices', 
       value: value, 
       category: category, 
       }
-  } else if (category === 'eyes') {
+  } else if (category === 'odors') {
       currentQuestion = {
-        attribute: 'eyes', 
+        attribute: 'odors', 
         value: value, 
         category: category,
       }
-  } else if (category === 'accessories'){
+  } else if (category === 'traits'){
       currentQuestion = {
-        attribute: value, 
-        value: true, 
+        attribute: 'traits', 
+        value: value, 
         category: category,
   } } else {
     currentQuestion = {
       attribute: value, 
       value: true, 
-      category: category, 
+      category: category,
     }
    }
   }
@@ -290,63 +290,63 @@ const checkQuestion = () => {
   //keep = currentQuestion.value === secret[currentQuestion.attribute]
 
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+  // Compare the currentQuestion details with the secret person details in a different manner based on category (vices/odors or traits/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
 
-  if (category === 'hair'|| category === 'eyes') {
+  if (category === 'vices'|| category === 'odors') {
     if (secret[category] === value) {
-      filterCharacters(true); //This one keeps everyone who has that eye- or hair color. 
+      filterCharacters(true); //This one keeps everyone who has that vice or odor. 
     }
     else {
-    filterCharacters(); //This one removes everyone who has that eye- or hair color. 
+    filterCharacters(false); //This one removes everyone who has that vice or odor.. 
   }
-} else if (category === 'accessories' || category === 'other') {
+} else if (category === 'traits' || category === 'other') {
     if (secret[category].includes(value)) {
-      filterCharacters(true); //Keeps everyone with a specific accessory or other. 
+      filterCharacters(true); //Keeps everyone with a specific personality trait or other. 
     }
     else {
-    filterCharacters(); 
+    filterCharacters(false); 
   }
 }
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { attribute, category, value } = currentQuestion
+  const { attribute, category, value } = currentQuestion; 
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'traits') {
      if (keep) {
       alert(
-        `Yes, the person wears ${attribute}! Keep all people that wear ${attribute}.`); 
+        `Yes, the person is definitely ${value}! Keep all people who are ${value}s.`); 
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)); 
  
     } else {
       alert(
-        `No, the person doesn't wear ${attribute}! Remove all people that wear ${attribute}.`)
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))   
+        `No, the person is not ${value}, thank god! Remove all people who are ${value}s.`)
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) ;  
     }
   } else if (category === 'other') {
       if (keep) {
       alert(
-        `Yes, the person is a ${attribute} and has no plan to quit. Keep all people that are ${attribute}s.`)
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+        `Yes, the person is ${attribute} and if you haven't already, you should break up. Keep all people who are ${attribute}s.`)
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)); 
 
       } else {
       alert(
-        `No, the person has made better life choices and isn't a ${attribute} anymore. Remove all people who aren't ${attribute}s.`)
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+        `No, the person has made better life choices and isn't ${attribute} anymore. Remove all people who aren't ${attribute}s.`)
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)); 
 
       }
   } else {
       if (keep) {
       alert(
-        `Yes, the person has ${value} ${category} ! Keep all people with ${value} ${category}".`)
-        charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+        `Yes, this person is ${value}. Annoying, right? Keep all people who are ${value}".`)
+        charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value); 
     } else {
       alert (
-        `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`)
-        charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+        `No, this person isn't ${value}, at least not to our knowledge! Remove all people who claim that they're not ${value}.`)
+        charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value); 
 
    } 
   }
@@ -368,27 +368,28 @@ const guess = (personToConfirm) => {
    // remember the confirm() ?
   
    // If the player wants to guess, invoke the checkMyGuess function.
+   // If you confirm, this function is invoked
    if (playersGuess) {
     checkMyGuess (personToConfirm); 
    }
 }
 
-// If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
+  const checkMyGuess = (personToCheck) => {
 
+// 1. Check if the personToCheck is the same as the secret person's name
+// 2. Set a Message to show in the win or lose section accordingly  
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `You're absolutely right! ${personToCheck} is the one!`; 
   }
   else {
     winOrLoseText.innerHTML = `Gaaah! Wrong guess! It wasn't ${personToCheck}.`; 
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
- 
-  // 4. Hide the game board
+  
 }
-winOrLose.style.display = 'flex'
-board.style.display = 'none'
+// 3. Show the win or lose section
+ winOrLose.style.display = 'flex'
+
+// 4. Hide the game board
+ board.style.display = 'none'
 }
 
 

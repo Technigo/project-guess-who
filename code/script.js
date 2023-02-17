@@ -1,10 +1,11 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
-const questions = document.getElementById('questions')
+const choices = document.getElementById('choices')
 const restartButton = document.getElementById('restart')
-
+const filterButton = document.getElementById("filter")
+const playAgainButton = document.getElementById("play-again")
 // Array with all the characters, as objects
-const CHARACTERS = [
+const people = [
   {
     name: 'Jabala',
     img: 'images/jabala.svg',
@@ -201,14 +202,14 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret  //Secret person object
-let currentQuestion  //Current question object
-let charactersInPlay //Array with people left in the game
+let secretPerson  //Secret person object
+let currentChoice  //Current question object
+let peopleInPlay //Array with people left in the game
 
-// Draw the game board
+// STEP 2 -----. board is generated and the function is called from the start()
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  peopleInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
@@ -222,54 +223,63 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// STEP 3 ------- Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log("secret person is set")
+  secretPerson = peopleInPlay[Math.floor(Math.random() * peopleInPlay.length)]
+  console.log(secretPerson) //now we see who is the secretPerson is
 }
 
-// This function to start (and restart) the game
+// STEP 1 -------This function starts and (and restarts) the game beacuse it is called outside the scope at the bottom of the page start()
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  
- 
-  // What else should happen when we start the game?
+  peopleInPlay = people
+  restartButton.style.display = 'none';
+  generateBoard() //Board is filled with all the cards
+  setSecret() //Secret person is selected
+  selectedQuestion()//functions that stores values from the selected options in the drop down.
 }
+ 
 
-// setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+// STEP 4 ------ the selectedQuestion function gives properties to the currentChioce object
+const selectedQuestion = () => {
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-   const value = questions.value //for example color of hair if category is hair
-
-  currentQuestion = { //This is an object, 
-    //that we declared in the beginning and it is global. Here we will store the properties value and category.
+  const category = choices.options[choices.selectedIndex].parentNode.label//stores the category fron the dropdown
+  console.log(category)
+  const value = choices.options[choices.selectedIndex].value //stores the value from dropdown, for example color of hair if category is hair
+  console.log(value) 
+  currentChoice = { //values are being stored in currentChoice that is a global variable (outside the scope) to be reused further along the code
     category: category,
-    value: value
+    value: value,
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// STEP 5 ---- This function should be invoked when you click on 'Find Out' button. Eventlistner is added at the bottom
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  const { category, value } = currentChoice //fetches category and value from currentChioce in the previous step
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+// Compare the currentChoice details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    if (value === secretPerson[category]) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secretPerson[category].includes(value)) {
+  }
+  filterCharacters(true); {
+  }  {
+    filterCharacters (false)
+  }
   }
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
+  const { category, value } = currentChoice
+  // Show the correct alert message for different categories. 
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -281,6 +291,15 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
+    if (keep) {
+      alert(
+        `Yes, this person has a ${value}, remove all others`
+      )
+    } else {
+      alert(
+        `No, this person does not have ${value}, remove all smokers`
+      )
+    }
     // Similar to the one above
   } else {
     if (keep) {
@@ -289,6 +308,11 @@ const filterCharacters = (keep) => {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
+
+
+
+
+
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
@@ -324,8 +348,13 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
-generateBoard() //Board is filled with all the cards
-setSecret() //Secret person i s selected
+
+
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+filterButton.addEventListener("click", checkQuestion)//STEP 5 ----- an eventlistner connected to the html button that starts the function filterCharaters
+choices.addEventListener('change', selectedQuestion)
+
+
+

@@ -8,6 +8,9 @@ const playAgainButton = document.getElementById('playAgain')
 const filterButton = document.getElementById('filter')
 const guessCounter = document.getElementById('guess-counter')
 const timerCounter = document.getElementById('timer')
+const sendNameBtn = document.getElementById('submitName')
+const nameInputField = document.getElementById('nameInputField')
+const nameForm = document.getElementById('nameForm')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -209,6 +212,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let userName
 const winTrack = new Audio('./images/woohoo.mp3')
   const winSound = () => {
    winTrack.play()
@@ -373,21 +377,17 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  if (personToCheck === secret.name) {
-      winOrLoseText.innerHTML = `Congratulations! ${personToCheck} was the correct!<br>Guesses: ${counter} `
-      winSound()
-    } else {
-      winOrLoseText.innerHTML = `Darn! ${personToCheck} was not the right pick, better luck next time!`     
-      loseSound()  
-    }
+    if (personToCheck === secret.name) {
+        winOrLoseText.innerHTML = `Congratulations  ${userName?userName:""} ${personToCheck} was the correct!<br>Guesses: ${counter} `
+        winSound()
+      } else {
+        winOrLoseText.innerHTML = `Darn! ${personToCheck} was not the right pick, better luck next time ${userName?userName:""}!`     
+        loseSound()  
+      }
     winOrLose.style.display = "flex"
     board.style.display = "none"
     winOrLoseText.style.display = "block"
   }
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 
 // Invokes the start function when website is loaded
 start()
@@ -397,3 +397,8 @@ restartButton.addEventListener('click', restart)
 playAgainButton.addEventListener('click', restart)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
+sendNameBtn.addEventListener('click', (event) => {
+event.preventDefault()
+userName = nameInputField.value
+nameForm.style.display = 'none'
+})

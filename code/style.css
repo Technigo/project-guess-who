@@ -1,6 +1,6 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #0d55f0;
+  --primary: #4778e0;
   --secondary: #000105;
 }
 
@@ -128,6 +128,10 @@ button {
   padding: 8px 16px;
 }
 
+.smallButton {
+  padding: 7px 15px
+}
+
 .outlined-button {
   background-color: transparent;
   color: var(--primary);
@@ -136,12 +140,14 @@ button {
   margin-top: 5%;
 }
 
+.smallbutton
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
   color: white;
 }
 
+.smallButton:hover,
 .filled-button:hover {
   background-color: white;
   border-color: white;

@@ -16,33 +16,37 @@
         src="images/guess-who-bubble.png"
         alt="bubble saying guess who?"
       />
-      <h1>Does the person have</h1>
+      <h1>Does the dog have</h1>
       <select id="questions" title="questions">
-        <optgroup label="hair">
-          <option value="black">Black hair</option>
-          <option value="brown">Brown hair</option>
-          <option value="yellow">Yellow hair</option>
-          <option value="grey">Grey hair</option>
-          <option value="orange">Orange hair</option>
-          <option value="purple">Purple hair</option>
-          <option value="white">White hair</option>
-          <option value="hidden">Hidden hair</option>
+        <option value="" selected disabled>Please choose...</option>
+        <optgroup label="color">
+          <option value="bw">Black and white fur</option>
+          <option value="black">Black fur</option>
+          <option value="white">White fur</option>
+          <option value="cream">Cream/tan fur</option>
+          <option value="tricolor">Tricolor fur</option>
+          <option value="brown">Brown fur</option>
+          <option value="dotted">Dotted fur</option>
         </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">Hidden eyes</option>
-          <option value="blue">Blue eyes</option>
-          <option value="brown">Brown eyes</option>
-          <option value="green">Green eyes</option>
+        <optgroup label="fur">
+          <option value="long">Long fur</option>
+          <option value="short">Short fur</option>
         </optgroup>
         <optgroup label="accessories">
-          <option value="glasses">Glasses</option>
+          <option value="collar">Collar</option>
           <option value="hat">Hat</option>
+          <option value="armor">Armor</option>
+          <option value="jewlery">Jewlery</option>
+          <option value="suit">Business attire</option>
         </optgroup>
         <optgroup label="other">
-          <option value="smoker">Smoker</option>
+          <option value="royal">Royal ancestry</option>
+          <option value="metalfan">An interest in metal music</option>
         </optgroup>
       </select>
       <button class="filled-button" id="filter">Find out!</button>
+      <div class="questions-counter" id="questionsCounter"></div>
+      <div id="game-guesses" class="game-guesses"><span>Guesses: <span id="guesses">0</span></span></div>
     </aside>
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>

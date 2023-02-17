@@ -116,7 +116,7 @@ const CHARACTERS = [
   {
     name: "Gollum",
     img: "images/gollum.png",
-    hair: "barely",
+    hair: "barely any",
     eyes: "blue",
     accessories: ["ring"],
     other: false,

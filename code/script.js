@@ -16,7 +16,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['smiling']
   },
   {
     name: 'Jack',
@@ -29,7 +29,7 @@ const CHARACTERS = [
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
-    hair: 'grey',
+    hair: 'white',
     eyes: 'blue',
     accessories: ['hat'],
     other: ['smoker']
@@ -40,7 +40,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['smiling']
   },
   {
     name: 'Jake',
@@ -48,7 +48,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['smiling']
   },
   {
     name: 'James',
@@ -64,7 +64,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: ['smiling']
   },
   {
     name: 'Jane',
@@ -105,7 +105,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['smiling']
   },
   {
     name: 'Jed',
@@ -137,7 +137,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['smiling']
   },
   {
     name: 'Jess',
@@ -145,7 +145,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: ['smiling']
   },
   {
     name: 'Jocelyn',
@@ -161,7 +161,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['smiling']
   },
   {
     name: 'Jordan',
@@ -169,7 +169,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['smiling']
   },
   {
     name: 'Josephine',
@@ -177,7 +177,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['smiling']
   },
   {
     name: 'Josh',
@@ -185,7 +185,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['smiling']
   },
   {
     name: 'Jude',
@@ -248,7 +248,7 @@ console.log("The secret person is", secret.name);
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label   // This variable stores what option group (category) the question belongs to.
-  const value = questions.options.option[questions.selectedIndex].value; //This variable stores the value (value!) of the question in the dropdown
+  const value = questions.options[questions.selectedIndex].value; //This variable stores the value (value!) of the question in the dropdown
 
   // We also need a variable that stores the actual value of the question we've selected.
   currentQuestion = {
@@ -266,9 +266,21 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    if (secret[category] === value) {
+      keep = true
+      filterCharacters(true);
+    } else {
+      keep = false
+      filterCharacters(false);
+    }
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[category].includes(value)) {
+      keep = true
+      filterCharacters(true);
+    } else {
+      keep = false
+      filterCharacters(false);
+    }
   }
 }
 
@@ -333,5 +345,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-questions.addEventListener('change', selectQuestion)
-
+questions.addEventListener('change', selectQuestion) 
+filterButton.addEventListener('click', checkQuestion) //invoking checQuestion to filter with the Find out button

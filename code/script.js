@@ -6,6 +6,7 @@ const fillterButton = document.getElementById('filter')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const winOrLose = document.getElementById('winOrLose')
 const playAgainButton = document.getElementById('playAgain')
+const myAudio = document.getElementById('myAudio')
 
 
 // Array with all the characters, as objects
@@ -209,6 +210,7 @@ const CHARACTERS = [
 let secret // this is the secret person object
 let currentQuestion // this is current question object
 let charactersInPlay  // array of all people left in the game after filtering
+let myMusic
 
 // Draw the game board
 const generateBoard = () => {
@@ -250,10 +252,10 @@ const checkMyGuess = (suspect) => {
   // 2. Set a Message to show in the win or lose section accordingly
   if (suspect === secret.name){
     winOrLoseText.innerHTML = `
-    Congrats, ${suspect} was a corect person you were loking for!`
+    Congrats, ${suspect} was a corect person you were loking for! 😉`
   } else {
     winOrLoseText.innerHTML = `
-    To bad, ${suspect} was not the right person!`
+    👎 To bad, ${suspect} was not the right person!  👎`
   } 
   // 3. Show the win or lose section
   winOrLose.style.display = "flex";
@@ -275,7 +277,7 @@ const selectQuestion = () => {
     value: value,
   }
 }
-//console.log(selectQuestion);
+
 
 // This function should be invoked when you click on 'Find Out' button.
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
@@ -309,24 +311,24 @@ const filterCharacters = (keep) => {
     if (keep) { // if true
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `🎩Yes, the person wears ${value}! Keep all people that wears ${value}👓`
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `🎩No, the person doesn't wear ${value}! Remove all people that wears ${value}👓`
       )
     }
   } else if (category === 'other') {
     if (keep){
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
-        `Yes, the person is ${value}! Keep all people that are ${value}`
+        ` 🚬 🚬 🚬Yes, the person is ${value}! Keep all people that are ${value}`
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       alert(
-        `No, the person is not ${value}! Remove all people that are ${value}`
+        `⭐⭐⭐No, the person is not ${value}! Remove all people that are ${value}⭐⭐⭐`
       )
     }
   } else if (category === 'hair') {
@@ -345,12 +347,12 @@ const filterCharacters = (keep) => {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       alert(
-        `Yes, that person has ${value} eyes. Keep everyone that has ${value} eyes.`
+        `👀👀👀Yes, that person has ${value} eyes. Keep everyone that has ${value} eyes.`
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       alert(
-        `No, that person does not have ${value} eyes. Remove all without ${value} eyes.`
+        `👀👀👀No, that person does not have ${value} eyes. Remove all without ${value} eyes.`
       )
     }
   }

@@ -2,6 +2,10 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOut = document.getElementById('filter')
+const playAgain = document.getElementById('playAgain')
+//const winOrLose = document.getElementById('winOrLose')
+//const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -266,7 +270,7 @@ const checkQuestion = () => {
   } else if (category === 'accessories' || category === 'other') {
     keep = secret[category].includes(value);
   }
-  console.log('This is the comparaison:' + value === secret[category])
+  //console.log('This is the comparaison:' + value === secret[category])
 
   filterCharacters(keep)
 }
@@ -276,7 +280,7 @@ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
-    if (keep) {
+    if (keep) { //keep value is a boolean so we can use it in the if statement 
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
@@ -347,22 +351,36 @@ const filterCharacters = (keep) => {
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
+  let playerGuess = confirm(`Do you want to guess on ${personToConfirm}?`) // true or false
   // If the player wants to guess, invoke the checkMyGuess function.
+  if (playerGuess) {
+    checkMyGuess(personToConfirm)
+  } else {
+    alert("You can continue to guess!")
+  }
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
+const checkMyGuess = (personToConfirm) => { 
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
+  if (personToConfirm === secret.name) {
+    winOrLoseText.innerHTML = `YAY! ⭐️ You guessed on ${personToConfirm} and it was correct! The correct answer was ${secret.name}!`
+  } else {
+    winOrLoseText.innerHTML = `Sorry, it's not ${personToConfirm}. The correct answer was ${secret.name}!`
+  }
   // 3. Show the win or lose section
+  winOrLose.style.display = 'flex'
   // 4. Hide the game board
+  board.style.display = 'none'
+
 }
 
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start) // when the user clicks on play again button
-restartButton.addEventListener('click', start, setInterval) // when the user clicks on the restart button
+restartButton.addEventListener('click', start) // when the user clicks on restart button
 questions.addEventListener('change', selectQuestion) // when the user selects the question in the drop down list
 findOut.addEventListener('click', checkQuestion) // when the user clicks on the find out button
+playAgain.addEventListener('click', start) //when the user clicks on play again button

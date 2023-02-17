@@ -17,8 +17,14 @@ h1 {
   font-weight: 600;
   line-height: 40px;
   margin: 10px 0;
-  color: #ff69b4;
+  color: purple;
   margin-bottom: 5px;
+}
+
+.focustext {
+  font-size: 32px;
+  color: #ff69b4;
+  font-weight: 800;
 }
 
 h2 {
@@ -32,7 +38,7 @@ h2 {
 }
 
 @keyframes gradient_text {
-  0% {color: #ba55d3 ;}
+  5% {color: #ba55d3 ;}
   50% {color: #ff69b4;}
   100% {color: purple;}
 }
@@ -41,7 +47,6 @@ h2 {
   width: 30%;
   min-height: 100vh;
   background-color: pink;
-  /*var(--secondary);*/
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -55,7 +60,6 @@ select {
   font-size: 22px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: purple;
-  /*var(--secondary);*/
   width: 100%;
   margin: 24px 0;
 }
@@ -64,6 +68,17 @@ select {
   width: 126px;
   /*align-self: flex-end;*/
   margin-bottom: 50px;
+  border: 8px solid;
+  border-radius: 45px;
+  animation-name: gradient_border;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes gradient_border {
+  5% {color: #ba55d3 ;}
+  50% {color: #ff69b4;}
+  100% {color: purple;}
 }
 
 .board-wrapper {
@@ -158,7 +173,7 @@ button {
   background-color: transparent;
   color: var(--primary);
   margin-bottom: 40px;
-  /*align-self: flex-end;*/
+  align-self: flex-end;
 }
 
 .filled-button {

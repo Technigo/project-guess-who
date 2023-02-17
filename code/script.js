@@ -305,8 +305,6 @@ const filterCharacters = (keep) => {
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       );
     }
-
-    //Den här function ska vi själva slutföra:
   } else if (category === "other") {
     // Similar to the one above
   } else {

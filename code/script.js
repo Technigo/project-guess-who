@@ -12,7 +12,7 @@ const questionCounter = document.getElementById('questionsAsked')
 const playAgain = document.getElementById('playAgain')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
-const guesses = document.querySelector('.guesses');
+const guesses = document.querySelector('.guesses-counter');
 
 
 ////////////////////////////CHARACTERS OBJECTS///////////////////////////////
@@ -227,6 +227,7 @@ let charactersInPlay // This is an array that is the same as CHARACTERS when the
 
 const generateBoard = () => { // Here this function is created and called.
   board.innerHTML = ''// Every time we start the game this code makes the board fresh
+  guesses.innerHTML = '0' // Every time we start the game this code makes the guesscounter go to 0
   charactersInPlay.forEach((person) => { // The forEach loops trough all objects and shows the cards
     board.innerHTML += `
       <div class="card">
@@ -240,11 +241,20 @@ const generateBoard = () => { // Here this function is created and called.
     `
   })
 }
-//////////////////////////////////SOUND/////////////////////////////////////////////////
+//////////////////////////////////SOUNDS/////////////////////////////////////////////////
+
+  //SOUND 1: Plays cardflip-sound every time the "new" board is presented
 
 const cardFlipTrack = new Audio('./images/flipcard.mp3');
 const makesound = () => {
       cardFlipTrack.play();
+};
+
+  //SOUND 2: Plays applaus-sound when the player wins
+
+const applausTrack = new Audio('./images/applaus.mp3');
+const makesound2 = () => {
+      applausTrack.play();
 };
 
 ////////////////////////////THIS RANDOMLY SELECT A SECRET PERSON/////////////////////////
@@ -256,7 +266,11 @@ const setSecret = () => { // The function is created and called. The global vari
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+////////////////////////////THIS IS THE GUESS-COUNTER/////////////////////////////////////
+
 const increaseGuesses = () => guesses.innerHTML++;
+
+  // This function will be called and adds 1 (++) every time playes guesses
 
 ////////////////////////////THIS IS THE START AND RESTART FUNCTION//////////////////////
 
@@ -266,7 +280,7 @@ const start = () => { // The function is created and then
   board.style.display = 'flex' // This is helps the display be more responsive in say mobiles
   generateBoard() // Make the board visible
   setSecret() // Calls and selects the secret person.
-  cardFlipTrack.play();
+  cardFlipTrack.play(); // Evokes the flipsound
 }
 
 ///////////////////////THIS IS SETTING THE currentQuestion IN THE DROPDOWN/////////////
@@ -298,10 +312,13 @@ const checkQuestion = () => {
   } else if (category === 'accessories' || category === 'other') {
     keep = secret[category].includes(value);
   }
-  increaseGuesses();
-
+    
   // Then invoke filterCharacters. This is why we want to filter the characters array and redraw the game board with the "new" array.
   filterCharacters(keep); // (holds the Boolean value True). The  value goes trough the IF statement and stops at True. 
+  increaseGuesses(); // Increase number off guesses
+  cardFlipTrack.play(); // Evokes the flipsound
+
+
 }
 
 ////////////////////////////FILTER////////////////////////////////////////////
@@ -397,8 +414,9 @@ const guess = (personToConfirm) => { // This is linked in the board and the card
 
 const checkMyGuess = (personToCheck) => { // Here we bring in the stored interation/value (personToCheck is just a name could be banana).
 if (personToCheck === secret.name) { // This compares if the players guess (personeToCheck) is the same as the persons name in the object array then show this message.
-  winOrLoseText.innerHTML = `🔥 YES!! The correct answer is ${secret.name}! 🔥` // This shows the win or loose page. Secret is a global variable that we declared in the global scopes and can therfore be used here..
+  winOrLoseText.innerHTML = `🔥 YES!! The correct answer is ${secret.name}!` // This shows the win or loose page. Secret is a global variable that we declared in the global scopes and can therfore be used here..
   winOrLose.style.display = 'flex'
+  applausTrack.play();
 } else {
   winOrLoseText.innerHTML = `Sorry its not ${personToCheck} the correct answer is ${secret.name}!`
   winOrLose.style.display = 'flex'

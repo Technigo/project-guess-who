@@ -18,7 +18,7 @@ const playAgain = document.getElementById('playAgain')
 const CHARACTERS = [
   {
     name: 'Jabala',
-    img: 'images/jabala.svg',
+    img: 'images/jabala-andreasaxelssontechnigo.png',
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
@@ -26,7 +26,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jack',
-    img: 'images/jack.svg',
+    img: 'images/jack-andreasaxelssontechnigo.png',
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
@@ -34,7 +34,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jacques',
-    img: 'images/jacques.svg',
+    img: 'images/jacques-andreasaxelssontechnigo.png',
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
@@ -42,7 +42,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jai',
-    img: 'images/jai.svg',
+    img: 'images/jai-andreasaxelssontechnigo.png',
     hair: 'black',
     eyes: 'brown',
     accessories: [],
@@ -50,7 +50,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jake',
-    img: 'images/jake.svg',
+    img: 'images/jake-andreasaxelssontechnigo.png',
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
@@ -58,7 +58,7 @@ const CHARACTERS = [
   },
   {
     name: 'James',
-    img: 'images/james.svg',
+    img: 'images/james-andreasaxelssontechnigo.png',
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
@@ -66,7 +66,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jana',
-    img: 'images/jana.svg',
+    img: 'images/jana-andreasaxelssontechnigo.png',
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
@@ -74,7 +74,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jane',
-    img: 'images/jane.svg',
+    img: 'images/jane-andreasaxelssontechnigo.png',
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
@@ -82,7 +82,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
+    img: 'images/jaqueline-andreasaxelssontechnigo.png',
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
@@ -91,7 +91,7 @@ const CHARACTERS = [
 
   {
     name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
+    img: 'images/jazebelle-andreasaxelssontechnigo.png',
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
@@ -99,7 +99,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jean',
-    img: 'images/jean.svg',
+    img: 'images/jean-andreasaxelssontechnigo.png',
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
@@ -107,7 +107,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jeane',
-    img: 'images/jeane.svg',
+    img: 'images/jeane-andreasaxelssontechnigo.png',
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
@@ -115,7 +115,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jed',
-    img: 'images/jed.svg',
+    img: 'images/jed-andreasaxelssontechnigo.png',
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
@@ -123,7 +123,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jenni',
-    img: 'images/jenni.svg',
+    img: 'images/jenni-andreasaxelssontechnigo.png',
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],
@@ -131,7 +131,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jeri',
-    img: 'images/jeri.svg',
+    img: 'images/jeri-andreasaxelssontechnigo.png',
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
@@ -139,7 +139,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jerry',
-    img: 'images/jerry.svg',
+    img: 'images/jerry-andreasaxelssontechnigo.png',
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
@@ -147,7 +147,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jess',
-    img: 'images/jess.svg',
+    img: 'images/jess-andreasaxelssontechnigo.png',
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
@@ -155,7 +155,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
+    img: 'images/jocelyn-andreasaxelssontechnigo.png',
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
@@ -163,7 +163,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jon',
-    img: 'images/jon.svg',
+    img: 'images/jon-andreasaxelssontechnigo.png',
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
@@ -171,7 +171,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jordan',
-    img: 'images/jordan.svg',
+    img: 'images/jordan-andreasaxelssontechnigo.png',
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
@@ -179,7 +179,7 @@ const CHARACTERS = [
   },
   {
     name: 'Josephine',
-    img: 'images/josephine.svg',
+    img: 'images/josephine-andreasaxelssontechnigo.png',
     hair: 'grey',
     eyes: 'brown',
     accessories: [],
@@ -187,7 +187,7 @@ const CHARACTERS = [
   },
   {
     name: 'Josh',
-    img: 'images/josh.svg',
+    img: 'images/josh-andreasaxelssontechnigo.png',
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
@@ -195,7 +195,7 @@ const CHARACTERS = [
   },
   {
     name: 'Jude',
-    img: 'images/jude.svg',
+    img: 'images/jude-andreasaxelssontechnigo.png',
     hair: 'black',
     eyes: 'green',
     accessories: [],
@@ -203,7 +203,7 @@ const CHARACTERS = [
   },
   {
     name: 'Julie',
-    img: 'images/julie.svg',
+    img: 'images/julie-andreasaxelssontechnigo.png',
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
@@ -236,6 +236,12 @@ const generateBoard = () => { // Here this function is created and called.
     `
   })
 }
+//////////////////////////////////SOUND/////////////////////////////////////////////////
+
+const cardFlipTrack = new Audio('./assets/flipcard.mp3');
+const makesound = () => {
+      cardFlipTrack.play();
+};
 
 ////////////////////////////THIS RANDOMLY SELECT A SECRET PERSON/////////////////////////
  

@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #ffa500;
+  --secondary: #4d8ccc	;
 }
 
 body {
@@ -22,12 +22,17 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
   display: flex;
   flex-direction: column;
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  background: url("./images/pexels-karolina-grabowska-541208.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
 }
 
 select {
@@ -73,11 +78,18 @@ select {
   justify-content: space-between;
 }
 
+.card img{
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
 .card p {
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 10px;
   font-weight: 700;
+  position: absolute;
 }
 
 .card .guess {

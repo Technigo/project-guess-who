@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const playAgainButton = document.getElementById('playAgainButton')
 
 // Array with all the characters in the game, as objects
 const CHARACTERS = [
@@ -316,26 +317,36 @@ const filterCharacters = (keep) => {
 };
 
 
-/*
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-}
+  const confirmGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`)
+  if (confirmGuess === true) {
+  checkMyGuess(personToConfirm) //Should probably be invoked here?
+  }
+};
+
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-}
-*/
+  if (personToCheck === secret.name) {
+  winOrLose.style.display = 'flex';
+  board.style.display = 'none';
+  winOrLose.innerHTML += `
+        <h1>YOU WIN! ${personToCheck} was the secret person</h1>
+    `;
+  } else {
+    winOrLose.style.display = 'flex'
+    board.style.display = 'none'
+    winOrLose.innerHTML += `
+        <h1>You lost! ${personToCheck} was not the secret person, it was ${secret.name}!</h1>
+      `;
+  }
+};
+
 
 const start = () => {
   charactersInPlay = CHARACTERS // reset characters to the initial array
-  winOrLoose.style.display = 'none' // don't show the win/lose screen
+  winOrLose.style.display = 'none' // don't show the win/lose screen
   board.style.display = 'flex' // show the game board again
   setSecret() // set a new secret person
   generateBoard() // draw the board with all the people
@@ -350,3 +361,7 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener("click", start)
+
+
+

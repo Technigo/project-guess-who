@@ -147,8 +147,8 @@ button {
   color: var(--primary);
 }
 
-/****** WIN OR LOoSE SECTION ******/
-.win-or-loose-wrapper {
+/****** WIN OR LOSE SECTION ******/
+.win-or-lose-wrapper {
   display: none;
   align-items: center;
   justify-content: center;
@@ -161,7 +161,7 @@ button {
   height: 100vh;
 }
 
-.win-or-loose {
+.win-or-lose {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -170,12 +170,16 @@ button {
   text-align: center;
 }
 
-.win-or-loose img {
+.win-or-lose img {
   align-self: flex-start;
   margin-left: 15%;
 }
 
-.win-or-loose h1 {
+.win-or-lose h1 {
+  margin-bottom: 32px;
+}
+
+.win-or-lose h2 {
   margin-bottom: 32px;
 }
 

@@ -286,11 +286,11 @@ const filterCharacters = (keep) => {
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person is a ${value}! Keep everyone that is a ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person is not a ${value}! Remove everyone that is not a ${value}`
       )
     }
   } else {
@@ -302,9 +302,19 @@ const filterCharacters = (keep) => {
       alert(
         `No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}`
       )
-    }
+    } 
   }
 
+  if (category === 'hair' || category === 'eyes'){ 
+    if (keep) {charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    } else {charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)}
+
+  }
+  else if (category === 'accessories' || category === 'other') {
+    if (keep) { charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    } else {charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))}
+
+  }
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   /* 
@@ -320,6 +330,7 @@ const filterCharacters = (keep) => {
   */
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard(charactersInPlay)
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

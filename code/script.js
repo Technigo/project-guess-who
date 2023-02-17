@@ -6,7 +6,8 @@ const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgain = document.getElementById('playAgain')
-
+let counterDisplayElem = document.querySelector('.counter-display');
+let winOrLoseContainer = document.getElementById('winOrLoseContainer')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -208,6 +209,12 @@ const CHARACTERS = [
 let secret //Secret person object
 let currentQuestion // The current question object
 let charactersInPlay //The people that are left in the game
+let hour = 0;
+let minute = 0;
+let second = 0;
+let millisecond = 0;
+
+let cron;
 
 // Draw the game board
 const generateBoard = () => {
@@ -215,16 +222,34 @@ const generateBoard = () => {
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
-        <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+        <div class="inner-card">
+          <div class="card-front">
+            <p>${person.name}</p>
+            <img src=${person.img} alt=${person.name}>
+          </div>
+          <div class="guess">
+            <span>Guess on ${person.name}?</span>
+            <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          </div>
         </div>
       </div>
     `
-  })
+})
+/* const card = document.querySelectorAll(".card")
+const flipCard = document.querySelectorAll(".card-front")
+  card.forEach((cardOver => cardOver.addEventListener('mouseover', () => 
+    document.querySelectorAll(".card").style.transform = "rotateY(180deg)";
+  ))) */
 }
+
+let guessCounter = 0;
+
+
+function updateDisplay() {
+  counterDisplayElem.innerHTML = guessCounter;
+};
+
+updateDisplay(); 
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
@@ -238,11 +263,14 @@ const start = () => {
 
   generateBoard();  //Loads the board of characters
   setSecret();  //Generates a new secret person on start
+  filterButton.disabled = true;
+  filterButton.style.opacity = "0.5"
   console.log("The secret person is", secret.name);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
+  filterButton.disabled = false;
   const category = questions.options[questions.selectedIndex].parentNode.label// This variable stores what option group (category) the question belongs to.
   const value = questions.options[questions.selectedIndex].value; // This variable stores the value of the question from the dropdown.
   
@@ -335,25 +363,81 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-
+    board.innerHTML = '';
+    winOrLose.style.display = "block";
+    let secretPersonImg = `<img class="cardFinal" src=${secret.img} alt=${secret.name}>`;
+    winOrLoseContainer.insertAdjacentHTML("afterBegin", secretPersonImg);
    if (personToCheck === secret.name) {
-    winOrLose.style.display = "block";
      winOrLoseText.innerText = `Wohoo that's correct! You Win!`
+    /* secretPersonImg.innerHTML = `<img src=${secret.img} alt=${secret.name}>` */
   } else {
-    winOrLose.style.display = "block";
     winOrLoseText.innerText = `Oh no! Your guess is wrong! The correct answer is ${secret.name}`
+    /* secretPersonImg.innerHTML = `<img src=${secret.img} alt=${secret.name}>` */
   }
+}
+
+const startTimer = () => {
+  pause();
+  cron = setInterval(() => { timer(); }, 10);
+}
+
+const pause = () => {
+  clearInterval(cron);
+}
+
+const reset = () => {
+  minute = 0;
+  second = 0;
+  /* millisecond = 0; */
+  document.getElementById('minute').innerText = '00';
+  document.getElementById('second').innerText = '00';
+  /*   document.getElementById('millisecond').innerText = '00'; */
+}
+
+const timer = () => {
+  if ((millisecond += 10) == 1000) {
+    millisecond = 0;
+    second++;
+  }
+  if (second == 60) {
+    second = 0;
+    minute++;
+  }
+  if (minute == 60) {
+    minute = 0;
+    hour++;
+  }
+
+  document.getElementById('minute').innerText = returnData(minute);
+  document.getElementById('second').innerText = returnData(second);
+}
+
+const returnData = (input) => {
+  return input >= 10 ? input : `0${input}`
 }
 
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start) 
-questions.addEventListener('change', selectQuestion)
+restartButton.addEventListener('click', (event) => { 
+start()
+pause();
+reset();
+});
+questions.addEventListener('change', () => {
+  selectQuestion();
+  filterButton.style.opacity = "1.0"
+})
 filterButton.addEventListener('click', checkQuestion)
 playAgain.addEventListener("click", (event) => {
   start();
+  pause();
+  reset();
   winOrLose.style.display = "none";
 });
-
+filterButton.addEventListener("click", () => {
+  guessCounter += 1;
+  updateDisplay();
+  startTimer();
+});

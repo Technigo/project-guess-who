@@ -11,13 +11,13 @@
     />
   </head>
   <body>
-    <aside class="question-section">
-      <button 
+    <aside class="question-section" id="aside-section">
+        <button 
         type="button" 
         id="restart" 
         class="outlined-button">
         RESTART
-      </button>
+      </button> 
       <img
         class="guess-who-icon"
         src="images/guess-who-bubble.png"
@@ -28,7 +28,6 @@
 
       <select title="questions" id="questions">
         <optgroup label="hair">
-          <option value="" selected disabled>👇 Guess...</option>
           <option value="black">black hair</option>
           <option value="brown">brown hair</option>
           <option value="grey">grey hair</option>
@@ -57,6 +56,15 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <section>
+        <h3 class="counter-display">(..)</h3>
+      </section>
+      <form name="form_main">
+  <div>
+
+    
+    <span id="minute">00</span>:<span id="second">00</span>
+  </div>    
     </aside>
 
     <section class="board-wrapper">
@@ -64,13 +72,14 @@
     </section>
 
     <section id="winOrLose" class="win-or-lose-wrapper">
-      <div class="win-or-lose">
-        <img
+      <div class="win-or-lose" id="winOrLoseContainer">
+      <!--   <img
           class="guess-who-icon"
           src="images/guess-who-bubble.png"
           alt="Guess who image"
-        />
+        /> -->
         <h1 id="winOrLoseText"></h1>
+    <!--     <div id="secret-person-img"></div> -->
         <button 
           type="button" 
           id="playAgain" 

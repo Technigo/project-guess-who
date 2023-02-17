@@ -250,7 +250,7 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label;
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].value;
+  const value = questions.value;
 
   // This changes the value of currentQuestion object
   currentQuestion = {
@@ -354,5 +354,5 @@ restartBtn.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 // When clicking on the 'Find out' button, invoke the checkQuestion 
 findOutBtn.addEventListener('click', checkQuestion);
-//
+// When clicking on the 'Play Again' button, restart the game
 playAgainBtn.addEventListener('click', start)

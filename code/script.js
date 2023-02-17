@@ -208,6 +208,10 @@ let secret
 let currentQuestion
 let charactersInPlay
 
+// Counter to keep track of how many guesses the player does. 
+let btncounter = document.querySelector('#filter')
+let counter = 0
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -236,8 +240,8 @@ const setSecret = () => {
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
 const selectQuestion = () => {
-  const value = questions.value
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  const value = questions.value //referring to the value in the optgroups in the index-file
+  const category = questions.options[questions.selectedIndex].parentNode.label 
 
   if (category === 'hair') {
     currentQuestion = {
@@ -266,20 +270,15 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion; 
-  if (category === 'eyes') {
-    if (value === secret.eyes) {
+
+  if (category === 'eyes' || category === 'hair') {
+    if (value === secret.eyes || value === secret.hair) {
       filterCharacters(true);
     } else {
       filterCharacters();
-    }
-  } else if (category === 'hair') {
-    if (value === secret.hair) {
-      filterCharacters(true);
-    } else {
-      filterCharacters();
-    }
-  } 
-  else if (category === 'accessories' || category === 'other') {
+    }  } 
+
+  else {
     if (secret.accessories.includes(value) || secret.other.includes(value)) {
       filterCharacters(true);
     } else {
@@ -291,12 +290,6 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-
-  /* if (category === 'hair' || category === 'eyes') {
-
-  } else if (category === 'accessories' || category === 'other') {
-
-  } */
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -338,24 +331,9 @@ const filterCharacters = (keep) => {
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
-
-  
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   
-    // for hair and eyes :
-  /*  if (category === 'hair', 'eyes', 'accessories', 'other') {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-    }  else {
-     charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      } */
-  //  for accessories and other
-/* if (category === 'accessories', 'other') {
-    charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
-    } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-    } */
-
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
 } 
@@ -393,11 +371,10 @@ const checkMyGuess = (personToCheck) => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  winOrLose.style.display = 'none'
-  board.style.display = 'flex'
+  winOrLose.style.display = 'none' 
+  board.style.display = 'flex' 
   setSecret()
   generateBoard()
-  // What else should happen when we start the game?
 }
 
 
@@ -411,3 +388,9 @@ restartButton.addEventListener('click', start)
 playAgainButton.addEventListener('click', start)
 filterButton.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
+
+// Event listener for the counter
+btncounter.addEventListener('click', function () {
+  counter ++
+  document.querySelector("#result").innerHTML = counter
+})

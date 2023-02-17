@@ -6,6 +6,7 @@ const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutBtn = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText");
+const card = document.querySelector(".card");
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -203,6 +204,14 @@ const CHARACTERS = [
   },
 ];
 
+// audio
+// const audio = (url) => {
+const sound = new Audio(
+  "/project-guess-who/code/images/Card-flip-sound-effect.mp3"
+);
+
+// };
+
 // Global variables
 let secret;
 let currentQuestion;
@@ -309,6 +318,8 @@ const start = () => {
   setSecret();
   CategoryOptions();
   createCategories();
+
+  console.log(board.children);
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -408,3 +419,9 @@ start();
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutBtn.addEventListener("click", checkQuestion);
+
+for (let i = 0; i < board.children.length; i++) {
+  board.children[i].addEventListener("mouseenter", () => {
+    sound.play();
+  });
+}

@@ -1,14 +1,19 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  /* --primary: #a259ff;
+  --secondary: #b0a6ff; */
+  /* --primary: #ffe9c9; */
+  --primary: #aa6c4b;
+  --secondary: #fa8128;
+  /* --secondary: #da9875; */
 }
 
 body {
+  background-color: #cad0db;
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 h1 {
@@ -34,7 +39,7 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -76,7 +81,7 @@ select {
 .card p {
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -92,6 +97,8 @@ select {
 
 .card:hover {
   background-color: var(--secondary);
+  /* background-color: #b0a6ff79;
+  opacity: 50%; */
 }
 
 .card:hover img,
@@ -117,7 +124,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;

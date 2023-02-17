@@ -349,8 +349,16 @@ const checkQuestion = () => {
       filterCharacters(false);
     }
   } else if (category === "accessories" || category === "other") {
-    console.log("it's accessories or other and there is a match with secret");
-    filterCharacters(true);
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+      filterCharacters(true);
+      console.log(
+        "it's accessories or other and there is a match with secret",
+        value
+      );
+    } else {
+      console.log("other or accessories doesn't match");
+      filterCharacters(false);
+    }
   }
 };
 

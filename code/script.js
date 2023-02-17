@@ -317,8 +317,6 @@ const checkQuestion = () => {
   filterCharacters(keep); // (holds the Boolean value True). The  value goes trough the IF statement and stops at True. 
   increaseGuesses(); // Increase number off guesses
   cardFlipTrack.play(); // Evokes the flipsound
-
-
 }
 
 ////////////////////////////FILTER////////////////////////////////////////////

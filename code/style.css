@@ -37,7 +37,29 @@ h2 {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
 
+.flex-container {
+  margin-top: 0;
+  width: 50%;
+  max-width: 200px;
+  height: 10px;
+  border-radius: 30px;
+  padding: 20px 15px;
+  padding-top: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  color: green;
+  margin-bottom: 5px;
+}
+.flex-container img {
+height: 8px;
+}
+
+a {
+  color: green;
 }
 
 .guesses-counter {

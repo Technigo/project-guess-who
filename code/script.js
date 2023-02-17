@@ -10,6 +10,8 @@ const restartButton = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
 const questionCounter = document.getElementById('questionsAsked')
 const playAgain = document.getElementById('playAgain')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 ////////////////////////////CHARACTERS OBJECTS///////////////////////////////
 
@@ -388,7 +390,8 @@ const guess = (personToConfirm) => { // This is linked in the board and the card
 
 const checkMyGuess = (personToCheck) => { // Here we bring in the stored interation/value (personToCheck is just a name could be banana).
 if (personToCheck === secret.name) { // This compares if the players guess (personeToCheck) is the same as the persons name in the object array then show this message.
-  winOrLoseText.innerHTML = `Sorry its not ${personToCheck} the correct answer is ${secret.name}!` // This shows the win or loose page. Secret is a global variable that we declared in the global scopes and can therfore be used here..
+  winOrLoseText.innerHTML = `YES!! The correct answer is ${secret.name}!` // This shows the win or loose page. Secret is a global variable that we declared in the global scopes and can therfore be used here..
+  winOrLose.style.display = 'flex'
 } else {
   winOrLoseText.innerHTML = `Sorry its not ${personToCheck} the correct answer is ${secret.name}!`
   winOrLose.style.display = 'flex'

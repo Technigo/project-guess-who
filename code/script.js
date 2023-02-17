@@ -8,194 +8,194 @@ const playAgainButton = document.getElementById('playAgainButton')
 // Array with all the characters in the game, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
+    name: 'Paris',
+    img: 'images/pexels-photo-460740.jpeg',
+    continent: 'europe',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
+    name: 'Bangkok',
+    img: 'images/bangkok.png',
+    continent: 'asia',
     eyes: 'blue',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
+    name: 'Washington DC',
+    img: 'images/washington.png',
+    continent: 'north-america',
     eyes: 'blue',
     accessories: ['hat'],
     other: ['smoker']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
+    name: 'Berlin',
+    img: 'images/berlin.png',
+    continent: 'europe',
     eyes: 'brown',
     accessories: [],
     other: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
+    name: 'Pretoria', //is this correct...?
+    img: 'images/pretoria.png',
+    continent: 'africa',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
+    name: 'Buenos Aires',
+    img: 'images/buenosaires.png',
+    continent: 'south-america',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
+    name: 'Rome',
+    img: 'images/rome.png',
+    continent: 'europe',
     eyes: 'hidden',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
+    name: 'Jerusalem',
+    img: 'images/jerusalem.png',
+    continent: 'asia',
     eyes: 'hidden',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
+    name: 'Lima',
+    img: 'images/lima.png',
+    continent: 'south-america',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
+    name: 'Canberra',
+    img: 'images/canberra.png',
+    continent: 'oceania',
     eyes: 'hidden',
     accessories: ['glasses'],
     other: ['smoker']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
+    name: 'Copenhagen',
+    img: 'images/copenhagen.png',
+    continent: 'europe',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
+    name: 'Dubai',
+    img: 'images/dubai.png',
+    continent: 'asia',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
+    name: 'Jakarta',
+    img: 'images/jakarta.png',
+    continent: 'asia',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
+    name: 'New York',
+    img: 'images/newyork.png',
+    continent: 'north-america',
     eyes: 'hidden',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
+    name: 'Vancouver',
+    img: 'images/vancouver.png',
+    continent: 'north-america',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
+    name: 'Cancun',
+    img: 'images/cancun.png',
+    continent: 'north-america',
     eyes: 'blue',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
+    name: 'Kyoto',
+    img: 'images/kyoto.png',
+    continent: 'asia',
     eyes: 'blue',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
+    name: 'Nairobi',
+    img: 'images/nairobi.png',
+    continent: 'africa',
     eyes: 'brown',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
+    name: 'Amsterdam',
+    img: 'images/amsterdam.png',
+    continent: 'europe',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
+    name: 'Addis Abeba',
+    img: 'images/addisababa.png',
+    continent: 'africa',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
+    name: 'Delhi',
+    img: 'images/delhi.png',
+    continent: 'asia',
     eyes: 'brown',
     accessories: [],
     other: []
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
+    name: 'Barcelona',
+    img: 'images/barcelona.png',
+    continent: 'europe',
     eyes: 'green',
     accessories: [],
     other: []
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
+    name: 'Lahore',
+    img: 'images/lahore.png',
+    continent: 'asia',
     eyes: 'green',
     accessories: [],
     other: []
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
+    name: 'Auckland',
+    img: 'images/auckland.png',
+    continent: 'oceania',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
     other: []
@@ -257,7 +257,7 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'continent' || category === 'eyes') {
     if (secret[category] === value) {
       keep = true
       filterCharacters(true);
@@ -302,16 +302,16 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
 
-
   } else {
     if (keep) {
-      alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`);
+      alert(`Yes, the city is in ${value}! Keep all the cities in ${value}`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
 
     } else {
-      alert(`No, the person does not have ${value} ${category}! Remove all people with ${value} ${category}`);
+      alert(`No, the city is not in ${value}! Remove all the cities in ${value}`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
+    
   }
   generateBoard();
 };

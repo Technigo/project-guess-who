@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #e168d5;
-  --secondary: #f6a3e4;
+  --primary: #9dd1f0;
+  --secondary: #468bcc;
 }
 
 body {
@@ -10,6 +10,8 @@ body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
 }
+
+
 
 h1 {
   font-size: 40px;
@@ -80,6 +82,11 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+}
+
+.card img {
+    height: 135px;
+    width: 135px;
 }
 
 .card .guess {

@@ -177,7 +177,8 @@ button {
 
 .win-or-lose img {
   align-self: flex-start;
-  margin-left: 15%;
+  margin-left: 10%;
+  width: 190px;
 }
 
 .win-or-lose h1 {

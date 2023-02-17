@@ -145,14 +145,14 @@ const CHARACTERS = [
     accessories: [],
     other: true,
   },
-  // {
-  //   name: "Jocelyn",
-  //   img: "images/jocelyn.svg",
-  //   hair: "black",
-  //   eyes: "brown",
-  //   accessories: ["glasses"],
-  //   other: ["jewelleries"],
-  // },
+  {
+    name: "Saruman",
+    img: "images/saruman.png",
+    hair: "white",
+    eyes: "brown",
+    accessories: ["staff"],
+    other: true,
+  },
   // {
   //   name: "Jon",
   //   img: "images/jon.svg",
@@ -225,8 +225,8 @@ const generateBoard = () => {
   });
 };
 
-// A person is randomly selected a person from the characters array and set as the value of the variable called secret
-const setsecretCharacter = () => {
+// A person is randomly selected from the characters array and set as the value of the variable called secretCharacter
+const setSecretCharacter = () => {
   secretCharacter =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
@@ -236,14 +236,13 @@ const start = () => {
   // Generates a new board of characters and a new secret person is selected
   charactersInPlay = CHARACTERS;
   generateBoard();
-  setsecretCharacter();
+  setSecretCharacter();
 };
 
 // Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.value; // This variable stores what option group (category) the question belongs to.
-
   // Each question is related to category and values,
   currentQuestion = {
     category: category,
@@ -262,19 +261,23 @@ const checkQuestion = () => {
   } else if (category === "eyes") {
     keep = secretCharacter.eyes === value;
   } else if (category === "accessories") {
-    keep = secretCharacter.accessories.includes(value);
+    keep = secretCharacter.accessories.includes(value); //array
   } else if (category === "other") {
-    keep = secretCharacter.other;
+    keep = secretCharacter.other; //boolean
   }
-  filterCharacters(keep); // Invokes filterCharacters
+  filterCharacters(keep);
+  console.log("filter characters", keep);
 };
 
-// Filters the characters array and redraw the game board.
+// Filters the characters array
 const filterCharacters = (keep) => {
+  console.log("keep it?", keep);
+
   const { category, value } = currentQuestion;
 
-  // Show the correct alert message for different categories dependent if they match the value of the secret person
+  // Show the correct alert message for different categories and filter characters depending on if they match the value of the secret person
 
+  // 1st category "accessories", array
   if (category === "accessories") {
     if (keep) {
       alert(`Yes! The person has a ${value}! Keep everyone with a ${value}`);
@@ -289,19 +292,19 @@ const filterCharacters = (keep) => {
         (person) => !person[category].includes(value)
       );
     }
+    // 2nd category "other", boolean
   } else if (category === "other") {
     if (keep) {
       alert(`Yes! The person has a ${value}! Keep everyone with a ${value}`);
       charactersInPlay = charactersInPlay.filter((person) => person[category]);
-    } else if (keep) {
     } else {
       alert(
         `No! The person does not have a ${value}! Remove all people with a ${value}`
       );
       charactersInPlay = charactersInPlay.filter((person) => !person[category]);
     }
-  }
-  if (category === "hair") {
+    // 3rd category "hair", value
+  } else if (category === "hair") {
     if (keep) {
       alert(
         `Yes! The person has ${value} hair! Keep everyone with ${value} hair.`
@@ -317,8 +320,8 @@ const filterCharacters = (keep) => {
         (person) => person[category] !== value
       );
     }
-  }
-  if (category === "eyes") {
+    // 4th category "eyes", value
+  } else if (category === "eyes") {
     if (keep) {
       alert(
         `Yes! The person has ${value} eyes! Keep everyone with ${value} eyes.`
@@ -335,6 +338,7 @@ const filterCharacters = (keep) => {
       );
     }
   }
+  // Redraws the game board
   generateBoard();
 };
 

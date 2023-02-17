@@ -3,6 +3,9 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("filter");
+const resultBoard = document.getElementById("winOrLose")
+const resultText = document.getElementById("winOrLoseText")
+const playAgainButton = document.getElementById("playAgain")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -217,7 +220,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button small" id="guessBtn" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `;
@@ -259,7 +262,7 @@ const selectQuestion = () => {
   };
 };
 
-questions.addEventListener("change", selectQuestion) 
+questions.addEventListener("change", selectQuestion)
 
 findOutButton.addEventListener("click", (event) => {
   checkQuestion();
@@ -287,7 +290,7 @@ const checkQuestion = () => {
     filterCharacters(keep)
   }
   else {
-  filterCharacters()
+    filterCharacters()
   }
 };
 
@@ -299,8 +302,8 @@ const filterCharacters = (keep) => {
     if (keep) {
       alert(`Yes the person has ${value} ${category}! Keep everyone with that`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
-    console.log("filters hair/eyes yes")
-    generateBoard();
+      console.log("filters hair/eyes yes")
+      generateBoard();
     } else {
       alert(`No, the person doesn't have ${value} ${category}. Remove all such people.`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
@@ -314,7 +317,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       generateBoard()
     }
-    
     else {
       alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
@@ -332,14 +334,14 @@ const filterCharacters = (keep) => {
       generateBoard()
     }
 
-   
+
   }
 }
 
 // Determine what is the category
 //filter by category to keep or remove based on the keep variable.
 
-  //for hair and eyes :
+//for hair and eyes :
 /*
   if (keep) {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value);
@@ -359,7 +361,16 @@ const filterCharacters = (keep) => {
 //  };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
+
+
 const guess = (personToConfirm) => {
+ // onclick(person.name) = userGuess
+  const playerClick = confirm(`Do you think ${personToConfirm} is the one?`);
+
+ if (playerClick) {
+    checkMyGuess(personToConfirm)
+    console.log("playerClick true")
+  }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function. //WHAT IF THEY DON'T?
@@ -367,10 +378,22 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    alert("You won!");
+    winOrLoseText.innerHTML = `Congrats!`
+    winOrLose.style.display = "block";
+    board.style.display = "none";
+  } else {
+    alert("Oh no, that wasn't right")
+    winOrLoseText.innerHTML = `Ouch! Better luck next time!`
+    winOrLose.style.display = "block";
+    board.style.display = "none";
+  }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  console.log("Check my guess")
 };
 
 // Invokes the start function when website is loaded
@@ -378,3 +401,7 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+playAgainButton.addEventListener("click", () => {
+  location.reload()
+  //return false
+})

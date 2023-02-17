@@ -251,6 +251,7 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value ('yellow' if hair colour, for example) of the question we've selected.
   const value = questions.value // 
 
+  // doesn't recognise hair colour 
   if (category === 'hair color') {
     currentQuestion = {
       attribute: 'hair',
@@ -258,7 +259,7 @@ const selectQuestion = () => {
       category: category,
     }
   }
-
+//does recognise eye colour 
 else if (category === 'eyes'){
    currentQuestion = {
     attribute: 'eyes',
@@ -266,6 +267,7 @@ else if (category === 'eyes'){
     category: category,
   }
 }
+//doesn't recognise accessories 
 else if (category === 'accessories'){
     currentQuestion = {
       attribute: 'accessories',
@@ -273,22 +275,17 @@ else if (category === 'accessories'){
       category: category,
     }
   }
-else if (category === 'other'){
+  //don't recognise smoking habit
+else {
     currentQuestion = {
-      attribute: 'accessories',
-      value: value, //not sure what to use for this 
+      attribute: 'other',
+      value: value, 
       category: category,
     }
 }
-else { // not sure why there is no category used for last one
-  currentQuestion = {
-    attribute: value,
-    value: true,
-    category: category,
-  }
-}
 
-console.log("selectQuestion");// to check if it's running
+
+// console.log("selectQuestion");// to check if it's running
 
 }
 
@@ -299,34 +296,59 @@ console.log("filter-button-click"); // The Find Out(filter) button takes you to 
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion.value === secret[currentQuestion.category.value] //need to fix this
+  const { category, value } = currentQuestion
+  //.value === secret[currentQuestion.value] //doesn't seem to do anything
   const keep = currentQuestion.value === secret[currentQuestion.attribute] // THIS IS NEEDED
+
+
+
+//adding attribute to line 300 is helping the eyes to be recognised 
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-
+ 
 filterCharacters(keep); // NEED THIS TO SAY KEEP TO RECOGNISE WHAT NEEDS KEEPING
 //Not sure how this section makes a difference yet ... 
-  if (category === 'hair' || category === 'eyes') {
-    if (value ===secret[category]) {
-      filterCharacters(true);
-      }
-      else {
-        filterCharacters(false);
-      }
-    
-  }
-  else if (category === 'accessories' || category === 'other') {
-      if (secret[category].includes(value)){
-      filterCharacters(true);    
-      }
-      else {
-        filterCharacters(false);
-      }
-  }
+ 
+// function checkQuestion(secret, currentQuestion) {
+//   if (secret.hair === currentQuestion) {
+//     return true;
+//   }
+//   if (secret.eyes === currentQuestion) {
+//     return true;
+//   } 
+//   if (secret.accessories.includes(currentQuestion)) {
+//     return true;
+//   }
+//   if (secret.other.includes(currentQuestion)) {
+//     return true;
+//   }
 
-  console.log("secret-compare");
+//   return false;
+// }
+
+if (category === 'hair' || category === 'eyes') {
+  if (value ===secret[category]) {
+    filterCharacters(true);
+    }
+    else {
+      filterCharacters(false);
+    }
+  
+}
+else if (category === 'accessories' || category === 'other') {
+    if (secret[category].includes(value)){
+    filterCharacters(true);    
+    }
+    else {
+      filterCharacters(false);
+    }
+}
+
+
+
+//   // console.log("secret-compare");
  
 }
 
@@ -355,29 +377,43 @@ const filterCharacters = (keep) => {
       `No, the person doesn't have ${value}. Remove all people that have ${value}`
     )
   }
-  } else {
+  } else if (category === 'hair') {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-    alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`)
-    } else {
+    alert(
+      `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`
+    )
+     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-    alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`)
-    }
+    alert(
+      `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
+    )
+   } // added hair and eyes as 'hair' didn't work, but this hasn't changed anything
+  } else {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`
+    )
+     } else {
+    alert(
+      `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
+    )
   }
+}
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+  // /* 
+  //   for hair and eyes :
+  //     charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+  //     or
+  //     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+  //   for accessories and other
+  //     charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+  //     or
+  //     charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+  // */
 
   // Invoke a function to redraw the board with the remaining people.
 }
@@ -402,4 +438,5 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion) // I added
-filterButton.addEventListener('click', checkQuestion) // The Find Out button will invoke the checkQuestion function 
+filterButton.addEventListener('click', checkQuestion)
+// filterButton.addEventListener('click', () =>  checkQuestion(), filterCharacters()) // The Find Out button will invoke the checkQuestion function 

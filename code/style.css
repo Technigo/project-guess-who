@@ -1,88 +1,161 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #838385;
+  --primary: #232325;
+  --secondary: #ffffff;
+}
+
+@font-face {
+  font-family: 'font-reward';
+  src: url("assets/reward-font/reward.ttf");
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Andada Pro', serif;
+  background-image: url("images/train-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
 }
 
-h1 {
-  font-size: 42px;
-  font-weight: 500;
-  line-height: 48px;
+.main-heading{
+  width:90%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'font-reward', cursive;
+  text-transform: uppercase;
   margin: 10px 0;
-  color: white;
+  color: #000;
+  letter-spacing: 5px;
+  text-shadow:0 0 white;
+  margin-top: 65px;;
+}
+
+.main-heading h1{
+  font-size: 70px;
+  font-weight: 500;
+  line-height: 30px;
+  margin:0;
+}
+
+.main-heading h2{
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 30px;
+  margin: 20px 0;
 }
 
 .question-section {
-  width: 30%;
+  width: 35%;
   min-height: 100vh;
-  background-color: var(--secondary);
   display: flex;
   flex-direction: column;
   padding: 5vw;
-  align-items: flex-start;
+  align-items:center;
   box-sizing: border-box;
+  background-image: url("images/scroll.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  /* border:solid green; */
 }
+
+.question-text{
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  margin-top: 60px;
+  margin-bottom: 20px;
+} 
 
 select {
   display: block;
-  border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
-  width: 100%;
-  margin: 24px 0;
-}
-
-.guess-who-icon {
-  width: 55%;
+  border: transparent;
+  border-radius: 15px;
+  font-size: 16px;
+  font-family: 'Andada Pro', serif;
+  color: white;
+  background-color: var(--primary);
+  width: 90%;
+  margin: 10px 0;
+  padding: 23px;
+  text-transform: uppercase;
+  
 }
 
 .board-wrapper {
-  width: 70%;
+  width: 65%;
   display: flex;
-  align-items: center;
+  align-items:flex-start;
   justify-content: center;
+  /* border: solid yellow; */
 }
 
 .game-board {
-  width: 90%;
-  max-width: 882px;
+  width: 100%;
+  /* max-width: 100%; */
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
+  padding-top: 5%;
+  /* border: solid yellow; */
+  
+
 }
 
 /****** CARD ******/
 .card {
-  width: 135px;
-  height: 165px;
+  width: 155px;
+  height: 190px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
   border-radius: 4px;
-  margin: 3px;
+  margin: 7px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-image: url("images/vintage-paper.jpg"); 
+  background-size: cover;
+
+  
 }
 
 img{
   width:100%;
   height: 165px;
+  
+}
+.card p{
+  color:#f5ecec;
+  background-color: var(--primary);
+  /* border:solid 1px #f5f1f1; */
+  border-radius: 50px;
+  padding: 5px 10px;
+  margin-bottom: 0;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 15px;
+  width: 100%;
+  font-weight:800;
+  
+  
 }
 
-.card p {
-  text-align: center;
-  margin-bottom: 0;
-  font-size: 16px;
-  font-weight: 700;
+.person-image-class{
+  position: relative;
+  z-index: 0;
+  top:-10px;
+  
+}
+
+.card-back-class{
+  width: 100%;
+  position: relative;
+  z-index: 99;
+  top:-200px; 
 }
 
 .card .guess {
@@ -95,9 +168,6 @@ img{
   height: inherit;
 }
 
-.card-back{
-  width: 100%;
-}
 
 .card:hover {
   background-color: var(--secondary);
@@ -126,7 +196,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Andada Pro', serif;
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -136,19 +206,23 @@ button {
   padding: 8px 16px;
 }
 
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
+.restart-button {
+  background-color: var(--primary);
+  color: var(--secondary);
+  align-self: flex-start;
+  padding: 17px 35px;
+  width: 90%;
+  margin-top:50px;
+  
 }
 
-.filled-button,
-.outlined-button:hover {
+.filled-button {
   background-color: var(--primary);
   color: white;
 }
 
-.filled-button:hover {
+.filled-button:hover,
+.restart-button:hover {
   background-color: white;
   border-color: white;
   color: var(--primary);
@@ -166,6 +240,9 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
+  background-image: url("images/train-bg.jpg");
+  flex-direction: column;
+
 }
 
 .win-or-lose {
@@ -175,15 +252,25 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  margin-top:10px;
+
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+.win-or-lose-wrapper .main-heading{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 30px;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+  font-size: 37px;
+  color:var(--secondary);
+  line-height: 60px;
 }
 
 @media (max-width: 768px) {
@@ -203,8 +290,16 @@ button {
     line-height: 30px;
   }
 
-  .guess-who-icon {
-    width: 51px;
+  .main-heading h1{
+    font-size: 50px;
+  }
+  
+  .main-heading h2{
+    font-size: 30px;
+  }
+
+  select{
+    width:70%;
   }
 
   .board-wrapper {

@@ -3,76 +3,104 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
+    <title>Murder on the Vasa Express</title>
     <link rel="stylesheet" href="style.css" />
-    <link
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andada+Pro:ital,wght@0,400;0,500;0,600;0,800;1,500&display=swap" rel="stylesheet">
+
+  
   </head>
   <body>
     <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
-
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
-
-      <h1>Does the person have</h1>
-
+    
+    
+      <div class="main-heading">
+        <h1>Murder</h1>
+        <h2>on the</h2>
+        <h1>Vasa Express</h1>
+        
+      </div>
+    
+    
+    
+      <h2 class = "question-text">Does the suspect have: </h2>
+    
       <select title="questions" id="questions">
         <!-- <option value="">--Please choose an option--</option> -->
         <optgroup label="hair">
-          <option value="brown">Brown hair</option>
+          <option selected="selected" value="brown">Brown hair</option>
           <option value="black">Black hair</option>
           <option value="yellow">Yellow hair</option>
           <option value="orange">Orange hair</option>
           <option value="purple">Purple hair</option>
           <option value="hidden">Hidden hair</option>
-     
+    
         </optgroup>
         <optgroup label="eyes">
           <option value="brown">Brown eyes</option>
           <option value="blue">Blue eyes</option>
           <option value="grey">Grey eyes</option>
           <option value="hidden">Hidden eyes</option>
-       
+    
         </optgroup>
         <optgroup label="accessories">
           <option value="glasses">Glasses</option>
           <option value="hat">Hat</option>
           <option value="neckwear">Neckwear</option>
           <option value="notepad">Notepad</option>
-          
+    
         </optgroup>
         <optgroup label="other">
           <option value="smoker">Smoker</option>
         </optgroup>
       </select>
-
+    
       <button id="filter" class="filled-button">FIND OUT</button>
-
+    
       <h2 class="questionsAsked-text"> Questions asked: <span id="questionsAsked"></span>/4</h2>
-
-      </aside>
+    
+      <button type="button" id="restart" class="restart-button">RESTART GAME</button>
+    
+    </aside>
 
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
     </section>
-
+    
     <section id="winOrLose" class="win-or-lose-wrapper">
+    
+      <div class="main-heading">
+        <h1>Murder</h1>
+        <h2>on the</h2>
+        <h1>Vasa Express</h1>
+        
+      </div>
+    
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
         <h1 id="winOrLoseText"></h1>
         <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
-    <script src="script.js"></script>
-  </body>
+    
+       
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script src="script.js" defer></script>
+    </body>
 </html>

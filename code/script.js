@@ -7,76 +7,69 @@ const winOrLoseSection = document.getElementById('winOrLose')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
 const questionsAskedDisplay = document.getElementById('questionsAsked')
+const timer = document.getElementById('timer')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Amy',
-    img: 'images/amy.jpg',
+    name: 'Amy Stake',
+    img: 'images/amy.png',
     hair: 'brown',
     eyes: 'brown',
     accessories: ['neckwear'],
     other: []
   },
   {
-    name: 'Doug',
-    img: 'images/doug.jpg',
+    name: 'Doug Graves',
+    img: 'images/doug.png',
     hair: 'black',
     eyes: 'brown',
     accessories: ['hat', 'neckwear'],
     other: []
   },
   {
-    name: 'Ella',
-    img: 'images/ella.jpg',
+    name: 'Ella Vader',
+    img: 'images/ella.png',
     hair: 'orange',
     eyes: 'blue',
-    accessories: ['neckwear'],
+    accessories: ['glasses','neckwear'],
     other: ['smoker']
   },
   {
-    name: 'Green',
-    img: 'images/green.jpg',
+    name: 'Revered Green',
+    img: 'images/green.png',
     hair: 'brown',
     eyes: 'brown',
     accessories: [],
     other: []
   },
   {
-    name: 'Hank',
-    img: 'images/hank.jpg',
-    hair: 'brown',
-    eyes: 'brown',
-    accessories: ['hat', 'neckwear'],
-    other: []
-  },
-  {
-    name: 'Jay',
-    img: 'images/jay.jpg',
+    name: 'Jay Walker',
+    img: 'images/jay.png',
     hair: 'orange',
     eyes: 'brown',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Justin',
-    img: 'images/justin.jpg',
+    name: 'Justin Tyme',
+    img: 'images/justin.png',
     hair: 'black',
     eyes: 'grey',
     accessories: ['hat', 'neckwear'],
     other: []
   },
   {
-    name: 'Kandy',
-    img: 'images/kandy.jpg',
+    name: 'Kandy Kane',
+    img: 'images/kandy.png',
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses','neckwear'],
     other: []
   },
   {
-    name: 'Luke',
-    img: 'images/luke.jpg',
+    name: 'Luke Atmey',
+    img: 'images/luke.png',
     hair: 'hidden',
     eyes: 'grey',
     accessories: ['glasses', 'neckwear'],
@@ -84,88 +77,88 @@ const CHARACTERS = [
   },
 
   {
-    name: 'Maple',
-    img: 'images/maple.jpg',
+    name: 'Maple Searup',
+    img: 'images/maple.png',
     hair: 'orange',
     eyes: 'blue',
     accessories: [],
     other: []
   },
   {
-    name: 'Mustard',
-    img: 'images/mustard.jpg',
+    name: 'Colonel Mustard',
+    img: 'images/mustard.png',
     hair: 'black',
     eyes: 'brown',
     accessories: ['hat', 'neckwear'],
     other: ['smoker']
   },
   {
-    name: 'Paige',
-    img: 'images/paige.jpg',
+    name: 'Paige Turner',
+    img: 'images/paige.png',
     hair: 'white',
     eyes: 'blue',
     accessories: [],
     other: []
   },
   {
-    name: 'Peacock',
-    img: 'images/peacock.jpg',
+    name: 'Mrs. Peacock',
+    img: 'images/peacock.png',
     hair: 'yellow',
     eyes: 'blue',
     accessories: [],
     other: []
   },
   {
-    name: 'Philipa',
-    img: 'images/philipa.jpg',
+    name: 'Philipa Bucket',
+    img: 'images/philipa.png',
     hair: 'yellow',
     eyes: 'blue',
     accessories: ['neckwear'],
     other: []
   },
   {
-    name: 'Plum',
-    img: 'images/plum.jpg',
+    name: 'Professor Plum',
+    img: 'images/plum.png',
     hair: 'yellow',
     eyes: 'brown',
     accessories: ['glasses', 'neckwear'],
     other: []
   },
   {
-    name: 'Redd',
-    img: 'images/redd.jpg',
+    name: 'Redd Vyne',
+    img: 'images/redd.png',
     hair: 'black',
     eyes: 'brown',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Robyn',
-    img: 'images/robyn.jpg',
+    name: 'Robyn Banks',
+    img: 'images/robyn.png',
     hair: 'hidden',
     eyes: 'brown',
     accessories: ['glasses'],
     other: ['smoker']
   },
   {
-    name: 'Scarlett',
-    img: 'images/scarlett.jpg',
+    name: 'Ms. Scarlett',
+    img: 'images/scarlett.png',
     hair: 'yellow',
     eyes: 'blue',
     accessories: ['neckwear'],
     other: []
   },
   {
-    name: 'Sue',
-    img: 'images/sue.jpg',
+    name: 'Sue Flay',
+    img: 'images/sue.png',
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'notepad'],
     other: []
   },
   {
-    name: 'Tim',
-    img: 'images/tim.jpg',
+    name: 'Tim Burr',
+    img: 'images/tim.png',
     hair: 'brown',
     eyes: 'grey',
     accessories: ['hat', 'neckwear'],
@@ -173,32 +166,32 @@ const CHARACTERS = [
   },
 
   {
-    name: 'Ty',
-    img: 'images/ty.jpg',
+    name: 'Ty Prater',
+    img: 'images/ty.png',
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['hat', 'notepad'],
     other: []
   },
   {
-    name: 'Violet',
-    img: 'images/violet.jpg',
+    name: 'Violet Rose',
+    img: 'images/violet.png',
     hair: 'purple',
     eyes: 'blue',
     accessories: ['neckwear'],
     other: []
   },
   {
-    name: 'White',
-    img: 'images/white.jpg',
+    name: 'Mrs. White',
+    img: 'images/white.png',
     hair: 'white',
     eyes: 'grey',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Zoltan',
-    img: 'images/zoltan.jpg',
+    name: 'Zoltan Pepper',
+    img: 'images/zoltan.png',
     hair: 'hidden',
     eyes: 'brown',
     accessories: ['hat', 'neckwear'],
@@ -212,6 +205,12 @@ let currentQuestion
 let charactersInPlay
 let countQuestionsAsked = 0
 const questionsAllowed = 4
+let gameName = "Murder on the Vasa Express"
+let playerName
+let gameWonSound = new Audio("assets/win-audio.mp3");
+let gameLostSound = new Audio("assets/lost-audio.mp3");
+
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -220,22 +219,34 @@ const generateBoard = () => {
     if (charactersInPlay.includes(person)) {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <p class = "person-name-class">${person.name}</p>
+        <div class = "person-image-class">
+          <img src=${person.img} alt=${person.name}>
+        </div>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
-    } else {
+    } else if (!(charactersInPlay.includes(person))) {
       board.innerHTML += `
-      <div class = "card back">
-        <img class = "card-back" src="images/card-back.png" alt = "Suspect is innocent".
+      <div class="card">
+        <p>${person.name}</p>
+        <div class = "person-image-class">
+          <img src=${person.img} alt=${person.name}>
+        </div>
+        <div class = "card-back-class">
+         <img class = "card-back" src="images/not-guilty-black.png" alt = "Suspect is not guilty">
+        </div>
+        <div class="guess">
+          <span>Guess on ${person.name}?</span>
+          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+        </div>
       </div>
-      `
+    `
     }
-  })
+  }) 
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
@@ -249,6 +260,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard();
   setSecret();
+  askName();
   countQuestionsAsked = 0 //reset counter for new game
   questionsAskedDisplay.innerText = 0
   
@@ -272,13 +284,7 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   selectQuestion() //To avoid the error of this function not being called if user selects the default from questions dropdown
 
- // const {category, value} = currentQuestion
- const category = currentQuestion.category
- const value = currentQuestion.value
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+ const {category, value} = currentQuestion
   if (category === 'hair' || category === 'eyes') {
     if (value === secret.hair || value === secret.eyes) {
       filterCharacters(true)
@@ -299,55 +305,52 @@ const checkQuestion = () => {
 // Filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   countQuestionsAsked++
-  // const { category, value } = currentQuestion
-  const category = currentQuestion.category
-  const value = currentQuestion.value
-
+  const { category, value } = currentQuestion
+ 
   // Show the correct alert message for different categories
   if (countQuestionsAsked > questionsAllowed) {
-    alert(
-      `You have run out of questions to ask. It's time to make an accusation.`
-    )
+    alertify.alert(gameName, "You've run out of questions to ask. </br> Time to make an accusation!");
+  
   } else {
     questionsAskedDisplay.innerText = countQuestionsAsked
 
     if (category === 'hair') {
       if (keep) {
-        alert(
+        alertify.alert(gameName,
           `Yes, the suspect has ${value} hair! Keep all suspects that have ${value} hair.`
         )
       } else {
-        alert(
+        alertify.alert(gameName,
           `No, the suspect doesn't have ${value} hair! Remove all suspects that have ${value} hair.`
         )
       }
     } else if (category === 'eyes') {
       if (keep) {
-        alert(
+        alertify.alert(gameName,
           `Yes the suspect has ${value} eyes! Keep all suspects with ${value} eyes.`
         )
       } else[
-        alert(
+        alertify.alert(gameName,
           `No, the suspect doesn't have ${value} eyes! Remove all suspects with ${value} eyes.`
         )
       ]
     } else if (category === 'accessories') {
       if (keep) {
-        alert(
+        alertify.alert(gameName,
           `Yes, the suspect has ${value}! Keep all suspects that have ${value}.`
         )
       } else {
-        alert(
+        alertify.alert(gameName,
           `No, the suspect doesn't have ${value}! Remove all suspects that have ${value}.`
         )
       }
     } else if (category === 'other') {
       if (keep) {
-        alert(
+        alertify.alert(gameName,
           `Yes, the suspect is a ${value}! Keep all suspects that are ${value}s.`
         )
       } else {
-        alert(
+        alertify.alert(gameName,
           `No, the suspect isn't a ${value}! Remove all suspects that are ${value}s.`
         )
       }
@@ -355,7 +358,6 @@ const filterCharacters = (keep) => {
   }
 
   // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
   if (category === 'hair' || category === 'eyes') {
     if (value === secret.hair || value === secret.eyes) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
@@ -372,16 +374,18 @@ const filterCharacters = (keep) => {
   generateBoard();
 }
 
+
 // when clicking guess, the player first has to confirm that they want to make a guess.
 const guess = (suspect) => {
-  const makeAGuess = confirm(`Are you sure you want to accuse ${suspect}?`)
-
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-  if (makeAGuess){
-    checkMyGuess(suspect)
-  }
+  const makeAGuess = 
+    alertify.confirm(gameName, `Are you sure you want to accuse ${suspect}?`,
+    function(){
+      alertify.success('Ok');
+      checkMyGuess(suspect);
+    },
+    function(){
+      alertify.error('Cancel');
+    });
 }
 
 
@@ -389,9 +393,12 @@ const guess = (suspect) => {
 const checkMyGuess = (suspectToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   if(suspectToCheck === secret.name) {
-    winOrLoseText.innerHTML = `YOU WON! ${secret.name} was the murderer!`
+    winOrLoseText.innerHTML = `YOU WON ${playerName}! </br> ${secret.name} was the murderer!`
+    gameWinSound.play();
+
   } else {
-    winOrLoseText.innerHTML = `YOU LOST! ${suspectToCheck} is innocent.  ${secret.name} was the murderer!`
+    winOrLoseText.innerHTML = `YOU LOST ${playerName}! </br> ${suspectToCheck} is innocent.</br> ${secret.name} was the murderer!`
+    gameLostSound.play();
   }
   winOrLoseSection.style.display = 'flex';
   board.style.display = 'none';
@@ -404,6 +411,22 @@ const playAgain = () => {
   countQuestionsAsked = 0 // resets counter to 0 
   questionsAskedDisplay.innerText = countQuestionsAsked //and displays it
 }
+
+const askName = () => {
+  alertify.prompt(gameName, "Enter player name: ", "Poirot",
+  function(evt, value ){
+    playerName = value;
+    alertify.success;
+    alertify.alert(gameName,
+      `Welcome Detective ${playerName}!
+       </br> Dr. Black has been murdered on the Vasa Express & it's up to you to solve the mystery. `
+    )
+    
+  },
+  function(){
+    alertify.error;
+  });
+} 
 
 // Invokes the start function when website is loaded
 start()

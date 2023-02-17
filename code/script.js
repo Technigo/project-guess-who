@@ -6,8 +6,6 @@ const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutBtn = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText");
-const playAgainBtn = document.getElementById("playAgain");
-
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -248,7 +246,7 @@ let accessoriesArr = [];
 let otherArr = [];
 
 const CategoryOptions = () =>
-  CHARACTERS.forEach((character) => {
+  charactersInPlay.forEach((character) => {
     if (!hairArr.includes(character.hair)) {
       hairArr.push(character.hair);
     }
@@ -266,7 +264,6 @@ const CategoryOptions = () =>
       }
     });
   });
-CategoryOptions();
 
 console.log(hairArr, eyesArr, accessoriesArr, otherArr);
 
@@ -308,10 +305,9 @@ const createCategories = () => {
 // This function to start (and restart) the game
 const start = () => {
   charactersInPlay = CHARACTERS;
-  winOrLoseWrapper.style.display = "none";
-  boardWrapper.style.display = "flex";
   generateBoard();
   setSecret();
+  CategoryOptions();
   createCategories();
 };
 
@@ -437,4 +433,3 @@ start();
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutBtn.addEventListener("click", checkQuestion);
-playAgainBtn.addEventListener("click", start);

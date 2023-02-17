@@ -208,7 +208,7 @@ const CHARACTERS = [
 // Global variables
 let secret
 let currentQuestion
-let charactersInPlay
+let charactersInPlay 
 
 // Draw the game board
 const generateBoard = () => {
@@ -247,16 +247,15 @@ console.log("The secret person is", secret.name);
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  const category = questions.options[questions.selectedIndex].parentNode.label   // This variable stores what option group (category) the question belongs to.
+  const value = questions.options.option[questions.selectedIndex].value; //This variable stores the value (value!) of the question in the dropdown
 
-  // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+  console.log("Selected Question", currentQuestion);
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -334,3 +333,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+

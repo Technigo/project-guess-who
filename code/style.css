@@ -195,7 +195,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 100px;
   }
 
   .board-wrapper {
@@ -204,7 +204,9 @@ button {
 
   .game-board {
     width: 100%;
-    max-width: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .card {

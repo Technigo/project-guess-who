@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #0d55f0;
+  --secondary: #000105;
 }
 
 body {
@@ -18,6 +18,7 @@ h1 {
   margin: 10px 0;
   color: white;
 }
+
 
 .question-section {
   width: 30%;
@@ -131,6 +132,8 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  float: right;
+  margin-top: 5%;
 }
 
 .filled-button,

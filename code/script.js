@@ -6,201 +6,202 @@ const filterButton = document.getElementById('filter')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
 const winOrLose = document.getElementById('winOrLose')
+const questionSection = document.getElementById('question-section')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Zelda',
+    img: 'zelda-images/zelda.webp',
+    hair: 'yellow hair, fins, or feathers',
+    eyes: 'blue eyes',
+    accessories: ['a Sheikah slate', 'a belt'],
+    other: ['Hylian']
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Link',
+    img: 'zelda-images/link.webp',
+    hair: 'yellow hair, fins, or feathers',
+    eyes: 'blue eyes',
+    accessories: ['a Sheikah slate', 'a bow', 'a shield', 'weapons'],
+    other: ["Hylian"]
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    name: 'Urbosa',
+    img: 'zelda-images/urbosa.webp',
+    hair: 'red hair, fins, or feathers',
+    eyes: 'green eyes',
+    accessories: ['a sword', 'a shield', 'weapons'],
+    other: ['Gerudo']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: 'Mipha',
+    img: 'zelda-images/mipha.webp',
+    hair: 'red hair, fins, or feathers',
+    eyes: 'gold eyes',
+    accessories: ['weapons', 'a trident'],
+    other: ['Zora']
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Daruk',
+    img: 'zelda-images/daruk.webp',
+    hair: 'white hair, fins, or feathers',
+    eyes: 'blue eyes',
+    accessories: ['a belt', 'a beard'],
+    other: ['Goron']
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Revali',
+    img: 'zelda-images/revali.webp',
+    hair: 'blue hair, fins, or feathers',
+    eyes: 'green eyes',
+    accessories: ['weapons', 'a bow'],
+    other: ['Rito']
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Riju',
+    img: 'zelda-images/riju.webp',
+    hair: 'red hair, fins, or feathers',
+    eyes: 'green eyes',
+    accessories: ['crown'],
+    other: ['Gerudo']
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Sidon',
+    img: 'zelda-images/sidon.webp',
+    hair: 'red hair, fins, or feathers',
+    eyes: 'gold eyes',
+    accessories: ['a belt'],
+    other: ['Zora']
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Yunobo',
+    img: 'zelda-images/yunobo.webp',
+    hair: 'white hair, fins, or feathers',
+    eyes: 'blue eyes',
+    accessories: ['a scarf','a flaming ham'],
+    other: ['Goron']
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
+    name: 'Teba',
+    img: 'zelda-images/teba.png',
+    hair: 'white hair, fins, or feathers',
+    eyes: 'gold eyes',
     accessories: [],
-    other: []
+    other: ['Rito']
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
+    name: 'Dorephan',
+    img: 'zelda-images/dorephan.jpg',
+    hair: 'blue hair, fins, or feathers',
+    eyes: 'gold eyes',
+    accessories: ['a crown', 'a belt'],
+    other: ['Zora']
+  },
+  {
+    name: 'Bludo',
+    img: 'zelda-images/bludo.webp',
+    hair: 'white hair, fins, or feathers',
+    eyes: 'black eyes',
+    accessories: ['a beard', 'an eye-patch'],
+    other: ['Goron']
+  },
+  {
+    name: 'Kaneli',
+    img: 'zelda-images/kaneli.webp',
+    hair: 'white hair, fins, or feathers',
+    eyes: 'gold eyes',
+    accessories: ['a beard'],
+    other: ['Rito']
+  },
+  {
+    name: 'Rhoam',
+    img: 'zelda-images/rhoam.webp',
+    hair: 'white hair, fins, or feathers',
+    eyes: 'blue eyes',
+    accessories: ['a beard', 'weapons', 'a sword', 'a crown'],
+    other: ['Hylian']
+  },
+  {
+    name: 'Impa',
+    img: 'zelda-images/impa.webp',
+    hair: 'white hair, fins, or feathers',
+    eyes: 'black eyes',
+    accessories: ['a tattoo', 'hair chopsticks'],
+    other: ['Sheikah']
+  },
+  {
+    name: 'Purah',
+    img: 'zelda-images/purah.png',
+    hair: 'white hair, fins, or feathers',
+    eyes: 'brown eyes',
+    accessories: ['glasses', 'hair chopsticks'],
+    other: ['Sheikah']
+  },
+  {
+    name: 'Robbie',
+    img: 'zelda-images/robbie.webp',
+    hair: 'white hair, fins, or feathers',
+    eyes: 'hidden eyes',
+    accessories: ['glasses', 'hair chopsticks'],
+    other: ['Sheikah']
+  },
+  {
+    name: 'Hestu',
+    img: 'zelda-images/hestu.webp',
+    hair: 'green hair, fins, or feathers',
+    eyes: 'hidden eyes',
+    accessories: ['a musical instrument', 'maracas', 'a bag', 'a beard'],
+    other: ['Korok']
+  },
+  {
+    name: 'Kass',
+    img: 'zelda-images/kass.webp',
+    hair: 'blue hair, fins, or feathers',
+    eyes: 'gold eyes',
+    accessories: ['a musical instrument'],
+    other: ['Rito']
+  },
+  {
+    name: 'Chuchu',
+    img: 'zelda-images/chuchu.webp',
+    hair: 'no hair, fins, or feathers',
+    eyes: 'yellow eyes',
     accessories: [],
-    other: []
+    other: ['Monster']
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: 'Bokoblin',
+    img: 'zelda-images/bokoblin.png',
+    hair: 'no hair, fins, or feathers',
+    eyes: 'yellow eyes',
+    accessories: ['horns'],
+    other: ['Monster']
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Moblin',
+    img: 'zelda-images/moblin.webp',
+    hair: 'no hair, fins, or feathers',
+    eyes: 'blue eyes',
+    accessories: ['horns'],
+    other: ['Monster']
+  },
+  {
+    name: 'Hinox',
+    img: 'zelda-images/hinox.webp',
+    hair: 'white hair, fins, or feathers',
+    eyes: 'yellow eyes',
+    accessories: ['horns'],
+    other: ['Monster']
+  },
+  {
+    name: 'Lynel',
+    img: 'zelda-images/lynel.webp',
+    hair: 'red hair, fins, or feathers',
+    eyes: 'green eyes',
+    accessories: ['horns'],
+    other: ['Monster']
   },
 ]
 
@@ -248,51 +249,18 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label // This variable stores what option group (category) the question belongs to.
   const value = questions.value // We also need a variable that stores the actual value of the question we've selected.
-  console.log('questions has been selected')
+  console.log('new dropdown item has been selected', `category: ${category}`, `value: ${value}`)
 
-  if (category === 'hair'){
-    currentQuestion = {
-      attribute: 'hair',
-      value: value,
-      category: category,
-    }
-    console.log('hair');
-   
-  } else if (category === 'eyes') {
-    currentQuestion = {
-      attribute: 'eyes',
-      value: value,
-      category: category,
-    }
-    console.log('eyes');
-   
-  } else if (category === 'accessories') {
-    currentQuestion = {
-      attribute: 'accessories',
-      value: value,
-      category: category,
-    }
-    console.log('accessories');
-   
-  } else if (category === 'other') {
-    currentQuestion = {
-      attribute: 'other',
-      value: value,
-      category: category,
-    }
-    console.log('other');
-    }
-  
-  //   currentQuestion = {
-  //   category: category,
-  //   value: value
-  // }
+  currentQuestion = {
+    category: category,
+    value: value
+  }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   console.log('filter button')
-  const { category, value} = currentQuestion
+  const {category, value} = currentQuestion
 
   // // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // // See if we should keep or remove people based on that
@@ -311,6 +279,7 @@ const checkQuestion = () => {
     if (secret[category].includes(value)) {
       keep = true
       console.log(`${secret[category]}`, 'accessories and other is true');
+      // need to define differently than hair and eyes in order to access the values stored in the other and accessories
     }
   }
 
@@ -325,11 +294,11 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
+        `Yes, the person has ${value}! Keep all people that have ${value}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
+        `No, the person doesn't have ${value}! Remove all people that have ${value}.`
       )
     }
   } else if (category === 'other') {
@@ -347,12 +316,12 @@ const filterCharacters = (keep) => {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     alert(
-      `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}.`
+      `Yes, the person has ${value}! Keep all people that have ${value}.`
     )
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     alert(
-      `No, the person does not have ${value} ${category}! Remove all people that have ${value} ${category}.`
+      `No, the person does not have ${value}! Remove all people that have ${value}.`
     )
     }
   }
@@ -384,15 +353,15 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
-  // remember the confirm() ? NO BECAUSE WE HAVEN'T LEARNED IT YET. 
+  // remember the confirm() ? 
   // If the player wants to guess, invoke the checkMyGuess function.
 
   const makeAGuess = confirm(`Want to guess ${personToConfirm}?`)
 
   if(makeAGuess) {
     console.log ('making a guess');
+    checkMyGuess(personToConfirm) //this must go inside of the if statement otherwise checkMyGuess is called regardless of whether or not user confirms
   }
-checkMyGuess(personToConfirm)
 }
 
 // If you confirm, this function is invoked
@@ -415,11 +384,14 @@ const checkMyGuess = (personToConfirm) => {
   }
   winOrLose.style.display = 'flex'
   board.style.display = 'none'
+  questionSection.style.display = 'none'
+  
 }
 
 const playAgain = () => {
   winOrLose.style.display = 'none'
   board.style.display = 'flex'
+  questionSection.style.display = 'flex'
   start();
 }
 

@@ -61,8 +61,8 @@ select {
 
 /****** CARD ******/
 .card {
-  width: 135px;
-  height: 165px;
+  width: 150px;
+  height: 200px;
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;
@@ -71,6 +71,14 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.card img {
+  width: 140px;
+  height: 155px;
+  object-fit: contain;
+  margin-bottom: 7px;
 }
 
 .card p {

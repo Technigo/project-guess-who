@@ -1,13 +1,12 @@
-# Project Name
+# Sprint 1 , Week 2 - Guess Who 
 
-Replace this readme with your own information about your project.
+I have build the game "Guess who" for week 2 project. We have recived start code from Technigo in HTML, CSS and Javascript. Guesse who is a responsie app where we have used javascript to make the game work. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started to plan how the game should work and then started with the start code to build the game. I added a counter for how many guesses as an extra for this game. 
+I have been using stackoverflow, google and youtube to help me solve the problems. 
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+You can play the game at https://guesswho-amanda-elvkull.netlify.app/

@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #fff2be;
+  --secondary: #f6318c;
 }
 
 body {
@@ -18,6 +18,7 @@ h1 {
   margin: 10px 0;
   color: white;
 }
+
 
 .question-section {
   width: 30%;
@@ -136,13 +137,13 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #36d1c4;
 }
 
 .filled-button:hover {
-  background-color: white;
+  background-color: #36d1c4;
   border-color: white;
-  color: var(--primary);
+  color: white;
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -231,3 +232,14 @@ button {
     border: none;
   }
 }
+
+
+.counter {
+  display: flex; 
+  border: none;  
+  margin-top: 20px; 
+  background-color: #36d1c4;
+  border-radius: 8px;
+  
+}
+

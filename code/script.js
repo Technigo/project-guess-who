@@ -209,8 +209,10 @@ let currentQuestion
 let charactersInPlay
 
 // Counter to keep track of how many guesses the player does. 
-let btncounter = document.querySelector('#filter')
+let btnCounter = document.querySelector('#filter')
 let counter = 0
+
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -267,7 +269,9 @@ const selectQuestion = () => {
 }
 
 
-// This function should be invoked when you click on 'Find Out' button.
+// Compares the currentQuestion with the secret person based on category
+// Eyes and hair can be compared by compairing the value of the property string from the secret person and all other characters on the board
+// Accessories and other can be compared by caompairing the arrays and therefor we use .includes(value)
 const checkQuestion = () => {
   const { category, value } = currentQuestion; 
 
@@ -296,6 +300,7 @@ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
 
   // Show the correct alert message for different categories
+  // filter by category to keep or remove based on the keep variable.
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -331,8 +336,6 @@ const filterCharacters = (keep) => {
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
   
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
@@ -356,10 +359,9 @@ const checkMyGuess = (personToCheck) => {
   // 3. Show the win or lose section
   // 4. Hide the game board
   if (personToCheck === secret.name) {
-    winOrLoseText.innerHTML = `YAY! Congrats <br>
-     – you won! <span role="img" aria-label="cheer">🙌</span>`
+    winOrLoseText.innerHTML = `You we're correct! <br> Great job!`
   } else {
-    winOrLoseText.innerHTML = `Oh no! You guessed wrong. Game over! <span role="img" aria-label="angry">😤</span>`
+    winOrLoseText.innerHTML = `Wrong answer. <br> Let's try again!`
   }
   winOrLose.style.display = 'flex'
   board.style.display = 'none'
@@ -373,6 +375,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   winOrLose.style.display = 'none' 
   board.style.display = 'flex' 
+  // Invoke generate board and set secret when loading and reloading the page
   setSecret()
   generateBoard()
 }
@@ -384,13 +387,12 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-restartButton.addEventListener('click', start) 
 playAgainButton.addEventListener('click', start)
 filterButton.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
 
 // Event listener for the counter
-btncounter.addEventListener('click', function () {
+btnCounter.addEventListener('click', function () {
   counter ++
   document.querySelector("#result").innerHTML = counter
 })

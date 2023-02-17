@@ -15,7 +15,7 @@ const CHARACTERS = [
     hair: "brown",
     eyes: "blue",
     accessories: [],
-    other: "beard",
+    other: true,
   },
   {
     name: "Legolas",
@@ -31,7 +31,7 @@ const CHARACTERS = [
     hair: "red",
     eyes: "brown",
     accessories: [],
-    other: "beard",
+    other: true,
   },
   {
     name: "Gimli",
@@ -39,7 +39,7 @@ const CHARACTERS = [
     hair: "red",
     eyes: "brown",
     accessories: ["weapon"],
-    other: "beard",
+    other: true,
   },
   {
     name: "Gandalf",
@@ -47,7 +47,7 @@ const CHARACTERS = [
     hair: "grey",
     eyes: "blue",
     accessories: ["staff", "hat"],
-    other: "beard",
+    other: true,
   },
   {
     name: "Elrond",
@@ -55,7 +55,7 @@ const CHARACTERS = [
     hair: "black",
     eyes: "blue",
     accessories: ["crown"],
-    other: "",
+    other: false,
   },
   {
     name: "Frodo",
@@ -63,7 +63,7 @@ const CHARACTERS = [
     hair: "brown",
     eyes: "blue",
     accessories: ["ring"],
-    other: "",
+    other: false,
   },
   {
     name: "Sam",
@@ -71,7 +71,7 @@ const CHARACTERS = [
     hair: "red",
     eyes: "brown",
     accessories: [],
-    other: "",
+    other: false,
   },
   {
     name: "Arwen",
@@ -79,7 +79,7 @@ const CHARACTERS = [
     hair: "black",
     eyes: "blue",
     accessories: ["evenstar"],
-    other: "",
+    other: false,
   },
   {
     name: "Merry",
@@ -87,7 +87,7 @@ const CHARACTERS = [
     hair: "blonde",
     eyes: "blue",
     accessories: [],
-    other: "",
+    other: false,
   },
   {
     name: "Pippin",
@@ -95,7 +95,7 @@ const CHARACTERS = [
     hair: "brown",
     eyes: "blue",
     accessories: [],
-    other: "",
+    other: false,
   },
   {
     name: "Theoden",
@@ -103,7 +103,7 @@ const CHARACTERS = [
     hair: "blonde",
     eyes: "blue",
     accessories: [],
-    other: "beard",
+    other: true,
   },
   {
     name: "Eowyn",
@@ -111,7 +111,7 @@ const CHARACTERS = [
     hair: "blonde",
     eyes: "blue",
     accessories: [],
-    other: "",
+    other: false,
   },
   {
     name: "Gollum",
@@ -119,7 +119,7 @@ const CHARACTERS = [
     hair: "barely",
     eyes: "blue",
     accessories: ["ring"],
-    other: "",
+    other: false,
   },
   {
     name: "Bilbo",
@@ -127,7 +127,7 @@ const CHARACTERS = [
     hair: "grey",
     eyes: "blue",
     accessories: ["ring"],
-    other: "",
+    other: false,
   },
   {
     name: "Galadriel",
@@ -135,7 +135,7 @@ const CHARACTERS = [
     hair: "blonde",
     eyes: "blue",
     accessories: ["crown"],
-    other: "",
+    other: false,
   },
   {
     name: "Faramir",
@@ -143,64 +143,64 @@ const CHARACTERS = [
     hair: "red",
     eyes: "blue",
     accessories: [],
-    other: "beard",
+    other: true,
   },
-  {
-    name: "Jocelyn",
-    img: "images/jocelyn.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: ["glasses"],
-    other: ["jewelleries"],
-  },
-  {
-    name: "Jon",
-    img: "images/jon.svg",
-    hair: "brown",
-    eyes: "green",
-    accessories: ["glasses"],
-    other: [],
-  },
-  {
-    name: "Jordan",
-    img: "images/jordan.svg",
-    hair: "blonde",
-    eyes: "hidden",
-    accessories: ["sunglasses", "hat"],
-    other: ["jewelleries"],
-  },
-  {
-    name: "Josephine",
-    img: "images/josephine.svg",
-    hair: "different",
-    eyes: "brown",
-    accessories: [],
-    other: ["jewelleries"],
-  },
-  {
-    name: "Josh",
-    img: "images/josh.svg",
-    hair: "blonde",
-    eyes: "green",
-    accessories: [],
-    other: [],
-  },
-  {
-    name: "Jude",
-    img: "images/jude.svg",
-    hair: "black",
-    eyes: "green",
-    accessories: ["tie"],
-    other: ["beard"],
-  },
-  {
-    name: "Julie",
-    img: "images/julie.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: ["glasses", "hat"],
-    other: [],
-  },
+  // {
+  //   name: "Jocelyn",
+  //   img: "images/jocelyn.svg",
+  //   hair: "black",
+  //   eyes: "brown",
+  //   accessories: ["glasses"],
+  //   other: ["jewelleries"],
+  // },
+  // {
+  //   name: "Jon",
+  //   img: "images/jon.svg",
+  //   hair: "brown",
+  //   eyes: "green",
+  //   accessories: ["glasses"],
+  //   other: [],
+  // },
+  // {
+  //   name: "Jordan",
+  //   img: "images/jordan.svg",
+  //   hair: "blonde",
+  //   eyes: "hidden",
+  //   accessories: ["sunglasses", "hat"],
+  //   other: ["jewelleries"],
+  // },
+  // {
+  //   name: "Josephine",
+  //   img: "images/josephine.svg",
+  //   hair: "different",
+  //   eyes: "brown",
+  //   accessories: [],
+  //   other: ["jewelleries"],
+  // },
+  // {
+  //   name: "Josh",
+  //   img: "images/josh.svg",
+  //   hair: "blonde",
+  //   eyes: "green",
+  //   accessories: [],
+  //   other: [],
+  // },
+  // {
+  //   name: "Jude",
+  //   img: "images/jude.svg",
+  //   hair: "black",
+  //   eyes: "green",
+  //   accessories: ["tie"],
+  //   other: [true],
+  // },
+  // {
+  //   name: "Julie",
+  //   img: "images/julie.svg",
+  //   hair: "black",
+  //   eyes: "brown",
+  //   accessories: ["glasses", "hat"],
+  //   other: [],
+  // },
 ];
 
 // Global variables
@@ -264,7 +264,7 @@ const checkQuestion = () => {
   } else if (category === "accessories") {
     keep = secretCharacter.accessories.includes(value);
   } else if (category === "other") {
-    keep = secretCharacter.other.includes(value);
+    keep = secretCharacter.other;
   }
   filterCharacters(keep); // Invokes filterCharacters
 };
@@ -292,17 +292,13 @@ const filterCharacters = (keep) => {
   } else if (category === "other") {
     if (keep) {
       alert(`Yes! The person has a ${value}! Keep everyone with a ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) =>
-        person[category].includes(value)
-      );
+      charactersInPlay = charactersInPlay.filter((person) => person[category]);
     } else if (keep) {
     } else {
       alert(
         `No! The person does not have a ${value}! Remove all people with a ${value}`
       );
-      charactersInPlay = charactersInPlay.filter(
-        (person) => !person[category].includes(value)
-      );
+      charactersInPlay = charactersInPlay.filter((person) => !person[category]);
     }
   }
   if (category === "hair") {

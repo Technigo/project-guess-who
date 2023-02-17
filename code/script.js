@@ -4,6 +4,8 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutBtn = document.getElementById('filter')
 const playAgain = document.getElementById('playAgain')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // The array containing all the characters it is called CHARACTERS 
 const CHARACTERS = [
@@ -351,7 +353,7 @@ const checkMyGuess = (personToConfirm) => {
 //personToConfirm is the person the user have clicked on, it can be called something else
 
 //if personToConfirm is the same as the secret persons name, the user wins.
-if (personToConfirm === secret.name){
+if (personToConfirm === secret.name) {
 winOrLoseText.innerHTML = `Congratulations, you won! &#129395 The right answer was ${secret.name}!`
 }
 
@@ -360,10 +362,10 @@ else {
 winOrLoseText.innerHTML = `Oh no! You lost! &#128543 The right answer was ${secret.name}.`
 }
 
-//Displays the HTML-section winOrLose
-winOrLose.style.display = 'flex'
-//Removes the display of the board.
-board.style.display = 'none'
+  //Displays the HTML-section winOrLose
+  winOrLose.style.display = 'flex'
+  //Removes the display of the board.
+  board.style.display = 'none'
 }
 
 start()// Invokes the start function when website is loaded

@@ -369,11 +369,11 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     alert(`Good job! Your guess on ${personToCheck} is correct! You win!`);
     board.innerHTML = "";
-    winOrLose.style.display = "block";
+    winOrLose.style.display = "flex";
 } else {
     alert(`Oh no! Your guess is wrong! The correct answer is ${secret.name}`);
     board.innerHTML = "";
-    winOrLose.style.display = "block";
+    winOrLose.style.display = "flex";
 }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly

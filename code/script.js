@@ -11,218 +11,218 @@ const CHARACTERS = [
   {
     name: "Adelaide",
     img: "images/adelaide.png",
-    fur: "short",
-    color: "bw",
-    accessories: ["suit"],
+    color: "black",
+    job: "lawyer",
+    accessories: ["glasses", "suit"],
     other: [],
   },
   {
     name: "Biscuit",
     img: "images/Biscuit.png",
-    fur: "short",
     color: "dotted",
-    accessories: ["hat", "jewlery"],
+    job: "designer",
+    accessories: ["hat", "jewelry"],
     other: [],
   },
   {
     name: "Boots",
     img: "images/Boots.png",
-    fur: "long",
     color: "white",
+    job: "designer",
     accessories: ["hat", "collar"],
     other: [],
   },
   {
     name: "Churchill",
     img: "images/Churchill.png",
-    fur: "short",
     color: "black",
-    accessories: ["collar"],
+    job: "professor",
+    accessories: ["collar", "glasses"],
     other: [],
   },
   {
     name: "Dorothy",
     img: "images/Dorothy.png",
-    fur: "long",
-    color: "white",
-    accessories: [],
-    other: ["royal"],
+    color: "brown",
+    job: "bartender",
+    accessories: ["hat", "collar"],
+    other: [],
   },
   {
     name: "Dutch",
     img: "images/Dutch.png",
-    fur: "short",
     color: "white",
+    job: "mooch",
     accessories: ["hat"],
     other: [],
   },
   {
     name: "Elektra",
     img: "images/Elektra.png",
-    fur: "short",
     color: "black",
-    accessories: ["jewlery"],
+    job: "mooch",
+    accessories: ["jewelry"],
     other: ["royal"],
   },
   {
-    name: "Ghost",
-    img: "images/Ghost.png",
-    fur: "long",
-    color: "white",
-    accessories: [],
+    name: "Gerald",
+    img: "images/Gerald.png",
+    color: "brown",
+    job: "designer",
+    accessories: ["hat", "glasses"],
     other: [],
   },
   {
     name: "Hamlet",
     img: "images/Hamlet.png",
-    fur: "short",
-    color: "bw",
-    accessories: ["jewlery"],
+    color: "black",
+    job: "professor",
+    accessories: ["jewelry"],
     other: ["metalfan"],
   },
 
   {
     name: "Hero",
     img: "images/Hero.png",
-    fur: "short",
-    color: "cream",
+    color: "white",
+    job: "lawyer",
     accessories: ["suit"],
     other: [],
   },
   {
     name: "Howl",
     img: "images/Howl.png",
-    fur: "long",
     color: "tricolor",
-    accessories: ["armor"],
+    job: "knight",
+    accessories: [],
     other: [],
   },
   {
     name: "Iggy",
     img: "images/Iggy.png",
-    fur: "long",
-    color: "cream",
+    color: "brown",
+    job: "mooch",
     accessories: [],
     other: ["royal"],
   },
   {
     name: "Java",
     img: "images/Java.png",
-    fur: "short",
     color: "dotted",
-    accessories: ["collar"],
+    job: "cowboy",
+    accessories: ["collar", "hat"],
     other: [],
   },
   {
     name: "Kamala",
     img: "images/Kamala.png",
-    fur: "short",
     color: "brown",
+    job: "mooch",
     accessories: [],
     other: ["royal"],
   },
   {
     name: "Lucky",
     img: "images/Lucky.png",
-    fur: "long",
-    color: "bw",
+    color: "brown",
+    job: "cowboy",
     accessories: ["hat"],
     other: [],
   },
   {
     name: "Medusa",
     img: "images/Medusa.png",
-    fur: "short",
-    color: "dotted",
-    accessories: ["suit"],
-    other: [],
+    color: "brown",
+    job: "lawyer",
+    accessories: ["jewelry"],
+    other: ["metalfan"],
   },
   {
     name: "Monet",
     img: "images/Monet.png",
-    fur: "short",
-    color: "black",
-    accessories: ["armor"],
-    other: [],
-  },
-  {
-    name: "Nessie",
-    img: "images/Nessie.png",
-    fur: "short",
-    color: "black",
+    color: "dotted",
+    job: "mooch",
     accessories: [],
     other: ["royal"],
   },
   {
+    name: "Nessie",
+    img: "images/Nessie.png",
+    color: "brown",
+    job: "mooch",
+    accessories: [],
+    other: ["hat"],
+  },
+  {
     name: "Oates",
     img: "images/Oates.png",
-    fur: "short",
-    color: "tricolor",
-    accessories: ["armor"],
+    color: "white",
+    job: "bartender",
+    accessories: ["hat", "glasses"],
     other: [],
   },
   {
     name: "Pickles",
     img: "images/Pickles.png",
-    fur: "short",
     color: "white",
+    job: "mooch",
     accessories: [],
     other: ["royal"],
   },
   {
     name: "Pippin",
     img: "images/Pippin.png",
-    fur: "short",
-    color: "tricolor",
+    color: "brown",
+    job: "knight",
     accessories: ["armor"],
     other: [],
   },
   {
     name: "Platon",
     img: "images/Platon.png",
-    fur: "short",
-    color: "bw",
+    color: "black",
+    job: "designer",
     accessories: ["collar"],
     other: ["metalfan"],
   },
   {
     name: "Satin",
     img: "images/Satin.png",
-    fur: "short",
     color: "brown",
-    accessories: ["jewlery"],
+    job: "mooch",
+    accessories: ["jewelry"],
     other: [],
   },
   {
     name: "Ted",
     img: "images/Ted.png",
-    fur: "short",
     color: "tricolor",
+    job: "mooch",
     accessories: ["hat", "collar"],
     other: [],
   },
   {
     name: "Tofu",
     img: "images/Tofu.png",
-    fur: "long",
     color: "tricolor",
+    job: "lawyer",
     accessories: ["suit"],
     other: [],
   },
   {
-    name: "Wrinkle",
-    img: "images/Wrinkle.png",
-    fur: "long",
-    color: "creme",
-    accessories: ["armor"],
-    other: [],
+    name: "Wendy",
+    img: "images/Wendy.png",
+    color: "black",
+    job: "mooch",
+    accessories: ["jewelry"],
+    other: ["royal"],
   },
   {
     name: "Yeti",
     img: "images/Yeti.png",
-    fur: "long",
     color: "black",
-    accessories: ["hat"],
+    job: "designer",
+    accessories: ["hat", "glasses"],
     other: [],
   },
 ];
@@ -230,7 +230,7 @@ const CHARACTERS = [
 let secret; // will be the secret character
 let currentQuestion; // will be the current question object
 let charactersInPlay; //will be an array of all characters left in the game
-let guesses = 0 //Guess counter
+let guesses = 0; //Guess counter
 
 //Generates the board with all the dogs. Starts with reset to clear dogs if filter is applied.
 const generateBoard = () => {
@@ -238,12 +238,12 @@ const generateBoard = () => {
   charactersInPlay.forEach((dog) => {
     board.innerHTML += `
         <div class="card">
-            <p>${dog.name}</p>
             <img src=${dog.img} alt=${dog.name}/>
             <div class="guess">
             <span>Guess on ${dog.name}?</span>
             <button class="filled-button small" onclick="guess('${dog.name}')">Guess</button>
             </div>
+            <p>${dog.name}</p>
         </div>
         `;
   });
@@ -262,7 +262,7 @@ const start = () => {
   generateBoard(); //Draws the board
   winOrLose.style.display = "none"; //needs to be cleared if someone has restarted
   board.style.display = "flex"; //board needs to be visible if "play again" was clicked
-  guessCounter.innerHTML = `0`
+  guessCounter.innerHTML = `0`;
 };
 
 //Setting the current question in the dropdown
@@ -276,7 +276,7 @@ const selectQuestion = () => {
 //Checking the question values against the secret character
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  if (category === "color" || category === "fur") {
+  if (category === "color" || category === "job") {
     if (secret[category] === value) {
       filterCharacters(true);
     } else {
@@ -294,18 +294,30 @@ const checkQuestion = () => {
 //Alerting the user and filtering the characters
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-  if (category === "color" || category === "fur") {
+  if (category === "color") {
     if (keep) {
       alert(
-        `Yes, the dog has ${value} ${category}! Keeping everyone with ${value} ${category}.`
+        `Yes, the dog has ${value} fur! Keeping everyone with ${value} fur.`
       );
       charactersInPlay = charactersInPlay.filter(
         (dog) => dog[category] === value
       );
     } else {
       alert(
-        `No, the dog doesn't have ${value} ${category}! Removing everyone with ${value} ${category}.`
+        `No, the dog doesn't have ${value} fur! Removing everyone with ${value} fur.`
       );
+      charactersInPlay = charactersInPlay.filter(
+        (dog) => dog[category] !== value
+      );
+    }
+  } else if (category === "job") {
+    if (keep) {
+      alert(`Yes, the dog works as a ${value}! Keeping all ${value}s.`);
+      charactersInPlay = charactersInPlay.filter(
+        (dog) => dog[category] === value
+      );
+    } else {
+      alert(`No, the dog doesn't work as ${value}! Removing all ${value}s.`);
       charactersInPlay = charactersInPlay.filter(
         (dog) => dog[category] !== value
       );
@@ -339,9 +351,10 @@ const filterCharacters = (keep) => {
       );
     }
   }
-  guesses++ //Adds +1 guesses to the guess counter
-  guessCounter.innerHTML = guesses //Shows game counter to player
+  guesses++; //Adds +1 guesses to the guess counter
+  guessCounter.innerHTML = guesses; //Shows game counter to player
   generateBoard();
+  questions.selectedIndex = null; //Clears the select from previously chosen values
 };
 
 //Making a guess

@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guess who</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&family=Karla:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -20,23 +26,26 @@
       <select id="questions" title="questions">
         <option value="" selected disabled>Please choose...</option>
         <optgroup label="color">
-          <option value="bw">Black and white fur</option>
           <option value="black">Black fur</option>
-          <option value="white">White fur</option>
-          <option value="cream">Cream/tan fur</option>
-          <option value="tricolor">Tricolor fur</option>
           <option value="brown">Brown fur</option>
           <option value="dotted">Dotted fur</option>
+          <option value="tricolor">Tricolor fur</option>
+          <option value="white">White fur</option>
         </optgroup>
-        <optgroup label="fur">
-          <option value="long">Long fur</option>
-          <option value="short">Short fur</option>
+        <optgroup label="job">
+          <option value="bartender">Bartender</option>
+          <option value="cowboy">Cowboy</option>
+          <option value="designer">Designer</option>
+          <option value="knight">Knight</option>
+          <option value="lawyer">Lawyer</option>
+          <option value="professor">Professor</option>
+          <option value="mooch">Unemployed</option>
         </optgroup>
         <optgroup label="accessories">
           <option value="collar">Collar</option>
           <option value="hat">Hat</option>
           <option value="armor">Armor</option>
-          <option value="jewlery">Jewlery</option>
+          <option value="jewelry">Jewelry</option>
           <option value="suit">Business attire</option>
         </optgroup>
         <optgroup label="other">
@@ -44,9 +53,12 @@
           <option value="metalfan">An interest in metal music</option>
         </optgroup>
       </select>
-      <button class="filled-button" id="filter">Find out!</button>
-      <div class="questions-counter" id="questionsCounter"></div>
-      <div id="game-guesses" class="game-guesses"><span>Guesses: <span id="guesses">0</span></span></div>
+      <button class="filter-button" id="filter">FIND OUT!</button>
+      <section class="guesses-wrapper">
+        <p>Guesses:&nbsp;</p>
+        <p id="guesses">0</p>
+      </section>
+      <div class="info">Made as part of Technigo front end dev bootcamp. Dogs made with <a href="https://openart.ai/">Open Art AI</a>.</div>
     </aside>
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>

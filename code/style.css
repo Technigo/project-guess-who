@@ -1,18 +1,19 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #ffffff;
+  --secondary: #302e2e;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
+  font-family: "Dosis", sans-serif;
 }
 
 h1 {
   font-size: 42px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 48px;
   margin: 10px 0;
   color: white;
@@ -32,15 +33,40 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
+  width: 100%;
+  font-size: 18px;
+  font-family: "DM Sans", sans-serif;
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
 }
 
+#questions option {
+  background: plum;
+}
+
 .guess-who-icon {
-  width: 126px;
+  width: 170px;
+}
+
+.guesses-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.guesses-wrapper p,
+.info {
+  color: white;
+}
+
+.info {
+  font-size: 0.6rem;
+}
+
+a {
+font-weight: bolder;
+color: var(--primary);
+text-decoration: none;
 }
 
 .board-wrapper {
@@ -65,7 +91,7 @@ select {
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;
-  margin: 3px;
+  margin: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,9 +104,10 @@ select {
 
 .card p {
   text-align: center;
-  margin-bottom: 0;
+  margin-top: 10px;
+  margin-bottom: 3px;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .card .guess {
@@ -120,32 +147,52 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Dosis", sans-serif;
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
 }
 
+.filter-button {
+  border-radius: 0;
+  width: 100%;
+}
+
+.filter-button:hover {
+  border-radius: 0px;
+  width: 100%;
+  background-color: var(--secondary);
+  border-color: var(--primary);
+  color: white;
+}
+
 .small {
   padding: 8px 16px;
+  padding: 8px 20px;
+  border-radius: 10px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  margin-top: 1rem;
 }
 
 .outlined-button {
+  padding: 8px 16px;
+  margin-bottom: 3rem;
+  font-size: 0.7rem;
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
 }
 
-.filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: var(--secondary);
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
+  background-color: var(--primary);
+  border-color: var(--secondary);
+  color: var(--secondary);
 }
 
 /****** WIN OR LOSE SECTION ******/

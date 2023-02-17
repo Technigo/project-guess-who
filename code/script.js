@@ -213,6 +213,7 @@ let charactersInPlay
 //Sounds
 let correctSound = new Audio('sounds/correct.wav')
 let wrongSound = new Audio('sounds/wrong.wav')
+let selectClick = new Audio('sounds/selectClick2.wav')
 
 // Draw the game board
 const generateBoard = () => {
@@ -229,6 +230,7 @@ const generateBoard = () => {
       </div>
     `
   })
+  selectClick.play()
 }
 
 

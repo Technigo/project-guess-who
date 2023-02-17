@@ -407,7 +407,7 @@ const filterCharacters = (keep) => {
     // making sure that we are selecting the ones with the right category ie "hair"
     // and then removing it
     if (questions.options[option.index].parentNode.label === category) {
-      o.remove();
+      option.remove();
     }
   });
 

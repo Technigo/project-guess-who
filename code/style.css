@@ -73,10 +73,6 @@ select {
   display: inline;
 }
 
-.guesses {
-  display: inline;
-}
-
 .game-log {
   border: 3px solid white;
   border-radius: 3px;

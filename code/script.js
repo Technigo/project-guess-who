@@ -12,6 +12,8 @@ const questionCounter = document.getElementById('questionsAsked')
 const playAgain = document.getElementById('playAgain')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const guesses = document.querySelector('.guesses');
+
 
 ////////////////////////////CHARACTERS OBJECTS///////////////////////////////
 
@@ -240,7 +242,7 @@ const generateBoard = () => { // Here this function is created and called.
 }
 //////////////////////////////////SOUND/////////////////////////////////////////////////
 
-const cardFlipTrack = new Audio('./assets/flipcard.mp3');
+const cardFlipTrack = new Audio('./images/flipcard.mp3');
 const makesound = () => {
       cardFlipTrack.play();
 };
@@ -254,6 +256,8 @@ const setSecret = () => { // The function is created and called. The global vari
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+const increaseGuesses = () => guesses.innerHTML++;
+
 ////////////////////////////THIS IS THE START AND RESTART FUNCTION//////////////////////
 
 const start = () => { // The function is created and then
@@ -262,6 +266,7 @@ const start = () => { // The function is created and then
   board.style.display = 'flex' // This is helps the display be more responsive in say mobiles
   generateBoard() // Make the board visible
   setSecret() // Calls and selects the secret person.
+  cardFlipTrack.play();
 }
 
 ///////////////////////THIS IS SETTING THE currentQuestion IN THE DROPDOWN/////////////
@@ -293,6 +298,8 @@ const checkQuestion = () => {
   } else if (category === 'accessories' || category === 'other') {
     keep = secret[category].includes(value);
   }
+  increaseGuesses();
+
   // Then invoke filterCharacters. This is why we want to filter the characters array and redraw the game board with the "new" array.
   filterCharacters(keep); // (holds the Boolean value True). The  value goes trough the IF statement and stops at True. 
 }
@@ -305,14 +312,14 @@ const filterCharacters = (keep) => { // Keep holds the value true
   if (category === 'accessories') {
     if (keep) { // If true then show the alert. Yes, the person wears ${value}! Keep all people that wear ${value}
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)) //person is a parameter - filter is a method and we want i delete the items that not contains the category or value. the result is a new array thets meets the criteria of the filermethod.
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wear ${value} `
+      alert( 
+        `🔥 Yes, the person wears ${value}! Keep all people that wear ${value}!`
       )
     } else { // IF false than show: No, the person doesn't wear ${value}! Remove all people that wear ${value}
 
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) // It does not inklude a hat.
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wear ${value}!`
       )
     }
 
@@ -324,7 +331,7 @@ const filterCharacters = (keep) => { // Keep holds the value true
         (person) => person[category].includes(value)
       )
       alert(
-        `Yes, the person is a ${value}! Keep all people that are ${value}s`
+        `🔥 Yes, the person is a ${value}! Keep all people that are ${value}s 🚬`
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
@@ -339,7 +346,7 @@ const filterCharacters = (keep) => { // Keep holds the value true
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
       alert(
-        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+        `🔥 Yes, the person has ${value} hair! Keep all people with ${value} hair`
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
@@ -354,7 +361,7 @@ const filterCharacters = (keep) => { // Keep holds the value true
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value); // compares if the value is the same
       alert(
-        `Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
+        `🔥 Yes, the person has ${value} eyes! Keep all people with ${value} eyes`
       )
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value) // or not the same
@@ -390,7 +397,7 @@ const guess = (personToConfirm) => { // This is linked in the board and the card
 
 const checkMyGuess = (personToCheck) => { // Here we bring in the stored interation/value (personToCheck is just a name could be banana).
 if (personToCheck === secret.name) { // This compares if the players guess (personeToCheck) is the same as the persons name in the object array then show this message.
-  winOrLoseText.innerHTML = `YES!! The correct answer is ${secret.name}!` // This shows the win or loose page. Secret is a global variable that we declared in the global scopes and can therfore be used here..
+  winOrLoseText.innerHTML = `🔥 YES!! The correct answer is ${secret.name}! 🔥` // This shows the win or loose page. Secret is a global variable that we declared in the global scopes and can therfore be used here..
   winOrLose.style.display = 'flex'
 } else {
   winOrLoseText.innerHTML = `Sorry its not ${personToCheck} the correct answer is ${secret.name}!`

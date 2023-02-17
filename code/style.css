@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #e168d5;
+  --secondary: #f6a3e4;
 }
 
 body {
@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 40px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
@@ -33,11 +33,13 @@ h1 {
 select {
   display: block;
   border: none;
+  border-radius: 18px;
   font-size: 22px;
   font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;
-  margin: 24px 0;
+  margin: 20px 0;
+  padding: 5px;
 }
 
 .guess-who-icon {
@@ -145,8 +147,8 @@ button {
   color: var(--primary);
 }
 
-/****** WIN OR LOSE SECTION ******/
-.win-or-lose-wrapper {
+/****** WIN OR LOoSE SECTION ******/
+.win-or-loose-wrapper {
   display: none;
   align-items: center;
   justify-content: center;
@@ -159,7 +161,7 @@ button {
   height: 100vh;
 }
 
-.win-or-lose {
+.win-or-loose {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -168,12 +170,12 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
+.win-or-loose img {
   align-self: flex-start;
   margin-left: 15%;
 }
 
-.win-or-lose h1 {
+.win-or-loose h1 {
   margin-bottom: 32px;
 }
 

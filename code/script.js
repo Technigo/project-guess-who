@@ -10,198 +10,135 @@ const playAgainButton = document.getElementById('playAgain')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
+    name: 'Boh',
+    img: 'images/boh.png',
+    hair: 'yellow',
+    clothes:"" ,
     accessories: [],
     other: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
+    name: 'Boiler Geezer',
+    img: 'images/boiler_geezer.png',
+    hair: 'bald',
+    clothes: 'red',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    name: 'Calcifer',
+    img: 'images/calcifer.png',
+    hair: '',
+    clothes: '',
+    accessories: [],
     other: []
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
+    name: 'Catbus',
+    img: 'images/catbus.png',
+    hair: 'mixed',
+    clothes: '',
+    accessories: [],
+    other: ['teeth showing']
+  },
+  {
+    name: 'chihiro',
+    img: 'images/chihiro.png',
     hair: 'black',
-    eyes: 'hidden',
+    clothes: 'red',
+    accessories: ['bow'],
+    other: []
+  },
+  {
+    name: 'Haku',
+    img: 'images/haku.png',
+    hair: 'mixed',
+    clothes: '',
+   // accessories: [],
+    other: []
+  },
+  {
+    name: 'jiji',
+    img: 'images/jiji.png',
+    hair: 'black',
+    clothes: '',
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'kiki',
+    img: 'images/kiki.png',
+    hair: 'black',
+    clothes: 'blue',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'kodama',
+    img: 'images/kodama.png',
+    hair: '',
+    clothes: '',
+    accessories: [],
+    other: ['group']
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
+    name: 'moro',
+    img: 'images/moro.png',
     hair: 'white',
-    eyes: 'hidden',
+    clothes: '',
+    accessories: [],
+    other: ['teeth showing']
+  },
+  {
+    name: 'No Face',
+    img: 'images/no_face.png',
+    hair: '',
+    clothes: 'black',
+    accessories: ['mask'],
+    other: []
+  },
+  {
+    name: 'San',
+    img: 'images/san.png',
+    hair: 'white',
+    clothes: '',
+    accessories: ['mask,earrings'],
+    other: []
+  },
+  {
+    name: 'Susuwatari',
+    img: 'images/susuwatari.png',
+    hair: 'black',
+    clothes: '',
+    accessories: ['stars'],
+    other: ['group']
+  },
+  {
+    name: 'Totoro',
+    img: 'images/totoro.png',
+    hair: 'mixed',
+    clothes: 'hidden',
     accessories: ['hat'],
-    other: []
+    other: ['teeth showing']
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Turnip Head',
+    img: 'images/turnip_head.png',
+    hair: '',
+    clothes: 'blue',
+    accessories: ['hat,pipe'],
+    other: ['teeth showing']
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
+    name: 'White & Blue totoros',
+    img: 'images/white-blue_totoros.png',
+    hair: 'mixed',
+    clothes: '',
+    accessories: ['leaf'],
     other: []
   },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
+
 ]
 
 // Global variables
@@ -305,30 +242,30 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
-      alert (`Yeees, the person wears ${value}! Keep all people that wears${value}.`)
+      alert (`Yeees, the character wears ${value}! Keep all characters that wears${value}.`)
     } else  {
-      alert (`oh no, the person doesn't wear ${value}! Remove all people that wears. ${value}.`)
+      alert (`oh no, the person doesn't wear ${value}! Remove all characters that wears. ${value}.`)
     }
 
 } else if (category === "hair") {
     if (keep) {
-      alert (`Yaay, the person has ${value} hair! Keep all people with ${value} hair.`)
+      alert (`Yaay, the character has ${value} hair! Keep all characters with ${value} hair.`)
     } else  {
-      alert (`oh no, the person doesnt have ${value} hair! Remove all people with ${value} hair.`)
+      alert (`oh no, the person doesnt have ${value} hair! Remove all characters with ${value} hair.`)
     }
 
 } else if (category === "eyes") {
     if (keep) {
-      alert (`Yeah, the person have ${value} eyes! Keep all people with ${value} eyes.`)
+      alert (`Yeah, the character have ${value} eyes! Keep all characters with ${value} eyes.`)
     } else  {
-      alert (`oh no, the person doesnt have ${value} eyes! Remove all people with ${value} eyes.`)
+      alert (`oh no, the character doesnt have ${value} eyes! Remove all characters with ${value} eyes.`)
     }
 
 } else if (category === "other") {
     if (keep) {
-      alert (`yuhuu, the person have ${value}! Keep all people with ${value}.`)
+      alert (`yuhuu, the character have ${value}! Keep all characters with ${value}.`)
     } else  {
-      alert (`oh no, the person doesnt have ${value}! Remove all people with ${value}.`)
+      alert (`oh no, the character doesnt have ${value}! Remove all characters with ${value}.`)
     }
   }
   
@@ -375,12 +312,12 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToConfirm) => {
   // 1. Check if the personToCheck is the same as the secret person's name
    if ( secret.name === personToConfirm) {
-     winOrLoseText.innerHTML = `That's impressive! you are right it is ${secret.name}!`
+     winOrLoseText.innerHTML = `YOU WON is ${secret.name}!`
     }
 
   // 2. Set a Message to show in the win or lose section accordingly
   else {
-    winOrLoseText.innerHTML = `Oh no you lost is was ${secret.name}!` 
+    winOrLoseText.innerHTML = `GAME OVER!` 
    }
 // 3. Show the win or lose section
    winOrLose.style.display = "flex"

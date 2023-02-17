@@ -1,14 +1,15 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #b8a3d3;
-  --secondary: #0b062b;
+  --primary: rgb(0, 0, 0);
+  --secondary:  #e94a87;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Press Start 2P';
+  background-color: black;
 }
 
 h1 {
@@ -57,28 +58,38 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  background-color: #b8a3d3;
+  background-color: #000000;
 }
 
 /****** CARD ******/
 .card {
-  width: 135px;
-  height: 165px;
+  width: 150px;
+  height: 250px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+  border: 5px solid var(--secondary);
+  border-radius: 7px;
+  border-style: double;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: black;
+  margin-bottom: 20px;
+}
+
+.card img {
+  width: 150px;
+  height: 200px;
+
 }
 
 .card p {
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
+  color: #ffd7e7;
 }
 
 .card .guess {
@@ -92,13 +103,16 @@ select {
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: black;
 }
 
 .card:hover img,
 .card:hover p {
   display: none;
+  color: #000000;
 }
+
+
 
 /* The div with the guess class is only shown on hover */
 .card:hover .guess {
@@ -116,9 +130,9 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
+  border-radius: 10px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Press Start 2P';
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -126,23 +140,27 @@ button {
 
 .small {
   padding: 8px 16px;
+  border: 5px solid white;
+  border-radius: 7px;
+  border-style: double;
 }
 
 .outlined-button {
-  background-color: transparent;
+  background-color: yellow;
   color: var(--primary);
-  align-self: flex-end;
+  align-self: flex-start;
+  margin-bottom: 50px;
 }
 
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color:white;
 }
 
 .filled-button:hover {
   background-color: white;
-  border-color: white;
+  border-color: white ;
   color: var(--primary);
 }
 
@@ -160,6 +178,15 @@ button {
   height: 100vh;
 }
 
+/*.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}*/
+
 .win-or-lose {
   display: flex;
   flex-direction: column;
@@ -173,6 +200,16 @@ button {
   align-self: flex-start;
   margin-left: 15%;
 }
+
+#questions {
+  font-size: 15px;
+  line-height: 30px;
+  font-family: 'Press Start 2P';
+  padding: 10px;
+  background-color: black;
+  border-radius: 10px;
+}
+
 
 .win-or-lose h1 {
   margin-bottom: 32px;
@@ -193,6 +230,7 @@ button {
   h1 {
     font-size: 24px;
     line-height: 30px;
+    font-family: 'Press Start 2P';
   }
 
   .guess-who-icon {
@@ -231,5 +269,6 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+    
   }
 }

@@ -368,7 +368,7 @@ const guess = (suspect) => {
 //Checks the guess against the secret character's name
 const checkMyGuess = (dogToCheck) => {
   if (dogToCheck === secret.name) {
-    winOrLoseText.innerHTML = `NICE JOB! You guessed correct! The dog was ${secret.name}.`;
+    winOrLoseText.innerHTML = `NICE JOB! Your guess was correct! The dog was ${secret.name}.`;
   } else {
     winOrLoseText.innerHTML = `Oh no, your guess was not correct. The dog was ${secret.name}. Game over!`;
   }

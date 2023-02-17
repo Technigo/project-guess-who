@@ -222,11 +222,12 @@ const generateBoard = () => {
       <img src =${person.img} alt=${person.name}/>
         <div class = "guess">
           <span> Guess me ${person.name}?</span>
-          <button class= "filled-button small">Guess</button>
+          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>`
   })
 }
+
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
@@ -259,11 +260,11 @@ const selectQuestion = () => {
     category: category,
     value: value 
   }
+  //selectQuestion()
 }
 
 // This function should be invoked when you click on 'Find Out=filter' button.
 const checkQuestion = () => {
-  console.log(currentQuestion)
   
   const {category, value} = currentQuestion
   
@@ -290,7 +291,6 @@ const checkQuestion = () => {
     }
   }
 }
-console.log(currentQuestion)
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
@@ -316,7 +316,6 @@ const filterCharacters = (keep) => {
     }
   }
  else if (category === 'eyes' || category === 'hair') {
-  console.log('i am in the right category')
   if (keep) {
     // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     alert(
@@ -345,27 +344,25 @@ const guess = (personToConfirm) => {
     alert(`You can always guess again later`)
   }
 }
-
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   let messgage =""
   if (secret.name ===personToCheck){
-    message="Holy Moly you guessed correctly!"
+    alert("Holy Moly you guessed correctly!")
   } else {
-    messgage= "Woopsy daisy better luck next time"
+    alert ("Woopsy daisy better luck next time")
   }
-
+  console.log("this works")
   winOrLose.innerHTML=message
   boardWrapper.classList.add("board-wrapper-inactive")
   winOrLose.classList.add("win-or-lose-wrapper-active")
   //Show the win or lose section and hide the game board
 }
-
 // Invokes the start function when website is loaded
-start()
+start( selectQuestion())
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start) //restart button
 questions.addEventListener("change", selectQuestion)
-filter.addEventListener("click", checkQuestion)
+filter.addEventListener("click", checkQuestion) //find out button
 playAgain.addEventListener("click", start)

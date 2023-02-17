@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
   --primary: #aeec9c;
-  --secondary: #319fa5;
+  --secondary: #237276;
 }
 
 body {
@@ -49,6 +49,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #aff0e3;
 }
 
 .game-board {

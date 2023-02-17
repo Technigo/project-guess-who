@@ -1,10 +1,14 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #FF5733;
+  --secondary: #C70039;
 }
 
-body {
+/* --primary: #a259ff;
+  --secondary: #b0a6ff; */
+
+/* body of the cards */
+body { 
   display: flex;
   margin: 0;
   padding: 0;
@@ -200,6 +204,7 @@ button {
 
   .board-wrapper {
     width: 100%;
+    background-color: #FF5733 ;
   }
 
   .game-board {
@@ -226,7 +231,7 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: #900C3F;
     color: var(--primary);
     border: none;
   }

@@ -11,14 +11,17 @@
     />
   </head>
   <body>
-    <aside class="question-section">
+    <section id="myAudio">
+      <audio src="./game!.mp3" loop autoplay ></audio> <!-- adding music-->
+    </section>
+    <aside class="question-section">  <!-- aside is basically side bar-->
       <button type="button" id="restart" class="outlined-button">RESTART</button>
 
       <img
         class="guess-who-icon"
         src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
+        alt="Guess Who" 
+      /> <!-- if image is not shown this text will show up -->
 
       <h1>Does the person have</h1>
 
@@ -26,14 +29,24 @@
         <optgroup label="hair">
           <option value="brown">brown hair</option>
           <option value="yellow">yellow hair</option>
+          <option value="hidde">hidden hair</option>
+          <option value="grey">grey hair</option>
+          <option value="black">black hair</option>
+          <option value="orange">orange hair</option>
+          <option value="purple">purple hair</option>
+          <option value="white">white hair</option>
           <!-- Add the rest of hair colors as options  -->
         </optgroup>
         <optgroup label="eyes">
           <option value="hidden">hidden eyes</option>
+          <option value="brown">brown eyes</option>
+          <option value="green">green eyes</option>
+          <option value="blue">blue eyes</option>
           <!-- Add the rest of eye colors as options  -->
         </optgroup>
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
+          <option value="hat">hat</option>
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
         <optgroup label="other">
@@ -56,7 +69,11 @@
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <button type="button" 
+            id="playAgain" 
+            class="filled-button">
+            PLAY AGAIN
+        </button>
       </div>
     </section>
     <script src="script.js"></script>

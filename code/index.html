@@ -3,66 +3,125 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Can You Guess Who?</title>
+    <title>Guess Who? Zelda Edition</title>
     <link rel="stylesheet" href="style.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Medula+One" rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet"/>
   </head>
   <body>
     <aside class="question-section" id="question-section"> 
     <!-- Creates the side bar where the questioning takes place. -->
       
-    <button type="button" id="restart" class="outlined-button">RESTART</button>
-
+    <div>
+      <img
+      class="zelda-logo"
+      src="./zelda-images/zelda-logo.svg"
+      alt="Zelda Breath of the Wild Logo"
+      />
       <img
         class="guess-who-icon"
-        src="images/guess-who-bubble.png"
+        src="./zelda-images/guess-who.webp"
         alt="Guess Who"
       />
-
-      <h1>Does the person have</h1>
+      </div>
+      
+      <h1>Does the character have</h1>
 
       <select title="questions" id="questions">
       <!-- Select is used to create a dropdown -->
         <option value="blank"> </options>
-        <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
+        <optgroup label="features">
+          <option value="blue">blue hair/fins/feathers</option>
+          <option value="green">green leaves</option>
+          <option value="red">red hair/fins/feathers</option>
+          <option value="white">white hair/fins/feathers</option>
+          <option value="yellow">yellow hair/fins/feathers</option>
+
         </optgroup>
         <optgroup label="eyes">
+          <option value="black">black eyes</option>
+          <option value="blue">blue eyes</option>
+          <option value="brown">brown eyes</option>
+          <option value="gold">gold eyes</option>
+          <option value="green">green eyes</option>
           <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+          <option value="yellow">yellow eyes</option>
         </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
-        </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
-        </optgroup>
-      </select>
 
+        <optgroup label="accessories">
+          <option value="a beard">a beard</option>
+          <option value="a belt">a belt</option>
+          <option value="a crown">a crown</option>
+          <option value="glasses">glasses</option>
+          <option value="hair chopsticks">chopsticks in their hair</option>
+          <option value="horns">horns</option>
+          <option value="a musical instrument">a musical instrument</option>
+          <option value="a Sheikah Slate">a Sheikah Slate</option>
+          <option value="a tattoo">a tattoo</option>
+          <option value="weapons">weapons</option>
+        </optgroup>
+
+        <optgroup label="weapons">
+          <option value="a bow">a bow</option>
+          <option value="a flaming ham">a flaming ham</option>
+          <option value="a shield">a shield</option>
+          <option value="a sword">a sword</option>
+          <option value="a trident">a trident</option>
+        </optgroup>
+
+        <optgroup label="other">
+          <option value="Gerudo">Gerudo heritage</option>
+          <option value="Goron">Goron heritage</option>
+          <option value="Hylian">Hylian heritage</option>
+          <option value="Korok">Korok heritage</option>
+          <option value="Monster">Monster heritage</option>
+          <option value="Rito">Rito heritage</option>
+          <option value="Sheikah">Sheikah heritage</option>
+          <option value="Zora">Zora heritage</option>
+        </optgroup>
+
+      </select>
+      <section class="last-line" id="last-line">
+        <div class="counter-timer">
+          <p>Number of Guesses: <span id="guess-counter">0</span></p>  
+        </div>
       <button id="filter" class="filled-button">FIND OUT</button>
+        <div class="counter-timer">
+          <p><span id="timer">10:01 remaining</span></p>
+        </div>
+      </section>  
     </aside>
 
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
     </section>
 
-    <section id="winOrLose" class="win-or-lose-wrapper">
-      <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
-        <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+    <button type="button" id="restart" class="outlined-button">RESTART</button>
+
+    <section id="win-wrapper" class="win-wrapper">
+      <div class="win-screen">
+        <h1 id="winText"></h1>
+        <button type="button" id="playAgainAfterWin" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
+
+    <section id="lose-wrapper" class="lose-wrapper">
+      <div class="lose-screen">
+        <h1 id="loseText"></h1>
+        <button type="button" id="playAgainAfterLoss" class="filled-button">PLAY AGAIN</button>
+      </div>
+    </section>
+    <footer>
+      <div class="contactme">
+        <a href="https://www.linkedin.com/in/bridget-mailley/"><img src="./zelda-images/linkedinlogo.png" class="contact-logo" alt="small linkedin logo"></a>
+        <a href="https://github.com/beemailley"><img src="./zelda-images/githublogo.png" class="contact-logo" alt="small github logo"></a>
+      </div>
+      <div class="aboutme">
+        Designed by Bridget Mailley. Technigo Web Development Bootcamp 2023.
+       </div>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

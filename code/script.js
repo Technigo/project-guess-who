@@ -3,205 +3,235 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
-const winOrLoseText = document.getElementById('winOrLoseText')
-const playAgainButton = document.getElementById('playAgain')
-const winOrLose = document.getElementById('winOrLose')
+const winText = document.getElementById('winText')
+const loseText = document.getElementById('loseText')
+const playAgainAfterWin = document.getElementById('playAgainAfterWin')
+const playAgainAfterLoss = document.getElementById('playAgainAfterLoss')
+const winWrapper = document.getElementById('win-wrapper')
+const loseWrapper = document.getElementById('lose-wrapper')
 const questionSection = document.getElementById('question-section')
+const guessCounter = document.getElementById('guess-counter')
+let timer = document.getElementById('timer')
+let footer = document.querySelector('footer')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
     name: 'Zelda',
     img: 'zelda-images/zelda.webp',
-    hair: 'yellow hair, fins, or feathers',
-    eyes: 'blue eyes',
+    features: 'yellow',
+    eyes: 'blue',
     accessories: ['a Sheikah slate', 'a belt'],
-    other: ['Hylian']
+    other: ['Hylian'], 
+    weapons: []
   },
   {
     name: 'Link',
     img: 'zelda-images/link.webp',
-    hair: 'yellow hair, fins, or feathers',
-    eyes: 'blue eyes',
-    accessories: ['a Sheikah slate', 'a bow', 'a shield', 'weapons'],
-    other: ["Hylian"]
+    features: 'yellow',
+    eyes: 'blue',
+    accessories: ['a Sheikah slate','weapons'],
+    other: ["Hylian"], 
+    weapons: ['a bow', 'a shield']
   },
   {
     name: 'Urbosa',
     img: 'zelda-images/urbosa.webp',
-    hair: 'red hair, fins, or feathers',
-    eyes: 'green eyes',
-    accessories: ['a sword', 'a shield', 'weapons'],
-    other: ['Gerudo']
+    features: 'red',
+    eyes: 'green',
+    accessories: ['a sword', 'weapons'],
+    other: ['Gerudo'],
+    weapons: ['a sword', 'a shield']
   },
   {
     name: 'Mipha',
     img: 'zelda-images/mipha.webp',
-    hair: 'red hair, fins, or feathers',
-    eyes: 'gold eyes',
-    accessories: ['weapons', 'a trident'],
-    other: ['Zora']
+    features: 'red',
+    eyes: 'gold',
+    accessories: ['weapons'],
+    other: ['Zora'], 
+    weapons: ['a trident']
   },
   {
     name: 'Daruk',
     img: 'zelda-images/daruk.webp',
-    hair: 'white hair, fins, or feathers',
-    eyes: 'blue eyes',
+    features: 'white',
+    eyes: 'blue',
     accessories: ['a belt', 'a beard'],
-    other: ['Goron']
+    other: ['Goron'], 
+    weapons: []
   },
   {
     name: 'Revali',
     img: 'zelda-images/revali.webp',
-    hair: 'blue hair, fins, or feathers',
-    eyes: 'green eyes',
-    accessories: ['weapons', 'a bow'],
-    other: ['Rito']
+    features: 'blue',
+    eyes: 'green',
+    accessories: ['weapons'],
+    other: ['Rito'], 
+    weapons: ['a bow']
   },
   {
     name: 'Riju',
     img: 'zelda-images/riju.webp',
-    hair: 'red hair, fins, or feathers',
-    eyes: 'green eyes',
+    features: 'red',
+    eyes: 'green',
     accessories: ['crown'],
-    other: ['Gerudo']
+    other: ['Gerudo'], 
+    weapons: []
   },
   {
     name: 'Sidon',
     img: 'zelda-images/sidon.webp',
-    hair: 'red hair, fins, or feathers',
-    eyes: 'gold eyes',
+    features: 'red',
+    eyes: 'gold',
     accessories: ['a belt'],
-    other: ['Zora']
+    other: ['Zora'],
+    weapons: []
   },
   {
     name: 'Yunobo',
     img: 'zelda-images/yunobo.webp',
-    hair: 'white hair, fins, or feathers',
-    eyes: 'blue eyes',
-    accessories: ['a scarf','a flaming ham'],
-    other: ['Goron']
+    features: 'white',
+    eyes: 'blue',
+    accessories: ['a scarf'],
+    other: ['Goron'],
+    weapons: ['a flaming ham']
   },
 
   {
     name: 'Teba',
     img: 'zelda-images/teba.png',
-    hair: 'white hair, fins, or feathers',
-    eyes: 'gold eyes',
+    features: 'white',
+    eyes: 'gold',
     accessories: [],
-    other: ['Rito']
+    other: ['Rito'], 
+    weapons: []
   },
   {
     name: 'Dorephan',
     img: 'zelda-images/dorephan.jpg',
-    hair: 'blue hair, fins, or feathers',
-    eyes: 'gold eyes',
+    features: 'blue',
+    eyes: 'gold',
     accessories: ['a crown', 'a belt'],
-    other: ['Zora']
+    other: ['Zora'],
+    weapons: []
   },
   {
     name: 'Bludo',
     img: 'zelda-images/bludo.webp',
-    hair: 'white hair, fins, or feathers',
-    eyes: 'black eyes',
+    features: 'white',
+    eyes: 'black',
     accessories: ['a beard', 'an eye-patch'],
-    other: ['Goron']
+    other: ['Goron'],
+    weapons: []
   },
   {
     name: 'Kaneli',
     img: 'zelda-images/kaneli.webp',
-    hair: 'white hair, fins, or feathers',
-    eyes: 'gold eyes',
+    features: 'white',
+    eyes: 'gold',
     accessories: ['a beard'],
-    other: ['Rito']
+    other: ['Rito'],
+    weapons: []
   },
   {
     name: 'Rhoam',
     img: 'zelda-images/rhoam.webp',
-    hair: 'white hair, fins, or feathers',
-    eyes: 'blue eyes',
-    accessories: ['a beard', 'weapons', 'a sword', 'a crown'],
-    other: ['Hylian']
+    features: 'white',
+    eyes: 'blue',
+    accessories: ['a beard', 'weapons', 'a crown'],
+    other: ['Hylian'],
+    weapons: ['a sword']
   },
   {
     name: 'Impa',
     img: 'zelda-images/impa.webp',
-    hair: 'white hair, fins, or feathers',
-    eyes: 'black eyes',
+    features: 'white',
+    eyes: 'black',
     accessories: ['a tattoo', 'hair chopsticks'],
-    other: ['Sheikah']
+    other: ['Sheikah'], 
+    weapons: []
   },
   {
     name: 'Purah',
     img: 'zelda-images/purah.png',
-    hair: 'white hair, fins, or feathers',
-    eyes: 'brown eyes',
+    features: 'white',
+    eyes: 'brown',
     accessories: ['glasses', 'hair chopsticks'],
-    other: ['Sheikah']
+    other: ['Sheikah'],
+    weapons: []
   },
   {
     name: 'Robbie',
     img: 'zelda-images/robbie.webp',
-    hair: 'white hair, fins, or feathers',
-    eyes: 'hidden eyes',
+    features: 'white',
+    eyes: 'hidden',
     accessories: ['glasses', 'hair chopsticks'],
-    other: ['Sheikah']
+    other: ['Sheikah'],
+    weapons: []
   },
   {
     name: 'Hestu',
     img: 'zelda-images/hestu.webp',
-    hair: 'green hair, fins, or feathers',
-    eyes: 'hidden eyes',
+    features: 'green',
+    eyes: 'hidden',
     accessories: ['a musical instrument', 'maracas', 'a bag', 'a beard'],
-    other: ['Korok']
+    other: ['Korok'],
+    weapons: []
   },
   {
     name: 'Kass',
     img: 'zelda-images/kass.webp',
-    hair: 'blue hair, fins, or feathers',
-    eyes: 'gold eyes',
+    features: 'blue',
+    eyes: 'gold',
     accessories: ['a musical instrument'],
-    other: ['Rito']
+    other: ['Rito'],
+    weapons: []
   },
   {
     name: 'Chuchu',
     img: 'zelda-images/chuchu.webp',
-    hair: 'no hair, fins, or feathers',
-    eyes: 'yellow eyes',
+    features: '',
+    eyes: 'yellow',
     accessories: [],
-    other: ['Monster']
+    other: ['Monster'],
+    weapons: []
   },
   {
     name: 'Bokoblin',
     img: 'zelda-images/bokoblin.png',
-    hair: 'no hair, fins, or feathers',
-    eyes: 'yellow eyes',
+    features: '',
+    eyes: 'yellow',
     accessories: ['horns'],
-    other: ['Monster']
+    other: ['Monster'],
+    weapons: []
   },
   {
     name: 'Moblin',
     img: 'zelda-images/moblin.webp',
-    hair: 'no hair, fins, or feathers',
-    eyes: 'blue eyes',
+    features: '',
+    eyes: 'blue',
     accessories: ['horns'],
-    other: ['Monster']
+    other: ['Monster'],
+    weapons: []
   },
   {
     name: 'Hinox',
     img: 'zelda-images/hinox.webp',
-    hair: 'white hair, fins, or feathers',
-    eyes: 'yellow eyes',
+    features: 'white',
+    eyes: 'yellow',
     accessories: ['horns'],
-    other: ['Monster']
+    other: ['Monster'],
+    weapons: []
   },
   {
     name: 'Lynel',
     img: 'zelda-images/lynel.webp',
-    hair: 'red hair, fins, or feathers',
-    eyes: 'green eyes',
+    features: 'red',
+    eyes: 'green',
     accessories: ['horns'],
-    other: ['Monster']
+    other: ['Monster'],
+    weapons: []
   },
 ]
 
@@ -209,9 +239,8 @@ const CHARACTERS = [
 let secret //Will be the secret person object
 let currentQuestion //Will be the current question object
 let charactersInPlay //Will be an array of all people left in the game
-
-// let keep ='';
-// const characterAccessories = "accessories";
+let count = 0
+let timerIntervalId
 
 // Draw the game board
 const generateBoard = () => {
@@ -233,24 +262,61 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret);
+
 }
+
+const clickCounter = () => {
+  count++;
+  guessCounter.innerHTML = `${count}`;
+}
+
+const startTimer = () => { // defining startTimer
+  clearInterval(timerIntervalId); // clears the interval before starting to count, in case of restarts
+  let second = 01,
+      minute = 10;
+
+  timerIntervalId = setInterval(() => {
+    timer.innerHTML = 
+    (minute < 10 ? "0" + minute + ":" : minute + ":") +  // if there are less then 10 minutes, add a 0 in front of the minute, else show the minutes
+    (second < 10 ? "0" + second + " remaining" : second + " remaining");  
+
+    second --;  //subtracts a second every second
+
+    if (second == 00){ //if seconds gets to 00, decrease minutes by one and return seconds to 59
+      minute--;
+      second = 59;
+    }
+    
+    if (minute == 0){
+      loseText.innerHTML = ''
+      loseText.innerHTML += `
+      GAME OVER.`
+      loseWrapper.style.display = 'flex'
+      board.style.display = 'none'
+      questionSection.style.display = 'none'
+      footer.style.display = 'none'
+    }
+
+  }, 1000);//for this function, it runs ever 1 second
+}
+
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+
   // What else should happen when we start the game?
   generateBoard();
-  setSecret();
+  setSecret(CHARACTERS);
+  startTimer();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label // This variable stores what option group (category) the question belongs to.
   const value = questions.value // We also need a variable that stores the actual value of the question we've selected.
-  console.log('new dropdown item has been selected', `category: ${category}`, `value: ${value}`)
-
+  
   currentQuestion = {
     category: category,
     value: value
@@ -259,27 +325,19 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  console.log('filter button')
   const {category, value} = currentQuestion
-
-  // // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // // See if we should keep or remove people based on that
-  // // Then invoke filterCharacters
 
   keep = false; // if this line of code is not included, then get wrong answers when selecting values from grouped categories. E.g. without keep = false, 
   // if a character has yellow hair and hidden eyes.  I ask about yellow hair, the alert says yes they have yellow hair. Then I ask if they have green eyes, alert will give me a false yes, 
   //because now keep has been changed to true for hair and eyes.
 
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'features' || category === 'eyes') {
     if (value === secret[category]) {
       keep = true
-      console.log(`${secret[category]}`, 'hair and eyes is true');
     }
-  } else if (category === 'accessories' || category === 'other') {  
+  } else if (category === 'accessories' || category === 'other' || category === 'weapons') {  //these categories are compared differently than features and eyes because these categories contain arrays
     if (secret[category].includes(value)) {
       keep = true
-      console.log(`${secret[category]}`, 'accessories and other is true');
-      // need to define differently than hair and eyes in order to access the values stored in the other and accessories
     }
   }
 
@@ -290,110 +348,105 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
-  if (category === 'accessories') {
+//shows the alert messages
+  if (category === 'accessories' || category === 'weapons') {
     if (keep) {
       alert(
-        `Yes, the person has ${value}! Keep all people that have ${value}.`
+        `Yes, the character has ${value}! Keep all characters that have ${value}.`
       )
     } else {
       alert(
-        `No, the person doesn't have ${value}! Remove all people that have ${value}.`
+        `No, the character doesn't have ${value}! Remove all characters that have ${value}.`
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  if (keep) {
-    alert(
-      `Yes, the person is a ${value}! Keep all people that are ${value}s.`
-    )
-  } else {
-    alert(
-      `No, the person is not a ${value}! Remove all people that are ${value}s.`
-    )
-  }
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-    alert(
-      `Yes, the person has ${value}! Keep all people that have ${value}.`
-    )
+      alert(
+        `Yes, the character is a ${value}! Keep all characters that are ${value}s.`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-    alert(
-      `No, the person does not have ${value}! Remove all people that have ${value}.`
-    )
+      alert(
+        `No, the character is not a ${value}! Remove all characters that are ${value}s.`
+      )
     }
+    } else {
+      if (keep) {
+      alert(
+        `Yes, the character has ${value} ${category}! Keep all characters that have ${value} ${category}.`
+      )
+      } else {
+      alert(
+        `No, the character does not have ${value} ${category}! Remove all characters that have ${value} ${category}.`
+      )
+      }
   }
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
+  // filters by category then puts the new array on the game board - looks like it's removing characters, but it's replacing the original CHARACTERs array (or previous array) with a new one according to filters
    
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'features' || category === 'eyes') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
-      console.log(charactersInPlay);
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      console.log(charactersInPlay)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     } 
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'accessories' || category === 'other' || category === 'weapons') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      console.log(charactersInPlay);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      console.log(charactersInPlay)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   }
-  // Invoke a function to redraw the board with the remaining people.
+  // Invokes the function to redraw the board with the remaining people.
   generateBoard(filterCharacters);
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ? 
-  // If the player wants to guess, invoke the checkMyGuess function.
-
   const makeAGuess = confirm(`Want to guess ${personToConfirm}?`)
 
   if(makeAGuess) {
-    console.log ('making a guess');
     checkMyGuess(personToConfirm) //this must go inside of the if statement otherwise checkMyGuess is called regardless of whether or not user confirms
   }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToConfirm) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 
-  if (personToConfirm === secret.name) {
-    console.log('you win')
-    winOrLoseText.innerHTML = ''
-    winOrLoseText.innerHTML += `
-    you win`
+
+
+
+
+  if (personToConfirm === secret.name) {   // 1. Check if the personToCheck is the same as the secret person's name
+    winText.innerHTML = ''
+    winText.innerHTML += `
+    You are a Champion!`   // 2. Set a Message to show in the win or lose section accordingly   // 3. Show the win or lose section
+    winWrapper.style.display = 'flex'
+    board.style.display = 'none'   // 4. Hide the game board
+    questionSection.style.display = 'none'
+    footer.style.display = 'none'
   } else {
-    console.log('you lose', `${personToConfirm}`)
-    winOrLoseText.innerHTML = ''
-    winOrLoseText.innerHTML += `
-    you lose`
+    loseText.innerHTML = ''
+    loseText.innerHTML += `
+    GAME OVER.`   // 2. Set a Message to show in the win or lose section accordingly   // 3. Show the win or lose section
+    loseWrapper.style.display = 'flex'
+    board.style.display = 'none'   // 4. Hide the game board
+    questionSection.style.display = 'none'
+    footer.style.display = 'none'
   }
-  winOrLose.style.display = 'flex'
-  board.style.display = 'none'
-  questionSection.style.display = 'none'
   
 }
 
 const playAgain = () => {
-  winOrLose.style.display = 'none'
+  winWrapper.style.display = 'none'
+  loseWrapper.style.display = 'none'
   board.style.display = 'flex'
   questionSection.style.display = 'flex'
+  guessCounter.innerHTML = `0`;
+  footer.style.display = 'block'
+  count = 0
   start();
 }
+
 
 
 // Invokes the start function when website is loaded
@@ -403,7 +456,9 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
-playAgainButton.addEventListener('click', playAgain)
+filterButton.addEventListener('click',clickCounter)
+playAgainAfterWin.addEventListener('click', playAgain)
+playAgainAfterLoss.addEventListener('click', playAgain)
 
 
 
@@ -485,7 +540,7 @@ playAgainButton.addEventListener('click', playAgain)
 //   // // Then invoke filterCharacters
  
 //   if (category === 'hair' || category === 'eyes') {
-//     //console.log('secret hair:', secret.hair, 'value:', value, 'category:', category)
+//     //console.log('secret features:', secret.hair, 'value:', value, 'category:', category)
 //     if (Object.is(secret.hair, currentQuestion.value) === true){
 //       keep = CHARACTERS.hair === currentQuestion.value;//if the question value = the secret person's value, keep all characters with the question value
 //       console.log('keep hair true')

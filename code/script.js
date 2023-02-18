@@ -219,7 +219,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}/>
         <div class="guess">
           <span> Guess on ${person.name}?</span>
-          <button class="filled-button small" onClick="guess('${person.name})">Guess</button>
+          <button class="filled-button small" onClick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
@@ -256,23 +256,25 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion;
-
+  const { category, value } = currentQuestion
+  console.log(`checkQuestion will filter based on ${category}: ${value}`)
+  
   if (category === 'hair' || category === 'eyes') {
-    if (value === secret.hair || value === secret.eyes) {
-      filterCharacters(true);
+    if (secret[category] === value) {
+      filterCharacters(true); 
     } else {
-      filterCharacters(false);
+      filterCharacters(false) 
     }
-  } else if (category === 'accessories' || category === 'other') {
-    if (value === secret.accessories || value === secret.other) {
-      filterCharacters(true);
-    } else {
-      filterCharacters(false);
-    }
-    }
-  } 
 
+  } else if (category === 'accessories' || category === 'other') {
+    if (secret[category].includes(value)) {
+      filterCharacters(true) 
+    } else {
+      filterCharacters(false) 
+    }
+  }
+
+}
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {

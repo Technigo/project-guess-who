@@ -49,6 +49,14 @@ select {
   width: 126px;
 }
 
+#timer, #guesses{
+font-size: 42px;
+font-weight: 500;
+line-height: 48px;
+margin: 10px 0;
+color: white;
+}
+
 .board-wrapper {
   width: 70%;
   display: flex;
@@ -201,6 +209,12 @@ button {
     padding: 8px 16px;
   }
   h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  #timer ,
+  #guesses{
     font-size: 24px;
     line-height: 30px;
   }

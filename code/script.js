@@ -1,4 +1,3 @@
-// All the DOM selectors stored as short variables
 const board = document.getElementById("board");
 const boardWrapper = document.querySelector(".board-wrapper");
 const winOrLoseWrapper = document.querySelector(".win-or-lose-wrapper");
@@ -6,13 +5,31 @@ const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutBtn = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText");
+const details = document.getElementById("details");
 const card = document.querySelector(".card");
+const timer = document.getElementById("timer");
+const guesses = document.getElementById("guesses");
+
+// Global variables
+let userNamePrompt = prompt("What's your name?");
+let userNameText = "";
+let guessCounter = 1;
+let secret;
+let currentQuestion;
+let charactersInPlay;
+
+//Creating an array for each category options list and removing duplicates
+let hairArr = [];
+let eyesArr = [];
+let accessoriesArr = [];
+let otherArr = [];
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
     name: "Charlie",
     img: "images/charlie.jpg",
-    hair: "beige tabby",
+    fur: "tabby",
     eyes: "hidden",
     accessories: [],
     other: ["shorthair"],
@@ -20,7 +37,7 @@ const CHARACTERS = [
   {
     name: "Ricky",
     img: "images/ricky.jpg",
-    hair: "black and white",
+    fur: "mixed color",
     eyes: "green",
     accessories: [],
     other: ["shorthair"],
@@ -28,7 +45,7 @@ const CHARACTERS = [
   {
     name: "Jacques",
     img: "images/jacques.png",
-    hair: "black",
+    fur: "black",
     eyes: "yellow",
     accessories: [],
     other: ["shorthair", "tongue out"],
@@ -36,7 +53,7 @@ const CHARACTERS = [
   {
     name: "Peter",
     img: "images/peter.jpg",
-    hair: "brown tabby",
+    fur: "tabby",
     eyes: "yellow",
     accessories: ["collar"],
     other: ["longhair"],
@@ -44,7 +61,7 @@ const CHARACTERS = [
   {
     name: "Jake",
     img: "images/jake.jpg",
-    hair: "brown tabby",
+    fur: "tabby",
     eyes: "green",
     accessories: ["collar"],
     other: [],
@@ -52,7 +69,7 @@ const CHARACTERS = [
   {
     name: "Jana",
     img: "images/jana.jpg",
-    hair: "calico",
+    fur: "mixed color",
     eyes: "green",
     accessories: [],
     other: ["shorthair"],
@@ -60,7 +77,7 @@ const CHARACTERS = [
   {
     name: "Rufus",
     img: "images/rufus.jpg",
-    hair: "grey",
+    fur: "grey",
     eyes: "green",
     accessories: [],
     other: ["shorthair"],
@@ -68,7 +85,7 @@ const CHARACTERS = [
   {
     name: "Jaqueline",
     img: "images/jaqueline.jpg",
-    hair: "grey",
+    fur: "grey",
     eyes: "hidden",
     accessories: ["glasses"],
     other: ["shorthair"],
@@ -77,7 +94,7 @@ const CHARACTERS = [
   {
     name: "Martin",
     img: "images/martin.jpg",
-    hair: "orange",
+    fur: "orange",
     eyes: "yellow",
     accessories: ["clothes"],
     other: ["shorthair"],
@@ -85,7 +102,7 @@ const CHARACTERS = [
   {
     name: "Oliver",
     img: "images/oliver.jpg",
-    hair: "orange",
+    fur: "orange",
     eyes: "brown",
     accessories: [],
     other: ["longhair"],
@@ -93,7 +110,7 @@ const CHARACTERS = [
   {
     name: "Rocky",
     img: "images/rocky.jpg",
-    hair: "orange",
+    fur: "orange",
     eyes: "hidden",
     accessories: [],
     other: ["shorthair"],
@@ -101,7 +118,7 @@ const CHARACTERS = [
   {
     name: "Mollie",
     img: "images/mollie.jpg",
-    hair: "white",
+    fur: "white",
     eyes: "green",
     accessories: [],
     other: ["shorthair"],
@@ -109,7 +126,7 @@ const CHARACTERS = [
   {
     name: "Andy",
     img: "images/andy.jpg",
-    hair: "orange and white",
+    fur: "mixed color",
     eyes: "green",
     accessories: [],
     other: ["shorthair"],
@@ -117,7 +134,7 @@ const CHARACTERS = [
   {
     name: "Mandy",
     img: "images/mandy.jpg",
-    hair: "white and beige",
+    fur: "mixed color",
     eyes: "blue",
     accessories: ["collar"],
     other: ["longhair"],
@@ -125,7 +142,7 @@ const CHARACTERS = [
   {
     name: "Jerry",
     img: "images/jerry.jpg",
-    hair: "white and brown",
+    fur: "mixed color",
     eyes: "green",
     accessories: ["collar"],
     other: ["shorthair", "tongue out"],
@@ -133,7 +150,7 @@ const CHARACTERS = [
   {
     name: "Jess",
     img: "images/jess.jpg",
-    hair: "white",
+    fur: "white",
     eyes: "brown",
     accessories: [],
     other: ["longhair"],
@@ -141,7 +158,7 @@ const CHARACTERS = [
   {
     name: "Jocelyn",
     img: "images/jocelyn.jpg",
-    hair: "orange",
+    fur: "orange",
     eyes: "brown",
     accessories: ["glasses"],
     other: ["longhair"],
@@ -149,7 +166,7 @@ const CHARACTERS = [
   {
     name: "Jon",
     img: "images/jon.jpg",
-    hair: "brown tabby",
+    fur: "tabby",
     eyes: "green",
     accessories: [],
     other: ["shorthair"],
@@ -157,7 +174,7 @@ const CHARACTERS = [
   {
     name: "Jordan",
     img: "images/jordan.jpg",
-    hair: "orange",
+    fur: "orange",
     eyes: "hidden",
     accessories: ["glasses"],
     other: ["shorthair"],
@@ -165,7 +182,7 @@ const CHARACTERS = [
   {
     name: "Tom",
     img: "images/tom.jpg",
-    hair: "white brown",
+    fur: "mixed color",
     eyes: "blue",
     accessories: ["clothes"],
     other: ["shorthair"],
@@ -173,7 +190,7 @@ const CHARACTERS = [
   {
     name: "Bob",
     img: "images/bob.jpg",
-    hair: "brown tabby",
+    fur: "tabby",
     eyes: "blue",
     accessories: ["collar"],
     other: ["shorthair"],
@@ -181,15 +198,15 @@ const CHARACTERS = [
   {
     name: "Annie",
     img: "images/annie.jpg",
-    hair: "no",
+    fur: "no",
     eyes: "hidden",
     accessories: [],
-    other: ["naked"],
+    other: [],
   },
   {
     name: "Kora",
     img: "images/kora.jpg",
-    hair: "white and grey tabby",
+    fur: "tabby",
     eyes: "yellow",
     accessories: [],
     other: ["shorthair"],
@@ -197,7 +214,7 @@ const CHARACTERS = [
   {
     name: "Zoe",
     img: "images/zoe.jpg",
-    hair: "grey",
+    fur: "grey",
     eyes: "hidden",
     accessories: [],
     other: ["tongue out", "shorthair"],
@@ -205,17 +222,9 @@ const CHARACTERS = [
 ];
 
 // audio
-// const audio = (url) => {
 const sound = new Audio(
   "/project-guess-who/code/images/Card-flip-sound-effect.mp3"
 );
-
-// };
-
-// Global variables
-let secret;
-let currentQuestion;
-let charactersInPlay;
 
 // Draw the game board
 const generateBoard = () => {
@@ -237,27 +246,20 @@ const generateBoard = () => {
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  console.log(secret);
   return secret;
 };
 
 // Create category (optGroup) elements
 const categoryArray = Object.keys(CHARACTERS[0]);
+
 //Removed unnecessary categories
 categoryArray.splice(categoryArray.indexOf("img"), 1);
 categoryArray.splice(categoryArray.indexOf("name"), 1);
-console.log(categoryArray);
-
-//Creating an array for each category options list and removing duplicates
-let hairArr = [];
-let eyesArr = [];
-let accessoriesArr = [];
-let otherArr = [];
 
 const CategoryOptions = () =>
   charactersInPlay.forEach((character) => {
-    if (!hairArr.includes(character.hair)) {
-      hairArr.push(character.hair);
+    if (!hairArr.includes(character.fur)) {
+      hairArr.push(character.fur);
     }
     if (!eyesArr.includes(character.eyes)) {
       eyesArr.push(character.eyes);
@@ -274,8 +276,6 @@ const CategoryOptions = () =>
     });
   });
 
-console.log(hairArr, eyesArr, accessoriesArr, otherArr);
-
 //Creating HTML element OptGroups and Options
 const createCategories = () => {
   categoryArray.forEach((category) => {
@@ -283,7 +283,7 @@ const createCategories = () => {
      <optgroup label="${category}" id="${category}">
         </optgroup>
     `;
-    if (category === "hair") {
+    if (category === "fur") {
       hairArr.forEach((hairItem) => {
         document.getElementById(category).innerHTML += `
     <option value="${hairItem}" id="${hairItem}">${hairItem} fur</option>
@@ -310,16 +310,35 @@ const createCategories = () => {
     }
   });
 };
+//timer
+let totalSeconds = 0;
+const timerCount = () => {
+  // define minutes and seconds variable
+  totalSeconds++;
+  minutes = Math.floor(totalSeconds / 60);
+  seconds = totalSeconds - minutes * 60;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+  timer.innerHTML = `Time: ${minutes}:${seconds}`;
+};
+setInterval(timerCount, 1000);
 
 // This function to start (and restart) the game
 const start = () => {
+  totalSeconds = 0;
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
   CategoryOptions();
   createCategories();
-
-  console.log(board.children);
+  if (userNamePrompt) {
+    userNameText = userNamePrompt;
+  }
+  timerCount();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -333,17 +352,13 @@ const selectQuestion = () => {
     category: category,
     value: value,
   };
-  console.log(value);
-  console.log(currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-
-  console.log(category, value);
-  if (category === "hair" || category === "eyes") {
-    if (value === secret.hair || value === secret.eyes) {
+  if (category === "fur" || category === "eyes") {
+    if (value === secret.fur || value === secret.eyes) {
       filterCharacters(true);
     } else {
       filterCharacters(false);
@@ -356,6 +371,7 @@ const checkQuestion = () => {
     }
   }
   generateBoard();
+  guesses.textContent = `Guesses: ${guessCounter++}`;
 };
 
 // It'll filter the characters array and redraw the game board.
@@ -364,13 +380,13 @@ const filterCharacters = (keep) => {
   document.getElementById(value).disabled = true;
   if (category === "accessories" || category === "other") {
     if (keep) {
-      alert(`Yes, the cat wears ${value}! Keep all cats that wears ${value}`);
+      alert(`Yes, the cat has ${value}! Keep all cats that have ${value}`);
       charactersInPlay = charactersInPlay.filter((cat) =>
         cat[category].includes(value)
       );
     } else {
       alert(
-        `No, the cat doesn't wear ${value}! Remove all cats that wears ${value}`
+        `No, the cat doesn't have ${value}! Remove all cats that have ${value}!`
       );
       charactersInPlay = charactersInPlay.filter(
         (cat) => !cat[category].includes(value)
@@ -378,38 +394,42 @@ const filterCharacters = (keep) => {
     }
   } else {
     if (keep) {
-      alert(`Yes, the cat has  ${value}! Keep all cats with ${value}`);
+      alert(
+        `Yes, the cat has ${value} ${category}! Keep all cats with ${value} ${category}!`
+      );
       charactersInPlay = charactersInPlay.filter(
         (cat) => cat[category] === value
       );
     } else {
       alert(
-        `No, the cat doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
+        `No, the cat doesn't have ${value} ${category}! Remove all cats with ${value} ${category}!`
       );
       charactersInPlay = charactersInPlay.filter(
         (cat) => cat[category] !== value
       );
-      console.log(charactersInPlay);
     }
   }
 };
 
 const guess = (catToConfirm) => {
-  confirm(`Do you want to confirm ${catToConfirm}?`);
-  checkMyGuess(catToConfirm);
+  if (confirm(`Do you want to confirm ${catToConfirm}?`) === true) {
+    checkMyGuess(catToConfirm);
+  } else {
+  }
 };
 
 const checkMyGuess = (catToCheck) => {
   boardWrapper.style.display = "none";
+  details.textContent = `${timer.textContent} ${guesses.textContent}`;
   if (catToCheck === secret.name) {
     alert("Match!");
     winOrLoseWrapper.style.display = "flex";
-    winOrLoseText.textContent = "Hurray! You won! Do you want to play again?";
+    winOrLoseText.textContent = `Hurray ${userNameText}! You won!`;
     document.querySelector(".sadcat").style.display = "none";
   } else {
     alert(`Your answer is wrong!`);
     winOrLoseWrapper.style.display = "flex";
-    winOrLoseText.textContent = `Your answer is wrong! The correct solution was ${secret.name}! Play again?`;
+    winOrLoseText.textContent = `Your answer is wrong ${userNameText}! ${secret.name} stole the tuna!`;
     document.querySelector(".happycat").style.display = "none";
   }
 };

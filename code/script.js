@@ -6,8 +6,10 @@ const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgain = document.getElementById('playAgain')
-let counterDisplayElem = document.querySelector('.counter-display');
-let winOrLoseContainer = document.getElementById('winOrLoseContainer')
+const guessCounterElem = document.getElementById('guess-counter');
+const winOrLoseContainer = document.getElementById('winOrLoseContainer')
+const countUpTimer = document.getElementById('count-up')
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -209,12 +211,7 @@ const CHARACTERS = [
 let secret //Secret person object
 let currentQuestion // The current question object
 let charactersInPlay //The people that are left in the game
-let hour = 0;
-let minute = 0;
-let second = 0;
-let millisecond = 0;
-
-let cron;
+let guessCounter = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -237,18 +234,30 @@ const generateBoard = () => {
 })
 }
 
-let guessCounter = 0;
-
-
-function updateDisplay() {
-  counterDisplayElem.innerHTML = guessCounter;
-};
-
-updateDisplay(); 
-
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+}
+
+
+const guessCounterDisplay = () => {
+  guessCounterElem.innerText = `${guessCounter}`;
+};
+
+let seconds = 0
+
+const upTimer = () => {
+  ++seconds;
+  let hour = Math.floor(seconds / 3600);
+  let minute = Math.floor((seconds - hour * 3600) / 60);
+  let updSecond = seconds - (hour * 3600 + minute * 60);
+  countUpTimer.innerHTML = `Your time: <span id="hour">${hour}</span>hr <span id="minute">${minute}</span>min <span id="second">${updSecond}</span>sec`;
+}
+
+let timer = setInterval(upTimer, 1000);
+
+const pause = () => {
+  clearInterval(timer);
 }
 
 // This function to start (and restart) the game
@@ -358,55 +367,18 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+    console.log('checkMyGuess')
+  console.log(countUpTimer.innerHTML)
     board.innerHTML = '';
     winOrLose.style.display = "block";
-    let secretPersonImg = `<img class="cardFinal" src=${secret.img} alt=${secret.name}>`;
-    winOrLoseContainer.insertAdjacentHTML("afterBegin", secretPersonImg);
+    board.innerHTML = '';
+  let secretPersonImg = `<img class="cardFinal" src=${secret.img} alt=${secret.name}> <div><h3>Amount of guesses: ${guessCounter}</h3></div><div class="winOrLoseTime"><h3>You played the game in </h3>${countUpTimer.innerHTML}</div>`;
+    winOrLoseContainer.insertAdjacentHTML("beforeEnd", secretPersonImg);
    if (personToCheck === secret.name) {
      winOrLoseText.innerText = `Wohoo that's correct! You Win!`
   } else {
-    winOrLoseText.innerText = `Oh no! Your guess is wrong! The correct answer is ${secret.name}`
+    winOrLoseText.innerText = `Oh no! Your guess is wrong! ${secret.name} is very angry!`
   }
-}
-
-const startTimer = () => {
-  pause();
-  cron = setInterval(() => { timer(); }, 10);
-}
-
-const pause = () => {
-  clearInterval(cron);
-}
-
-const reset = () => {
-  minute = 0;
-  second = 0;
-  /* millisecond = 0; */
-  document.getElementById('minute').innerText = '00';
-  document.getElementById('second').innerText = '00';
-  /*   document.getElementById('millisecond').innerText = '00'; */
-}
-
-const timer = () => {
-  if ((millisecond += 10) == 1000) {
-    millisecond = 0;
-    second++;
-  }
-  if (second == 60) {
-    second = 0;
-    minute++;
-  }
-  if (minute == 60) {
-    minute = 0;
-    hour++;
-  }
-
-  document.getElementById('minute').innerText = returnData(minute);
-  document.getElementById('second').innerText = returnData(second);
-}
-
-const returnData = (input) => {
-  return input >= 10 ? input : `0${input}`
 }
 
 // Invokes the start function when website is loaded
@@ -415,8 +387,9 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', (event) => { 
 start()
-pause();
-reset();
+/* pause();
+reset(); */
+window.location.reload();
 });
 questions.addEventListener('change', () => {
   selectQuestion();
@@ -425,13 +398,13 @@ questions.addEventListener('change', () => {
 filterButton.addEventListener('click', checkQuestion)
 playAgain.addEventListener("click", (event) => {
   start();
-  pause();
-  reset();
+ /*  pause();
+  reset(); */
   winOrLose.style.display = "none";
   window.location.reload();
 });
 filterButton.addEventListener("click", () => {
   guessCounter += 1;
-  updateDisplay();
-  startTimer();
+  guessCounterDisplay(); 
+/*   startTimer(); */
 });

@@ -12,6 +12,10 @@
   </head>
   <body>
     <aside class="question-section">
+      <section class="display-username">
+        <h2 id="users-name-displayed"></h2>
+        <button type="button" id="reset-username">✒️</button>
+      </section>
       <button type="button" id="restart" class="outlined-button">
         RESTART
       </button>
@@ -56,6 +60,13 @@
     </aside>
 
     <section class="board-wrapper">
+      <div id="overlay">
+        <div class="box">
+          <label for="name">Please enter your name:</label>
+          <input type="text" name="name" id="name" placeholder="Jon Doe" />
+          <button id="name-button">Continue to game</button>
+        </div>
+      </div>
       <main class="game-board" id="board"></main>
     </section>
 

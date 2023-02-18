@@ -6,7 +6,11 @@ const restartButton = document.getElementById("restart");
 const filter = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const playAgain = document.getElementById("playAgain");
-const counter = document.getElementById("counter");
+const nameButton = document.getElementById("name-button");
+const userNameInput = document.getElementById("name");
+const displayUsername = document.getElementById("users-name-displayed");
+const resetUsernameButton = document.getElementById("reset-username");
+const overlay = document.getElementById("overlay");
 const count = document.getElementById("count");
 
 // Array with all the characters, as objects
@@ -207,15 +211,22 @@ const CHARACTERS = [
 ];
 
 // Global variables
-let secret, currentQuestion, charactersInPlay, userGuess;
-
+let secret, currentQuestion, charactersInPlay, userName, userGuess;
 let numberOfGuesses = 0;
+
+// Counter
+function counter() {
+  numberOfGuesses++;
+  count.innerHTML = `${numberOfGuesses}`;
+}
+
+// Reset Counter
 function resetCounter() {
   numberOfGuesses = 0;
   count.innerHTML = `${numberOfGuesses}`;
 }
 
-// timer func
+// Timer
 let seconds = 0;
 let timer = setInterval(upTimer, 1000);
 
@@ -228,8 +239,18 @@ function upTimer() {
     hour + ":" + minute + ":" + updSecond;
 }
 
+// Reset timer
 function resetTimer() {
   seconds = 0;
+}
+
+//overlay func
+function showOverlay() {
+  overlay.style.display = "flex";
+}
+
+function hideOverlay() {
+  overlay.style.display = "none";
 }
 
 // Draw the game board
@@ -286,8 +307,6 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  console.log("checkQuestion value:", value);
-  console.log("checkQuestion cat:", category);
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
@@ -402,14 +421,14 @@ const checkMyGuess = (personToCheck) => {
     // 3. Hide the game board
     board.style.display = "none";
     // 4. Set a Message to show in the win or lose section accordingly
-    winOrLoseText.innerHTML = "You Win!";
+    winOrLoseText.innerHTML = `${userName}, You Win!`;
   } else {
     // 1. Show the lose section
     winOrLose.style.display = "block";
     // 2. Hide the game board
     board.style.display = "none";
     // 3. Set a Message to show in the win or lose section accordingly
-    winOrLoseText.innerHTML = "You Lose!";
+    winOrLoseText.innerHTML = `${userName}, You Lose!`;
   }
 };
 
@@ -418,16 +437,16 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", () => {
-  start();
-  resetCounter();
-  resetTimer();
+  confirm("Are you sure you want to restart?");
+  if (confirm) {
+    start();
+    resetCounter();
+    resetTimer();
+  }
 });
 
 filter.addEventListener("click", () => {
-  numberOfGuesses++;
-  count.innerHTML = `${numberOfGuesses}`;
-  console.log("the selected question is: ", currentQuestion);
-  console.log("the secret is: ", secret);
+  counter();
   checkQuestion();
 });
 
@@ -441,4 +460,25 @@ playAgain.addEventListener("click", () => {
   start();
   resetCounter();
   resetTimer();
+});
+
+//Username input
+userNameInput.addEventListener("keyup", () => {
+  // console.log(userNameInput.value);
+  userName = userNameInput.value;
+});
+//Hide overlay on click
+nameButton.addEventListener("click", () => {
+  if (typeof userName === "string" && userName.length > 0) {
+    hideOverlay();
+    displayUsername.innerHTML = `${userName}`;
+  } else {
+    alert("please enter username");
+  }
+  resetTimer();
+});
+
+//Reshow overlay
+resetUsernameButton.addEventListener("click", () => {
+  showOverlay();
 });

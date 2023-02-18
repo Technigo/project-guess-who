@@ -227,7 +227,7 @@ let charactersInPlay // This is an array that is the same as CHARACTERS when the
 
 const generateBoard = () => { // Here this function is created and called.
   board.innerHTML = ''// Every time we start the game this code makes the board fresh
-  guesses.innerHTML = '0' // Every time we start the game this code makes the guesscounter go to 0
+  increaseGuesses(); // Increase number off guesses
   charactersInPlay.forEach((person) => { // The forEach loops trough all objects and shows the cards
     board.innerHTML += `
       <div class="card">
@@ -281,6 +281,8 @@ const start = () => { // The function is created and then
   generateBoard() // Make the board visible
   setSecret() // Calls and selects the secret person.
   cardFlipTrack.play(); // Evokes the flipsound
+  guesses.innerHTML = '0' // Every time we start the game this code makes the guesscounter go to 0
+
 }
 
 ///////////////////////THIS IS SETTING THE currentQuestion IN THE DROPDOWN/////////////
@@ -288,7 +290,6 @@ const start = () => { // The function is created and then
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label // This variable stores what option group (category) the question belongs to.
   const value = questions.value // This variable stores the value ex green orange black...
-
   currentQuestion = { // Here we create an object named currentQuestion that contains the values that we are going to take with us
     category: category, // Property and value
     value: value, // Propert and value
@@ -315,7 +316,6 @@ const checkQuestion = () => {
     
   // Then invoke filterCharacters. This is why we want to filter the characters array and redraw the game board with the "new" array.
   filterCharacters(keep); // (holds the Boolean value True). The  value goes trough the IF statement and stops at True. 
-  increaseGuesses(); // Increase number off guesses
   cardFlipTrack.play(); // Evokes the flipsound
 }
 
@@ -385,11 +385,13 @@ const filterCharacters = (keep) => { // Keep holds the value true
       )
     }
   }
+
 ////////////////////////////REDRAW THE BOARD///////////////////////////////////////////
 
     // Invoke a function to redraw the board with the remaining people.
 
   generateBoard() // Showing the new board. We creating a new array with the persons that meet the criteria of category and value
+
 }
 
 ///////////////////////////////////GUESS///////////////////////////////////////////////

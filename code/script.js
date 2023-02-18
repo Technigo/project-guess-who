@@ -6,11 +6,12 @@ const findOutBtn = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const playAgainBtn = document.getElementById('playAgain')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const guessCounter = document.getElementById('guessCounter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
+    name: 'Adam',
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
@@ -26,7 +27,15 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jacques',
+    name: 'Michelle',
+    img: 'images/jolee.svg',
+    hair: 'black',
+    eyes: 'blue',
+    accessories: [],
+    other: []
+  },
+  {
+    name: 'Gregory',
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
@@ -34,7 +43,7 @@ const CHARACTERS = [
     other: ['smoker']
   },
   {
-    name: 'Jai',
+    name: 'Paul',
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
@@ -50,56 +59,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
+    name: 'Sarah',
     img: 'images/jeane.svg',
     hair: 'brown',
     eyes: 'green',
@@ -107,7 +67,47 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jed',
+    name: 'Louis',
+    img: 'images/jia.svg',
+    hair: 'black',
+    eyes: 'blue',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
+    name: 'Matt',
+    img: 'images/james.svg',
+    hair: 'brown',
+    eyes: 'green',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
+    name: 'Tori',
+    img: 'images/jane.svg',
+    hair: 'yellow',
+    eyes: 'hidden',
+    accessories: ['glasses'],
+    other: []
+  },
+  {
+    name: 'Jaz',
+    img: 'images/jazebelle.svg',
+    hair: 'purple',
+    eyes: 'hidden',
+    accessories: ['glasses'],
+    other: ['smoker']
+  },
+  {
+    name: 'John',
+    img: 'images/jean.svg',
+    hair: 'brown',
+    eyes: 'blue',
+    accessories: ['glasses', 'hat'],
+    other: ['smoker']
+  },
+  {
+    name: 'Robert',
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
@@ -115,7 +115,7 @@ const CHARACTERS = [
     other: ['smoker']
   },
   {
-    name: 'Jenni',
+    name: 'Zoe',
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
@@ -123,7 +123,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jeri',
+    name: 'Jen',
     img: 'images/jeri.svg',
     hair: 'orange',
     eyes: 'green',
@@ -131,15 +131,15 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
+    name: 'Joe',
+    img: 'images/joe.svg',
+    hair: 'black',
+    eyes: 'brown',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jess',
+    name: 'Patricia',
     img: 'images/jess.svg',
     hair: 'black',
     eyes: 'blue',
@@ -155,7 +155,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jon',
+    name: 'Michael',
     img: 'images/jon.svg',
     hair: 'brown',
     eyes: 'green',
@@ -163,7 +163,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jordan',
+    name: 'Thomas',
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
@@ -171,15 +171,15 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
+    name: 'Elizabeth',
+    img: 'images/jaqueline.svg',
+    hair: 'orange',
+    eyes: 'green',
+    accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Josh',
+    name: 'Charles',
     img: 'images/josh.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -187,7 +187,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jude',
+    name: 'Joseph',
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
@@ -195,7 +195,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Julie',
+    name: 'Lisa',
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
@@ -260,7 +260,13 @@ const selectQuestion = () => {
 }
 
 // This function should be invoked when you click on 'Find Out' button.
+let count = 0
 const checkQuestion = () => {
+  count++
+
+  guessCounter.innerHTML=''
+  guessCounter.innerHTML += `GUESS COUNTER: ${count}`
+  
   const { category, value } = currentQuestion
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -337,10 +343,17 @@ const checkMyGuess = (theGuess) => {
  if (theGuess === secret.name) {
   console.log('you win')
   // Set a Message to show in the win or lose section accordingly
-  winOrLoseText.innerHTML = `Ding ding ding! We got a winner!🥳`;
+  winOrLoseText.innerHTML = `
+  We got a winner!🥳<br>
+  One more round?
+  `
  } else {
   console.log('you loose')
-  winOrLoseText.innerHTML = `Oh no.. that's not correct!`;
+  winOrLoseText.innerHTML = `
+  Oh no, that isn't correct 😔<br>
+  The secret person was ${secret.name}..<br>
+  Do you wanna try again? 😃
+  `
  }
 
 }

@@ -12,25 +12,24 @@
   </head>
   <body>
     <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
 
+      <button type="button"
+       id="restart"
+       class="outlined-button">
+       RESTART
+      </button>
+
+      <div class="icon">
+        <p>GUESS <br> WHO</p>
         <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
         <lord-icon
-        src="https://cdn.lordicon.com/enzmygww.json"
-        trigger="hover"
-        colors="primary:#C21C12"
-        state="hover-1"
-        style="width:80px;height:80px">
+         src="https://cdn.lordicon.com/enzmygww.json"
+         trigger="hover"
+         colors="primary:#C21C12"
+         state="hover-1"
+         style="width:80px;height:80px">
         </lord-icon>
-
-
-      <!---
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
-      -->
+      </div>
 
       <h1>Does the person have</h1>
 
@@ -38,20 +37,17 @@
         <optgroup label="hair">
           <option value="brown">brown hair</option>
           <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
           <option value="black">black hair</option>
           <option value="hidden">hidden hair</option>
         </optgroup>
         <optgroup label="eyes">
           <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
           <option value="green">green eyes</option>
           <option value="blue">blue eyes</option>
           <option value="brown">brown eyes</option>
         </optgroup>
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
           <option value="hat">hat</option>
         </optgroup>
         <optgroup label="other">
@@ -59,7 +55,14 @@
         </optgroup>
       </select>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
+      <button type="button"
+       id="filter"
+       class="filled-button">
+       FIND OUT
+      </button>
+
+      <h2 id="guessCounter">GUESS COUNTER: 0</h2>
+
     </aside>
 
     <section class="board-wrapper">
@@ -68,15 +71,27 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
+        <div class="icon">
+          <p>GUESS <br> WHO</p>
+          <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+          <lord-icon
+           src="https://cdn.lordicon.com/enzmygww.json"
+           trigger="hover"
+           colors="primary:#C21C12"
+           state="hover-1"
+           style="width:80px;height:80px">
+          </lord-icon>
+        </div>
         <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <button type="button"
+        id="playAgain"
+        class="filled-button">
+        PLAY AGAIN
+        </button>
       </div>
     </section>
+
     <script src="script.js"></script>
+
   </body>
 </html>

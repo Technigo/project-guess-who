@@ -4,8 +4,6 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const refreshButon = document.getElementById('refreshBtn')
-//const winOrLose = document.getElementById('winOrLose')
-//const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
 
 const guessButton = document.querySelector(".guess")
@@ -254,12 +252,8 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  //vatför funkar inte denna?
-  //const value = value
-//used this from another code what does it do!?
+  //used this from another code 
   let value = questions.options[questions.selectedIndex].value;
-
 
   currentQuestion = {
     category: category,
@@ -272,10 +266,10 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+  // This part compares the currentQuestion  with the secret person details 
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  //how do you come up with this solution
+  //
   if (category === 'hair' || 
   category === 'eyes') 
   {
@@ -319,14 +313,14 @@ const filterCharacters = (keep) => {
         `Siiii eso es!!, the person wears ${value}! Keep all people that wears ${value}`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+  
     
     } else {
       alert(
         `Ay no!, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      
     }  
 
   } else {
@@ -342,26 +336,21 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)    
     }
   }
-  // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-// Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  //for hair and eyes :
-  //for accessories and other
-// Invoke a function to redraw the board with the remaining people.
+ 
   generateBoard();
 
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-// where does the let guessed come from?
+
 // store the interaction from the player in a variable.
-  // remember the confirm() ?
+
   // If the player wants to guess, invoke the checkMyGuess function.
 const guess = (personToConfirm) => {
   let guessed = confirm (`hmmmm are you sure?, really really sure that ${personToConfirm} is your guess?`)
   if(guessed){
     let personToCheck = personToConfirm; //variable that saves the character the player has shosen
-checkMyGuess(personToCheck)//vad e detta?
+checkMyGuess(personToCheck)
 
   }
   //if no
@@ -372,16 +361,14 @@ checkMyGuess(personToCheck)//vad e detta?
 }
 
 // If you confirm, this function is invoked
-// 1. Check if the personToCheck is the same as the secret person's name
-//hur kom man på att detta skulle vara där? hur viste du detta?
-// 2. Set a Message to show in the win or lose section accordingly
+
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name){
     
     winOrLoseText.innerHTML = `${secret.name} Que vivaaaaaa, arribaaaa hurraaaay its totaly correct!
   }<br>Well done! <br><img class="secret-revealed-img" src="${secret.img}"/>`;
 
-  // 3. Show the win or lose section
+  // Show the win or lose section
   winOrLose.style.display = 'flex'
   //  Hide the game board
   board.style.display = 'none'
@@ -413,26 +400,12 @@ const refreshPage = () => {
 }
 
 
-// All the event listeners /listen to where to callon the html
-//restartButton.addEventListener('click', start ) //calls start
-//findOutButton.addEventListener('select', currentQuestion)
-//vart ska den kopplas till?
-//refreshButton.addEventListener('click', refreshPage)
-//questions.addEventListener('click', selectQuestion)
-//playAgainButton.addEventListener( 'click', start)
-
-//filterButton.addEventListener('click', () => {
-  //checkQuestion()
-//});
-
-
-
 restartButton.addEventListener('click', start);
 
 questions.addEventListener('change', selectQuestion); //this calls the selectQuestion function as soon as the player changes option in dropdown.
 findOutButton.addEventListener('click', () => {
   checkQuestion()
-});//bättre sätt att göra denna på?
+});//Is there another way to do this??
 
-playAgainButton.addEventListener ('click', start)
+playAgainButton.addEventListener ('click', start) //seems like this wont work for me!
 

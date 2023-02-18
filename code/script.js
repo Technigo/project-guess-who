@@ -261,16 +261,22 @@ const start = () => {
   // making the board visible and the winOrLose-part not visible
   board.style.display = "flex";
   winOrLose.style.display = "none";
-  document.querySelector(".question-section").style.display = "flex"; // making sure this section is visible because its hidden when you win or lose
+  // making sure the question section is visible because its hidden when you win or lose
+  document.querySelector(".question-section").style.display = "flex";
 
+  // resetting the select element to the one we saved before because during the game we have removed elements from it
   questions.innerHTML = oldQuestions;
+
   // clearing the log
   log.innerHTML = "";
+
   // reset the number of guesses showing
   numberOfGuesses = 0;
   updateGuessCounter();
+
   // showing the game board on the screen
   generateBoard();
+
   // randomizing the person you're looking for
   setSecret();
 };
@@ -378,33 +384,19 @@ const filterCharacters = (keep) => {
     }
   }
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-  // remove the guessed option from the select element, because you don't want the player to be able to guess it again
-  // I got this code from https://stackoverflow.com/questions/41112624/remove-select-option-with-specific-value
+  // remove the guessed option from the select element, because we don't want the player to be able to guess it again
+  // this code is from https://stackoverflow.com/questions/41112624/remove-select-option-with-specific-value
   // and also https://stackoverflow.com/questions/55062159/find-select-index-by-valuetext
   const optionsToRemove = questions.querySelectorAll(
     "option[value=" + value + "]" // using a query selector to get all options with the same value, for example "covered"
   );
   // because the value for both "covered hair" and "covered eyes" is "covered"
-  // I needed to find a way to see if the category was the same as the guess
+  // we need to find a way to see if the category was the same as the guess
   // otherwise when you guessed "covered eyes" it removed the "covered hair" option :-/
 
   optionsToRemove.forEach((option) => {
     // putting all of the options we got from querySelectorAll in a forEach-loop
-    // making sure that we are selecting the ones with the right category ie "hair"
+    // making sure that we are selecting the ones with the right category for example "hair"
     // and then removing it
     if (questions.options[option.index].parentNode.label === category) {
       option.remove();
@@ -438,7 +430,9 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
   winOrLose.style.display = "flex";
   board.style.display = "none";
+
   // hiding the entire question section because it was still visible when scrolling down
+  // during the winOrLose event
   document.querySelector(".question-section").style.display = "none";
 
   if (personToCheck === secret.name) {

@@ -1,7 +1,11 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
+const winorlose = document.getElementById('winOrLose')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const dropdownQuestion = document.getElementById("questions")
+const findOutButton = document.getElementById("filter")
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -204,6 +208,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let dptype
 
 // Draw the game board
 const generateBoard = () => {
@@ -222,44 +227,68 @@ const generateBoard = () => {
   })
 }
 
+
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
 // This function to start (and restart) the game
+
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  // Answer: to call the generateBoard and setSecret function to show all the characters and set a secret character.
+  generateBoard();
+  setSecret();
+  selectQuestion(); //fix bug " default brown hair color"
 }
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    if (value === secret.hair || value === secret.eyes) {
+      let keepItem = true
+      filterCharacters(keepItem)
+    } else {
+      keepItem = false
+      filterCharacters(keepItem)
+    }
 
   } else if (category === 'accessories' || category === 'other') {
-
+  
+    if (((secret.accessories).includes(value) ) ||  ((secret.other).includes(value) )) {
+      keepItem = true
+      filterCharacters(keepItem)
+    } else {
+      keepItem = false
+      filterCharacters(keepItem)
+    }
   }
+
+
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -277,29 +306,69 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person is a ${value}! Keep all people are ${value}s `
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the people isn't a ${value} ! Remove all people are ${value}s`
+      )
+    }
+
+
+  } else if (category === 'eyes') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people that has ${value} eyes`
+      )
+    } else {
+      alert(
+        `No, the people doesn't have ${value} eyes! Remove all people that has ${value} eyes`
+      )
+    }
+
+  } else if (category === 'hair') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} hair! Keep all people that has ${value}`
+      )
+    } else {
+      alert(
+        `No, the people doesn't have ${value} hair! Remove all people that has ${value}`
+      )
     }
   }
 
+
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
+  //for hair and eyes :
+  if (category === 'hair' || category === 'eyes') {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) =>  person[category] === value) // to keep
+
+    } else {
+     
+      charactersInPlay = charactersInPlay.filter((person) =>  person[category] !== value) // to remove
+
+    }
+  //for accessories and other
+  } else if (category === 'accessories' || category === 'other') {
+   
+    if (keep) {
+      
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+      
 
+    } else {
+      
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      
+    }
+  }
+  generateBoard();
   // Invoke a function to redraw the board with the remaining people.
 }
 
@@ -307,15 +376,60 @@ const filterCharacters = (keep) => {
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-}
+  const confirmAction =  confirm(`Are you sure you want to guess ${personToConfirm}`)
 
+ if(confirmAction){
+
+  checkMyGuess(personToConfirm);
+
+ }
+// If the player wants to guess, invoke the checkMyGuess function.
+ 
+}
 // If you confirm, this function is invoked
+
 const checkMyGuess = (personToCheck) => {
+ 
   // 1. Check if the personToCheck is the same as the secret person's name
+  if(personToCheck===secret.name){
+    winorlose.innerHTML = `  <div class="inw-or-lose">
+                                <img
+                                  class="guess-who-icon"
+                                  src="images/guess-who-bubble.png"
+                                  alt="Guess Who"
+                                />
+                                <h1 id="winOrLoseText">YAY! Congrats! <br> - you win <span role="img" aria-label="cheer">🙌</span> </h1>
+                                <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+                              </div>`
+                  // <p>YAY! Congrats - you win</p>
+
+
+  }else{
+    winorlose.innerHTML = `  <div class="inw-or-lose">
+                                <img
+                                  class="guess-who-icon"
+                                  src="images/guess-who-bubble.png"
+                                  alt="Guess Who"
+                                />
+                                <h1 id="winOrLoseText">Oh No! you guess wrong, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp Game Over! <span role="img" aria-label="angry">😤</span> </h1>
+                                <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+                              </div>`
+
+  }
+  dptype= board.style.display
+  board.style.display = "none"
+  winorlose.style.display = "block"
+  
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  let playAgain = document.getElementById("playAgain")
+  playAgain.addEventListener("click", startOver)
+}
+const startOver = () =>{
+  winorlose.style.display = "none"
+  board.style.display = dptype
+  start();
 }
 
 // Invokes the start function when website is loaded
@@ -323,3 +437,7 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+dropdownQuestion.addEventListener("change", selectQuestion)
+findOutButton.addEventListener("click", checkQuestion)
+
+

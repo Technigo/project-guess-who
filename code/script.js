@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -254,15 +255,26 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
+  let keep = false
+  console.log(category)
+  console.log(secret)
+  console.log(secret[category])
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    keep = value === secret[category]
   } else if (category === 'accessories' || category === 'other') {
-
+    //since accesory and other are arrays we have to find value inside them first and then set keep to true or false depending on if value exist in the array.
+    const findItem = secret[category].find(item => item === value)
+    // if findItem exist in the array keep is true else false
+    if (findItem) {
+      keep = true
+    } else {
+      keep = false
+    }
   }
+  filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -327,3 +339,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener("change", selectQuestion )
+findOutButton.addEventListener("click", checkQuestion)

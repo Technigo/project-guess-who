@@ -4,6 +4,8 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -209,9 +211,8 @@ let charactersInPlay //After filtering the array, ex does not have black hair, a
 
 
 // Draw the game board
-
 const generateBoard = () => {
-  board.innerHTML = '' //empty string to start fresh
+  board.innerHTML = '' 
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
@@ -237,7 +238,6 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
   setSecret()
   generateBoard()
   winOrLose.style.display = 'none';
@@ -279,7 +279,6 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
   
   if (category === 'accessories') {
     if (keep) {
@@ -353,10 +352,12 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerHTML = `<h1>WIIHOOOO!!! You rule 🥳</h1>
     <h4>Are you up for another game?</h4>`
   } else {
-    alert('Oh, GOD nooooo!!')
+    alert('Oh, GOD no!!')
     winOrLoseText.innerHTML = `<h1> Is that really all you've got?<h1/>
     <h4>Up for another game? Try to win this time maybe...🙄`
   }
+  winOrLose.style.display = 'flex'
+  board.style.display = 'none'
 }
 
 // Invokes the start function when website is loaded
@@ -366,4 +367,7 @@ start()
 restartButton.addEventListener('click', start)
 filterButton.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
-playAgain.addEventListener("click", start);
+playAgain.addEventListener("click", start)
+playAgainButton.addEventListener("click", () => {
+  location.reload()
+})

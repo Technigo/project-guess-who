@@ -209,7 +209,6 @@ const CHARACTERS = [
 let secret  //object secret person
 let currentQuestion //object current question
 let charactersInPlay // the remaining people
-let keep 
 
 // Draw the game board
 const generateBoard = () => {
@@ -242,7 +241,7 @@ const start = () => {
 
 generateBoard(); //Should load the characters on the board
 setSecret(); // Generates a new guess-person at start
-console.log("The secret person is", secret.name);
+console.log("The secret person is", secret.name); // remove this when done cause noo more cheating
 }
 
 
@@ -314,7 +313,7 @@ const filterCharacters = (keep) => {
       } else {
     if (keep) { // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(
-        `Yes, the person has ${value} ${category} Keep all people that wears ${value}${category}`);
+        `Yes, the person has ${value} ${category}! Keep all people that have ${value}${category}`);
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else { // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(`Nope, the person does not have ${value} ${category}! Remove all people with ${value} ${category}`)

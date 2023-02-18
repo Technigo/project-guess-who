@@ -16,7 +16,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: ['smiling']
+    other: []
   },
   {
     name: 'Jack',
@@ -40,7 +40,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: ['smiling']
+    other: []
   },
   {
     name: 'Jake',
@@ -48,7 +48,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['smiling']
+    other: []
   },
   {
     name: 'James',
@@ -64,7 +64,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smiling']
+    other: []
   },
   {
     name: 'Jane',
@@ -105,7 +105,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['smiling']
+    other: []
   },
   {
     name: 'Jed',
@@ -137,7 +137,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smiling']
+    other: []
   },
   {
     name: 'Jess',
@@ -145,7 +145,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: ['smiling']
+    other: []
   },
   {
     name: 'Jocelyn',
@@ -161,7 +161,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: ['smiling']
+    other: []
   },
   {
     name: 'Jordan',
@@ -169,7 +169,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: ['smiling']
+    other: []
   },
   {
     name: 'Josephine',
@@ -177,7 +177,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'brown',
     accessories: [],
-    other: ['smiling']
+    other: []
   },
   {
     name: 'Josh',
@@ -185,7 +185,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: ['smiling']
+    other: []
   },
   {
     name: 'Jude',
@@ -303,22 +303,22 @@ const filterCharacters = (keep) => {
   } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person has a ${value}! Keep all people that wears ${value}`);
+        `Yes, the person is a ${value}! Keep all people that is a ${value}`);
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
       } else {
         alert(
-          `No, the person does not have a ${value}! Remove all people that have ${value}`);
-          charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+          `Eouh.. noo, the person is not a ${value}! Remove all people that are a ${value}!`);
+         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
         }
-      } else {
-    if (keep) { // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-      alert(
-        `Yes, the person has ${value} ${category}! Keep all people that have ${value}${category}`);
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
-    } else { // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-      alert(`Nope, the person does not have ${value} ${category}! Remove all people with ${value} ${category}`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
-    }
+  } else {
+      if (keep) { // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+          alert(
+            `Yes, the person has ${value} ${category}! Keep all people that have ${value}$ {category}`);
+            charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+      } else { // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+          alert(`Nope, the person does not have ${value} ${category}! Remove all people with ${value} ${category}`)
+          charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
+      }
   }
     // Invoke a function to redraw the board with the remaining people.
     generateBoard();

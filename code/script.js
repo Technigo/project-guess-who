@@ -284,7 +284,7 @@ const start = () => {
   // What else should happen when we start the game?
 
   //Start value of question
-  currentQuestion = { category: "hair", value: "brown" };
+  // currentQuestion = { category: "hair", value: "brown" };
   setSecret();
   generateBoard();
 };

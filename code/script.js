@@ -424,7 +424,7 @@ questions.addEventListener('change', () => {
 })
 filterButton.addEventListener('click', checkQuestion)
 playAgain.addEventListener("click", (event) => {
-  /* window.location.reload();  */
+  window.location.reload(); 
   start();
   pause();
   reset();

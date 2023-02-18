@@ -8,3 +8,4 @@ If I had more time I would style the game to make it more interactive and fun ma
 
 ## View it live
 
+https://guess-who-game-technigo.netlify.app/

@@ -388,6 +388,7 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winningSound.play();
     winOrLoseText.innerText = `That's correct! The person is indeed ${secret.name}`;
+    secretImageAtCheck.innerHTML += `<img src=${secret.img} alt=${secret.name}>`;
   } else {
     losingSound.play();
     winOrLoseText.innerText = `You lost! It is not ${personToCheck}. The person is ${secret.name}`;

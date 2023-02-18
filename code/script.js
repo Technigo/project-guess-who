@@ -6,6 +6,8 @@ const restartButton = document.getElementById("restart");
 const filter = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const playAgain = document.getElementById("playAgain");
+const counter = document.getElementById("counter");
+const count = document.getElementById("count");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -206,6 +208,7 @@ const CHARACTERS = [
 
 // Global variables
 let secret, currentQuestion, charactersInPlay, userGuess;
+let numberOfGuesses = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -425,9 +428,14 @@ const checkMyGuess = (personToCheck) => {
 start();
 
 // All the event listeners
-restartButton.addEventListener("click", start());
+restartButton.addEventListener("click", () => {
+  console.log("restart");
+  start();
+});
 
 filter.addEventListener("click", () => {
+  numberOfGuesses++;
+  count.innerHTML = `${numberOfGuesses}`;
   console.log("the selected question is: ", currentQuestion);
   console.log("the secret is: ", secret);
   checkQuestion();

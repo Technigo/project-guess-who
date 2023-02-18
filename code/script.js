@@ -75,7 +75,7 @@ const CHARACTERS = [
     img: 'zelda-images/riju.webp',
     features: 'red',
     eyes: 'green',
-    accessories: ['crown'],
+    accessories: ['a crown'],
     other: ['Gerudo'], 
     weapons: []
   },
@@ -93,7 +93,7 @@ const CHARACTERS = [
     img: 'zelda-images/yunobo.webp',
     features: 'white',
     eyes: 'blue',
-    accessories: ['a scarf'],
+    accessories: ['a scarf', 'weapons'],
     other: ['Goron'],
     weapons: ['a flaming ham']
   },
@@ -262,7 +262,6 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-
 }
 
 const clickCounter = () => {

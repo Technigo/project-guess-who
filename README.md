@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project is to generate a Guess who game using the HTML/CSS and JS already given to us by technigo. 
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+My plan is to look at others code to see how they approached the problems and try to use the same methods as they did. I also used the approach to slow down and try to analyze each piece I added to the JS or HTML so I do not get hung up on tiny mistakes. 
+If I had more time I would style the game to make it more interactive and fun maybe with sounds or animations. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guess-who-game-technigo.netlify.app/

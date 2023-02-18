@@ -1,13 +1,12 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The purpose of this project was to create a Guess Who? game. The computer selects a character from the board, then the user needs to guess which character is it. The user can start guessing based on preselected questions that will keep filtering the characters on the board. At every step of selecting a characteristic the user will get an answer from the computer based on if it matches with the secret character's characterstics or not.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Technigo has already provided the CSS and some JS functions that needed to be completed and envoked. Firs I started with understand how the game works and what functions are already available for use. Then I have started working on the basic functionality to make the game work. Once it was already working I have changed the style and theme and added some extra features to count guesses and set a timer.
+This project mainly focused on using loops, forEach, array.filter method and passing arguments into functions.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+You can see my project here:

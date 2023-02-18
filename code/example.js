@@ -354,12 +354,12 @@ const filterCharacters = (keep) => {
 
   // filter to keep or remove
   if (keep) {
-    charactersInPlay = charactersInPlay.filter(
-      (person) => person[attribute] === value
+    charactersInPlay = charactersInPlay.filter((person) =>
+      person[category].includes(value)
     );
   } else {
     charactersInPlay = charactersInPlay.filter(
-      (person) => person[attribute] !== value
+      (person) => !person[category].includes(value)
     );
   }
 

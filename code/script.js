@@ -342,12 +342,12 @@ const filterCharacters = (keep) => {
     // Similar to the one above
     if (keep) {
       alert(
-        `Yes, the person is a ${value}. Keep all the people that are ${value}`
+        `Yes, the person is a ${value}. Keep all the people that is a ${value}`
       );
     } else {
       // alert popup that says something like: "No, the person doesn't have yellow hair! Remove all people with yellow hair"
       alert(
-        `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
+        `No, the person isn't a ${value}! Remove all people that is a ${value}`
       );
     }
   }
@@ -356,22 +356,22 @@ const filterCharacters = (keep) => {
 
   if (category === "Hair" || category === "Eyes") {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) =>
-        person[category].includes(value)
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
       );
     } else {
       charactersInPlay = charactersInPlay.filter(
-        (person) => !person[category].includes(value)
+        (person) => person[category] !== value
       );
     }
   } else {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) =>
-        person[category].includes(value)
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
       );
     } else {
       charactersInPlay = charactersInPlay.filter(
-        (person) => !person[category].includes(value)
+        (person) => person[category] !== value
       );
     }
   }

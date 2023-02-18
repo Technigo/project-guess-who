@@ -6,198 +6,198 @@ const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgainButton')
 
 // Array with all the characters in the game, as objects
-const CHARACTERS = [
+const CITIES = [
   {
     name: 'Paris',
     img: 'images/pexels-photo-460740.jpeg',
     continent: 'europe',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    hemisphere: ['northern', 'eastern'],
+    language: [],
+    other: ['capital']
   },
   {
     name: 'Bangkok',
     img: 'images/bangkok.png',
     continent: 'asia',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    hemisphere: ['northern', 'eastern'],
+    language: [],
+    other: ['capital']
   },
   {
     name: 'Washington DC',
     img: 'images/washington.png',
     continent: 'north-america',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    hemisphere: ['northern', 'western'],
+    language: ['english'],
+    other: ['capital']
   },
   {
     name: 'Berlin',
     img: 'images/berlin.png',
     continent: 'europe',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    hemisphere: ['northern', 'eastern'],
+    language: [],
+    other: ['capital']
   },
   {
-    name: 'Pretoria', //is this correct...?
+    name: 'Pretoria',
     img: 'images/pretoria.png',
     continent: 'africa',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    hemisphere: ['southern', 'eastern'],
+    language: ['english'],
+    other: ['capital']
   },
   {
     name: 'Buenos Aires',
     img: 'images/buenosaires.png',
     continent: 'south-america',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    hemisphere: ['northern', 'western'],
+    language: ['spanish'],
+    other: ['capital']
   },
   {
     name: 'Rome',
     img: 'images/rome.png',
     continent: 'europe',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    hemisphere: ['northern', 'eastern'],
+    language: [],
+    other: ['capital']
   },
   {
     name: 'Jerusalem',
     img: 'images/jerusalem.png',
     continent: 'asia',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    hemisphere: ['northern', 'eastern'],
+    language: ['arabic'],
+    other: ['capital']
   },
   {
     name: 'Lima',
     img: 'images/lima.png',
     continent: 'south-america',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    hemisphere: ['southern', 'western'],
+    language: ['spanish'],
+    other: ['capital']
   },
 
   {
     name: 'Canberra',
     img: 'images/canberra.png',
     continent: 'oceania',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    hemisphere: ['southern', 'eastern'],
+    language: ['english'],
+    other: ['capital']
   },
   {
     name: 'Copenhagen',
     img: 'images/copenhagen.png',
     continent: 'europe',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    hemisphere: ['northern', 'eastern'],
+    language: [],
+    other: ['capital']
   },
   {
     name: 'Dubai',
     img: 'images/dubai.png',
     continent: 'asia',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    hemisphere: ['northern', 'eastern'],
+    language: ['arabic'],
+    other: ['capital']
   },
   {
     name: 'Jakarta',
     img: 'images/jakarta.png',
     continent: 'asia',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    hemisphere: ['southern', 'eastern'],
+    language: [],
+    other: ['capital']
   },
   {
     name: 'New York',
     img: 'images/newyork.png',
     continent: 'north-america',
-    eyes: 'hidden',
-    accessories: ['hat'],
+    hemisphere: ['northern', 'western'],
+    language: ['english'],
     other: []
   },
   {
     name: 'Vancouver',
     img: 'images/vancouver.png',
     continent: 'north-america',
-    eyes: 'green',
-    accessories: ['glasses'],
+    hemisphere: ['northern', 'western'],
+    language: ['english'],
     other: []
   },
   {
     name: 'Cancun',
     img: 'images/cancun.png',
     continent: 'north-america',
-    eyes: 'blue',
-    accessories: ['hat'],
+    hemisphere: ['northern', 'western'],
+    language: ['spanish'],
     other: []
   },
   {
     name: 'Kyoto',
     img: 'images/kyoto.png',
     continent: 'asia',
-    eyes: 'blue',
-    accessories: ['glasses'],
+    hemisphere: ['northern', 'eastern'],
+    language: [],
     other: []
   },
   {
     name: 'Nairobi',
     img: 'images/nairobi.png',
     continent: 'africa',
-    eyes: 'brown',
-    accessories: ['glasses'],
+    hemisphere: ['southern', 'eastern'],
+    language: [],
     other: []
   },
   {
     name: 'Amsterdam',
     img: 'images/amsterdam.png',
     continent: 'europe',
-    eyes: 'green',
-    accessories: ['glasses'],
+    hemisphere: ['northern', 'eastern'],
+    language: [],
     other: []
   },
   {
-    name: 'Addis Abeba',
+    name: 'Addis Ababa',
     img: 'images/addisababa.png',
     continent: 'africa',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    hemisphere: ['southern', 'eastern'],
+    language: [],
     other: []
   },
   {
     name: 'Delhi',
     img: 'images/delhi.png',
     continent: 'asia',
-    eyes: 'brown',
-    accessories: [],
+    hemisphere: ['northern', 'eastern'],
+    language: [],
     other: []
   },
   {
     name: 'Barcelona',
     img: 'images/barcelona.png',
     continent: 'europe',
-    eyes: 'green',
-    accessories: [],
+    hemisphere: ['northern', 'eastern'],
+    language: ['spanish'],
     other: []
   },
   {
     name: 'Lahore',
     img: 'images/lahore.png',
     continent: 'asia',
-    eyes: 'green',
-    accessories: [],
+    hemisphere: ['northern', 'eastern'],
+    language: [],
     other: []
   },
   {
     name: 'Auckland',
     img: 'images/auckland.png',
     continent: 'oceania',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    hemisphere: ['southern', 'eastern'],
+    language: ['english'],
     other: []
   },
 ]
@@ -205,20 +205,20 @@ const CHARACTERS = [
 // Global variables
 let secret
 let currentQuestion
-let charactersInPlay
+let citiesInPlay
 let keep
 
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  citiesInPlay.forEach((city) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <p>${city.name}</p>
+        <img src=${city.img} alt=${city.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Guess on ${city.name}?</span>
+          <button class="filled-button small" onclick="guess('${city.name}')">Guess</button>
         </div>
       </div>
     `
@@ -226,9 +226,9 @@ const generateBoard = () => {
 }
 
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Randomly select a city from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = citiesInPlay[Math.floor(Math.random() * citiesInPlay.length)]
   console.log(secret); //REMOVE - Only to see that a new secret character is selected each time
 }
 //WORKING
@@ -254,10 +254,10 @@ const checkQuestion = () => {
   const {category, value} = currentQuestion;
   
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+  // Compare the currentQuestion details with the secret city details in a different manner based on category (continent/hemisphere or language/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'continent' || category === 'eyes') {
+  if (category === 'continent') {
     if (secret[category] === value) {
       keep = true
       filterCharacters(true);
@@ -265,7 +265,7 @@ const checkQuestion = () => {
       keep = false
       filterCharacters(false);
     }
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'hemisphere' || category === 'other' || category === 'language') {
     if (secret[category].includes(value)) {
       keep = true
       filterCharacters(true);
@@ -281,35 +281,45 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  if (category === 'accessories') {
+  if (category === 'language') {
     if (keep) {
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+      alert(`Yes, ${value} is an official language! Keep all the cities that have ${value} as an official language`);
+      citiesInPlay = citiesInPlay.filter((city) => city[category].includes(value));
 
     } else {
-      alert(`No, the person does not wear ${value}! Remove all people that wears ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+      alert(`No, ${value} is not an official language! Remove all the cities that have ${value} as an official language`);
+      citiesInPlay = citiesInPlay.filter((city) => !city[category].includes(value));
     }
 
 
   } else if (category === 'other') {
     if (keep) {
-      alert(`Yes, the person has ${value}! Keep all people that has ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+      alert(`Yes, the city is a ${value}! Keep all the cities that are a ${value}`);
+      citiesInPlay = citiesInPlay.filter((city) => city[category].includes(value));
 
     } else {
-      alert(`No, the person does not have ${value}! Remove all people that have ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+      alert(`No, the city is not a ${value}! Remove all the cities that are a ${value}`);
+      citiesInPlay = citiesInPlay.filter((city) => !city[category].includes(value));
+    }
+
+  } else if (category === 'hemisphere') {
+    if (keep) {
+      alert(`Yes, the city is in the ${value} hemisphere! Keep all the cities that are in the ${value} hemisphere`);
+      citiesInPlay = citiesInPlay.filter((city) => city[category].includes(value));
+
+    } else {
+      alert(`No, the city is not in the ${value} hemisphere! Remove all the cities that are in the ${value} hemisphere`);
+      citiesInPlay = citiesInPlay.filter((city) => !city[category].includes(value));
     }
 
   } else {
     if (keep) {
       alert(`Yes, the city is in ${value}! Keep all the cities in ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+      citiesInPlay = citiesInPlay.filter((city) => city[category] === value);
 
     } else {
       alert(`No, the city is not in ${value}! Remove all the cities in ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
+      citiesInPlay = citiesInPlay.filter((city) => city[category] !== value);
     }
     
   }
@@ -318,38 +328,38 @@ const filterCharacters = (keep) => {
 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
-  const confirmGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`)
+const guess = (cityToConfirm) => {
+  const confirmGuess = confirm(`Are you sure you want to guess on ${cityToConfirm}?`)
   if (confirmGuess === true) {
-  checkMyGuess(personToConfirm) //Should probably be invoked here?
+  checkMyGuess(cityToConfirm) //Should probably be invoked here?
   }
 };
 
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  if (personToCheck === secret.name) {
+const checkMyGuess = (cityToCheck) => {
+  if (cityToCheck === secret.name) {
   winOrLose.style.display = 'flex';
   board.style.display = 'none';
   winOrLose.innerHTML += `
-        <h1>YOU WIN! ${personToCheck} was the secret person</h1>
+        <h1>YOU WIN! ${cityToCheck} was the secret city</h1>
     `;
   } else {
     winOrLose.style.display = 'flex'
     board.style.display = 'none'
     winOrLose.innerHTML += `
-        <h1>You lost! ${personToCheck} was not the secret person, it was ${secret.name}!</h1>
+        <h1>You lost! ${cityToCheck} was not the secret city, it was ${secret.name}!</h1>
       `;
   }
 };
 
 
 const start = () => {
-  charactersInPlay = CHARACTERS // reset characters to the initial array
+  citiesInPlay = CITIES // reset characters to the initial array
   winOrLose.style.display = 'none' // don't show the win/lose screen
   board.style.display = 'flex' // show the game board again
-  setSecret() // set a new secret person
-  generateBoard() // draw the board with all the people
+  setSecret() // set a new secret city
+  generateBoard() // draw the board with all the cities
 } 
 
 

@@ -351,7 +351,7 @@ const guess = (suspectCharacter) => {
 // If you confirm, this function is invoked and different text is shown dependent of guess is right or wrong
 const checkMyGuess = (suspectCharacter) => {
   if (suspectCharacter === secretCharacter.name) {
-    winOrLoseText.innerHTML = `Well done! The right person was ${secretCharacter.name} Congratulations!`;
+    winOrLoseText.innerHTML = `Well done! The right person was ${secretCharacter.name}! Congratulations!`;
   } else {
     winOrLoseText.innerHTML = `Oh no, you lost... The right person was actually ${secretCharacter.name}.`;
   }

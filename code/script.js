@@ -61,7 +61,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: ['jewelry']
   },
   {
     name: 'Jane',
@@ -77,7 +77,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['jewelry']
   },
 
   {
@@ -150,7 +150,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
-    other: []
+    other: ['jewelry']
   },
   {
     name: 'Jon',
@@ -166,7 +166,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['jewelry']
   },
   {
     name: 'Josephine',
@@ -174,7 +174,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['jewelry']
   },
   {
     name: 'Josh',
@@ -275,25 +275,19 @@ const selectQuestion = () => {
 
   if (category === 'hair') {
     currentQuestion = {
-      attribute: 'hairCol',
+      checkProp: 'hairCol',
       value: value,
       category: category,
     }
   } else if (category === 'eyes') {
     currentQuestion = {
-      attribute: 'eyeCol',
+      checkProp: 'eyeCol',
       value: value,
       category: category,
     }
-  } else if (category === 'accessories') {
+  } else if (category === 'accessories' || category === 'other') {
     currentQuestion = {
-      attribute: value,
-      value: true,
-      category: category,
-    }
-  } else {
-    currentQuestion = {
-      attribute: value,
+      checkProp: value,
       value: true,
       category: category,
     }
@@ -303,89 +297,70 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   //destructures currentQuestion to separate value of category and value from object
-  const { category, value } = currentQuestion
-
+  const {checkProp, value, category } = currentQuestion
   console.log(currentQuestion)
+
+  const {hair, eyes, accessories, other} = secretPerson
+  console.log(secretPerson)
   
-  //No need to check since all other cases are false
-  let keep = false
-  
+  //CHeck if currentQuestion matches with secretPerson
+
   if (category === 'hair' || category === 'eyes') {
-    if (value === secretPerson.hair || value === secretPerson.eyes) {
-      keep = true
+    if (value === secretPerson.hair || value === secretPerson.eyes) {  
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)}
+  } else if (category === 'accessories' || category === 'other'){
+      if (secretPerson.accessories.includes(checkProp) || secretPerson.other.includes(checkProp)){
+       filterCharacters(true)
+      } else {
+        filterCharacters(false)}
     }
-  } else if (category === 'accessories' || category === 'other') {
-    if (secretPerson.accessories.includes(value) || secretPerson.other.includes(value)) {
-      keep = true
-    }
-  }
-  filterCharacters(keep)
 }
-
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
 
 
 // //It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const {attribute, category, value } = currentQuestion
+const {checkProp, category, value} = currentQuestion
+
   
-  // Show the correct alert message for different categories
   if (category === 'accessories') {
-    if (keep) {
-      alert(`Yes, the person wears ${attribute}! Let's see who are left...`)
+    if (keep=== true) {
+      alert(`Yes, the person wears ${checkProp}! Let's see who are left...`)
+      //charactersInPlay = charactersInPlay.filter( person => person["accessories"].includes(value))
+      charactersInPlay = charactersInPlay.filter(person => person['accessories'] === checkProp)
     } else {
-      alert(
-        `No, the person doesn't wear ${attribute}! Let's see who are left...`
-      )
+      alert(`No, the person doesn't wear ${checkProp}! Let's see who are left...`)
+      //charactersInPlay = charactersInPlay.filter( (person) => !person["accessories"].includes(value))
+      charactersInPlay = charactersInPlay.filter(person => !person['accessories'].includes(checkProp))
     }
-  } 
-  else if (category === 'other') {
-    if (keep) {
-      alert(`Yes the person has ${attribute}`)
+  } else if (category === 'other') {
+    if (keep === true) {
+      alert(`Yes the person has ${checkProp}`)
+      charactersInPlay = charactersInPlay.filter(otherCheck => otherCheck.other.includes(checkProp))
     } else {
-      alert(`No, the person doesn't ${attribute}`)
+      alert(`No, the person doesn't have ${checkProp}`)
+      charactersInPlay = charactersInPlay.filter(otherCheck => !otherCheck.other.includes(checkProp))
     }
-  } 
-  else if (category === "hair"){
-    if (keep) {
+  } else if (category === "hair"){
+    if (keep === true) {
       alert(`Yes, the person has ${value} hair. Let's see who are left...`)
+      charactersInPlay = charactersInPlay.filter(person => person.hair === value)
     } else {
       alert(`No the person doesn't have ${value} hair. Let's see who are left...`)
+      charactersInPlay = charactersInPlay.filter(person => person.hair !== value)
      }
-    }
-  else if (category === "eyes"){
-    if (keep){
+    } else if (category === "eyes"){
+    if (keep === true){
       alert(`Yes, the person has ${value} eyes`)
+      charactersInPlay = charactersInPlay.filter(person => person.eyes === value)
     } else {
       alert(`No the person doesn't have ${value} eyes`)
+      charactersInPlay = charactersInPlay.filter(person => person.eyes !== value)
     }
   };
-
-
-/* if (category === 'hair'|| 'eyes'){
-    if (keep){
-      charactersInPlay = charactersInPlay.filter((person) => person[value] === value)
-      }};
-    /* } else if (category === 'accessories'|| 'other'){
-      if (keep){
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-        }
-      } 
-generateBoard(); */
-if (keep) {
-  charactersInPlay = charactersInPlay.filter(
-    (person) => person[attribute] === value
-  )
-} else {
-  charactersInPlay = charactersInPlay.filter(
-    (person) => person[attribute] !== value
-  )
-}
-
-generateBoard()
+  console.log(currentQuestion)
+  generateBoard()
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

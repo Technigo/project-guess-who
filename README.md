@@ -11,8 +11,10 @@ Then doing some extra fun stuff like making my own images/"persons" to the board
 Fixed some css.
 Added earrings.
 Added beard.
-Added own pics.
+Added own pics just for fun(only 3 characters)
 Changed smoker to cigarette.
 
 ## View it live
+https://lively-licorice-306250.netlify.app/
 
+If I had more time I would do some more own pics/images and work some more on the mobile version on css. I would also do some more options/questions to the game.

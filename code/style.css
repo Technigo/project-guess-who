@@ -176,7 +176,7 @@ button {
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
-
+/*the mobile version*/
 @media (max-width: 768px) {
   body {
     flex-direction: column;

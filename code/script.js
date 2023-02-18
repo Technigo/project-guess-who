@@ -291,17 +291,17 @@ const filterCharacters = (keep) => {
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Then invoke filterCharacters to take away the characters that are not correct
 
   if (category === 'hair') {
     if (keep) {
       alert(
-        `Good guess! The person has ${value} hair!`
+        `Good guess! The person has ${value} hair! Keep everyone with ${value} hair.`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
       alert(
-        `Sorry! The person doesn't have ${value} hair!`
+        `Sorry! The person doesn't have ${value} hair! Remove everyone with ${value} hair.`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
@@ -309,12 +309,12 @@ const filterCharacters = (keep) => {
     
     if (keep) {
       alert(
-        `Good guess! The person has ${value} eyes!`
+        `Good guess! The person has ${value} eyes! Keep everyone with ${value} eyes.`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
       alert(
-        `Sorry! The person doesn't have ${value} eyes!`
+        `Sorry! The person doesn't have ${value} eyes! Remove everyone with ${value} eyes.`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
@@ -322,12 +322,12 @@ const filterCharacters = (keep) => {
    
     if (keep) {
       alert(
-        `Good guess! The person wears ${value}!`
+        `Good guess! The person wears ${value}! Keep everyone with ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
-        `Sorry! The person doesn't wear ${value}!`
+        `Sorry! The person doesn't wear ${value}! Remove everyone with ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
@@ -336,12 +336,12 @@ const filterCharacters = (keep) => {
     
     if (keep) {
       alert(
-        `Good guess! The person has a ${value}!`
+        `Good guess! The person has a ${value}! Keep everyone with ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
-        `Sorry! The person does not have a ${value}!`
+        `Sorry! The person does not have a ${value}! Remove everyone with ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
@@ -361,7 +361,8 @@ const guess = (personToConfirm) => {
   }
 };
 
-  // If the player wants to guess, invoke the checkMyGuess function.
+
+// If the player wants to guess, invoke the checkMyGuess function.
 
 
 // If you confirm, this function is invoked

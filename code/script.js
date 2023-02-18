@@ -49,7 +49,7 @@ const CHARACTERS = [
     img: 'images/jai-andreasaxelssontechnigo.png',
     hair: 'black',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['tie'],
     other: []
   },
   {
@@ -179,7 +179,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['psycho']
   },
   {
     name: 'Josephine',
@@ -194,7 +194,7 @@ const CHARACTERS = [
     img: 'images/josh-andreasaxelssontechnigo.png',
     hair: 'yellow',
     eyes: 'green',
-    accessories: [],
+    accessories: ['tie'],
     other: []
   },
   {
@@ -202,7 +202,7 @@ const CHARACTERS = [
     img: 'images/jude-andreasaxelssontechnigo.png',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
+    accessories: ['tie'],
     other: []
   },
   {

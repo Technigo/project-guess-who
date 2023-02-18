@@ -208,7 +208,29 @@ const CHARACTERS = [
 
 // Global variables
 let secret, currentQuestion, charactersInPlay, userGuess;
+
 let numberOfGuesses = 0;
+function resetCounter() {
+  numberOfGuesses = 0;
+  count.innerHTML = `${numberOfGuesses}`;
+}
+
+// timer func
+let seconds = 0;
+let timer = setInterval(upTimer, 1000);
+
+function upTimer() {
+  ++seconds;
+  var hour = Math.floor(seconds / 3600);
+  var minute = Math.floor((seconds - hour * 3600) / 60);
+  var updSecond = seconds - (hour * 3600 + minute * 60);
+  document.getElementById("timer").innerHTML =
+    hour + ":" + minute + ":" + updSecond;
+}
+
+function resetTimer() {
+  seconds = 0;
+}
 
 // Draw the game board
 const generateBoard = () => {
@@ -259,7 +281,6 @@ const selectQuestion = () => {
     category: category, //Cat from questions dropdown
     value: value, //Value from questions dropdown
   };
-  console.log(currentQuestion); //prints the current Question
 };
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -283,26 +304,12 @@ const checkQuestion = () => {
     } else {
       filterCharacters(false);
     }
-    // filterCharacters(); // should keep or not keep
-    // if (category === "hair") {
-    //   if (value === secret.hair) filterCharacters(value); //should keep or not keep}
-    //   // else {
-    //   //   console.log("not same hair");
-    //   // }
-    //   if (category === "eyes") {
-    //     if (value === secret.eyes) filterCharacters(value); //should keep or not keep}
-    //   }
-    // else {
-    //   console.log("not same eyes");
-    // }
   }
 };
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-  // console.log(questions);
-  // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
       alert(
@@ -365,23 +372,8 @@ const filterCharacters = (keep) => {
     }
   }
 
-  generateBoard();
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard();
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -390,9 +382,6 @@ const guess = (personToConfirm) => {
   if (confirm) {
     checkMyGuess(personToConfirm);
   }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 };
 
 // If you confirm, this function is invoked
@@ -429,8 +418,9 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", () => {
-  console.log("restart");
   start();
+  resetCounter();
+  resetTimer();
 });
 
 filter.addEventListener("click", () => {
@@ -449,4 +439,6 @@ playAgain.addEventListener("click", () => {
   winOrLose.style.display = "none";
   board.style.display = "flex";
   start();
+  resetCounter();
+  resetTimer();
 });

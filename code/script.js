@@ -283,24 +283,45 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
     } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
     }
   } else if (category === 'other') {
     // Similar to the one above
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      alert(
+        `Yes, the person have ${value}! Keep all people that have ${value}`
+      )
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that have ${value}`
+      )
+    }
   } else {
     if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`
+      )
     } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`
+      )
     }
   }
-
+  generateBoard()
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   /* 

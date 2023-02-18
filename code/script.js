@@ -6,6 +6,7 @@ const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
+const guessCounter = document.getElementById('guessCount')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -326,11 +327,11 @@ const filterCharacters = (keep) => {
     if (keep) {
       alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`)
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(`No, the person does not have ${value} ${category}! Remove all people with ${value} ${category}.`)
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
 

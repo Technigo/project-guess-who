@@ -18,72 +18,72 @@ const CHARACTERS = [
   {
     name: 'Jabala',
     img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
+    hairColor: 'hidden',
+    eyeColor: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
   },
   {
     name: 'Jack',
     img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
+    hairColor: 'hidden',
+    eyeColor: 'blue',
     accessories: ['hat'],
     other: []
   },
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
+    hairColor: 'grey',
+    eyeColor: 'blue',
     accessories: ['hat'],
     other: ['smoker']
   },
   {
     name: 'Jai',
     img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
+    hairColor: 'black',
+    eyeColor: 'brown',
     accessories: [],
     other: []
   },
   {
     name: 'Jake',
     img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
+    hairColor: 'yellow',
+    eyeColor: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
     name: 'James',
     img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
+    hairColor: 'brown',
+    eyeColor: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
     name: 'Jana',
     img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
+    hairColor: 'black',
+    eyeColor: 'hidden',
     accessories: ['glasses'],
     other: []
   },
   {
     name: 'Jane',
     img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
+    hairColor: 'yellow',
+    eyeColor: 'hidden',
     accessories: ['glasses'],
     other: []
   },
   {
     name: 'Jaqueline',
     img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
+    hairColor: 'orange',
+    eyeColor: 'green',
     accessories: ['glasses'],
     other: []
   },
@@ -91,120 +91,120 @@ const CHARACTERS = [
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
+    hairColor: 'purple',
+    eyeColor: 'hidden',
     accessories: ['glasses'],
     other: ['smoker']
   },
   {
     name: 'Jean',
     img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
+    hairColor: 'brown',
+    eyeColor: 'blue',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
   {
     name: 'Jeane',
     img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
+    hairColor: 'brown',
+    eyeColor: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
     name: 'Jed',
     img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
+    hairColor: 'orange',
+    eyeColor: 'green',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
+    hairColor: 'white',
+    eyeColor: 'hidden',
     accessories: ['hat'],
     other: []
   },
   {
     name: 'Jeri',
     img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
+    hairColor: 'orange',
+    eyeColor: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
     name: 'Jerry',
     img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
+    hairColor: 'hidden',
+    eyeColor: 'blue',
     accessories: ['hat'],
     other: []
   },
   {
     name: 'Jess',
     img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
+    hairColor: 'black',
+    eyeColor: 'blue',
     accessories: ['glasses'],
     other: []
   },
   {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
+    hairColor: 'black',
+    eyeColor: 'brown',
     accessories: ['glasses'],
     other: []
   },
   {
     name: 'Jon',
     img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
+    hairColor: 'brown',
+    eyeColor: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
     name: 'Jordan',
     img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
+    hairColor: 'yellow',
+    eyeColor: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
   },
   {
     name: 'Josephine',
     img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
+    hairColor: 'grey',
+    eyeColor: 'brown',
     accessories: [],
     other: []
   },
   {
     name: 'Josh',
     img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
+    hairColor: 'yellow',
+    eyeColor: 'green',
     accessories: [],
     other: []
   },
   {
     name: 'Jude',
     img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
+    hairColor: 'black',
+    eyeColor: 'green',
     accessories: [],
     other: []
   },
   {
     name: 'Julie',
     img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
+    hairColor: 'black',
+    eyeColor: 'brown',
     accessories: ['glasses', 'hat'],
     other: []
   },
@@ -263,7 +263,7 @@ const upStartGame = () => {
   winOrLose.style.display = 'none';
 }
 
-// With this function, which is envoked whenever we change the value of the dropdown menu, we store those values (category (i.e. hair color) and actual value (i.e. brown) in variables. These variables we also put into an object called currentQuestion):
+// With this function, which is envoked whenever we change the value of the dropdown menu, we store those values (category (i.e. hairColor color) and actual value (i.e. brown) in variables. These variables we also put into an object called currentQuestion):
 const selectQuestion = (event) => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label;

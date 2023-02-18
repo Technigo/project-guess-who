@@ -60,7 +60,7 @@ h2 {
 .questionSection {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: var(--lightGreen);
   /*display: flex;*/
   display: none;
   flex-direction: column;
@@ -177,6 +177,21 @@ button {
   background-color: var(--primary);
   color: white;
   box-shadow: 7px 10px 5px rgba(0, 0, 0, 0.4) inset;
+}
+
+#restartBtn {
+  margin: 0 0 0 50%;
+  padding: 7px 17px;
+  font-size: 14px;
+  background-color: var(--darkerGreen);
+  border: none;
+}
+
+#playAgainBtn {
+  padding: 27px 37px;
+  font-size: 22px;
+  background-color: var(--darkerGreen);
+  border: none;
 }
 
 

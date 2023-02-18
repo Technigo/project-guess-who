@@ -9,7 +9,7 @@
   --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-body {
+.container {
   display: flex;
   margin: 0;
   padding: 0;
@@ -189,6 +189,58 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+/*footer*/
+.logo-footer {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.logo-footer img {
+  width: 50px;
+  border-radius: 50%;
+  box-shadow: var(--box-shadow);
+  margin-top: 5px;
+}
+
+.logoTextSpan {
+  padding: 10px;
+  font-family: var(--footer-font-family);
+}
+
+.footer-icons {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.fa-linkedin,
+.fa-github {
+  font-size: 38px;
+  padding-left: 25px;
+  filter: drop-shadow(2px 4px 1px rgb(0 0 0 / 0.3));
+  text-decoration: none;
+}
+
+.fa-linkedin {
+  color: #0270ad;
+}
+
+.fa-github {
+  color: #000;
+}
+
+.flex-parent footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-child footer {
+  display: inline-flex;
 }
 
 @media (max-width: 768px) {

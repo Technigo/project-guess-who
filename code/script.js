@@ -258,7 +258,6 @@ const selectQuestion = () => {
     category: category,
     value: value
   }
-//alert("selectquestion")
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -281,11 +280,9 @@ const checkQuestion = () => {
   } else if (category === 'accessories' || category === 'other') {
   
     if (((secret.accessories).includes(value) ) ||  ((secret.other).includes(value) )) {
-      alert("rihgt??")
       keepItem = true
       filterCharacters(keepItem)
     } else {
-      alert("worng??")
       keepItem = false
       filterCharacters(keepItem)
     }

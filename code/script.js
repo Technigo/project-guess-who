@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -235,6 +236,8 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  winOrLose.style.display = "none"
+  board.style.display = "flex"
   // What else should happen when we start the game?
   generateBoard()
   setSecret()
@@ -379,3 +382,4 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener("change", selectQuestion )
 findOutButton.addEventListener("click", checkQuestion)
+playAgain.addEventListener("click", start)

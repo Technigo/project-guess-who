@@ -1,13 +1,13 @@
-# Project Name
+# Guess who!
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week we dug deeper into JavaScript: objects, arrays and functions by creating a "Guess who"-game.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+My main issue this week was that one of the categories in my game was a boolean (the category "other" could only be beard och no beard) and i wasn't sure how to filter out the characters based on a boolean value. But after som help from Stack, asking ChatGTP for examples and poking around the code I eventually figured it out!
+
+JavaScript is still quite confusing but i feel like im getting a better hang of it every week!
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guess-who-lotr.netlify.app/

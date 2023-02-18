@@ -6,7 +6,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
-
+const guessesHowMany = document.getElementById('howManyGuesses')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -209,6 +209,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let counter
 
 // Draw the game board
 const generateBoard = () => {
@@ -238,6 +239,9 @@ const setSecret = () => {
 const start = () => {
   board.style.display = 'flex'
   winOrLose.style.display = 'none'
+  //Make the counter reset to 0 when the game starts. 
+  counter= 0;
+  guessesHowMany.innerHTML= `<h2>Number of guesses: </h2>`;
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
@@ -274,9 +278,11 @@ const checkQuestion = () => {
     if (secret[category].includes(value)) {
       filterCharacters(true); //Keep everyone with some kind of accessories or other
     } else {
-      filterCharacters(); //Remove all with acc or other, I really hope it will look into all array index
+      filterCharacters(); //Remove all with acc or other
     }
   }
+  counter++;
+  guessesHowMany.innerHTML=`<h2>Number of guesses: ${counter} </h2>`
 }
 
 // It'll filter the characters array and redraw the game board.

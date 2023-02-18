@@ -19,6 +19,10 @@ h1 {
   color: white;
 }
 
+h2 {
+  color: white;
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;

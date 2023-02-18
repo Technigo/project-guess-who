@@ -239,7 +239,7 @@ let numberOfGuesses = 0
 //Sounds
 let correctSound = new Audio('sounds/correct.wav')
 let wrongSound = new Audio('sounds/wrong.wav')
-let selectClick = new Audio('sounds/selectClick2.wav')
+let selectClick = new Audio('sounds/selectClick.wav')
 
 // Draw the game board
 const generateBoard = () => {

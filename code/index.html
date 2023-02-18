@@ -10,9 +10,32 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
-    <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
+
+    <!-- The start page, where we click to begin the game -->
+    <div class="start" id="startPage">
+        <img
+        class="detectiveimg"
+        src="images/detectivegirl.png"
+        alt="Guess Who"
+        />
+        <h1>Hey there buddy!</h1>
+        <h2>Do you want to play a game of "Guess Who"?</h2>
+        <div class="button-img">
+          <img
+          class="guess-who-icon"
+          src="images/guess-who-bubble.png"
+          alt="Guess Who"
+          />
+          <button type="button" id="beginBtn" class="generalButton">BEGIN GAME</button>
+        </div>
+    </div>
+
+
+        <!-- The question section, where we select filter and guess -->
+    <aside class="questionSection" id="questionWrapper">
+      <button type="button" id="restartBtn" class="generalButton">RESTART</button>
 
       <img
         class="guess-who-icon"
@@ -22,32 +45,43 @@
 
       <h1>Does the person have</h1>
 
-      <select title="questions" id="questions">
-        <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
+      <select id="questions">
+        <option value selected disabled>Select:</option>
+        <optgroup label="hair color">
+          <option value="brown">Brown hair?</option>
+          <option value="yellow">Yellow hair?</option>
+          <option value="black">Black hair?</option>
+          <option value="grey">Grey hair?</option>
+          <option value="purple">Purple hair?</option>
+          <option value="orange">Orange hair?</option>
+          <option value="hidden">Hidden hair?</option>
+         </optgroup>
+        <optgroup label="eye color">
+          <option value="brown">Brown eyes?</option>
+          <option value="blue">Blue eyes?</option>
+          <option value="green">Green eyes?</option>
+          <option value="hidden">Hidden eyes?</option>
         </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
-        </optgroup>
+        <!--
         <optgroup label="accessories">
-          <option value="glasses">glasses</option>
+          <option value="glasses">glasses</option> -->
           <!-- Add the other accessory option here. (hat)  -->
-        </optgroup>
+        <!-- </optgroup>
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
-        </optgroup>
+        </optgroup> -->
       </select>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
+      <button id="filterBtn" class="generalButton">FIND OUT</button>
     </aside>
 
-    <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
+
+<!-- The board, where we generate the playing board with cards -->
+    <section class="board">
+      <main class="game-board" id="boardWrapper"></main>
     </section>
 
+        <!-- The win/lose page, where we find out if we won or lost, and get to restart -->
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
         <img
@@ -55,10 +89,32 @@
           src="images/guess-who-bubble.png"
           alt="Guess Who"
         />
-        <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <h1 id="winOrLoseText"></h1>     <!-- Replacing the text element -->
+        <div id="winOrLoseImg"></div>     <!-- Replacing the image <img > -->
+        <button type="button" id="playAgainBtn" class="generalButton">PLAY AGAIN</button>
       </div>
     </section>
+
+
     <script src="script.js"></script>
   </body>
 </html>
+
+
+<!-- If winner, use this image: 
+      <img
+      class="testimg"
+      src="images/Winner_Monochromatic2.png"
+      alt="Guess Who"
+      />
+    -->
+
+    <!-- If loser, use this image: 
+      <img
+      class="testimg"
+      src="images/Explosion_TwoColor4.png"
+      alt="Guess Who"
+      />
+    -->
+
+    

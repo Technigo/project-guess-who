@@ -2,7 +2,12 @@
 :root {
   --primary: #a259ff;
   --secondary: #b0a6ff;
+  --tertiary: #3f3497;
+  --lightGreen: #93D9B1;
+  --darkerGreen: #229C75;
+  --evenDarkerGreen: #0B4D31;
 }
+
 
 body {
   display: flex;
@@ -12,18 +17,52 @@ body {
 }
 
 h1 {
-  font-size: 42px;
-  font-weight: 500;
+  font-size: 48px;
+  font-weight: 800;
   line-height: 48px;
   margin: 10px 0;
   color: white;
 }
 
-.question-section {
+h2 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 10px 15px 30px 15px;
+  color: white;
+}
+
+.start {
+  background-color: var(--lightGreen);
+  width: 75%;
+  max-width: 800px;
+  margin: 100px auto;
+  border-radius: 50px;
+  /*display: none;*/
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 50px 5px;
+}
+
+.detectiveimg {
+  max-width: 80px;
+  margin: auto;
+}
+
+.button-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.questionSection {
   width: 30%;
   min-height: 100vh;
   background-color: var(--secondary);
-  display: flex;
+  /*display: flex;*/
+  display: none;
   flex-direction: column;
   padding: 5vw;
   align-items: flex-start;
@@ -44,9 +83,10 @@ select {
   width: 126px;
 }
 
-.board-wrapper {
+.boardWrapper {
   width: 70%;
-  display: flex;
+  /*display: flex;*/
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -127,23 +167,18 @@ button {
   padding: 8px 16px;
 }
 
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
-}
-
-.filled-button,
-.outlined-button:hover {
+.generalButton {
   background-color: var(--primary);
   color: white;
+  margin: 3px;
 }
 
-.filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
+.generalButton:hover {
+  background-color: var(--primary);
+  color: white;
+  box-shadow: 7px 10px 5px rgba(0, 0, 0, 0.4) inset;
 }
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -168,14 +203,29 @@ button {
   text-align: center;
 }
 
+/*
 .win-or-lose img {
   align-self: flex-start;
   margin-left: 15%;
 }
 
+
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
+*/
+
+.win-img {
+  max-width: 300px;
+  margin: 30px;
+}
+
+
+.lose-img {
+  max-width: 250px;
+  margin-left: 0;
+}
+
 
 @media (max-width: 768px) {
   body {
@@ -190,7 +240,12 @@ button {
     padding: 8px 16px;
   }
   h1 {
-    font-size: 24px;
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  h2 {
+    font-size: 18px;
     line-height: 30px;
   }
 
@@ -198,7 +253,7 @@ button {
     width: 51px;
   }
 
-  .board-wrapper {
+  .boardWrapper {
     width: 100%;
   }
 

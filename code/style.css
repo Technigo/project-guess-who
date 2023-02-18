@@ -19,6 +19,12 @@ h1 {
   color: white;
 }
 
+.header {
+text-shadow: 4px 4px 10px #a259ff ;
+
+}
+
+
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -144,6 +150,23 @@ button {
   border-color: white;
   color: var(--primary);
 }
+
+.score-up-button {
+ color: #a259ff;
+}
+
+.score-down-button {
+color: #a259ff;
+}
+
+.save-score-button {
+color: #a259ff;
+}
+
+#count-el {
+  color: #4f4f4f;
+}
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {

@@ -360,8 +360,8 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
     board.innerHTML = '';
     winOrLose.style.display = "block";
-/*     let secretPersonImg = `<img class="cardFinal" src=${secret.img} alt=${secret.name}>`;
-    winOrLoseContainer.insertAdjacentHTML("afterBegin", secretPersonImg); */
+    let secretPersonImg = `<img class="cardFinal" src=${secret.img} alt=${secret.name}>`;
+    winOrLoseContainer.insertAdjacentHTML("afterBegin", secretPersonImg);
    if (personToCheck === secret.name) {
      winOrLoseText.innerText = `Wohoo that's correct! You Win!`
   } else {

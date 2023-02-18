@@ -1,4 +1,4 @@
-# Guess Who Game
+# Guess Who Game - In Progress
 
 This is a web-based implementation of the classic Guess Who board game, where the player has to guess a secret person from a board with different characters. 
 The project was built using HTML, CSS, and JavaScript, and includes the following features:

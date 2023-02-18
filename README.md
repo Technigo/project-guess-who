@@ -9,4 +9,4 @@ This project mainly focused on using loops, forEach, array.filter method and pas
 
 ## View it live
 
-You can see my project here:
+You can see my project here: https://who-stole-the-tuna.netlify.app/

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guess where?</title>
+    <title>Guess the city!</title>
     <link rel="icon" href="images/icons8-earth-globe-50.png">
     <link rel="stylesheet" href="style.css" />
     <link
@@ -13,19 +13,6 @@
   </head>
   <body>
     <aside class="question-section">
-      <button 
-      type="button" 
-      id="restart" 
-      class="outlined-button">
-      RESTART
-    </button>
-
-      <!--<img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />-->
-
       <h1>
         <img 
         src="images/icons8-earth-globe-50 (1).png" 
@@ -35,6 +22,7 @@
       </h1>
 
       <select title="questions" id="questions">
+        <option value="">--Pick a question--</option>
         <optgroup label="continent">
           <option value="africa">Is it in Africa?</option>
           <option value="asia">Is it in Asia?</option>
@@ -63,6 +51,8 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+
+      <button type="button" id="restart" class="outlined-button">RESTART</button>
     </aside>
 
     <section class="board-wrapper">
@@ -77,7 +67,6 @@
           alt="Logo of globe"
         />
         <h1 id="winOrLoseText"></h1>
-        
         <button id="playAgainButton" class="filled-button">PLAY AGAIN</button>
 
       </div>

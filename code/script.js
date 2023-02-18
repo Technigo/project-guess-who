@@ -25,7 +25,7 @@ const CITIES = [
   },
   {
     name: 'Washington DC',
-    img: 'images/washington.png',
+    img: 'images/washingtonDC.png',
     continent: 'north-america',
     hemisphere: ['northern', 'western'],
     language: ['english'],
@@ -150,7 +150,7 @@ const CITIES = [
     continent: 'africa',
     hemisphere: ['southern', 'eastern'],
     language: [],
-    other: []
+    other: ['capital']
   },
   {
     name: 'Amsterdam',
@@ -166,7 +166,7 @@ const CITIES = [
     continent: 'africa',
     hemisphere: ['southern', 'eastern'],
     language: [],
-    other: []
+    other: ['capital']
   },
   {
     name: 'Delhi',
@@ -280,25 +280,27 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
+  const { category, value } = currentQuestion;
+  const uppercaseValue = value.replace('-', ' ').replace(/\b\w/g, c => c.toUpperCase());
+
   if (category === 'language') {
     if (keep) {
-      alert(`Yes, ${value} is an official language! Keep all the cities that have ${value} as an official language`);
+      alert(`Yes, ${uppercaseValue} is an official language! Keep all the cities that have ${uppercaseValue} as an official language`);
       citiesInPlay = citiesInPlay.filter((city) => city[category].includes(value));
 
     } else {
-      alert(`No, ${value} is not an official language! Remove all the cities that have ${value} as an official language`);
+      alert(`No, ${uppercaseValue} is not an official language! Remove all the cities that have ${uppercaseValue} as an official language`);
       citiesInPlay = citiesInPlay.filter((city) => !city[category].includes(value));
     }
 
 
   } else if (category === 'other') {
     if (keep) {
-      alert(`Yes, the city is a ${value}! Keep all the cities that are a ${value}`);
+      alert(`Yes, the city is a ${Value}! Keep all the cities that are a ${Value}`);
       citiesInPlay = citiesInPlay.filter((city) => city[category].includes(value));
 
     } else {
-      alert(`No, the city is not a ${value}! Remove all the cities that are a ${value}`);
+      alert(`No, the city is not a ${Value}! Remove all the cities that are a ${Value}`);
       citiesInPlay = citiesInPlay.filter((city) => !city[category].includes(value));
     }
 
@@ -314,11 +316,11 @@ const filterCharacters = (keep) => {
 
   } else {
     if (keep) {
-      alert(`Yes, the city is in ${value}! Keep all the cities in ${value}`);
+      alert(`Yes, the city is in ${uppercaseValue}! Keep all the cities in ${uppercaseValue}`);
       citiesInPlay = citiesInPlay.filter((city) => city[category] === value);
 
     } else {
-      alert(`No, the city is not in ${value}! Remove all the cities in ${value}`);
+      alert(`No, the city is not in ${uppercaseValue}! Remove all the cities in ${uppercaseValue}`);
       citiesInPlay = citiesInPlay.filter((city) => city[category] !== value);
     }
     

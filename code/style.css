@@ -17,6 +17,7 @@ h1 {
   line-height: 48px;
   margin: 10px 0;
   color: white;
+  text-align: center;
 }
 
 .question-section {
@@ -26,7 +27,7 @@ h1 {
   display: flex;
   flex-direction: column;
   padding: 5vw;
-  align-items: flex-start;
+  align-items: center;
   box-sizing: border-box;
 }
 
@@ -51,6 +52,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #d7e8f6;
 }
 
 .game-board {
@@ -73,11 +75,14 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: rgb(250, 250, 250);
+  box-shadow: 3px 3px 3px rgb(68, 142, 199);
 }
 
 .card p {
   text-align: center;
   margin-bottom: 0;
+  margin-top: 4px;
   font-size: 16px;
   font-weight: 700;
 }
@@ -137,7 +142,7 @@ button {
 .outlined-button {
   background-color: transparent;
   color: var(--primary);
-  align-self: flex-end;
+  margin-top: 20px;
 }
 
 .filled-button,
@@ -155,9 +160,11 @@ button {
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: rgb(202,219,236);
+  background: radial-gradient(circle, rgb(191, 213, 236) 0%, rgb(86, 161, 236) 100%);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -176,16 +183,17 @@ button {
 }
 
 .win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+  align-self: center;
+  width: 80px;
+  height: 80px;
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
 
-.win-or-lose h2 {
-  margin-bottom: 32px;
+.win-or-lose button {
+  background-color: #7bb6ed;
 }
 
 @media (max-width: 768px) {

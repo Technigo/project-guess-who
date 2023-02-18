@@ -24,11 +24,11 @@ const CITIES = [
     other: ['capital']
   },
   {
-    name: 'Washington DC',
-    img: 'images/washingtonDC.png',
-    continent: 'north-america',
-    hemisphere: ['northern', 'western'],
-    language: ['english'],
+    name: 'Cairo',
+    img: 'images/cairo.png',
+    continent: 'africa',
+    hemisphere: ['northern', 'eastern'],
+    language: ['arabic'],
     other: ['capital']
   },
   {
@@ -178,7 +178,7 @@ const CITIES = [
   },
   {
     name: 'Barcelona',
-    img: 'images/barcelona.png',
+    img: 'images/barcelona2.png',
     continent: 'europe',
     hemisphere: ['northern', 'eastern'],
     language: ['spanish'],
@@ -293,14 +293,13 @@ const filterCharacters = (keep) => {
       citiesInPlay = citiesInPlay.filter((city) => !city[category].includes(value));
     }
 
-
   } else if (category === 'other') {
     if (keep) {
-      alert(`Yes, the city is a ${Value}! Keep all the cities that are a ${Value}`);
+      alert(`Yes, the city is a ${value}! Keep all the cities that are a ${value}`);
       citiesInPlay = citiesInPlay.filter((city) => city[category].includes(value));
 
     } else {
-      alert(`No, the city is not a ${Value}! Remove all the cities that are a ${Value}`);
+      alert(`No, the city is not a ${value}! Remove all the cities that are a ${value}`);
       citiesInPlay = citiesInPlay.filter((city) => !city[category].includes(value));
     }
 

@@ -1,10 +1,12 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById("board");
+const winOrLose = document.getElementById("winOrLose");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const filter = document.getElementById("filter");
+const winOrLoseText = document.getElementById("winOrLoseText");
+const playAgain = document.getElementById("playAgain");
 
-//
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -228,8 +230,6 @@ const generateBoard = () => {
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  // CHARACTERS[4]; //Just to test if filterCharacters works as i want. Remove this value!
-  console.log(secret);
 };
 
 // This function to start (and restart) the game
@@ -241,8 +241,8 @@ const start = () => {
 
   //Start value of question
   currentQuestion = { category: "hair", value: "brown" };
-  generateBoard();
   setSecret();
+  generateBoard();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -362,25 +362,8 @@ const filterCharacters = (keep) => {
         (person) => !person[category].includes(value)
       );
     }
-    // Similar to the one above
   }
-  //else {
-  //   if (keep) {
-  //     // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-  //     alert(
-  //       `Yes, the person has ${value} hair! Keep all people with ${value} hair`
-  //     );
-  //     charactersInPlay = charactersInPlay.filter(
-  //       (person) => person[category] === value
-  //     );
-  //     // } else {
-  //     //   // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-  //     //   alert(
-  //     //     `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
-  //     //   );
-  //     // }
-  //   }
-  // }
+
   generateBoard();
 
   // Determine what is the category
@@ -402,31 +385,50 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  confirm(`are you sure you want to guess on: ${personToConfirm}?`);
+  if (confirm) {
+    checkMyGuess(personToConfirm);
+  }
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  if (personToCheck === secret.name) {
+    // 2. Show the win section
+    winOrLose.style.display = "block";
+    // 3. Hide the game board
+    board.style.display = "none";
+    // 4. Set a Message to show in the win or lose section accordingly
+    winOrLoseText.innerHTML = "You Win!";
+  } else {
+    // 1. Show the lose section
+    winOrLose.style.display = "block";
+    // 2. Hide the game board
+    board.style.display = "none";
+    // 3. Set a Message to show in the win or lose section accordingly
+    winOrLoseText.innerHTML = "You Lose!";
+  }
 };
 
 // Invokes the start function when website is loaded
 start();
 
 // All the event listeners
-restartButton.addEventListener("click", start);
+restartButton.addEventListener("click", start());
 
 filter.addEventListener("click", () => {
-  // console.log("the selected question is: ", currentQuestion);
-  // console.log("the secret is: ", secret);
+  console.log("the selected question is: ", currentQuestion);
+  console.log("the secret is: ", secret);
   checkQuestion();
 });
 
 questions.addEventListener("click", () => {
   selectQuestion();
+});
+
+playAgain.addEventListener("click", () => {
+  winOrLose.style.display = "none";
+  board.style.display = "flex";
+  start();
 });

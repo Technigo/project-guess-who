@@ -10,3 +10,4 @@ I started by watching all of this week's Technigo lessons and did the team exerc
 
 ## View it live
 
+https://guess-who-frida-n.netlify.app/

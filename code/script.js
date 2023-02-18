@@ -235,11 +235,6 @@ const generateBoard = () => {
       </div>
     `
 })
-/* const card = document.querySelectorAll(".card")
-const flipCard = document.querySelectorAll(".card-front")
-  card.forEach((cardOver => cardOver.addEventListener('mouseover', () => 
-    document.querySelectorAll(".card").style.transform = "rotateY(180deg)";
-  ))) */
 }
 
 let guessCounter = 0;
@@ -369,10 +364,8 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseContainer.insertAdjacentHTML("afterBegin", secretPersonImg);
    if (personToCheck === secret.name) {
      winOrLoseText.innerText = `Wohoo that's correct! You Win!`
-    /* secretPersonImg.innerHTML = `<img src=${secret.img} alt=${secret.name}>` */
   } else {
     winOrLoseText.innerText = `Oh no! Your guess is wrong! The correct answer is ${secret.name}`
-    /* secretPersonImg.innerHTML = `<img src=${secret.img} alt=${secret.name}>` */
   }
 }
 
@@ -431,7 +424,7 @@ questions.addEventListener('change', () => {
 })
 filterButton.addEventListener('click', checkQuestion)
 playAgain.addEventListener("click", (event) => {
-  window.location.reload(); 
+  /* window.location.reload();  */
   start();
   pause();
   reset();

@@ -2,10 +2,10 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgain = document.getElementById('playAgain')
-const filterButton = document.getElementById('filter')
 
 
 // Array with all the characters, as objects
@@ -206,9 +206,10 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay 
+let secret  //object secret person
+let currentQuestion //object current question
+let charactersInPlay // the remaining people
+let keep 
 
 // Draw the game board
 const generateBoard = () => {
@@ -260,7 +261,7 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  const { category, value } = currentQuestion;
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -282,7 +283,7 @@ const checkQuestion = () => {
       filterCharacters(false);
     }
   }
-}
+};
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -307,7 +308,7 @@ const filterCharacters = (keep) => {
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
       } else {
         alert(
-          `No, the person does not have a ${value}! Remove all people that wears ${value}`);
+          `No, the person does not have a ${value}! Remove all people that have ${value}`);
           charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
         }
       } else {
@@ -324,9 +325,8 @@ const filterCharacters = (keep) => {
     generateBoard();
 }
 
-
   /* 
-    for hair and eyes :
+    for hair and eyes : (cannot get this to work)
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
@@ -343,7 +343,11 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-}
+  const confirmGuess = confirm(`Are your sure you want to guess on ${personToConfirm}?`)
+    if (confirmGuess === true) {
+      checkMyGuess(personToConfirm)
+    }
+};
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
@@ -351,6 +355,13 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  if (personToCheck === secret.name) {
+    winOrLose.style.display = "block";
+      winOrLoseText.innerText = `Wow, that's absolutly right! You win!`
+  } else {
+      winOrLose.style.display ="block";
+        winOrLoseText.innerText = `Oh noes! That was wrong, the correct answer is ${secret.name}!` 
+  }
 }
 
 // Invokes the start function when website is loaded
@@ -360,3 +371,7 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion) 
 filterButton.addEventListener('click', checkQuestion) //invoking checQuestion to filter with the Find out button
+playAgain.addEventListener("click", (event) => {
+  start()
+  winOrLose.style.display = "none";
+});

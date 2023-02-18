@@ -381,7 +381,7 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `Yes! You made the right guess. Congratulations! 🎉`
   } else {
-    winOrLoseText.innerHTML = `No! You guessed wrong, sorry.`
+    winOrLoseText.innerHTML = `Darn it! You made the wrong guess. Play again? 👀`
   }
 }
 

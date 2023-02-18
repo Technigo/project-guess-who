@@ -255,7 +255,7 @@ button {
   body {
     flex-direction: column;
   }
-
+  
   .question-section {
     width: 100%;
     min-height: 0;

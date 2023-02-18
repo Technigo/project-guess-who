@@ -360,8 +360,8 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
     board.innerHTML = '';
     winOrLose.style.display = "block";
-    let secretPersonImg = `<img class="cardFinal" src=${secret.img} alt=${secret.name}>`;
-    winOrLoseContainer.insertAdjacentHTML("afterBegin", secretPersonImg);
+/*     let secretPersonImg = `<img class="cardFinal" src=${secret.img} alt=${secret.name}>`;
+    winOrLoseContainer.insertAdjacentHTML("afterBegin", secretPersonImg); */
    if (personToCheck === secret.name) {
      winOrLoseText.innerText = `Wohoo that's correct! You Win!`
   } else {
@@ -424,11 +424,11 @@ questions.addEventListener('change', () => {
 })
 filterButton.addEventListener('click', checkQuestion)
 playAgain.addEventListener("click", (event) => {
-  window.location.reload(); 
   start();
   pause();
   reset();
   winOrLose.style.display = "none";
+  window.location.reload();
 });
 filterButton.addEventListener("click", () => {
   guessCounter += 1;

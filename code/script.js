@@ -7,6 +7,7 @@ const findOutButton = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const winOrLoseSection = document.getElementById("winOrLose");
 const playAgainButton = document.getElementById("playAgain");
+const secretImageAtCheck = document.getElementById("secretImage");
 
 // Alexander: The main array with all the characters as objects
 
@@ -16,7 +17,7 @@ const CHARACTERS = [
     img: "images/bjork.png",
     hair: "black",
     eyes: "visible",
-    accessories: ["hat"],
+    accessories: ["a hat"],
     other: ["singer"],
   },
   {
@@ -38,8 +39,8 @@ const CHARACTERS = [
   {
     name: "Yayoi Kusama",
     img: "images/yayoi.png",
-    hair: "black",
-    eyes: "brown",
+    hair: "red",
+    eyes: "visible",
     accessories: [],
     other: ["artist"],
   },
@@ -208,9 +209,10 @@ const CHARACTERS = [
 
 // Alexander: Declaring all glocal variables
 
+let charactersInPlay;
 let secret;
 let currentQuestion;
-let charactersInPlay;
+let gameCounter;
 
 // Alexander: Declaring sound effects for winning or losing to be referenced later
 
@@ -249,6 +251,11 @@ const start = () => {
 
   questions.value = "";
   winOrLoseSection.style.display = "none";
+  secretImageAtCheck.innerHTML = "";
+
+  // Alexander: Resets the counter
+  gameCounter = 0;
+
   // winOrLoseSection.innerText += ` `;
 
   charactersInPlay = CHARACTERS;
@@ -301,7 +308,9 @@ const checkQuestion = () => {
     }
   }
 
-  // counter possibly?
+  // adds +1 to the counter
+  // Increment counter for number of guesses/questions the player makes
+  counter++;
 };
 
 // Alexander: Filters the array based on currentQuestion output and redraws the board
@@ -386,6 +395,7 @@ const checkMyGuess = (personToCheck) => {
     // winOrLoseSection.innerHTML += `
     //     <img src=${secret.img} alt=${secret.name}>
     // `;
+    secretImageAtCheck.innerHTML += `<img src=${secret.img} alt=${secret.name}>`;
   }
   winOrLoseSection.style.display = "flex";
   // 1. Check if the personToCheck is the same as the secret person's name

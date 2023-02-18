@@ -205,9 +205,7 @@ const CHARACTERS = [
 ];
 
 // Global variables
-let secret;
-let currentQuestion;
-let charactersInPlay;
+let secret, currentQuestion, charactersInPlay, userGuess;
 
 // Draw the game board
 const generateBoard = () => {
@@ -385,6 +383,10 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  confirm(`Are you sure you want to guess on ${personToConfirm}?`);
+  if (confirm) {
+    checkMyGuess(personToConfirm);
+  }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.

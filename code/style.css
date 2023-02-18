@@ -23,7 +23,7 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-image: url("/project-guess-who/code/images/background-for-questions.jpg");
+  background-image: url("images/background-for-questions.jpg");
   display: flex;
   flex-direction: column;
   padding: 5vw;

@@ -222,9 +222,7 @@ const CHARACTERS = [
 ];
 
 // audio
-const sound = new Audio(
-  "/project-guess-who/code/images/Card-flip-sound-effect.mp3"
-);
+const sound = new Audio("images/Card-flip-sound-effect.mp3");
 
 // Draw the game board
 const generateBoard = () => {

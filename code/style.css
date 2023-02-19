@@ -1,10 +1,11 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #62F163;
+  --secondary: #C1E1C1;
 }
 
 body {
+  background-color: #F0FFEC;
   display: flex;
   margin: 0;
   padding: 0;
@@ -82,6 +83,11 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+}
+
+.card img {
+  margin-bottom: 35px;
+
 }
 
 .card .guess {

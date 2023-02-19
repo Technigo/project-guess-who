@@ -7,201 +7,202 @@ const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
 const guessesHowMany = document.getElementById('howManyGuesses')
+const secretImageAtGuess = document.getElementById('secretImageAtGuess')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses',],
-    other: []
+    name: 'Ozzy Orange',
+    img: 'images/orange.png',
+    color: 'orange',
+    a: 'fruit',
+    characteristics: ['juicy', 'sweet'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['facial hair', 'pet']
+    name: 'Shakira Soda',
+    img: 'images/soda.png',
+    color: 'red',
+    a: 'drink',
+    characteristics: ['fizzy', 'sweet'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker', 'facial hair']
+    name: 'Chris Chili',
+    img: 'images/chili.png',
+    color: 'red',
+    a: 'vegetable',
+    characteristics: ['spicy'],
+    hiddenTalent: ['actor']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: 'Bob Banana',
+    img: 'images/banana.png',
+    color: 'yellow',
+    a: 'fruit',
+    characteristics: ['sweet', 'slippery'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Billie Bread',
+    img: 'images/bread.png',
+    color: 'yellow',
+    a: 'meal',
+    characteristics: ['moist', 'slices'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Beyonce Brocoli',
+    img: 'images/brocoli.png',
+    color: 'green',
+    a: 'vegetable',
+    characteristics: ['healthy', 'raw'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses', 'necklace'],
-    other: []
+    name: 'Cat Cherry',
+    img: 'images/cherry.png',
+    color: 'red',
+    a: 'fruit',
+    characteristics: ['sweet', 'kernels'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Courtney Coffee',
+    img: 'images/coffee.png',
+    color: 'beige',
+    a: 'drink',
+    characteristics: ['hot', 'cold'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'necklace', 'earring'],
-    other: []
+    name: 'Cameron Croissant',
+    img: 'images/croissant.png',
+    color: 'brown',
+    a: 'sweet',
+    characteristics: ['crispy', 'greasy'],
+    hiddenTalent: ['actor']
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    name: 'Cristiano Cupcake',
+    img: 'images/cupcake.png',
+    color: 'purple',
+    a: 'sweet',
+    characteristics: ['sweet', 'fluffy'],
+    hiddenTalent: ['elite athlete']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Enya Egg',
+    img: 'images/egg.png',
+    color: 'yellow',
+    a: 'meal',
+    characteristics: ['cooked', 'healthy'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Freddie Fries',
+    img: 'images/french-fries.png',
+    color: 'yellow',
+    a: 'meal',
+    characteristics: ['hot', 'greasy'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker', 'facial hair']
+    name: 'Gaga Grapes',
+    img: 'images/grape.png',
+    color: 'purple',
+    a: 'fruit',
+    characteristics: ['sweet', 'juicy'],
+    hiddenTalent: ['artist', 'actor']
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    name: 'Iggy Ice-cream',
+    img: 'images/ice-cream.png',
+    color: 'pink',
+    a: 'sweet',
+    characteristics: ['sweet', 'cold'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Jay Jam',
+    img: 'images/jam.png',
+    color: 'orange',
+    a: 'sweet',
+    characteristics: ['sweet', 'sticky'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Mikael Milk',
+    img: 'images/milk.png',
+    color: 'blue',
+    a: 'drink',
+    characteristics: ['cold'],
+    hiddenTalent: ['actor']
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
+    name: 'Maria Mushroom',
+    img: 'images/mushroom.png',
+    color: 'brown',
+    a: 'vegetable',
+    characteristics: ['healthy', 'spongy'],
+    hiddenTalent: ['elite athlete']
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'earring'],
-    other: []
+    name: 'Natalie Noodle',
+    img: 'images/noodle.png',
+    color: 'blue',
+    a: 'meal',
+    characteristics: ['hot', 'slippery'],
+    hiddenTalent: ['actor']
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Orlando Onion',
+    img: 'images/onion.png',
+    color: 'beige',
+    a: 'vegetable',
+    characteristics: ['raw', 'crying'],
+    hiddenTalent: ['actor']
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Pete Pea',
+    img: 'images/pea.png',
+    color: 'green',
+    a: 'vegetable',
+    characteristics: ['healthy', 'crispy'],
+    hiddenTalent: ['elite athlete']
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: ['earring'],
-    other: []
+    name: 'Penelope Pizza',
+    img: 'images/pizza.png',
+    color: 'beige',
+    a: 'meal',
+    characteristics: ['greasy', 'hot'],
+    hiddenTalent: ['actor']
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: 'Paul Popsicle',
+    img: 'images/popsicle.png',
+    color: 'orange',
+    a: 'sweet',
+    characteristics: ['sweet', 'cold'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: ['facial hair']
+    name: 'Tina Taco',
+    img: 'images/taco.png',
+    color: 'brown',
+    a: 'meal',
+    characteristics: ['spicy', 'greasy'],
+    hiddenTalent: ['artist']
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Pele´ Potato',
+    img: 'images/potato.png',
+    color: 'brown',
+    a: 'vegetable',
+    characteristics: ['cooked', 'healthy'],
+    hiddenTalent: ['elite athlete']
   },
 ]
 
@@ -265,20 +266,20 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const {category, value} = currentQuestion
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
+  // Compare the currentQuestion details with the secret person details in a different manner based on category (color/a or characteristic/hiddenTalent).
+  // See if we should keep or remove figure based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'color' || category === 'a') {
     if (secret[category] === value) {
-      filterCharacters(true); // Keep everyone with that hair/eye color
+      filterCharacters(true); // Keep everyone with that color/a value
     } else {
-      filterCharacters(); // Remove everyone with that hair/eye color
+      filterCharacters(); // Remove everyone with that color/a value
     }
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'characteristics' || category === 'hiddenTalent') {
     if (secret[category].includes(value)) {
-      filterCharacters(true); //Keep everyone with some kind of accessories or other
+      filterCharacters(true); //Keep everyone with characteristic/hiddenTalent that match secret
     } else {
-      filterCharacters(); //Remove all with acc or other
+      filterCharacters(); //Remove all with characteristic/hiddenTalent that does not match secret
     }
   }
   counter++;
@@ -288,29 +289,29 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories and filter based on the category and value of param keep
-  if (category === 'accessories') {
+  // Show the correct alert message for different categories and filter based on the category and value
+  if (category === 'characteristics') {
     if (keep) {
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
+      alert(`Yes, it is ${value}! Keep all figures that are ${value}`);
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
+      alert(`No, it is not ${value}! Remove all figures that are ${value}`);
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
-  } else if (category === 'other') {
+  } else if (category === 'hiddenTalent') {
     if (keep) {
-      alert(`Yes, some ${value}s coming up! Keep all ${value}s`);
+      alert(`Yes, the figures secret talent is ${value}! Keep all that are ${value}`);
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
-      alert(`No, ${value}s here! Remove all ${value}s`);
+      alert(`No, the figures secret talent is not ${value}! Remove all that are ${value}`);
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   } else {
     if (keep) {
-      alert(`Yes, the person have ${value} ${category}! Keep all people that have ${value} ${category}`);
+      alert(`Yes, it is ${category} ${value}! Keep all that are ${category} ${value}`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
-      alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`);
+      alert(`No, it is not ${category} ${value}! Remove all that are ${category} ${value}`);
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   }
@@ -334,9 +335,10 @@ const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   if (personToCheck === secret.name) {
   // 2. Set a Message to show in the win or lose section accordingly  
-    winOrLoseText.innerHTML= `Wihuuuu that is correct, the secret person is ${personToCheck}`
+    winOrLoseText.innerHTML= `Wihuuuu that is correct, the secret figure is ${personToCheck}`;
   } else {
-    winOrLoseText.innerHTML= `Sorry, but your guess ${personToCheck} is not correct`
+    winOrLoseText.innerHTML= `Sorry, but your guess ${personToCheck} is not correct. The secret figure is ${secret.name}`;
+    secretImageAtGuess.innerHTML= `<img src=${secret.img} alt=${secret.name}>`;
   }
   // 3. Show the win or lose section
   winOrLose.style.display= 'flex'

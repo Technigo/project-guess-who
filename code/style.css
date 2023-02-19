@@ -20,13 +20,13 @@ h1 {
   color: white;
 }
 
-#nrOfQuestions {
+#numberOfQuestions {
   padding-top: 10px;
   font-size: 20px;
   font-weight: 500;
   line-height: 42px;
-  margin; 10px 0;
-  color: white;
+  margin: 10px 0;
+  color: #353436;
 }
 
 .question-section {
@@ -46,17 +46,27 @@ h1 {
   width: 100%;
   height: 50px;
   font-size: 18px;
-  color: white;
+  color: #353436;
+}
+
+input {
+  font-size: 18px;
+  color: var(--secondary);
+  outline: none;
+  border: none;
+  margin-top: 1rem;
 }
 
 select {
   display: block;
-  border: none;
+  /* border: none; */
+  border: solid 1px black;
   font-size: 22px;
   font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  color: #353436;
 }
 
 .guess-who-icon {
@@ -131,6 +141,19 @@ select {
   width: 90%;
 }
 
+.timer {
+  border: 2px solid var(--primary);
+  background-color: white;
+  color: var(--primary);
+  border-radius: 30px;
+  font-size: 12px;
+  font-family: "Montserrat";
+  font-weight: bold;
+  padding: 17px 27px;
+  margin-top: 35px;
+  align-self: center;
+}
+
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
@@ -190,12 +213,21 @@ button {
 .win-or-lose img {
   align-self: flex-start;
   margin-left: 15%;
+  /* padding: 10px; will chose between these too once I see the difference*/
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
 
+footer {
+  display: none;
+}
+footer h4 {
+  display: none;
+}
+
+/****** MEDIA QUERIES ******/
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -207,14 +239,37 @@ button {
   }
   button {
     padding: 8px 16px;
+    margin: 0 auto;
   }
   h1 {
     font-size: 24px;
     line-height: 30px;
+    margin: 10px 25px;
+  }
+
+  #playeNameHere {
+    text-align: center;
+    font-weight: 600;
+  }
+  input {
+    max-width: 150px;
+  }
+  #numberOfQuestions {
+    align-self: center;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  #mainQuestion {
+    align-self: center;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
   }
 
   .guess-who-icon {
     width: 51px;
+    /*might change this*/
   }
 
   .board-wrapper {
@@ -224,6 +279,7 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    justify-content: center;
   }
 
   .card {
@@ -249,4 +305,24 @@ button {
     color: var(--primary);
     border: none;
   }
+}
+.timer {
+  margin-top: 10px;
+}
+footer {
+  display: block;
+  margin-top: 15px;
+  height: 7em;
+  padding: 5px;
+  background-color: var(--secondary);
+  box-sizing: border-box;
+  width: 100%;
+}
+footer h4 {
+  display: block;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
 }

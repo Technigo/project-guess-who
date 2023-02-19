@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guess Who It Is-Game by Ylva, 2023</title>
+    <title>Guess Who? Made by Ylva, 2023</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon-guess-who.png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -28,11 +28,12 @@
         <input type="text" placeholder="Enter your name" id="nameInput" />
       </div>
 
-      <div id="nrOfQuestions"></div>
+      <div id="numberOfQuestions"></div>
 
       <h1 id="mainQuestion">Does the person have...</h1>
 
       <select title="questions" id="questions">
+        <option value=""" selected disabled>select</option>"
         <!-- Here are all the options for hair colors of the characters  -->
         <optgroup label="hair">
           <option value="brown">brown hair</option>
@@ -52,7 +53,6 @@
           <option value="glasses">glasses</option>
           <option value="a hat">hat</option>
           <option value="watch">watch</option>
-          <option value="hellohello">HELLOHELLO</option>
         </optgroup>
         <!-- Here are all the options for habits of the characters -->
         <optgroup label="other">

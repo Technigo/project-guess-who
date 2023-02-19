@@ -12,8 +12,7 @@
   </head>
   <body>
     <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">Restart</button>
-
+      
       <img
         class="guess-who-icon"
         src="images/Gru.jpg"
@@ -24,9 +23,12 @@
       <h2>Does the person have...</h2>
 
       <select title="questions" id="questions">
+        <!--Inital disabled select so that the first value can be chosen-->
+        <option value="" selected disabled></option>
+        <!--The different values available for the user in the selector-->
         <optgroup label="hair color">
-          <option value="black">black hair?</option>
           <option value="dk brown">dk brown hair?</option>
+          <option value="black">black hair?</option>
           <option value="lt brown">lt brown hair?</option>
           <option value="grey">grey hair?</option>
           <option value="no">no hair?</option>
@@ -44,14 +46,13 @@
         <optgroup label="accessories">
           <option value="glasses">glasses?</option>
           <option value="sunglasses">sunglasses?</option>
-          <option value="jewelry">jewelry?</option>          
-        </optgroup>
-        <optgroup label="other">
-          <option value="hair accessory">a hair accessory?</option>
+          <option value="jewelry">jewelry?</option>
+          <option value="accessory">a hair accessory?</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">Find out</button>
+      <button type="button" id="restart" class="outlined-button">Restart</button>
     </aside>
 
     <section class="board-wrapper">

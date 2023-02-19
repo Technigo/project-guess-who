@@ -6,7 +6,6 @@ const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
-const secretImageAtGuess = document.getElementById('secretImageAtGuess')
 
 // Array with all the characters
 // Change array values for accessories and other to booleans?
@@ -19,7 +18,7 @@ const CHARACTERS = [
     glasses: false,
     sunglasses: true,
     jewelry: false,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Suzy',
@@ -29,7 +28,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false, 
     jewelry: false,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Anna',
@@ -39,27 +38,27 @@ const CHARACTERS = [
     glasses: false,
     sunglasses: true,
     jewelry: true,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Jean Paul',
     img: 'images/JeanPaul.png',
-    hairColor: 'hidden',
+    hairColor: 'no',
     eyeColor: 'blue',
     glasses: true,
     sunglasses: false,
     jewelry: false,  
-    other: false,
+    accessory: false,
   },
   {
     name: 'Alexa',
     img: 'images/alexa.png',
-    hairColor: 'brown',
+    hairColor: 'dk brown',
     eyeColor: 'green',
     glasses: true,
     sunglasses: false, 
     jewelry: false,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Vivienne',
@@ -69,7 +68,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: false,      
+    accessory: false,      
   },
   {
     name: 'Marc',
@@ -79,7 +78,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Cara',
@@ -89,7 +88,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: true,
+    accessory: true,
   },
   {
     name: 'Donatella',
@@ -99,17 +98,17 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Anna B',
     img: 'images/annaB.png',
-    hairColor: 'brown',
+    hairColor: 'dk brown',
     eyeColor: 'green',
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: true, 
+    accessory: true, 
   },
   {
     name: 'Victoria',
@@ -119,7 +118,7 @@ const CHARACTERS = [
     glasses: false,
     sunglasses: true,
     jewelry: false,
-    other: false, 
+    accessory: false, 
   },
   {
     name: 'Valentino',
@@ -129,7 +128,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Iris',
@@ -139,7 +138,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: true,
-    other: false,    
+    accessory: false,    
   },
   {
     name: 'Derek',
@@ -149,7 +148,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: true,
+    accessory: true,
   },
   {
     name: 'Franca',
@@ -159,7 +158,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Grace',
@@ -169,7 +168,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Isabel',
@@ -179,7 +178,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: true,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Susie',
@@ -189,17 +188,17 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: true,
+    accessory: true,
   },
   {
     name: 'Man Repeller',
-    img: 'images/ManRepeller.png',
-    hairColor: 'brown',
+    img: 'images/ManRepeller1.png',
+    hairColor: 'dk brown',
     eyeColor: 'blue',
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Jules',
@@ -209,7 +208,7 @@ const CHARACTERS = [
     glasses: false,
     sunglasses: true,
     jewelry: false,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Garance',
@@ -219,7 +218,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Bryan',
@@ -229,7 +228,7 @@ const CHARACTERS = [
     glasses: false,
     sunglasses: true,
     jewelry: true,
-    other: false,
+    accessory: false,
   },
   {
     name: 'Sartorialist',
@@ -239,7 +238,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: false,
-    other: false, 
+    accessory: false, 
   },
   {
     name: 'Betty',
@@ -249,7 +248,7 @@ const CHARACTERS = [
     glasses: true,
     sunglasses: false,
     jewelry: false, 
-    other: true,
+    accessory: true,
   },
 ]
 
@@ -296,15 +295,12 @@ const checkMyGuess = (suspect) => {
     Congrats - you are a winner! <br>
     The secret minion is ${suspect}!
     <span role=img" aria-label="trophy">🏆</span>` 
-    secretImageAtGuess.innerHtml= `<img src=${secret.img} alt= ${secret.name}>`; 
-    
   }
   else {
     winOrLoseText.innerHTML = `<span role="img" aria-label = "warningLight">🚨</span> <br>
     Oh no, no banana for you this time. <br>
     ${suspect} is the wrong answer. <br>
     The secret minion is ${secret.name}.`
-    secretImageAtGuess.innerHtml= `<img src=${secret.img} alt= ${secret.name}>`;
   }
   winOrLose.style.display = 'flex'
   board.style.display = 'none'
@@ -361,17 +357,17 @@ if (category === 'accessories') {
     )
   } else {
     alert(
-      `No, the minion does not wear a ${attribute}. Remove all minions that wear ${attribute}.`
+      `No, the minion does not wear ${attribute}. Remove all minions that wear ${attribute}.`
     )
   }
 } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the minion is a ${attribute}! Keep all minions that are ${attribute}s.`
+        `Yes, the minion has a ${attribute}! Keep all minions that have a ${attribute}.`
       )
     } else {
       alert(
-        `No the minion is not a ${attribute}. Remove all minions that are not ${attribute}s.`
+        `No the minion does not have a ${attribute}. Remove all minions that does not have a ${attribute}.`
       )
     }
 } else {
@@ -418,4 +414,3 @@ restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 playAgainButton.addEventListener('click', start)
 filterButton.addEventListener('click', checkQuestion)
-

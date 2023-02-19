@@ -1,9 +1,16 @@
-// All the DOM selectors stored as short variables
+// Ylva - All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('findOut')
+const rightOrWrongText = document.getElementById('rightOrWrongText')
+const rightOrWrongSection = document.getElementById('rightOrWrong')
+const playAgainButton = document.getElementById('playAgain')
+const secretImageAtCheck = document.getElementById('secretImage')
+const nrOfQuestionsAllowed = document.getElementById('numberOfQuestions')
+const gameTimer = document.getElementById('timer')
 
-// Array with all the characters, as objects
+// Ylva - Array with all the characters, as objects
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -200,14 +207,46 @@ const CHARACTERS = [
   },
 ]
 
-// Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+// Ylva - here are all the Global variables declared
+let secret;
+let currentQuestion;
+let charactersInPlay;
+let nrOfQuestionsAllowed;
+let timeLeft;
+let timerCountdown;
+let playerName;
+
+// Ylva - might add sound effects here if I have time later
+
+// Ylva - Function for the timer function (to show double digits)
+const paddedNumber = (number, length) => {
+  let str = number + "";
+  while (str.length < length) = "0" + str;
+  return str;
+};
+// countdown- function and reset for the timer
+const resetTimer = () => {
+  timeLeft = 240; //4-minutes countdown for game - might make this longer
+
+countDown = setInterval(() => {
+  if (timeLeft <= 0) {
+    clearInterval(countDown);
+    rightOrWrongText.innerHTML = "<p>Game Over</p>";
+    rightOrWrong.style.display = "flex";
+}
+else {
+  //showing the time left in minutes and seconds instead of default settings
+let minutes = Math.floor(timeLeft / 60) % 60;
+let seconds = timeLeft % 60;
+gameTimer.innerHTML = paddedNumber(minutes, 4) + ":" + paddedNumber(seconds, 4) + " remaining";
+}
+timeLeft -= 1;
+}, 1000);
+};
 
 // Draw the game board
 const generateBoard = () => {
-  board.innerHTML = ''
+  board.innerHTML = '';
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
@@ -218,46 +257,86 @@ const generateBoard = () => {
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
-    `
-  })
-}
+    `;
+  });
+};
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Ylva - Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-}
+};
 
-// This function to start (and restart) the game
+// Ylva - This function to start (and restart) the game - this also creates an array called charactersInPlay to be iterated
+//through later, generates the cards of the characters and sets the secret character.
+// This function also clears the RightOrWrongSection after right or wrong guess in the game
 const start = () => {
+  //This shows the first option as selected in the dropdown-menu
+  questions.value = "";
+  rightOrWrongSection.style.display = "none";
+  secretImageAtCheck.innerHTML = "";
+  nrOfQuestions = 5;
+  resetTimer();
+  questions.style.display = "block";
+  document.getElementById('findOut').style.display = "block";
+  document.getElementById('mainQuestion').innerText = "Does the person have...";
+  document.getElemenetById('nameInput').value = "";
+  
+  // Ylva - Resets the counter of questions allowed
+nrOfQuestionsAllowed.innerText = "You have 5 questions left";
+
+//rightOrWrong.innerText += ` `;
+
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// This loads the board of the characters
+generateBoard();
+
+// Ylva - set secret person to be guessed by the user
+setSecret();
+console.log(secret);
+
+// Ylva - setting the currentQuestion object when you select something in the dropdown - "Does the person have..."
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  // The category variable is used to store what option group (category) the question belongs to.
+  const category = questions.options[questions.selectedIndex].parentNode.label;
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  // Ylva - this is a variable that stores the actual value of the question we've selected.
+  const value = questions.value;
+  // this above could also be written as:
+  // const value = questions.options[questions.selectedIndex].value;
 
+  // Ylva - This below is variables that stores the actual value of the current questions we've selected.
   currentQuestion = {
-    category: category,
-    // value: value
-  }
-}
+  category: category,
+  value: value,
+  };
+
+ // Ylva - to check the values of the currentQuestion object
+console.log(currentQuestion);
+};
+
+const playerNameSave = () => {
+playerName = document.getElementById('nameInput').value;
+console.log(playerName);
+};
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  const { category, value } = currentQuestion;
 
+  if (nrOfQuestions > 1) {
+    console.log(nrOfQuestions);
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
+  // See if we should keep or remove people based on that (true or false)
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-
+  if (secret[category] === 'hair' || category === 'eyes') {
+    filterCharacters(true); //keep everyone with true according to hair/eye color
+    
   } else if (category === 'accessories' || category === 'other') {
+if (secret[category].includes(value)) === 'glasses') {
 
   }
 }
@@ -285,6 +364,19 @@ const filterCharacters = (keep) => {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
+
+  // this line of code below is from Tuesdays Live Session - don't yet know where to put it or how to use it
+  // this is an example of a callback function - ((function) => {})
+  //const filteredCharacters = CHARACTERS.filter((singleCharacter) => {
+    // if (singleCharacter.hair === "black") {
+    // return singleCharacter;
+// }
+// });
+// console.log(filteredCharacters);
+
+
+
+
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.

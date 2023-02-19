@@ -288,7 +288,6 @@ const start = () => {
 
   generateBoard(); //Should load the characters on the board
   setSecret(); // Generates a new guess-person at start
-  console.log("The secret person is", secret.name); // remove this when done cause noo more cheating
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -359,7 +358,7 @@ const filterCharacters = (keep) => {
       );
     } else {
       alert(
-        `Eouh.. noo, it's not a ${value}! Remove everyone that are a ${value}!`
+        `Eouh.. noo, it's not a ${value}! Remove everyone that is a ${value}!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)

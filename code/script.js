@@ -15,192 +15,216 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hairColor: 'hidden',
     eyeColor: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: false
+    glasses: true,
+    hat: true,
+    smoker: false,
   },
   {
     name: 'Jack',
     img: 'images/jack.svg',
     hairColor: 'hidden',
     eyeColor: 'blue',
-    accessories: ['hat', 'parrot'],
-    other: false
+    glasses: false, 
+    hat: true,
+    smoker: false,
   },
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
     hairColor: 'grey',
     eyeColor: 'blue',
-    accessories: ['hat'],
-    other: true
+    glasses: false,
+    hat: true,
+    smoker: true,      
   },
   {
     name: 'Jai',
     img: 'images/jai.svg',
     hairColor: 'black',
     eyeColor: 'brown',
-    accessories: ['tie'],
-    other: false
+    glasses: false,
+    hat: false,
+    smoker: false,      
   },
   {
     name: 'Jake',
     img: 'images/jake.svg',
     hairColor: 'yellow',
     eyeColor: 'green',
-    accessories: ['glasses'],
-    other: false
+    glasses: true,
+    hat: false,
+    smoker: false,    
   },
   {
     name: 'James',
     img: 'images/james.svg',
     hairColor: 'brown',
     eyeColor: 'green',
-    accessories: ['glasses'],
-    other: false
+    glasses: true,
+    hat: false,
+    smoker: false,    
   },
   {
     name: 'Jana',
     img: 'images/jana.svg',
     hairColor: 'black',
     eyeColor: 'hidden',
-    accessories: ['glasses', 'necklace'],
-    other: false
+    glasses: true,
+    hat: false,
+    smoker: false,    
   },
   {
     name: 'Jane',
     img: 'images/jane.svg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
-    accessories: ['glasses'],
-    other: false
+    glasses: true,
+    hat: false,
+    smoker: false,    
   },
   {
     name: 'Jaqueline',
     img: 'images/jaqueline.svg',
     hairColor: 'orange',
     eyeColor: 'green',
-    accessories: ['glasses', 'necklace'],
-    other: false
+    glasses: true,
+    hat: false,
+    smoker: false,
   },
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
     hairColor: 'purple',
     eyeColor: 'hidden',
-    accessories: ['glasses'],
-    other: true
+    glasses: true,
+    hat: false,
+    smoker: true,    
   },
   {
     name: 'Jean',
     img: 'images/jean.svg',
     hairColor: 'brown',
     eyeColor: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: true
+    glasses: true,
+    hat: true,
+    smoker: true,    
   },
   {
     name: 'Jeane',
     img: 'images/jeane.svg',
     hairColor: 'brown',
     eyeColor: 'green',
-    accessories: ['glasses'],
-    other: false
+    glasses: true,
+    hat: false,
+    smoker: false,
   },
   {
     name: 'Jed',
     img: 'images/jed.svg',
     hairColor: 'orange',
     eyeColor: 'green',
-    accessories: ['glasses', 'hat'],
-    other: true
+    glasses: true,
+    hat: true,
+    smoker: true,    
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
     hairColor: 'white',
     eyeColor: 'hidden',
-    accessories: ['hat', 'phone'],
-    other: false
+    glasses: false,
+    hat: true,
+    smoker: false,
   },
   {
     name: 'Jeri',
     img: 'images/jeri.svg',
     hairColor: 'orange',
     eyeColor: 'green',
-    accessories: ['glasses'],
-    other: false
+    glasses: true,
+    hat: false,
+    smoker: false,
   },
   {
     name: 'Jerry',
     img: 'images/jerry.svg',
     hairColor: 'hidden',
     eyeColor: 'blue',
-    accessories: ['hat'],
-    other: false
+    glasses: false,
+    hat: true, 
+    smoker: false,
   },
   {
     name: 'Jess',
     img: 'images/jess.svg',
     hairColor: 'black',
     eyeColor: 'blue',
-    accessories: ['glasses'],
-    other: false
+    glasses: true,
+    hat: false,
+    smoker: false,
   },
   {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
     hairColor: 'black',
     eyeColor: 'brown',
-    accessories: ['glasses'],
-    other: false
+    glasses: true,
+    hat: false,
+    smoker: false,
   },
   {
     name: 'Jon',
     img: 'images/jon.svg',
     hairColor: 'brown',
     eyeColor: 'green',
-    accessories: ['glasses'],
-    other: false
+    glasses: true,
+    hat: false,
+    smoker: false,
   },
   {
     name: 'Jordan',
     img: 'images/jordan.svg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
-    accessories: ['glasses', 'hat', 'necklace'],
-    other: false
+    glasses: true,
+    hat: true,
+    smoker: false,
   },
   {
     name: 'Josephine',
     img: 'images/josephine.svg',
     hairColor: 'grey',
     eyeColor: 'brown',
-    accessories: [],
-    other: false
+    glasses: false,
+    hat: false,
+    smoker: false,
   },
   {
     name: 'Josh',
     img: 'images/josh.svg',
     hairColor: 'yellow',
     eyeColor: 'green',
-    accessories: [],
-    other: false
+    glasses: false,
+    hat: false,
+    smoker: false,    
   },
   {
     name: 'Jude',
     img: 'images/jude.svg',
     hairColor: 'black',
     eyeColor: 'green',
-    accessories: ['tie'],
-    other: false
+    glasses: false,
+    hat: false,
+    smoker: false,
   },
   {
     name: 'Julie',
     img: 'images/julie.svg',
     hairColor: 'black',
     eyeColor: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: false
+    glasses: true,
+    hat: true,
+    smoker: false,
   },
 ]
 
@@ -232,17 +256,17 @@ const setSecret = () => {
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (characters) => {
-  const makeAGuess = confirm(`Are you really sure you want to guess on ${characters}?`)
-  // change here for minions
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+const guess = (suspect) => {
+  const makeAGuess = confirm(`Are you really sure you want to guess on ${suspect}?`)
+
+  if (makeAGuess) {
+    checkMyGuess(suspect)
+  }
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (characters) => {
-  if (minionToCheck === secret.name) {
+const checkMyGuess = (suspect) => {
+  if (suspect === secret.name) {
     winOrLoseText.innerHTML = `Banana 🍌! Congrats <br>
     - you are a winner! <span role=img" aria-label="trophy">🏆</span>`
   }
@@ -254,14 +278,8 @@ const checkMyGuess = (characters) => {
   board.style.display = 'none'
 }
 
-  // 1. Check if the personToCheck is the same as the secret person's name. OK.
-  // 2. Set a Message to show in the win or lose section accordingly. OK. 
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-
-
 // setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = () => {} 
+const selectQuestion = () => { 
   const value = questions.value
   const category = questions.options[questions.selectedIndex].parentNode.label
 
@@ -279,8 +297,8 @@ const selectQuestion = () => {}
     }
   } else if (category === 'accessories') {
     currentQuestion = {
-      attribute: 'accessories',
-      value: value,
+      attribute: value,
+      value: true,
       category: category, 
     }
   } else {
@@ -290,7 +308,8 @@ const selectQuestion = () => {}
       category: category,
     }
   }
-  
+}  
+
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
@@ -304,7 +323,6 @@ const selectQuestion = () => {}
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { attribute, category, value } = currentQuestion
-  //perhaps add attribute within the curly brackets 
 
 // Show the correct alert message for different categories
 if (category === 'accessories') {
@@ -339,24 +357,10 @@ if (category === 'accessories') {
   }
 }
 
-// setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-} 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
-  currentQuestion = {
-    category: category,
-    // value: value
-  }
-
-
-  // Filter by category to keep or remove
+// Filter by category to keep or remove characters 
 if (keep) {
   charactersInPlay = charactersInPlay.filter(
-    (person) =>[attribute] === value
+    (person) => person[attribute] === value
   )
 } else {
   charactersInPlay = charactersInPlay.filter(
@@ -364,8 +368,7 @@ if (keep) {
   )
 }
 
-generateBoard()
-  
+  generateBoard()
 }
 
 // Function to start (and restart) the game

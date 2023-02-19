@@ -342,6 +342,8 @@ const filterCharacters = (keep) => {
     questions.selectedIndex = null; //Clears the select from previously chosen values
 
   if (guesses <= 0) {
+    alert(`Time to make a guess!`);
+  } else if (guesses <= -1) {
     winOrLoseText.innerHTML = `You've run out of questions!`
     winOrLose.style.display = "flex";
   board.style.display = "none";

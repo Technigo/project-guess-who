@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guess who</title>
+    <title>Guess woof</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,12 +14,12 @@
   </head>
   <body>
     <aside class="question-section">
-      <button class="outlined-button" type="button" id="restartBtn">
+      <button class="restart-button" type="button" id="restartBtn">
         RESTART
       </button>
       <img
         class="guess-who-icon"
-        src="images/guess-who-bubble.png"
+        src="images/guess-who-bubble.svg"
         alt="bubble saying guess who?"
       />
       <h1>Does the dog have</h1>
@@ -42,11 +42,12 @@
           <option value="mooch">Unemployed</option>
         </optgroup>
         <optgroup label="accessories">
-          <option value="collar">Collar</option>
-          <option value="hat">Hat</option>
           <option value="armor">Armor</option>
-          <option value="jewelry">Jewelry</option>
           <option value="suit">Business attire</option>
+          <option value="collar">Collar</option>
+          <option value="glasses">Glasses</option>
+          <option value="hat">Hat</option>
+          <option value="jewelry">Jewelry</option>
         </optgroup>
         <optgroup label="other">
           <option value="royal">Royal ancestry</option>
@@ -55,9 +56,8 @@
       </select>
       <button class="filter-button" id="filter">FIND OUT!</button>
       <section class="guesses-wrapper">
-        <p>Guesses:&nbsp;</p>
-        <p id="guesses">0</p>
-      </section>
+        <p>You have&nbsp;<span id="guesses">5</span>&nbsp;guesses left.</p>
+        </section>
       <div class="info">Made as part of Technigo front end dev bootcamp. Dogs made with <a href="https://openart.ai/">Open Art AI</a>.</div>
     </aside>
     <section class="board-wrapper">
@@ -67,7 +67,7 @@
       <div class="win-or-lose">
         <img
           class="guess-who-icon"
-          src="images/guess-who-bubble.png"
+          src="images/guess-who-bubble.svg"
           alt="guess who image"
         />
         <h1 id="winOrLoseText"></h1>

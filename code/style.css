@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
   --primary: #ffffff;
-  --secondary: #302e2e;
+  --secondary: #232440;
 }
 
 body {
@@ -35,14 +35,16 @@ select {
   border: none;
   width: 100%;
   font-size: 18px;
-  font-family: "DM Sans", sans-serif;
-  color: var(--secondary);
+  font-family: "Dosis", sans-serif;
+  color: var(--primary);
   width: 100%;
   margin: 24px 0;
 }
 
-#questions option {
-  background: plum;
+#questions option,
+#questions optgroup {
+  background: #730237;
+  font-family: "Dosis", sans-serif;
 }
 
 .guess-who-icon {
@@ -175,24 +177,20 @@ button {
   margin-top: 1rem;
 }
 
-.outlined-button {
+.restart-button {
   padding: 8px 16px;
-  margin-bottom: 3rem;
-  font-size: 0.7rem;
+  font-size: 14px;
+  border-radius: 10px;
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
 }
 
-.outlined-button:hover {
-  background-color: var(--primary);
-  color: var(--secondary);
-}
-
-.filled-button:hover {
-  background-color: var(--primary);
-  border-color: var(--secondary);
-  color: var(--secondary);
+.filled-button:hover,
+.restart-button:hover {
+  background-color: #730237;
+  border-color: var(--primary);
+  color: var(--primary)
 }
 
 /****** WIN OR LOSE SECTION ******/

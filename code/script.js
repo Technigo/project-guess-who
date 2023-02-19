@@ -9,14 +9,6 @@ const guessCounter = document.getElementById("guesses");
 //Array with all the characters as objects
 const CHARACTERS = [
   {
-    name: "Adelaide",
-    img: "images/adelaide.png",
-    color: "black",
-    job: "lawyer",
-    accessories: ["glasses", "suit"],
-    other: [],
-  },
-  {
     name: "Biscuit",
     img: "images/Biscuit.png",
     color: "dotted",
@@ -28,9 +20,9 @@ const CHARACTERS = [
     name: "Boots",
     img: "images/Boots.png",
     color: "white",
-    job: "designer",
-    accessories: ["hat", "collar"],
-    other: [],
+    job: "mooch",
+    accessories: ["jewelry"],
+    other: ["royal"],
   },
   {
     name: "Churchill",
@@ -94,7 +86,7 @@ const CHARACTERS = [
     img: "images/Howl.png",
     color: "tricolor",
     job: "knight",
-    accessories: [],
+    accessories: ["armor"],
     other: [],
   },
   {
@@ -102,7 +94,7 @@ const CHARACTERS = [
     img: "images/Iggy.png",
     color: "brown",
     job: "mooch",
-    accessories: [],
+    accessories: ["jewelry"],
     other: ["royal"],
   },
   {
@@ -118,7 +110,7 @@ const CHARACTERS = [
     img: "images/Kamala.png",
     color: "brown",
     job: "mooch",
-    accessories: [],
+    accessories: ["jewelry"],
     other: ["royal"],
   },
   {
@@ -142,7 +134,7 @@ const CHARACTERS = [
     img: "images/Monet.png",
     color: "dotted",
     job: "mooch",
-    accessories: [],
+    accessories: ["jewelry"],
     other: ["royal"],
   },
   {
@@ -160,14 +152,6 @@ const CHARACTERS = [
     job: "bartender",
     accessories: ["hat", "glasses"],
     other: [],
-  },
-  {
-    name: "Pickles",
-    img: "images/Pickles.png",
-    color: "white",
-    job: "mooch",
-    accessories: [],
-    other: ["royal"],
   },
   {
     name: "Pippin",
@@ -230,7 +214,7 @@ const CHARACTERS = [
 let secret; // will be the secret character
 let currentQuestion; // will be the current question object
 let charactersInPlay; //will be an array of all characters left in the game
-let guesses = 0; //Guess counter
+let guesses //Guess counter
 
 //Generates the board with all the dogs. Starts with reset to clear dogs if filter is applied.
 const generateBoard = () => {
@@ -262,7 +246,8 @@ const start = () => {
   generateBoard(); //Draws the board
   winOrLose.style.display = "none"; //needs to be cleared if someone has restarted
   board.style.display = "flex"; //board needs to be visible if "play again" was clicked
-  guessCounter.innerHTML = `0`;
+  guesses = 5; //Number of guesses at start
+  guessCounter.innerHTML = `5`; //Number of guesses shown to player
 };
 
 //Setting the current question in the dropdown
@@ -351,26 +336,32 @@ const filterCharacters = (keep) => {
       );
     }
   }
-  guesses++; //Adds +1 guesses to the guess counter
+  guesses--; //Removes 1 guess from the guess counter
   guessCounter.innerHTML = guesses; //Shows game counter to player
   generateBoard();
-  questions.selectedIndex = null; //Clears the select from previously chosen values
+    questions.selectedIndex = null; //Clears the select from previously chosen values
+
+  if (guesses <= 0) {
+    winOrLoseText.innerHTML = `You've run out of questions!`
+    winOrLose.style.display = "flex";
+  board.style.display = "none";
+  }
 };
 
 //Making a guess
-const guess = (suspect) => {
-  const makeAGuess = confirm(`Are you sure you want to guess ${suspect}?`);
+const guess = (theory) => {
+  const makeAGuess = confirm(`Are you sure you want to guess ${theory}?`);
   if (makeAGuess) {
-    checkMyGuess(suspect);
+    checkMyGuess(theory);
   }
 };
 
 //Checks the guess against the secret character's name
 const checkMyGuess = (dogToCheck) => {
   if (dogToCheck === secret.name) {
-    winOrLoseText.innerHTML = `NICE JOB! Your guess was correct! The dog was ${secret.name}.`;
+    winOrLoseText.innerHTML = `NICE JOB! Your guess was correct! The secret dog was the ${secret.job} ${secret.name}!`;
   } else {
-    winOrLoseText.innerHTML = `Oh no, your guess was not correct. The dog was ${secret.name}. Game over!`;
+    winOrLoseText.innerHTML = `Oh no, your guess was not correct. The secret dog was the ${secret.job} ${secret.name}. Game over!`;
   }
   winOrLose.style.display = "flex";
   board.style.display = "none";

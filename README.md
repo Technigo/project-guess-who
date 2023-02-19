@@ -1,4 +1,4 @@
-# Guess Who Game - In Progress
+# Guess Who Game
 
 This is a web-based implementation of the classic Guess Who board game, where the player has to guess a secret person from a board with different characters. 
 The project was built using HTML, CSS, and JavaScript, and includes the following features:
@@ -24,5 +24,4 @@ If you want to start a new game, click the Restart button and a new secret perso
 Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guess-who-smirrebinx.netlify.app/

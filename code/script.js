@@ -1,10 +1,10 @@
 //DOM selectors declared here
 const board = document.getElementById("board");
-const questions = document.getElementById("questions");
+const dropdown = document.getElementById("dropdown");
 const playAgainButton = document.getElementById("playAgain");
 const restartButton = document.getElementById("restartBtn");
 const filterButton = document.getElementById("filter");
-const guessCounter = document.getElementById("guesses");
+const questionCounter = document.getElementById("questions-left");
 
 //Array with all the characters as objects
 const CHARACTERS = [
@@ -214,7 +214,7 @@ const CHARACTERS = [
 let secret; // will be the secret character
 let currentQuestion; // will be the current question object
 let charactersInPlay; //will be an array of all characters left in the game
-let guesses //Guess counter
+let questions //Question counter
 
 //Generates the board with all the dogs. Starts with reset to clear dogs if filter is applied.
 const generateBoard = () => {
@@ -246,14 +246,14 @@ const start = () => {
   generateBoard(); //Draws the board
   winOrLose.style.display = "none"; //needs to be cleared if someone has restarted
   board.style.display = "flex"; //board needs to be visible if "play again" was clicked
-  guesses = 5; //Number of guesses at start
-  guessCounter.innerHTML = `5`; //Number of guesses shown to player
+  questions = 5; //Number of guesses at start
+  questionCounter.innerHTML = `5`; //Number of guesses shown to player
 };
 
 //Setting the current question in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label;
-  const value = questions.options[questions.selectedIndex].value;
+  const category = dropdown.options[dropdown.selectedIndex].parentNode.label;
+  const value = dropdown.options[dropdown.selectedIndex].value;
 
   currentQuestion = { category: category, value: value };
 };
@@ -336,14 +336,14 @@ const filterCharacters = (keep) => {
       );
     }
   }
-  guesses--; //Removes 1 guess from the guess counter
-  guessCounter.innerHTML = guesses; //Shows game counter to player
+  questions--; //Removes 1 guess from the guess counter
+  questionCounter.innerHTML = questions; //Shows game counter to player
   generateBoard();
-    questions.selectedIndex = null; //Clears the select from previously chosen values
+    dropdown.selectedIndex = null; //Clears the dropdown from previously chosen values
 
-  if (guesses <= 0) {
+  if (questions <= 0) { //alerts the user that it's time to make their guess, lets them make a final guess
     alert(`Time to make a guess!`);
-  } else if (guesses <= -1) {
+  } else if (questions <= -1) { //alerts user that they've run out of questions
     winOrLoseText.innerHTML = `You've run out of questions!`
     winOrLose.style.display = "flex";
   board.style.display = "none";
@@ -375,5 +375,5 @@ start();
 //Eventlisteners
 restartButton.addEventListener("click", start);
 playAgainButton.addEventListener("click", start);
-questions.addEventListener("change", selectQuestion);
+dropdown.addEventListener("change", selectQuestion);
 filterButton.addEventListener("click", checkQuestion);

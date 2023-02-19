@@ -236,10 +236,10 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS //All caracters. later on filter characters
   generateBoard();
   setSecret();
-  console.log(secret.name);
+  console.log(secret);
 
   // What else should happen when we start the game?
 }
@@ -247,28 +247,45 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
+  const value = questions.value
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
-
+//if else here.
+  
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
-}
+
+console.log(`new dropdown item has been selected`, `cateogory: ${category}`, `${value}`);
+  };
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
+  keep = false;
+
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  //eys and hair = 
+  //accessories and other = arrays
+
   if (category === 'hair' || category === 'eyes') {
+    if (secret[category] === value) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
 
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[category].includes(value)) {
+      filterCharacters(true);
+      } else {
+        filterCharacters(false);
+      }
   }
 }
 
@@ -302,6 +319,7 @@ const filterCharacters = (keep) => {
     }
   }
 
+  //FILTERING the board below 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   /* 
@@ -328,6 +346,10 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+if (personToCheck === secret.name) {
+
+}
+
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -341,6 +363,6 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener("change", selectQuestion);
 findOutButton.addEventListener('click', () => {
-  checkQuestion();
+  filterCharacters();
     });
 

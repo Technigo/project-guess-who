@@ -1,12 +1,11 @@
-# Project Name
+# Guess who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Project week 2 - Make a "Guess who"-game with focus on Javascript. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This week has been a real struggle and the main problem for me was to understand everything. I think it's been really hard to grasp everything this week. When I thougt I understood something it was really confusing to know how to use it and were in the code. 
+After spending time at the computer every free moment almost the whole week I had to just give my self a break from it so this week I'm sending in an unfinished project. Hope to have time soon to get back to it, finish the last part and change the styling to my own. 
 
 ## View it live
 

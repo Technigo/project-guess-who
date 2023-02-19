@@ -19,5 +19,5 @@ The magnifying glass icon was downloaded from a website offering royalty-free im
 A modest hover effect was used on the picture to add a little bit more of motion and interaction on the website. 
 
 ## View it live
-<a href=" " target="_blank">Click here</a> to view the deployed page. 
+<a href="https://mellifluous-phoenix-53abaa.netlify.app" target="_blank">Click here</a> to view the deployed page. 
 

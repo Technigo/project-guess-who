@@ -368,7 +368,7 @@ button {
   }
 
   .card .guess .guessButton {
-    padding: 3px 7px;
+    padding: 5px 9px;
     margin-bottom: 1px;
     background: white;
     color: var(--evenDarkerGreen);

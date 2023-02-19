@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #396b6f;
+  --secondary: #91cad0;
 }
 
 body {
@@ -176,7 +176,7 @@ button {
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
-
+/*the mobile version*/
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -195,7 +195,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 100px;
   }
 
   .board-wrapper {
@@ -204,7 +204,9 @@ button {
 
   .game-board {
     width: 100%;
-    max-width: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .card {

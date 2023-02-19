@@ -1,16 +1,16 @@
 # Project Name
 
-This is a project for the week 2 of the Technigo Bootcamp - The simple game Guess who, made with Java Script. 
-
+This is a project for the week 2 of the Technigo Bootcamp. The digital version of the classic board game Guess Who. 
 
 ## The problem
+The main challenge was to understand creating objects and arrays using Java Script. 
 
 I played around with HTML and CSS to make my project more unique.
 
-I swapped the font. I download a new font from Google fonts page. The news, selected font is called 'Handlee'. 
+I swapped the font. I download a new font from  <a href="https://fonts.google.com/specimen/Handlee">Google fonts </a>. The new selected font is called 'Handlee'. 
 
-Color palette was also changed. 
-The website <a href="https://coolors.co/palettes/popular/3%20colors">Coolors </a> helped me to select the right 3 Color Palette. 
+Colour palette was also changed. 
+The website <a href="https://coolors.co/palettes/popular/3%20colors">Coolors </a> helped me to select the right 3 Colour Palette. 
 
 I used marquee tag which enables a scrolling text area that moves across the page - it was used for a footer and credits information.
 

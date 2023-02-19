@@ -8,6 +8,8 @@ const winOrLoseText = document.getElementById("winOrLoseText");
 const winOrLoseSection = document.getElementById("winOrLose");
 const playAgainButton = document.getElementById("playAgain");
 const secretImageAtCheck = document.getElementById("secretImage");
+const numberOfQuestionsAllowed = document.getElementById("numberOfQuestions");
+const gameTimer = document.getElementById("timer");
 
 // Alexander: The main array with all the characters as objects
 
@@ -212,12 +214,43 @@ const CHARACTERS = [
 let charactersInPlay;
 let secret;
 let currentQuestion;
-let gameCounter;
+let numberOfQuestions;
+let timeLeft;
+let timerCountdown;
 
 // Alexander: Declaring sound effects for winning or losing to be referenced later
 
 const winningSound = new Audio("assets/tadaa.mp3");
 const losingSound = new Audio("assets/woop.mp3");
+
+// Alexander: A function that alway shows double-digid, even when it's single-digits
+const paddedNumber = (number, length) => {
+  let str = number + "";
+  while (str.length < length) str = "0" + str;
+  return str;
+};
+// The countdown-function and the reset for the countdown everytime there's a reload of the game
+const resetTimer = () => {
+  timeLeft = 90; // two minutes countdown
+
+  countDown = setInterval(() => {
+    if (timeLeft <= 0) {
+      clearInterval(countDown);
+      winOrLoseText.innerHTML = `<p>Time's run out!</p>`;
+      winOrLose.style.display = "flex";
+    } else {
+      // to show the countdown in minutes and seconds instead of the default setting that is just seconds
+      let minutes = Math.floor(timeLeft / 60) % 60;
+      let seconds = timeLeft % 60;
+      gameTimer.innerHTML =
+        paddedNumber(minutes, 2) +
+        ":" +
+        paddedNumber(seconds, 2) +
+        " remaining";
+    }
+    timeLeft -= 1;
+  }, 1000);
+};
 
 // Alexander: Drawing the game board
 
@@ -252,9 +285,11 @@ const start = () => {
   questions.value = "";
   winOrLoseSection.style.display = "none";
   secretImageAtCheck.innerHTML = "";
+  numberOfQuestions = 3;
+  resetTimer();
 
   // Alexander: Resets the counter
-  gameCounter = 0;
+  numberOfQuestionsAllowed.innerText = `🤍 Number of questions left: 3 🤍`;
 
   // winOrLoseSection.innerText += ` `;
 
@@ -291,26 +326,55 @@ const selectQuestion = () => {
 // Alexander: checkQuestion is invoked when you click on 'Find Out' button
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes OR accessories/others)
-  // See if we should keep or remove people based on that - (true) or (false)
-  // At the end it invokes filterCharacters
-  if (category === "hair" || category === "eyes") {
-    if (secret[category] === value) {
-      filterCharacters(true); // Keep everyone with that hair/eye colour
-    } else {
-      filterCharacters(); // Remove everyone with that hair/eye colour
-    }
-  } else if (category === "accessories" || category === "other") {
-    if (secret[category].includes(value)) {
-      filterCharacters(true);
-    } else {
-      filterCharacters();
-    }
-  }
 
-  // adds +1 to the counter
-  // Increment counter for number of guesses/questions the player makes
-  counter++;
+  if (numberOfQuestions > 1) {
+    console.log(numberOfQuestions);
+    // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes OR accessories/others)
+    // See if we should keep or remove people based on that - (true) or (false)
+    // At the end it invokes filterCharacters
+    if (category === "hair" || category === "eyes") {
+      if (secret[category] === value) {
+        filterCharacters(true); // Keep everyone with that hair/eye colour
+      } else {
+        filterCharacters(); // Remove everyone with that hair/eye colour
+      }
+    } else if (category === "accessories" || category === "other") {
+      if (secret[category].includes(value)) {
+        filterCharacters(true);
+      } else {
+        filterCharacters();
+      }
+    }
+    numberOfQuestions--;
+    console.log(numberOfQuestions);
+    numberOfQuestionsAllowed.innerText = `🤍 Number of questions left: ${numberOfQuestions} 🤍`;
+  } else if ((numberOfQuestions = 1)) {
+    if (category === "hair" || category === "eyes") {
+      if (secret[category] === value) {
+        filterCharacters(true); // Keep everyone with that hair/eye colour
+      } else {
+        filterCharacters(); // Remove everyone with that hair/eye colour
+      }
+    } else if (category === "accessories" || category === "other") {
+      if (secret[category].includes(value)) {
+        filterCharacters(true);
+      } else {
+        filterCharacters();
+      }
+    }
+    numberOfQuestionsAllowed.innerText = `🤍 Number of questions left: 0 🤍`;
+    questions.style.display = "none";
+    document.getElementById("filter").style.display = "none";
+    document.getElementById("mainQuestion").innerText =
+      "Welp, time to make a guess! 👁";
+    // adds +1 to the counter
+    // Increment counter for number of guesses/questions the player makes
+    // counter++;
+
+    // Number of questions allowed
+
+    // numberOfQuestionsLimit();
+  }
 };
 
 // Alexander: Filters the array based on currentQuestion output and redraws the board
@@ -403,6 +467,12 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+};
+
+const numberOfQuestionsLimit = () => {
+  winOrLoseSection.style.display = "flex";
+  losingSound.play();
+  winOrLoseText.innerText = `You lost! It is not ${personToCheck}. The person is ${secret.name}`;
 };
 
 // Invokes the start function when website is loaded

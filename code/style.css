@@ -24,6 +24,18 @@ h1 {
   color: white;
 }
 
+#numberOfQuestions {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 15px 0;
+  color: white;
+}
+
+#questions option {
+  /* background: lightblue; */
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -46,7 +58,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 200px;
 }
 
 .board-wrapper {
@@ -117,6 +129,19 @@ select {
   font-weight: 600;
   margin-bottom: 8px;
   width: 90%;
+}
+
+.timer {
+  border: 2px solid var(--primary);
+  background-color: #eddfff;
+  color: var(--primary);
+  border-radius: 30px;
+  font-size: 12px;
+  font-family: "Montserrat";
+  font-weight: bold;
+  padding: 17px 27px;
+  margin-top: 10px;
+  align-self: center;
 }
 
 /****** BUTTONS ******/
@@ -205,10 +230,21 @@ button {
   h1 {
     font-size: 24px;
     line-height: 30px;
+    margin: 10px 25px;
+  }
+
+  #numberOfQuestions {
+    align-self: center;
+  }
+
+  #mainQuestion {
+    align-self: center;
   }
 
   .guess-who-icon {
-    width: 51px;
+    /* width: 51px; */
+    width: 150px;
+    margin: 10px 20px;
   }
 
   .board-wrapper {
@@ -216,8 +252,9 @@ button {
   }
 
   .game-board {
-    width: 100%;
+    width: 90%; // original was 100%
     max-width: 750px;
+    justify-content: center; //new
   }
 
   .card {

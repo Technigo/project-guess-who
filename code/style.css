@@ -306,7 +306,6 @@ button {
 
 .lose-img {
   max-width: 250px;
-  margin-left: 0;
 }
 
 
@@ -330,6 +329,7 @@ button {
   h2 {
     font-size: 18px;
     line-height: 30px;
+    margin: 0;
   }
 
   .guess-who-icon {
@@ -416,6 +416,20 @@ button {
 
   #filterBtn {
     margin: 0;
+  }
+
+  .win-img {
+    max-width: 200px;
+    margin: 30px;
+  }
+
+  
+.lose-img {
+  max-width: 200px;
+}
+
+  #playAgainBtn {
+    padding: 17px 27px;
   }
 
 }

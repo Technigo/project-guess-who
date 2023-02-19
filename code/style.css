@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #519981;
+  --secondary: #fabfcb;
 }
 
 body {
@@ -33,11 +33,12 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
+  font-size: 20px;
   font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  border-radius: 10px;
 }
 
 .guess-who-icon {
@@ -49,6 +50,8 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(139,176,119,1) 100%);
 }
 
 .game-board {
@@ -65,7 +68,7 @@ select {
   height: 165px;
   overflow: hidden;
   border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border-radius: 8px;
   margin: 3px;
   display: flex;
   flex-direction: column;
@@ -85,7 +88,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color:blanchedalmond;
   text-align: center;
   height: inherit;
 }
@@ -136,12 +139,12 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: blanchedalmond;
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: blanchedalmond;
+  border-color: blanchedalmond;
   color: var(--primary);
 }
 
@@ -226,7 +229,7 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: blanchedalmond;
     color: var(--primary);
     border: none;
   }

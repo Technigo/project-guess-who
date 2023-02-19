@@ -38,6 +38,8 @@ select {
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  border-radius: 10px;
+  background-color: #aff0e3;
 }
 
 .guess-who-icon {

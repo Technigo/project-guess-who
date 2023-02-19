@@ -29,7 +29,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoking habit']
   },
   {
     name: 'Jai',
@@ -42,7 +42,7 @@ const CHARACTERS = [
   {
     name: 'Jake',
     img: 'images/jake.svg',
-    hair: 'yellow',
+    hair: 'blonde',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
@@ -60,13 +60,13 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['jewelry']
+    accessories: ['glasses', 'jewelry'],
+    other: []
   },
   {
     name: 'Jane',
     img: 'images/jane.svg',
-    hair: 'yellow',
+    hair: 'blonde',
     eyes: 'hidden',
     accessories: ['glasses'],
     other: []
@@ -76,8 +76,8 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
-    other: ['jewelry']
+    accessories: ['glasses', 'jewelry'],
+    other: []
   },
 
   {
@@ -86,7 +86,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['smoking habit']
   },
   {
     name: 'Jean',
@@ -94,7 +94,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoking habit']
   },
   {
     name: 'Jeane',
@@ -110,7 +110,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoking habit']
   },
   {
     name: 'Jenni',
@@ -149,8 +149,8 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
-    other: ['jewelry']
+    accessories: ['glasses', 'jewelry'],
+    other: []
   },
   {
     name: 'Jon',
@@ -163,23 +163,23 @@ const CHARACTERS = [
   {
     name: 'Jordan',
     img: 'images/jordan.svg',
-    hair: 'yellow',
+    hair: 'blonde',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: ['jewelry']
+    accessories: ['glasses', 'hat', 'jewelry'],
+    other: []
   },
   {
     name: 'Josephine',
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
-    other: ['jewelry']
+    accessories: ['jewelry'],
+    other: []
   },
   {
     name: 'Josh',
     img: 'images/josh.svg',
-    hair: 'yellow',
+    hair: 'blonde',
     eyes: 'green',
     accessories: [],
     other: []
@@ -202,19 +202,15 @@ const CHARACTERS = [
   },
 ]
 
-// Added gender property to the characters - still needs to be set individually
-CHARACTERS.forEach( (person) => {
-  person["gender"] = ""
-})
-
+console.log(CHARACTERS)
 //Array holding winOrLose html-elements (cleared on start)
 let winOrLose = 
 [`
 <section id="winOrLose" class="win-or-lose-wrapper" style="display: flex;">
   <div class="win-or-lose">
   <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who">
-  <h1 id="winOrLoseText">YAY! Congrats <br>
-–    you won! <span role="img" aria-label="cheer">🙌</span></h1>
+  <h1 id="winOrLoseText">Congratulations!<br>
+–    You won! <span role="img" aria-label="cheer">🙌</span></h1>
   <button id="playAgain" class="filled-button" onclick= start()>PLAY AGAIN</button>
   </div>
 </section>
@@ -298,13 +294,9 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   //destructures currentQuestion to separate value of category and value from object
   const {checkProp, value, category } = currentQuestion
-  console.log(currentQuestion)
-
   const {hair, eyes, accessories, other} = secretPerson
-  console.log(secretPerson)
   
-  //CHeck if currentQuestion matches with secretPerson
-
+  //CHeck if currentQuestion matches secretPerson...
   if (category === 'hair' || category === 'eyes') {
     if (value === secretPerson.hair || value === secretPerson.eyes) {  
       filterCharacters(true)
@@ -319,19 +311,17 @@ const checkQuestion = () => {
 }
 
 
-// //It'll filter the characters array and redraw the game board.
+//...if secretPerson is matched keep is true, else keep is false. 
 const filterCharacters = (keep) => {
 const {checkProp, category, value} = currentQuestion
 
-  
+//Different messages is passed to user based on category, than characters are filtered to keep all matches or delete all non-matches
   if (category === 'accessories') {
     if (keep=== true) {
       alert(`Yes, the person wears ${checkProp}! Let's see who are left...`)
-      //charactersInPlay = charactersInPlay.filter( person => person["accessories"].includes(value))
-      charactersInPlay = charactersInPlay.filter(person => person['accessories'] === checkProp)
+      charactersInPlay = charactersInPlay.filter(person => person['accessories'].includes(checkProp))
     } else {
       alert(`No, the person doesn't wear ${checkProp}! Let's see who are left...`)
-      //charactersInPlay = charactersInPlay.filter( (person) => !person["accessories"].includes(value))
       charactersInPlay = charactersInPlay.filter(person => !person['accessories'].includes(checkProp))
     }
   } else if (category === 'other') {
@@ -359,7 +349,6 @@ const {checkProp, category, value} = currentQuestion
       charactersInPlay = charactersInPlay.filter(person => person.eyes !== value)
     }
   };
-  console.log(currentQuestion)
   generateBoard()
 };
 
@@ -367,13 +356,10 @@ const {checkProp, category, value} = currentQuestion
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   const characterGuessed = personToConfirm
-  // remember the confirm() ?
  if (confirm(`Do you really want to guess on ${characterGuessed}? If it's wrong you lose...`))
  {
   checkMyGuess(characterGuessed)
  }
-  // If the player wants to guess, invoke the checkMyGuess function.
-
 }
 
 // If you confirm, this function is invoked
@@ -395,4 +381,3 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener(('click'), checkQuestion)
-// playAgainButton.addEventListener('click', start) - not working...//

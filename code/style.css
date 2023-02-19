@@ -167,8 +167,8 @@ button {
 }
 
 .outlined-button {
-  background-color: transparent;
-  color: var(--primary);
+  background-color: #5f7161;
+  color: #adf0db;
   border-color: #adf0db;
   margin-bottom: 40px;
   align-self: flex-end;

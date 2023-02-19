@@ -224,15 +224,16 @@ let playerName;
 const winningSound = new Audio("assets/tadaa.mp3");
 const losingSound = new Audio("assets/woop.mp3");
 
-// Alexander: A function that alway shows double-digid, even when it's single-digits
+// Alexander: A function used for the timer that alway shows double-digid, even when it's single-digits
+
 const paddedNumber = (number, length) => {
   let str = number + "";
   while (str.length < length) str = "0" + str;
   return str;
 };
-// The countdown-function and the reset for the countdown everytime there's a reload of the game
+// The countdown-function and the reset for the countdown everytime the game restarts
 const resetTimer = () => {
-  timeLeft = 120; // two minutes countdown
+  timeLeft = 120; // seconds
 
   countDown = setInterval(() => {
     if (timeLeft <= 0) {
@@ -240,7 +241,7 @@ const resetTimer = () => {
       winOrLoseText.innerHTML = `<p>Time is out!</p>`;
       winOrLose.style.display = "flex";
     } else {
-      // to show the countdown in minutes and seconds instead of the default setting that is just seconds
+      // The countdown in minutes and seconds instead of the default setting that is just seconds
       let minutes = Math.floor(timeLeft / 60) % 60;
       let seconds = timeLeft % 60;
       gameTimer.innerHTML =
@@ -271,7 +272,7 @@ const generateBoard = () => {
   });
 };
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Alexander: A randomizer function that selects a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
@@ -286,15 +287,19 @@ const start = () => {
   questions.value = "";
   winOrLoseSection.style.display = "none";
   secretImageAtCheck.innerHTML = "";
+  // Alexander: This resets the number of questions allowed
   numberOfQuestions = 3;
+  // Alexander: This resets the timer
   resetTimer();
+  // Alexander: This resets the question div and makes it visible again
   questions.style.display = "block";
   document.getElementById("filter").style.display = "block";
   document.getElementById("mainQuestion").innerText = "Does the person have...";
+  // Alexander: This resets the player's name
   document.getElementById("nameInput").value = "";
 
-  // Alexander: Resets the counter
-  numberOfQuestionsAllowed.innerText = `🤍 Number of questions left: 3 🤍`;
+  // Alexander: Resets the number of questions allowed innerText
+  numberOfQuestionsAllowed.innerText = `⚪ Number of questions left: 3 ⚪`;
 
   // winOrLoseSection.innerText += ` `;
 
@@ -328,6 +333,7 @@ const selectQuestion = () => {
   console.log(currentQuestion);
 };
 
+// Alexander: To save the player's name throughout one round
 const playerNameSave = () => {
   playerName = document.getElementById("nameInput").value;
   console.log(playerName);
@@ -336,7 +342,7 @@ const playerNameSave = () => {
 // Alexander: checkQuestion is invoked when you click on 'Find Out' button
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-
+  // Alexander: This if statement is limit to the number of questions "checked" or asked to 3
   if (numberOfQuestions > 1) {
     console.log(numberOfQuestions);
     // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes OR accessories/others)
@@ -372,6 +378,7 @@ const checkQuestion = () => {
         filterCharacters();
       }
     }
+    // Alexander: This shows that the player has no questions left to ask, and hides the questions section as it has no use now. Then it asks the player to take a guess.
     numberOfQuestionsAllowed.innerText = `🤍 Number of questions left: 0 🤍`;
     questions.style.display = "none";
     document.getElementById("filter").style.display = "none";

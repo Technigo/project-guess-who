@@ -265,6 +265,10 @@ footer h4 {
 
   #playerNameHere {
     text-align: center;
+    font-weight: 600;
+  }
+  input {
+    max-width: 150px;
   }
   #numberOfQuestions {
     align-self: center;

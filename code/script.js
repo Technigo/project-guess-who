@@ -171,11 +171,11 @@ const CHARACTERS = [
     other: [],
   },
   {
-    name: "Josephine",
-    img: "images/josephine.svg",
-    hair: "grey",
+    name: "Good Boi",
+    img: "images/Goodboi2.png",
+    hair: "orange",
     eyes: "brown",
-    accessories: [],
+    accessories: ["hat"],
     other: [],
   },
   {
@@ -208,7 +208,7 @@ const CHARACTERS = [
 let keep;
 let secret;
 let currentQuestion;
-let charactersInPlay; // Varför funkar det att ha dessa bara liggande utan något värde?
+let charactersInPlay;
 
 // Draw the game board
 const generateBoard = () => {
@@ -217,41 +217,35 @@ const generateBoard = () => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <img src=${person.img} class="img" alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" id="guessBtn" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `;
-    console.log("generate")
   });
 };
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret =
-    charactersInPlay[10];
-  //[Math.floor(Math.random() * charactersInPlay.length)];
-  //console.log("hemlis1")
+    charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  //console.log("bräde1")
   // What else should happen when we start the game?
   setSecret();
   generateBoard();
-  console.log("startfunktionen");
 };
 
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
-  console.log("select question");
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.value
@@ -262,12 +256,11 @@ const selectQuestion = () => {
   };
 };
 
-questions.addEventListener("change", selectQuestion)
+
 
 findOutButton.addEventListener("click", (event) => {
   checkQuestion();
   event.preventDefault();
-  console.log("Find out button");
 });
 
 
@@ -318,7 +311,7 @@ const filterCharacters = (keep) => {
       generateBoard()
     }
     else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
+      alert(`No, the person doesn't wear ${value}! Remove all people that wear ${value}`);
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       generateBoard()
     }
@@ -364,12 +357,10 @@ const filterCharacters = (keep) => {
 
 
 const guess = (personToConfirm) => {
- // onclick(person.name) = userGuess
   const playerClick = confirm(`Do you think ${personToConfirm} is the one?`);
 
- if (playerClick) {
+  if (playerClick) {
     checkMyGuess(personToConfirm)
-    console.log("playerClick true")
   }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
@@ -393,15 +384,14 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-  console.log("Check my guess")
 };
 
 // Invokes the start function when website is loaded
 start();
 
 // All the event listeners
+questions.addEventListener("change", selectQuestion)
 restartButton.addEventListener("click", start);
 playAgainButton.addEventListener("click", () => {
   location.reload()
-  //return false
-})
+});

@@ -73,6 +73,10 @@ select {
   justify-content: space-between;
 }
 
+.card img {
+  max-height: 165px;
+}
+
 .card p {
   text-align: center;
   margin-bottom: 0;

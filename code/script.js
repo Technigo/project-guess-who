@@ -310,10 +310,7 @@ const selectQuestion = () => {
   }
 }  
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
+// Function invoked when user click "Find out" button.
   const checkQuestion = () => {
     const keep = currentQuestion.value === secret[currentQuestion.attribute]
   
@@ -328,11 +325,11 @@ const filterCharacters = (keep) => {
 if (category === 'accessories') {
   if (keep) {
     alert(
-      `Yes, the person wears ${attribute}! Keep all people that wears ${attribute}`
+      `Yes, the person wears ${attribute}! Keep all people that wears ${attribute}.`
     )
   } else {
     alert(
-      `No, the person does not wear a ${attribute}! Remove all people that wears ${attribute}`
+      `No, the person does not wear a ${attribute}! Remove all people that wears ${attribute}.`
     )
   }
 } else if (category === 'other') {
@@ -352,7 +349,7 @@ if (category === 'accessories') {
     )
   } else {
     alert(
-      `No, the person does not have ${value} ${category}! Remove all that do not have ${value} ${category}`
+      `No, the person does not have ${value} ${category}! Remove all that do not have ${value} ${category}.`
     )
   }
 }
@@ -386,7 +383,7 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-questions.addEventListener('click', selectQuestion)
+questions.addEventListener('change', selectQuestion)
 playAgainButton.addEventListener('click', start)
 filterButton.addEventListener('click', checkQuestion)
 

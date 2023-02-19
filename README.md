@@ -1,4 +1,4 @@
-Project - Guess Who
+## Project - Guess Who
 
 This weeks project was about understanding more JavaScript like objects, arrays and functions.
 

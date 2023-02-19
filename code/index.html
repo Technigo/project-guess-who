@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
+    <title>Guess Who?</title>
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -12,7 +12,9 @@
   </head>
   <body>
     <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
+      <button type="button" id="restart" class="outlined-button">
+        RESTART
+      </button>
 
       <img
         class="guess-who-icon"
@@ -20,28 +22,44 @@
         alt="Guess Who"
       />
 
-      <h1>Does the person have</h1>
+      <h1>Does the person have...</h1>
 
       <select title="questions" id="questions">
+        <option disabled selected value="">Start asking questions..👇</option>
         <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
+          <option value="hiddenhair">Hidden hair</option>
+          <option value="brown">Brown hair</option>
+          <option value="yellow">Yellow hair</option>
+          <option value="black">Black hair</option>
+          <option value="purple">Purple hair</option>
+          <option value="white">White hair</option>
+          <option value="orange">Orange hair</option>
+          <option value="grey">Grey hair</option>
         </optgroup>
         <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+          <option value="hidden">Hidden eyes</option>
+          <option value="green">Green eyes</option>
+          <option value="blue">Blue eyes</option>
+          <option value="brown">Brown eyes</option>
         </optgroup>
         <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
+          <option value="sunglasses">Sunglasses</option>
+          <option value="glasses">Glasses</option>
+          <option value="hat">Headwear</option>
         </optgroup>
         <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+          <option value="smoker">Smoker</option>
         </optgroup>
       </select>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
+      <button id="filter" class="filled-button">TAKE A GUESS!</button>
+
+      <footer>
+        <p>
+          Bot made by <a href="mailto:sammyolsson@gmail.com">Sammy Olsson</a>,
+          Team-🐢
+        </p>
+      </footer>
     </aside>
 
     <section class="board-wrapper">
@@ -56,7 +74,9 @@
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <button type="button" id="playAgain" class="filled-button">
+          PLAY AGAIN
+        </button>
       </div>
     </section>
     <script src="script.js"></script>

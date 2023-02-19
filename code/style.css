@@ -14,7 +14,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Andada Pro', serif;
-  background-image: url("images/train-bg.jpg");
+  background-image: url("images/ship-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
   
@@ -25,13 +25,14 @@ body {
   display:flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   font-family: 'font-reward', cursive;
   text-transform: uppercase;
-  margin: 10px 0;
+  margin: 80px 0 20px 0;
   color: #000;
   letter-spacing: 5px;
   text-shadow:0 0 white;
-  margin-top: 65px;;
+  /* margin-top: 65px;; */
 }
 
 .main-heading h1{
@@ -55,10 +56,11 @@ body {
   flex-direction: column;
   padding: 5vw;
   align-items:center;
+  /* justify-content: center; */
   box-sizing: border-box;
   background-image: url("images/scroll.png");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 100vh;
 
   /* border:solid green; */
 }
@@ -83,6 +85,13 @@ select {
   padding: 23px;
   text-transform: uppercase;
   
+}
+
+.timer {
+  font-size:27px;
+  font-family: 'Andada Pro', serif;
+  font-weight: bold;
+
 }
 
 .board-wrapper {
@@ -119,6 +128,7 @@ select {
   justify-content: space-between;
   background-image: url("images/vintage-paper.jpg"); 
   background-size: cover;
+  transition: transform .2s;
 
   
 }
@@ -166,11 +176,12 @@ img{
   color: white;
   text-align: center;
   height: inherit;
+  
 }
-
 
 .card:hover {
   background-color: var(--secondary);
+  transform: scale(1.2);
 }
 
 .card:hover img,
@@ -181,6 +192,7 @@ img{
 /* The div with the guess class is only shown on hover */
 .card:hover .guess {
   display: flex;
+  
 }
 
 .guess span {
@@ -198,8 +210,9 @@ button {
   font-size: 16px;
   font-family: 'Andada Pro', serif;
   font-weight: bold;
-  padding: 17px 27px;
+  padding: 17px 25px;
   cursor: pointer;
+  justify-items:center;
 }
 
 .small {
@@ -209,16 +222,17 @@ button {
 .restart-button {
   background-color: var(--primary);
   color: var(--secondary);
-  align-self: flex-start;
+  align-self: center;
   padding: 17px 35px;
-  width: 90%;
-  margin-top:50px;
-  
+  width: 75%;
+  margin-top:10px;
+  margin-bottom: 20px;
 }
 
 .filled-button {
   background-color: var(--primary);
   color: white;
+  margin-bottom: 20px;
 }
 
 .filled-button:hover,
@@ -227,6 +241,11 @@ button {
   border-color: white;
   color: var(--primary);
 }
+
+.play-again{
+  margin-bottom: 130px;
+}
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -240,9 +259,20 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
-  background-image: url("images/train-bg.jpg");
+  background-image: url("images/ship-bg.png");
   flex-direction: column;
 
+}
+
+.win-or-lose-container{
+  background-image: url("images/scroll.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .win-or-lose {
@@ -253,24 +283,24 @@ button {
   max-width: 700px;
   text-align: center;
   margin-top:10px;
+ 
 
 }
 
 .win-or-lose-wrapper .main-heading{
   display: flex;
   flex-direction: column;
-  width: 50%;
-  padding: 30px;
-  margin-bottom: 50px;
-  margin-top: 20px;
+  width: 75%;
+  margin-top: 13vh;
   
 }
 
 .win-or-lose h1 {
-  margin-bottom: 32px;
-  font-size: 37px;
-  color:var(--secondary);
-  line-height: 60px;
+  font-size: 30px;
+  color:var(--primary);
+  line-height: 50px;
+  padding: 20px 80px;
+  text-shadow:2px 2px var(--secondary);
 }
 
 @media (max-width: 768px) {
@@ -281,6 +311,7 @@ button {
   .question-section {
     width: 100%;
     min-height: 0;
+    background-size: 100% 100%;
   }
   button {
     padding: 8px 16px;
@@ -288,6 +319,9 @@ button {
   h1 {
     font-size: 24px;
     line-height: 30px;
+  }
+  .main-heading{
+    margin: 15vh 0 0 0;
   }
 
   .main-heading h1{
@@ -334,4 +368,103 @@ button {
     color: var(--primary);
     border: none;
   }
+
+  .restart-button {
+     margin-top:30px;
+  
+}
+
+.win-or-lose h1 {
+  font-size: 27px;
+  
+}
+}
+
+@media (min-width: 769px) and (orientation:portrait) {
+  body {
+    flex-direction: column;
+  }
+
+  .question-section {
+    width:100%;
+    min-height: 0;
+  }
+  button {
+    padding: 8px 16px;
+  }
+  h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .main-heading{
+    margin: 15vh 0 0 0;
+  }
+
+  .main-heading h1{
+    font-size: 70px;
+  }
+  
+  .main-heading h2{
+    font-size: 30px;
+  }
+
+  select{
+    width:70%;
+  }
+
+  .board-wrapper {
+    width: 100%;
+  }
+
+  .game-board {
+    width: 100%;
+  }
+
+  .card {
+    width: 113px;
+    position: relative;
+  }
+
+  .card .guess {
+    display: flex;
+    top: 0;
+    position: absolute;
+    justify-content: flex-end;
+  }
+
+  .card .guess span {
+    display: none;
+  }
+
+  .card .guess .filled-button {
+    padding: 6px 11px;
+    margin-bottom: 1px;
+    background: white;
+    color: var(--primary);
+    border: none;
+  }
+
+  .win-or-lose h1 {
+    font-size: 27px;
+    
+  }
+}
+
+
+/* Alertify */
+.ajs-header,
+.ajs-body,
+.ajs-footer 
+{
+  color: var(--secondary) !important;
+  background-color:var(--primary)!important;
+}
+
+.ajs-body{
+  margin-left: -24px;
+  margin-right: -24px;
+}
+
+.ajs-button{
+  color: var(--secondary) !important;
 }

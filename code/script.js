@@ -206,9 +206,11 @@ let charactersInPlay
 let countQuestionsAsked = 0
 const questionsAllowed = 4
 let gameName = "Murder on the Vasa Express"
-let playerName
-let gameWonSound = new Audio("assets/win-audio.mp3");
-let gameLostSound = new Audio("assets/lost-audio.mp3");
+let playerName = "Holmes"
+let gameWonSound = new Audio("assets/win-audio.mp3")
+let gameLostSound = new Audio("assets/lost-audio.mp3")
+let gameBackgroundSound = new Audio("assets/game-bg-audio.mp3")
+let timerStart = Date.now();
 
 
 
@@ -261,6 +263,7 @@ const start = () => {
   generateBoard();
   setSecret();
   askName();
+  gameBackgroundSound.play();
   countQuestionsAsked = 0 //reset counter for new game
   questionsAskedDisplay.innerText = 0
   
@@ -380,22 +383,21 @@ const guess = (suspect) => {
   const makeAGuess = 
     alertify.confirm(gameName, `Are you sure you want to accuse ${suspect}?`,
     function(){
-      alertify.success('Ok');
+      //alertify.success('Ok');
       checkMyGuess(suspect);
     },
     function(){
-      alertify.error('Cancel');
+      //alertify.error('Cancel');
     });
 }
 
 
 // If you confirm, this function is invoked
 const checkMyGuess = (suspectToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
+ //Check if the suspectToCheck is the same as the secret person's name
   if(suspectToCheck === secret.name) {
     winOrLoseText.innerHTML = `YOU WON ${playerName}! </br> ${secret.name} was the murderer!`
-    gameWinSound.play();
-
+    gameWonSound.play();
   } else {
     winOrLoseText.innerHTML = `YOU LOST ${playerName}! </br> ${suspectToCheck} is innocent.</br> ${secret.name} was the murderer!`
     gameLostSound.play();
@@ -413,21 +415,32 @@ const playAgain = () => {
 }
 
 const askName = () => {
-  alertify.prompt(gameName, "Enter player name: ", "Poirot",
+  alertify.prompt(gameName, "Enter player name: ", "Holmes",
   function(evt, value ){
-    playerName = value;
+    playerName = value,
     alertify.success;
     alertify.alert(gameName,
       `Welcome Detective ${playerName}!
-       </br> Dr. Black has been murdered on the Vasa Express & it's up to you to solve the mystery. `
+       </br> Dr. Black has been murdered on the Vasa & it's up to you to solve the mystery. `
     )
-    
   },
   function(){
     alertify.error;
   });
+  startTimer();
 } 
 
+// Timer
+const startTimer = () =>{
+  setInterval(function() {
+      let millisecondsElapsed = Date.now() - timerStart; // milliseconds elapsed since start
+      let secondsElapsed = Math.floor(millisecondsElapsed / 1000);
+      let minutes = Math.floor(secondsElapsed / 60);
+      let seconds = secondsElapsed % 60
+      let formattedTimeElapsed = (`${(minutes > 9 ? minutes : `0${minutes}`)}:${(seconds > 9 ? seconds : `0${seconds}`)}`);
+      timer.innerHTML = formattedTimeElapsed;
+  }, 1000); 
+  }
 // Invokes the start function when website is loaded
 start()
 
@@ -436,3 +449,5 @@ restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
 playAgainButton.addEventListener('click', playAgain)
+
+

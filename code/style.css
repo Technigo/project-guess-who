@@ -1,10 +1,11 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #62F163;
+  --secondary: #C1E1C1;
 }
 
 body {
+  background-color: #F0FFEC;
   display: flex;
   margin: 0;
   padding: 0;
@@ -16,6 +17,10 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
+  color: white;
+}
+
+h2 {
   color: white;
 }
 
@@ -59,6 +64,10 @@ select {
   align-content: center;
 }
 
+footer {
+  display: none;
+}
+
 /****** CARD ******/
 .card {
   width: 135px;
@@ -71,6 +80,8 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 
+  0 6px 20px 0 rgb(0 0 0 / 19%);
 }
 
 .card p {
@@ -78,6 +89,11 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+}
+
+.card img {
+  margin-bottom: 35px;
+
 }
 
 .card .guess {
@@ -179,6 +195,7 @@ button {
 
 @media (max-width: 768px) {
   body {
+    min-height: 100vh;
     flex-direction: column;
   }
 
@@ -200,11 +217,26 @@ button {
 
   .board-wrapper {
     width: 100%;
+    margin-bottom: 20px;
   }
 
   .game-board {
     width: 100%;
     max-width: 750px;
+    justify-content: center;
+  }
+
+  footer{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #62F163;
+    color: white;
+  }
+
+  footer h4, h5 {
+    margin: 5px;
   }
 
   .card {

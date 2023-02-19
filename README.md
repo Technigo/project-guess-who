@@ -17,3 +17,10 @@ One detail about the game: sometimes, you end up in a situation where you need t
 ## View it live
 
 http://www.korea.fi/technigo4/
+
+
+
+
+
+<img width="1531" alt="Screenshot 2023-02-19 at 23 22 04" src="https://user-images.githubusercontent.com/112956568/219976145-fa0f7063-2832-47f8-ad63-497643e76dee.png">
+<img width="839" alt="Screenshot 2023-02-19 at 23 22 41" src="https://user-images.githubusercontent.com/112956568/219976164-19b1771e-52dd-4e82-9848-b332dd8846bf.png">

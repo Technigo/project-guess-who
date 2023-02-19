@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The purpose of this project was the get the guess-who game up and running, and to style it a bit if we had time.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I spent ages on trying to figure out why my code did not work, I could see in console logs that things should be there, but in "reality" it wasn't happening. It turned out that changing the optgroup label to start with a capital letter was the thing that made nothing else work. When that was fixed, the rest worked as it should. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guesswho-project-feb2023.netlify.app/

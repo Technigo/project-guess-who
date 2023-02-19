@@ -14,4 +14,4 @@ I started by looking at this weeks material and do exercises to get a better und
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://sparkling-kringle-be0ba1.netlify.app/

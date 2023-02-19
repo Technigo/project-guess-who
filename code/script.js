@@ -11,7 +11,7 @@ let winOrLoseContainer = document.getElementById('winOrLoseContainer')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
+    name: 'Ingegerd',
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
@@ -19,7 +19,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jack',
+    name: 'Totti',
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
@@ -27,15 +27,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoking habit']
-  },
-  {
-    name: 'Jai',
+    name: 'Alfred',
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
@@ -43,7 +35,15 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jake',
+    name: 'Bengt',
+    img: 'images/jacques.svg',
+    hair: 'grey',
+    eyes: 'blue',
+    accessories: ['hat'],
+    other: ['smoking habit']
+  },
+  {
+    name: 'Alexander',
     img: 'images/jake.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -51,7 +51,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'James',
+    name: 'Ricard',
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
@@ -59,7 +59,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jana',
+    name: 'Ulla',
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
@@ -67,7 +67,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jane',
+    name: 'Catarina',
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
@@ -75,72 +75,72 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jaqueline',
+    name: 'Ann-Britt',
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings'],
     other: []
   },
 
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
+    name: 'Hannah',
+    img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['smoking habit']
   },
   {
-    name: 'Jeane',
+    name: 'Elin',
     img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
+    name: 'Jensen',
+    img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoking habit']
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
+    name: 'Malin',
+    img: 'images/jenni.svg',
     hair: 'white',
+    eyes: 'hidden',
+    accessories: ['hat'],
+    other: ['smoking habit']
+  },
+  {
+    name: 'Lisa',
+    img: 'images/jeri.svg',
+    hair: 'orange',
     eyes: 'hidden',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jerry',
+    name: 'Douglas',
     img: 'images/jerry.svg',
-    hair: 'orange',
-    eyes: 'green',
+    hair: 'hidden',
+    eyes: 'blue',
+    accessories: ['glasses', 'hat'],
+    other: []
+  },
+  {
+    name: 'Elsa',
+    img: 'images/jess.svg',
+    hair: 'black',
+    eyes: 'blue',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jia',
+    name: 'Thomas',
     img: 'images/jia.svg',
     hair: 'black',
     eyes: 'blue',
@@ -148,59 +148,59 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jocelyn',
+    name: 'Elisabeth',
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings'],
     other: []
   },
   {
-    name: 'Jodi',
+    name: 'Lollo',
     img: 'images/jodi.svg',
+    hair: 'yellow',
+    eyes: 'blue',
+    accessories: ['hat'],
+    other: []
+  },
+  {
+    name: 'Nicholas',
+    img: 'images/joe.svg',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: ['hat'],
+    other: []
+  },
+  {
+    name: 'Mayete',
+    img: 'images/jolee.svg',
+    hair: 'black',
+    eyes: 'blue',
+    accessories: ['earrings'],
+    other: []
+  },
+  {
+    name: 'Axel',
+    img: 'images/jon.svg',
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Joe',
-    img: 'images/joe.svg',
+    name: 'Fred',
+    img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
   },
   {
-    name: 'Jolee',
-    img: 'images/jolee.svg',
+    name: 'Barbro',
+    img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    accessories: ['earrings'],
     other: []
   },
 ];
@@ -298,23 +298,36 @@ const filterCharacters = (keep) => {
 
   // Show the correct alert message for different categories
 
-  if (category === 'accessories') {
+
+
+
+  if (category === 'hair') {
     if (keep) {
-      alert(`Yay, the person has ${value}! Keep all people that has ${value}`);
+      alert(`Yay, the person has ${value} hair! Keep all people that has ${value} hair.`);
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
 
     } else {
-      alert(`Nope, the person doesn't have ${value}! Remove all people that have ${value}`);
+      alert(`Nope, the person doesn't have ${value} hair! Remove all people that has ${value} hair.`);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+
+    }
+  } else if (category === 'eyes') {
+    if (keep) {
+      alert(`Yay, the person has ${value} eyes! Keep all people that have ${value} eyes.`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+
+    } else {
+      alert(`Nope, the person doesn't have ${value} eyes! Remove all people that has ${value} eyes.`);
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
 
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(`Yay, the person does have a ${value}! Keep all people that has a ${value}`);
+      alert(`Yay, the person does have a ${value}! Keep all people that have a ${value}.`);
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
 
     } else {
-      alert(`Nope, the person doesn't have ${value}! Remove all people that have a ${value}`);
+      alert(`Nope, the person doesn't have a ${value}! Remove all people that have a ${value}.`);
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
 
     }

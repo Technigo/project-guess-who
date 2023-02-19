@@ -6,6 +6,7 @@ const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
+const secretImageAtGuess = document.getElementById('secretImageAtGuess')
 
 // Array with all the characters
 // Change array values for accessories and other to booleans?
@@ -13,155 +14,155 @@ const CHARACTERS = [
   {
     name: 'Karl',
     img: 'images/karl.png',
-    hairColor: 'hidden',
+    hairColor: 'grey',
     eyeColor: 'hidden',
-    glasses: true,
-    hat: true,
-    smoker: false,
+    glasses: false,
+    sunGlasses: true,
+    other: false,
   },
   {
     name: 'Suzy',
     img: 'images/suzy.png',
-    hairColor: 'hidden',
-    eyeColor: 'blue',
-    glasses: false, 
-    hat: true,
-    smoker: false,
+    hairColor: 'dk brown',
+    eyeColor: 'green',
+    glasses: true,
+    sunGlasses: false, 
+    other: false,
   },
   {
     name: 'Anna',
     img: 'images/anna.png',
-    hairColor: 'grey',
-    eyeColor: 'blue',
+    hairColor: 'lt brown',
+    eyeColor: 'hidden',
     glasses: false,
-    hat: true,
-    smoker: true,      
+    sunGlasses: true,
+    other: false,
   },
   {
     name: 'Jean Paul',
     img: 'images/JeanPaul.png',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: false,
-    hat: false,
-    smoker: false,      
+    hairColor: 'hidden',
+    eyeColor: 'blue',
+    glasses: true,
+    sunGlasses: false,  
+    other: false,
   },
   {
     name: 'Alexa',
     img: 'images/alexa.png',
-    hairColor: 'yellow',
+    hairColor: 'brown',
     eyeColor: 'green',
     glasses: true,
-    hat: false,
-    smoker: false,    
+    sunGlasses: false, 
+    other: false,
   },
   {
     name: 'Vivienne',
     img: 'images/vivienne.png',
-    hairColor: 'brown',
+    hairColor: 'red',
     eyeColor: 'green',
     glasses: true,
-    hat: false,
-    smoker: false,    
+    sunGlasses: false,
+    other: false,      
   },
   {
     name: 'Marc',
     img: 'images/marc.png',
-    hairColor: 'black',
-    eyeColor: 'hidden',
+    hairColor: 'grey',
+    eyeColor: 'brown',
     glasses: true,
-    hat: false,
-    smoker: false,    
+    sunGlasses: false,
+    other: false,
   },
   {
     name: 'Cara',
     img: 'images/cara.png',
-    hairColor: 'yellow',
-    eyeColor: 'hidden',
+    hairColor: 'dk blonde',
+    eyeColor: 'blue',
     glasses: true,
-    hat: false,
-    smoker: false,    
+    sunGlasses: false,
+    other: true,
   },
   {
     name: 'Donatella',
     img: 'images/donatella.png',
-    hairColor: 'orange',
-    eyeColor: 'green',
+    hairColor: 'lt blonde',
+    eyeColor: 'brown',
     glasses: true,
-    hat: false,
-    smoker: false,
+    sunGlasses: false,
+    other: false,
   },
   {
     name: 'Anna B',
     img: 'images/annaB.png',
-    hairColor: 'purple',
-    eyeColor: 'hidden',
+    hairColor: 'brown',
+    eyeColor: 'green',
     glasses: true,
-    hat: false,
-    smoker: true,    
+    sunGlasses: false,
+    other: true, 
   },
   {
     name: 'Victoria',
     img: 'images/victoria.png',
-    hairColor: 'brown',
-    eyeColor: 'blue',
-    glasses: true,
-    hat: true,
-    smoker: true,    
+    hairColor: 'lt brown',
+    eyeColor: 'hidden',
+    glasses: false,
+    sunGlasses: true,
+    other: false, 
   },
   {
     name: 'Valentino',
     img: 'images/valentino.png',
-    hairColor: 'brown',
+    hairColor: 'lt brown',
     eyeColor: 'green',
     glasses: true,
-    hat: false,
-    smoker: false,
+    sunGlasses: false,
+    other: false,
   },
   {
     name: 'Iris',
     img: 'images/iris.png',
-    hairColor: 'orange',
-    eyeColor: 'green',
+    hairColor: 'white',
+    eyeColor: 'blue',
     glasses: true,
-    hat: true,
-    smoker: true,    
+    sunGlasses: false,
+    other: false,    
   },
   {
     name: 'Derek',
     img: 'images/derek.png',
-    hairColor: 'white',
-    eyeColor: 'hidden',
-    glasses: false,
-    hat: true,
-    smoker: false,
+    hairColor: 'black',
+    eyeColor: 'blue',
+    glasses: true,
+    sunGlasses: false,
+    other: true,
   },
   {
     name: 'Franca',
     img: 'images/franca.png',
-    hairColor: 'orange',
-    eyeColor: 'green',
+    hairColor: 'lt blonde',
+    eyeColor: 'blue',
     glasses: true,
-    hat: false,
-    smoker: false,
+    sunGlasses: false,
+    other: false,
   },
   {
     name: 'Grace',
     img: 'images/grace.png',
-    hairColor: 'hidden',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true, 
-    smoker: false,
+    hairColor: 'red',
+    eyeColor: 'brown',
+    glasses: true,
+    sunGlasses: false,
+    other: false,
   },
   {
     name: 'Isabel',
     img: 'images/isabel.png',
-    hairColor: 'black',
-    eyeColor: 'blue',
+    hairColor: 'grey',
+    eyeColor: 'green',
     glasses: true,
-    hat: false,
-    smoker: false,
+    sunGlasses: false,
+    other: false,
   },
   {
     name: 'Susie',
@@ -169,53 +170,53 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'brown',
     glasses: true,
-    hat: false,
-    smoker: false,
+    sunGlasses: false,
+    other: true,
   },
   {
     name: 'Man Repeller',
     img: 'images/ManRepeller.png',
     hairColor: 'brown',
-    eyeColor: 'green',
+    eyeColor: 'blue',
     glasses: true,
-    hat: false,
-    smoker: false,
+    sunGlasses: false,
+    other: false,
   },
   {
     name: 'Jules',
     img: 'images/jules.png',
-    hairColor: 'yellow',
+    hairColor: 'dk brown',
     eyeColor: 'hidden',
-    glasses: true,
-    hat: true,
-    smoker: false,
+    glasses: false,
+    sunGlasses: true,
+    other: false,
   },
   {
     name: 'Garance',
     img: 'images/garance.png',
-    hairColor: 'grey',
-    eyeColor: 'brown',
-    glasses: false,
-    hat: false,
-    smoker: false,
+    hairColor: 'dk brown',
+    eyeColor: 'blue',
+    glasses: true,
+    sunGlasses: false,
+    other: false,
   },
   {
     name: 'Bryan',
     img: 'images/bryan.png',
-    hairColor: 'yellow',
-    eyeColor: 'green',
+    hairColor: 'black',
+    eyeColor: 'hidden',
     glasses: false,
-    hat: false,
-    smoker: false,    
+    sunGlasses: true,
+    other: false,
   },
   {
     name: 'Sartorialist',
     img: 'images/sartorialist.png',
-    hairColor: 'black',
-    eyeColor: 'green',
-    glasses: false,
-    hat: false,
-    smoker: false,
+    hairColor: 'dk brown',
+    eyeColor: 'blue',
+    glasses: true,
+    sunGlasses: false,
+    other: false, 
   },
   {
     name: 'Betty',
@@ -223,8 +224,8 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'brown',
     glasses: true,
-    hat: true,
-    smoker: false,
+    sunGlasses: false,
+    other: true,
   },
 ]
 
@@ -267,12 +268,19 @@ const guess = (suspect) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
-    winOrLoseText.innerHTML = `Banana 🍌! Congrats <br>
-    - you are a winner! <span role=img" aria-label="trophy">🏆</span>`
+    winOrLoseText.innerHTML = `Banana 🍌! <br>
+    Congrats - you are a winner! <br>
+    The secret minion is ${suspect}!
+    <span role=img" aria-label="trophy">🏆</span>` 
+    secretImageAtGuess.innerHtml= `<img src=${secret.img} alt= ${secret.name}>`; 
+    
   }
   else {
-    winOrLoseText.innerHTML = `Oh no, no banana for you this time. <br>
-    <span role="img" aria-label = "warningLight">🚨</span>`
+    winOrLoseText.innerHTML = `<span role="img" aria-label = "warningLight">🚨</span> <br>
+    Oh no, no banana for you this time. <br>
+    ${suspect} is the wrong answer. <br>
+    The secret minion is ${secret.name}.`
+    secretImageAtGuess.innerHtml= `<img src=${secret.img} alt= ${secret.name}>`;
   }
   winOrLose.style.display = 'flex'
   board.style.display = 'none'
@@ -325,31 +333,31 @@ const filterCharacters = (keep) => {
 if (category === 'accessories') {
   if (keep) {
     alert(
-      `Yes, the person wears ${attribute}! Keep all people that wears ${attribute}.`
+      `Yes, the minion wears ${attribute}! Keep all minions that wear ${attribute}.`
     )
   } else {
     alert(
-      `No, the person does not wear a ${attribute}! Remove all people that wears ${attribute}.`
+      `No, the minion does not wear a ${attribute}. Remove all minions that wear ${attribute}.`
     )
   }
 } else if (category === 'other') {
     if (keep) {
       alert(
-        `Yes, the person is a ${attribute}! Keep all that are ${attribute}s.`
+        `Yes, the minion is a ${attribute}! Keep all minions that are ${attribute}s.`
       )
     } else {
       alert(
-        `No the person is not a ${attribute}. Remove all that are not ${attribute}s.`
+        `No the minion is not a ${attribute}. Remove all minions that are not ${attribute}s.`
       )
     }
 } else {
   if (keep) {
     alert(
-      `Correct, the person has ${value} ${category}! Keep all that have ${value} ${category}.`
+      `Correct, the minion has ${value} ${category}! Keep all minions that have ${value} ${category}.`
     )
   } else {
     alert(
-      `No, the person does not have ${value} ${category}! Remove all that do not have ${value} ${category}.`
+      `No, the minion does not have ${value} ${category}. Remove all minions that do not have ${value} ${category}.`
     )
   }
 }
@@ -373,7 +381,7 @@ const start = () => {
   charactersInPlay = CHARACTERS //reset character to original array
   winOrLose.style.display = 'none' //dont show win or lose display 
   board.style.display = 'flex' //show the board again
-  setSecret() //set a new secret person
+  setSecret() //sets a new secret person
   generateBoard() //draw board w all characters
   // What else should happen when we start the game?
 }

@@ -18,14 +18,103 @@ const playAgainBtn = document.getElementById('playAgainBtn');
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hairColor: 'hidden',
-    eyeColor: 'hidden',
+    name: 'Aneesa',
+    img: 'images/julie.svg',
+    hairColor: 'black',
+    eyeColor: 'brown',
     glasses: true,
     hat: true,
     jewellery: false,
     smoker: false,
+    beard: false
+  },
+  {
+    name: 'Anton',
+    img: 'images/jean.svg',
+    hairColor: 'brown',
+    eyeColor: 'blue',
+    glasses: true,
+    hat: true,
+    jewellery: false,
+    smoker: true,
+    beard: false
+  },
+
+  {
+    name: 'Audrey',
+    img: 'images/jane.svg',
+    hairColor: 'yellow',
+    eyeColor: 'hidden',
+    glasses: true,
+    hat: false,
+    jewellery: false,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Celeste',
+    img: 'images/jocelyn.svg',
+    hairColor: 'black',
+    eyeColor: 'brown',
+    glasses: true,
+    hat: false,
+    jewellery: true,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Chase',
+    img: 'images/james.svg',
+    hairColor: 'brown',
+    eyeColor: 'green',
+    glasses: true,
+    hat: false,
+    jewellery: false,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Dominic',
+    img: 'images/jake.svg',
+    hairColor: 'yellow',
+    eyeColor: 'green',
+    glasses: true,
+    hat: false,
+    jewellery: false,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Elizabeth',
+    img: 'images/jaqueline.svg',
+    hairColor: 'orange',
+    eyeColor: 'green',
+    glasses: true,
+    hat: false,
+    jewellery: true,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Gordon',
+    img: 'images/jude.svg',
+    hairColor: 'black',
+    eyeColor: 'green',
+    glasses: false,
+    hat: false,
+    jewellery: false,
+    smoker: false,
+    beard: true
+  },
+  {
+    name: 'Harmony',
+    img: 'images/jazebelle.svg',
+    hairColor: 'purple',
+    eyeColor: 'hidden',
+    glasses: true,
+    hat: false,
+    jewellery: false,
+    smoker: true,
     beard: false
   },
   {
@@ -40,195 +129,7 @@ const CHARACTERS = [
     beard: true
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hairColor: 'grey',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: false,
-    jewellery: false,
-    smoker: true,
-    beard: true
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: false,
-    hat: false,
-    jewellery: false,
-    smoker: false,
-    beard: false
-  },
-  {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hairColor: 'yellow',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    jewellery: false,
-    smoker: false,
-    beard: false
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    jewellery: false,
-    smoker: false,
-    beard: false
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hairColor: 'black',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    jewellery: true,
-    smoker: false,
-    beard: false
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hairColor: 'yellow',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    jewellery: false,
-    smoker: false,
-    beard: false
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    jewellery: true,
-    smoker: false,
-    beard: false
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hairColor: 'purple',
-    eyeColor: 'hidden',
-    glasses: true,
-    hat: false,
-    jewellery: false,
-    smoker: true,
-    beard: false
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hairColor: 'brown',
-    eyeColor: 'blue',
-    glasses: true,
-    hat: true,
-    jewellery: false,
-    smoker: true,
-    beard: false
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    jewellery: false,
-    smoker: false,
-    beard: false
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: true,
-    jewellery: false,
-    smoker: true,
-    beard: true
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hairColor: 'white',
-    eyeColor: 'hidden',
-    glasses: false,
-    hat: true,
-    jewellery: false,
-    smoker: false,
-    beard: false
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hairColor: 'orange',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    jewellery: false,
-    smoker: false,
-    beard: false
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hairColor: 'hidden',
-    eyeColor: 'blue',
-    glasses: false,
-    hat: true,
-    jewellery: false,
-    smoker: false,
-    beard: false
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hairColor: 'black',
-    eyeColor: 'blue',
-    glasses: true,
-    hat: false,
-    jewellery: false,
-    smoker: false,
-    beard: false
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hairColor: 'black',
-    eyeColor: 'brown',
-    glasses: true,
-    hat: false,
-    jewellery: true,
-    smoker: false,
-    beard: false
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hairColor: 'brown',
-    eyeColor: 'green',
-    glasses: true,
-    hat: false,
-    jewellery: false,
-    smoker: false,
-    beard: false
-  },
-  {
-    name: 'Jordan',
+    name: 'Logan',
     img: 'images/jordan.svg',
     hairColor: 'yellow',
     eyeColor: 'hidden',
@@ -239,7 +140,51 @@ const CHARACTERS = [
     beard: false
   },
   {
-    name: 'Josephine',
+    name: 'Lorna',
+    img: 'images/jeane.svg',
+    hairColor: 'brown',
+    eyeColor: 'green',
+    glasses: true,
+    hat: false,
+    jewellery: false,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Millicent',
+    img: 'images/jenni.svg',
+    hairColor: 'white',
+    eyeColor: 'hidden',
+    glasses: false,
+    hat: true,
+    jewellery: false,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Otis',
+    img: 'images/jerry.svg',
+    hairColor: 'hidden',
+    eyeColor: 'blue',
+    glasses: false,
+    hat: true,
+    jewellery: false,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Paige',
+    img: 'images/jeri.svg',
+    hairColor: 'orange',
+    eyeColor: 'green',
+    glasses: true,
+    hat: false,
+    jewellery: false,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Phyllis',
     img: 'images/josephine.svg',
     hairColor: 'grey',
     eyeColor: 'brown',
@@ -250,7 +195,40 @@ const CHARACTERS = [
     beard: false
   },
   {
-    name: 'Josh',
+    name: 'Remi',
+    img: 'images/jai.svg',
+    hairColor: 'black',
+    eyeColor: 'brown',
+    glasses: false,
+    hat: false,
+    jewellery: false,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Reuben',
+    img: 'images/jacques.svg',
+    hairColor: 'grey',
+    eyeColor: 'blue',
+    glasses: false,
+    hat: false,
+    jewellery: false,
+    smoker: true,
+    beard: true
+  },
+  {
+    name: 'Samira',
+    img: 'images/jabala.svg',
+    hairColor: 'hidden',
+    eyeColor: 'hidden',
+    glasses: true,
+    hat: true,
+    jewellery: false,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Steve',
     img: 'images/josh.svg',
     hairColor: 'yellow',
     eyeColor: 'green',
@@ -261,27 +239,49 @@ const CHARACTERS = [
     beard: false
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hairColor: 'black',
+    name: 'Todd',
+    img: 'images/jon.svg',
+    hairColor: 'brown',
     eyeColor: 'green',
-    glasses: false,
-    hat: false,
-    jewellery: false,
-    smoker: false,
-    beard: true
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hairColor: 'black',
-    eyeColor: 'brown',
     glasses: true,
-    hat: true,
+    hat: false,
     jewellery: false,
     smoker: false,
     beard: false
   },
+  {
+    name: 'Toni',
+    img: 'images/jana.svg',
+    hairColor: 'black',
+    eyeColor: 'hidden',
+    glasses: true,
+    hat: false,
+    jewellery: true,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Willa',
+    img: 'images/jess.svg',
+    hairColor: 'black',
+    eyeColor: 'blue',
+    glasses: true,
+    hat: false,
+    jewellery: false,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Zackary',
+    img: 'images/jed.svg',
+    hairColor: 'orange',
+    eyeColor: 'green',
+    glasses: true,
+    hat: true,
+    jewellery: false,
+    smoker: true,
+    beard: true
+  }
 ]
 
 // Global variables

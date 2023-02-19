@@ -254,7 +254,8 @@ button {
   margin-bottom: 32px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 769px) and (orientation:portrair) {
+
   body {
     flex-direction: column;
   }
@@ -267,8 +268,10 @@ button {
     padding: 8px 16px;
   }
   h1 {
-    font-size: 100%;
-    line-height: 30px;
+
+    font-size: 100px;
+    line-height: 102px;
+
     font-family: 'Bungee Shade';
   }
 

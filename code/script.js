@@ -5,12 +5,14 @@ const restartButton = document.getElementById('restart')
 const filterButton= document.getElementById('filter')
 const winnerLooser= document.getElementById('winOrLose')
 const winnerLooserText = document.getElementById ('winOrLoseText')
+const whoCharacterIs = document.getElementById('revealCharacterText')
 const playAgain = document.getElementById('playAgain')
+const guessCounter=document.getElementById('guesses')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
+    name: 'Amabala',
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
@@ -18,7 +20,7 @@ const CHARACTERS = [
     other: ['scarf']
   },
   {
-    name: 'Jack',
+    name: 'Bob',
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
@@ -26,7 +28,7 @@ const CHARACTERS = [
     other: ['pet' , 'facial'],
   },
   {
-    name: 'Jacques',
+    name: 'Charles',
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
@@ -34,7 +36,7 @@ const CHARACTERS = [
     other: ['smoker', 'facial']
   },
   {
-    name: 'Jai',
+    name: 'Dave',
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
@@ -42,7 +44,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jake',
+    name: 'Eric',
     img: 'images/jake.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -50,7 +52,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'James',
+    name: 'Frank',
     img: 'images/james.svg',
     hair: ['brown'],
     eyes: 'green',
@@ -58,7 +60,7 @@ const CHARACTERS = [
     other: ['facial']
   },
   {
-    name: 'Jana',
+    name: 'Gertrude',
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
@@ -66,7 +68,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jane',
+    name: 'Hannah',
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
@@ -74,7 +76,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jaqueline',
+    name: 'Iris',
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
@@ -91,7 +93,7 @@ const CHARACTERS = [
     other: ['smoker']
   },
   {
-    name: 'Jean',
+    name: 'Konrad',
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
@@ -99,7 +101,7 @@ const CHARACTERS = [
     other: ['smoker', 'facial'],
   },
   {
-    name: 'Jeane',
+    name: 'Lauren',
     img: 'images/jeane.svg',
     hair: 'brown',
     eyes: 'green',
@@ -107,7 +109,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jed',
+    name: 'Matt',
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
@@ -115,15 +117,15 @@ const CHARACTERS = [
     other: ['smoker', 'facial']
   },
   {
-    name: 'Jenni',
+    name: 'Nina',
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat', 'jewelry'],
+    accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jeri',
+    name: 'Olivia',
     img: 'images/jeri.svg',
     hair: 'orange',
     eyes: 'green',
@@ -131,7 +133,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jerry',
+    name: 'Peter',
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
@@ -139,7 +141,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jess',
+    name: 'Quinn',
     img: 'images/jess.svg',
     hair: 'black',
     eyes: 'blue',
@@ -147,7 +149,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jocelyn',
+    name: 'Roselyn',
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
@@ -155,7 +157,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jon',
+    name: 'Scott',
     img: 'images/jon.svg',
     hair: 'brown',
     eyes: 'green',
@@ -163,7 +165,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jordan',
+    name: 'Terrence',
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
@@ -171,7 +173,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Josephine',
+    name: 'Uma',
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
@@ -179,7 +181,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Josh',
+    name: 'Vince',
     img: 'images/josh.svg',
     hair: 'yellow',
     eyes: 'green',
@@ -187,7 +189,7 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Jude',
+    name: 'William',
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
@@ -195,7 +197,7 @@ const CHARACTERS = [
     other: ['facial']
   },
   {
-    name: 'Julie',
+    name: 'Xelda',
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
@@ -208,28 +210,12 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let guesses = 0;
 
-//Kanske en startruta här? ---------------
-// const beginGame = () => { 
-//   board.innerHTML = `
-//   <input id='playersNameInput'> Your name</input>
-// `
-// document.getElementById('playersNameInput')
-//   const playersNameInput (event) => {
-//     event.preventDefault()
-//     showMessage(`Welcome ${playersNameInput.value} Let´s start a new game of Guess who?`)
-//   }
-//   //User types in Name and a massage is shown with the users name
-//   const handleNameInput = (event) => {
-//     event.preventDefault()
-//     showMessage(nameInput.value, 'user')
-  
-//     // Save the username for later
-//     username = nameInput.value 
-//   //Empty input
-//     nameInput.value = ''
-// }
-//----------------------------
+//Audio
+let winnerSound = new Audio('sounds/winnerSound.mp3')
+let losingSound = new Audio('sounds/losingSound.mp3')
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -247,16 +233,17 @@ const generateBoard = () => {
     `
   })
 }
+board.scrollTop = board.scrollHeight
 
-//Random selection of a charatcer
+//Random selection of a character
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-const selectQuestion = () => {
-  // This variable stores what option group (category) the question belongs to.
-  const category = questions.options[questions.selectedIndex].parentNode.label;
+const selectQuestion = () => {  // This variable stores what option group (category) the question belongs to.
+ 
   // We also need a variable that stores the actual value of the question we've selected.
+  const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
@@ -268,26 +255,23 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const {category, value} = currentQuestion
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Compares the currentQuestion details with the secret person details + invoking filterCharacters-function
   if (category === 'hair' || category === 'eyes') {
     if (secret[category] === value) {
-      filterCharacters(true); // Keep everyone with that hair/eye color
+      filterCharacters(true)
     } else {
-      filterCharacters(); // Remove everyone with that hair/eye color
+      filterCharacters()
     }
   } else if (category === 'accessories' || category === 'other') {
     if (secret[category].includes(value)) {
-      filterCharacters(true); //Keep everyone with some kind of accessories or other
+      filterCharacters(true)
     } else {
-      filterCharacters(); //Remove all with acc or other, I really hope it will look into all array index
+      filterCharacters()
     }
   }
-  console.log()
 }
 
-// It'll filter the characters array and redraw the game board.
+// Filter out characters via keep/ or not.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories and filter based on the category and value of param keep
@@ -316,7 +300,12 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   }
-  // Invoke a function to redraw the board with the remaining people.
+
+  //Adding a guess for each time player makes a guess 
+  guesses++
+  //Showing player the counter
+  guessCounter.innerHTML = guesses
+  //New board with the characters still left on the board
   generateBoard()
 }
 
@@ -329,17 +318,32 @@ const guess = (confirmGuess) => {
     checkTheGuess(confirmGuess)
   }
 }
-//Confirming the guess will trigger
+//Confirming the guess will trigger the winning or losing message
 const checkTheGuess = (personToConfirm) => {
   if (personToConfirm === secret.name) {
-    winnerLooserText.innerHTML = `CONGRATULATIONS <br> - you did <span role="img"></span>` //Modifierad LOGO2
+    winnerLooserText.innerHTML = `
+    <div>CONGRATULATIONS <br> - you did <span role="img"></span> </div>`
+
+    whoCharacterIs.innerHTML = `Who? was indeed <br> 
+         <div class="winLooseCard">
+         <p>${secret.name}</p>
+         <img src=${secret.img} alt=${secret.name}>
+       </div>` 
+    winnerSound.play()
   } else {
-    winnerLooserText.innerHTML = `Oh sorry! You didn´t <br> <span role="img"></span>` //LOGO2
+    winnerLooserText.innerHTML = `
+    <div> Oh sorry! You didn't <br> <span role="img"></span>`
+
+    whoCharacterIs.innerHTML = `Who? was actually <br> 
+         <div class="winLooseCard">
+         <p>${secret.name}</p>
+         <img src=${secret.img} alt=${secret.name}>
+       </div>` 
+    losingSound.play()
   }
   winnerLooser.style.display = 'flex'
   board.style.display = 'none'
 }
-
 
 //Start and restart game
 const play = () => {
@@ -350,9 +354,8 @@ const play = () => {
   generateBoard()
 }
 play ()
-// // // All the event listeners
 
-// playersNameInput.addEventListener('submit', start)
+// // // All the event listeners
 questions.addEventListener('change', selectQuestion)
 restartButton.addEventListener('click', play)
 questions.addEventListener('change', selectQuestion)

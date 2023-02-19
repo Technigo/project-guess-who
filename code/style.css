@@ -1,15 +1,9 @@
-/* Global css variables used for colors */
 /*HEXcolos
 Turqoise: #b2e4d5
 Salmon: #f2a6a6
 Purple: #b18ea6
 LightTurqoise: #e7f3ee
 */
-
-:root {
-  --primary: #f2a6a6;
-  --secondary: #b2e4d5;
-}
 
 body {
   display: flex;
@@ -29,12 +23,13 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: #b2e4d5;
   display: flex;
   flex-direction: column;
   padding: 5vw;
   align-content: center;
   box-sizing: border-box;
+  border: dotted #b18ea6 5px;
 }
 
 select {
@@ -78,13 +73,15 @@ select:hover {
   align-content: center;
 }
 
-/* #nameInput {
-  background-color: aqua;
-  justify-self: center;
-} */
+.guesses-wrapper {
+  font-size: 20px;
+  color: #b18ea6;
+  margin: auto;
+}
 
 /****** CARD ******/
-.card {
+.card,
+.winLooseCard {
   width: 135px;
   height: 165px;
   overflow: hidden;
@@ -98,7 +95,8 @@ select:hover {
   justify-content: space-between;
 }
 
-.card p {
+.card p,
+.winLooseCard p{
   text-align: center;
   margin-bottom: 0;
   font-size: 16px;
@@ -116,7 +114,7 @@ select:hover {
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: #b2e4d5;
 }
 
 .card:hover img,
@@ -129,6 +127,11 @@ select:hover {
   display: flex;
 }
 
+.winLooseCard {
+margin: auto;
+margin-top: 10px;
+}
+
 .guess span {
   font-size: 16px;
   line-height: 18px;
@@ -139,7 +142,7 @@ select:hover {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
+  border: 2px solid #f2a6a6;
   border-radius: 50px;
   font-size: 20px;
   font-family: 'Gloria Hallelujah';
@@ -157,7 +160,7 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
+  color: #f2a6a6;
   align-self: flex-end;
   font-size: 10px;
   border-radius: 50%;
@@ -167,7 +170,7 @@ button {
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
+  background-color: #f2a6a6;
   color: #e7f3ee;
 }
 
@@ -179,10 +182,11 @@ button {
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  align-content: space-between;
+  background: #b2e4d5;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -200,14 +204,11 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+.guess-who-logo-end {
+  width: 300px;
+  margin: 20px;
 }
 
-.win-or-lose h1 {
-  margin-bottom: 32px;
-}
 
 @media (max-width: 768px) {
   body {
@@ -259,7 +260,18 @@ button {
     padding: 6px 11px;
     margin-bottom: 1px;
     background: white;
-    color: var(--primary);
+    color: #f2a6a6;
     border: none;
   }
+
+  footer {
+    font-size: 9px;
+    margin-top: 130px;
+  }
+}
+
+footer {
+  margin:auto;
+  font-size: 12px;
+  color: #b18ea6;
 }

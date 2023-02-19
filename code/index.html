@@ -16,7 +16,7 @@
 
       <button type="button" id="restart" class="outlined-button">RESTART</button>
   
-      <img class="guess-who-logo" src="images/LOGO2.png" alt="Guess Who"/>
+      <img class="guess-who-logo" src="images/LOGO2.png" alt="Guess Who?"/>
 
       <h1>Does the character have</h1>
 
@@ -54,27 +54,29 @@
           <option value="scarf">a scarf?</option>
         </optgroup>
       </select>
-
       <button id="filter" class="filled-button">FIND OUT</button>
+      <section class="guesses-wrapper">
+        <p>Guesses:</p><p id="guesses">0</p>
+      </section> 
+      <footer> 
+        <p> © 2023 | TBL | Guess Who Project @ Technigo</p>
+      </footer>
     </aside>
 
     <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
-      <!-- <form id="nameForm">
-        <input id="nameInput" type="text" required/>
-        <button class="send-btn" id=sendBtn type="submit">That´s me!</button>
-      </form>
-    </section> -->
+      <main class="game-board" id="board"></main> 
+    </section>
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
         <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <img
+          class="guess-who-logo-end"
+          src="images/LOGO2.png"
+          alt="Guess Who?"
+        />
+        <h1 id="revealCharacterText"></h1>
+        <button type="button" id="playAgain" class="filled-button small">PLAY AGAIN</button>
       </div>
     </section>
     <script src="script.js"></script>

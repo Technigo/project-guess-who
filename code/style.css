@@ -21,9 +21,6 @@ h1 {
   text-shadow: 1px 1px 2px black;
 }
 
-h2 {
-
-}
 
 p{
   margin: 10px 0px 5px 0px;
@@ -343,11 +340,12 @@ button {
   }
 
   .card .guess .filled-button {
-    padding: 6px 11px;
+    padding: 5px 30px;
     margin-bottom: 1px;
     background: white;
     color: var(--secondary);
     border: none;
+    border-radius: 0;
   }
 
   .last-line .filled-button{

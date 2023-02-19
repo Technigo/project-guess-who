@@ -242,6 +242,12 @@ let charactersInPlay //Will be an array of all people left in the game
 let count = 0
 let timerIntervalId
 
+let winSound = new Audio ('./sounds/kass-theme.flac');
+winSound.volume = 0.5;
+
+let loseSound = new Audio ('./sounds/hyrule-castle.flac')
+loseSound.volume = 0.5;
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = '' //clears the board before it is repopulated by HTML below
@@ -287,6 +293,7 @@ const startTimer = () => { // defining startTimer
     }
     
     if (minute == 0){
+      loseSound.play()
       loseText.innerHTML = ''
       loseText.innerHTML += `
       GAME OVER.`
@@ -416,6 +423,7 @@ const checkMyGuess = (personToConfirm) => {
 
 
   if (personToConfirm === secret.name) {   // 1. Check if the personToCheck is the same as the secret person's name
+    winSound.play()
     winText.innerHTML = ''
     winText.innerHTML += `
     You are a Champion!`   // 2. Set a Message to show in the win or lose section accordingly   // 3. Show the win or lose section
@@ -424,6 +432,7 @@ const checkMyGuess = (personToConfirm) => {
     questionSection.style.display = 'none'
     footer.style.display = 'none'
   } else {
+    loseSound.play()
     loseText.innerHTML = ''
     loseText.innerHTML += `
     GAME OVER.`   // 2. Set a Message to show in the win or lose section accordingly   // 3. Show the win or lose section
@@ -436,6 +445,8 @@ const checkMyGuess = (personToConfirm) => {
 }
 
 const playAgain = () => {
+  winSound.pause()
+  loseSound.pause()
   winWrapper.style.display = 'none'
   loseWrapper.style.display = 'none'
   board.style.display = 'flex'

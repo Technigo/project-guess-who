@@ -308,16 +308,6 @@ const filterCharacters = (keep) => {
   // filter by category to keep or remove based on the keep variable.
   //For hair and eyes
   if (keep) {
-    charactersInPlay = charactersInPlay.filter(
-      (person) => person[category === value
-    );
-  } else {
-    charactersInPlay = charactersInPlay.filter(
-      (person) => person[attribute] !== value
-    );
-  }
-  //for accessories and other:
-  if (keep) {
     charactersInPlay = charactersInPlay.filter((person) =>
       person[category].includes(value)
     );
@@ -326,26 +316,39 @@ const filterCharacters = (keep) => {
       (person) => !person[category].includes(value)
     );
   }
+  //for accessories and other:
 
   // Invoke a function to redraw the board with the remaining people.
   generateBoard();
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
+// when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  const userConfirm = confirm(
+    `Are you sure you want to guess on ${personToConfirm}?`
+  );
+
+  if (userConfirm) {
+    checkMyGuess(personToConfirm);
+  }
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  if (personToCheck === secret) {
+    winOrLoseText.innerHTML = `Yay    – you won! <span role="img" aria-label="cheer">🙌</span>`;
+  } else {
+    winOrLoseText.innerHTML = `Oh no! You guessed wrong. Game over! <span role="img" aria-label="angry">😤</span>`;
+  }
+  winOrLose.style.display = "flex";
+  board.style.display = "none";
 };
 
+// 1. Check if the personToCheck is the same as the secret person's name
+// 2. Set a Message to show in the win or lose section accordingly
+// 3. Show the win or lose section
+// 4. Hide the game board
 // Invokes the start function when website is loaded
 start();
 

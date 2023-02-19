@@ -19,18 +19,40 @@ h1 {
   color: #ee4266;
 }
 
-h6 {
+h5 {
   color: #ee4266;
-  font-size: 22px;
+  font-size: 15px;
 }
 
 .marquee {
+  /*
   height: 90;
-  width: 450;
+  width: 100;
+  margin-bottom: 50%; */ 
+
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 15px;
+  color: #ee4266;
+  font-family: 'Handlee', cursive;
+  display:inline-block;
+  
+  width: 200px;
 }
 
-footer {
-  margin-top: 3%;
+.marquee span {
+  display:inline-block;
+  min-width: 100%;
+  -webkit-animation: marquee 6s linear infinite;
+}
+
+@-webkit-keyframes marquee {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+  }
 }
 
 .question-section {
@@ -183,7 +205,7 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
-  padding-bottom: 10%;
+  padding-bottom: 13%;
 }
 
 .win-or-lose {

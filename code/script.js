@@ -7,6 +7,10 @@ const resultBoard = document.getElementById("winOrLose")
 const resultText = document.getElementById("winOrLoseText")
 const playAgainButton = document.getElementById("playAgain")
 
+const soundEffectFinal = () => {
+  const sound = new Audio('sport-rock-logo1-13776.mp3');
+  sound.play()
+}
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -230,7 +234,8 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret =
-    charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+    charactersInPlay[20];
+//[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
 // This function to start (and restart) the game
@@ -342,6 +347,7 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerHTML = `Congrats!`
     winOrLose.style.display = "block";
     board.style.display = "none";
+    soundEffectFinal();
   } else {
     alert("Oh no, that wasn't right")
     winOrLoseText.innerHTML = `Ouch! Better luck next time!`

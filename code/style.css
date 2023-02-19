@@ -314,13 +314,19 @@ button {
     flex-direction: column;
   }
 
+  .start {
+    margin: 50px auto;
+  }
+
   .questionSection {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 26px;
     line-height: 30px;

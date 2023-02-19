@@ -122,7 +122,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hairColor: 'hidden',
     eyeColor: 'blue',
-    glasses: true,
+    glasses: false,
     hat: true,
     jewellery: false,
     smoker: false,

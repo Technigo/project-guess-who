@@ -237,7 +237,7 @@ const generateBoard = () => {
   });
 };
 
-/* I though getting popup alerts with every guess was annoying, 
+/* I thought getting popup alerts with every guess was annoying, 
 so I made a container in the HTML for a log, styled it in CSS,
 and used this addToLog-function instead of alert() to put the messages there instead */
 

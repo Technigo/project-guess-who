@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to build a guess-who game, focusing on the functions of javascript such as filters and arrays.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I decided to keep the code as simple as possible, following the iterations handed to us from Technigo. I had to focus on each function to get an understanding of what was happening in the code. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://magenta-gaufre-7c18aa.netlify.app/

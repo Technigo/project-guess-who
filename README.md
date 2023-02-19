@@ -9,5 +9,4 @@ Step by step other persons are ruled out until player are ready to make a guess.
 I used a starter code holding the basic html and css and built the game logic using JavaScript. With different if-statements player's selected question value was tested on secret person and based on the result a filter function was used to redraw the characters in the gameboard.
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://earnest-cactus-488c67.netlify.app

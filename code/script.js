@@ -287,6 +287,9 @@ const start = () => {
   secretImageAtCheck.innerHTML = "";
   numberOfQuestions = 3;
   resetTimer();
+  questions.style.display = "block";
+  document.getElementById("filter").style.display = "block";
+  document.getElementById("mainQuestion").innerText = "Does the person have...";
 
   // Alexander: Resets the counter
   numberOfQuestionsAllowed.innerText = `🤍 Number of questions left: 3 🤍`;

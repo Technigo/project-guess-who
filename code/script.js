@@ -337,7 +337,7 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret) {
-    winOrLoseText.innerHTML = `Yay    – you won! <span role="img" aria-label="cheer">🙌</span>`;
+    winOrLoseText.innerHTML = `You guessed RIGHT! Well played!!`;
   } else {
     winOrLoseText.innerHTML = `Oh no! You guessed wrong. Game over! <span role="img" aria-label="angry">😤</span>`;
   }

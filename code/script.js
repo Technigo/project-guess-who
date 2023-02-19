@@ -391,7 +391,7 @@ const filterCharacters = (keep) => {
       );
     } else {
       alert(
-        `Nope, it's not a ${value}! Let's kill everything that is not ${value}!`
+        `Nope, it's not a ${value}! Let's kill everything that is a ${value}!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)

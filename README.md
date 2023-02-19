@@ -1,13 +1,19 @@
-# Project Name
+# Who Ate My Cookies!
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+I made this game for my son. I drew and created the characters for him, and he even made some of the creatures for this game.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I wanted to make my version of this assignment and probably managed to do it. Next time I will not make 25 characters but focus only on coding :-D
+
+In general, this was a demanding task in this time slot. (I was also forced to do a photo shoot middle of the week and was forced to work during the weekend.) 
+
+I did pretty good documentation of my javascript to truly understand what it does.
+
+I spend a lot of time tweaking the CSS, and there is still some stuff with mobile/tablet versions. I'm not too happy. I will probably ask some of these things from Daniel at the beginning of this week.
+
+One detail about the game: sometimes, you end up in a situation where you need to guess from several options. That is a feature, not a bug because sometimes you do not know who ate your cookies even if you tried to be clever with your detective work. -That's life ;-)
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+http://www.korea.fi/technigo4/

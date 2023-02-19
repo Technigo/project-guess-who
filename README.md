@@ -1,13 +1,15 @@
-# Project Name
+# Guess Who
 
-Replace this readme with your own information about your project.
+This was the project for week 2 of the Technigo boot camp.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The goal was to make a Guess Who?-type of game. It went well!
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Adding the basic functionality was fine. The example code was clearly commented and I had no trouble getting the basic functionality up. I started adding some custom elements of my own which gave me a little trouble. The most problematic was the function which removed a guess from the select element of guesses but I managed to get it working in the end.
+
+I also did not really spend any time styling it or modifying the characters or guesses as I focused on the Javascript.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://remarkable-salmiakki-3f4422.netlify.app/

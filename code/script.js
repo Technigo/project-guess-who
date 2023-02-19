@@ -410,7 +410,7 @@ const filterCharacters = (keep) => {
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(
-        `Nope, it does not have ${value} ${category}! Remove everyone with ${value} ${category}`
+        `Nope, it does not have ${value} ${category}! Remove everything with ${value} ${category}!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
@@ -454,10 +454,10 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
   if (personToCheck === secret.name) {
     winOrLose.style.display = "block";
-    winOrLoseText.innerText = `Wow, that's absolutly right! You win!`;
+    winOrLoseText.innerText = `Wow, you are awesome, that's absolutly right! You win!`;
   } else {
     winOrLose.style.display = "block";
-    winOrLoseText.innerText = `Oh noes! That was wrong, the correct answer is ${secret.name}!`;
+    winOrLoseText.innerText = `Oh noes! Totally wrong that! The correct answer is ${secret.name}!`;
   }
 };
 

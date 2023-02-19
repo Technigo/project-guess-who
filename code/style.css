@@ -51,7 +51,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 146px;
   margin-top: 20px;
 }
 
@@ -68,6 +68,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  margin: 4px 0;
 }
 
 /****** CARD ******/
@@ -79,7 +80,7 @@ select {
   border-radius: 4px;
   background-color: #040cfa67;
   color: white;
-  margin: 4px;
+  margin: 2px;
   padding-top: 4px;
   display: flex;
   flex-direction: column;
@@ -112,12 +113,15 @@ select {
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  /*background-color: var(--secondary);*/
+  background-image:url("people/cardBack.png");
 }
 
 .card:hover img,
 .card:hover p {
   display: none;
+  height: 165px;
+  width: 135px;
 }
 
 /* The div with the guess class is only shown on hover */
@@ -219,7 +223,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 100px;
   }
 
   .board-wrapper {
@@ -229,7 +233,9 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    justify-content: center;
   }
+
 
   .card {
     width: 113px;

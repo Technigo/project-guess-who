@@ -19,6 +19,7 @@ h1 {
   color: white;
 }
 
+
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -36,15 +37,15 @@ select {
   width: 100%;
   font-size: 18px;
   font-family: "Dosis", sans-serif;
-  color: var(--primary);
   width: 100%;
   margin: 24px 0;
 }
 
 #questions option,
 #questions optgroup {
-  background: #730237;
   font-family: "Dosis", sans-serif;
+  color: white;
+  background-color: #730237;
 }
 
 .guess-who-icon {
@@ -56,13 +57,14 @@ select {
   align-items: center;
 }
 
-.guesses-wrapper p,
-.info {
+.guesses-wrapper p {
+  font-size: 22px;
   color: white;
 }
 
 .info {
-  font-size: 0.6rem;
+  font-size: 0.8rem;
+  color: white;
 }
 
 a {

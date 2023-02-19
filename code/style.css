@@ -19,7 +19,6 @@ h1 {
   color: white;
 }
 
-
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -68,9 +67,9 @@ select {
 }
 
 a {
-font-weight: bolder;
-color: var(--primary);
-text-decoration: none;
+  font-weight: bolder;
+  color: var(--primary);
+  text-decoration: none;
 }
 
 .board-wrapper {
@@ -192,7 +191,7 @@ button {
 .restart-button:hover {
   background-color: #730237;
   border-color: var(--primary);
-  color: var(--primary)
+  color: var(--primary);
 }
 
 /****** WIN OR LOSE SECTION ******/

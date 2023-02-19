@@ -214,7 +214,7 @@ const CHARACTERS = [
 let secret; // will be the secret character
 let currentQuestion; // will be the current question object
 let charactersInPlay; //will be an array of all characters left in the game
-let questions //Question counter
+let questions; //Question counter
 
 //Generates the board with all the dogs. Starts with reset to clear dogs if filter is applied.
 const generateBoard = () => {
@@ -254,7 +254,6 @@ const start = () => {
 const selectQuestion = () => {
   const category = dropdown.options[dropdown.selectedIndex].parentNode.label;
   const value = dropdown.options[dropdown.selectedIndex].value;
-
   currentQuestion = { category: category, value: value };
 };
 
@@ -339,14 +338,16 @@ const filterCharacters = (keep) => {
   questions--; //Removes 1 guess from the guess counter
   questionCounter.innerHTML = questions; //Shows game counter to player
   generateBoard();
-    dropdown.selectedIndex = null; //Clears the dropdown from previously chosen values
+  dropdown.selectedIndex = null; //Clears the dropdown from previously chosen values
 
-  if (questions <= 0) { //alerts the user that it's time to make their guess, lets them make a final guess
+  if (questions <= 0) {
+    //alerts the user that it's time to make their guess, lets them make a final guess
     alert(`Time to make a guess!`);
-  } else if (questions <= -1) { //alerts user that they've run out of questions
-    winOrLoseText.innerHTML = `You've run out of questions!`
+  } else if (questions <= -1) {
+    //alerts user that they've run out of questions
+    winOrLoseText.innerHTML = `You've run out of questions!`;
     winOrLose.style.display = "flex";
-  board.style.display = "none";
+    board.style.display = "none";
   }
 };
 

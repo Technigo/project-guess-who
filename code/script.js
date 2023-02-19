@@ -1,14 +1,14 @@
 // Ylva - All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
-const findOutButton = document.getElementById('findOut')
-const rightOrWrongText = document.getElementById('rightOrWrongText')
-const rightOrWrongSection = document.getElementById('rightOrWrong')
-const playAgainButton = document.getElementById('playAgain')
-const secretImageAtCheck = document.getElementById('secretImage')
-const nrOfQuestionsAllowed = document.getElementById('numberOfQuestions')
-const gameTimer = document.getElementById('timer')
+const board = document.getElementById("board")
+const questions = document.getElementById("questions")
+const restartButton = document.getElementById("restart")
+const findOutButton = document.getElementById("findOut")
+const winOrLoseText = document.getElementById("winOrLoseText")
+const winOrLoseSection = document.getElementById("winOrLose")
+const playAgainButton = document.getElementById("playAgain")
+const secretImageAtCheck = document.getElementById("secretImage")
+const nrOfQuestionsAllowed = document.getElementById("numberOfQuestions")
+const gameTimer = document.getElementById("timer")
 
 // Ylva - Array with all the characters, as objects
 const CHARACTERS = [
@@ -228,20 +228,20 @@ const paddedNumber = (number, length) => {
 const resetTimer = () => {
   timeLeft = 240; //4-minutes countdown for game - might make this longer
 
-countDown = setInterval(() => {
-  if (timeLeft <= 0) {
+  countDown = setInterval(() => {
+    if (timeLeft <= 0) {
     clearInterval(countDown);
-    rightOrWrongText.innerHTML = "<p>Game Over</p>";
-    rightOrWrong.style.display = "flex";
-}
-else {
-  //showing the time left in minutes and seconds instead of default settings
-let minutes = Math.floor(timeLeft / 60) % 60;
-let seconds = timeLeft % 60;
-gameTimer.innerHTML = paddedNumber(minutes, 4) + ":" + paddedNumber(seconds, 4) + " remaining";
-}
-timeLeft -= 1;
-}, 1000);
+    winOrLoseText.innerHTML = "<p>Game Over</p>";
+    winOrLose.style.display = "flex";
+  }
+    else {
+    //showing the time left in minutes and seconds instead of default settings
+    let minutes = Math.floor(timeLeft / 60) % 60;
+    let seconds = timeLeft % 60;
+    gameTimer.innerHTML = paddedNumber(minutes, 4) + ":" + paddedNumber(seconds, 4) + " remaining";
+  }
+  timeLeft -= 1;
+  }, 1000);
 };
 
 // Draw the game board
@@ -263,7 +263,8 @@ const generateBoard = () => {
 
 // Ylva - Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret =
+    charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
 // Ylva - This function to start (and restart) the game - this also creates an array called charactersInPlay to be iterated
@@ -272,7 +273,7 @@ const setSecret = () => {
 const start = () => {
   //This shows the first option as selected in the dropdown-menu
   questions.value = "";
-  rightOrWrongSection.style.display = "none";
+  winOrLoseSection.style.display = "none";
   secretImageAtCheck.innerHTML = "";
   nrOfQuestions = 5;
   resetTimer();
@@ -332,19 +333,39 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that (true or false)
   // Then invoke filterCharacters
-  if (secret[category] === 'hair' || category === 'eyes') {
+  if (category === "hair" || category === "eyes") {
+   if (secret[category] === value) {
     filterCharacters(true); //keep everyone with true according to hair/eye color
-    
+   } else {
+   filterCharacters(); //remove everyone with false according to hair/eye color
+   }
   } else if (category === 'accessories' || category === 'other') {
-if (secret[category].includes(value)) === 'glasses') {
-
+if (secret[category].includes(value)) {
+filterCharacters(true); //keep everyone with true according to accessories/other
+else {
+  filterCharacters(); //remove everyone with false according to accessories/other
+}
   }
 }
+  }
+numberOfQuestionsAllowed.innerText = "You have 0 questions left";
+questions.style.display = "none";
+document.getElementById('findOut').style.display = "none";
+document.getElementById('mainQuestion').innerText = 
+"Now it's time to make a guess!";
+//adds +1 to the counter of questions allowed
+//Make the counter for number of guesses/questions from the player
+//counter++;
+//Nr of questions allowed should be 5 - but I can't make that work now
+//NrOfQuestionsLimit();
+}
+};
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
+  // Show the correct alert message for different categories, to keep or remove - based on the value of keep.
+
   if (category === 'accessories') {
     if (keep) {
       alert(

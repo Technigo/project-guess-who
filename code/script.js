@@ -231,12 +231,12 @@ const paddedNumber = (number, length) => {
 };
 // The countdown-function and the reset for the countdown everytime there's a reload of the game
 const resetTimer = () => {
-  timeLeft = 90; // two minutes countdown
+  timeLeft = 120; // two minutes countdown
 
   countDown = setInterval(() => {
     if (timeLeft <= 0) {
       clearInterval(countDown);
-      winOrLoseText.innerHTML = `<p>Time's run out!</p>`;
+      winOrLoseText.innerHTML = `<p>Time is out!</p>`;
       winOrLose.style.display = "flex";
     } else {
       // to show the countdown in minutes and seconds instead of the default setting that is just seconds

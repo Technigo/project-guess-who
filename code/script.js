@@ -342,9 +342,7 @@ const filterCharacters = (keep) => {
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-
 // store the interaction from the player in a variable.
-
   // If the player wants to guess, invoke the checkMyGuess function.
 const guess = (personToConfirm) => {
   let guessed = confirm (`hmmmm are you sure?, really really sure that ${personToConfirm} is your guess?`)
@@ -398,6 +396,10 @@ const refreshPage = () => {
   board.style.display = 'flex';
   start();
 }
+const playAgain = ()=>{
+  start 
+
+}
 
 
 restartButton.addEventListener('click', start);
@@ -407,5 +409,5 @@ findOutButton.addEventListener('click', () => {
   checkQuestion()
 });//Is there another way to do this??
 
-playAgainButton.addEventListener ('click', start) //seems like this wont work for me!
+playAgainButton.addEventListener ('click', playAgain) //seems like this wont work for me!
 

@@ -7,12 +7,17 @@ const resultBoard = document.getElementById("winOrLose")
 const resultText = document.getElementById("winOrLoseText")
 const playAgainButton = document.getElementById("playAgain")
 
-const soundEffectFinal = () => {
+const soundEffectWon = () => {
   const sound = new Audio('sport-rock-logo1-13776.mp3');
   sound.volume = 0.1;
   sound.play()
 }
 
+const soundEffectLost = () => {
+  const sound = new Audio('failure-2-89169.mp3');
+  sound.volume = 0.5;
+  sound.play()
+}
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -344,16 +349,17 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    alert("You won!");
+    alert("You won! Wohoo!");
     winOrLoseText.innerHTML = `Congrats!`
     winOrLose.style.display = "block";
     board.style.display = "none";
-    soundEffectFinal();
+    soundEffectWon();
   } else {
     alert("Oh no, that wasn't right")
     winOrLoseText.innerHTML = `Ouch! Better luck next time!`
     winOrLose.style.display = "block";
     board.style.display = "none";
+    soundEffectLost();
   }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly

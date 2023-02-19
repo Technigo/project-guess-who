@@ -194,8 +194,7 @@ footer {
   align-items: center;
   bottom: 0;
   margin-top: 5px;
-  background-image: linear-gradient(rgba(60, 125, 209, 0.8), rgba(44, 95, 190, 0.8)),
-  url("images/card-background1.png");
+  background: white;
 }
 
 .contact {

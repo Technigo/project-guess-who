@@ -295,7 +295,7 @@ const filterCharacters = (keep) => {
     if (keep) {
     alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`)
     } else {
-      alert(`No, the person doesn't have ${value} ${category}! Remove all peole with ${value} ${category}`)
+      alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`)
     }
   } else if (category === 'accessories') {
     if (keep) {
@@ -357,6 +357,13 @@ const checkMyGuess = (theGuess) => {
  }
 
 }
+// Makes the guess counter reset
+const playAgain = () => {
+  start();
+  count = 0;
+  guessCounter.innerHTML=''
+  guessCounter.innerHTML += `GUESS COUNTER: ${count}`
+}
 
 // Invokes the start function when website is loaded
 start()
@@ -368,4 +375,4 @@ questions.addEventListener('change', selectQuestion);
 // When clicking on the 'Find out' button, invoke the checkQuestion 
 findOutBtn.addEventListener('click', checkQuestion);
 // When clicking on the 'Play Again' button, restart the game
-playAgainBtn.addEventListener('click', start)
+playAgainBtn.addEventListener('click', playAgain)

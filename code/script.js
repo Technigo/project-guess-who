@@ -231,6 +231,38 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+// when clicking guess, the player first have to confirm that they want to make a guess.
+const guess = (minionToConfirm) => {
+  const makeAGuess = confirm(`Are you really sure you want to guess on ${minionToConfirm}?`)
+  // store the interaction from the player in a variable.
+  // remember the confirm() ?
+  // If the player wants to guess, invoke the checkMyGuess function.
+}
+
+// If you confirm, this function is invoked
+const checkMyGuess = (minionToCheck) => {
+  if (minionToCheck === secret.name) {
+    winOrLoseText.innerHTML = `Banana 🍌! Congrats <br>
+    - you are a winner! <span role=img" aria-label="trophy">🏆</span>`
+  }
+  else {
+    winOrLoseText.innerHTML = `Oh no, no banana for you this time. <br>
+    <span role="img" aria-label = "warningLight">🚨</span>`
+  }
+  winOrLose.style.display = 'flex'
+  board.style.display = 'none'
+}
+
+
+{
+  // 1. Check if the personToCheck is the same as the secret person's name. OK.
+  // 2. Set a Message to show in the win or lose section accordingly. OK. 
+  // 3. Show the win or lose section
+  // 4. Hide the game board
+}
+
+
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -242,6 +274,7 @@ const start = () => {
   // What else should happen when we start the game?
 }
 
+//CHARACTERS.forEach((person) => console.log(person.hair));
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -313,21 +346,9 @@ const filterCharacters = (keep) => {
   // Invoke a function to redraw the board with the remaining people.
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
-  const makeAGuess = confirm(`Are you really sure you want to guess on ${personToConfirm}?`)
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-}
 
-// If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-}
+
+
 
 // Invokes the start function when website is loaded
 start()

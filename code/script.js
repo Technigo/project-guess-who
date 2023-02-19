@@ -17,7 +17,8 @@ const CHARACTERS = [
     hairColor: 'grey',
     eyeColor: 'hidden',
     glasses: false,
-    sunGlasses: true,
+    sunglasses: true,
+    jewelry: false,
     other: false,
   },
   {
@@ -26,7 +27,8 @@ const CHARACTERS = [
     hairColor: 'dk brown',
     eyeColor: 'green',
     glasses: true,
-    sunGlasses: false, 
+    sunglasses: false, 
+    jewelry: false,
     other: false,
   },
   {
@@ -35,7 +37,8 @@ const CHARACTERS = [
     hairColor: 'lt brown',
     eyeColor: 'hidden',
     glasses: false,
-    sunGlasses: true,
+    sunglasses: true,
+    jewelry: true,
     other: false,
   },
   {
@@ -44,7 +47,8 @@ const CHARACTERS = [
     hairColor: 'hidden',
     eyeColor: 'blue',
     glasses: true,
-    sunGlasses: false,  
+    sunglasses: false,
+    jewelry: false,  
     other: false,
   },
   {
@@ -53,7 +57,8 @@ const CHARACTERS = [
     hairColor: 'brown',
     eyeColor: 'green',
     glasses: true,
-    sunGlasses: false, 
+    sunglasses: false, 
+    jewelry: false,
     other: false,
   },
   {
@@ -62,7 +67,8 @@ const CHARACTERS = [
     hairColor: 'red',
     eyeColor: 'green',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: false,      
   },
   {
@@ -71,7 +77,8 @@ const CHARACTERS = [
     hairColor: 'grey',
     eyeColor: 'brown',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: false,
   },
   {
@@ -80,7 +87,8 @@ const CHARACTERS = [
     hairColor: 'dk blonde',
     eyeColor: 'blue',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: true,
   },
   {
@@ -89,7 +97,8 @@ const CHARACTERS = [
     hairColor: 'lt blonde',
     eyeColor: 'brown',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: false,
   },
   {
@@ -98,7 +107,8 @@ const CHARACTERS = [
     hairColor: 'brown',
     eyeColor: 'green',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: true, 
   },
   {
@@ -107,7 +117,8 @@ const CHARACTERS = [
     hairColor: 'lt brown',
     eyeColor: 'hidden',
     glasses: false,
-    sunGlasses: true,
+    sunglasses: true,
+    jewelry: false,
     other: false, 
   },
   {
@@ -116,7 +127,8 @@ const CHARACTERS = [
     hairColor: 'lt brown',
     eyeColor: 'green',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: false,
   },
   {
@@ -125,7 +137,8 @@ const CHARACTERS = [
     hairColor: 'white',
     eyeColor: 'blue',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: true,
     other: false,    
   },
   {
@@ -134,7 +147,8 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'blue',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: true,
   },
   {
@@ -143,7 +157,8 @@ const CHARACTERS = [
     hairColor: 'lt blonde',
     eyeColor: 'blue',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: false,
   },
   {
@@ -152,7 +167,8 @@ const CHARACTERS = [
     hairColor: 'red',
     eyeColor: 'brown',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: false,
   },
   {
@@ -161,7 +177,8 @@ const CHARACTERS = [
     hairColor: 'grey',
     eyeColor: 'green',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: true,
     other: false,
   },
   {
@@ -170,7 +187,8 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'brown',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: true,
   },
   {
@@ -179,7 +197,8 @@ const CHARACTERS = [
     hairColor: 'brown',
     eyeColor: 'blue',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: false,
   },
   {
@@ -188,7 +207,8 @@ const CHARACTERS = [
     hairColor: 'dk brown',
     eyeColor: 'hidden',
     glasses: false,
-    sunGlasses: true,
+    sunglasses: true,
+    jewelry: false,
     other: false,
   },
   {
@@ -197,7 +217,8 @@ const CHARACTERS = [
     hairColor: 'dk brown',
     eyeColor: 'blue',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: false,
   },
   {
@@ -206,7 +227,8 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'hidden',
     glasses: false,
-    sunGlasses: true,
+    sunglasses: true,
+    jewelry: true,
     other: false,
   },
   {
@@ -215,7 +237,8 @@ const CHARACTERS = [
     hairColor: 'dk brown',
     eyeColor: 'blue',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false,
     other: false, 
   },
   {
@@ -224,7 +247,8 @@ const CHARACTERS = [
     hairColor: 'black',
     eyeColor: 'brown',
     glasses: true,
-    sunGlasses: false,
+    sunglasses: false,
+    jewelry: false, 
     other: true,
   },
 ]

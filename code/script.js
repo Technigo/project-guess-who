@@ -4,45 +4,50 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
-const winOrLoseText = document.getElementById('winOrLoseText')
+const winOrLoseText1 = document.getElementById('winOrLoseText1')
+const winOrLoseText2 = document.getElementById('winOrLoseText2')
 const playAgain = document.getElementById('playAgain')
 const guessCounterElem = document.getElementById('guess-counter');
 const winOrLoseContainer = document.getElementById('winOrLoseContainer')
 const countUpTimer = document.getElementById('count-up')
 
-// Array with all the characters, as objects
+
 const CHARACTERS = [
   {
     name: 'Jabala',
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    accessories: ['sunglasses', 'a hat'],
+    other: [],
+    mood: 'a happy'
   },
   {
     name: 'Jack',
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: ['beard']
+    accessories: ['a hat'],
+    other: ['beard', 'pet'],
+    mood: 'an angry'
   },
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker','beard']
+    accessories: ['a hood'],
+    other: ['smoking habit','beard'],
+    mood: 'an uneasy'
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
+    name: 'Jagger',
+    img: 'images/jagger.svg',
     hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    eyes: 'jagger',
+    accessories: ['a face mask'],
+    other: [],
+    mood: 'an unknown'
   },
   {
     name: 'Jake',
@@ -50,56 +55,71 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    mood: 'a happy'
   },
   {
     name: 'James',
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['sunglasses'],
+    other: [],
+    mood: 'a sad'
   },
   {
     name: 'Jana',
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['sunglasses','jewelry'],
+    other: [],
+    mood: 'a chill'
   },
   {
     name: 'Jane',
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['sunglasses'],
+    other: [],
+    mood: 'an angry'
   },
   {
     name: 'Jaqueline',
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['glasses','jewelry'],
+    other: [],
+    mood: 'an uneasy'
   },
-
+  {
+    name: 'Javier',
+    img: 'images/javier.svg',
+    hair: 'hidden',
+    eyes: 'blue',
+    accessories: ['a cap'],
+    other: [],
+    mood: 'an uneasy'
+  },
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    accessories: ['sunglasses'],
+    other: ['smoking habit'],
+    mood: 'an angry'
   },
   {
     name: 'Jean',
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    accessories: ['glasses','a hat'],
+    other: ['smoking habit'],
+    mood: 'an angry'
   },
   {
     name: 'Jeane',
@@ -107,23 +127,26 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    mood: 'a happy'
   },
   {
     name: 'Jed',
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker', 'beard']
+    accessories: ['glasses','a hat'],
+    other: ['smoking habit','beard'],
+    mood: 'an angry'
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    accessories: ['a hat','jewelry'],
+    other: [],
+    mood: 'an unknown'
   },
   {
     name: 'Jeri',
@@ -131,15 +154,17 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    mood: 'an uneasy'
   },
   {
     name: 'Jerry',
     img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    hair: 'grey',
+    eyes: 'brown',
+    accessories: ['a face mask', 'glasses'],
+    other: [],
+    mood: 'an unknown'
   },
   {
     name: 'Jess',
@@ -147,15 +172,62 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    mood: 'a chill'
+  },
+  {
+    name: 'Jia',
+    img: 'images/jia.svg',
+    hair: 'black',
+    eyes: 'blue',
+    accessories: ['glasses'],
+    other: [],
+    mood: 'an uneasy'
+  },
+  {
+    name: 'Jinx',
+    img: 'images/jinx.svg',
+    hair: 'purple',
+    eyes: 'green',
+    accessories: ['a face mask'],
+    other: [],
+    mood: 'an unknown'
   },
   {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    accessories: ['glasses','jewelry'],
+    other: [],
+    mood: 'an uneasy'
+  },
+  {
+    name: 'Jodi',
+    img: 'images/jodi.svg',
+    hair: 'yellow',
+    eyes: 'blue',
+    accessories: ['a hat'],
+    other: [],
+    mood: 'a sad'
+  },
+  {
+    name: 'Joe',
+    img: 'images/joe.svg',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: ['a cap'],
+    other: [],
+    mood: 'a happy'
+  },
+  {
+    name: 'Jolee',
+    img: 'images/jolee.svg',
+    hair: 'black',
+    eyes: 'blue',
+    accessories: ['a hair band', 'jewelry'],
+    other: [],
+    mood: 'an uneasy'
   },
   {
     name: 'Jon',
@@ -163,23 +235,26 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    mood: 'a happy'
   },
   {
     name: 'Jordan',
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    accessories: ['sunglasses', 'a cap', 'jewelry'],
+    other: [],
+    mood: 'a chill'
   },
   {
     name: 'Josephine',
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
-    other: []
+    accessories: ['jewelry'],
+    other: [],
+    mood: 'an uneasy'
   },
   {
     name: 'Josh',
@@ -187,7 +262,8 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: [],
+    mood: 'a happy'
   },
   {
     name: 'Jude',
@@ -195,23 +271,25 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: ['beard']
+    other: ['beard'],
+    mood: 'a chill'
   },
   {
     name: 'Julie',
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
+    accessories: ['glasses', 'a cap'],
+    other: [],
+    mood: 'an angry'
+  }
 ]
 
 // Global variables
 let secret //Secret person object
 let currentQuestion // The current question object
 let charactersInPlay //The people that are left in the game
-let guessCounter = 0;
+let guessCounter = 0; // Question counter starts on 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -239,7 +317,6 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-
 const guessCounterDisplay = () => {
   guessCounterElem.innerText = `${guessCounter}`;
 };
@@ -251,7 +328,7 @@ const upTimer = () => {
   let hour = Math.floor(seconds / 3600);
   let minute = Math.floor((seconds - hour * 3600) / 60);
   let updSecond = seconds - (hour * 3600 + minute * 60);
-  countUpTimer.innerHTML = `Your time: <span id="hour">${hour}</span>hr <span id="minute">${minute}</span>min <span id="second">${updSecond}</span>sec`;
+  countUpTimer.innerHTML = `Your time: <div class="timer"><span id="hour">${hour}</span>hr <span id="minute">${minute}</span>min <span id="second">${updSecond}</span>sec</div>`;
 }
 
 let timer = setInterval(upTimer, 1000);
@@ -289,7 +366,7 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'hair' || category === 'eyes' || category === 'mood' ) {
     if (secret[category] === value) {
       keep = true
       filterCharacters(true); 
@@ -351,11 +428,7 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-  const userGuess = window.confirm(`Are you sure about ${personToConfirm}..?`
-  );
+  const userGuess = window.confirm(`Are you sure about ${personToConfirm}..?`);
   if (userGuess) {
     checkMyGuess(personToConfirm);
   }
@@ -363,21 +436,19 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-    console.log('checkMyGuess')
-  console.log(countUpTimer.innerHTML)
-    board.innerHTML = '';
-    winOrLose.style.display = "block";
-    board.innerHTML = '';
-  let secretPersonImg = `<img class="cardFinal" src=${secret.img} alt=${secret.name}> <div><h3>Amount of guesses: ${guessCounter}</h3></div><div class="winOrLoseTime"><h3>You played the game in </h3>${countUpTimer.innerHTML}</div>`;
-    winOrLoseContainer.insertAdjacentHTML("beforeEnd", secretPersonImg);
-   if (personToCheck === secret.name) {
-     winOrLoseText.innerText = `Wohoo that's correct! You Win!`
+  board.innerHTML = '';
+  winOrLose.style.display = "block";
+  board.innerHTML = '';
+  if (personToCheck === secret.name) {
+    let secretPersonImgWin = `<img class="card-win" src=${secret.img} alt=${secret.name}><h3>Amount of guesses: </h3><div class="winOrLoseTime guess-container">${guessCounter}</div><div class="winOrLoseTime"><h3>${countUpTimer.innerHTML}</h3></div>`;
+    winOrLoseContainer.insertAdjacentHTML("beforeEnd", secretPersonImgWin);
+    winOrLoseText1.innerText = `Wohoo that's correct! You Win!`
+    winOrLoseText2.innerText = `${secret.name} is pleased!`
   } else {
-    winOrLoseText.innerText = `Oh no! Your guess is wrong! ${secret.name} is very angry!`
+    let secretPersonImgLose = `<img class="card-lose" src=${secret.img} alt=${secret.name}><h3>Amount of guesses: </h3><div class="winOrLoseTime guess-container">${guessCounter}</div><div class="winOrLoseTime"><h3>${countUpTimer.innerHTML}</h3></div>`;
+    winOrLoseContainer.insertAdjacentHTML("beforeEnd", secretPersonImgLose);
+    winOrLoseText1.innerText = `Oh no! Your guess is wrong!`
+    winOrLoseText2.innerText = `${secret.name} (the right person) is very angry!`
   }
 }
 
@@ -387,8 +458,6 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', (event) => { 
 start()
-/* pause();
-reset(); */
 window.location.reload();
 });
 questions.addEventListener('change', () => {
@@ -398,13 +467,10 @@ questions.addEventListener('change', () => {
 filterButton.addEventListener('click', checkQuestion)
 playAgain.addEventListener("click", (event) => {
   start();
- /*  pause();
-  reset(); */
   winOrLose.style.display = "none";
   window.location.reload();
 });
 filterButton.addEventListener("click", () => {
   guessCounter += 1;
   guessCounterDisplay(); 
-/*   startTimer(); */
 });

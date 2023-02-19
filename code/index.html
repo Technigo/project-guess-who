@@ -10,20 +10,20 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://use.typekit.net/ouw1zgu.css">
-    <link rel="stylesheet" href="https://use.typekit.net/ouw1zgu.css">
   </head>
   <body>
     <aside class="question-section" id="aside-section">
-         
+         <header class="header">
     
-  <!--       <img
+          <img
           class="guess-who-icon"
-          src="images/guess-who-bubble.png"
+          src="images/logo-question-01.svg"
           alt="Guess Who"
-        /> -->
+        />
+        <img class="guess-who-background" src="./images/aside-background1-01.svg" alt="guess who background"> 
 
         <h1>Does the person have?</h1>
-
+        </header>
         <select title="questions" id="questions">
           <option value="" disabled selected> </options>
           <optgroup label="hair">
@@ -45,26 +45,42 @@
           </optgroup>
           <optgroup label="accessories">
             <option value="glasses">glasses</option>
-            <option value="hat">hat</option>
+            <option value="sunglasses">sunglasses</option>
+            <option value="jewelry">jewelry</option>
+            <option value="a hat">hat</option>
+            <option value="a cap">cap</option>
+            <option value="a hood">hood</option>
+            <option value="a hair band">hair band</option>
+            <option value="a face mask">face mask</option>
             <!-- Add the other accessory option here. (hat)  -->
           </optgroup>
           <optgroup label="other">
-            <option value="beard">a beard</option>
-            <option value="smoker">a smoking habit</option>
+            <option value="beard">beard</option>
+            <option value="smoking habit">smoking habit</option>
+            <option value="pet">a pet</option>
+          </optgroup>
+          <optgroup label="mood">
+            <option value="a happy">happy</option>
+            <option value="a chill">chill</option>
+            <option value="a sad">sad</option>
+            <option value="an angry">angry</option>
+            <option value="an uneasy">uneasy</option>
+            <option value="an unknown">unknown</option>
           </optgroup>
         </select>
 
         <button id="filter" class="filled-button">FIND OUT</button>
       
       <section class="counting-section">
-        <h3>Amount of guesses: <span id="guess-counter">0</span></h3>
-        <h3 id= "count-up">Your time: <span id="hour">0</span>hr <span id="minute">0</span>min <span id="second">0</span>sec</h3>
+        <h3>Amount of guesses: <span class="guess-container" id="guess-counter">0</span></h3>
+        <h3 id= "count-up">Your time: <div class="timer"><span id="hour">0</span>hr <span id="minute">0</span>min <span id="second">0</span>sec</div></h3>
+        </section>
       <button 
           type="button" 
           id="restart" 
           class="outlined-button">
           RESTART
-        </button>    
+      </button>   
     </aside>
 
     <section class="board-wrapper">
@@ -73,12 +89,8 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-      <!--   <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess who image"
-        /> -->
-        <h1 id="winOrLoseText"></h1>
+        <h1 id="winOrLoseText1"></h1>
+        <h2 id="winOrLoseText2"></h2>
         <div id="winOrLoseContainer"></div>
         <button 
           type="button" 

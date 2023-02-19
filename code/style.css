@@ -1,4 +1,3 @@
-/* Global css variables used for colors */
 :root {
   --primary: #9dd1f0;
   --secondary: #468bcc;
@@ -43,6 +42,11 @@ select {
   padding: 5px;
 }
 
+#questions {
+  font-size: 22px;
+  text-align: center;
+}
+
 .guess-who-icon {
   width: 126px;
 }
@@ -61,6 +65,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: space-around;
 }
 
 /****** CARD ******/
@@ -70,7 +75,7 @@ select {
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;
-  margin: 3px;
+  margin: 3px 3px 8px 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -196,7 +201,15 @@ button {
   background-color: #7bb6ed;
 }
 
-@media (max-width: 768px) {
+
+@media (min-width: 668px) and (max-width: 1023px) {
+  #questions {
+    font-size: 16px;
+  }
+}
+
+
+@media (max-width: 667px) {
   body {
     flex-direction: column;
   }
@@ -204,10 +217,18 @@ button {
   .question-section {
     width: 100%;
     min-height: 0;
+    background: rgb(178, 200, 222);
+    background: radial-gradient(circle, rgb(176, 195, 214) 0%, rgb(78, 156, 233) 100%);
   }
+
+  #questions {
+    font-size: 16px;
+  }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
@@ -224,6 +245,7 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    min-height: 380px;
   }
 
   .card {
@@ -245,8 +267,8 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
-    color: var(--primary);
+    background: rgb(248, 250, 251, 0.6);
+    color: rgb(35, 95, 179);
     border: none;
   }
 }

@@ -1,9 +1,9 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
-const findOutButton = document.getElementById('filter')
-const playAgainButton = document.getElementById('playAgainButton')
+const board = document.getElementById('board');
+const questions = document.getElementById('questions');
+const restartButton = document.getElementById('restart');
+const findOutButton = document.getElementById('filter');
+const playAgain = document.getElementById('playAgain');
 
 // Array with all the characters in the game, as objects
 const CITIES = [
@@ -223,40 +223,34 @@ const generateBoard = () => {
       </div>
     `
   })
-}
+};
 
 
-// Randomly select a city from the characters array and set as the value of the variable called secret
+// Randomly selects a city from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = citiesInPlay[Math.floor(Math.random() * citiesInPlay.length)]
-  console.log(secret); //REMOVE - Only to see that a new secret character is selected each time
 }
-//WORKING
 
 
 
-
-// setting the currentQuestion object when you select something in the dropdown
+// Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label // This variable stores what option group (category) the question belongs to.
-  const value = questions.value // A variable that stores the actual value of the question we've selected ("blue", "brown")
+  const category = questions.options[questions.selectedIndex].parentNode.label
+  const value = questions.value
 
   currentQuestion = {
     category: category,
     value: value
   }
-  console.log("Selected value", currentQuestion)//REMOVE - WORKING!
 };
 
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function is invoked when you click on 'Find Out' button
 const checkQuestion = () => {
   const {category, value} = currentQuestion;
   
 
-  // Compare the currentQuestion details with the secret city details in a different manner based on category (continent/hemisphere or language/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Compares the currentQuestion details with the secret city details in a different manner based on category (continent/hemisphere or language/others).
   if (category === 'continent') {
     if (secret[category] === value) {
       keep = true
@@ -277,8 +271,7 @@ const checkQuestion = () => {
 };
 
 
-
-// It'll filter the characters array and redraw the game board.
+// Filter the characters array and redraws the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   const uppercaseValue = value.replace('-', ' ').replace(/\b\w/g, c => c.toUpperCase());
@@ -322,22 +315,21 @@ const filterCharacters = (keep) => {
       alert(`No, the city is not in ${uppercaseValue}! Remove all the cities in ${uppercaseValue}`);
       citiesInPlay = citiesInPlay.filter((city) => city[category] !== value);
     }
-    
   }
   generateBoard();
 };
 
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// When clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (cityToConfirm) => {
-  const confirmGuess = confirm(`Are you sure you want to guess on ${cityToConfirm}?`)
+  const confirmGuess = confirm(`Are you sure you want to guess on ${cityToConfirm}?`);
   if (confirmGuess === true) {
-  checkMyGuess(cityToConfirm) //Should probably be invoked here?
+  checkMyGuess(cityToConfirm);
   }
 };
 
 
-// If you confirm, this function is invoked
+// If confirmed, this function is invoked
 const checkMyGuess = (cityToCheck) => {
   if (cityToCheck === secret.name) {
   winOrLose.style.display = 'flex';
@@ -345,34 +337,34 @@ const checkMyGuess = (cityToCheck) => {
   winOrLose.innerHTML += `
         <h1>YOU WIN! ${cityToCheck} was the secret city</h1>
     `;
+
   } else {
     winOrLose.style.display = 'flex'
     board.style.display = 'none'
     winOrLose.innerHTML += `
-        <h1>You lost! ${cityToCheck} was not the secret city, it was ${secret.name}!</h1>
-      `;
+        <h1>You lost :( ${cityToCheck} was not the secret city, it was ${secret.name}!</h1>
+    `;
   }
 };
 
 
 const start = () => {
-  citiesInPlay = CITIES // reset characters to the initial array
-  winOrLose.style.display = 'none' // don't show the win/lose screen
-  board.style.display = 'flex' // show the game board again
-  setSecret() // set a new secret city
-  generateBoard() // draw the board with all the cities
+  citiesInPlay = CITIES
+  winOrLose.style.display = 'none'
+  board.style.display = 'flex'
+  setSecret()
+  generateBoard()
 } 
 
-
 // Invokes the start function when website is loaded
-start()
+start();
 
 
 // All the event listeners
-restartButton.addEventListener('click', start)
-questions.addEventListener('change', selectQuestion)
-findOutButton.addEventListener('click', checkQuestion)
-playAgainButton.addEventListener("click", start)
-
-
-
+restartButton.addEventListener('click', start);
+questions.addEventListener('change', selectQuestion);
+findOutButton.addEventListener('click', checkQuestion);
+playAgain.addEventListener("click", (event) => {
+  start();
+  winOrLose.style.display = "none";
+});

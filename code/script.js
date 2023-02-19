@@ -7,10 +7,10 @@ const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgain = document.getElementById('playAgain')
 let winOrLoseContainer = document.getElementById('winOrLoseContainer')
-let winSound = new Audio ('./assets/lady.mp3');
+let winSound = new Audio ('./assets/win.wav');
 winSound.volume = 0.5;
 
-let loseSound = new Audio ('./assets/lady.mp3')
+let loseSound = new Audio ('./assets/lose.mp3')
 loseSound.volume = 0.5;
 
 // Array with all the characters, as objects

@@ -1,325 +1,704 @@
+//******************************************** */
+//******************************************** */
+
+
+
+//This code declares and initializes several variables using the getElementById 
+//method of the document object in JavaScript.
+
+//document represents the web page as a document object model (DOM), 
+//and the getElementById method is used to access an HTML element on the page using its unique identifier (ID).
+
+//The variables declared are:
+
+//board: This variable is assigned the HTML element with an ID of "board".
+//questions: This variable is assigned the HTML element with an ID of "questions".
+//restartButton: This variable is assigned the HTML element with an ID of "restart".
+//winOrLose: This variable is assigned the HTML element with an ID of "winOrLose".
+//winOrLoseText: This variable is assigned the HTML element with an ID of "winOrLoseText".
+//playAgainButton: This variable is assigned the HTML element with an ID of "playAgain".
+//filterButton: This variable is assigned the HTML element with an ID of "filter".
+//Once these variables are assigned, they can be used to manipulate or access the corresponding HTML elements on the page. For example, if we wanted to add an event listener to the restartButton element, we could do so using restartButton.addEventListener().
+
+
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
+const filterButton = document.getElementById('filter')
 
+
+//******************************* */
+//******************************************** */
+
+
+
+// CHARACTERS CHARACTERS CHARACTERS
 // Array with all the characters, as objects
 const CHARACTERS = [
+
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'PRTHMU',
+    img: 'images/prthmu.png',
+    eyes: 'two eyes',
+    teeth: 'no teeth',
+    mouth: false,
+    hat: false,
+    "green skin": true,
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    name: 'Fuki',
+    img: 'images/fuki.png',
+    eyes: 'two eyes',
+    teeth: 'many teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Neuro',
+    img: 'images/neuro.png',
+    eyes: 'two eyes',
+    teeth: 'many teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Killi',
+    img: 'images/killi.png',
+    eyes: 'no eyes',
+    teeth: 'less than five teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Kyklo',
+    img: 'images/kyklo.png',
+    eyes: 'one eye',
+    teeth: 'less than five teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    name: 'Polo',
+    img: 'images/polo.png',
+    eyes: 'one eye',
+    teeth: 'no teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Meta',
+    img: 'images/meta.png',
+    eyes: 'two eyes',
+    teeth: 'many teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'El Hefe',
+    img: 'images/elhefe.png',
+    eyes: 'two eyes',
+    teeth: 'no teeth',
+    mouth: false,
+    hat: true,
+    "green skin": true,
+  },
+
+  {
+    name: 'Plöppö',
+    img: 'images/ploppo.png',
+    eyes: 'one eye',
+    teeth: 'less than five teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
+  },
+
+  {
+    name: 'Melo',
+    img: 'images/melo.png',
+    eyes: 'two eyes',
+    teeth: 'no teeth',
+    mouth: false,
+    hat: true,
+    "green skin": true,
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
+    name: 'Sielu',
+    img: 'images/sielu.png',
+    eyes: 'two eyes',
+    teeth: 'no teeth',
+    mouth: false,
+    hat: false,
+    "green skin": true,
+  },
+
+  {
+    name: 'Maibeline',
+    img: 'images/maibeline.png',
+    eyes: 'two eyes',
+    teeth: 'many teeth',
+    mouth: true,
+    hat: true,
+    "green skin": true,
+  },
+
+  {
+    name: 'Seppo',
+    img: 'images/seppo.png',
+    eyes: 'two eyes',
+    teeth: 'no teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    name: 'Haamu',
+    img: 'images/haamu.png',
+    eyes: 'two eyes',
+    teeth: 'no teeth',
+    mouth: false,
+    hat: false,
+    "green skin": false,
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Mute',
+    img: 'images/mute.png',
+    eyes: 'two eyes',
+    teeth: 'no teeth',
+    mouth: false,
+    hat: false,
+    "green skin": true,
+  },
+
+  {
+    name: 'Esso',
+    img: 'images/esso.png',
+    eyes: 'two eyes',
+    teeth: 'many teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Sugar',
+    img: 'images/sugar.png',
+    eyes: 'two eyes',
+    teeth: 'less than five teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: 'Paavo',
+    img: 'images/paavo.png',
+    eyes: 'two eyes',
+    teeth: 'many teeth',
+    mouth: true,
+    hat: true,
+    "green skin": true,
+  },
+
+  {
+    name: 'Kyylä',
+    img: 'images/kyyla.png',
+    eyes: 'many eyes',
+    teeth: 'many teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
+  },
+
+  {
+    name: 'Doom',
+    img: 'images/doom.png',
+    eyes: 'two eyes',
+    teeth: 'less than five teeth',
+    mouth: false,
+    hat: true,
+    "green skin": false,
+  },
+
+  {
+    name: 'America',
+    img: 'images/america.png',
+    eyes: 'two eyes',
+    teeth: 'many teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: 'Häppi',
+    img: 'images/happi.png',
+    eyes: 'two eyes',
+    teeth: 'no teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
+
+
+
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: 'Hilma',
+    img: 'images/hilma.png',
+    eyes: 'two eyes',
+    teeth: 'less than five teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
+
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Pii Paa',
+    img: 'images/piipaa.png',
+    eyes: 'one eye',
+    teeth: 'no teeth',
+    mouth: true,
+    hat: false,
+    "green skin": true,
   },
+  
+  {
+    name: 'Pikku',
+    img: 'images/pikku.png',
+    eyes: 'two eyes',
+    teeth: 'no teeth',
+    mouth: false,
+    hat: false,
+    "green skin": false,
+  },
+
 ]
 
-// Global variables
-let secret
-let currentQuestion
-let charactersInPlay
 
-// Draw the game board
+
+
+
+
+
+//OWN NOTES: CHARACTERS.forEach(test => console.log(test));  
+
+
+//********************** */
+//******************************************** */
+
+// GLOBAL VARIABLES GLOBAL VARIABLES
+//For examplle secret is the person we are guessing. It's declared here, 
+// but we are giving a random value for it everytime we run the code with const setSecret...
+//currentQuestion linked with const checkQuestion
+//charactersInPlay declared later like this  charactersInPlay = CHARACTERS
+// let secret  // Will be the secret person object
+// let currentQuestion  // Will be current question object
+//let charactersInPlay // Will be an array of all the characters still left in the game.
+let secret, currentQuestion, charactersInPlay
+
+
+//****************************************** */
+//******************************************** */
+
+
+// CHARACTER IN PLAY TO THE BOARD   CHARACTER IN PLAY TO THE BOARD
+//go through every charactesInPlay and place them on board via innerHTML property (<-- is property right word?)
+   //section in below explains how to place them
+
+
+   //This is a function named generateBoard, which generates the game board 
+   //based on the current charactersInPlay array.
+
+   //The function starts by clearing the content of the board element using board.
+   //innerHTML = ''. This ensures that any previously generated cards are removed before the new ones are added.
+   
+   //Next, the function iterates over each object in the charactersInPlay array using the forEach method.
+   //For each object, the function creates a new HTML element with the class card and populates it with 
+   //an image of the character and a button to make a guess.
+   
+   //The HTML elements are created using template literals, which allow the dynamic insertion of variable values 
+   //into a string. The person object properties (img and name) are inserted using ${} syntax.
+   
+   //The onclick attribute of the button element calls a function named guess, passing the character's name as a parameter.
+   
+   //Finally, the new HTML element is added to the board element using the += operator to append the generated HTML to the existing content of board.innerHTML.
+   
+  
+   
+
+
+  //******************************************** */
+  //******************************************** */
+
+
+
+
+   
+   
+//The generateBoard function generates a set of HTML elements for each 
+//character in charactersInPlay and adds them to the board element on the web page.  
+
+
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
-    board.innerHTML += `
-      <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
-        <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
-        </div>
-      </div>
-    `
-  })
+    board.innerHTML +=  `
+     <div class="card"> 
+     <img src=${person.img} alt=${person.name}>
+     <div class="guess">
+       <span>${person.name}?</span>
+       <button class="filled-button-guess small" onclick="guess('${person.name}')">CATCH IT</button>
+     </div>
+   </div>
+ `
+})
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+//******************************************** */
+//******************************************** */
+
+
+// place characters via css styled (card) html:
+//<p> text is using name onject from the CHARACTERS array
+
+// NOTE TO SELF: Addition assignment (+=) for example let a = 'hello';
+// NOTE TO SELF: console.log(a += ' world');  --> Expected output: "hello world"
+
+
+
+
+//css class "card" is about style of every single card in the game"
+//board --> css game board describes how wide the game board should be
+// forEach going through every characters in play.
+// and with the help of board.innerHTML determines
+// to show name and image for every person
+// <span> part showing a overlay text/button menu where you can click to guess a player lelft in game.
+ 
+//************************
+//******************************************** */
+
+
+// SECRET SECRET SECRET
+
+// Randomly set a secret person
+// Select a person (randomly) from the characters array 
+//...and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
+// Math.random giving random numbers between 0 and 1.
+// The random number will be multiplied by the ammount of the characters in play --> charactersInPlay.length, [] "to reach" the index of the array.
+// Math.floor rounds desimals to whole numbers
+//************************ */
 
-// This function to start (and restart) the game
-const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-}
 
-// setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+//******************************************** */
+//************************************* */
 
-  currentQuestion = {
-    category: category,
-    // value: value
+
+//GUESS GUESS GUESS//
+
+
+// when clicking guess, you first have to confirm that you want to make a guess
+const guess = (suspect) => {
+  const makeAGuess = confirm(`Are you sure ${suspect} ate my cookies?`)
+
+  if (makeAGuess) {
+    checkMyGuess(suspect)
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
-const checkQuestion = () => {
-  const { category, value } = currentQuestion
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-
-  } else if (category === 'accessories' || category === 'other') {
-
-  }
-}
-
-// It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
-  if (category === 'accessories') {
-    if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
-    } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
-    }
-  } else if (category === 'other') {
-    // Similar to the one above
-  } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-    } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-    }
-  }
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-  // Invoke a function to redraw the board with the remaining people.
-}
-
-// when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-}
+
+
+
+
+
+//******************************************** */
+//******************************************** */
+
+
+
+
+//CHECK MY GUESS     CHECK MY GUESS   CHECK MY GUESS
+
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+const checkMyGuess = (suspect) => {
+  if (suspect === secret.name) {
+   winOrLoseText.innerHTML = `WOW!<br>You catched the cookie monster!!!` 
+  } else {
+    winOrLoseText.innerHTML = `Oh no!<br>You guessed wrong.<br>Game over! <span role="img" aria-label="angry">😤</span>`
+    }
+    winOrLose.style.display = 'flex'
+    board.style.display = 'none'
+  }
+
+
+
+//******************************************** */
+//******************************************** */
+
+
+ // SELECT QUESTION FROM THE DROPDOWN MENU 
+
+// setting the currentQuestion object when you select something in the dropdown
+// Notice that questions is a DOM selector, declared in the beginning of the code
+
+
+//the selectQuestion function retrieves the selected question and category from the dropdown menu,
+//and creates a new currentQuestion object based on the selected values. 
+//The currentQuestion object is used later in the game to filter the characters based on their attributes.
+
+const selectQuestion = () => {
+  const value = questions.value
+  const category = questions.options[questions.selectedIndex].parentNode.label
+
+  if (category === 'eyes') {
+    currentQuestion = {
+      attribute: 'eyes',
+      value: value,
+      category: category,
+    }
+  } else if (category === 'teeth') {
+    currentQuestion = {
+      attribute: 'teeth',
+      value: value,
+      category: category,
+    }
+  } else if (category === 'other') {
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    }
+  } else {
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    }
+  }
 }
+
+
+//This is a function named selectQuestion that is called 
+//when the user selects a question from the dropdown menu with an ID of "questions".
+
+// The function retrieves the selected value from the dropdown menu 
+//using questions.value, which returns the value attribute of the selected option.
+
+//The function also retrieves the label of the option group that contains 
+//the selected option using questions.options[questions.selectedIndex].parentNode.label.
+
+//The function then uses a series of conditional statements (if-else) to create 
+//a new currentQuestion object based on the selected category and value. 
+//The currentQuestion object has three properties: attribute, value, and category.
+
+
+
+
+//******************************************** */
+//******************************************** */
+
+
+
+
+// This function should be invoked when you click on 'Find Out'.
+//checkQuestion function determines whether the current question helps eliminate
+// some of the characters in the game by comparing the selected value to 
+//the secret attribute of the secret character. 
+//It then calls the filterCharacters function to update the charactersInPlay array
+//based on the result of the comparison.
+
+
+
+
+const checkQuestion = () => {
+  const keep = currentQuestion.value === secret[currentQuestion.attribute]
+
+  filterCharacters(keep)
+
+
+}
+
+
+//This is a function named checkQuestion that is called when the user clicks 
+//the "Find Out" button to check if their selected question helps eliminate some of the characters from the game.
+
+//The function first compares the value of the current question (as set by the selectQuestion function)
+// to the secret attribute of the secret character. If the values match, 
+//the keep variable is set to true; otherwise, keep is set to false.
+
+//The filterCharacters function is then called with the keep value as an argument. 
+//The filterCharacters function updates the charactersInPlay array 
+//based on the keep value, eliminating characters that do not match 
+//the current question and keeping those that do.
+
+
+//******************************************** */
+//******************************************** */
+
+
+
+// It'll filter the characters array and redraw the game board.
+const filterCharacters = (keep) => {
+  const { attribute, category, value } = currentQuestion
+
+  // Show the correct alert message
+  if (category === 'other') {
+    if (keep) {
+      alert(
+        `Yes, that mofo has ${attribute}! Keep all that have ${attribute}.`
+      )
+    } else {
+      alert(
+        `No, that mofo doesn't have ${attribute}! Remove all that have ${attribute}.`
+      )
+    }
+  } else if (category === 'teeth') {
+    if (keep) {
+      alert(
+        `Yes, that mofo has ${value}! Keep all that have ${value}.`
+      )
+    } else {
+      alert(
+        `Nope! Remove all that have ${value}.`
+      )
+    }
+  } else {
+    if (keep) {
+      alert(
+        `That mofo has ${value}! Keep all that have ${value}.`
+      )
+    } else {
+      alert(
+        `Nope! Remove all that have ${value}.`
+      )
+    }
+  }
+
+
+  //******************************************** */
+  //******************************************** */
+
+
+
+
+ //***** FILTER *****************//
+
+// Determine what is the category
+  // filter by category to keep or remove based on the keep variable.
+  // for accessories and other
+  //NOTE TO SELF: IF I WOUDLD HAVE KEPT THE CHARACTER OBJECTS LIKE THIS: accessories:
+  //NOTE TO SELF: ['glasses', 'hat'],other: ['smoker'], THEN I WOULLD HAVE USED THING BELOW:
+  //NOTE TO SELF: charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+  
+
+  // Invoke a function to redraw the board with the remaining people.
+  // Notice that board is a DOM selector, declared in the beginning of the code
+
+    // filter to keep or remove
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[attribute] === value
+      )
+    } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[attribute] !== value
+      )
+    }
+
+    charactersInPlay
+    generateBoard()
+  }
+
+
+  //This function called filterCharacters takes a boolean parameter called keep.
+  //It also references a variable called currentQuestion that presumably contains 
+  //information about the current question being asked in the game.
+
+  //The purpose of the filterCharacters function is to filter an array of characters
+  //based on the information in currentQuestion and the value of the keep parameter.
+  //If keep is true, the function will keep only the characters that match the specified 
+  //attribute or value, and if keep is false, it will remove 
+  //all characters that match the specified attribute or value.
+  
+  //The function also displays an alert message depending on the category of the current 
+  //question and the value of keep. If the category is "other", the alert will mention 
+  //the attribute that should be kept or removed. 
+  //If the category is "teeth", the alert will mention the specific value of teeth that should be kept or removed. 
+  //If the category is anything else, the alert will mention the specific value that should be kept or removed.
+
+
+
+//*********************************** */
+//************************************* */
+
+
+
+// This is the function to start/restart the game
+//the start function ensures that the game board is set up correctly and ready for the user to play.
+
+const start = () => {
+  charactersInPlay = CHARACTERS // all the original characters appears
+  winOrLose.style.display = 'none' // hide win/lose screen
+  board.style.display = 'flex' // to make game board visible, order with flex. 
+  setSecret() // set new secret, aka secret person, we are guessing.
+  generateBoard() // make new game board with all the people.
+}
+
+
+//This function called start that initializes the game board and starts a new game round.
+//The function performs several tasks:
+
+//1. It sets the global variable charactersInPlay to the original CHARACTERS array.
+//This array contains information about all the characters that can appear in the game.
+
+// 2. It hides the win/lose screen by setting its display property to 'none'.
+//This allows the game board to be visible to the user.
+
+// 3. It shows the game board by setting its display property to 'flex'.
+//This ensures that the game board will be visible and the user can interact with it.
+
+// 4. It calls the setSecret function, which sets a new secret person that the user will try to guess.
+
+// 5. It calls the generateBoard function, which creates a new game board with all the people in the charactersInPlay array.
+//This game board will display images and names of the characters that the user can interact with and use to make their guess.
+
+
+
+//************************************* */
+//************************************* */
+
+
 
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
+// Notice that restartButton is a DOM selector, declared in the beginning of the code
 restartButton.addEventListener('click', start)
+//NOTE TO SELF: This part is not written like this restartButton.addEventListener('click', start())
+// NOTE TO SELF: Because start() would execute the code right away.
+playAgainButton.addEventListener('click', start)
+filterButton.addEventListener('click', checkQuestion)
+questions.addEventListener('change', selectQuestion)
+
+
+
+//************************************* */
+//************************************* */
+//peki//
+

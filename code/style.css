@@ -235,10 +235,12 @@ button {
 
   #numberOfQuestions {
     align-self: center;
+    font-weight: 700;
   }
 
   #mainQuestion {
     align-self: center;
+    font-weight: 500;
   }
 
   .guess-who-icon {

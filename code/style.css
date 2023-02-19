@@ -24,14 +24,14 @@ h1 {
 
 /* Aside */
 .question-section {
-  width: 30%;
+  width: 40%;
   min-height: 100vh;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
   padding-right: 5vw;
   padding-left: 5vw;
-  align-items: flex-start;
+  align-items: stretch;
   box-sizing: border-box;
 }
 
@@ -250,7 +250,9 @@ button {
   body {
     flex-direction: column;
   }
-
+  select {
+    max-width: 50%;
+  }
   .question-section {
     width: 100%;
     min-height: 0;

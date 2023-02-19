@@ -14,7 +14,7 @@ const CHARACTERS = [
     img: "images/jabala.svg",
     hair: "hidden",
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    accessories: ["glasses", "a hat"],
     other: [],
   },
   {
@@ -22,7 +22,7 @@ const CHARACTERS = [
     img: "images/jack.svg",
     hair: "hidden",
     eyes: "blue",
-    accessories: ["hat"],
+    accessories: ["a hat"],
     other: [],
   },
   {
@@ -30,8 +30,8 @@ const CHARACTERS = [
     img: "images/jacques.svg",
     hair: "gray",
     eyes: "blue",
-    accessories: ["hat"],
-    other: ["smoker"],
+    accessories: ["a hat"],
+    other: ["a smoker"],
   },
   {
     name: "Jai",
@@ -88,15 +88,15 @@ const CHARACTERS = [
     hair: "purple",
     eyes: "hidden",
     accessories: ["glasses"],
-    other: ["smoker"],
+    other: ["a smoker"],
   },
   {
     name: "Jean",
     img: "images/jean.svg",
     hair: "brown",
     eyes: "blue",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    accessories: ["glasses", "a hat"],
+    other: ["a smoker"],
   },
   {
     name: "Jeane",
@@ -111,15 +111,15 @@ const CHARACTERS = [
     img: "images/jed.svg",
     hair: "orange",
     eyes: "green",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    accessories: ["glasses", "a hat"],
+    other: ["a smoker"],
   },
   {
     name: "Jenni",
     img: "images/jenni.svg",
     hair: "white",
     eyes: "hidden",
-    accessories: ["hat"],
+    accessories: ["a hat"],
     other: [],
   },
   {
@@ -135,7 +135,7 @@ const CHARACTERS = [
     img: "images/jerry.svg",
     hair: "hidden",
     eyes: "blue",
-    accessories: ["hat"],
+    accessories: ["a hat"],
     other: [],
   },
   {
@@ -167,7 +167,7 @@ const CHARACTERS = [
     img: "images/jordan.svg",
     hair: "yellow",
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    accessories: ["glasses", "a hat"],
     other: [],
   },
   {
@@ -199,7 +199,7 @@ const CHARACTERS = [
     img: "images/julie.svg",
     hair: "black",
     eyes: "brown",
-    accessories: ["glasses", "hat"],
+    accessories: ["glasses", "a hat"],
     other: [],
   },
 ];
@@ -353,14 +353,14 @@ const filterCharacters = (keep) => {
   if (category === "Other") {
     if (keep) {
       alert(
-        `Yes, the person is a ${value}. Keep all the people that is a ${value}.`
+        `Yes, the person is ${value}. Keep all the people that is ${value}.`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person.other.includes(value)
       );
     } else {
       alert(
-        `No, the person isn't a ${value}! Remove all people that is a ${value}.`
+        `No, the person isn't ${value}! Remove all people that is ${value}.`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person.other.includes(value)

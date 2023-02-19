@@ -205,7 +205,7 @@ let currentQuestion
 let charactersInPlay
 let countQuestionsAsked = 0
 const questionsAllowed = 4
-let gameName = "Murder on the Vasa Express"
+let gameName = "Murder on the Vasa"
 let playerName = "Holmes"
 let gameWonSound = new Audio("assets/win-audio.mp3")
 let gameLostSound = new Audio("assets/lost-audio.mp3")
@@ -226,8 +226,8 @@ const generateBoard = () => {
           <img src=${person.img} alt=${person.name}>
         </div>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Accuse ${person.name}?</span>
+          <button class="filled-button small" onclick="guess('${person.name}')">Accuse</button>
         </div>
       </div>
     `
@@ -242,8 +242,8 @@ const generateBoard = () => {
          <img class = "card-back" src="images/not-guilty-black.png" alt = "Suspect is not guilty">
         </div>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Accuse ${person.name}?</span>
+          <button class="filled-button small" onclick="guess('${person.name}')">Accuse</button>
         </div>
       </div>
     `
@@ -263,7 +263,7 @@ const start = () => {
   generateBoard();
   setSecret();
   askName();
-  gameBackgroundSound.play();
+  
   countQuestionsAsked = 0 //reset counter for new game
   questionsAskedDisplay.innerText = 0
   
@@ -423,11 +423,14 @@ const askName = () => {
       `Welcome Detective ${playerName}!
        </br> Dr. Black has been murdered on the Vasa & it's up to you to solve the mystery. `
     )
+    gameBackgroundSound.play();
   },
   function(){
-    alertify.error;
-  });
+    gameBackgroundSound.play();
+  }
+  );
   startTimer();
+  
 } 
 
 // Timer

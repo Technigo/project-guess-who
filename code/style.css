@@ -468,3 +468,7 @@ button {
 .ajs-button{
   color: var(--secondary) !important;
 }
+
+.ajs-cancel{
+  display: none;
+}

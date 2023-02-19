@@ -2,12 +2,12 @@
 
 Replace this readme with your own information about your project.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+I made a Guess Who game which allows players to ask questions to try and guess a secret person. The secret person is filtered down based on whether the player correctly guesses a feature of the secret person or not. Each time a guess is made, only the remaining possible suspects are left on the board. The player can guess any time who the secret person might be. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I approached the problem by thinking about the different functions needed for the game to work, and using Javascript to create the functions and actions to move the game forward. I also used some HTML to create a guess counter, and styled the game with CSS. If I had more time I would add sound effects and a timer to the game. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://glistening-nasturtium-bfa074.netlify.app/

@@ -40,7 +40,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    otherThanAccessories: []
+    other: []
   },
   {
     name: 'Jake',
@@ -234,7 +234,7 @@ const generateBoard = () => {
 //Kolla om funktionen fungerar.
 //Deras startkod: secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 const setSecret = () => {
-secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
 
@@ -250,7 +250,7 @@ const start = () => {
 
   generateBoard();
   setSecret();
- //Behövs denna? filterButton.disabled = true;
+  //Behövs denna? filterButton.disabled = true;
   //Behövs denna? filterButton.style.opacity = "0,5"
   console.log("The secret person is", secret.name);
 }
@@ -294,11 +294,11 @@ const checkGameTime = finishTime => {
 // setting the currentQuestion object when you select something in the dropdown
 
 const selectQuestion = () => {
- // Behövs denna? filterButton.disabled = false;
+  // Behövs denna? filterButton.disabled = false;
   const category = questions.options[questions.selectedIndex].parentNode.label
 
-    // We also need a variable that stores the actual value of the question we've selected.
-    const value = questions.options[questions.selectedIndex].value;
+  // We also need a variable that stores the actual value of the question we've selected.
+  const value = questions.options[questions.selectedIndex].value;
 
   console.log(selectQuestion);
   // This variable stores what option group (category) the question belongs to.
@@ -323,21 +323,21 @@ const checkQuestion = () => {
   if (category === 'hair' || category === 'eyes') {
     if (secret[category] === value) {
       keep = true
-      filterCharacters(true); 
+      filterCharacters(true);
     }
     else {
       keep = false
-      filterCharacters(false); 
+      filterCharacters(false);
     }
   }
- else if (category === 'accessories' || category === 'other') {
-    if (secret[category].includes(value)) {  
+  else if (category === 'accessories' || category === 'other') {
+    if (secret[category].includes(value)) {
       keep = true
-      filterCharacters(true); 
+      filterCharacters(true);
     }
     else {
       keep = false
-      filterCharacters(false); 
+      filterCharacters(false);
     }
   }
 }
@@ -352,47 +352,47 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(`Yay, the person has ${value}! Keep all people that has ${value}`);
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
-      
-    } else {
-      alert(`Nope, the person doesn't have ${value}! Remove all people that have ${value}`);
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
-      
-    }
-  } else if (category === 'other') {
-   if (keep) {
-    alert(`Yay, the person does have a ${value}! Keep all people that has a ${value}`);
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
-    
-  } else {
-    alert(`Nope, the person doesn't have ${value}! Remove all people that have a ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
-    
-  }
-  } else {
-    if (keep) {
-      alert(`Yay, the person has ${value}! Keep all people that have ${value}`);
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
-      
 
     } else {
       alert(`Nope, the person doesn't have ${value}! Remove all people that have ${value}`);
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
-      
-      }
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+
     }
-    generateBoard();
+  } else if (category === 'other') {
+    if (keep) {
+      alert(`Yay, the person does have a ${value}! Keep all people that has a ${value}`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+
+    } else {
+      alert(`Nope, the person doesn't have ${value}! Remove all people that have a ${value}`);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+
+    }
+  } else {
+    if (keep) {
+      alert(`Yay, the person has ${value}! Keep all people that have ${value}`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+
+
+    } else {
+      alert(`Nope, the person doesn't have ${value}! Remove all people that have ${value}`);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+
+    }
+  }
+  generateBoard();
 }
 
 
 
 
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
+// Determine what is the category
+// filter by category to keep or remove based on the keep variable.
 
 
-  // Invoke a function to redraw the board with the remaining people.
+// Invoke a function to redraw the board with the remaining people.
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
@@ -408,7 +408,7 @@ const guess = (personToConfirm) => {
   }
 }
 
-  
+
 
 
 
@@ -418,18 +418,18 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-  board.innerHTML ='';
+  board.innerHTML = '';
   winOrLose.style.display = "block";
   let secretPersonImg = `<img class="cardFinal" src=${secret.img} alt=${secret.name}>`;
-  winOrLoseContainer.insertAdjecentHTML("afterBegin", secretPersonImg);
+  winOrLoseContainer.insertAdjacentHTML("beforeEnd", secretPersonImg);
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `Good job, my friend! Thats is correct. You win!`
   } else {
     winOrLoseText.innerHTML = `Ha! You got it wrong! The correct answer is ${secret.name}. Try again!`
   }
-winOrLose.style.display = 'flex'
-board.style.display = 'none'
-  }
+  winOrLose.style.display = 'flex'
+  board.style.display = 'none'
+}
 
 
 
@@ -438,13 +438,22 @@ start();
 
 
 // All the event listeners
-restartButton.addEventListener('click', start)
-playAgain.addEventListener('click', (event) => {
-  start();
-filterButton.addEventListener('click', checkQuestion)
- winOrLose.style.display = "none";
-questions.addEventListener('change', selectQuestion)
-
+restartButton.addEventListener('click', (event) => { 
+start()
+/* pause();
+reset(); */
+window.location.reload();
 });
-
+questions.addEventListener('change', () => {
+  selectQuestion();
+  filterButton.style.opacity = "1.0"
+})
+filterButton.addEventListener('click', checkQuestion)
+playAgain.addEventListener("click", (event) => {
+  start();
+ /*  pause();
+  reset(); */
+  winOrLose.style.display = "none";
+  window.location.reload();
+});
 

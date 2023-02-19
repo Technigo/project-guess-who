@@ -1,74 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guesswhogame</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <aside class="question-section" id="aside-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
 
-      <img
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>theguesswhogame </title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.typekit.net/ouw1zgu.css">
+  <link rel="stylesheet" href="https://use.typekit.net/ouw1zgu.css">
+</head>
+
+<body>
+  <aside class="question-section" id="aside-section">
+    <button type="button" id="restart" class="outlined-button">RESTART</button>
+
+    <!-- <img
         class="guess-who-icon"
         src="images/guess-who-bubble.png"
         alt="Guess Who"
-      />
+      />-->
 
-      <h1>Does the person have</h1>
+    <h1>Does the person have</h1>
 
-      <select title="questions" id="questions">
-        <optgroup label="hair">
-          <option value="brown hair">brown hair</option>
-          <option value="yellow hair">yellow hair</option>
-          <option value="hidden hair">hidden hair</option>
-          <option value="black hair">black hair</option>
-          <option value="grey hair">grey hair</option>
-          <option value="orange hair">orange hair</option>
-          <option value="purple hair">purple hair</option>
-          <option value="white hair">white hair</option>
-          <!-- Add the rest of hair colors as options  -->
-        </optgroup>
-        <optgroup label="eyes">
-          <option value="brown eyes">brown eyes</option>
-          <option value="blue eyes">blue eyes</option>
-          <option value="green eyes">green eyes</option>
-          <option value="hidden eyes">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
-        </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <option value="a hat">a hat</option>
-          <!-- Add the other accessory option here. (hat)  -->
-        </optgroup>
-        <optgroup label="other">
-          <option value="smoking habit">a smoking habit</option>
-        </optgroup>
-      </select>
+    <select title="questions" id="questions">
+      <optgroup label="hair">
+        <option value="brown hair">brown hair</option>
+        <option value="yellow hair">yellow hair</option>
+        <option value="hidden hair">hidden hair</option>
+        <option value="black hair">black hair</option>
+        <option value="grey hair">grey hair</option>
+        <option value="orange hair">orange hair</option>
+        <option value="purple hair">purple hair</option>
+        <option value="white hair">white hair</option>
+        <!-- Add the rest of hair colors as options  -->
+      </optgroup>
+      <optgroup label="eyes">
+        <option value="brown eyes">brown eyes</option>
+        <option value="blue eyes">blue eyes</option>
+        <option value="green eyes">green eyes</option>
+        <option value="hidden eyes">hidden eyes</option>
+        <!-- Add the rest of eye colors as options  -->
+      </optgroup>
+      <optgroup label="accessories">
+        <option value="glasses">glasses</option>
+        <option value="a hat">a hat</option>
+        <!-- Add the other accessory option here. (hat)  -->
+      </optgroup>
+      <optgroup label="other">
+        <option value="smoking habit">a smoking habit</option>
+      </optgroup>
+    </select>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
-    </aside>
+    <button id="filter" class="filled-button">FIND OUT</button>
+  </aside>
 
-    <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
-    </section>
+  <section class="board-wrapper">
+    <main class="game-board" id="board"></main>
+  </section>
 
-    <section id="winOrLose" class="win-or-lose-wrapper">
-      <div class="win-or-lose">
-       <!-- <img
+  <section id="winOrLose" class="win-or-lose-wrapper">
+    <div class="win-or-lose">
+      <!-- <img
           class="guess-who-icon"
           src="images/guess-who-bubble.png"
           alt="Guess Who"/> -->
-        <h1 id="winOrLoseText"></h1>
-        <div id="secret-person-img">
+      <h1 id="winOrLoseText"></h1>
+      <div id="winOrLoseContainer">
+
         <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
-    </section>
-    <script src="script.js"></script>
-  </body>
+  </section>
+  <script src="script.js"></script>
+</body>
+
 </html>

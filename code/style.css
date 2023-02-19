@@ -51,12 +51,12 @@ select {
   width: 170px;
 }
 
-.questions-left-wrapper {
+.question-counter-wrapper {
   display: flex;
   align-items: center;
 }
 
-.questions-left-wrapper p {
+.question-counter-wrapper p {
   font-size: 22px;
   color: white;
 }

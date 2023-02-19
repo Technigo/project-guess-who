@@ -27,7 +27,7 @@ const CHARACTERS = [
     img: "images/frida.png",
     hair: "black",
     eyes: "visible",
-    accessories: ["a necklace", "earrings"],
+    accessories: ["a necklace", "earrings", "a headband"],
     other: ["artist"],
   },
   {
@@ -217,6 +217,7 @@ let currentQuestion;
 let numberOfQuestions;
 let timeLeft;
 let timerCountdown;
+let playerName;
 
 // Alexander: Declaring sound effects for winning or losing to be referenced later
 
@@ -290,6 +291,7 @@ const start = () => {
   questions.style.display = "block";
   document.getElementById("filter").style.display = "block";
   document.getElementById("mainQuestion").innerText = "Does the person have...";
+  document.getElementById("nameInput").value = "";
 
   // Alexander: Resets the counter
   numberOfQuestionsAllowed.innerText = `🤍 Number of questions left: 3 🤍`;
@@ -324,6 +326,11 @@ const selectQuestion = () => {
 
   // Alexander: To check the values of currentQuestion
   console.log(currentQuestion);
+};
+
+const playerNameSave = () => {
+  playerName = document.getElementById("nameInput").value;
+  console.log(playerName);
 };
 
 // Alexander: checkQuestion is invoked when you click on 'Find Out' button
@@ -369,7 +376,7 @@ const checkQuestion = () => {
     questions.style.display = "none";
     document.getElementById("filter").style.display = "none";
     document.getElementById("mainQuestion").innerText =
-      "Welp, time to make a guess! 👁";
+      "Welp, time to take a wild guess! 👁";
     // adds +1 to the counter
     // Increment counter for number of guesses/questions the player makes
     // counter++;
@@ -454,11 +461,11 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winningSound.play();
-    winOrLoseText.innerText = `That's correct! The person is indeed ${secret.name}`;
+    winOrLoseText.innerText = `That's correct ${playerName}! The person is indeed ${secret.name}`;
     secretImageAtCheck.innerHTML += `<img src=${secret.img} alt=${secret.name}>`;
   } else {
     losingSound.play();
-    winOrLoseText.innerText = `You lost! It is not ${personToCheck}. The person is ${secret.name}`;
+    winOrLoseText.innerText = `You lost ${playerName}! It is not ${personToCheck}. The person is ${secret.name}`;
     // An attempt to have the image of the secret person shows, could not get it to reload afterwads
     // winOrLoseSection.innerHTML += `
     //     <img src=${secret.img} alt=${secret.name}>
@@ -486,3 +493,4 @@ restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutButton.addEventListener("click", checkQuestion);
 playAgainButton.addEventListener("click", start);
+findOutButton.addEventListener("click", playerNameSave);

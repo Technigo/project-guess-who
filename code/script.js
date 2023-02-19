@@ -181,6 +181,7 @@ const start = () => {
   winOrLose.style.display = "none"
   // 4. Hide the game board
   board.style.display = "flex"
+  aside.style.display = "flex"
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
 
@@ -188,7 +189,7 @@ const start = () => {
   generateBoard(); // the board shoud appear
   setSecret(); // invoke the funtion so the computer select the secretc character
   lifes = 4
-  playerLifes.innerHTML = `LIFES: ${lifes}` // the player starts with 3 lifes
+  playerLifes.innerHTML = `Questions left: ${lifes}` // the player starts with 3 lifes
   //gamingTimer();
 };
 
@@ -222,7 +223,7 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a 
   
  
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'hair' || category === 'clothes') {
     if (value === secret[category]) {
       keep = true
       } else {
@@ -266,12 +267,12 @@ const filterCharacters = (keep) => {
       );
     }
 
-} else if (category === "eyes") {
+} else if (category === "clothes") {
     if (keep) {
-      alert (`Yeah, the character have ${value} eyes! Keep all characters with ${value} eyes.`
+      alert (`Yeah, the character have ${value} clothes! Keep all characters with ${value} clothes.`
       );
     } else  {
-      alert (`oh no, the character doesnt have ${value} eyes! Remove all characters with ${value} eyes.`
+      alert (`oh no, the character doesnt have ${value} clothes! Remove all characters with ${value} clothes.`
       );
     }
 
@@ -287,7 +288,7 @@ const filterCharacters = (keep) => {
   
    
   //for hair and eyes :
-  if (category === "hair" || category === "eyes")
+  if (category === "hair" || category === "clothes")
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {

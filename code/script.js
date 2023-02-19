@@ -142,8 +142,8 @@ const CHARACTERS = [
     img: "images/Nessie.png",
     color: "brown",
     job: "mooch",
-    accessories: [],
-    other: ["hat"],
+    accessories: ["hat"],
+    other: [],
   },
   {
     name: "Oates",

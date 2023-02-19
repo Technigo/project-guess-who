@@ -236,8 +236,8 @@ const setSecret = () => {
 const start = () => {
   charactersInPlay = CHARACTERS
   document.getElementById('winOrLose').style.display = "none" //This hides the winOrLose css
-  generateBoard(); //The game board is shown when the game starts
-  setSecret(); //A secret is set when the game starts
+  generateBoard();
+  setSecret();
   console.log("Secret:", secret.name) //I can see in the console who is set as the secret
 }
 
@@ -260,7 +260,7 @@ const checkQuestion = () => {
 
 if (category === 'hair' || category === 'eyes') {
   if (value === secret[category]) {
-    filterCharacters (true)
+      filterCharacters (true)
    } else {
       filterCharacters(false)
    }

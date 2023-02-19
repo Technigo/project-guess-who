@@ -1,12 +1,12 @@
 # Project Name
 
-Replace this readme with your own information about your project.
+Guess who game
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+the assignment was to use javaScript to make the game guess who work
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Im having dificulties to grasp on how to start my projects, when I see the code I understand what it does but having a hard time to grasp hot to get there so that was my main problem.
+If I had more time I would start over again and plan it differently and I would also use different pictures that I didnt want to know because of the copyrights.
 
 ## View it live
 

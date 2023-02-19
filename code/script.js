@@ -7,6 +7,7 @@ const filterButton = document.getElementById("filter");
 const winOrLose = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const log = document.getElementById("gameLog");
+const logWrapper = document.querySelector(".log-wrapper");
 const guessCounter = document.getElementById("guesses");
 const questionSection = document.querySelector(".question-section");
 
@@ -229,7 +230,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-guess-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `;
@@ -242,7 +243,7 @@ and used this addToLog-function instead of alert() to put the messages there ins
 
 const addToLog = (message) => {
   log.innerHTML += `<p class="log-entry">${message}</p>`;
-  log.scrollTop = -log.scrollHeight;
+  logWrapper.scrollTop = -log.scrollHeight;
   // above function will keep the scrollbar scrolled UP because we want the newest message to be at the top
   // please note the negative sign!
 };

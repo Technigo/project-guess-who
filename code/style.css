@@ -183,6 +183,17 @@ button {
   color: var(--primary);
 }
 
+.filled-guess-button {
+  background-color: var(--primary);
+  color: white;
+}
+
+.filled-guess-button:hover {
+  background-color: #f95959;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
 /****** SELECT INPUT ******/
 
 select {
@@ -275,16 +286,25 @@ select {
     border: none;
   }
 
-  .game-log {
+  .guesses-counter {
+    font-size: 14px;
+  }
+
+  .log-wrapper {
     border: 3px solid white;
     border-radius: 3px;
-    padding: 10px;
+    padding: 5px;
     margin: 24px 0;
     max-height: 10vh;
     min-height: 3vh;
+    width: 90%;
     overflow: auto;
     background-color: white;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+  }
+
+  .log-entry {
+    font-size: 12px;
   }
 }

@@ -8,198 +8,134 @@ const findOutButton = document.getElementById('filter')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
+    name: 'Geralt',
+    img: 'images/geralt.png',
+    hair: 'white',
+    eyes: 'yellow',
+    accessories: ['sword'],
+    other: ['Witcher']
+  },
+  {
+    name: 'Yennefer',
+    img: 'images/yennefer.png',
+    hair: 'black',
+    eyes: 'purple',
+    accessories: [],
+    other: ['Mage']
+  },
+  {
+    name: 'Cirilla',
+    img: 'images/ciri.png',
+    hair: 'white',
+    eyes: 'green',
+    accessories: ['sword'],
+    other: []
+  },
+  {
+    name: 'Eredin',
+    img: 'images/eredin.png',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    accessories: ['sword'],
+    other: ['Elven']
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
+    name: 'Triss',
+    img: 'images/triss.png',
+    hair: 'red',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: [],
+    other: ['Mage']
+  },
+  {
+    name: 'Dandelion',
+    img: 'images/dandelion.png',
+    hair: 'brown',
+    eyes: 'brown',
+    accessories: ['instrument'],
     other: []
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
+    name: 'Emhyr',
+    img: 'images/emhyr.png',
     hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
     eyes: 'brown',
     accessories: [],
     other: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
+    name: 'Keira Metz',
+    img: 'images/keira-metz.png',
     hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    eyes: 'brown',
+    accessories: [],
+    other: ['Mage']
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: "Avallac'h",
+    img: "images/avallac'h.png",
+    hair: 'grey',
+    eyes: 'blue',
+    accessories: [],
+    other: ['Elven']
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    name: 'Zoltan',
+    img: 'images/zoltan.png',
+    hair: 'red',
+    eyes: 'brown',
+    accessories: ['crossbow'],
+    other: ['Dwarf']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
+    name: 'Vesemir',
+    img: 'images/vesemir.png',
     hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    eyes: 'yellow',
+    accessories: ['sword'],
+    other: ['Witcher']
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
+    name: 'Olgierd von Everec',
+    img: 'images/olgierd.png',
+    hair: 'red',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['sword'],
     other: []
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
+    name: 'Letho',
+    img: 'images/letho.png',
+    hair: 'none',
+    eyes: 'yellow',
+    accessories: ['sword'],
+    other: ['Witcher']
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
+    name: 'Leshy',
+    img: 'images/leshy.png',
+    hair: 'none',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    accessories: [],
+    other: ['Monster']
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
+    name: 'Rock Troll',
+    img: 'images/rock-troll.png',
+    hair: 'none',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['Monster']
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
+    name: 'Wyvern',
+    img: 'images/wyvern.png',
+    hair: 'none',
     eyes: 'green',
     accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
+    other: ['Monster']
+  }
 ]
 
 // Global variables
@@ -309,7 +245,7 @@ const filterCharacters = (keep) => {
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
    
-    //for hair and eyes :
+
      if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value),
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
@@ -362,7 +298,3 @@ restartButton.addEventListener('click', start)
 playAgainButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
-
-
-// Wait on this one
-// playAgainButton.addEventListener('click', start)

@@ -212,7 +212,9 @@ let charactersInPlay
 let btnCounter = document.querySelector('#filter')
 let counter = 0
 
-
+const updateGuessCounter = () => {
+  btnCounter.innerHTML = `Guesses: ${parseInt(counter)}`;
+};
 
 // Draw the game board
 const generateBoard = () => {
@@ -289,6 +291,8 @@ const checkQuestion = () => {
       filterCharacters();
     }
   }
+  counter++; 
+updateGuessCounter();
 }
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
@@ -378,6 +382,8 @@ const start = () => {
   // Invoke generate board and set secret when loading and reloading the page
   setSecret()
   generateBoard()
+  counter = 0;
+updateGuessCounter();
 }
 
 
@@ -391,8 +397,9 @@ playAgainButton.addEventListener('click', start)
 filterButton.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
 
-// Event listener for the counter
-btnCounter.addEventListener('click', function () {
-  counter ++
-  document.querySelector("#result").innerHTML = counter
-})
+// Event listener for the counter (that I didn't use, but will try to get it to work later)
+// btnCounter.addEventListener('click', function () {
+ // counter ++
+//  document.querySelector("#result").innerHTML = counter
+//})
+

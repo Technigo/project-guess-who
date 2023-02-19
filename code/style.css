@@ -252,9 +252,11 @@ button {
   }
 
   .game-board {
-    width: 90%; // original was 100%
+    width: 100%;
+    /* width: 100 original; */
     max-width: 750px;
-    justify-content: center; //new
+    /* Added */
+    justify-content: center;
   }
 
   .card {

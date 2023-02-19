@@ -1,12 +1,10 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A digital remake of the popular game Guess Who?
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started with the code along and later referred to the code in the example game we were provided. Learned by adding and removing code. (What happens when I remove this? Does it still work? etc). Added an object in the array to challenge myself, which actually made the game more fun since it eliminated more "suspects". It reduced the risk of ending up with several people to choose from and no clues left. If I had more time, I would probably add even more objects and maybe add some sound effects or something similar.
 
 ## View it live
 

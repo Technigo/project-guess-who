@@ -1,7 +1,8 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #455d7a;
+  --secondary: #e3e3e3;
+  --text: #233142;
 }
 
 body {
@@ -16,7 +17,7 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: var(--text);
 }
 
 .question-section {
@@ -59,21 +60,11 @@ select {
   align-content: center;
 }
 
+/****** LOG AND GUESSES ******/
 .log-wrapper {
   display: flex;
   width: 100%;
   flex-direction: column;
-}
-
-.guesses-counter {
-  font-size: 22px;
-  font-weight: 500;
-  margin: 10px 0;
-  color: white;
-  display: inline;
-}
-
-.game-log {
   border: 3px solid white;
   border-radius: 3px;
   padding: 10px;
@@ -82,6 +73,19 @@ select {
   min-height: 3vh;
   overflow: auto;
   background-color: white;
+}
+
+.guesses-counter {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 10px 0;
+  color: var(--text);
+  display: inline;
+}
+
+.game-log {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .log-entry {
@@ -116,7 +120,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--text);
   text-align: center;
   height: inherit;
 }
@@ -164,16 +168,25 @@ button {
   align-self: flex-end;
 }
 
-.filled-button,
-.outlined-button:hover {
+.filled-button {
   background-color: var(--primary);
+  color: white;
+}
+.outlined-button:hover {
+  background-color: #f95959;
   color: white;
 }
 
 .filled-button:hover {
   background-color: white;
-  border-color: white;
+  border-color: var(--primary);
   color: var(--primary);
+}
+
+/****** SELECT INPUT ******/
+
+select {
+  color: var(--text);
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -260,5 +273,18 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+
+  .game-log {
+    border: 3px solid white;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 24px 0;
+    max-height: 10vh;
+    min-height: 3vh;
+    overflow: auto;
+    background-color: white;
+    display: flex;
+    flex-direction: column-reverse;
   }
 }

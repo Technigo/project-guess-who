@@ -8,6 +8,7 @@ const winOrLose = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const log = document.getElementById("gameLog");
 const guessCounter = document.getElementById("guesses");
+const questionSection = document.querySelector(".question-section");
 
 // save the entire list of guesses to another array
 // because when you remove guesses later on,
@@ -241,6 +242,9 @@ and used this addToLog-function instead of alert() to put the messages there ins
 
 const addToLog = (message) => {
   log.innerHTML += `<p class="log-entry">${message}</p>`;
+  log.scrollTop = -log.scrollHeight;
+  // above function will keep the scrollbar scrolled UP because we want the newest message to be at the top
+  // please note the negative sign!
 };
 
 const updateGuessCounter = () => {
@@ -262,7 +266,7 @@ const start = () => {
   board.style.display = "flex";
   winOrLose.style.display = "none";
   // making sure the question section is visible because its hidden when you win or lose
-  document.querySelector(".question-section").style.display = "flex";
+  questionSection.style.display = "flex";
 
   // resetting the select element to the one we saved before because during the game we have removed elements from it
   questions.innerHTML = oldQuestions;
@@ -297,7 +301,7 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  // if the "make a guess" option is selected, pressing "find out" should not do anything
+  // if the "make a guess" option (it's the first one so it has index 0) is selected, pressing "find out" should not do anything
   if (questions.options[questions.selectedIndex].index === 0) {
     return;
   }
@@ -360,12 +364,12 @@ const filterCharacters = (keep) => {
     }
   } else if (category === "accessories") {
     if (keep) {
-      addToLog(`The person wears ${value}!`);
+      addToLog(`The person wears ${value == "hat" ? "a" : ""} ${value}!`);
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
-      addToLog(`The person does not wear ${value}!`);
+      addToLog(`The person does not wear ${value == "hat" && "a"} ${value}!`);
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
@@ -390,14 +394,9 @@ const filterCharacters = (keep) => {
   const optionsToRemove = questions.querySelectorAll(
     "option[value=" + value + "]" // using a query selector to get all options with the same value, for example "covered"
   );
-  // because the value for both "covered hair" and "covered eyes" is "covered"
-  // we need to find a way to see if the category was the same as the guess
-  // otherwise when you guessed "covered eyes" it removed the "covered hair" option :-/
 
   optionsToRemove.forEach((option) => {
-    // putting all of the options we got from querySelectorAll in a forEach-loop
-    // making sure that we are selecting the ones with the right category for example "hair"
-    // and then removing it
+    // since both the hair and eyes have the same value in the select element we need to make sure to remove the correct one
     if (questions.options[option.index].parentNode.label === category) {
       option.remove();
     }
@@ -433,7 +432,7 @@ const checkMyGuess = (personToCheck) => {
 
   // hiding the entire question section because it was still visible when scrolling down
   // during the winOrLose event
-  document.querySelector(".question-section").style.display = "none";
+  questionSection.style.display = "none";
 
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `Congratulations! It was ${personToCheck}!`;

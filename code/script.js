@@ -1,11 +1,11 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
-const findOutButton = document.getElementById('filter')
-const winOrLose = document.getElementById('winOrLose')
-const winOrLoseText = document.getElementById('winOrLoseText')
-const playAgainButton = document.getElementById('playAgain')
+const board = document.getElementById("board")
+const questions = document.getElementById("questions")
+const restartButton = document.getElementById("restart")
+const findOutButton = document.getElementById("filter")
+const winOrLose = document.getElementById("winOrLose")
+const winOrLoseText = document.getElementById("winOrLoseText")
+const playAgainButton = document.getElementById("playAgain")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -207,6 +207,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let keep
 
 // Draw the game board
 const generateBoard = () => {
@@ -248,11 +249,28 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
-
+if (category === 'hair') {
   currentQuestion = {
     category: category,
-    value: value,
+    value: value
   }
+} else if (category === 'eyes') {
+  currentQuestion = {
+   category: category,
+   value: value
+  }
+} else if (category === 'accessories') {
+  currentQuestion = {
+    category: category,
+    value: value
+  }
+
+} else if (category === 'other') {
+  currentQuestion = {
+    category: category,
+    value: value
+  }
+}
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -266,6 +284,7 @@ let keep = false
 switch (category) {
   case 'hair':
   case 'eyes':
+    console.log(category, value)
     if (value === secret[category]) {
       keep = true
     }
@@ -338,7 +357,7 @@ const guess = (personToConfirm) => {
   if (playerConfirmation) {
     checkMyGuess(personToConfirm);
   } else {
-    alert("Ok, keep guessing!");
+    alert(`Ok, keep guessing!`);
 
   }
   // store the interaction from the player in a variable.
@@ -348,6 +367,21 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    let showWinOrLose = () => {
+      document.getElementById('winOrLose').style.display = "flex"
+      winOrLoseText.innerHTML = `Whoop whoop, you got it!!! 🍾`
+    }
+    board.innerHTML = ""
+    showWinOrLose ();
+} else {
+  let showWinOrLose = () => {
+    document.getElementById('winOrLose').style.display = "flex"
+    winOrLoseText.innerHTML = `Better luck next time, ${secret.name} was the one to look for! 👀`
+  }
+    board.innerHTML = ""
+    showWinOrLose ();
+}
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

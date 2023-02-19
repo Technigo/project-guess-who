@@ -288,7 +288,7 @@ const guess = (suspect) => {
   }
 }
 
-// If you confirm, this function is invoked
+// If user confirm choice, this function is invoked
 const checkMyGuess = (suspect) => {
   if (suspect === secret.name) {
     winOrLoseText.innerHTML = `Banana 🍌! <br>

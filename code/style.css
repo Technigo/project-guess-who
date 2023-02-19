@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #0ee8e8;
+  --secondary: #fbc793;
 }
 
 body {
@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: rgb(248, 163, 163);
 }
 
 h1 {
@@ -64,7 +65,7 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid #0ee8e8;
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -132,7 +133,7 @@ button {
 }
 
 .outlined-button {
-  background-color: transparent;
+  background-color: black;
   color: var(--primary);
   align-self: flex-end;
 }
@@ -144,8 +145,8 @@ button {
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: black;
+  border-color: #0ee8e8;
   color: var(--primary);
 }
 

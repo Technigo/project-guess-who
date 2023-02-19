@@ -237,7 +237,6 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  // What else should happen when we start the game?
   setSecret();
   generateBoard();
 };
@@ -258,28 +257,18 @@ const selectQuestion = () => {
 
 
 
-findOutButton.addEventListener("click", (event) => {
-  checkQuestion();
-  event.preventDefault();
-});
-
-
-
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  //let keep = false;
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
     keep = value === secret[category];
     filterCharacters(keep);
-    console.log("check question1");
 
   } else if (category === "accessories" || category === "other") {
     keep = secret[category].includes(value);
-    console.log("check question2");
     filterCharacters(keep)
   }
   else {
@@ -331,27 +320,6 @@ const filterCharacters = (keep) => {
   }
 }
 
-// Determine what is the category
-//filter by category to keep or remove based on the keep variable.
-
-//for hair and eyes :
-/*
-  if (keep) {
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value);
-    console.log("filtrerar")
-    generateBoard();
-  }
-  
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
- 
-  for accessories and other
-    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    or
-    charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-*/
-
-// Invoke a function to redraw the board with the remaining people.
-//  };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 
@@ -364,7 +332,7 @@ const guess = (personToConfirm) => {
   }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function. //WHAT IF THEY DON'T?
+  // If the player wants to guess, invoke the checkMyGuess function. 
 };
 
 // If you confirm, this function is invoked
@@ -391,6 +359,10 @@ start();
 
 // All the event listeners
 questions.addEventListener("change", selectQuestion)
+findOutButton.addEventListener("click", (event) => {
+  checkQuestion();
+  event.preventDefault();
+});
 restartButton.addEventListener("click", start);
 playAgainButton.addEventListener("click", () => {
   location.reload()

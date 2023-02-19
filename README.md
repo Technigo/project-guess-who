@@ -1,13 +1,11 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Rethe assignment was to create a replica of the guess who game and after a few days opf studing and dividing the problem into small problems I managed to do it 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+As tools I used all the material from technigo and the site created as a showcase and a few other students that did it in the past.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://adorable-daifuku-0ac584.netlify.app

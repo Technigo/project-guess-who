@@ -16,7 +16,7 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: #EFEAD8;
 }
 
 .question-section {
@@ -132,7 +132,7 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
+  color: #EFEAD8;
   align-self: flex-end;
 }
 

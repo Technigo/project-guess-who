@@ -12,16 +12,16 @@ const CHARACTERS = [
   {
     name: 'Jabala',
     img: 'images/jabala.svg',
-    hair: 'hidden',
+    hair: 'hiddenhair',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['sunglasses', 'hat'],
     other: [],
     gender: ['female']
   },
   {
     name: 'Jack',
     img: 'images/jack.svg',
-    hair: 'hidden',
+    hair: 'hiddenhair',
     eyes: 'blue',
     accessories: ['hat'],
     other: [],
@@ -59,7 +59,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: [],
     gender: ['male']
   },
@@ -68,7 +68,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: [],
     gender: ['female']
   },
@@ -77,7 +77,7 @@ const CHARACTERS = [
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: [],
     gender: ['female']
   },
@@ -96,7 +96,7 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['sunglasses'],
     other: ['smoker'],
     gender: ['female']
   },
@@ -148,7 +148,7 @@ const CHARACTERS = [
   {
     name: 'Jerry',
     img: 'images/jerry.svg',
-    hair: 'hidden',
+    hair: 'hiddenhair',
     eyes: 'blue',
     accessories: ['hat'],
     other: [],
@@ -186,7 +186,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['sunglasses', 'hat'],
     other: [],
     gender: ['male']
   },
@@ -302,20 +302,6 @@ const checkQuestion = () => {
   }
   filterCharacters(keep);
 };
-//   if (category === 'hair' || category === 'eyes') {
-//     if (value === secret.hair || value === secret.eyes) {
-// filterCharacters(true)
-// } else {
-//   filterCharacters(false)
-// }
-//   } else if (category === 'accessories' || category === 'other' || category === 'gender') {
-//     if (secret.accessories.includes(value) || secret.other.includes(value) || secret.gender.includes(value)) {
-//       filterCharacters(true)
-//     } else {
-//       filterCharacters(false)
-//     }
-//   }
-// }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -395,10 +381,10 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   const playerGuess = confirm(`Do you really want to guess on ${personToConfirm}?`)
   // remember the confirm() ?
+   // If the player wants to guess, invoke the checkMyGuess function.
   if (playerGuess) {
     checkMyGuess(personToConfirm)
   }
-  // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked

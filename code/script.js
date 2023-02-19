@@ -7,6 +7,11 @@ const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgain = document.getElementById('playAgain')
 let winOrLoseContainer = document.getElementById('winOrLoseContainer')
+let winSound = new Audio ('./assets/lady.mp3');
+winSound.volume = 0.5;
+
+let loseSound = new Audio ('./assets/lady.mp3')
+loseSound.volume = 0.5;
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -120,7 +125,7 @@ const CHARACTERS = [
     img: 'images/jeri.svg',
     hair: 'orange',
     eyes: 'hidden',
-    accessories: ['hat'],
+    accessories: ['hat', 'glasses'],
     other: []
   },
   {
@@ -128,7 +133,7 @@ const CHARACTERS = [
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['glasses', 'hat'],
+    accessories: ['hat'],
     other: []
   },
   {
@@ -377,8 +382,10 @@ const checkMyGuess = (personToCheck) => {
   let secretPersonImg = `<img class="cardFinal" src=${secret.img} alt=${secret.name}>`;
   winOrLoseContainer.insertAdjacentHTML("beforeEnd", secretPersonImg);
   if (personToCheck === secret.name) {
-    winOrLoseText.innerHTML = `Good job, my friend! Thats is correct. You win!`
+    winSound.play()
+    winOrLoseText.innerHTML = `Good job, my friend! That's correct. You win!`
   } else {
+    loseSound.play()
     winOrLoseText.innerHTML = `Ha! You got it wrong! The correct answer is ${secret.name}. Try again!`
   }
   winOrLose.style.display = 'flex'
@@ -401,6 +408,8 @@ questions.addEventListener('change', () => {
 })
 filterButton.addEventListener('click', checkQuestion)
 playAgain.addEventListener("click", (event) => {
+  winSound.pause()
+  loseSound.pause()
   start();
  /*  pause();
   reset(); */

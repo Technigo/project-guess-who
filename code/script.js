@@ -31,7 +31,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker', 'beard']
+    other: ['cigarette', 'beard']
   },
   {
     name: 'Jai',
@@ -87,7 +87,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['cigarette']
   },
   {
     name: 'Jean',
@@ -95,7 +95,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['cigarette']
   },
   {
     name: 'Jeane',
@@ -111,7 +111,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker', 'beard']
+    other: ['cigarette', 'beard']
   },
   {
     name: 'Jenni',
@@ -242,15 +242,13 @@ const start = () => {
 }
 
 // setting the currentQuestion object when you select something in the dropdown
-//not sure that I need to specify for each category, but better safe than sorry...
-
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   const value = questions.value;
 
   currentQuestion = {
     category: category,
-    value: value,
+    value: value
   }
   console.log("Selected", currentQuestion.value)
   console.log("Selected", currentQuestion.category)
@@ -262,14 +260,14 @@ const checkQuestion = () => {
 
 if (category === 'hair' || category === 'eyes') {
   if (value === secret[category]) {
-    filterCharacters = (true)
-    } else {
+    filterCharacters (true)
+   } else {
       filterCharacters(false)
    }
 
 } else if (category === 'accessories' || category === 'other') {
     if (secret[category].includes(value)) {
-      filterCharacters = (true)
+      filterCharacters (true)
     } else {
       filterCharacters(false)
     }
@@ -302,13 +300,13 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)
       );
       alert(
-        `Yes, the person has ${value}! Confirm to keep all people who have ${value}.`
+        `Yes, the person wears or has a ${value}! Confirm to keep all people who wear or have a ${value}.`
       );
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
       );
       alert(
-        `No, the person does not have ${value}! Confirm to remove all people who have ${value}.`
+        `No, the person does not wear or have a ${value}! Confirm to remove all people who wear or have a ${value}.`
       );
     }
   }
@@ -332,7 +330,7 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     let showWinOrLose = () => {
       document.getElementById('winOrLose').style.display = "flex"
-      winOrLoseText.innerHTML = `Whoop whoop, you got it!!! 🍾`
+      winOrLoseText.innerHTML = `✨ Nailed it!!! ✨`
     }
     board.innerHTML = ""
     showWinOrLose ();

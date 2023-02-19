@@ -40,31 +40,6 @@ select {
   margin: 24px 0;
 }
 
-.guessess {
-  background-color: var(--primary);
-  width: 100%;
-  height: 200px;
-  margin-top: 50px;
-  border-radius: 30px;
-}
-
-h2 {
-  font-family: 'Montserrat';
-  color: white;
-  font-weight: bold;
-  font-size: 30px;
-  padding: 10px;
-  text-align: center;
-  border-bottom: solid 2px var(--secondary);
-}
-
-.guessess p {
-  font-family: 'Montserrat';
-  color: white;
-  font-size: 30px;
-  text-align: center;
-}
-
 .guess-who-icon {
   width: 126px;
 }

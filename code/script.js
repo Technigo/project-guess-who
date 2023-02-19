@@ -12,6 +12,7 @@ const displayUsername = document.getElementById("users-name-displayed");
 const resetUsernameButton = document.getElementById("reset-username");
 const overlay = document.getElementById("overlay");
 const count = document.getElementById("count");
+const totalTime = document.getElementById("total-time");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -211,47 +212,50 @@ const CHARACTERS = [
 ];
 
 // Global variables
-let secret, currentQuestion, charactersInPlay, userName, userGuess;
+let secret, currentQuestion, charactersInPlay, userName, userGuess, seconds;
 let numberOfGuesses = 0;
 
 // Counter
-function counter() {
+let counter = () => {
   numberOfGuesses++;
   count.innerHTML = `${numberOfGuesses}`;
-}
+};
 
 // Reset Counter
-function resetCounter() {
+let resetCounter = () => {
   numberOfGuesses = 0;
   count.innerHTML = `${numberOfGuesses}`;
-}
+};
 
 // Timer
-let seconds = 0;
-let timer = setInterval(upTimer, 1000);
-
-function upTimer() {
+seconds = 0;
+let timer = setInterval(() => {
   ++seconds;
-  var hour = Math.floor(seconds / 3600);
-  var minute = Math.floor((seconds - hour * 3600) / 60);
-  var updSecond = seconds - (hour * 3600 + minute * 60);
+  let hour = Math.floor(seconds / 3600);
+  let minute = Math.floor((seconds - hour * 3600) / 60);
+  let updSecond = seconds - (hour * 3600 + minute * 60);
   document.getElementById("timer").innerHTML =
     hour + ":" + minute + ":" + updSecond;
-}
+}, 1000);
 
 // Reset timer
-function resetTimer() {
+let resetTimer = () => {
   seconds = 0;
-}
+};
+
+//Display time on Win / Loose
+let displaySeconds = () => {
+  totalTime.innerHTML = `${seconds}`;
+};
 
 //overlay func
-function showOverlay() {
+const showOverlay = () => {
   overlay.style.display = "flex";
-}
+};
 
-function hideOverlay() {
+const hideOverlay = () => {
   overlay.style.display = "none";
-}
+};
 
 // Draw the game board
 const generateBoard = () => {
@@ -284,7 +288,6 @@ const start = () => {
   // What else should happen when we start the game?
 
   //Start value of question
-  // currentQuestion = { category: "hair", value: "brown" };
   setSecret();
   generateBoard();
 };
@@ -405,6 +408,7 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  displaySeconds();
   if (personToCheck === secret.name) {
     winOrLose.style.display = "block";
     board.style.display = "none";

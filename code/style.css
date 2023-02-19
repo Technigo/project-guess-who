@@ -1,14 +1,17 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #09b9f4;
+  --secondary: #2b88a1;
+  --background: #98dae1;
 }
 
 body {
   display: flex;
+  flex-direction: row-reverse;
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
+  background-color: var(--background);
 }
 
 h1 {
@@ -19,13 +22,15 @@ h1 {
   color: white;
 }
 
+/* Aside */
 .question-section {
   width: 30%;
   min-height: 100vh;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding-right: 5vw;
+  padding-left: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
 }
@@ -38,6 +43,33 @@ select {
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+}
+
+.display-username {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#users-name-displayed {
+  padding-left: 10px;
+}
+#reset-username {
+  all: unset;
+  padding: 5px 50px 5px 20px;
+}
+
+#reset-username:hover,
+#reset-username:active {
+  cursor: pointer;
+}
+
+.stats {
+  border: 2px solid var(--primary);
+  color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem;
+  width: 75%;
 }
 
 .guess-who-icon {
@@ -57,6 +89,40 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+}
+
+/* Overlay */
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: flex; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+.box {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: aliceblue;
+}
+.box > label {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.box input {
+  width: 80%;
+  margin-bottom: 5rem;
 }
 
 /****** CARD ******/
@@ -129,10 +195,13 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
+  color: white;
+  align-self: center;
 }
 
+.filled-button {
+  align-self: center;
+}
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
@@ -185,6 +254,7 @@ button {
   .question-section {
     width: 100%;
     min-height: 0;
+    padding-bottom: 1rem;
   }
   button {
     padding: 8px 16px;
@@ -230,52 +300,4 @@ button {
     color: var(--primary);
     border: none;
   }
-}
-
-#overlay {
-  position: fixed; /* Sit on top of the page content */
-  display: flex; /* Hidden by default */
-  justify-content: center;
-  align-items: center;
-  width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-  cursor: pointer; /* Add a pointer on hover */
-}
-.box {
-  width: 50%;
-  height: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: aliceblue;
-}
-.box > label {
-  text-align: center;
-  margin-bottom: 10px;
-}
-.box input {
-  width: 80%;
-  margin-bottom: 5rem;
-}
-
-.display-username {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#reset-username {
-  all: unset;
-  padding: 5px;
-}
-
-#reset-username:hover,
-#reset-username:active {
-  cursor: pointer;
 }

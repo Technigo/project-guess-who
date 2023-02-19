@@ -13,12 +13,10 @@
   <body>
     <aside class="question-section">
       <section class="display-username">
+        <p>Player Name:</p>
         <h2 id="users-name-displayed"></h2>
         <button type="button" id="reset-username">✒️</button>
       </section>
-      <button type="button" id="restart" class="outlined-button">
-        RESTART
-      </button>
 
       <img
         class="guess-who-icon"
@@ -55,8 +53,13 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
-      <h2 id="counter">Count: <span id="count">0</span></h2>
-      <h2>Timer: <span id="timer">0.0.0</span></h2>
+      <div class="stats">
+        <h2 id="counter">Tries: <span id="count">0</span></h2>
+        <h2>Timer: <span id="timer">0.0.0</span></h2>
+      </div>
+      <button type="button" id="restart" class="outlined-button">
+        RESTART
+      </button>
     </aside>
 
     <section class="board-wrapper">
@@ -81,6 +84,10 @@
         <button type="button" id="playAgain" class="filled-button">
           PLAY AGAIN
         </button>
+        <div class="stats">
+          <h2 id="counter">Tries: <span id="count">0</span></h2>
+          <h2>Seconds: <span id="total-time"></span></h2>
+        </div>
       </div>
     </section>
     <script src="script.js"></script>

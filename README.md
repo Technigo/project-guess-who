@@ -26,8 +26,8 @@ Guess Who? is a two-player board game where players each guess the identity of t
 
 As a kid of the 90'ths, this was a great nostalgic experience for me; so lovely to get a project that might be the first board game I played as a kid.
 
-This task seemed daunting. First, I must admit.
-So I split the more significant task into smaller pieces: The building blocks (aka the functions) and what they are supposed to do.
+ First, I must admit this task seemed daunting..
+So I split the more significant task into smaller pieces: Into the building blocks (aka the functions) and what they are supposed to do.
 
 Splitting the project into these smaller bits was a great way to make sense of it all.
 

@@ -11,196 +11,196 @@ const winOrLose = document.getElementById ('winOrLose')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    vices: 'a toilet seat terrorist',
-    odors: 'having a really bad breath',
-    traits: ['a paranoid hipster', 'a greedy grandma'],
+    name: 'Harald-Leif',
+    img: 'images/person1.png',
+    vices: 'toilet seat terrorist',
+    musictaste: 'a fan of Sven-Ingvars',
+    traits: ['paranoid', 'greedy'],
     other: []
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    vices: 'a toilet seat terrorist',
-    odors: 'reeking of poo',
-    traits: ['a greedy grandma'],
+    name: 'Bent-Are',
+    img: 'images/person2.png',
+    vices: 'toilet seat terrorist',
+    musictaste: 'a fan of Anna Book',
+    traits: ['greedy'],
     other: []
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
+    name: 'Livunn',
+    img: 'images/person3.png',
     vices: 'laughing loudly at everything',
-    odors: 'reeking of poo',
-    traits: ['a greedy grandma'],
+    musictaste: 'a fan of Anna Book',
+    traits: ['greedy'],
     other: ['a bad friend']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    vices: 'a freeloader',
-    odors: 'nose picker',
-    traits: ['a crazy frog'],
+    name: 'Signe',
+    img: 'images/person4.png',
+    vices: 'freeloader',
+    musictaste: 'a fan of Onkel Kånkel',
+    traits: ['crazy'],
     other: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    vices: 'a binge drinker',
-    odors: 'reeking of sweat',
-    traits: ['a paranoid hipster'],
+    name: 'Gunnbjørn',
+    img: 'images/person7.png',
+    vices: 'binge drinker',
+    musictaste: 'a fan of Onkel Kånkel',
+    traits: ['paranoid'],
     other: []
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    vices: 'a nose picker',
-    odors: 'reeking of sweat',
-    traits: ['a vindictive dork'],
+    name: 'Ole-Ronny',
+    img: 'images/person6.png',
+    vices: 'nose picker',
+    musictaste: 'a fan of Onkel Kånkel',
+    traits: ['vindictive'],
     other: []
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    vices: 'a freeloader',
-    odors: 'having a really bad breath',
-    traits: ['a paranoid hipster', 'a narcissistic aspiring model'],
+    name: 'Britt-Olga',
+    img: 'images/person5.png',
+    vices: 'freeloader',
+    musictaste: 'a fan of Sven-Ingvars',
+    traits: ['paranoid', 'narsissistic'],
     other: []
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    vices: 'a binge drinker',
-    odors: 'reeking of burp',
-    traits: ['an arrogant a-hole'],
+    name: 'Dagny',
+    img: 'images/person8.png',
+    vices: 'binge drinker',
+    musictaste: 'a fan of A-ha',
+    traits: ['arrogant'],
     other: []
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    vices: 'a litterer',
-    odors: 'reeking of sweat',
-    traits: ['an egocentric douchebag', 'a narcissistic aspiring model'],
+    name: 'Målfrid',
+    img: 'images/person9.png',
+    vices: 'litterer',
+    musictaste: 'a fan of Onkel Kånkel',
+    traits: ['egocentric', 'narsissistic'],
     other: []
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    vices: 'a whiner',
-    odors: 'reeking of loo',
-    traits: ['a crazy frog'],
+    name: 'Harry-Jan',
+    img: 'images/person10.png',
+    vices: 'whiner',
+    musictaste: 'a fan of Vengaboys',
+    traits: ['crazy'],
     other: ['a bad friend']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    vices: 'a nose picker',
-    odors: 'reeking of poo',
-    traits: ['a pessimistic smock', 'a greedy grandma'],
+    name: 'Knut-Sverre',
+    img: 'images/person24.png',
+    vices: 'nose picker',
+    musictaste: 'a fan of Anna Book',
+    traits: ['pessimistic', 'greedy'],
     other: ['a bad friend']
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    vices: 'a nose picker',
-    odors: 'reeking of sweat',
-    traits: ['a vindictive dork'],
+    name: 'Gunn-Elin',
+    img: 'images/person11.png',
+    vices: 'nose picker',
+    musictaste: 'a fan of Onkel Kånkel',
+    traits: ['vindictive'],
     other: ['a cheater']
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    vices: 'a litterer',
-    odors: 'reeking of sweat',
-    traits: ['a paranoid hipster', 'a greedy grandma'],
+    name: 'Snorre',
+    img: 'images/Person20.png',
+    vices: 'litterer',
+    musictaste: 'a fan of Onkel Kånkel',
+    traits: ['paranoid', 'greedy'],
     other: ['a bad friend']
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
+    name: 'Frøydis',
+    img: 'images/Person16.png',
     vices: 'talking in baby voice',
-    odors: 'reeking of burp',
-    traits: ['a greedy grandma', 'a pessimistic smock'],
+    musictaste: 'a fan of A-ha',
+    traits: ['greedy', 'pessimistic'],
     other: []
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    vices: 'a litterer',
-    odors: 'reeking of sweat',
-    traits: ['a paranoid hipster'],
+    name: 'Eldbjørg',
+    img: 'images/person14.png',
+    vices: 'litterer',
+    musictaste: 'a fan of Onkel Kånkel',
+    traits: ['paranoid'],
     other: []
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    vices: 'a toilet seat terrorist',
-    odors: 'reeking of poo',
-    traits: ['a greedy grandma'],
+    name: 'Roy-Petter',
+    img: 'images/person15.png',
+    vices: 'toilet seat terrorist',
+    musictaste: 'a fan of Anna Book',
+    traits: ['greedy'],
     other: []
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    vices: 'a freeloader',
-    odors: 'reeking of poo',
-    traits: ['an arrogant a-hole', 'a lazy lunatic'],
+    name: 'Norbert',
+    img: 'images/person13.png',
+    vices: 'freeloader',
+    musictaste: 'a fan of Anna Book',
+    traits: ['arrogant', 'lazy'],
     other: []
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    vices: 'a freeloader',
-    odors: 'reeking of rotten eggs',
-    traits: ['a lazy lunatic', 'a narcissistic aspiring model'],
+    name: 'Torleif',
+    img: 'images/person17.png',
+    vices: 'freeloader',
+    musictaste: 'a fan of Carola',
+    traits: ['lazy', 'narsissistic'],
     other: []
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    vices: 'a nose picker',
-    odors: 'reeking of sweat',
-    traits: ['a lazy lunatic'],
+    name: 'Geir-Arne',
+    img: 'images/person25.png',
+    vices: 'nose picker',
+    musictaste: 'a fan of Onkel Kånkel',
+    traits: ['lazy'],
     other: []
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    vices: 'a binge drinker',
-    odors: 'reeking of rotten eggs',
-    traits: ['a paranoid hipster', 'a greedy grandma', 'a narcissistic aspiring model'],
+    name: 'Kevin-André',
+    img: 'images/person19.png',
+    vices: 'binge drinker',
+    musictaste: 'a fan of Carola',
+    traits: ['paranoid', 'greedy', 'narsissistic'],
     other: []
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
+    name: 'Vigdis',
+    img: 'images/person18.png',
     vices: 'laughing loudly at everything',
-    odors: 'reeking of reeking of loo',
-    traits: ['a narcissistic aspiring model', 'an egocentric douchebag'],
+    musictaste: 'a fan of Vengaboys',
+    traits: ['narsissistic', 'egocentric'],
     other: []
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    vices: 'a binge drinker',
-    odors: 'reeking of sweat',
-    traits: ['a lazy lunatic'],
+    name: 'Alf-Kåre',
+    img: 'images/person21.png',
+    vices: 'binge drinker',
+    musictaste: 'a fan of Onkel Kånkel',
+    traits: ['lazy'],
     other: []
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    vices: 'a freeloader',
-    odors: 'reeking of sweat',
-    traits: ['an arrogant a-hole'],
+    name: 'Aslaug',
+    img: 'images/person22.png',
+    vices: 'freeloader',
+    musictaste: 'a fan of Onkel Kånkel',
+    traits: ['arrogant'],
     other: []
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    vices: 'a freeloader',
-    odors: 'reeking of fart',
-    traits: ['a paranoid hipster', 'a greedy grandma'],
+    name: 'Gizabellah',
+    img: 'images/person23.png',
+    vices: 'freeloader',
+    musictaste: 'a fan of Vengaboys',
+    traits: ['paranoid', 'narsissistic'],
     other: []
   },
 ]
@@ -261,9 +261,9 @@ const selectQuestion = () => {
       value: value, 
       category: category, 
       }
-  } else if (category === 'odors') {
+  } else if (category === 'musictaste') {
       currentQuestion = {
-        attribute: 'odors', 
+        attribute: 'musictaste', 
         value: value, 
         category: category,
       }
@@ -290,16 +290,16 @@ const checkQuestion = () => {
   //keep = currentQuestion.value === secret[currentQuestion.attribute]
 
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (vices/odors or traits/others).
+  // Compare the currentQuestion details with the secret person details in a different manner based on category (vices/musictaste or traits/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
 
-  if (category === 'vices'|| category === 'odors') {
+  if (category === 'vices'|| category === 'musictaste') {
     if (secret[category] === value) {
-      filterCharacters(true); //This one keeps everyone who has that vice or odor. 
+      filterCharacters(true); //This one keeps everyone who has that vice or musictaste taste. 
     }
     else {
-    filterCharacters(false); //This one removes everyone who has that vice or odor.. 
+    filterCharacters(false); //This one removes everyone who has that vice or musictaste taste.. 
   }
 } else if (category === 'traits' || category === 'other') {
     if (secret[category].includes(value)) {
@@ -318,12 +318,12 @@ const filterCharacters = (keep) => {
   if (category === 'traits') {
      if (keep) {
       alert(
-        `Yes, the person is definitely ${value}! Keep all people who are ${value}s.`); 
+        `Yes, the person is definitely ${value}! Keep all people who are ${value}.`); 
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)); 
  
     } else {
       alert(
-        `No, the person is not ${value}, thank god! Remove all people who are ${value}s.`)
+        `No, the person is not ${value}, thank god! Remove all people who are ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) ;  
     }
   } else if (category === 'other') {
@@ -341,11 +341,11 @@ const filterCharacters = (keep) => {
   } else {
       if (keep) {
       alert(
-        `Yes, this person is ${value}. Annoying, right? Keep all people who are ${value}".`)
+        `Yes, this person is a ${value}. Annoying, right? Keep all people who are ${value}s.`)
         charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value); 
     } else {
       alert (
-        `No, this person isn't ${value}, at least not to our knowledge! Remove all people who claim that they're not ${value}.`)
+        `No, this person isn't a ${value}, at least not to our knowledge! Remove all people who claim that they're not ${value}s.`)
         charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value); 
 
    } 

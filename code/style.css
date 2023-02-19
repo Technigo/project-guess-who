@@ -1,27 +1,29 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #bc2949;
-  --secondary: #5e559b;
+  --primary: #59dcd3;
+  --secondary: #8c7cf1;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Kanit', sans-serif;}
+  font-family: 'Patrick Hand SC', cursive;
+}
 
 h1 {
-  font-size: 42px;
+  font-size: 50px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
   color: white;
+  align-content: center;
 }
 
 .question-section {
   width: 32%;
   min-height: 100vh;
-  border: 2px solid blue; 
+  border: 4px solid rgb(11, 186, 230); 
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
@@ -33,16 +35,15 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
-  font-family: 'Kanit', sans-serif;
+  font-size: 18px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
 }
 
 .questions {
-  font-family:'Kanit', sans-serif;
-  font-size: 24px;
+  font-family: 'Patrick Hand SC', cursive;
 }
 
 .guess-who-icon {
@@ -54,6 +55,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgb(20, 193, 158);
 }
 
 .game-board {
@@ -69,20 +71,29 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 4px solid var(--secondary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: white;
+ 
 }
 
 .card p {
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
+  font-family: 'Patrick Hand SC', cursive;
+  
+}
+
+.card img {
+  object-fit: cover;
+  height: 80%; 
 }
 
 .card .guess {
@@ -121,9 +132,8 @@ select {
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
-  font-size: 16px;
-  font-family: 'Kanit', sans-serif;  font-weight: bold;
-  padding: 17px 27px;
+  font-size: 24px;
+  font-family: 'Patrick Hand SC', cursive;
   cursor: pointer;
 }
 

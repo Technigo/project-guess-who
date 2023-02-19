@@ -1,5 +1,4 @@
-  @import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,600;1,300;1,800;1,900&display=swap');
 
 /* Global css variables used for colors */
 :root {
@@ -11,7 +10,7 @@ body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Newsreader', serif;;
+  font-family: 'Poppins', sans-serif;
   background-image: url(img/back.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,8 +18,9 @@ body {
 
 h1 {
   font-size: 42px;
-  font-weight: 900;
-  line-height: 48px;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 58px;
   margin: 10px 0;
   color: #040cfa;
 }
@@ -43,7 +43,7 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: ''Newsreader', serif;';
+  font-family: 'Poppins', sans-serif;
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -76,18 +76,28 @@ select {
   overflow: hidden;
   border: 3px solid var(--primary);
   border-radius: 4px;
-  margin: 3px;
+  background-color: #040cfa67;
+  color: white;
+  margin: 4px;
+  padding-top: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
+.card img {
+  height: 140px;
+  width: 135px;
+}
+
 .card p {
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
-  font-weight: 700;
+  margin-top: 0;
+  font-size: 13px;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 .card .guess {
@@ -118,7 +128,7 @@ select {
   font-size: 16px;
   line-height: 18px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 28px;
   width: 90%;
 }
 
@@ -126,15 +136,15 @@ select {
 button {
   border: 2px solid var(--primary);
   border-radius: 40px;
-  font-size: 16px;
-  font-family: 'Newsreader', serif;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  padding: 17px 22px 14px 22px;
+  padding: 8px 15px;
   cursor: pointer;
 }
 
 .small {
-  padding: 8px 16px;
+  padding: 3px 12px;
 }
 
 .outlined-button {
@@ -238,7 +248,7 @@ button {
 
   .card .guess .filled-button {
     padding: 6px 11px;
-    margin-bottom: 1px;
+    margin-bottom:1px;
     background: white;
     color: var(--primary);
     border: none;

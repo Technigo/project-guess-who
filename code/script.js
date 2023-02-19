@@ -11,243 +11,243 @@ const playAgain = document.getElementById("playAgain");
 const CHARACTERS = [
   {
     name: "Jabala",
-    img: "images/jabala.svg",
-    hair: "hidden",
+    img: "people/jabala.png",
+    hair: "grey",
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
+    accessories: ["horn"],
     other: [],
-    species: "human",
-    gender: "female",
+    species: "monster",
+    gender: "else",
   },
   {
     name: "Jack",
-    img: "images/jack.svg",
-    hair: "hidden",
-    eyes: "blue",
-    accessories: ["hat"],
+    img: "people/jack.png",
+    hair: "pink",
+    eyes: "brown",
+    accessories: [],
     other: [],
-    species: "human",
+    species: "monster",
     gender: "male",
   },
   {
     name: "Jacques",
-    img: "images/jacques.svg",
-    hair: "white",
-    eyes: "blue",
-    accessories: ["hat"],
-    other: ["smoker"],
-    species: "human",
+    img: "people/jacques.png",
+    hair: "hidden",
+    eyes: "brown",
+    accessories: ["glasses"],
+    other: [],
+    species: "monster",
     gender: "female",
   },
   {
     name: "Jai",
-    img: "images/jai.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: [],
+    img: "people/jai.png",
+    hair: "hidden",
+    eyes: "blue",
+    accessories: ["glasses"],
     other: [],
-    species: "human",
+    species: "monster",
     gender: "female",
   },
   {
     name: "Jake",
-    img: "images/jake.svg",
-    hair: "yellow",
-    eyes: "green",
-    accessories: ["glasses"],
+    img: "people/jake.png",
+    hair: "blue",
+    eyes: "brown",
+    accessories: ["horn"],
     other: [],
-    species: "human",
+    species: "monster",
     gender: "male",
   },
   {
     name: "James",
-    img: "images/james.svg",
-    hair: "brown",
+    img: "people/james.png",
+    hair: "pink",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["horn"],
     other: [],
-    species: "human",
+    species: "monster",
     gender: "male",
   },
   {
     name: "Jana",
-    img: "images/jana.svg",
-    hair: "black",
-    eyes: "hidden",
-    accessories: ["glasses"],
+    img: "people/jana.png",
+    hair: "blue",
+    eyes: "green",
+    accessories: ["horn"],
     other: [],
-    species: "human",
-    gender: "female",
+    species: "monster",
+    gender: "else",
   },
   {
     name: "Jane",
-    img: "images/jane.svg",
+    img: "people/jane.png",
     hair: "yellow",
-    eyes: "hidden",
-    accessories: ["glasses"],
+    eyes: "brown",
+    accessories: ["horn"],
     other: [],
-    species: "human",
+    species: "animal",
     gender: "female",
   },
   {
     name: "Jaqueline",
-    img: "images/jaqueline.svg",
-    hair: "orange",
+    img: "people/jaqueline.png",
+    hair: "hidden",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["horn"],
     other: [],
-    species: "human",
+    species: "monster",
     gender: "female",
   },
 
   {
     name: "Jazebelle",
-    img: "images/jazebelle.svg",
-    hair: "purple",
-    eyes: "hidden",
-    accessories: ["glasses"],
-    other: ["smoker"],
-    species: "human",
-    gender: "female",
-  },
-  {
-    name: "Jean",
-    img: "images/jean.svg",
-    hair: "brown",
-    eyes: "blue",
-    accessories: ["glasses", "hat"],
-    other: ["smoker"],
-    species: "human",
-    gender: "male",
-  },
-  {
-    name: "Jeane",
-    img: "images/jeane.svg",
-    hair: "brown",
+    img: "people/jazebelle.png",
+    hair: "pink",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["hat"],
     other: [],
     species: "human",
     gender: "female",
   },
   {
-    name: "Jed",
-    img: "images/jed.svg",
-    hair: "orange",
-    eyes: "green",
+    name: "Jean",
+    img: "people/jean.png",
+    hair: "yellow",
+    eyes: "brown",
+    accessories: ["horn"],
+    other: ["smoker"],
+    species: "monster",
+    gender: "else",
+  },
+  {
+    name: "Jeane",
+    img: "people/jeane.png",
+    hair: "white",
+    eyes: "hidden",
     accessories: ["glasses", "hat"],
+    other: [],
+    species: "monster",
+    gender: "female",
+  },
+  {
+    name: "Jed",
+    img: "people/jed.png",
+    hair: "yellow",
+    eyes: "brown",
+    accessories: ["horn"],
     other: ["smoker"],
     species: "human",
     gender: "male",
   },
   {
     name: "Jenni",
-    img: "images/jenni.svg",
-    hair: "white",
+    img: "people/jenni.png",
+    hair: "grey",
     eyes: "hidden",
-    accessories: ["hat"],
-    other: [],
-    species: "human",
+    accessories: [],
+    other: ["smoker"],
+    species: "animal",
     gender: "female",
   },
   {
     name: "Jeri",
-    img: "images/jeri.svg",
-    hair: "orange",
-    eyes: "green",
-    accessories: ["glasses"],
+    img: "people/jeri.png",
+    hair: "white",
+    eyes: "hidden",
+    accessories: ["glasses", "hat"],
     other: [],
-    species: "human",
-    gender: "male",
+    species: "animal",
+    gender: "else",
   },
   {
     name: "Jerry",
-    img: "images/jerry.svg",
-    hair: "hidden",
+    img: "people/jerry.png",
+    hair: "grey",
     eyes: "blue",
-    accessories: ["hat"],
-    other: [],
-    species: "human",
+    accessories: ["horn"],
+    other: ["smoker"],
+    species: "monster",
     gender: "male",
   },
   {
     name: "Jess",
-    img: "images/jess.svg",
-    hair: "black",
-    eyes: "blue",
-    accessories: ["glasses"],
+    img: "people/jess.png",
+    hair: "white",
+    eyes: "hidden",
+    accessories: ["glasses", "horn"],
     other: [],
     species: "human",
     gender: "female",
   },
   {
     name: "Jocelyn",
-    img: "images/jocelyn.svg",
+    img: "people/jocelyn.png",
     hair: "black",
     eyes: "brown",
-    accessories: ["glasses"],
+    accessories: ["horn"],
     other: [],
     species: "human",
     gender: "female",
   },
   {
     name: "Jon",
-    img: "images/jon.svg",
+    img: "people/jon.png",
     hair: "brown",
     eyes: "green",
-    accessories: ["glasses"],
+    accessories: ["hat"],
     other: [],
-    species: "human",
+    species: "monster",
     gender: "male",
   },
   {
     name: "Jordan",
-    img: "images/jordan.svg",
+    img: "people/jordan.png",
     hair: "yellow",
     eyes: "hidden",
-    accessories: ["glasses", "hat"],
-    other: [],
-    species: "human",
-    gender: "male",
+    accessories: ["glasses", "horn"],
+    other: ["smoker"],
+    species: "monster",
+    gender: "else",
   },
   {
     name: "Josephine",
-    img: "images/josephine.svg",
-    hair: "grey",
+    img: "people/josephine.png",
+    hair: "white",
     eyes: "brown",
     accessories: [],
     other: [],
-    species: "human",
+    species: "monster",
     gender: "female",
   },
   {
     name: "Josh",
-    img: "images/josh.svg",
+    img: "people/josh.png",
     hair: "yellow",
     eyes: "green",
-    accessories: [],
+    accessories: ["hat", "horn", "glasses"],
     other: [],
     species: "human",
     gender: "male",
   },
   {
     name: "Jude",
-    img: "images/jude.svg",
-    hair: "black",
-    eyes: "green",
-    accessories: [],
+    img: "people/jude.png",
+    hair: "yellow",
+    eyes: "brown",
+    accessories: ["hat"],
     other: [],
-    species: "animal",
+    species: "monster",
     gender: "male",
   },
   {
     name: "Julie",
-    img: "images/julie.svg",
-    hair: "black",
-    eyes: "brown",
-    accessories: ["glasses", "hat"],
+    img: "people/julie.png",
+    hair: "pink",
+    eyes: "blue",
+    accessories: ["hat", "horn"],
     other: [],
-    species: "animal",
+    species: "moster",
     gender: "female",
   },
 ];
@@ -267,7 +267,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button small" onclick="guess('${person.name}')">GUESS</button>
         </div>
       </div>
     `;
@@ -336,14 +336,14 @@ const filterCharacters = (keep) => {
   if (category === "accessories") {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, it wears ${value}! Keep everything that wears ${value}!`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, it does not wear ${value}! Remove everything that wears ${value}!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
@@ -352,14 +352,14 @@ const filterCharacters = (keep) => {
   } else if (category === "other") {
     if (keep) {
       alert(
-        `Yes, the person is a ${value}! Keep all people that is a ${value}`
+        `Yes, it is a ${value}! Keep everything that is a ${value}!`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
       alert(
-        `Eouh.. noo, the person is not a ${value}! Remove all people that are a ${value}!`
+        `Eouh.. noo, it's not a ${value}! Remove everyone that are a ${value}!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
@@ -368,14 +368,14 @@ const filterCharacters = (keep) => {
   } else if (category === "gender") {
     if (keep) {
       alert(
-        `Yes, it is a ${value}! Keep everything that is a ${value}`
+        `Yes, it is a ${value}! Keep everything that is a ${value}!`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
       alert(
-        `No no no is not a ${value}! Remove everything that are a ${value}!`
+        `No no is not a ${value}! Remove everything that are a ${value}!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
@@ -385,14 +385,14 @@ const filterCharacters = (keep) => {
   } else if (category === "species") {
     if (keep) {
       alert(
-        `Yep it is a ${value}! Keep everything that is a ${value}`
+        `Yep it's a ${value}! Keep everything that's a ${value}`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
     } else {
       alert(
-        `Nope, it is not a ${value}! Let's kill everything that is not ${value}!`
+        `Nope, it's not a ${value}! Let's kill everything that is not ${value}!`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
@@ -402,7 +402,7 @@ const filterCharacters = (keep) => {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(
-        `Yes, the person has ${value} ${category}! Keep all people that have ${value}$ {category}`
+        `Yes, it has ${value} ${category}! Keep everything that have ${value} ${category}!`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
@@ -410,7 +410,7 @@ const filterCharacters = (keep) => {
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(
-        `Nope, the person does not have ${value} ${category}! Remove all people with ${value} ${category}`
+        `Nope, it does not have ${value} ${category}! Remove everyone with ${value} ${category}`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
@@ -422,7 +422,7 @@ const filterCharacters = (keep) => {
 };
 
 /* 
-    for hair and eyes : (cannot get this to work)
+    for hair and eyes : (cannot get attributes to work)
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)

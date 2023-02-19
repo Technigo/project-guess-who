@@ -64,6 +64,10 @@ select {
   align-content: center;
 }
 
+footer {
+  display: none;
+}
+
 /****** CARD ******/
 .card {
   width: 135px;
@@ -191,6 +195,7 @@ button {
 
 @media (max-width: 768px) {
   body {
+    min-height: 100vh;
     flex-direction: column;
   }
 
@@ -212,11 +217,26 @@ button {
 
   .board-wrapper {
     width: 100%;
+    margin-bottom: 20px;
   }
 
   .game-board {
     width: 100%;
     max-width: 750px;
+    justify-content: center;
+  }
+
+  footer{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #62F163;
+    color: white;
+  }
+
+  footer h4, h5 {
+    margin: 5px;
   }
 
   .card {

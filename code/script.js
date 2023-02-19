@@ -238,6 +238,7 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  questions.value='';
   board.style.display = 'flex'
   winOrLose.style.display = 'none'
   //Make the counter reset to 0 when the game starts. 

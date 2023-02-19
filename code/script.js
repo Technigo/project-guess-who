@@ -11,8 +11,8 @@ const playAgainButton = document.getElementById('playAgain')
 // Change array values for accessories and other to booleans?
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
+    name: 'Karl',
+    img: 'images/karl.png',
     hairColor: 'hidden',
     eyeColor: 'hidden',
     glasses: true,
@@ -20,8 +20,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
+    name: 'Suzy',
+    img: 'images/suzy.png',
     hairColor: 'hidden',
     eyeColor: 'blue',
     glasses: false, 
@@ -29,8 +29,8 @@ const CHARACTERS = [
     smoker: false,
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
+    name: 'Anna',
+    img: 'images/anna.png',
     hairColor: 'grey',
     eyeColor: 'blue',
     glasses: false,
@@ -38,8 +38,8 @@ const CHARACTERS = [
     smoker: true,      
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
+    name: 'Jean Paul',
+    img: 'images/JeanPaul.png',
     hairColor: 'black',
     eyeColor: 'brown',
     glasses: false,
@@ -47,8 +47,8 @@ const CHARACTERS = [
     smoker: false,      
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
+    name: 'Alexa',
+    img: 'images/alexa.png',
     hairColor: 'yellow',
     eyeColor: 'green',
     glasses: true,
@@ -56,8 +56,8 @@ const CHARACTERS = [
     smoker: false,    
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
+    name: 'Vivienne',
+    img: 'images/vivienne.png',
     hairColor: 'brown',
     eyeColor: 'green',
     glasses: true,
@@ -65,8 +65,8 @@ const CHARACTERS = [
     smoker: false,    
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
+    name: 'Marc',
+    img: 'images/marc.png',
     hairColor: 'black',
     eyeColor: 'hidden',
     glasses: true,
@@ -74,8 +74,8 @@ const CHARACTERS = [
     smoker: false,    
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
+    name: 'Cara',
+    img: 'images/cara.png',
     hairColor: 'yellow',
     eyeColor: 'hidden',
     glasses: true,

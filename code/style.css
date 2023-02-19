@@ -41,7 +41,7 @@ h1, h2 {
   left: 4px;
   text-align: center;
   font-size: 60px;
-  line-height: 50px;
+  line-height: 55px;
 }
 
 .question-section {
@@ -183,7 +183,6 @@ h3 {
 
 .card-front {
   overflow: hidden;
-
 }
 
 .card p {
@@ -307,8 +306,7 @@ button {
 }
 
 .winOrLoseTime h3{
-  margin:0;
-  margin-right:4px;
+  margin-top: 10px;
 }
 
 #playAgain {
@@ -374,6 +372,7 @@ button {
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
@@ -444,6 +443,12 @@ button {
   }
   .win-or-lose {
     max-width: 700px;
+    padding: 0 20px;
+  }
+
+  .win-or-lose h1 {
+    line-height: 50px;
+    margin-top: 20px;
   }
 
   label {

@@ -254,7 +254,7 @@ button {
   margin-bottom: 32px;
 }
 
-@media (max-width: 769px) and (orientation:portrair) {
+@media (max-width: 769px) {
 
   body {
     flex-direction: column;
@@ -264,13 +264,15 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
 
-    font-size: 100px;
-    line-height: 102px;
+    font-size: 70px;
+    line-height: 70px;
 
     font-family: 'Bungee Shade';
   }
@@ -286,7 +288,7 @@ button {
   }
 
   .card {
-    width: 113px;
+    width: 150px;
     position: relative;
   }
 

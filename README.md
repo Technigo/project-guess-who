@@ -10,18 +10,10 @@ The player receives feedback with alerts, indicating whether the current selecti
 You can guess the secret person at any time, by clicking on the "Guess" button and entering the corresponding name in the input field. The game will display a message indicating whether the guess was correct or not, and if the game is over.
 Illustration: https://undraw.co/illustrations
 
-## How to Play
-To start the game, simply open the index.html file in your browser. The game will display a board with 24 different characters, along with a set of buttons to select questions about the people (e.g. "Does the person have glasses?", "Is the person smiling?", etc.).
-
-You can click on any of the buttons to filter the board based on that question, and the game will display a feedback message indicating how many people match the criteria. You can continue asking questions and eliminating people until you think you have found the secret person.
-
-To guess the secret person, click on the "Guess" button and enter the name of the person you think is the secret. The game will display a message indicating whether your guess was correct or not, and if the game is over.
-
-If you want to start a new game, click the Restart button and a new secret person will be selected randomly.
-
 ## The problem
+Various resources and tools were utilized to approach the problem. Inspiration was sought from previous students' projects, which was a helpful starting point for understanding the project requirements and design. Additionally, Stackoverflow, various blogs, and ChatGPT were utilized. A more experienced coder helped with getting the filter method in place. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+If there had been more time, a counter would have been added for the number of player attempts, providing additional functionality and improving the user experience. There would also have been more focus on the CSS, such as adding animations to make the cards flip when hovering or clicking, and adding a footer to provide additional information and enhance the overall design.
 
 ## View it live
 https://guess-who-smirrebinx.netlify.app/

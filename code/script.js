@@ -9,8 +9,11 @@ const playAgainButton = document.getElementById("playAgain")
 
 const soundEffectFinal = () => {
   const sound = new Audio('sport-rock-logo1-13776.mp3');
+  sound.volume = 0.1;
   sound.play()
 }
+
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {

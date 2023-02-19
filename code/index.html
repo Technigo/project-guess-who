@@ -11,30 +11,39 @@
       href="https://fonts.googleapis.com/css2?family=Press Start 2P:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+
+    <link
+      href= "https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href= "https://fonts.googleapis.com/css2?family=Monofett&display=swap"
+      rel="stylesheet"
+    />
+
+
   </head>
   <body>
    
+   
 
-    <aside class="question-section">
-      <button type="button" id="restart" 
-      class="outlined-button">RESTART</button>
+    <aside class="question-section" id="aside">
 
-     <!-- <img
-        class=""
-        src=".png"
-        alt="Not an Error"
-      --->
+      <button id="mute" class="filled-button">UNMUTE</button> 
+      
+    <h1>GHIBLI ARCADE</h1>
 
-
-      <h1>Does the character have?</h1>
+      <h2>Does the character have?</h2>
 
       <select id="questions">
         <optgroup label="hair">
-          <option value="bald">bald?</option>
+         
           <option value="black">Black hair?</option>
           <option value="white">White hair?</option>
           <option value="yellow">Yellow hair?</option>
           <option value="mixed">Mixed color hair?</option>
+          <option value="bald">bald?</option>
 
         </optgroup>
         <optgroup label="Clothes">
@@ -58,13 +67,20 @@
           <option value="teeth showing">teeth showing?</option>
           <option value="hot">hot?</option>
           <option value="group">a group?</option>
-
-          
-          
+          <option value="human">human face?</option>
         </optgroup>
+
       </select>
 
+  
       <button id="filter" class="filled-button">FIND OUT</button>
+      <button type="button" id="restart" 
+       class="outlined-button">RESTART</button>
+
+      <div id="lifes" >LIFES: 3</div>
+      <div id="timer" class="timer">TIMER</div>
+     
+
     </aside>
 
     <section class="board-wrapper">
@@ -73,17 +89,18 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <!--<img
-          class=""
-          src=""
-          alt="Not an Error" -->
-        /> 
-        <h1 id="winOrLoseText"></h1>
+        
+        <h4 id="winOrLoseText"></h4>
+
+        <img src="./images/lost gif.gif" class="gif">
+
         <button type="button" id="playAgain"
          class="filled-button">PLAY AGAIN</button>
 
       </div>
     </section>
     <script src="script.js"></script>
+    
   </body>
+
 </html>

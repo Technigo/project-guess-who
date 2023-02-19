@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: rgb(0, 0, 0);
-  --secondary:  #e94a87;
+  --primary:black;
+  --secondary:  #e65b90;
 }
 
 body {
@@ -12,13 +12,45 @@ body {
   background-color: black;
 }
 
+
 h1 {
-  font-size: 42px;
+  font-size: 70px;
+  font-weight: 500;
+  line-height: 70px;
+
+  color: black;
+  font-family:'Bungee Shade';
+   margin-bottom: 60px;
+
+}
+
+
+h2 {
+  font-size: 35px;
+  font-weight: 500;
+  line-height: 40px;
+  color: rgb(255, 255, 255);
+  font-family: 'Press Start 2P' ;
+}
+
+h3 {
+  font-size: 30px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  font-family: 'Press Start 2P' ;
+  color:rgb(255, 255, 255);
 }
+
+h4  {
+  font-size: 70px;
+  font-weight: 500;
+ 
+  color: black;
+  font-family: 'Press Start 2P' ;
+}
+
+
 
 .question-section {
   width: 30%;
@@ -29,27 +61,27 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
 select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  cursor: pointer;
 }
 
-.guess-who-icon {
-  width: 126px;
-}
 
 .board-wrapper {
-  width: 70%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 50PX;
+  padding-bottom: 100px;
 }
 
 .game-board {
@@ -66,10 +98,10 @@ select {
   width: 150px;
   height: 250px;
   overflow: hidden;
-  border: 5px solid var(--secondary);
+  border: 15px solid rgb(241, 146, 179);
   border-radius: 7px;
-  border-style: double;
-  margin: 10px;
+  border-style:double;
+  margin: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,10 +118,10 @@ select {
 
 .card p {
   text-align: center;
-  margin-bottom: 0;
+  margin-top: 20px;
   font-size: 14px;
   font-weight: 700;
-  color: #ffd7e7;
+  color: #fce8f0;
 }
 
 .card .guess {
@@ -113,7 +145,6 @@ select {
 }
 
 
-
 /* The div with the guess class is only shown on hover */
 .card:hover .guess {
   display: flex;
@@ -125,6 +156,18 @@ select {
   font-weight: 600;
   margin-bottom: 8px;
   width: 90%;
+}
+
+
+.winner_gif {
+  height: auto;
+  width: 200px;
+}
+
+.gif{
+  height: auto;
+  width: 350px;
+
 }
 
 /****** BUTTONS ******/
@@ -143,19 +186,25 @@ button {
   border: 5px solid white;
   border-radius: 7px;
   border-style: double;
+  background-color: white;
+  margin-top: 50px;
 }
 
 .outlined-button {
-  background-color: yellow;
+
   color: var(--primary);
   align-self: flex-start;
   margin-bottom: 50px;
+  background-color: white;
 }
 
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color:white;
+  color: rgb(255, 255, 255);
+  margin-bottom: 70px;
+  
+
 }
 
 .filled-button:hover {
@@ -178,14 +227,7 @@ button {
   height: 100vh;
 }
 
-/*.video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}*/
+
 
 .win-or-lose {
   display: flex;
@@ -196,10 +238,6 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
-}
 
 #questions {
   font-size: 15px;
@@ -208,6 +246,7 @@ button {
   padding: 10px;
   background-color: black;
   border-radius: 10px;
+  margin-bottom: 10PX;
 }
 
 
@@ -238,7 +277,7 @@ button {
   }
 
   .board-wrapper {
-    width: 100%;
+    width: 70%;
   }
 
   .game-board {
@@ -272,3 +311,7 @@ button {
     
   }
 }
+
+
+  
+

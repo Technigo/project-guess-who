@@ -1,11 +1,16 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
-const findOutButton = document.getElementById('filter')
-const playAgainButton = document.getElementById('playAgain')
+const board = document.getElementById('board');
+const questions = document.getElementById('questions');
+const restartButton = document.getElementById('restart');
+const findOutButton = document.getElementById('filter');
+const playAgainButton = document.getElementById('playAgain');
+const playerLifes = document.getElementById("lifes");
+const muteButton = document.getElementById("mute");
+const aside = document.getElementById("aside");
 
 
+
+//const playerTimer = document.getElementById('timer');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -47,7 +52,7 @@ const CHARACTERS = [
     hair: 'black',
     clothes: 'red',
     accessories: ['bow'],
-    other: []
+    other: ['human']
   },
   {
     name: 'Haku',
@@ -71,7 +76,7 @@ const CHARACTERS = [
     hair: 'black',
     clothes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: ['human']
   },
   {
     name: 'kodama',
@@ -142,18 +147,16 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay
-let keep
+let secret;
+let currentQuestion;
+let charactersInPlay;
+let keep;
+let lifes;
+let backGroundSound = new Audio("./audio/song_background.mp3")  //sound
 
-//sound
-
-const sounWinner =()=> {}
-
-const soundLose =() =>{}
 
 // Draw the game board
+
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -174,7 +177,6 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
- 
 };
 
 // This function to start (and restart) the game
@@ -185,10 +187,13 @@ const start = () => {
   board.style.display = "flex"
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+
   // What else should happen when we start the game?
-  generateBoard(); 
+  generateBoard(); // the board shoud appear
   setSecret(); // invoke the funtion so the computer select the secretc character
-  
+  lifes = 4
+  playerLifes.innerHTML = `LIFES: ${lifes}` // the player starts with 3 lifes
+  //gamingTimer();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -203,17 +208,23 @@ const selectQuestion = () => {
     category: category,
     value: value
   }
-
 }
 
 // This function should be invoked when you click on 'Find Out' button. (step4)
 const checkQuestion = () => {
+  // Decrease user lifes.
+  if (lifes > 0) {
+    lifes --;
+    playerLifes.innerHTML = `LIFES: ${lifes}`
+  } else {
+    alert("Oh no! You have ran out of questions :c ! Now you have a final turn of guessing by clicking the character card")
+    return
+  }
+
   selectQuestion();
   const { category, value } = currentQuestion
   // Compare the currentQuestion details with the secret person details in a 
-  // different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  
  
   if (category === 'hair' || category === 'eyes') {
     if (value === secret[category]) {
@@ -242,30 +253,39 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
-      alert (`Yeees, the character wears ${value}! Keep all characters that wears${value}.`)
+     alert(
+       `Yeees, the character wears ${value}! Keep all characters that wears${value}.`
+       );
     } else  {
-      alert (`oh no, the person doesn't wear ${value}! Remove all characters that wears. ${value}.`)
+     alert(`oh no, the person doesn't wear ${value}! Remove all characters that wears. ${value}.`
+     );
     }
 
 } else if (category === "hair") {
     if (keep) {
-      alert (`Yaay, the character has ${value} hair! Keep all characters with ${value} hair.`)
+      alert (`Yaay, the character has ${value} hair! Keep all characters with ${value} hair.`
+      );
     } else  {
-      alert (`oh no, the person doesnt have ${value} hair! Remove all characters with ${value} hair.`)
+      alert (`oh no, the person doesnt have ${value} hair! Remove all characters with ${value} hair.`
+      );
     }
 
 } else if (category === "eyes") {
     if (keep) {
-      alert (`Yeah, the character have ${value} eyes! Keep all characters with ${value} eyes.`)
+      alert (`Yeah, the character have ${value} eyes! Keep all characters with ${value} eyes.`
+      );
     } else  {
-      alert (`oh no, the character doesnt have ${value} eyes! Remove all characters with ${value} eyes.`)
+      alert (`oh no, the character doesnt have ${value} eyes! Remove all characters with ${value} eyes.`
+      );
     }
 
 } else if (category === "other") {
     if (keep) {
-      alert (`yuhuu, the character have ${value}! Keep all characters with ${value}.`)
+     alert (`yuhuu, the character have ${value}! Keep all characters with ${value}.`
+     );
     } else  {
-      alert (`oh no, the character doesnt have ${value}! Remove all characters with ${value}.`)
+      alert (`oh no, the character doesnt have ${value}! Remove all characters with ${value}.`
+      );
     }
   }
   
@@ -303,9 +323,6 @@ const guess = (personToConfirm) => {
     checkMyGuess(playerGuess)
   }
 
-// store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked
@@ -323,22 +340,51 @@ const checkMyGuess = (personToConfirm) => {
    winOrLose.style.display = "flex"
 // 4. Hide the game board
    board.style.display = "none"
-  
+   aside.style.display = "none"
+
   }
 
+  
 
- 
+// timer
 
-
-
+/*
+function gamingTimer (time) {
+    let hours = Math.floor(time / 3600);
+    let minutes = Math.floor((time - hours * 3600) / 60);
+    let seconds = time - hours * 3600 - minutes * 60;
+    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}
+  
+function startTimer() {
+    setInterval(() => {
+      time++;
+      timer.textContent = formatTime(time);
+    }, 1000);
+}
+*/
+  
+ const muteSound = () => {
+   if (backGroundSound.muted === true) {
+     backGroundSound.muted = false
+     backGroundSound.play()
+     muteButton.innerHTML = "MUTE"
+   } else {
+     backGroundSound.muted = true
+     muteButton.innerHTML = "UNMUTE"
+   }
+ }
+  
+  
 
 
 // Invokes the start function when website is loaded
-start()
+start();
+
 
 // All the event listeners
 restartButton.addEventListener('click', start)
 findOutButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', start)
-
+muteButton.addEventListener("click", muteSound)
 

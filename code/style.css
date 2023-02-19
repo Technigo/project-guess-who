@@ -203,6 +203,8 @@ button {
   align-items: center;
   justify-content: center;
   background: var(--secondary);
+  background-image: url(images/imagebackground.png);
+  background-size: 50%;
   position: absolute;
   top: 0;
   bottom: 0;

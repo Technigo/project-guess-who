@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
   --primary: #519981;
-  --secondary: #ffc5cf;
+  --secondary: #fabfcb;
 }
 
 body {
@@ -50,6 +50,8 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(139,176,119,1) 100%);
 }
 
 .game-board {

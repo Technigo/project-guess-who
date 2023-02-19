@@ -267,7 +267,7 @@ button {
     padding: 8px 16px;
   }
   h1 {
-    font-size: 24px;
+    font-size: 100%;
     line-height: 30px;
     font-family: 'Bungee Shade';
   }

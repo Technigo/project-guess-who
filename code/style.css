@@ -269,11 +269,7 @@ button {
   h1 {
     font-size: 24px;
     line-height: 30px;
-    font-family: 'Press Start 2P';
-  }
-
-  .guess-who-icon {
-    width: 51px;
+    font-family: 'Bungee Shade';
   }
 
   .board-wrapper {
@@ -308,10 +304,10 @@ button {
     background: white;
     color: var(--primary);
     border: none;
-    
+ 
   }
-}
 
+}
 
   
 

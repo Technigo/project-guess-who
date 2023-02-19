@@ -7,10 +7,8 @@ const playAgainButton = document.getElementById('playAgain');
 const playerLifes = document.getElementById("lifes");
 const muteButton = document.getElementById("mute");
 const aside = document.getElementById("aside");
+const countdownEl = document.getElementById('countdown');
 
-
-
-//const playerTimer = document.getElementById('timer');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -18,7 +16,7 @@ const CHARACTERS = [
     name: 'Boh',
     img: 'images/boh.png',
     hair: 'yellow',
-    clothes:"" ,
+    clothes: null ,
     accessories: [],
     other: []
   },
@@ -34,7 +32,7 @@ const CHARACTERS = [
     name: 'Calcifer',
     img: 'images/calcifer.png',
     hair: '',
-    clothes: '',
+    clothes: null,
     accessories: [],
     other: []
   },
@@ -42,7 +40,7 @@ const CHARACTERS = [
     name: 'Catbus',
     img: 'images/catbus.png',
     hair: 'mixed',
-    clothes: '',
+    clothes: null,
     accessories: [],
     other: ['teeth showing']
   },
@@ -58,15 +56,15 @@ const CHARACTERS = [
     name: 'Haku',
     img: 'images/haku.png',
     hair: 'mixed',
-    clothes: '',
-   // accessories: [],
+    clothes: null,
+    accessories: [],
     other: []
   },
   {
     name: 'jiji',
     img: 'images/jiji.png',
     hair: 'black',
-    clothes: '',
+    clothes: null,
     accessories: [],
     other: []
   },
@@ -82,7 +80,7 @@ const CHARACTERS = [
     name: 'kodama',
     img: 'images/kodama.png',
     hair: '',
-    clothes: '',
+    clothes: null,
     accessories: [],
     other: ['group']
   },
@@ -91,7 +89,7 @@ const CHARACTERS = [
     name: 'moro',
     img: 'images/moro.png',
     hair: 'white',
-    clothes: '',
+    clothes: null,
     accessories: [],
     other: ['teeth showing']
   },
@@ -107,7 +105,6 @@ const CHARACTERS = [
     name: 'San',
     img: 'images/san.png',
     hair: 'white',
-    clothes: '',
     accessories: ['mask,earrings'],
     other: []
   },
@@ -115,7 +112,6 @@ const CHARACTERS = [
     name: 'Susuwatari',
     img: 'images/susuwatari.png',
     hair: 'black',
-    clothes: '',
     accessories: ['stars'],
     other: ['group']
   },
@@ -123,7 +119,7 @@ const CHARACTERS = [
     name: 'Totoro',
     img: 'images/totoro.png',
     hair: 'mixed',
-    clothes: 'hidden',
+    clothes: null,
     accessories: ['hat'],
     other: ['teeth showing']
   },
@@ -139,7 +135,7 @@ const CHARACTERS = [
     name: 'White & Blue totoros',
     img: 'images/white-blue_totoros.png',
     hair: 'mixed',
-    clothes: '',
+    clothes: null,
     accessories: ['leaf'],
     other: []
   },
@@ -346,24 +342,24 @@ const checkMyGuess = (personToConfirm) => {
 
   
 
-// timer
+//timer
 
-/*
-function gamingTimer (time) {
-    let hours = Math.floor(time / 3600);
-    let minutes = Math.floor((time - hours * 3600) / 60);
-    let seconds = time - hours * 3600 - minutes * 60;
-    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
-}
-  
-function startTimer() {
-    setInterval(() => {
-      time++;
-      timer.textContent = formatTime(time);
-    }, 1000);
-}
-*/
-  
+const startingMinutes = 5;
+let time = startingMinutes * 60;
+
+setInterval(function () {
+const minutes = Math.floor(time / 60);
+let seconds = time % 60;
+
+seconds = seconds < 5 ? '0' + seconds : seconds;
+
+countdownEl.innerHTML = `${minutes}:${seconds}`;
+time--;
+}, 1000);
+
+
+  // background song option
+
  const muteSound = () => {
    if (backGroundSound.muted === true) {
      backGroundSound.muted = false
@@ -375,8 +371,6 @@ function startTimer() {
    }
  }
   
-  
-
 
 // Invokes the start function when website is loaded
 start();

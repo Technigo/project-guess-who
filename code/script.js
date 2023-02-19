@@ -210,7 +210,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-let guesses = 0;
+let guesses
 
 //Audio
 let winnerSound = new Audio('sounds/winnerSound.mp3')
@@ -233,18 +233,27 @@ const generateBoard = () => {
     `
   })
 }
-board.scrollTop = board.scrollHeight
+
+//Start and restart game
+const play = () => {
+  board.style.display ='flex'
+  winnerLooser.style.display = 'none'
+  guesses = 0
+  guessCounter.innerHTML = guesses
+  charactersInPlay = CHARACTERS
+  setSecret()
+  generateBoard()
+}
 
 //Random selection of a character
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-const selectQuestion = () => {  // This variable stores what option group (category) the question belongs to.
+const selectQuestion = () => {  
  
-  // We also need a variable that stores the actual value of the question we've selected.
-  const category = questions.options[questions.selectedIndex].parentNode.label;
-  const value = questions.options[questions.selectedIndex].value;
+  const category = questions.options[questions.selectedIndex].parentNode.label // Storing what option group (category) the question belongs to.
+  const value = questions.options[questions.selectedIndex].value // We also need a variable that stores the actual value of the question we've selected.
 
   currentQuestion = {
     category: category,
@@ -274,30 +283,30 @@ const checkQuestion = () => {
 // Filter out characters via keep/ or not.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories and filter based on the category and value of param keep
+  // Show the correct alert message depending on what we´re filtering out
   if (category === 'accessories') {
     if (keep) {
-      alert(`Yes, the character is looking fabulous in ${value}! Confirm to keep all people that wears ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+      alert(`Yes, the character is looking fabulous in ${value}! Confirm to keep all people that wears ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
-      alert(`No, this character can't pull of ${value}! Remove everyone wearing ${value}!`);
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+      alert(`No, this character can't pull of ${value}! Remove everyone wearing ${value}!`)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(`Yes some ${value}s coming up! No need to see the other ones!`);
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+      alert(`Yes some ${value}s coming up! No need to see the other ones!`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(`Nope, no ${value}s here! Get rid of them!`);
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else {
     if (keep) {
-      alert(`Yay, this character has beautiful ${value} ${category}. Sort out the other ones that don't!`);
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+      alert(`Yay, this character has beautiful ${value} ${category}. Sort out the other ones that don't!`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
-      alert(`Nope this character doesn't have ${value} ${category}! Sort out all the characters that do!`);
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
+      alert(`Nope this character doesn't have ${value} ${category}! Sort out all the characters that do!`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
 
@@ -306,6 +315,7 @@ const filterCharacters = (keep) => {
   //Showing player the counter
   guessCounter.innerHTML = guesses
   //New board with the characters still left on the board
+  questions.selectedIndex = null
   generateBoard()
 }
 
@@ -345,19 +355,12 @@ const checkTheGuess = (personToConfirm) => {
   board.style.display = 'none'
 }
 
-//Start and restart game
-const play = () => {
-  board.style.display ='flex'
-  winnerLooser.style.display = 'none'
-  charactersInPlay = CHARACTERS
-  setSecret()
-  generateBoard()
-}
+//Starts game when whole script is loaded
 play ()
 
 // // // All the event listeners
 questions.addEventListener('change', selectQuestion)
-restartButton.addEventListener('click', play)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
-playAgain.addEventListener ('click' , play)
+restartButton.addEventListener('click', play)
+playAgain.addEventListener ('click', play)

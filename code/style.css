@@ -5,7 +5,7 @@
   --border-color: #94b1aa;
   --primary-bg-color: #e6f3f0;
   --secondary-bg-color: #94b1aa;
-  --tertiary-bg-color: #fff;
+  --tertiary-bg-color: #fcfffe;
   --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -27,6 +27,14 @@ h2 {
   font-family: var(--headings-font-family), sans-serif;
 }
 
+p,
+select,
+.card,
+footer,
+button {
+  font-family: var(--paragraph-font-family);
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -43,11 +51,11 @@ select {
   border: none;
   border-radius: 5px;
   padding: 5px;
-  font-size: 22px;
-  font-family: var(--paragraph-font-family);
+  font-size: 18px;
   width: 100%;
   margin: 24px 0;
   box-shadow: var(--box-shadow);
+  background-color: var(--tertiary-bg-color);
 }
 
 .question-mark-icon {
@@ -170,7 +178,7 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  min-height: 101vh;
 }
 
 .win-or-lose {
@@ -183,12 +191,17 @@ button {
 }
 
 .win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+  /* align-self: flex-start;
+  margin-left: 15%; */
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
 }
 
-.win-or-lose h1 {
-  margin-bottom: 32px;
+.win-or-lose h2 {
+  /* margin-bottom: 32px; */
+  margin: 20px;
 }
 
 /*footer*/
@@ -248,16 +261,26 @@ button {
     flex-direction: column;
   }
 
+  select {
+    font-size: 15px;
+  }
+
   .question-section {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
   h1 {
     font-size: 24px;
     line-height: 30px;
+  }
+
+  h2 {
+    font-size: 20px;
+    line-height: 25px;
   }
 
   .guess-who-icon {
@@ -293,7 +316,6 @@ button {
     padding: 6px 11px;
     margin-bottom: 1px;
     background: white;
-    color: var(--secondary-bg-color);
     border: none;
   }
 }

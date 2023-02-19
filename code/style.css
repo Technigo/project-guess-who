@@ -1,5 +1,6 @@
 body {
   display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
@@ -11,7 +12,7 @@ body {
   align-items: center;
   font-size: 18px;
   font-weight: bold;
-  margin: 30px 0;
+  margin: 15px 0;
   color: #C21C12;
 }
 
@@ -25,14 +26,13 @@ h1 {
 }
 
 .question-section {
-  width: 30%;
-  min-height: 100vh;
   background-color: #303599;
   display: flex;
   flex-direction: column;
-  padding: 5vw;
-  align-items: flex-start;
+  align-items: center;
   box-sizing: border-box;
+  padding: 5px;
+  width: 100%;
 }
 
 select {
@@ -41,25 +41,25 @@ select {
   font-size: 22px;
   font-family: 'Montserrat';
   color: #303599;
-  width: 100%;
-  margin: 24px 0;
+  width: 30%;
+  margin: 15px 0;
 }
 
 h2 {
   color: #C21C12;
   text-shadow: 1px 1px white;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .board-wrapper {
-  width: 70%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 10px;
 }
 
 .game-board {
-  width: 90%;
   max-width: 882px;
   display: flex;
   flex-wrap: wrap;
@@ -143,6 +143,7 @@ button {
   background-color: transparent;
   color: #C21C12;
   align-self: flex-end;
+  margin: 15px;
 }
 
 .outlined-button:hover {
@@ -187,33 +188,62 @@ button {
   margin-bottom: 32px;
 }
 
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  margin-top: 5px;
+  background-image: linear-gradient(rgba(60, 125, 209, 0.8), rgba(44, 95, 190, 0.8)),
+  url("images/card-background1.png");
+}
+
+.contact {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 6px;
+  color: black;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.logo {
+  width: 30px;
+}
+
+.logo:hover {
+  transform: scale(1.2);
+  opacity: .75;
+}
+
 @media (max-width: 768px) {
-  body {
-    flex-direction: column;
+  select {
+    width: 70%;
   }
 
-  .question-section {
-    width: 100%;
-    min-height: 0;
-  }
   button {
     padding: 8px 16px;
   }
+
   h1 {
-    font-size: 24px;
+    font-size: 26px;
     line-height: 30px;
+    text-shadow: 1px 1px white;
   }
 
-  .guess-who-icon {
-    width: 51px;
+  h2 {
+    text-shadow: none;
+    font-size: 18px;
   }
 
   .board-wrapper {
-    width: 100%;
+    width: 99%;
   }
 
   .game-board {
-    width: 100%;
+    width: 99%;
     max-width: 750px;
   }
 

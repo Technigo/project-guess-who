@@ -15,3 +15,5 @@ taking pictures of the drawings and remove the background (coz the pictures that
 ## View it live
 
 https://effortless-griffin-4920d5.netlify.app/
+
+![guesswho](https://user-images.githubusercontent.com/121789853/220186462-a5a10994-7a72-401f-ab31-25f47b01e495.png)

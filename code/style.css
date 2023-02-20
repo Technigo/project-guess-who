@@ -221,7 +221,7 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: linen;
   text-align: center;
   height: inherit;
   transform: rotateY(180deg);
@@ -269,12 +269,12 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: linen;
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: linen;
+  border-color: linen;
   color: var(--primary);
 }
 

@@ -249,12 +249,12 @@ button {
 
   .board-wrapper {
     width: 100%;
-    align-content: ;
   }
 
   .game-board {
     width: 100%;
     max-width: 750px;
+    justify-content: center;
   }
 
   .card {

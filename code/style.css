@@ -218,7 +218,6 @@ h3 {
 
 .guess {
   display: flex;
-  background-color: var(--secondary);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -229,6 +228,9 @@ h3 {
   border: 1px solid var(--secondary);
   top: -1px;
   left: -1px;
+  background: linear-gradient(-45deg, lightsalmon, #c58fc9, #48D1CC, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
 }
 
 .guess span {
@@ -415,8 +417,8 @@ button {
 
   .guess-who-background {
    width: 66px;
-  top: 157px;
-  left: -26px;
+    top: 157px;
+    left: -26px;
   }
 
   .board-wrapper {

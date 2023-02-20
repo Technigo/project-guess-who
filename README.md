@@ -1,13 +1,14 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project was to build a guess-who type of game using javascript. Creating, manipulating and deleting arrays were the highlight of this project.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I received much of my knowledge from past projects, videos and stack overlfow. I kept discussions open with team mates bugs and ways and means of getting the project to function as it should. 
+
+I made it a murder mystery themed game and so changed the character images and info to suit it. I also used alertifyJS to add custom promts and alerts to the game. 
+
+To make it better, I would like to add a countdown timer instead of a stopwatch timer like there is now. I would also like to improve the media queries so that the game looks as it should on various devices. 
 
 ## View it live
-
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+ View it here https://guess-who-joannaphilips.netlify.app/

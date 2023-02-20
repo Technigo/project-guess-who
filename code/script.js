@@ -444,13 +444,17 @@ const startTimer = () =>{
       timer.innerHTML = formattedTimeElapsed;
   }, 1000); 
   }
+
+  const restartGame = () => {
+    window.location.reload();
+  }
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', restartGame)
 findOutButton.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
-playAgainButton.addEventListener('click', playAgain)
+playAgainButton.addEventListener('click', restartGame)
 
 

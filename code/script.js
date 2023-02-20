@@ -96,6 +96,17 @@ const CHARACTERS = [
     beard: false
   },
   {
+    name: 'Fred',
+    img: 'images/jia.svg',
+    hairColor: 'black',
+    eyeColor: 'blue',
+    glasses: true,
+    hat: false,
+    jewellery: false,
+    smoker: false,
+    beard: false
+  },
+  {
     name: 'Gordon',
     img: 'images/jude.svg',
     hairColor: 'black',
@@ -105,6 +116,17 @@ const CHARACTERS = [
     jewellery: false,
     smoker: false,
     beard: true
+  },
+  {
+    name: 'Hallie',
+    img: 'images/jodi.svg',
+    hairColor: 'yellow',
+    eyeColor: 'blue',
+    glasses: false,
+    hat: true,
+    jewellery: false,
+    smoker: false,
+    beard: false
   },
   {
     name: 'Harmony',
@@ -158,6 +180,17 @@ const CHARACTERS = [
     glasses: false,
     hat: true,
     jewellery: false,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Nadine',
+    img: 'images/jolee.svg',
+    hairColor: 'black',
+    eyeColor: 'blue',
+    glasses: false,
+    hat: false,
+    jewellery: true,
     smoker: false,
     beard: false
   },
@@ -257,6 +290,17 @@ const CHARACTERS = [
     glasses: true,
     hat: false,
     jewellery: true,
+    smoker: false,
+    beard: false
+  },
+  {
+    name: 'Uri',
+    img: 'images/joe.svg',
+    hairColor: 'black',
+    eyeColor: 'brown',
+    glasses: false,
+    hat: true,
+    jewellery: false,
     smoker: false,
     beard: false
   },

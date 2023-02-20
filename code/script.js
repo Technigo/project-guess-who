@@ -153,8 +153,8 @@ const CHARACTERS = [
     img: 'images/jeri.svg',
     hair: 'purple',
     eyes: 'green',
-    accessories: ['pet'],
-    other: [],
+    accessories: [],
+    other: ['pet'],
     mood: 'an angry'
   },
   {

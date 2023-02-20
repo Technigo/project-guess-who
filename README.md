@@ -13,6 +13,6 @@ I will reach out to my fellow boot camp-buddies for more help.
 
 ## View it live
 
-I will deploy my project on Netlify and provide a link here:
+I will deploy my project on Netlify and provide a link here: https://guess-who-game-ylva-karlsson.netlify.app/
 This will be my last commit for today and then I will fix the changes requested with fresh eyes in the morning. :)
 "The struggle is real"...

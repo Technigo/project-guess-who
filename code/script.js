@@ -66,7 +66,7 @@ const CHARACTERS = [
     hair: "black",
     eyes: "hidden",
     accessories: ["glasses"],
-    other: ["actvive"]
+    other: ["active"]
   },
   {
     name: "Jane",
@@ -238,7 +238,7 @@ const resetTimer = () => {
     //showing the time left in minutes and seconds instead of default settings
     let minutes = Math.floor(timeLeft / 60) % 60;
     let seconds = timeLeft % 60;
-    gameTimer.innerHTML = paddedNumber(minutes, 2) + ":" + paddedNumber(seconds, 2) + " to go/remaining";
+    gameTimer.innerHTML = paddedNumber(minutes, 2) + ":" + paddedNumber(seconds, 2) + " - time left";
   }
   timeLeft -= 1;
   }, 1000);
@@ -266,6 +266,7 @@ const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
+console.log(setSecret);
 
 // Ylva - This function to start (and restart) the game - this also creates an array called charactersInPlay to be iterated
 //through later, generates the cards of the characters and sets the secret character.
@@ -275,10 +276,14 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
+  console.log("The secret person is",secret.name); // - the secret person works - YEY!
+  
   board.style.display = "flex"; //added - this doesn't look that nice though - need to change but don't know how
   questions.value = "";
   secretImageAtCheck.innerHTML = "";
+  
   //resetting the questions allowed
+  
   numberOfQuestions = 3;
    //resetting the timer
   resetTimer();
@@ -327,7 +332,7 @@ console.log(playerName);
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
 //if-statement limits the number of questions allowed to 3 questions in total
-  if (numberOfQuestions > 1) {
+  if (numberOfQuestions > 0) {
     console.log(numberOfQuestions);
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that (true or false)
@@ -349,7 +354,7 @@ filterCharacters(true); //keep everyone with true according to accessories/other
 numberOfQuestions--;
     console.log(numberOfQuestions);
     numberOfQuestionsAllowed.innerText = `Number of questions left: ${numberOfQuestions}`;
-  } else if ((numberOfQuestions = 1)) {
+  } else if ((numberOfQuestions === 1)) {
     if (category === "Hair" || category === "Eyes") {
       if (secret[category] === value) {
         filterCharacters(true); // Keep everyone with that hair/eye colour
@@ -510,4 +515,4 @@ restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutButton.addEventListener("click", checkQuestion);
 playAgainButton.addEventListener("click", start);
-//findOutButton.addEventListener("click", playerNameSave);
+findOutButton.addEventListener("click", playerNameSave);

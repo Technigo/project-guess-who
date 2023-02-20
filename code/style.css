@@ -4,6 +4,13 @@
   --secondary: #e47651;
 }
 
+.containter {
+  display: flex;
+  /* flex-direction: row; */
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #f8f6f9;
   display: flex;
@@ -29,6 +36,7 @@ h1 {
   color: #353436;
 }
 
+/*This section decides the width of the left side of the Gameboard - where the user selects the questions for the secret person*/
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -77,7 +85,8 @@ select {
   width: 70%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  align-content: center;
+  /* justify-content: center; */
 }
 
 .game-board {
@@ -247,7 +256,7 @@ footer h4 {
     margin: 10px 25px;
   }
 
-  #playeNameHere {
+  #playerNameHere {
     text-align: center;
     font-weight: 600;
   }

@@ -5,7 +5,7 @@ const winOrLose = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const restartButton = document.getElementById("restart");
 const playAgainButton = document.getElementById("playAgain");
-const findOutbutton = document.getElementById("filter");
+const finOutButton = document.getElementById("filter");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -240,6 +240,7 @@ const start = () => {
   board.style.display = "flex"; // show the game board again
   setSecret(); // set a new secret person
   generateBoard(); // Here we're setting charactersInPlay array to be all the characters to start with (så att de visas vid laddning av sidan)
+  selectQuestion();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -336,7 +337,7 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  if (personToCheck === secret) {
+  if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `You guessed RIGHT! Well played!!`;
   } else {
     winOrLoseText.innerHTML = `Oh no! You guessed wrong. Game over! <span role="img" aria-label="angry">😤</span>`;
@@ -355,7 +356,7 @@ start();
 // All the event listeners
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
-findOutbutton.addEventListener("click", () => {
+finOutButton.addEventListener("click", () => {
   checkQuestion();
   filterCharacters();
 });

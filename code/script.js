@@ -13,7 +13,7 @@ const guesses = document.getElementById("guesses");
 // Global variables
 let userNamePrompt = prompt("What's your name?");
 let userNameText = "";
-let guessCounter = 1;
+let guessCounter;
 let secret;
 let currentQuestion;
 let charactersInPlay;
@@ -286,24 +286,28 @@ const createCategories = () => {
         document.getElementById(category).innerHTML += `
     <option value="${hairItem}" id="${hairItem}">${hairItem} fur</option>
     `;
+        document.getElementById(hairItem).disabled = false;
       });
     } else if (category === "eyes") {
       eyesArr.forEach((eyesItem) => {
         document.getElementById(category).innerHTML += `
     <option value="${eyesItem}" id="${eyesItem}">${eyesItem} eyes</option>
     `;
+        document.getElementById(eyesItem).disabled = false;
       });
     } else if (category === "accessories") {
       accessoriesArr.forEach((accessoriesItem) => {
         document.getElementById(category).innerHTML += `
     <option value="${accessoriesItem}" id="${accessoriesItem}">${accessoriesItem}</option>
     `;
+        document.getElementById(accessoriesItem).disabled = false;
       });
     } else if (category === "other") {
       otherArr.forEach((otherItem) => {
         document.getElementById(category).innerHTML += `
     <option value="${otherItem}" id="${otherItem}" >${otherItem} </option>
     `;
+        document.getElementById(otherItem).disabled = false;
       });
     }
   });
@@ -324,10 +328,16 @@ const timerCount = () => {
   timer.innerHTML = `Time: ${minutes}:${seconds}`;
 };
 setInterval(timerCount, 1000);
-
+//Guess counter
+const countGuesses = () => {
+  guessCounter++;
+  guesses.textContent = `Guesses: ${guessCounter}`;
+};
 // This function to start (and restart) the game
 const start = () => {
   totalSeconds = 0;
+  guessCounter = 0;
+  guesses.textContent = `Guesses: ${guessCounter}`;
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
@@ -369,7 +379,7 @@ const checkQuestion = () => {
     }
   }
   generateBoard();
-  guesses.textContent = `Guesses: ${guessCounter++}`;
+  countGuesses();
 };
 
 // It'll filter the characters array and redraw the game board.

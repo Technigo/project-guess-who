@@ -50,9 +50,8 @@ select {
 }
 
 #timer, #guesses{
-font-size: 42px;
+font-size: 22px;
 font-weight: 500;
-line-height: 48px;
 margin: 10px 0;
 color: white;
 }
@@ -207,6 +206,7 @@ button {
   }
   button {
     padding: 8px 16px;
+    margin: 15px 0;
   }
   h1 {
     font-size: 24px;
@@ -215,8 +215,9 @@ button {
 
   #timer ,
   #guesses{
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 10px;
+    line-height: 2px;
+    padding:0px 10px;
   }
 
   .guess-who-icon {

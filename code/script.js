@@ -262,6 +262,7 @@ const timer = () => {
           minutes + ":" + seconds;
       }
     }, 1000);
+    timerCounter.style.color = "#ffffff"
  }
 
 // This function to start the game

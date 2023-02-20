@@ -92,7 +92,7 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['sunglasses','jewelry'],
     other: [],
-    mood: 'chill'
+    mood: 'a chill'
   },
   {
     name: 'Javier',

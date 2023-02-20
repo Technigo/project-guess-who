@@ -249,6 +249,7 @@ button {
 
   .board-wrapper {
     width: 100%;
+    align-content: ;
   }
 
   .game-board {
@@ -262,20 +263,18 @@ button {
   }
 
   .card .guess {
-    display: flex;
+    display: none;
     top: 0;
     position: absolute;
-    justify-content: flex-end;
   }
 
-  .card .guess span {
-    display: none;
+  .card .guess:hover {
+    display: flex;
   }
-
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: #730237;
     color: var(--primary);
     border: none;
   }

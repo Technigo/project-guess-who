@@ -10,4 +10,4 @@ If I had more time I would start over again and plan it differently and I would 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://app.netlify.com/sites/polite-druid-74af85/overview

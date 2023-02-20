@@ -1,6 +1,6 @@
 # Project Guess Who
 
-This assignment was part of Technigo web development bootcamp for week 3.
+This assignment was part of Technigo web development bootcamp for week 2.
 
 We were tasked with creating a "Guess Who" game, to practice using array manipulation methods, working with objects and implementing loops. The user should be able to filter out objects by asking questions, to finally make a guess on which one of these objects the game has randomly selected to be the secret person.
 

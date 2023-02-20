@@ -438,4 +438,8 @@ button {
     padding: 17px 27px;
   }
 
+  #winOrLoseText-h2 {
+    margin: 0 10px;
+  }
+
 }

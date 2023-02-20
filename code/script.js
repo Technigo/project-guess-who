@@ -266,26 +266,25 @@ const setSecret = () => {
   secret =
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
-console.log(setSecret);
+//console.log(`secret person:`, secret.name);
 
 // Ylva - This function to start (and restart) the game - this also creates an array called charactersInPlay to be iterated
 //through later, generates the cards of the characters and sets the secret character.
 // This function also clears the RightOrWrongSection after winning or losing the "Guess who? in the game
-const start = () => {
+function start() {
   //This shows the first option as selected in the dropdown-menu
   charactersInPlay = CHARACTERS;
   generateBoard();
   setSecret();
-  console.log("The secret person is",secret.name); // - the secret person works - YEY!
-  
+  console.log("The secret person is", secret.name); // - the secret person works - YEY!
+
   board.style.display = "flex"; //added - this doesn't look that nice though - need to change but don't know how
   questions.value = "";
   secretImageAtCheck.innerHTML = "";
-  
+
   //resetting the questions allowed
-  
   numberOfQuestions = 3;
-   //resetting the timer
+  //resetting the timer
   resetTimer();
   //resetting the div with questions and makes it visible once again
   questions.style.display = "block";
@@ -293,16 +292,15 @@ const start = () => {
   document.getElementById("mainQuestion").innerText = "Does the person have...";
   //resetting the player's name in game
   document.getElementById("nameInput").value = "";
-  
+
   // Ylva - Resets the counter of questions allowed
-numberOfQuestionsAllowed.innerText = `You have 3 questions left`;
+  numberOfQuestionsAllowed.innerText = `You have 3 questions left`;
 
-//winOrLose.innerText += ` `;
-
+  //winOrLose.innerText += ` `;
   // Here we're setting charactersInPlay array to be all the characters to start with
   // charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
-};
+}
 // Ylva - setting the currentQuestion object when you select something in the dropdown - "Does the person have..."
 const selectQuestion = () => {
   // The category variable is used to store what option group (category) the question belongs to.
@@ -512,6 +510,8 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
+//restartButton.addEventListener('click', start),(()=>{ location.reload()}) //trying to fix game to start again
+//restartButton.addEventListener("click", start()=>{ location.reload()});
 questions.addEventListener("change", selectQuestion);
 findOutButton.addEventListener("click", checkQuestion);
 playAgainButton.addEventListener("click", start);

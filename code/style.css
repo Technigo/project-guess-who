@@ -82,16 +82,19 @@ select {
 }
 
 .board-wrapper {
-  width: 70%;
+  /*width: 70%;*/
+  width: auto;
   display: flex;
   align-items: center;
-  align-content: center;
-  /* justify-content: center; */
+  /* background-color: #e47651;*/
+  /*align-content: center;*/
+  justify-content: center;
 }
 
 .game-board {
   width: 90%;
-  max-width: 882px;
+  /*max-width: 882px;*/
+  max-width: 980px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -123,7 +126,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  /*color: white;*/
   text-align: center;
   height: inherit;
 }
@@ -165,8 +168,10 @@ select {
 
 /****** BUTTONS ******/
 button {
+  display: flex;
   border: 2px solid var(--primary);
   border-radius: 50px;
+  justify-content: center;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
@@ -222,6 +227,10 @@ button {
 .win-or-lose img {
   align-self: flex-start;
   margin-left: 15%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
   /* padding: 10px; will chose between these too once I see the difference*/
 }
 
@@ -230,8 +239,12 @@ button {
 }
 
 footer {
+  /*display: none;*/
   display: none;
-}
+  justify-content: space-evenly;
+  margin: 10px;
+  /*padding: 50px;*/
+  }
 footer h4 {
   display: none;
 }
@@ -325,7 +338,7 @@ footer {
   padding: 5px;
   background-color: var(--secondary);
   box-sizing: border-box;
-  width: 100%;
+  width: 50%;
 }
 footer h4 {
   display: block;

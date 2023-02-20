@@ -10,4 +10,4 @@ If I had more time I would start over again and plan it differently and I would 
 
 ## View it live
 
-https://app.netlify.com/sites/polite-druid-74af85/overview
+https://polite-druid-74af85.netlify.app

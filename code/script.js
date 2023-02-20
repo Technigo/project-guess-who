@@ -7,9 +7,9 @@ const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText1 = document.getElementById('winOrLoseText1')
 const winOrLoseText2 = document.getElementById('winOrLoseText2')
 const playAgain = document.getElementById('playAgain')
-const guessCounterElem = document.getElementById('guess-counter');
 const winOrLoseContainer = document.getElementById('winOrLoseContainer')
 const countUpTimer = document.getElementById('count-up')
+const guessCounterElem = document.getElementById('guess-counter');
 
 
 const CHARACTERS = [
@@ -289,7 +289,8 @@ const CHARACTERS = [
 let secret //Secret person object
 let currentQuestion // The current question object
 let charactersInPlay //The people that are left in the game
-let guessCounter = 0; // Question counter starts on 0
+let guessCounter = 0 // Question counter starts on 0
+let seconds = 0 // The timer starts with 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -317,45 +318,48 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+// The guess counter function displays the number of guesses
 const guessCounterDisplay = () => {
   guessCounterElem.innerText = `${guessCounter}`;
 };
 
-let seconds = 0
-
+// The timer function
 const upTimer = () => {
   ++seconds;
   let hour = Math.floor(seconds / 3600);
   let minute = Math.floor((seconds - hour * 3600) / 60);
   let updSecond = seconds - (hour * 3600 + minute * 60);
-  countUpTimer.innerHTML = `Your time: <div class="timer"><span id="hour">${hour}</span>hr <span id="minute">${minute}</span>min <span id="second">${updSecond}</span>sec</div>`;
+  countUpTimer.innerHTML = `
+    Your time: 
+    <div class="timer">
+      <span id="hour">${hour}</span>hr 
+      <span id="minute">${minute}</span>min 
+      <span id="second">${updSecond}</span>sec
+    </div>
+  `
 }
 
-let timer = setInterval(upTimer, 1000);
-
-const pause = () => {
-  clearInterval(timer);
-}
+let timer = setInterval(upTimer, 1000); // This has to come below the timer function
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
+  // Setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
 
   generateBoard();  //Loads the board of characters
-  setSecret();  //Generates a new secret person on start
-  filterButton.disabled = true;
-  filterButton.style.opacity = "0.5"
+  setSecret();  // Generates a new secret person on start
+  filterButton.disabled = true; // Disables the "Find Out" button before the player has selected an option from the selection menu
+  filterButton.style.opacity = "0.5" 
   console.log("The secret person is", secret.name);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  filterButton.disabled = false;
+  filterButton.disabled = false; //Enables the "Find Out" button when a selection has been made
   const category = questions.options[questions.selectedIndex].parentNode.label// This variable stores what option group (category) the question belongs to.
   const value = questions.options[questions.selectedIndex].value; // This variable stores the value of the question from the dropdown.
   
-  // We also need a variable that stores the actual value of the question we've selected.
+  // A variable that stores the value of the question we've selected.
   currentQuestion = {
     category: category,
     value: value
@@ -363,9 +367,9 @@ const selectQuestion = () => {
   console.log("Question selected", currentQuestion);
 }
 
+// This function is invoked when you click on "Find Out' button, leads to filter function
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
   if (category === 'hair' || category === 'eyes' || category === 'mood' ) {
     if (secret[category] === value) {
       keep = true
@@ -426,7 +430,7 @@ const filterCharacters = (keep) => {
   generateBoard();
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// This function is invoked when you click on "Guess" button on each card and the player then has to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   const userGuess = window.confirm(`Are you sure about ${personToConfirm}..?`);
   if (userGuess) {
@@ -434,19 +438,32 @@ const guess = (personToConfirm) => {
   }
 }
 
-// If you confirm, this function is invoked
+// If the player confirms, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  board.innerHTML = '';
-  winOrLose.style.display = "block";
-  board.innerHTML = '';
+  board.innerHTML = ''; // Clears the board
+  winOrLose.style.display = "block"; // Displays the winOrLose window
   if (personToCheck === secret.name) {
-    let secretPersonImgWin = `<img class="card-win" src=${secret.img} alt=${secret.name}><h3>Amount of guesses: </h3><div class="winOrLoseTime guess-container">${guessCounter}</div><div class="winOrLoseTime"><h3>${countUpTimer.innerHTML}</h3></div>`;
-    winOrLoseContainer.insertAdjacentHTML("beforeEnd", secretPersonImgWin);
-    winOrLoseText1.innerText = `Wohoo that's correct! You Win!`
+    let theResultWin = `
+      <img class="card-win" src=${secret.img} alt=${secret.name}>
+      <h3>Amount of guesses: </h3>
+      <div class="winOrLoseTime guess-container">${guessCounter}</div>
+      <div class="winOrLoseTime">
+        <h3>${countUpTimer.innerHTML}</h3>
+      </div>
+    `; // A varible with the secret person image, the amount of guesses the player had and how long it took
+    winOrLoseContainer.insertAdjacentHTML("beforeEnd", theResultWin); //Displaying that HTML element without ruining the eventListeners below
+    winOrLoseText1.innerText = `Wohoo that's correct! You Win!` // Two messages are displayed
     winOrLoseText2.innerText = `${secret.name} is pleased!`
   } else {
-    let secretPersonImgLose = `<img class="card-lose" src=${secret.img} alt=${secret.name}><h3>Amount of guesses: </h3><div class="winOrLoseTime guess-container">${guessCounter}</div><div class="winOrLoseTime"><h3>${countUpTimer.innerHTML}</h3></div>`;
-    winOrLoseContainer.insertAdjacentHTML("beforeEnd", secretPersonImgLose);
+    let theResultLose = `
+      <img class="card-lose" src=${secret.img} alt=${secret.name}>
+      <h3>Amount of guesses: </h3>
+      <div class="winOrLoseTime guess-container">${guessCounter}</div>
+      <div class="winOrLoseTime">
+        <h3>${countUpTimer.innerHTML}</h3>
+      </div>
+    `;
+    winOrLoseContainer.insertAdjacentHTML("beforeEnd", theResultLose);
     winOrLoseText1.innerText = `Oh no! Your guess is wrong!`
     winOrLoseText2.innerText = `${secret.name} (the right person) is very angry!`
   }
@@ -455,22 +472,27 @@ const checkMyGuess = (personToCheck) => {
 // Invokes the start function when website is loaded
 start()
 
-// All the event listeners
+// All the event listeners below
+
+//Restart button
 restartButton.addEventListener('click', (event) => { 
-start()
-window.location.reload();
+start() // Restarts the page on click
+window.location.reload(); // The page is reloaded to remove the old insertAdjacentHTML elements
 });
+//When an option is picked in the dropdown menu
 questions.addEventListener('change', () => {
-  selectQuestion();
-  filterButton.style.opacity = "1.0"
+  selectQuestion(); //Invokes the selectQuestion function
+  filterButton.style.opacity = "1.0" //Enables the "Find Out" button
 })
-filterButton.addEventListener('click', checkQuestion)
-playAgain.addEventListener("click", (event) => {
-  start();
-  winOrLose.style.display = "none";
-  window.location.reload();
-});
+//When "Find Out" button is clicked
 filterButton.addEventListener("click", () => {
-  guessCounter += 1;
-  guessCounterDisplay(); 
+  checkQuestion(); // The checkQuestion function is invoked
+  guessCounter += 1; // The counter starts counting
+  guessCounterDisplay();  // The counter starts displaying
+});
+//When "Play Again" button is clicked
+playAgain.addEventListener("click", (event) => {
+  start(); // The start function is invoked
+  winOrLose.style.display = "none"; // The winOrLoseWindow stops showing
+  window.location.reload(); // The page is reloaded to remove the old insertAdjacentHTML elements
 });

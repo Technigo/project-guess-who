@@ -332,13 +332,13 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that (true or false)
   // Then invoke filterCharacters
-  if (category === "hair" || category === "eyes") {
+  if (category === "Hair" || category === "Eyes") {
    if (secret[category] === value) {
     filterCharacters(true); //keep everyone with true according to hair/eye color
    } else {
    filterCharacters(); //remove everyone with false according to hair/eye color
    }
-  } else if (category === "accessories" || category === "other") {
+  } else if (category === "Accessories" || category === "Other") {
 if (secret[category].includes(value)) {
 filterCharacters(true); //keep everyone with true according to accessories/other
 } else {
@@ -350,13 +350,13 @@ numberOfQuestions--;
     console.log(numberOfQuestions);
     numberOfQuestionsAllowed.innerText = `Number of questions left: ${numberOfQuestions}`;
   } else if ((numberOfQuestions = 1)) {
-    if (category === "hair" || category === "eyes") {
+    if (category === "Hair" || category === "Eyes") {
       if (secret[category] === value) {
         filterCharacters(true); // Keep everyone with that hair/eye colour
       } else {
         filterCharacters(); // Remove everyone with that hair/eye colour
       }
-    } else if (category === "accessories" || category === "other") {
+    } else if (category === "Accessories" || category === "Other") {
       if (secret[category].includes(value)) {
         filterCharacters(true);
       } else {
@@ -381,7 +381,7 @@ const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories, to keep or remove - based on the value of keep.
 
-  if (category === "accessories") {
+  if (category === "Accessories") {
     if (keep) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
@@ -397,7 +397,7 @@ const filterCharacters = (keep) => {
         !person[category].includes(value)
       );
     }
-  } else if (category === "other") {
+  } else if (category === "Other") {
     if (keep) {
       alert(
         `Yes, the person is a ${value}! Keep all people that are ${value}s`

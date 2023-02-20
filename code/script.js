@@ -54,7 +54,7 @@ const CHARACTERS = [
   {
     name: 'Frank',
     img: 'images/james.svg',
-    hair: ['brown'],
+    hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
     other: ['facial']

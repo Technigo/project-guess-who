@@ -27,8 +27,8 @@
       <h1>Does the person have</h1>
 
       <select title="questions" id="questions">
+        <option disabled selected>Pick a question</option>
         <optgroup label="hair">
-          <option disabled selected>Pick a question</option>
           <option value="brown">brown hair</option>
           <option value="yellow">yellow hair</option>
           <option value="grey">gray hair</option>
@@ -55,8 +55,8 @@
 
       <button id="filter" class="filled-button">FIND OUT</button>
       <div class="stats">
-        <h2 id="counter">Tries: <span id="count">0</span></h2>
-        <h2>Timer: <span id="timer">0.0.0</span></h2>
+        <h2 id="counter">Questions: <span id="count">0</span></h2>
+        <h2>Elapsed time: <span id="timer">0 : 0 : 0</span></h2>
       </div>
       <button type="button" id="restart" class="outlined-button">
         RESTART
@@ -91,11 +91,12 @@
           PLAY AGAIN
         </button>
         <div class="stats">
-          <h2 id="counter">Tries: <span id="count">0</span></h2>
-          <h2>Seconds: <span id="total-time"></span></h2>
+          <h2 id="counter">Guesses: <span id="guesses">0</span></h2>
+          <h2>Elapsed time: <span id="total-time"></span></h2>
         </div>
       </div>
     </section>
+    <script src="script.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

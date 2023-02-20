@@ -12,6 +12,7 @@ const displayUsername = document.getElementById("users-name-displayed");
 const resetUsernameButton = document.getElementById("reset-username");
 const overlay = document.getElementById("overlay");
 const count = document.getElementById("count");
+const guesses = document.getElementById("guesses");
 const totalTime = document.getElementById("total-time");
 
 // Array with all the characters, as objects
@@ -212,13 +213,27 @@ const CHARACTERS = [
 ];
 
 // Global variables
-let secret, currentQuestion, charactersInPlay, userName, userGuess, seconds;
+let secret,
+  currentQuestion,
+  charactersInPlay,
+  userName,
+  userGuess,
+  seconds,
+  minute,
+  hour;
 let numberOfGuesses = 0;
 
-// Counter
+// Counters
+// Display on aside
 let counter = () => {
   numberOfGuesses++;
   count.innerHTML = `${numberOfGuesses}`;
+};
+
+//Display on win / lose
+let displayGuesses = () => {
+  numberOfGuesses++;
+  guesses.innerHTML = `${numberOfGuesses}`;
 };
 
 // Reset Counter
@@ -231,8 +246,8 @@ let resetCounter = () => {
 seconds = 0;
 let timer = setInterval(() => {
   ++seconds;
-  let hour = Math.floor(seconds / 3600);
-  let minute = Math.floor((seconds - hour * 3600) / 60);
+  hour = Math.floor(seconds / 3600);
+  minute = Math.floor((seconds - hour * 3600) / 60);
   let updSecond = seconds - (hour * 3600 + minute * 60);
   document.getElementById("timer").innerHTML =
     hour + ":" + minute + ":" + updSecond;
@@ -245,7 +260,7 @@ let resetTimer = () => {
 
 //Display time on Win / Loose
 let displaySeconds = () => {
-  totalTime.innerHTML = `${seconds}`;
+  totalTime.innerHTML = `${hour} : ${minute} : ${seconds}`;
 };
 
 //overlay func
@@ -409,19 +424,12 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   displaySeconds();
-  if (personToCheck === secret.name) {
-    winOrLose.style.display = "block";
-    board.style.display = "none";
-    winOrLoseText.innerHTML = "You Win!";
-  } else {
-    winOrLose.style.display = "block";
-    board.style.display = "none";
-    winOrLoseText.innerHTML = "You Lose!";
-  }
+  displayGuesses();
   // 1. Check if the personToCheck is the same as the secret person's name
   if (personToCheck === secret.name) {
     // 2. Show the win section
     winOrLose.style.display = "block";
+
     // 3. Hide the game board
     board.style.display = "none";
     // 4. Set a Message to show in the win or lose section accordingly

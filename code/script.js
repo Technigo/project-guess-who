@@ -359,12 +359,12 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
 if (personToCheck === secret["name"]) {
-  questions.style.display = "none"
+  questions.style.display = "flex"
   winOrLose.style.display = "flex"
   board.style.display = "none"
   winOrLoseText.innerHTML = "WOOHOO! YOU WON!"
 } else {
-  questions.style.display = "none"
+  questions.style.display = "flex"
   winOrLose.style.display = "flex"
   board.style.display = "none"
   winOrLoseText.innerHTML = "OH NO! YOU LOST!"

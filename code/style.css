@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
   --primary: tomato;
-  --secondary: lightsalmon;
+  --secondary: #63cdc9;
 }
 
 body {
@@ -9,11 +9,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-color: rgb(255, 248, 241);
+  background-color: linen;
 }
 
 .header {
-  height: 334px;
+  height: 322px;
 }
 
 h1, h2 {
@@ -21,7 +21,7 @@ h1, h2 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: rgb(255, 248, 241);
+  color: linen;
   font-family: "gelica", sans-serif;
   font-weight: 600;
   font-style: normal;
@@ -40,8 +40,23 @@ h1, h2 {
   top: -404px;
   left: 4px;
   text-align: center;
-  font-size: 60px;
+  font-size: 55px;
   line-height: 55px;
+}
+
+.arrow {
+  height:50px;
+  margin: 0;
+  -webkit-animation: mover 0.6s infinite  alternate;
+  animation: mover 0.6s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
 }
 
 .question-section {
@@ -52,22 +67,22 @@ h1, h2 {
   padding: 0 5vw 5vw 5vw;
   align-items: center;
   box-sizing: border-box;
-  background: linear-gradient(-45deg, linen, tomato, #23d5ab, salmon);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: 8S0vh;
+  background: linear-gradient(-45deg, lightsalmon, #c58fc9, #48D1CC, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
 }
-  @keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-} 
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 
 select {
   display: block;
@@ -79,7 +94,15 @@ select {
   margin: 24px 0;
   border-radius:10px;
   padding: 1px 5px;
-  
+  background: linen;
+    cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select:focus-visible {
+  outline: none;
 }
 
 .guess-who-icon {
@@ -90,7 +113,7 @@ select {
 }
 
 .counting-section {
-  margin-top: 35px;
+  margin-top: 24px;
   color: var(--primary);
   display: flex;
   align-items: flex-start;
@@ -203,6 +226,9 @@ h3 {
   text-align: center;
   height: inherit;
   transform: rotateY(180deg);
+  border: 1px solid var(--secondary);
+  top: -1px;
+  left: -1px;
 }
 
 .guess span {
@@ -235,7 +261,7 @@ button {
 .outlined-button {
   background-color: transparent;
   color: var(--primary);
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .filled-button,
@@ -260,22 +286,22 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 102vh;
-  background: linear-gradient(-45deg, #e6ca91, #da4e30, #a39f56);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-
+  min-height: 120vh;
+  background: linear-gradient(-45deg, lightsalmon, #c58fc9, #48D1CC, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
 }
+
 @keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .win-or-lose {
@@ -362,7 +388,7 @@ button {
   }
 
   .header {
-  height: 209px;
+    height: 179px;
   }
 
   .question-section {
@@ -436,11 +462,6 @@ button {
     border: none;
   }
 
-  .guess {
-    border: 1px solid var(--secondary);
-    top: -1px;
-    left: -1px;
-  }
   .win-or-lose {
     max-width: 700px;
     padding: 0 20px;

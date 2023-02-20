@@ -25,20 +25,20 @@ const CHARACTERS = [
   {
     name: 'Jack',
     img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['a hat'],
-    other: ['beard', 'pet'],
+    hair: 'orange',
+    eyes: 'green',
+    accessories: ['glasses'],
+    other: [],
     mood: 'an angry'
   },
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
-    hair: 'grey',
+    hair: 'white',
     eyes: 'blue',
-    accessories: ['a hood'],
-    other: ['smoking habit','beard'],
-    mood: 'an uneasy'
+    accessories: [],
+    other: ['smoking habit'],
+    mood: 'a chill'
   },
   {
     name: 'Jagger',
@@ -90,9 +90,9 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses','jewelry'],
+    accessories: ['sunglasses','jewelry'],
     other: [],
-    mood: 'an uneasy'
+    mood: 'chill'
   },
   {
     name: 'Javier',
@@ -124,11 +124,11 @@ const CHARACTERS = [
   {
     name: 'Jeane',
     img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    hair: 'grey',
+    eyes: 'brown',
+    accessories: ['jewelry'],
     other: [],
-    mood: 'a happy'
+    mood: 'an uneasy'
   },
   {
     name: 'Jed',
@@ -151,11 +151,11 @@ const CHARACTERS = [
   {
     name: 'Jeri',
     img: 'images/jeri.svg',
-    hair: 'orange',
+    hair: 'purple',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['pet'],
     other: [],
-    mood: 'an uneasy'
+    mood: 'an angry'
   },
   {
     name: 'Jerry',
@@ -251,10 +251,10 @@ const CHARACTERS = [
     name: 'Josephine',
     img: 'images/josephine.svg',
     hair: 'grey',
-    eyes: 'brown',
-    accessories: ['jewelry'],
+    eyes: 'blue',
+    accessories: ['jewelry','glasses'],
     other: [],
-    mood: 'an uneasy'
+    mood: 'a happy'
   },
   {
     name: 'Josh',

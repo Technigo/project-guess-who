@@ -301,7 +301,7 @@ const filterCharacters = (keep) => {
         (dog) => dog[category] === value
       );
     } else {
-      alert(`No, the dog doesn't work as ${value}! Removing all ${value}s.`);
+      alert(`No, the dog doesn't work as a ${value}! Removing all ${value}s.`);
       charactersInPlay = charactersInPlay.filter(
         (dog) => dog[category] !== value
       );

@@ -287,7 +287,7 @@ const start = () => {
   document.getElementById("filter").style.display = "block";
   document.getElementById("mainQuestion").innerText = "Does the person have...";
   //resetting the player's name in game
-  document.getElemenetById("nameInput").value = "";
+  document.getElementById("nameInput").value = "";
   
   // Ylva - Resets the counter of questions allowed
 numberOfQuestionsAllowed.innerText = `You have 3 questions left`;

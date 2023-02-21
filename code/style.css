@@ -1,8 +1,9 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #8b6a7b;
+  --secondary: #d9cabb;
 }
+
 
 body {
   display: flex;
@@ -22,12 +23,16 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-image: url("images/background-for-questions.jpg");
   display: flex;
   flex-direction: column;
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+}
+
+.question-section img{
+  object-fit: fill;
 }
 
 select {
@@ -42,6 +47,13 @@ select {
 
 .guess-who-icon {
   width: 126px;
+}
+
+#timer, #guesses{
+font-size: 22px;
+font-weight: 500;
+margin: 10px 0;
+color: white;
 }
 
 .board-wrapper {
@@ -78,6 +90,11 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+}
+
+.card img {
+  width: 100%;
+  object-fit: fill;
 }
 
 .card .guess {
@@ -171,6 +188,7 @@ button {
 .win-or-lose img {
   align-self: flex-start;
   margin-left: 15%;
+  padding:20px;
 }
 
 .win-or-lose h1 {
@@ -188,10 +206,18 @@ button {
   }
   button {
     padding: 8px 16px;
+    margin: 15px 0;
   }
   h1 {
     font-size: 24px;
     line-height: 30px;
+  }
+
+  #timer ,
+  #guesses{
+    font-size: 10px;
+    line-height: 2px;
+    padding:0px 10px;
   }
 
   .guess-who-icon {

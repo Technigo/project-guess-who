@@ -1,325 +1,455 @@
-// All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const board = document.getElementById("board");
+const boardWrapper = document.querySelector(".board-wrapper");
+const winOrLoseWrapper = document.querySelector(".win-or-lose-wrapper");
+const questions = document.getElementById("questions");
+const restartButton = document.getElementById("restart");
+const findOutBtn = document.getElementById("filter");
+const winOrLoseText = document.getElementById("winOrLoseText");
+const details = document.getElementById("details");
+const card = document.querySelector(".card");
+const timer = document.getElementById("timer");
+const guesses = document.getElementById("guesses");
+
+// Global variables
+let userNamePrompt = prompt("What's your name?");
+let userNameText = "";
+let guessCounter;
+let secret;
+let currentQuestion;
+let charactersInPlay;
+
+//Creating an array for each category options list and removing duplicates
+let hairArr = [];
+let eyesArr = [];
+let accessoriesArr = [];
+let otherArr = [];
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
+    name: "Charlie",
+    img: "images/charlie.jpg",
+    fur: "tabby",
+    eyes: "hidden",
     accessories: [],
-    other: []
+    other: ["shorthair"],
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: "Ricky",
+    img: "images/ricky.jpg",
+    fur: "mixed color",
+    eyes: "green",
+    accessories: [],
+    other: ["shorthair"],
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: "Jacques",
+    img: "images/jacques.png",
+    fur: "black",
+    eyes: "yellow",
+    accessories: [],
+    other: ["shorthair", "tongue out"],
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: "Peter",
+    img: "images/peter.jpg",
+    fur: "tabby",
+    eyes: "yellow",
+    accessories: ["collar"],
+    other: ["longhair"],
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: "Jake",
+    img: "images/jake.jpg",
+    fur: "tabby",
+    eyes: "green",
+    accessories: ["collar"],
+    other: [],
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: "Jana",
+    img: "images/jana.jpg",
+    fur: "mixed color",
+    eyes: "green",
+    accessories: [],
+    other: ["shorthair"],
+  },
+  {
+    name: "Rufus",
+    img: "images/rufus.jpg",
+    fur: "grey",
+    eyes: "green",
+    accessories: [],
+    other: ["shorthair"],
+  },
+  {
+    name: "Jaqueline",
+    img: "images/jaqueline.jpg",
+    fur: "grey",
+    eyes: "hidden",
+    accessories: ["glasses"],
+    other: ["shorthair"],
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    name: "Martin",
+    img: "images/martin.jpg",
+    fur: "orange",
+    eyes: "yellow",
+    accessories: ["clothes"],
+    other: ["shorthair"],
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
+    name: "Oliver",
+    img: "images/oliver.jpg",
+    fur: "orange",
+    eyes: "brown",
     accessories: [],
-    other: []
+    other: ["longhair"],
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
+    name: "Rocky",
+    img: "images/rocky.jpg",
+    fur: "orange",
+    eyes: "hidden",
     accessories: [],
-    other: []
+    other: ["shorthair"],
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
+    name: "Mollie",
+    img: "images/mollie.jpg",
+    fur: "white",
+    eyes: "green",
     accessories: [],
-    other: []
+    other: ["shorthair"],
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: "Andy",
+    img: "images/andy.jpg",
+    fur: "mixed color",
+    eyes: "green",
+    accessories: [],
+    other: ["shorthair"],
   },
-]
+  {
+    name: "Mandy",
+    img: "images/mandy.jpg",
+    fur: "mixed color",
+    eyes: "blue",
+    accessories: ["collar"],
+    other: ["longhair"],
+  },
+  {
+    name: "Jerry",
+    img: "images/jerry.jpg",
+    fur: "mixed color",
+    eyes: "green",
+    accessories: ["collar"],
+    other: ["shorthair", "tongue out"],
+  },
+  {
+    name: "Jess",
+    img: "images/jess.jpg",
+    fur: "white",
+    eyes: "brown",
+    accessories: [],
+    other: ["longhair"],
+  },
+  {
+    name: "Jocelyn",
+    img: "images/jocelyn.jpg",
+    fur: "orange",
+    eyes: "brown",
+    accessories: ["glasses"],
+    other: ["longhair"],
+  },
+  {
+    name: "Jon",
+    img: "images/jon.jpg",
+    fur: "tabby",
+    eyes: "green",
+    accessories: [],
+    other: ["shorthair"],
+  },
+  {
+    name: "Jordan",
+    img: "images/jordan.jpg",
+    fur: "orange",
+    eyes: "hidden",
+    accessories: ["glasses"],
+    other: ["shorthair"],
+  },
+  {
+    name: "Tom",
+    img: "images/tom.jpg",
+    fur: "mixed color",
+    eyes: "blue",
+    accessories: ["clothes"],
+    other: ["shorthair"],
+  },
+  {
+    name: "Bob",
+    img: "images/bob.jpg",
+    fur: "tabby",
+    eyes: "blue",
+    accessories: ["collar"],
+    other: ["shorthair"],
+  },
+  {
+    name: "Annie",
+    img: "images/annie.jpg",
+    fur: "no",
+    eyes: "hidden",
+    accessories: [],
+    other: [],
+  },
+  {
+    name: "Kora",
+    img: "images/kora.jpg",
+    fur: "tabby",
+    eyes: "yellow",
+    accessories: [],
+    other: ["shorthair"],
+  },
+  {
+    name: "Zoe",
+    img: "images/zoe.jpg",
+    fur: "grey",
+    eyes: "hidden",
+    accessories: [],
+    other: ["tongue out", "shorthair"],
+  },
+];
 
-// Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+// audio
+const sound = new Audio("images/Card-flip-sound-effect.mp3");
 
 // Draw the game board
 const generateBoard = () => {
-  board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  board.innerHTML = "";
+  charactersInPlay.forEach((cat) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <p>${cat.name}</p>
+        <img src=${cat.img} class="board-images" alt=${cat.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Guess on ${cat.name}?</span>
+          <button class="filled-button small" onclick="guess('${cat.name}')">Guess</button>
         </div>
       </div>
-    `
-  })
-}
+    `;
+  });
+};
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-}
+  secret =
+    charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  return secret;
+};
 
+// Create category (optGroup) elements
+const categoryArray = Object.keys(CHARACTERS[0]);
+
+//Removed unnecessary categories
+categoryArray.splice(categoryArray.indexOf("img"), 1);
+categoryArray.splice(categoryArray.indexOf("name"), 1);
+
+const CategoryOptions = () =>
+  charactersInPlay.forEach((character) => {
+    if (!hairArr.includes(character.fur)) {
+      hairArr.push(character.fur);
+    }
+    if (!eyesArr.includes(character.eyes)) {
+      eyesArr.push(character.eyes);
+    }
+    character.accessories.forEach((accessoriesItem) => {
+      if (!accessoriesArr.includes(accessoriesItem)) {
+        accessoriesArr.push(accessoriesItem);
+      }
+    });
+    character.other.forEach((otherItem) => {
+      if (!otherArr.includes(otherItem)) {
+        otherArr.push(otherItem);
+      }
+    });
+  });
+
+//Creating HTML element OptGroups and Options
+const createCategories = () => {
+  categoryArray.forEach((category) => {
+    questions.innerHTML += `
+     <optgroup label="${category}" id="${category}">
+        </optgroup>
+    `;
+    if (category === "fur") {
+      hairArr.forEach((hairItem) => {
+        document.getElementById(category).innerHTML += `
+    <option value="${hairItem}" id="${hairItem}">${hairItem} fur</option>
+    `;
+        document.getElementById(hairItem).disabled = false;
+      });
+    } else if (category === "eyes") {
+      eyesArr.forEach((eyesItem) => {
+        document.getElementById(category).innerHTML += `
+    <option value="${eyesItem}" id="${eyesItem}">${eyesItem} eyes</option>
+    `;
+        document.getElementById(eyesItem).disabled = false;
+      });
+    } else if (category === "accessories") {
+      accessoriesArr.forEach((accessoriesItem) => {
+        document.getElementById(category).innerHTML += `
+    <option value="${accessoriesItem}" id="${accessoriesItem}">${accessoriesItem}</option>
+    `;
+        document.getElementById(accessoriesItem).disabled = false;
+      });
+    } else if (category === "other") {
+      otherArr.forEach((otherItem) => {
+        document.getElementById(category).innerHTML += `
+    <option value="${otherItem}" id="${otherItem}" >${otherItem} </option>
+    `;
+        document.getElementById(otherItem).disabled = false;
+      });
+    }
+  });
+};
+//timer
+let totalSeconds = 0;
+const timerCount = () => {
+  // define minutes and seconds variable
+  totalSeconds++;
+  minutes = Math.floor(totalSeconds / 60);
+  seconds = totalSeconds - minutes * 60;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+  timer.innerHTML = `Time: ${minutes}:${seconds}`;
+};
+setInterval(timerCount, 1000);
+//Guess counter
+const countGuesses = () => {
+  guessCounter++;
+  guesses.textContent = `Guesses: ${guessCounter}`;
+};
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-}
+  totalSeconds = 0;
+  guessCounter = 0;
+  guesses.textContent = `Guesses: ${guessCounter}`;
+  charactersInPlay = CHARACTERS;
+  generateBoard();
+  setSecret();
+  CategoryOptions();
+  createCategories();
+  if (userNamePrompt) {
+    userNameText = userNamePrompt;
+  }
+  timerCount();
+};
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
+  const category = questions.options[questions.selectedIndex].parentNode.label; // it gives the name of the optgroup element
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
     category: category,
-    // value: value
-  }
-}
+    value: value,
+  };
+};
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-
-  } else if (category === 'accessories' || category === 'other') {
-
+  const { category, value } = currentQuestion;
+  if (category === "fur" || category === "eyes") {
+    if (value === secret.fur || value === secret.eyes) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+  } else if (category === "accessories" || category === "other") {
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
   }
-}
+  generateBoard();
+  countGuesses();
+};
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  const { category, value } = currentQuestion;
+  document.getElementById(value).disabled = true;
+  if (category === "accessories" || category === "other") {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+      alert(`Yes, the cat has ${value}! Keep all cats that have ${value}`);
+      charactersInPlay = charactersInPlay.filter((cat) =>
+        cat[category].includes(value)
+      );
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
+        `No, the cat doesn't have ${value}! Remove all cats that have ${value}!`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (cat) => !cat[category].includes(value)
+      );
     }
-  } else if (category === 'other') {
-    // Similar to the one above
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the cat has ${value} ${category}! Keep all cats with ${value} ${category}!`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (cat) => cat[category] === value
+      );
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the cat doesn't have ${value} ${category}! Remove all cats with ${value} ${category}!`
+      );
+      charactersInPlay = charactersInPlay.filter(
+        (cat) => cat[category] !== value
+      );
     }
   }
+};
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+const guess = (catToConfirm) => {
+  if (confirm(`Do you want to confirm ${catToConfirm}?`) === true) {
+    checkMyGuess(catToConfirm);
+  } else {
+  }
+};
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+const checkMyGuess = (catToCheck) => {
+  boardWrapper.style.display = "none";
+  details.textContent = `${timer.textContent} ${guesses.textContent}`;
+  if (catToCheck === secret.name) {
+    alert("Match!");
+    winOrLoseWrapper.style.display = "flex";
+    winOrLoseText.textContent = `Hurray ${userNameText}! You won!`;
+    document.querySelector(".sadcat").style.display = "none";
+  } else {
+    alert(`Your answer is wrong!`);
+    winOrLoseWrapper.style.display = "flex";
+    winOrLoseText.textContent = `Your answer is wrong ${userNameText}! ${secret.name} stole the tuna!`;
+    document.querySelector(".happycat").style.display = "none";
+  }
+};
 
-  // Invoke a function to redraw the board with the remaining people.
+start();
+
+restartButton.addEventListener("click", start);
+questions.addEventListener("change", selectQuestion);
+findOutBtn.addEventListener("click", checkQuestion);
+
+for (let i = 0; i < board.children.length; i++) {
+  board.children[i].addEventListener("mouseenter", () => {
+    sound.play();
+  });
 }
-
-// when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-}
-
-// If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-}
-
-// Invokes the start function when website is loaded
-start()
-
-// All the event listeners
-restartButton.addEventListener('click', start)

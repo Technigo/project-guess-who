@@ -8,4 +8,4 @@ I watched provided videos, did Sandbox practices, looked at provided code and co
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://eloquent-syrniki-f0b365.netlify.app/

@@ -1,83 +1,171 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #232325;
+  --secondary: #ffffff;
+}
+
+@font-face {
+  font-family: 'font-reward';
+  src: url("assets/reward-font/reward.ttf");
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Andada Pro', serif;
+  background-image: url("images/ship-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
 }
 
-h1 {
-  font-size: 42px;
+.main-heading{
+  width:90%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'font-reward', cursive;
+  text-transform: uppercase;
+  margin: 80px 0 20px 0;
+  color: #000;
+  letter-spacing: 5px;
+  text-shadow:0 0 white;
+  /* margin-top: 65px;; */
+}
+
+.main-heading h1{
+  font-size: 70px;
   font-weight: 500;
-  line-height: 48px;
-  margin: 10px 0;
-  color: white;
+  line-height: 30px;
+  margin:0;
+}
+
+.main-heading h2{
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 30px;
+  margin: 20px 0;
 }
 
 .question-section {
-  width: 30%;
+  width: 35%;
   min-height: 100vh;
-  background-color: var(--secondary);
   display: flex;
   flex-direction: column;
   padding: 5vw;
-  align-items: flex-start;
+  align-items:center;
+  /* justify-content: center; */
   box-sizing: border-box;
+  background-image: url("images/scroll.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100vh;
+
+  /* border:solid green; */
 }
+
+.question-text{
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  margin-top: 60px;
+  margin-bottom: 20px;
+} 
 
 select {
   display: block;
-  border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
-  width: 100%;
-  margin: 24px 0;
+  border: transparent;
+  border-radius: 15px;
+  font-size: 16px;
+  font-family: 'Andada Pro', serif;
+  color: white;
+  background-color: var(--primary);
+  width: 90%;
+  margin: 10px 0;
+  padding: 23px;
+  text-transform: uppercase;
+  
 }
 
-.guess-who-icon {
-  width: 126px;
+.timer {
+  font-size:27px;
+  font-family: 'Andada Pro', serif;
+  font-weight: bold;
+
 }
 
 .board-wrapper {
-  width: 70%;
+  width: 65%;
   display: flex;
-  align-items: center;
+  align-items:flex-start;
   justify-content: center;
+  /* border: solid yellow; */
 }
 
 .game-board {
-  width: 90%;
-  max-width: 882px;
+  width: 100%;
+  /* max-width: 100%; */
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
+  padding-top: 5%;
+  /* border: solid yellow; */
+  
+
 }
 
 /****** CARD ******/
 .card {
-  width: 135px;
-  height: 165px;
+  width: 155px;
+  height: 190px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
   border-radius: 4px;
-  margin: 3px;
+  margin: 7px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-image: url("images/vintage-paper.jpg"); 
+  background-size: cover;
+  transition: transform .2s;
+
+  
 }
 
-.card p {
-  text-align: center;
+img{
+  width:100%;
+  height: 165px;
+  
+}
+.card p{
+  color:#f5ecec;
+  background-color: var(--primary);
+  /* border:solid 1px #f5f1f1; */
+  border-radius: 50px;
+  padding: 5px 10px;
   margin-bottom: 0;
-  font-size: 16px;
-  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 15px;
+  width: 100%;
+  font-weight:800;
+  
+  
+}
+
+.person-image-class{
+  position: relative;
+  z-index: 0;
+  top:-10px;
+  
+}
+
+.card-back-class{
+  width: 100%;
+  position: relative;
+  z-index: 99;
+  top:-200px; 
 }
 
 .card .guess {
@@ -88,10 +176,12 @@ select {
   color: white;
   text-align: center;
   height: inherit;
+  
 }
 
 .card:hover {
   background-color: var(--secondary);
+  transform: scale(1.2);
 }
 
 .card:hover img,
@@ -102,6 +192,7 @@ select {
 /* The div with the guess class is only shown on hover */
 .card:hover .guess {
   display: flex;
+  
 }
 
 .guess span {
@@ -117,33 +208,44 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Andada Pro', serif;
   font-weight: bold;
-  padding: 17px 27px;
+  padding: 17px 25px;
   cursor: pointer;
+  justify-items:center;
 }
 
 .small {
   padding: 8px 16px;
 }
 
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
+.restart-button {
+  background-color: var(--primary);
+  color: var(--secondary);
+  align-self: center;
+  padding: 17px 35px;
+  width: 75%;
+  margin-top:10px;
+  margin-bottom: 20px;
 }
 
-.filled-button,
-.outlined-button:hover {
+.filled-button {
   background-color: var(--primary);
   color: white;
+  margin-bottom: 20px;
 }
 
-.filled-button:hover {
+.filled-button:hover,
+.restart-button:hover {
   background-color: white;
   border-color: white;
   color: var(--primary);
 }
+
+.play-again{
+  margin-bottom: 130px;
+}
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -157,6 +259,20 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
+  background-image: url("images/ship-bg.png");
+  flex-direction: column;
+
+}
+
+.win-or-lose-container{
+  background-image: url("images/scroll.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .win-or-lose {
@@ -166,15 +282,25 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  margin-top:10px;
+ 
+
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+.win-or-lose-wrapper .main-heading{
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin-top: 13vh;
+  
 }
 
 .win-or-lose h1 {
-  margin-bottom: 32px;
+  font-size: 30px;
+  color:var(--primary);
+  line-height: 50px;
+  padding: 20px 80px;
+  text-shadow:2px 2px var(--secondary);
 }
 
 @media (max-width: 768px) {
@@ -185,6 +311,7 @@ button {
   .question-section {
     width: 100%;
     min-height: 0;
+    background-size: 100% 100%;
   }
   button {
     padding: 8px 16px;
@@ -193,9 +320,20 @@ button {
     font-size: 24px;
     line-height: 30px;
   }
+  .main-heading{
+    margin: 15vh 0 0 0;
+  }
 
-  .guess-who-icon {
-    width: 51px;
+  .main-heading h1{
+    font-size: 50px;
+  }
+  
+  .main-heading h2{
+    font-size: 30px;
+  }
+
+  select{
+    width:70%;
   }
 
   .board-wrapper {
@@ -230,4 +368,107 @@ button {
     color: var(--primary);
     border: none;
   }
+
+  .restart-button {
+     margin-top:30px;
+  
+}
+
+.win-or-lose h1 {
+  font-size: 27px;
+  
+}
+}
+
+@media (min-width: 769px) and (orientation:portrait) {
+  body {
+    flex-direction: column;
+  }
+
+  .question-section {
+    width:100%;
+    min-height: 0;
+  }
+  button {
+    padding: 8px 16px;
+  }
+  h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .main-heading{
+    margin: 15vh 0 0 0;
+  }
+
+  .main-heading h1{
+    font-size: 70px;
+  }
+  
+  .main-heading h2{
+    font-size: 30px;
+  }
+
+  select{
+    width:70%;
+  }
+
+  .board-wrapper {
+    width: 100%;
+  }
+
+  .game-board {
+    width: 100%;
+  }
+
+  .card {
+    width: 113px;
+    position: relative;
+  }
+
+  .card .guess {
+    display: flex;
+    top: 0;
+    position: absolute;
+    justify-content: flex-end;
+  }
+
+  .card .guess span {
+    display: none;
+  }
+
+  .card .guess .filled-button {
+    padding: 6px 11px;
+    margin-bottom: 1px;
+    background: white;
+    color: var(--primary);
+    border: none;
+  }
+
+  .win-or-lose h1 {
+    font-size: 27px;
+    
+  }
+}
+
+
+/* Alertify */
+.ajs-header,
+.ajs-body,
+.ajs-footer 
+{
+  color: var(--secondary) !important;
+  background-color:var(--primary)!important;
+}
+
+.ajs-body{
+  margin-left: -24px;
+  margin-right: -24px;
+}
+
+.ajs-button{
+  color: var(--secondary) !important;
+}
+
+.ajs-cancel{
+  display: none;
 }

@@ -356,8 +356,6 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
 /* Check if the personToCheck is the same as the secret person's name */
 
- /*  numberOfGuesses++; */
-
 if(personToCheck.name === secret.name) {
   window.alert('Yes! YOu Won 😊!!! ' );
   winOrLose.style.display='block'

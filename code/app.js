@@ -29,10 +29,7 @@ const CHARACTERS = [
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-<<<<<<< HEAD
-    accessories: ['tie'],
-=======
->>>>>>> 3cb8a99f2eb86d10d6a72f3194a2f596878aae3b
+   accessories: ['tie'],
     other: []
   },
   {

@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #4778e0;
+  --secondary: #000105;
 }
 
 body {
@@ -17,6 +17,18 @@ h1 {
   line-height: 48px;
   margin: 10px 0;
   color: white;
+}
+
+h2 {
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 10px 0;
+  color: white;
+}
+
+.timer {
+  color: #ffffff;
 }
 
 .question-section {
@@ -127,18 +139,26 @@ button {
   padding: 8px 16px;
 }
 
+.smallButton {
+  padding: 7px 15px
+}
+
 .outlined-button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  float: right;
+  margin-top: 5%;
 }
 
+.smallbutton
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
   color: white;
 }
 
+.smallButton:hover,
 .filled-button:hover {
   background-color: white;
   border-color: white;

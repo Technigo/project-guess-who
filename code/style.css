@@ -146,6 +146,23 @@ button {
   color: var(--primary);
 }
 
+.counter,
+.outlined-button:hover {
+  width: 180px;
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-weight: bold;
+}
+.counter:hover{
+  background-color: white;
+  border-color: white;
+  color: var(--primary);
+}
+
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;

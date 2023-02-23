@@ -273,23 +273,19 @@ const selectQuestion = () => {
 Then invoke filterCharacters*/
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-  let keep;
+  let keep = true
     if (category === "hair" || category === "eyes") {
-          if(value === secret[category]) {
-            keep = true
-      filterCharacters(true);
+      if(value === secret[category]) {
+       filterCharacters(true);
     } else {
-      keep = false
-      filterCharacters(false);
+       filterCharacters(false);
     }
   }
 
   else if (category === 'accessories' || category === 'other') {
     if (secret[category].includes(value)) {
-      keep = true
-      filterCharacters(true);
+     filterCharacters(true);
     } else{
-      keep = false
       filterCharacters(false);
   }
 }
@@ -298,6 +294,7 @@ const checkQuestion = () => {
 /* It'll filter the characters array and rearrange the game board.*/
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+    console.log("filterCharacters", category, value);
   if (category === 'hair') {
     if (keep) {
       alert(`Yes, the person has ${value} hair! Keep all people that have ${value} hair`)
@@ -322,6 +319,7 @@ const filterCharacters = (keep) => {
     if (keep) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}` )
+        
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(

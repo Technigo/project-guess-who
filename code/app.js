@@ -204,8 +204,7 @@ const findOutBtn = document.getElementById('filter')
 const playAgainBtn = document.getElementById('playAgain');
 const winerOrloserText = document.getElementById('winOrLoseText');
 const winerOrLoserDiv = document.getElementById('winOrLose')
-const counter = document.getElementById('counter')
-const nrOfTryBtn= document.getElementById('nrOfTry')
+const guessCounter = document.getElementById('guesses')
 
 
 /*Global variables*/
@@ -213,7 +212,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 let secretValue
-let numberOfGuess = 0;
+let numberOfGuesses = 0;
 
 charactersInPlay = CHARACTERS
 
@@ -357,27 +356,27 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
 /* Check if the personToCheck is the same as the secret person's name */
 
-  numberOfGuess++;
+ /*  numberOfGuesses++; */
 
 if(personToCheck.name === secret.name) {
   window.alert('Yes! YOu Won 😊!!! ' );
   winOrLose.style.display='block'
-  winerOrloserText.innerHTML = 'Yes! YOu Won 😊!!! ' ;
+  winerOrloserText.innerHTML = `Yes! YOu Won 🎉 🎉!!! You guess ${numberOfGuesses} times & you WON` ;
   board.style.display='none'
  
 }else{
   personToCheck.name !== secret.name
-  window.alert("No! Guess anothe Person... ");
-  winOrLose.style.display = 'none'
-  winerOrloserText.innerHTML = " ";
+  window.alert("Sorry, you lost the game 😔");
+  winOrLose.style.display = 'block'
+  winerOrloserText.innerHTML = `Sorry, you lost the game 😔, You guessed ${numberOfGuesses} times and the correct answer is ${secret.name} `;
   board.style.display = 'flex';
 
-  if (numberOfGuess > 5) {
+  if (numberOfGuesses > 5) {
     window.alert('You LOST! Refresh the browser and try again. ')
     return start();
   }
   else{
-    counter.innerText = numberOfGuess;
+    counter.innerText = numberOfGuesses;
   }
 }
 }
@@ -387,14 +386,20 @@ start()
 
 /* All event listeners */
 restartBtn.addEventListener('click', start);
+
 findOutBtn.addEventListener('click', () => {
   selectQuestion()
   checkQuestion()
+  numberOfGuesses += 1;
+    guessCounter.innerHTML =`${numberOfGuesses}`;
 })
 
-nrOfTryBtn.addEventListener('click', start);
+
 
 playAgainBtn.addEventListener('click', () => {
+  start();
   location.reload()
-  return false
+  numberOfGuesses = 0
+    guessCounter.innerHTML =`${numberOfGuesses}`;
+ /*  return false */
 })

@@ -213,6 +213,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 let userName
+
 const winTrack = new Audio('./images/woohoo.mp3')
   const winSound = () => {
    winTrack.play()

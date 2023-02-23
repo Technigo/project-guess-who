@@ -94,7 +94,7 @@ const CHARACTERS = [
     img: 'images/jeane.svg',
     hair: 'brown',
     eyes: 'green',
-    accessories: ['sunglasses'],
+    accessories: ['glasses'],
     other: []
   },
   {

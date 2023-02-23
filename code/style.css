@@ -372,7 +372,8 @@ button {
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width:768px) and (max-width:1116px) {
+  
   body {
     flex-direction: column;
   }
@@ -385,6 +386,79 @@ button {
     width: 100%;
     min-height: 0;
   }
+
+  .guess-who-icon {
+    left: -196px;
+    height: 212px;
+    width: 227px;
+  }
+
+  .guess-who-background {
+    display: none;
+  }
+
+   .arrow {
+    display:none;
+  }
+
+  .question-section h1{
+    top: -216px;
+    font-size: 60px;
+    width: 446px;
+  }
+  
+  select {
+    width:356px;
+  }
+  
+  button {
+    padding: 8px 16px;
+  }
+
+  .board-wrapper {
+    width: 100%;
+  }
+  
+  .game-board {
+    width: 100%;
+    max-width: 750px;
+    margin: 5px 0px;
+    justify-content: center;
+  }
+}
+
+@media (min-width:389px) and (max-width:768px) {
+
+  .guess-who-background {
+    display: none;
+  }
+
+  .question-section h1 {
+    top: -93px;
+  }
+}
+
+@media (max-width:389px) {
+
+  .question-section h1 {
+    top: -395px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .question-section {
+    width: 100%;
+    min-height: 0;
+  }
+
+  .header {
+    height: 229px;
+  }
+
   button {
     padding: 8px 16px;
   }
@@ -395,18 +469,24 @@ button {
   }
 
   .question-section h1 {
-    top: -361px;
+    font-size: 55px;
+    max-width: 332px;
   }
 
   .guess-who-icon {
-    width: 103px;
-    left: -28px;
+    width: 97px;
+    height: 89px;
+    left: -22px;
   }
 
   .guess-who-background {
-   width: 66px;
-    top: 157px;
+    width: 73px;
+    top: 191px;
     left: -26px;
+  }
+
+  select {
+    margin:16px 0px 33px 0px;
   }
 
   .board-wrapper {

@@ -16,5 +16,7 @@ I didnot know the rule of this game. It took me a while to undestand what is req
 If I had more time , I would add sound effects for winer or loser, and timer. 
 
 ## View it live
-https://snazzy-melba-71a126.netlify.app
+
+https://guesswho-game-71a12.netlify.app/
+
 

@@ -29,7 +29,6 @@ const CHARACTERS = [
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
     other: []
   },
   {

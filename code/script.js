@@ -3,7 +3,6 @@ const board = document.getElementById('board');
 const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findOutButton = document.getElementById('filter');
-const playAgain = document.getElementById('playAgain');
 
 // Array with all the characters in the game, as objects
 const CITIES = [
@@ -331,20 +330,28 @@ const guess = (cityToConfirm) => {
 
 // If confirmed, this function is invoked
 const checkMyGuess = (cityToCheck) => {
-  if (cityToCheck === secret.name) {
-  winOrLose.style.display = 'flex';
-  board.style.display = 'none';
-  winOrLose.innerHTML += `
-        <h1>YOU WIN! ${cityToCheck} was the secret city</h1>
-    `;
+  const winOrLose = document.getElementById("winOrLose");
+  const winOrLoseText = document.getElementById("winOrLoseText");
 
-  } else {
-    winOrLose.style.display = 'flex'
-    board.style.display = 'none'
+    if (cityToCheck === secret.name) {
+    winOrLose.style.display = 'flex';
+    board.style.display = 'none';
     winOrLose.innerHTML += `
-        <h1>You lost :( ${cityToCheck} was not the secret city, it was ${secret.name}!</h1>
-    `;
-  }
+          <h1>YOU WIN! ${cityToCheck} was the secret city</h1>
+      `;
+
+    } else {
+      winOrLose.style.display = 'flex'
+      board.style.display = 'none'
+      winOrLose.innerHTML += `
+          <h1>You lost :( ${cityToCheck} was not the secret city, it was ${secret.name}!</h1>
+      `;
+    }
+    const playAgain = document.getElementById("playAgain");
+  playAgain.addEventListener("click", (event) => {
+    start();
+    winOrLose.style.display = "none";
+  });
 };
 
 
@@ -364,7 +371,3 @@ start();
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
-playAgain.addEventListener("click", (event) => {
-  start();
-  winOrLose.style.display = "none";
-});

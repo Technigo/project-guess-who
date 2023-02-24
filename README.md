@@ -1,5 +1,5 @@
 # Project Name
-Guess who? 
+# Guess who? 
 In this game which user is playing with the computer. Computer choosing a random character as a secret and user can guess who is a secret character.User can ask questions up to 5 to find a secret person. User can choose different options such as, hair, eyes color or accessories. 
 
 - I made a counter function, which user can try 5 times, after 5 times user has to start a new game, and at the end it shows user how many times tried. 

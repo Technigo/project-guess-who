@@ -368,11 +368,10 @@ winOrLoseText.innerHTML = `Oh no! You lost! &#128543 The right answer was ${secr
   board.style.display = 'none'
 }
 
-start()// Invokes the start function when website is loaded
-
-
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutBtn.addEventListener('click', checkQuestion)
 playAgain.addEventListener('click', start)
+
+start()// Invokes the start function when website is loaded

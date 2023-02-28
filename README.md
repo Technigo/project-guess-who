@@ -1,13 +1,16 @@
-# Project Name
+# Project Guess Who
 
-Replace this readme with your own information about your project.
+This is a game of Guess Who using Javascript. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I found this project particularly difficult to wrap my head around, because of the amount of steps and functions representing every step and aspect of the game. I went about trying to understand it by looking at every function, commenting what each line of code did and that way mapping out the reasoning behind the code. At the end I added some sound effects and changed the styling a bit, but I'm planning on changing it more in the coming weeks.
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://antoniasguesswho.netlify.app
+
+
+<img width="700" alt="Skärmavbild 2023-02-27 kl  12 40 52" src="https://user-images.githubusercontent.com/95037306/221944233-b53e1d03-76c4-4722-847f-b7038f897987.png">

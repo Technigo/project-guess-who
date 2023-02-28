@@ -1,6 +1,6 @@
 # Project Guess Who
 
-This is a game of Guess Who using Javascript. 
+This is a game of Guess Who using Vanilla JavaScript. 
 
 
 ## The problem

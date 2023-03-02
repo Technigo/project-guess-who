@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
+    <title>Who is SHE?</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -12,7 +13,9 @@
   </head>
   <body>
     <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
+      <button type="button" id="restart" class="outlined-button">
+        RESTART
+      </button>
 
       <img
         class="guess-who-icon"
@@ -20,28 +23,52 @@
         alt="Guess Who"
       />
 
-      <h1>Does the person have</h1>
+      <div id="playerNameHere">
+        Name of player:
+        <input type="text" placeholder="Enter your name" id="nameInput" />
+      </div>
+      <div id="numberOfQuestions"></div>
+
+      <h1 id="mainQuestion">Does the person have...</h1>
 
       <select title="questions" id="questions">
+        <option value="" selected disabled>Select</option>
         <optgroup label="hair">
           <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
+          <option value="blonde">blonde hair</option>
+          <option value="black">black hair</option>
+          <option value="red">red hair</option>
+          <option value="orange">orange hair</option>
+          <option value="hidden">hidden hair</option>
           <!-- Add the rest of hair colors as options  -->
         </optgroup>
         <optgroup label="eyes">
           <option value="hidden">hidden eyes</option>
+          <option value="winged">winged eyes</option>
+          <option value="visible">visible eyes</option>
           <!-- Add the rest of eye colors as options  -->
         </optgroup>
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
+          <option value="a necklace">necklace</option>
+          <option value="earrings">earrings</option>
+          <option value="a flower">flower in their hair</option>
+          <option value="a hat">hat</option>
+          <option value="a headband">headband</option>
+          <option value="a microphone">microphone</option>
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
         <optgroup label="other">
+          <option value="singer">a music career</option>
+          <option value="author">an author career</option>
+          <option value="artist">an art career</option>
+          <option value="fashion designer">a fasion career</option>
           <option value="smoker">a smoking habit</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div id="timer" class="timer"></div>
     </aside>
 
     <section class="board-wrapper">
@@ -56,9 +83,16 @@
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <div id="secretImage"></div>
+        <button type="button" id="playAgain" class="filled-button">
+          PLAY AGAIN
+        </button>
       </div>
     </section>
+    <footer>
+      <h4>Thanks for playing!</h4>
+      <h4>Alexander Gabor - Technigo, 2023</h4>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

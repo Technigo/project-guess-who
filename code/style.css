@@ -49,6 +49,8 @@ select {
 
 .guess-who-icon {
   width: 170px;
+  align-self: flex-start;
+  margin-left: 15%;
 }
 
 .question-counter-wrapper {
@@ -84,7 +86,7 @@ a {
   max-width: 882px;
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
+  justify-content: center;
 }
 
 /****** CARD ******/
@@ -92,7 +94,7 @@ a {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid #232440;
   border-radius: 4px;
   margin: 5px;
   display: flex;
@@ -185,6 +187,7 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  margin-bottom: 15px;
 }
 
 .filled-button:hover,
@@ -217,16 +220,17 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
-}
+
 
 .win-or-lose h1 {
   margin-bottom: 32px;
 }
 
-@media (max-width: 768px) {
+.secret-img {
+  width: 135px;
+}
+
+@media (max-width: 660px) {
   body {
     flex-direction: column;
   }
@@ -241,10 +245,6 @@ button {
   h1 {
     font-size: 24px;
     line-height: 30px;
-  }
-
-  .guess-who-icon {
-    width: 51px;
   }
 
   .board-wrapper {
@@ -277,5 +277,21 @@ button {
     background: #730237;
     color: var(--primary);
     border: none;
+    }
+
+    .win-or-lose {
+      max-width: 300px;
+    }
+
+}
+
+@media (min-width: 668px) and (max-width: 768px) {
+  .guess-who-icon {
+    width: 90px;
   }
+
+  .game-board {
+  max-width: 400px;
+  justify-content: center;
+}
 }

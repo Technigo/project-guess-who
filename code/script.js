@@ -343,7 +343,7 @@ const filterCharacters = (keep) => {
   if (questions <= 0) {
     //alerts the user that it's time to make their guess, lets them make a final guess
     alert(`Time to make a guess!`);
-  } else if (questions <= -1) {
+  } else if (questions === -1) {
     //alerts user that they've run out of questions
     winOrLoseText.innerHTML = `You've run out of questions!`;
     winOrLose.style.display = "flex";
@@ -362,9 +362,11 @@ const guess = (theory) => {
 //Checks the guess against the secret character's name
 const checkMyGuess = (dogToCheck) => {
   if (dogToCheck === secret.name) {
-    winOrLoseText.innerHTML = `NICE JOB! Your guess was correct! The secret dog was the ${secret.job} ${secret.name}!`;
+    winOrLoseText.innerHTML = `<h1>Well done! Your guess was correct! The secret dog was the ${secret.job} ${secret.name}!</h1> 
+    <img class="secret-img" src=${secret.img} alt=${secret.name}/>`;
   } else {
-    winOrLoseText.innerHTML = `Oh no, your guess was not correct. The secret dog was the ${secret.job} ${secret.name}. Game over!`;
+    winOrLoseText.innerHTML = `<h1>Oh no, your guess was not correct. The secret dog was the ${secret.job} ${secret.name}. Game over!</h1>
+    <img  class="secret-img" src=${secret.img} alt=${secret.name}/>`;
   }
   winOrLose.style.display = "flex";
   board.style.display = "none";

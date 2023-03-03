@@ -8,4 +8,4 @@ I started of by go through all the given material such as tutorials and practice
 
 ## View it live
 
-https://glowing-centaur-b5d5bd.netlify.app/
+https://nina-guesswho-game.netlify.app/

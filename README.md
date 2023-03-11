@@ -1,6 +1,4 @@
-# Project Name
-
-Replace this readme with your own information about your project.
+# Guess Who
 
 I made a Guess Who game which allows players to ask questions to try and guess a secret person. The secret person is filtered down based on whether the player correctly guesses a feature of the secret person or not. Each time a guess is made, only the remaining possible suspects are left on the board. The player can guess any time who the secret person might be. 
 

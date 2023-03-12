@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
   --primary: #cddad3;
-  --secondary: #87948d;
+  --secondary:#76928c ;
 }
 
 body {
@@ -9,7 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-color: #cbba96;
+  background-color: #a6b8b4;
 }
 
 h1 {
@@ -42,7 +42,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 300px;
 }
 
 .board-wrapper {

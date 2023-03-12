@@ -11,146 +11,145 @@ const restartButton = document.getElementById('restart')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
     img: 'images/guesswho/1.png',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    pet: false,
+    plants: '2-needs-water',
+    accessories: 'mug',
+    other: false,
+    
   },
   {
     img: 'images/guesswho/19.png',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    /*pet: [],
+    plants: ['1-plant'],
+    accessories: ['mug'],
+    other: ['party'],*/
   },
   {
     img: 'images/guesswho/3.png',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    /*pet: [],
+    plants: [],
+    accessories: ['lamp', 'curtain'],
+    other: [],*/
   },
   {
     img: 'images/guesswho/4.png',
-    hair: 'black',
-    eyes: 'brown',
+    /*pet: ['cat'],
+    plants: ['2-plant'],
     accessories: [],
-    other: []
+    other: ['not-home'],*/
   },
   {
     img: 'images/guesswho/5.png',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    /*pet: [],
+    plants: ['1-plant'],
+    accessories: ['watercane',]
+    other: [],*/
   },
   {
     img: 'images/guesswho/6.png',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    /*pet: ['dog'],
+    plants: ['1-plant'],
+    accessories: ['lamp', 'curtain'],
+    other: [],*/
   },
   {
     img: 'images/guesswho/7.png',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    /*pet: ['cat'],
+    plants: ['1-plant'],
+    accessories: [],
+    other: [],*/
   },
   {
     img: 'images/guesswho/8.png',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    /*pet: [],
+    plants: ['2-plant'],
+    accessories: [],
+    other: ['not-home'],*/
   },
   {
     img: 'images/guesswho/9.png',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    /*pet: [],
+    plants: ['1-plant'],
+    accessories: ['watercane'],
+    other: [],*/
   },
-
   {
     img: 'images/guesswho/17.png',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    /*pet: [],
+    plants: [],
+    accessories: ['vase'],
+    other: [],*/
   },
   {
     img: 'images/guesswho/11.png',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    /*pet: 'dog',
+    plants: [],
+    accessories: ['lamp', 'curtain'],
+    other: [],*/
   },
   {
     img: 'images/guesswho/12.png',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    /*pet: 'cat',
+    plants: [],
+    accessories: ['curtain'],
+    other: [],*/
   },
   {
     img: 'images/guesswho/15.png',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    /*pet: [],
+    plants: '1-plant',
+    accessories: ['watercane'],
+    other: [],*/
   },
   {
     img: 'images/guesswho/14.png',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    /*pet: [],
+    plants: '1-plant',
+    accessories: ['vase'],
+    other: [],*/
   },
   {
     img: 'images/guesswho/13.png',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    /*pet: 'cat,',
+    plants: false,
+    accessories: ['curtain'],
+    other: [],*/
   },
   {
     img: 'images/guesswho/16.png',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    /*pet: 'cat',
+    plants: false,
+    accessories: ['vase'],
+    other: [],*/
   },
   {
     img: 'images/guesswho/10.png',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
+    /*pet: false,
+    plants: '2-plant',
+    accessories: [],
+    other: [],*/
   },
   {
     img: 'images/guesswho/18.png',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    /*pet: 'dog',
+    plants: false,
+    accessories: ['mug', 'vase'],
+    other: [],*/
   },
   {
     img: 'images/guesswho/2.png',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    /*pet: false,
+    plants: '1-plant',
+    accessories: ['lamp'],
+    other: [],*/
   },
   {
     img: 'images/guesswho/20.png',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    /*pet: false,
+    plants: '5-plant',
+    accessories: [],
+    other: [],*/
   },
   
 ]
@@ -167,7 +166,7 @@ const generateBoard = () => {
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
-        <img src=${person.img} alt=${person.name}>
+        <img src=${person.img}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
@@ -222,47 +221,59 @@ const checkQuestion = () => {
   //eys and hair = 
   //accessories and other = arrays
 
-  if (category === 'hair' || category === 'eyes') {
-    if (secret[category] === value) {
-      filterCharacters(true);
-    } else {
-      filterCharacters(false);
+  if (category === 'pets') {
+    currentQuestion = {
+      attribute: value,
+      value: true, 
+      category: category,
     }
-
-  } else if (category === 'accessories' || category === 'other') {
-    if (secret[category].includes(value)) {
-      filterCharacters(true);
-      } else {
-        filterCharacters(false);
-      }
+  } else if (category === 'plants') {
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    }
+  } else if (category === 'accessories') {
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category, 
+    }
+  } else {
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    }
   }
-}
+}  
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'pet') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, there is a ${value} in the window! Lets keep all windows where we can see a ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `Nope, no ${value} here! Lets remove all windows with a ${value}`
       )
     }
-  } else if (category === 'other') {
+  } else if (category === 'plant') {
     // Similar to the one above
   } else {
     if (keep) {
       alert(
-        `Yes, the person is a ${value}! Keep all that is ${value}.`
+        `Yes, it's ${value} in the window! Keep all windows that has ${value}.`
       )
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
       alert(
-        `No, the person is not ${value}. Remove all people that is ${value}.`
+        `No, no plants here! Remove all windows with plants.`
       )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }

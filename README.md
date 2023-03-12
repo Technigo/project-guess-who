@@ -8,4 +8,4 @@ I approached the problem by thinking about the different functions needed for th
 
 ## View it live
 
-https://glistening-nasturtium-bfa074.netlify.app/
+https://fiona-klacar-project-guess-who-game.netlify.app

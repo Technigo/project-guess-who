@@ -12,71 +12,63 @@ const restartButton = document.getElementById('restart')
 const CHARACTERS = [
   {
     name: 'Jabala',
-    img: 'images/jabala.svg',
+    img: 'images/guesswho/1.png',
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
+    img: 'images/guesswho/19.png',
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
+    img: 'images/guesswho/3.png',
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
     other: ['smoker']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
+    img: 'images/guesswho/4.png',
     hair: 'black',
     eyes: 'brown',
     accessories: [],
     other: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
+    img: 'images/guesswho/5.png',
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
+    img: 'images/guesswho/6.png',
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
+    img: 'images/guesswho/7.png',
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
+    img: 'images/guesswho/8.png',
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
+    img: 'images/guesswho/9.png',
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
@@ -84,125 +76,83 @@ const CHARACTERS = [
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
+    img: 'images/guesswho/17.png',
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
     other: ['smoker']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
+    img: 'images/guesswho/11.png',
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
+    img: 'images/guesswho/12.png',
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
+    img: 'images/guesswho/15.png',
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
+    img: 'images/guesswho/14.png',
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
+    img: 'images/guesswho/13.png',
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
+    img: 'images/guesswho/16.png',
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
     other: []
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
+    img: 'images/guesswho/10.png',
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
+    img: 'images/guesswho/18.png',
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
+    img: 'images/guesswho/2.png',
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
+    img: 'images/guesswho/20.png',
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     other: []
   },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
+  
 ]
 
 
@@ -217,7 +167,6 @@ const generateBoard = () => {
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>

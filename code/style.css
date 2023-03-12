@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a6ddd3;
-  --secondary: #cface7;
+  --primary: #cddad3;
+  --secondary: #87948d;
 }
 
 body {
@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: #cbba96;
 }
 
 h1 {
@@ -64,20 +65,16 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+  margin: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
-.card p {
-  text-align: center;
-  margin-bottom: 0;
-  font-size: 16px;
-  font-weight: 700;
+.card img {
+  width: 100%;
+  height: 165px;
 }
 
 .card .guess {

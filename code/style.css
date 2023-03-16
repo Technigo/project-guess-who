@@ -40,8 +40,8 @@ select {
   margin: 24px 0;
 }
 
-#select option,
-#select optgroup {
+#dropdown option,
+#dropdown optgroup {
   font-family: "Dosis", sans-serif;
   color: white;
   background-color: #730237;

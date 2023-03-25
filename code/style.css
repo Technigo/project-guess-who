@@ -31,7 +31,7 @@ h1 {
   box-sizing: border-box;
 }
 
-.question-section img{
+.question-section img {
   object-fit: fill;
 }
 
@@ -49,11 +49,12 @@ select {
   width: 126px;
 }
 
-#timer, #guesses{
-font-size: 22px;
-font-weight: 500;
-margin: 10px 0;
-color: white;
+#timer,
+#guesses {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 10px 0;
+  color: white;
 }
 
 .board-wrapper {
@@ -129,6 +130,11 @@ color: white;
   width: 90%;
 }
 
+.happycat,
+.sadcat {
+  width: 200px;
+}
+
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
@@ -186,9 +192,7 @@ button {
 }
 
 .win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
-  padding:20px;
+  padding: 20px;
 }
 
 .win-or-lose h1 {
@@ -204,20 +208,22 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
     margin: 15px 0;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
   }
 
-  #timer ,
-  #guesses{
+  #timer,
+  #guesses {
     font-size: 10px;
     line-height: 2px;
-    padding:0px 10px;
+    padding: 0px 10px;
   }
 
   .guess-who-icon {

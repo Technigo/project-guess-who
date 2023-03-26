@@ -182,6 +182,10 @@ button {
     flex-direction: column;
   }
 
+  .header h1 {
+    font-size: 30px;
+  }
+
   .question-section {
     width: 100%;
     min-height: 0;

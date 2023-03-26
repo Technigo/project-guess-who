@@ -18,7 +18,7 @@ const CHARACTERS = [
     img: 'images/guesswho/1.png',
     name: 'Number 1',
     pet: [],
-    plants: ['2-needs-water'],
+    plants: ['dry'],
     accessories: ['mug'],
     other: []
   },
@@ -26,7 +26,7 @@ const CHARACTERS = [
     img: 'images/guesswho/19.png',
     name: 'Number 2',
     pet: [],
-    plants: ['1-plant'],
+    plants: ['1'],
     accessories: ['mug'],
     other: ['party']
   },
@@ -42,15 +42,15 @@ const CHARACTERS = [
     img: 'images/guesswho/4.png',
     name: 'Number 4',
     pet: ['cat'],
-    plants: ['2-plant'],
+    plants: ['2'],
     accessories: [],
-    other: ['not-home']
+    other: ['away']
   },
   {
     img: 'images/guesswho/5.png',
     name: 'Number 5',
     pet: [],
-    plants: ['1-plant'],
+    plants: ['1'],
     accessories: ['watercane'],
     other: []
   },
@@ -58,7 +58,7 @@ const CHARACTERS = [
     img: 'images/guesswho/6.png',
     name: 'Number 6',
     pet: ['dog'],
-    plants: ['1-plant'],
+    plants: ['1'],
     accessories: ['lamp', 'curtain'],
     other: []
   },
@@ -66,7 +66,7 @@ const CHARACTERS = [
     img: 'images/guesswho/7.png',
     name: 'Number 7',
     pet: ['cat'],
-    plants: ['1-plant'],
+    plants: ['1'],
     accessories: [],
     other: []
   },
@@ -74,15 +74,15 @@ const CHARACTERS = [
     img: 'images/guesswho/8.png',
     name: 'Number 8',
     pet: [],
-    plants: ['2-plant'],
+    plants: ['2'],
     accessories: [],
-    other: ['not-home']
+    other: ['away']
   },
   {
     img: 'images/guesswho/9.png',
     name: 'Number 9',
     pet: [],
-    plants: ['1-plant'],
+    plants: ['1'],
     accessories: ['watercane'],
     other: []
   },
@@ -114,7 +114,7 @@ const CHARACTERS = [
     img: 'images/guesswho/15.png',
     name: 'Number 13',
     pet: [],
-    plants: ['1-plant'],
+    plants: ['1'],
     accessories: ['watercane'],
     other: []
   },
@@ -122,14 +122,14 @@ const CHARACTERS = [
     img: 'images/guesswho/14.png',
     name: 'Number 14',
     pet: [],
-    plants: ['1-plant'],
+    plants: ['1'],
     accessories: ['vase'],
     other: []
   },
   {
     img: 'images/guesswho/13.png',
     name: 'Number 15',
-    pet: ['cat,'],
+    pet: ['cat'],
     plants: [],
     accessories: ['curtain'],
     other: []
@@ -146,7 +146,7 @@ const CHARACTERS = [
     img: 'images/guesswho/10.png',
     name: 'Number 17',
     pet: [],
-    plants: ['2-plant'],
+    plants: ['2'],
     accessories: [],
     other: []
   },
@@ -162,7 +162,7 @@ const CHARACTERS = [
     img: 'images/guesswho/2.png',
     name: 'Number 19',
     pet: [],
-    plants: ['1-plant'],
+    plants: ['1'],
     accessories: ['lamp'],
     other: []
   },
@@ -170,7 +170,7 @@ const CHARACTERS = [
     img: 'images/guesswho/20.png',
     name: 'Number 20',
     pet: [],
-    plants: ['5-plant'],
+    plants: ['5'],
     accessories: [],
     other: []
   },
@@ -267,7 +267,7 @@ const filterCharacters = (keep) => {
   } else if (category === 'plants') {
     if (keep) {
       alert(
-        `Yes, it's ${value} in the window! Keep all windows that has ${value}.`
+        `Yes, it's ${value} 🪴 in the window! Keep all windows that has ${value}.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
@@ -294,7 +294,7 @@ const filterCharacters = (keep) => {
     else if (category === 'other') {
       if (keep) {
         alert(
-          `Yes, it's ${value} in this window! Keep all windows that has 
+          `Yes, that's right! Keep all windows that has 
           ${value}.`
         );
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));

@@ -18,7 +18,7 @@ const CHARACTERS = [
     pet: [],
     plants: ['2-needs-water'],
     accessories: ['mug'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/19.png',
@@ -34,7 +34,7 @@ const CHARACTERS = [
     pet: [],
     plants: [],
     accessories: ['lamp', 'curtain'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/4.png',
@@ -42,7 +42,7 @@ const CHARACTERS = [
     pet: ['cat'],
     plants: ['2-plant'],
     accessories: [],
-    other: ['not-home'],
+    other: ['not-home']
   },
   {
     img: 'images/guesswho/5.png',
@@ -50,7 +50,7 @@ const CHARACTERS = [
     pet: [],
     plants: ['1-plant'],
     accessories: ['watercane'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/6.png',
@@ -58,7 +58,7 @@ const CHARACTERS = [
     pet: ['dog'],
     plants: ['1-plant'],
     accessories: ['lamp', 'curtain'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/7.png',
@@ -66,7 +66,7 @@ const CHARACTERS = [
     pet: ['cat'],
     plants: ['1-plant'],
     accessories: [],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/8.png',
@@ -74,7 +74,7 @@ const CHARACTERS = [
     pet: [],
     plants: ['2-plant'],
     accessories: [],
-    other: ['not-home'],
+    other: ['not-home']
   },
   {
     img: 'images/guesswho/9.png',
@@ -82,7 +82,7 @@ const CHARACTERS = [
     pet: [],
     plants: ['1-plant'],
     accessories: ['watercane'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/17.png',
@@ -90,7 +90,7 @@ const CHARACTERS = [
     pet: [],
     plants: [],
     accessories: ['vase'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/11.png',
@@ -98,7 +98,7 @@ const CHARACTERS = [
     pet: ['dog'],
     plants: [],
     accessories: ['lamp', 'curtain'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/12.png',
@@ -106,7 +106,7 @@ const CHARACTERS = [
     pet: ['cat'],
     plants: [],
     accessories: ['curtain'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/15.png',
@@ -114,7 +114,7 @@ const CHARACTERS = [
     pet: [],
     plants: ['1-plant'],
     accessories: ['watercane'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/14.png',
@@ -122,7 +122,7 @@ const CHARACTERS = [
     pet: [],
     plants: ['1-plant'],
     accessories: ['vase'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/13.png',
@@ -130,7 +130,7 @@ const CHARACTERS = [
     pet: ['cat,'],
     plants: [],
     accessories: ['curtain'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/16.png',
@@ -138,7 +138,7 @@ const CHARACTERS = [
     pet: ['cat'],
     plants: [],
     accessories: ['vase'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/10.png',
@@ -146,7 +146,7 @@ const CHARACTERS = [
     pet: [],
     plants: ['2-plant'],
     accessories: [],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/18.png',
@@ -154,7 +154,7 @@ const CHARACTERS = [
     pet: ['dog'],
     plants: [],
     accessories: ['mug', 'vase'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/2.png',
@@ -162,7 +162,7 @@ const CHARACTERS = [
     pet: [],
     plants: ['1-plant'],
     accessories: ['lamp'],
-    other: [],
+    other: []
   },
   {
     img: 'images/guesswho/20.png',
@@ -170,7 +170,7 @@ const CHARACTERS = [
     pet: [],
     plants: ['5-plant'],
     accessories: [],
-    other: [],
+    other: []
   },
   
 ]
@@ -187,7 +187,7 @@ const generateBoard = () => {
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
-        <img src=${person.img}>
+        <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on this home?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
@@ -205,6 +205,9 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
+  questions.value='';
+  board.style.display = 'flex'
+  winOrLose.style.display = 'none'
   charactersInPlay = CHARACTERS //All caracters. later on filter characters
   generateBoard();
   setSecret();
@@ -228,59 +231,62 @@ const selectQuestion = () => {
 const checkQuestion = () => {
 const  { category, value } = currentQuestion;
 
-keep = false;
+keep = false
+
 
 if (category === 'pet' || category === 'plants' || category === 'accessories' || category === 'other') {
   if (secret[category].includes(value)) {
     keep = true
   }
-}
+} else {
+  keep = false
 
+}
 filterCharacters(keep);
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion;
+  const { category, value } = currentQuestion
 
   // Show the correct alert message for different categories
   if (category === 'pet') {
     if (keep) {
       alert(
         `Yes, there is a ${value} in this home! Lets keep all windows where we can see a ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      );
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
         `Nope, no ${value} here! Lets remove all homes with a ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      );
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
-  } else if (category === 'plant') {
+  } else if (category === 'plants') {
     if (keep) {
       alert(
         `Yes, it's ${value} in the window! Keep all windows that has ${value}.`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      );
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
         `No, no plants in this home! Remove all homes with plants.`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      );
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   }
-   else if (category === 'accesories') {
+   else if (category === 'accessories') {
     if (keep) {
       alert(
         `Yes, it's ${value} in this window! Keep all windows that has 
         ${value}.`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      );
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
         `Nope, no ${value} here. Lets remove all windows with ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      );
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     } 
   }
     else if (category === 'other') {
@@ -288,15 +294,15 @@ const filterCharacters = (keep) => {
         alert(
           `Yes, it's ${value} in this window! Keep all windows that has 
           ${value}.`
-        )
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+        );
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
       } else {
         alert(
           `Nope, no ${value} here. Lets remove all windows with ${value}`
-        )
-        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+        );
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
       } } 
-     generateBoard(filterCharacters);
+     generateBoard();
       }
   
 

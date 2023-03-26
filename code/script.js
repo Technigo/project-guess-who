@@ -272,7 +272,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
-        `No, no plants in this home! Remove all homes with plants.`
+        `No, sorry. Let's remove all windows with ${value} 🪴`
       );
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
@@ -286,7 +286,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
-        `Nope, no ${value} here. Lets remove all windows with ${value}`
+        `Nope, no ${value} here. Lets remove all windows with this.`
       );
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     } 
@@ -294,13 +294,12 @@ const filterCharacters = (keep) => {
     else if (category === 'other') {
       if (keep) {
         alert(
-          `Yes, that's right! Keep all windows that has 
-          ${value}.`
+          `Yes, that's right! Good job!`
         );
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
       } else {
         alert(
-          `Nope, no ${value} here. Lets remove all windows with ${value}`
+          `No, sorry. Let's remove all windows with this.`
         );
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
       } } 

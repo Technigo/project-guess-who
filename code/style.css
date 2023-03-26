@@ -161,17 +161,20 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  width: 100%;
   text-align: center;
 }
 
 .win-or-lose img {
   align-self: flex-start;
   margin-left: 15%;
+  width: 100%;
+  height: 200px;
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+  color: white;
 }
 
 @media (max-width: 768px) {
@@ -207,6 +210,7 @@ button {
   .card {
     width: 135px;
     height: 193px;
+    margin-left: 27px;
     position: relative;
   }
   
@@ -232,5 +236,9 @@ button {
     background: rgb(255, 255, 255);
     color: rgb(127, 124, 124);
     border: none;
+  }
+
+  .win-or-lose {
+    padding: 5px;
   }
 }

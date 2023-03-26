@@ -6,6 +6,8 @@ const restartButton = document.getElementById('restart')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
+const questionSection = document.getElementById('question-section')
+const secretImage = document.getElementById('secretImage')
 
 
 
@@ -54,7 +56,7 @@ const CHARACTERS = [
   },
   {
     img: 'images/guesswho/6.png',
-    name: 'Numbre 6',
+    name: 'Number 6',
     pet: ['dog'],
     plants: ['1-plant'],
     accessories: ['lamp', 'curtain'],
@@ -206,11 +208,11 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   questions.value='';
-  board.style.display = 'flex'
-  winOrLose.style.display = 'none'
   charactersInPlay = CHARACTERS //All caracters. later on filter characters
   generateBoard();
   setSecret();
+  board.style.display = 'flex'
+  winOrLose.style.display = 'none'
   console.log(secret);
 
  
@@ -316,15 +318,22 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToConfirm) => {
+ 
 
 if (personToConfirm === secret.name) {
   winOrLoseText.innerHTML = `YES! You won, it's ${secret.name}!`;
+  secretImage.innerHTML= `<img src=${secret.img} alt=${secret.name}>`;
+  
+
 } else {
   winOrLoseText.innerHTML = `No sorry, wrong answer! The secret home was ${secret.name}`
+  secretImage.innerHTML= `<img src=${secret.img} alt=${secret.name}>`;
 }
 
-winOrLose.style.display = 'flex'
 board.style.display = 'none'
+winOrLose.style.display = 'flex'
+questionSection.style.display = 'none'
+
 
 }
 

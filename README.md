@@ -1,4 +1,4 @@
-# Guess Who game with Javascript
+# Guess Who with Javascript
 
 The second week of the bootcamp, our task was to create a Guess Who game using vanilla Javascript, HTML and CSS. We worked individually.
 

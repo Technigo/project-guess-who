@@ -1,14 +1,22 @@
-# Project Name
+# Guess Who game with Javascript
 
-The task was to create a digital version of the Guess Who game using Javascript.
+The second week of the bootcamp, our task was to create a Guess Who game using vanilla Javascript, HTML and CSS. We worked individually.
 
-## The problem
+## The brief
 
-I started out by watching all the video material twice. Secondly, I completed the exercises with my team mates in small break-out groups. Then, using a Kanban board, I deconstructed the project into different steps and watched the code-along to get a better understanding of the starter code. After forking and cloning, I started out by completing the HTML and after that, I dove straight into the Javascript. 
+This week’s project is to create your own digital version of the classic board game Guess Who. You'll practice creating objects and arrays and also connect this to the DOM. Here’s an example you can look at: https://technigo-guess-who.netlify.app/
 
-To better understand what I needed the different functions to do in order for the game to work, I wrote the game steps in pseudocode, which I then translated into real code later on. I also looked at previous student's Github-projects and the live version of the game from Technigo. Whenever I got stuck, I asked my classmates or looked at questions in StackOverflow.
+**What you need to do**
 
-If I had had more time, I would have loved to change the characters and some of the styling to make it more my own. I would also have liked to add a timer & a guess counter.
+✓ Style your page.
+
+✓ Use CSS Grid and Flexbox to layout the page.
+
+✓ Create a responsive design with the following views; Desktop 4 columns, tablet 2 columns, mobile 1 column.
+
+✓ The site should have a header, a main news article, a grid of news articles.
+
+✓ Play around with hover effects, i.e. change colors, add or remove borders or flip the image upside down.
 
 ## View it live
 

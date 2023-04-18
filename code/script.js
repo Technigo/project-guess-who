@@ -597,3 +597,4 @@ playAgainBtn.addEventListener('click', upStartGame);
 // All the event listeners connected to filtering and guessing:
 filterBtn.addEventListener('click', checkQuestion);
 questions.addEventListener('change', selectQuestion);
+

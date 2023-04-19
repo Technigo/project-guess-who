@@ -253,8 +253,8 @@ const selectQuestion = () => {
 
   // const value
   currentQuestion = {
-    category: category,
-    value: value,
+    category: category.toLowerCase(),
+    value: value.toLowerCase(),
   }
 }
 
@@ -277,7 +277,7 @@ const checkQuestion = () => {
 // Alert popup that tells if´s: yes - else: no
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  
+
     if (category === 'accessories') {
       if (keep) {
         alert(`Yessss, that person wears ${value}! save all that wears ${value}`);
@@ -354,7 +354,7 @@ const checkMyGuess = (personToCheck) => {
 start();
 
 // All the event listeners
-restartBtn.addEventListener('click', start)
-letSee.addEventListener('click', checkQuestion)
-questions.addEventListener('change', selectQuestion)
-playAgain.addEventListener('click', start)
+restartBtn.addEventListener('click', start) // restart button
+letSee.addEventListener('click', checkQuestion) // found out button
+questions.addEventListener('change', selectQuestion) // select dropdown
+playAgain.addEventListener('click', start) // start over

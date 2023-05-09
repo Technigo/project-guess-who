@@ -323,18 +323,33 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
   // If the player wants to guess, invoke the checkMyGuess function.
-const guess = (personToConfirm) => { if (confirm(`Are you sure you want to guess on ${personToConfirm}`)) checkMyGuess() 
-
+const guess = (personToConfirm) => { 
+  if (confirm(`Are you sure you want to guess on ${personToConfirm}`)) 
+  checkMyGuess(personToConfirm) 
 }
 
-// If you confirm, this function is invoked
+// If you confirm, next function is invoked
+
+  // 1. Check if the personToCheck is the same as the secret person's name
+  // 2. Set a Message to show in the win or lose section accordingly
+  // 3. Show the win or lose section
+  // 4. Hide the game board
+
 const checkMyGuess = (personToCheck) => { 
+  console.log(personToCheck)
+  console.log(secret.name)
   if (personToCheck === secret.name) {
     winOrLose.style.display= "flex"
     winOrLose.innerHTML = `
     <div class="win-or-lose">
     <h1 id="winOrLoseText"> YOU WON </h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <button 
+          type="button" 
+          id="playAgain" 
+          class="filled-button"
+          onclick="window.location.reload()">
+          PLAY AGAIN
+          </button>
         </div>`
   }
   else {
@@ -342,14 +357,16 @@ const checkMyGuess = (personToCheck) => {
     winOrLose.innerHTML = `
     <div class="win-or-lose">
     <h1 id="winOrLoseText"> YOU LOST </h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <button 
+        type="button" 
+        id="playAgain" 
+        class="filled-button"
+        onclick="window.location.reload()">
+        PLAY AGAIN
+        </button>
         </div> `
   }
   board.innerHTML = ''
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 }
 
 // Invokes the start function when website is loaded

@@ -214,6 +214,7 @@ let charactersInPlay
 
 // Draw the game board
 const generateBoard = () => {
+  console.log("Generating game board with " + charactersInPlay.length + " characters")
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
@@ -239,6 +240,8 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  console.log(CHARACTERS.length)
+  console.log({charactersInPlay, secret, currentQuestion})
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
@@ -397,7 +400,8 @@ const refreshPage = () => {
   start();
 }
 const playAgain = ()=>{
-  start 
+  console.log("playAgain function called");
+  start();
 
 }
 
@@ -409,5 +413,6 @@ findOutButton.addEventListener('click', () => {
   checkQuestion()
 });//Is there another way to do this??
 
-playAgainButton.addEventListener ('click', playAgain) //seems like this wont work for me!
+playAgainButton.addEventListener('click', playAgain);
+ //seems like this wont work for me!
 

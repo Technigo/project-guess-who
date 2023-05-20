@@ -388,17 +388,17 @@ const guess = (personToConfirm) => {
 // If the player confirms, this function is invoked
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
+  // 2. Set a Message to show in the win or lose section
+  // 3. Show the win or lose section
+  // 4. Hide the game board and question section
+
   if (personToCheck === secret.name) {
-    // 2. Set a Message to show in the win or lose section
-    // 3. Show the win or lose section
     winOrLoseText.innerHTML = `You win! 🥳🎉${secret.name} is correct!`;
-    winOrLose.style.display = "block";
-    // 4. Hide the game board and question section
+    winOrLose.style.display = "block"; //flex?
     board.style.display = "none";
   } else {
     winOrLoseText.innerHTML = `Game over 😒. The secret person was ${secret.name}`;
-    winOrLose.style.display = "block";
-    // 4. Hide the game board and question section
+    winOrLose.style.display = "block"; //flex?
     board.style.display = "none";
   }
 };

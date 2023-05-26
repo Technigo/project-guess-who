@@ -399,10 +399,10 @@ const refreshPage = () => {
   board.style.display = 'flex';
   start();
 }
-const playAgain = ()=>{
-  console.log("playAgain function called");
-  start();
-
+const playAgain = () => {
+  start(); 
+  winOrLose.style.display = 'none';
+  board.style.display = 'flex';
 }
 
 

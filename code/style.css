@@ -152,7 +152,7 @@ select {
   margin-bottom: 8px;
   width: 90%;
 }
-
+/* 
 .timer {
   border: 2px solid var(--primary);
   background-color: white;
@@ -164,7 +164,7 @@ select {
   padding: 17px 27px;
   margin-top: 35px;
   align-self: center;
-}
+} */
 
 /****** BUTTONS ******/
 button {

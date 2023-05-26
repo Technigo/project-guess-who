@@ -2,7 +2,7 @@
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
-// const findOutButton = document.getElementById("filter");
+//const findOutButton = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const winOrLoseSection = document.getElementById("winOrLose");
 const playAgainButton = document.getElementById("playAgain");
@@ -399,9 +399,9 @@ const filterCharacters = (keep) => {
     //   currentQuestion = questions.value
     // })
     
-    findOutBtn.addEventListener('click', checkQuestion)
+    filter.addEventListener('click', checkQuestion)
     
-    playAgainBtn.addEventListener('click', () => {
+    playAgainButton.addEventListener('click', () => {
       location.reload()
     })
     

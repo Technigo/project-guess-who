@@ -444,14 +444,6 @@ restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutBtn.addEventListener("click", checkQuestion);
 
-// for (let i = 0; i < board.children.length; i++) {
-//   board.children[i].addEventListener("mouseenter", () => {
-//     console.log('hovered')
-//     sound.play();
-//   });
-// }
-
-
 const soundOnHover = () => {
   Array.from(board.children).forEach((card) => {
     card.addEventListener("mouseenter", () => {

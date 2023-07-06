@@ -11,8 +11,6 @@ const timer = document.getElementById("timer");
 const guesses = document.getElementById("guesses");
 
 // Global variables
-let userNamePrompt = prompt("What's your name?");
-let userNameText = "";
 let guessCounter;
 let secret;
 let currentQuestion;
@@ -44,7 +42,7 @@ const CHARACTERS = [
   },
   {
     name: "Jacques",
-    img: "images/jacques.png",
+    img: "images/jacques.jpg",
     fur: "black",
     eyes: "yellow",
     accessories: [],
@@ -222,7 +220,7 @@ const CHARACTERS = [
 ];
 
 // audio
-const sound = new Audio("images/Card-flip-sound-effect.mp3");
+const sound = new Audio("images/meow.mp3");
 
 // Draw the game board
 const generateBoard = () => {
@@ -343,9 +341,6 @@ const start = () => {
   setSecret();
   CategoryOptions();
   createCategories();
-  if (userNamePrompt) {
-    userNameText = userNamePrompt;
-  }
   timerCount();
 };
 
@@ -380,6 +375,7 @@ const checkQuestion = () => {
   }
   generateBoard();
   countGuesses();
+  soundOnHover()
 };
 
 // It'll filter the characters array and redraw the game board.
@@ -432,12 +428,12 @@ const checkMyGuess = (catToCheck) => {
   if (catToCheck === secret.name) {
     alert("Match!");
     winOrLoseWrapper.style.display = "flex";
-    winOrLoseText.textContent = `Hurray ${userNameText}! You won!`;
+    winOrLoseText.textContent = `Hurray! You won!`;
     document.querySelector(".sadcat").style.display = "none";
   } else {
     alert(`Your answer is wrong!`);
     winOrLoseWrapper.style.display = "flex";
-    winOrLoseText.textContent = `Your answer is wrong ${userNameText}! ${secret.name} stole the tuna!`;
+    winOrLoseText.textContent = `Your answer is wrong! ${secret.name} stole the tuna!`;
     document.querySelector(".happycat").style.display = "none";
   }
 };
@@ -448,8 +444,19 @@ restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutBtn.addEventListener("click", checkQuestion);
 
-for (let i = 0; i < board.children.length; i++) {
-  board.children[i].addEventListener("mouseenter", () => {
-    sound.play();
+// for (let i = 0; i < board.children.length; i++) {
+//   board.children[i].addEventListener("mouseenter", () => {
+//     console.log('hovered')
+//     sound.play();
+//   });
+// }
+
+
+const soundOnHover = () => {
+  Array.from(board.children).forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+      sound.play();
+    });
   });
-}
+};
+  soundOnHover()

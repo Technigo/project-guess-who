@@ -260,9 +260,7 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
 
-  keep = false; // if this line of code is not included, then get wrong answers when selecting values from grouped categories. E.g. without keep = false,
-  // if a character has yellow hair and hidden eyes.  I ask about yellow hair, the alert says yes they have yellow hair. Then I ask if they have green eyes, alert will give me a false yes,
-  //because now keep has been changed to true for hair and eyes.
+  keep = false; // this variable will be updated later, depending on the category and value chosen by the user (if the user wants to keep or remove the characters that match the chosen category and value)
 
   // below: defining what categories and values to keep
   // we need to define the two else if conditionals here, values and attributes + arrays

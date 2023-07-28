@@ -1,8 +1,9 @@
 // All the DOM selectors stored as short variables.
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
-const findOutButton = document.getElementById("filter");
-const restartButton = document.getElementById("restart");
+const filterButton = document.getElementById("filter");
+const restartButton = document.getElementById("restart"); 
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects.
 const CHARACTERS = [
@@ -231,19 +232,6 @@ const setSecret = () => {
     charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
 };
 
-// Here we start to fill up the board.
-// This function, "start", to start (and restart) the game. Here we call other functions.
-const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with. Change the value of the variable charactersInPlay to CHARACTERS. Holds the value of the whole array.
-  charactersInPlay = CHARACTERS; // fetches ALL characters.
-  // Call the generate board to make the board visible.
-  // What else should happen when we start the game?
-  // The values are global – work wherever.
-  generateBoard(); // "Awakens" the board = calling the function. Later, this function will fetch the filtered characters. Generating new arrays rather than deleting characters – the filteredCharacters variable's parameter/argument.
-  setSecret();
-  console.log("yyy", secret.name);
-};
-
 // Setting the currentQuestion object when you select something in the dropdown. A function that needs to be invoked by adding an eventListener.
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label //Question = an id. The category has been defined.
@@ -423,16 +411,33 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board.
 };
 
+// Here we start to fill up the board.
+// This function, "start", to start (and restart) the game. Here we call other functions.
+const start = () => {
+  // Here we're setting charactersInPlay array to be all the characters to start with. Change the value of the variable charactersInPlay to CHARACTERS. Holds the value of the whole array.
+  board.style.display = 'flex'
+  winOrLose.style.display = 'none'
+  charactersInPlay = CHARACTERS; // fetches ALL characters.
+  // Call the generate board to make the board visible.
+  // What else should happen when we start the game?
+  // The values are global – work wherever.
+  generateBoard(); // "Awakens" the board = calling the function. Later, this function will fetch the filtered characters. Generating new arrays rather than deleting characters – the filteredCharacters variable's parameter/argument.
+  setSecret();
+  console.log("yyy", secret.name);
+  selectQuestion();
+};
+
 // Invokes the start function when website is loaded.
 start();
 
 // All the event listeners in the html files.
-restartButton.addEventListener("click", start); // Listening for button.
-questions.addEventListener("change", selectQuestion); // Dropdwon menu asking questions, listening to questions. The event is on questions, and the Listener is calling the selectQuestions which is a function that needs to be populated.
-findOutButton.addEventListener("click", () => {
+restartButton.addEventListener("click", start) // Listening for button.
+questions.addEventListener("change", selectQuestion) // Dropdwon menu asking questions, listening to questions. The event is on questions, and the Listener is calling the selectQuestions which is a function that needs to be populated.
+filterButton.addEventListener("click", checkQuestion) // Find out Button
+  // findOutButton.addEventListener("click", () => {
   // Paranthesis and arrow invoke another happening.
-  checkQuestion();
-});
+  // checkQuestion();
+playAgainButton.addEventListener('click', start)
 //Eventlisteners can be in the bottom if it works all the time.
 
 // Put in function, call it once.

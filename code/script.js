@@ -3,7 +3,7 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const filterButton = document.getElementById("filter");
 const restartButton = document.getElementById("restart"); 
-const playAgainButton = document.getElementById('playAgain')
+// const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects.
 const CHARACTERS = [
@@ -286,33 +286,32 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   // Destructs the currentQuestion object to be able to use these variables more easily.
-  if (category === 'hair') {
-    currentQuestion = {
-      category: 'hair',
-      value: value
+
+  if (category === 'eyes') {
+    if (value === secret.eyes) {
+      filterCharacters(keep);
+    } else {
+      filterCharacters();
     }
-  } else if (category === 'eyes') {
-    currentQuestion = {
-      category: 'eyes',
-      value: value
+  } else if (category === 'hair') {
+    if (value === secret.hair) {
+      filterCharacters(keep);
+    } else {
+      filterCharacters();
     }
-  } else if (category === 'accessories') {
-    currentQuestion = {
-      category: 'accessories',
-      value: value
-    }
-  } else {
-    currentQuestion = {
-      category: 'other',
-      value: value
+  } else if (category === 'accessories' || category === 'other') {
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+      filterCharacters(keep);
+    } else {
+      filterCharacters();
     }
   }
-}  
+}
   // If you've asked whether the secret person has glasses, it checks weather it does.
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that.
   // Then invoke filterCharacters.
-  // keep = false; // If this line of code is not included, then we'll get wrong answers when selecting values from grouped categories. eg. without keep = false.
+  keep = false; // If this line of code is not included, then we'll get wrong answers when selecting values from grouped categories. eg. without keep = false.
   // If a character has yellow hair and hidden eyes, I ask about yellow hair, the alert says yes they have yellow hair. Then I ask if they have green eyes, alert will give me a false yes, because now keep has been changed to true for hair and eyes.
 
   // Below: defining what categories and values to keep.
@@ -439,7 +438,7 @@ filterButton.addEventListener("click", checkQuestion) // Find out Button
   // findOutButton.addEventListener("click", () => {
   // Paranthesis and arrow invoke another happening.
   // checkQuestion();
-playAgainButton.addEventListener('click', start)
+// playAgainButton.addEventListener('click', start)
 //Eventlisteners can be in the bottom if it works all the time.
 
 // Put in function, call it once.

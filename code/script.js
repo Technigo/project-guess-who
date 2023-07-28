@@ -286,26 +286,28 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   // Destructs the currentQuestion object to be able to use these variables more easily.
-  if (category === 'eyes') {
-    if (value === secret.eyes) {
-      filterCharacters(keep);
-    } else {
-      filterCharacters();
+  if (category === 'hair') {
+    currentQuestion = {
+      category: 'hair',
+      value: value
     }
-  } else if (category === 'hair') {
-    if (value === secret.hair) {
-      filterCharacters(keep);
-    } else {
-      filterCharacters();
+  } else if (category === 'eyes') {
+    currentQuestion = {
+      category: 'eyes',
+      value: value
     }
-  } else if (category === 'accessories' || category === 'other') {
-    if (secret.accessories.includes(value) || secret.other.includes(value)) {
-      filterCharacters(keep);
-    } else {
-      filterCharacters();
+  } else if (category === 'accessories') {
+    currentQuestion = {
+      category: 'accessories',
+      value: value
+    }
+  } else {
+    currentQuestion = {
+      category: 'other',
+      value: value
     }
   }
-}
+}  
   // If you've asked whether the secret person has glasses, it checks weather it does.
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that.

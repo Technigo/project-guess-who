@@ -401,16 +401,27 @@ const filterCharacters = (keep) => {
 const guess = (personToConfirm) => {
   // Store the interaction from the player in a variable.
   // Remember the confirm() ?
+  const makeAGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`) 
+  if (makeAGuess === true) {
+    checkMyGuess(personToConfirm)
+  }
   // If the player wants to guess, invoke the checkMyGuess function.
-};
+}
 
 // If you confirm, this function is invoked.
 const checkMyGuess = (personToCheck) => {
+  winOrLose.style.display = 'flex'
+  board.style.display = 'none'
   // 1. Check if the personToCheck is the same as the secret person's name.
   // 2. Set a Message to show in the win or lose section accordingly.
   // 3. Show the win or lose section.
   // 4. Hide the game board.
-};
+  if (personToCheck === secret.name) {
+    winOrLoseText.innerHTML = `Congrats! You guessed it 👍`
+  } else {
+    winOrLoseText.innerHTML = `Oh no, that's not right. Would you like to play again?`
+  }
+}
 
 // Here we start to fill up the board.
 // This function, "start", to start (and restart) the game. Here we call other functions.

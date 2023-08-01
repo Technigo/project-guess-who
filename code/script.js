@@ -338,14 +338,14 @@ const filterCharacters = (keep) => {
   // Add a filter to keep or remove. Array method .filter
   if (category === "accessories") {
     if (keep) {
-      console.log("xxx", category);
+      // console.log("xxx", category);
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      );
+        `Yes, the person wears ${value}! Keep all people that wears ${value}`);
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      );
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     }
   }
   
@@ -353,13 +353,13 @@ const filterCharacters = (keep) => {
     // Similar to the one above.
     if (keep) {
       alert(
-        `Yes, the person is a ${value}! Remove all people that ${value}`
-      );
+        `Yes, the person is a ${value}! Keep all people that are ${value}s`);
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       // Alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair".
     } else {
       alert(
-        `No, the person is not a ${value}! Remove all people that ${value}`
-      );
+        `No, the person is not a ${value}! Remove all people that ${value}s`);
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       // Alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair".
     }
   }

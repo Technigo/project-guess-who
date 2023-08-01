@@ -1,10 +1,10 @@
 // All the DOM selectors stored as short variables.
-const board = document.getElementById("board");
-const questions = document.getElementById("questions");
-const filterButton = document.getElementById("filter");
+const board = document.getElementById("board")
+const questions = document.getElementById("questions")
+const filterButton = document.getElementById("filter")
 const winOrLose = document.getElementById('winOrLose') 
 const winOrLoseText = document.getElementById('winOrLoseText') 
-const restartButton = document.getElementById("restart"); 
+const restartButton = document.getElementById("restart")
 const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects.

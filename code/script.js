@@ -307,6 +307,7 @@ const checkQuestion = () => {
     }
   }
 }  
+
   // If you've asked whether the secret person has glasses, it checks weather it does.
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that.
@@ -338,7 +339,7 @@ const filterCharacters = (keep) => {
   // Add a filter to keep or remove. Array method .filter
   if (category === "accessories") {
     if (keep) {
-      // console.log("xxx", category);
+      console.log("xxx", category);
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`);
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))

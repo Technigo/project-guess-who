@@ -44,7 +44,7 @@ const CHARACTERS = [
   {
     name: "Jake",
     img: "images/jake.svg",
-    hair: "yellow",
+    hair: "blonde",
     eyes: "green",
     accessories: ["glasses"],
     other: [],
@@ -68,7 +68,7 @@ const CHARACTERS = [
   {
     name: "Jane",
     img: "images/jane.svg",
-    hair: "yellow",
+    hair: "blonde",
     eyes: "hidden",
     accessories: ["glasses"],
     other: [],
@@ -165,7 +165,7 @@ const CHARACTERS = [
   {
     name: "Jordan",
     img: "images/jordan.svg",
-    hair: "yellow",
+    hair: "blonde",
     eyes: "hidden",
     accessories: ["glasses", "hat"],
     other: [],
@@ -181,7 +181,7 @@ const CHARACTERS = [
   {
     name: "Josh",
     img: "images/josh.svg",
-    hair: "yellow",
+    hair: "blonde",
     eyes: "green",
     accessories: [],
     other: [],
@@ -311,7 +311,7 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that.
   // Then invoke filterCharacters.
-  keep = false; // If this line of code is not included, then we'll get wrong answers when selecting values from grouped categories. eg. without keep = false.
+  // keep = false; // If this line of code is not included, then we'll get wrong answers when selecting values from grouped categories. eg. without keep = false.
   // If a character has yellow hair and hidden eyes, I ask about yellow hair, the alert says yes they have yellow hair. Then I ask if they have green eyes, alert will give me a false yes, because now keep has been changed to true for hair and eyes.
 
   // Below: defining what categories and values to keep.

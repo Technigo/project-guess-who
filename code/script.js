@@ -449,6 +449,6 @@ filterButton.addEventListener("click", checkQuestion) // Find out Button
   // findOutButton.addEventListener("click", () => {
   // Paranthesis and arrow invoke another happening.
   // checkQuestion();
-  // playAgainButton.addEventListener('click', start)
+  playAgainButton.addEventListener('click', start)
   // Eventlisteners can be in the bottom if it works all the time.
   // Put in function, call it once.

@@ -287,26 +287,46 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button. Called by an eventListener, the Find Out button. A filter.
 const checkQuestion = () => {
   const { category, value } = currentQuestion; // Destructs the currentQuestion object to be able to use these variables more easily.
-  if (category === 'eyes') {
-    if (value === secret.eyes) {
-      filterCharacters(keep);
-    } else {
-      filterCharacters();
+  if (category === 'hair' || category === 'eyes' ) {
+    if (secret[category] === value) {
+      keep = true
+      filterCharacters(true); 
     }
-  } else if (category === 'hair') {
-    if (value === secret.hair) {
-      filterCharacters(keep);
-    } else {
-      filterCharacters();
-    }
-  } else if (category === 'accessories' || category === 'other') {
-    if (secret.accessories.includes(value) || secret.other.includes(value)) {
-      filterCharacters(keep);
-    } else {
-      filterCharacters();
+    else {
+      keep = false
+      filterCharacters(false); 
     }
   }
-}  
+  else if (category === 'accessories' || category === 'other') {
+    if (secret[category].includes(value)) {  
+      keep = true
+      filterCharacters(true); 
+    }
+    else {
+      keep = false
+      filterCharacters(false);
+    }
+}
+}
+  // if (category === 'eyes') {
+  //   if (value === secret.eyes) {
+  //     filterCharacters(keep);
+  //   } else {
+  //     filterCharacters();
+  //   }
+  // } else if (category === 'hair') {
+  //   if (value === secret.hair) {
+  //     filterCharacters(keep);
+  //   } else {
+  //     filterCharacters();
+  //   }
+  // } else if (category === 'accessories' || category === 'other') {
+  //   if (secret.accessories.includes(value) || secret.other.includes(value)) {
+  //     filterCharacters(keep);
+  //   } else {
+  //     filterCharacters();
+  //   }
+  // } 
 
   // If you've asked whether the secret person has glasses, it checks weather it does.
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).

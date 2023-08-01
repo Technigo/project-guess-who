@@ -311,7 +311,7 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that.
   // Then invoke filterCharacters.
-  keep = false; // If this line of code is not included, then we'll get wrong answers when selecting values from grouped categories. eg. without keep = false.
+  // keep = false; // If this line of code is not included, then we'll get wrong answers when selecting values from grouped categories. eg. without keep = false.
   // If a character has yellow hair and hidden eyes, I ask about yellow hair, the alert says yes they have yellow hair. Then I ask if they have green eyes, alert will give me a false yes, because now keep has been changed to true for hair and eyes.
 
   // Below: defining what categories and values to keep.
@@ -368,11 +368,11 @@ const filterCharacters = (keep) => {
     if (keep) {
     alert (
       `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
   } else {
     alert (
       `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`)
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
   }
 }
 

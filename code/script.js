@@ -368,11 +368,11 @@ const filterCharacters = (keep) => {
     if (keep) {
     alert (
       `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`)
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
   } else {
     alert (
       `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`)
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
   }
 }
 

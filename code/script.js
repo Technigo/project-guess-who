@@ -346,7 +346,7 @@ const filterCharacters = (keep) => {
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`)
-        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   }
   

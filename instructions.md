@@ -1,9 +1,7 @@
 ## Step 1 - Loading the website
 The first thing that happens when you load the website is that the game board should be rendered on the screen. We've set up the function `generateBoard` that you can invoke whenever you need it. Take a look at this function to **see that you understand what is happening in there**. Basically, we're looking at the characters array and looping through that array, creating one 'card' for each person in that array. We're adding that as the innerHTML of the element with the id `board`. 
 
-<aside>
 💡 You can also see that all the DOM selectors should be set up on the top of the file, just as we've done with a few of them.
-</aside>
 
 Also, take a look at the huge CHARACTERS array that contains a bunch of objects with all the people and their characteristics. So you know how that data is structured.
 
@@ -12,12 +10,9 @@ The `generateBoard` function should be invoked when the website is loaded, but t
 ## Step 2 - What else should happen when we start the game?
 We're playing against "the computer" so there's a need to have a secret person, randomly selected by the opponent. The one that we're guessing on. We need to set this secret when the game starts. We've created a randomizer function to randomly select one character item from the big array of characters. This is done in the `setSecret` function, where we randomly select a character and set that as the value of the global variable named `secret`. Make sure to set a secret person when the game starts.
 
-<aside>
-💡 Read more about how to use `Math.random()` [here](https://www.w3schools.com/js/js_random.asp)
-</aside>
+💡 Read more about how to use `Math.random()` [here](https://www.w3schools.com/js/js_random.asp "here")
 
 ## Step 3 - How do we play the game?
-
 First of all, we need to be able to select a question to ask about a person and then based on the answer to that question, filter out the people who match (or don't match) that answer. 
 
 For example, if our `secret` person is wearing glasses, and we make a guess that the character is wearing glasses, we want the game to filter out all characters who are *not wearing glasses.* We'll go further into how you might do the filtering in step 4.
@@ -28,9 +23,7 @@ It's time to use an eventListener that listens to when the player interacts with
 
 All the `eventListeners` should be set up at the bottom of the file. We've set up the restart button there and made that button listen to a click event. When the click event is triggered, the start function is invoked. Do something similar with the `select` element.
 
-<aside>
 💡 Read more about how to deal with events and selects [here](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
-</aside>
 
 Also, make sure to set up the actual select element with all the options to ask about. 
 
@@ -65,9 +58,7 @@ Then we also want to know If the text should say *Yes, the person smokes* or *No
 
 Lastly we want to use the `filter()` method to filter out people from the `charactersInPlay` array. There's an example on how to structure this in the code.
 
-<aside>
 💡 Remember that you also need to re render the game board so that only the people still in play is shown.
-</aside>
 
 ## Step 6 - Time to make a guess!
 At some point, the player wants to make a guess about who the secret person is.
@@ -78,9 +69,7 @@ In the guess function you should use a built-in JavaScript method `confirm()` to
 
 If the player confirms that they want to make a guess, invoke the `checkMyGuess` function.
 
-<aside>
 💡 Remember to pass along the person that are being guessed at as an argument to the checkMyGuess function!
-</aside>
 
 Inside the `checkMyGuess` function you should;
 

@@ -426,7 +426,7 @@ const checkMyGuess = (personToConfirm) => {
     winOrLoseText.innerHTML = `Congratulations! 👑 It was ${secret.name}. It only took you ${questionCounter} question(s) and ${elapsedTime}s to find out.`
   } else {
     losingSound.play();
-    winOrLoseText.innerHTML = `Oh no, wrong guess! ☹️ The secret person was ${secret.name}. It only took you ${questionCounter} question(s) and ${elapsedTime}s to find out.`
+    winOrLoseText.innerHTML = `Wrong guess 🥴 The secret person was ${secret.name}. It only took you ${questionCounter} question(s) and ${elapsedTime}s to find out.`
   }
   winOrLose.style.display = "flex"
   // 1. Check if the personToCheck is the same as the secret person's name

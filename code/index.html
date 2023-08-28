@@ -14,21 +14,18 @@
   </head>
   <body>
     <aside class="question-section">
-      <div id="timer">Time: <span id="timerValue">0</span> seconds</div>
+      <div id="timer"><img src="assets/images/clock.svg" alt="clock"><span id="timerValue">0</span> s</div>
       <button type="button" id="restart" class="outlined-button">RESTART</button>
-      <div id="playerInfo">
-        <div id="playerDisplay">
-          <h2>
+        <div id="playerInfo">
             <span id="playerName">Player 1</span>
-          </h2>
+            <hr class="solid">
+            <div id="countDisplay">
+              Questions asked: 
+              <span id="countValue">0</span>
+          </div>
         </div>
-        <hr class="solid">
-          <div id="countDisplay">
-            Questions asked: 
-            <span id="countValue">0</span>
-        </div>
-      </div>
 
+      
       <h1>Does the person have</h1>
 
       <select title="questions" id="questions">
@@ -77,11 +74,6 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="assets/images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
         <h1 id="winOrLoseText"></h1>
         <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>

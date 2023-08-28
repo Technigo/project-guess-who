@@ -1,13 +1,17 @@
-# Project Name
+# Project Guess Who
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-Replace this readme with your own information about your project.
+This is a game of Guess Who using Vanilla JavaScript. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
-## The problem
+### The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I found this project particularly difficult to wrap my head around, because of the amount of steps and functions representing every step and aspect of the game. I went about trying to understand it by looking at every function, commenting what each line of code did and that way mapping out the reasoning behind the code. At the end I added some sound effects and changed the styling a bit, but I'm planning on changing it more in the coming weeks.
 
-## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+### View it live
+
+https://antoniasguesswho.netlify.app
+
+
+<img width="300" alt="guesswho-screenshot" src="https://github.com/AntoniaGranit/project-guess-who/assets/95037306/2b905705-bbf6-4c97-98e7-ad1a627013fc">

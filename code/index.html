@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
+    <title>Guess the city!</title>
+    <link rel="icon" href="images/icons8-earth-globe-50.png">
     <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -12,36 +13,42 @@
   </head>
   <body>
     <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
-
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
-
-      <h1>Does the person have</h1>
+      <h1>
+        <img src="images/icons8-earth-globe-50 (1).png" class="logo-globe" alt="Logo of globe">Guess the city!
+      </h1>
 
       <select title="questions" id="questions">
-        <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
+        <option value="">--Pick a question--</option>
+        <optgroup label="continent">
+          <option value="africa">Is it in Africa?</option>
+          <option value="asia">Is it in Asia?</option>
+          <option value="europe">Is it in Europe?</option>
+          <option value="north-america">Is it in North America?</option>
+          <option value="oceania">Is it in Oceania?</option>
+          <option value="south-america">Is it in South America?</option>
         </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+
+        <optgroup label="hemisphere">
+          <option value="northern">Is it in the northern hemisphere?</option>
+          <option value="southern">Is it in the southern hemisphere?</option>
+          <option value="eastern">Is it in the eastern hemisphere?</option>
+          <option value="western">Is it in the western hemisphere?</option>
         </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
+
+        <optgroup label="language">
+          <option value="english">Is one of the official languages English?</option>
+          <option value="spanish">Is one of the official languages Spanish?</option>
+          <option value="arabic">Is one of the official languages Arabic?</option>
         </optgroup>
+
         <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+          <option value="capital">Is it a capital?</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+
+      <button type="button" id="restart" class="outlined-button">RESTART</button>
     </aside>
 
     <section class="board-wrapper">
@@ -49,16 +56,13 @@
     </section>
 
     <section id="winOrLose" class="win-or-lose-wrapper">
-      <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
+      <div class="win-or-lose"> 
+        <img class="logo-globe" src="images/icons8-earth-globe-50 (1).png"" alt="Logo of globe"/>
         <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
+      <button id="playAgain" class="filled-button" type="submit">PLAY AGAIN</button>
     </section>
+    
     <script src="script.js"></script>
   </body>
 </html>

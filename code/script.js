@@ -1,201 +1,202 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const board = document.getElementById('board');
+const questions = document.getElementById('questions');
+const restartButton = document.getElementById('restart');
+const findOutButton = document.getElementById('filter');
 
-// Array with all the characters, as objects
-const CHARACTERS = [
+// Array with all the characters in the game, as objects
+const CITIES = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Paris',
+    img: 'images/pexels-photo-460740.jpeg',
+    continent: 'europe',
+    hemisphere: ['northern', 'eastern'],
+    language: [],
+    other: ['capital']
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Bangkok',
+    img: 'images/bangkok.png',
+    continent: 'asia',
+    hemisphere: ['northern', 'eastern'],
+    language: [],
+    other: ['capital']
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    name: 'Cairo',
+    img: 'images/cairo.png',
+    continent: 'africa',
+    hemisphere: ['northern', 'eastern'],
+    language: ['arabic'],
+    other: ['capital']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: 'Berlin',
+    img: 'images/berlin.png',
+    continent: 'europe',
+    hemisphere: ['northern', 'eastern'],
+    language: [],
+    other: ['capital']
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Pretoria',
+    img: 'images/pretoria.png',
+    continent: 'africa',
+    hemisphere: ['southern', 'eastern'],
+    language: ['english'],
+    other: ['capital']
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Buenos Aires',
+    img: 'images/buenosaires.png',
+    continent: 'south-america',
+    hemisphere: ['northern', 'western'],
+    language: ['spanish'],
+    other: ['capital']
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Rome',
+    img: 'images/rome.png',
+    continent: 'europe',
+    hemisphere: ['northern', 'eastern'],
+    language: [],
+    other: ['capital']
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Jerusalem',
+    img: 'images/jerusalem.png',
+    continent: 'asia',
+    hemisphere: ['northern', 'eastern'],
+    language: ['arabic'],
+    other: ['capital']
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Lima',
+    img: 'images/lima.png',
+    continent: 'south-america',
+    hemisphere: ['southern', 'western'],
+    language: ['spanish'],
+    other: ['capital']
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    name: 'Canberra',
+    img: 'images/canberra.png',
+    continent: 'oceania',
+    hemisphere: ['southern', 'eastern'],
+    language: ['english'],
+    other: ['capital']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Copenhagen',
+    img: 'images/copenhagen.png',
+    continent: 'europe',
+    hemisphere: ['northern', 'eastern'],
+    language: [],
+    other: ['capital']
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    name: 'Dubai',
+    img: 'images/dubai.png',
+    continent: 'asia',
+    hemisphere: ['northern', 'eastern'],
+    language: ['arabic'],
+    other: ['capital']
+  },
+  {
+    name: 'Jakarta',
+    img: 'images/jakarta.png',
+    continent: 'asia',
+    hemisphere: ['southern', 'eastern'],
+    language: [],
+    other: ['capital']
+  },
+  {
+    name: 'New York',
+    img: 'images/newyork.png',
+    continent: 'north-america',
+    hemisphere: ['northern', 'western'],
+    language: ['english'],
     other: []
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
+    name: 'Vancouver',
+    img: 'images/vancouver.png',
+    continent: 'north-america',
+    hemisphere: ['northern', 'western'],
+    language: ['english'],
     other: []
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
+    name: 'Cancun',
+    img: 'images/cancun.png',
+    continent: 'north-america',
+    hemisphere: ['northern', 'western'],
+    language: ['spanish'],
     other: []
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
+    name: 'Kyoto',
+    img: 'images/kyoto.png',
+    continent: 'asia',
+    hemisphere: ['northern', 'eastern'],
+    language: [],
     other: []
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
+    name: 'Nairobi',
+    img: 'images/nairobi.png',
+    continent: 'africa',
+    hemisphere: ['southern', 'eastern'],
+    language: [],
+    other: ['capital']
+  },
+  {
+    name: 'Amsterdam',
+    img: 'images/amsterdam.png',
+    continent: 'europe',
+    hemisphere: ['northern', 'eastern'],
+    language: [],
     other: []
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
+    name: 'Addis Ababa',
+    img: 'images/addisababa.png',
+    continent: 'africa',
+    hemisphere: ['southern', 'eastern'],
+    language: [],
+    other: ['capital']
+  },
+  {
+    name: 'Delhi',
+    img: 'images/delhi.png',
+    continent: 'asia',
+    hemisphere: ['northern', 'eastern'],
+    language: [],
     other: []
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    name: 'Barcelona',
+    img: 'images/barcelona2.png',
+    continent: 'europe',
+    hemisphere: ['northern', 'eastern'],
+    language: ['spanish'],
     other: []
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    name: 'Lahore',
+    img: 'images/lahore.png',
+    continent: 'asia',
+    hemisphere: ['northern', 'eastern'],
+    language: [],
     other: []
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    name: 'Auckland',
+    img: 'images/auckland.png',
+    continent: 'oceania',
+    hemisphere: ['southern', 'eastern'],
+    language: ['english'],
     other: []
   },
 ]
@@ -203,123 +204,170 @@ const CHARACTERS = [
 // Global variables
 let secret
 let currentQuestion
-let charactersInPlay
+let citiesInPlay
+let keep
 
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  citiesInPlay.forEach((city) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <p>${city.name}</p>
+        <img src=${city.img} alt=${city.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <span>Guess on ${city.name}?</span>
+          <button class="filled-button small" onclick="guess('${city.name}')">Guess</button>
         </div>
       </div>
     `
   })
-}
+};
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+
+// Randomly selects a city from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = citiesInPlay[Math.floor(Math.random() * citiesInPlay.length)]
 }
 
-// This function to start (and restart) the game
-const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-}
 
-// setting the currentQuestion object when you select something in the dropdown
+
+// Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
-}
+};
 
-// This function should be invoked when you click on 'Find Out' button.
+
+// This function is invoked when you click on 'Find Out' button
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  const {category, value} = currentQuestion;
+  
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-
-  } else if (category === 'accessories' || category === 'other') {
-
-  }
-}
-
-// It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
-  if (category === 'accessories') {
-    if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+  // Compares the currentQuestion details with the secret city details in a different manner based on category (continent/hemisphere or language/others).
+  if (category === 'continent') {
+    if (secret[category] === value) {
+      keep = true
+      filterCharacters(true);
     } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
+      keep = false
+      filterCharacters(false);
     }
+  } else if (category === 'hemisphere' || category === 'other' || category === 'language') {
+    if (secret[category].includes(value)) {
+      keep = true
+      filterCharacters(true);
+    } else {
+      keep = false
+      filterCharacters(false);
+    }
+  }
+};
+
+
+// Filter the characters array and redraws the game board.
+const filterCharacters = (keep) => {
+  const { category, value } = currentQuestion;
+  const uppercaseValue = value.replace('-', ' ').replace(/\b\w/g, c => c.toUpperCase());
+
+  if (category === 'language') {
+    if (keep) {
+      alert(`Yes, ${uppercaseValue} is an official language! Keep all the cities that have ${uppercaseValue} as an official language`);
+      citiesInPlay = citiesInPlay.filter((city) => city[category].includes(value));
+
+    } else {
+      alert(`No, ${uppercaseValue} is not an official language! Remove all the cities that have ${uppercaseValue} as an official language`);
+      citiesInPlay = citiesInPlay.filter((city) => !city[category].includes(value));
+    }
+
   } else if (category === 'other') {
-    // Similar to the one above
+    if (keep) {
+      alert(`Yes, the city is a ${value}! Keep all the cities that are a ${value}`);
+      citiesInPlay = citiesInPlay.filter((city) => city[category].includes(value));
+
+    } else {
+      alert(`No, the city is not a ${value}! Remove all the cities that are a ${value}`);
+      citiesInPlay = citiesInPlay.filter((city) => !city[category].includes(value));
+    }
+
+  } else if (category === 'hemisphere') {
+    if (keep) {
+      alert(`Yes, the city is in the ${value} hemisphere! Keep all the cities that are in the ${value} hemisphere`);
+      citiesInPlay = citiesInPlay.filter((city) => city[category].includes(value));
+
+    } else {
+      alert(`No, the city is not in the ${value} hemisphere! Remove all the cities that are in the ${value} hemisphere`);
+      citiesInPlay = citiesInPlay.filter((city) => !city[category].includes(value));
+    }
+
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(`Yes, the city is in ${uppercaseValue}! Keep all the cities in ${uppercaseValue}`);
+      citiesInPlay = citiesInPlay.filter((city) => city[category] === value);
+
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(`No, the city is not in ${uppercaseValue}! Remove all the cities in ${uppercaseValue}`);
+      citiesInPlay = citiesInPlay.filter((city) => city[category] !== value);
     }
   }
+  generateBoard();
+};
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+// When clicking guess, the player first have to confirm that they want to make a guess.
+const guess = (cityToConfirm) => {
+  const confirmGuess = confirm(`Are you sure you want to guess on ${cityToConfirm}?`);
+  if (confirmGuess === true) {
+  checkMyGuess(cityToConfirm);
+  }
+};
 
-  // Invoke a function to redraw the board with the remaining people.
-}
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-}
+// If confirmed, this function is invoked
+const checkMyGuess = (cityToCheck) => {
+  const winOrLose = document.getElementById("winOrLose");
+  const winOrLoseText = document.getElementById("winOrLoseText");
 
-// If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-}
+    if (cityToCheck === secret.name) {
+    winOrLose.style.display = 'flex';
+    board.style.display = 'none';
+    winOrLose.innerHTML += `
+          <h1>YOU WIN! ${cityToCheck} was the secret city</h1>
+      `;
+
+    } else {
+      winOrLose.style.display = 'flex'
+      board.style.display = 'none'
+      winOrLose.innerHTML += `
+          <h1>You lost :( ${cityToCheck} was not the secret city, it was ${secret.name}!</h1>
+      `;
+    }
+    const playAgain = document.getElementById("playAgain");
+  playAgain.addEventListener("click", (event) => {
+    start();
+    winOrLose.style.display = "none";
+  });
+};
+
+
+const start = () => {
+  citiesInPlay = CITIES
+  winOrLose.style.display = 'none'
+  board.style.display = 'flex'
+  setSecret()
+  generateBoard()
+} 
 
 // Invokes the start function when website is loaded
-start()
+start();
+
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start);
+questions.addEventListener('change', selectQuestion);
+findOutButton.addEventListener('click', checkQuestion);

@@ -15,7 +15,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     clothing: [],
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     expressions: ['smile'],
     other: []
   },
@@ -24,8 +24,8 @@ const CHARACTERS = [
     img: 'assets/images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    clothing: ['stripes'],
-    accessories: ['hat'],
+    clothing: ['striped shirt'],
+    accessories: ['a hat'],
     expressions: ['frown'],
     other: []
   },
@@ -35,7 +35,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     clothing: [],
-    accessories: ['hat'],
+    accessories: ['a hat'],
     expressions: ['frown'],
     other: ['smoker']
   },
@@ -75,7 +75,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     clothing: ['collar'],
-    accessories: ['glasses', 'necklace'],
+    accessories: ['glasses', 'a necklace'],
     expressions: ['smile'],
     other: []
   },
@@ -84,7 +84,7 @@ const CHARACTERS = [
     img: 'assets/images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    clothing: ['stripes'],
+    clothing: ['striped shirt'],
     accessories: ['glasses'],
     expressions: ['frown'],
     other: []
@@ -95,7 +95,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     clothing: [],
-    accessories: ['glasses', 'necklace'],
+    accessories: ['glasses', 'a necklace'],
     expressions: ['smile'],
     other: []
   },
@@ -116,7 +116,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     clothing: ['collar'],
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     expressions: ['frown'],
     other: ['smoker']
   },
@@ -136,7 +136,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     clothing: [],
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     expressions: ['frown'],
     other: ['smoker']
   },
@@ -146,7 +146,7 @@ const CHARACTERS = [
     hair: 'white',
     eyes: 'hidden',
     clothing: [],
-    accessories: ['hat'],
+    accessories: ['a hat'],
     expressions: [],
     other: []
   },
@@ -155,7 +155,7 @@ const CHARACTERS = [
     img: 'assets/images/jeri.svg',
     hair: 'orange',
     eyes: 'green',
-    clothing: ['stripes'],
+    clothing: ['striped shirt'],
     accessories: ['glasses'],
     expressions: ['frown'],
     other: []
@@ -166,7 +166,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     clothing: [],
-    accessories: ['hat'],
+    accessories: ['a hat'],
     expressions: ['smile'],
     other: []
   },
@@ -206,7 +206,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     clothing: ['collar'],
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     expressions: ['smile'],
     other: []
   },
@@ -246,7 +246,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     clothing: [],
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     expressions: ['frown'],
     other: []
   },
@@ -414,7 +414,7 @@ const checkMyGuess = (personToConfirm) => {
   if (personToConfirm === secret.name) {
     winOrLoseText.innerHTML = `Congratulations! You were right. It was ${secret.name}. You asked ${questionCounter} questions.`
   } else {
-    winOrLoseText.innerHTML = `Oh no! You were wrong! The person you were looking for was ${secret.name}. You asked ${questionCounter} questions.`
+    winOrLoseText.innerHTML = `Oh no! You were wrong! The secret person was ${secret.name}. You asked ${questionCounter} questions.`
   }
   winOrLose.style.display = "flex"
   // 1. Check if the personToCheck is the same as the secret person's name

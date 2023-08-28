@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #180142;
+  --secondary: #048f73;
 }
 
 body {
@@ -17,6 +17,18 @@ h1 {
   line-height: 48px;
   margin: 10px 0;
   color: white;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  line-height: 48px;
+  margin: 10px 0;
+}
+
+#countValue {
+  font-size: 28px;
 }
 
 .question-section {
@@ -143,6 +155,10 @@ button {
   background-color: white;
   border-color: white;
   color: var(--primary);
+}
+
+#restart {
+  margin: 15px 0;
 }
 
 /****** WIN OR LOSE SECTION ******/

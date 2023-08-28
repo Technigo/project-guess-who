@@ -309,22 +309,41 @@ const selectQuestion = () => {
 Use else to specify a block of code to be executed, if the same condition is false
 Use else if to specify a new condition to test, if the first condition is false*/
 const checkQuestion = () => {
+  questionCounter++;
+  console.log(questionCounter);
+  updateCounter();
   const { category, value } = currentQuestion 
 // Invoking filterCharacters
   if (category === 'accessories' || category === 'other') {
     if (secret[category].includes(value)) {
-      filterCharacters(true) // Keep everyone with that accessories/other value
+      filterCharacters(true); // Keep everyone with that accessories/other value
     } else {
-      filterCharacters() // Remove everyone with that accessories/other value
+      filterCharacters(); // Remove everyone with that accessories/other value
     }
   } else if (category === 'hair' || category === 'eyes') {
     if (secret[category] === value) {
-      filterCharacters(true) //Keep everyone with hair/eyes that match secret
+      filterCharacters(true); //Keep everyone with hair/eyes that match secret
     } else {
       filterCharacters() //Remove all with hair/eyes that does not match secret
     }
+  } else if (category === 'expressions' || category === 'clothing') {
+    if (secret[category].includes(value)) {
+      filterCharacters(true); //Keep everyone with expression/clothing that matches secret
+    } else {
+      filterCharacters(); //Remove all with expression/clothing that does not match secret
+    }
   } 
 }
+
+// Create a counter to keep track of how many questions a player asks
+let questionCounter = 0;
+const countValue = document.getElementById('countValue');
+const updateCounter = () => {
+  countValue.innerHTML = questionCounter.toString();
+}
+
+
+
 
 // This function will filter the characters array and regenerate the board.
 const filterCharacters = (keep) => {
@@ -339,7 +358,7 @@ const filterCharacters = (keep) => {
       person[category].includes(value))
     } else {
       alert(
-        `No, the person does not have ${value}! Remove everyone with ${value}.`)
+        `No, the person does not wear ${value}! Remove everyone with ${value}.`)
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value))
     }
@@ -347,13 +366,13 @@ const filterCharacters = (keep) => {
   } else if (category === 'other') {
       if (keep) {
         alert(
-          `Yes! The person has ${value}! Keep everyone with ${value}.`)
-        charactersInPlay = charactersInPlay.filter((person) => person[category])
+          `Yes! The person is a ${value}! Keep everyone who is a ${value}.`)
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       }
       else {
         alert(
-        `No! The person does not have ${value}! Remove everyone with ${value}.`)
-      charactersInPlay = charactersInPlay.filter((person) => !person[category])
+        `No! The person is not a ${value}! Remove everyone who is a ${value}.`)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       }
   // Hair and eyes
   } else if (category === "hair" || category === "eyes") {
@@ -365,30 +384,37 @@ const filterCharacters = (keep) => {
         alert(
           `No, the person does not have ${value} ${category}. Remove everyone with ${value} ${category}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-      }
+      } 
+    } else if (category === "expressions" || category === "clothing") {
+      if (keep) {
+        alert(
+          `Yes the person wears a ${value}! Keep everyone with a ${value}.`)
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      } else {
+        alert(
+          `No, the person does not wear a ${value}. Remove everyone with a ${value}.`)
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      } 
   // Invoke a function to redraw the board with the remaining people.
     } generateBoard()
   }
-
-  
- 
-
 
 // Prompt user to confirm they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   const confirmGuess = confirm(`Are you sure you want to guess?`)
   // remember the confirm() ?
-  if (confirmGuess) checkMyGuess(personToConfirm)
-  // If the player wants to guess, invoke the checkMyGuess function.
+  if (confirmGuess) {
+    checkMyGuess(personToConfirm);
+   }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToConfirm) => {
   if (personToConfirm === secret.name) {
-    winOrLoseText.innerHTML = `Congratulations! It was ${secret.name}.`
+    winOrLoseText.innerHTML = `Congratulations! You were right. It was ${secret.name}. You asked ${questionCounter} questions.`
   } else {
-    winOrLoseText.innerHTML = `Oh no, wrong guess...The person we were looking for was ${secret.name}!`
+    winOrLoseText.innerHTML = `Oh no! You were wrong! The person you were looking for was ${secret.name}. You asked ${questionCounter} questions.`
   }
   winOrLose.style.display = "flex"
   // 1. Check if the personToCheck is the same as the secret person's name

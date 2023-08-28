@@ -420,12 +420,13 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToConfirm) => {
+  clearInterval(timerInterval); // Stop the timer interval
   if (personToConfirm === secret.name) {
     winningSound.play();
-    winOrLoseText.innerHTML = `Congratulations! You were right. It was ${secret.name}. You asked ${questionCounter} questions.`
+    winOrLoseText.innerHTML = `Congratulations! 👑 It was ${secret.name}. It only took you ${questionCounter} question(s) and ${elapsedTime}s to find out.`
   } else {
     losingSound.play();
-    winOrLoseText.innerHTML = `Oh no! You were wrong! The secret person was ${secret.name}. You asked ${questionCounter} questions.`
+    winOrLoseText.innerHTML = `Oh no, wrong guess! ☹️ The secret person was ${secret.name}. It only took you ${questionCounter} question(s) and ${elapsedTime}s to find out.`
   }
   winOrLose.style.display = "flex"
   // 1. Check if the personToCheck is the same as the secret person's name
@@ -437,13 +438,32 @@ const checkMyGuess = (personToConfirm) => {
 // Prompt user for name
 const namePrompt = () => {
   let userName;
-  let user = prompt("Hi! Do you want to enter a username?", "Player 1");
+  let user = prompt("Hi! Enter a username to start the game.", "Player 1");
   if (user == null || user == "") {
     userName = "Player 1";
   } else {
     userName = user
-  } document.getElementById("playerName").innerHTML = userName
+  } document.getElementById("playerName").innerHTML = userName;
+  startTime = new Date(); // Record the start time
+  timerInterval = setInterval(updateTimer, 1000); // Update timer every second
 }
+
+
+// Set up a timer to measure the length of each game
+let timerInterval; // To store the setInterval reference
+let startTime;     // To store the start time
+let endTime;       // To store the end time
+let elapsedTime;   // To store the elapsed time
+
+const updateTimer = () => {
+  endTime = new Date(); // Record the current time
+  elapsedTime = Math.floor((endTime - startTime) / 1000); // Calculate elapsed time in seconds
+  document.getElementById('timerValue').innerHTML = elapsedTime;
+};
+
+
+
+
 
 // Invokes the start function when website is loaded
 start();

@@ -19,16 +19,9 @@ h1 {
   color: white;
 }
 
-h2 {
-  font-size: 18px;
-  font-weight: 500;
-  color: white;
-  line-height: 48px;
-  margin: 10px 0;
-}
-
-#countValue, #playerName {
-  font-size: 28px;
+/* Solid border */
+hr.solid {
+  border-top: 3px solid white;
 }
 
 .question-section {

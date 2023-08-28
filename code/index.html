@@ -14,7 +14,20 @@
   </head>
   <body>
     <aside class="question-section">
+      <div id="timer">Time: <span id="timerValue">0</span> seconds</div>
       <button type="button" id="restart" class="outlined-button">RESTART</button>
+      <div id="playerInfo">
+        <div id="playerDisplay">
+          <h2>
+            <span id="playerName">Player 1</span>
+          </h2>
+        </div>
+        <hr class="solid">
+          <div id="countDisplay">
+            Questions asked: 
+            <span id="countValue">0</span>
+        </div>
+      </div>
 
       <h1>Does the person have</h1>
 
@@ -56,17 +69,6 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
-      <div id="playerDisplay">
-        <h2>Player:
-          <span id="playerName"></span>
-        </h2>
-      </div>
-      <div id="countDisplay">
-        <h2>
-          Questions asked: 
-          <span id="countValue">0</span>
-        </h2>
-      </div>
     </aside>
 
     <section class="board-wrapper">

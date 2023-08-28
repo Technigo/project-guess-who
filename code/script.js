@@ -6,6 +6,12 @@ const findOutButton = document.getElementById("filter")
 const playAgainButton = document.getElementById("playAgain")
 const winOrLoseSection = document.getElementById("winOrLose")
 const winOrLoseText = document.getElementById("winOrLoseText")
+const winningSound = document.getElementById("winner")
+const losingSound = document.getElementById("loser")
+
+// Pause the audio elements initially
+winningSound.pause();
+losingSound.pause();
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -286,6 +292,9 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
+  setTimeout(() => {
+    namePrompt();
+  }, 1000);
 }
 
 // Setting the currentQuestion object when you select something in the dropdown
@@ -412,8 +421,10 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToConfirm) => {
   if (personToConfirm === secret.name) {
+    winningSound.play();
     winOrLoseText.innerHTML = `Congratulations! You were right. It was ${secret.name}. You asked ${questionCounter} questions.`
   } else {
+    losingSound.play();
     winOrLoseText.innerHTML = `Oh no! You were wrong! The secret person was ${secret.name}. You asked ${questionCounter} questions.`
   }
   winOrLose.style.display = "flex"
@@ -436,7 +447,6 @@ const namePrompt = () => {
 
 // Invokes the start function when website is loaded
 start();
-namePrompt();
 
 // All the event listeners
 restartButton.addEventListener('click', start)

@@ -9,6 +9,8 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <audio id="winner" src="assets/audio/ES_Trumpet Charge - SFX Producer.mp3"></audio>
+    <audio id="loser" src="assets/audio/ES_Trumpet Sad - SFX Producer.mp3"></audio>
   </head>
   <body>
     <aside class="question-section">
@@ -54,15 +56,15 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div id="playerDisplay">
+        <h2>Player:
+          <span id="playerName"></span>
+        </h2>
+      </div>
       <div id="countDisplay">
         <h2>
           Questions asked: 
           <span id="countValue">0</span>
-        </h2>
-      </div>
-      <div id="playerDisplay">
-        <h2>Player: 
-          <span id="playerName"></span>
         </h2>
       </div>
     </aside>

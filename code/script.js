@@ -423,8 +423,20 @@ const checkMyGuess = (personToConfirm) => {
   // 4. Hide the game board
 }
 
+// Prompt user for name
+const namePrompt = () => {
+  let userName;
+  let user = prompt("Hi! Do you want to enter a username?", "Player 1");
+  if (user == null || user == "") {
+    userName = "Player 1";
+  } else {
+    userName = user
+  } document.getElementById("playerName").innerHTML = userName
+}
+
 // Invokes the start function when website is loaded
-start()
+start();
+namePrompt();
 
 // All the event listeners
 restartButton.addEventListener('click', start)

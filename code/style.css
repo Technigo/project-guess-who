@@ -1,14 +1,14 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #ffa500;
+  --secondary: #4d8ccc	;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: futura;
 }
 
 h1 {
@@ -18,23 +18,60 @@ h1 {
   margin: 10px 0;
   color: white;
 }
+h2 {
+  color: #ffa500;
+  font-size: 18px;
+  margin-left: 15px;
+}
 
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
   display: flex;
   flex-direction: column;
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  background: url("./images/pexels-karolina-grabowska-541208.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.flex-container {
+  margin-top: 0;
+  width: 50%;
+  max-width: 200px;
+  height: 10px;
+  border-radius: 30px;
+  padding: 20px 15px;
+  padding-top: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  color: green;
+  margin-bottom: 5px;
+}
+.flex-container img {
+height: 8px;
+}
+
+a {
+  color: green;
+}
+
+.guesses-counter {
+  color:#ffa500;
+  font-size: 18px;
 }
 
 select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: Futura;
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -64,7 +101,7 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid green;
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -73,11 +110,18 @@ select {
   justify-content: space-between;
 }
 
+.card img{
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
 .card p {
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
+  position: absolute;
 }
 
 .card .guess {
@@ -117,7 +161,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: Futura;
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -129,7 +173,7 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
+  color: green;
   align-self: flex-end;
 }
 

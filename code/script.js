@@ -6,6 +6,9 @@ const findOutBtn = document.getElementById("filter");
 const winOrLose = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const playAgainbtn = document.getElementById("playAgain");
+const pText = document.getElementById("counter");
+const winAudio = document.getElementById("win");
+const loseAudio = document.getElementById("lose");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -208,6 +211,8 @@ const CHARACTERS = [
 let secret; //will be the secret person object
 let currentQuestion; //will be the current question object
 let charactersInPlay; //will be an array of all people left in the game
+let keep;
+let guessCount = 0; //Initialize the counter
 
 // Draw the game board
 const generateBoard = () => {
@@ -250,7 +255,7 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
 
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.value;
+  const value = questions.options[questions.selectedIndex].value;
   console.log(value);
 
   currentQuestion = {
@@ -266,7 +271,7 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  let keep;
+
   if (category === "hair" || category === "eyes") {
     keep = secret[category] === value;
   } else if (category === "accessories" || category === "other") {
@@ -357,8 +362,10 @@ const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `Yeah 🎉 Congrats \n you won! 👏 `;
+    winAudio.play();
   } else {
-    winOrLoseText.innerHTML = `Noooo! You gessed Wrong. Game over😤`;
+    winOrLoseText.innerHTML = `Noooo! You gessed Wrong. Game over😤 `;
+    loseAudio.play();
   }
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -366,12 +373,21 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
   board.innerHTML = "";
 };
+// Function to increment the counter and display the count
+const count = () => {
+  guessCount++;
+  pText.innerHTML = guessCount;
+};
 
 // Invokes the start function when website is loaded
 start();
 
 // All the event listeners
-playAgainbtn.addEventListener("click", start);
+
 questions.addEventListener("change", selectQuestion);
 findOutBtn.addEventListener("click", checkQuestion);
+findOutBtn.addEventListener("click", count);
 restartButton.addEventListener("click", start);
+playAgainbtn.addEventListener("click", () => {
+  location.reload();
+});

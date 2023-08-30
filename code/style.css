@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #076219;
+  --secondary: #0aac83;
 }
 
 body {
@@ -17,6 +17,17 @@ h1 {
   line-height: 48px;
   margin: 10px 0;
   color: white;
+}
+
+p{
+  font-size: 20px;
+  font-weight: 500;
+  color:white;
+}
+#counter{
+  font-size: 30px;
+  margin-left:10px;
+  color:#076219
 }
 
 .question-section {

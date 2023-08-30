@@ -53,6 +53,11 @@
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div>
+        <p> How many guess?
+        <span id="counter"></span>
+      </p>
+      </div>
     </aside>
 
     <section class="board-wrapper">
@@ -70,6 +75,8 @@
         <button type="button" id="playAgain" class="filled-button">
           PLAY AGAIN
         </button>
+        <audio src="./sounds/win.wav" id="win"></audio>
+        <audio src="./sounds/lose.wav" id="lose"></audio>
       </div>
     </section>
     <script src="script.js"></script>

@@ -12,32 +12,43 @@
   </head>
   <body>
     <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
+      <button type="button" id="restart" class="outlined-button">
+        RESTART
+      </button>
 
       <img
         class="guess-who-icon"
         src="images/guess-who-bubble.png"
         alt="Guess Who"
       />
-
       <h1>Does the person have</h1>
-
+      <!-- Add the hair colors as options  -->
       <select title="questions" id="questions">
         <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
+          <option value="brown">Brown hair?</option>
+          <option value="yellow">Yellow hair?</option>
+          <option value="hidden">Hidden hair?</option>
+          <option value="black">Black hair?</option>
+          <option value="grey">Grey hair?</option>
+          <option value="orange">Orange hair?</option>
+          <option value="purple">Purple hair?</option>
+          <option value="white">White hair?</option>
+          
+      <!-- Add the rest of eye colors as options  -->
         </optgroup>
         <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
-        </optgroup>
+          <option value="brown">Brown eyes?</option>
+          <option value="blue">Blue eyes?</option>
+          <option value="green">Green eyes?</option>
+          <option value="hidden">Hidden eyes?</option>
+     <!-- Add the other accessory option here. (hat)  -->
+       </optgroup>
         <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
+          <option value="glasses">Glasses?</option>
+          <option value="glasses">A hat?</option>
         </optgroup>
         <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+          <option value="smoker">A smoking habit?</option>
         </optgroup>
       </select>
 
@@ -56,7 +67,9 @@
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <button type="button" id="playAgain" class="filled-button">
+          PLAY AGAIN
+        </button>
       </div>
     </section>
     <script src="script.js"></script>

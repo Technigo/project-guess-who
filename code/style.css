@@ -2,7 +2,14 @@
 :root {
   --primary: #a259ff;
   --secondary: #b0a6ff;
+  --tertiary: #3f3497;
+  --lightGreen: #93D9B1;
+  --slightlyDarkerGreen: #81c79f;
+  --darkerGreen: #229C75;
+  --evenDarkerGreen: #0B4D31;
+  --evenLighterGreen: #bcf1d3;
 }
+
 
 body {
   display: flex;
@@ -12,22 +19,86 @@ body {
 }
 
 h1 {
-  font-size: 42px;
-  font-weight: 500;
+  font-size: 48px;
+  font-weight: 800;
   line-height: 48px;
   margin: 10px 0;
   color: white;
 }
 
-.question-section {
+h2 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 10px 15px 30px 15px;
+  color: white;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 30px;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+p {
+  color: var(--evenDarkerGreen);
+  font-size: 18px;
+}
+
+.start {
+  background-color: var(--lightGreen);
+  width: 75%;
+  max-width: 800px;
+  margin: 100px auto;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 50px 5px;
+  box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.detectiveimg {
+  max-width: 80px;
+  margin: auto;
+}
+
+.button-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.questionSection {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
-  display: flex;
+  background-color: var(--lightGreen);
+  /*display: flex;*/
+  display: none;
   flex-direction: column;
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+}
+
+.topQuestions {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.bottomQuestions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 select {
@@ -40,33 +111,60 @@ select {
   margin: 24px 0;
 }
 
-.guess-who-icon {
-  width: 126px;
+.numberGuesses {
+  background-color: var(--slightlyDarkerGreen);
+  margin: 75px auto 0 auto;
+  padding: 10px;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.board-wrapper {
-  width: 70%;
-  display: flex;
+.numberGuesses p {
+  color: white;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 42px;
+  margin: 0;
+}
+
+.guess-who-icon {
+  width: 126px;
+  margin: 7px;
+}
+
+.boardWrapper {
+  max-width: 70%;
+  display: none;
   align-items: center;
   justify-content: center;
 }
 
 .game-board {
-  width: 90%;
+  width: 100%;
   max-width: 882px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  background-color: var(--evenLighterGreen);
+  min-height: 100vh;
 }
 
 /****** CARD ******/
 .card {
+  background-color: white;
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  margin: 3px;
+  margin: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,7 +189,7 @@ select {
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: var(--darkerGreen);
 }
 
 .card:hover img,
@@ -123,27 +221,59 @@ button {
   cursor: pointer;
 }
 
-.small {
-  padding: 8px 16px;
-}
-
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
-}
-
-.filled-button,
-.outlined-button:hover {
+.generalButton {
   background-color: var(--primary);
   color: white;
+  margin: 3px;
 }
 
-.filled-button:hover {
-  background-color: white;
-  border-color: white;
-  color: var(--primary);
+.generalButton:hover {
+  background-color: var(--primary);
+  color: white;
+  box-shadow: 7px 10px 5px rgba(0, 0, 0, 0.4) inset;
 }
+
+.guessButton {
+  color: white;
+  background-color: var(--secondary);
+  border: none;
+  padding: 12px 22px;
+}
+
+.guessButton:hover {
+  box-shadow: 7px 10px 5px rgba(0, 0, 0, 0.4) inset;
+}
+
+#restartBtn {
+  max-height: 32px;
+  margin: 0;
+  padding: 7px 17px;
+  font-size: 14px;
+  background-color: var(--darkerGreen);
+  border: none;
+}
+
+#playAgainBtn {
+  padding: 27px 37px;
+  font-size: 22px;
+  background-color: var(--darkerGreen);
+  border: none;
+}
+
+#beginBtn {
+  padding: 27px 37px;
+  font-size: 22px;
+}
+
+
+#filterBtn {
+  /*max-width: 136px;*/
+  /*max-height: 53px;*/
+  width: 150px;
+  margin: 0 50px 0 0;
+  text-align: center;
+}
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -168,37 +298,51 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+.win-img {
+  max-width: 300px;
+  margin: 30px;
 }
 
-.win-or-lose h1 {
-  margin-bottom: 32px;
+
+.lose-img {
+  max-width: 250px;
 }
+
 
 @media (max-width: 768px) {
   body {
     flex-direction: column;
   }
 
-  .question-section {
+  .start {
+    margin: 50px auto;
+  }
+
+  .questionSection {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
-    font-size: 24px;
+    font-size: 26px;
     line-height: 30px;
   }
 
-  .guess-who-icon {
-    width: 51px;
+  h2 {
+    font-size: 18px;
+    line-height: 30px;
+    margin: 0;
   }
 
-  .board-wrapper {
+  .guess-who-icon {
+    width: 100px;
+  }
+
+  .boardWrapper {
     width: 100%;
   }
 
@@ -223,11 +367,79 @@ button {
     display: none;
   }
 
-  .card .guess .filled-button {
-    padding: 6px 11px;
+  .card .guess .guessButton {
+    padding: 5px 9px;
     margin-bottom: 1px;
     background: white;
-    color: var(--primary);
+    color: var(--evenDarkerGreen);
     border: none;
+    font-size: 12px;
   }
+
+  #beginBtn {
+    padding: 15px 20px;
+    font-size: 22px;
+  }
+
+  
+  .numberGuesses {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+  }
+  
+  
+  .numberGuesses p {
+    color: white;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .numberGuesses h3 {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+  
+
+  #questions {
+    margin: 0 0 15px 0;
+  }
+
+  .topQuestions {
+    flex-wrap: wrap;
+  }
+  
+
+  .bottomQuestions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #filterBtn {
+    margin: 0;
+  }
+
+  .win-img {
+    max-width: 200px;
+    margin: 30px;
+  }
+
+  
+.lose-img {
+  max-width: 200px;
+}
+
+  #playAgainBtn {
+    padding: 17px 27px;
+  }
+
+  #winOrLoseText-h2 {
+    margin: 0 10px;
+  }
+
 }

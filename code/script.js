@@ -204,7 +204,9 @@ const CHARACTERS = [
 // Global variables
 let secret;
 let currentQuestion;
-let charactersInPlay;
+let charactersInPlay = CHARACTERS;
+let valueNoWhiteSpace;
+let valueAsKey;
 
 // Draw the game board
 const generateBoard = () => {
@@ -225,28 +227,29 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
+  console.log("this is set secret function");
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  console.log(secret);
 };
 
 // This function to start (and restart) the game
 const start = () => {
+  console.log("this is start function");
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   // What else should happen when we start the game?
   generateBoard();
   setSecret();
-  console.log(secret);
-  selectQuestion();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
+  console.log("this is select q function");
   const category = questions.options[questions.selectedIndex].parentNode.label;
-  console.log(category);
+
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].text;
-  console.log(value);
 
   currentQuestion = {
     category: category,
@@ -258,9 +261,10 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  console.log("this is check function");
   const { category, value } = currentQuestion;
   // Getting rid of white space for value
-  let valueNoWhiteSpace = value.replace(/\s/g, "");
+  valueNoWhiteSpace = value.replace(/\s/g, "");
   console.log(`${secret[category]}`, 2, value);
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
@@ -273,25 +277,34 @@ const checkQuestion = () => {
       filterCharacters(false);
     }
   } else if (category === "accessories" || category === "other") {
-    console.log("acc", "other", category);
-    // console.log(secret[category].toString() === "smoker");
-
-    console.log(secret[category].length);
-    console.log(valueNoWhiteSpace.slice(1));
-
-    console.log(valueNoWhiteSpace);
+    // to make it easier to identigy key in object for step 5. Input value and proparty in object is different, so I am fixing it here.
+    switch (valueNoWhiteSpace) {
+      case "ahat":
+        valueAsKey = "hat";
+        break;
+      case "glasses":
+        valueAsKey = "glasses";
+        break;
+      case "asmokinghabit":
+        valueAsKey = "smoker";
+        break;
+    }
     if (secret[category].includes("hat") || secret[category].includes("glasses")) {
+      // If there are two elements in accessories
       if (secret[category].length === 2) {
         filterCharacters(true);
-      } else if (secret[category].toString() === "hat" && valueNoWhiteSpace === "ahat") {
-        console.log("this is hat");
+
+        // if there is only hat in accessories
+      } else if (secret[category].toString() === "hat" && valueAsKey === "hat") {
         filterCharacters(true);
-      } else if (secret[category].toString() === "glasses" && valueNoWhiteSpace === "glasses") {
-        console.log("this is glasses");
+
+        // if there is only glasses in accessories
+      } else if (secret[category].toString() === "glasses" && valueAsKey === "glasses") {
         filterCharacters(true);
       } else {
         filterCharacters(false);
       }
+      // he/she is a smoker
     } else if (secret[category].includes("smoker")) {
       filterCharacters(true);
     } else {
@@ -302,6 +315,7 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
+  console.log(valueAsKey);
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
   if (category === "accessories") {
@@ -309,21 +323,34 @@ const filterCharacters = (keep) => {
       alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
     } else {
       alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
+
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(valueAsKey)
+      );
+      generateBoard();
     }
   } else if (category === "other") {
     // Similar to the one above
     if (keep) {
-      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
+      alert(`Yes, the person is a ${value}! Keep all people that are ${value}`);
     } else {
-      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
+      alert(`No, the person isn't a ${value}! Remove all people that are ${value}`);
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(valueAsKey)
+      );
+      generateBoard();
     }
   } else {
+    const valueArr = value.split(" ");
     if (keep) {
       alert(`Yes, the person has ${value}!  Keep all people with ${value} `);
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
-      alert(`No, the person doesn't have ${value}! Remove all people with ${value}`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== valueArr[0]);
+      generateBoard();
+
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(`No, the person doesn't have ${value}! Remove all people with ${value}`);
     }
   }
 

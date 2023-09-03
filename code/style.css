@@ -1,14 +1,14 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #f87171;
+  --secondary: #fecaca;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 h1 {
@@ -33,11 +33,38 @@ h1 {
 select {
   display: block;
   border: none;
+  border-radius: 3px;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  padding: 3px 8px;
+}
+
+select:focus {
+  outline: 3px solid var(--primary);
+}
+
+.counter-box {
+  width: 100%;
+  border: 2px solid var(--primary);
+  margin-top: 300px;
+  padding-bottom: 15px;
+  border-radius: 3px;
+}
+
+.counter-box h2 {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+}
+
+#counter-display {
+  color: #fff;
+  text-align: center;
+  font-size: 32px;
 }
 
 .guess-who-icon {
@@ -71,6 +98,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  transition: all 0.3s ease-in;
 }
 
 .card p {
@@ -117,7 +145,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -156,7 +184,7 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  height: 110vh;
 }
 
 .win-or-lose {

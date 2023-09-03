@@ -2,11 +2,22 @@
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
+
+// This button is under select box. When a user clicks, all the functions will be called to remove items from the board.
 const filterBtn = document.getElementById("filter");
+
+// These two under are after a user cliked a prompt and say yes to guess a person.
 const winOrLosePage = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
-const boardWrapper = document.querySelector(".board-wrapper");
+//After win or lose page is displayed, this button is placed under a text. User can start over.
 const playAgainBtn = document.getElementById("playAgain");
+
+// This is where all the cards will be displayed
+const boardWrapper = document.querySelector(".board-wrapper");
+
+// this is where counter will be displayed.
+const counterDisplay = document.getElementById("counter-display");
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -204,13 +215,28 @@ const CHARACTERS = [
   },
 ];
 
-// Global variables
+// Global variables//////////////////////////////////
+// This stores secret person who a user is going to guess. In setSecret function, the person will be decided.
 let secret;
+
+// this will store an object of category and value, which a user choose from select box. category is the same as a key in object CHARACTERS. value is a value of option
+// Value will be passed in function "selectQuestion" for both, category and value.
 let currentQuestion;
+
+// Here are ones who are displayed on the screen. When a user select an option, and some will be removed when a secret doesn't have the same feature.
 let charactersInPlay = CHARACTERS;
+
+// These two are for a value that will be picked up in function selectQuestion.
+// It is a value of option in html. When a user clike a button "filterBtn", value will be stored. like a hat/yellow hair...
+// -> it stores a no white space value in function "checkQuestion"
 let valueNoWhiteSpace;
+// Because value is different from a proparty in Object, I modify it in function "checkQuestion" to use it later function "filterCharactors"
 let valueAsKey;
 
+// To count how many guess a user made
+let counter = 0;
+
+///////////////////////////////////////////////////////
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = "";
@@ -237,19 +263,21 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  console.log("this is start function");
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  // What else should happen when we start the game?
+
+  // Whenever a user starts the game, counter will be reset.
+  counter = 0;
+  counterDisplay.innerText = counter;
+
+  // board is made and a secret person is chosen here
   generateBoard();
   setSecret();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  console.log("this is select q function");
   const category = questions.options[questions.selectedIndex].parentNode.label;
-
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].text;
@@ -259,20 +287,24 @@ const selectQuestion = () => {
     value: value,
   };
 
+  // counter will be added one when this function is called.
+  counter++;
+  counterDisplay.innerText = counter;
+
+  // After a user select an option and click filterBtn, this function will call to check what will happen the next
   checkQuestion();
 };
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  console.log("this is check function");
   const { category, value } = currentQuestion;
-  // Getting rid of white space for value
+  // Getting rid of white space of a value
   valueNoWhiteSpace = value.replace(/\s/g, "");
-  console.log(`${secret[category]}`, 2, value);
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+
   if (category === "hair" || category === "eyes") {
     if (`${secret[category]}${category}` === valueNoWhiteSpace) {
       filterCharacters(true);
@@ -362,20 +394,6 @@ const filterCharacters = (keep) => {
       alert(`No, the person doesn't have ${value}! Remove all people with ${value}`);
     }
   }
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
 
   // Invoke a function to redraw the board with the remaining people.
 };

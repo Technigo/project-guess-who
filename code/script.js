@@ -3,6 +3,9 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const filterBtn = document.getElementById("filter");
+const winOrLosePage = document.getElementById("winOrLose");
+const winOrLoseText = document.getElementById("winOrLoseText");
+const boardWrapper = document.querySelector(".board-wrapper");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -321,6 +324,8 @@ const filterCharacters = (keep) => {
   if (category === "accessories") {
     if (keep) {
       alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(valueAsKey));
+      generateBoard();
     } else {
       alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
 
@@ -333,6 +338,8 @@ const filterCharacters = (keep) => {
     // Similar to the one above
     if (keep) {
       alert(`Yes, the person is a ${value}! Keep all people that are ${value}`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(valueAsKey));
+      generateBoard();
     } else {
       alert(`No, the person isn't a ${value}! Remove all people that are ${value}`);
       charactersInPlay = charactersInPlay.filter(
@@ -344,6 +351,8 @@ const filterCharacters = (keep) => {
     const valueArr = value.split(" ");
     if (keep) {
       alert(`Yes, the person has ${value}!  Keep all people with ${value} `);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === valueArr[0]);
+      generateBoard();
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== valueArr[0]);
@@ -373,16 +382,29 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  const confirmation = confirm(`Are you sure you want to guess on ${personToConfirm}`);
+  if (confirmation) {
+    checkMyGuess(personToConfirm);
+  }
   // store the interaction from the player in a variable.  // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  console.log(secret.name);
+  winOrLosePage.style.display = "flex";
+  boardWrapper.style.display = "none";
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  if (personToCheck === secret.name) {
+    winOrLoseText.textContent = `✨🎉Conglaturation!! 🎉✨`;
+  } else {
+    winOrLoseText.textContent = `💫 Oh no!! A wrong person. 
+                                        Game over 😱 💨`;
+  }
 };
 
 // Invokes the start function when website is loaded

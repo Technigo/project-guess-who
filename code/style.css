@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #aeec9c;
+  --secondary: #237276;
 }
 
 body {
@@ -38,6 +38,8 @@ select {
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  border-radius: 10px;
+  background-color: #aff0e3;
 }
 
 .guess-who-icon {
@@ -49,6 +51,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #aff0e3;
 }
 
 .game-board {

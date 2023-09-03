@@ -2,6 +2,10 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
+const wOL = document.getElementById('winOrLose')
+const wOLtext = document.getElementById('winOrLoseText')
+const playagain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -18,7 +22,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['hat', 'eyepatch'],
     other: []
   },
   {
@@ -231,22 +235,44 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  board.innerHTML -= winOrLose[0] || winOrLose[1]
+  questions.selectedIndex = 0
+  setSecret()
+  generateBoard()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
+  const categoryQuestion = questions.options[questions.selectedIndex].parentNode.label
+  const valueQuestion = questions.value
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
-
+ if (category === 'hair') {
+    currentQuestion = {
+      checkProp: 'hairCol',
+      value: value,
+      category: category,
+    }
+  } else if (category === 'eyes') {
+    currentQuestion = {
+      checkProp: 'eyeCol',
+      value: value,
+      category: category,
+    }
+  } else if (category === 'accessories' || category === 'other') {
+    currentQuestion = {
+      checkProp: value,
+      value: true,
+      category: category,
+    }
+  }
+}
   currentQuestion = {
     category: category,
     // value: value
   }
-}
+
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {

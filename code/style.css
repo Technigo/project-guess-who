@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #FDDDE6;
+  --secondary: 	#89CFF0;
 }
 
 body {
@@ -99,6 +99,11 @@ select {
   display: none;
 }
 
+.card img {
+  height: 135px;
+  width: 135px;
+}
+
 /* The div with the guess class is only shown on hover */
 .card:hover .guess {
   display: flex;
@@ -186,9 +191,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

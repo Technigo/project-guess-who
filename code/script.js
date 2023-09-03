@@ -6,7 +6,7 @@ const filterBtn = document.getElementById("filter");
 const winOrLosePage = document.getElementById("winOrLose");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const boardWrapper = document.querySelector(".board-wrapper");
-
+const playAgainBtn = document.getElementById("playAgain");
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -415,4 +415,10 @@ restartButton.addEventListener("click", start);
 
 filterBtn.addEventListener("click", () => {
   selectQuestion();
+});
+
+playAgainBtn.addEventListener("click", () => {
+  start();
+  winOrLosePage.style.display = "none";
+  boardWrapper.style.display = "flex";
 });

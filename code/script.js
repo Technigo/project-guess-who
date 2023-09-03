@@ -410,7 +410,7 @@ const checkMyGuess = (personToCheck) => {
 // Invokes the start function when website is loaded
 start();
 
-// All the event listeners
+// All the event listeners /////////////////////////////////
 restartButton.addEventListener("click", start);
 
 filterBtn.addEventListener("click", () => {

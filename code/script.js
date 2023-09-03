@@ -2,6 +2,7 @@
 const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
+const filterBtn = document.getElementById("filter");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -259,31 +260,49 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   // Getting rid of white space for value
-  const valueString = value.replace(/\s/g, "");
-  console.log(`${secret[category]}`, 2, valueString);
+  let valueNoWhiteSpace = value.replace(/\s/g, "");
+  console.log(`${secret[category]}`, 2, value);
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
-    if (`${secret[category]}${category}` === valueString) {
+    if (`${secret[category]}${category}` === valueNoWhiteSpace) {
       filterCharacters(true);
     } else {
       filterCharacters(false);
     }
   } else if (category === "accessories" || category === "other") {
-    // if (`${secret[category]}${category}` === valueString) {
-    //   filterCharacters(true);
-    // } else {
-    //   filterCharacters(false);
-    // }
+    console.log("acc", "other", category);
+    // console.log(secret[category].toString() === "smoker");
+
+    console.log(secret[category].length);
+    console.log(valueNoWhiteSpace.slice(1));
+
+    console.log(valueNoWhiteSpace);
+    if (secret[category].includes("hat") || secret[category].includes("glasses")) {
+      if (secret[category].length === 2) {
+        filterCharacters(true);
+      } else if (secret[category].toString() === "hat" && valueNoWhiteSpace === "ahat") {
+        console.log("this is hat");
+        filterCharacters(true);
+      } else if (secret[category].toString() === "glasses" && valueNoWhiteSpace === "glasses") {
+        console.log("this is glasses");
+        filterCharacters(true);
+      } else {
+        filterCharacters(false);
+      }
+    } else if (secret[category].includes("smoker")) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
   }
 };
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-  console.log(category, value);
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
@@ -293,6 +312,11 @@ const filterCharacters = (keep) => {
     }
   } else if (category === "other") {
     // Similar to the one above
+    if (keep) {
+      alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
+    } else {
+      alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
+    }
   } else {
     if (keep) {
       alert(`Yes, the person has ${value}!  Keep all people with ${value} `);
@@ -322,8 +346,7 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
+  // store the interaction from the player in a variable.  // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 };
 
@@ -340,6 +363,7 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
-questions.addEventListener("change", () => {
+
+filterBtn.addEventListener("click", () => {
   selectQuestion();
 });

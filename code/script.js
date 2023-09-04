@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter')
 
 
 // Array with all the characters, as objects
@@ -204,6 +205,7 @@ const CHARACTERS = [
 // Global variables
 let secret
 let currentQuestion
+let currentValue
 let charactersInPlay
 
 
@@ -240,40 +242,48 @@ const start = () => {
   setSecret()
   generateBoard();
 
+
   // What else should happen when we start the game?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
+  const category = questions.options[questions.selectedIndex].parentNode.label;
+  const value = questions.value;
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
   currentQuestion = {
     category: category,
-    // value: value
-  }
+    value: value,
+  };
 }
+
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
 
+  const { category, value } = currentQuestion;
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  let matched = false;
 
-  } else if (category === 'accessories' || category === 'other') {
-
+  if (category === 'hair') {
+    matched = secret.hair === value;
+  } else if (category === 'eyes') {
+    matched = secret.eyes === value;
+  } else if (category === 'accessories') {
+    matched = secret.accessories === value;
+  } else if (category === 'other') {
+    matched = secret.category === value;
   }
-}
 
+  filterCharacters(matched);
+}
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
+
+  const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -286,12 +296,35 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `super, the person is a ${value}! Keep all people that are ${value}s`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person is not a ${value}! Remove all people that are not ${value}s`
+      )
+    }
+  } else if (category === 'eyes') {
+    if (keep) {
+      alert(
+        `super, the person has ${value}! Keep all people that has ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that doesn't have ${value}`
+      )
+    }
+  } else if (category === 'hair') {
+
+    if (keep) {
+      alert(
+        `super, the person has ${value}! Keep all people that has ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that doesn't have ${value}`
+      )
     }
   }
 }
@@ -303,7 +336,7 @@ const filterCharacters = (keep) => {
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     or
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
+ 
   for accessories and other
     charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     or
@@ -334,3 +367,11 @@ start()
 // All the event listeners
 
 restartButton.addEventListener('click', start)
+filterButton.addEventListener('click', checkQuestion)
+filterButton.addEventListener('click', () => {
+  checkQuestion();
+});
+
+questions.addEventListener('change', (event) => {
+  selectQuestion();
+});

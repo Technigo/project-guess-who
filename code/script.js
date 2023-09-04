@@ -243,33 +243,32 @@ const start = () => {
 }
 
 // setting the currentQuestion object when you select something in the dropdown
-const selectQuestion = () => {
-  const categoryQuestion = questions.options[questions.selectedIndex].parentNode.label;
-  const valueQuestion = questions.value;
 
-  if (categoryQuestion === 'Hair') {
-    currentQuestion = {
-      checkProp: 'hairCol',
-      value: valueQuestion,
-      category: categoryQuestion,  // Use categoryQuestion here
-    };
-  } else if (categoryQuestion === 'Eyes') {
-    currentQuestion = {
-      checkProp: 'eyeCol',
-      value: valueQuestion,
-      category: categoryQuestion,  // Use categoryQuestion here
-    };
-  } else if (categoryQuestion === 'Accessories' || categoryQuestion === 'Other') {
-    currentQuestion = {
-      checkProp: valueQuestion,
-      value: true,
-      category: categoryQuestion,  // Use categoryQuestion here
-    };
-  }
-}
-currentQuestion = {
-  category: categoryQuestion,
-};
+  const selectQuestion = () => {
+    const category = questions.options[questions.selectedIndex].parentNode.label;
+    const value = questions.value;
+  
+    if (category === 'Hair') {
+      currentQuestion = {
+        checkProp: 'hairCol',
+        category: category.toLowerCase(), 
+        value: value.toLowerCase(), 
+      };
+    } else if (category === 'Eyes') {
+      currentQuestion = {
+        checkProp: 'eyeCol',
+        category: category.toLowerCase(), 
+        value: value.toLowerCase(), 
+      };
+    } else if (category === 'Accessories' || category === 'Other') {
+      currentQuestion = {
+        checkProp: 'Accessories'+ 'Other',
+        category: category.toLowerCase(), 
+        value: value.toLowerCase(), 
+      };
+    }
+  };
+
 
 
 
@@ -289,18 +288,6 @@ const checkQuestion = () => {
 }
 
 // It'll filter the characters array and redraw the game board.
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-
-    //for hair and eyes :
-      //charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-     // or
-      //charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    //for accessories and other
-      //charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-     // or
-      //charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
 
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
@@ -348,7 +335,20 @@ const filterCharacters = (keep) => {
     }
   }
 };
+  // Determine what is the category
+  // filter by category to keep or remove based on the keep variable.
 
+    //for hair and eyes :
+      //charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+     // or
+      //charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+
+    //for accessories and other
+      //charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+     // or
+      //charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+
+       // Invoke a function to redraw the board with the remaining people.
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 
@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
   generateBoard();
 });
 
-
+questions.addEventListener('change', selectQuestion);
 
 
 

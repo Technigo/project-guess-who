@@ -25,7 +25,9 @@ const CHARACTERS = [
     img: "images/jabala.svg",
     hair: "hidden",
     eyes: "hidden",
+    wedlock: "divorced",
     accessories: ["glasses", "hat"],
+    pet: ["cat"],
     other: [],
   },
   {
@@ -33,7 +35,9 @@ const CHARACTERS = [
     img: "images/jack.svg",
     hair: "hidden",
     eyes: "blue",
+    wedlock: "single",
     accessories: ["hat"],
+    pet: [],
     other: [],
   },
   {
@@ -41,7 +45,9 @@ const CHARACTERS = [
     img: "images/jacques.svg",
     hair: "grey",
     eyes: "blue",
+    wedlock: "single",
     accessories: ["hat"],
+    pet: [],
     other: ["smoker"],
   },
   {
@@ -49,7 +55,9 @@ const CHARACTERS = [
     img: "images/jai.svg",
     hair: "black",
     eyes: "brown",
+    wedlock: "married",
     accessories: [],
+    pet: ["bog"],
     other: [],
   },
   {
@@ -57,7 +65,9 @@ const CHARACTERS = [
     img: "images/jake.svg",
     hair: "yellow",
     eyes: "green",
+    wedlock: "divorced",
     accessories: ["glasses"],
+    pet: ["bog"],
     other: [],
   },
   {
@@ -65,7 +75,9 @@ const CHARACTERS = [
     img: "images/james.svg",
     hair: "brown",
     eyes: "green",
+    wedlock: "married",
     accessories: ["glasses"],
+    pet: ["rabbit"],
     other: [],
   },
   {
@@ -73,7 +85,9 @@ const CHARACTERS = [
     img: "images/jana.svg",
     hair: "black",
     eyes: "hidden",
+    wedlock: "single",
     accessories: ["glasses"],
+    pet: ["bog", "cat"],
     other: [],
   },
   {
@@ -81,7 +95,9 @@ const CHARACTERS = [
     img: "images/jane.svg",
     hair: "yellow",
     eyes: "hidden",
+    wedlock: "married",
     accessories: ["glasses"],
+    pet: [],
     other: [],
   },
   {
@@ -89,7 +105,9 @@ const CHARACTERS = [
     img: "images/jaqueline.svg",
     hair: "orange",
     eyes: "green",
+    wedlock: "widowed",
     accessories: ["glasses"],
+    pet: [],
     other: [],
   },
 
@@ -98,7 +116,9 @@ const CHARACTERS = [
     img: "images/jazebelle.svg",
     hair: "purple",
     eyes: "hidden",
+    wedlock: "sambo",
     accessories: ["glasses"],
+    pet: ["cat"],
     other: ["smoker"],
   },
   {
@@ -106,7 +126,9 @@ const CHARACTERS = [
     img: "images/jean.svg",
     hair: "brown",
     eyes: "blue",
+    wedlock: "sambo",
     accessories: ["glasses", "hat"],
+    pet: [],
     other: ["smoker"],
   },
   {
@@ -114,7 +136,9 @@ const CHARACTERS = [
     img: "images/jeane.svg",
     hair: "brown",
     eyes: "green",
+    wedlock: "divorced",
     accessories: ["glasses"],
+    pet: ["bog", "cat"],
     other: [],
   },
   {
@@ -122,7 +146,9 @@ const CHARACTERS = [
     img: "images/jed.svg",
     hair: "orange",
     eyes: "green",
+    wedlock: "sambo",
     accessories: ["glasses", "hat"],
+    pet: [],
     other: ["smoker"],
   },
   {
@@ -130,7 +156,9 @@ const CHARACTERS = [
     img: "images/jenni.svg",
     hair: "white",
     eyes: "hidden",
+    wedlock: "single",
     accessories: ["hat"],
+    pet: ["rabbit"],
     other: [],
   },
   {
@@ -138,7 +166,9 @@ const CHARACTERS = [
     img: "images/jeri.svg",
     hair: "orange",
     eyes: "green",
+    wedlock: "sambo",
     accessories: ["glasses"],
+    pet: ["bog"],
     other: [],
   },
   {
@@ -146,7 +176,9 @@ const CHARACTERS = [
     img: "images/jerry.svg",
     hair: "hidden",
     eyes: "blue",
+    wedlock: "single",
     accessories: ["hat"],
+    pet: ["cat"],
     other: [],
   },
   {
@@ -154,7 +186,9 @@ const CHARACTERS = [
     img: "images/jess.svg",
     hair: "black",
     eyes: "blue",
+    wedlock: "sambo",
     accessories: ["glasses"],
+    pet: [],
     other: [],
   },
   {
@@ -162,7 +196,9 @@ const CHARACTERS = [
     img: "images/jocelyn.svg",
     hair: "black",
     eyes: "brown",
+    wedlock: "widowed",
     accessories: ["glasses"],
+    pet: [],
     other: [],
   },
   {
@@ -170,7 +206,9 @@ const CHARACTERS = [
     img: "images/jon.svg",
     hair: "brown",
     eyes: "green",
+    wedlock: "single",
     accessories: ["glasses"],
+    pet: [],
     other: [],
   },
   {
@@ -178,7 +216,9 @@ const CHARACTERS = [
     img: "images/jordan.svg",
     hair: "yellow",
     eyes: "hidden",
+    wedlock: "sambo",
     accessories: ["glasses", "hat"],
+    pet: [],
     other: [],
   },
   {
@@ -186,7 +226,9 @@ const CHARACTERS = [
     img: "images/josephine.svg",
     hair: "grey",
     eyes: "brown",
+    wedlock: "married",
     accessories: [],
+    pet: [],
     other: [],
   },
   {
@@ -194,7 +236,9 @@ const CHARACTERS = [
     img: "images/josh.svg",
     hair: "yellow",
     eyes: "green",
+    wedlock: "single",
     accessories: [],
+    pet: [],
     other: [],
   },
   {
@@ -202,7 +246,9 @@ const CHARACTERS = [
     img: "images/jude.svg",
     hair: "black",
     eyes: "green",
+    wedlock: "sambo",
     accessories: [],
+    pet: ["bog"],
     other: [],
   },
   {
@@ -210,7 +256,9 @@ const CHARACTERS = [
     img: "images/julie.svg",
     hair: "black",
     eyes: "brown",
+    wedlock: "married",
     accessories: ["glasses", "hat"],
+    pet: [],
     other: [],
   },
 ];
@@ -256,7 +304,6 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  console.log("this is set secret function");
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
   console.log(secret);
 };
@@ -298,21 +345,24 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  // Getting rid of white space of a value
-  valueNoWhiteSpace = value.replace(/\s/g, "");
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Getting rid of white space of a value(green eye-> greeneye/ "wedlock" needs to be concated due to a value from option)
+  valueNoWhiteSpace = category === "wedlock" ? value + category : value.replace(/\s/g, "");
 
-  if (category === "hair" || category === "eyes") {
+  /*****************************************************************************************/
+  // Compare the currentQuestion details with the secret person details in a different manner based on category
+  if (category === "hair" || category === "eyes" || category === "wedlock") {
     if (`${secret[category]}${category}` === valueNoWhiteSpace) {
       filterCharacters(true);
     } else {
       filterCharacters(false);
     }
-  } else if (category === "accessories" || category === "other") {
-    // to make it easier to identigy key in object for step 5. Input value and proparty in object is different, so I am fixing it here.
+    /*****************************************************************************************/
+  } else if (category === "pet" || category === "accessories" || category === "other") {
+    // These categories are made from arrays. So it needs to be carefully validated.
+
+    // to make it easier to identigy key in object for step 5. Input value and proparty in object are different, so I am fixing it here.
+
     switch (valueNoWhiteSpace) {
       case "ahat":
         valueAsKey = "hat";
@@ -323,23 +373,46 @@ const checkQuestion = () => {
       case "asmokinghabit":
         valueAsKey = "smoker";
         break;
+      case "acat":
+        valueAsKey = "cat";
+        break;
+      case "abog":
+        valueAsKey = "bog";
+        break;
+      case "arabbit":
+        valueAsKey = "rabbit";
+        break;
     }
-    if (secret[category].includes("hat") || secret[category].includes("glasses")) {
-      // If there are two elements in accessories
-      if (secret[category].length === 2) {
+
+    const secretCategory = secret[category];
+    const secretCategoryString = secretCategory.toString();
+
+    // There are some varieties with these arrays. But other option has only two options. Smoker or not. So I validate it separetly.
+    if (
+      secretCategory.includes("hat") ||
+      secretCategory.includes("glasses") ||
+      secretCategory.includes("cat") ||
+      secretCategory.includes("bog") ||
+      secretCategory.includes("rabbit")
+    ) {
+      // If there are two elements in an array of accessories or pet
+      if (secretCategory.length === 2) {
         filterCharacters(true);
 
-        // if there is only hat in accessories
-      } else if (secret[category].toString() === "hat" && valueAsKey === "hat") {
-        filterCharacters(true);
-
-        // if there is only glasses in accessories
-      } else if (secret[category].toString() === "glasses" && valueAsKey === "glasses") {
+        // if there is only one item in an array of accessories or pet
+      } else if (
+        (secretCategoryString === "hat" && valueAsKey === "hat") ||
+        (secretCategoryString === "glasses" && valueAsKey === "glasses") ||
+        (secretCategoryString === "cat" && valueAsKey === "cat") ||
+        (secretCategoryString === "bog" && valueAsKey === "bog") ||
+        (secretCategoryString === "rabbit" && valueAsKey === "rabbit")
+      ) {
         filterCharacters(true);
       } else {
         filterCharacters(false);
       }
-      // he/she is a smoker
+
+      // secret is a smoker
     } else if (secret[category].includes("smoker")) {
       filterCharacters(true);
     } else {
@@ -350,73 +423,90 @@ const checkQuestion = () => {
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  console.log(valueAsKey);
   const { category, value } = currentQuestion;
+
+  // Here is a function will change player for arrays ( other/pet/accessories)
+  function changePlayerForArr(keep) {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(valueAsKey));
+    } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(valueAsKey)
+      );
+    }
+  }
+  // Here is a function will change player for "strings"(wedlock/hair/eye)
+  function changePlayer(keep, checker) {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === checker);
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== checker);
+    }
+  }
+  /************************************************************************************/
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
       alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(valueAsKey));
-      generateBoard();
     } else {
       alert(`No, the person doesn't wear ${value}! Remove all people that wears ${value}`);
-
-      charactersInPlay = charactersInPlay.filter(
-        (person) => !person[category].includes(valueAsKey)
-      );
-      generateBoard();
     }
-  } else if (category === "other") {
-    // Similar to the one above
+    changePlayerForArr(keep);
+
+    /************************************************************************************/
+    // If category is other or wedlock
+  } else if (category === "other" || category === "wedlock") {
     if (keep) {
       alert(`Yes, the person is a ${value}! Keep all people that are ${value}`);
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(valueAsKey));
-      generateBoard();
     } else {
       alert(`No, the person isn't a ${value}! Remove all people that are ${value}`);
-      charactersInPlay = charactersInPlay.filter(
-        (person) => !person[category].includes(valueAsKey)
-      );
-      generateBoard();
     }
-  } else {
-    const valueArr = value.split(" ");
+    // checking if category is other or wedlock. Then involk a function depends on that.
+    category === "other" ? changePlayerForArr(keep) : changePlayer(keep, value);
+
+    /*******************************************************************************/
+    //  If category is pet
+  } else if (category === "pet") {
     if (keep) {
       alert(`Yes, the person has ${value}!  Keep all people with ${value} `);
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === valueArr[0]);
-      generateBoard();
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== valueArr[0]);
-      generateBoard();
-
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(`No, the person doesn't have ${value}! Remove all people with ${value}`);
     }
+
+    changePlayerForArr(keep);
+    /******************************************************************************************/
+  } else {
+    // I split "value"(black heair) into array as I just need a first value(black).
+    const valueArr = value.split(" ");
+
+    if (keep) {
+      alert(`Yes, the person has ${value}!  Keep all people with ${value} `);
+    } else {
+      alert(`No, the person doesn't have ${value}! Remove all people with ${value}`);
+    }
+    changePlayer(keep, valueArr[0]);
   }
 
-  // Invoke a function to redraw the board with the remaining people.
+  // Generate a board with remaining players
+  generateBoard();
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   const confirmation = confirm(`Are you sure you want to guess on ${personToConfirm}`);
+  // only the player confirmed, then checkMyGuess function will be called
   if (confirmation) {
     checkMyGuess(personToConfirm);
   }
-  // store the interaction from the player in a variable.  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  console.log(secret.name);
+  // display needs to be changed to show if the player guesed correctly or not
   winOrLosePage.style.display = "flex";
   boardWrapper.style.display = "none";
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+
+  // check a name of secret and guessed person's name is the same
   if (personToCheck === secret.name) {
     winOrLoseText.textContent = `✨🎉Conglaturation!! 🎉✨`;
   } else {
@@ -428,7 +518,9 @@ const checkMyGuess = (personToCheck) => {
 // Invokes the start function when website is loaded
 start();
 
-// All the event listeners /////////////////////////////////
+/**************************************************************************************************************************************************/
+// All the event listeners
+
 restartButton.addEventListener("click", start);
 
 filterBtn.addEventListener("click", () => {

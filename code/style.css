@@ -205,6 +205,34 @@ button {
   margin-bottom: 32px;
 }
 
+@media (max-width: 1200px) {
+  .question-section {
+    padding: 3vw;
+  }
+  button {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 14px 24px;
+  }
+
+  .guess-who-icon {
+    width: 96px;
+  }
+
+  h1 {
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 36px;
+  }
+  .counter-box h2 {
+    font-size: 14px;
+  }
+
+  #counter-display {
+    font-size: 26px;
+  }
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -231,7 +259,8 @@ button {
   }
 
   .game-board {
-    width: 100%;
+    margin: 20px 35px;
+    width: fit-content;
     max-width: 750px;
   }
 
@@ -257,5 +286,15 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+
+  .counter-box {
+    width: unset;
+    margin: 50px auto 0;
+    padding: 0 10px 10px;
+  }
+
+  #counter-display {
+    font-size: 22px;
   }
 }

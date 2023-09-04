@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -205,6 +206,7 @@ let secret
 let currentQuestion
 let charactersInPlay
 
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -219,18 +221,25 @@ const generateBoard = () => {
         </div>
       </div>
     `
+
   })
 }
+console.log(charactersInPlay)
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret)
 }
+
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS;
+  setSecret()
+  generateBoard();
+
   // What else should happen when we start the game?
 }
 
@@ -285,23 +294,24 @@ const filterCharacters = (keep) => {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-  // Invoke a function to redraw the board with the remaining people.
 }
+
+// Determine what is the category
+// filter by category to keep or remove based on the keep variable.
+/* 
+  for hair and eyes :
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    or
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+
+  for accessories and other
+    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    or
+    charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+*/
+
+// Invoke a function to redraw the board with the remaining people.
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
@@ -322,4 +332,5 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
+
 restartButton.addEventListener('click', start)

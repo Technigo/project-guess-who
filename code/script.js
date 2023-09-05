@@ -214,23 +214,24 @@ const generateBoard = () => {
   board.innerHTML = '';
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
-        <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
-        </div>
+    <div class="card">
+      <p>${person.name}</p>
+      <img src=${person.img} alt=${person.name}>
+      <div class="guess">
+        <span>Guess on ${person.name}?</span>
+        <button class="filled-button small" onclick="Guess('${person.name}')">Guess</button>
       </div>
-    `;
-  });
+    </div>
+  `;
+});
 };
 
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-}
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  currentQuestion = {}; 
+};
 
 // This function to start (and restart) the game
 const start = () => {
@@ -239,6 +240,7 @@ const start = () => {
   board.innerHTML -= winOrLose[0] || winOrLose[1];
   questions.selectedIndex = 0;
   setSecret();
+  currentQuestion = {};
   generateBoard();
 }
 
@@ -247,22 +249,22 @@ const start = () => {
   const selectQuestion = () => {
     const category = questions.options[questions.selectedIndex].parentNode.label;
     const value = questions.value;
+    const keep = currentQuestion.value === secret[currentQuestion.attribute] 
   
+    filterCharacters(keep); 
+    
     if (category === 'Hair') {
       currentQuestion = {
-        checkProp: 'hairCol',
         category: category.toLowerCase(), 
         value: value.toLowerCase(), 
       };
     } else if (category === 'Eyes') {
       currentQuestion = {
-        checkProp: 'eyeCol',
         category: category.toLowerCase(), 
         value: value.toLowerCase(), 
       };
     } else if (category === 'Accessories' || category === 'Other') {
       currentQuestion = {
-        checkProp: 'Accessories'+ 'Other',
         category: category.toLowerCase(), 
         value: value.toLowerCase(), 
       };
@@ -299,64 +301,46 @@ const checkQuestion = () => {
 
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
+  let attributeOrCategory;
+  if (category === 'hair' || category === 'eyes') {
+    attributeOrCategory = category;
+  } else {
+    attributeOrCategory = category;
+  }
   if (category === 'accessories') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] === value);
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wear ${value}`
-      )
+      alert(`Yes, the person wears ${value}! Keep all people that wear ${value}`);
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] !== value);
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
-      )
+      alert(`No, the person doesn't wear ${value}! Remove all people that wear ${value}`);
     }
   } else if (category === 'other') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] === value);
-      alert(
-        `Yes, the person has ${value}! Keep all people that have ${value}`
-      )
+      alert(`Yes, the person has ${value}! Keep all people that have ${value}`);
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] !== value);
-      alert(
-        `No, the person doesn't have ${value}! Remove all people that have ${value}`
-      )
+      alert(`No, the person doesn't have ${value}! Remove all people that have ${value}`);
     }
   } else if (category === 'hair') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] === value);
-      alert(
-        `Yes, person has ${value}! Keep all people that have ${value}`
-      )
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(`Yes, person has ${value} hair! Keep all people that have ${value} hair`);
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] !== value);
-      alert(
-        `No, the person does not have ${value}! Remove all the people with ${value}`
-      )
+      alert(`No, the person doesn't have ${value} hair! Remove all the people with ${value} hair`);
     }
   } else if (category === 'eyes') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] === value);
-      alert(
-        `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`
-      );
+      alert(`Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`);
     } else {
       charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] !== value);
-      alert(
-        `No, the person doesn't have ${value} eyes! Remove all the people with ${value} eyes`
-      );
+      alert(`No, the person doesn't have ${value} eyes! Remove all the people with ${value} eyes`);
     }
   }
 
-  let attributeOrCategory;
-  if (category === 'hair' || category === 'eyes') {
-    attributeOrCategory = currentQuestion.checkProp;
-  } else {
-    attributeOrCategory = category;
-  }
   // After filtering, update the game board
   generateBoard();
 };
@@ -379,7 +363,7 @@ const Guess = (personToConfirm) => {
 // If you confirm, this function is invoked
   const checkMyGuess = (personToCheck) => {
     // 1. Check if the personToCheck is the same as the secret person's name
-    if (personToCheck === secretPerson.name){
+    if (personToCheck === secret.name){
       //show winner-board
       board.innerHTML += winOrLose[0]
   } else {
@@ -394,11 +378,14 @@ const Guess = (personToConfirm) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', () => {
+  start();
+});
 
 findOutButton.addEventListener("click", () => {
   checkQuestion();
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
   start()

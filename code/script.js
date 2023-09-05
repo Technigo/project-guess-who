@@ -7,6 +7,7 @@ const wOL = document.getElementById('winOrLose')
 const wOLtext = document.getElementById('winOrLoseText')
 const playagain = document.getElementById('playAgain')
 
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -252,7 +253,7 @@ const start = () => {
     const keep = currentQuestion.value === secret[currentQuestion.attribute] 
   
     filterCharacters(keep); 
-    
+
     if (category === 'Hair') {
       currentQuestion = {
         category: category.toLowerCase(), 
@@ -370,9 +371,13 @@ const Guess = (personToConfirm) => {
       //Show loser-board
       board.innerHTML += winOrLose[1]
     }
+    if (charactersInPlay.length === 0) {
+      reset();
+      return;
+    }
     //hide the game board
     board.style.display = "none";
-  }
+  };
 
 // Invokes the start function when website is loaded
 start()

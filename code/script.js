@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -215,7 +216,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button> //This variable should go into the guess function!
         </div>
       </div>
     `
@@ -231,26 +232,38 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  //Generate board
+  generateBoard();
+  //Set secret person
+  setSecret(); 
+  console.log(secret)
   // What else should happen when we start the game?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
+  const category = questions.options[questions.selectedIndex].parentNode.label
+  //This variable stores what value of the category is selected 
+  const value = questions.options[questions.selectedIndex].value
+  //Redeclaring the global variable "currenQuestion", making it into an object.
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+    console.log("Current question:")
+    console.log(currentQuestion)
+    console.log(currentQuestion.category)
+    console.log(currentQuestion.value)
+    console.log(secret.hair)
 }
+
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  //destructuring "secret"
+  const { eyes, hair } = secret
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -323,3 +336,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+findOutButton.addEventListener('click', checkQuestion)
+ //Eventlistener added to select menu
+ questions.addEventListener('change', selectQuestion)

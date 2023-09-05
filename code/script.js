@@ -569,7 +569,7 @@ while (!player) {
   player = prompt("Who is going to play,today");
 }
 
-welcomeMessage.innerText = `Welcome to Guess Who, ${player}!! Let's have fun.`;
+welcomeMessage.innerText = `Welcome to Guess Who, ${player}!! `;
 
 startGameBtn.onclick = function () {
   initialPage.style.display = "none";

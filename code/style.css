@@ -52,6 +52,7 @@ select {
 }
 
 .game-board {
+  /* ist main=spielfeld */
   width: 90%;
   max-width: 882px;
   display: flex;
@@ -186,9 +187,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

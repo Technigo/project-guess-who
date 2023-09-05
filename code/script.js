@@ -233,6 +233,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   setSecret();
   generateBoard();
+  questions.addEventListener('change', selectQuestion);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -242,11 +243,15 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
+  const selectedOption = questions.options[questions.selectedIndex];
+  const value = selectedOption.value;
+
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.

@@ -24,7 +24,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat', 'eyepatch'],
-    other: []
+    other: ['parrot']
   },
   {
     name: 'Jacques',
@@ -39,7 +39,7 @@ const CHARACTERS = [
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['tie'],
     other: []
   },
   {
@@ -192,7 +192,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
+    accessories: ['tie'],
     other: []
   },
   {
@@ -245,6 +245,13 @@ const start = () => {
   generateBoard();
 }
 
+const restart = () => {
+  charactersInPlay = CHARACTERS; 
+  setSecret(); 
+  currentQuestion = {}; 
+  generateBoard(); 
+};
+
 // setting the currentQuestion object when you select something in the dropdown
 
   const selectQuestion = () => {
@@ -275,16 +282,16 @@ const start = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
-  const {hair, eyes, accessories, other} = secret
+  const { category, value } = currentQuestion;
+  const { hair, eyes, accessories, other } = secret;
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Compare the currentQuestion details with the secret person details
+  // and determine if the player's choice is correct
+
   if (category === 'hair' || category === 'eyes') {
-    charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+    keep = charactersInPlay.some((person) => person[category] === value);
   } else if (category === 'accessories' || category === 'other') {
-    charactersInPlay = charactersInPlay.filter((person) => {
+    keep = charactersInPlay.some((person) => {
       if (value) {
         return person[category].includes(value);
       } else {
@@ -293,11 +300,12 @@ const checkQuestion = () => {
     });
   }
 
-  // After filtering, you might want to update the game board here
+  filterCharacters(keep);
+
   generateBoard();
 };
 
-// It'll filter the characters array and redraw the game board.
+
 
 
 const filterCharacters = (keep) => {
@@ -356,6 +364,7 @@ const filterCharacters = (keep) => {
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 const Guess = (personToConfirm) => {
+  const isCorrectGuess = personToConfirm === secret.name;
   if (confirm(`Do you want to guess on ${personToConfirm}?`)) {
     checkMyGuess(personToConfirm);
   }
@@ -372,7 +381,7 @@ const Guess = (personToConfirm) => {
       board.innerHTML += winOrLose[1]
     }
     if (charactersInPlay.length === 0) {
-      reset();
+      restart();
       return;
     }
     //hide the game board

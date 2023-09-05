@@ -234,6 +234,10 @@ const start = () => {
   
   //Invoke the board
   generateBoard();
+
+  //Invoke the secret character
+  setSecret();
+  console.log(secret);
 }
 
 // setting the currentQuestion object when you select something in the dropdown

@@ -212,7 +212,7 @@ let charactersInPlay
 // create the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  // bord ist main/.game-board/erstmal leermachen, dann füllen mit divs durch loop
+  // bord ist main/.game-board/erstmal leermachen, dann füllen mit divs bzw. Rest durch loop
   charactersInPlay.forEach((person) => {
     // person= 1 objekt
     board.innerHTML += `
@@ -225,6 +225,7 @@ const generateBoard = () => {
         </div>
       </div>
     `
+    // div for span is pos: abs + d:none, only displayed on  hover->.card:hover .guess
   })
 }
 
@@ -239,23 +240,31 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // for a start all items in array
   generateBoard(charactersInPlay);
-
-  // What else should happen when we start the game?
+  setSecret();
+  // console.log(secret);
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// setting the currentQuestion/guess object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-  // =select tag/options/welches label hat parent->Kategorie
-  // This variable stores what option group (category) the question belongs to.
+  const category = questions.options[questions.selectedIndex].parentElement.label
+  // =select tag thru id/options/which is selected and from this their parent->Kategorie
+  // optgroup in between dosnt matter
+  // This variable stores what optgroup (category) the question belongs to.
+
 
   // We also need a variable that stores the actual value/option of the question we've selected.
-  // !!!!!!!!!!!!!!!!!!! todo const value =
+  const questionValue = questions.options[questions.selectedIndex].value;
+  console.log(questionValue);
 
+  // !!!!!!!!!!!!!!!!!!! todo const value =
   currentQuestion = {
     category: category,
-    // value: value
+    questionValue: questionValue
+    // creates local object with a pair->value: value
   }
+  console.log(currentQuestion);
+
+
 }
 
 // This function should be invoked when you click on 'Find Out' button-> Frage abschicken
@@ -337,6 +346,7 @@ const checkMyGuess = (personToCheck) => {
 // All the event listeners------------------------------------
 restartButton.addEventListener('click', start);
 
+questions.addEventListener("change", selectQuestion);
 
 // CODE STARTS HERE ----------------------------------------------------------------------
 

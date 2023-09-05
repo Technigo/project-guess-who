@@ -2,6 +2,43 @@
 :root {
   --primary: #f87171;
   --secondary: #fecaca;
+  box-sizing: border-box;
+}
+
+.initial-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: "Montserrat";
+}
+
+.initial-page button {
+  background-color: var(--primary);
+  color: #fff;
+  font-size: 30px;
+  padding: 20px 40px;
+}
+
+.initial-page h2 {
+  font-weight: 700;
+  font-size: 60px;
+}
+
+.initial-page p {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+#hello-text {
+  font-size: 30px;
 }
 
 body {
@@ -49,9 +86,17 @@ select:focus {
 .counter-box {
   width: 100%;
   border: 2px solid var(--primary);
-  margin-top: 300px;
+  margin-top: 3vh;
   padding-bottom: 15px;
   border-radius: 3px;
+}
+
+#display-name {
+  font-size: 22px;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .counter-box h2 {
@@ -65,6 +110,12 @@ select:focus {
   color: #fff;
   text-align: center;
   font-size: 32px;
+}
+
+#timer {
+  font-size: 26px;
+  color: #777;
+  text-align: center;
 }
 
 .guess-who-icon {
@@ -87,49 +138,66 @@ select:focus {
 }
 
 /****** CARD ******/
+
 .card {
+  background-color: transparent;
   width: 135px;
   height: 165px;
-  overflow: hidden;
   border: 3px solid var(--secondary);
-  border-radius: 4px;
   margin: 3px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  transition: all 0.3s ease-in;
+  overflow: hidden;
+  perspective: 1000px; /* 3D effect */
 }
 
-.card p {
+.inner-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: all 0.8s;
+  transform-style: preserve-3d;
+}
+
+.inner-card p {
   text-align: center;
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
 }
 
-.card .guess {
-  display: none;
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.card:hover .inner-card {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.card-front,
+.guess {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style the back side */
+.guess {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: white;
   text-align: center;
   height: inherit;
-}
-
-.card:hover {
   background-color: var(--secondary);
-}
-
-.card:hover img,
-.card:hover p {
-  display: none;
-}
-
-/* The div with the guess class is only shown on hover */
-.card:hover .guess {
-  display: flex;
+  transform: rotateY(180deg);
 }
 
 .guess span {
@@ -138,6 +206,8 @@ select:focus {
   font-weight: 600;
   margin-bottom: 8px;
   width: 90%;
+  color: #fff;
+  z-index: 1000;
 }
 
 /****** BUTTONS ******/
@@ -237,7 +307,19 @@ button {
   body {
     flex-direction: column;
   }
+  .initial-page button {
+    font-size: 20px;
+    padding: 14px 32px;
+  }
 
+  .initial-page h2 {
+    font-weight: 500;
+    font-size: 40px;
+  }
+
+  .initial-page p {
+    font-size: 18px;
+  }
   .question-section {
     width: 100%;
     min-height: 0;
@@ -264,37 +346,68 @@ button {
     max-width: 750px;
   }
 
-  .card {
-    width: 113px;
-    position: relative;
+  .counter-box {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 5px 10px;
   }
 
-  .card .guess {
+  #display-name {
+    margin-top: 0;
+    font-size: 18px;
+  }
+
+  #counter-display {
+    font-size: 18px;
+  }
+
+  #timer {
+    font-size: 18px;
+  }
+  .inner-card-sm {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease-in;
+  }
+
+  .card-sm p {
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .card-sm .guess-sm {
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-align: center;
+    height: inherit;
     display: flex;
     top: 0;
     position: absolute;
     justify-content: flex-end;
   }
 
-  .card .guess span {
-    display: none;
+  .card-sm {
+    width: 113px;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid var(--secondary);
+    border-radius: 4px;
+    margin: 3px;
   }
 
-  .card .guess .filled-button {
+  .card-sm .guess-sm .filled-button {
     padding: 6px 11px;
-    margin-bottom: 1px;
+    margin-bottom: 5px;
     background: white;
     color: var(--primary);
     border: none;
-  }
-
-  .counter-box {
-    width: unset;
-    margin: 50px auto 0;
-    padding: 0 10px 10px;
-  }
-
-  #counter-display {
-    font-size: 22px;
   }
 }

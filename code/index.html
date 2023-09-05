@@ -11,6 +11,12 @@
     />
   </head>
   <body>
+    <div class="initial-page" id="initial-page">
+      <h2>Guess Who!!</h2>
+      <h3 id="hello-text"></h3>
+      <button id="game-start-btn">Start</button>
+      <p>Click to start</p>
+    </div>
     <aside class="question-section">
       <button type="button" id="restart" class="outlined-button">RESTART</button>
 
@@ -61,10 +67,14 @@
           <option value="smoker">a smoking habit</option>
         </optgroup>
         <!-- other option here -->
+        <h1>Card Flip with Text</h1>
+        <h3>Hover over the image below:</h3>
       </select>
-
       <button id="filter" class="filled-button">FIND OUT</button>
       <div class="counter-box">
+        <h3 id="display-name"></h3>
+        <h2>Timer</h2>
+        <div id="timer">00:00</div>
         <h2>How many guess you made</h2>
         <div id="counter-display"></div>
       </div>

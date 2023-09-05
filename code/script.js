@@ -3,8 +3,15 @@ const board = document.getElementById("board");
 const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 
+// Store a player name
+let player;
 // This button is under select box. When a user clicks, all the functions will be called to remove items from the board.
 const filterBtn = document.getElementById("filter");
+
+// This is h3 for initial page. Welcome message with player's name will be displayed
+const welcomeMessage = document.getElementById("hello-text");
+// This is h3 for displaying name in aside
+const NameContainer = document.getElementById("display-name");
 
 // These two under are after a user cliked a prompt and say yes to guess a person.
 const winOrLosePage = document.getElementById("winOrLose");
@@ -284,21 +291,50 @@ let valueAsKey;
 // To count how many guess a user made
 let counter = 0;
 
+// Listen to page load if the page is freshly loaded, I don't want to start a timer as the initial page is first shown
+let pageLoad = false;
+
+// screen width -> when a width ois resized, it will get a new value.
+let screenWidth = window.screen.width;
+
+// This event listener listen to resize event when a user is changing a screen width
+window.addEventListener("resize", () => {
+  screenWidth = window.screen.width;
+  generateBoard();
+});
+
 ///////////////////////////////////////////////////////
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = "";
+  console.log(window.screen.width);
   charactersInPlay.forEach((person) => {
-    board.innerHTML += `
+    if (screenWidth >= 769) {
+      board.innerHTML += `
       <div class="card">
+      <div class="inner-card">
+      <div class="card-front">
         <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <img src=${person.img} alt=${person.name}></div>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button small guess-button" id="guess-button" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `;
+    } else {
+      board.innerHTML += `
+      <div class="card-sm">
+      <div class="inner-card-sm">
+        <p>${person.name}</p>
+        <img src=${person.img} alt=${person.name}>
+        <div class="guess-sm">
+          <button class="filled-button small guess-button" id="guess-button" onclick="guess('${person.name}')">Guess</button>
+          </div>
+          </div>
+     
+      </div>`;
+    }
   });
 };
 
@@ -316,6 +352,9 @@ const start = () => {
   // Whenever a user starts the game, counter will be reset.
   counter = 0;
   counterDisplay.innerText = counter;
+
+  // when start/restart btn is clicked, timer starts counting.
+  startTimer();
 
   // board is made and a secret person is chosen here
   generateBoard();
@@ -509,17 +548,91 @@ const checkMyGuess = (personToCheck) => {
   // check a name of secret and guessed person's name is the same
   if (personToCheck === secret.name) {
     winOrLoseText.textContent = `✨🎉Conglaturation!! 🎉✨`;
+    createSound("./images/audio/win-sound.mp3");
   } else {
     winOrLoseText.textContent = `💫 Oh no!! A wrong person. 
-                                        Game over 😱 💨`;
+                                        Game over 😱 `;
+    createSound("./images/audio/fail-sound.mp3");
   }
 };
 
-// Invokes the start function when website is loaded
-start();
+/*********************************************************************/
+// opening the borad page
+const startGameBtn = document.getElementById("game-start-btn");
+const initialPage = document.getElementById("initial-page");
+
+player = prompt("Who is going to play, today?");
+
+// if player did not type its name, alert and ask again
+while (!player) {
+  alert("Please type your name!");
+  player = prompt("Who is going to play,today");
+}
+
+welcomeMessage.innerText = `Welcome to Guess Who, ${player}!! Let's have fun.`;
+
+startGameBtn.onclick = function () {
+  initialPage.style.display = "none";
+
+  NameContainer.innerText = `Player: ${player}`;
+  // Invokes the start function when startgameBtn is clicked
+  start();
+};
+
+/*********************************************************************/
+// Sound effect function
+
+function createSound(soundSrc) {
+  const audio = document.createElement("audio");
+  winOrLosePage.appendChild(audio);
+  audio.setAttribute("src", soundSrc);
+  audio.volume = 0.1;
+  audio.play();
+}
+
+/*********************************************************************/
+// timer function
+const timer = document.getElementById("timer");
+let timerInterval;
+console.log(timer);
+
+const startTimer = () => {
+  console.log("start Timer");
+  clearInterval(timerInterval);
+
+  let second = 0,
+    minute = 0,
+    hour = 0;
+
+  timerInterval = setInterval(function () {
+    timer.innerHTML =
+      (hour ? hour + ":" : "") +
+      (minute < 10 ? "0" + minute : minute) +
+      ":" +
+      (second < 10 ? "0" + second : second);
+
+    second++;
+
+    if (second == 60) {
+      minute++;
+      second = 0;
+    }
+    if (minute == 60) {
+      hour++;
+      minute = 0;
+    }
+  }, 1000);
+};
 
 /**************************************************************************************************************************************************/
 // All the event listeners
+
+// Listen to page load event and set it pageLoad to true, then when start btn is clicked, the value is assignted to false.
+// only when pageload = false, time starts.
+// window.addEventListener("load", (event) => {
+//   console.log("page true");
+//   pageLoad = true;
+// });
 
 restartButton.addEventListener("click", start);
 

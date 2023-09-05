@@ -1,6 +1,7 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board');
-const body = document.getElementById('body');
+const winOrLoseSection = document.getElementById('winOrLose');
+const winOrLoseText = document.getElementById('winOrLoseText');
 const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findOutButton = document.getElementById('filter');
@@ -15,7 +16,7 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
     shirt: [],
-    habit: []
+    habit: '',
   },
   {
     name: 'Jack',
@@ -24,7 +25,7 @@ const CHARACTERS = [
     eyes: 'blue',
     accessories: ['hat'],
     shirt: ['striped shirt'],
-    habit: []
+    habit: '',
   },
   {
     name: 'Jacques',
@@ -33,7 +34,7 @@ const CHARACTERS = [
     eyes: 'blue',
     accessories: ['hat'],
     shirt: [],
-    habit: ['smoking']
+    habit: 'smoking'
   },
   {
     name: 'Jai',
@@ -42,7 +43,7 @@ const CHARACTERS = [
     eyes: 'brown',
     accessories: [],
     shirt: [],
-    habit: []
+    habit: ''
   },
   {
     name: 'Jake',
@@ -51,7 +52,7 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses'],
     shirt: ['striped shirt', 'collared shirt'],
-    habit: []
+    habit: ''
   },
   {
     name: 'James',
@@ -60,7 +61,7 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses'],
     shirt: [],
-    habit: []
+    habit: ''
   },
   {
     name: 'Jana',
@@ -69,7 +70,7 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['glasses', 'jewelry'],
     shirt: ['collared shirt'],
-    habit: []
+    habit: ''
   },
   {
     name: 'Jane',
@@ -78,7 +79,7 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['glasses'],
     shirt: ['striped shirt'],
-    habit: []
+    habit: ''
   },
   {
     name: 'Jaqueline',
@@ -87,7 +88,7 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses', 'jewelry'],
     shirt: [],
-    habit: []
+    habit: ''
   },
 
   {
@@ -97,7 +98,7 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['glasses'],
     shirt: [],
-    habit: ['smoking']
+    habit: 'smoking'
   },
   {
     name: 'Jean',
@@ -106,7 +107,7 @@ const CHARACTERS = [
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
     shirt: ['collared shirt'],
-    habit: ['smoking']
+    habit: 'smoking'
   },
   {
     name: 'Jeane',
@@ -115,7 +116,7 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses'],
     shirt: [],
-    habit: []
+    habit: ''
   },
   {
     name: 'Jed',
@@ -124,7 +125,7 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses', 'hat'],
     shirt: [],
-    habit: ['smoking']
+    habit: 'smoking'
   },
   {
     name: 'Jenni',
@@ -142,7 +143,7 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses'],
     shirt: ['striped shirt'],
-    habit: []
+    habit: ''
   },
   {
     name: 'Jerry',
@@ -151,7 +152,7 @@ const CHARACTERS = [
     eyes: 'blue',
     accessories: ['hat'],
     shirt: [],
-    habit: []
+    habit: ''
   },
   {
     name: 'Jess',
@@ -160,7 +161,7 @@ const CHARACTERS = [
     eyes: 'blue',
     accessories: ['glasses'],
     shirt: [],
-    habit: []
+    habit: ''
   },
   {
     name: 'Jocelyn',
@@ -169,7 +170,7 @@ const CHARACTERS = [
     eyes: 'brown',
     accessories: ['glasses', 'jewelry'],
     shirt: [],
-    habit: []
+    habit: ''
   },
   {
     name: 'Jon',
@@ -178,7 +179,7 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: ['glasses'],
     shirt: ['collared shirt'],
-    habit: []
+    habit: ''
   },
   {
     name: 'Jordan',
@@ -187,7 +188,7 @@ const CHARACTERS = [
     eyes: 'hidden',
     accessories: ['glasses', 'hat', 'jewelry'],
     shirt: ['collared shirt'],
-    habit: []
+    habit: ''
   },
   {
     name: 'Josephine',
@@ -196,7 +197,7 @@ const CHARACTERS = [
     eyes: 'brown',
     accessories: ['jewelry'],
     shirt: [],
-    habit: []
+    habit: ''
   },
   {
     name: 'Josh',
@@ -205,7 +206,7 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: [],
     shirt: ['collared shirt'],
-    habit: []
+    habit: ''
   },
   {
     name: 'Jude',
@@ -214,7 +215,7 @@ const CHARACTERS = [
     eyes: 'green',
     accessories: [],
     shirt: ['collared shirt'],
-    habit: []
+    habit: ''
   },
   {
     name: 'Julie',
@@ -223,7 +224,7 @@ const CHARACTERS = [
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
     shirt: [],
-    habit: []
+    habit: ''
   },
 ];
 
@@ -231,32 +232,6 @@ const CHARACTERS = [
 let secretPerson;
 let currentQuestion;
 let charactersInPlay;
-let winOrLose = [
-  `<section id="winOrLose" class="win-or-lose-wrapper">
-    <div class="win-or-lose">
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
-      <h1 id="winOrLoseText">Congratulations! You won!</h1>
-      <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
-    </div>
-  </section>
-  `,
-  `<section id="winOrLose" class="win-or-lose-wrapper">
-    <div class="win-or-lose">
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
-      <h1 id="winOrLoseText">Sorry, not this time!</h1>
-      <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
-    </div>
-  </section>
-  `
-]
 
 // Draw the game board
 const generateBoard = () => {
@@ -284,8 +259,9 @@ const setSecretPerson = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  // Remove the result of the previous game
-  board.innerHTML -= winOrLose[0] || winOrLose[1];
+  // Remove the result of the previous game and display the game board
+  winOrLoseSection.style.display = 'none';
+  board.style.display = 'flex';
   // Reset the selected option as the first one in the dropdown list
   questions.selectedIndex = 0;
   // Invoke the function to set a new secret person
@@ -365,7 +341,7 @@ const filterCharacters = (keep) => {
   generateBoard();
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// When clicking "Guess", the player first has to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
@@ -378,16 +354,19 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secretPerson person's name
-  if (personToCheck === secretPerson.name) {
+  // 1. Check if the personToCheck is the same as the secretPerson person's name  
   // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-    board.innerHTML += winOrLose[0];
+  if (personToCheck === secretPerson.name) {
+    winOrLoseText.innerText = 'Congratulations! You won!';
   } else {
-    board.innerHTML += winOrLose[1];
+    winOrLoseText.innerText = 'Sorry, not this time!';
   };
+  
+  // 3. Show the win or lose section
+  winOrLoseSection.style.display = 'flex';
+
   // 4. Hide the game board
-  // board.style.display = 'none';
+  board.style.display = 'none';
 };
 
 // Invokes the start function when website is loaded
@@ -402,3 +381,6 @@ questions.addEventListener('change', selectQuestion);
 
 // Filter the characters when user clicks on Find out button
 findOutButton.addEventListener('click', checkQuestion);
+
+// Restart the game when user clicks on Play Again button
+playAgainButton.addEventListener('click', start);

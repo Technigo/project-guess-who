@@ -3,6 +3,9 @@ const board = document.getElementById('board');
 const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findOutButton = document.getElementById('filter');
+const playAgainButton = document.getElementById('playAgain');
+const winOrLose = document.querySelector('.win-or-lose-wrapper');
+const winOrLoseText = document.getElementById('winOrLoseText');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -254,17 +257,19 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
+  // Comparing if the category and value chosen (aka currentQuestion) is hair or eyes. 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // Within this if/else, there are two nested if/else statements, that check if the current value chosen is the same as the on of the "secret person"
+  // If it's the same then it will return filterCharacters true, otherwise false.
   if (category === 'hair' || category === 'eyes') {
-    // Comparing the secrets category to the value, since the properties are single values in the object CHARACTERS
+    // Comparing the secret persons "category" to the value, since the properties are single values in the object CHARACTERS
     // Category is inside brackets, because it compares both categories from above against the value
     if (secret[category] === value) {
       filterCharacters(true);
     } else {
       filterCharacters(false);
     }
+    // Comparing if the category and value chosen (aka currentQuestion) is accessories or other. 
   } else if (category === 'accessories' || category === 'other') {
     // Checking if the secret category is included in the value, since the values of accessories and other are contained within arrays
     if (secret[category].includes(value)) {
@@ -285,6 +290,7 @@ const filterCharacters = (keep) => {
   const negativeHairEyes = charactersInPlay.filter(person => person[category] !== value);
 
   // Show the correct alert message for different categories
+  // ------- category is accessories -------
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -297,6 +303,7 @@ const filterCharacters = (keep) => {
       )
       charactersInPlay = negativeAccOther;
     };
+    // ------- category is other -------
   } else if (category === 'other') {
     if (keep) {
       alert(
@@ -309,6 +316,7 @@ const filterCharacters = (keep) => {
       )
       charactersInPlay = negativeAccOther;
     };
+    // ------- category is hair -------
   } else if (category === 'hair') {
     if (keep) {
       alert(
@@ -321,6 +329,7 @@ const filterCharacters = (keep) => {
       )
       charactersInPlay = negativeHairEyes;
     };
+    // ------- category is eyes -------
   } else if (category === 'eyes') {
     if (keep) {
       alert(
@@ -334,22 +343,40 @@ const filterCharacters = (keep) => {
       charactersInPlay = negativeHairEyes;
     };
   };
+  // Regenerates the board with the filtered characters - those left after the question has been checked. 
   generateBoard();
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// Function to make a guess at the character of choice and then to confirm that choice.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  // Saves the parameter personToConfirm in a variable called playerGuess
+  const playerGuess = personToConfirm;
+
+  // If player presses OK - in other words confirms === true - then checkMyGuess is invoked. I'm passing in playerGuess as an argument so that we can use that value in the checkMyGuess function.
+  if (confirm(`Are you sure you want to guess on ${playerGuess}?`)) {
+    checkMyGuess(playerGuess);
+  } else {
+    // If they choose cancel they'll end up in the same situation as before the guess button was clicked.
+    return false
+  }
 };
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  // The section with the class winOrLose is hidden in CSS, this line makes it visible again.
+  winOrLose.style.display = "flex";
+
+  if (personToCheck === secret.name) {
+    winOrLoseText.textContent = `Yay - that was correct! Congrats – you won! 🙌`;
+  } else {
+    winOrLoseText.textContent = `I'm sorry - that was incorrect!😥 Wanna go again?`;
+  }
+};
+
+// Function to restart the game after the guess has been checked. We first need to set the winOrLose section to display: none again, otherwise we can't see that the board has been reset. Then the start-function gets invoked. We don't have to generate the board again here, since that happens in the start function, same with the secret. 
+const restartGame = () => {
+  winOrLose.style.display = "none";
+  start();
 };
 
 // Invokes the start function when website is loaded
@@ -357,5 +384,6 @@ start();
 
 // All the event listeners
 restartButton.addEventListener('click', start);
+playAgainButton.addEventListener('click', restartGame);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);

@@ -23,23 +23,48 @@
       <h1>Does the person have</h1>
 
       <select title="questions" id="questions">
-        <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <option value="black">Black hair</option>
+        <optgroup label="hair" data-category="Hair">
+          <option value="brownhair" data-value="Brown">brown hair?</option>
+          <option value="yellowhair" data-value="Yellow">yellow hair?</option>
+          <option value="blackhair" data-value="Black">black hair?</option>
+          <option value="hiddenhair" data-value="Hidden">hidden hair?</option>
+          <option value="greyhair" data-value="Grey">grey hair?</option>
+          <option value="orangehair" data-value="Orange">orange hair?</option>
+          <option value="purplehair" data-value="Purple">purple hair?</option>
+          <option value="whitehair" data-value="White">white hair?</option>
           <!-- Add the rest of hair colors as options  -->
         </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
+        <optgroup label="eyes" data-category="Eyes">
+          <option value="hiddeneyes" data-value="Hidden">hidden eyes?</option>
+          <option value="blueeyes" data-value="Blue">blue eyes?</option>
+          <option value="browneyes" data-value="Brown">brown eyes?</option>
+          <option value="greeneyes" data-value="Green">green eyes?</option>
           <!-- Add the rest of eye colors as options  -->
         </optgroup>
-        <optgroup label="accessories">
-          <option value="glasses">glasses</option>
+        <optgroup label="accessories" data-category="Accessories">
+          <option value="glasses" data-value="Glasses">glasses?</option>
+          <option value="hat" data-value="Hat">hat?</option>
+          <option value="necklace" data-value="Necklace">necklace?</option>
+          <option value="tie" data-value="Tie">tie??</option>
+          <option value="earings" data-value="Earings">earings?</option>
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+        <optgroup label="dress" data-category="Dress">
+          <option value="greendress" data-value="Green">green dress?</option>
+          <option value="bluedress" data-value="Blue">blue dress?</option>
+          <option value="yellowdress" data-value="Yellow">yellow dress?</option>
+          <option value="blackdress" data-value="Black">black dress?</option>
+          <option value="whitedress" data-value="White">white dress?</option>
+          <option value="stripeddress" data-value="Stiped">stiped dress?</option>
+          <option value="pinkdress" data-value="Pink">pink dress?</option>
+          <option value="reddress" data-value="Red">red dress?</option>
+          
         </optgroup>
+        <optgroup label="other" data-category="other">
+          <option value="smoker" data-value="Smoking Habit">a smoking habit?</option>
+          
+        </optgroup>
+        
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>

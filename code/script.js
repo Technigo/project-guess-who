@@ -260,18 +260,16 @@ const selectQuestion = () => {
   currentQuestion = {
     category: category,
     questionValue: questionValue
-    // creates local object with a pair->value: value
+    // creates local object/tuple with a pair->value: value
   }
   console.log(currentQuestion);
-
-
 }
 
-// This function should be invoked when you click on 'Find Out' button-> Frage abschicken
+// This function should be invoked when you click on 'Find Out' button-> send your guess
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
-  // Objekt mit Variablen, wird gefüllt mit Objekt von currentQuestion oben
+  // neues lokales Objekt mit Variablen, wird gefüllt mit Objekt von currentQuestion oben
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters

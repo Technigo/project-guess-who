@@ -1,7 +1,7 @@
-// All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const restartButton = document.getElementById('playAgain')
+const filterButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -227,39 +227,68 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-}
+  charactersInPlay = CHARACTERS.slice();// Create a copy of characters
+
+  setSecret();
+  // Sets secret person.
+
+  function shuffleArray(array) {
+  
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+  shuffleArray(CHARACTERS);
+  generateBoard();
+  // This is a shuffle function witch gives the card a random new place when you start the game.
+  document.getElementById('winOrLose').style.display = 'none';
+  //Hides the win or lose section (if its visible).
+  document.getElementById('board').style.display = 'flex';
+  // Shows gameboard.
+};
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
+  const value =questions.value;
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
+console.log('Current question', currentQuestion);
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
 
+    console.log(`Filtering by ${category} with value ${value}`);// Debugging
+
+charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+
   } else if (category === 'accessories' || category === 'other') {
 
-  }
+    console.log(`Filtering by ${category} with value ${value}`); // Debugging
+
+    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+  } 
+  console.log('Remaining characters', charactersInPlay);
+  // Invoke the filter characters and updates the gameboard.
+filterCharacters(true);
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -280,11 +309,19 @@ const filterCharacters = (keep) => {
     // Similar to the one above
   } else {
     if (keep) {
+      alert(`Yes the person has ${value} ${category}! keep all people with ${value} ${category}`
+      );
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
+alert(`No the person does not have ${value} ${category}! Remove all people with ${value} ${category}`);
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
+if (category === 'hair' || category === 'eyes') {
+  charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+} else if (category === 'accessories' || category === 'other') {
+  charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+}
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
@@ -299,27 +336,56 @@ const filterCharacters = (keep) => {
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
-
+      generateBoard();
   // Invoke a function to redraw the board with the remaining people.
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
+  const isConfirmed = confirm(`Are you sure you want to guess that ${personToConfirm} is the secret person?`);
   // remember the confirm() ?
+  if (isConfirmed) {
+    checkMyGuess(personToConfirm);
+  }
   // If the player wants to guess, invoke the checkMyGuess function.
-}
+};
 
-// If you confirm, this function is invoked
+// This function compares your guess to the secretperson and if its a match it shows a message.
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
+  if (personToCheck === secret.name) {
+    document.getElementById('winOrLoseText').textContent ='Congratulations! You guessed right 🥳🥳🥳!';
+
+  } else {
+document.getElementById('winOrLoseText').textContent = 'Sorry you lost, try again!';
+
+  } 
+// 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
+  document.getElementById('winOrLose').style.display = 'flex';
+  document.getElementById('board').style.display = 'none';
   // 3. Show the win or lose section
   // 4. Hide the game board
-}
+};
+
+// This function resets the dropdown 
+const resetDropdowns = () => {
+  questions.selectedIndex = 0;
+};
+
 
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+
+//Eventlistener to the "filter"button
+filterButton.addEventListener('click', () => {
+  console.log("filterbutton is clicked") //Debugging
+  selectQuestion(); // Set the current question based on dropdowns
+  console.log('Current question', currentQuestion);//Debugging
+  checkQuestion(); //Filter characters based on question
+
+  resetDropdowns(); //resets dropdown to defoault values
+});

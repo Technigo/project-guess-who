@@ -6,10 +6,14 @@ const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
+const guessCountBox = document.getElementById('guess-container')
 const winnerLoserImg = document.createElement('img');
 const winnerLoserP = document.createElement('p');
+
+//Adding classes to the DOM variables
 winnerLoserImg.className = 'winner-loser-img';
 winnerLoserP.className = 'winner-loser-p';
+//Setting children to the winOrLose element
 winOrLose.appendChild(winnerLoserImg);
 winOrLose.appendChild(winnerLoserP);
 
@@ -215,6 +219,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let guessCount = 0 //counts guesses(questions!), starting at 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -238,6 +243,11 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
   console.log(`secret character is ${secret.name}`)
 }
+//This function shows the number of guesses (later invokes in filter button event listener)
+const guessCountDisplay = () => {
+  guessCountBox.innerText =`${guessCount}`
+}
+
 
 // This function to start (and restart) the game
 const start = () => {
@@ -390,10 +400,13 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-filterButton.addEventListener('click', checkQuestion)
+filterButton.addEventListener('click', () => {
+  checkQuestion();
+  guessCount += 1; //Count is increased by 1
+  guessCountDisplay(); //Updates the actual count!
+})
 questions.addEventListener('change', selectQuestion)
 playAgainButton.addEventListener('click', () => {
-
-  window.location.reload();
+  window.location.reload(); //reloads the page if user clicks play again
 } );
 

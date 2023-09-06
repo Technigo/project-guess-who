@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutBtn = document.getElementById('findOut')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -215,7 +216,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button id="findOut" class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
@@ -223,6 +224,11 @@ const generateBoard = () => {
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
+/*  The setSecret function randomly selects a character from the
+ charactersInPlay array and designates it as the "secret" character.
+The random character selection is based on the index number calculated using Math.random(). Since we have 24 characters and the index starts at 0, by using the math.floor() method the highest number that can be calculated is 23, which is the last character in the array.
+charactersInPlay.length = the number of elements in the array. 
+*/
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
@@ -231,6 +237,8 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  // Invoke/use the function generateBoard to load all the characters on the board.
+  generateBoard(charactersInPlay);
   // What else should happen when we start the game?
 }
 

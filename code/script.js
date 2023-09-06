@@ -262,9 +262,11 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    const isMatch = secret[category] === value;
+    filterCharacters(isMatch)
   } else if (category === 'accessories' || category === 'other') {
-
+    const isMatch = secret[category].includes(value);
+    filterCharacters(isMatch);
   }
 }
 
@@ -284,16 +286,42 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'other') {
     // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person has ${value}! Keep all people that have ${value}.`
+      );
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that have ${value}.`
+      );
+    }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}.`
+      );
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}.`
+      );
     }
   }
 
   // Determine what is the category
+  // determine what is the attribute (hair/eyes) or category (accessories/other)
+  const attributeOrCategory = category === 'hair' || category === 'eyes' ? category : 'other';
   // filter by category to keep or remove based on the keep variable.
+  if (keep) {
+    charactersInPlay = charactersInPlay.filter(
+      (person) => person[attributeOrCategory] === value
+    );
+  } else {
+    charactersInPlay = charactersInPlay.filter(
+      (person) => person[attributeOrCategory] !== value
+    );
+  }
   /* 
     for hair and eyes :
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
@@ -306,7 +334,9 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
 
+  console.log('Filtered characters:', charactersInPlay);    
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard();
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -332,3 +362,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+
+const filterButton = document.getElementById('filter');
+filterButton.addEventListener('click', checkQuestion);

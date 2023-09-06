@@ -246,14 +246,38 @@ const selectQuestion = () => {
   console.log(`selects question from dropdown`);
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.value;
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+
+  if (category === "hair color") {
+    currentQuestion = {
+      attribute: "hairColor",
+      value: value,
+      category: category,
+    };
+  } else if (category === "eye color") {
+    currentQuestion = {
+      attribute: "eyeColor",
+      value: value,
+      category: category,
+    };
+  } else if (category === "accessories") {
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    };
+  } else if (category === "other") {
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    };
+  }
 
   currentQuestion = {
     category: category,
     value: value,
   };
+  console.log(currentQuestion);
 };
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -288,10 +312,10 @@ const filterCharacters = (keep) => {
         `Yes, the person wears ${value}! Keep all people that wear ${value}`
       );
     } else {
-      // Added this else block to handle the "No" case
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
+
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
       );
@@ -301,19 +325,20 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)
       );
+
       alert(
         `Yes, the person has a ${value}! Keep all people that have a ${value}`
       );
     } else {
-      // Added this else block to handle the "No" case
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value)
       );
+
       alert(
         `No, the person doesn't have a ${value}! Remove all people that have a ${value}`
       );
     }
-  } else if (category === "eyes" || category === "hair") {
+  } else if (category === "eyes") {
     if (keep) {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] === value
@@ -322,7 +347,22 @@ const filterCharacters = (keep) => {
         `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}`
       );
     } else {
-      // Added this else block to handle the "No" case
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
+      alert(
+        `No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}`
+      );
+    }
+  } else if (category === "hair") {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
+      alert(
+        `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}`
+      );
+    } else {
       charactersInPlay = charactersInPlay.filter(
         (person) => person[category] !== value
       );
@@ -331,31 +371,12 @@ const filterCharacters = (keep) => {
       );
     }
   }
-
   // Invoke a function to redraw the board with the remaining people.
   generateBoard();
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-/*
-const guess = (personToConfirm) => {
-  const confirmed = confirm(
-    `Are you sure you want to take a guess on ${personToConfirm}`
-  );
-  const playerInteraction = `Guessed` + personToConfirm;
-  if (confirmed) {
-    console.log(`Player's guess`);
-    checkMyGuess(personToConfirm, playerInteraction);
-  } else {
-    console.log(`Guess canceled`);
-    alert(`Okay! So you didn't want to guess? That's fine`);
-  }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-  // Pass the correct parameters to checkMyGuess.
-};
-*/
+
 const guess = (personToConfirm) => {
   const confirmed = confirm(
     `Are you sure you want to take a guess on ${personToConfirm}`

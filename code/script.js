@@ -206,6 +206,11 @@ let secret;
 let currentQuestion;
 let charactersInPlay;
 
+
+//---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = '';
@@ -223,11 +228,23 @@ const generateBoard = () => {
   });
 };
 
+
+//---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  console.log(secret);
+  console.log("This is ", secret);
 };
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 // This function to start (and restart) the game
 const start = () => {
@@ -236,7 +253,15 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard();// step 1 The generateBoard function is invoked when the website is loaded
   setSecret(); // 
+  
 };
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -296,6 +321,8 @@ const selectQuestion = () => {
 //   filterCharacters();
 // }
 
+//---------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 const checkQuestion = () => {
@@ -317,63 +344,90 @@ const checkQuestion = () => {
 };
 
 
+//---------------------------------------------------------------------------------------------------------------------------------------------
+
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
+  console.log('Filtering characters...');
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
-  if (category === 'accessories') {
-    if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
-    } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
-    }
-  } else if (category === 'other') {
-    // Similar to the one above
+ // Show the appropriate alert message based on the question category
+  
+ if (category === 'accessories') {
+  if (keep) {
+    alert(`Yes, the person wears ${value}! Keep all people that wear ${value}.`);
   } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-    } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-    }
+    alert(`No, the person doesn't wear ${value}! Remove all people that wear ${value}.`);
   }
+} else if (category === 'other') {
+  // Add an appropriate message for other characteristics (similar to the above)
+  if (keep) {
+    alert(`Yes, the person wears ${value}! Keep all people that wear ${value}.`);
+  } else {
+    alert(`No, the person doesn't wear ${value}! Remove all people that wear ${value}.`);
+  }
+} else {
+  // For hair and eyes categories
+  if (keep) {
+    alert(`Yes, the person has ${value} hair/eyes! Keep all people with ${value} hair/eyes.`);
+  } else {
+    alert(`No, the person doesn't have ${value} hair/eyes! Remove all people with ${value} hair/eyes.`);
+  }
+}
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+  if (category === 'hair' || category === 'eyes') {
+    charactersInPlay = charactersInPlay.filter((person) => (person[category] === value) === keep);
+  } else if (category === 'accessories' || category === 'other') {
+    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value) === keep);
+  }
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  const wantToGuess = confirm(`Are you sure you want to take a guess on ${personToConfirm}`)
+  if (wantToGuess) {
+    checkMyGuess(personToConfirm)
+  }
 }
+
+
+//---------------------------------------------------------------------------------------------------------------------------------------------
+
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    alert(`Congrats! You guessed right, it's ${secret.name} .`);
+  } else {
+    alert(`Woops, this was wrong. It's not ${personToCheck} .`);
+}
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
 }
 
+
+//---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 // Invokes the start function when website is loaded
+console.log("I start", start);
 start()
 
 

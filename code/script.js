@@ -264,8 +264,18 @@ const checkQuestion = () => {
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
 
+    //LÄGG till kommentar vad som händer här
+    if (secret[category] === value) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[category].includes(value)) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
   }
 }
 

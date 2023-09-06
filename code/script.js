@@ -42,7 +42,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    shirt: [],
+    shirt: ['collared shirt'],
     habit: ''
   },
   {
@@ -253,6 +253,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secretPerson
 const setSecretPerson = () => {
   secretPerson = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secretPerson);
 };
 
 // This function to start (and restart) the game
@@ -288,23 +289,14 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion; 
 
-  // Compare the currentQuestion details with the secretPerson person details in a different manner based on category (hair/eyes/others or accessories/shirt).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters, passing in the value of the variable "keep"
-  if (category === 'hair' || category === 'eyes' || category === 'habit') {
-    if (value === secretPerson.category) {
-      filterCharacters(true);
-    } else {
-      filterCharacters(false);
-    }
- 
-  } else if (category === 'accessories' || category === 'shirt') {
-    if (secretPerson[category].includes(value)) {
-      filterCharacters(true);
-    } else {
-      filterCharacters(false);
-    }
-  };
+  // Compare the currentQuestion details with the secretPerson person details to determine if we should keep or remove people based on that
+  // Invoke the function filterCharacters, passing in the value of the variable "keep"
+
+  if (secretPerson[category].includes(value)) {
+    filterCharacters(true);
+  } else {
+    filterCharacters(false);
+  }
 };
 
 // It'll filter the characters array and redraw the game board.
@@ -316,12 +308,12 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}.`
       );
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
         `No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}.`
       );
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     };
   } else if (category === 'accessories' || category === 'shirt') {
     if (keep) {
@@ -361,7 +353,7 @@ const checkMyGuess = (personToCheck) => {
   } else {
     winOrLoseText.innerText = 'Sorry, not this time!';
   };
-  
+
   // 3. Show the win or lose section
   winOrLoseSection.style.display = 'flex';
 

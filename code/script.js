@@ -234,8 +234,11 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   charactersInPlay.forEach((person) => {
-    board.innerHTML += `  
+    board.innerHTML += `
+    <div class="card">
     <p>${person.name}</p>
+    <img src=${person.img} alt=${person.name}/>
+    </div>
     `
 
   })

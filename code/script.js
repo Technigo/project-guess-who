@@ -224,9 +224,10 @@ const generateBoard = () => {
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
-/*  
-The random character selection is based on the index number calculated using Math.random(). Since we have 24 characters and the index starts at 0, by using the math.floor() method the highest number that can be calculated is 23, which is the last character in the array.
-charactersInPlay.length = the number of elements in the array. 
+/*  Explanation for setSecret()
+  The random character selection is based on the index number calculated using Math.random(). Math.random() generates decimal numbers 0>= x < 1.
+  Since we have 24 characters and the index starts at 0, by also using the math.floor() method (that rounds down to the closest integer) the highest number that can be calculated is 23, which is the last character in the array[].
+  charactersInPlay.length = the number of elements in the array. 
 */
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -238,25 +239,36 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // Invoke/use the function generateBoard to load all the characters on the board.
   generateBoard(charactersInPlay);
-  
+
   //Randomly select a character from the charactersInPlay array and designate it as the "secret" character.
   setSecret();
   console.log("The secret character is:", secret);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
+/* EXPLANATION
+const category: stores what option group (category) the question belongs to
+  questions.options[questions.selectedIndex] retrieves the specific <option> element that is currently selected in the dropdown list.
+  [questions.selectedIndex] returns the numerical index of the selected option. The first option in the list has an index of 0, the second has an index of 1, and so on.
+  .parentNode.label, accesses the parent element of the selected <option>, the <optgroup> element and retrieves the label attribute of that element.
+  So the whole expression is used to retrieve the label of the <optgroup> element from the option that is currently selected in the drop-down menu
+*/
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  const category = questions.options[questions.selectedIndex].parentNode.label;
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  // Variable that stores the actual value of the question that has been selected.
+  const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+  console.log(currentQuestion);
 }
+
+// Event listener for the dropdown menu
+questions.addEventListener('change', selectQuestion);
+
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
@@ -333,3 +345,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+

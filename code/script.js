@@ -224,8 +224,7 @@ const generateBoard = () => {
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
-/*  The setSecret function randomly selects a character from the
- charactersInPlay array and designates it as the "secret" character.
+/*  
 The random character selection is based on the index number calculated using Math.random(). Since we have 24 characters and the index starts at 0, by using the math.floor() method the highest number that can be calculated is 23, which is the last character in the array.
 charactersInPlay.length = the number of elements in the array. 
 */
@@ -239,7 +238,10 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // Invoke/use the function generateBoard to load all the characters on the board.
   generateBoard(charactersInPlay);
-  // What else should happen when we start the game?
+  
+  //Randomly select a character from the charactersInPlay array and designate it as the "secret" character.
+  setSecret();
+  console.log("The secret character is:", secret);
 }
 
 // setting the currentQuestion object when you select something in the dropdown

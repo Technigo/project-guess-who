@@ -245,11 +245,11 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value;
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   };
 };
 
@@ -257,10 +257,28 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
 
+  /*
+ name: "Jack",
+    img: "images/jack.svg",
+    hair: "hidden",
+    eyes: "blue",
+    accessories: ["hat"],
+    othe
+  */
+
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
+    category === "hair"
+      ? (charactersInPlay = CHARACTERS.filter(
+          (person) => person.hair === value
+        ))
+      : (charactersInPlay = CHARACTERS.filter(
+          (person) => person.eyes === value
+        ));
+    charactersInPlay = CHARACTERS.filter((person) => person.hair === value);
+    generateBoard();
   } else if (category === "accessories" || category === "other") {
   }
 };
@@ -326,5 +344,5 @@ start();
 
 // All the event listeners
 restartButton.addEventListener("click", start);
-questions.addEventListener("change", () => console.log(options.value));
-filterButton.addEventListener("click", filterCharacters);
+questions.addEventListener("change", selectQuestion);
+filterButton.addEventListener("click", checkQuestion);

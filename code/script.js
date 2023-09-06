@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -206,6 +207,8 @@ let currentQuestion
 let charactersInPlay
 
 // Draw the game board
+// generated under main #board
+// div.guess is on display:none -> display:flex on hover
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -232,19 +235,25 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard(charactersInPlay);
+  setSecret();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
+  // This variable stores what option group (category) the question belongs to.
+  /* targets the html select through DOM with "questions" and depending on the selected option "options[questions.selectedIndex]", targets in return the label of the parentNode (parentNode.label) i.e. optgroup
+  */
   const category = questions.options[questions.selectedIndex].parentNode.label
 
-  // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value
 
+  // "questions" is used to set up <select> including all options
+  // currentQuestion is an object variable storing functions "category" and"value"
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
@@ -323,3 +332,4 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)

@@ -6,125 +6,110 @@ const restartButton = document.getElementById('restart')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Frodo',
+    img: 'images/frodo.png',
+    hair: 'dark brown',
+    type: 'hobbit',
+    accessories: ['ring of power']
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Aragorn',
+    img: 'images/aragorn.png',
+    hair: 'dark brown',
+    type: 'human',
+    accessories: ['sword']
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
+    name: 'Galadriel',
+    img: 'images/galadriel.png',
+    hair: 'blond',
+    type: 'elf',
+    accessories: ['headband']
+  },
+  {
+    name: 'Legolas',
+    img: 'images/legolas.png',
+    hair: 'blond',
+    type: 'elf',
+    accessories: ['bow']
+  },
+  {
+    name: 'Merry',
+    img: 'images/merry.png',
+    hair: 'light brown',
+    type: 'hobbit',
+    accessories: ['pipe']
+  },
+  {
+    name: 'Saruman',
+    img: 'images/saruman.png',
+    hair: 'white',
+    type: 'wizard',
+    accessories: ['wand']
+  },
+  {
+    name: 'Sam',
+    img: 'images/sam.png',
+    hair: 'light brown',
+    type: 'hobbit',
+    accessories: ['pipe']
+  },
+  {
+    name: 'Arwen',
+    img: 'images/arwen.png',
+    hair: 'dark brown',
+    type: 'elf',
+    accessories: ['hood']
+  },
+  {
+    name: 'Bilbo',
+    img: 'images/bilbo.png',
     hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    type: 'hobbit',
+    accessories: ['ring of power']
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    name: 'Gollum',
+    img: 'images/gollum.png',
+    hair: 'no hair',
+    type: 'other',
+    accessories: ['ring of power']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Elrond',
+    img: 'images/elrond.png',
+    hair: 'dark brown',
+    type: 'elf',
+    accessories: ['headband']
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Éowyn',
+    img: 'images/eowyn.png',
+    hair: 'blond',
+    type: 'human',
+    accessories: ['sword']
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Gandalf',
+    img: 'images/gandalf.png',
+    hair: 'grey',
+    type: 'wizard',
+    accessories: ['wand']
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    name: 'Pippin',
+    img: 'images/pippin.png',
+    hair: 'light brown',
+    type: 'hobbit',
+    accessories: ['sword']
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Faramir',
+    img: 'images/faramir.png',
+    hair: 'light brown',
+    type: 'human',
+    accessories: ['bow']
   },
   {
     name: 'Jerry',
@@ -166,38 +151,6 @@ const CHARACTERS = [
     accessories: ['glasses', 'hat'],
     other: []
   },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
 ]
 
 // Global variables
@@ -230,7 +183,9 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS;
+  generateBoard();
+  setSecret();
   // What else should happen when we start the game?
 }
 

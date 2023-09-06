@@ -261,9 +261,9 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  //IDAH step 4: True or false should be used Connect this to set secret på något sätt??? Check if the attributes in the current Question matches the attributes in the secret or not...
+  //IDAH step 4: True or false should be used Connect this to set secret på något sätt??? Check if the attributes in the current Question matches the attributes in the secret or not.Keep is in the filterCharacters.
 
-  //IDAH step 4 If the category chosen is a type of hair or eyes (objects)
+  //IDAH step 4 If the category chosen is a type of hair or eyes (objects). 
   if (category === 'hair' || category === 'eyes') {
     if (secret[category] === value) {
       filterCharacters(true);
@@ -280,10 +280,12 @@ const checkQuestion = () => {
   }
 };
 
-// It'll filter the characters array and redraw the game board.
+// Filter the characters array and redraw the game board.
 function filterCharacters(keep) {
   const { category, value } = currentQuestion
+
   // Show the correct alert message for different categories
+  //Category: Accessories
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -293,14 +295,43 @@ function filterCharacters(keep) {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
-    }
+    };
+    //Category: Other
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person is a ${value}! Keep all the people that is a ${value}`
+      )
+
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person isn't a ${value}. Remove all the people that is a ${value}`
+      )
+
+    }
+    //Category: Hair
+  } else if (category === 'hair') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} hair! Keep all the people that has ${value} hair`
+      )
+
+    } else {
+      alert(
+        `No, the person hasn't ${value} hair. Remove all the people that has ${value} hair`
+      )
+
+    }
+    //Category: eyes
+  } else if (category === 'eyes') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} eyes! Keep all the people that has ${value} eyes`
+      )
+    } else {
+      alert(
+        `No, the person hasn't ${value} eyes. Remove all the people that has ${value} eyes`
+      )
     }
   }
 

@@ -6,6 +6,7 @@ const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findOutButton = document.getElementById('filter');
 const playAgainButton = document.getElementById('playAgain');
+const timer = document.getElementById('timer');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -232,6 +233,12 @@ const CHARACTERS = [
 let secretPerson;
 let currentQuestion;
 let charactersInPlay;
+// Create a counter to keep track of the number of times the player clicks the Find Out button to get a hint
+let countOfHints = 0;
+// Create a start time and an end time of the game
+let startTime = 0;
+let endTime = 0;
+
 
 // Draw the game board
 const generateBoard = () => {
@@ -256,6 +263,23 @@ const setSecretPerson = () => {
   console.log(secretPerson);
 };
 
+// Function to start and update timer every second, to be invoked when the website is loaded - WHY SHOWING TIME WITH MINUS??? WHY ALWAYS STARTS AT 1 MINUTE???
+const updateTimer = () => {
+  setInterval(() => {
+    startTime = new Date().getTime();
+    let timeDiff = endTime - startTime;
+    let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    timer.innerHTML = `${minutes}:${seconds}`;
+  }, 1000);
+}
+
+// Function to stop timer, to be invoked when win or lose section is displayed
+const stopTimer = () => {
+  endTime = new Date().getTime();
+  clearInterval(updateTimer());
+}
+
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
@@ -269,6 +293,8 @@ const start = () => {
   setSecretPerson();  
   // Invoke the function to draw the game board
   generateBoard();
+  // Invoke the function to start and update timer
+  updateTimer();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -297,6 +323,10 @@ const checkQuestion = () => {
   } else {
     filterCharacters(false);
   }
+
+  // Increase the counter of hints by 1 and return it
+  countOfHints++;
+  return countOfHints;
 };
 
 // It'll filter the characters array and redraw the game board.
@@ -335,10 +365,10 @@ const filterCharacters = (keep) => {
 
 // When clicking "Guess", the player first has to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  // Store the interaction from the player in a variable
   const personGuessed = personToConfirm;
+
+  // Prompt the player to confirm whether he/she wants to guess. If yes, invoke the checkMyGuess function
   if (confirm(`Would you like to guess on ${personGuessed}? If it is wrong, you lose...`)) {
     checkMyGuess(personGuessed);
   };
@@ -349,9 +379,9 @@ const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secretPerson person's name  
   // 2. Set a Message to show in the win or lose section accordingly
   if (personToCheck === secretPerson.name) {
-    winOrLoseText.innerText = 'Congratulations! You won!';
+    winOrLoseText.innerText = `Congratulations! You won after receiving ${countOfHints} hint(s)! Good job!`;
   } else {
-    winOrLoseText.innerText = 'Sorry, not this time!';
+    winOrLoseText.innerText = 'Sorry, wrong choice! Game over!';
   };
 
   // 3. Show the win or lose section
@@ -359,6 +389,9 @@ const checkMyGuess = (personToCheck) => {
 
   // 4. Hide the game board
   board.style.display = 'none';
+
+  // 5. Stop the timer
+  stopTimer();
 };
 
 // Invokes the start function when website is loaded

@@ -1,5 +1,6 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
+//This is the Dropdown menu:
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
@@ -201,9 +202,9 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+let secret //This is the sectret person opject
+let currentQuestion //This is the current question object
+let charactersInPlay //This is an array of people left in the game
 
 // Draw the game board
 const generateBoard = () => {

@@ -2,6 +2,9 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filterButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+//const playAgainButton = document.getElementById('playAgain') BEHÖVS DEN?
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -320,6 +323,7 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start()
+generateBoard()
 
 // All the event listeners
 restartButton.addEventListener('click', start)

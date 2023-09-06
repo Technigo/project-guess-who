@@ -3,6 +3,9 @@ const board = document.getElementById('board');
 const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findoutBtn = document.getElementById("filter");
+const winOrLoseText = document.getElementById("winOrLoseText");
+const playAgainButton = document.getElementById('playAgain');
+const winOrLose = document.getElementById("winOrLose")
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -255,7 +258,8 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  
   console.log(secret)
 }
 
@@ -285,7 +289,7 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
-  questions.addEventListener("change" , ()=>{
+  
     const category = questions.options[questions.selectedIndex].parentNode.label;
     const value = questions.value;
     const dataCategory = questions.options[questions.selectedIndex].parentNode.dataset.category;
@@ -299,16 +303,10 @@ const selectQuestion = () => {
     };
     console.log(currentQuestion);
   
-    
-    
-  });
-
-
- 
-
+checkQuestion()
   
 };
-
+questions.addEventListener("change", selectQuestion);
 
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -407,9 +405,9 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
   hiddenboard();
 };
-const playAgainButton = document.getElementById('playAgain');
+
 playAgainButton.addEventListener('click', () => {
-  document.getElementById('winOrLose').classList.add('hidden');
+  winOrLose.classList.add('hidden');
   start();
 });
 
@@ -418,7 +416,7 @@ playAgainButton.addEventListener('click', () => {
 
 // All the event listeners
 restartButton.addEventListener('click', start);
-findoutBtn.addEventListener("click" , checkQuestion);
+
 
 
 

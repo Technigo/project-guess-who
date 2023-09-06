@@ -207,6 +207,7 @@ let currentQuestion //This is the current question object
 let charactersInPlay //This is an array of people left in the game
 
 // Draw the game board
+//This is the games styling - the cards etc
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -220,33 +221,37 @@ const generateBoard = () => {
         </div>
       </div>
     `
-  })
-}
+  });
+};
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
+  console.log("secret")
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-}
+
+};
 
 // This function to start (and restart) the game
 const start = () => {
+  console.log("start game");
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
-  charactersInPlay.forEach((person) => {
-    board.innerHTML += `
-    <div class="card">
-    <p>${person.name}</p>
-    <img src=${person.img} alt=${person.name}/>
-    </div>
-    `
 
-  })
-}
+  setSecret();
+  generateBoard();
+
+};
 
 // setting the currentQuestion object when you select something in the dropdown
+// .parentNode.label stores hair and eyes
+// category is the options - 
+
+
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  //const = value this just go here - and this is the value ex "hair" = the category is "brown" = the value
+
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
@@ -266,8 +271,10 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    //something will happen - put in here
 
   } else if (category === 'accessories' || category === 'other') {
+    //something will happen - put in here
 
   }
 }
@@ -303,7 +310,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
+ 
     for accessories and other
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or
@@ -315,6 +322,9 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+
+  //person.name, I think I have to put in here 
+
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.

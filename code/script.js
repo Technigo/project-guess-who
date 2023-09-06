@@ -112,12 +112,11 @@ const CHARACTERS = [
     accessories: ['bow']
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Gimli',
+    img: 'images/gimli.png',
+    hair: 'red',
+    type: 'dwarf',
+    accessories: ['helmet']
   },
   {
     name: 'Jess',
@@ -164,8 +163,8 @@ const generateBoard = () => {
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
+        <p>${person.name}</p>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>

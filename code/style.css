@@ -1,14 +1,19 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #a8c49b;
+  --secondary: #5e6f45;
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Ringbearer';
+}
+
+@font-face {
+  font-family: 'Ringbearer';
+  src: url('RINGM___.TTF');
 }
 
 h1 {
@@ -49,10 +54,11 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url('images/rivendell.png');
 }
 
 .game-board {
-  width: 90%;
+  width: 70%;
   max-width: 882px;
   display: flex;
   flex-wrap: wrap;
@@ -61,23 +67,31 @@ select {
 
 /****** CARD ******/
 .card {
-  width: 140px;
-  height: 170px;
+  width: 130px;
+  height: 160px;
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;
-  margin: 3px;
+  margin: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  text-align: center;
 }
 
 .card p {
+  font-family: 'Ringbearer';
+  position: absolute;
+  color: rgb(68, 63, 46);
+  background: rgba(255, 255, 255, 0.5);
+  bottom: 5px;
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
+  padding: 3px;
 }
 
 .card .guess {

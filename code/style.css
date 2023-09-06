@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #180142;
+  --secondary: #048f73;
 }
 
 body {
@@ -11,12 +11,34 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+p {
+  font-size: 18px;
+}
+
 h1 {
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
+  margin: 40px 0 5px 0;
+  color: white;
+}
+
+#playerName {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 30px;
   margin: 10px 0;
   color: white;
+}
+
+#timer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+hr.solid {
+  border-top: 2px solid white;
 }
 
 .question-section {
@@ -145,6 +167,10 @@ button {
   color: var(--primary);
 }
 
+#restart {
+  margin: 15px 0;
+}
+
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
@@ -192,6 +218,11 @@ button {
   h1 {
     font-size: 24px;
     line-height: 30px;
+  }
+
+  #playerName {
+    font-size: 20px;
+    line-height: 20px;
   }
 
   .guess-who-icon {

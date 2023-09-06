@@ -247,13 +247,13 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.value;
 
-  if (category === "hair color") {
+  if (category === "hair") {
     currentQuestion = {
       attribute: "hairColor",
       value: value,
       category: category,
     };
-  } else if (category === "eye color") {
+  } else if (category === "eyes") {
     currentQuestion = {
       attribute: "eyeColor",
       value: value,

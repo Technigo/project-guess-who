@@ -1,64 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Guess woof</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;600&family=Karla:wght@500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
-
+      <button class="restart-button" type="button" id="restartBtn">
+        RESTART
+      </button>
       <img
         class="guess-who-icon"
         src="images/guess-who-bubble.png"
-        alt="Guess Who"
+        alt="bubble saying guess who?"
       />
-
-      <h1>Does the person have</h1>
-
-      <select title="questions" id="questions">
-        <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
+      <h1>Does the dog have</h1>
+      <select id="dropdown" title="Select a question">
+        <option value="" selected disabled>Please choose...</option>
+        <optgroup label="color">
+          <option value="black">Black fur</option>
+          <option value="brown">Brown fur</option>
+          <option value="dotted">Dotted fur</option>
+          <option value="tricolor">Tricolor fur</option>
+          <option value="white">White fur</option>
         </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+        <optgroup label="job">
+          <option value="bartender">Bartender</option>
+          <option value="cowboy">Cowboy</option>
+          <option value="designer">Designer</option>
+          <option value="knight">Knight</option>
+          <option value="lawyer">Lawyer</option>
+          <option value="professor">Professor</option>
+          <option value="mooch">Unemployed</option>
         </optgroup>
         <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
+          <option value="armor">Armor</option>
+          <option value="suit">Business attire</option>
+          <option value="collar">Collar</option>
+          <option value="glasses">Glasses</option>
+          <option value="hat">Hat</option>
+          <option value="jewelry">Jewelry</option>
         </optgroup>
         <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+          <option value="royal">Royal ancestry</option>
+          <option value="metalfan">An interest in metal music</option>
         </optgroup>
       </select>
-
-      <button id="filter" class="filled-button">FIND OUT</button>
+      <button class="filter-button" id="filter">FIND OUT!</button>
+      <section class="question-counter-wrapper">
+        <p>
+          You have&nbsp;<span id="questions-left">5</span>&nbsp;questions left.
+        </p>
+      </section>
+      <div class="info">
+        Made as part of <a href="https://www.technigo.io/">Technigo</a> front
+        end dev bootcamp. Dogs generated with
+        <a href="https://openart.ai/">Open Art AI</a>.
+      </div>
     </aside>
-
     <section class="board-wrapper">
       <main class="game-board" id="board"></main>
     </section>
-
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
         <img
           class="guess-who-icon"
           src="images/guess-who-bubble.png"
-          alt="Guess Who"
+          alt="guess who image"
         />
         <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <button type="button" id="playAgain" class="filled-button">
+          PLAY AGAIN
+        </button>
       </div>
     </section>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>

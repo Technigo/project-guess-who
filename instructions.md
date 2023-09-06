@@ -60,7 +60,7 @@ Lastly we want to use the `filter()` method to filter out people from the `chara
 
 💡 Remember that you also need to re render the game board so that only the people still in play is shown.
 
-## Step 6 - Time to make a guess!
+## Step 6 - Time to make a guess! //HÄR E JAG
 At some point, the player wants to make a guess about who the secret person is.
 
 When you hover over the cards you'll see a `'Guess'` button. That button is already connected to the `guess` function via the `onclick` attribute on the card element. You can see this in the `generateBoard` function.

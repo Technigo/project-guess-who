@@ -205,6 +205,7 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let filteredList;
 
 // Draw the game board
 const generateBoard = () => {
@@ -271,15 +272,24 @@ const checkQuestion = () => {
   // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
     category === "hair"
-      ? (charactersInPlay = CHARACTERS.filter(
+      ? (filteredList = charactersInPlay.filter(
           (person) => person.hair === value
         ))
-      : (charactersInPlay = CHARACTERS.filter(
+      : (filteredList = charactersInPlay.filter(
           (person) => person.eyes === value
         ));
-    charactersInPlay = CHARACTERS.filter((person) => person.hair === value);
+    charactersInPlay = filteredList;
     generateBoard();
   } else if (category === "accessories" || category === "other") {
+    category === "accessories"
+      ? (filteredList = charactersInPlay.filter((person) =>
+          person.accessories.includes(value)
+        ))
+      : (filteredList = charactersInPlay.filter((person) =>
+          person.other.includes(value)
+        ));
+    charactersInPlay = filteredList;
+    generateBoard();
   }
 };
 

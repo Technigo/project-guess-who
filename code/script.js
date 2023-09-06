@@ -248,11 +248,12 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
+  const value = selectedOption.value;
+  const selectedOption = questions.options[questions.selectedIndex];
+  
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
@@ -331,3 +332,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', currentQuestion)
+//filterButton.addEventListener('change' )

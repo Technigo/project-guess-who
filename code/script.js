@@ -2,7 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
+const findOutButton = document.getElementById('filter') // IDAH step 4
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -261,15 +261,27 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
+  //IDAH step 4: True or false should be used Connect this to set secret på något sätt??? Check if the attributes in the current Question matches the attributes in the secret or not...
+
+  //IDAH step 4 If the category chosen is a type of hair or eyes (objects)
   if (category === 'hair' || category === 'eyes') {
-
+    if (secret[category] === value) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
+    //IDAH step 4 If the category chosen is a type of accessory or other (array)
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[category].includes(value)) {
+      filterCharacters(true);
+    } else {
+      filterCharacters(false);
+    }
   }
-}
+};
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
+function filterCharacters(keep) {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
@@ -294,18 +306,17 @@ const filterCharacters = (keep) => {
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
+  /*
     for hair and eyes :
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
+ 
     for accessories and other
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
-
   // Invoke a function to redraw the board with the remaining people.
 }
 
@@ -328,5 +339,6 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
-questions.addEventListener('change', selectQuestion) //IDAHS step 3 to invoke the select element when we change something in the dropdown/select list
+restartButton.addEventListener('click', start);
+questions.addEventListener('change', selectQuestion); //IDAHS step 3 to invoke the select element when we change something in the dropdown/select list
+findOutButton.addEventListener('click', checkQuestion); //IDAHS step 4 to invoke checkQuestion

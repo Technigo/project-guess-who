@@ -256,6 +256,7 @@ const selectQuestion = () => {
     console.log(currentQuestion.category)
     console.log(currentQuestion.value)
     console.log (secret[category]) ///OBS PÅ DETTA-FORTSÄTT HÄR
+    console.log(secret)
 }
 
 
@@ -315,6 +316,9 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} hair! Keep all people that have ${value} hair.`
       )
+      charactersInPlay = charactersInPlay.filter((character) => character[category] === value)
+      console.log (charactersInPlay)
+      generateBoard()
     } else {
       alert(
         `No, the person doesn't have ${value} hair! Remove all people that doesn't have ${value} hair.`
@@ -331,6 +335,8 @@ const filterCharacters = (keep) => {
         `No, the person doesn't have ${value} eyes! Remove all people that doesn't have ${value} eyes.`
       )
     }
+
+
   }
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.

@@ -2,8 +2,12 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
 // Array with all the characters, as objects
+
+
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -19,7 +23,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['parrot']
   },
   {
     name: 'Jacques',
@@ -58,7 +62,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'neckless'],
     other: []
   },
   {
@@ -74,7 +78,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'earrings', 'neckless'],
     other: []
   },
 
@@ -116,7 +120,7 @@ const CHARACTERS = [
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],
-    other: []
+    other: ['phone']
   },
   {
     name: 'Jeri',
@@ -171,7 +175,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['earrings'],
     other: []
   },
   {
@@ -199,7 +203,6 @@ const CHARACTERS = [
     other: []
   },
 ]
-
 // Global variables
 let secret
 let currentQuestion

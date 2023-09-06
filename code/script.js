@@ -9,6 +9,7 @@ const playAgain = document.getElementById('playAgain')
 
 
 
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -24,7 +25,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['hat', 'eyepatch'],
     other: []
   },
   {
@@ -40,7 +41,7 @@ const CHARACTERS = [
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['tie'],
     other: []
   },
   {
@@ -64,7 +65,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace'],
     other: []
   },
   {
@@ -80,7 +81,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'necklace'],
     other: []
   },
 
@@ -169,7 +170,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'necklace'],
     other: []
   },
   {
@@ -193,7 +194,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
+    accessories: ['tie'],
     other: []
   },
   {
@@ -231,7 +232,7 @@ const generateBoard = () => {
 
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
-const setSecret = () => {
+const setSecretPerson = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
   currentQuestion = {}; 
 };
@@ -242,7 +243,7 @@ const start = () => {
   charactersInPlay = CHARACTERS;
   board.innerHTML -= winOrLose[0] || winOrLose[1];
   questions.selectedIndex = 0;
-  setSecret();
+  setSecretPerson();
   currentQuestion = {};
   generateBoard();
   wOL.style.display = 'none';
@@ -250,7 +251,7 @@ const start = () => {
 
 const restart = () => {
   charactersInPlay = CHARACTERS; 
-  setSecret(); 
+  setSecretPerson(); 
   currentQuestion = {}; 
   generateBoard(); 
 };
@@ -260,76 +261,57 @@ const restart = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.value;
-  
-    
-      currentQuestion = {
-        category: category.toLowerCase(), 
-        value: value.toLowerCase(), 
-    }
+
+  currentQuestion = {
+    category: category.toLowerCase(),
+    value: value.toLowerCase(),
   };
+};
 
-
-// This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
 
-  // Initialize keep variable to false
-  let keep = false;
-
-  if (category === 'hair' || category === 'eyes') {
-    // Check if any character matches the value
-    keep = charactersInPlay.some((person) => person[category] === value);
-  } else if (category === 'accessories' || category === 'other') {
-    // Check if any character matches the value in accessories or other
-    keep = charactersInPlay.some((person) => person[category].includes(value));
+  if (secret[category].includes(value)) {
+    filterCharacters(true);
+  } else {
+    filterCharacters(false);
   }
-
-  // Call the filterCharacters function with the correct parameter
-  filterCharacters(keep);
 };
-
 
 
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-  let attributeOrCategory;
-
-  if (category === 'hair' || category === 'eyes') {
-    attributeOrCategory = category;
-  } else {
-    attributeOrCategory = category;
-  }
-
+ 
   if (category === 'accessories') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] === value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
       alert(`Yes, the person wears ${value}! Keep all people that wear ${value}`);
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] !== value);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
       alert(`No, the person doesn't wear ${value}! Remove all people that wear ${value}`);
     }
   } else if (category === 'other') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] === value);
-      alert(`Yes, the person has ${value}! Keep all people that has a ${value}`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+      alert(`Yes, the person is a ${value}! Keep all people that is a ${value}`);
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] !== value);
-      alert(`No, the person doesn't have ${value}! Remove all people that has a ${value}`);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+      alert(`No, the person isn't a ${value}! Remove all people that is a ${value}`);
     }
   } else if (category === 'hair') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] === value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
       alert(`Yes, person has ${value} hair! Keep all people that have ${value} hair`);
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] !== value);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
       alert(`No, the person doesn't have ${value} hair! Remove all the people with ${value} hair`);
     }
   } else if (category === 'eyes') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] === value);
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
       alert(`Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`);
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => person[attributeOrCategory] !== value);
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
       alert(`No, the person doesn't have ${value} eyes! Remove all the people with ${value} eyes`);
     }
   }
@@ -388,6 +370,9 @@ restartButton.addEventListener('click', () => {
 
 findOutButton.addEventListener("click", () => {
   checkQuestion();
+});
+
+questions.addEventListener('change', () => {selectQuestion();
 });
 
 playAgain.addEventListener('click', () => {

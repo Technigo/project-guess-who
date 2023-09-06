@@ -4,6 +4,7 @@ const questions = document.getElementById("questions");
 const restartButton = document.getElementById("restart");
 const findOutButton = document.getElementById("findout");
 const result = document.getElementById("winOrLose");
+const playAgain = document.getElementById("playAgain");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -275,25 +276,6 @@ const checkQuestion = () => {
   filterCharacters(charactersInPlay.length > 0);
 };
 
-// Determine what is the category
-// filter by category to keep or remove based on the keep variable.
-/* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-// Invoke a function to redraw the board with the remaining people.
-/*generateBoard();
-};
-*/
-
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
@@ -355,6 +337,7 @@ const filterCharacters = (keep) => {
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
+/*
 const guess = (personToConfirm) => {
   const confirmed = confirm(
     `Are you sure you want to take a guess on ${personToConfirm}`
@@ -371,7 +354,20 @@ const guess = (personToConfirm) => {
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
   // Pass the correct parameters to checkMyGuess.
-  checkMyGuess(personToConfirm, playerInteraction);
+};
+*/
+const guess = (personToConfirm) => {
+  const confirmed = confirm(
+    `Are you sure you want to take a guess on ${personToConfirm}`
+  );
+  const playerInteraction = `Guessed` + personToConfirm;
+  if (confirmed) {
+    console.log(`Player's guess`);
+    checkMyGuess(personToConfirm, playerInteraction);
+  } else {
+    console.log(`Guess canceled`);
+    alert(`Okay! So you didn't want to guess? That's fine`);
+  }
 };
 
 // If you confirm, this function is invoked
@@ -382,16 +378,11 @@ const checkMyGuess = (personToCheck, playerInteraction) => {
     message = `Congrats! You guessed right, it's ${secret.name} ${playerInteraction}.`;
   } else {
     message = `Woops, this was wrong. It's not ${personToCheck} ${playerInteraction}.`;
-    return;
   }
   result.textContent = message;
   result.style.display = "block";
 
-  board.style.display = "none";
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  generateBoard();
 };
 
 // Invokes the start function when website is loaded
@@ -401,3 +392,4 @@ start();
 restartButton.addEventListener("click", start);
 questions.addEventListener("change", selectQuestion);
 findOutButton.addEventListener("click", checkQuestion);
+playAgain.addEventListener("click", start);

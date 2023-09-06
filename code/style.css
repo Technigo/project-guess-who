@@ -18,6 +18,7 @@
   align-items: center;
   color: #fff;
   font-family: "Montserrat";
+  z-index: 10000;
 }
 
 .initial-page button {
@@ -41,25 +42,36 @@
   font-size: 30px;
 }
 
-body {
+.body {
   display: flex;
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
+  background-color: #fecaca;
+  position: relative;
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 50px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
   color: white;
 }
 
+.primary-heading {
+  font-size: 60px;
+  font-weight: 800;
+  -webkit-text-stroke: 2px var(--primary);
+  letter-spacing: 15px;
+  -webkit-filter: drop-shadow(2px 6px 0 #afe2c6);
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-image: url("./images/cute-background.png");
+  background-size: 80%;
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -73,7 +85,7 @@ select {
   border-radius: 3px;
   font-size: 22px;
   font-family: "Montserrat";
-  color: var(--secondary);
+  color: var(--primary);
   width: 100%;
   margin: 24px 0;
   padding: 3px 8px;
@@ -89,6 +101,7 @@ select:focus {
   margin-top: 3vh;
   padding-bottom: 15px;
   border-radius: 3px;
+  backdrop-filter: blur(8px);
 }
 
 #display-name {
@@ -107,15 +120,21 @@ select:focus {
 }
 
 #counter-display {
-  color: #fff;
+  color: #444;
   text-align: center;
   font-size: 32px;
 }
 
 #timer {
   font-size: 26px;
-  color: #777;
+  color: #444;
   text-align: center;
+}
+
+.game-data-btn {
+  padding: 6px 10px;
+  color: var(--primary);
+  margin: 15px auto 0;
 }
 
 .guess-who-icon {
@@ -129,6 +148,10 @@ select:focus {
   justify-content: center;
 }
 
+main {
+  padding: 30px 0 50px;
+}
+
 .game-board {
   width: 90%;
   max-width: 882px;
@@ -140,7 +163,7 @@ select:focus {
 /****** CARD ******/
 
 .card {
-  background-color: transparent;
+  background-color: #fff;
   width: 135px;
   height: 165px;
   border: 3px solid var(--secondary);
@@ -221,12 +244,17 @@ button {
   cursor: pointer;
 }
 
+aside .filled-button {
+  border: 1px solid #fff;
+  margin: 0 auto;
+}
+
 .small {
   padding: 8px 16px;
 }
 
 .outlined-button {
-  background-color: transparent;
+  background-color: #fff;
   color: var(--primary);
   align-self: flex-end;
 }
@@ -239,7 +267,6 @@ button {
 
 .filled-button:hover {
   background-color: white;
-  border-color: white;
   color: var(--primary);
 }
 
@@ -275,10 +302,110 @@ button {
   margin-bottom: 32px;
 }
 
+/******************************************************************** */
+/* Modal Window */
+
+.modal-window {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100vw;
+  max-height: 100vh;
+  min-height: 100vh;
+  background: var(--primary);
+  color: #fff;
+  display: none;
+}
+
+.game-clear-btn {
+  font-size: 20px;
+  padding: 3px 10px;
+  border: #fff solid 0.5px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #f89393;
+  margin-top: 10px;
+  transition: background 0.2s ease-in-out;
+}
+
+.game-clear-btn:hover {
+  background-color: #fecaca;
+}
+
+.game-score-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-table {
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  background-color: #f89393;
+}
+
+thead tr th {
+  font-size: 20px;
+  border: none;
+}
+
+td {
+  border: 0.5px solid #fff;
+}
+
+th,
+td {
+  text-align: center;
+  border-collapse: collapse;
+  border: 0.5px solid #fff;
+  padding: 2px 8px;
+}
+.modal-heading {
+  font-size: 40px;
+}
+
+.best-score-container {
+  background-color: #f89393;
+  border: solid 1px #fff;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+.best-score-container p {
+  font-weight: 700;
+}
+
+.best-score-container h3 {
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.modal-window-inner {
+  max-width: 1000px;
+  padding: 50px 200px 0;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+/******************************************************************** */
+
 @media (max-width: 1200px) {
   .question-section {
     padding: 3vw;
   }
+
   button {
     font-size: 14px;
     font-weight: bold;
@@ -290,10 +417,18 @@ button {
   }
 
   h1 {
-    font-size: 34px;
-    font-weight: 400;
+    font-size: 30px;
     line-height: 36px;
   }
+
+  .primary-heading {
+    font-size: 38px;
+    font-weight: 600;
+    -webkit-text-stroke: 1.5px var(--primary);
+    letter-spacing: 7px;
+    -webkit-filter: drop-shadow(3px 6px 0 #afe2c6);
+  }
+
   .counter-box h2 {
     font-size: 14px;
   }
@@ -301,12 +436,45 @@ button {
   #counter-display {
     font-size: 26px;
   }
+  /* Modal window */
+
+  th,
+  td {
+    font-size: 16px;
+  }
+
+  thead tr th {
+    font-size: 18px;
+  }
+
+  .modal-heading {
+    font-size: 40px;
+  }
+
+  .best-score-container {
+    padding: 0 16px;
+    margin-bottom: 10px;
+  }
+
+  .best-score-container p {
+    font-weight: 500;
+  }
+
+  .best-score-container h3 {
+    font-size: 16px;
+    text-decoration: underline;
+  }
+
+  .modal-window-inner {
+    padding: 30px 100px 0;
+  }
 }
 
 @media (max-width: 768px) {
   body {
     flex-direction: column;
   }
+
   .initial-page button {
     font-size: 20px;
     padding: 14px 32px;
@@ -320,20 +488,41 @@ button {
   .initial-page p {
     font-size: 18px;
   }
+
   .question-section {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
+    margin-bottom: 5px;
   }
+
   h1 {
-    font-size: 24px;
+    font-size: 26px;
     line-height: 30px;
   }
 
+  .primary-heading {
+    text-align: center;
+    font-size: 40px;
+    -webkit-text-stroke: 1px var(--primary);
+    letter-spacing: 3px;
+    -webkit-filter: drop-shadow(3px 6px 0 #afe2c6);
+  }
+
+  h3 {
+    text-align: center;
+  }
+
   .guess-who-icon {
-    width: 51px;
+    width: 80px;
+  }
+
+  select {
+    width: 70%;
+    margin: 20px auto;
   }
 
   .board-wrapper {
@@ -348,8 +537,8 @@ button {
 
   .counter-box {
     width: fit-content;
-    margin: 0 auto;
-    padding: 5px 10px;
+    margin: 10px auto 0;
+    padding: 5px 30px;
   }
 
   #display-name {
@@ -362,12 +551,11 @@ button {
   }
 
   #timer {
-    font-size: 18px;
+    font-size: 20px;
   }
   .inner-card-sm {
     width: 100%;
     height: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -398,9 +586,10 @@ button {
     width: 113px;
     position: relative;
     overflow: hidden;
-    border: 3px solid var(--secondary);
+    border: 1px solid var(--primary);
     border-radius: 4px;
     margin: 3px;
+    background-color: #fff;
   }
 
   .card-sm .guess-sm .filled-button {
@@ -409,5 +598,99 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+
+  /* Modal Window */
+
+  .modal-window {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    max-height: 100vh;
+    min-height: 100vh;
+    background: var(--primary);
+    color: #fff;
+    display: none;
+  }
+
+  .game-clear-btn {
+    font-size: 18px;
+    padding: 3px 8px;
+
+    border-radius: 3px;
+    margin-top: 10px;
+  }
+  .modal-table {
+    padding: 6px 12px;
+  }
+
+  thead tr th {
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    text-align: center;
+    border-collapse: collapse;
+    border: 0.5px solid #fff;
+    padding: 1px 4px;
+  }
+  .modal-heading {
+    font-size: 28px;
+  }
+
+  .best-score-container {
+    padding: 0 16px;
+    margin-bottom: 10px;
+  }
+
+  .best-score-container p {
+    font-weight: 300;
+  }
+
+  .best-score-container h3 {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 500px) {
+  thead tr th {
+    font-size: 16px;
+    border: none;
+  }
+
+  .modal-heading {
+    font-size: 26px;
+  }
+
+  .best-score-container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding-bottom: 2px;
+  }
+
+  .best-score-container p {
+    font-weight: 300;
+    font-size: 12px;
+    margin: 0;
+  }
+
+  h3 {
+    margin-bottom: 0;
+    margin-top: 3px;
+  }
+
+  .best-score-container h3 {
+    font-size: 14px;
+    text-decoration: underline;
+  }
+
+  .modal-window-inner {
+    padding: 30px 20px 0;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
   }
 }

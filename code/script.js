@@ -25,6 +25,24 @@ const boardWrapper = document.querySelector(".board-wrapper");
 // this is where counter will be displayed.
 const counterDisplay = document.getElementById("counter-display");
 
+// This is used for timer funtion
+const timer = document.getElementById("timer");
+let timerInterval;
+
+/*****************************************************************************/
+// This is for localStorage.
+let finalCounts = 0;
+let finalTimerValue = "";
+
+const dataStorage = {
+  username: "",
+  howManyGuesses: "",
+  time: "",
+};
+
+const arrayForLocalStorage = [];
+/*****************************************************************************/
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -545,6 +563,11 @@ const checkMyGuess = (personToCheck) => {
   winOrLosePage.style.display = "flex";
   boardWrapper.style.display = "none";
 
+  // Store final counter number and time for local storage
+  finalCounts = counter;
+  finalTimerValue = timer.textContent;
+  console.log(finalCounts);
+
   // check a name of secret and guessed person's name is the same
   if (personToCheck === secret.name) {
     winOrLoseText.textContent = `✨🎉Conglaturation!! 🎉✨`;
@@ -561,13 +584,13 @@ const checkMyGuess = (personToCheck) => {
 const startGameBtn = document.getElementById("game-start-btn");
 const initialPage = document.getElementById("initial-page");
 
-player = prompt("Who is going to play, today?");
+// player = prompt("Who is going to play, today?");
 
 // if player did not type its name, alert and ask again
-while (!player) {
-  alert("Please type your name!");
-  player = prompt("Who is going to play,today");
-}
+// while (!player) {
+// alert("Please type your name!");
+// player = prompt("Who is going to play,today");
+// }
 
 welcomeMessage.innerText = `Welcome to Guess Who, ${player}!! `;
 
@@ -579,6 +602,29 @@ startGameBtn.onclick = function () {
   start();
 };
 
+/*********************************************************************/
+// For Modal Window
+const bestPlayer = document.getElementById("best-player");
+const bestScore = document.getElementById("best-score");
+const bestTime = document.getElementById("best-time");
+const table = document.getElementsByTagName("table");
+const clearGameBtn = document.querySelector(".clear-game-btn");
+const gameDataBtn = document.querySelector(".game-data-btn");
+const modalWindow = document.querySelector(".modal-window");
+
+// This is a button which is placed in aside, under count box. When it is clicked, modal window will open. You can see previous game data, which are stored in localStorage.
+gameDataBtn.addEventListener("click", () => {
+  modalWindow.style.display = "flex";
+  modalWindow.style.zIndex = "100000";
+});
+
+// This works for preventing scrolling when a modal window is open
+modalWindow.addEventListener("wheel", preventScroll, { passive: false });
+function preventScroll(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+}
 /*********************************************************************/
 // Sound effect function
 
@@ -592,9 +638,6 @@ function createSound(soundSrc) {
 
 /*********************************************************************/
 // timer function
-const timer = document.getElementById("timer");
-let timerInterval;
-console.log(timer);
 
 const startTimer = () => {
   console.log("start Timer");
@@ -629,10 +672,10 @@ const startTimer = () => {
 
 // Listen to page load event and set it pageLoad to true, then when start btn is clicked, the value is assignted to false.
 // only when pageload = false, time starts.
-// window.addEventListener("load", (event) => {
-//   console.log("page true");
-//   pageLoad = true;
-// });
+window.addEventListener("load", (event) => {
+  console.log("page true");
+  pageLoad = true;
+});
 
 restartButton.addEventListener("click", start);
 

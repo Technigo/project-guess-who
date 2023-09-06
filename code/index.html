@@ -10,19 +10,62 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="body">
+    <!-- The first page when the page is loaded -->
     <div class="initial-page" id="initial-page">
       <h2>Guess Who!!</h2>
       <h3 id="hello-text"></h3>
       <button id="game-start-btn">Start</button>
       <p>Click to start</p>
     </div>
+
+    <!-- The modal window that shows the past game data -->
+    <div class="modal-window">
+      <div class="modal-window-inner">
+        <div class="game-score-box">
+          <h2 class="modal-heading">Game</h2>
+
+          <div class="best-score-container">
+            <h3>Best Score</h3>
+            <p>Player: <span id="best-player">sss</span></p>
+            <p>How Many Guess: <span id="best-guess">4</span></p>
+            <p>Time: <span id="best-time">1:00</span></p>
+          </div>
+          <table class="modal-table">
+            <thead>
+              <tr>
+                <th colspan="3">The Game Results</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Player Name</th>
+                <th>How Many times you guessed</th>
+                <th>Time</th>
+              </tr>
+              <tr>
+                <td>Maria</td>
+                <td>5</td>
+                <td>4:00</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="game-clear-btn">Clear Data</button>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="modal-svg"><path fill="#fecaca" fill-opacity="1" d="M0,128L40,160C80,192,160,256,240,250.7C320,245,400,171,480,160C560,149,640,203,720,208C800,213,880,171,960,170.7C1040,171,1120,213,1200,224C1280,235,1360,213,1400,202.7L1440,192L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
+      </div>
+     
+      </svg>
+    </div>
+
+    <!-- From here is the main page -->
+
     <aside class="question-section">
       <button type="button" id="restart" class="outlined-button">RESTART</button>
 
       <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
 
-      <h1>Does the person have</h1>
+      <h1 class="primary-heading">Does the person have</h1>
 
       <select title="questions" id="questions">
         <optgroup label="hair">
@@ -78,6 +121,7 @@
         <h2>How many guess you made</h2>
         <div id="counter-display"></div>
       </div>
+      <button class="game-data-btn outlined-button">See previous game results</button>
     </aside>
 
     <section class="board-wrapper">

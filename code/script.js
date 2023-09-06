@@ -372,9 +372,9 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-   winOrLoseText.innerHTML = `That is correct, it was indeed ${personToCheck}!`
+   winOrLoseText.innerHTML = `That is correct, it was indeed ${personToCheck}! Good job.`
   } else {
-    winOrLoseText.innerHTML = `No, that's incorrect. The right person was ${secret.name}.`
+    winOrLoseText.innerHTML = `No, that's incorrect! The right person was ${secret.name}.`
   }
   winOrLose.style.display = 'flex'
   board.style.display = 'none'

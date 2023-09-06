@@ -1,8 +1,19 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
+const winOrLose = document.getElementById('winOrLose')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const playAgainButton = document.getElementById('playAgain')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const winnerImg = document.createElement('img');
+const winLoseP = document.createElement('p')
+
+winLoseP.className = 'winLose-p'
+winOrLose.appendChild(winLoseP)
+
+winnerImg.className = 'winner-img';
+winOrLose.appendChild(winnerImg);
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -207,6 +218,7 @@ let currentQuestion
 let charactersInPlay
 let guessedPerson
 
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -238,6 +250,7 @@ const start = () => {
   //Set secret person
   setSecret(); 
   console.log(secret)
+
   // What else should happen when we start the game?
 }
 
@@ -257,7 +270,7 @@ const selectQuestion = () => {
     console.log(currentQuestion.category)
     console.log(currentQuestion.value)
     console.log (secret[category]) ///OBS PÅ DETTA-FORTSÄTT HÄR
-    console.log(secret)
+    console.log(secret.name)
 }
 
 
@@ -344,27 +357,18 @@ const filterCharacters = (keep) => {
 
   }
   generateBoard()
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-  // Invoke a function to redraw the board with the remaining people.
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  confirm(`Are you sure you want to guess on ${personToConfirm}?`)
+  
+  const confirmation = confirm(`Are you sure you want to guess on ${personToConfirm}?`)
+  console.log(confirmation)
+  if(confirmation) {
+    checkMyGuess(personToConfirm)
+  } else {
+    console.log ("Guess cancelled")
+  }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -372,6 +376,18 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  board.innerHTML = ""
+  winOrLose.style.display = "flex"
+  if (personToCheck === secret.name) {
+    winOrLoseText.innerHTML = `Yes! ${secret.name} was the one <br> who was hiding!`
+    winnerImg.src = secret.img
+    winnerImg.alt = secret.name
+    console.log ('yes!')
+   
+  } else {
+   console.log ('no!')
+   winOrLoseText.innerHTML = `Oh no, that's not correct! <strong>${secret.name} </strong> was the one who was hiding. Try again!`
+  }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -382,7 +398,17 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', (event) => {
+  console.log ("restart!")
+  start() // Restarts the page on click
+})
+playAgainButton.addEventListener('click', (event) => { 
+  console.log("playagain!")
+  start() // Restarts the page on click
+  winOrLose.style.display = "none"; // The winOrLoseWindow stops showing
+  });
 findOutButton.addEventListener('click', checkQuestion)
  //Eventlistener added to select menu
- questions.addEventListener('change', selectQuestion)
+questions.addEventListener('change', selectQuestion)
+
+

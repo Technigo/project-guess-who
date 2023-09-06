@@ -177,6 +177,19 @@ button {
   margin-bottom: 32px;
 }
 
+
+.winner-img {
+  height: 300px; 
+}
+
+.winLose-p {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 10px 0;
+  color: white;
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;

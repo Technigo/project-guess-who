@@ -289,6 +289,7 @@ const checkQuestion = () => {
 };
 
 
+
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
   let attributeOrCategory;

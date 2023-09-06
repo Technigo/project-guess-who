@@ -20,7 +20,7 @@ const CHARACTERS = [
     hair: "hidden",
     eyes: "blue",
     accessories: ["hat"],
-    other: [],
+    other: ["beard"],
   },
   {
     name: "Jacques",
@@ -28,7 +28,7 @@ const CHARACTERS = [
     hair: "grey",
     eyes: "blue",
     accessories: ["hat"],
-    other: ["smoker"],
+    other: ["smoker", "beard"],
   },
   {
     name: "Jai",
@@ -109,7 +109,7 @@ const CHARACTERS = [
     hair: "orange",
     eyes: "green",
     accessories: ["glasses", "hat"],
-    other: ["smoker"],
+    other: ["smoker", "beard"],
   },
   {
     name: "Jenni",
@@ -189,7 +189,7 @@ const CHARACTERS = [
     hair: "black",
     eyes: "green",
     accessories: [],
-    other: [],
+    other: ["beard"],
   },
   {
     name: "Julie",

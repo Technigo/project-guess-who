@@ -2,6 +2,10 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -24,7 +28,7 @@ const CHARACTERS = [
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
-    hair: 'grey',
+    hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
     other: ['smoker']
@@ -353,18 +357,37 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
+  if (confirm(`Are you sure you want to guess ${personToConfirm}?`) === true ) {
+    checkMyGuess(personToConfirm)
+  } else {
+    alert(
+      `Ok then, keep playing!`
+  )
+  }
+}
+ // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-}
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+   winOrLoseText.innerHTML = `That is correct, it was indeed ${personToCheck}!`
+  } else {
+    winOrLoseText.innerHTML = `No, that's incorrect. The right person was ${secret.name}.`
+  }
+  winOrLose.style.display = 'flex'
+  board.style.display = 'none'
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-}
+};
+
+const restartGame = () => {
+  winOrLose.style.display = "none";
+  start();
+};
 
 // Invokes the start function when website is loaded
 start()
@@ -372,3 +395,5 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
+playAgainButton.addEventListener('click', start);
+findOutButton.addEventListener('click', checkQuestion)

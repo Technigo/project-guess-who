@@ -334,9 +334,9 @@ const checkQuestion = () => {
     }
   };
 }
-findoutBtn.addEventListener("click" , ()=>{
-  checkQuestion()
-})
+// findoutBtn.addEventListener("click" , ()=>{
+//   checkQuestion()
+// })
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -391,9 +391,11 @@ const showBoard = ()=>{
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (secret.name === personToCheck) {
-    document.getElementById('winOrLoseText').textContent = 'Congratulations, you win!';
+    winOrLoseText.textContent = 'Congratulations, you win!';
+    winOrLose.style.display = "flex"
   } else {
-    document.getElementById('winOrLoseText').textContent = 'Oops! You lose.';
+    winOrLoseText.textContent = 'Oops! You lose. You gussed wrong! Game ove!';
+    winOrLose.style.display = "flex"
   }
 
   // Show the win or lose section
@@ -407,8 +409,9 @@ const checkMyGuess = (personToCheck) => {
 };
 
 playAgainButton.addEventListener('click', () => {
-  winOrLose.classList.add('hidden');
+  winOrLose.style.display = "none";
   start();
+  showBoard()
 });
 
 // Invokes the start function when website is loaded

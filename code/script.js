@@ -2,6 +2,8 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOut = document.getElementById('filter')
+const optgroup = document.getElementById('optgroup')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -194,11 +196,12 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
-
+  
+  const value = questions.options[questions.selectedIndex].value
+  
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
@@ -209,9 +212,16 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  let keep;
 
-  } else if (category === 'accessories' || category === 'other') {
+  if (category === 'Hair' || category === 'Accessories') {
+    if (secret[category] === value) {
+      filterCharacters(true)
+      } else {
+        filterCharacters();
+      }
+  } else if (category === 'Character type' || category === 'other') {
+    if (secret[category].includes(value))
 
   }
 }
@@ -223,20 +233,32 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the character has a ${value}! Keep all characters that have a ${value}.`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the character doesn't have a ${value}! Remove all characters that have a ${value}`
       )
     }
-  } else if (category === 'other') {
-    // Similar to the one above
-  } else {
+  } else if (category === 'type') {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the character is a ${value}! Keep all characters that are ${value}s.`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the character isn't a ${value}. Remove all characters that are ${value}s.`
+      )
+    }
+  } else if (category === 'hair') {
+    if (keep) {
+      alert(
+        `Yes, the character has ${value} hair! Keep all characters whose hair is ${value}.`
+      )
+    } else {
+      alert(
+        `No, the characters doesn't have ${value} hair. Remove all characters whose hair is ${value}.`
+      )
     }
   }
 
@@ -276,4 +298,6 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start);
+findOut.addEventListener('click', checkQuestion);
+questions.addEventListener('change')

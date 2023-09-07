@@ -300,7 +300,7 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 
-const checkQuestion = () => {
+/*const checkQuestion = () => {
   console.log(`function checkQuestion`);
   const { category, value } = currentQuestion;
   let keep = false;
@@ -309,6 +309,16 @@ const checkQuestion = () => {
     keep = charactersInPlay.some((person) => person[category] === value);
   } else if (category === "accessories" || category === "other") {
     keep = charactersInPlay.some((person) => person[category].includes(value));
+  }
+*/
+const checkQuestion = () => {
+  const { category, value } = currentQuestion;
+  let keep = false;
+  // compares question to secretperson.
+  if (category === "hair" || category === "eyes") {
+    keep = value === secret[category];
+  } else if (category === "accessories" || category === "other") {
+    keep = secret[category].includes(value);
   }
 
   // After determining keep, call filterCharacters with keep as an argument

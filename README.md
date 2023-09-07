@@ -1,13 +1,25 @@
-# Project Name
+# Guess Who Game
 
-Replace this readme with your own information about your project.
+#1 Individual project
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Create a "Guess who?" game where you win by guessing who the secret person is among an ensamble of different person cards. During the game you guess on personal attributes to filter among persons and reduce the options.
 
-## The problem
+Tech: JavaScript, HTML, CSS
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Tech focus:
+
+- How to use objects in JavaScript
+
+- How to use arrays in JavaScript
+
+- How to use array methods such as `forEach()` and `filter()` 
+
+- Knowledge about closures and scope in JavaScript
+
+- More about manipulating the DOM using Javascript
+
+- How to structure your code in functions
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://euphonious-dolphin-4826b9.netlify.app

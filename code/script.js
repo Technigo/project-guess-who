@@ -2,6 +2,10 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const filter = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -19,7 +23,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Jacques',
@@ -27,7 +31,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['beard']
   },
   {
     name: 'Jai',
@@ -67,7 +71,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: ['bun']
   },
   {
     name: 'Jaqueline',
@@ -108,7 +112,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['beard']
   },
   {
     name: 'Jenni',
@@ -124,7 +128,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['bun']
   },
   {
     name: 'Jerry',
@@ -133,6 +137,7 @@ const CHARACTERS = [
     eyes: 'blue',
     accessories: ['hat'],
     other: []
+    
   },
   {
     name: 'Jess',
@@ -141,6 +146,7 @@ const CHARACTERS = [
     eyes: 'blue',
     accessories: ['glasses'],
     other: []
+    
   },
   {
     name: 'Jocelyn',
@@ -148,7 +154,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
-    other: []
+    other: ['bun']
   },
   {
     name: 'Jon',
@@ -188,7 +194,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: ['beard']
   },
   {
     name: 'Julie',
@@ -231,7 +237,9 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  generateBoard();
+  setSecret();
+  selectQuestion();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -240,12 +248,12 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value; 
 
   currentQuestion = {
     category: category,
-    // value: value
-  }
+    value: value
+  };
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -256,9 +264,17 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    if (secret[category].includes(value)) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
   } else if (category === 'accessories' || category === 'other') {
-
+    if (secret[category].includes(value)) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
   }
 }
 
@@ -266,60 +282,96 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'hair') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Good guess! The person have ${value} hair!`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `Sorry! The person doesn't have ${value} hair!`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
-  } else if (category === 'other') {
-    // Similar to the one above
-  } else {
+  } else if (category === 'eyes') {
+    
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Good guess! The person have ${value} eyes!`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `Sorry! The person doesn't have ${value} eyes!`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
+    }
+  } else if (category === 'accessories') {
+   
+    if (keep) {
+      alert(
+        `Good guess! The person wears ${value}!`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+    } else {
+      alert(
+        `Sorry! The person doesn't wear ${value}!`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+    }
+  
+  } else if (category === 'other') {
+    
+    if (keep) {
+      alert(
+        `Good guess! The person has a ${value}!`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+    } else {
+      alert(
+        `Sorry! The person does not have a ${value}!`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   }
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard();
 }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// When clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-}
+  const result = window.confirm(`Are you sure this is your choice?`);
 
-// If you confirm, this function is invoked
+  if (result) {
+    checkMyGuess(personToConfirm);
+  }
+};
+
+// If confirm, this function follows to unveal if the guess is right or wrong
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-}
+  if (personToCheck === secret.name) {
+    alert("Wohoo that's correct! You Win!");
+    board.innerHTML = "";
+    winOrLose.style.display = "block"; // show the end game overlay
+  } else {
+    alert(`Oh no! Your guess is wrong! The correct answer is ${secret.name}`);
+    board.innerHTML = "";
+    winOrLose.style.display = "block"; // show the end game overlay
+  }
+};
+
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion); 
+filter.addEventListener('click', checkQuestion); 
+playAgain.addEventListener("click", (event) => {
+  start();
+  winOrLose.style.display = "none"; //hide the end game overlay
+});

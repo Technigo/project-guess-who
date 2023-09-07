@@ -1,13 +1,14 @@
-# Project Name
+# Project Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+We created our own version of the classic game "Guess Who". I chose a minion & Gru theme.
+The focus features where to randomly select a secret character/minion and that the user could chose different options to narrow the number of choices to chose from.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I added additional options to the selector and updated the board with new characters. Job effort mainly in JS and some in CSS and HTML.
+If I had more time I would have added a counter for the number of guesses that the user used and I would have also made the mobile version have better responsiveness. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to the deployed project:
+https://guess-who-with-gru.netlify.app/

@@ -227,7 +227,8 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   console.log("secret")
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  currentQuestion = {};
 
 };
 
@@ -249,8 +250,9 @@ const start = () => {
 
 
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
+  const category = questions.options[questions.selectedIndex].parentNode.label;
   //const = value this just go here - and this is the value ex "hair" = the category is "brown" = the value
+  const value = questions.value;
 
 
   // This variable stores what option group (category) the question belongs to.
@@ -258,10 +260,11 @@ const selectQuestion = () => {
   // const value =
 
   currentQuestion = {
-    category: category,
+    category: category.toLowerCase(),
+    value: value.toLowerCase(),
     // value: value
-  }
-}
+  };
+};
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
@@ -345,4 +348,9 @@ start()
 restartButton.addEventListener('click', () => {
   start();
   console.log(start);
+});
+
+//This is the eventL for the selectQ function
+questions.addEventListener('change', () => {
+  selectQuestion();
 });

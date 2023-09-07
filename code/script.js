@@ -3,7 +3,6 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
 const findoutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
 //don't need a GUESS button DOM selector because we add this button dynamically in this JS
@@ -245,8 +244,7 @@ const generateBoard = () => {
 // Function - setSecret - Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret);
-
+  console.log(`Secret person is set as: ${secret.name}`);
 }
 
 // Function - selectQuestion - setting currentQuestion object when you select something in the dropdown
@@ -295,12 +293,12 @@ const checkQuestion = () => {
 
 // Function - filterCharacters - filter characters array and redraw the game board
 const filterCharacters = (keep) => {
-  console.log("we have entered filtercharacters")
-  console.log(`the value of keep is: ${keep}`)
 
   const { category, value } = currentQuestion
 
-  // Show the correct alert message for different categories
+  // The following shows the correct alert message for different categories 
+  //AND filters by category to re-populate the charactersInPlay array 
+  //AND invokes the generateBoard function to produce a new board based on the charactersInPlay Array
   if (category === 'hair') {
     if (keep) {
       alert(`YES, the person has ${value} hair! We will keep all people who have ${value} hair.`)
@@ -346,36 +344,29 @@ const filterCharacters = (keep) => {
     }
   }
 }
-// Determine what is the category
-// filter by category to keep or remove based on the keep variable.
-
-
-/* 
-  for hair and eyes :
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-    or
-    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
- 
-  for accessories and other
-    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    or
-    charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-*/
-
-// Invoke a function to redraw the board with the remaining people.
-
-
 
 // Function - guess - when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-}
+  console.log("we have entered the guess function")
 
+  let confirmGuess = confirm(`Are you sure you want to guess on ${personToConfirm}`);
+
+  if (confirmGuess) {
+    checkMyGuess(personToConfirm);
+  } else if (!confirmGuess) {
+    return;
+  }
+  console.log(`confirm equals: ${confirmGuess}`);
+  console.log(`This is the secret person: ${secret.name}`);
+
+}
 
 // Function - checkMyGuess - if you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  console.log("we have entered the last function - check my guess")
+  if (personToCheck === secret.name) {
+
+  }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

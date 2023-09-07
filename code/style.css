@@ -1,7 +1,8 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #86472B;
+  --secondary: #FFF3C7;
+  --tertiary: #CABB91;
 }
 
 body {
@@ -11,21 +12,37 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+.guess-counter {
+ width: 100%;
+  background-color: var(--secondary);
+  text-align: left;
+  font-size: 16px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  padding: 5% 2% 2% 0%;
+ }
+
+ .counter-text {
+  display: inline-block;
+  color: var(--primary);
+  margin: 0% 5% 0% 5%;
+ }
+
 h1 {
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: var(--primary);
 }
 
 .question-section {
-  width: 30%;
+  width: 35%;
   min-height: 100vh;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding: 3vw;
   align-items: flex-start;
   box-sizing: border-box;
 }
@@ -35,7 +52,7 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: var(--primary);
   width: 100%;
   margin: 24px 0;
 }
@@ -45,6 +62,8 @@ select {
 }
 
 .board-wrapper {
+  background-image: url(./images/city-image.jpg);
+  background-size: cover;
   width: 70%;
   display: flex;
   align-items: center;
@@ -63,8 +82,9 @@ select {
 .card {
   width: 135px;
   height: 165px;
+  background-color: var(--tertiary);
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 3px solid var(--primary);
   border-radius: 4px;
   margin: 3px;
   display: flex;
@@ -85,7 +105,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--primary);
   text-align: center;
   height: inherit;
 }
@@ -155,7 +175,6 @@ button {
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
   height: 100vh;
 }
 
@@ -166,6 +185,7 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  height: 100%;
 }
 
 .win-or-lose img {

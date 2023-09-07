@@ -39,7 +39,7 @@ const CHARACTERS = [
   {
     name: 'Cruella',
     img: 'imagesnew/cruellaDeVil.png',
-    hair: ['very specific'],
+    hair: 'very specific',
     eyes: 'blue',
     accessories: [],
     other: ['a smoking habit', 'a fashion habit']

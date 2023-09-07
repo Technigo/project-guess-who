@@ -291,10 +291,13 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${value}! Keep all people that wear ${value}`
       )
+      //filter out people from the charactersInPlay array using the filter method
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'other') {
     // Similar to the one above
@@ -302,10 +305,12 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has a ${value}! Keep all people that have a ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
         `No, the person doesn't have a ${value}! Remove all people that have a ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'eyes') {
     // Similar to the one above
@@ -313,10 +318,12 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       alert(
         `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
   } else {
     if (keep) {
@@ -324,11 +331,13 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(
         `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
   }
 
@@ -347,6 +356,7 @@ const filterCharacters = (keep) => {
   */
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

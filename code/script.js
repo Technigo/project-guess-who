@@ -2,7 +2,9 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-
+const findOutButton = document.getElementById('filter')
+const wOLtext = document.getElementById('winOrLoseText')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -334,7 +336,7 @@ else if (category === 'other') {
   } else {
     alert(`The secret person does not have ${value} as an attribute, let's remove everyone with ${value}.`) }
   }
-}
+
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   /* 
@@ -366,12 +368,9 @@ const guess = (personName) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (guessedPersonName) => {
   if (guessedPersonName === secret.name) {
-    alert(`You're awesome, you guessed ${secret.name} and that's the right answer!`);
+    alert(`You're awesome, you guessed ${secret.name} and that's the right answer!`)
   } else {
-    alert(`Sorry, you guessed wrong. Better luck next time!`);
-
-    
-    
+    alert(`Sorry, you guessed wrong. Better luck next time!`) 
   }
 
   // 1. Check if the personToCheck is the same as the secret person's name
@@ -384,4 +383,4 @@ const checkMyGuess = (guessedPersonName) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)}
+restartButton.addEventListener('click', start)}}

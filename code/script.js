@@ -247,39 +247,68 @@ const generateBoard = () => {
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
   console.log(secret);
+
 }
 
 // Function - selectQuestion - setting currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-  // This variable stores what option group (category) the question belongs to.
+  console.log(" selectQuestion function entered - make it an object")
 
-  // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].parentNode.value
+  const category = questions.options[questions.selectedIndex].parentNode.label //stores selected category after find out button
+  const value = questions.options[questions.selectedIndex].value //stores selected value after find out button
 
   //declare an object
   currentQuestion = {
     category: category,
     value: value
   }
+
+  console.log(currentQuestion)
+  return (currentQuestion)
 }
+
 
 // Function - checkQuestion - should be invoked when you click on 'Find Out' button
 const checkQuestion = () => {
+  console.log("find out button clicked, CheckQuestion function entered")
+
+  selectQuestion();
+
   const { category, value } = currentQuestion
+  let matched = true;
+  console.log(currentQuestion)
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // See if we should keep or remove people based on that, then invoke filterCharacters
+
+  console.log(`current question value:${currentQuestion.value}`)
+  console.log(`current secret value:${secret.accessories}`)
+
   if (category === 'hair' || category === 'eyes') {
+    if (secret.hair === value || secret.eyes === value) {
+      console.log(`${matched} hair colour or eye colour matched`)
+      filterCharacters(true)
+    } else {
+      filterCharacters(true)
+    }
+  }
 
-  } else if (category === 'accessories' || category === 'other') {
-
+  if (category === 'accessories' || category === 'other') {
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {
+      console.log(`${matched} accessories or other matched`)
+      //let keep = true and pass keep with next function?????
+      filterCharacters(true)
+      console.log("logged a true")
+    } else {
+      filterCharacters(false)
+      console.log("logged a false")
+    }
   }
 }
 
 // Function - filterCharacters - filter characters array and redraw the game board
 const filterCharacters = (keep) => {
+  console.log("we have entered filtercharacters")
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
   if (category === 'accessories') {
@@ -304,7 +333,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
+ 
     for accessories and other
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or
@@ -342,7 +371,7 @@ start()
 //NOTE: 4 events - restart button, find out button, guess button, play again button
 
 restartButton.addEventListener('click', start) //NOTE: technigo wrote this
+playAgainButton.addEventListener('click', start)
+findoutButton.addEventListener('click', checkQuestion)
 
-filterButton.addEventListener('click', filterCharacters)
-
-// dont need this nothing happens on change. filterDropdown.addEventListener('change', filterGuess)
+//filterDropdown.addEventListener('change', filterGuess) //this is suggested in instructions but I have not used it as I have all my event listeners linked to buttons.

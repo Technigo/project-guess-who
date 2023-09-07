@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const guessButton = document.getElementById('guess-button')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
@@ -241,7 +242,6 @@ const start = () => {
 
   //Invoke the secret character
   setSecret();
-  console.log(secret);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -259,9 +259,11 @@ const selectQuestion = () => {
   }
 }
 
+
+
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  const { category, value } = currentQuestion;
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -357,12 +359,10 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  if (confirm(`Are you sure you want to guess ${personToConfirm}?`) === true ) {
-    checkMyGuess(personToConfirm)
+  if (confirm(`Are you sure you want to guess ${personToConfirm}?`)) {
+    checkMyGuess(personToConfirm);
   } else {
-    alert(
-      `Ok then, keep playing!`
-  )
+    alert(`Ok then, keep playing!`);
   }
 }
  // store the interaction from the player in a variable.
@@ -389,11 +389,13 @@ const restartGame = () => {
   start();
 };
 
+
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
-playAgainButton.addEventListener('click', start);
 findOutButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', restartGame);
+

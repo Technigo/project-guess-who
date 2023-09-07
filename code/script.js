@@ -1,3 +1,5 @@
+// DEAR EVALUATOR! Please use the console in browser to check the current secret and some other console.logs.
+
 "use strict";
 
 // All the DOM selectors stored as short variables---------------------------------
@@ -8,6 +10,14 @@ const restartButton = document.getElementById('restart');
 //Find button
 const findoutButton = document.getElementById("filter");
 
+// result screen after guessing a person
+const resultscreen = document.getElementById("winOrLose");
+
+// result text on result screen
+const resultText = document.getElementById("winOrLoseText");
+
+// restart button on result screen
+const playagain = document.getElementById("playagain");
 
 // Array CHARACTERS with all the characters as objects, keys: name/img/hair/eyes/accessories/other(only smoker)
 const CHARACTERS = [
@@ -210,8 +220,9 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
-
 // all filtered/leftover cards per turn/initially all
+
+//functions
 
 // create the game board
 const generateBoard = () => {
@@ -225,10 +236,10 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
-        </div>
-      </div>
-    `
+          <button class="filled-button small" onclick="confirmguess('${person.name}')">Guess</button>
+        </div >
+      </div >
+  `
     // div for span is pos: abs + d:none, only displayed on  hover->.card:hover .guess
   })
 }
@@ -284,28 +295,28 @@ const checkQuestion = () => {
     } else {
       comparison = false;
     }
-    console.log(comparison);
+    console.log("comparison: " + comparison);
   } else if (category === "eyes") {
     if (questionValue === secret[category]) {
       comparison = true;
     } else {
       comparison = false;
     }
-    console.log(comparison);
+    console.log("comparison: " + comparison);
   } else if (category === 'accessories') {
     if (secret[category].includes(questionValue)) {
       comparison = true;
     } else {
       comparison = false;
     }
-    console.log(comparison);
+    console.log("comparison: " + comparison);
   } else if (category === "other") {
     if (questionValue === secret.other[0]) {
       comparison = true;
     } else {
       comparison = false;
     }
-    console.log(comparison);
+    console.log("comparison: " + comparison);
     filterCharacters(comparison);
   }
 
@@ -348,7 +359,7 @@ const filterCharacters = (keep) => {
     }
   } else if (category === 'eyes') {
     if (keep) {
-      alert(`Yes, the person has ${questionValue} eyes. Keep all people with ${questionValue} eyes.`);
+      alert(`Yes, the person has ${questionValue} eyes.Keep all people with ${questionValue} eyes.`);
       charactersInPlay = charactersInPlay.filter((items) => items[category] === questionValue);
     } else {
       alert(`No, the person does not have ${questionValue} eyes! Remove all people that have ${questionValue} eyes.`)
@@ -356,7 +367,7 @@ const filterCharacters = (keep) => {
   } else if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${questionValue}! Keep all people that wear ${questionValue}`);
+        `Yes, the person wears ${questionValue} !Keep all people that wear ${questionValue} `);
       charactersInPlay = charactersInPlay.filter((items) => items[category].includes(questionValue));
     } else {
       alert(
@@ -388,6 +399,29 @@ const filterCharacters = (keep) => {
   // 4. Hide the game board
   generateBoard(charactersInPlay);
 }
+// 
+
+//called by event handler confirmguess to check guess of user
+const checkguess = (guessToCheck) => {
+  const check = (secret.name === guessToCheck);
+  if (check) {
+    console.log("guess correct");
+    resultText.innerHTML = "Yeah, your guess was right!"
+  } else {
+    console.log("guess wrong");
+    resultText.innerHTML = `
+    Oops! Your guess was wrong.
+    Try again!`
+  }
+  resultscreen.style.display = "unset";
+}
+//event handler for guess button 
+const confirmguess = (guess) => {
+  const confirmation = window.confirm(`Make a guess on ${guess}?`);
+  if (confirmation) {
+    checkguess(guess);
+  }
+}
 
 // All the event listeners------------------------------------
 restartButton.addEventListener('click', start);
@@ -395,6 +429,16 @@ restartButton.addEventListener('click', start);
 questions.addEventListener("change", selectQuestion);
 
 findoutButton.addEventListener("click", checkQuestion);
+
+// to restart game on click on restart button
+restartButton.addEventListener("click", start);
+
+// play again button on result screen
+playagain.addEventListener("click", () => {
+  resultscreen.style.display = "none";
+  // unmask resultscreen for new game
+  start();
+});
 
 // CODE STARTS HERE ----------------------------------------------------------------------
 

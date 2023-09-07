@@ -202,9 +202,9 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+let secret;
+let currentQuestion;
+let charactersInPlay;
 
 // Draw the game board
 const generateBoard = () => {
@@ -244,42 +244,53 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].text;
 
- const currentQuestion = {
+  currentQuestion = {
     category: category,
-    value: value,
+    value: value
   }
-}
+
+if (category === "hair") {
+  currentQuestion = {
+    attribute: "hairColor",
+    value: value,
+    category: category,
+  }
+ } else if (category === "eyes") {
+    currentQuestion = {
+      attribute: "eyeColor",
+      value: value,
+      category: category,
+    }
+  } else if (category === "accessories") {
+    currentQuestion = {
+      attribute: "accessories",
+      value: value,
+      category: category,
+    }
+  } else if (category === "other") {
+    currentQuestion = {
+      attribute: value,
+      value: true,
+      category: category,
+    }
+  };
+};
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion;
+  const { category, value } = checkQuestion;
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  let keep; 
+  let keep = false; 
 
   if (category === 'hair' || category === 'eyes') {
-    if (secret [category] === value) {
-      keep = true
-      filterCharacters(true);
-    }
-    else {
-      keep = false
-      filterCharacters(false);
-    }
-
+    keep = secret [category] === value;
   } else if (category === 'accessories' || category === 'other') {
-     if (secret [category] === value) {
-      keep = true
-      filterCharacters(true);
+     keep = secret [category] === value; {
+      filterCharacters(keep);
      }
-
-     else {
-      keep = false
-      filterCharacters(false);
-     }
-
   }
   filterCharacters(keep);
 }
@@ -299,11 +310,19 @@ const filterCharacters = (keep) => {
     if (keep) {
       alert(`Yes, the person has a smoking habit. Keep all people that smoke.`)
     } else {
-      alert(`Yes, the person does not have a smoking habit. Remove all people that smokes.`)
+      alert(`No, the person does not have a smoking habit. Remove all people that smokes.`)
     }
+  }
+
+  const filteredCharacters = () => {
+    const { category, value } = currentQuestion
+  if (category === 'hair' || category === 'eyes') {
+    charactersInPlay = charactersInPlay.filter((person) => (person[category] === value) === keep);
+  } else if (category === 'accessories' || category === 'other') {
+    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value) === keep);
     generateBoard();
   }
-  
+}
   
   // charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
 

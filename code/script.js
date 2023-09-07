@@ -425,6 +425,17 @@ const guess = (personToConfirm) => {
 //   // 3. Show the win or lose section
 //   // 4. Hide the game board
 // }
+// const checkMyGuess = (personToCheck) => {
+//   if (personToCheck === secret.name) {
+//     // Display win message
+//     winOrLoseText.textContent = `Congratulations! You guessed right  it id ${personToCheck}`;
+//     winOrLoseSection.style.display = 'block';
+//   } else {
+//     winOrLoseText.textContent = `Oops, this was wrong. It's not ${personToCheck}.`;
+//     winOrLoseSection.style.display = 'block';
+//   }
+// };
+
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     // Display win message
@@ -435,7 +446,6 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseSection.style.display = 'block';
   }
 };
-
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------

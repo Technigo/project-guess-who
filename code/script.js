@@ -240,12 +240,13 @@ function start () {
     <img src=${person.img} alt=${person.name}/> 
     <div class="guess">
       <span>Guess on ${person.name}?</span>
-      <button class=filled-button small target=onklick>Guess</button> 
+      <button class=filled-button small target=click>Guess</button> 
     </div>
     `
-
   })
   // What else should happen when we start the game?
+  generateBoard()
+  setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -306,7 +307,7 @@ const filterCharacters = (keep) => {
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   
-   /* for 'hair' and 'eyes' :
+    for hair and eyes :
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
@@ -315,10 +316,11 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+  
 
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
+
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -364,6 +366,8 @@ start()
 restartButton.addEventListener('click', start)
 //board.addEventListener('click', start)
 guess.addEventListener('click', checkMyGuess)
+//add eventlistener to Guess button
+guess.addEventListener('click', guess)
 //questions.addEventListener('change', selectQuestion)
 
 console.log('hello') 

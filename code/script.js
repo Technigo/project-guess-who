@@ -201,9 +201,9 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+let secret   //secret person
+let currentQuestion //current question object
+let charactersInPlay //array of all people left in the game
 
 // Draw the game board
 const generateBoard = () => {
@@ -232,6 +232,7 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -277,11 +278,37 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
+      alert(
+        `Yes, the person is a ${value}, let's keep all people that is a ${value}`
+      )
+    } else {
+      alert(
+        `No, the person is not ${value}! Remove all the people who is a ${value}`
+      )
+    }
+  
+    // Similar to the one above
+  } else if (category === 'hair') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value}! Keep all the people with ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesnt have ${value}, let's remove all the people with ${value}!`)
+    }
+  }
+  else (category === 'eyes') {
+    if (keep) {
+      alert(
+        `Yes, the person has ${value}! Keep all the people with ${value}`
+        )
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
+      alert(
+        `No, the person doesnt have ${value}, let's remove all the people with ${value}!`
+      )
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }

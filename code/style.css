@@ -2,7 +2,17 @@
 :root {
   --primary: #f87171;
   --secondary: #fecaca;
+  --color-rose: #f89393;
+  --color-green: #e5ff9c;
+  --color-darker-green: #71f8c6;
+  --box-shadow-md: 0 4px 6px -1px rgb(0, 0, 0, 0.1), 0 2px 4px -2px rgb(0, 0, 0, 0.1);
+  --box-shadow-sm: 0 1px 2px 0 rgb(0, 0, 0, 0.05);
   box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
 }
 
 .initial-page {
@@ -12,6 +22,7 @@
   height: 100vh;
   width: 100vw;
   background-color: var(--secondary);
+  background: radial-gradient(circle, var(--secondary) 47%, var(--color-green) 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,6 +37,9 @@
   color: #fff;
   font-size: 30px;
   padding: 20px 40px;
+}
+.initial-page button:hover {
+  transform: scale(1.1);
 }
 
 .initial-page h2 {
@@ -47,7 +61,8 @@
   margin: 0;
   padding: 0;
   font-family: "Montserrat", sans-serif;
-  background-color: #fecaca;
+  background: var(--secondary);
+  background: linear-gradient(0deg, var(--secondary) 17%, var(--color-green) 100%);
   position: relative;
 }
 
@@ -59,12 +74,18 @@ h1 {
   color: white;
 }
 
+.icon-thinking {
+  width: 70px;
+  height: 70px;
+  transform: translate(20px, 6px);
+}
+
 .primary-heading {
   font-size: 60px;
   font-weight: 800;
   -webkit-text-stroke: 2px var(--primary);
   letter-spacing: 15px;
-  -webkit-filter: drop-shadow(2px 6px 0 #afe2c6);
+  -webkit-filter: drop-shadow(2px 6px 0 var(--color-darker-green));
 }
 
 .question-section {
@@ -97,7 +118,7 @@ select:focus {
 
 .counter-box {
   width: 100%;
-  border: 2px solid var(--primary);
+  border: 2px solid var(--color-darker-green);
   margin-top: 3vh;
   padding-bottom: 15px;
   border-radius: 3px;
@@ -169,6 +190,7 @@ main {
   border: 3px solid var(--secondary);
   margin: 3px;
   overflow: hidden;
+  box-shadow: var(--box-shadow-sm);
   perspective: 1000px; /* 3D effect */
 }
 
@@ -242,6 +264,8 @@ button {
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  box-shadow: var(--box-shadow-md);
+  transition: all 0.3s ease;
 }
 
 aside .filled-button {
@@ -266,6 +290,7 @@ aside .filled-button {
 }
 
 .filled-button:hover {
+  border: solid 2px var(--primary);
   background-color: white;
   color: var(--primary);
 }
@@ -313,6 +338,7 @@ aside .filled-button {
   max-height: 100vh;
   min-height: 100vh;
   background: var(--primary);
+  background: linear-gradient(0deg, var(--color-rose) 17%, var(--color-green) 100%);
   color: #fff;
   display: none;
 }
@@ -323,13 +349,15 @@ aside .filled-button {
   border: #fff solid 0.5px;
   border-radius: 5px;
   color: #fff;
-  background-color: #f89393;
+  background-color: var(--color-rose);
   margin-top: 10px;
-  transition: background 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  box-shadow: var(--box-shadow-md);
 }
 
 .game-clear-btn:hover {
-  background-color: #fecaca;
+  background-color: var(--secondary);
+  transform: translateY(3px);
 }
 
 .game-score-box {
@@ -340,13 +368,16 @@ aside .filled-button {
 
 .modal-table {
   border: 1px solid #fff;
-  padding: 10px 20px;
-  background-color: #f89393;
+  padding: 5px 20px 10px;
+  background-color: var(--color-rose);
+  box-shadow: var(--box-shadow-md);
+  border-radius: 5px;
 }
 
 thead tr th {
   font-size: 20px;
   border: none;
+  padding: 0;
 }
 
 td {
@@ -360,29 +391,62 @@ td {
   border: 0.5px solid #fff;
   padding: 2px 8px;
 }
+
+.table-alert-text {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 10px auto;
+  text-align: center;
+  color: #666;
+}
+
+.close-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 120px;
+  right: 260px;
+  transition: all 0.3s ease;
+  box-shadow: var(--box-shadow-md);
+}
+
+.close-icon:hover {
+  transform: translateY(3px);
+}
+
 .modal-heading {
-  font-size: 40px;
+  font-size: 50px;
 }
 
 .best-score-container {
-  background-color: #f89393;
+  background-color: var(--color-rose);
   border: solid 1px #fff;
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  align-items: center;
   width: fit-content;
-  padding: 0 20px;
+  padding: 10px 20px;
   margin-bottom: 10px;
+  box-shadow: var(--box-shadow-md);
+  border-radius: 5px;
 }
 
-.best-score-container p {
-  font-weight: 700;
+.best-players-box p {
+  font-weight: 500;
+  font-size: 14px;
+  padding: 2px 0;
+  margin: 0;
+}
+
+.best-players-box {
+  display: flex;
+  gap: 10px;
 }
 
 .best-score-container h3 {
   font-size: 20px;
-  text-decoration: underline;
+  text-align: center;
+  margin: 0;
+  padding: 4px 0;
 }
 
 .modal-window-inner {
@@ -390,8 +454,6 @@ td {
   padding: 50px 200px 0;
   margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .modal-svg {
@@ -399,9 +461,34 @@ td {
   bottom: 0;
   right: 0;
 }
+
+/* ANIMATIONS */
+.animation-wrapper {
+  content: "";
+  width: 500px;
+  height: 20px;
+}
+
+.animation-box {
+  content: "";
+  border-radius: 5px;
+  height: 20px;
+  background-color: var(--color-darker-green);
+}
+
+.left {
+  width: 0%;
+  animation: rotationFromLeft 5s ease infinite;
+}
+
+.right {
+  margin-top: 50px;
+  width: 100%;
+  animation: rotationFromRight 5s ease infinite;
+}
 /******************************************************************** */
 
-@media (max-width: 1200px) {
+@media (max-width: 1260px) {
   .question-section {
     padding: 3vw;
   }
@@ -426,7 +513,7 @@ td {
     font-weight: 600;
     -webkit-text-stroke: 1.5px var(--primary);
     letter-spacing: 7px;
-    -webkit-filter: drop-shadow(3px 6px 0 #afe2c6);
+    -webkit-filter: drop-shadow(3px 6px 0 var(--color-darker-green));
   }
 
   .counter-box h2 {
@@ -468,6 +555,10 @@ td {
   .modal-window-inner {
     padding: 30px 100px 0;
   }
+  .close-icon {
+    top: 80px;
+    right: 80px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -478,6 +569,7 @@ td {
   .initial-page button {
     font-size: 20px;
     padding: 14px 32px;
+    margin-top: 20px;
   }
 
   .initial-page h2 {
@@ -509,7 +601,7 @@ td {
     font-size: 40px;
     -webkit-text-stroke: 1px var(--primary);
     letter-spacing: 3px;
-    -webkit-filter: drop-shadow(3px 6px 0 #afe2c6);
+    -webkit-filter: drop-shadow(3px 6px 0 var(--color-darker-green));
   }
 
   h3 {
@@ -553,6 +645,7 @@ td {
   #timer {
     font-size: 20px;
   }
+
   .inner-card-sm {
     width: 100%;
     height: 100%;
@@ -602,18 +695,6 @@ td {
 
   /* Modal Window */
 
-  .modal-window {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    max-height: 100vh;
-    min-height: 100vh;
-    background: var(--primary);
-    color: #fff;
-    display: none;
-  }
-
   .game-clear-btn {
     font-size: 18px;
     padding: 3px 8px;
@@ -621,12 +702,14 @@ td {
     border-radius: 3px;
     margin-top: 10px;
   }
+
   .modal-table {
     padding: 6px 12px;
   }
 
   thead tr th {
     font-size: 14px;
+    font-weight: 400;
   }
 
   th,
@@ -635,6 +718,8 @@ td {
     border-collapse: collapse;
     border: 0.5px solid #fff;
     padding: 1px 4px;
+    font-weight: 400;
+    font-size: 12px;
   }
   .modal-heading {
     font-size: 28px;
@@ -652,9 +737,24 @@ td {
   .best-score-container h3 {
     font-size: 14px;
   }
+
+  .close-icon {
+    top: 40px;
+    right: 40px;
+  }
+
+  .icon-thinking {
+    width: 50px;
+    height: 50px;
+    transform: translate(10px, 5px);
+  }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 530px) {
+  .animation-wrapper {
+    width: 100%;
+    height: 10px;
+  }
   thead tr th {
     font-size: 16px;
     border: none;
@@ -690,7 +790,46 @@ td {
   .modal-window-inner {
     padding: 30px 20px 0;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
+  }
+  .close-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/*************************************/
+/* animations */
+
+@keyframes rotationFromLeft {
+  0% {
+    width: 0%;
+    background-color: var(--color-green);
+  }
+
+  50% {
+    width: 100%;
+    background-color: var(--color-darker-green);
+  }
+
+  100% {
+    width: 1%;
+    background-color: var(--color-green);
+  }
+}
+
+@keyframes rotationFromRight {
+  0% {
+    width: 100%;
+    background-color: var(--color-green);
+  }
+
+  50% {
+    width: 0%;
+    background-color: var(--color-darker-green);
+  }
+
+  100% {
+    width: 99%;
+    background-color: var(--color-green);
   }
 }

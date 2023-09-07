@@ -33,16 +33,25 @@ let timerInterval;
 // This is for localStorage.
 let finalCounts = 0;
 let finalTimerValue = "";
-
-const dataStorage = {
-  username: "",
-  howManyGuesses: "",
-  time: "",
-};
-
-const arrayForLocalStorage = [];
+let arrayForLocalStorage = localStorage.getItem("items")
+  ? JSON.parse(localStorage.getItem("items"))
+  : [];
 /*****************************************************************************/
 
+// For Modal Window
+const bestScoreContainer = document.getElementById("best-score-container-inner");
+const tbody = document.getElementById("table-body");
+const table = document.querySelector(".modal-table");
+const clearGameBtn = document.querySelector(".game-clear-btn");
+const gameDataBtn = document.querySelector(".game-data-btn");
+const modalWindow = document.querySelector(".modal-window");
+const modalCloseBtn = document.querySelector(".close-icon");
+
+let modalDisplayArr;
+let bestScore = 0;
+let bestPlayerObj;
+
+/*********************************************************************/
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -325,7 +334,7 @@ window.addEventListener("resize", () => {
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = "";
-  console.log(window.screen.width);
+
   charactersInPlay.forEach((person) => {
     if (screenWidth >= 769) {
       board.innerHTML += `
@@ -359,7 +368,6 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
-  console.log(secret);
 };
 
 // This function to start (and restart) the game
@@ -566,10 +574,12 @@ const checkMyGuess = (personToCheck) => {
   // Store final counter number and time for local storage
   finalCounts = counter;
   finalTimerValue = timer.textContent;
-  console.log(finalCounts);
+  handleLocalStorage();
 
   // check a name of secret and guessed person's name is the same
   if (personToCheck === secret.name) {
+    // handleLocalStorage();
+
     winOrLoseText.textContent = `✨🎉Conglaturation!! 🎉✨`;
     createSound("./images/audio/win-sound.mp3");
   } else {
@@ -577,6 +587,22 @@ const checkMyGuess = (personToCheck) => {
                                         Game over 😱 `;
     createSound("./images/audio/fail-sound.mp3");
   }
+};
+
+// Handle Local Storage
+
+const handleLocalStorage = () => {
+  const dataStorage = {
+    playerName: "sakura",
+    howManyGuesses: finalCounts,
+    time: finalTimerValue,
+  };
+  // Pushing a newly created obj with game data into the array that stores data from localstorage
+  arrayForLocalStorage.push(dataStorage);
+
+  // then store again in localstorage
+  window.localStorage.setItem("items", JSON.stringify(arrayForLocalStorage));
+  console.log(localStorage);
 };
 
 /*********************************************************************/
@@ -602,29 +628,6 @@ startGameBtn.onclick = function () {
   start();
 };
 
-/*********************************************************************/
-// For Modal Window
-const bestPlayer = document.getElementById("best-player");
-const bestScore = document.getElementById("best-score");
-const bestTime = document.getElementById("best-time");
-const table = document.getElementsByTagName("table");
-const clearGameBtn = document.querySelector(".clear-game-btn");
-const gameDataBtn = document.querySelector(".game-data-btn");
-const modalWindow = document.querySelector(".modal-window");
-
-// This is a button which is placed in aside, under count box. When it is clicked, modal window will open. You can see previous game data, which are stored in localStorage.
-gameDataBtn.addEventListener("click", () => {
-  modalWindow.style.display = "flex";
-  modalWindow.style.zIndex = "100000";
-});
-
-// This works for preventing scrolling when a modal window is open
-modalWindow.addEventListener("wheel", preventScroll, { passive: false });
-function preventScroll(e) {
-  e.preventDefault();
-  e.stopPropagation();
-  return false;
-}
 /*********************************************************************/
 // Sound effect function
 
@@ -666,6 +669,133 @@ const startTimer = () => {
     }
   }, 1000);
 };
+/*********************************************************************/
+// For Modal Window
+
+// Here I am getting data from localStorage
+const getDataFromLocalStorage = () => {
+  if (localStorage.length === 1) {
+    modalDisplayArr = JSON.parse(localStorage.getItem("items"));
+  }
+};
+
+// checking the best scored game
+const checkBextGame = (arr) => {
+  arr.forEach((item) => {
+    if (item.howManyGuesses <= bestScore) {
+      bestScore = item.howManyGuesses;
+      bestPlayerObj = item;
+    }
+  });
+
+  // if there are the some score as the best score, then it filters and make it into a new array
+
+  const bestScoreArr = arr.filter((item) => item.howManyGuesses === bestScore);
+
+  if (bestScoreArr.length < 5) {
+    bestScoreArr.forEach((item) => {
+      const bestPlayerBox = document.createElement("div");
+      bestPlayerBox.classList.add("best-players-box");
+      bestPlayerBox.innerHTML += `
+    <p>Player: ${item.playerName}</p>
+    <p>Guesses: ${item.howManyGuesses}</p>
+    <p>Time: ${item.time}</p>
+    `;
+      bestScoreContainer.insertAdjacentElement("beforeend", bestPlayerBox);
+    });
+  } else {
+    const ajustedBestScoreArr = bestScoreArr.slice(0, 4);
+    ajustedBestScoreArr.forEach((item) => {
+      const bestPlayerBox = document.createElement("div");
+      bestPlayerBox.classList.add("best-players-box");
+      bestPlayerBox.innerHTML += `
+    <p>Player: ${item.playerName}</p>
+    <p>Guesses: ${item.howManyGuesses}</p>
+    <p>Time: ${item.time}</p>
+    `;
+      bestScoreContainer.insertAdjacentElement("beforeend", bestPlayerBox);
+    });
+  }
+};
+// This creates table tr
+const createHTMLForTable = (arr) => {
+  // creating html for each item in an array
+  for (let i = 0; i < arr.length; i++) {
+    console.log(i);
+    tbody.innerHTML += `<tr>
+  <td>${arr[i].playerName}</th>
+  <td>${arr[i].howManyGuesses}</th>
+  <td>${arr[i].time}</th>
+  <tr>
+`;
+    //  addting trElement the end of the childelement of Tbody
+    table.insertAdjacentElement("beforeend", tbody);
+  }
+};
+
+// Create table element for a table on a modal window.
+const alartMessageBox = document.createElement("div");
+const createTableElement = (arr) => {
+  if (arr.length < 10) {
+    createHTMLForTable(arr);
+  } else {
+    const ajustedArr = arr.slice(0, 9);
+    createHTMLForTable(ajustedArr);
+
+    alartMessageBox.classList.add("table-alert-text");
+    alartMessageBox.textContent = "Please clear the data to store new data";
+    table.insertAdjacentElement("afterend", alartMessageBox);
+  }
+};
+
+/****************** Modal Event Handlers ************************************/
+
+// This is a button you can clean up localstorage and data that is displayed in a table.
+clearGameBtn.addEventListener("click", () => {
+  localStorage.clear();
+  console.log("clear", localStorage);
+  tbody.textContent = "";
+  alartMessageBox.textContent = "";
+  bestScoreContainer.textContent = "";
+});
+
+// Closeing icon on a modal window event handler
+modalCloseBtn.addEventListener("click", () => {
+  // hide a modal window
+  modalWindow.style.display = "none";
+  modalWindow.style.zIndex = "-1";
+  // clears up textcontent on a modal so that the next time when a modal is open, it won't show old data and won't mess up.
+  tbody.textContent = "";
+  alartMessageBox.textContent = "";
+  bestScoreContainer.textContent = "";
+});
+
+// This is a button which is placed in aside, under count box. When it is clicked, modal window will open. You can see previous game data, which are stored in localStorage.
+gameDataBtn.addEventListener("click", () => {
+  modalWindow.style.display = "flex";
+  modalWindow.style.zIndex = "100000";
+  clearGameBtn.style.zIndex = "100000";
+  getDataFromLocalStorage();
+  // This scrolls up to the top of the window, when a modal is opened.
+  window.scrollTo(0, 0);
+  // if there is a data that is stored in localstorage, then a modal would show some previous game data.
+  if (localStorage.length === 1) {
+    createTableElement(arrayForLocalStorage);
+    checkBextGame(arrayForLocalStorage);
+  } else {
+    console.log("no Data");
+  }
+});
+
+// This works for preventing scrolling when a modal window/ initial page is open
+modalWindow.addEventListener("wheel", preventScroll, { passive: false });
+initialPage.addEventListener("wheel", preventScroll, { passive: false });
+
+function preventScroll(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
+}
 
 /**************************************************************************************************************************************************/
 // All the event listeners
@@ -673,7 +803,6 @@ const startTimer = () => {
 // Listen to page load event and set it pageLoad to true, then when start btn is clicked, the value is assignted to false.
 // only when pageload = false, time starts.
 window.addEventListener("load", (event) => {
-  console.log("page true");
   pageLoad = true;
 });
 

@@ -21,7 +21,8 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: [],
+    nationality: 'australian'           //added another property to ask about nationality
   },
   {
     name: 'Jack',
@@ -29,7 +30,8 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: [],
+    nationality: 'australian'
   },
   {
     name: 'Jacques',
@@ -37,7 +39,8 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker'],
+    nationality: 'british'
   },
   {
     name: 'Jai',
@@ -45,7 +48,8 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: [],
+    nationality: 'icelandic'
   },
   {
     name: 'Jake',
@@ -53,7 +57,8 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    nationality: 'british'
   },
   {
     name: 'James',
@@ -61,7 +66,8 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    nationality: 'icelandic'
   },
   {
     name: 'Jana',
@@ -69,7 +75,8 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    nationality: 'swiss'
   },
   {
     name: 'Jane',
@@ -77,7 +84,8 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    nationality: 'australian'
   },
   {
     name: 'Jaqueline',
@@ -85,7 +93,8 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    nationality: 'icelandic'
   },
   {
     name: 'Jazebelle',
@@ -93,7 +102,8 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['smoker'],
+    nationality: 'swiss'
   },
   {
     name: 'Jean',
@@ -101,7 +111,8 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker'],
+    nationality: 'australian'
   },
   {
     name: 'Jeane',
@@ -109,7 +120,8 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    nationality: 'swiss'
   },
   {
     name: 'Jed',
@@ -117,7 +129,8 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoker'],
+    nationality: 'icelandic'
   },
   {
     name: 'Jenni',
@@ -125,7 +138,8 @@ const CHARACTERS = [
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],
-    other: []
+    other: [],
+    nationality: 'british'
   },
   {
     name: 'Jeri',
@@ -133,7 +147,8 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    nationality: 'australian'
   },
   {
     name: 'Jerry',
@@ -141,7 +156,8 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: [],
+    nationality: 'icelandic'
   },
   {
     name: 'Jess',
@@ -149,7 +165,8 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'blue',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    nationality: 'swiss'
   },
   {
     name: 'Jocelyn',
@@ -157,7 +174,8 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    nationality: 'british'
   },
   {
     name: 'Jon',
@@ -165,7 +183,8 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: [],
+    nationality: 'icelandic'
   },
   {
     name: 'Jordan',
@@ -173,7 +192,8 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: [],
+    nationality: 'british'
   },
   {
     name: 'Josephine',
@@ -181,7 +201,8 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: [],
+    nationality: 'swiss'
   },
   {
     name: 'Josh',
@@ -189,7 +210,8 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: [],
+    nationality: 'icelandic'
   },
   {
     name: 'Jude',
@@ -197,7 +219,8 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'green',
     accessories: [],
-    other: []
+    other: [],
+    nationality: 'australian'
   },
   {
     name: 'Julie',
@@ -205,7 +228,8 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: [],
+    nationality: 'icelandic'
   },
 ]
 
@@ -251,12 +275,11 @@ const generateBoard = () => {
 // Function - setSecret - Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(`Secret person is set as: ${secret.name}`);
+  console.log(`Secret person is set as: ${secret.name}`); //Used for debugging
 }
 
 // Function - selectQuestion - setting currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  console.log(" selectQuestion function entered - make it an object")
 
   const category = questions.options[questions.selectedIndex].parentNode.label //stores selected category after find out button
   const value = questions.options[questions.selectedIndex].value //stores selected value after find out button
@@ -272,14 +295,13 @@ const selectQuestion = () => {
 
 // Function - checkQuestion - should be invoked when you click on 'Find Out' button
 const checkQuestion = () => {
-  console.log("find out button clicked, CheckQuestion function entered")
 
   selectQuestion(); //jump into selectQuestion to get details of what the user has guessed and return here to compare the values
 
-  const { category, value } = currentQuestion
+  const { category, value, } = currentQuestion
 
-  if (category === 'hair' || category === 'eyes') {
-    if (secret.hair === value || secret.eyes === value) {
+  if (category === 'hair' || category === 'eyes' || category === 'nationality') {
+    if (secret.hair === value || secret.eyes === value || secret.nationality === value) {
       filterCharacters(true)
     } else {
       filterCharacters(false)
@@ -301,6 +323,8 @@ const filterCharacters = (keep) => {
 
   const { category, value } = currentQuestion
 
+  console.log(`INSIDE filter question: Secret person is set as: ${secret.name}. category: ${category} value: ${value}`);
+
   // The following shows the correct alert message for different categories 
   //AND filters by category to re-populate the charactersInPlay array 
   //AND invokes the generateBoard function to produce a new board based on the charactersInPlay Array
@@ -308,23 +332,30 @@ const filterCharacters = (keep) => {
     if (keep) {
       alert(`YES, the person has ${value} hair! We will keep all people who have ${value} hair.`)
       charactersInPlay = charactersInPlay.filter((person) => person.hair === value);
-      console.log(`this should display the new array: ${charactersInPlay}`);
       generateBoard(charactersInPlay);
     } else {
       alert(`NO, the person doesn't have ${value} hair. We will remove all people who have ${value} hair`)
       charactersInPlay = charactersInPlay.filter((person) => person.hair !== value);
-      console.log(`this should display the new array: ${charactersInPlay}`);
       generateBoard(charactersInPlay);
     }
   } else if (category === 'eyes') {
     if (keep) {
       alert(`YES, the person has ${value} eyes! We will keep all people who have ${value} coloured eyes.`)
       charactersInPlay = charactersInPlay.filter((person) => person.eyes === value);
-      console.log(`this should display the new array: ${charactersInPlay}`);
       generateBoard(charactersInPlay);
     } else {
       alert(`NO, the person doesn't have ${value} eyes. We will remove all people who have ${value} eyes`)
       charactersInPlay = charactersInPlay.filter((person) => person.eyes !== value);
+      generateBoard(charactersInPlay);
+    }
+  } else if (category === 'nationality') {
+    if (keep) {
+      alert(`YES, the person is ${value} ! We will keep all people who are ${value}.`)
+      charactersInPlay = charactersInPlay.filter((person) => person.nationality === value);
+      generateBoard(charactersInPlay);
+    } else {
+      alert(`NO, the person is not ${value}. We will remove all people who are ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => person.nationality !== value);
       generateBoard(charactersInPlay);
     }
   } else if (category === 'accessories') {
@@ -347,6 +378,8 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person.other.includes(value));
       generateBoard(charactersInPlay);
     }
+  } else {
+    generateBoard(charactersInPlay);
   }
 }
 

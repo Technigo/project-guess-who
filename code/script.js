@@ -230,6 +230,7 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 function start () {
+  board.innerHTML = ''
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   charactersInPlay.forEach((person) => {
@@ -239,7 +240,7 @@ function start () {
     <img src=${person.img} alt=${person.name}/> 
     <div class="guess">
       <span>Guess on ${person.name}?</span>
-      <button class=filled-button small">Guess</button>
+      <button class=filled-button small target=onklick>Guess</button> 
     </div>
     `
 
@@ -362,6 +363,8 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 //board.addEventListener('click', start)
+guess.addEventListener('click', checkMyGuess)
+//questions.addEventListener('change', selectQuestion)
 
 console.log('hello') 
 console.log('hello')

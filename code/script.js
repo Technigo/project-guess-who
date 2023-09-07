@@ -375,7 +375,6 @@ const restartGame = () => {
 start();
 
 // All the event listeners
-
 restartButton.addEventListener('click', start);
 findOutButton.addEventListener('click', checkQuestion);
 playAgainButton.addEventListener('click', restartGame);

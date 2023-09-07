@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #F8ECD1;
+  --secondary: #85586F;
 }
 
 body {
@@ -17,6 +17,7 @@ h1 {
   line-height: 48px;
   margin: 10px 0;
   color: white;
+  font-family: 'Seymour One', sans-serif;
 }
 
 .question-section {
@@ -59,13 +60,44 @@ select {
   align-content: center;
 }
 
+.game-instructions {
+  background: #AC7D88;
+  margin-top: 15px;
+  padding: 5px;
+  border-radius: 20px;
+  color: var(--primary);
+  font-family: 'Indie Flower', cursive;
+  font-size: 13px;
+  text-align: center;
+}
+
+.game-instructions:hover {
+  cursor: pointer;
+  border: 2px solid #F8ECD1;
+}
+
+.game-instructions-extended {
+  background: #AC7D88;
+  display: none;
+  font-family: 'Indie Flower', cursive;
+  font-size: 13px;
+  padding: 3px;
+  border-radius: 20px;
+  margin-top: 3px;
+  color: var(--primary);
+}
+
+.active + .game-instructions-extended {
+  display: block;
+}
+
 /****** CARD ******/
 .card {
   width: 135px;
   height: 165px;
   overflow: hidden;
   border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border-radius: 15px;
   margin: 3px;
   display: flex;
   flex-direction: column;
@@ -136,7 +168,7 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #AC7D88;
 }
 
 .filled-button:hover {

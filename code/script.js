@@ -244,6 +244,13 @@ const start = () => {
 
 };
 
+const restart = () => {
+  charactersInPlay = CHARACTERS;
+  setSecretPerson();
+  currentQuestion = {};
+  generateBoard();
+};
+
 // setting the currentQuestion object when you select something in the dropdown
 // .parentNode.label stores hair and eyes
 // category is the options - 

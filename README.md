@@ -1,8 +1,6 @@
 # project-guess-who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project is about building a digital version of the classic board game Guess Who using JavaScript, HTML, and CSS.
 
 ## The problem
 

@@ -5,7 +5,7 @@ const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
-//const playAgainButton = document.getElementById('playAgain')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -279,12 +279,12 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
       );
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
@@ -292,12 +292,12 @@ const filterCharacters = (keep) => {
     // Similar to the one above
     if (keep) {
       alert(
-        `Yes, the person has ${value}! Keep all people that has ${value}`
+        `Yes, the person is a ${value}! Keep all people that is a ${value}.`
       );
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
-        `No, the person doesn't have ${value}! Remove all people that has ${value}`
+        `No, the person isn't a ${value}! Remove all people that isn't a ${value}.`
       );
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
@@ -379,3 +379,10 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
+
+// Sets up a event listener for the click event. Makes the board regenerate and restarts the game.
+playAgainButton.addEventListener('click', (event) => {
+  winOrLose.style.display = "none";
+  board.style.display = "flex"
+  start();
+})

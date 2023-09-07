@@ -13,7 +13,7 @@ body {
 
 h1 {
   font-size: 42px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 48px;
   margin: 10px 0;
   color: white;
@@ -22,10 +22,13 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  /*background-color: var(--secondary);*/
+  background-image: url("./images/pexels-brett-jordan-11123244kopia.jpg");
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding: 3vw 5vw 5vw 5vw;
   align-items: flex-start;
   box-sizing: border-box;
 }
@@ -45,6 +48,10 @@ select {
 }
 
 .board-wrapper {
+  /*background-image: url("./images/pexels-ann-h-11141897kopia.jpg");
+  background-size: cover;
+  background-position: center;*/
+  background: #1d7a8d;
   width: 70%;
   display: flex;
   align-items: center;
@@ -61,6 +68,7 @@ select {
 
 /****** CARD ******/
 .card {
+  background-color: #fff;
   width: 135px;
   height: 165px;
   overflow: hidden;
@@ -175,6 +183,30 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  font-size: 16px;
+  background-color: #155663;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+}
+
+.copyright img {
+  width: 30px;
+}
+
+footer a:link,
+a:visited {
+  font-size: 20px;
+  color: #fff;
 }
 
 @media (max-width: 768px) {

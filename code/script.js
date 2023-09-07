@@ -299,68 +299,90 @@ const selectQuestion = () => {
 //------------------------------------------------------------------------
 
 // This function should be invoked when you click on 'Find Out' button.
+
 const checkQuestion = () => {
   console.log(`function checkQuestion`);
   const { category, value } = currentQuestion;
+  let keep = false;
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
   if (category === "hair" || category === "eyes") {
-    charactersInPlay = charactersInPlay.filter(
-      (person) => person[category] === value
-    );
+    keep = charactersInPlay.some((person) => person[category] === value);
   } else if (category === "accessories" || category === "other") {
-    charactersInPlay = charactersInPlay.filter((person) =>
-      person[category].includes(value)
-    );
+    keep = charactersInPlay.some((person) => person[category].includes(value));
   }
-  filterCharacters(charactersInPlay.length > 0);
+
+  // After determining keep, call filterCharacters with keep as an argument
+  filterCharacters(keep);
 };
 
 //----------------------------------------------------------------------
 
 const filterCharacters = (keep) => {
-  console.log(`Filter characters`);
   const { category, value } = currentQuestion;
-
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
       alert(
         `Yes, the person wears ${value}! Keep all people that wear ${value}`
       );
     } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
+
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
       );
     }
   } else if (category === "other") {
     if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) =>
+        person[category].includes(value)
+      );
+
       alert(
         `Yes, the person has a ${value}! Keep all people that have a ${value}`
       );
     } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => !person[category].includes(value)
+      );
+
       alert(
         `No, the person doesn't have a ${value}! Remove all people that have a ${value}`
       );
     }
   } else if (category === "eyes") {
     if (keep) {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
       alert(
         `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}`
       );
     } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
       alert(
         `No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}`
       );
     }
   } else if (category === "hair") {
     if (keep) {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] === value
+      );
       alert(
         `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}`
       );
     } else {
+      charactersInPlay = charactersInPlay.filter(
+        (person) => person[category] !== value
+      );
       alert(
         `No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}`
       );
@@ -378,10 +400,10 @@ const guess = (personToConfirm) => {
   const confirmed = confirm(
     `Are you sure you want to take a guess on ${personToConfirm}`
   );
-  const playerInteraction = `Guessed` + personToConfirm;
+
   if (confirmed) {
     console.log(`Player's guess`);
-    checkMyGuess(personToConfirm, playerInteraction);
+    checkMyGuess(personToConfirm);
   } else {
     console.log(`Guess canceled`);
     alert(`Okay! So you didn't want to guess? That's fine`);
@@ -394,7 +416,7 @@ const guess = (personToConfirm) => {
 
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    winOrLoseText.textContent = `Congratulations! You guessed right  it id ${personToCheck}`;
+    winOrLoseText.textContent = `Congratulations! You guessed right, it's ${personToCheck}`;
     result.style.display = "block";
   } else {
     winOrLoseText.textContent = `Oops, this was wrong. It's not ${personToCheck}.`;
@@ -407,8 +429,6 @@ const checkMyGuess = (personToCheck) => {
 
 // Invokes the start function when website is loaded
 start();
-
-//----------------------------------------------------------------------------
 
 // All the event listeners
 restartButton.addEventListener("click", start);

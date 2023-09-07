@@ -5,7 +5,7 @@ const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
-//const playAgainButton = document.getElementById('playAgain') BEHÖVS DEN?
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -391,6 +391,13 @@ const checkMyGuess = (personToCheck) => {
   }
 }
 
+//If the player wants to play again - the win or lose section needs to hide, the board should be visible again and the start function should be invoked
+const playAgain = () => {
+  winOrLose.style.display = "none"
+  board.style.display = "flex"
+  start()
+}
+
 // Invokes the start function when website is loaded
 start()
 
@@ -398,3 +405,4 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', playAgain)

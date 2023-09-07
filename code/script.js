@@ -318,7 +318,7 @@ const filterCharacters = (keepParameter) => {
       alert(
         `Yes, the person has ${value} hair! Keep all people that have ${value} hair.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => { person[category] === value })
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       alert(
         `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair.`

@@ -21,197 +21,237 @@ winOrLose.appendChild(winnerLoserP);
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['sunglasses', 'a hat'],
+    name: 'Barbie',
+    img: 'imagesnew/barbie.png',
+    hair: 'blonde',
+    eyes: 'blue',
+    accessories: ['jewelry'],
+    other: ['a fashion habit']
+  },
+  {
+    name: 'Count Orlok',
+    img: 'imagesnew/countOrlok.png',
+    hair: 'no',
+    eyes: 'haunting',
+    accessories: [],
+    other: ['elf ears', 'a magical habit', 'a striking complexion']
+  },
+  {
+    name: 'Cruella',
+    img: 'imagesnew/cruellaDeVil.png',
+    hair: ['very specific'],
+    eyes: 'blue',
+    accessories: [],
+    other: ['a smoking habit', 'a fashion habit']
+  },
+  {
+    name: 'Deloris',
+    img: 'imagesnew/deloris.png',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: ['sunglasses', 'a headpiece'],
     other: []
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
+    name: 'Dobby',
+    img: 'imagesnew/dobby.png',
+    hair: 'no',
     eyes: 'blue',
-    accessories: ['a hat', 'an eye-patch'],
-    other: ['a beard']
+    accessories: [],
+    other: ['elf ears', 'a magical habit']
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
+    name: 'Dorothy',
+    img: 'imagesnew/dorothyGale.png',
+    hair: 'brown',
+    eyes: 'brown',
+    accessories: ['a dog'],
+    other: ['braids', 'a magical habit']
+  },
+  {
+    name: 'mr Corleone',
+    img: 'imagesnew/donVitoCorleone.png',
     hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['a smoking habit', 'a beard']
+    eyes: 'brown',
+    accessories: [],
+    other: ['a mustache']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
+    name: 'Professor',
+    img: 'imagesnew/drEmmettBrown.png',
+    hair: 'white',
+    eyes: 'hidden',
+    accessories: ['sunglasses'],
+    other: []
+  },
+  {
+    name: 'Dre Parker',
+    img: 'imagesnew/dreParker.png',
     hair: 'black',
     eyes: 'brown',
     accessories: [],
-    other: []
-  },
-  {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['sunglasses'],
-    other: ['a beard']
-  },
-  {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['sunglasses', 'jewelry'],
-    other: []
-  },
-  {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['sunglasses'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses','jewelry'],
-    other: []
+    other: ['braids']
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['sunglasses'],
-    other: ['a smoking habit']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
+    name: 'Elle Woods',
+    img: 'imagesnew/elleWoods.png',
+    hair: 'blonde',
     eyes: 'blue',
-    accessories: ['glasses', 'a hat'],
-    other: ['a smoking habit', 'a beard']
+    accessories: ['sunglasses', 'a dog'],
+    other: ['a fashion habit']
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'a hat'],
-    other: ['a smoking habit', 'a beard']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['a hat', 'jewelry'],
-    other: ['a phone']
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
+    name: 'Galadriel',
+    img: 'imagesnew/galadriel.png',
+    hair: 'blonde',
     eyes: 'blue',
-    accessories: ['a hat'],
-    other: []
+    accessories: ['jewelry', 'a headpiece'],
+    other: ['elf ears', 'a magical habit']
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
+    name: 'Genie',
+    img: 'imagesnew/genie.png',
     hair: 'black',
+    eyes: 'green',
+    accessories: ['jewelry'],
+    other: ['braids', 'a beard', 'a magical habit', 'a striking complexion', 'a mustache']
+  },
+  {
+    name: 'Gimli',
+    img: 'imagesnew/gimli.png',
+    hair: 'red',
+    eyes: 'green',
+    accessories: ['a headpiece'],
+    other: ['braids', 'a beard']
+  },
+  {
+    name: 'Harry Potter',
+    img: 'imagesnew/harryPotter.png',
+    hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses'],
+    accessories: ['glasses',],
+    other: ['a magical habit']
+  },
+  {
+    name: 'Indiana',
+    img: 'imagesnew/indieanaJones.png',
+    hair: 'brown',
+    eyes: 'blue',
+    accessories: ['a headpiece'],
+    other: ['a mustache']
+  },
+  {
+    name: 'John Coffey',
+    img: 'imagesnew/johnCoffey.png',
+    hair: 'no',
+    eyes: 'brown',
+    accessories: [],
     other: []
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
+    name: 'Jules Winnfield',
+    img: 'imagesnew/julesWinnfield.png',
+    hair: 'brown',
+    eyes: 'brown',
+    accessories: ['a weapon'],
+    other: ['a mustache']
+  },
+  {
+    name: 'Katniss Everdeen',
+    img: 'imagesnew/katnissEverdeen.png',
+    hair: 'brown',
+    eyes: 'blue',
+    accessories: ['a weapon'],
+    other: []
+  },
+  {
+    name: 'Lobby Boy',
+    img: 'imagesnew/lobbyBoy.png',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'jewelry'],
+    accessories: ['a headpiece'],
+    other: ['a mustache']
+  },
+  {
+    name: 'Maleficent',
+    img: 'imagesnew/malificent.png',
+    hair: 'black',
+    eyes: 'blue',
+    accessories: ['a headpiece'],
+    other: ['a magical habit']
+  },
+  {
+    name: 'Mary Poppins',
+    img: 'imagesnew/maryPoppins.png',
+    hair: 'grey',
+    eyes: 'blue',
+    accessories: ['a headpiece'],
+    other: ['a magical habit']
+  },
+  {
+    name: 'Miranda',
+    img: 'imagesnew/mirandaPriestly.png',
+    hair: 'grey',
+    eyes: 'blue',
+    accessories: ['sunglasses', 'jewelry'],
+    other: ['a fashion habit']
+  },
+  {
+    name: 'Queen of Hearts',
+    img: 'imagesnew/queenOfHearts.png',
+    hair: 'red',
+    eyes: 'haunting',
+    accessories: ['a headpiece'],
+    other: ['a striking complexion']
+  },
+  {
+    name: 'Red',
+    img: 'imagesnew/red.png',
+    hair: 'black',
+    eyes: 'brown',
+    accessories: [ 'a headpiece'],
     other: []
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
+    name: 'Spock',
+    img: 'imagesnew/spock.png',
     hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    eyes: 'brown',
+    accessories: ['a headpiece'],
+    other: ['elf ears']
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['sunglasses', 'a hat', 'jewelry'],
-    other: []
+    name: 'Storm',
+    img: 'imagesnew/storm.png',
+    hair: 'white',
+    eyes: 'haunting',
+    accessories: ['a headpiece'],
+    other: ['a magical habit']
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
+    name: 'Joker',
+    img: 'imagesnew/theJoker.png',
+    hair: 'very specific',
+    eyes: 'haunting',
+    accessories: ['cards'],
+    other: ['a magical habit', 'a striking complexion']
+  },
+  {
+    name: 'the Mask',
+    img: 'imagesnew/theMask.png',
+    hair: 'no',
+    eyes: 'brown',
+    accessories: ['dollars', 'a headpiece'],
+    other: ['a magical habit','a striking complexion']
+  },
+  {
+    name: 'William Somerset',
+    img: 'imagesnew/williamSomerset.png',
     hair: 'grey',
     eyes: 'brown',
-    accessories: ['jewelry'],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: ['a beard']
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'a hat'],
-    other: []
+    accessories: ['a plan'],
+    other: ['a mustache']
   },
 ]
 
@@ -387,7 +427,7 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerHTML = `YOU'RE A LOSER BABY!`;
     winnerLoserImg.src = secret.img
     winnerLoserImg.alt = secret.name
-    winnerLoserP.innerHTML = `Your guess was ${personToCheck}... <strong ${secret.name} was the person we were looking for!`
+    winnerLoserP.innerHTML = `Your guess was ${personToCheck}... <strong> ${secret.name} </strong> was the person we were looking for!`
 
   }
   // 1. Check if the personToCheck is the same as the secret person's name
@@ -399,7 +439,9 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', () => {
+  window.location.reload(); //reloads the page if user clicks restart
+} );
 filterButton.addEventListener('click', () => {
   checkQuestion();
   guessCount += 1; //Count is increased by 1

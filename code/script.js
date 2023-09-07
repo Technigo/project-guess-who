@@ -253,11 +253,12 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value
+
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
@@ -293,16 +294,18 @@ const filterCharacters = (keep) => {
     // Similar to the one above
   } else {
     if (keep) {
+      alert(`Yes, the person has ${person.hair} hair! Keep all people with ${person.hair} hair`)
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
+      alert(`No, the person doesnt have ${person.hair} hair! Remove all people with ${person.hair} hair`)
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
   }
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
+  
+   /* for 'hair' and 'eyes' :
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
@@ -314,18 +317,39 @@ const filterCharacters = (keep) => {
   */
 
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard()
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
-  const personChecked = (`${person.name}`)
-  // remember the confirm() ?
+  const personCheck = alert(`Do you think it is` `${person.name}``?`)
+  
+  confirm(personCheck);
+  { if (personCheck === true) {
+      checkMyGuess(personToConfirm)
+    } else {
+      alert(`Ok, then keep playing!`)
+    }
+  }  // This function should be invoked when you click on the button 'Guess'.
   // If the player wants to guess, invoke the checkMyGuess function.
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  personToCheck = secret.name,
+  alert(`You guessed on ${personToCheck}!`);
+  //win or lose section should be displayed
+  const winOrLoseText = document.getElementById('winOrLoseText');
+  const winOrLoseSection = document.getElementById('winOrLoseSection');
+  winOrLoseSection.style.display = 'block';
+  board.style.display = 'none';
+  if (personToCheck === secret.name) {
+    winOrLoseText.innerHTML = `You guessed right! It was ${personToCheck}!`;
+  } else {
+    winOrLoseText.innerHTML = `You guessed wrong! It was ${secret.name}!`;
+  }
+
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
@@ -337,7 +361,7 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-board.addEventListener('click', start)
+//board.addEventListener('click', start)
 
 console.log('hello') 
 console.log('hello')

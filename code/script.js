@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const guessForwardButton = document.getElementById('guess-button')
 const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
@@ -203,9 +204,9 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret;
-let currentQuestion;
-let charactersInPlay;
+let secret; //randomly selected person card to be guessed
+let currentQuestion; //stores user's selected option and corresponding category
+let charactersInPlay; // updated person array
 
 // Draw the game board
 // generated under main #board
@@ -219,7 +220,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button small id="guess-button" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
@@ -294,7 +295,7 @@ const filterCharacters = (keep) => {
         `Yes, the person wears ${value}! Keep all people that wear ${value}`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
-        person[category].includes(value)); //loops through the people in the array in search for corresponding selected category and checks if its value is included to keep it creating a new filtered object
+        person[category].includes(value)); //loops through the people in the array in search for corresponding selected category and checks if its value is included (Boolean:true) to keep it creating a new filtered array
     } else {//message to discard the cards as accessories do not match
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
@@ -308,7 +309,7 @@ const filterCharacters = (keep) => {
         `Yes, the person is a ${value}! Keep all people that are a ${value}`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
-        person[category].includes(value));//loops through the people in the array in search for corresponding selected category and checks if its value is included to keep it creating a new filtered object
+        person[category].includes(value));//loops through the people in the array in search for corresponding selected category and checks if its value is included to keep it creating a new filtered array
     } else { //message to discard cards as secret's value doesn't match user's
       alert(
         `No, the person is not a ${value}! Remove all people that are not a ${value}`
@@ -322,13 +323,13 @@ const filterCharacters = (keep) => {
         `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
-        person[category] === value);// loops through the people in the array in search for corresponding selected category and checks its value to keep it only if it matches the user's selected value creating a new filtered object
+        person[category] === value);// loops through the people in the array in search for corresponding selected category and checks its value to keep it only if it matches the user's selected value creating a new filtered array
     } else {// msg to discard cards as secret's value doesn't match user's
       alert(
         `No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
-        person[category] !== value); //loops through the people in the array in search for corresponding selected category and checks its value to keep it only if its value DOES NOT match the user's selected value creating a new object (if it matches, it is discarded)
+        person[category] !== value); //loops through the people in the array in search for corresponding selected category and checks its value to keep it only if its value DOES NOT match the user's selected value creating a new array (if it matches, it is discarded)
     }
   }
 
@@ -354,8 +355,14 @@ const filterCharacters = (keep) => {
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
+  // confirm() method is boolean and comes with 2 buttons in prompt
+  confirm(`Are you sure you want to take a guess on ${personToConfirm}?`)
   // If the player wants to guess, invoke the checkMyGuess function.
+  if (takeGuess === true) {
+    checkMyGuess();
+  };
 };
+
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
@@ -372,3 +379,4 @@ start();
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
+guessForwardButton.addEventListener("click", guess)

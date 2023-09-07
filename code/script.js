@@ -3,8 +3,12 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
-const guessForwardButton = document.getElementById('guess-button')
-const playAgainButton = document.getElementById('playAgain')
+const asideQuestionSection = document.getElementById('question-section')
+const boardWrapper = document.getElementById('board-wrapper')
+// const bodyElement = document.getElementsByTagName('body')
+const winOrLoseWrapper = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('play-again')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -220,7 +224,7 @@ const generateBoard = () => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small id="guess-button" onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
@@ -356,10 +360,12 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // confirm() method is boolean and comes with 2 buttons in prompt
-  confirm(`Are you sure you want to take a guess on ${personToConfirm}?`)
+  const guessForward = confirm(`Are you sure you want to take a guess on ${personToConfirm}?`)
   // If the player wants to guess, invoke the checkMyGuess function.
-  if (takeGuess === true) {
-    checkMyGuess();
+  if (guessForward) {
+    checkMyGuess(personToConfirm);
+  } else {
+    alert(`Cancelled guess move.`)
   };
 };
 
@@ -367,10 +373,32 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
+  if (personToCheck === secret.name) {
+    winOrLoseText.innerHTML = `
+    Yipee!  Congratulations! 🎊 You have won!
+    `
+  } else {
+    winOrLoseText.innerHTML = `
+    Nopes!  That was a wrong guess! 😒 Game Over!
+      `
+  }
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
+  winOrLoseWrapper.style.display = "flex";
   // 4. Hide the game board
+  asideQuestionSection.style.display = "none";
+  boardWrapper.style.display = "none";
 };
+
+//Restarting function to play again
+const restartGame = () => {
+  // Hide win or lose section
+  winOrLoseWrapper.style.display = "none";
+  // Restore the game board
+  asideQuestionSection.style.display = "flex";
+  boardWrapper.style.display = "flex";
+  start();
+}
 
 // Invokes the start function when website is loaded
 start();
@@ -379,4 +407,5 @@ start();
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
-guessForwardButton.addEventListener("click", guess)
+playAgainButton.addEventListener('click', restartGame)
+

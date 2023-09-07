@@ -256,6 +256,7 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  console.log('currentQuestion:', currentQuestion);
   const { category, value } = currentQuestion
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
@@ -333,8 +334,10 @@ const filterCharacters = (keep) => {
       or
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   */
-
-  console.log('Filtered characters:', charactersInPlay);    
+  
+  const filteredCharacterNames = charactersInPlay.map((person) => person.name);
+  console.log('Filtered characters:', filteredCharacterNames);    
+  // console.log('Filtered characters:', charactersInPlay);    
   // Invoke a function to redraw the board with the remaining people.
   generateBoard();
 }

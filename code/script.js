@@ -227,21 +227,22 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
+
 // This function to start (and restart) the game
-const start = () => {
+function start () {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
     <div class="card">
     <p>${person.name}</p>
-    <img src=${person.img} alt=${person.name}/>
+    <img src=${person.img} alt=${person.name}/> 
     <div class="guess">
       <span>Guess on ${person.name}?</span>
       <button class=filled-button small">Guess</button>
     </div>
     `
-  
+
   })
   // What else should happen when we start the game?
 }
@@ -318,6 +319,7 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
+  const personChecked = (`${person.name}`)
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 }
@@ -336,3 +338,6 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 board.addEventListener('click', start)
+
+console.log('hello') 
+console.log('hello')

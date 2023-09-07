@@ -199,7 +199,7 @@ const CHARACTERS = [
     accessories: ['glasses', 'hat'],
     other: []
   },
-]
+];
 
 // Global variables
 let secret //This is the sectret person opject
@@ -342,4 +342,7 @@ const checkMyGuess = (personToCheck) => {
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', () => {
+  start();
+  console.log(start);
+});

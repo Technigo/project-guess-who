@@ -1,7 +1,16 @@
+
+/*colors:
+98DDCA - turkos
+D5ECC2 - päron
+B9F9FF - ljusblått
+DAFDFF - vitblå
+F7E590 - ljusgul
+F5CD6D - ljus senap
+
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #D5ECC2;
+  --secondary: #98DDCA;
 }
 
 body {
@@ -9,7 +18,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: #DAFDFF;
 }
+
 
 h1 {
   font-size: 42px;
@@ -41,7 +52,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 260px;
 }
 
 .board-wrapper {
@@ -167,10 +178,24 @@ button {
   max-width: 700px;
   text-align: center;
 }
-
-.win-or-lose img {
+.win-or-lose img:first-child {
   align-self: flex-start;
   margin-left: 15%;
+  width: 200px;
+  height: 100px;
+}
+
+.win-or-lose img {
+height: 100px;
+width: 250px;
+margin:0;
+
+}
+
+.win-or-lose img:last-child {
+ height: 200px;
+ Width: 200px;
+ margin: 0;
 }
 
 .win-or-lose h1 {
@@ -195,7 +220,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 190px;
   }
 
   .board-wrapper {

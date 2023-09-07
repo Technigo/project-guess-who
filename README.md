@@ -1,13 +1,15 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a guess-who-game using if-statements, objects and arrays. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I made a plan in Figma with the basic functions I wanted the game t have based on the requirements of the assignment. I decided to start with the fundamentals and add on more if I had time. I tried to learn as much as possible about arrays and objects before starting coding so that I would know what I was doing. 
+
+The hardest part was the nested if-statements and the filtering function. 
+If I had more time I would add a counter that would count the guesses and make the player lose if she/he made more than x nr of guesses. I would also  try to make the values in the dropdown be unselectable after being selected once. And also make the alert messages look nicer by doing them in JavaScript instead of using the windows default ones. 
+Maybe I would have made the dropdown more visually pleasing, maybe even by using pictures and checkboxes/radiobuttons instead of a dropdown. 
 
 ## View it live
+https://mdahlgrenguesswho.netlify.app/
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

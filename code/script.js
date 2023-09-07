@@ -5,7 +5,8 @@ const restartButton = document.getElementById('restart');
 const findoutBtn = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const playAgainButton = document.getElementById('playAgain');
-const winOrLose = document.getElementById("winOrLose")
+const winOrLose = document.getElementById("winOrLose");
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [

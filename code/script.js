@@ -327,7 +327,7 @@ const filterCharacters = (keep) => {
         (person) => person[category] !== value
       );
     }
-  } else if (category === "accessiaors" || category === "other") {
+  } else if (category === "accessories" || category === "other") {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) =>
         person[category].includes(value)

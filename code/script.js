@@ -276,7 +276,6 @@ const filterCharacters = (keep) => {
 
     if (category === 'hair') {
       return keep ? person.hair === value : person.hair !== value;
-      alert()
     } else if (category === 'eyes') {
       return keep ? person.eyes === value : person.eyes !== value;
     } else if (category === 'accessories') {
@@ -370,6 +369,7 @@ const winOrLoseText = [`You're awesome, you guessed ${secret.name} and that's th
 const checkMyGuess = (guessedPersonName) => {
   if (guessedPersonName === secret.name) {
     wOLtext.textContent = winOrLoseText[0];} 
+    restart();
   else {
     wOLtext.textContent = winOrLoseText[1];
 
@@ -388,9 +388,10 @@ start();
 // All the event listeners
 restartButton.addEventListener('click', () => {
   start();
-}};
+  generateBoard();
+});
 
-findOutButton.addEventListener('click', ( => {
+findOutButton.addEventListener('click', () => {
   checkQuestion();
 });
   
@@ -399,7 +400,7 @@ questions.addEventListener('change', () => {
 });
 
 playAgain.addEventListener('click', () => {
-  start();
+  restart();
   generateBoard();
 });
 
@@ -407,7 +408,3 @@ document.addEventListener('DOMContentLoaded', () => {
   start ();
   generateBoard ();
 });
-
-questions.addEventListener('change', selectQuestion);
-
-

@@ -3,60 +3,80 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
+    <title>Guess Who?</title>
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    
+    <!-- <link type="image/png" sizes="16x16" rel="icon" href=".../icons8-update-left-rotation-16.png"> -->
   </head>
   <body>
     <aside class="question-section">
+
       <button type="button" id="restart" class="outlined-button">RESTART</button>
+  
+      <img class="guess-who-logo" src="images/LOGO2.png" alt="Guess Who?"/>
 
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
-
-      <h1>Does the person have</h1>
+      <h1>Does the character have</h1>
 
       <select title="questions" id="questions">
+        <option value="" selected disabled> ...?</option>
         <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
+          <option value="brown">brown hair?</option>
+          <option value="yellow">yellow hair?</option>
+          <option value="black">black hair?</option>
+          <option value="hidden">hidden hair?</option>
+          <option value="grey">grey hair?</option>
+          <option value="orange">orange hair?</option>
+          <option value="purple">purple hair?</option>
+          <option value="white">white hair?</option>
         </optgroup>
+
         <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+          <option value="hidden">hidden eyes?</option>
+          <option value="blue">blue eyes?</option>
+          <option value="brown">brown eyes?</option>
+          <option value="green">green eyes?</option>
         </optgroup>
+
         <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
+          <option value="glasses">glasses?</option>
+          <option value="hat">a hat?</option>
+          <option value="jewelry">any jewelry?</option>
         </optgroup>
+
         <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+          <option value="smoker">a smoking habit?</option>
+          <option value="pet">a pet?</option>
+          <option value="facial">facial hair?</option>
+          <option value="freckle">freckles?</option>
+          <option value="scarf">a scarf?</option>
         </optgroup>
       </select>
-
       <button id="filter" class="filled-button">FIND OUT</button>
+      <section class="guesses-wrapper">
+        <p>Guesses:</p><p id="guesses"></p>
+      </section> 
+      <footer> 
+        <p> © 2023 | TBL | Guess Who Project @ Technigo</p>
+      </footer>
     </aside>
 
     <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
+      <main class="game-board" id="board"></main> 
     </section>
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
         <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+        <img
+          class="guess-who-logo-end"
+          src="images/LOGO2.png"
+          alt="Guess Who?"
+        />
+        <h1 id="revealCharacterText"></h1>
+        <button type="button" id="playAgain" class="filled-button small">PLAY AGAIN</button>
       </div>
     </section>
     <script src="script.js"></script>

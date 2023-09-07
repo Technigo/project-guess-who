@@ -290,7 +290,6 @@ aside .filled-button {
 }
 
 .filled-button:hover {
-  border: solid 2px var(--primary);
   background-color: white;
   color: var(--primary);
 }

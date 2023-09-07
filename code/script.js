@@ -574,11 +574,10 @@ const checkMyGuess = (personToCheck) => {
   // Store final counter number and time for local storage
   finalCounts = counter;
   finalTimerValue = timer.textContent;
-  handleLocalStorage();
 
   // check a name of secret and guessed person's name is the same
   if (personToCheck === secret.name) {
-    // handleLocalStorage();
+    handleLocalStorage();
 
     winOrLoseText.textContent = `✨🎉Conglaturation!! 🎉✨`;
     createSound("./images/audio/win-sound.mp3");
@@ -610,13 +609,13 @@ const handleLocalStorage = () => {
 const startGameBtn = document.getElementById("game-start-btn");
 const initialPage = document.getElementById("initial-page");
 
-// player = prompt("Who is going to play, today?");
+player = prompt("Who is going to play, today?");
 
 // if player did not type its name, alert and ask again
-// while (!player) {
-// alert("Please type your name!");
-// player = prompt("Who is going to play,today");
-// }
+while (!player) {
+  alert("Please type your name!");
+  player = prompt("Who is going to play,today");
+}
 
 welcomeMessage.innerText = `Welcome to Guess Who, ${player}!! `;
 

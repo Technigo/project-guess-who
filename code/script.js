@@ -216,7 +216,7 @@ let charactersInPlay
 // create the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  // bord ist main/.game-board/erstmal leermachen, dann füllen mit divs bzw. Rest durch loop
+  // bord is main/.game-board/always clear, then fill with card divs or remaning rest thru loops
   charactersInPlay.forEach((person) => {
     // person= 1 objekt
     board.innerHTML += `
@@ -256,7 +256,6 @@ const selectQuestion = () => {
   // optgroup in between dosnt matter
   // This variable stores what optgroup (category) the question belongs to.
 
-
   // We also need a variable that stores the actual value/option of the question we've selected.
   const questionValue = questions.options[questions.selectedIndex].value;
   console.log("guess: " + questionValue);
@@ -280,6 +279,7 @@ const checkQuestion = () => {
 
   if (category === 'hair') {
     if (questionValue === secret[category]) {
+      // secret is a DOM querey, then placeholder for cat=key
       comparison = true;
     } else {
       comparison = false;
@@ -306,7 +306,6 @@ const checkQuestion = () => {
       comparison = false;
     }
     console.log(comparison);
-
   }
 
   // This given routine is so overcomplicated, that I discarded it. I took a nice plain if/else if above and this is much easier to read and understand. Basta. =]
@@ -333,7 +332,7 @@ const checkQuestion = () => {
   // }
 }
 
-// It'll filter the characters array and redraw the game board. Muss wohl selber aufrufen.
+// filter the characters array and redraw the game board. Muss wohl selber aufrufen.
 const filterCharacters = (keep) => {
   // gibt true, false
   const { category, value } = currentQuestion

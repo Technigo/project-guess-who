@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 //First commit 
 
@@ -206,6 +207,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let keep
 
 // Draw the game board
 const generateBoard = () => {
@@ -263,8 +265,16 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
+    if (value === secretPerson[category]) {
+      filterPeople(true)
+    } else
+      filterPeople(false)
 
   } else if (category === 'accessories' || category === 'other') {
+    if (secretPerson[category].includes(value)) {
+      filterPeople(true)
+    } else
+      filterPeople(false)
 
   }
 }
@@ -331,3 +341,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)

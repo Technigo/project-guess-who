@@ -260,7 +260,7 @@ const selectQuestion = () => {
 
   currentQuestion = {
     category: category,
-    value: value
+    value: attribute
   }
 }
 
@@ -307,26 +307,34 @@ const filterCharacters = (keep) => {
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+    newFunction()
+  // filter by category to keep or remove based on the keep variable.
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
   
 
   // Invoke a function to redraw the board with the remaining people.
   generateBoard()
 
+
+  function newFunction() {
+    for (hair; ;) and(eyes)
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    or
+    charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+
+    for (accessories; ;) and(other)
+    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    or
+    charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    document.getElementById('board').innerHTML = ''
+    generateBoard()
+  }
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
-  const personCheck = alert(`Do you think it is` `${person.name}``?`)
+  const personCheck = confirm(`Do you think it is ${person.name} ?`)
   
   confirm(personCheck);
   { if (personCheck === true) {
@@ -365,7 +373,7 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 //board.addEventListener('click', start)
-guess.addEventListener('click', checkMyGuess)
+//guess.addEventListener('click', checkMyGuess)
 //add eventlistener to Guess button
 guess.addEventListener('click', guess)
 //questions.addEventListener('change', selectQuestion)

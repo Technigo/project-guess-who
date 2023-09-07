@@ -222,6 +222,10 @@ let charactersInPlay
 let guessedPerson
 let numberOfGuesses = 0;
 
+//Audio
+let winnerSound = new Audio('sounds/winner-sound.mp3')
+let loserSound = new Audio('sounds/loser-sound.wav')
+
 //disolay counter in aside
 let counter = () => {
     numberOfGuesses++;
@@ -391,10 +395,12 @@ const checkMyGuess = (personToCheck) => { //The value that is passed on is perso
     winOrLoseText.innerHTML = `Yes! ${secret.name} was the one <br> who was hiding!`
     winnerImg.src = secret.img //Inserting img of the secret person
     winnerImg.alt = secret.name
+    winnerSound.play()
   } else {
    winOrLoseText.innerHTML = `Oh no, that's not correct! <strong>${secret.name}</strong> was the one who was hiding. Try again!`
    winnerImg.src = secret.img //Inserting img of the secret person
     winnerImg.alt = secret.name
+    loserSound.play()
   }
 }
 

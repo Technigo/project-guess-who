@@ -267,15 +267,18 @@ const checkQuestion = () => {
   if (category === 'hair' || category === 'eyes') {
     if (value === secretPerson[category]) {
       filterPeople(true)
+      console.log("keep")
     } else
       filterPeople(false)
+    console.log("remove")
 
   } else if (category === 'accessories' || category === 'other') {
     if (secretPerson[category].includes(value)) {
       filterPeople(true)
+      console.log("keep")
     } else
       filterPeople(false)
-
+    console.log("remove")
   }
 }
 
@@ -286,20 +289,46 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the person wears ${value}! Keep all people that wear ${value}`
       )
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
       )
     }
   } else if (category === 'other') {
     // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person has a ${value}! Keep all people that have a ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have a ${value}! Remove all people that have a ${value}`
+      )
+    }
+  } else if (category === 'eyes') {
+    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
+      )
+    }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
+      )
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`
+      )
     }
   }
 
@@ -310,7 +339,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
+ 
     for accessories and other
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or

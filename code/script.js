@@ -592,7 +592,7 @@ const checkMyGuess = (personToCheck) => {
 
 const handleLocalStorage = () => {
   const dataStorage = {
-    playerName: "sakura",
+    playerName: userName,
     howManyGuesses: finalCounts,
     time: finalTimerValue,
   };
@@ -720,7 +720,6 @@ const checkBextGame = (arr) => {
 const createHTMLForTable = (arr) => {
   // creating html for each item in an array
   for (let i = 0; i < arr.length; i++) {
-    console.log(i);
     tbody.innerHTML += `<tr>
   <td>${arr[i].playerName}</th>
   <td>${arr[i].howManyGuesses}</th>
@@ -752,6 +751,7 @@ const createTableElement = (arr) => {
 // This is a button you can clean up localstorage and data that is displayed in a table.
 clearGameBtn.addEventListener("click", () => {
   localStorage.clear();
+  arrayForLocalStorage = [];
   console.log("clear", localStorage);
   tbody.textContent = "";
   alartMessageBox.textContent = "";

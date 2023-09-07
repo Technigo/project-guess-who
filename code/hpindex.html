@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guess Who 👀</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="hpstyle.css" />
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet" />
@@ -13,39 +13,45 @@
 
 <body>
   <aside class="question-section">
-    <button type="button" id="restart" class="outlined-button">Restart</button>
+
 
     <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
 
     <h1>Does the person have</h1>
 
     <select title="questions" id="questions">
+      <optgroup label="house">
+        <option value="gryffindor">Gryffindor</option>
+        <option value="slytherin">Slytherin</option>
+        <option value="hufflepuff">Hufflepuff</option>
+        <option value="ravenclaw">Ravenclaw</option>
+      </optgroup>
       <optgroup label="hair">
-        <option value="brown">Brown hair</option>
-        <option value="yellow">Yellow hair</option>
-        <option value="hidden">Hair is hidden</option>
-        <option value="grey">Grey hair</option>
         <option value="black">Black hair</option>
-        <option value="orange">Orange hair</option>
-        <option value="purple">Purple hair</option>
+        <option value="brown">Brown hair</option>
+        <option value="red">Red hair</option>
         <option value="white">White hair</option>
+        <option value="grey">Grey hair</option>
+        <option value="bald">Is bald!</option>
       </optgroup>
-      <optgroup label="eyes">
-        <option value="hidden">Eyes are hidden</option>
-        <option value="blue">Blue eyes</option>
-        <option value="brown">Brown eyes</option>
-        <option value="green">Green eyes</option>
+      <optgroup label="species">
+        <option value="human">Human</option>
+        <option value="cat">Cat</option>
+        <option value="werewolf">Werewolf</option>
+        <option value="half-giant">Half-giant</option>
       </optgroup>
-      <optgroup label="accessories">
-        <option value="glasses">Glasses</option>
-        <option value="hat">Hat</option>
+      <optgroup label="type">
+        <option value="witch">Witch</option>
+        <option value="wizard">Wizard</option>
       </optgroup>
-      <optgroup label="other">
-        <option value="smoker">A smoking habit</option>
+      <optgroup label="teacher">
+        <option value="teacher">Is a teacher</option>
       </optgroup>
     </select>
-
-    <button id="filter" class="filled-button">Find out</button>
+    <div class="button-div">
+      <button id="filter" class="filled-button">Find out</button>
+      <button type="button" id="restart" class="outlined-button">Restart</button>
+    </div>
   </aside>
 
   <section class="board-wrapper">
@@ -59,7 +65,7 @@
       <button type="button" id="playAgain" class="filled-button">Play again</button>
     </div>
   </section>
-  <script src="script.js"></script>
+  <script src="hpscript.js"></script>
 </body>
 
 </html>

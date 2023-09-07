@@ -92,7 +92,7 @@ To really finish this up you might want to make sure that the player can restart
 So you’ve completed the requirements? Great job! Make sure you've committed and pushed a version of your project before starting on the stretch goals. Remember that the stretch goals are optional.
 
 ### Intermediate stretch goals
-- Check the bonus step
+- ~~Check the bonus step~~
 - Change the array of objects:
   - Add more information about the people, and with this add the possibility to ask questions and filter the board in regards to these addons.
   - Change the characters' info to be about your family, football club, colleagues, or cute dogs.

@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #FFE09C;
+  --secondary: #FF2349;
 }
 
 body {
@@ -38,6 +38,8 @@ select {
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  padding: 10px;
+  /* Added more space around the text in the select */
 }
 
 .guess-who-icon {
@@ -61,16 +63,18 @@ select {
 
 /****** CARD ******/
 .card {
-  width: 135px;
-  height: 165px;
+  width: 200px;
+  /* Changed width and height to match new photos*/
+  height: 250px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+  /*border: 3px solid var(--secondary);*/
+  border-radius: 8px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 5px 6px 10px -1px rgba(0, 0, 0, 0.08);
 }
 
 .card p {
@@ -78,6 +82,10 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+  /* Extra styling after changing colors */
+  color: var(--secondary);
+  padding: 10px;
+  ;
 }
 
 .card .guess {
@@ -112,7 +120,17 @@ select {
   width: 90%;
 }
 
+/* Sets width of images to 100%*/
+.card img {
+  width: 100%;
+  border-radius: 8px 8px;
+}
+
 /****** BUTTONS ******/
+button:first-child {
+  margin-right: 10px;
+}
+
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
@@ -129,7 +147,8 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
+  color: white;
+  border-color: white;
   align-self: flex-end;
 }
 
@@ -137,12 +156,13 @@ button {
 .outlined-button:hover {
   background-color: var(--primary);
   color: white;
+  border-color: var(--primary);
 }
 
 .filled-button:hover {
   background-color: white;
   border-color: white;
-  color: var(--primary);
+  color: var(--secondary);
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -186,9 +206,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

@@ -364,23 +364,50 @@ const guess = (personName) => {
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 }
-
+const winOrLoseText = [`You're awesome, you guessed ${secret.name} and that's the right answer!`, 
+`Sorry, you guessed wrong. Better luck next time!`]
 // If you confirm, this function is invoked
 const checkMyGuess = (guessedPersonName) => {
   if (guessedPersonName === secret.name) {
-    alert(`You're awesome, you guessed ${secret.name} and that's the right answer!`)
-  } else {
-    alert(`Sorry, you guessed wrong. Better luck next time!`) 
+    wOLtext.textContent = winOrLoseText[0];} 
+  else {
+    wOLtext.textContent = winOrLoseText[1];
+
+  if (charactersInPlay.length === 0) {
+    restart();
+    return;
   }
+  } 
 
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-
+board.style.display = 'none';
+}
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
-restartButton.addEventListener('click', start)}}
+restartButton.addEventListener('click', () => {
+  start();
+}};
+
+findOutButton.addEventListener('click', ( => {
+  checkQuestion();
+});
+  
+questions.addEventListener('change', () => {
+  selectQuestion();
+});
+
+playAgain.addEventListener('click', () => {
+  start();
+  generateBoard();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  start ();
+  generateBoard ();
+});
+
+questions.addEventListener('change', selectQuestion);
+
+

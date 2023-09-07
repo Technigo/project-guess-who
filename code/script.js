@@ -574,10 +574,10 @@ const checkMyGuess = (personToCheck) => {
   // Store final counter number and time for local storage
   finalCounts = counter;
   finalTimerValue = timer.textContent;
-  handleLocalStorage();
+  // handleLocalStorage();
   // check a name of secret and guessed person's name is the same
   if (personToCheck === secret.name) {
-    // handleLocalStorage();
+    handleLocalStorage();
 
     winOrLoseText.textContent = `✨🎉Conglaturation!! 🎉✨`;
     createSound("./images/audio/win-sound.mp3");

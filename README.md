@@ -1,13 +1,30 @@
-# Project Name
+## Project Guess who
 
-Replace this readme with your own information about your project.
+Our task was to create a guess who game using HTML, CSS and JavaScript.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+**Requirements**
+
+✓ Generate a board with characters.
+✓ A randomly selected person should be set as the secret when the game starts.
+✓ Select questions to ask about the people and filter the board based on those questions.
+✓ Give the player feedback with alerts
+✓ Be able to guess the secret person and get an answer if it's correct or not.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+DI followed the instructions from the Technigo course to break down the problem. I got familiar with the code and used the tutorials, stack overflow and lessions Technigo provides. 
+If I had time I would have spent more time on css and trying out different ways of solving the problems.
+
+
+Technologies used:
+
+- HTML
+- CSS
+- JavaScript
+
+- [Netlify](https://www.netlify.com/) for deployment
+
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://petrasguesswhogame.netlify.app/

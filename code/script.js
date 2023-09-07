@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const winOrLose = document.getElementById(`winOrLose`)
 const winOrLoseText = document.getElementById(`winOrLoseText`)
+const playAgainButton = document.getElementById(`playAgain`)
 
 //First commit 
 
@@ -238,6 +239,8 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  board.style.display = 'flex'
+  winOrLose.style.display = 'none'
   // What else should happen when we start the game?
   //Game board should be rendered on the screen
   generateBoard();
@@ -380,3 +383,4 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', start)

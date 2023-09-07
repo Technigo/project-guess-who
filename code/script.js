@@ -1,10 +1,13 @@
 "use strict";
 
 // All the DOM selectors stored as short variables---------------------------------
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
+const board = document.getElementById('board');
+const questions = document.getElementById('questions');
 // select element
-const restartButton = document.getElementById('restart')
+const restartButton = document.getElementById('restart');
+//Find button
+const findoutButton = document.getElementById("filter");
+
 
 // Array CHARACTERS with all the characters as objects, keys: name/img/hair/eyes/accessories/other(only smoker)
 const CHARACTERS = [
@@ -207,6 +210,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+
 // all filtered/leftover cards per turn/initially all
 
 // create the game board
@@ -241,7 +245,8 @@ const start = () => {
   // for a start all items in array
   generateBoard(charactersInPlay);
   setSecret();
-  // console.log(secret);
+  console.log(secret);
+  // console.log(charactersInPlay);
 }
 
 // setting the currentQuestion/guess object when you select something in the dropdown
@@ -254,30 +259,78 @@ const selectQuestion = () => {
 
   // We also need a variable that stores the actual value/option of the question we've selected.
   const questionValue = questions.options[questions.selectedIndex].value;
-  console.log(questionValue);
+  console.log("guess: " + questionValue);
 
-  // !!!!!!!!!!!!!!!!!!! todo const value =
   currentQuestion = {
     category: category,
     questionValue: questionValue
-    // creates local object/tuple with a pair->value: value
+    // creates local object/tuple with a pair->key/value
   }
-  console.log(currentQuestion);
+  // console.log("guess " + currentQuestion);
 }
 
 // This function should be invoked when you click on 'Find Out' button-> send your guess
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
-
+  const { category, questionValue } = currentQuestion
+  let comparison;
   // neues lokales Objekt mit Variablen, wird gefüllt mit Objekt von currentQuestion oben
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  // check values in object with key/value pairs
 
-  } else if (category === 'accessories' || category === 'other') {
+  if (category === 'hair') {
+    if (questionValue === secret[category]) {
+      comparison = true;
+    } else {
+      comparison = false;
+    }
+    console.log(comparison);
+  } else if (category === "eyes") {
+    if (questionValue === secret[category]) {
+      comparison = true;
+    } else {
+      comparison = false;
+    }
+    console.log(comparison);
+  } else if (category === 'accessories') {
+    if (secret[category].includes(questionValue)) {
+      comparison = true;
+    } else {
+      comparison = false;
+    }
+    console.log(comparison);
+  } else if (category === "other") {
+    if (questionValue === secret.other[0]) {
+      comparison = true;
+    } else {
+      comparison = false;
+    }
+    console.log(comparison);
 
   }
+
+  // This given routine is so overcomplicated, that I discarded it. I took a nice plain if/else if above and this is much easier to read and understand. Basta. =]
+  //   if (category === "hair" || category === "eyes"){
+  //   if (questionValue === secret[category]) {
+  //     comparison = true;
+  //   } else {
+  //     comparison = false;
+  //   }
+  //   // check nested arrays in object
+  // } else if (category === 'accessories' || category === 'other') {
+  //   if (category === "other") {
+  //     if (questionValue === secret.other[0]) { comparison = true; }
+  //   } else {
+  //     comparison = false;
+  //   }
+  //   else if (questionValue === "accessories") {
+  //   if (secret[category].includes(questionValue)) {
+  //     comparison = true;
+  //   } else {
+  //     comparison = false;
+  //   }
+  //   console.log(comparison);
+  // }
 }
 
 // It'll filter the characters array and redraw the game board. Muss wohl selber aufrufen.
@@ -314,7 +367,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
       or
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
+ 
     for accessories and other
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       or
@@ -345,6 +398,8 @@ const checkMyGuess = (personToCheck) => {
 restartButton.addEventListener('click', start);
 
 questions.addEventListener("change", selectQuestion);
+
+findoutButton.addEventListener("click", checkQuestion);
 
 // CODE STARTS HERE ----------------------------------------------------------------------
 

@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
 //const playAgainButton = document.getElementById('playAgain') BEHÖVS DEN?
 
 // Array with all the characters, as objects
@@ -361,15 +362,15 @@ const guess = (personToConfirm) => {
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
   const confirmed = confirm(
-    `Do you really want to guess on ${personToConfirm}?`
+    `Moment of truth! Do you really want to guess on ${personToConfirm}?`
   )
 
   if (confirmed) {
     checkMyGuess(personToConfirm)
-} else {
-  alert(
-    `Guess cancelled.`
-  )
+  } else {
+    alert(
+      `Guess cancelled.`
+    )
   }
 }
 
@@ -379,6 +380,15 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  if (personToCheck === secret.name) {
+    winOrLose.style.display = "flex"
+    board.style.display = "none"
+    winOrLoseText.textContent = `Congratulations! 🥳 You guessed right, it was ${secret.name}! 👏`
+  } else if (personToCheck !== secret.name) {
+    winOrLose.style.display = "flex"
+    board.style.display = "none"
+    winOrLoseText.textContent = `Oh no! 😣 You guessed wrong, it was ${secret.name}! Better luck next time! 🥴`
+  }
 }
 
 // Invokes the start function when website is loaded

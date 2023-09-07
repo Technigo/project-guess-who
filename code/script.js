@@ -220,7 +220,7 @@ const generateBoard = (charactersInPlay) => {
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" id= guessBtn onclick="guess('${person.name}')">Guess</button>
+          <button class="filled-button small" id="guessBtn" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
     `
@@ -238,6 +238,8 @@ const setSecret = (charactersInPlay) => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
+
+  winOrLose.style.display = "none";
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   setSecret(CHARACTERS)
@@ -360,9 +362,14 @@ const filterCharacters = (keep) => {
 
 // Invoke a function to redraw the board with the remaining people.e player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  // personToConfirm = person.name
   if (confirm(`Are you sure you want to guess on ${personToConfirm}?`) == true) {
     checkMyGuess(personToConfirm)
+    // const selectedGuess = (event) => event.target.id {
+
+    // }
   }
+
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
@@ -371,10 +378,24 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 
 const checkMyGuess = (personToCheck) => {
-  if (personToCheck = secret.name) {
-    winOrLose.style.display = "block";
-  } else ()
+  if (personToCheck === secret.name) {
+    winOrLose.style.display = "flex";
+    winOrLoseText.innerHTML += `
+    <h1>YAY! Congrats
+    – you won! 🙌</h1>`
+  } else {
+    winOrLose.style.display = "flex";
+    winOrLoseText.innerHTML += `
+    <h1>Oh no! You guessed wrong. Game over! 😤</h1>
+    `
+    const replay = () => {
+      generateBoard(CHARACTERS);
+      start();
+    }
+    playAgain.addEventListener('click', replay)
+  }
 }
+
 
 //   }
 
@@ -402,4 +423,6 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterBtn.addEventListener('click', checkQuestion)
-playAgain.addEventListener('click' start)
+
+
+

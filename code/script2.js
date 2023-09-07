@@ -29,7 +29,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['bad-day']
   },
   {
     name: 'Jacques',
@@ -37,7 +37,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker']
+    other: ['smoker', 'bad-day']
   },
   {
     name: 'Jai',
@@ -68,7 +68,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewellery'],
     other: []
   },
   {
@@ -84,7 +84,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewellery'],
     other: []
   },
 
@@ -125,7 +125,7 @@ const CHARACTERS = [
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
+    accessories: ['hat', 'jewellery'],
     other: []
   },
   {
@@ -157,7 +157,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses'],
+    accessories: ['glasses', 'jewellery'],
     other: []
   },
   {
@@ -173,7 +173,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'hat', 'jewellery'],
     other: []
   },
   {
@@ -181,7 +181,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
+    accessories: ['jewellery'],
     other: []
   },
   {
@@ -247,6 +247,17 @@ const start = () => {
   generateBoard();
   //Set secret person
   setSecret(); 
+  console.log (secret)
+}
+
+//A function for restarting. Gives the user an alert message
+const restart = () => {
+    const alert = confirm(`Are you sure you want to restart the game?`)
+    if(alert) { //If clicks OK the checkMyGuess() wil be invoked.
+      start()
+    } else { //Else nothing will happen and the alert window will disappear.
+      console.log ("restart cancelled")
+    }
 }
 
 // Setting the currentQuestion object when you select something in the dropdown
@@ -361,6 +372,8 @@ const checkMyGuess = (personToCheck) => { //The value that is passed on is perso
     winnerImg.alt = secret.name
   } else {
    winOrLoseText.innerHTML = `Oh no, that's not correct! <strong>${secret.name}</strong> was the one who was hiding. Try again!`
+   winnerImg.src = secret.img //Inserting img of the secret person
+    winnerImg.alt = secret.name
   }
 }
 
@@ -368,7 +381,7 @@ const checkMyGuess = (personToCheck) => { //The value that is passed on is perso
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', restart)
 findOutButton.addEventListener('click', checkQuestion)
 playAgainButton.addEventListener('click', (event) => { 
   start() 
@@ -378,3 +391,4 @@ playAgainButton.addEventListener('click', (event) => {
 questions.addEventListener('change', selectQuestion)
 
 
+console.log ("heeej!")

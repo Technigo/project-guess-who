@@ -6,7 +6,9 @@ const questions = document.getElementById('questions');
 const restartButton = document.getElementById('restart');
 const findOutButton = document.getElementById('filter');
 const playAgainButton = document.getElementById('playAgain');
-const timer = document.getElementById('timer');
+const playerName = document.getElementById('playerName');
+const stopwatch = document.getElementById('stopwatch');
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -233,12 +235,22 @@ const CHARACTERS = [
 let secretPerson;
 let currentQuestion;
 let charactersInPlay;
+let userName;
 // Create a counter to keep track of the number of times the player clicks the Find Out button to get a hint
 let countOfHints = 0;
-// Create a start time and an end time of the game
-let startTime = 0;
-let endTime = 0;
+// Initialize variables to store the number of seconds, minutes and the timeout function for the stopwatch
+let sec = 0;
+let min = 0;
+let timeout = null;
 
+// Function to add the player's name at the beginning and then start the stopwatch after one second
+const addPlayerName = () => {
+  userName = prompt(`Hello! Please enter your name!`);
+  playerName.innerText = `Player's name: ${userName}`;
+  alert(`Let's start, ${userName}!`);
+  // Invoke the function to start stopwatch after a delay of one second
+  setTimeout(() => {startStopwatch()}, 1000);
+}
 
 // Draw the game board
 const generateBoard = () => {
@@ -263,21 +275,35 @@ const setSecretPerson = () => {
   console.log(secretPerson);
 };
 
-// Function to start and update timer every second, to be invoked when the website is loaded - WHY SHOWING TIME WITH MINUS??? WHY ALWAYS STARTS AT 1 MINUTE???
-const updateTimer = () => {
-  setInterval(() => {
-    startTime = new Date().getTime();
-    let timeDiff = endTime - startTime;
-    let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-    timer.innerHTML = `${minutes}:${seconds}`;
+// Function to start and update the stopwatch, to be invoked when the website is loaded 
+const startStopwatch = () => {
+  // Update the variable timeout every second
+  timeout = setTimeout(() => {
+    sec = parseInt(sec);
+    min = parseInt(min);
+    sec++;
+    if (sec === 60) {
+      min++;
+      sec = 0;
+    };
+    if (sec < 10) {
+      sec = '0' +  sec;
+    };
+    if (min < 10) {
+      min = '0' + min;
+    };
+    stopwatch.innerHTML = `${min}:${sec}`;
+    // calling startStopwatch() function recursively to continue stopwatch
+    startStopwatch();
   }, 1000);
-}
+} 
 
-// Function to stop timer, to be invoked when win or lose section is displayed
-const stopTimer = () => {
-  endTime = new Date().getTime();
-  clearInterval(updateTimer());
+// Function to stop and reset stopwatch, to be invoked when win or lose section is displayed
+const stopStopwatch = () => {
+  sec = 0;
+  min = 0;
+  clearTimeout(timeout);
+  stopwatch.innerHTML = '00:00';
 }
 
 // This function to start (and restart) the game
@@ -293,8 +319,8 @@ const start = () => {
   setSecretPerson();  
   // Invoke the function to draw the game board
   generateBoard();
-  // Invoke the function to start and update timer
-  updateTimer();
+  // Invoke the function to add the player's name in the beginning
+  addPlayerName();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -379,9 +405,9 @@ const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secretPerson person's name  
   // 2. Set a Message to show in the win or lose section accordingly
   if (personToCheck === secretPerson.name) {
-    winOrLoseText.innerText = `Congratulations! You won after receiving ${countOfHints} hint(s)! Good job!`;
+    winOrLoseText.innerText = `Congratulations ${userName}! You won after receiving ${countOfHints} hint(s)! Good job!`;
   } else {
-    winOrLoseText.innerText = 'Sorry, wrong choice! Game over!';
+    winOrLoseText.innerText = `Sorry ${userName}, wrong choice! Game over!`;
   };
 
   // 3. Show the win or lose section
@@ -390,16 +416,19 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
   board.style.display = 'none';
 
-  // 5. Stop the timer
-  stopTimer();
+  // 5. Stop the stopwatch
+  stopStopwatch();
 };
 
 // Invokes the start function when website is loaded
 start();
 
 // All the event listeners
-// Start or restart the game when user clicks on Restart button
-restartButton.addEventListener('click', start);
+// Start or restart the game including resetting the stopwatch when user clicks on Restart button
+restartButton.addEventListener('click', () => {
+  stopStopwatch();
+  start();
+});
 
 // Invoke function to select question when user changes the option
 questions.addEventListener('change', selectQuestion);

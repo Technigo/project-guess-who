@@ -44,6 +44,26 @@ select {
   width: 126px;
 }
 
+/******STOPWATCH******/
+#stopwatch {
+  border: 2px solid var(--primary);
+  border-radius: 40px;
+  font-size: 20px;
+  font-family: 'Montserrat';
+  font-weight: bold;
+  padding: 17px 27px;
+  margin: 20px 0 20px 0;
+}
+
+/******PLAYER'S NAME*******/
+#playerName {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 48px;
+  margin-top: 20px;
+  color: white;
+}
+
 .board-wrapper {
   width: 70%;
   display: flex;
@@ -134,7 +154,8 @@ button {
 }
 
 .filled-button,
-.outlined-button:hover {
+.outlined-button:hover, 
+#stopwatch {
   background-color: var(--primary);
   color: white;
 }
@@ -177,6 +198,7 @@ button {
   margin-bottom: 32px;
 }
 
+/******MEDIA QUERIES******/
 @media (max-width: 768px) {
   body {
     flex-direction: column;

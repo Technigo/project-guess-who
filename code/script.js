@@ -325,15 +325,34 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  let guessedPerson = personToConfirm
+  let isConfirmed = confirm(`Are you sure you want to guess on ${guessedPerson}?`)
+  
+  //If it's confirmed, run the function checkMyGuess
+  if (isConfirmed) checkMyGuess(guessedPerson)
+  else alert(`Oh no, you didn't want to guess 🤔. 
+You can keep playing instead`)
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
+  console.log(secret.name)
+  console.log(personToCheck)
+  // Check if the personToCheck is the same as the secret person's name
+  if (secret.name === personToCheck) {
+    alert(
+      `Wohooo 🥳
+${secret.name} was the secret person!`)
+
+  }
+  else {
+    alert(
+      `Oh noooo 🤦🏼‍♀️
+      ${personToCheck} was not the secret person!`)
+
+
+  }
+  
   // 3. Show the win or lose section
   // 4. Hide the game board
 }

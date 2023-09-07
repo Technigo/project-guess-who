@@ -83,7 +83,6 @@ const CHARACTERS = [
     accessories: ['glasses'],
     other: []
   },
-
   {
     name: 'Jazebelle',
     img: 'images/jazebelle.svg',
@@ -211,7 +210,7 @@ const CHARACTERS = [
 // Global variables
 let secret                  //Will be the secret person object
 let currentQuestion         //Will be the current question object
-let charactersInPlay        //Array of people still in the game
+let charactersInPlay = [];        //Array of people still in the game
 
 
 //----------- Functions after this comment -----------------//
@@ -304,41 +303,53 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'hair') {
     if (keep) {
-      alert(`YES, the person has ${value} hair! We will keep all people who have ${value} hair.`
-      )
+      alert(`YES, the person has ${value} hair! We will keep all people who have ${value} hair.`)
+      charactersInPlay = charactersInPlay.filter((person) => person.hair === value);
+      console.log(`this should display the new array: ${charactersInPlay}`);
+      generateBoard(charactersInPlay);
     } else {
-      alert(`NO, the person doesn't have ${value} hair. We will remove all people who have ${value} hair`
-      )
+      alert(`NO, the person doesn't have ${value} hair. We will remove all people who have ${value} hair`)
+      charactersInPlay = charactersInPlay.filter((person) => person.hair !== value);
+      console.log(`this should display the new array: ${charactersInPlay}`);
+      generateBoard(charactersInPlay);
     }
   } else if (category === 'eyes') {
     if (keep) {
-      alert(`YES, the person has ${value} eyes! We will keep all people who have ${value} coloured eyes.`
-      )
+      alert(`YES, the person has ${value} eyes! We will keep all people who have ${value} coloured eyes.`)
+      charactersInPlay = charactersInPlay.filter((person) => person.eyes === value);
+      console.log(`this should display the new array: ${charactersInPlay}`);
+      generateBoard(charactersInPlay);
     } else {
-      alert(`NO, the person doesn't have ${value} eyes. We will remove all people who have ${value} eyes`
-      )
+      alert(`NO, the person doesn't have ${value} eyes. We will remove all people who have ${value} eyes`)
+      charactersInPlay = charactersInPlay.filter((person) => person.eyes !== value);
+      generateBoard(charactersInPlay);
     }
   } else if (category === 'accessories') {
     if (keep) {
-      alert(`YES, the person has ${value}! We will keep all people who have ${value}.`
-      )
+      alert(`YES, the person has ${value}! We will keep all people who have ${value}.`)
+      charactersInPlay = charactersInPlay.filter((person) => person.accessories.includes(value));
+      generateBoard(charactersInPlay);
     } else {
-      alert(`NO, the person doesn't have ${value}. We will remove all people who have ${value}`
-      )
+      alert(`NO, the person doesn't have ${value}. We will remove all people who have ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => !person.accessories.includes(value));
+      generateBoard(charactersInPlay);
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(`YES, the person has ${value}! We will keep all people who have ${value}.`
-      )
+      alert(`YES, the person is a ${value}! We will keep all people who haven't kicked the habit.`)
+      charactersInPlay = charactersInPlay.filter((person) => person.other.includes(value));
+      generateBoard(charactersInPlay);
     } else {
-      alert(`NO, the person doesn't have ${value}. We will remove all people who have ${value}`
-      )
+      alert(`NO, the person is not a ${value}. We will remove all people who are ${value}s`)
+      charactersInPlay = charactersInPlay.filter((person) => !person.other.includes(value));
+      generateBoard(charactersInPlay);
     }
   }
 }
-
 // Determine what is the category
 // filter by category to keep or remove based on the keep variable.
+
+
 /* 
   for hair and eyes :
     charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)

@@ -265,19 +265,19 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    if (value === secretPerson[category]) {
-      filterPeople(true)
+    if (value === secret[category]) {
+      filterCharacters(true)
       console.log("keep")
     } else
-      filterPeople(false)
+      filterCharacters(false)
     console.log("remove")
 
   } else if (category === 'accessories' || category === 'other') {
-    if (secretPerson[category].includes(value)) {
-      filterPeople(true)
+    if (secret[category].includes(value)) {
+      filterCharacters(true)
       console.log("keep")
     } else
-      filterPeople(false)
+      filterCharacters(false)
     console.log("remove")
   }
 }
@@ -289,13 +289,13 @@ const filterCharacters = (keep) => {
   if (category === 'accessories') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wear ${value}`
+        `Yes, the person wears ${value}! Keep all people that wear ${value}.`
       )
       //filter out people from the charactersInPlay array using the filter method
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
+        `No, the person doesn't wear ${value}! Remove all people that wear ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
@@ -303,12 +303,12 @@ const filterCharacters = (keep) => {
     // Similar to the one above
     if (keep) {
       alert(
-        `Yes, the person has a ${value}! Keep all people that have a ${value}`
+        `Yes, the person has a ${value}! Keep all people that have a ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        `No, the person doesn't have a ${value}! Remove all people that have a ${value}`
+        `No, the person doesn't have a ${value}! Remove all people that have a ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
@@ -316,28 +316,28 @@ const filterCharacters = (keep) => {
     // Similar to the one above
     if (keep) {
       alert(
-        `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`
+        `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       alert(
-        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
+        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       alert(
-        `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
+        `Yes, the person has ${value} hair! Keep all people that have ${value} hair.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(
-        `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`
+        `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
 

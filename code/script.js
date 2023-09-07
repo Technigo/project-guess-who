@@ -248,8 +248,8 @@ const selectQuestion = () => {
   const selectedOption = questions.options[questions.selectedIndex];
   const value = selectedOption.value;
 
-  console.log("Selected Category:", category);
-  console.log("Selected Value:", value);
+  //console.log("Selected Category:", category);
+  //console.log("Selected Value:", value);
 
   currentQuestion = {
     category: category,
@@ -261,9 +261,9 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, value } = currentQuestion
   let keep
-  console.log(`category: ${category}`)
-  console.log(`value: ${value}`)
-  console.log(secret)
+  //console.log(`category: ${category}`)
+  //console.log(`value: ${value}`)
+  //console.log(secret)
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -275,7 +275,7 @@ const checkQuestion = () => {
   } else if (category === 'accessories' || category === 'other') {
     keep = secret[category].includes(value)
   }
-  console.log(keep)
+  //console.log(keep)
   filterCharacters(keep)
 }
 
@@ -312,28 +312,28 @@ const filterCharacters = (keep) => {
 
   if (category === 'accessories') {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else if (category === 'other') {
     //} else {
     if (keep) {
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
         `Yes, the person is a ${value}! Keep all people that is a ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       alert(
         `No, the person isn't a ${value}! Remove all people who's a ${value}`
       )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   }
 
@@ -360,6 +360,17 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  const confirmed = confirm(
+    `Do you really want to guess on ${personToConfirm}?`
+  )
+
+  if (confirmed) {
+    checkMyGuess(personToConfirm)
+} else {
+  alert(
+    `Guess cancelled.`
+  )
+  }
 }
 
 // If you confirm, this function is invoked

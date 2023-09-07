@@ -1,4 +1,4 @@
-## Project Guess Who
+# Project Guess Who
 
 The aim of the project was to make a digital version of the board game Guess Who by using HTML, CSS and Javascript.
 

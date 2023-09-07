@@ -242,7 +242,8 @@ const start = () => {
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label // This variable stores what option group (category) the question belongs to.
+  // This variable stores what option group (category) the question belongs to.
+  const category = questions.options[questions.selectedIndex].parentNode.label 
   
   const selectedOption = questions.options[questions.selectedIndex];
   // This variable stores the actual value of the question we've selected.
@@ -327,24 +328,8 @@ const filterCharacters = (keep) => {
          );
          charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
       }
-      
     }
     generateBoard(charactersInPlay);
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-  // Invoke a function to redraw the board with the remaining people.
 };
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
@@ -368,7 +353,8 @@ const checkMyGuess = (personToCheck) => {
   } else {
     winOrLose.style.display = "flex";
     board.style.display = "none"
-    winOrLoseText.innerText = `Oh no, you guessed wrong 🫣. GAME OVER! The correct answer is ${secret.name}`
+    winOrLoseText.innerText = `You guessed wrong 🫣
+    The correct answer is ${secret.name}.`
   }
 };
 

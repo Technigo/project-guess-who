@@ -22,7 +22,7 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: var(--secondary); /*här kan jag kanske lägga in en bild*/
   display: flex;
   flex-direction: column;
   padding: 5vw;

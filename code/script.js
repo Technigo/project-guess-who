@@ -273,7 +273,7 @@ const checkQuestion = () => {
   } else if (category === 'accessories' || category === 'other') {
     keep = secret[category].includes(value)
   }
-  filterCharacters(keep)
+  filterCharacters(keep) //Invokes filterCharacters
 }
 
 // Filter the characters array and redraw the game board.

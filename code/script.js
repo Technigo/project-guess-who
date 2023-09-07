@@ -6,6 +6,7 @@ const findOut = document.getElementById('filter')
 const optgroup = document.getElementById('optgroup')
 const guessButton = document.getElementsByClassName('filled-button small')
 const winOrLose = document.getElementById('winOrLose')
+const conclusion = document.getElementsByClassName('conclusion')
 const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
@@ -13,147 +14,115 @@ const CHARACTERS = [
   {
     name: 'Frodo',
     img: 'images/frodo.png',
-    hair: 'dark brown hair',
+    hair: 'dark-brown',
     type: 'hobbit',
-    accessories: ['the ring of power']
+    accessories: 'ring'
   },
   {
     name: 'Aragorn',
     img: 'images/aragorn.png',
-    hair: 'dark brown hair',
+    hair: 'dark-brown',
     type: 'human',
-    accessories: ['sword']
+    accessories: 'sword'
   },
   {
     name: 'Galadriel',
     img: 'images/galadriel.png',
-    hair: 'blond hair',
+    hair: 'blond',
     type: 'elf',
-    accessories: ['headband']
+    accessories: 'headband'
   },
   {
     name: 'Legolas',
     img: 'images/legolas.png',
-    hair: 'blond hair',
+    hair: 'blond',
     type: 'elf',
-    accessories: ['bow']
+    accessories: 'bow'
   },
   {
     name: 'Merry',
     img: 'images/merry.png',
-    hair: 'light brown hair',
+    hair: 'light-brown',
     type: 'hobbit',
-    accessories: ['pipe']
+    accessories: 'pipe'
   },
   {
     name: 'Saruman',
     img: 'images/saruman.png',
-    hair: 'white hair',
+    hair: 'white',
     type: 'wizard',
-    accessories: ['wand']
+    accessories: 'staff'
   },
   {
     name: 'Sam',
     img: 'images/sam.png',
-    hair: 'light brown hair',
+    hair: 'light-brown',
     type: 'hobbit',
-    accessories: ['pipe']
+    accessories: 'pipe'
   },
   {
     name: 'Arwen',
     img: 'images/arwen.png',
-    hair: 'dark brown hair',
+    hair: 'dark-brown',
     type: 'elf',
-    accessories: ['hood']
+    accessories: 'hood'
   },
   {
     name: 'Bilbo',
     img: 'images/bilbo.png',
-    hair: 'grey hair',
+    hair: 'grey',
     type: 'hobbit',
-    accessories: ['the ring of power']
+    accessories: 'ring'
   },
   {
     name: 'Gollum',
     img: 'images/gollum.png',
-    hair: 'no hair',
+    hair: 'missing',
     type: 'other',
-    accessories: ['the ring of power']
+    accessories: 'ring'
   },
   {
     name: 'Elrond',
     img: 'images/elrond.png',
-    hair: 'dark brown hair',
+    hair: 'dark-brown',
     type: 'elf',
-    accessories: ['headband']
+    accessories: 'headband'
   },
   {
     name: 'Éowyn',
     img: 'images/eowyn.png',
-    hair: 'blond hair',
+    hair: 'blond',
     type: 'human',
-    accessories: ['sword']
+    accessories: 'sword'
   },
   {
     name: 'Gandalf',
     img: 'images/gandalf.png',
-    hair: 'grey hair',
+    hair: 'grey',
     type: 'wizard',
-    accessories: ['wand']
+    accessories: 'staff'
   },
   {
     name: 'Pippin',
     img: 'images/pippin.png',
-    hair: 'light brown hair',
+    hair: 'light-brown',
     type: 'hobbit',
-    accessories: ['sword']
+    accessories: 'sword'
   },
   {
     name: 'Faramir',
     img: 'images/faramir.png',
-    hair: 'light brown hair',
+    hair: 'light-brown',
     type: 'human',
-    accessories: ['bow']
+    accessories: 'bow'
   },
   {
     name: 'Gimli',
     img: 'images/gimli.png',
-    hair: 'red hair',
+    hair: 'red',
     type: 'dwarf',
-    accessories: ['helmet']
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black hair',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black hair',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown hair',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
+    accessories: 'helmet'
+  }
 ]
 
 // Global variables
@@ -250,11 +219,11 @@ const filterCharacters = (keep) => {
   } else if (category === 'hair') {
     if (keep) {
       alert(
-        `Yes, the character has ${value}! Keep all characters who have ${value}.`
+        `Yes, the character's hair is ${value}! Keep all characters whose hair is ${value}.`
       )
     } else {
       alert(
-        `No, the character doesn't have ${value}. Remove all characters with ${value}.`
+        `No, the character's hair is not ${value}. Remove all characters with ${value} hair.`
       )
     }
   }
@@ -298,13 +267,18 @@ const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     //board.style.display = 'none';
     winOrLose.style.display = 'flex';
-    winOrLose.innerHTML `
-    <p>Congratulations! Your guess was right and your quest successful.</p>`
+    winOrLose.innerHTML=`
+    <div class="conclusion">
+      <img src=${secret.img} alt=${secret.name}>
+      <p>It truly was ${secret.name}! Your guess was right and your quest successful.</p>
+    </div>`
   } else {
     //board.style.display = 'none';
     winOrLose.style.display = 'flex';
-    winOrLose.innerHTML`
-    <p>Oh no, your guess was wrong... the eye seems to be still looking around Mordor.</p> `
+    winOrLose.innerHTML=`
+    <div class="conclusion">
+      <p>Oh no, your guess was wrong... the eye seems to be still looking around Mordor.</p>
+    </div> `
   }
 }
   // 1. Check if the personToCheck is the same as the secret person's name

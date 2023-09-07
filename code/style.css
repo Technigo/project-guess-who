@@ -199,6 +199,16 @@ audio {
   margin-bottom: 32px;
 }
 
+.conclusion p {
+  color: white;
+  font-size: 25px;
+}
+
+.conclusion img {
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;

@@ -7,6 +7,7 @@ const findoutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
 
 const winOrLoseText = document.getElementById("winOrLoseText")
+const winOrLoseTexth2 = document.getElementById("winOrLoseTexth2")
 const winOrLoseSection = document.getElementById("winOrLose")
 
 //don't need a GUESS button DOM selector because we add this button dynamically in this JS
@@ -220,15 +221,12 @@ let charactersInPlay = [];        //Array of people still in the game
 
 // Function - start - to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  //winOrLoseText.innerHTML = ""
-  //winOrLoseText.innerHTML = ""
+  //if this is not the first call of start() the next 2 lines clear the win and loose screens
   winOrLoseSection.style.display = "none";
   board.style.display = "flex";
   generateBoard();  //Step 1 - I added this on Tues to see the board  
   setSecret(); //Step 1 - 'Computer player' selects the secret character the user tries to guess
-
 }
 
 
@@ -268,9 +266,7 @@ const selectQuestion = () => {
     category: category,
     value: value
   }
-
-  console.log(currentQuestion)
-  return (currentQuestion)
+  return (currentQuestion) //do I need this?
 }
 
 
@@ -358,39 +354,35 @@ const filterCharacters = (keep) => {
 const guess = (personToConfirm) => {
   console.log("we have entered the guess function")
 
-  let confirmGuess = confirm(`Are you sure you want to guess on ${personToConfirm}`);
+  let confirmGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`);
 
   if (confirmGuess) {
     checkMyGuess(personToConfirm);
   } else if (!confirmGuess) {
     return;
   }
+
   console.log(`confirm equals: ${confirmGuess}`);
   console.log(`This is the secret person: ${secret.name}`);
-
 }
 
 // Function - checkMyGuess - if you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  console.log("we have entered the last function - check my guess")
-  if (personToCheck == secret.name) {
-    winOrLoseText.innerHTML = "You won!"
+
+  if (personToCheck == secret.name) {                     // 1. Check if the personToCheck is the same as the secret person's name
+    winOrLoseText.innerHTML = "You won! &#127881;"        // 2. Set a Message to show in the win or lose section accordingly
+    winOrLoseTexth2.innerHTML = "Well done, Thank you for playing!"
   }
   else {
-    winOrLoseText.innerHTML = "You lost"
+    winOrLoseText.innerHTML = "You lost &#128078;"
+    winOrLoseTexth2.innerHTML = `Good try, bad luck this time`
   }
-  winOrLoseSection.style.display = "block";
-  board.style.display = "none";
 
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-  // body.innerHTML += `
-
-  //   `
+  winOrLoseSection.style.display = "block";               // 3. Show the win or lose section
+  board.style.display = "none";                           // 4. Hide the game board
 }
 
+//-------------------- Program Starts Here --------------------//
 
 // Invokes the start function when website is loaded
 start()
@@ -399,7 +391,7 @@ start()
 //-------------------- All Event Listeners --------------------//
 
 
-//NOTE: 4 events - restart button, find out button, guess button, play again button
+//NOTE: 4 events - restart button, find out button, play again button (NONE for Guess button as it is added dynamically)
 
 restartButton.addEventListener('click', start) //NOTE: technigo wrote this
 playAgainButton.addEventListener('click', start)

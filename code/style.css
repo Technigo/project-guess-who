@@ -19,6 +19,14 @@ h1 {
   color: #00804d;
 }
 
+h2 {
+  font-size: 30px;
+  font-weight: 200;
+  margin: 10px 0;
+  color: #00804d;
+  padding: 0 0 20px 100px;
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;

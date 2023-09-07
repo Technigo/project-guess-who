@@ -65,6 +65,32 @@
     align-content: center;
   }
   
+
+  #counter-aside {
+    color: white;
+    font-weight: 500;
+    margin-top: 50px;
+    padding: 20px; 
+    background-color: var(--red);
+    text-align: center;
+    border-radius: 10px;
+}
+
+#counter-win-loose {
+    color: white; 
+    margin: 50px; 
+    padding: 20px; 
+    font-weight: 200;
+    background-color: var(--red);
+    border-radius: 20px;
+}
+
+    #count {
+    text-align: center;
+    color: var(--light-orange); 
+    font-size: 80px;
+}
+  
   /****** CARD ******/
   .card {
     width: 135px;

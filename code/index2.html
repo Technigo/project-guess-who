@@ -49,12 +49,16 @@
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
         <optgroup label="other">
-          <option value="smoker">A smoking habit</option>
-          <option value="bad-day">A bad day</option>
+          <option value="smoking habit">A smoking habit</option>
+          <option value="bad day">A bad day</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+
+      <div class="stats">
+        <h2 id="counter-aside">No of guesses: <br> <span id="count">0</span></h2>
+      </div>
     </aside>
 
     <section class="board-wrapper">
@@ -63,13 +67,19 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
+        
         <img
           class="guess-who-icon"
           src="images/guess-who-bubble.png"
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
+        <div class="stats">
+            <h2 id="counter-win-loose">Number of guesses: <span id="guesses">0</span></h2>
+        </div>
         <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+
+        
       </div>
     </section>
     <script src="script2.js"></script>

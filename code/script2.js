@@ -8,10 +8,15 @@ const playAgainButton = document.getElementById('playAgain')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const winnerImg = document.createElement('img');
 const winLoseP = document.createElement('p')
+
 winLoseP.className = 'winLose-p'
 winOrLose.appendChild(winLoseP)
 winnerImg.className = 'winner-img';
 winOrLose.appendChild(winnerImg);
+
+const count = document.getElementById("count");
+const guesses = document.getElementById("guesses");
+const totalTime = document.getElementById("total-time");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -29,7 +34,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['bad-day']
+    other: ['bad day']
   },
   {
     name: 'Jacques',
@@ -37,7 +42,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'blue',
     accessories: ['hat'],
-    other: ['smoker', 'bad-day']
+    other: ['smoking habit', 'bad day']
   },
   {
     name: 'Jai',
@@ -61,7 +66,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['bad day']
   },
   {
     name: 'Jana',
@@ -77,7 +82,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: []
+    other: ['bad day']
   },
   {
     name: 'Jaqueline',
@@ -94,7 +99,7 @@ const CHARACTERS = [
     hair: 'purple',
     eyes: 'hidden',
     accessories: ['glasses'],
-    other: ['smoker']
+    other: ['smoking habit', 'bad day']
   },
   {
     name: 'Jean',
@@ -102,7 +107,7 @@ const CHARACTERS = [
     hair: 'brown',
     eyes: 'blue',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoking habit', 'bad day']
   },
   {
     name: 'Jeane',
@@ -118,7 +123,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    other: ['smoking habit', 'bad day']
   },
   {
     name: 'Jenni',
@@ -126,7 +131,7 @@ const CHARACTERS = [
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat', 'jewellery'],
-    other: []
+    other: ['bad day']
   },
   {
     name: 'Jeri',
@@ -134,7 +139,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['bad day']
   },
   {
     name: 'Jerry',
@@ -158,7 +163,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'jewellery'],
-    other: []
+    other: ['bad day']
   },
   {
     name: 'Jon',
@@ -206,7 +211,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['bad day']
   },
 ]
 
@@ -215,7 +220,20 @@ let secret
 let currentQuestion
 let charactersInPlay
 let guessedPerson
+let numberOfGuesses = 0;
 
+//disolay counter in aside
+let counter = () => {
+    numberOfGuesses++;
+    count.innerHTML = `${numberOfGuesses}`;
+    guesses.innerHTML = `${numberOfGuesses}`;
+  };
+
+// Reset Counter
+let resetCounter = () => {
+    numberOfGuesses = 0;
+    count.innerHTML = `${numberOfGuesses}`;
+  };
 
 // Draw the game board
 const generateBoard = () => {
@@ -247,6 +265,7 @@ const start = () => {
   generateBoard();
   //Set secret person
   setSecret(); 
+  resetCounter()
   console.log (secret)
 }
 
@@ -267,6 +286,7 @@ const selectQuestion = () => {
   //This variable stores what value of the category is selected 
   const value = questions.options[questions.selectedIndex].value
   //Redeclaring the global variable "currenQuestion", making it into an object.
+
   currentQuestion = {
     category: category,
     value: value
@@ -305,19 +325,20 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((character) => character[category].includes(value))
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
+        `No, the person doesn't wear ${value}! Remove all people that doesn't wear ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((character) => !character[category].includes(value))
     }
   } else if (category === 'other') {
     if (keep) {
+        
       alert(
-        `Yes, the person is a ${value}! Keep all people that are ${value}s.`
+        `Yes, the person has a ${value}! Keep everybody that has a ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((character) => character[category].includes(value))
     } else {
       alert(
-        `No, the person isn't a ${value}! Remove all people that are ${value}s.`
+        `No, the person doesn't have a ${value}! Remove everybody that doesn't have a ${value}.`
       )
       charactersInPlay = charactersInPlay.filter((character) => !character[category].includes(value))
     }
@@ -383,6 +404,7 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', restart)
 findOutButton.addEventListener('click', checkQuestion)
+filter.addEventListener("click", counter) //eventlistener for every guess
 playAgainButton.addEventListener('click', (event) => { 
   start() 
   winOrLose.style.display = "none"; // The winOrLoseWindow stops showing
@@ -391,4 +413,4 @@ playAgainButton.addEventListener('click', (event) => {
 questions.addEventListener('change', selectQuestion)
 
 
-console.log ("heeej!")
+ 

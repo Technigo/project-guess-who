@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -200,6 +201,8 @@ const CHARACTERS = [
   },
 ]
 
+
+
 // Global variables
 let secret
 let currentQuestion
@@ -230,7 +233,9 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS; 
+  setSecret();
+  generateBoard();
   // What else should happen when we start the game?
 }
 

@@ -2,6 +2,7 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const findOutButton = document.getElementById('filter')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -241,16 +242,14 @@ const start = () => {
 const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label
-  console.log(category)
   // This variable stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value
-  console.log(value)
 
+  // This object stores the selected category and value to be able to compare later on
   currentQuestion = {
     category: category,
     value: value
   }
-  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
@@ -262,8 +261,14 @@ const checkQuestion = () => {
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
 
-  } else if (category === 'accessories' || category === 'other') {
+    //if the details of the currentQuestion matches the secret "WHO" then we will run filterCharacter-function and passing true as the argument. Otherwise the function is run with the argument false.
+    if (value === secret[category]) filterCharacters(true)
+    else filterCharacters(false)
 
+    //for category accessories and other the approach is different since they are arrays. So I run the method "includes" to see if the value is in the secret "WHO"'s array
+  } else if (category === 'accessories' || category === 'other') {
+    if (secret[category].includes(value)) filterCharacters(true)
+    else filterCharacters(false)
   }
 }
 
@@ -282,6 +287,7 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
+    
     // Similar to the one above
   } else {
     if (keep) {
@@ -329,3 +335,4 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener("change", selectQuestion)
+findOutButton.addEventListener('click', checkQuestion)

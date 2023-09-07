@@ -245,7 +245,6 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  //const value = 
   const selectedOption = questions.options[questions.selectedIndex];
   const value = selectedOption.value;
 
@@ -261,15 +260,22 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  let keep
+  console.log(`category: ${category}`)
+  console.log(`value: ${value}`)
+  console.log(secret)
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    //keep = category === 'hair' ? (secret.hair === value) : (secret.eyes === value)
+    keep = secret[category] === value
   } else if (category === 'accessories' || category === 'other') {
-
+    keep = secret[category].includes(value)
   }
+  console.log(keep)
+  filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -333,4 +339,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
-questions.addEventListener('change', currentQuestion)
+questions.addEventListener('change', selectQuestion)
+filterButton.addEventListener('click', checkQuestion)

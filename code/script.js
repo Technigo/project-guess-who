@@ -5,6 +5,7 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter') // step 4
 const winOrLose = document.getElementById('winOrLose') //step 6
 const winOrLoseText = document.getElementById('winOrLoseText') //step 6
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -363,12 +364,19 @@ const checkMyGuess = (personToCheck) => {
   else { //If the personToCheck is not the same as the secret person's name
     winOrLoseText.innerHTML = `Oh no! ⛈️ Wrong answer, ${secret.name} is the correct answer. Reload the page to try again!`
   }
-}
+};
+
+const restartGame = () => {
+  winOrLose.style.display = "none";
+  start();
+};
 
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
+
 restartButton.addEventListener('click', start);
-questions.addEventListener('change', selectQuestion); //IDAHS step 3 to invoke the select element when we change something in the dropdown/select list
-findOutButton.addEventListener('click', checkQuestion); //IDAHS step 4 to invoke checkQuestion
+findOutButton.addEventListener('click', checkQuestion);
+playAgainButton.addEventListener('click', restartGame);
+questions.addEventListener('change', selectQuestion);

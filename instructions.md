@@ -47,7 +47,7 @@ We've helped you to set up the `category` variable. Make sure to properly create
 
 ## Step 4 - Time to find out the answer to your questions!
 
-When clicking on the `'Find out'` button, you should invoke the `checkQuestion` function (using an eventListener). //OK FRAM TILL HIT. In the `checkQuestion` function, we need to check if the attributes in the `currentQuestion` matches the attributes in the `secret` or not.
+When clicking on the `'Find out'` button, you should invoke the `checkQuestion` function (using an eventListener). In the `checkQuestion` function, we need to check if the attributes in the `currentQuestion` matches the attributes in the `secret` or not.
 
 For example, if we're asking: "Does the person have yellow hair" and the person stored in the secret has yellow hair, we want to **keep** all with yellow hair. If not, we want to **remove** all with yellow hair.
 

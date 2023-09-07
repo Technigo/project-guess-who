@@ -3,6 +3,10 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('find-out');
+const winOrLoseSection = document.getElementById('winOrLose');
+const winOrLoseText = document.getElementById('winOrLoseText');
+const playAgainBtn = document.getElementById('playAgain');
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -297,6 +301,7 @@ const selectQuestion = () => {
       category: category,
     };
   }
+
   currentQuestion = {
     category: category,
     value: value
@@ -408,18 +413,29 @@ const guess = (personToConfirm) => {
 //---------------------------------------------------------------------------------------------------------------------------------------------
 
 
-// If you confirm, this function is invoked
+// // If you confirm, this function is invoked
+// const checkMyGuess = (personToCheck) => {
+//   if (personToCheck === secret.name) {
+//     alert(`Congrats! You guessed right, it's ${secret.name} .`);
+//   } else {
+//     alert(`Woops, this was wrong. It's not ${personToCheck} .`);s
+// }
+//   // 1. Check if the personToCheck is the same as the secret person's name
+//   // 2. Set a Message to show in the win or lose section accordingly
+//   // 3. Show the win or lose section
+//   // 4. Hide the game board
+// }
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    alert(`Congrats! You guessed right, it's ${secret.name} .`);
+    // Display win message
+    winOrLoseText.textContent = `Congratulations! You guessed right  it id ${personToCheck}`;
+    winOrLoseSection.style.display = 'block';
   } else {
-    alert(`Woops, this was wrong. It's not ${personToCheck} .`);
-}
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-}
+    winOrLoseText.textContent = `Oops, this was wrong. It's not ${personToCheck}.`;
+    winOrLoseSection.style.display = 'block';
+  }
+};
+
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -435,6 +451,7 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
+playAgainBtn.addEventListener('click', start);
 
 
 

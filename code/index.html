@@ -12,7 +12,7 @@
   </head>
   <body>
     <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
+      <button type="button" id="restart" class="outlined-button">restart</button>
 
       <img
         class="guess-who-icon"
@@ -20,41 +20,36 @@
         alt="Guess Who"
       />
 
-      <h1>Choose character trait to guess!</h1>
+      <h1>Choose a character trait to guess!</h1>
 
       <select title="questions" id="questions">
-        <optgroup label="Hair color">
-          <option value="lightBrown">light brown</option>
-          <option value="darkBrown">dark brown</option>
-          <option value="blond">blond</option>
-          <option value="red">red</option>
-          <option value="grey">grey</option>
-          <option value="white">white</option>
+        <option value="choice" selected disabled>Make a choice...</option>
+        <optgroup label="hair">
+          <option value="lightBrown">light brown hair</option>
+          <option value="darkBrown">dark brown hair</option>
+          <option value="blond">blond hair</option>
+          <option value="red">red hair</option>
+          <option value="grey">grey hair</option>
+          <option value="white">white hair</option>
           <option value="noHair">no hair</option>
-          <!-- Add the rest of hair colors as options  -->
         </optgroup>
-        <optgroup label="Character type">
+        <optgroup label="type">
           <option value="hobbit">hobbit</option>
           <option value="elf">elf</option>
           <option value="human">human</option>
           <option value="dwarf">dwarf</option>
           <option value="other">other</option>
-          <!-- Add the rest of eye colors as options  -->
         </optgroup>
-        <optgroup label="Accessories">
+        <optgroup label="accessories">
           <option value="sword">sword</option>
           <option value="ring">the ring of power</option>
           <option value="headband">headband</option>
           <option value="pipe">pipe</option>
           <option value="hood">hood</option>
-          <!-- Add the other accessory option here. (hat)  -->
-        </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
         </optgroup>
       </select>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
+      <button id="filter" class="filled-button">find out</button>
     </aside>
 
     <section class="board-wrapper">
@@ -72,6 +67,9 @@
         <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>
+    <audio controls>
+      <source src="..\code\music.mp3" type="audio/mpeg" />
+    </audio>
     <script src="script.js"></script>
   </body>
 </html>

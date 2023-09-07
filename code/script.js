@@ -4,126 +4,128 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOut = document.getElementById('filter')
 const optgroup = document.getElementById('optgroup')
+const guessButton = document.getElementsByClassName('filled-button small')
+const winOrLose = document.getElementById('winOrLose')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
     name: 'Frodo',
     img: 'images/frodo.png',
-    hair: 'dark brown',
+    hair: 'dark brown hair',
     type: 'hobbit',
-    accessories: ['ring of power']
+    accessories: ['the ring of power']
   },
   {
     name: 'Aragorn',
     img: 'images/aragorn.png',
-    hair: 'dark brown',
+    hair: 'dark brown hair',
     type: 'human',
     accessories: ['sword']
   },
   {
     name: 'Galadriel',
     img: 'images/galadriel.png',
-    hair: 'blond',
+    hair: 'blond hair',
     type: 'elf',
     accessories: ['headband']
   },
   {
     name: 'Legolas',
     img: 'images/legolas.png',
-    hair: 'blond',
+    hair: 'blond hair',
     type: 'elf',
     accessories: ['bow']
   },
   {
     name: 'Merry',
     img: 'images/merry.png',
-    hair: 'light brown',
+    hair: 'light brown hair',
     type: 'hobbit',
     accessories: ['pipe']
   },
   {
     name: 'Saruman',
     img: 'images/saruman.png',
-    hair: 'white',
+    hair: 'white hair',
     type: 'wizard',
     accessories: ['wand']
   },
   {
     name: 'Sam',
     img: 'images/sam.png',
-    hair: 'light brown',
+    hair: 'light brown hair',
     type: 'hobbit',
     accessories: ['pipe']
   },
   {
     name: 'Arwen',
     img: 'images/arwen.png',
-    hair: 'dark brown',
+    hair: 'dark brown hair',
     type: 'elf',
     accessories: ['hood']
   },
   {
     name: 'Bilbo',
     img: 'images/bilbo.png',
-    hair: 'grey',
+    hair: 'grey hair',
     type: 'hobbit',
-    accessories: ['ring of power']
+    accessories: ['the ring of power']
   },
-
   {
     name: 'Gollum',
     img: 'images/gollum.png',
     hair: 'no hair',
     type: 'other',
-    accessories: ['ring of power']
+    accessories: ['the ring of power']
   },
   {
     name: 'Elrond',
     img: 'images/elrond.png',
-    hair: 'dark brown',
+    hair: 'dark brown hair',
     type: 'elf',
     accessories: ['headband']
   },
   {
     name: 'Éowyn',
     img: 'images/eowyn.png',
-    hair: 'blond',
+    hair: 'blond hair',
     type: 'human',
     accessories: ['sword']
   },
   {
     name: 'Gandalf',
     img: 'images/gandalf.png',
-    hair: 'grey',
+    hair: 'grey hair',
     type: 'wizard',
     accessories: ['wand']
   },
   {
     name: 'Pippin',
     img: 'images/pippin.png',
-    hair: 'light brown',
+    hair: 'light brown hair',
     type: 'hobbit',
     accessories: ['sword']
   },
   {
     name: 'Faramir',
     img: 'images/faramir.png',
-    hair: 'light brown',
+    hair: 'light brown hair',
     type: 'human',
     accessories: ['bow']
   },
   {
     name: 'Gimli',
     img: 'images/gimli.png',
-    hair: 'red',
+    hair: 'red hair',
     type: 'dwarf',
     accessories: ['helmet']
   },
   {
     name: 'Jess',
     img: 'images/jess.svg',
-    hair: 'black',
+    hair: 'black hair',
     eyes: 'blue',
     accessories: ['glasses'],
     other: []
@@ -131,7 +133,7 @@ const CHARACTERS = [
   {
     name: 'Jocelyn',
     img: 'images/jocelyn.svg',
-    hair: 'black',
+    hair: 'black hair',
     eyes: 'brown',
     accessories: ['glasses'],
     other: []
@@ -139,7 +141,7 @@ const CHARACTERS = [
   {
     name: 'Jon',
     img: 'images/jon.svg',
-    hair: 'brown',
+    hair: 'brown hair',
     eyes: 'green',
     accessories: ['glasses'],
     other: []
@@ -183,22 +185,16 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS;
-  generateBoard();
-  setSecret();
-  // What else should happen when we start the game?
+  charactersInPlay = CHARACTERS
+  generateBoard()
+  setSecret()
+  winOrLose.style.display = 'none';
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  
   const value = questions.options[questions.selectedIndex].value
-  
   currentQuestion = {
     category: category,
     value: value
@@ -212,17 +208,18 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  let keep;
-
-  if (category === 'Hair' || category === 'Accessories') {
+  if (category === 'hair' || category === 'accessories') {
     if (secret[category] === value) {
       filterCharacters(true)
       } else {
-        filterCharacters();
+        filterCharacters(false);
       }
-  } else if (category === 'Character type' || category === 'other') {
-    if (secret[category].includes(value))
-
+  } else if (category === 'type') {
+    if (secret[category].includes(value)) {
+      filterCharacters(true)
+    } else {
+      filterCharacters(false)
+    }
   }
 }
 
@@ -237,7 +234,7 @@ const filterCharacters = (keep) => {
       )
     } else {
       alert(
-        `No, the character doesn't have a ${value}! Remove all characters that have a ${value}`
+        `No, the character doesn't have a ${value}! Remove all characters that have a ${value}.`
       )
     }
   } else if (category === 'type') {
@@ -253,51 +250,78 @@ const filterCharacters = (keep) => {
   } else if (category === 'hair') {
     if (keep) {
       alert(
-        `Yes, the character has ${value} hair! Keep all characters whose hair is ${value}.`
+        `Yes, the character has ${value}! Keep all characters who have ${value}.`
       )
     } else {
       alert(
-        `No, the characters doesn't have ${value} hair. Remove all characters whose hair is ${value}.`
+        `No, the character doesn't have ${value}. Remove all characters with ${value}.`
       )
     }
   }
-
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
+  if (category === 'hair' || category === 'accessories') { 
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => 
+      person[category] === value)
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => 
+      person[category] !== value)
+    }
+  }
+  else if (category === 'type') {
+    if (keep) {
+      charactersInPlay = charactersInPlay.filter((person) => 
+      person[category].includes(value))
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => 
+      !person[category].includes(value))
+    }
+  }
   // Invoke a function to redraw the board with the remaining people.
+  generateBoard(keep)
 }
-
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  let confirmation = confirm(`${personToConfirm}, you say? Are you ready to cast your guess to the fiery pits of Mordor?`)
+    if (confirmation) {
+      checkMyGuess(personToConfirm)
+    }
+  }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-}
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    //board.style.display = 'none';
+    winOrLose.style.display = 'flex';
+    winOrLose.innerHTML `
+    <p>Congratulations! Your guess was right and your quest successful.</p>`
+  } else {
+    //board.style.display = 'none';
+    winOrLose.style.display = 'flex';
+    winOrLose.innerHTML`
+    <p>Oh no, your guess was wrong... the eye seems to be still looking around Mordor.</p> `
+  }
+}
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
-}
 
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start);
-findOut.addEventListener('click', checkQuestion);
-questions.addEventListener('change')
+restartButton.addEventListener('click', start)
+findOut.addEventListener('click', checkQuestion)
+questions.addEventListener('change', selectQuestion)
+guessButton.addEventListener('click', guess)
+restartButton.addEventListener('click', start)
+playAgain.addEventListener("click", () => {
+  location.reload
+  return false
+})

@@ -129,11 +129,10 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
-  font-size: 16px;
-  font-family: 'Montserrat';
+  font-size: 25px;
+  font-family: 'Ringbearer';
   font-weight: bold;
-  padding: 17px 27px;
+  padding: 10px;
   cursor: pointer;
 }
 
@@ -157,6 +156,15 @@ button {
   background-color: white;
   border-color: white;
   color: var(--primary);
+}
+
+audio {
+  position: absolute;
+  display: flex;
+  left: 70px;
+  bottom: 30px;
+  width: 300px;
+  height: 20px;
 }
 
 /****** WIN OR LOSE SECTION ******/

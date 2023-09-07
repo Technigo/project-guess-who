@@ -574,10 +574,10 @@ const checkMyGuess = (personToCheck) => {
   // Store final counter number and time for local storage
   finalCounts = counter;
   finalTimerValue = timer.textContent;
-
+  handleLocalStorage();
   // check a name of secret and guessed person's name is the same
   if (personToCheck === secret.name) {
-    handleLocalStorage();
+    // handleLocalStorage();
 
     winOrLoseText.textContent = `✨🎉Conglaturation!! 🎉✨`;
     createSound("./images/audio/win-sound.mp3");
@@ -592,7 +592,7 @@ const checkMyGuess = (personToCheck) => {
 
 const handleLocalStorage = () => {
   const dataStorage = {
-    playerName: userName,
+    playerName: player,
     howManyGuesses: finalCounts,
     time: finalTimerValue,
   };
@@ -601,7 +601,6 @@ const handleLocalStorage = () => {
 
   // then store again in localstorage
   window.localStorage.setItem("items", JSON.stringify(arrayForLocalStorage));
-  console.log(localStorage);
 };
 
 /*********************************************************************/
@@ -752,7 +751,7 @@ const createTableElement = (arr) => {
 clearGameBtn.addEventListener("click", () => {
   localStorage.clear();
   arrayForLocalStorage = [];
-  console.log("clear", localStorage);
+
   tbody.textContent = "";
   alartMessageBox.textContent = "";
   bestScoreContainer.textContent = "";

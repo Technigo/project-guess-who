@@ -157,6 +157,7 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
+  
 }
 
 .win-or-lose {
@@ -166,7 +167,10 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  margin: auto; 
+  padding-top: 200px;
 }
+
 
 .win-or-lose img {
   align-self: flex-start;

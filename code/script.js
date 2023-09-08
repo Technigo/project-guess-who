@@ -204,6 +204,7 @@ const CHARACTERS = [
     accessories: ["glasses", "hat"],
     other: [],
   },
+  console.log(`CHARACTERS`),
 ];
 
 //----------------------------------------------------------------------
@@ -300,17 +301,6 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 
-/*const checkQuestion = () => {
-  console.log(`function checkQuestion`);
-  const { category, value } = currentQuestion;
-  let keep = false;
-
-  if (category === "hair" || category === "eyes") {
-    keep = charactersInPlay.some((person) => person[category] === value);
-  } else if (category === "accessories" || category === "other") {
-    keep = charactersInPlay.some((person) => person[category].includes(value));
-  }
-*/
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   let keep = false;

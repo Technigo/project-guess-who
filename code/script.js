@@ -272,6 +272,7 @@ const checkQuestion = () => {
 }// Here the characters array is filtered and game board is redrawn
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
+  let filtered;
 
   if (category === 'house' || category === 'hair' || category === 'type' || category === 'species') {
     // Saves the filtered characters in the variable filtered
@@ -340,17 +341,18 @@ const checkMyGuess = (personToCheck) => {
 };
 
 // Count is set to zero here, if this value is inside the function it doesn't increment.
-let count = 1;
+/*let count = 1;
 // Counter function, increments via using the same eventListener as for the checkQuestion.
 const counter = () => {
   let counterSection = document.querySelector('.counter');
-  let finalCount = count++
 
   counterSection.innerHTML =
     `<p>Guesses made: 
     <span style="font-weight: bolder; color: #5a52b4;">${finalCount}</span>
     </p>`
-}
+
+  let finalCount = count++;
+}*/
 
 //timer should start when page loads
 
@@ -370,4 +372,5 @@ start();
 restartButton.addEventListener('click', start);
 playAgainButton.addEventListener('click', restartGame);
 questions.addEventListener('change', selectQuestion);
-findOutButton.addEventListener('click', counter, checkQuestion);
+findOutButton.addEventListener('click', checkQuestion);
+//findOutButton.addEventListener('click', counter);

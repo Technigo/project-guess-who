@@ -1,14 +1,18 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #76b682;
+  --secondary: #517a59;
+  
 }
 
 body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Russo One', sans-serif;
+  /*font-family: 'Montserrat', sans-serif;
+  font-family: 'Teko', sans-serif; */
+  background: black url("woodboard.jpg");
 }
 
 h1 {
@@ -28,13 +32,15 @@ h1 {
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
+  border-radius: 80px;
+  margin: 20px;
 }
 
 select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: 'Russo One', sans-serif;
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
@@ -61,12 +67,13 @@ select {
 
 /****** CARD ******/
 .card {
+  background: rgb(186, 232, 186);
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
+  border: 5px solid var(--secondary);
   border-radius: 4px;
-  margin: 3px;
+  margin: 7px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,7 +124,7 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: 'Russo One', sans-serif;
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
@@ -199,6 +206,7 @@ button {
   }
 
   .board-wrapper {
+    display: flex;
     width: 100%;
   }
 

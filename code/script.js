@@ -3,7 +3,6 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
-const guessButton = document.getElementById('guess-button')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
@@ -242,7 +241,7 @@ const start = () => {
 
   //Invoke the secret character
   setSecret();
-}
+};
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -384,11 +383,6 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
 };
 
-const restartGame = () => {
-  winOrLose.style.display = "none";
-  start();
-};
-
 
 // Invokes the start function when website is loaded
 start()
@@ -397,5 +391,9 @@ start()
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion)
-playAgainButton.addEventListener('click', restartGame);
+playAgainButton.addEventListener('click', (event) => {
+  winOrLose.style.display = "none";
+  board.style.display = "flex"
+  start();
+})
 

@@ -10,11 +10,17 @@ I struggeled a bit from step 3 and forward. There was a lot of tips how to move 
 
 At first, just knowing in what order to do things, made me dizzy. Being such a noob makes it quite challenging to grasp the layout and in which order things need to happend.
 
-The project has made me more comfirtable with the DOM, so that's great.
+Ther's quite a long if statement that looked hard to do at once, but then it went better further down I got. This should be made shorter and so it's easier to maintain, but at the moment it's devided into the different categories so it works.
 
-Ther's quite a long if statement that looked hard at once, but then it went better further down I got. This should be made shorter and so it's easier to maintain, but at the moment it's devided into the different categories so it works.
+If I had more time I would love to play around with the timer and a counter. It makes the game more fun.
 
-# Requirements for this project:
+I used different techniques during this project:
+Functions: breaking down code inte functions for modularity and reusability
+Variable Scoping: Understand the difference between global and local scope and trying to avoid polluting the global namespace to prevent conflicts
+Event handling: use event listeners to respond to user interactions
+DOM manipulation: Select and manipulate DOM elements
+
+### Requirements for this project:
 
 - The board with characters should be generated when the website is loaded.
 - A randomly selected person should be set as the secret when the game starts.
@@ -24,16 +30,15 @@ Ther's quite a long if statement that looked hard at once, but then it went bett
 
 I have completed all these steps.
 
-# Stretch goals
+### Stretch goals
 
-Intermediate
+Intermediate:
 *The Bonus step felt easy enough to attack, but it still took some thinking to get it right.
 *Changed the styling a bit just for fun.
 
-Advanced stretch goals
-\*Sound. I haven't added sound to any of my projects before so I wanted to try it at this one. And it worked!
-
-and what tools and techniques you used to solve it.What technologies did you use? If you had more time, what would be next?
+Advanced stretch goals:
+*Sound. I haven't added sound to any of my projects before so I wanted to try it at this one. And it worked!
+*N
 
 ## View it live
 

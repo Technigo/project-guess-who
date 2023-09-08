@@ -211,7 +211,7 @@ let charactersInPlay
 
 // Draw the game board
 const generateBoard = () => {
-  //Reset the select element (drop down) to its default value
+  //Reset the select element (drop down) to it's default value
   questions.value = 'default';
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -371,9 +371,6 @@ const playAgain = () => {
 }
 // Invokes the start function when website is loaded
 start()
-
-// Sets the drop down to default when restarting the game
-
 
 // All the event listeners
 restartButton.addEventListener('click', start)

@@ -5,7 +5,6 @@ const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const asideQuestionSection = document.getElementById('question-section')
 const boardWrapper = document.getElementById('board-wrapper')
-// const bodyElement = document.getElementsByTagName('body')
 const winOrLoseWrapper = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('play-again')
@@ -256,7 +255,7 @@ const selectQuestion = () => {
   const value = questions.options[questions.selectedIndex].value
 
   // "questions" is used to set up <select> including all options
-  // currentQuestion is an object variable storing values "category" and"value"
+  // currentQuestion is a destrtuctured object variable storing values "category" and"value"
   currentQuestion = {
     category: category,
     value: value
@@ -377,10 +376,14 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerHTML = `
     Yipee!  Congratulations! 🎊 You have won!
     `
+    const winSound = new Audio('./assets/win.wav');
+    winSound.play();
   } else {
     winOrLoseText.innerHTML = `
     Nopes!  That was a wrong guess! 😒 Game Over!
       `
+    const loseSound = new Audio('./assets/lose.wav')
+    loseSound.play();
   }
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

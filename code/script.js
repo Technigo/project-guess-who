@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const winOrLoseBoard = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -309,7 +311,7 @@ const filterCharacters = (keep) => {
     }
   }
 
-    // Determine what is the category
+  // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
   if (category === 'accessories' || category === 'other'){
     if (keep) charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
@@ -336,8 +338,6 @@ You can keep playing instead`)
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  console.log(secret.name)
-  console.log(personToCheck)
   // Check if the personToCheck is the same as the secret person's name
   if (secret.name === personToCheck) {
     alert(
@@ -349,12 +349,14 @@ ${secret.name} was the secret person!`)
     alert(
       `Oh noooo 🤦🏼‍♀️
       ${personToCheck} was not the secret person!`)
-
-
   }
   
   // 3. Show the win or lose section
+  winOrLoseBoard.style.display = "flex"
+  if (secret.name === personToCheck) winOrLoseText.innerHTML = "✨ WIN! YOU ARE A BAD ASS GUESSER ✨"
+  else winOrLoseText.innerHTML = "☠️ YOU LOST... ☠️"
   // 4. Hide the game board
+  board.style.display = "none"
 }
 
 // Invokes the start function when website is loaded

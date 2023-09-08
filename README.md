@@ -8,7 +8,7 @@ Most time consuming was to understand the starter code and the different parts o
 
 Great sessions with my team where we all helped each other out, course material and chatGPT was used to understand objects and arrays.
 
-With more time I would do the stretch goals. I found it important, at this time, to understand the basics. In order to do so I spent time going through my code and understand it better instead of doing stretch goals.
+With more time I would do the stretch goals. I found it important, at this time, to understand the basics. In order to do so I spent time going through my code, commenting a lot to understand it, and understand it better instead of doing stretch goals.
 
 ## View it live
 

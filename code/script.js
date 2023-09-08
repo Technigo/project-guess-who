@@ -2,12 +2,12 @@
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const findOutButton = document.getElementById('filter') // step 4
-const winOrLose = document.getElementById('winOrLose') //step 6
-const winOrLoseText = document.getElementById('winOrLoseText') //step 6
+const findOutButton = document.getElementById('filter')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
 
-// Array with all the characters, as objects
+// Array with all the characters as objects
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -204,15 +204,16 @@ const CHARACTERS = [
   },
 ]
 
-// Global variables
+// Global variables declared outside of functions to be accessed and modified from anywhere within JavaScript.
 let secret ////Will be the secret person object
 let currentQuestion ////Will be the current question object
 let charactersInPlay////Will be an array of all people left in the game
 
-// Draw the game board
+// Function to draw the game board
 const generateBoard = () => {
-  board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  board.innerHTML = '' //Clears the content with the id board. Sets the innerHTML property of that element to an empty string.
+  charactersInPlay.forEach((person) => { //Iterates over each element in the charactersInPlay array
+    //Generates HTML content for each character and adds it to the board element.
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
@@ -229,48 +230,40 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret)
 }
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
+  // Setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // Invokes the board to show all the characters
   generateBoard();
   // Invokes the randomizer function to randomly select one character as the secret one.
   setSecret();
-  console.log(setSecret);
+  console.log(secret); //To see the secret person in the console
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// Setting and updating the currentQuestion object when the player select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].value; //IDAHS step 3 make selectQuest work
-
+  const value = questions.options[questions.selectedIndex].value;
   currentQuestion = {
     category: category,
-    value: value //IDAHS step 3
+    value: value
   }
 }
 
-// This checkQuestionfunction is invoked when player click on 'Find Out' button.
+// checkQuestion function is invoked when player click on 'Find Out' button. Comparing the currentQuestion (global variable) details with the secret person details based on category and determining whether to keep or remove characters based on question.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
-
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  //IDAH step 4: True or false should be used Connect this to set secret på något sätt??? Check if the attributes in the current Question matches the attributes in the secret or not.Keep is in the filterCharacters.
-  let keep
-  //IDAH step 4 If the category chosen is a type of hair or eyes (objects). 
+  let keep //Sets the variable to true or false (yes/no).
+  //If the category chosen is a type of hair or eyes (objects). 
   if (category === 'hair' || category === 'eyes') {
     keep = secret[category] === value
 
-    //IDAH step 4 If the category chosen is a type of accessory or other (array)
+    //If the category chosen is a type of accessory or other (array)
   } else if (category === 'accessories' || category === 'other') {
     keep = secret[category].includes(value)
   }
@@ -340,41 +333,42 @@ function filterCharacters(keep) {
 };
 
 
-// when clicking guess, the player confirm if they want to make a guess.
+// when clicking guess, the player then confirms if they want to make a guess.
 const guess = (personToConfirm) => {
-  // Storing the interaction from the player in a variable.
+  // Storing the interaction from the player in the variable 'confirming'.
   const confirming = confirm(`Are you sure you want to guess on ${personToConfirm}?`) //Confirm
   if (confirming) {
     checkMyGuess(personToConfirm) //Invoking checkMyGuess if player presses ok
   } else {
-    // The user clicked "Cancel" in the confirmation dialog
+    // If the user clicked "Cancel" in the confirmation dialog
     console.log("No guess was made")
   }
 }
 
 // If player confirms in the function above, this function is invoked and will show the win or lose section.
 const checkMyGuess = (personToCheck) => {
-  board.innerHTML = ""; //"Clears" the browser/Hides the game board
-  winOrLose.style.display = "flex"; //This adds from the CSS-file
+  board.innerHTML = ""; //Clears/hides the game board
+  winOrLose.style.display = "flex"; //Makes the id winOrLose visible from the CSS-file
 
-  if (personToCheck === secret.name) //If the personToCheck is the same as the secret person's name
+  if (personToCheck === secret.name) //If the personToCheck is the same as the secret person's name a winner-text appears
   {
     winOrLoseText.innerHTML = `Yeay! ☀️ ${secret.name} is correct!`
   }
-  else { //If the personToCheck is not the same as the secret person's name
+  else { //If the personToCheck is not the same as the secret person's name a wrong anser-text appears
     winOrLoseText.innerHTML = `Oh no! ⛈️ Wrong answer, ${secret.name} is the correct answer. Reload the page to try again!`
   }
 };
 
+//Function to restart game/Play again
 const restartGame = () => {
-  winOrLose.style.display = "none";
-  start();
+  winOrLose.style.display = ''; //Hides winOrLose again
+  start(); //Invokes the start function
 };
 
 // Invokes the start function when website is loaded
 start();
 
-// All the event listeners
+// Event listeners
 restartButton.addEventListener('click', start);
 findOutButton.addEventListener('click', checkQuestion);
 playAgainButton.addEventListener('click', restartGame);

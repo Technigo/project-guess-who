@@ -1,8 +1,10 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
+const winOrLose = document.getElementById('winOrLose')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const playAgainButton = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -232,10 +234,18 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  // Showing the game board when you restart the game.
+  board.style.display = 'flex';
+
+  // Hiding the win or lose page when you restart the game.
+  winOrLose.style.display = 'none';
+
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+
   // The computer chooses a character which the player has to guess.
   setSecret();
+
   // Invoking the function generateBoard to generate the board on start.
   generateBoard();
 
@@ -280,7 +290,7 @@ const checkQuestion = () => {
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
+  // Show the correct alert message for different categoriess
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -292,14 +302,36 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person is a ${value}! Keep all that are ${value}s.`
+      )
+    } else {
+      alert(
+        `No, the person isn't a ${value}! Remove all that aren't ${value}s.`
+      )
+    }
+  } else if (category === 'hair') {
+    if (keep) {
+      alert(
+        `Yes the person has ${value} hair! Keep all persons with ${value} hair.`
+      )
+    } else {
+      alert(
+        `No, the person doesn´t have ${value} hair. Remove all persons with ${value} hair.`
+      )
+    }
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value} eyes!. Keep all persons with ${value} eyes.`
+      )
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn´t have ${value} eyes. Remove all persons with ${value} eyes.`
+      )
     }
-  }
+  };
 
   // Determine what is the category
   // filter by category to keep or remove based on the keep variable.
@@ -331,11 +363,22 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  const hasGuessedRight = secret.name === personToCheck;
   // 1. Check if the personToCheck is the same as the secret person's name
+  const hasGuessedRight = secret.name === personToCheck;
+
   // 2. Set a Message to show in the win or lose section accordingly
+  const text = document.getElementById('winOrLoseText')
+  if (hasGuessedRight) {
+    text.innerText = 'YAY! Congrats – you won! 🙌';
+  } else {
+    text.innerText = 'Oh no! You guessed wrong. Game over! 😤';
+  }
+
   // 3. Show the win or lose section
+  winOrLose.style.display = 'flex';
+
   // 4. Hide the game board
+  board.style.display = 'none';
 }
 
 // Invokes the start function when website is loaded
@@ -345,4 +388,5 @@ start()
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
+playAgainButton.addEventListener('click', start);
 

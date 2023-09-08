@@ -17,7 +17,7 @@ body {
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 35px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
@@ -32,6 +32,7 @@ h1 {
   flex-direction: column;
   padding: 5vw;
   align-items: flex-start;
+  justify-content: flex-end;
   box-sizing: border-box;
 }
 
@@ -39,14 +40,17 @@ select {
   display: block;
   border: none;
   font-size: 22px;
-  font-family: 'Montserrat';
+  font-family: 'Dosis';
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 200px;
+  position: absolute;
+  top: 80px;
+  left: 40px;
 }
 
 .board-wrapper {
@@ -129,7 +133,7 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
-  font-size: 25px;
+  font-size: 20px;
   font-family: 'Ringbearer';
   font-weight: bold;
   padding: 10px;
@@ -143,7 +147,9 @@ button {
 .outlined-button {
   background-color: transparent;
   color: var(--primary);
-  align-self: flex-end;
+  position: absolute;
+  top: 50px;
+  left: 300px;
 }
 
 .filled-button,
@@ -186,27 +192,17 @@ audio {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
   text-align: center;
 }
 
 .win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+  margin-bottom: 30px;
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
-}
-
-.conclusion p {
   color: white;
   font-size: 25px;
-}
-
-.conclusion img {
-  justify-content: center;
-  align-items: center;
 }
 
 @media (max-width: 768px) {

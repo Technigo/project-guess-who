@@ -8,6 +8,8 @@ const guessButton = document.getElementsByClassName('filled-button small')
 const winOrLose = document.getElementById('winOrLose')
 const conclusion = document.getElementsByClassName('conclusion')
 const playAgain = document.getElementById('playAgain')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const winLoseWrapper = document.getElementsByClassName('win-or-lose')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -26,20 +28,6 @@ const CHARACTERS = [
     accessories: 'sword'
   },
   {
-    name: 'Galadriel',
-    img: 'images/galadriel.png',
-    hair: 'blond',
-    type: 'elf',
-    accessories: 'headband'
-  },
-  {
-    name: 'Legolas',
-    img: 'images/legolas.png',
-    hair: 'blond',
-    type: 'elf',
-    accessories: 'bow'
-  },
-  {
     name: 'Merry',
     img: 'images/merry.png',
     hair: 'light-brown',
@@ -52,6 +40,20 @@ const CHARACTERS = [
     hair: 'white',
     type: 'wizard',
     accessories: 'staff'
+  },
+  {
+    name: 'Galadriel',
+    img: 'images/galadriel.png',
+    hair: 'blond',
+    type: 'elf',
+    accessories: 'headband'
+  },
+  {
+    name: 'Legolas',
+    img: 'images/legolas.png',
+    hair: 'blond',
+    type: 'elf',
+    accessories: 'bow'
   },
   {
     name: 'Sam',
@@ -78,7 +80,7 @@ const CHARACTERS = [
     name: 'Gollum',
     img: 'images/gollum.png',
     hair: 'missing',
-    type: 'other',
+    type: 'unknown',
     accessories: 'ring'
   },
   {
@@ -122,6 +124,32 @@ const CHARACTERS = [
     hair: 'red',
     type: 'dwarf',
     accessories: 'helmet'
+  },
+  {
+    name: 'Boromir',
+    img: 'images/boromir.png',
+    hair: 'light-brown',
+    type: 'human',
+    accessories: 'ring'
+  },
+  {
+    name: 'Rosie',
+    img: 'images/rosie.png',
+    hair: 'light-brown',
+    type: 'hobbit'
+  },
+  {
+    name: 'Sauron',
+    img: 'images/sauron.png',
+    hair: 'missing',
+    type: 'unknown',
+    accessories: 'helmet'
+  },
+  {
+    name: 'Treebeard',
+    img: 'images/treebeard.png',
+    hair: 'missing',
+    type: 'ent'
   }
 ]
 
@@ -157,7 +185,6 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard()
   setSecret()
-  winOrLose.style.display = 'none';
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -209,11 +236,11 @@ const filterCharacters = (keep) => {
   } else if (category === 'type') {
     if (keep) {
       alert(
-        `Yes, the character is a ${value}! Keep all characters that are ${value}s.`
+        `Yes, the character's type is ${value}! Keep all characters that are ${value}s.`
       )
     } else {
       alert(
-        `No, the character isn't a ${value}. Remove all characters that are ${value}s.`
+        `No, the character's type is not ${value}. Remove all characters that are ${value}s.`
       )
     }
   } else if (category === 'hair') {
@@ -265,20 +292,33 @@ const guess = (personToConfirm) => {
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    //board.style.display = 'none';
+    board.style.display = 'none';
     winOrLose.style.display = 'flex';
-    winOrLose.innerHTML=`
-    <div class="conclusion">
+    winOrLose.innerHTML = `
+    <div class="win-or-lose">
+        <img
+          class="guess-who-icon"
+          src="images/guesslogo.png"
+          alt="Guess Who"
+        />
       <img src=${secret.img} alt=${secret.name}>
-      <p>It truly was ${secret.name}! Your guess was right and your quest successful.</p>
+      <h1>It truly was ${secret.name}! Your guess was right and your quest successful.</h1>
+      <button type="button" id="playAgain" class="filled-button">play again</button>
     </div>`
   } else {
-    //board.style.display = 'none';
+    board.style.display = 'none';
     winOrLose.style.display = 'flex';
-    winOrLose.innerHTML=`
-    <div class="conclusion">
-      <p>Oh no, your guess was wrong... the eye seems to be still looking around Mordor.</p>
-    </div> `
+    winOrLose.innerHTML = `
+    <div class="win-or-lose">
+        <img
+          class="guess-who-icon"
+          src="images/guesslogo.png"
+          alt="Guess Who"
+        />
+      <img src="images/sauroneye.png">
+      <h1>Oh no, your guess was wrong... the eye seems to be still looking around Mordor.</h1>
+      <button type="button" id="playAgain" class="filled-button">play again</button>
+    </div>`
   }
 }
   // 1. Check if the personToCheck is the same as the secret person's name
@@ -294,8 +334,7 @@ restartButton.addEventListener('click', start)
 findOut.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
 guessButton.addEventListener('click', guess)
-restartButton.addEventListener('click', start)
-playAgain.addEventListener("click", () => {
-  location.reload
-  return false
-})
+playAgain.addEventListener('click', (event) => {
+  start();
+  winOrLose.style.display = "none";
+});

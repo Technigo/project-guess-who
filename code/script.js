@@ -356,8 +356,7 @@ const checkMyGuess = (personToCheck) => {
     restart();
     return;
   }
-  // Hide the game board
-  board.style.display = 'none';
+
 };
 
 // Invokes the start function when website is loaded

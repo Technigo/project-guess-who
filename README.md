@@ -8,4 +8,4 @@ With the help from my team, the material of the week, chat gpt and google I was 
 
 ## View it live
 
-
+https://guess-who-jennylarsen.netlify.app

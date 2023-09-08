@@ -296,6 +296,7 @@ const startStopwatch = () => {
     // calling startStopwatch() function recursively to continue stopwatch
     startStopwatch();
   }, 1000);
+  return [min, sec];
 } 
 
 // Function to stop and reset stopwatch, to be invoked when win or lose section is displayed
@@ -405,9 +406,9 @@ const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secretPerson person's name  
   // 2. Set a Message to show in the win or lose section accordingly
   if (personToCheck === secretPerson.name) {
-    winOrLoseText.innerText = `Congratulations ${userName}! You won after receiving ${countOfHints} hint(s)! Good job!`;
+    winOrLoseText.innerText = `Congratulations ${userName}! You won after ${[min, sec][0]} minutes ${[min, sec][1]} seconds and receiving ${countOfHints} hint(s)! Good job!`;
   } else {
-    winOrLoseText.innerText = `Sorry ${userName}, wrong choice! Game over!`;
+    winOrLoseText.innerText = `Sorry ${userName}, wrong choice! The secret person is ${secretPerson.name}. Game over!`;
   };
 
   // 3. Show the win or lose section

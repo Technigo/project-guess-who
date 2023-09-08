@@ -10,6 +10,9 @@ const restartButton = document.getElementById('restart');
 //Find button
 const findoutButton = document.getElementById("filter");
 
+// counter for attempts
+const counterfield = document.getElementById("attempts");
+
 // result screen after guessing a person
 const resultscreen = document.getElementById("winOrLose");
 
@@ -221,9 +224,9 @@ let secret
 let currentQuestion
 let charactersInPlay
 // all filtered/leftover cards per turn/initially all
+let counterGuesses = 0;
 
 //functions
-
 // create the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -251,8 +254,10 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with, first turn all
-  charactersInPlay = CHARACTERS
+  counterGuesses = 0;
+  counterfield.innerHTML = counterGuesses,
+    // Here we're setting charactersInPlay array to be all the characters to start with, first turn all
+    charactersInPlay = CHARACTERS
   // for a start all items in array
   generateBoard(charactersInPlay);
   setSecret();
@@ -283,7 +288,7 @@ const selectQuestion = () => {
 const checkQuestion = () => {
   const { category, questionValue } = currentQuestion
   let comparison;
-  // neues lokales Objekt mit Variablen, wird gefüllt mit Objekt von currentQuestion oben
+  // new local object with varaibles, gets filled with object currenQuestion from above
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // check values in object with key/value pairs
@@ -348,6 +353,10 @@ const checkQuestion = () => {
 // filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   // gets true, false from checkQuestion above
+  counterGuesses += 1;
+  console.log("tries: ", counterGuesses);
+  counterfield.innerHTML = counterGuesses;
+  // update counter field in aside
   const { category, questionValue } = currentQuestion
   if (category === 'hair') {
     if (keep) {
@@ -386,32 +395,31 @@ const filterCharacters = (keep) => {
       );
     }
   }
-  // when clicking guess, the player first have to confirm that they want to make a guess. persontoconfirm=wahl
-  // const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-  // If you confirm, this function is invoked
-  // const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  // when clicking guess, the player first have to confirm that they want to make a guess. 
+
   generateBoard(charactersInPlay);
 }
-// 
 
 //called by event handler confirmguess to check guess of user
 const checkguess = (guessToCheck) => {
+  counterGuesses += 1;
+  // because this is not a new question, so we take guesses so far +1 for this one
   const check = (secret.name === guessToCheck);
   if (check) {
     console.log("guess correct");
-    resultText.innerHTML = "Yeah, your guess was right!"
+    resultText.innerHTML = `
+    Yeah, your guess was right!
+    You had ${counterGuesses} attempts.`;
+    resultText.style.color = "yellow";
+    document.getElementById("winOrLose").style.backgroundColor = "orange";
   } else {
     console.log("guess wrong");
     resultText.innerHTML = `
     Oops! Your guess was wrong.
-    Try again!`
+    You had ${counterGuesses} attempts.
+    Try again!`;
+    resultText.style.color = "white";
+    document.getElementById("winOrLose").style.backgroundColor = "darkblue";
   }
   resultscreen.style.display = "unset";
 }

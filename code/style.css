@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #f59c0d;
+  --secondary: #a6c8ff;
 }
 
 body {
@@ -12,11 +12,11 @@ body {
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 40px;
   font-weight: 500;
-  line-height: 48px;
+  line-height: 40px;
   margin: 10px 0;
-  color: white;
+  color: rgb(255, 235, 220);
 }
 
 .question-section {
@@ -25,14 +25,15 @@ h1 {
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding: 4vw;
   align-items: flex-start;
   box-sizing: border-box;
 }
 
 select {
   display: block;
-  border: none;
+  border-radius: 15px;
+  border: solid var(--primary);
   font-size: 22px;
   font-family: 'Montserrat';
   color: var(--secondary);
@@ -41,7 +42,8 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 20vw;
+  padding: 15px 0px;
 }
 
 .board-wrapper {
@@ -65,19 +67,26 @@ select {
   height: 165px;
   overflow: hidden;
   border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+  border-radius: 8px;
+  margin: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: rgb(255, 235, 220);
+  background-image: '';
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .card p {
   text-align: center;
   margin-bottom: 0;
-  font-size: 16px;
+  margin-top: 3px;
+  font-size: 12px;
   font-weight: 700;
+  color: var(--primary);
 }
 
 .card .guess {
@@ -85,7 +94,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: rgb(255, 235, 220);
   text-align: center;
   height: inherit;
 }
@@ -115,12 +124,13 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
+  border-radius: 15px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
-  padding: 17px 27px;
+  padding: 8px 27px;
   cursor: pointer;
+  box-shadow:rgba(123, 123, 123, 0.4) 5px 3px 3px inset;
 }
 
 .small {
@@ -136,12 +146,12 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: rgb(255, 235, 220);
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: rgb(255, 235, 220);
+  border-color: rgb(255, 235, 220);
   color: var(--primary);
 }
 
@@ -152,7 +162,7 @@ button {
   justify-content: center;
   background: var(--secondary);
   position: absolute;
-  top: 0;
+  top: 0px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -175,23 +185,34 @@ button {
 
 .winner-loser-img {
   height: 300px;
+  padding: 10px;
+  border: solid var(--primary);
+  border-radius: 20px;
 
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+  padding: 10px;
 }
 
 p {
   font-family: 'Montserrat';
   font-size: 16px;
   font-weight: 700;
+  padding: 10px;
 }
 
 .winner-loser-p {
   font-family: 'Montserrat';
   font-size: 16px;
   font-weight: 700;
+  width: 100px;
+  color: rgb(255, 235, 220);
+}
+
+.count-section {
+  color: rgb(255, 235, 220);
 }
 
 
@@ -214,7 +235,7 @@ p {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 150px;
   }
 
   .board-wrapper {
@@ -245,7 +266,7 @@ p {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: rgb(255, 235, 220);
     color: var(--primary);
     border: none;
   }

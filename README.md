@@ -1,13 +1,12 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project was to create a whos´s there game focusing on arrays, objects and filtering functions using Javascript and some HTML.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This project was quite tricky to understand. I spent a lot of time getting the logic and used chatGPT and Google to find answers. I had to console log a lot to see what was actually happening and I tried to figure out how to connect everything in the code.
+If I had more time I would´ve liked to get in to the stretch goals, for example adding a timer and sound to the game board.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guess-who-week3-amanda.netlify.app/

@@ -1,13 +1,13 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The Assignment is to build a guesswho game! its a game with cards with diffrent portraits of people, the computer chooses 1 secretperson from the cards. The user should then ask questions selected from a dropdownlist to filter the people and then finally guess on who the secret person is.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had filtering issues and used ai to get some tips on how I could debug using the console, I narrowed the issues down bit by bit and used stackoverflow as source to fix issues.
+
+I also added an extra feature such as shuffle the board when a new game starts.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://sandrasguesswho.netlify.app/

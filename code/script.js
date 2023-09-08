@@ -201,6 +201,8 @@ const CHARACTERS = [
   },
 ]
 
+const everyBodyWithYellowHair = CHARACTERS.filter(character => character.accessories.includes('glasses'))
+
 // Global variables
 let secret
 let currentQuestion
@@ -262,15 +264,17 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   let keep;
-  if (category === 'hair' || category === 'eyes') {
-    if (category === 'hair') {
-      keep = secret.hair === value
-    } else {
-      keep = secret.eyes === value
-    }
-  } else if (category === 'accessories' || category === 'other') {
-
+  if (category === 'hair') {
+    keep = secret.hair === value
+  } else if (category === 'eyes') {
+    keep = secret.eyes === value
+  } else if (category === 'accessories') {
+    keep = secret.accessories.includes(value)
+  } else {
+    keep = secret.other.includes(value)
   }
+
+  filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -319,10 +323,15 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
+  const wantsToGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`);
+  if (wantsToGuess) {
+    checkMyGuess(personToConfirm);
+  }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  const hasGuessedRight = secret.name === personToCheck;
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

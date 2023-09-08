@@ -1,17 +1,17 @@
-/* Global css variables used for colors */
-:root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
-}
+
 
 body {
+  background-image: url('https://img.freepik.com/free-photo/stucco-grined-cracked-background_1194-7688.jpg?w=826&t=st=1679522995~exp=1679523595~hmac=ab840f1dae99603cb6296b8b868008408cee003470409b0dd5116cc235cc905c');
   display: flex;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
+.header {
+margin-top: 30px;
+}
+.header h1 {
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
@@ -22,7 +22,7 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-image: url('https://img.freepik.com/free-photo/stucco-grined-cracked-background_1194-7688.jpg?w=826&t=st=1679522995~exp=1679523595~hmac=ab840f1dae99603cb6296b8b868008408cee003470409b0dd5116cc235cc905c');
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -35,13 +35,13 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: rgb(14, 14, 14);
   width: 100%;
   margin: 24px 0;
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 300px;
 }
 
 .board-wrapper {
@@ -64,20 +64,16 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+  margin: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
-.card p {
-  text-align: center;
-  margin-bottom: 0;
-  font-size: 16px;
-  font-weight: 700;
+.card img {
+  width: 100%;
+  height: 165px;
 }
 
 .card .guess {
@@ -91,7 +87,8 @@ select {
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: rgb(255, 255, 255);
+  
 }
 
 .card:hover img,
@@ -114,7 +111,7 @@ select {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
+  border: 2px solid white;
   border-radius: 50px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -140,7 +137,7 @@ button {
 }
 
 .filled-button:hover {
-  background-color: white;
+  background-color: rgb(239, 179, 179);
   border-color: white;
   color: var(--primary);
 }
@@ -164,22 +161,29 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  width: 100%;
   text-align: center;
 }
 
 .win-or-lose img {
   align-self: flex-start;
   margin-left: 15%;
+  width: 100%;
+  height: 200px;
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+  color: white;
 }
 
 @media (max-width: 768px) {
   body {
     flex-direction: column;
+  }
+
+  .header h1 {
+    font-size: 30px;
   }
 
   .question-section {
@@ -195,7 +199,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 130px;
   }
 
   .board-wrapper {
@@ -208,8 +212,15 @@ button {
   }
 
   .card {
-    width: 113px;
+    width: 135px;
+    height: 193px;
+    margin-left: 33px;
     position: relative;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 165px;
   }
 
   .card .guess {
@@ -224,10 +235,14 @@ button {
   }
 
   .card .guess .filled-button {
-    padding: 6px 11px;
+    padding: 4px 100px;
     margin-bottom: 1px;
-    background: white;
-    color: var(--primary);
+    background: rgb(255, 255, 255);
+    color: rgb(127, 124, 124);
     border: none;
+  }
+
+  .win-or-lose {
+    padding: 5px;
   }
 }

@@ -1,204 +1,182 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
+const filterButton = document.getElementById('filter')
 const restartButton = document.getElementById('restart')
+const winOrLose = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainButton = document.getElementById('playAgain')
+const questionSection = document.getElementById('question-section')
+const secretImage = document.getElementById('secretImage')
 
-// Array with all the characters, as objects
+
+
+
+// Array with all the characters
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    img: 'images/guesswho/1.png',
+    name: 'Number 1',
+    pet: [],
+    plants: ['dry'],
+    accessories: ['mug'],
     other: []
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
+    img: 'images/guesswho/19.png',
+    name: 'Number 2',
+    pet: [],
+    plants: ['1'],
+    accessories: ['mug'],
+    other: ['party']
+  },
+  {
+    img: 'images/guesswho/3.png',
+    name: 'Number 3',
+    pet: [],
+    plants: [],
+    accessories: ['lamp', 'curtain'],
     other: []
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    img: 'images/guesswho/4.png',
+    name: 'Number 4',
+    pet: ['cat'],
+    plants: ['2'],
+    accessories: [],
+    other: ['away']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
+    img: 'images/guesswho/5.png',
+    name: 'Number 5',
+    pet: [],
+    plants: ['1'],
+    accessories: ['watercane'],
+    other: []
+  },
+  {
+    img: 'images/guesswho/6.png',
+    name: 'Number 6',
+    pet: ['dog'],
+    plants: ['1'],
+    accessories: ['lamp', 'curtain'],
+    other: []
+  },
+  {
+    img: 'images/guesswho/7.png',
+    name: 'Number 7',
+    pet: ['cat'],
+    plants: ['1'],
     accessories: [],
     other: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
+    img: 'images/guesswho/8.png',
+    name: 'Number 8',
+    pet: [],
+    plants: ['2'],
+    accessories: [],
+    other: ['away']
+  },
+  {
+    img: 'images/guesswho/9.png',
+    name: 'Number 9',
+    pet: [],
+    plants: ['1'],
+    accessories: ['watercane'],
     other: []
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    img: 'images/guesswho/17.png',
+    name: 'Number 10',
+    pet: [],
+    plants: [],
+    accessories: ['vase'],
     other: []
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
+    img: 'images/guesswho/11.png',
+    name: 'Number 11',
+    pet: ['dog'],
+    plants: [],
+    accessories: ['lamp', 'curtain'],
     other: []
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
+    img: 'images/guesswho/12.png',
+    name: 'Number 12',
+    pet: ['cat'],
+    plants: [],
+    accessories: ['curtain'],
     other: []
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    img: 'images/guesswho/15.png',
+    name: 'Number 13',
+    pet: [],
+    plants: ['1'],
+    accessories: ['watercane'],
     other: []
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
+    img: 'images/guesswho/14.png',
+    name: 'Number 14',
+    pet: [],
+    plants: ['1'],
+    accessories: ['vase'],
     other: []
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
+    img: 'images/guesswho/13.png',
+    name: 'Number 15',
+    pet: ['cat'],
+    plants: [],
+    accessories: ['curtain'],
     other: []
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
+    img: 'images/guesswho/16.png',
+    name: 'Number 16',
+    pet: ['cat'],
+    plants: [],
+    accessories: ['vase'],
     other: []
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
+    img: 'images/guesswho/10.png',
+    name: 'Number 17',
+    pet: [],
+    plants: ['2'],
     accessories: [],
     other: []
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
+    img: 'images/guesswho/18.png',
+    name: 'Number 18',
+    pet: ['dog'],
+    plants: [],
+    accessories: ['mug', 'vase'],
     other: []
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
+    img: 'images/guesswho/2.png',
+    name: 'Number 19',
+    pet: [],
+    plants: ['1'],
+    accessories: ['lamp'],
     other: []
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    img: 'images/guesswho/20.png',
+    name: 'Number 20',
+    pet: [],
+    plants: ['5'],
+    accessories: [],
     other: []
   },
+  
 ]
+
 
 // Global variables
 let secret
@@ -211,10 +189,9 @@ const generateBoard = () => {
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
+          <span>Guess on this home?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
@@ -230,92 +207,133 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  questions.value='';
+  charactersInPlay = CHARACTERS //All caracters. later on filter characters
+  generateBoard();
+  setSecret();
+  board.style.display = 'flex'
+  winOrLose.style.display = 'none'
+  console.log(secret);
+
+ 
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
-
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+const  { category, value } = currentQuestion;
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+keep = false
 
-  } else if (category === 'accessories' || category === 'other') {
 
+if (category === 'pet' || category === 'plants' || category === 'accessories' || category === 'other') {
+  if (secret[category].includes(value)) {
+    keep = true
   }
+} else {
+  keep = false
+
+}
+filterCharacters(keep);
 }
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
+
   // Show the correct alert message for different categories
-  if (category === 'accessories') {
+  if (category === 'pet') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
+        `Yes, there is a ${value} in this home! Lets keep all windows where we can see a ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
+        `Nope, no ${value} here! Lets remove all homes with a ${value}`
+      );
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
-  } else if (category === 'other') {
-    // Similar to the one above
-  } else {
+  } else if (category === 'plants') {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, it's ${value} 🪴 in the window! Keep all windows that has ${value}.`
+      );
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, sorry. Let's remove all windows with ${value} 🪴`
+      );
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   }
-
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
-
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
-
-  // Invoke a function to redraw the board with the remaining people.
-}
+   else if (category === 'accessories') {
+    if (keep) {
+      alert(
+        `Yes, it's ${value} in this window! Keep all windows that has 
+        ${value}.`
+      );
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+    } else {
+      alert(
+        `Nope, no ${value} here. Lets remove all windows with this.`
+      );
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+    } 
+  }
+    else if (category === 'other') {
+      if (keep) {
+        alert(
+          `Yes, that's right! Good job!`
+        );
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+      } else {
+        alert(
+          `No, sorry. Let's remove all windows with this.`
+        );
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+      } } 
+     generateBoard();
+      }
+  
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  const makeAGuess = confirm(`Are you sure you want to guess on this home?`)
+  if(makeAGuess) {
+    checkMyGuess(personToConfirm)
+  }
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+const checkMyGuess = (personToConfirm) => {
+ 
+
+if (personToConfirm === secret.name) {
+  winOrLoseText.innerHTML = `YES! You won, it's ${secret.name}!`;
+  secretImage.innerHTML= `<img src=${secret.img} alt=${secret.name}>`;
+  
+
+} else {
+  winOrLoseText.innerHTML = `No sorry, wrong answer! The secret home was ${secret.name}`
+  secretImage.innerHTML= `<img src=${secret.img} alt=${secret.name}>`;
+}
+
+board.style.display = 'none'
+winOrLose.style.display = 'flex'
+questionSection.style.display = 'none'
+
+
 }
 
 // Invokes the start function when website is loaded
@@ -323,3 +341,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+filterButton.addEventListener('click', checkQuestion)
+playAgainButton.addEventListener('click', start)

@@ -211,6 +211,8 @@ let charactersInPlay
 
 // Draw the game board
 const generateBoard = () => {
+  //Reset the select element (drop down) to its default value
+  questions.value = 'default';
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
@@ -244,7 +246,6 @@ const start = () => {
 const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   const category = questions.options[questions.selectedIndex].parentNode.label 
-  
   const selectedOption = questions.options[questions.selectedIndex];
   // This variable stores the actual value of the question we've selected.
   const value = selectedOption.value; 
@@ -260,8 +261,7 @@ const checkQuestion = () => {
   const {category, value} = currentQuestion
   let keep
 
-  // Compares the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
+  // Compares the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).Decides who to keep or remove  based on that
   if (category === 'hair' || category === 'eyes') {
     keep = secret[category] === value;
     // Defines the condition for 'accessories' or 'other' category.  
@@ -272,10 +272,10 @@ const checkQuestion = () => {
   filterCharacters(keep)
 };
 
-// It'll filter the characters array and redraw the game board.
+// This will filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const {category, value} = currentQuestion
-  //let attribute
+  
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -290,7 +290,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   } else if (category === 'other') { 
-    // Similar to the one above
     if (keep) {
       alert(
         `Yes, the person is a ${value}! Keep all people that is a ${value}.`
@@ -303,14 +302,12 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
   } else if (category === 'hair') {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
       if (keep) {
       alert(
         `Yes, the person has ${value} hair! Keep all the people with ${value} hair.`
         );
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
       alert(
         `No, the person does not have ${value} hair! Remove all people with ${value} hair.`
         );
@@ -347,10 +344,18 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   // Checks if the personToCheck is the same as the secret person's name
   if (personToCheck === secret.name) {
+    // Play sound effect
+    const audio = new Audio(`images/success.mp3`)
+    audio.play() 
+
     winOrLose.style.display = "flex"; // Show the win or lose section
     board.style.display = "none" // Hideing the game board
     winOrLoseText.innerText = `Yay, that is correct, you win! 🤩`;
   } else {
+    //play sound effect
+    const audio = new Audio(`images/loss.mp3`)
+    audio.play() //Play the tune
+
     winOrLose.style.display = "flex";
     board.style.display = "none"
     winOrLoseText.innerText = `You guessed wrong 🫣
@@ -358,17 +363,20 @@ const checkMyGuess = (personToCheck) => {
   }
 };
 
+//Regenerates the board and restarts the game
+const playAgain = () => {
+  winOrLose.style.display = "none"
+  board.style.display = "flex"
+  start()
+}
 // Invokes the start function when website is loaded
 start()
+
+// Sets the drop down to default when restarting the game
+
 
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
-
-// Sets up a event listener for the click event. Makes the board regenerate and restarts the game.
-playAgainButton.addEventListener('click', (event) => {
-  winOrLose.style.display = "none";
-  board.style.display = "flex"
-  start();
-})
+playAgainButton.addEventListener('click', playAgain) 

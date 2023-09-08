@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #0c4ec2;
+  --secondary: #6082bd;
 }
 
 body {
@@ -57,6 +57,18 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+}
+
+.guess-counter {
+  border: dashed 1px;
+  box-shadow: 5px 6px 7px rgb(92, 99, 201);
+  margin-top: 20px;
+  font-size: 1.3em;
+  color: #042867;
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 /****** CARD ******/
@@ -131,12 +143,14 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  box-shadow: 4px 5px 6px #6082bd;
 }
 
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
   color: white;
+  box-shadow: 4px 5px 6px cornflowerblue;
 }
 
 .filled-button:hover {

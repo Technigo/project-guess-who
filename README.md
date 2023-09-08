@@ -1,6 +1,6 @@
 # Project Name
 Technigo-project4-project-guess-who
-Build a chatbot.
+Build an in interactive game "Guess Who".
 # Technigo web development bootcamp august 2023 - jan 2024: project 2
 
 This is a solution to the fourth project for the students:

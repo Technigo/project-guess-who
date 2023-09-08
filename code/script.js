@@ -297,7 +297,7 @@ const CHARACTERS = [
   },
 ];
 
-// Global variables//////////////////////////////////
+// Global variables ***************************************************/
 // This stores secret person who a user is going to guess. In setSecret function, the person will be decided.
 let secret;
 
@@ -324,13 +324,6 @@ let pageLoad = false;
 // screen width -> when a width ois resized, it will get a new value.
 let screenWidth = window.screen.width;
 
-// This event listener listen to resize event when a user is changing a screen width
-window.addEventListener("resize", () => {
-  screenWidth = window.screen.width;
-  generateBoard();
-});
-
-///////////////////////////////////////////////////////
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = "";
@@ -574,10 +567,10 @@ const checkMyGuess = (personToCheck) => {
   // Store final counter number and time for local storage
   finalCounts = counter;
   finalTimerValue = timer.textContent;
-  handleLocalStorage();
+
   // check a name of secret and guessed person's name is the same
   if (personToCheck === secret.name) {
-    // handleLocalStorage();
+    handleLocalStorage();
 
     winOrLoseText.textContent = `✨🎉Conglaturation!! 🎉✨`;
     createSound("./images/audio/win-sound.mp3");
@@ -689,10 +682,10 @@ const checkBextGame = (arr) => {
   // if there are the some score as the best score, then it filters and make it into a new array
 
   const bestScoreArr = arr.filter((item) => item.howManyGuesses === bestScore);
+  const bestPlayerBox = document.createElement("div");
 
   if (bestScoreArr.length < 5) {
     bestScoreArr.forEach((item) => {
-      const bestPlayerBox = document.createElement("div");
       bestPlayerBox.classList.add("best-players-box");
       bestPlayerBox.innerHTML += `
     <p>Player: ${item.playerName}</p>
@@ -704,7 +697,6 @@ const checkBextGame = (arr) => {
   } else {
     const ajustedBestScoreArr = bestScoreArr.slice(0, 4);
     ajustedBestScoreArr.forEach((item) => {
-      const bestPlayerBox = document.createElement("div");
       bestPlayerBox.classList.add("best-players-box");
       bestPlayerBox.innerHTML += `
     <p>Player: ${item.playerName}</p>
@@ -728,6 +720,9 @@ const createHTMLForTable = (arr) => {
     //  addting trElement the end of the childelement of Tbody
     table.insertAdjacentElement("beforeend", tbody);
   }
+  if (arr.length === 1) {
+    bestPlayerBox.insertAdjacentHTML("beforeend", "There is no comparable data");
+  }
 };
 
 // Create table element for a table on a modal window.
@@ -749,7 +744,10 @@ const createTableElement = (arr) => {
 
 // This is a button you can clean up localstorage and data that is displayed in a table.
 clearGameBtn.addEventListener("click", () => {
+  // cleaning all the data localstorage/array/HTML
+
   localStorage.clear();
+
   arrayForLocalStorage = [];
 
   tbody.textContent = "";
@@ -781,7 +779,7 @@ gameDataBtn.addEventListener("click", () => {
     createTableElement(arrayForLocalStorage);
     checkBextGame(arrayForLocalStorage);
   } else {
-    console.log("no Data");
+    alert("There is no previous game's data");
   }
 });
 
@@ -804,14 +802,23 @@ window.addEventListener("load", (event) => {
   pageLoad = true;
 });
 
+// THis is a button on aside. You restart a game by clicking this
 restartButton.addEventListener("click", start);
 
+// Button under a select this trigers filtering functions depens on a condition, alert message will appear
 filterBtn.addEventListener("click", () => {
   selectQuestion();
 });
 
+// Button element on a win or lose message shown page to restart a game
 playAgainBtn.addEventListener("click", () => {
   start();
   winOrLosePage.style.display = "none";
   boardWrapper.style.display = "flex";
+});
+
+// This event listener listen to resize event when a user is changing a screen width
+window.addEventListener("resize", () => {
+  screenWidth = window.screen.width;
+  generateBoard();
 });

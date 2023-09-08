@@ -267,6 +267,7 @@ const selectQuestion = () => {
     category: category,
     value: value
   };
+ 
   console.log("This is the category and value of currentQuestion", currentQuestion);
 }
 
@@ -281,19 +282,16 @@ const checkQuestion = () => {
    The destructuring makes it easier to extract data
    */
   const { category, value } = currentQuestion;
-
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
 
-  /* 
-  This is divided like this since the first two categories will have one to one comparisons while the other two categories contain properties with multiple values
-  */
-  let keep = false;
+  /* Explanations
+  This is divided like this since the first two categories will have one to one comparisons while the other two categories contain properties with multiple values.
+  For the hair/eyes category:
+  We're accessing a CHARACTER object (via the variable secretCharacter) and look through its attributes until we find one that matches the category in the if statement. Once found we take the value (for example "yellow hair") and compare that to the player's choice to see if the match.*/
 
+  let keep = false; //Chose "false" to make the code below easier for me to read (and avoid !)
   if (category === 'hair' || category === 'eyes') {
-    /* 
-    We're accessing a CHARACTER object (via the variable secret) and look through its attributes until we find one that matches the category in the if statement. Once found we take the value (for example "yellow hair") and compare to the player's choice to see if the match.
-    */
     if (value === secretCharacter[category]) {
       keep = true;
     }
@@ -411,4 +409,5 @@ if I type:
 filterBtn.addEventListener('click', checkQuestion());
 the function will be run immediately without Javascript listening to the event which is not what i want here.
 */
-filterBtn.addEventListener('click', () => checkQuestion());
+filterBtn.addEventListener('click', () => 
+  checkQuestion());

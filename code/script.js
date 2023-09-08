@@ -1,5 +1,7 @@
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
+const questionSection = document.getElementById('question-section')
+const boardWrapper = document.getElementById('board-wrapper')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
@@ -382,27 +384,39 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  board.style.hidden = true;
+  board.style.display = "none";
   winOrLose.style.display = "flex";
 
   if (personToCheck === secretCharacter.name) {
-    winOrLoseText.innerHTML = `Yay! That was correct! Congratz!`;
+    winOrLoseText.innerHTML = `Yay! ${personToCheck} was correct! Congratz!`;
   } else {
-    winOrLoseText.innerHTML = `Oh, no! That was the wrong answer! Better luck next time!`;
+    winOrLoseText.innerHTML = `Oh, no! ${secretCharacter.name} was the right answer! Better luck next time!`;
   }
 }
 
 // Invokes the start function when website is loaded
 start()
 
+
+
+// Counter for number of guesses
+let counter = 0;
+let counterDiv = document.createElement("div");
+counterDiv.id = "counterDiv";
+
+let numberOfGuessesText = 'Number of guesses: ';
+let counterText = document.createTextNode(`${numberOfGuessesText} ${counter}`);
+counterText.id = "counterElement";
+
+// Append the text node to the div.
+// The new node will be last in the list of children.
+counterDiv.appendChild(counterText);
+
+// Append the div to the aside section.
+questionSection.appendChild(counterDiv);
+
+
 // All the event listeners
-restartButton.addEventListener('click', () => {
-  location.reload();
-  start();
-})
-// Event listener for the dropdown menu
-questions.addEventListener('change', selectQuestion);
-// Event listener for find out-button
 /* EXPLANATION, event listeners:
 there are two different options:
 filterBtn.addEventListener('click', checkQuestion);
@@ -413,11 +427,22 @@ if I type:
 filterBtn.addEventListener('click', checkQuestion());
 the function will be run immediately without Javascript listening to the event which is not what i want here.
 */
-filterBtn.addEventListener('click', () =>
-  checkQuestion());
+filterBtn.addEventListener('click', () => {
+  counter++; // Increase counter by 1
+  // Updates the textnode since that text is static and the counter number won't go up without this update
+  counterText.textContent = `${numberOfGuessesText} ${counter}`;
+  checkQuestion();
+});
+restartButton.addEventListener('click', () => {
+  location.reload();
+  start();
+})
+// Event listener for the dropdown menu
+questions.addEventListener('change', selectQuestion);
+// Event listener for find out-button
 playAgainBtn.addEventListener('click', () => {
   winOrLose.style.display = "none";
-  board.style.hidden = false;
+  board.style.display = "flex";
   location.reload();
   start();
 })

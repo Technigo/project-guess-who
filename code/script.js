@@ -225,6 +225,7 @@ const generateBoard = () => {
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  console.log(secret)
 }
 
 // This function to start (and restart) the game
@@ -233,34 +234,51 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
   generateBoard()
+  setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
+  const value = questions.value;
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  // const value = questions.value
 
   currentQuestion = {
     category: category,
-    // value: value
+    value: value
   }
+  console.log(currentQuestion)
 }
 
 // This function should be invoked when you click on 'Find Out' button.
-const checkQuestion = () => {
+const Question = () => {
   const { category, value } = currentQuestion
+  let keep = false
+  console.log(category)
+  console.log(secret)
+  console.log(secret[category])
+
+// "||" means logical or. Used in boolean values and when a operands i true or more than one. 
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-
+    keep = value === secret[category]
   } else if (category === 'accessories' || category === 'other') {
-
+//since accesory and other are arrays we have to find value inside them first and then set keep to true or false depending on if value exist in the array.
+const findItem = secret[category].find(item => item === value)
+// if findItem exist in the array keep is true else false
+if (findItem) {
+  keep = true
+} else {
+  keep = false
   }
+}
+  filterCharacters(keep)
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -324,3 +342,10 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion)
+
+//
+document.getElementById('filter').addEventListener('click', checkQuestion)
+//
+
+// Loadcharacters (characters?) Add this to load pictures of the characters

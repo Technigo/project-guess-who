@@ -3,6 +3,7 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
+const playAgainButton = document.getElementById('playAgain')
 const winOrLoseBoard = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 
@@ -232,6 +233,11 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+  //Making sure the board is "re-set" before starting the game:
+  winOrLoseBoard.style.display = "none"
+  winOrLoseText.innerHTML = ""
+  board.style.display = "flex"
+  
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   //generate the cards to the coard
@@ -353,7 +359,7 @@ ${secret.name} was the secret person!`)
   
   // 3. Show the win or lose section
   winOrLoseBoard.style.display = "flex"
-  if (secret.name === personToCheck) winOrLoseText.innerHTML = "✨ WIN! YOU ARE A BAD ASS GUESSER ✨"
+  if (secret.name === personToCheck) winOrLoseText.innerHTML = "✨ WIN! \nYOU ARE A BAD ASS GUESSER ✨"
   else winOrLoseText.innerHTML = "☠️ YOU LOST... ☠️"
   // 4. Hide the game board
   board.style.display = "none"
@@ -364,5 +370,6 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+playAgain.addEventListener('click', start)
 questions.addEventListener("change", selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)

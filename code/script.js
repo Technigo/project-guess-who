@@ -200,12 +200,12 @@ const CHARACTERS = [
   },
 ]
 
-// Global variables
+// Global variables declared.
 let secret
 let currentQuestion
 let charactersInPlay
 
-// Draw the game board
+// Function to generate gameboard
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -222,7 +222,7 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+//Function that selects the secretperson
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
@@ -234,8 +234,9 @@ const start = () => {
   charactersInPlay = CHARACTERS.slice();// Create a copy of characters
 
   setSecret();
-  // Sets secret person.
+  // Sets secret person randomly.
 
+  // function that shuffles characters on the board
   function shuffleArray(array) {
   
     for (let i = array.length - 1; i > 0; i--) {
@@ -243,23 +244,23 @@ const start = () => {
       [array[i], array[j]] = [array[j], array[i]];
     }
   }
-  shuffleArray(CHARACTERS);
-  generateBoard();
-  // This is a shuffle function witch gives the card a random new place when you start the game.
+  shuffleArray(CHARACTERS);//Shuffles characters 
+  generateBoard();// Generate gameboard
+
+  
   document.getElementById('winOrLose').style.display = 'none';
-  //Hides the win or lose section (if its visible).
+  //Hides the win or lose section 
   document.getElementById('board').style.display = 'flex';
   // Shows gameboard.
 };
 
-// setting the currentQuestion object when you select something in the dropdown
+//Function thats select a question
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
   // This variable stores what option group (category) the question belongs to.
   const value =questions.value;
-  // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  
 
   currentQuestion = {
     category: category,
@@ -267,14 +268,11 @@ const selectQuestion = () => {
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// Funtion to check the selected question agains the secret person
 const checkQuestion = () => {
   const { category, value } = currentQuestion
   let keep = false;
-//console.log('Current question', currentQuestion); // used to debugg
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+// compares question to secretperson.
   if (category === 'hair' || category === 'eyes') {
 
 keep = value === secret[category];
@@ -284,21 +282,22 @@ keep = secret[category].includes(value);
 
   } 
 
-  // Invoke the filter characters and updates the gameboard.
+  
 filterCharacters(keep);
 };
 
-// It'll filter the characters array and redraw the game board.
+// Function to filter characters based on the selected question
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
+  
+  // This part shows appropiate messages based on category
   if (category === 'other') {
     if (keep) {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
       alert(`Yes the person is a ${value}! Keep all ${value}'s!`);
     } else {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
-      alert(`No the person is no a ${value}, Reamove all ${value}'s!`);
+      alert(`No the person is not a ${value}, Reamove all ${value}'s!`);
     }
   } else if (category === 'accessories') {
   if (keep) {
@@ -325,23 +324,19 @@ alert(`yes the person wears ${value}! Keep all people with ${value}!`);
     alert(`No the person does not have ${value} ${category}! Remove all people with ${value} ${category}!`);
   }
 }
-  // Filter characters based on the current question's characteristics
- 
-
-  // After filtering, redraw the game board 
   
- generateBoard();
+  
+ generateBoard();// redraws gameboard
 };
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+// Function that controlles the users guess
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
+  
   const isConfirmed = confirm(`Are you sure you want to guess that ${personToConfirm} is the secret person?`);
-  // remember the confirm() ?
+  
   if (isConfirmed) {
     checkMyGuess(personToConfirm);
   }
-  // If the player wants to guess, invoke the checkMyGuess function.
 };
 
 // This function compares your guess to the secretperson and if its a match it shows a message.
@@ -353,12 +348,9 @@ const checkMyGuess = (personToCheck) => {
 document.getElementById('winOrLoseText').textContent = 'Sorry you lost, try again!';
 
   } 
-// 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
+
   document.getElementById('winOrLose').style.display = 'flex';
   document.getElementById('board').style.display = 'none';
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 };
 
 // This function resets the dropdown 
@@ -375,9 +367,8 @@ restartButton.addEventListener('click', start)
 
 //Eventlistener to the "filter"button
 filterButton.addEventListener('click', () => {
-  console.log("filterbutton is clicked") //Debugging
   selectQuestion(); // Set the current question based on dropdowns
-  console.log('Current question', currentQuestion);//Debugging
+  
   checkQuestion(); //Filter characters based on question
 
   resetDropdowns(); //resets dropdown to defoault values

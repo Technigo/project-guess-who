@@ -1,76 +1,148 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #141414;
+  --secondary: #00ff99;
+  --thirdcolor: #efeded;
+  --fourthcolor: #7d7c7c;
+  --fifthcolor: transparent;
 }
+
+
+/* Some basic settingss */
+html * {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+/* Container around everything on tthe page */
+#everything {
+display:flex;
+}
+
 
 body {
   display: flex;
   margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  padding: 20px;
+  font-size: 28px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  background-color: var(--thirdcolor);
 }
 
+
+/* BIG text (the mofo with) */
 h1 {
-  font-size: 42px;
-  font-weight: 500;
-  line-height: 48px;
-  margin: 10px 0;
-  color: white;
+  font-size: 34px;
+ 
+  font-family: 'Sora', sans-serif;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-style: normal;
+  margin: 30px 0 10px 0px;
+  color: var(--primary);
+  text-align: center;
+  width: 306px;
 }
 
+
+/* Question section includin select, speaek buble and two buttons */
 .question-section {
-  width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: var(--thirdcolor);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding: 2em 1em 2em 2em;
   align-items: flex-start;
   box-sizing: border-box;
 }
 
+/* Dropdown menu */
 select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('images/arrow.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 20px 20px; /* set the size of the arrow here */
+  border-right: 20px;
   display: block;
   border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
-  width: 100%;
-  margin: 24px 0;
+  font-size: 18px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-style: bold;
+  color: var(--primary);
+  border-radius: 16px;
+  background-color: #d3d1d1;
+  width: 306px;
+  height: 60px;
+  margin: 24px 0 20px 0;
+  outline: 0;
+  cursor: pointer;
 }
 
-.guess-who-icon {
-  width: 126px;
+
+/* Text aling for the text in dropdown, dooesn't work with iPhone */
+
+.text_position_dropdown {
+
+ text-align: center;
+ cursor: pointer;
+  
 }
+
+
+
+
+.who-ate-my-cookies-icon {
+  width: 360px;
+}
+
+/* wrapper for gameboard */
 
 .board-wrapper {
-  width: 70%;
+  width: 100%;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  margin-right:2%;
+  margin-left: 1em;
+  padding: 0 0.3em 0 0.4em;
 }
 
+/* gameboard */
+
 .game-board {
-  width: 90%;
-  max-width: 882px;
+  width: 100%;
+  max-width: 1280px;
+  margin-top: 2em; 
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: flex-end;
 }
 
-/****** CARD ******/
+/****** CARD STARTS ******/
+
 .card {
-  width: 135px;
-  height: 165px;
-  overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+ width: 100%; 
+ width: 150px;
+ height: 230px;
+overflow: hidden;
   display: flex;
   flex-direction: column;
+flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+margin-bottom:30px;
+  margin:6px;
+  cursor: pointer;
+  
+  
 }
 
 .card p {
@@ -84,20 +156,34 @@ select {
   display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  height: inherit;
+  color: var(--primary);
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
-.card:hover {
-  background-color: var(--secondary);
+/****** CARD ENDS ******/
+
+/****** for those devices where hover doesn't work ******/
+
+@media (hover: hover) and (pointer: fine) {
+ 
+ .card:hover img,
+.card:hover p
+  { 
+ 
+    display: none;
+  
+}
+.card .guess {
+  display: flex;
 }
 
-.card:hover img,
-.card:hover p {
-  display: none;
+.guess span {
+  display: flex;
 }
+
+ }
+
 
 /* The div with the guess class is only shown on hover */
 .card:hover .guess {
@@ -105,21 +191,42 @@ select {
 }
 
 .guess span {
-  font-size: 16px;
-  line-height: 18px;
+  margin-top: 30px;
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  letter-spacing: auto;
+  line-height: 32px;
   font-weight: 600;
-  margin-bottom: 8px;
-  width: 90%;
+  width: 100%;
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 6px;
+  cursor: pointer;
 }
 
-/****** BUTTONS ******/
+/****** CARD STARTS ******/
+
+
+/****** BUTTONS START******/
+
+#twobuttons {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: 306px;
+
+}
+
 button {
   border: 2px solid var(--primary);
   border-radius: 50px;
-  font-size: 16px;
-  font-family: 'Montserrat';
+  font-size: 18px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
   font-weight: bold;
-  padding: 17px 27px;
+  padding: 14px 22px;
+  cursor: pointer;
+  background-color: var(--primary);
   cursor: pointer;
 }
 
@@ -127,25 +234,73 @@ button {
   padding: 8px 16px;
 }
 
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
-}
-
-.filled-button,
-.outlined-button:hover {
+.filled-button {
   background-color: var(--primary);
-  color: white;
+  border-color: var(--primary);
+  color: var(--secondary);
+  margin-top: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: var(--secondary);
+  border-color: var(--secondary);
   color: var(--primary);
+  margin-top: 20px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/****** WIN OR LOSE SECTION ******/
+.filled-button-guess {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--primary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filled-button-guess:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--secondary);
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+
+/* restart button */
+.outlined-button {
+  background-color: transparent;
+  color: var(--primary);
+  margin-top: 20px;
+  opacity: 0.6;
+  cursor: pointer; 
+  transition: 0.3s;
+}
+
+.outlined-button:hover {
+  margin-top: 0px;
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--primary);
+  margin-top: 20px;
+  opacity: 1;
+  cursor: pointer;
+  transition: 0.3s; 
+}
+
+
+
+/****** BUTTONS ENDS******/
+
+
+
+/****** WIN OR LOSE SECTION STARTS ******/
 .win-or-lose-wrapper {
   display: none;
   align-items: center;
@@ -166,68 +321,385 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  font-size: 60px;
 }
 
 .win-or-lose img {
   align-self: flex-start;
-  margin-left: 15%;
+  margin-left: 60px;
 }
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+  width: 500px;
+  line-height: 2;
+  line-break: auto;
 }
 
-@media (max-width: 768px) {
-  body {
-    flex-direction: column;
+
+
+.bottom-text-big-screen {
+  display: flex;
+  justify-content: left;
+  align-items:center ;
+  flex-direction: row;
+  width: 100%;
+  height:260px;
+  margin-left: 40px;
+  opacity: 1;
+}
+
+
+
+
+
+.powered-by {
+  color: var(--fourthcolor);
+  font-size: 18px;
+  font-family: "work sans", Helvetica, Arial, sans-serif;
+  text-transform: uppercases;
+  font-weight: 400;
+  padding-right: 8px;
+  padding-top: 1px;
+  margin-bottom: 0px;
+}
+
+
+.big-dada {
+  font-family: "Sora", sans-serif;
+  color: var(--fourthcolor);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 47.5px;
+margin-top: 4px;
+
+}
+
+.bottom-text-small-screen {
+  display:none;
+}
+
+
+/* TABLET ETC     TABLET ETC     TABLET ETC   TABLET ETC  */
+/* TABLET ETC     TABLET ETC     TABLET ETC   TABLET ETC  */
+/* TABLET ETC     TABLET ETC     TABLET ETC   TABLET ETC  */
+/* TABLET ETC     TABLET ETC     TABLET ETC   TABLET ETC  */
+/* TABLET ETC     TABLET ETC     TABLET ETC   TABLET ETC  */
+
+
+
+@media (max-width: 990px) {
+
+
+
+  #everything {
+    display:grid;
+    flex-direction: row;
+  justify-content: center;
+  transform: scale(0.86);
+  margin-bottom: -4em;
+  margin-top: -4em;
+  
   }
+
+
 
   .question-section {
-    width: 100%;
-    min-height: 0;
-  }
-  button {
-    padding: 8px 16px;
-  }
-  h1 {
-    font-size: 24px;
-    line-height: 30px;
-  }
-
-  .guess-who-icon {
-    width: 51px;
+    position: relative;
+    margin:auto;
+    width: 70%; 
+    min-height: 50vh;
+    background-color: var(--thirdcolor);
+    display: flex;
+    flex-direction: column;
+    padding: 0em;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 0;
   }
 
+  
   .board-wrapper {
     width: 100%;
+    margin:auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: rap;
+    justify-content: center;
+    padding: 0 0em 0 0em;
   }
-
+  
   .game-board {
     width: 100%;
-    max-width: 750px;
-  }
-
-  .card {
-    width: 113px;
-    position: relative;
-  }
-
-  .card .guess {
+    max-width: 1040px;
+    padding: 0em 0em 0em 0em;
     display: flex;
-    top: 0;
-    position: absolute;
-    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
   }
-
-  .card .guess span {
+  
+  /****** CARD STARTS ******/
+  
+  
+  
+  .card {
+   width: 100%; 
+   width: 150px;
+   height: 230px;
+  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  flex-wrap: wrap;
+    align-items: center;
+  margin-bottom:30px;
+    margin:6px;
+    cursor: pointer;
+    
+    
+  }
+  
+  .card p {
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  
+  .card .guess {
     display: none;
+    flex-direction: column;
+    align-items: center;
+    color: var(--primary);
+    text-transform: uppercase;
+    cursor: pointer;
   }
 
-  .card .guess .filled-button {
-    padding: 6px 11px;
-    margin-bottom: 1px;
-    background: white;
-    color: var(--primary);
-    border: none;
-  }
+
+/****** WIN OR LOSE SECTION STARTS ******/
+.win-or-lose-wrapper {
+    transform: scale(1.4);
+    padding-top: 10%;
+
 }
+
+.win-or-lose {
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 110vh;
+  width: 70vh;
+
+ 
+}
+
+.win-or-lose img {
+  align-self: flex-start;
+  width: 340px;
+  margin-left: 24%;
+}
+
+.win-or-lose h1 {
+  margin-bottom: 62px;
+  font-size:20px;
+  width: 400px;
+  box-sizing: none;
+  text-align: center;
+
+}
+
+  
+  
+  
+  .bottom-text-small-screen {
+    display: flex;
+  justify-content: center;
+  align-items:flex-end;
+  flex-direction: row;
+    width: 100%;
+    min-width: 306px;
+    height: 60px;
+    margin-bottom: 40px;
+  }
+  
+  
+  
+  .bottom-text-small-screen {
+    display: flex;
+  justify-content: center;
+  align-items:flex-end;
+  flex-direction: row;
+    width: 100%;
+    min-width: 306px;
+    height: 60px;
+    margin-bottom: 40px;
+  }
+  
+
+  
+  
+  .powered-by {
+    color: var(--fourthcolor);
+    font-size: 18px;
+    font-family: "work sans", Helvetica, Arial, sans-serif;
+    text-transform: uppercases;
+    padding-right: 6px;
+    padding-top: 1px;
+    margin-top: 0px;
+    padding-bottom: 13px;
+  }
+  
+  
+  .big-dada {
+    font-family: "Sora", sans-serif;
+    color: var(--fourthcolor);
+    font-weight: 700;
+    font-size: 18px;
+  padding-bottom: 0px;
+  
+  }
+
+
+  .bottom-text-big-screen {
+display: none; 
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+ 
+    card:hover img,
+   card:hover p
+     { 
+    
+       display: none;
+     
+   }
+  }
+
+
+}
+
+
+
+
+/****** MOBILE SECTION STARTS ********/
+/****** MOBILE SECTION STARTS ********/
+/****** MOBILE SECTION STARTS ********/
+
+@media (max-width: 440px) {
+  #everything {
+    display:grid;
+  justify-content: center;
+  transform: scale(0.8);
+  margin-bottom: -12em;
+  margin-top: -12em;
+  max-width: 440px
+  
+  }
+
+
+  /****** WIN OR LOSE SECTION STARTS ******/
+.win-or-lose-wrapper {
+  display: flex;
+  justify-content: center;
+  transform: scale(1);
+  padding-top: 50%;
+  margin-top: 100px;
+  margin-left: -40%;
+  margin-right: 10%;
+
+}
+
+.win-or-lose {
+align-items: center;
+justify-content: center;
+background: var(--secondary);
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+height: 154vh;
+width: 80vh;
+
+}
+
+.win-or-lose img {
+align-self: flex-start;
+width: 140px;
+margin-left: 34%;
+}
+
+.win-or-lose h1 {
+margin-bottom: 62px;
+font-size:20px;
+width: 400px;
+text-align: center;
+
+}
+
+
+
+
+.bottom-text-small-screen {
+  display: flex;
+justify-content: center;
+align-items:flex-end;
+flex-direction: row;
+  width: 100%;
+  min-width: 306px;
+  height: 60px;
+  margin-bottom: 40px;
+}
+
+
+
+
+
+
+}
+
+
+  @media (hover: hover) and (pointer: fine) {
+ 
+    .card:hover img,
+   .card:hover p
+     { 
+    
+       display:inline-block;
+     
+   }
+  }
+ 
+  @media (max-width: 390px) {
+
+  .win-or-lose {
+  height: 154vh; 
+  }
+
+  .win-or-lose-wrapper {
+    padding-top: 50%;
+    margin-top: 140px;
+    margin-left: -28%;
+    margin-right: 10%;
+  
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+ 
+    .card:hover img,
+   .card:hover p
+     { 
+    
+       display:inline-block;
+     
+   }
+  }
+  }
+/****** MOBILE SECTION ENDS ********/
+/****** MOBILE SECTION ENDS ********/
+/****** MOBILE SECTION ENDS ********/

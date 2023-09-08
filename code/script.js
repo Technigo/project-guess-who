@@ -3,6 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
+const winOrLose = document.getElementById("winOrLose")
+const winOrLoseText = document.getElementById("winOrLoseText")
+const playAgainBtn = document.getElementById("playAgain")
 
 
 // Array with all the characters, as objects
@@ -267,7 +270,7 @@ const selectQuestion = () => {
     category: category,
     value: value
   };
- 
+
   console.log("This is the category and value of currentQuestion", currentQuestion);
 }
 
@@ -306,13 +309,13 @@ const checkQuestion = () => {
 }
 
 // It'll filter the characters array and redraw the game board.
-const filterCharacters = (keepParameter) => {
+const filterCharacters = (keepParam) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
   console.log(charactersInPlay);
   if (category === 'hair') {
     // since keep parameter is a boolean there's no need to do an equation.
-    if (keepParameter) {
+    if (keepParam) {
       alert(
         `Yes, the person has ${value} hair! Keep all people that have ${value} hair.`
       )
@@ -324,7 +327,7 @@ const filterCharacters = (keepParameter) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   } else if (category === 'eyes') {
-    if (keepParameter) {
+    if (keepParam) {
       alert(
         `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes.`
       )
@@ -336,7 +339,7 @@ const filterCharacters = (keepParameter) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   } else if (category === 'accessories') {
-    if (keepParameter) {
+    if (keepParam) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
@@ -348,7 +351,7 @@ const filterCharacters = (keepParameter) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   } else {
-    if (keepParameter) {
+    if (keepParam) {
       alert(
         `Yes, the person has a ${value}! Keep all people that have a ${value}.`
       )
@@ -370,32 +373,33 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   console.log("guess= ", personToConfirm);
   // remember the confirm() ?
-let result = confirm(`Are you sure you want to pick ${personToConfirm}?`);
+  let result = confirm(`Are you sure you want to pick ${personToConfirm}?`);
   // If the player wants to guess, invoke the checkMyGuess function.
-  if (result){
+  if (result) {
     checkMyGuess(personToConfirm);
   }
 }
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  if(personToCheck === secretCharacter.name) {
-    alert("Yay! That was correct! Congratz!")
+  board.style.hidden = true;
+  winOrLose.style.display = "flex";
+
+  if (personToCheck === secretCharacter.name) {
+    winOrLoseText.innerHTML = `Yay! That was correct! Congratz!`;
   } else {
-    alert("Oh, no! That was the wrong answer! Better luck next time!")
+    winOrLoseText.innerHTML = `Oh, no! That was the wrong answer! Better luck next time!`;
   }
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-  board.style.visibility = 'hidden'
 }
 
 // Invokes the start function when website is loaded
 start()
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', () => {
+  location.reload();
+  start
+})
 // Event listener for the dropdown menu
 questions.addEventListener('change', selectQuestion);
 // Event listener for find out-button
@@ -409,5 +413,10 @@ if I type:
 filterBtn.addEventListener('click', checkQuestion());
 the function will be run immediately without Javascript listening to the event which is not what i want here.
 */
-filterBtn.addEventListener('click', () => 
+filterBtn.addEventListener('click', () =>
   checkQuestion());
+playAgainBtn.addEventListener('click', () => {
+  winOrLose.style.display = "none";
+  board.style.hidden = false;
+  start
+})

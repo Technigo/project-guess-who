@@ -391,5 +391,16 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', start);
 questions.addEventListener('change', selectQuestion);
-filterButton.addEventListener('click', checkQuestion);
+filterButton.addEventListener('click', () => {
+  selectQuestion(); // Set the current question based on dropdowns
+  checkQuestion(); // Filter characters based on the question
+  resetDropdowns(); // Reset the dropdown to default values
+});
 playAgainButton.addEventListener('click', start);
+
+
+
+
+const resetDropdowns = () => {
+  questions.selectedIndex = 0;
+};

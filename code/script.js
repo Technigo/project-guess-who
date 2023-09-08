@@ -91,7 +91,7 @@ const CHARACTERS = [
     eyes: "brown",
     wedlock: "married",
     accessories: [],
-    pet: ["bog"],
+    pet: ["dog"],
     other: [],
   },
   {
@@ -101,7 +101,7 @@ const CHARACTERS = [
     eyes: "green",
     wedlock: "divorced",
     accessories: ["glasses"],
-    pet: ["bog"],
+    pet: ["dog"],
     other: [],
   },
   {
@@ -121,7 +121,7 @@ const CHARACTERS = [
     eyes: "hidden",
     wedlock: "single",
     accessories: ["glasses"],
-    pet: ["bog", "cat"],
+    pet: ["dog", "cat"],
     other: [],
   },
   {
@@ -172,7 +172,7 @@ const CHARACTERS = [
     eyes: "green",
     wedlock: "divorced",
     accessories: ["glasses"],
-    pet: ["bog", "cat"],
+    pet: ["dog", "cat"],
     other: [],
   },
   {
@@ -202,7 +202,7 @@ const CHARACTERS = [
     eyes: "green",
     wedlock: "sambo",
     accessories: ["glasses"],
-    pet: ["bog"],
+    pet: ["dog"],
     other: [],
   },
   {
@@ -282,7 +282,7 @@ const CHARACTERS = [
     eyes: "green",
     wedlock: "sambo",
     accessories: [],
-    pet: ["bog"],
+    pet: ["dog"],
     other: [],
   },
   {
@@ -441,8 +441,8 @@ const checkQuestion = () => {
       case "acat":
         valueAsKey = "cat";
         break;
-      case "abog":
-        valueAsKey = "bog";
+      case "adog":
+        valueAsKey = "dog";
         break;
       case "arabbit":
         valueAsKey = "rabbit";
@@ -457,7 +457,7 @@ const checkQuestion = () => {
       secretCategory.includes("hat") ||
       secretCategory.includes("glasses") ||
       secretCategory.includes("cat") ||
-      secretCategory.includes("bog") ||
+      secretCategory.includes("dog") ||
       secretCategory.includes("rabbit")
     ) {
       // If there are two elements in an array of accessories or pet
@@ -469,7 +469,7 @@ const checkQuestion = () => {
         (secretCategoryString === "hat" && valueAsKey === "hat") ||
         (secretCategoryString === "glasses" && valueAsKey === "glasses") ||
         (secretCategoryString === "cat" && valueAsKey === "cat") ||
-        (secretCategoryString === "bog" && valueAsKey === "bog") ||
+        (secretCategoryString === "dog" && valueAsKey === "dog") ||
         (secretCategoryString === "rabbit" && valueAsKey === "rabbit")
       ) {
         filterCharacters(true);
@@ -574,10 +574,10 @@ const checkMyGuess = (personToCheck) => {
   // Store final counter number and time for local storage
   finalCounts = counter;
   finalTimerValue = timer.textContent;
-  // handleLocalStorage();
+  handleLocalStorage();
   // check a name of secret and guessed person's name is the same
   if (personToCheck === secret.name) {
-    handleLocalStorage();
+    // handleLocalStorage();
 
     winOrLoseText.textContent = `✨🎉Conglaturation!! 🎉✨`;
     createSound("./images/audio/win-sound.mp3");

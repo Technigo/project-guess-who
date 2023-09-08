@@ -14,44 +14,47 @@
 <body>
   <aside class="question-section">
 
-
     <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
 
-    <h1>Does the person have</h1>
+    <h1>Is the character</h1>
 
     <select title="questions" id="questions">
       <optgroup label="house">
-        <option value="gryffindor">Gryffindor</option>
-        <option value="slytherin">Slytherin</option>
-        <option value="hufflepuff">Hufflepuff</option>
-        <option value="ravenclaw">Ravenclaw</option>
+        <option value="gryffindor">In Gryffindor</option>
+        <option value="slytherin">In Slytherin</option>
+        <option value="hufflepuff">In Hufflepuff</option>
+        <option value="ravenclaw">In Ravenclaw</option>
       </optgroup>
       <optgroup label="hair">
-        <option value="black">Black hair</option>
-        <option value="brown">Brown hair</option>
-        <option value="red">Red hair</option>
-        <option value="white">White hair</option>
-        <option value="grey">Grey hair</option>
-        <option value="bald">Is bald!</option>
+        <option value="black">Black haired</option>
+        <option value="brown">Brown haired</option>
+        <option value="red">Red haired</option>
+        <option value="white">White haired</option>
+        <option value="grey">Grey haired</option>
+        <option value="bald">Is bald</option>
       </optgroup>
       <optgroup label="species">
-        <option value="human">Human</option>
-        <option value="cat">Cat</option>
-        <option value="werewolf">Werewolf</option>
-        <option value="half-giant">Half-giant</option>
+        <option value="human">A human</option>
+        <option value="cat">A cat</option>
+        <option value="werewolf">A werewolf</option>
+        <option value="half-giant">A half-giant</option>
       </optgroup>
       <optgroup label="type">
-        <option value="witch">Witch</option>
-        <option value="wizard">Wizard</option>
+        <option value="witch">A witch</option>
+        <option value="wizard">A wizard</option>
       </optgroup>
       <optgroup label="teacher">
-        <option value="teacher">Is a teacher</option>
+        <option value="teacher">A teacher</option>
       </optgroup>
     </select>
     <div class="button-div">
+      <!-- Added an onclick here for the counter -->
       <button id="filter" class="filled-button">Find out</button>
       <button type="button" id="restart" class="outlined-button">Restart</button>
     </div>
+    <!-- Added section for counter -->
+    <section class="counter">
+    </section>
   </aside>
 
   <section class="board-wrapper">

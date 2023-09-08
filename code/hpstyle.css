@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #FFE09C;
-  --secondary: #FF2349;
+  --primary: #5a52b4;
+  --secondary: #11141a;
 }
 
 body {
@@ -51,6 +51,8 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #242632;
+  /* Changed background color here aswell*/
 }
 
 .game-board {
@@ -59,6 +61,12 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+}
+
+/* This and the section below is styling for the counter position */
+.counter {
+  margin: 20px 0;
+  color: white;
 }
 
 /****** CARD ******/
@@ -74,7 +82,6 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 5px 6px 10px -1px rgba(0, 0, 0, 0.08);
 }
 
 .card p {
@@ -85,6 +92,7 @@ select {
   /* Extra styling after changing colors */
   color: var(--secondary);
   padding: 10px;
+  color: white;
   ;
 }
 

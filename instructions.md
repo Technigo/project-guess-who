@@ -93,11 +93,11 @@ So you’ve completed the requirements? Great job! Make sure you've committed an
 
 ### Intermediate stretch goals
 - ~~Check the bonus step~~
-- Change the array of objects:
-  - Add more information about the people, and with this add the possibility to ask questions and filter the board in regards to these addons.
-  - Change the characters' info to be about your family, football club, colleagues, or cute dogs.
-- Create a counter to keep track of how many guesses a player does.
-- Change the styling to be as you want it!
+- ~~Change the array of objects:~~
+  ~~- Add more information about the people, and with this add the possibility to ask questions and filter the board in regards to these addons.~~
+  ~~- Change the characters' info to be about your family, football club, colleagues, or cute dogs.~~
+- ~~Create a counter to keep track of how many guesses a player does.~~
+- ~~Change the styling to be as you want it!~~
 
 ### Advanced stretch goals
 - Create a timer that measures how long time each game takes.

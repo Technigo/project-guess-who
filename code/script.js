@@ -23,7 +23,7 @@ const CHARACTERS = [
     hair: 'hidden',
     eyes: 'blue',
     accessories: ['hat'],
-    other: []
+    other: ['influencer']
   },
   {
     name: 'Jacques',
@@ -38,8 +38,8 @@ const CHARACTERS = [
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: [],
-    other: []
+    accessories: ['tie'],
+    other: ['french']
   },
   {
     name: 'Jake',
@@ -120,7 +120,7 @@ const CHARACTERS = [
     hair: 'white',
     eyes: 'hidden',
     accessories: ['hat'],
-    other: []
+    other: ['french']
   },
   {
     name: 'Jeri',
@@ -128,7 +128,7 @@ const CHARACTERS = [
     hair: 'orange',
     eyes: 'green',
     accessories: ['glasses'],
-    other: []
+    other: ['fear of heights']
   },
   {
     name: 'Jerry',
@@ -152,7 +152,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
-    other: []
+    other: ['fear of heights']
   },
   {
     name: 'Jon',
@@ -168,7 +168,7 @@ const CHARACTERS = [
     hair: 'yellow',
     eyes: 'hidden',
     accessories: ['glasses', 'hat'],
-    other: []
+    other: ['fear of heights']
   },
   {
     name: 'Josephine',
@@ -176,7 +176,7 @@ const CHARACTERS = [
     hair: 'grey',
     eyes: 'brown',
     accessories: [],
-    other: []
+    other: ['french', 'influencer']
   },
   {
     name: 'Josh',
@@ -191,7 +191,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: [],
+    accessories: ['tie'],
     other: []
   },
   {

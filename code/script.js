@@ -234,6 +234,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard();
   setSecret();
+  console.log(secret.name);
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -242,39 +243,40 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  const value = questions.options[questions.selectedIndex].text;
+  const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
     category: category,
     value: value,
   }
+}
 
-if (category === "hair") {
-  currentQuestion = {
-    attribute: "hair",
-    value: value,
-    category: category,
-  }
- } else if (category === "eyes") {
-    currentQuestion = {
-      attribute: "eyes",
-      value: value,
-      category: category,
-    }
-  } else if (category === "accessories") {
-    currentQuestion = {
-      attribute: "accessories",
-      value: value,
-      category: category,
-    }
-  } else if (category === "other") {
-    currentQuestion = {
-      attribute: value,
-      value: true,
-      category: category,
-    }
-  };
-};
+// if (category === "hair") {
+//   currentQuestion = {
+//     attribute: "hair",
+//     value: value,
+//     category: category,
+//   }
+//  } else if (category === "eyes") {
+//     currentQuestion = {
+//       attribute: "eyes",
+//       value: value,
+//       category: category,
+//     }
+//   } else if (category === "accessories") {
+//     currentQuestion = {
+//       attribute: "accessories",
+//       value: value,
+//       category: category,
+//     }
+//   } else if (category === "other") {
+//     currentQuestion = {
+//       attribute: value,
+//       value: true,
+//       category: category,
+//     }
+//   };
+// };
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
@@ -312,9 +314,17 @@ const filterCharacters = (keep) => {
       alert(`No, the person does not have a smoking habit. Remove all people that smokes.`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
     }
-    generateBoard();
-  }
-}
+    
+   } else if (category === 'hair'  || category === 'eyes') {
+      if (keep) {
+        alert(`Yes, the person does have ${value}. Keep all persons with ${value}`);
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
+       } else {
+          alert(`No, the person does not have ${value}. Remove all persons with ${value}`);
+          charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value));
+        }
+   }
+    } 
   
   // charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
 

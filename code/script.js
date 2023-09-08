@@ -1,12 +1,21 @@
 // All the DOM selectors stored as short variables
+// targets html <main> to display cards
 const board = document.getElementById('board')
+// targets html <select> including all options
 const questions = document.getElementById('questions')
+// targets "restart" <button> on <aside> to reload the whole board
 const restartButton = document.getElementById('restart')
+// targets "Find out" <button> to compare user's card with secret's
 const findOutButton = document.getElementById('filter')
+// targets <aside> for display purposes
 const asideQuestionSection = document.getElementById('question-section')
+// targets board <section> for display purposes
 const boardWrapper = document.getElementById('board-wrapper')
+// targets win/lose <section> for display purposes
 const winOrLoseWrapper = document.getElementById('winOrLose')
+// targets <p> for win/lose message
 const winOrLoseText = document.getElementById('winOrLoseText')
+//targets playagain <button> to reload page after guess reveal
 const playAgainButton = document.getElementById('play-again')
 
 // Array with all the characters, as objects
@@ -207,16 +216,18 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret; //randomly selected person card to be guessed
+let secret; //randomly selected person card to be guessed by user
 let currentQuestion; //stores user's selected option and corresponding category
-let charactersInPlay; // updated person array
+let displayedCharacters; // characters displayed on the board
 
-// Draw the game board
-// generated under main #board
+// Drawing of the game board (generated under main #board)
 // div.guess is on display:none -> display:flex on hover
+// onclick method already in html, no use for AddEventListener, passing the variable person.name to function guess.  No need for id as multiple examples of it will be created( or add a personalised id to be generated several times)
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  const shuffle = new Audio('./assets/shuffle.wav');
+  shuffle.play();
+  displayedCharacters.forEach((person) => {
     board.innerHTML += `
       <div class="card">
         <p>${person.name}</p>
@@ -230,18 +241,18 @@ const generateBoard = () => {
   });
 };
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
-const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+// Function for randomly selecting the secret person from the characters array and setting it as the value of the variable "secret"
+const setSecretCard = () => {
+  secret = displayedCharacters[Math.floor(Math.random() * displayedCharacters.length)];
 };
 
-// This function to start (and restart) the game
+// Function for starting (and restarting) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  // Here we're setting displayedCharacters array to be ALL the characters to start with
+  displayedCharacters = CHARACTERS;
   // What else should happen when we start the game?
   generateBoard();
-  setSecret();
+  setSecretCard();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -254,7 +265,6 @@ const selectQuestion = () => {
   // We also need a variable that stores the actual value of the question we've selected.
   const value = questions.options[questions.selectedIndex].value
 
-  // "questions" is used to set up <select> including all options
   // currentQuestion is a destrtuctured object variable storing values "category" and"value"
   currentQuestion = {
     category: category,
@@ -297,13 +307,13 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person wears ${value}! Keep all people that wear ${value}`
       );
-      charactersInPlay = charactersInPlay.filter((person) =>
+      displayedCharacters = displayedCharacters.filter((person) =>
         person[category].includes(value)); //loops through the people in the array in search for corresponding selected category and checks if its value is included (Boolean:true) to keep it creating a new filtered array
     } else {//message to discard the cards as accessories do not match
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wear ${value}`
       );
-      charactersInPlay = charactersInPlay.filter((person) =>
+      displayedCharacters = displayedCharacters.filter((person) =>
         !person[category].includes(value));
     }
   } else if (category === 'other') { //if category regards smoking habits
@@ -311,13 +321,13 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person is a ${value}! Keep all people that are a ${value}`
       );
-      charactersInPlay = charactersInPlay.filter((person) =>
+      displayedCharacters = displayedCharacters.filter((person) =>
         person[category].includes(value));//loops through the people in the array in search for corresponding selected category and checks if its value is included to keep it creating a new filtered array
     } else { //message to discard cards as secret's value doesn't match user's
       alert(
         `No, the person is not a ${value}! Remove all people that are not a ${value}`
       );
-      charactersInPlay = charactersInPlay.filter((person) =>
+      displayedCharacters = displayedCharacters.filter((person) =>
         !person[category].includes(value));
     }
   } else { //if category selected is either hair or eye colour
@@ -325,13 +335,13 @@ const filterCharacters = (keep) => {
       alert(
         `Yes, the person has ${value} ${category}! Keep all people that have ${value} ${category}`
       );
-      charactersInPlay = charactersInPlay.filter((person) =>
+      displayedCharacters = displayedCharacters.filter((person) =>
         person[category] === value);// loops through the people in the array in search for corresponding selected category and checks its value to keep it only if it matches the user's selected value creating a new filtered array
     } else {// msg to discard cards as secret's value doesn't match user's
       alert(
         `No, the person doesn't have ${value} ${category}! Remove all people that have ${value} ${category}`
       );
-      charactersInPlay = charactersInPlay.filter((person) =>
+      displayedCharacters = displayedCharacters.filter((person) =>
         person[category] !== value); //loops through the people in the array in search for corresponding selected category and checks its value to keep it only if its value DOES NOT match the user's selected value creating a new array (if it matches, it is discarded)
     }
   }
@@ -380,7 +390,7 @@ const checkMyGuess = (personToCheck) => {
     winSound.play();
   } else {
     winOrLoseText.innerHTML = `
-    Nopes!  That was a wrong guess! 😒 Game Over!
+    Nopes!  Wrong guess! The secret card was ${secret.name}. 😒 Game Over!
       `
     const loseSound = new Audio('./assets/lose.wav')
     loseSound.play();

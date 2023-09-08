@@ -36,4 +36,4 @@ If I had more time to work on this project, I would consider the following impro
 
 ## View It Live
 
-You can play the Guess Who Game live by following this [link](#). Have fun guessing the secret character!
+You can play the Guess Who Game live by following this [link](https://stenlisuryadinata.github.io/project-guess-who/code/index.html). Have fun guessing the secret character!

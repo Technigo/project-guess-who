@@ -9,6 +9,7 @@ const restartButton = document.getElementById('restart')
 const findOutBtn = document.getElementById("filter");
 const playAgainButton = document.getElementById("playAgain");
 const winOrLoseText = document.getElementById("winOrLoseText");
+const winOrLose = document.getElementById('winOrLose');
 
 
 // Array with all the characters, as objects
@@ -241,7 +242,7 @@ const generateBoard = () => {
 //Math built in js methods (so that we will get a random person every time, if we use 0 it will always be the first person)
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-  console.log(secret); //SB
+  console.log(secret);
 }
 
 
@@ -251,9 +252,9 @@ const start = () => {
   charactersInPlay = CHARACTERS
   // Here I can add if anything else should happen when we start the game?
 
-
-  generateBoard();// Board made visible. 
+  winOrLose.style.display = 'none'; //Got help with this during demo from the strawberry team :)
   setSecret(); //Secret person selected (let secret, const setSecret = () => {)
+  generateBoard();// Board made visible. 
   console.log("Start function called");
 }
 
@@ -313,7 +314,7 @@ const checkQuestion = () => {
 /* If I want to add on categorys:
  else if (category === 'accessories' || category === 'other' || category === 'clothes' || category === 'hairtype') 
  
- would it be better to write like this again:
+ would it be better to write like this again, easier for me to understand?:
  {
     console.log(category, value);
     if (secret[category].includes(value)) {
@@ -397,23 +398,6 @@ const checkMyGuess = (personToCheck) => {
 }
 
 
-
-/*const playAgainHandler = () => {
-  console.log("Play again button clicked");
-  // Add logic to this function to perform any actions needed to start a new game (start()) or other actions.
-  start();
-};*/
-// DOES NOT WORK, BUT NO ERROR IN CONSOLE LOG
-
-// All the event listeners
-//playAgainButton.addEventListener("click", start);
-//DOES NOT WORK YET
-playAgainButton.addEventListener('click', start => {
-  console.log("Restart button clicked");
-  start(); // Call the start function
-});
-//DOES NOT WORK
-
 questions.addEventListener("change", selectQuestion); //?
 //play again? why did I put this here? selects element dropdown??
 findOutBtn.addEventListener("click", checkQuestion);
@@ -423,4 +407,8 @@ window.addEventListener('load', start);
 restartButton.addEventListener('click', () => {
   console.log("Restart button clicked");
   start(); // Call the start function
+});
+playAgainButton.addEventListener('click', () => {
+  console.log("Restart button clicked");
+  start(); // Call the start function //showboard function. 
 });

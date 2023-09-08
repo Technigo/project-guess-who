@@ -352,7 +352,8 @@ const counter = () => {
     </p>`
 }
 
-//timer
+//timer should start when page loads
+
 
 
 // Function to restart the game after the guess has been checked. We first need to set the winOrLose section to display: none again, otherwise we can't see that the board has been reset. Then the start-function gets invoked. We don't have to generate the board again here, since that happens in the start function, same with the secret. 

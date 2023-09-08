@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess Who Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <aside class="question-section">
+      <button type="button" id="restart" class="outlined-button">RESTART</button>
+
+      <img
+        class="guess-who-icon"
+        src="images/guess-who-bubble.png"
+        alt="Guess Who"
+      />
+
+      <h1>Does the person have</h1>
+
+      <select title="questions" id="questions">
+        <optgroup label="hair">
+          <option value="brown">brown hair</option>
+          <option value="yellow">yellow hair</option>
+          <!-- Add the rest of hair colors as options  -->
+        </optgroup>
+        <optgroup label="eyes">
+          <option value="hidden">hidden eyes</option>
+          <!-- Add the rest of eye colors as options  -->
+        </optgroup>
+        <optgroup label="accessories">
+          <option value="glasses">glasses</option>
+          <!-- Add the other accessory option here (hat)  -->
+        </optgroup>
+        <optgroup label="other">
+          <option value="smoker">a smoking habit</option>
+        </optgroup>
+      </select>
+
+      <button id="filter" class="filled-button">FIND OUT</button>
+    </aside>
+
+    <section class="board-wrapper">
+      <main class="game-board" id="board"></main>
+    </section>
+
+    <section id="winOrLose" class="win-or-lose-wrapper">
+      <div class="win-or-lose">
+        <img
+          class="guess-who-icon"
+          src="images/guess-who-bubble.png"
+          alt="Guess Who"
+        />
+        <h1 id="winOrLoseText"></h1>
+        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+<script>
+  // All the DOM selectors stored as short variables
+  const board = document.getElementById('board')
+  const questions = document.getElementById('questions')
+  const restartButton = document.getElementById('restart')
+
+  // Array with all the characters, as objects
+  const CHARACTERS = [
+    {
+      name: 'Jabala',
+      img: 'images/jabala.svg',
+      hair: 'hidden',
+      eyes: 'hidden',
+      accessories: ['glasses', 'hat'],
+      other: [],
+    },
+    {
+      name: 'Jack',
+      img: 'images/jack.svg',
+      hair: 'hidden',
+      eyes: 'blue',
+      accessories: ['hat'],
+      other: [],
+    },
+    {
+      name: 'Jacques',
+      img: 'images/jacques.svg',
+      hair: 'grey',
+      eyes: 'blue',
+      accessories: ['hat'],
+      other: ['smoker'],
+    },
+    // Add more characters here...
+  ]
+
+  // Global variables
+  let secret
+  let currentQuestion
+  let charactersInPlay
+
+  // Draw the game board
+  const generateBoard = () => {
+    board.innerHTML = ''
+    charactersInPlay.forEach((person) => {
+      board.innerHTML += `
+        <div class="card">
+          <p>${person.name}</p>
+          <img src=${person.img} alt=${person.name}>
+          <div class="guess">
+            <span>Guess on ${person.name}?</span>
+            <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          </div>
+        </div>
+      `
+    })
+  }
+
+  // Randomly select a person from the characters array and set it as the value of the variable called secret
+  const setSecret = () => {
+    secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
+  }
+
+  // This function to start (and restart) the game
+  const start = () => {
+    // Set charactersInPlay array to be all the characters to start with
+    charactersInPlay = CHARACTERS
+    generateBoard()
+    setSecret()
+  }
+
+  // Set the currentQuestion object when you select something in the dropdown
+  const selectQuestion = () => {
+    const category = questions.options[questions.selectedIndex].parentNode.label
+    const value = questions.value
+
+    currentQuestion = {
+      category: category,
+      value: value,
+    }
+  }
+
+  // This function should be invoked when you click on the 'FIND OUT' button.
+  const checkQuestion = () => {
+    const { category, value } = currentQuestion
+
+    if (category === 'hair' || category === 'eyes') {
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+    } else if (category === 'accessories') {
+      if (value === 'glasses') {
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes('glasses'))
+      } else if (value === 'hat') {
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes('hat'))
+      }
+    } else if (category === 'other') {
+      if (value === 'smoker') {
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes('smoker'))
+      } else {
+        // Handle other "other" category values here if needed
+      }
+    }
+
+    generateBoard()
+
+    // Display step-by-step instructions based on the question
+    if (category === 'hair') {
+      document.getElementById('winOrLoseText').textContent = `Step 1: Keep only the people with ${value} hair.`
+    } else if (category === 'eyes') {
+      document.getElementById('winOrLoseText').textContent = `Step 2: Keep only the people with ${value} eyes.`
+    } else if (category === 'accessories') {
+      if (value === 'glasses') {
+        document.getElementById('winOrLoseText').textContent = 'Step 3: Keep only the people who wear glasses.'
+      } else if (value === 'hat') {
+        document.getElementById('winOrLoseText').textContent = 'Step 3: Keep only the people who wear a hat.'
+      }
+    } else if (category === 'other') {
+      if (value === 'smoker') {
+        document.getElementById('winOrLoseText').textContent = 'Step 4: Keep only the people who have a smoking habit.'
+      } else {
+        // Handle other "other" category values here if needed
+      }
+    }
+  }
+
+  // Function to invoke when you make a guess
+  const guess = (suspect) => {
+    const guessResult = confirm(`Is it ${suspect}?`)
+
+    if (guessResult) {
+      if (suspect === secret.name) {
+        document.getElementById('winOrLoseText').textContent = 'You Win! You guessed the correct person.'
+      } else {
+        document.getElementById('winOrLoseText').textContent = `Game Over! It's not ${suspect}.`
+      }
+    } else {
+      document.getElementById('winOrLoseText').textContent = 'Keep playing!'
+    }
+  }
+
+  // All the event listeners
+  restartButton.addEventListener('click', start)
+  questions.addEventListener('change', selectQuestion)
+  filter.addEventListener('click', checkQuestion)
+
+  // Start the game when the page loads
+  start()
+</script>

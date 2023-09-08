@@ -146,17 +146,18 @@ button {
 }
 
 /****** WIN OR LOSE SECTION ******/
+/* Center the win or lose message */
 .win-or-lose-wrapper {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  background: var(--secondary);
+  z-index: 999; /* Ensure it's above other elements */
 }
 
 .win-or-lose {
@@ -164,9 +165,20 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: blue;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute; /* Use absolute position */
+  top: 50%; /* Move to the vertical center */
+  left: 50%; /* Move to the horizontal center */
+  transform: translate(-50%, -50%); /* Center it perfectly */
   max-width: 700px;
   text-align: center;
 }
+
+
+
 
 .win-or-lose img {
   align-self: flex-start;

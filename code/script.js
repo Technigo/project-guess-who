@@ -1,3 +1,5 @@
+
+
 // All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
@@ -232,6 +234,8 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   // What else should happen when we start the game?
+  generateBoard()
+  setSecret()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -241,10 +245,12 @@ const selectQuestion = () => {
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
   // const value =
+  const value = questions.value;
 
   currentQuestion = {
     category: category,
     // value: value
+    value: value,
   }
 }
 
@@ -255,12 +261,75 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  // if (category === 'hair' || category === 'eyes') {
+  //   charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
 
-  } else if (category === 'accessories' || category === 'other') {
+  // } else if (category === 'accessories' || category === 'other') {
+  //   charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
 
+  // }
+  // if (category === 'hair' || category === 'eyes') {
+  //   charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+  // } else if (category === 'accessories') {
+  //   if (value === 'glasses') {
+  //     charactersInPlay = charactersInPlay.filter((person) => person[category].includes('glasses'));
+  //   } else if (value === 'hat') {
+  //     charactersInPlay = charactersInPlay.filter((person) => person[category].includes('hat'));
+  //   }
+  // } else if (category === 'other') {
+  //   if (value === 'smoker') {
+  //     charactersInPlay = charactersInPlay.filter((person) => person[category].includes('smoker'));
+  //   } else {
+  //     // Handle other "other" category values here if needed
+  //   }
+  // }
+
+  // generateBoard();
+  if (category === 'hair') {
+    charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+    document.getElementById('winOrLoseText').textContent = `Step 1: Keep only the people with ${value} hair.`;
+  } else if (category === 'eyes') {
+    charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+    document.getElementById('winOrLoseText').textContent = `Step 2: Keep only the people with ${value} eyes.`;
+  } else if (category === 'accessories') {
+    if (value === 'glasses') {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes('glasses'));
+      document.getElementById('winOrLoseText').textContent = 'Step 3: Keep only the people who wear glasses.';
+    } else if (value === 'hat') {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes('hat'));
+      document.getElementById('winOrLoseText').textContent = 'Step 3: Keep only the people who wear a hat.';
+    }
+  } else if (category === 'other') {
+    if (value === 'smoker') {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes('smoker'));
+      document.getElementById('winOrLoseText').textContent = 'Step 4: Keep only the people who have a smoking habit.';
+    } else {
+      // Handle other "other" category values here if needed
+    }
   }
-}
+
+  generateBoard();
+
+  // Display step-by-step instructions based on the question
+  if (category === 'hair') {
+    document.getElementById('winOrLoseText').textContent = `Step 1: Keep only the people with ${value} hair.`;
+  } else if (category === 'eyes') {
+    document.getElementById('winOrLoseText').textContent = `Step 2: Keep only the people with ${value} eyes.`;
+  } else if (category === 'accessories') {
+    if (value === 'glasses') {
+      document.getElementById('winOrLoseText').textContent = 'Step 3: Keep only the people who wear glasses.';
+    } else if (value === 'hat') {
+      document.getElementById('winOrLoseText').textContent = 'Step 3: Keep only the people who wear a hat.';
+    }
+  } else if (category === 'other') {
+    if (value === 'smoker') {
+      document.getElementById('winOrLoseText').textContent = 'Step 4: Keep only the people who have a smoking habit.';
+    } else {
+      // Provide instructions for other "other" category values if needed
+    }
+  }
+};
+
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -281,8 +350,14 @@ const filterCharacters = (keep) => {
   } else {
     if (keep) {
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(
+        `Yes, the person has ${value} hair! Keep all people with ${value} hair`
+      )
     } else {
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(
+        `No, the person doesn't have ${value} hair! Remove all people with ${value} hair`
+      )
     }
   }
 
@@ -301,14 +376,63 @@ const filterCharacters = (keep) => {
   */
 
   // Invoke a function to redraw the board with the remaining people.
-}
+  // if (category === 'hair' || category === 'eyes') {
+  //   charactersInPlay = charactersInPlay.filter((person) => (keep ? person[category] === value : person[category] !== value));
+  // } else if (category === 'accessories' || category === 'other') {
+  //   charactersInPlay = charactersInPlay.filter((person) => (keep ? person[category].includes(value) : !person[category].includes(value)));
+  // }
+
+  if (category === 'hair' || category === 'eyes') {
+    charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+  } else if (category === 'accessories') {
+    if (value === 'glasses') {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes('glasses'));
+    } else if (value === 'hat') {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes('hat'));
+    }
+  } else if (category === 'other') {
+    if (value === 'smoker') {
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes('smoker'));
+    } else {
+      // Handle other "other" category values here if needed
+    }
+  }
+
+  generateBoard()
+  // Display step-by-step instructions based on the question
+  if (category === 'hair') {
+    alert(`Step 1: Keep only the people with ${value} hair.`);
+  } else if (category === 'eyes') {
+    alert(`Step 2: Keep only the people with ${value} eyes.`);
+  } else if (category === 'accessories') {
+    if (value === 'glasses') {
+      alert('Step 3: Keep only the people who wear glasses.');
+    } else if (value === 'hat') {
+      alert('Step 3: Keep only the people who wear a hat.');
+    }
+  } else if (category === 'other') {
+    if (value === 'smoker') {
+      alert('Step 4: Keep only the people who have a smoking habit.');
+    } else {
+      // Provide instructions for other "other" category values if needed
+    }
+  }
+};
+
+
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-}
+  const confirmGuess = confirm(`Are you sure you want to guess ${personToConfirm}?`);
+  if (confirmGuess) {
+    checkMyGuess(personToConfirm);
+  }
+};
+
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
@@ -316,6 +440,15 @@ const checkMyGuess = (personToCheck) => {
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
   // 4. Hide the game board
+  if (personToCheck === secret.name) {
+    document.getElementById('winOrLoseText').textContent = 'Congratulations! You won!';
+  } else {
+    document.getElementById('winOrLoseText').textContent = `Sorry, you lost 😤! The secret person was ${secret.name}.`;
+  }
+
+  // Show the win or lose section and hide the game board
+  document.getElementById('winOrLose').style.display = 'block';
+  document.querySelector('.board-wrapper').style.display = 'none';
 }
 
 // Invokes the start function when website is loaded
@@ -323,3 +456,15 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+questions.addEventListener('change', selectQuestion);
+// document.getElementById('filter').addEventListener('click', checkQuestion);
+document.getElementById('filter').addEventListener('click', () => {
+  selectQuestion(); // Make sure the current question is selected
+  checkQuestion(); // Call the checkQuestion function
+});
+
+document.getElementById('playAgain').addEventListener('click', () => {
+  document.getElementById('winOrLose').style.display = 'none';
+  document.querySelector('.board-wrapper').style.display = 'block';
+  start();
+});

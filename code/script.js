@@ -1,10 +1,7 @@
-// All the DOM selectors stored as short variables
 const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
-
-// Array with all the characters, as objects
 const CHARACTERS = [
   {
     name: 'Jabala',
@@ -201,8 +198,6 @@ const CHARACTERS = [
   },
 ]
 
-
-
 // Global variables
 let secret
 let currentQuestion
@@ -224,19 +219,15 @@ const generateBoard = () => {
     `
   })
 }
-
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS; 
   setSecret();
   generateBoard();
-  // What else should happen when we start the game?
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -323,7 +314,6 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hide the game board
 }
 
-// Invokes the start function when website is loaded
 start()
 
 // All the event listeners

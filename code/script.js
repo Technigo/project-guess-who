@@ -398,7 +398,7 @@ start()
 // All the event listeners
 restartButton.addEventListener('click', () => {
   location.reload();
-  start
+  start();
 })
 // Event listener for the dropdown menu
 questions.addEventListener('change', selectQuestion);
@@ -418,5 +418,6 @@ filterBtn.addEventListener('click', () =>
 playAgainBtn.addEventListener('click', () => {
   winOrLose.style.display = "none";
   board.style.hidden = false;
-  start
+  location.reload();
+  start();
 })

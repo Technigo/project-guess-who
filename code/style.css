@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #ffe6f2;
+  --secondary:  #ffcccc;
 }
 
 body {
@@ -16,7 +16,7 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: #ff3399;
 }
 
 .question-section {
@@ -85,7 +85,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #ff3399;
   text-align: center;
   height: inherit;
 }
@@ -136,12 +136,12 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: #ff3399;
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: #ff3399;
+  border-color: #ff3399;
   color: var(--primary);
 }
 
@@ -226,7 +226,7 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: #ff3399;
     color: var(--primary);
     border: none;
   }

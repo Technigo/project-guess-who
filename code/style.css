@@ -69,7 +69,7 @@ span#attempts {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(/code/images/background_board.jpg);
+  background-image: url(images/background_board.jpg);
   background-size: contain;
   background-repeat: repeat;
 }

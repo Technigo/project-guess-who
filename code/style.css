@@ -44,6 +44,12 @@ select {
   width: 126px;
 }
 
+.display-name {
+  font-size: 22px;
+  font-weight: 500;
+  color: white;
+}
+
 .board-wrapper {
   width: 70%;
   display: flex;
@@ -186,9 +192,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

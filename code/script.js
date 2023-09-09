@@ -17,6 +17,8 @@ const winOrLoseWrapper = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 //targets playagain <button> to reload page after guess reveal:
 const playAgainButton = document.getElementById('play-again')
+//targets user's name:
+const displayName = document.getElementById('displayName')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -242,7 +244,24 @@ const CHARACTERS = [
 let secret; //randomly selected person card to be guessed by user
 let currentQuestion; //stores user's selected option and corresponding category
 let displayedCharacters; // characters displayed on the board
+let userName; //possibility to store and display user's name
 
+
+//----------------------Extra------------------------//
+//Function to add user's name after a prompt message:
+const addUserName = () => {
+  playerName = prompt(`Welcome to the game Guess who!  Please enter your name:`)
+  const regex = /(?=.*[A-Za-z]){1,}/g;
+  if (playerName.match(regex)) {
+    alert(`The game starts...NOW!`)
+    displayName.innerText = `
+  Player: ${playerName}
+  `
+  } else {
+    alert(`Name not registered.  Please try with a min of 1 letter.`)
+    playerName;
+  }
+};
 /* ----------------------Step 1-----------------------*/
 // Drawing of the game board (generated under main #board)
 
@@ -279,6 +298,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard();
   setSecretCard();
+  setTimeout(addUserName, 1000);
 };
 
 /*-------------------------Step3-------------------------*/
@@ -313,7 +333,7 @@ const checkQuestion = () => {
   // Determines whether to keep or remove people based on that
   //Determines when we need to keep the cards with selected option
   let keepingCards;
-  if (category === 'hair' || category === 'eyes' || category === 'faceExpression') {// here, both literal values can be accessed with bracket or dot notation
+  if (category === 'hair' || category === 'eyes' || category === 'face') {// here, both literal values can be accessed with bracket or dot notation
     if (secret[category] === currentQuestion.value) {
       keepingCards = true //when the secret's value matches the player's selected value
     } else {

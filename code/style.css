@@ -33,11 +33,14 @@ h1 {
 select {
   display: block;
   border: none;
-  font-size: 22px;
+  font-size: 28px;
   font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;
   margin: 24px 0;
+  padding: 10px;
+  border-radius: 7px;
+  box-shadow: 2px 4px 6px rgba(0,0,0,.5);
 }
 
 .guess-who-icon {
@@ -175,6 +178,9 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+.hidden{
+  display: none;
 }
 
 @media (max-width: 768px) {

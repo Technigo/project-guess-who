@@ -12,4 +12,4 @@ By using a lot more console.log did help me to avoid a lot of mistakes, since I 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://jocular-queijadas-c57f9a.netlify.app

@@ -27,6 +27,10 @@ h2 {
   padding: 0 0 20px 100px;
 }
 
+p {
+  font-size: 18px;
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -157,7 +161,6 @@ button {
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
-  align-items: center;
   justify-content: center;
   background: var(--secondary);
   position: absolute;
@@ -166,24 +169,8 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
-}
-
-.win-or-lose {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 700px;
   text-align: center;
-}
-
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
-}
-
-.win-or-lose h1 {
-  margin-bottom: 32px;
+  padding: 100px 0 100px 0;
 }
 
 @media (max-width: 768px) {
@@ -240,5 +227,32 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+}
+
+/****** TIMER - ADDED BY BEC  ******/
+#minutes,
+#colon,
+#seconds {
+  font-size: 40px;
+}
+
+.game-timer {
+  display: inline-block;
+  color: #00804d;
+  border: 2px solid #00804d;
+  background: #ccffeb;
+  border-radius: 4px;
+  padding: 0 10px 0 10px;
+  margin: 40px 0 0 0;
+  vertical-align: middle;
+  min-width: 140px;
+  text-align: center;
+}
+
+/*media query for mobile and tablet - remove the timer*/
+@media screen and (max-width: 933px) {
+  .game-timer {
+    display: none;
   }
 }

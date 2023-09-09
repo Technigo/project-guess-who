@@ -55,6 +55,14 @@
     </select>
 
     <button id="filter" class="filled-button">FIND OUT</button>
+    <p id="questionsAsked">Questions asked: </p>
+    <!--game timer added-->
+    <div class="game-timer">
+      <label id="minutes">00</label>
+      <label id="colon">:</label>
+      <label id="seconds">00</label>
+    </div>
+    <!-------------------->
   </aside>
 
   <section class="board-wrapper">
@@ -62,13 +70,12 @@
   </section>
 
   <section id="winOrLose" class="win-or-lose-wrapper">
-    <div class="win-or-lose">
-      <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
-      <h1 id="winOrLoseText"></h1>
-      <!-- Added a h2 for more text -->
-      <h2 id="winOrLoseTexth2"></h2>
-      <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
-    </div>
+    <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
+    <h1 id="winOrLoseText"></h1>
+    <!-- Added a h2 for more text -->
+    <h2 id="winOrLoseTexth2"></h2>
+    <p id="questionsAsked">Questions asked: </p>
+    <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
   </section>
   <script src="script.js"></script>
 </body>

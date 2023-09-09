@@ -9,6 +9,11 @@ const playAgainButton = document.getElementById('playAgain')
 const winOrLoseText = document.getElementById("winOrLoseText")
 const winOrLoseTexth2 = document.getElementById("winOrLoseTexth2")
 const winOrLoseSection = document.getElementById("winOrLose")
+const questionsAskedCount = document.getElementById("questionsAsked")
+
+//for Timer
+let minutesLabel = document.getElementById("minutes");
+let secondsLabel = document.getElementById("seconds");
 
 //don't need a GUESS button DOM selector because we add this button dynamically in this JS
 
@@ -236,10 +241,11 @@ const CHARACTERS = [
 //---------------- Global Variables -------------------------//
 
 // Global variables
-let secret                  //Will be the secret person object
-let currentQuestion         //Will be the current question object
-let charactersInPlay = [];        //Array of people still in the game
-
+let secret                        // Will be the secret person object
+let currentQuestion               // Will be the current question object
+let charactersInPlay = [];        // Array of people still in the game
+let totalSeconds = 0;             // for Timer
+let questionsAskedCounter = 0;
 
 //----------- Functions after this comment -----------------//
 
@@ -249,8 +255,13 @@ const start = () => {
   //if this is not the first call of start() the next 2 lines clear the win and loose screens
   winOrLoseSection.style.display = "none";
   board.style.display = "flex";
-  generateBoard();  //Step 1 - I added this on Tues to see the board  
-  setSecret(); //Step 1 - 'Computer player' selects the secret character the user tries to guess
+  generateBoard();               //Step 1 - I added this on Tues to see the board  
+  setSecret();                   //Step 1 - 'Computer player' selects the secret character the user tries to guess
+  valString = 0;
+  totalSeconds = 0;
+  questionsAskedCounter = 0;
+  setInterval(setTime, 1000);    //Start/re-start timer
+  questionsAskedCount.innerHTML = `Questions asked: ${questionsAskedCounter}`
 }
 
 
@@ -277,6 +288,7 @@ const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
   console.log(`Secret person is set as: ${secret.name}`); //Used for debugging
 }
+
 
 // Function - selectQuestion - setting currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
@@ -315,12 +327,17 @@ const checkQuestion = () => {
       filterCharacters(false)
     }
   }
+  //--------------------------add in dynamic html to display questionCounter in <p>--------------------//
+
+  questionsAskedCounter = questionsAskedCounter + 1;
+  questionsAskedCount.innerHTML = `Questions asked: ${questionsAskedCounter}`
+
+
 }
 
-
 // Function - filterCharacters - filter characters array and redraw the game board
-const filterCharacters = (keep) => {
 
+const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
 
   console.log(`INSIDE filter question: Secret person is set as: ${secret.name}. category: ${category} value: ${value}`);
@@ -408,12 +425,32 @@ const checkMyGuess = (personToCheck) => {
   }
   else {
     winOrLoseText.innerHTML = "You lost &#128078;"
-    winOrLoseTexth2.innerHTML = `Good try, bad luck this time`
+    winOrLoseTexth2.innerHTML = `Good try, bad luck this time, you should try again`
   }
 
   winOrLoseSection.style.display = "block";               // 3. Show the win or lose section
   board.style.display = "none";                           // 4. Hide the game board
 }
+
+
+// Functions - setTime - added for TIMER - only works so far when you refresh the page
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+  let valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  }
+  else {
+    return valString;
+  }
+}
+
 
 //-------------------- Program Starts Here --------------------//
 

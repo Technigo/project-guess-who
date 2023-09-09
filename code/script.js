@@ -6,7 +6,8 @@ const findoutBtn = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const playAgainButton = document.getElementById('playAgain');
 const winOrLose = document.getElementById("winOrLose");
-const questionSection = document.getElementById("question-section")
+const questionSection = document.getElementById("question-section");
+const numberOfGuess = document.getElementById("number-guess");
 
 
 // Array with all the characters, as objects
@@ -235,6 +236,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let numberOfGuesses = 5
 
 
 
@@ -269,6 +271,8 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  numberOfGuesses = 5
+  numberOfGuess.innerHTML = numberOfGuesses
   // What else should happen when we start the game?
   currentQuestion = {};
   setSecret();
@@ -305,7 +309,7 @@ const selectQuestion = () => {
     };
     console.log(currentQuestion);
   
-checkQuestion()
+
   
 };
 questions.addEventListener("change", selectQuestion);
@@ -336,9 +340,18 @@ const checkQuestion = () => {
     }
   };
 }
-// findoutBtn.addEventListener("click" , ()=>{
-//   checkQuestion()
-// })
+findoutBtn.addEventListener("click" , ()=>{
+  if (numberOfGuesses < 1){
+    alert("no more question sorry")
+    return
+  }
+  checkQuestion()
+  decrementNumberOfGuesses();
+})
+
+const decrementNumberOfGuesses = () => {
+  numberOfGuess.innerHTML = --numberOfGuesses;
+}
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
@@ -364,7 +377,7 @@ const filterCharacters = (keep) => {
 
     })
   };
-  currentQuestion = {}
+  // currentQuestion = {}
   generateBoard();
 }
 

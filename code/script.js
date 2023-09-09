@@ -10,6 +10,7 @@ const winOrLoseText = document.getElementById("winOrLoseText")
 const winOrLoseTexth2 = document.getElementById("winOrLoseTexth2")
 const winOrLoseSection = document.getElementById("winOrLose")
 const questionsAskedCount = document.getElementById("questionsAsked")
+const worLQuestionsCount = document.getElementById("worLQuestionsAsked")
 
 //for Timer
 let minutesLabel = document.getElementById("minutes");
@@ -245,7 +246,8 @@ let secret                        // Will be the secret person object
 let currentQuestion               // Will be the current question object
 let charactersInPlay = [];        // Array of people still in the game
 let totalSeconds = 0;             // for Timer
-let questionsAskedCounter = 0;
+let questionsAskedCounter = 0;    //questions asked counter
+
 
 //----------- Functions after this comment -----------------//
 
@@ -261,7 +263,7 @@ const start = () => {
   totalSeconds = 0;
   questionsAskedCounter = 0;
   setInterval(setTime, 1000);    //Start/re-start timer
-  questionsAskedCount.innerHTML = `Questions asked: ${questionsAskedCounter}`
+  questionsAskedCount.innerHTML = `Questions asked: ${questionsAskedCounter}` //Set questions asked to display 0
 }
 
 
@@ -321,19 +323,16 @@ const checkQuestion = () => {
   }
 
   if (category === 'accessories' || category === 'other') {
-    if (secret.accessories.includes(value) || secret.other.includes(value)) { //the .include array property took me a ages to work out here
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {    //the .include array property took me a ages to work out
       filterCharacters(true)
     } else {
       filterCharacters(false)
     }
   }
-  //--------------------------add in dynamic html to display questionCounter in <p>--------------------//
-
-  questionsAskedCounter = questionsAskedCounter + 1;
-  questionsAskedCount.innerHTML = `Questions asked: ${questionsAskedCounter}`
-
-
+  questionsAskedCounter = questionsAskedCounter + 1;                             //add 1 to question counter
+  questionsAskedCount.innerHTML = `Questions asked: ${questionsAskedCounter}`;   //display question counter
 }
+
 
 // Function - filterCharacters - filter characters array and redraw the game board
 
@@ -400,9 +399,9 @@ const filterCharacters = (keep) => {
   }
 }
 
+
 // Function - guess - when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  console.log("we have entered the guess function")
 
   let confirmGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`);
 
@@ -411,10 +410,8 @@ const guess = (personToConfirm) => {
   } else if (!confirmGuess) {
     return;
   }
-
-  console.log(`confirm equals: ${confirmGuess}`);
-  console.log(`This is the secret person: ${secret.name}`);
 }
+
 
 // Function - checkMyGuess - if you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
@@ -427,14 +424,14 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerHTML = "You lost &#128078;"
     winOrLoseTexth2.innerHTML = `Good try, bad luck this time, you should try again`
   }
-
   winOrLoseSection.style.display = "block";               // 3. Show the win or lose section
   board.style.display = "none";                           // 4. Hide the game board
+  worLQuestionsCount.innerHTML = `Questions asked: ${questionsAskedCounter}`;   //display question counter
+  console.log(`the question count in checkMyGuess function: ${questionsAskedCounter}`)
 }
 
 
 // Functions - setTime - added for TIMER - only works so far when you refresh the page
-
 function setTime() {
   ++totalSeconds;
   secondsLabel.innerHTML = pad(totalSeconds % 60);

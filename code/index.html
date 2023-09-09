@@ -20,6 +20,7 @@
     <h1>Does the person have</h1>
 
     <select title="questions" id="questions">
+      <option selected disabled>Choose here....</option>
       <optgroup label="hair">
         <option value="brown">brown hair</option>
         <option value="black">black hair</option>
@@ -55,7 +56,7 @@
     </select>
 
     <button id="filter" class="filled-button">FIND OUT</button>
-    <p id="questionsAsked">Questions asked: </p>
+    <p id="questionsAsked"></p>
     <!--game timer added-->
     <div class="game-timer">
       <label id="minutes">00</label>
@@ -74,7 +75,7 @@
     <h1 id="winOrLoseText"></h1>
     <!-- Added a h2 for more text -->
     <h2 id="winOrLoseTexth2"></h2>
-    <p id="questionsAsked">Questions asked: </p>
+    <p id="worLQuestionsAsked"></p>
     <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
   </section>
   <script src="script.js"></script>

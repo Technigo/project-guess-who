@@ -295,14 +295,13 @@ const checkQuestion = () => {
   } else {
     filterCharacters(false);
     //something will happen - put in here
-
   }
 };
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
-  console.log(category);
-  const { category, value } = currentQuestion
+  console.log(filterCharacters);
+  const { category, value } = currentQuestion;
   // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
@@ -394,24 +393,24 @@ const winOrlose = ['Congrats! You are kicking it', 'Please try again! You are so
 // 3. Show the win or lose section
 // 4. Hide the game board
 const checkMyGuess = (personToCheck) => {
+
   console.log(checkMyGuess);
   if (personToCheck === secret.name) {
-    winOrLosetxt.textContent = winOrLose[0];
+    winOrLosetxt.textContent = `Congratulations! You are amazing! The right answer is ${personToCheck}`
+    winOrLose.style.display = 'block';
   } else {
-    winOrLosetxt.textContent = winOrLose[1];
+    winOrLosetxt.textContent = `Ooops! That was the wrong answer. The right answer is ${personToCheck}.`
+    winOrLose.style.display = 'block';
   }
-  winOrLose.style.display = 'inline-block';
 
-  if (charactersInPlay.lenght === 0) {
-    restart();
-    return;
-  }
+
   //This hides the game
   board.style.display = 'none';
-
 };
 
+
 // Invokes the start function when website is loaded
+console.log(start);
 start()
 
 // All the event listeners

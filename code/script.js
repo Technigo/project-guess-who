@@ -1,209 +1,220 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const board = document.querySelector('.game-board');
+const questions = document.getElementById('questions');
+const restartButton = document.getElementById('restart');
+const findOutButton = document.getElementById('filter');
+const playAgainButton = document.getElementById('playAgain');
+const winOrLose = document.querySelector('.win-or-lose-wrapper');
+const winOrLoseText = document.getElementById('winOrLoseText');
+
+// Global variables
+let secret;
+let currentQuestion;
+let charactersInPlay;
+// Count is set here, if this value is inside the function counter it doesn't increment.
+let count = 0;
+
+// Was going to bring in the characters with an API but time ran out.
+// fetch("https://hp-api.onrender.com/api/characters")
+//   // Render into a JSON format, save into a variable. Again, await means it will do it now instead of just giving us a promise. 
+//   .then((response) => {
+//     return response.json()
+//   })
+//   .then((newCharacters) => {
+//     const container = document.getElementById('test');
+//     newCharacters.forEach((character) => {
+//       container.innerHTML += `<li style="color: white;">${character.name}</li>`;
+
+//     })
+//   })
+//   .catch((error) => {
+//     console.error('Something went wrong!', error);
+//   });
 
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jai',
-    img: 'images/jai.svg',
+    name: 'Harry Potter',
+    img: 'https://ik.imagekit.io/hpapi/harry.jpg',
+    house: 'gryffindor',
     hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    type: 'wizard',
+    species: 'human',
+    isTeacher: false
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'James',
-    img: 'images/james.svg',
+    name: 'Hermione Granger',
+    img: 'https://ik.imagekit.io/hpapi/hermione.jpeg',
+    house: 'gryffindor',
     hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    type: 'witch',
+    species: 'human',
+    isTeacher: false
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
+    name: 'Ron Weasly',
+    img: 'https://ik.imagekit.io/hpapi/ron.jpg',
+    house: 'gryffindor',
+    hair: 'red',
+    type: 'wizard',
+    species: 'human',
+    isTeacher: false
+  },
+  {
+    name: 'Minerva McGonagall',
+    img: 'https://ik.imagekit.io/hpapi/mcgonagall.jpg',
+    house: 'gryffindor',
     hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    type: 'witch',
+    species: 'human',
+    isTeacher: true
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Draco Malfoy',
+    img: 'https://ik.imagekit.io/hpapi/draco.jpg',
+    house: 'slytherin',
+    hair: 'white',
+    type: 'wizard',
+    species: 'human',
+    isTeacher: false
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Severus Snape',
+    img: 'https://ik.imagekit.io/hpapi/snape.jpg',
+    house: 'slytherin',
+    hair: 'black',
+    type: 'wizard',
+    species: 'human',
+    isTeacher: true
+  },
+  {
+    name: 'Rubeus Hagrid',
+    img: 'https://ik.imagekit.io/hpapi/hagrid.png',
+    house: 'gryffindor',
+    hair: 'brown',
+    type: 'wizard',
+    species: 'half-giant',
+    isTeacher: true
+  },
+  {
+    name: 'Luna Lovegood',
+    img: 'https://ik.imagekit.io/hpapi/luna.jpg',
+    house: 'ravenclaw',
+    hair: 'white',
+    type: 'witch',
+    species: 'human',
+    isTeacher: false
+  },
+  {
+    name: 'Mrs Norris',
+    img: 'https://ik.imagekit.io/hpapi/norris.JPG',
+    house: '',
+    hair: 'brown',
+    type: '',
+    species: 'cat',
+    isTeacher: false
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
+    name: 'Remus Lupin',
+    img: 'https://ik.imagekit.io/hpapi/lupin.jpg',
+    house: 'gryffindor',
     hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    type: 'wizard',
+    species: 'werewolf',
+    isTeacher: true
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Ginny Weasly',
+    img: 'https://ik.imagekit.io/hpapi/ginny.jpg',
+    house: 'gryffindor',
+    hair: 'red',
+    type: 'witch',
+    species: 'human',
+    isTeacher: false
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Lord Voldemort',
+    img: 'https://ik.imagekit.io/hpapi/voldemort.jpg',
+    house: 'slytherin',
+    hair: 'bald',
+    type: 'wizard',
+    species: 'human',
+    isTeacher: false
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
+    name: 'Dolores Umbridge',
+    img: 'https://ik.imagekit.io/hpapi/umbridge.jpg',
+    house: 'slytherin',
     hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    type: 'witch',
+    species: 'human',
+    isTeacher: true
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: 'Cedric Diggory',
+    img: 'https://ik.imagekit.io/hpapi/cedric.png',
+    house: 'hufflepuff',
+    hair: 'brown',
+    type: 'wizard',
+    species: 'human',
+    isTeacher: false
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
+    name: 'Cho Chang',
+    img: 'https://ik.imagekit.io/hpapi/cho.jpg',
+    house: 'ravenclaw',
     hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    type: 'witch',
+    species: 'human',
+    isTeacher: false
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
+    name: 'Neville Longbottom',
+    img: 'https://ik.imagekit.io/hpapi/neville.jpg',
+    house: 'gryffindor',
+    hair: 'brown',
+    type: 'wizard',
+    species: 'human',
+    isTeacher: false
+  },
+  {
+    name: 'Sirius black',
+    img: 'https://ik.imagekit.io/hpapi/sirius.JPG',
+    house: 'gryffindor',
     hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    type: 'wizard',
+    species: 'human',
+    isTeacher: false
+  },
+  {
+    name: 'Arthur Weasley',
+    img: 'https://ik.imagekit.io/hpapi/arthur.jpg',
+    house: 'gryffindor',
+    hair: 'red',
+    type: 'wizard',
+    species: 'human',
+    isTeacher: false
+  },
+  {
+    name: 'Bellatrix Lestrange',
+    img: 'https://ik.imagekit.io/hpapi/bellatrix.jpg',
+    house: 'slytherin',
+    hair: 'black',
+    type: 'witch',
+    species: 'human',
+    isTeacher: false
+  },
+  {
+    name: 'Lucius Malfoy',
+    img: 'https://ik.imagekit.io/hpapi/lucius.jpg',
+    house: 'slytherin',
+    hair: 'white',
+    type: 'wizard',
+    species: 'human',
+    isTeacher: false
   },
 ]
-
-// Global variables
-let secret
-let currentQuestion
-let charactersInPlay
 
 // Draw the game board
 const generateBoard = () => {
@@ -219,107 +230,142 @@ const generateBoard = () => {
         </div>
       </div>
     `
-  })
-}
+  });
+};
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
-}
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+};
 
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = CHARACTERS;
+  // Reset the count to zero after the game restarts/ when it starts
+  count = 0;
   // What else should happen when we start the game?
-}
+  generateBoard();
+  setSecret();
+  counter();
+  console.log(secret.name);
+};
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-
   // This variable stores what option group (category) the question belongs to.
+  const category = questions.options[questions.selectedIndex].parentNode.label;
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value;
 
   currentQuestion = {
     category: category,
-    // value: value
-  }
-}
+    value: value
+  };
+};
 
-// This function should be invoked when you click on 'Find Out' button.
+// This function is invoked when user clicks the 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  // Have removed the category from the destructioning of currentQuestion here since it isn't used below
+  const { value } = currentQuestion;
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
+  // Here we take in and define keep so that it the checkQuestion function knows if we should save or not when the value is equal to the properties of the secret.
+  let keep;
 
-  } else if (category === 'accessories' || category === 'other') {
-
-  }
-}
-
-// It'll filter the characters array and redraw the game board.
-const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
-  if (category === 'accessories') {
-    if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
-    } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
-    }
-  } else if (category === 'other') {
-    // Similar to the one above
+  // Comparing if the secret persons property-value is the same as the chosen value. All these can be on the same line with logical operator || between them since the all would return keep = true
+  if (secret.house === value || secret.hair === value || secret.species === value || secret.type === value || secret.isTeacher === true) {
+    keep = true;
   } else {
-    if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
-    } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
-    }
+    keep = false;
   }
 
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+  // Passing on the keep value to the filterCharacters function
+  filterCharacters(keep);
 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+}// Here the characters array is filtered and game board is redrawn
+const filterCharacters = (keep) => {
+  const { category, value } = currentQuestion;
 
-  // Invoke a function to redraw the board with the remaining people.
-}
+  if (category === 'house' || category === 'hair' || category === 'type' || category === 'species') {
+    filterFunction = person => person[category] === value;
+  } else if (category === 'teacher') {
+    filterFunction = person => person.isTeacher;
+  }
 
-// when clicking guess, the player first have to confirm that they want to make a guess.
+  const positiveCharacters = charactersInPlay.filter(filterFunction);
+  const negativeCharacters = charactersInPlay.filter(person => !filterFunction(person));
+
+  if (keep) {
+    // Using ternary operators to shorten the way in which alerts are shown.
+    // In those cases the character is a teacher, one text is shown, in all other cases and other text is shown. This is becuase teacher has a different syntax when writing it out. 
+    alert(
+      `Yes, the character ${category === 'teacher' ? 'is a teacher' : `has ${value} ${category}`}! Keep all matching characters`
+    );
+    charactersInPlay = positiveCharacters;
+  } else {
+    alert(
+      `No, the character ${category === 'teacher' ? `isn't a teacher` : `doesn't have ${value} ${category}`}! Remove all matching characters`
+    );
+    charactersInPlay = negativeCharacters;
+  }
+  // Regenerates the board with the filtered characters - those left after the question has been checked. 
+  generateBoard();
+};
+
+// Function to make a guess at the character of choice and then to confirm that choice.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-}
+  // Saves the parameter personToConfirm in a variable called playerGuess
+  const playerGuess = personToConfirm;
+
+  // If player presses OK - in other words confirms === true - then checkMyGuess is invoked. I'm passing in playerGuess as an argument so that we can use that value in the checkMyGuess function.
+  if (confirm(`Are you sure you want to guess on ${playerGuess}?`)) {
+    checkMyGuess(playerGuess);
+    counter(); // Call the counter function when a guess is confirmed
+  } else {
+    // If they choose cancel, they'll end up in the same situation as before the guess button was clicked.
+    return false
+  }
+};
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  // The section with the class winOrLose is hidden in CSS, this line makes it visible again.
+  winOrLose.style.display = "flex";
+  board.style.display = "none"; // Without setting board to display: none, some of the characters where visible on scroll
+
+  if (personToCheck === secret.name) {
+    winOrLoseText.textContent = `Yay - ${personToCheck} was correct! Congrats – you won, and you got it right after ${count} guesses! 🙌`;
+  } else {
+    winOrLoseText.textContent = `I'm sorry - ${personToCheck} was incorrect! 😥 Wanna go again, and try to beat your ${count} guesses?`;
+  }
+};
+
+
+// Counter function, increments via using the same eventListener as for the checkQuestion.
+const counter = () => {
+  let counterSection = document.querySelector('.counter');
+
+  counterSection.innerHTML =
+    `<p>Guesses made: 
+    <span style="font-weight: bolder; color: #5a52b4;">${count}</span>
+    </p>`
+
+  count++;
 }
 
+// Function to restart the game after the guess has been checked. We first need to set the winOrLose section to display: none again, otherwise we can't see that the board has been reset. Then the start-function gets invoked. We don't have to generate the board again here, since that happens in the start function, same with the secret. 
+const restartGame = () => {
+  winOrLose.style.display = "none";
+  board.style.display = "flex";
+  start();
+};
+
 // Invokes the start function when website is loaded
-start()
+start();
 
 // All the event listeners
-restartButton.addEventListener('click', start)
+restartButton.addEventListener('click', start);
+playAgainButton.addEventListener('click', restartGame);
+questions.addEventListener('change', selectQuestion);
+findOutButton.addEventListener('click', checkQuestion);
+findOutButton.addEventListener('click', counter);

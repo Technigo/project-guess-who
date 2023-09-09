@@ -218,7 +218,7 @@ const CHARACTERS = [
     img: 'imagesnew/spock.png',
     hair: 'brown',
     eyes: 'brown',
-    accessories: ['a headpiece'],
+    accessories: [],
     other: ['elf ears']
   },
   {
@@ -226,7 +226,7 @@ const CHARACTERS = [
     img: 'imagesnew/storm.png',
     hair: 'white',
     eyes: 'haunting',
-    accessories: ['a headpiece'],
+    accessories: [],
     other: ['a magical habit']
   },
   {
@@ -266,7 +266,7 @@ const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
-      <div class="card" style="background-image: url('${person.img}'); background: linear-gradient(transparent.rgba(0,0,0,10.6));">
+      <div class="card" style="background-image: url('${person.img}'); background-image: linear-gradient(transparent.rgba(0,0,0,10.6));">
         <p>${person.name}</p>
         <div class="guess">
           <span>Guess on ${person.name}?</span>

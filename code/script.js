@@ -7,14 +7,29 @@ const playAgainButton = document.getElementById('playAgain');
 const winOrLose = document.querySelector('.win-or-lose-wrapper');
 const winOrLoseText = document.getElementById('winOrLoseText');
 
+// Global variables
+let secret;
+let currentQuestion;
+let charactersInPlay;
+// Count is set here, if this value is inside the function counter it doesn't increment.
+let count = 0;
+
 // Was going to bring in the characters with an API but time ran out.
-// async function fetchData() {
-//   // Make a fetch and save it in a variable. Await means Javascript is going to stop here and get the item, instead of calling the rest of the code before. 
-//   let response = await fetch("https://hp-api.onrender.com/api/characters");
+// fetch("https://hp-api.onrender.com/api/characters")
 //   // Render into a JSON format, save into a variable. Again, await means it will do it now instead of just giving us a promise. 
-//   let body = await response.json();
-//   console.log(body);
-// } fetchData()
+//   .then((response) => {
+//     return response.json()
+//   })
+//   .then((newCharacters) => {
+//     const container = document.getElementById('test');
+//     newCharacters.forEach((character) => {
+//       container.innerHTML += `<li style="color: white;">${character.name}</li>`;
+
+//     })
+//   })
+//   .catch((error) => {
+//     console.error('Something went wrong!', error);
+//   });
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -200,13 +215,6 @@ const CHARACTERS = [
     isTeacher: false
   },
 ]
-
-// Global variables
-let secret;
-let currentQuestion;
-let charactersInPlay;
-// Count is set here, if this value is inside the function counter it doesn't increment.
-let count = 0;
 
 // Draw the game board
 const generateBoard = () => {

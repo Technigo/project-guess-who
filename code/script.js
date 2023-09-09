@@ -10,7 +10,7 @@ const resultScreen = document.getElementById('winOrLoseSection') //winOrLoseSect
 
 const resultText= document.getElementById('winOrLoseText') //winOrLoseText is the id of the p element in html file
 
-const playAgain = document.getElementById('playAgain') //playAgain is the id of the button element in html file
+const playAgainButton = document.getElementById('playAgain') //playAgain is the id of the button element in html file
 
 const findOutButton = document.getElementById('filter') //filter is the id of the button element in html file
 
@@ -215,8 +215,8 @@ const CHARACTERS = [
 // Global variables
 let secret // The current secret person
 let keep // The current keep value for filtering
-let currentQuestion = {} // The current question in play
-let charactersInPlay = CHARACTERS // charactersInPlay is an array of objects
+let currentQuestion // The current question in play
+let charactersInPlay// charactersInPlay is an array of objects
 
 
 // Draw the game board
@@ -272,8 +272,10 @@ const checkQuestion = () => {
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {
-    if (value === secret[category]) {
+    if (secret[category].includes(value)) {
       filterCharacters(true)
+    //(value === secret[category]) {
+     // filterCharacters(true)
       console.log("keep")
     } else
       filterCharacters(false)

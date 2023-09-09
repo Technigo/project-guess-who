@@ -273,34 +273,51 @@ const checkQuestion = () => {
     keep = value === secret[category];
 
   } else if (category === 'accessories' || category === 'other') {
+    keep = secret[category].includes(value);
   }
+
   filterCharacters(keep);
 };
 
-// It'll filter the characters array and redraw the game board.
+// This function filters characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
+
+  //accesories
   if (category === 'accessories') {
     if (keep) {
+      /*charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)) //doesn't remove */
+
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}`
       )
     } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))//doesn't remove them
       alert(
         `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
       )
-    }
+    } //other/smoker
   } else if (category === 'other') {
-    // Similar to the one above
-  } else {
     if (keep) {
-      alert(`Yes! The person has ${value}! Let's keep all people with ${value}.`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      alert(`Yes! The person is a ${value}! Let's remove all non-smokers!`) //doesn't remove them
+    } else {
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)) //doesn't remove them
+      alert(`Noo, this is a healthy person who's not a ${value}. Let's remove all smokers!`)
+    }
+
+  } else {
+    if (keep) { //hair and eyes
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      alert(`Yes! The person has ${value} ${category}! Let's keep all people with ${value} ${category}.`)
 
     } else {
-      alert(`No, the person doesn't have ${value}! Let's remove all people with ${value}.`)
-      // alerts here just say "hidden" not "hidden eyes" etc.
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      alert(`No, the person doesn't have ${value} ${category}! Let's remove all people with ${value} ${category}.`)
+
     }
+    generateBoard();
   }
 
   // Determine what is the category

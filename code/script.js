@@ -205,6 +205,8 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+// Count is set here, if this value is inside the function counter it doesn't increment.
+let count = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -232,9 +234,12 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
+  // Reset the count to zero after the game restarts/ when it starts
+  count = 0;
   // What else should happen when we start the game?
   generateBoard();
   setSecret();
+  counter();
   console.log(secret.name);
 };
 
@@ -272,41 +277,27 @@ const checkQuestion = () => {
 }// Here the characters array is filtered and game board is redrawn
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-  let filtered;
 
   if (category === 'house' || category === 'hair' || category === 'type' || category === 'species') {
-    // Saves the filtered characters in the variable filtered
-    filtered = person => person[category] === value;
+    filterFunction = person => person[category] === value;
   } else if (category === 'teacher') {
-    filtered = person => person.isTeacher;
+    filterFunction = person => person.isTeacher;
   }
 
-  // Here two new arrays are created, with the filtered characters in them
-  const positiveCharacters = charactersInPlay.filter(filtered);
-  const negativeCharacters = charactersInPlay.filter(person => !filtered(person));
+  const positiveCharacters = charactersInPlay.filter(filterFunction);
+  const negativeCharacters = charactersInPlay.filter(person => !filterFunction(person));
 
   if (keep) {
-    if (category === 'teacher') {
-      alert(
-        `Yes, the character is a ${value}. Keep all matching characters.`
-      );
-      // Teacher is the first, because all options after teacher can be written in the similar syntax.
-    } else {
-      alert(
-        `Yes, the character has ${value} ${category}! Keep all matching characters.`
-      );
-    }
+    // Using ternary operators to shorten the way in which alerts are shown.
+    // In those cases the character is a teacher, one text is shown, in all other cases and other text is shown. This is becuase teacher has a different syntax when writing it out. 
+    alert(
+      `Yes, the character ${category === 'teacher' ? 'is a teacher' : `has ${value} ${category}`}! Keep all matching characters`
+    );
     charactersInPlay = positiveCharacters;
   } else {
-    if (category === 'teacher') {
-      alert(
-        `No, the character isn't a ${value}. Remove all matching characters`
-      );
-    } else {
-      alert(
-        `No, the character doesn't have ${value} ${category}! Remove all matching characters.`
-      );
-    }
+    alert(
+      `No, the character ${category === 'teacher' ? `isn't a teacher` : `doesn't have ${value} ${category}`}! Remove all matching characters`
+    );
     charactersInPlay = negativeCharacters;
   }
   // Regenerates the board with the filtered characters - those left after the question has been checked. 
@@ -321,8 +312,9 @@ const guess = (personToConfirm) => {
   // If player presses OK - in other words confirms === true - then checkMyGuess is invoked. I'm passing in playerGuess as an argument so that we can use that value in the checkMyGuess function.
   if (confirm(`Are you sure you want to guess on ${playerGuess}?`)) {
     checkMyGuess(playerGuess);
+    counter(); // Call the counter function when a guess is confirmed
   } else {
-    // If they choose cancel they'll end up in the same situation as before the guess button was clicked.
+    // If they choose cancel, they'll end up in the same situation as before the guess button was clicked.
     return false
   }
 };
@@ -334,29 +326,24 @@ const checkMyGuess = (personToCheck) => {
   board.style.display = "none"; // Without setting board to display: none, some of the characters where visible on scroll
 
   if (personToCheck === secret.name) {
-    winOrLoseText.textContent = `Yay - ${personToCheck} was correct! Congrats – you won! 🙌`;
+    winOrLoseText.textContent = `Yay - ${personToCheck} was correct! Congrats – you won, and you got it right after ${count} guesses! 🙌`;
   } else {
-    winOrLoseText.textContent = `I'm sorry - ${personToCheck} was incorrect! 😥 Wanna go again?`;
+    winOrLoseText.textContent = `I'm sorry - ${personToCheck} was incorrect! 😥 Wanna go again, and try to beat your ${count} guesses?`;
   }
 };
 
-// Count is set to zero here, if this value is inside the function it doesn't increment.
-/*let count = 1;
+
 // Counter function, increments via using the same eventListener as for the checkQuestion.
 const counter = () => {
   let counterSection = document.querySelector('.counter');
 
   counterSection.innerHTML =
     `<p>Guesses made: 
-    <span style="font-weight: bolder; color: #5a52b4;">${finalCount}</span>
+    <span style="font-weight: bolder; color: #5a52b4;">${count}</span>
     </p>`
 
-  let finalCount = count++;
-}*/
-
-//timer should start when page loads
-
-
+  count++;
+}
 
 // Function to restart the game after the guess has been checked. We first need to set the winOrLose section to display: none again, otherwise we can't see that the board has been reset. Then the start-function gets invoked. We don't have to generate the board again here, since that happens in the start function, same with the secret. 
 const restartGame = () => {
@@ -373,4 +360,4 @@ restartButton.addEventListener('click', start);
 playAgainButton.addEventListener('click', restartGame);
 questions.addEventListener('change', selectQuestion);
 findOutButton.addEventListener('click', checkQuestion);
-//findOutButton.addEventListener('click', counter);
+findOutButton.addEventListener('click', counter);

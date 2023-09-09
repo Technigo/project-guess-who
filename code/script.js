@@ -3,7 +3,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOut = document.getElementById('filter')
-
+const winOrLose = document.getElementById('winOrLose')
+const guessbtn = document.getElementsByClassName(`filled-button small`)
+const playAgain = document.getElementById(`playAgain`)
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -286,7 +288,6 @@ const filterCharacters = (keep) => {
   //accesories
   if (category === 'accessories') {
     if (keep) {
-      /*charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)) //doesn't remove */
 
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       alert(
@@ -339,26 +340,55 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
+  const isConfirmed = confirm(`Are you sure you want to guess that ${personToConfirm} is the secret person?`);
+
+  if (isConfirmed) {
+    checkMyGuess(personToConfirm)
+  }
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
 }
 
+
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  if (personToCheck === secret.name) {
+    winOrLose.style.display = "flex";
+    board.style.display = 'none';
+    winOrLoseText.innerHTML += `<h1>Congratulations! Your guess is right and you WON! 🏆</h1>`
+  } else {
+    winOrLose.style.display = "flex";
+    board.style.display = 'none';
+    winOrLoseText.innerHTML += `<h1>Your guess is unfortunately wrong 😞 Do you wanna try again?</h1>`
+  }
+
 }
 
+// 1. Check if the personToCheck is the same as the secret person's name
+// 2. Set a Message to show in the win or lose section accordingly
+// 3. Show the win or lose section
+// 4. Hide the game board
 
 // Invokes the start function when website is loaded
 start();
 
+const replay = () => {
+  location.reload();
+
+  //winOrLose.style.display = `none`;
+  //generateBoard(CHARACTERS);
+  //start();
+
+}
+
+
+
 // All the event listeners
-restartButton.addEventListener('click', start);
+restartButton.addEventListener('click', start); //resets the board when the restart button is clicked.
 
 questions.addEventListener('click', selectQuestion); //Does this work? Error in console on website.
 
 findOut.addEventListener('click', checkQuestion); //Invokes the checkQuestion when "find out button" is clicked.
+
+playAgain.addEventListener(`click`, replay); //loads the board for a new game when the play again button is clicked.

@@ -311,7 +311,6 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
     }
   }
-
   else if (category === 'accessories') {
     if (keep) {
       alert(`Yes, the person wears ${value}! Keep all people that wears ${value}`)
@@ -321,6 +320,16 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
   }
+  else if (category === 'other') {
+    if (keep) {
+      alert(`Yes, the person is a ${value}! Keep all people that is a ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    } else {
+      alert(`No, the person isn't a ${value}! Remove all people isn't a ${value}`)
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    }
+  }
+  generateBoard(charactersInPlay)
   // I encounter some problems of the above block of code, I used chatGPT to check what was wrong. It provided an improvement of my code
   // Although I realized the problem was the value in the drop down list (hats) didn't match the attribube in the object (hat)
   // const filterCondition = keep
@@ -336,16 +345,6 @@ const filterCharacters = (keep) => {
 
   //   charactersInPlay = charactersInPlay.filter(filterCondition);
   // }
-
-
-  else if (category === 'other') {
-    if (keep) {
-      alert(`Yes, the person is a ${value}! Keep all people who smoke!`)
-    } else {
-      alert(`No, the person is not a ${value}! Remove all people who smoke!`)
-    }
-  }
-  generateBoard(charactersInPlay)
 
 }
 

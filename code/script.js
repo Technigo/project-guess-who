@@ -335,11 +335,16 @@ const checkMyGuess = (personToCheck) => {
   };
 
 const playAgain = () => {
+  const resetDropdown = () => { //function that resets the dropdown to default
+    questions.selectedIndex = 0;
+  };
   winOrLose.style.display = "none";
   board.style.display = "flex"
+  resetDropdown(); 
   start();
   }
-
+  
+  
 // Invokes the start function when website is loaded
 start()
 

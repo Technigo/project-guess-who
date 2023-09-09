@@ -3,6 +3,8 @@ const board = document.getElementById('board')
 //This is the Dropdown menu:
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
+const winOrlose = document.getElementById('winOrlose')
+const winOrlosetxt = document.getElementById(winOrLoseText)
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -371,6 +373,8 @@ const guess = (personToConfirm) => {
   }
 };
 
+const winOrlose = ['Congrats! You are kicking it', 'Please try again! You are so so close.'];
+
 //person.name, I think I have to put in here 
 
 // store the interaction from the player in a variable.
@@ -380,6 +384,17 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
+  if (personToCheck === secret.name) {
+    winOrlosetxt.textContent = winOrlose[0];
+  } else {
+    winOrlosetxt.textContent = winOrlose[1];
+  }
+  winOrlose.style.display = 'inline-block';
+
+  if (charactersInPlay.lenght === 0) {
+    restart();
+    return;
+  }
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section

@@ -4,7 +4,9 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const winOrLose = document.getElementById('winOrLose')
-const winOrlosetxt = document.getElementById(winOrLoseText)
+const winOrLosetxt = document.getElementById('winOrLoseText')
+const findOutbtn = document.getElementById('filter')
+const playAgain = document.getElementById('playAgain')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -211,6 +213,7 @@ let charactersInPlay //This is an array of people left in the game
 // Draw the game board
 //This is the games styling - the cards etc
 const generateBoard = () => {
+  console.log(generateBoard);
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
@@ -248,6 +251,7 @@ const start = () => {
 
 //This functions with a eventlistner
 const restart = () => {
+  console.log(restart);
   charactersInPlay = CHARACTERS;
   setSecretPerson();
   currentQuestion = {};
@@ -260,6 +264,7 @@ const restart = () => {
 
 
 const selectQuestion = () => {
+  console.log(selectQuestion);
   const category = questions.options[questions.selectedIndex].parentNode.label;
   //const = value this just go here - and this is the value ex "hair" = the category is "brown" = the value
   const value = questions.value;
@@ -278,6 +283,7 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  console.log(checkQuestion);
   const { category, value } = currentQuestion;
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
@@ -390,9 +396,9 @@ const winOrlose = ['Congrats! You are kicking it', 'Please try again! You are so
 const checkMyGuess = (personToCheck) => {
   console.log(checkMyGuess);
   if (personToCheck === secret.name) {
-    winOrlosetxt.textContent = winOrLose[0];
+    winOrLosetxt.textContent = winOrLose[0];
   } else {
-    winOrlosetxt.textContent = winOrLose[1];
+    winOrLosetxt.textContent = winOrLose[1];
   }
   winOrLose.style.display = 'inline-block';
 
@@ -400,7 +406,7 @@ const checkMyGuess = (personToCheck) => {
     restart();
     return;
   }
-
+  //This hides the game
   board.style.display = 'none';
 
 };
@@ -418,3 +424,15 @@ restartButton.addEventListener('click', () => {
 questions.addEventListener('change', () => {
   selectQuestion();
 });
+
+findOutbtn.addEventListener('click', () => {
+  checkQuestion();
+});
+
+playAgain.addEventListener('click', () => {
+  start();
+  generateBoard();
+});
+
+
+

@@ -318,19 +318,24 @@ const checkQuestion = () => {
 }
 
 // This function will filter the characters array and redraw the game board.
+ // Also showing the correct alert message for different categories
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
+  //if category of the currentQuestion is 'accessories' this if/else statement will happen: 
   if (category === 'accessories') {
+    //if keep is true (if the secret person has the accessories that were asked for) this if statement is invoked: 
     if (keep) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wears ${value}.`
       )
+      //... and the characters will be filtered, only keeping the people with the accessory asked for.
       charactersInPlay = charactersInPlay.filter((character) => character[category].includes(value))
     } else {
+      //if keep is not true this else statement will happen:
       alert(
         `No, the person doesn't wear ${value}! Remove all people that doesn't wear ${value}.`
       )
+      //... and all the characters without the accessory asked for will be filtered out.
       charactersInPlay = charactersInPlay.filter((character) => !character[category].includes(value))
     }
   } else if (category === 'other') {

@@ -1,7 +1,11 @@
 // All the DOM selectors stored as short variables
-const board = document.getElementById('board')
-const questions = document.getElementById('questions')
-const restartButton = document.getElementById('restart')
+const board = document.getElementById('board');
+const questions = document.getElementById('questions');
+const restartButton = document.getElementById('restart');
+const findOutButton = document.getElementById('filter');
+const winOrLose = document.getElementById('winOrLose');
+const winOrLoseText = document.getElementById('winOrLoseText');
+const playAgain = document.getElementById('playAgain');
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -201,13 +205,13 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+let secret;
+let currentQuestion;
+let charactersInPlay;
 
 
 // Draw the game board
-const generateBoard = (charactersInPlay) => {
+const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
@@ -223,6 +227,8 @@ const generateBoard = (charactersInPlay) => {
   })
 }
 
+
+
 const filterQuestions = () => {
   
 }
@@ -233,8 +239,9 @@ questions.addEventListener('change', filterQuestions);
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
- 
+  secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
+  console.log(secret);
+  
 }
 
 
@@ -242,33 +249,30 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
-  // What else should happen when we start the game?
-  const start = () => {
-    result.style.dislay = 'none';
-    setSecret(); 
-    generateBoard();
-  };
-}
 
+  // What else should happen when we start the game?
+ 
+  //result.style.display = 'none';
+  //setSecret(); 
+    generateBoard();
+
+}
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
-  const category = questions.options[questions.selectedIndex].parentNode.label
-  const value = questions.value;
+  const category = questions.options[questions.selectedIndex].parentNode.label;
+  const value = questions.value
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-
-if ()
   currentQuestion = {
     category: category,
-    // value: value
+    value: value,
   }
-
 }
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion
+  const { category, value } = currentQuestion;
   let keep = false;
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -298,13 +302,25 @@ const filterCharacters = (keep) => {
       )
     }
   } else if (category === 'other') {
-    // Similar to the one above
+    if (keep) {
+      alert(
+        `Yes, the person has ${value}! Keep all people that has ${value}`
+      )
+    } else {
+      alert(
+        `No, the person doesn't have ${value}! Remove all people that has ${value}`
+      )
+    }
   } else {
     if (keep) {
+      alert(``)
       // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
     } else {
+      alert(``)
       // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
     }
+ 
+    generateBoard();
   }
 
   // Determine what is the category
@@ -338,9 +354,8 @@ const checkMyGuess = (personToCheck) => {
   // 3. Show the win or lose section
   // 4. Hide the game board
 }
-
 // Invokes the start function when website is loaded
 start();
-
+setSecret();
 // All the event listeners
-restartButton.addEventListener('click', start)
+//restartButton.addEventListener('click', start);

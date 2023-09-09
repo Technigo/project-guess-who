@@ -19,12 +19,23 @@ h1 {
   color: white;
 }
 
+optgroup,
+option {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary);
+}
+
+aside p {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary);
+  font-weight: bold;
+  margin: 0 0 1em 0;
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
-  display: flex;
-  flex-direction: column;
+  background: linear-gradient(to right, rgba(255, 177, 225, 0.8), rgba(118, 64, 248, 0.8));
   padding: 5vw;
   align-items: flex-start;
   box-sizing: border-box;
@@ -35,13 +46,22 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: var(--primary);
   width: 100%;
   margin: 24px 0;
 }
 
+span#attempts {
+  background-color: white;
+  padding: 0 .1em 0 .1em;
+  margin-left: .2em;
+  font-weight: normal;
+  background-color: white;
+}
+
 .guess-who-icon {
   width: 126px;
+  margin-bottom: 2em;
 }
 
 .board-wrapper {
@@ -49,20 +69,26 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url(images/background_board.jpg);
+  background-size: contain;
+  background-repeat: repeat;
 }
 
 .game-board {
+  /* is main=gameboard */
   width: 90%;
   max-width: 882px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 }
 
 /****** CARD ******/
 .card {
   width: 135px;
   height: 165px;
+  background-color: white;
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;
@@ -127,16 +153,10 @@ button {
   padding: 8px 16px;
 }
 
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
-}
-
-.filled-button,
-.outlined-button:hover {
+.filled-button {
   background-color: var(--primary);
   color: white;
+  margin: 0 1em 1em 0;
 }
 
 .filled-button:hover {
@@ -144,6 +164,19 @@ button {
   border-color: white;
   color: var(--primary);
 }
+
+.outlined-button {
+  background-color: rgb(255, 178, 224);
+  color: var(--primary);
+  align-self: flex-end;
+  margin-bottom: 1em;
+}
+
+.outlined-button:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -156,7 +189,8 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  min-height: 1200px;
+  /* otherwise not covering whole body */
 }
 
 .win-or-lose {
@@ -166,6 +200,7 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  margin: 5em auto;
 }
 
 .win-or-lose img {
@@ -177,6 +212,46 @@ button {
   margin-bottom: 32px;
 }
 
+
+/* footer */
+
+/* footer */
+#footerdiv {
+  text-align: left;
+
+}
+
+div#footerdiv p {
+  display: inline-block;
+  /* padding: 10px; */
+  color: white;
+  font-size: 1rem;
+  text-shadow: none;
+  margin: 0 0 0.3em 0;
+  font-size: .8em;
+}
+
+a,
+a:visited {
+  color: rgb(189, 254, 255);
+}
+
+/*@ media  */
+
+/* supress hover effekt on devices without pointing device, otherwise strange behaviour for color change on click. */
+@media (hover: none) {
+  .filled-button:hover {
+    background-color: inherit;
+    border-color: inherit;
+    color: inherit;
+  }
+
+  .outlined-button:hover {
+    background-color: inherit;
+    color: inherit;
+  }
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -185,10 +260,22 @@ button {
   .question-section {
     width: 100%;
     min-height: 0;
+    background: linear-gradient(to bottom, rgba(255, 177, 225, 0.8), rgba(118, 64, 248, 0.8));
+
   }
+
   button {
     padding: 8px 16px;
   }
+
+  .filled-button {
+    margin-bottom: unset;
+  }
+
+  .outlined-button {
+    margin-bottom: 1em;
+  }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
@@ -196,15 +283,19 @@ button {
 
   .guess-who-icon {
     width: 51px;
+    margin-bottom: .5em;
   }
 
   .board-wrapper {
     width: 100%;
+    min-height: 1200px;
+    align-items: flex-start;
   }
 
   .game-board {
     width: 100%;
     max-width: 750px;
+
   }
 
   .card {

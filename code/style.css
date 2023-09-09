@@ -153,18 +153,10 @@ button {
   padding: 8px 16px;
 }
 
-.outlined-button {
-  background-color: rgb(255, 178, 224);
-  color: var(--primary);
-  align-self: flex-end;
-  margin-bottom: 2em;
-}
-
-.filled-button,
-.outlined-button:hover {
+.filled-button {
   background-color: var(--primary);
   color: white;
-  margin-bottom: 2em;
+  margin: 0 1em 1em 0;
 }
 
 .filled-button:hover {
@@ -172,6 +164,19 @@ button {
   border-color: white;
   color: var(--primary);
 }
+
+.outlined-button {
+  background-color: rgb(255, 178, 224);
+  color: var(--primary);
+  align-self: flex-end;
+  margin-bottom: 1em;
+}
+
+.outlined-button:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -231,7 +236,22 @@ a:visited {
   color: rgb(189, 254, 255);
 }
 
-/*  */
+/*@ media  */
+
+/* supress hover effekt on devices without pointing device, otherwise strange behaviour for color change on click. */
+@media (hover: none) {
+  .filled-button:hover {
+    background-color: inherit;
+    border-color: inherit;
+    color: inherit;
+  }
+
+  .outlined-button:hover {
+    background-color: inherit;
+    color: inherit;
+  }
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -263,7 +283,7 @@ a:visited {
 
   .guess-who-icon {
     width: 51px;
-    margin-bottom: 1em;
+    margin-bottom: .5em;
   }
 
   .board-wrapper {

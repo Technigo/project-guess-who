@@ -4,6 +4,7 @@ const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const findOutButton = document.getElementById('filter')
 const playAgainButton = document.getElementById('playAgain')
+const guessCounter = document.getElementById('guess-counter')
 const winOrLoseBoard = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 
@@ -208,6 +209,7 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let numberOfGuesses = 0
 
 // Draw the game board
 const generateBoard = () => {
@@ -263,6 +265,10 @@ const selectQuestion = () => {
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+
+  numberOfGuesses += 1
+  console.log(numberOfGuesses)
+  guessCounter.innerHTML = `Number of guesses: ${numberOfGuesses}`
 
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
@@ -359,7 +365,7 @@ ${secret.name} was the secret person!`)
   
   // 3. Show the win or lose section
   winOrLoseBoard.style.display = "flex"
-  if (secret.name === personToCheck) winOrLoseText.innerHTML = "✨ WIN! \nYOU ARE A BAD ASS GUESSER ✨"
+  if (secret.name === personToCheck) winOrLoseText.innerHTML = "✨ WIN! \YOU ARE A BAD ASS GUESSER ✨"
   else winOrLoseText.innerHTML = "☠️ YOU LOST... ☠️"
   // 4. Hide the game board
   board.style.display = "none"

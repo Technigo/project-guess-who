@@ -231,7 +231,7 @@ const generateBoard = () => {
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 
-  console.log(`secret person is ${secret}`); //checks that the secret person is set?
+  console.log(`secret person is ${secret.name}`); //helps me to see who the secret person is.
 }
 
 // This function to start (and restart) the game
@@ -295,9 +295,11 @@ const filterCharacters = (keep) => {
     // Similar to the one above
   } else {
     if (keep) {
-      // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
+      alert(`Yes! The person has ${value}! Let's keep all people with ${value}.`)
+
     } else {
-      // alert popup that says something like: "No, the person doesnt have yellow hair! Remove all people with yellow hair"
+      alert(`No, the person doesn't have ${value}! Let's remove all people with ${value}.`)
+      // alerts here just say "hidden" not "hidden eyes" etc.
     }
   }
 

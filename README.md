@@ -1,4 +1,4 @@
-# Project Name
+# GUESS WHO
 
 A guess who game developed by html, css and java script. Using filter function to compare if the selected character has the same attributes as the secret character in order to make the best guess.
 

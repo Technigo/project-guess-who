@@ -27,7 +27,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    faceExpression: 'smile',
+    face: 'smiley',
     accessories: ['glasses', 'hat'],
     other: []
   },
@@ -36,7 +36,7 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    faceExpression: 'angry',
+    face: 'angry',
     accessories: ['hat'],
     other: []
   },
@@ -45,7 +45,7 @@ const CHARACTERS = [
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
-    faceExpression: '',
+    face: '',
     accessories: ['hat'],
     other: ['smoker']
   },
@@ -54,7 +54,7 @@ const CHARACTERS = [
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-    faceExpression: 'smile',
+    face: 'smiley',
     accessories: [],
     other: []
   },
@@ -63,7 +63,7 @@ const CHARACTERS = [
     img: 'images/jake.svg',
     hair: 'yellow',
     eyes: 'green',
-    faceExpression: 'smile',
+    face: 'smiley',
     accessories: ['glasses'],
     other: []
   },
@@ -72,7 +72,7 @@ const CHARACTERS = [
     img: 'images/james.svg',
     hair: 'brown',
     eyes: 'green',
-    faceExpression: '',
+    face: '',
     accessories: ['glasses'],
     other: []
   },
@@ -81,7 +81,7 @@ const CHARACTERS = [
     img: 'images/jana.svg',
     hair: 'black',
     eyes: 'hidden',
-    faceExpression: 'smile',
+    face: 'smiley',
     accessories: ['glasses', 'necklace'],
     other: []
   },
@@ -90,7 +90,7 @@ const CHARACTERS = [
     img: 'images/jane.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    faceExpression: '',
+    face: '',
     accessories: ['glasses'],
     other: []
   },
@@ -99,7 +99,7 @@ const CHARACTERS = [
     img: 'images/jaqueline.svg',
     hair: 'orange',
     eyes: 'green',
-    faceExpression: 'smile',
+    face: 'smiley',
     accessories: ['glasses', 'necklace', 'earrings'],
     other: []
   },
@@ -109,7 +109,7 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    faceExpression: '',
+    face: '',
     accessories: ['glasses'],
     other: ['smoker']
   },
@@ -118,7 +118,7 @@ const CHARACTERS = [
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    faceExpression: 'angry',
+    face: 'angry',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
@@ -127,7 +127,7 @@ const CHARACTERS = [
     img: 'images/jeane.svg',
     hair: 'brown',
     eyes: 'green',
-    faceExpression: 'smile',
+    face: 'smiley',
     accessories: ['glasses'],
     other: []
   },
@@ -136,7 +136,7 @@ const CHARACTERS = [
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    faceExpression: 'angry',
+    face: 'angry',
     accessories: ['glasses', 'hat'],
     other: ['smoker']
   },
@@ -145,7 +145,7 @@ const CHARACTERS = [
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    faceExpression: '',
+    face: '',
     accessories: ['hat'],
     other: []
   },
@@ -154,7 +154,7 @@ const CHARACTERS = [
     img: 'images/jeri.svg',
     hair: 'orange',
     eyes: 'green',
-    faceExpression: '',
+    face: '',
     accessories: ['glasses'],
     other: []
   },
@@ -163,7 +163,7 @@ const CHARACTERS = [
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
-    faceExpression: 'smile',
+    face: 'smiley',
     accessories: ['hat'],
     other: []
   },
@@ -172,7 +172,7 @@ const CHARACTERS = [
     img: 'images/jess.svg',
     hair: 'black',
     eyes: 'blue',
-    faceExpression: 'smile',
+    face: 'smiley',
     accessories: ['glasses'],
     other: []
   },
@@ -181,7 +181,7 @@ const CHARACTERS = [
     img: 'images/jocelyn.svg',
     hair: 'black',
     eyes: 'brown',
-    faceExpression: '',
+    face: '',
     accessories: ['glasses', 'earrings'],
     other: []
   },
@@ -190,7 +190,7 @@ const CHARACTERS = [
     img: 'images/jon.svg',
     hair: 'brown',
     eyes: 'green',
-    faceExpression: 'smile',
+    face: 'smiley',
     accessories: ['glasses'],
     other: []
   },
@@ -199,7 +199,7 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    faceExpression: 'smile',
+    face: 'smiley',
     accessories: ['glasses', 'hat', 'necklace'],
     other: []
   },
@@ -208,7 +208,7 @@ const CHARACTERS = [
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    faceExpression: 'smile',
+    face: 'smiley',
     accessories: ['earrings'],
     other: []
   },
@@ -217,7 +217,7 @@ const CHARACTERS = [
     img: 'images/josh.svg',
     hair: 'yellow',
     eyes: 'green',
-    faceExpression: 'smile',
+    face: 'smiley',
     accessories: [],
     other: []
   },
@@ -226,7 +226,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    faceExpression: '',
+    face: '',
     accessories: [],
     other: []
   },
@@ -235,7 +235,7 @@ const CHARACTERS = [
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
-    faceExpression: '',
+    face: '',
     accessories: ['glasses', 'hat'],
     other: []
   },
@@ -259,7 +259,7 @@ const addUserName = () => {
   `
   } else {
     alert(`Name not registered.  Please try with a min of 1 letter.`)
-    playerName;
+    addUserName(112);
   }
 };
 /* ----------------------Step 1-----------------------*/
@@ -329,7 +329,7 @@ const checkQuestion = () => {
 
   const { category, value } = currentQuestion;
 
-  // Comparing the currentQuestion details with the secret person details in a 2 different ways based on category (i.e. hair/eyes/faceExpression or accessories/others).
+  // Comparing the currentQuestion details with the secret person details in a 2 different ways based on category (i.e. hair/eyes/face or accessories/others).
   // Determines whether to keep or remove people based on that
   //Determines when we need to keep the cards with selected option
   let keepingCards;

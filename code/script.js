@@ -6,6 +6,7 @@ const findoutBtn = document.getElementById("filter");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const playAgainButton = document.getElementById('playAgain');
 const winOrLose = document.getElementById("winOrLose");
+const questionSection = document.getElementById("question-section")
 
 
 // Array with all the characters, as objects
@@ -392,11 +393,13 @@ const showBoard = ()=>{
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   if (secret.name === personToCheck) {
-    winOrLoseText.textContent = 'Congratulations, you win!';
-    winOrLose.style.display = "flex"
+    winOrLoseText.textContent = 'Congratulations, you win! 🙂';
+    winOrLose.style.display = "flex";
+    questionSection.classList.add("hidden")
   } else {
-    winOrLoseText.textContent = 'Oops! You lose. You gussed wrong! Game ove!';
-    winOrLose.style.display = "flex"
+    winOrLoseText.textContent = 'Oops! You lose. You gussed wrong! Game over! 😢';
+    winOrLose.style.display = "flex";
+    questionSection.classList.add("hidden")
   }
 
   // Show the win or lose section
@@ -412,7 +415,8 @@ const checkMyGuess = (personToCheck) => {
 playAgainButton.addEventListener('click', () => {
   winOrLose.style.display = "none";
   start();
-  showBoard()
+  showBoard();
+  questionSection.classList.remove("hidden")
 });
 
 // Invokes the start function when website is loaded

@@ -3,7 +3,7 @@ const board = document.getElementById('board')
 //This is the Dropdown menu:
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
-const winOrlose = document.getElementById('winOrlose')
+const winOrLose = document.getElementById('winOrLose')
 const winOrlosetxt = document.getElementById(winOrLoseText)
 
 // Array with all the characters, as objects
@@ -383,23 +383,27 @@ const winOrlose = ['Congrats! You are kicking it', 'Please try again! You are so
 
 
 // If you confirm, this function is invoked
+// 1. Check if the personToCheck is the same as the secret person's name
+// 2. Set a Message to show in the win or lose section accordingly
+// 3. Show the win or lose section
+// 4. Hide the game board
 const checkMyGuess = (personToCheck) => {
+  console.log(checkMyGuess);
   if (personToCheck === secret.name) {
-    winOrlosetxt.textContent = winOrlose[0];
+    winOrlosetxt.textContent = winOrLose[0];
   } else {
-    winOrlosetxt.textContent = winOrlose[1];
+    winOrlosetxt.textContent = winOrLose[1];
   }
-  winOrlose.style.display = 'inline-block';
+  winOrLose.style.display = 'inline-block';
 
   if (charactersInPlay.lenght === 0) {
     restart();
     return;
   }
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
-}
+
+  board.style.display = 'none';
+
+};
 
 // Invokes the start function when website is loaded
 start()

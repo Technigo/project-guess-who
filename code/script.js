@@ -348,22 +348,19 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  personToCheck === secret.name
-    ? correctGuess()
-    : (winOrLoseText.innerHTML += `
-    Yea, no. Better luck next time. The correct person was ${secret.name}`);
-  //winOrLose.style.display = "flex";
-  winOrLoseWrapper.style.display = "flex";
-  board.style.display = "none";
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  personToCheck === secret.name ? correctGuess() : wrongGuess();
 };
 
 const correctGuess = () => {
   winOrLoseText.innerHTML += `
   You are correct!`;
   nicelyDone.style.display = "flex";
+  winOrLoseWrapper.style.display = "flex";
+  board.style.display = "none";
+};
+const wrongGuess = () => {
+  winOrLoseText.innerHTML += `
+    Yea, no. Better luck next time. The correct person was ${secret.name}`;
   winOrLoseWrapper.style.display = "flex";
   board.style.display = "none";
 };

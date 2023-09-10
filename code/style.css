@@ -44,6 +44,13 @@ select {
   width: 126px;
 }
 
+.display-name,
+.number-hints {
+  font-size: 22px;
+  font-weight: 500;
+  color: white;
+}
+
 .board-wrapper {
   width: 70%;
   display: flex;
@@ -61,47 +68,55 @@ select {
 
 /****** CARD ******/
 .card {
+  background-color: transparent;
   width: 135px;
   height: 165px;
   overflow: hidden;
   border: 3px solid var(--secondary);
   border-radius: 4px;
   margin: 3px;
+}
+
+.flip-card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card-front,
+.guess {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
-.card p {
+.flip-card-front p {
   text-align: center;
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
 }
 
-.card .guess {
-  display: none;
+.flip-card-content .guess {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: var(--secondary);
   color: white;
   text-align: center;
   height: inherit;
-}
-
-.card:hover {
-  background-color: var(--secondary);
-}
-
-.card:hover img,
-.card:hover p {
-  display: none;
-}
-
-/* The div with the guess class is only shown on hover */
-.card:hover .guess {
-  display: flex;
+  transform: rotateY(180deg);
 }
 
 .guess span {
@@ -110,6 +125,11 @@ select {
   font-weight: 600;
   margin-bottom: 8px;
   width: 90%;
+}
+
+/* The div with the guess class is only shown on hover */
+.card:hover .flip-card-content {
+  transform: rotateY(180deg);
 }
 
 /****** BUTTONS ******/
@@ -186,9 +206,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

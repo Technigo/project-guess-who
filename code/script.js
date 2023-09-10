@@ -274,58 +274,44 @@ const checkQuestion = () => {
 
 // This function filters the characters based on the current question and updates the game board accordingly. It also displays alerts to inform the player about the filtering results. Then a function is invoked to redraw the board with the remaining people.
 const filterCharacters = (keep) => {
-  const { category, value } = currentQuestion
+  const { category, value } = currentQuestion;
+
   if (category === 'accessories') {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}.`
-      )
+      alert(`Yes, the person wears ${value}! Keep all people that wear ${value}.`);
       charactersInPlay = charactersInPlay.filter((character) => character[category].includes(value));
     } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}.`
-      )
+      alert(`No, the person doesn't wear ${value}! Remove all people that wear ${value}.`);
       charactersInPlay = charactersInPlay.filter((character) => !character[category].includes(value));
     }
   } else if (category === 'other') {
     if (keep) {
-      alert(
-        `Yes, the person is a ${value}! Keep all people that are ${value}.`
-      )
-      charactersInPlay = charactersInPlay.filter((character) => character[category].include(value))
+      alert(`Yes, the person is a ${value}! Keep all people that are ${value}.`);
+      charactersInPlay = charactersInPlay.filter((character) => (value === 'smoker' ? character[category].includes(value) : true));
     } else {
-      alert(
-        `No, the person is not a ${value}! Remove all the people that are ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((character) => !character[category].includes(value))
+      alert(`No, the person is not a ${value}! Remove all people that are ${value}.`);
+      charactersInPlay = charactersInPlay.filter((character) => (value === 'smoker' ? !character[category].includes(value) : true));
     }
-  } else if (category === 'hair'){
+  } else if (category === 'hair') {
     if (keep) {
-      alert(
-        `Yes, the person have ${value} hair! Keep all the people with ${value} hair.`
-      )
-      charactersInPlay = charactersInPlay.filter((character) => character[category] === (value))
-  } else {
-    alert(
-      `No, the person does not have ${value} hair! Remove all people with ${value} hair`
-    )
-     charactersInPlay = charactersInPlay.filter((character) => character[category] !== (value))
-    }
-  } else if (category === 'eyes'){
-    if (keep) {
-      alert(
-        `Yes, the person have ${value} eyes! Keep all people that have ${value} eyes.`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === (value))
+      alert(`Yes, the person has ${value} hair! Keep all people with ${value} hair.`);
+      charactersInPlay = charactersInPlay.filter((character) => character[category] === value);
     } else {
-      alert(
-        `No, the person does not have ${value} eyes! Remove all the people that does not have ${value} eyes.`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      alert(`No, the person does not have ${value} hair! Remove all people with ${value} hair.`);
+      charactersInPlay = charactersInPlay.filter((character) => character[category] !== value);
+    }
+  } else if (category === 'eyes') {
+    if (keep) {
+      alert(`Yes, the person has ${value} eyes! Keep all people that have ${value} eyes.`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
+    } else {
+      alert(`No, the person does not have ${value} eyes! Remove all people that do not have ${value} eyes.`);
+      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value);
     }
   }
+
   generateBoard();
-}
+};
 
 // This function is called when the player clicks the "Guess" button on a character card. It asks for confirmation before proceeding to check if the guessed character is correct.
 const guess = (personToConfirm) => {

@@ -8,6 +8,9 @@ const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainBtn = document.getElementById('playAgain')
 const secretPersonImg = document.getElementById('secretPerson')
 const winOrLoseName = document.getElementById('winOrLoseName')
+const timer = document.getElementById('counting')
+const counter = document.getElementById('counter')
+
 
 // Array with all the characters, as objects ------------------------------
 const CHARACTERS = [
@@ -209,7 +212,9 @@ const CHARACTERS = [
 // Global variables ------------------------------
 let secret;
 let currentQuestion;
-let charactersInPlay;
+let charactersInPlay; // Characters that are left in the game.
+let count = 0; // Question counter starts on 0.
+let seconds = 0; // Timer starts with 0.
 
 // ------------------------------
 
@@ -369,6 +374,9 @@ const resetDropdown = () => {
   questions.selectedIndex = 0;
 };
 
+// Counter for number of guesses.
+
+
 // Invokes the start function when website is loaded.
 start();
 
@@ -381,7 +389,7 @@ restartBtn.addEventListener('click', () => {
 // Invokes the selectQestion function.
 questions.addEventListener('change', selectQuestion);
 
-// Invokes the checkQuestion function when filterBtn is clicked.
+// When find out button is clicked.
 filterBtn.addEventListener('click', checkQuestion);
 
 // When play again button is clicked.

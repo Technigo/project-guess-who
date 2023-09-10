@@ -429,10 +429,11 @@ const guess = (personToConfirm) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-  let confirmAnswer = confirm(`Do you think that it is ${secret.name}?`);
+  let confirmAnswer = confirm(`Do you think that it is ${personToConfirm}?`);
 
   if (confirmAnswer) {
     checkMyGuess(personToConfirm);
+    timerStart();
   }
 };
 
@@ -446,12 +447,14 @@ const correctGuess = () => {
     winOrLoseText.innerHTML += `
     Nicely done ${namePrompt}!
     
-    It took you ${totalGuesses} guesses to reach the correct answer.`;
+    It took you ${totalGuesses} guesses to reach the correct answer.
+    Time played: ${timePlayed()}`;
   } else {
     winOrLoseText.innerHTML += `
     Nicely done!
     
-    It took you ${totalGuesses} guesses to reach the correct answer.`;
+    It took you ${totalGuesses} guesses to reach the correct answer.
+    Time played: ${timePlayed()}`;
   }
   nicelyDone.style.display = "flex";
   winOrLoseWrapper.style.display = "flex";
@@ -464,10 +467,14 @@ const correctGuess = () => {
 const wrongGuess = () => {
   if (namePrompt !== ``) {
     winOrLoseText.innerHTML += `
-      Yea, no. Better luck next time, ${namePrompt}. The correct person was ${secret.name}`;
+      Yea, no. Better luck next time, ${namePrompt}. The correct person was ${
+      secret.name
+    }.
+      Time played: ${timePlayed()}`;
   } else {
     winOrLoseText.innerHTML += `
-        Yea, no. Better luck next time. The correct person was ${secret.name}`;
+        Yea, no. Better luck next time. The correct person was ${secret.name}. 
+        Time played: ${timePlayed()}`;
   }
   winOrLoseWrapper.style.display = "flex";
   board.style.display = "none";
@@ -479,7 +486,10 @@ const wrongGuess = () => {
 const resetTheGame = () => {
   board.style.display = "flex";
   winOrLoseWrapper.style.display = "none";
+  winOrLoseText.innerHTML = ``;
   questions.selectedIndex = 0;
+  seconds = 0;
+  minutes = 0;
   start();
 };
 
@@ -500,6 +510,14 @@ const updateTimer = () => {
 
 const updateTimerDisplay = () => {
   timer.textContent = `${minutes}m ${seconds}s`;
+};
+
+const timePlayed = () => {
+  if (minutes < 1) {
+    return `${seconds}s`;
+  } else {
+    return `${minutes}m ${seconds}s`;
+  }
 };
 
 //asks the player's name and starts the game.

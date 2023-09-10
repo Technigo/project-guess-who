@@ -14,7 +14,7 @@ const CHARACTERS = [
     img: 'images/jabala.svg',
     hair: 'hidden',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     other: []
   },
   {
@@ -22,24 +22,24 @@ const CHARACTERS = [
     img: 'images/jack.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: ['influencer']
+    accessories: ['a hat'],
+    other: ['100k followers on TikTok']
   },
   {
     name: 'Jacques',
     img: 'images/jacques.svg',
     hair: 'grey',
     eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    accessories: ['a hat'],
+    other: ['a smoking habit']
   },
   {
     name: 'Jai',
     img: 'images/jai.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['tie'],
-    other: ['french']
+    accessories: ['a tie'],
+    other: ['a french accent']
   },
   {
     name: 'Jake',
@@ -87,16 +87,16 @@ const CHARACTERS = [
     img: 'images/jazebelle.svg',
     hair: 'purple',
     eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    accessories: ['glasses', 'a wristwatch'],
+    other: ['a smoking habit']
   },
   {
     name: 'Jean',
     img: 'images/jean.svg',
     hair: 'brown',
     eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    accessories: ['glasses', 'a hat'],
+    other: ['a smoking habit']
   },
   {
     name: 'Jeane',
@@ -111,31 +111,31 @@ const CHARACTERS = [
     img: 'images/jed.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    accessories: ['glasses', 'a hat'],
+    other: ['a smoking habit']
   },
   {
     name: 'Jenni',
     img: 'images/jenni.svg',
     hair: 'white',
     eyes: 'hidden',
-    accessories: ['hat'],
-    other: ['french']
+    accessories: ['a hat'],
+    other: ['a french accent']
   },
   {
     name: 'Jeri',
     img: 'images/jeri.svg',
     hair: 'orange',
     eyes: 'green',
-    accessories: ['glasses'],
-    other: ['fear of heights']
+    accessories: ['glasses', 'a wristwatch'],
+    other: ['a fear of heights']
   },
   {
     name: 'Jerry',
     img: 'images/jerry.svg',
     hair: 'hidden',
     eyes: 'blue',
-    accessories: ['hat'],
+    accessories: ['a hat'],
     other: []
   },
   {
@@ -152,7 +152,7 @@ const CHARACTERS = [
     hair: 'black',
     eyes: 'brown',
     accessories: ['glasses'],
-    other: ['fear of heights']
+    other: ['a fear of heights']
   },
   {
     name: 'Jon',
@@ -167,16 +167,16 @@ const CHARACTERS = [
     img: 'images/jordan.svg',
     hair: 'yellow',
     eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: ['fear of heights']
+    accessories: ['glasses', 'a hat'],
+    other: ['a fear of heights']
   },
   {
     name: 'Josephine',
     img: 'images/josephine.svg',
     hair: 'grey',
     eyes: 'brown',
-    accessories: [],
-    other: ['french', 'influencer']
+    accessories: ['a wristwatch'],
+    other: ['a french accent', '100k followers on TikTok']
   },
   {
     name: 'Josh',
@@ -191,7 +191,7 @@ const CHARACTERS = [
     img: 'images/jude.svg',
     hair: 'black',
     eyes: 'green',
-    accessories: ['tie'],
+    accessories: ['a tie'],
     other: []
   },
   {
@@ -199,7 +199,7 @@ const CHARACTERS = [
     img: 'images/julie.svg',
     hair: 'black',
     eyes: 'brown',
-    accessories: ['glasses', 'hat'],
+    accessories: ['glasses', 'a hat'],
     other: []
   },
 ]
@@ -267,7 +267,7 @@ const selectQuestion = () => {
     console.log(`Category: ${category}, Value: ${value}`);
   } else {
     // Handle the case where a category or value is not selected
-    alert("Please select a category and value before clicking 'Find Out'.");
+    alert("Please select an option before clicking 'Find Out'.");
   }
 };
 
@@ -360,7 +360,7 @@ const selectQuestion = () => {
 // }
 
 const guess = (personToConfirm) => {
-  const makeAGuess = confirm(`Do you want to guess ${personToConfirm}?`)
+  const makeAGuess = confirm(`Do you want to take a guess at ${personToConfirm}?`)
 
   if (makeAGuess) {
     checkMyGuess(personToConfirm)

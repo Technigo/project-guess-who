@@ -1,8 +1,6 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Time to dig deeper into javascript and focusing on Objects and Arrays through creating the boardgame "Guess Who".
 
 ## The problem
 

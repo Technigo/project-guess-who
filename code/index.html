@@ -11,6 +11,17 @@
     />
   </head>
   <body>
+    <div id="startBox" class="start-box">
+      <img
+        class="guess-who-icon"
+        src="imagesnew/guessWhoLogoNew.png"
+        alt="Guess Who"
+      />
+      <h2>Welcome to Guess Who!</h2>
+      <p>Click the button below to start the game.</p>
+      <button id="startButton" class="filled-button">START GAME!</button>
+     </div>
+
     <aside class="question-section">
       <button type="button" id="restart" class="outlined-button">RESTART</button>
 
@@ -67,10 +78,16 @@
 
       <button id="filter" class="filled-button">FIND OUT</button>
 
+      <section class="time-section">
+        <h2>Your time:
+          <span class="timer" id="timer">0</span> seconds
+        </h2>
+      </section>
+
       <section class="count-section">
-        <h3>Number of guesses:
+        <h2>Number of guesses:
           <span class="guess-container" id="guess-container">0</span>
-        </h3>
+        </h2>
       </section>
 
     </aside>
@@ -89,10 +106,11 @@
         <h1 id="winOrLoseText"></h1>
         <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
         <section class="count-section">
-          <h3>Your number of guesses was:
-            <span class="guess-container" id="guess-container">0</span>
-          </h3>
+          <h2>Your number of guesses was:
+            <span class="guess-container" id="win-or-lose-guess-container">0</span>
+          </h2>
         </section>
+        <h2 id ="winOrLoseTimer"></h2>
       </div>
     </section>
     <script src="script.js"></script>

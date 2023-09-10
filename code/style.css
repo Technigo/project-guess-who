@@ -19,6 +19,27 @@ h1 {
   color: rgb(255, 235, 220);
 }
 
+h2 {
+  color: rgb(255, 235, 220);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 5px;
+}
+
+.start-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%; 
+  transform: translate(-50%, -50%);
+  background-color: rgba(18, 68, 168, 0.9);
+  color: rgb(255, 235, 220);
+  padding: 20px;
+  text-align: center;
+  z-index: 999;
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;
@@ -54,8 +75,8 @@ select {
 }
 
 .game-board {
-  width: 90%;
-  max-width: 882px;
+  width: 95%;
+  max-width: 950px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -72,18 +93,19 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   background-color: rgb(255, 235, 220);
   background-image: '';
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  
 }
 
 .card p {
   text-align: center;
-  margin-bottom: 0;
-  margin-top: 3px;
+  margin: 0;
+ 
   font-size: 12px;
   font-weight: 700;
   color: var(--primary);
@@ -128,9 +150,10 @@ button {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
-  padding: 8px 27px;
+  padding: 20px 27px;
   cursor: pointer;
   box-shadow:rgba(123, 123, 123, 0.4) 5px 3px 3px inset;
+  margin: 0px 10px ;
 }
 
 .small {
@@ -210,12 +233,6 @@ p {
   width: 100px;
   color: rgb(255, 235, 220);
 }
-
-.count-section {
-  color: rgb(255, 235, 220);
-}
-
-
 
 @media (max-width: 768px) {
   body {

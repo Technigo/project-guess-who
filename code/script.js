@@ -6,9 +6,12 @@ const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
-const guessCountBox = document.getElementById('guess-container')
 const winnerLoserImg = document.createElement('img');
 const winnerLoserP = document.createElement('p');
+const startBox = document.getElementById('startBox');
+const startButton = document.getElementById('startButton');
+const timerElement = document.getElementById('timer')
+const winOrLoseTimer = document.getElementById('winOrLoseTimer')
 
 //Adding classes to the DOM variables
 winnerLoserImg.className = 'winner-loser-img';
@@ -37,7 +40,7 @@ const CHARACTERS = [
     other: ['elf ears', 'a magical habit', 'a striking complexion']
   },
   {
-    name: 'Cruella',
+    name: 'Cruella De Vil',
     img: 'imagesnew/cruellaDeVil.png',
     hair: 'very specific',
     eyes: 'blue',
@@ -134,7 +137,7 @@ const CHARACTERS = [
     other: ['a magical habit']
   },
   {
-    name: 'Indiana',
+    name: 'Indiana Jones',
     img: 'imagesnew/indieanaJones.png',
     hair: 'brown',
     eyes: 'blue',
@@ -190,7 +193,7 @@ const CHARACTERS = [
     other: ['a magical habit']
   },
   {
-    name: 'Miranda',
+    name: 'Miranda Priestly',
     img: 'imagesnew/mirandaPriestly.png',
     hair: 'grey',
     eyes: 'blue',
@@ -230,7 +233,7 @@ const CHARACTERS = [
     other: ['a magical habit']
   },
   {
-    name: 'Joker',
+    name: 'the Joker',
     img: 'imagesnew/theJoker.png',
     hair: 'very specific',
     eyes: 'haunting',
@@ -260,6 +263,8 @@ let secret
 let currentQuestion
 let charactersInPlay
 let guessCount = 0 //counts guesses(questions!), starting at 0
+let timerInterval;
+let seconds = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -283,8 +288,26 @@ const setSecret = () => {
   console.log(`secret character is ${secret.name}`)
 }
 //This function shows the number of guesses (later invokes in filter button event listener)
+//Also the DOM selectors inside function because i want it to retrieve the updated count!
 const guessCountDisplay = () => {
-  guessCountBox.innerText =`${guessCount}`
+  const guessCountBox = document.getElementById('guess-container');
+  const winOrLoseGuessContainer = document.getElementById('win-or-lose-guess-container');
+
+  guessCountBox.innerText = `${guessCount}`;
+  winOrLoseGuessContainer.innerText = `${guessCount}`;
+}
+
+//This function starts the timer!
+const startTimer = () => {
+  timerInterval = setInterval(() => {
+    seconds++;
+    timerElement.innerText = seconds; 
+  }, 1000); // updates the timer every second!
+}
+//This function stops the timer! And gives the elapsed time!
+const stopTimer = () => {
+  clearInterval(timerInterval);
+  return seconds;
 }
 
 
@@ -371,13 +394,14 @@ const filterCharacters = (keep) => {
 const guess = (personToConfirm) => {
   const userGuess = confirm(`Are you sure it's ...${personToConfirm}?`);
   if (userGuess){
-    checkMyGuess(personToConfirm); //If user guess, checkMyGuess is invoked
+    const elapsedTime = stopTimer(); // Stop timer
+    checkMyGuess(personToConfirm, elapsedTime); //If user guess, checkMyGuess is invoked
   }
  console.log(personToConfirm); 
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
+const checkMyGuess = (personToCheck, elapsedTime) => {
   board.innerHTML = '' //hide the game board
   winOrLose.style.display = 'flex'; //show win or lose section
   if (personToCheck === secret.name) {
@@ -391,6 +415,7 @@ const checkMyGuess = (personToCheck) => {
     winnerLoserP.innerHTML = `${secret.name} was the person we were looking for!`
     winnerLoserImg.src = secret.img
     winnerLoserImg.alt = secret.name
+    winOrLoseTimer.innerHTML = `It took you ${elapsedTime} seconds!`;
   }
   else {
     console.log(`LOSER BABY!`)
@@ -398,13 +423,19 @@ const checkMyGuess = (personToCheck) => {
     winnerLoserP.innerHTML = `Your guess was ${personToCheck}... <strong> ${secret.name} </strong> was the person we were looking for!`
     winnerLoserImg.src = secret.img
     winnerLoserImg.alt = secret.name
+    winOrLoseTimer.innerHTML = `It took you ${elapsedTime} seconds!`;
   }
 }
 
 // Invokes the start function when website is loaded
-start()
+
 
 // All the event listeners
+startButton.addEventListener('click', () => {
+  startBox.style.display = 'none'; // Hide the start box
+  startTimer();
+  start(); // Call the function to start the game
+});
 restartButton.addEventListener('click', () => {
   window.location.reload(); //reloads the page if user clicks restart
 } );
@@ -417,4 +448,11 @@ questions.addEventListener('change', selectQuestion)
 playAgainButton.addEventListener('click', () => {
   window.location.reload(); //reloads the page if user clicks play again
 } );
+
+
+
+
+
+
+
 

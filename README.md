@@ -12,3 +12,5 @@ I would also have spent more time on configuring the CSS to something more "me".
 I would also have looked at how to implement sounds when a user's guess on features is right or wrong. Currently it plays after the alert informing the player if they are right or wrong and that doesn't fit so I've commented it out.
 
 ## View it live
+
+https://roaring-moonbeam-guess-who.netlify.app/

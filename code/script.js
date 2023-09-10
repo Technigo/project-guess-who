@@ -247,11 +247,11 @@ let displayedCharacters; // characters displayed on the board
 let playerName; //possibility to store and display user's name
 
 
-//----------------------Extra------------------------//
+//------------------ Stretch goals ----------------------//
 //Function to add user's name after a prompt message:
 const addUserName = () => {
   playerName = prompt(`Welcome to the game Guess who!  Please enter your name:`)
-  const regex = /(?=.*[A-Za-z]){2,}/g;
+  const regex = /(?=.[A-Za-z]){2,}/g;
   if (playerName.match(regex)) {
     alert(`The game starts...NOW!`)
     displayName.innerText = `
@@ -272,18 +272,21 @@ const generateBoard = () => {
   displayedCharacters.forEach((person) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
-        <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+        <div class="flip-card-content">
+          <div class="flip-card-front">
+            <p>${person.name}</p>
+            <img src=${person.img} alt=${person.name}>
+          </div>
+          <div class="guess">
+            <span>Guess on ${person.name}?</span>
+            <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
+          </div>
         </div>
       </div>
     `
   });
 };
-/* div.guess is on display:none -> display:flex on hover,
-onclick method already in html, no use for AddEventListener, passing the variable person.name to function guess.  No need for id as multiple examples of it will be created( or add a personalised id to be generated several times)*/
+/* onclick method already in html, no use for AddEventListener, passing the variable person.name to function guess.  No need for id as multiple examples of it will be created( or add a personalised id to be generated several times)*/
 
 /*-----------------------Step2----------------------------*/
 // Function for randomly selecting the secret person from the characters array and setting it as the value of the variable "secret"

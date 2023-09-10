@@ -313,6 +313,7 @@ const stopTimer = () => {
 
 // This function to start (and restart) the game
 const start = () => {
+
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
   generateBoard();
@@ -395,7 +396,7 @@ const guess = (personToConfirm) => {
   const userGuess = confirm(`Are you sure it's ...${personToConfirm}?`);
   if (userGuess){
     const elapsedTime = stopTimer(); // Stop timer
-    checkMyGuess(personToConfirm, elapsedTime); //If user guess, checkMyGuess is invoked
+    checkMyGuess(personToConfirm, elapsedTime, userName); //If user guess, checkMyGuess is invoked
   }
  console.log(personToConfirm); 
 }

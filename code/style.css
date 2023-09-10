@@ -94,7 +94,6 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  background-color: rgb(255, 235, 220);
   background-image: '';
   background-size: cover;
   background-repeat: no-repeat;
@@ -105,7 +104,6 @@ select {
 .card p {
   text-align: center;
   margin: 0;
- 
   font-size: 12px;
   font-weight: 700;
   color: var(--primary);
@@ -150,10 +148,10 @@ button {
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
-  padding: 20px 27px;
+  padding: 10px 27px;
   cursor: pointer;
   box-shadow:rgba(123, 123, 123, 0.4) 5px 3px 3px inset;
-  margin: 0px 10px ;
+  margin-bottom: 10px;
 }
 
 .small {

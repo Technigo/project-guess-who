@@ -1,7 +1,12 @@
 /* Global css variables used for colors */
+
 :root {
   --primary: #a259ff;
   --secondary: #b0a6ff;
+  --light-orange: #fda403; 
+  --dark-orange: #e8751a; 
+  --red: #c51350; 
+  --dark-red: #8a1253;
 }
 
 body {
@@ -22,7 +27,7 @@ h1 {
 .question-section {
   width: 30%;
   min-height: 100vh;
-  background-color: var(--secondary);
+  background-color: var(--dark-red);
   display: flex;
   flex-direction: column;
   padding: 5vw;
@@ -35,7 +40,7 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: var(--dark-orange);
   width: 100%;
   margin: 24px 0;
 }
@@ -49,6 +54,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--light-orange);
 }
 
 .game-board {
@@ -59,18 +65,45 @@ select {
   align-content: center;
 }
 
+
+#counter-aside {
+  color: white;
+  font-weight: 500;
+  margin-top: 50px;
+  padding: 20px; 
+  background-color: var(--red);
+  text-align: center;
+  border-radius: 10px;
+}
+
+#counter-win-loose {
+  color: white; 
+  margin: 50px; 
+  padding: 20px; 
+  font-weight: 200;
+  background-color: var(--red);
+  border-radius: 20px;
+}
+
+  #count {
+  text-align: center;
+  color: var(--light-orange); 
+  font-size: 80px;
+}
+
 /****** CARD ******/
 .card {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border: 3px solid var(--dark-orange);
+  border-radius: 15px;
   margin: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: white;
 }
 
 .card p {
@@ -91,7 +124,7 @@ select {
 }
 
 .card:hover {
-  background-color: var(--secondary);
+  background-color: var(--red);
 }
 
 .card:hover img,
@@ -114,7 +147,7 @@ select {
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
+  border: 2px solid var(--light-orange);
   border-radius: 50px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -129,20 +162,20 @@ button {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--primary);
+  color: white;
   align-self: flex-end;
 }
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--primary);
+  background-color: var(--dark-orange);
   color: white;
 }
 
 .filled-button:hover {
   background-color: white;
   border-color: white;
-  color: var(--primary);
+  color: var(--dark-orange);
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -150,7 +183,7 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: var(--dark-red);
   position: absolute;
   top: 0;
   bottom: 0;
@@ -175,6 +208,19 @@ button {
 
 .win-or-lose h1 {
   margin-bottom: 32px;
+}
+
+
+.winner-img {
+  height: 300px; 
+}
+
+.winLose-p {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 48px;
+  margin: 10px 0;
+  color: white;
 }
 
 @media (max-width: 768px) {

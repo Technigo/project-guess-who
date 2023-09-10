@@ -1,13 +1,11 @@
-# Project Name
+# Project Guess Who?
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The goal was to use JavaScript to create a fully functional classic Guess Who? game from a partially working template.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Loading the game board was quickly sorted out. Then the more challenging problems started piling up. After hours consisting of a mixture of various code pages online, questions in Stack Overflow, bits and pieces from coding sessions, I was able to get the game working. Some important detail was given by other students in a chat on Discord before the demo. If I had more time, I might have replaced all the people with my own characters and come up with some more game features.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://rad-gumption-307274.netlify.app

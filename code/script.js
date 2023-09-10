@@ -218,7 +218,7 @@ const generateBoard = () => {
         <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
+          <span>Guess ${person.name}?</span>
           <button class="filled-button small" onclick="guess('${person.name}')">Guess</button>
         </div>
       </div>
@@ -242,7 +242,7 @@ const start = () => {
   board.style.display = 'flex'
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// Setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   // Get the selected category and value from the dropdown
   const category = questions.options[questions.selectedIndex].parentNode.label;
@@ -283,7 +283,7 @@ const selectQuestion = () => {
       keep = value === secret[category];
     } else if (category === 'accessories' || category === 'other') {
       if (category === 'other') {
-        // Check for "smoker" attribute directly
+        // Check for other attributes directly
         keep = secret['other'].includes(value);
       } else {
         keep = secret[category].includes(value);
@@ -294,7 +294,7 @@ const selectQuestion = () => {
     filterCharacters(keep);
   };
   
-  // It'll filter the characters array and redraw the game board.
+  // Filter the characters array and redraw the game board.
   const filterCharacters = (keep) => {
     const { category, value } = currentQuestion;
   
@@ -304,7 +304,7 @@ const selectQuestion = () => {
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value);
       } else if (category === 'accessories' || category === 'other') {
         if (category === 'other') {
-          // Check for "smoker" attribute directly
+          // Check for other attributes directly
           charactersInPlay = charactersInPlay.filter((person) => person['other'].includes(value));
         } else {
           charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value));
@@ -327,38 +327,30 @@ const selectQuestion = () => {
     // Show the correct alert message for different categories
     if (category === 'accessories') {
       if (keep) {
-        alert(`Yes, the person wears ${value}! Keep all people that wear ${value}`);
+        alert(`Yes, the person wears ${value}! All people that wear ${value} will be kept.`);
       } else {
-        alert(`No, the person doesn't wear ${value}! Remove all people that wear ${value}`);
+        alert(`No, the person doesn't wear ${value}! All people that wear ${value} will be removed.`);
       }
     } else if (category === 'other') {
       if (keep) {
-        alert(`Yes, the person has ${value}! Keep all people that have ${value}`);
+        alert(`Yes, the person has ${value}! All people that have ${value} will be kept.`);
       } else {
-        alert(`No, the person doesn't have ${value}! Remove all people that have ${value}`);
+        alert(`No, the person doesn't have ${value}! All people that have ${value} will be removed.`);
       }
     } else {
       if (keep) {
-        alert(`Yes, the person has ${value} ${category}! Keep all people with ${value} ${category}`);
+        alert(`Yes, the person has ${value} ${category}! All people with ${value} ${category} will be kept.`);
       } else {
-        alert(`No, the person doesn't have ${value} ${category}! Remove all people with ${value} ${category}`);
+        alert(`No, the person doesn't have ${value} ${category}! All people with ${value} ${category} will be removed.`);
       }
     }
   
     // After filtering, redraw the game board
     generateBoard();
   };
-  
 
-// ---------------
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-// const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
-// }
-
 const guess = (personToConfirm) => {
   const makeAGuess = confirm(`Do you want to take a guess at ${personToConfirm}?`)
 
@@ -367,13 +359,10 @@ const guess = (personToConfirm) => {
   }
 }
 
-// If you confirm, this function is invoked
-// const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly
   // 3. Show the win or lose section
-  // 4. Hide the game board
-//}
+
 
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
@@ -399,8 +388,7 @@ filterButton.addEventListener('click', () => {
 playAgainButton.addEventListener('click', start);
 
 
-
-
+// Fuction to reset the drop down menu
 const resetDropdowns = () => {
   questions.selectedIndex = 0;
 };

@@ -38,4 +38,6 @@ regarding autoplay policy in Chrome I do not master yet.  The 3rd sound file <sh
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to the deployed project:
+https://guess-who-gleeful-kitsune.netlify.app/ 
+so that the viewer can click around and see what it's all about.

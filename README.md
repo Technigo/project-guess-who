@@ -9,4 +9,7 @@ If I had more time, I'd definetely make the game about people I know, instead of
 
 ## View it live
 
+Here's a link to my project:
+https://gissevem.netlify.app/
+
 Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

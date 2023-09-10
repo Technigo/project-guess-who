@@ -3,45 +3,57 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
+    <title>GUESS WHO: Middle-Earth Quest</title>
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
+      <link 
+        href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" 
+        rel="stylesheet"/>
   </head>
   <body>
     <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
+      <button type="button" id="restart" class="outlined-button">restart</button>
 
       <img
         class="guess-who-icon"
-        src="images/guess-who-bubble.png"
+        src="images/guesslogo.png"
         alt="Guess Who"
       />
 
-      <h1>Does the person have</h1>
+      <h1>Choose a character trait to guess!</h1>
 
       <select title="questions" id="questions">
+        <option value="choice" selected disabled>Make a choice...</option>
         <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
+          <option value="light-brown">light brown hair</option>
+          <option value="dark-brown">dark brown hair</option>
+          <option value="blond">blond hair</option>
+          <option value="red">red hair</option>
+          <option value="grey">grey hair</option>
+          <option value="white">white hair</option>
+          <option value="missing">no hair</option>
         </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+        <optgroup label="type">
+          <option value="hobbit">hobbit</option>
+          <option value="elf">elf</option>
+          <option value="human">human</option>
+          <option value="dwarf">dwarf</option>
+          <option value="wizard">wizard</option>
+          <option value="ent">ent</option>
+          <option value="unknown">unknown</option>
         </optgroup>
         <optgroup label="accessories">
-          <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
-        </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
+          <option value="sword">sword</option>
+          <option value="ring">the ring of power</option>
+          <option value="headband">headband</option>
+          <option value="pipe">pipe</option>
+          <option value="hood">hood</option>
+          <option value="staff">staff</option>
+          <option value="bow">bow</option>
+          <option value="helmet">helmet</option>
         </optgroup>
       </select>
 
-      <button id="filter" class="filled-button">FIND OUT</button>
+      <button id="filter" class="filled-button">find out</button>
     </aside>
 
     <section class="board-wrapper">
@@ -52,13 +64,15 @@
       <div class="win-or-lose">
         <img
           class="guess-who-icon"
-          src="images/guess-who-bubble.png"
+          src="images/guesslogo.png"
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
-      </div>
+        <button type="button" id="playAgain" class="filled-button">play again</button>
     </section>
+    <audio controls>
+      <source src="..\code\images\music.mp3" type="audio/mpeg" />
+    </audio>
     <script src="script.js"></script>
   </body>
 </html>

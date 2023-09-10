@@ -10,197 +10,354 @@ const playAgainButton = document.getElementById('playAgain')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Zoey',
+    img: 'images/zoey.jpg',
+    furcolor: 'black',
+    coat: 'short',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Milo',
+    img: 'images/milo.jpg',
+    furcolor: 'golden',
+    coat: 'medium long',
+    ears: 'upright',
+    nose: ['dark', 'long'],
+    clothing: ['clothes', 'hat'],
+    accessories: ['a collar', 'glasses']
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    name: 'Ivy',
+    img: 'images/ivy.jpg',
+    furcolor: 'white',
+    coat: 'curly',
+    ears: 'floppy',
+    nose: ['light', 'long'],
+    clothing: [],
+    accessories: []
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: 'Sadie',
+    img: 'images/sadie.jpg',
+    furcolor: 'brown',
+    coat: 'wiry',
+    ears: 'upright',
+    nose: ['dark', 'short'],
+    clothing: [],
+    accessories: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Winnie',
+    img: 'images/winnie.jpg',
+    furcolor: 'mixed',
+    coat: 'short',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: ['a collar']
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Bella',
+    img: 'images/bella.jpg',
+    furcolor: 'black',
+    coat: 'medium long',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Baxter',
+    img: 'images/baxter.jpg',
+    furcolor: 'mixed',
+    coat: 'wiry',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: ['a bow']
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Ruby',
+    img: 'images/ruby.jpg',
+    furcolor: 'mixed',
+    coat: 'medium long',
+    ears: 'floppy',
+    nose: ['dark', 'short'],
+    clothing: [],
+    accessories: ['a collar']
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    name: 'Poppy',
+    img: 'images/poppy.jpg',
+    furcolor: 'mixed',
+    coat: 'short',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Ace',
+    img: 'images/ace.jpg',
+    furcolor: 'brown',
+    coat: 'short',
+    ears: 'floppy',
+    nose: ['light', 'long'],
+    clothing: [],
+    accessories: ['a collar']
   },
   {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Penny',
+    img: 'images/penny.jpg',
+    furcolor: 'mixed',
+    coat: 'medium long',
+    ears: 'floppy',
+    nose: ['dark', 'short'],
+    clothing: [],
+    accessories: ['a bow']
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
+    name: 'Toby',
+    img: 'images/toby.jpg',
+    furcolor: 'mixed',
+    coat: 'short',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
   },
   {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
+    name: 'Harley',
+    img: 'images/harley.jpg',
+    furcolor: 'mixed',
+    coat: 'short',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Max',
+    img: 'images/max.jpg',
+    furcolor: 'golden',
+    coat: 'short',
+    ears: 'upright',
+    nose: ['light', 'short'],
+    clothing: [],
+    accessories: ['a collar']
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Hazel',
+    img: 'images/hazel.jpg',
+    furcolor: 'mixed',
+    coat: 'short',
+    ears: 'floppy',
+    nose: ['dark', 'short'],
+    clothing: [],
+    accessories: ['a collar']
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
+    name: 'Luna',
+    img: 'images/luna.jpg',
+    furcolor: 'mixed',
+    coat: 'medium long',
+    ears: 'upright',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: ['glasses']
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    name: 'Duke',
+    img: 'images/duke.jpg',
+    furcolor: 'brown',
+    coat: 'short',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: ['a collar']
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Cody',
+    img: 'images/cody.jpg',
+    furcolor: 'mixed',
+    coat: 'medium long',
+    ears: 'upright',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: ['glasses']
   },
   {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Biscuit',
+    img: 'images/biscuit.jpg',
+    furcolor: 'white',
+    coat: 'curly',
+    ears: 'floppy',
+    nose: ['dark', 'short'],
+    clothing: [],
+    accessories: []
   },
   {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
+    name: 'Teddy',
+    img: 'images/teddy.jpg',
+    furcolor: 'mixed',
+    coat: 'medium long',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
   },
   {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: 'Mocha',
+    img: 'images/mocha.jpg',
+    furcolor: 'brown',
+    coat: 'curly',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
   },
   {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
+    name: 'Inez',
+    img: 'images/inez.jpg',
+    furcolor: 'mixed',
+    coat: 'medium long',
+    ears: 'floppy',
+    nose: ['dark', 'short'],
+    clothing: ['clothes'],
+    accessories: []
   },
   {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Rocco',
+    img: 'images/rocco.jpg',
+    furcolor: 'brown',
+    coat: 'short',
+    ears: 'upright',
+    nose: ['light', 'long'],
+    clothing: [],
+    accessories: ['a collar', 'glasses']
+  },
+  {
+    name: 'Roxy',
+    img: 'images/roxy.jpg',
+    furcolor: 'mixed',
+    coat: 'short',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: ['a collar']
+  },
+  {
+    name: 'Murphy',
+    img: 'images/murphy.jpg',
+    furcolor: 'golden',
+    coat: 'medium long',
+    ears: 'floppy',
+    nose: ['light', 'long'],
+    clothing: [],
+    accessories: []
+  },
+  {
+    name: 'Dobbie',
+    img: 'images/dobbie.jpg',
+    furcolor: 'mixed',
+    coat: 'short',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
+  },
+  {
+    name: 'Bailey',
+    img: 'images/bailey.jpg',
+    furcolor: 'golden',
+    coat: 'medium long',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
+  },
+  {
+    name: 'Jasper',
+    img: 'images/jasper.jpg',
+    furcolor: 'white',
+    coat: 'medium long',
+    ears: 'floppy',
+    nose: ['light', 'long'],
+    clothing: ['hat'],
+    accessories: []
+  },
+  {
+    name: 'Spot',
+    img: 'images/spot.jpg',
+    furcolor: 'mixed',
+    coat: 'short',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
+  },
+  {
+    name: 'Cooper',
+    img: 'images/cooper.jpg',
+    furcolor: 'mixed',
+    coat: 'medium long',
+    ears: 'upright',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
+  },
+  {
+    name: 'Millie',
+    img: 'images/millie.jpg',
+    furcolor: 'brown',
+    coat: 'wiry',
+    ears: 'upright',
+    nose: ['dark', 'short'],
+    clothing: ['clothes', 'hat'],
+    accessories: []
+  },
+  {
+    name: 'Finn',
+    img: 'images/finn.jpg',
+    furcolor: 'brown',
+    coat: 'short',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: ['a collar']
+  },
+  {
+    name: 'Sam',
+    img: 'images/sam.jpg',
+    furcolor: 'mixed',
+    coat: 'medium long',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: ['a bow']
+  },
+  {
+    name: 'Loki',
+    img: 'images/loki.jpg',
+    furcolor: 'mixed',
+    coat: 'wiry',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
+  },
+  {
+    name: 'Ollie',
+    img: 'images/ollie.jpg',
+    furcolor: 'golden',
+    coat: 'medium long',
+    ears: 'floppy',
+    nose: ['dark', 'long'],
+    clothing: [],
+    accessories: []
   },
 ]
 
@@ -208,6 +365,8 @@ const CHARACTERS = [
 let secret
 let currentQuestion
 let charactersInPlay
+let count = 0
+const soundCheer = new Audio('assets/cheer.mp3')
 
 // Draw the game board
 const generateBoard = () => {
@@ -235,9 +394,12 @@ const setSecret = () => {
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
+  // Resets the counter to zero after the game is restarted
+  count = 0;
   // What else should happen when we start the game?
   generateBoard()
   setSecret()
+  counter()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -269,11 +431,10 @@ const checkQuestion = () => {
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
-  if (category === 'hair' || category === 'eyes') {
-    //keep = category === 'hair' ? (secret.hair === value) : (secret.eyes === value)
+  if (category === 'furcolor' || category === 'coat' || category === 'ears') {
     attribute = category
     keep = secret[category] === value
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'nose' || category === 'clothing' || category === 'accessories') {
     keep = secret[category].includes(value)
   }
   //console.log(keep)
@@ -284,55 +445,78 @@ const checkQuestion = () => {
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  if (category === 'hair') {
+  if (category === 'furcolor') {
     if (keep) {
       alert(
-        `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
+        `Yes, the doggie has ${value} fur color! Keep all doggies that have ${value} fur color!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       alert(
-        `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`
+        `No, the doggie doesn't have ${value} fur color! Remove all doggies that have ${value} fur color!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
-  } else if (category === 'eyes') {
-    //} else {
+  } else if (category === 'coat') {
     if (keep) {
       alert(
-        `Yes, the person has ${value} eyes! Keep all people that has ${value} eyes`
+        `Yes, the doggie has a ${value} coat! Keep all doggies that have a ${value} coat!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
     } else {
       alert(
-        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
+        `No, the doggie doesn't have a ${value} coat! Remove all doggies that have a ${value} coat!`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+    }
+  } else if (category === 'ears') {
+    if (keep) {
+      alert(
+        `Yes, the doggie has ${value} ears! Keep all doggies that have ${value} ears!`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    } else {
+      alert(
+        `No, the doggie doesn't have ${value} ears! Remove all doggies that have ${value} ears!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
     }
   }
 
-  if (category === 'accessories') {
+  if (category === 'nose') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
+        `Yes, the doggie has a ${value} nose! Keep all doggies that have a ${value} nose!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
+        `No, the doggie doesn't have a ${value} nose! Remove all doggies that have a ${value} nose!`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
-  } else if (category === 'other') {
-    //} else {
+  } else if (category === 'clothing') {
     if (keep) {
       alert(
-        `Yes, the person is a ${value}! Keep all people that is a ${value}`
+        `Yes, the doggie wears ${value}! Keep all doggies that wears ${value}!`
       )
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        `No, the person isn't a ${value}! Remove all people who's a ${value}`
+        `No, the doggie doesn't wear ${value}! Remove all doggies that wears ${value}!`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    }
+  } else if (category === 'accessories') {
+    //} else {
+    if (keep) {
+      alert(
+        `Yes, the doggie has ${value}! Keep all doggies that have ${value}!`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    } else {
+      alert(
+        `No, the doggie doesn't have ${value}! Remove all doggies that have ${value}!`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
@@ -364,7 +548,6 @@ const guess = (personToConfirm) => {
   const confirmed = confirm(
     `Moment of truth! Do you really want to guess on ${personToConfirm}?`
   )
-
   if (confirmed) {
     checkMyGuess(personToConfirm)
   } else {
@@ -384,11 +567,23 @@ const checkMyGuess = (personToCheck) => {
     winOrLose.style.display = "flex"
     board.style.display = "none"
     winOrLoseText.textContent = `Congratulations! 🥳 You guessed right, it was ${secret.name}! 👏`
+    soundCheer.play()
   } else if (personToCheck !== secret.name) {
     winOrLose.style.display = "flex"
     board.style.display = "none"
     winOrLoseText.textContent = `Oh no! 😣 You guessed wrong, it was ${secret.name}! Better luck next time! 🥴`
   }
+}
+
+const counter = () => {
+  let counterSection = document.querySelector('.counter')
+
+  counterSection.innerHTML =
+    `<p>Number of guesses made: 
+    <span style="font-weight: bolder; color: #b0a6ff;">${count}</span>
+    </p>`
+
+  count++
 }
 
 //If the player wants to play again - the win or lose section needs to hide, the board should be visible again and the start function should be invoked
@@ -405,4 +600,5 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 filterButton.addEventListener('click', checkQuestion)
+filterButton.addEventListener('click', counter)
 playAgainButton.addEventListener('click', playAgain)

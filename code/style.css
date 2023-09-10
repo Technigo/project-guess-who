@@ -16,14 +16,14 @@ h1 {
   font-weight: 700;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: var(--primary);
 }
 
 .question-section {
   width: 30%;
   min-height: 100vh;
   /*background-color: var(--secondary);*/
-  background-image: url("./images/pexels-brett-jordan-11123244kopia.jpg");
+  background-image: url("./images/frenchie.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
@@ -45,6 +45,7 @@ select {
 
 .guess-who-icon {
   width: 126px;
+  align-self: flex-end;
 }
 
 .board-wrapper {
@@ -60,10 +61,16 @@ select {
 
 .game-board {
   width: 90%;
-  max-width: 882px;
+  max-width: 1025px;
+  margin-bottom: 60px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+}
+
+.counter {
+  margin: 20px 0;
+  color: var(--secondary);
 }
 
 /****** CARD ******/
@@ -112,6 +119,12 @@ select {
   display: flex;
 }
 
+.card img {
+  width: 95%;
+  /*height: 80%;*/
+  object-fit: contain;
+}
+
 .guess span {
   font-size: 16px;
   line-height: 18px;
@@ -138,7 +151,7 @@ button {
 .outlined-button {
   background-color: transparent;
   color: var(--primary);
-  align-self: flex-end;
+  align-self: flex-start;
 }
 
 .filled-button,
@@ -194,7 +207,7 @@ footer {
   background-color: #155663;
   width: 100%;
   text-align: center;
-  padding: 10px;
+  /*padding: 7px;*/
   position: fixed;
   bottom: 0;
 }
@@ -218,9 +231,11 @@ a:visited {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

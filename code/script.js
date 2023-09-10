@@ -8,6 +8,7 @@ const winOrLosetxt = document.getElementById('winOrLoseText')
 const findOutbtn = document.getElementById('filter')
 const playAgain = document.getElementById('playAgain')
 
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -231,7 +232,7 @@ const generateBoard = () => {
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
-  console.log("secret")
+  console.log('secret')
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
   currentQuestion = {};
 
@@ -239,21 +240,19 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  console.log("start game");
+  console.log('start game');
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-
+  winOrLose.style.display = 'none';
   setSecret();
   generateBoard();
-
 };
 
 //This functions with a eventlistner
 const restart = () => {
-  console.log(restart);
+  console.log('restart');
   charactersInPlay = CHARACTERS;
-  setSecretPerson();
+  setSecret();
   currentQuestion = {};
   generateBoard();
 };
@@ -351,19 +350,7 @@ const filterCharacters = (keep) => {
         `No, the person do not have ${value} hair! Remove all people with ${value} hair`);
     }
   }
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
-  /* 
-    for hair and eyes :
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
-      or
-      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
- 
-    for accessories and other
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-      or
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
-  */
+
 
   // Invoke a function to redraw the board with the remaining people.
   generateBoard();
@@ -371,52 +358,41 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  console.log(guess);
-  const isCorrectGuess = personToConfirm === secret.name;
-  if (confirm(`Is your guess on ${personToConfirm}?`)) {
+  console.log('guess')
+
+  const confirmed = confirm(
+    `Are you sure it's ${personToConfirm}?`
+  );
+
+  if (confirmed) {
+    console.log('guess');
     checkMyGuess(personToConfirm);
   }
 };
 
-const winOrlose = ['Congrats! You are kicking it', 'Please try again! You are so so close.'];
 
-//person.name, I think I have to put in here 
-
-// store the interaction from the player in a variable.
-// remember the confirm() ?
-// If the player wants to guess, invoke the checkMyGuess function.
-
-
-// If you confirm, this function is invoked
-// 1. Check if the personToCheck is the same as the secret person's name
-// 2. Set a Message to show in the win or lose section accordingly
-// 3. Show the win or lose section
-// 4. Hide the game board
 const checkMyGuess = (personToCheck) => {
-
-  console.log(checkMyGuess);
+  console.log('checkMyGuess');
   if (personToCheck === secret.name) {
-    winOrLosetxt.textContent = `Congratulations! You are amazing! The right answer is ${personToCheck}`
-    winOrLose.style.display = 'block';
+    winOrLose.style.display = 'block',
+      winOrLosetxt.textContent = `Congratulations! You are amazing! The right answer is ${personToCheck}`;
+    board.style.display = 'none';
+
   } else {
-    winOrLosetxt.textContent = `Ooops! That was the wrong answer. The right answer is ${personToCheck}.`
-    winOrLose.style.display = 'block';
+    winOrLose.style.display = 'block',
+      winOrLosetxt.textContent = `Ooops! That was the wrong answer. The right answer is ${secret.name}.`;
+    board.style.display = 'none'
   }
+}
 
-
-  //This hides the game
-  board.style.display = 'none';
-};
-
+start();
 
 // Invokes the start function when website is loaded
-console.log(start);
-start()
+
 
 // All the event listeners
 restartButton.addEventListener('click', () => {
   start();
-  console.log(start);
 });
 
 //This is the eventL for the selectQ function

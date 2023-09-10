@@ -9,6 +9,19 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <audio id="soundFail" src="./sounds/fail-144746.mp3"></audio>
+    <audio
+      id="soundCorrect"
+      src="./sounds/announcement-sound-4-21464.mp3"
+    ></audio>
+    <audio
+      id="soundLose"
+      src="./sounds/fail-jingle-stereo-mix-88784.mp3"
+    ></audio>
+    <audio
+      id="soundWin"
+      src="./sounds/success-fanfare-trumpets-6185.mp3"
+    ></audio>
   </head>
   <body>
     <aside class="question-section">
@@ -58,21 +71,25 @@
 
       <button id="filter" class="filled-button">FIND OUT</button>
       <div class="scoreboard">
-        <div id="totalGuesses">
-          <h2>Guesses</h2>
-          <p id="guess">0</p>
+        <div class="time-and-guess">
+          <div id="totalGuesses">
+            <h2>Guesses</h2>
+            <p id="guess">0</p>
+          </div>
+          <div id="elapsedTime">
+            <h2>Time elapsed:</h2>
+            <p id="timer">0</p>
+          </div>
         </div>
-        <div id="elapsedTime">
-          <h2>Time elapsed:</h2>
-          <p id="timer">0</p>
-        </div>
-        <div id="totalWins">
-          <h2>Wins</h2>
-          <p id="win">0</p>
-        </div>
-        <div id="totalLosses">
-          <h2>Losses</h2>
-          <p id="lose">0</p>
+        <div class="win-or-lose-stats">
+          <div id="totalWins">
+            <h2>Wins</h2>
+            <p id="win">0</p>
+          </div>
+          <div id="totalLosses">
+            <h2>Losses</h2>
+            <p id="lose">0</p>
+          </div>
         </div>
       </div>
     </aside>

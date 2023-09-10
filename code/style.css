@@ -156,7 +156,7 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  height: 100%;
 }
 
 .win-or-lose {
@@ -166,6 +166,7 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  height: 100%;
 }
 
 .win-or-lose.guess-who-icon {
@@ -179,9 +180,9 @@ button {
 
 #nicely-done {
   width: 400px;
-  height: auto;
   margin-bottom: 3rem;
   display: none;
+  height: auto;
 }
 
 /****** Scoreboard ******/
@@ -190,20 +191,7 @@ button {
   width: 100%;
   margin-top: 4rem;
   display: flex;
-  flex-direction: column;
-}
-
-#totalGuesses,
-#totalWins,
-#totalLosses {
-  align-self: center;
-}
-
-#guess,
-#win,
-#lose {
-  display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 @media (max-width: 768px) {

@@ -19,6 +19,8 @@ const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('play-again')
 //targets user's name:
 const displayName = document.getElementById('displayName')
+//targets number of guesses:
+const numberHints = document.getElementById('number-hints')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -245,6 +247,7 @@ let secret; //randomly selected person card to be guessed by user
 let currentQuestion; //stores user's selected option and corresponding category
 let displayedCharacters; // characters displayed on the board
 let playerName; //possibility to store and display user's name
+let hintsUsed; //stores number of hints used
 
 
 //------------------ Stretch goals ----------------------//
@@ -301,6 +304,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard();
   setSecretCard();
+  hintsUsed = 0;
   setTimeout(addUserName, 1000);
 };
 
@@ -349,6 +353,11 @@ const checkQuestion = () => {
       keepingCards = false // when the secret's value doesn't match the selected one
     }
   }
+  //Displaying number of hints used
+  hintsUsed++;
+  numberHints.innerText = `
+    Number of hints: ${hintsUsed}
+    `
   // Invoking filterCharacters
   filterCharacters(keepingCards);
 
@@ -365,7 +374,7 @@ const filterCharacters = (keepingCards) => {
   //if the category selected is accessories:
   if (category === 'accessories') {
     //the secret's value matches the player's- message to keep the cards
-    if (keepingsCards) {
+    if (keepingCards) {
       alert(
         `Yes, the person wears ${value}! Keep all people that wear ${value}`
       );
@@ -442,13 +451,13 @@ const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
   if (personToCheck === secret.name) {
     winOrLoseText.innerHTML = `
-    Yipee!  Congratulations! 🎊 You have won!
+    Yipee!  Congratulations ${playerName}! 🎊 You have won after ${hintsUsed} hints!
     `
     const winSound = new Audio('./assets/win.wav');
     winSound.play();
   } else {
     winOrLoseText.innerHTML = `
-    Nopes!  Wrong guess! The secret card was ${secret.name}. 😒 Game Over!
+    Nopes!  Wrong guess ${playerName}! The secret card was ${secret.name}. 😒 Game Over!
       `
     const loseSound = new Audio('./assets/lose.wav')
     loseSound.play();
@@ -470,6 +479,7 @@ const restartGame = () => {
   asideQuestionSection.style.display = "flex";
   boardWrapper.style.display = "flex";
   displayName.innerText = '';// clears name display if <restart> function is triggered and 'cancel' button on <playerName> prompt is clicked on <start>- no old name displayed on <start>
+  numberHints.innerText = '';// clears display of number of hints used with <restart> function
   start();
 }
 

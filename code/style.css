@@ -44,7 +44,8 @@ select {
   width: 126px;
 }
 
-.display-name {
+.display-name,
+.number-hints {
   font-size: 22px;
   font-weight: 500;
   color: white;

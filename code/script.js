@@ -362,6 +362,9 @@ start()
 
 
 // Counter for number of guesses
+/* Explanation
+ createElement and AppendChild are used when you want to dynamically create and insert new elements into the DOM or when you need to update specific parts of an element's content without replacing its entire content. += innerHTML is used when you want to update the content of an existing HTML element, replacing its content with new HTML.
+*/
 let counter = 0;
 let counterDiv = document.createElement("div");
 counterDiv.id = "counterDiv";

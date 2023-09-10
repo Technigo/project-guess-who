@@ -13,46 +13,47 @@
   </head>
   <body>
     <aside class="question-section" id="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
-
       <img
         class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
+        src="images/guess_who_bubble.png"
+        alt="Who's that Pokémon?"
       />
 
-      <h1>Who's that Pokémon?</h1>
+      <h1>Does the Pokémon have</h1>
       <select title="questions" id="questions">
         <option value="" disabled selected>--Select one option--</option>
         <optgroup label="color">
-          <option value="yellow">yellow</option>
-          <option value="red">red</option>
-          <option value="blue">blue</option>
-          <option value="green">green</option>
-          <option value="pink">pink</option>
+          <option value="yellow">yellow color</option>
+          <option value="red">red color</option>
+          <option value="blue">blue color</option>
+          <option value="green">green color</option>
+          <option value="pink">pink color</option>
         </optgroup>
         <optgroup label="type">
-          <option value="electric">electric</option>
-          <option value="fire">fire</option>
-          <option value="bug">bug</option>
-          <option value="poison">poison</option>
-          <option value="normal">normal</option>
-          <option value="fairy">fairy</option>
-          <option value="psychic">psychic</option>
-          <option value="water">water</option>
-          <option value="ice">ice</option>
-          <option value="grass">grass</option>
-          <option value="flying">flying</option>
+          <option value="electric">an electric type</option>
+          <option value="fire">a fire type</option>
+          <option value="bug">a bug type</option>
+          <option value="poison">a poison type</option>
+          <option value="normal">a normal type</option>
+          <option value="fairy">a fairy type</option>
+          <option value="psychic">a psychic type</option>
+          <option value="water">a water type</option>
+          <option value="ice">an ice type</option>
+          <option value="grass">a grass type</option>
+          <option value="flying">a flying type</option>
         </optgroup>
         <optgroup label="other">
-          <option value="flame">flame</option>
-          <option value="plant">plant</option>
-          <option value="fin">fin</option>
-          <option value="stinger">stinger</option>
-          <option value="tail">tail</option>
+          <option value="flame">a flame</option>
+          <option value="plant">a plant</option>
+          <option value="fin">a fin</option>
+          <option value="stinger">a stinger</option>
+          <option value="tail">a tail</option>
         </optgroup>
       </select>
-      <button id="filter" class="filled-button">FIND OUT</button>
+      <div class="buttonWrapper">
+        <button id="filter" class="filled-button">FIND OUT</button>
+        <button type="button" id="restart" class="outlined-button">RESTART</button>
+      </div>
     </aside>
 
     <section class="board-wrapper">
@@ -61,11 +62,6 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <!-- <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        /> -->
         <h1 id="winOrLoseText"></h1>
         <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>

@@ -436,7 +436,7 @@ start();
 
 // All the event listeners
 restartButton.addEventListener('click', start);
-questions.addEventListener('change', selectQuestion)
+// questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion);
 playAgainButton.addEventListener('click', restartGame)
 

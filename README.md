@@ -26,7 +26,9 @@ https://stackoverflow.com/questions/39149846/why-am-i-seeing-a-404-not-found-err
 
 - when selecting "brown hair" found at option [0], no change event is detected by the eventlistener -skipping the whole <selectQuestion> function, not passing the values <category> and <value> in <checkQuestion> (undefined) -<findOutbutton> does not react.
 Also, an action on the board game predetermined by the option selected in the menu is activated only when the <findOutbutton> is clicked, and not the <change> event itself, thus making the eventlisterner <change> irrelevant if the <selectQuestion> is invoked directly in next <checkQuestion> function triggered by <findOutbutton> + erasing <questions.addEventListener('change', selectQuestion)>
-- 2nd way to bypass the bug is to invoke the selectQuestion function using a second pathway by including it in the start function (please refer to <script src="script1.js"></script>)
+- 2nd way to bypass the bug is to invoke the selectQuestion function using a second pathway by including it in the start function.
+
+- when adding possibility to display a player's name on the <aside>, had to delay the prompt using <setTimeout(addUserName, 1000)> when restarting in start as the prompt appeared immediately after 'click' event on <playAgainButton> before the <start> function is triggered (why?)
 
 ## View it live
 

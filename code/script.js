@@ -210,6 +210,7 @@ let currentQuestion;
 let charactersInPlay;
 
 
+
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
@@ -228,7 +229,7 @@ const generateBoard = () => {
 }
 
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// This function randomly selects a person from the characters array
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)];
   secretPersonName = secret.name;
@@ -241,7 +242,13 @@ const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
 
-   
+  // Reset the win/lose section and show the game board
+
+  boardElement.style.display = 'flex';
+  winOrLoseElement.style.display = 'none';
+
+  // Reset the secret person for the new game
+  setSecret();
 
   // What else should happen when we start the game?
   generateBoard();
@@ -253,7 +260,7 @@ const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label;
   const value = questions.value;
   // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
+  
   currentQuestion = {
     category: category,
     value: value,
@@ -357,7 +364,7 @@ const checkMyGuess = (personToCheck) => {
   }
 
  // Reset the secret person for the new game
- winOrLoseElement.style.display = 'block';
+ winOrLoseElement.style.display = 'flex';
  boardElement.style.display = 'none'
   // 1. Check if the personToCheck is the same as the secret person's name
   // 2. Set a Message to show in the win or lose section accordingly

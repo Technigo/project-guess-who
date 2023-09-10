@@ -54,7 +54,7 @@ select {
 .game-board {
   width: 90%;
   max-width: 882px;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   align-content: center;
 }
@@ -131,6 +131,7 @@ button {
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
+  margin: 10px;
 }
 
 .filled-button,
@@ -147,7 +148,6 @@ button {
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
-  display: none;
   align-items: center;
   justify-content: center;
   background: var(--secondary);

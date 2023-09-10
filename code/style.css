@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #ff0000;
+  --secondary: #66ccff;
 }
 
 body {
@@ -41,7 +41,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 186px;
 }
 
 .board-wrapper {
@@ -85,7 +85,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #ff0000;
   text-align: center;
   height: inherit;
 }
@@ -195,7 +195,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 151px;
   }
 
   .board-wrapper {

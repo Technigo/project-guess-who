@@ -4,7 +4,7 @@ const board = document.getElementById('board')  //board is the id of the div in 
 
 const questions = document.getElementById('questions') //questions is the id of the select element in html file
 
-const restartButton = document.getElementById('restart'); //restart is the id of the button element in html file
+const restartButton = document.getElementById('restart') //restart is the id of the button element in html file
 
 const resultScreen = document.getElementById('winOrLoseSection') //winOrLoseSection is the id of the section element in html file
 
@@ -269,6 +269,8 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
+  const { category, value } = currentQuestion // MISSING PIECE THAT FINALLY MADE THE FILTER WORK..currentQuestion is an object with two properties: category and value. Declaring these two variables and assigning them to the properties of currentQuestion object makes it possible to use them in the if statement below.
+
   // See if we should keep or remove people based on that
   // Then invoke filterCharacters
   if (category === 'hair' || category === 'eyes') {

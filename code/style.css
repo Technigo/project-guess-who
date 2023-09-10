@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #e6ae5a;
+  --secondary: #5a9ca4;
 }
 
 body {
@@ -73,7 +73,14 @@ select {
   justify-content: space-between;
 }
 
+.pokemonImage {
+  height: 130px;
+  width: 130px;
+  object-fit: contain;
+}
+
 .card p {
+  color: #297383;
   text-align: center;
   margin-bottom: 0;
   font-size: 16px;
@@ -143,6 +150,13 @@ button {
   background-color: white;
   border-color: white;
   color: var(--primary);
+}
+
+#counterDiv {
+  font-size: 18px;
+  margin: 24px 0;
+  width: 100%;
+  color: white;
 }
 
 /****** WIN OR LOSE SECTION ******/
@@ -222,7 +236,15 @@ button {
   .card .guess span {
     display: none;
   }
-
+  .pokemonImage {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;

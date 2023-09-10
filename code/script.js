@@ -11,201 +11,176 @@ const playAgainBtn = document.getElementById("playAgain")
 
 
 // Array with all the characters, as objects
-const CHARACTERS = [
+const POKEMON = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    name: 'Pikachu',
+    img: 'images/Pikachu.png',
+    color: 'yellow',
+    type: ['electric'],
+    other: ['tail']
+  },
+  {
+    name: 'Ninetales',
+    img: 'images/Ninetales.png',
+    color: 'yellow',
+    type: ['fire'],
+    other: ['tail']
+  },
+  {
+    name: 'Beedrill',
+    img: 'images/Beedrill.png',
+    color: 'yellow',
+    type: ['bug', 'poison'],
+    other: ['stinger']
+  },
+  {
+    name: 'Meowth',
+    img: 'images/Meowth.png',
+    color: 'yellow',
+    type: ['normal'],
+    other: ['tail']
+  },
+  {
+    name: 'Ponyta',
+    img: 'images/Ponyta.png',
+    color: 'yellow',
+    type: ['fire'],
+    other: ['tail', 'flame']
+  },
+  {
+    name: 'Jigglypuff',
+    img: 'images/Jigglypuff.png',
+    color: 'pink',
+    type: ['normal', 'fairy'],
     other: []
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
+    name: 'Mew',
+    img: 'images/Mew.png',
+    color: 'pink',
+    type: ['psychic'],
+    other: ['tail']
+  },
+  {
+    name: 'Clefairy',
+    img: 'images/Clefairy.png',
+    color: 'pink',
+    type: ['fairy'],
+    other: ['tail']
+  },
+  {
+    name: 'Chansey',
+    img: 'images/Chansey.png',
+    color: 'pink',
+    type: ['normal'],
+    other: ['tail']
+  },
+  {
+    name: 'Squirtle',
+    img: 'images/Squirtle.png',
+    color: 'blue',
+    type: ['water'],
+    other: ['tail']
+  },
+  {
+    name: 'Gloom',
+    img: 'images/Gloom.png',
+    color: 'blue',
+    type: ['grass', 'poison'],
+    other: ['plant']
+  },
+  {
+    name: 'Vaporeon',
+    img: 'images/Vaporeon.png',
+    color: 'blue',
+    type: ['water'],
+    other: ['tail', 'fin']
+  },
+  {
+    name: 'Seadra',
+    img: 'images/Seadra.png',
+    color: 'blue',
+    type: ['water'],
+    other: ['tail', 'fin']
+  },
+  {
+    name: 'Lapras',
+    img: 'images/Lapras.png',
+    color: 'blue',
+    type: ['water', 'ice'],
+    other: ['tail', 'fin']
+  },
+  {
+    name: 'Poliwhirl',
+    img: 'images/Poliwhirl.png',
+    color: 'blue',
+    type: ['water'],
     other: []
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    name: 'Charmander',
+    img: 'images/Charmander.png',
+    color: 'red',
+    type: ['fire'],
+    other: ['tail', 'flame']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
+    name: 'Vileplume',
+    img: 'images/Vileplume.png',
+    color: 'blue',
+    type: ['grass', 'poison'],
+    other: ['plant']
+  },
+  {
+    name: 'Electabuzz',
+    img: 'images/Electabuzz.png',
+    color: 'yellow',
+    type: ['electric'],
+    other: ['tail'],
+    },
+  {
+    name: 'Flareon',
+    img: 'images/Flareon.png',
+    color: 'red',
+    type: ['fire'],
+    other: ['tail']
+  },
+  {
+    name: 'Krabby',
+    img: 'images/Krabby.png',
+    color: 'red',
+    type: ['water'],
     other: []
   },
   {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Seaking',
+    img: 'images/Seaking.png',
+    color: 'red',
+    type: ['water'],
+    other: ['fin']
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Bulbasaur',
+    img: 'images/Bulbasaur.png',
+    color: 'green',
+    type: ['grass', 'poison'],
+    other: ['plant']
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Caterpie',
+    img: 'images/Caterpie.png',
+    color: 'green',
+    type: ['bug'],
+    other: ['tail']
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Scyther',
+    img: 'images/Scyther.png',
+    color: 'green',
+    type: ['bug', 'flying'],
+    other: ['tail']
   },
-  {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
-  },
-  {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-]
+];
 
 // Global variables
 let secretCharacter
@@ -215,14 +190,14 @@ let charactersInPlay
 // Draw the game board
 const generateBoard = () => {
   board.innerHTML = ''
-  charactersInPlay.forEach((person) => {
+  charactersInPlay.forEach((pokemon) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
-        <img src=${person.img} alt=${person.name}>
+        <p>${pokemon.name}</p>
+        <img class="pokemonImage" src=${pokemon.img} alt=${pokemon.name}>
         <div class="guess">
-          <span>Guess on ${person.name}?</span>
-          <button id="findOut" class="filled-button small"onclick="guess('${person.name}')">Guess</button>
+          <span>Guess on ${pokemon.name}?</span>
+          <button id="findOut" class="filled-button small"onclick="guess('${pokemon.name}')">Guess</button>
         </div>
       </div>
     `
@@ -243,7 +218,7 @@ const setSecretCharacter = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
+  charactersInPlay = POKEMON
   // Invoke/use the function generateBoard to load all the characters on the board.
   generateBoard(charactersInPlay);
 
@@ -296,11 +271,11 @@ const checkQuestion = () => {
   We're accessing a CHARACTER object (via the variable secretCharacter) and look through its attributes until we find one that matches the category in the if statement. Once found we take the value (for example "yellow hair") and compare that to the player's choice to see if the match.*/
 
   let keep = false; //Chose "false" to make the code below easier for me to read (and avoid !)
-  if (category === 'hair' || category === 'eyes') {
+  if (category === 'color') {
     if (value === secretCharacter[category]) {
       keep = true;
     }
-  } else if (category === 'accessories' || category === 'other') {
+  } else if (category === 'type'|| category === 'other') {
     if (secretCharacter[category].includes(value)) { // .includes() since there are multiple values
       keep = true;
     }
@@ -315,80 +290,67 @@ const filterCharacters = (keepParam) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
   console.log(charactersInPlay);
-  if (category === 'hair') {
+  if (category === 'color') {
     // since keep parameter is a boolean there's no need to do an equation.
     if (keepParam) {
       alert(
-        `Yes, the person has ${value} hair! Keep all people that have ${value} hair.`
+        `Yes, the pokemon is ${value}! Keep all pokemon that are ${value}.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
+      charactersInPlay = charactersInPlay.filter((pokemon) => pokemon[category] === value)
     } else {
       alert(
-        `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair.`
+        `No, the pokemon isn't ${value}! Remove all pokemon that are ${value}.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
+      charactersInPlay = charactersInPlay.filter((pokemon) => pokemon[category] !== value)
     }
-  } else if (category === 'eyes') {
+  } else if (category === 'type') {
     if (keepParam) {
       alert(
-        `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes.`
+        `Yes, the pokemon has the ${value} type! Keep all pokemon that have the ${value} type.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => { person[category] === value })
+      charactersInPlay = charactersInPlay.filter((pokemon) => pokemon[category].includes(value))
     } else {
       alert(
-        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes.`
+        `No, the pokemon doesn't have the ${value} type! Remove all pokemon that have the ${value} type.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
-    }
-  } else if (category === 'accessories') {
-    if (keepParam) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
-    } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      charactersInPlay = charactersInPlay.filter((pokemon) => !pokemon[category].includes(value))
     }
   } else {
     if (keepParam) {
       alert(
-        `Yes, the person has a ${value}! Keep all people that have a ${value}.`
+        `Yes, the pokemon has a ${value}! Keep all pokemon that have a ${value}.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      charactersInPlay = charactersInPlay.filter((pokemon) => pokemon[category].includes(value))
     } else {
       alert(
-        `No, the person doesn't have a ${value}! Remove all people that have a ${value}.`
+        `No, the pokemon doesn't have a ${value}! Remove all pokemon that have a ${value}.`
       )
-      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      charactersInPlay = charactersInPlay.filter((pokemon) => !pokemon[category].includes(value))
     }
   }
-
   // Invoke a function to redraw the board with the remaining people.
   generateBoard();
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
-const guess = (personToConfirm) => {
+const guess = (pokemonToConfirm) => {
   // store the interaction from the player in a variable.
-  console.log("guess= ", personToConfirm);
+  console.log("guess= ", pokemonToConfirm);
   // remember the confirm() ?
-  let result = confirm(`Are you sure you want to pick ${personToConfirm}?`);
+  let result = confirm(`Are you sure you want to pick ${pokemonToConfirm}?`);
   // If the player wants to guess, invoke the checkMyGuess function.
   if (result) {
-    checkMyGuess(personToConfirm);
+    checkMyGuess(pokemonToConfirm);
   }
 }
 
 // If you confirm, this function is invoked
-const checkMyGuess = (personToCheck) => {
+const checkMyGuess = (pokemonToCheck) => {
   board.style.display = "none";
   winOrLose.style.display = "flex";
 
-  if (personToCheck === secretCharacter.name) {
-    winOrLoseText.innerHTML = `Yay! ${personToCheck} was correct! Congratz!`;
+  if (pokemonToCheck === secretCharacter.name) {
+    winOrLoseText.innerHTML = `Yay! ${pokemonToCheck} was correct! Congratz!`;
   } else {
     winOrLoseText.innerHTML = `Oh, no! ${secretCharacter.name} was the right answer! Better luck next time!`;
   }

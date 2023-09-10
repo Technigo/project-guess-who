@@ -14,6 +14,40 @@ const playAgainButton = document.getElementById('playAgain') //playAgain is the 
 
 const findOutButton = document.getElementById('filter') //filter is the id of the button element in html file
 
+//declaring a clock counter for the website, it starts at 2 minutes and counts down to 0
+// In minute format, sarting at 02:00
+let time = 120
+
+
+
+
+// Function to format the time as "MM:SS"
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+}
+/* This code will display the initial time as "02:00" and then count down in the "MM:SS" format until it reaches "00:00". When it reaches "00:00", you can add your logic to handle the end of the timer. 
+*/
+
+// When timer starts, display the starting time
+
+document.getElementById("timer").innerHTML = formatTime(time)
+let timer = setInterval(function() {
+  time--; // decrease time by 1
+  if (time <= 0) {
+    clearInterval(timer)
+    alert("You lost! The correct person was " + secret.name + ".");
+    winOrLose.style.display = 'flex';
+    board.style.display = 'none';
+    winOrLoseText.innerHTML = `You lost! The correct person was ${secret.name}.`
+  }
+  document.getElementById("timer").innerHTML = formatTime(time);
+ // update the element where the timer will be displayed
+}, 1000)//1000ms = 1s
+
+
+
 
 // Array with all the characters, as objects
 const CHARACTERS = [ 
@@ -251,6 +285,7 @@ const start = () => {
   //Game board should be rendered on the screen
   generateBoard();
   setSecret();
+  //startTimer(); // can't get this to work together with findout dropdown filter 
 }
   
 // setting the currentQuestion object when you select something in the dropdown
@@ -396,6 +431,7 @@ questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
 
 playAgainButton.addEventListener('click', start)
+
 
 
 

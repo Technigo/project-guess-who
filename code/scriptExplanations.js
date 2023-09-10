@@ -8,7 +8,6 @@ const filterBtn = document.getElementById('filter')
 const winOrLose = document.getElementById("winOrLose")
 const winOrLoseText = document.getElementById("winOrLoseText")
 const playAgainBtn = document.getElementById("playAgain")
-const timerAndCounter = document.getElementById("timerAndCounterWrapper")
 
 
 // Array with all the characters, as objects

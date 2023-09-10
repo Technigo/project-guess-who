@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
@@ -37,11 +37,11 @@ select {
   font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;
-  margin: 24px 0;
+  margin-bottom: 48px;
 }
 
 .guess-who-icon {
-  width: 200px;
+  width: 300px;
 }
 
 .board-wrapper {
@@ -59,18 +59,10 @@ select {
   align-content: center;
 }
 
-.timerAndCounterWrapper {
-  margin-top: 24px;
-  border-radius: 16px;
-  padding: 0 27px;
-  width: 100%;
-  height: 200px;
-  border: 3px solid var(--primary);
-}
 
 #counterDiv {
   font-size: 18px;
-  margin: 24px 0;
+  margin: 48px 0;
   color: white;
 }
 
@@ -227,7 +219,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 150px;
+    width: 240px;
   }
 
   .board-wrapper {
@@ -237,6 +229,7 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    justify-content: center;
   }
 
   .card {
@@ -250,7 +243,13 @@ button {
     position: absolute;
     justify-content: flex-end;
   }
+  #counterDiv {
+    margin: 24px 0;
+  }
 
+  select {
+    margin-bottom: 24px;
+  }
   .card .guess span {
     display: none;
   }

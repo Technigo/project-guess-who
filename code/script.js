@@ -8,10 +8,9 @@ const filterBtn = document.getElementById('filter')
 const winOrLose = document.getElementById("winOrLose")
 const winOrLoseText = document.getElementById("winOrLoseText")
 const playAgainBtn = document.getElementById("playAgain")
-const timerAndCounter = document.getElementById("timerAndCounterWrapper")
 
 
-// Array with all the characters, as objects
+// Array with all the pokemon, as objects
 const POKEMON = [
   {
     name: 'Pikachu',
@@ -206,25 +205,23 @@ const generateBoard = () => {
   )
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// Randomly select a pokemon from the POKEMON array and set as the value of the variable called secretCharacter
 const setSecretCharacter = () => {
   secretCharacter = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
-// This function to start (and restart) the game
+// Function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
+  // Setting the charactersInPlay array to be all the characters to start with
   charactersInPlay = POKEMON
-  // Invoke/use the function generateBoard to load all the characters on the board.
+  // Invoking/using the function generateBoard to load all the characters on the board.
   generateBoard(charactersInPlay);
 
   //Randomly select a character from the charactersInPlay array and designate it as the "secret" character.
   setSecretCharacter();
-  console.log("The secret character is:", secretCharacter);
-  console.log("secret is this data type:", typeof (secretCharacter));
 }
 
-// setting the currentQuestion object when you select something in the dropdown
+// Setting the currentQuestion object when something is selected in the dropdown menu
 const selectQuestion = () => {
   const selectedOption = questions.options[questions.selectedIndex];
   const category = selectedOption.parentNode.label;
@@ -236,17 +233,13 @@ const selectQuestion = () => {
     category: category,
     value: value
   };
-
-  console.log("This is the category and value of currentQuestion", currentQuestion);
 }
 
-
-// This function should be invoked when you click on 'Find Out' button.
+// This function is invoked when the find-out button is clicked.
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  let keep = false; //Chose "false" to make the code below easier for me to read (and avoid !)
+  // Comparing the currentQuestion details with the secret pokemon details based on category (color, type and other). Based on that the board will be filtered and characters removed/kept.
+  let keep = false; //Chose "false" to make the code below easier to read (and to avoid !)
   if (category === 'color') {
     if (value === secretCharacter[category]) {
       keep = true;
@@ -256,16 +249,14 @@ const checkQuestion = () => {
       keep = true;
     }
   }
-  console.log('keep:', keep);
-  // Then invoke filterCharacters
+
   filterCharacters(keep);
 }
 
-// It'll filter the characters array and redraw the game board.
+// Filter the characters array and redraw the game board.
 const filterCharacters = (keepParam) => {
   const { category, value } = currentQuestion
   // Show the correct alert message for different categories
-  console.log(charactersInPlay);
   if (category === 'color') {
     // since keep parameter is a boolean there's no need to do an equation.
     if (keepParam) {
@@ -304,31 +295,27 @@ const filterCharacters = (keepParam) => {
       charactersInPlay = charactersInPlay.filter((pokemon) => !pokemon[category].includes(value))
     }
   }
-  // Invoke a function to redraw the board with the remaining people.
+  // Invoke a function to redraw the board with the remaining pokemon.
   generateBoard();
 }
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (pokemonToConfirm) => {
-  // store the interaction from the player in a variable.
-  console.log("guess= ", pokemonToConfirm);
-  // remember the confirm() ?
   let result = confirm(`Are you sure you want to pick ${pokemonToConfirm}?`);
-  // If the player wants to guess, invoke the checkMyGuess function.
+  // If the player wants to guess, the checkMyGuess function is invoked.
   if (result) {
     checkMyGuess(pokemonToConfirm);
   }
 }
 
-// If you confirm, this function is invoked
 const checkMyGuess = (pokemonToCheck) => {
   board.style.display = "none";
   winOrLose.style.display = "flex";
 
   winOrLoseText.innerHTML =
-    (pokemonToCheck === secretCharacter.name) 
-    ? `Yay! ${pokemonToCheck} was correct! Congratz!` 
-    : `Oh, no! ${secretCharacter.name} was the right answer! Better luck next time!`;
+    (pokemonToCheck === secretCharacter.name)
+      ? `Yay! ${pokemonToCheck} was correct! Congratz!`
+      : `Oh, no! ${secretCharacter.name} was the right answer! Better luck next time!`;
 }
 
 // Invokes the start function when website is loaded

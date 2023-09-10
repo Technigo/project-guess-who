@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #4c5a4b;
+  --secondary: #789476;
 }
 
 body {
@@ -9,6 +9,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  background-color: rgb(231, 240, 227);
 }
 
 h1 {
@@ -16,7 +17,7 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .question-section {
@@ -186,9 +187,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

@@ -40,6 +40,8 @@ currentQuestion = {
 
 We need to set this up with variables `category` and `value` instead of hardcoded values since the actual data will be available to detect thanks to `questions.options[questions.selectedIndex]`.
 
+
+
 We've helped you to set up the `category` variable. Make sure to properly create `value` variable!
 
 ## Step 4 - Time to find out the answer to your questions!

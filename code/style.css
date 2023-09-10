@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
   --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --secondary: #2ef68b;
 }
 
 body {
@@ -186,9 +186,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

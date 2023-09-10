@@ -1,4 +1,4 @@
-# Game - Guess Who
+# Guess Who | Game
 
 In this project I'm building a digital version of the classic board game "Guess Who" using JavaScript, HTML, and CSS.
 

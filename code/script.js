@@ -204,7 +204,6 @@ const CHARACTERS = [
     accessories: ["glasses", "hat"],
     other: [],
   },
-  console.log(`CHARACTERS`),
 ];
 
 //----------------------------------------------------------------------
@@ -222,7 +221,7 @@ const generateBoard = () => {
   charactersInPlay.forEach((person) => {
     board.innerHTML += `
       <div class="card">
-        <p>${person.name}</p>
+      <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
@@ -397,6 +396,7 @@ const filterCharacters = (keep) => {
 // when clicking guess, the player first have to confirm that they want to make a guess.
 
 const guess = (personToConfirm) => {
+  console.log(`personToConfirm:`, personToConfirm); // Add this line for debugging
   const confirmed = confirm(
     `Are you sure you want to take a guess on ${personToConfirm}`
   );

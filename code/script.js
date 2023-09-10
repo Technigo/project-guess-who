@@ -11,6 +11,7 @@ const nicelyDone = document.getElementById("nicely-done");
 const guesses = document.getElementById("guess");
 const win = document.getElementById("win");
 const lose = document.getElementById("lose");
+const playerName = document.getElementById("playerName");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -216,6 +217,7 @@ let charactersInPlay;
 let totalGuesses = 0;
 let totalWins = 0;
 let totalLosses = 0;
+let namePrompt;
 
 // Draw the game board
 const generateBoard = () => {
@@ -436,7 +438,9 @@ const checkMyGuess = (personToCheck) => {
 
 const correctGuess = () => {
   winOrLoseText.innerHTML += `
-  You are correct!`;
+  Nicely done ${namePrompt}!
+  
+  It took you ${totalGuesses} guesses to reach the correct answer.`;
   nicelyDone.style.display = "flex";
   winOrLoseWrapper.style.display = "flex";
   board.style.display = "none";
@@ -447,7 +451,7 @@ const correctGuess = () => {
 
 const wrongGuess = () => {
   winOrLoseText.innerHTML += `
-    Yea, no. Better luck next time. The correct person was ${secret.name}`;
+    Yea, no. Better luck next time, ${namePrompt}. The correct person was ${secret.name}`;
   winOrLoseWrapper.style.display = "flex";
   board.style.display = "none";
   //Adds 1 to the value of total losses and displays it in the DOM
@@ -462,8 +466,16 @@ const resetTheGame = () => {
   start();
 };
 
-// Invokes the start function when website is loaded
-start();
+//a function that asks the player's name and starts the game.
+//this only asks the players the first time they play and not on every reset
+const startGame = () => {
+  start();
+  namePrompt = prompt("What is your name?");
+  playerName.textContent = `${namePrompt},`;
+};
+
+// Invokes the startGame function when website is loaded
+startGame();
 
 // All the event listeners
 restartButton.addEventListener("click", start);

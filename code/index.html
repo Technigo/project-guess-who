@@ -23,13 +23,14 @@
       <h1>Does the person have</h1>
 
       <select title="questions" id="questions">
+        <!-- Attribute - that the option is disabled and can’t be selected. Fungerar som en placeholder. -->
         <option value="" disabled selected>Select an option</option>
         <optgroup label="hair">
           <option value="brown">brown hair</option>
           <!-- Add the rest of hair colors as options  -->
+          <option value="hidden">hidden hair</option>
           <option value="grey">grey hair</option>
           <option value="black">black hair</option>
-          <option value="hidden">hidden hair</option>
           <option value="orange">orange hair</option>
           <option value="purple">purple hair</option>
           <option value="white">white hair</option>
@@ -61,12 +62,14 @@
 
     <section id="winOrLose" class="win-or-lose-wrapper">
       <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
         <h1 id="winOrLoseText"></h1>
+        <img
+          id="secretPerson"
+          class="secret-person-img"
+          src=""
+          alt=""
+        />
+        <h2 id="winOrLoseName"></h2>
         <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
       </div>
     </section>

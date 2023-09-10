@@ -3,6 +3,11 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 const filterBtn = document.getElementById('filter')
+const winOrLoseWrapper = document.getElementById('winOrLose')
+const winOrLoseText = document.getElementById('winOrLoseText')
+const playAgainBtn = document.getElementById('playAgain')
+const secretPersonImg = document.getElementById('secretPerson')
+const winOrLoseName = document.getElementById('winOrLoseName')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -202,9 +207,9 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+let secret;
+let currentQuestion;
+let charactersInPlay;
 
 // Draw the game board
 const generateBoard = () => {
@@ -244,7 +249,7 @@ const start = () => {
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   filterBtn.disabled = false; //Enables the "Find Out" button when a selection has been made
-  filterBtn.style.opacity = "1" 
+  filterBtn.style.opacity = "1"
   const category = questions.options[questions.selectedIndex].parentNode.label; // This variable stores what option group the question belongs to.
 
   // This variable stores what option group (category) the question belongs to.
@@ -335,17 +340,32 @@ const filterCharacters = (keep) => {
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
+  // Using the confirm method.
+  if (confirm(`Is your final guess ${personToConfirm}?`)) {
+    // Invokes the checkMyGuess function when player wants to continue.
+    checkMyGuess(personToConfirm);
+    console.log("Player clicked OK");
+  } else {
+    console.log("Player clicked Cancel or closed the dialog");
+  }
+  // store the interaction from the player in a variable.????
 }
 
-// If you confirm, this function is invoked
+// If you confirm, this function is invoked.
 const checkMyGuess = (personToCheck) => {
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
+  board.style.display = 'none'; // Hides the game board.
+  winOrLose.style.display = 'flex'; // Shows the win or lose section.
+  // Checks if the personToCheck is equal to the secret person's name and messages shown in the win or lose section accordingly.
+  if (personToCheck === secret.name) {
+    secretPersonImg.src = `${secret.img}`; // Shows the secret persons image.
+    secretPersonImg.alt = `Image of ${secret.name}`;
+    winOrLoseText.textContent = `YAY! Congrats you won! 🙌`;
+    winOrLoseName.textContent = `${secret.name}` // Shows the secret persons name.
+    console.log("Player won the game");
+  } else {
+    winOrLoseText.textContent = `Oh no! You guessed wrong. Game over! 😤`;
+    console.log("Player lost the game");
+  }
 }
 
 // Invokes the start function when website is loaded
@@ -355,7 +375,6 @@ start();
 restartButton.addEventListener('click', start);
 
 questions.addEventListener('change', selectQuestion)// Invokes the selectQestion function.
-
 
 // When find out button is clicked.
 filterBtn.addEventListener('click', checkQuestion)

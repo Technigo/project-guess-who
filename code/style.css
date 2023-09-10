@@ -19,16 +19,8 @@ h1 {
   color: #00804d;
 }
 
-h2 {
-  font-size: 30px;
-  font-weight: 200;
-  margin: 10px 0;
-  color: #00804d;
-  padding: 0 0 20px 100px;
-}
-
 p {
-  font-size: 18px;
+  font-size: 20px;
   color: #00804d;
 }
 
@@ -38,7 +30,7 @@ p {
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding: 4vw;
   align-items: flex-start;
   box-sizing: border-box;
 }
@@ -50,8 +42,16 @@ select {
   font-family: 'Montserrat';
   color: var(--primary);
   width: 100%;
-  margin: 26px 0;
+  margin: 15px 0;
   padding: 5px;
+}
+
+input {
+  font-size: 20px;
+  font-family: 'Montserrat';
+  color: var(--primary);
+  margin: 2px 0;
+  padding: 2px;
 }
 
 .guess-who-icon {
@@ -235,7 +235,7 @@ button {
 #minutes,
 #colon,
 #seconds {
-  font-size: 40px;
+  font-size: 25px;
 }
 
 .game-timer {
@@ -245,9 +245,9 @@ button {
   background: #ccffeb;
   border-radius: 4px;
   padding: 0 10px 0 10px;
-  margin: 40px 0 0 0;
+  margin: 10px 0 0 0;
   vertical-align: middle;
-  min-width: 140px;
+  min-width: 120px;
   text-align: center;
 }
 

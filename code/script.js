@@ -16,7 +16,7 @@ const worLQuestionsCount = document.getElementById("worLQuestionsAsked")
 let minutesLabel = document.getElementById("minutes");
 let secondsLabel = document.getElementById("seconds");
 
-//don't need a GUESS button DOM selector because we add this button dynamically in this JS
+//NOTE: don't need a GUESS button DOM selector because we add this button dynamically in this J.S
 
 //-------- Main Array (with all characters as objects) -------//
 
@@ -254,7 +254,7 @@ let questionsAskedCounter = 0;    //questions asked counter
 // Function - start - to start (and restart) the game
 const start = () => {
   charactersInPlay = CHARACTERS
-  //if this is not the first call of start() the next 2 lines clear the win and loose screens
+  //if this is not the first call of start() the next 2 lines clear the win and lose screens
   winOrLoseSection.style.display = "none";
   board.style.display = "flex";
   generateBoard();               //Step 1 - I added this on Tues to see the board  
@@ -263,7 +263,7 @@ const start = () => {
   totalSeconds = 0;
   questionsAskedCounter = 0;
   setInterval(setTime, 1000);    //Start/re-start timer
-  questionsAskedCount.innerHTML = `Questions asked: ${questionsAskedCounter}` //Set questions asked to display 0
+  questionsAskedCount.innerHTML = `Questions asked: ${questionsAskedCounter}` //Set questions asked to display: 0 at start
 }
 
 
@@ -303,7 +303,7 @@ const selectQuestion = () => {
     category: category,
     value: value
   }
-  return (currentQuestion) //do I need this?
+  return (currentQuestion) //do I need this??
 }
 
 
@@ -323,7 +323,7 @@ const checkQuestion = () => {
   }
 
   if (category === 'accessories' || category === 'other') {
-    if (secret.accessories.includes(value) || secret.other.includes(value)) {    //the .include array property took me a ages to work out
+    if (secret.accessories.includes(value) || secret.other.includes(value)) {  //the .include array property took me a ages to work out
       filterCharacters(true)
     } else {
       filterCharacters(false)
@@ -335,15 +335,10 @@ const checkQuestion = () => {
 
 
 // Function - filterCharacters - filter characters array and redraw the game board
-
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
 
-  console.log(`INSIDE filter question: Secret person is set as: ${secret.name}. category: ${category} value: ${value}`);
-
-  // The following shows the correct alert message for different categories 
-  //AND filters by category to re-populate the charactersInPlay array 
-  //AND invokes the generateBoard function to produce a new board based on the charactersInPlay Array
+  // Filter by category and display correct alert, then invoke generateBoard function
   if (category === 'hair') {
     if (keep) {
       alert(`YES, the person has ${value} hair! We will keep all people who have ${value} hair.`)
@@ -400,7 +395,7 @@ const filterCharacters = (keep) => {
 }
 
 
-// Function - guess - when clicking guess, the player first have to confirm that they want to make a guess.
+// Function - guess - when clicking guess, the player first has to confirm that they want to make a guess.
 const guess = (personToConfirm) => {
 
   let confirmGuess = confirm(`Are you sure you want to guess on ${personToConfirm}?`);
@@ -416,22 +411,22 @@ const guess = (personToConfirm) => {
 // Function - checkMyGuess - if you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
 
-  if (personToCheck == secret.name) {                     // 1. Check if the personToCheck is the same as the secret person's name
-    winOrLoseText.innerHTML = "You won! &#127881;"        // 2. Set a Message to show in the win or lose section accordingly
+  if (personToCheck == secret.name) {                     // Check if the personToCheck is the same as the secret person's name
+    winOrLoseText.innerHTML = "You won! &#127881;"        // Set a Message to show in the win or lose section accordingly
     winOrLoseTexth2.innerHTML = "Well done, Thank you for playing!"
   }
   else {
     winOrLoseText.innerHTML = "You lost &#128078;"
     winOrLoseTexth2.innerHTML = `Good try, bad luck this time, you should try again`
   }
-  winOrLoseSection.style.display = "block";               // 3. Show the win or lose section
-  board.style.display = "none";                           // 4. Hide the game board
-  worLQuestionsCount.innerHTML = `Questions asked: ${questionsAskedCounter}`;   //display question counter
-  console.log(`the question count in checkMyGuess function: ${questionsAskedCounter}`)
+  winOrLoseSection.style.display = "block";               // Show the win or lose section
+  board.style.display = "none";                           // Hide the game board
+  worLQuestionsCount.innerHTML = `Questions asked: ${questionsAskedCounter}`;   // Display question counter
 }
 
 
-// Functions - setTime - added for TIMER - only works so far when you refresh the page
+// Functions - setTime - added for TIMER - 
+// I found this timer function online and it only works so far when you refresh the page, if you reset with a button it then counts in a weird 2 step quick pace, also does not record time or display how long the game went for. But I wanted to keep the code here so, if I get time in the future, I may come back and try to get it to work correctly
 function setTime() {
   ++totalSeconds;
   secondsLabel.innerHTML = pad(totalSeconds % 60);
@@ -457,8 +452,7 @@ start()
 
 //-------------------- All Event Listeners --------------------//
 
-
-//NOTE: 4 events - restart button, find out button, play again button (NONE for Guess button as it is added dynamically)
+//NOTE: 3 events - restart button, find out button, play again button (NONE for Guess button as it is added dynamically)
 
 restartButton.addEventListener('click', start) //NOTE: technigo wrote this
 playAgainButton.addEventListener('click', start)

@@ -16,7 +16,6 @@
     <button type="button" id="restart" class="outlined-button">RESTART</button>
 
     <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
-
     <h1>Does the person have</h1>
 
     <select title="questions" id="questions">
@@ -49,6 +48,7 @@
         <option value="icelandic">Icelandic</option>
         <option value="australian">Australian</option>
         <option value="swiss">Swiss</option>
+        <!-- Added the nationality label with 4 options -->
       </optgroup>
       <optgroup label="other">
         <option value="smoker">a smoking habit</option>
@@ -56,14 +56,14 @@
     </select>
 
     <button id="filter" class="filled-button">FIND OUT</button>
+    <!--- Added Questions asked counter for game page -->
     <p id="questionsAsked"></p>
-    <!--game timer added-->
+    <!-- Added a game timer -->
     <div class="game-timer">
       <label id="minutes">00</label>
       <label id="colon">:</label>
       <label id="seconds">00</label>
     </div>
-    <!-------------------->
   </aside>
 
   <section class="board-wrapper">
@@ -73,8 +73,8 @@
   <section id="winOrLose" class="win-or-lose-wrapper">
     <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
     <h1 id="winOrLoseText"></h1>
-    <!-- Added a h2 for more text -->
-    <h2 id="winOrLoseTexth2"></h2>
+    <p id="winOrLoseTexth2"></p>
+    <!--- Added Questions asked counter for win or lose page -->
     <p id="worLQuestionsAsked"></p>
     <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
   </section>

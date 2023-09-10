@@ -8,7 +8,6 @@ const guessButton = document.getElementsByClassName('filled-button small')
 const winOrLose = document.getElementById('winOrLose')
 const conclusion = document.getElementsByClassName('conclusion')
 const playAgain = document.getElementById('playAgain')
-const winOrLoseText = document.getElementById('winOrLoseText')
 const winLoseWrapper = document.getElementsByClassName('win-or-lose')
 
 // Array with all the characters, as objects
@@ -183,8 +182,10 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   charactersInPlay = CHARACTERS
-  generateBoard()
+  winOrLose.style.display = 'none';
+  board.style.display = 'flex';
   setSecret()
+  generateBoard()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -334,7 +335,4 @@ restartButton.addEventListener('click', start)
 findOut.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
 guessButton.addEventListener('click', guess)
-playAgain.addEventListener('click', (event) => {
-  start();
-  winOrLose.style.display = "none";
-});
+playAgain.addEventListener('click', start)

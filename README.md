@@ -1,8 +1,6 @@
-# Project Name
+# Game - Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+In this project I'm building a digital version of the classic board game "Guess Who" using JavaScript, HTML, and CSS.
 
 ## The problem
 
@@ -10,4 +8,4 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://project-guess-who-julia.netlify.app/

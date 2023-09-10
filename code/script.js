@@ -7,8 +7,8 @@ const optgroup = document.getElementById('optgroup')
 const guessButton = document.getElementsByClassName('filled-button small')
 const winOrLose = document.getElementById('winOrLose')
 const conclusion = document.getElementsByClassName('conclusion')
-const playAgain = document.getElementById('playAgain')
 const winLoseWrapper = document.getElementsByClassName('win-or-lose')
+const winOrLoseText = document.getElementById('winOrLoseText')
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -198,13 +198,11 @@ const selectQuestion = () => {
   }
 }
 
-// This function should be invoked when you click on 'Find Out' button.
+// This is invoked when clicking on the 'Find Out' button.
 const checkQuestion = () => {
   const { category, value } = currentQuestion
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+  // currentQuestion details are compared with the secret person details
   if (category === 'hair' || category === 'accessories') {
     if (secret[category] === value) {
       filterCharacters(true)
@@ -220,10 +218,10 @@ const checkQuestion = () => {
   }
 }
 
-// It'll filter the characters array and redraw the game board.
+// filterCharacters filters the board based on the information 
+// The user is being alerted with updates regarding the progression of the game
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion
-  // Show the correct alert message for different categories
   if (category === 'accessories') {
     if (keep) {
       alert(
@@ -255,8 +253,6 @@ const filterCharacters = (keep) => {
       )
     }
   }
-  // Determine what is the category
-  // filter by category to keep or remove based on the keep variable.
 
   if (category === 'hair' || category === 'accessories') { 
     if (keep) {
@@ -276,58 +272,46 @@ const filterCharacters = (keep) => {
       !person[category].includes(value))
     }
   }
-  // Invoke a function to redraw the board with the remaining people.
+
+  // generateBoard is invoked to redraw the board with the remaining people
   generateBoard(keep)
 }
-// when clicking guess, the player first have to confirm that they want to make a guess.
+
+// The user clicks "guess" and is alerted with a message to confirm their guess
 const guess = (personToConfirm) => {
   let confirmation = confirm(`${personToConfirm}, you say? Are you ready to cast your guess to the fiery pits of Mordor?`)
     if (confirmation) {
       checkMyGuess(personToConfirm)
     }
   }
-  // store the interaction from the player in a variable.
-  // remember the confirm() ?
-  // If the player wants to guess, invoke the checkMyGuess function.
 
-// If you confirm, this function is invoked
+// If the user confirms their guess, the checkMyGuess function is invoked
+// The user gets a different end screen depending on if their guess was right or wrong
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
-    board.style.display = 'none';
     winOrLose.style.display = 'flex';
-    winOrLose.innerHTML = `
-    <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guesslogo.png"
-          alt="Guess Who"
-        />
-      <img src=${secret.img} alt=${secret.name}>
-      <h1>It truly was ${secret.name}! Your guess was right and your quest successful.</h1>
-      <button type="button" id="playAgain" class="filled-button">play again</button>
+    board.style.display = 'none'
+    winOrLoseText.innerHTML = `
+    <div class="reveal">
+    <img src=${secret.img} alt=${secret.name}>
+    It truly was ${secret.name}! Your guess was right and your quest successful.
     </div>`
+    document.getElementById('playAgain').addEventListener('click', start)
   } else {
-    board.style.display = 'none';
     winOrLose.style.display = 'flex';
-    winOrLose.innerHTML = `
-    <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guesslogo.png"
-          alt="Guess Who"
-        />
-      <img src="images/sauroneye.png">
-      <h1>Oh no, your guess was wrong... the eye seems to be still looking around Mordor.</h1>
-      <button type="button" id="playAgain" class="filled-button">play again</button>
+    board.style.display = 'none'
+    winOrLoseText.innerHTML = `
+    <div class="reveal">
+    <img src="images/sauroneye.png">
+    Oh no, your guess was wrong... the eye seems to be still looking around Mordor.
     </div>`
+    document.getElementById('playAgain').addEventListener('click', start)
   }
 }
-  // 1. Check if the personToCheck is the same as the secret person's name
-  // 2. Set a Message to show in the win or lose section accordingly
-  // 3. Show the win or lose section
-  // 4. Hide the game board
 
-// Invokes the start function when website is loaded
+// If the user clicks "play again", the start function is invoked and the board appears again
+
+// Invokes the start function when the website is loaded
 start()
 
 // All the event listeners
@@ -335,4 +319,3 @@ restartButton.addEventListener('click', start)
 findOut.addEventListener('click', checkQuestion)
 questions.addEventListener('change', selectQuestion)
 guessButton.addEventListener('click', guess)
-playAgain.addEventListener('click', start)

@@ -12,6 +12,7 @@ const guesses = document.getElementById("guess");
 const win = document.getElementById("win");
 const lose = document.getElementById("lose");
 const playerName = document.getElementById("playerName");
+const timer = document.getElementById("timer");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -218,6 +219,9 @@ let totalGuesses = 0;
 let totalWins = 0;
 let totalLosses = 0;
 let namePrompt;
+let minutes = 0;
+let seconds = 0;
+let timerInterval;
 
 // Draw the game board
 const generateBoard = () => {
@@ -253,6 +257,7 @@ const start = () => {
   console.log(secret);
   totalGuesses = 0;
   guesses.innerHTML = `${totalGuesses}`;
+  timerStart();
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -437,10 +442,17 @@ const checkMyGuess = (personToCheck) => {
 };
 
 const correctGuess = () => {
-  winOrLoseText.innerHTML += `
-  Nicely done ${namePrompt}!
-  
-  It took you ${totalGuesses} guesses to reach the correct answer.`;
+  if (namePrompt !== ``) {
+    winOrLoseText.innerHTML += `
+    Nicely done ${namePrompt}!
+    
+    It took you ${totalGuesses} guesses to reach the correct answer.`;
+  } else {
+    winOrLoseText.innerHTML += `
+    Nicely done!
+    
+    It took you ${totalGuesses} guesses to reach the correct answer.`;
+  }
   nicelyDone.style.display = "flex";
   winOrLoseWrapper.style.display = "flex";
   board.style.display = "none";
@@ -450,8 +462,13 @@ const correctGuess = () => {
 };
 
 const wrongGuess = () => {
-  winOrLoseText.innerHTML += `
-    Yea, no. Better luck next time, ${namePrompt}. The correct person was ${secret.name}`;
+  if (namePrompt !== ``) {
+    winOrLoseText.innerHTML += `
+      Yea, no. Better luck next time, ${namePrompt}. The correct person was ${secret.name}`;
+  } else {
+    winOrLoseText.innerHTML += `
+        Yea, no. Better luck next time. The correct person was ${secret.name}`;
+  }
   winOrLoseWrapper.style.display = "flex";
   board.style.display = "none";
   //Adds 1 to the value of total losses and displays it in the DOM
@@ -466,12 +483,33 @@ const resetTheGame = () => {
   start();
 };
 
-//a function that asks the player's name and starts the game.
+const timerStart = () => {
+  if (!timerInterval) {
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+};
+
+const updateTimer = () => {
+  seconds++;
+  if (seconds === 60) {
+    minutes++;
+    seconds = 0;
+  }
+  updateTimerDisplay();
+};
+
+const updateTimerDisplay = () => {
+  timer.textContent = `${minutes}m ${seconds}s`;
+};
+
+//asks the player's name and starts the game.
 //this only asks the players the first time they play and not on every reset
 const startGame = () => {
   start();
   namePrompt = prompt("What is your name?");
-  playerName.textContent = `${namePrompt},`;
+  if (namePrompt !== "") {
+    playerName.textContent = `${namePrompt},`;
+  }
 };
 
 // Invokes the startGame function when website is loaded

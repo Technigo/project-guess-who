@@ -46,17 +46,31 @@
         </optgroup>
         <optgroup label="accessories">
           <option value="glasses">glasses</option>
-          <option value="hat">wears a hat</option>
-          <option value="parrot">has a parrot</option>
+          <option value="hat">a hat</option>
           <!-- Add the other accessory option here. (hat)  -->
         </optgroup>
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
-          <option value="beard">has a beard</option>
+          <option value="beard">a beard</option>
+          <option value="parrot">a parrot</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div class="scoreboard">
+        <div id="totalGuesses">
+          <h2>Guesses</h2>
+          <p id="guess">0</p>
+        </div>
+        <div id="totalWins">
+          <h2>Wins</h2>
+          <p id="win">0</p>
+        </div>
+        <div id="totalLosses">
+          <h2>Losses</h2>
+          <p id="lose">0</p>
+        </div>
+      </div>
     </aside>
 
     <section class="board-wrapper">

@@ -184,6 +184,28 @@ button {
   display: none;
 }
 
+/****** Scoreboard ******/
+.scoreboard {
+  color: white;
+  width: 100%;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#totalGuesses,
+#totalWins,
+#totalLosses {
+  align-self: center;
+}
+
+#guess,
+#win,
+#lose {
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;

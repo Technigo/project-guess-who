@@ -8,6 +8,9 @@ const winOrLoseWrapper = document.querySelector(".win-or-lose-wrapper");
 const winOrLoseText = document.getElementById("winOrLoseText");
 const playAgain = document.getElementById("playAgain");
 const nicelyDone = document.getElementById("nicely-done");
+const guesses = document.getElementById("guess");
+const win = document.getElementById("win");
+const lose = document.getElementById("lose");
 
 // Array with all the characters, as objects
 const CHARACTERS = [
@@ -210,6 +213,9 @@ const CHARACTERS = [
 let secret;
 let currentQuestion;
 let charactersInPlay;
+let totalGuesses = 0;
+let totalWins = 0;
+let totalLosses = 0;
 
 // Draw the game board
 const generateBoard = () => {
@@ -243,6 +249,8 @@ const start = () => {
   generateBoard();
   setSecret();
   console.log(secret);
+  totalGuesses = 0;
+  guesses.innerHTML = `${totalGuesses}`;
 };
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -264,44 +272,60 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  const { category, value } = currentQuestion;
+  if (questions.selectedIndex === 0) {
+    alert(`You have to select an option`);
+  } else {
+    const { category, value } = currentQuestion;
 
-  // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
-  // See if we should keep or remove people based on that
-  // Then invoke filterCharacters
+    // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
+    // See if we should keep or remove people based on that
+    // Then invoke filterCharacters
 
-  // if (category === "hair") {
-  //   filterCharacters("hair");
-  // } else if (category === "eyes") {
+    filterCharacters(category);
 
-  // }
-  console.log(category);
-  console.log(value);
-  filterCharacters(category);
+    //in order to initialize the generateBoard function properly, charactersInPlay is changed.
 
-  //in order to initialize the generateBoard function properly, charactersInPlay is changed.
+    generateBoard();
 
-  generateBoard();
+    //Increases the amount of total guesses by 1 and displays it in the DOM
+    totalGuesses++;
+    guesses.innerHTML = `${totalGuesses}`;
+  }
 };
 
 // It'll filter the characters array and redraw the game board.
 const filterCharacters = (keep) => {
   const { category, value } = currentQuestion;
-  keep = secret[category] === value;
+
+  if (category === "accessories" || category === "other") {
+    keep = secret[category].includes(value);
+  } else {
+    keep = secret[category] === value;
+  }
   // Show the correct alert message for different categories
   if (category === "accessories") {
     if (keep) {
-      alert(
-        `Yes, the person wears ${value}! Keep all people that wears ${value}`
-      );
+      if (value === "hat") {
+        alert(
+          `Yes, the person has a ${value}! Keep all people with a ${value}`
+        );
+      } else {
+        alert(`Yes, the person wears ${value}! Keep all people with ${value}`);
+      }
       charactersInPlay = charactersInPlay.filter((person) =>
         person.accessories.includes(value)
       );
       generateBoard();
     } else {
-      alert(
-        `No, the person doesn't wear ${value}! Remove all people that wears ${value}`
-      );
+      if (value === "hat") {
+        alert(
+          `No, the person doesn't have a ${value}! Remove all people with a ${value}`
+        );
+      } else {
+        alert(
+          `No, the person doesn't wear ${value}! Remove all people with ${value}`
+        );
+      }
       charactersInPlay = charactersInPlay.filter(
         (person) => !person.accessories.includes(value)
       );
@@ -310,9 +334,16 @@ const filterCharacters = (keep) => {
   } else if (category === "other") {
     // Similar to the one above
     if (keep) {
-      alert(
-        `Yes, the person has a ${value}! Keep all people that have a ${value}`
-      );
+      if (value === "smoker") {
+        alert(
+          `Yes, the person has a smoking habit! Keep all people that have a smoking habit`
+        );
+      } else {
+        alert(
+          `Yes, the person has a ${value}! Keep all people that have a ${value}`
+        );
+      }
+
       charactersInPlay = charactersInPlay.filter((person) =>
         person.other.includes(value)
       );
@@ -329,11 +360,12 @@ const filterCharacters = (keep) => {
   } else if (category === "eyes") {
     if (keep) {
       alert(
-        `Yes, the person has a ${value}! Keep all people that have ${value} eyes`
+        `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person.eyes.includes(value)
       );
+
       generateBoard();
     } else {
       alert(
@@ -408,6 +440,9 @@ const correctGuess = () => {
   nicelyDone.style.display = "flex";
   winOrLoseWrapper.style.display = "flex";
   board.style.display = "none";
+  //Adds 1 to the value of total wins and displays it in the DOM
+  totalWins++;
+  win.innerHTML = `${totalWins}`;
 };
 
 const wrongGuess = () => {
@@ -415,6 +450,9 @@ const wrongGuess = () => {
     Yea, no. Better luck next time. The correct person was ${secret.name}`;
   winOrLoseWrapper.style.display = "flex";
   board.style.display = "none";
+  //Adds 1 to the value of total losses and displays it in the DOM
+  totalLosses++;
+  lose.innerHTML = `${totalLosses}`;
 };
 
 const resetTheGame = () => {

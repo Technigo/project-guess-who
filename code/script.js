@@ -373,9 +373,15 @@ const filterCharacters = (keep) => {
       generateBoard();
     } else {
       //playSound(playWrong);
-      alert(
-        `No, the person doesn't have a ${value}! Remove all people that have a ${value}`
-      );
+      if (value === "smoker") {
+        alert(
+          `No, the person doesn't have a smoking habit! Remove all people that have a smoking habit.`
+        );
+      } else {
+        alert(
+          `No, the person doesn't have a ${value}! Remove all people that have a ${value}.`
+        );
+      }
       charactersInPlay = charactersInPlay.filter(
         (person) => !person.other.includes(value)
       );
@@ -386,7 +392,7 @@ const filterCharacters = (keep) => {
     if (keep) {
       //playSound(playCorrect);
       alert(
-        `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`
+        `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes.`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person.eyes.includes(value)
@@ -396,21 +402,20 @@ const filterCharacters = (keep) => {
     } else {
       //playSound(playWrong);
       alert(
-        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
+        `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes.`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person.eyes.includes(value)
       );
       generateBoard();
     }
-    // alert popup that says something like: "Yes, the person has yellow hair! Keep all people with yellow hair"
   } else if (category === "hair") {
     //Filters based the hair value and the generates the board again based on a filtered list of charactersInPlay
 
     if (keep) {
       //playSound(playCorrect);
       alert(
-        `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
+        `Yes, the person has ${value} hair! Keep all people that have ${value} hair.`
       );
       charactersInPlay = charactersInPlay.filter((person) =>
         person.hair.includes(value)
@@ -419,7 +424,7 @@ const filterCharacters = (keep) => {
     } else {
       //playSound(playWrong);
       alert(
-        `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`
+        `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair.`
       );
       charactersInPlay = charactersInPlay.filter(
         (person) => !person.hair.includes(value)

@@ -251,14 +251,14 @@ let playerName; //possibility to store and display user's name
 //Function to add user's name after a prompt message:
 const addUserName = () => {
   playerName = prompt(`Welcome to the game Guess who!  Please enter your name:`)
-  const regex = /(?=.[A-Za-z]){2,}/g;
+  const regex = /^[a-zA-Z]{2,}$/g;
   if (playerName.match(regex)) {
     alert(`The game starts...NOW!`)
     displayName.innerText = `
   Player: ${playerName}
   `
   } else {
-    alert(`Name not registered.  Please try with a min of 2 letters.`)
+    alert(`Name not registered.  Please try with a min of 2 letters`)
     addUserName();
   }
 };

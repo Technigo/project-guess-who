@@ -1,13 +1,10 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A 'guess who' game that filters the cards based on user selection. The game selects a new "secret person" every time new board is loaded and you win by correctly guessing who it is.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The problem for me was to understand categories, values and parameters in the objects. I had to rely on coursemates code to debug and get it working (almost completely). At the time of submission the there is no working Timer-reset function when game is restarted (only on page refresh).
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.

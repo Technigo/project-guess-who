@@ -422,7 +422,3 @@ playAgainButton.addEventListener('click', (event) => {
   });
 
 questions.addEventListener('change', selectQuestion)
-
-
- 
-//adding test comment. Adding more. 

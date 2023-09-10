@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #e6ae5a;
+  --secondary: #5a9ca4;
 }
 
 body {
@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 30px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
@@ -37,11 +37,11 @@ select {
   font-family: 'Montserrat';
   color: var(--secondary);
   width: 100%;
-  margin: 24px 0;
+  margin-bottom: 48px;
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 300px;
 }
 
 .board-wrapper {
@@ -59,13 +59,20 @@ select {
   align-content: center;
 }
 
+
+#counterDiv {
+  font-size: 18px;
+  margin: 48px 0;
+  color: white;
+}
+
 /****** CARD ******/
 .card {
   width: 135px;
   height: 165px;
   overflow: hidden;
   border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border-radius: 8px;
   margin: 3px;
   display: flex;
   flex-direction: column;
@@ -73,7 +80,14 @@ select {
   justify-content: space-between;
 }
 
+.pokemonImage {
+  height: 130px;
+  width: 130px;
+  object-fit: contain;
+}
+
 .card p {
+  color: #297383;
   text-align: center;
   margin-bottom: 0;
   font-size: 16px;
@@ -113,9 +127,16 @@ select {
 }
 
 /****** BUTTONS ******/
+
+.buttonWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
+  border-radius: 16px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
@@ -128,10 +149,12 @@ button {
 }
 
 .outlined-button {
+
   background-color: transparent;
   color: var(--primary);
   align-self: flex-end;
 }
+
 
 .filled-button,
 .outlined-button:hover {
@@ -144,6 +167,7 @@ button {
   border-color: white;
   color: var(--primary);
 }
+
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
@@ -195,7 +219,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 240px;
   }
 
   .board-wrapper {
@@ -205,6 +229,7 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    justify-content: center;
   }
 
   .card {
@@ -218,11 +243,25 @@ button {
     position: absolute;
     justify-content: flex-end;
   }
+  #counterDiv {
+    margin: 24px 0;
+  }
 
+  select {
+    margin-bottom: 24px;
+  }
   .card .guess span {
     display: none;
   }
-
+  .pokemonImage {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;

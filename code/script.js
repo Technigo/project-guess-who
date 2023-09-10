@@ -242,7 +242,6 @@ const setSecretPerson = () => {
 const start = () => {
   generateBoard(); 
   charactersInPlay = CHARACTERS.slice(); 
-  wOL.textContent = '';
   wOLtext.textContent = '';
   setSecretPerson();
   currentQuestion = {};
@@ -329,24 +328,23 @@ const guess = (personName) => {
  
 const winOrLose = ['You are the best, you guessed right!', 'Oops, that was wrong person, try again!'];
 
-const checkMyGuess = (checkPerson) => {
-    if (checkPerson === secret.name) {
-      wOLtext.textContent = winOrLose[0];
-    } else {
-      wOLtext.textContent = winOrLose[1];
-    } 
-    wOL.style.display = 'block';
+const checkMyGuess = (checkedPerson) => {
+  const winLoseTextElement = document.getElementById('winOrLoseText'); 
+  if (checkedPerson === secret.name) {
+    winLoseTextElement.textContent = winOrLose[0]; 
+  } else {
+    winLoseTextElement.textContent = winOrLose[1]; 
+  }
 
-    if (charactersInPlay.length === 0) {
-      const restartChoice = confirm("Do you want to play again?");
-      if (restartChoice) {
-        start(); // Restart the game
-      }
+  wOL.style.display = 'block'; 
+
+  if (charactersInPlay.length === 0) {
+    const restartChoice = confirm("Do you want to play again?");
+    if (restartChoice) {
+      start();
     }
-  };
-
-// Invokes the start function when website is loaded
-start();
+  }
+};
 
 // All the event listeners
 restartButton.addEventListener('click', () => {
@@ -364,8 +362,9 @@ questions.addEventListener('change', () => {
 });
 
 playAgain.addEventListener('click', () => {
-  restart();
+  start();
   generateBoard();
+  wOL.style.display = 'none';
 });
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -8,6 +8,7 @@ const filterBtn = document.getElementById('filter')
 const winOrLose = document.getElementById("winOrLose")
 const winOrLoseText = document.getElementById("winOrLoseText")
 const playAgainBtn = document.getElementById("playAgain")
+const timerAndCounter = document.getElementById("timerAndCounterWrapper")
 
 
 // Array with all the characters, as objects
@@ -137,7 +138,7 @@ const POKEMON = [
     color: 'yellow',
     type: ['electric'],
     other: ['tail'],
-    },
+  },
   {
     name: 'Flareon',
     img: 'images/Flareon.png',
@@ -206,11 +207,6 @@ const generateBoard = () => {
 }
 
 // Randomly select a person from the characters array and set as the value of the variable called secret
-/*  Explanation for setSecret()
-  The random character selection is based on the index number calculated using Math.random(). Math.random() generates decimal numbers 0>= x < 1.
-  Since we have 24 characters and the index starts at 0, by also using the math.floor() method (that rounds down to the closest integer) the highest number that can be calculated is 23, which is the last character in the array[].
-  charactersInPlay.length = the number of elements in the array. 
-*/
 const setSecretCharacter = () => {
   secretCharacter = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
@@ -229,13 +225,6 @@ const start = () => {
 }
 
 // setting the currentQuestion object when you select something in the dropdown
-/* EXPLANATION
-const category: stores what option group (category) the question belongs to
-  questions.options[questions.selectedIndex] retrieves the specific <option> element that is currently selected in the dropdown list.
-  [questions.selectedIndex] returns the numerical index of the selected option. The first option in the list has an index of 0, the second has an index of 1, and so on.
-  .parentNode.label, accesses the parent element of the selected <option>, the <optgroup> element and retrieves the label attribute of that element.
-  So the whole expression is used to retrieve the label of the <optgroup> element from the option that is currently selected in the drop-down menu
-*/
 const selectQuestion = () => {
   const selectedOption = questions.options[questions.selectedIndex];
   const category = selectedOption.parentNode.label;
@@ -254,28 +243,15 @@ const selectQuestion = () => {
 
 // This function should be invoked when you click on 'Find Out' button.
 const checkQuestion = () => {
-  /* Explanation: Object destructuring
-   extract data from an object and assign to new variables.
-   Another way to do this is:
-   const category = currentQuestion.category;
-   const value = currentQuestion.value;
-   The destructuring makes it easier to extract data
-   */
   const { category, value } = currentQuestion;
   // Compare the currentQuestion details with the secret person details in a different manner based on category (hair/eyes or accessories/others).
   // See if we should keep or remove people based on that
-
-  /* Explanations
-  This is divided like this since the first two categories will have one to one comparisons while the other two categories contain properties with multiple values.
-  For the hair/eyes category:
-  We're accessing a CHARACTER object (via the variable secretCharacter) and look through its attributes until we find one that matches the category in the if statement. Once found we take the value (for example "yellow hair") and compare that to the player's choice to see if the match.*/
-
   let keep = false; //Chose "false" to make the code below easier for me to read (and avoid !)
   if (category === 'color') {
     if (value === secretCharacter[category]) {
       keep = true;
     }
-  } else if (category === 'type'|| category === 'other') {
+  } else if (category === 'type' || category === 'other') {
     if (secretCharacter[category].includes(value)) { // .includes() since there are multiple values
       keep = true;
     }
@@ -349,23 +325,18 @@ const checkMyGuess = (pokemonToCheck) => {
   board.style.display = "none";
   winOrLose.style.display = "flex";
 
-  if (pokemonToCheck === secretCharacter.name) {
-    winOrLoseText.innerHTML = `Yay! ${pokemonToCheck} was correct! Congratz!`;
-  } else {
-    winOrLoseText.innerHTML = `Oh, no! ${secretCharacter.name} was the right answer! Better luck next time!`;
-  }
+  winOrLoseText.innerHTML =
+    (pokemonToCheck === secretCharacter.name) 
+    ? `Yay! ${pokemonToCheck} was correct! Congratz!` 
+    : `Oh, no! ${secretCharacter.name} was the right answer! Better luck next time!`;
 }
 
 // Invokes the start function when website is loaded
 start()
 
-
-
 // Counter for number of guesses
-/* Explanation
- createElement and AppendChild are used when you want to dynamically create and insert new elements into the DOM or when you need to update specific parts of an element's content without replacing its entire content. += innerHTML is used when you want to update the content of an existing HTML element, replacing its content with new HTML.
-*/
 let counter = 0;
+
 let counterDiv = document.createElement("div");
 counterDiv.id = "counterDiv";
 
@@ -382,16 +353,6 @@ questionSection.appendChild(counterDiv);
 
 
 // All the event listeners
-/* EXPLANATION, event listeners:
-there are two different options:
-filterBtn.addEventListener('click', checkQuestion);
-or
-In this one i can pass in an argument to the function:
-filterBtn.addEventListener('click', () => checkQuestion());
-if I type:
-filterBtn.addEventListener('click', checkQuestion());
-the function will be run immediately without Javascript listening to the event which is not what i want here.
-*/
 filterBtn.addEventListener('click', () => {
   counter++; // Increase counter by 1
   // Updates the textnode since that text is static and the counter number won't go up without this update

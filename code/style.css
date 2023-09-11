@@ -166,6 +166,8 @@ button {
   justify-content: center;
   max-width: 700px;
   text-align: center;
+  margin: auto;
+  padding-top: 200px;
 }
 
 .win-or-lose img {
@@ -186,9 +188,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

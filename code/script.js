@@ -265,7 +265,7 @@ const start = () => {
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
   // This variable (catagory) stores what option group (category) the question belongs to.
-  // Variable that stores the actual value of the question we've selected.-->
+  // Variable that stores the actual value of the question we've selected.-->z
   const value = questions.options[questions.selectedIndex].value;
   //Careful to not mistake value attribute of the <option> element with text content (or label) of the <option> element on const CHARACTERS.
 

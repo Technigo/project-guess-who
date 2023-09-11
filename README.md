@@ -1,13 +1,11 @@
-# Project Name
+Project Guess Who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project is a board game called Guess Who. A randomly selected person are set as the secret when the game starts and to find out who it is you select questions to ask about the people and filter the board based on those questions.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The code is currently not working correctly, nothing happens when you click on the "Find out" button. I´ve tried looking in the console and used chat gpt to try to debug the code but no success so far. If I had more time than maybe I would figure it out. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://bright-frangipane-f64f01.netlify.app/

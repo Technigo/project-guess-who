@@ -21,4 +21,4 @@ Trouble with the VScode shell - had to get help from Diego, therefore have not b
 
 ## View it live
 
-Not able to push the project for now. 
+https://mc-guesswho.netlify.app/

@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #00804d;
+  --secondary: #ccffeb;
 }
 
 body {
@@ -16,7 +16,12 @@ h1 {
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
-  color: white;
+  color: #00804d;
+}
+
+p {
+  font-size: 20px;
+  color: #00804d;
 }
 
 .question-section {
@@ -25,7 +30,7 @@ h1 {
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding: 4vw;
   align-items: flex-start;
   box-sizing: border-box;
 }
@@ -35,9 +40,18 @@ select {
   border: none;
   font-size: 22px;
   font-family: 'Montserrat';
-  color: var(--secondary);
+  color: var(--primary);
   width: 100%;
-  margin: 24px 0;
+  margin: 15px 0;
+  padding: 5px;
+}
+
+input {
+  font-size: 20px;
+  font-family: 'Montserrat';
+  color: var(--primary);
+  margin: 2px 0;
+  padding: 2px;
 }
 
 .guess-who-icon {
@@ -64,8 +78,8 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border: 2px solid var(--primary);
+  border-radius: 3px;
   margin: 3px;
   display: flex;
   flex-direction: column;
@@ -85,7 +99,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #00804d;
   text-align: center;
   height: inherit;
 }
@@ -148,7 +162,6 @@ button {
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
   display: none;
-  align-items: center;
   justify-content: center;
   background: var(--secondary);
   position: absolute;
@@ -157,24 +170,8 @@ button {
   left: 0;
   right: 0;
   height: 100vh;
-}
-
-.win-or-lose {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 700px;
   text-align: center;
-}
-
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
-}
-
-.win-or-lose h1 {
-  margin-bottom: 32px;
+  padding: 100px 0 100px 0;
 }
 
 @media (max-width: 768px) {
@@ -186,9 +183,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
@@ -229,5 +228,32 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+}
+
+/****** TIMER - ADDED BY BEC  ******/
+#minutes,
+#colon,
+#seconds {
+  font-size: 25px;
+}
+
+.game-timer {
+  display: inline-block;
+  color: #00804d;
+  border: 2px solid #00804d;
+  background: #ccffeb;
+  border-radius: 4px;
+  padding: 0 10px 0 10px;
+  margin: 10px 0 0 0;
+  vertical-align: middle;
+  min-width: 120px;
+  text-align: center;
+}
+
+/*media query for mobile and tablet - remove the timer*/
+@media screen and (max-width: 933px) {
+  .game-timer {
+    display: none;
   }
 }

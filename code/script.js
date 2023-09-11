@@ -388,17 +388,14 @@ const checkMyGuess = (personToCheck) => {
 
 start();
 
-// Invokes the start function when website is loaded
 
 
-// All the event listeners
 restartButton.addEventListener('click', () => {
-  start();
+  restart();
   winOrLose.style.display = 'none';
   board.style.display = 'flex';
 });
 
-//This is the eventL for the selectQ function
 questions.addEventListener('change', () => {
   selectQuestion();
 });
@@ -409,8 +406,14 @@ findOutbtn.addEventListener('click', () => {
 
 playAgain.addEventListener('click', () => {
   start();
-  generateBoard();
+  winOrLose.style.display = 'none';
+  board.style.display = 'flex';
 });
+
+
+
+
+//Keeping all my comments so I understand if I have to change anything :)
 
 
 

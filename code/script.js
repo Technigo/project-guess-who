@@ -257,6 +257,7 @@ const restart = () => {
   generateBoard();
 };
 
+
 // setting the currentQuestion object when you select something in the dropdown
 // .parentNode.label stores hair and eyes
 // category is the options - 
@@ -393,6 +394,8 @@ start();
 // All the event listeners
 restartButton.addEventListener('click', () => {
   start();
+  winOrLose.style.display = 'none';
+  board.style.display = 'flex';
 });
 
 //This is the eventL for the selectQ function

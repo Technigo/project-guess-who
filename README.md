@@ -1,13 +1,12 @@
-# Project Name
+# Guess who
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project was to create a "Guess who"-game. It inluded using the DOM, eventlisteners etc. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+It was alot of information to start with in the files already, which both made it easier and trickier. Less to do and figure out along the way, but a lot of code to understand at once in the beginning. 
+If I hade more time, I would probably work more on the styling, and additional strechgoals. 
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guesswhoveras.netlify.app

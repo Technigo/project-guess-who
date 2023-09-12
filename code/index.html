@@ -29,34 +29,40 @@
     <select title="questions" id="questions">
 
       <optgroup label="versions">
-        <option value="stolen">stolen version</option>
-        <option value="taylors">taylors version</option>
-        <option value="new">new owned version</option>
+        <option value="stolen">"stolen version"</option>
+        <option value="taylorsV">"Taylors version"</option>
+        <option value="owned">owned by Taylor</option>
       </optgroup>
-      <optgroup label="erastour">
 
-        <option value="setlist">Is on The Eras Tour set list</option>
+      <optgroup label="erastour">
+        <option value="setlist">Is on The Eras Tour setlist</option>
         <option value="surprise">Has been played as a surprise song</option>
-        <!--<option value="hidden">hidden eyes</option> instead?
-        <option value="hidden">eyes not visible</option>
-        <option value="green">green eyes</option>
-        <option value="brown">brown eyes</option>
-        <option value="blue">blue eyes</option>-->
+        <option value="surpTwice">Has been played as a surprise song twice</option>
+
       </optgroup>
       <optgroup label="cinematic">
-        <option value="music video">Has a music video</option>
-        <option value="no musicvideo">Has no music video</option>
-        <!-- <option value="hat">hat</option>
-        <option value="glasses">glasses</option>
-        <option value="earrings">earrings</option>
-        Add the other accessory option here. (hat)  -->
+        <option value="musicvid">has a music video</option>
+        <option value="noMusicvideo">has no music video</option>
       </optgroup>
+
       <optgroup label="songtheme">
-        <option value="hearthbreak"> about heartbreak</option>
-        <option value="breakup"> about breakups</option>
-        <option value="relationship"> about relationships</option>
-        <option value="lifelessons"> about life and lifelessons</option>
+        <option value="heartbreak">heartbreak</option>
+        <option value="breakup">breakups</option>
+        <option value="relationship">relationships</option>
+        <option value="lifelessons">life and lifelessons</option>
       </optgroup>
+
+      <optgroup label="other">
+        <option value="fromTheV">From The Vault</option>
+        <option value="collaboration">a collaboration with other artists</option>
+      </optgroup>
+
+      <!--
+      <optgroup label="other">
+        <option value="fromTheVault">is From The Vault</option>
+       
+      </optgroup>-->
+
     </select>
 
     <button id="filter" class="filled-button">FIND OUT</button>

@@ -17,242 +17,272 @@ const CHARACTERS = [
   {
     name: 'You need to calm down',
     img: 'images/YNTCD.jpeg',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'setlist',
-    cinematic: 'music video',
-    songtheme: ['hearthbreak', 'breakup']
+    cinematic: 'musicvid',
+    songtheme: ['heartbreak'],
+    other: []
   },
   {
     name: 'Mean',
     img: 'images/mean.jpg',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'surprise',
-    cinematic: 'music video',
-    songtheme: ['hearthbreak', 'breakup']
+    cinematic: 'musicvid',
+    songtheme: ['heartbreak', 'breakup'],
+    other: []
   },
   {
     name: 'Cornelia street',
     img: 'images/corneliastreet.png',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'surprise',
-    cinematic: 'music video',
-    songtheme: ['hearthbreak', 'breakup']
+    cinematic: 'musicvid',
+    songtheme: ['heartbreak', 'breakup'],
+    other: []
   },
   {
     name: 'The Man',
     img: 'images/THEMAN.png',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'surprise',
-    cinematic: 'music video',
-    songtheme: ['hearthbreak', 'breakup']
+    cinematic: 'musicvid',
+    songtheme: ['heartbreak', 'breakup'],
+    other: []
   },
   {
     name: 'Look what you made me do',
     img: 'images/LWYMMD.jpg',
-    versions: 'taylors',
+    versions: 'taylorsV',
     erastour: 'setlist',
-    cinematic: 'musicviideo',
-    songtheme: ['hearthbreak', 'breakup']
+    cinematic: 'musicvid',
+    songtheme: ['heartbreak', 'breakup'],
+    other: []
   },
   {
     name: 'Delicate',
     img: 'images/Delicate.png',
     versions: 'stolen',
     erastour: 'setlist',
-    cinematic: 'music video',
-    songtheme: ['hearthbreak', 'breakup']
+    cinematic: 'musicvid',
+    songtheme: ['heartbreak', 'breakup'],
+    other: []
   },
   {
     name: 'Ready for it',
     img: 'images/readyforit.png',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'setlist',
-    cinematic: 'music video',
-    songtheme: ['hearthbreak', 'breakup']
+    cinematic: 'musicvid',
+    songtheme: ['heartbreak', 'breakup'],
+    other: ['fromTheV', 'collaboration']
   },
   {
     name: 'Anti-hero',
     img: 'images/antihero.jpg',
-    versions: 'taylors',
+    versions: 'taylorsV',
     erastour: 'surprise',
-    cinematic: 'music video',
-    songtheme: ['hearthbreak', 'breakup']
+    cinematic: 'musicvid',
+    songtheme: ['heartbreak', 'breakup'],
+    other: ['fromTheV', 'collaboration']
   },
   {
     name: 'Cruel summer',
     img: 'images/cruelsummer.jpg',
-    versions: 'orange',
+    versions: 'stolen',
     erastour: 'setlist',
-    cinematic: 'music video',
-    songtheme: ['hearthbreak', 'breakup']
+    cinematic: 'noMusicvideo',
+    songtheme: ['heartbreak', 'breakup'],
+    other: ['fromTheV', 'collaboration']
   },
   {
     name: 'WANEGBT',
     img: 'images/WANEGBT.jpg',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'surprise',
-    cinematic: 'music video',
-    songtheme: ['hearthbreak', 'breakup']
+    cinematic: 'musicvid',
+    songtheme: ['heartbreak', 'breakup'],
+    other: ['fromTheV', 'collaboration']
   },
   {
     name: 'You’re on your own kid',
     img: 'images/YOYOK.jpg',
     versions: 'stolen',
-    erastour: 'surprise',
-    cinematic: 'music video',
-    songtheme: ['hearthbreak', 'breakup']
+    erastour: 'surpTwice',
+    cinematic: 'noMusicvideo',
+    songtheme: ['heartbreak', 'breakup'],
+    other: ['fromTheV', 'collaboration']
   },
   {
     name: 'All too well',
     img: 'images/alltoowell.jpg',
     versions: 'stolen',
     erastour: 'surprise',
-    cinematic: 'music video',
+    cinematic: 'musicvid',
     songtheme: ['lifelessons', 'relationship'],
+    other: ['fromTheV', 'collaboration']
   },
   {
     name: 'Midnight rain',
     img: 'images/midnightrain.jpg',
     versions: 'stolen',
     erastour: 'setlist',
-    cinematic: 'music video',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: ['fromTheV', 'collaboration']
   },
   {
     name: 'I bet you think about me ',
     img: 'images/IBYTAM.jpg',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'setlist',
-    cinematic: 'music video',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'musicvid',
+    songtheme: ['lifelessons', 'relationship'],
+    other: ['fromTheV', 'collaboration']
   },
   {
     name: 'Fearless',
     img: 'images/fearless.png',
     versions: 'stolen',
     erastour: 'setlist',
-    cinematic: 'music video',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Should’ve said no',
     img: 'images/shouldvesaidno.png',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'setlist',
-    cinematic: 'music video',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Right where you left me',
     img: 'images/RWYLM.jpg',
-    versions: 'new',
+    versions: 'taylorsV',
     erastour: 'setlist',
-    cinematic: 'music video',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Cowboy like me',
     img: 'images/cowboylikeme.jpg',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'setlist',
-    cinematic: 'music video',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Tolerate it',//!!
     img: 'images/tolerateit.jpg',
     versions: 'stolen',
     erastour: 'surprise',
-    cinematic: 'music video',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Blank space',
     img: 'images/blankspace.png',
-    versions: 'taylors',
+    versions: 'taylorsV',
     erastour: 'surprise',
-    cinematic: 'music video',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'musicvid',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Bad blood',
     img: 'images/badblood.jpg',
-    versions: 'taylors',
+    versions: 'taylorsV',
     erastour: 'surprise',
-    cinematic: 'no musicvideo',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'musicvid',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Mirrorball',
     img: 'images/mirrorball.jpg',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'surprise',
-    cinematic: 'no musicvideo',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'I know places',
     img: 'images/iknowplaces.jpg',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'surprise',
-    cinematic: 'no musicvideo',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Love story',
     img: 'images/lovestory.png',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'surprise',
-    cinematic: 'no musicvideo',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'musicvid',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Electric touch',
     img: 'images/eletrictouch.jpg',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'surprise',
-    cinematic: 'no musicvideo',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Mad woman',
     img: 'images/madwoman.png',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'surprise',
-    cinematic: 'no musicvideo',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Illicit affairs',
     img: 'images/illicitaffair.jpg',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'surprise',
-    cinematic: 'no musicvideo',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Maroon',
     img: 'images/maroon.jpg',
-    versions: 'new',
-    erastour: 'surprise',
-    cinematic: 'no musicvideo',
-    songtheme: ['lifelessons', 'relationship']
+    versions: 'taylorsV',
+    erastour: 'surpTwice',
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Long live',
     img: 'images/longlive.jpg',
-    versions: 'new',
+    versions: 'taylorsV',
     erastour: 'surprise',
-    cinematic: 'no musicvideo',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Champagne problems',//!!
     img: 'images/champagneproblems.png',
-    versions: 'new',
+    versions: 'owned',
     erastour: 'surprise',
-    cinematic: 'no musicvideo',
-    songtheme: ['lifelessons', 'relationship']
+    cinematic: 'noMusicvideo',
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
 ]
 
@@ -323,21 +353,36 @@ const selectQuestion = () => {
   }
 }
 
-//Sakura Tanaka helped me figure out the textForAlert. I couldn't figure it out, but she looked over my code and gave me theese suggestions. 
+//Sakura Tanaka helped me figure out the textForAlert. I couldn't figure it out, but she looked over my code and gave me theese suggestions. I wanted to have the option text appear in the alert and not the option value
 
 // This function should be invoked when you click on 'Find Out' button.
-const checkQuestion = () => {
 
+
+const checkQuestion = () => {
+  const { category, value } = currentQuestion
   // Check if currentQuestion is defined before destructuring it. WHY did I add this?
   if (!currentQuestion) {
     alert("Please select a question before checking.");
     return;
   }
 
-  const { category, value } = currentQuestion
+  let keep;
 
-  keep = true;
+  if (category === 'versions' || category === 'erastour') {
+    keep = secret && secret[category] === value;
+  }
+  else if (category === 'other' || category === 'songtheme' || category === 'cinematic') {
+    keep = secret && secret[category] && secret[category].includes(value);
+  }
 
+  filterCharacters(keep);
+
+  console.log("Category:", category);
+  console.log("Secret Object:", secret);
+  console.log("Value:", value);
+  console.log("Secret[category]:", secret[category]);
+}
+/*CODE TRIED
   if (category === 'versions' || category === 'erastour') {
     console.log(category, value);
     if (secret[category] === value) //I think this condition checks if the value is exactly the same as secret catergory
@@ -347,7 +392,7 @@ const checkQuestion = () => {
       filterCharacters(false);
     }
   }
-  else if (category === 'cinematic' || category === 'songtheme') {
+  else if (category === 'cinematic' || category === 'songtheme' || category === 'other') {
     console.log(category, value);
     if (secret[category].includes(value)) ////I think this condition checks if the value is sone of the elements inside the array i think?
     {
@@ -356,14 +401,9 @@ const checkQuestion = () => {
     else {
       filterCharacters(false);
     }
-  }
-}
+  }*/
 
-//Logic: Checks for hair or eyes. If yes then true, if not moves on to accessories and other and checks them. 
-
-/* If I want to add on categorys:
- else if (category === 'accessories' || category === 'other' || category === 'clothes' || category === 'hairtype') 
- 
+/* THOUGHTS
  would it be better to write like this again, easier for me to understand?:
  {
     console.log(category, value);
@@ -374,7 +414,6 @@ const checkQuestion = () => {
     }
   }
   filterCharacters(keep);
-
 */
 
 
@@ -391,24 +430,28 @@ const filterCharacters = (keep) => {
   //I originally wanted different messages for each category (its the same now) that is why the code isn't more comact. Not sure if I'll keep it like this.
   if (category === 'cinematic') {
     message = keep
-      ? `Yes, the person wears ${textForAlert}! Keep all people that wear ${textForAlert}`
-      : `No, the person doesn't wear ${textForAlert}! Remove all people that wear ${textForAlert}`;
+      ? `Correct, the song ${textForAlert}! All songs that fit categoy "${textForAlert}" will be kept.`
+      : `Wrong, the song ${textForAlert}. All songs that fit categoy "${textForAlert}" will be removed.`;
   } else if (category === 'songtheme') {
     message = keep
-      ? `Yes, the person wears ${textForAlert}! Keep all people that wear ${textForAlert}`
-      : `No, the person doesn't wear ${textForAlert}! Remove all people that wear ${textForAlert}`;
+      ? `That's right, the song is about ${textForAlert}! All songs that are about ${textForAlert} will be kept.`
+      : `That's wrong, the song is not about ${textForAlert}! All songs that are not about ${textForAlert} will be removed.`;
+  } else if (category === 'other') {
+    message = keep
+      ? `That's right, the song is ${textForAlert}! All songs that fit this category will be kept.`
+      : `That's wrong, the song is not ${textForAlert}. All songs that fit this category will be removed.`;
   } else if (category === 'versions') {
     message = keep
-      ? `Yes, the person has ${textForAlert} hair! Keep all people with ${textForAlert} hair`
-      : `No, the person doesn't have ${textForAlert} hair! Remove all people with ${textForAlert} hair`;
+      ? `Yes! The song ${textForAlert}! All songs that fit category ${textForAlert} will be kept.`
+      : `No! The song is not ${textForAlert}. All songs that are not ${textForAlert} will be removed.`;
   } else if (category === 'erastour') {
     message = keep
-      ? `Yes, the person has ${textForAlert} eyes! Keep all people with ${textForAlert} eyes`
-      : `No, the person doesn't have ${textForAlert} eyes! Remove all people with ${textForAlert} eyes`;
+      ? `Yes! "${textForAlert}" is a correct guess! All songs that fit this category will be kept.`
+      : `No! "${textForAlert}" is a wrong guess. All songs that fit this category will be removed.`;
   } else {
     message = keep
-      ? `Yes, the person has ${textForAlert}! Keep all people with ${textForAlert}`
-      : `No, the person doesn't have ${textForAlert}! Remove all people with ${textForAlert}`;
+      ? `Yes, ${textForAlert} is correct! All ${textForAlert} will be kept.`
+      : `No, ${textForAlert} is wrong. All ${textForAlert} will be removed`;
   }
 
   alert(message);
@@ -416,17 +459,51 @@ const filterCharacters = (keep) => {
   // Filtering the characters based on the category and value. 
   //I struggeled with the logic of this part, and where to put it. I think there should be a way to write it to make to code more comact?
   if (category === 'cinematic') {
-    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value) === keep);
-  } else if (category === 'songtheme') {
-    charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value) === keep);
-  } else if (category === 'versions' || category === 'erastour') {
-    charactersInPlay = charactersInPlay.filter((person) => person[category] === value === keep);
+    charactersInPlay = charactersInPlay.filter((person) => {
+      if (person[category]) {
+        return person[category].includes(value) === keep;
+      }
+      return !keep; // Remove characters without the 'cinematic' property if keep is false
+    });
+  } else if (category === 'songtheme' || category === 'erastour') {
+    charactersInPlay = charactersInPlay.filter((person) => (person[category].includes(value) === keep));
+  } else if (category === 'versions') {
+    charactersInPlay = charactersInPlay.filter((person) => {
+      if (person[category]) {
+        return person[category] === value === keep;
+      }
+      return !keep; // Remove characters without the 'versions' property if keep is false
+    });
+  } else if (category === 'other') {
+    charactersInPlay = charactersInPlay.filter((person) => {
+      if (person[category]) {
+        return person[category].includes(value) === keep;
+      }
+      return !keep; // Remove characters without the 'other' property if keep is false
+    });
   } else {
     // Handle other categories here
   }
 
+
+  /*CODE TRIED
+  if (category === 'cinematic') {
+    charactersInPlay = charactersInPlay.filter((person) => (person[category].includes(value) === keep));
+  } else if (category === 'songtheme' || category === 'erastour') {
+    charactersInPlay = charactersInPlay.filter((person) => (person[category].includes(value) === keep));
+  } else if (category === 'versions' || category === 'other') {
+    charactersInPlay = charactersInPlay.filter((person) => (person[category] === value) === keep);
+  } else {
+    // Handle other categories here
+
+  }*/
+  console.log("Debugging: 'other' category");
+  console.log("Value:", value);
+  console.log("Keep:", keep);
+
   generateBoard();  //Updates the game-board with filtered characters. I couln't make it work without this. 
 }
+
 
 // when clicking guess, the player first have to confirm that they want to make a guess.
 const guess = (personToConfirm) => {

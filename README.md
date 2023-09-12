@@ -7,4 +7,5 @@ A 'guess who' game that filters the cards based on user selection. The game sele
 The problem for me was to understand categories, values and parameters in the objects. I had to rely on coursemates code to debug and get it working (almost completely). At the time of submission the there is no working Timer-reset function when game is restarted (only on page refresh).
 
 ## View it live
+https://mellifluous-smakager-f98424.netlify.app/
 

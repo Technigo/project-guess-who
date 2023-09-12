@@ -26,7 +26,7 @@ const CHARACTERS = [
   {
     name: 'Mean',
     img: 'images/mean.jpg',
-    versions: 'owned',
+    versions: ['taylorsV', 'owned'],
     erastour: 'surprise',
     cinematic: 'musicvid',
     songtheme: ['heartbreak', 'breakup'],
@@ -45,7 +45,7 @@ const CHARACTERS = [
     name: 'The Man',
     img: 'images/THEMAN.png',
     versions: 'owned',
-    erastour: 'surprise',
+    erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['heartbreak', 'breakup'],
     other: []
@@ -53,7 +53,7 @@ const CHARACTERS = [
   {
     name: 'Look what you made me do',
     img: 'images/LWYMMD.jpg',
-    versions: 'taylorsV',
+    versions: 'stolen',
     erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['heartbreak', 'breakup'],
@@ -71,7 +71,7 @@ const CHARACTERS = [
   {
     name: 'Ready for it',
     img: 'images/readyforit.png',
-    versions: 'owned',
+    versions: 'stolen',
     erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['heartbreak', 'breakup'],
@@ -80,8 +80,8 @@ const CHARACTERS = [
   {
     name: 'Anti-hero',
     img: 'images/antihero.jpg',
-    versions: 'taylorsV',
-    erastour: 'surprise',
+    versions: 'owned',
+    erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['heartbreak', 'breakup'],
     other: ['fromTheV', 'collaboration']
@@ -89,7 +89,7 @@ const CHARACTERS = [
   {
     name: 'Cruel summer',
     img: 'images/cruelsummer.jpg',
-    versions: 'stolen',
+    versions: 'owned',
     erastour: 'setlist',
     cinematic: 'noMusicvideo',
     songtheme: ['heartbreak', 'breakup'],
@@ -98,8 +98,8 @@ const CHARACTERS = [
   {
     name: 'WANEGBT',
     img: 'images/WANEGBT.jpg',
-    versions: 'owned',
-    erastour: 'surprise',
+    versions: 'taylorsV',
+    erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['heartbreak', 'breakup'],
     other: ['fromTheV', 'collaboration']
@@ -107,7 +107,7 @@ const CHARACTERS = [
   {
     name: 'You’re on your own kid',
     img: 'images/YOYOK.jpg',
-    versions: 'stolen',
+    versions: 'owned',
     erastour: 'surpTwice',
     cinematic: 'noMusicvideo',
     songtheme: ['heartbreak', 'breakup'],
@@ -116,8 +116,8 @@ const CHARACTERS = [
   {
     name: 'All too well',
     img: 'images/alltoowell.jpg',
-    versions: 'stolen',
-    erastour: 'surprise',
+    versions: 'taylorsV',
+    erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['lifelessons', 'relationship'],
     other: ['fromTheV', 'collaboration']
@@ -125,7 +125,7 @@ const CHARACTERS = [
   {
     name: 'Midnight rain',
     img: 'images/midnightrain.jpg',
-    versions: 'stolen',
+    versions: 'owned',
     erastour: 'setlist',
     cinematic: 'noMusicvideo',
     songtheme: ['lifelessons', 'relationship'],
@@ -134,8 +134,8 @@ const CHARACTERS = [
   {
     name: 'I bet you think about me ',
     img: 'images/IBYTAM.jpg',
-    versions: 'owned',
-    erastour: 'setlist',
+    versions: 'taylorsV',
+    erastour: 'surprise',
     cinematic: 'musicvid',
     songtheme: ['lifelessons', 'relationship'],
     other: ['fromTheV', 'collaboration']
@@ -143,17 +143,17 @@ const CHARACTERS = [
   {
     name: 'Fearless',
     img: 'images/fearless.png',
-    versions: 'stolen',
+    versions: 'taylorsV',
     erastour: 'setlist',
     cinematic: 'noMusicvideo',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: 'relationship',
     other: []
   },
   {
     name: 'Should’ve said no',
     img: 'images/shouldvesaidno.png',
-    versions: 'owned',
-    erastour: 'setlist',
+    versions: 'stolen',
+    erastour: 'surprise',
     cinematic: 'noMusicvideo',
     songtheme: ['lifelessons', 'relationship'],
     other: []
@@ -161,8 +161,8 @@ const CHARACTERS = [
   {
     name: 'Right where you left me',
     img: 'images/RWYLM.jpg',
-    versions: 'taylorsV',
-    erastour: 'setlist',
+    versions: 'owned',
+    erastour: 'surprise',
     cinematic: 'noMusicvideo',
     songtheme: ['lifelessons', 'relationship'],
     other: []
@@ -171,16 +171,16 @@ const CHARACTERS = [
     name: 'Cowboy like me',
     img: 'images/cowboylikeme.jpg',
     versions: 'owned',
-    erastour: 'setlist',
+    erastour: 'surprise',
     cinematic: 'noMusicvideo',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: 'relationship',
     other: []
   },
   {
     name: 'Tolerate it',//!!
     img: 'images/tolerateit.jpg',
-    versions: 'stolen',
-    erastour: 'surprise',
+    versions: 'owned',
+    erastour: 'setlist',
     cinematic: 'noMusicvideo',
     songtheme: ['lifelessons', 'relationship'],
     other: []
@@ -188,8 +188,8 @@ const CHARACTERS = [
   {
     name: 'Blank space',
     img: 'images/blankspace.png',
-    versions: 'taylorsV',
-    erastour: 'surprise',
+    versions: 'stolen',
+    erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['lifelessons', 'relationship'],
     other: []
@@ -197,8 +197,8 @@ const CHARACTERS = [
   {
     name: 'Bad blood',
     img: 'images/badblood.jpg',
-    versions: 'taylorsV',
-    erastour: 'surprise',
+    versions: 'stolen',
+    erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['lifelessons', 'relationship'],
     other: []
@@ -215,7 +215,7 @@ const CHARACTERS = [
   {
     name: 'I know places',
     img: 'images/iknowplaces.jpg',
-    versions: 'owned',
+    versions: 'stolen',
     erastour: 'surprise',
     cinematic: 'noMusicvideo',
     songtheme: ['lifelessons', 'relationship'],
@@ -224,8 +224,8 @@ const CHARACTERS = [
   {
     name: 'Love story',
     img: 'images/lovestory.png',
-    versions: 'owned',
-    erastour: 'surprise',
+    versions: 'taylorsV',
+    erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['lifelessons', 'relationship'],
     other: []
@@ -233,11 +233,11 @@ const CHARACTERS = [
   {
     name: 'Electric touch',
     img: 'images/eletrictouch.jpg',
-    versions: 'owned',
-    erastour: 'surprise',
+    versions: 'taylorsV',
+    erastour: [],
     cinematic: 'noMusicvideo',
     songtheme: ['lifelessons', 'relationship'],
-    other: []
+    other: ['fromTheV', 'collaboration']
   },
   {
     name: 'Mad woman',
@@ -252,7 +252,7 @@ const CHARACTERS = [
     name: 'Illicit affairs',
     img: 'images/illicitaffair.jpg',
     versions: 'owned',
-    erastour: 'surprise',
+    erastour: 'setlist',
     cinematic: 'noMusicvideo',
     songtheme: ['lifelessons', 'relationship'],
     other: []
@@ -260,7 +260,7 @@ const CHARACTERS = [
   {
     name: 'Maroon',
     img: 'images/maroon.jpg',
-    versions: 'taylorsV',
+    versions: 'owned',
     erastour: 'surpTwice',
     cinematic: 'noMusicvideo',
     songtheme: ['lifelessons', 'relationship'],
@@ -270,7 +270,7 @@ const CHARACTERS = [
     name: 'Long live',
     img: 'images/longlive.jpg',
     versions: 'taylorsV',
-    erastour: 'surprise',
+    erastour: ['surprise', 'setlist'],
     cinematic: 'noMusicvideo',
     songtheme: ['lifelessons', 'relationship'],
     other: []
@@ -279,7 +279,7 @@ const CHARACTERS = [
     name: 'Champagne problems',//!!
     img: 'images/champagneproblems.png',
     versions: 'owned',
-    erastour: 'surprise',
+    erastour: 'setlist',
     cinematic: 'noMusicvideo',
     songtheme: ['lifelessons', 'relationship'],
     other: []
@@ -443,7 +443,7 @@ const filterCharacters = (keep) => {
   } else if (category === 'versions') {
     message = keep
       ? `Yes! The song ${textForAlert}! All songs that fit category ${textForAlert} will be kept.`
-      : `No! The song is not ${textForAlert}. All songs that are not ${textForAlert} will be removed.`;
+      : `No! The song is not ${textForAlert}. All songs that are ${textForAlert} will be removed.`;
   } else if (category === 'erastour') {
     message = keep
       ? `Yes! "${textForAlert}" is a correct guess! All songs that fit this category will be kept.`

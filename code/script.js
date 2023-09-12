@@ -396,7 +396,7 @@ const guess = (personToConfirm) => {
   const userGuess = confirm(`Are you sure it's ...${personToConfirm}?`);
   if (userGuess){
     const elapsedTime = stopTimer(); // Stop timer
-    checkMyGuess(personToConfirm, elapsedTime, userName); //If user guess, checkMyGuess is invoked
+    checkMyGuess(personToConfirm, elapsedTime); //If user guess, checkMyGuess is invoked
   }
  console.log(personToConfirm); 
 }

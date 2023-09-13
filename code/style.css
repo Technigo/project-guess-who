@@ -34,7 +34,7 @@ h1 {
   background-color: var(--secondary);
   padding-top: 2vw;
   padding-right: 2vw;
-  padding-bottom: 15vw;
+  padding-bottom: 10vw;
   padding-left: 2vw;
 }
 
@@ -201,7 +201,7 @@ button {
     width: 100%;
     min-height: 0;
     background-size: cover;
-    padding-top: 20vw;
+    padding-top: 40vw;
   }
 
   button {
@@ -209,13 +209,15 @@ button {
   }
 
   h1 {
-    font-size: 24px;
-    line-height: 30px;
+    font-size: 20px;
+    line-height: 25px;
+    padding-top: 40px;
   }
 
+  /*
   .guess-who-icon {
     width: 51px;
-  }
+  }*/
 
   .board-wrapper {
     width: 100%;
@@ -252,4 +254,6 @@ button {
     color: var(--primary);
     border: none;
   }
+
+
 }

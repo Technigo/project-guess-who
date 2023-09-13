@@ -360,22 +360,18 @@ const selectQuestion = () => {
 
 const checkQuestion = () => {
   const { category, value } = currentQuestion
+  //const { category, value, textForAlert } = currentQuestion;
+
   // Check if currentQuestion is defined before destructuring it. WHY did I add this?
-  if (!currentQuestion) {
-    alert("Please select a question before checking.");
-    return;
-  }
+  let keep
 
-  let keep;
-
-  if (category === 'versions' || category === 'erastour') {
-    keep = secret && secret[category] === value;
+  if (category === 'versions' || category === 'coaerastourt') {
+    attribute = category
+    keep = secret[category] === value
+  } else if (category === 'other' || category === 'songtheme' || category === 'cinematic') {
+    keep = secret[category].includes(value)
   }
-  else if (category === 'other' || category === 'songtheme' || category === 'cinematic') {
-    keep = secret && secret[category] && secret[category].includes(value);
-  }
-
-  filterCharacters(keep);
+  filterCharacters(keep)
 
   console.log("Category:", category);
   console.log("Secret Object:", secret);

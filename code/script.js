@@ -18,7 +18,7 @@ const CHARACTERS = [
     versions: 'owned',
     erastour: 'setlist',
     cinematic: 'musicvid',
-    songtheme: ['heartbreak'],
+    songtheme: 'lifelessons',
     other: []
   },
   {
@@ -27,7 +27,7 @@ const CHARACTERS = [
     versions: ['taylorsV', 'owned'],
     erastour: 'surprise',
     cinematic: 'musicvid',
-    songtheme: ['heartbreak', 'breakup'],
+    songtheme: 'lifelessons',
     other: []
   },
   {
@@ -36,7 +36,7 @@ const CHARACTERS = [
     versions: 'owned',
     erastour: 'surprise',
     cinematic: 'musicvid',
-    songtheme: ['heartbreak', 'breakup'],
+    songtheme: ['relationship', 'heartbreak'],
     other: []
   },
   {
@@ -45,7 +45,7 @@ const CHARACTERS = [
     versions: 'owned',
     erastour: 'setlist',
     cinematic: 'musicvid',
-    songtheme: ['heartbreak', 'breakup'],
+    songtheme: 'lifelessons',
     other: []
   },
   {
@@ -54,7 +54,7 @@ const CHARACTERS = [
     versions: 'stolen',
     erastour: 'setlist',
     cinematic: 'musicvid',
-    songtheme: ['heartbreak', 'breakup'],
+    songtheme: 'lifelessons',
     other: []
   },
   {
@@ -63,7 +63,7 @@ const CHARACTERS = [
     versions: 'stolen',
     erastour: 'setlist',
     cinematic: 'musicvid',
-    songtheme: ['heartbreak', 'breakup'],
+    songtheme: ['lifelessons', 'relationship'],
     other: []
   },
   {
@@ -72,8 +72,8 @@ const CHARACTERS = [
     versions: 'stolen',
     erastour: 'setlist',
     cinematic: 'musicvid',
-    songtheme: ['heartbreak', 'breakup'],
-    other: ['fromTheV', 'collaboration']
+    songtheme: ['lifelessons', 'relationship'],
+    other: []
   },
   {
     name: 'Anti-hero',
@@ -81,8 +81,8 @@ const CHARACTERS = [
     versions: 'owned',
     erastour: 'setlist',
     cinematic: 'musicvid',
-    songtheme: ['heartbreak', 'breakup'],
-    other: ['fromTheV', 'collaboration']
+    songtheme: 'lifelessons',
+    other: []
   },
   {
     name: 'Cruel summer',
@@ -90,8 +90,8 @@ const CHARACTERS = [
     versions: 'owned',
     erastour: 'setlist',
     cinematic: 'noMusicvideo',
-    songtheme: ['heartbreak', 'breakup'],
-    other: ['fromTheV', 'collaboration']
+    songtheme: 'relationship',
+    other: []
   },
   {
     name: 'WANEGBT',
@@ -100,7 +100,7 @@ const CHARACTERS = [
     erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['heartbreak', 'breakup'],
-    other: ['fromTheV', 'collaboration']
+    other: []
   },
   {
     name: 'You’re on your own kid',
@@ -108,8 +108,8 @@ const CHARACTERS = [
     versions: 'owned',
     erastour: 'surpTwice',
     cinematic: 'noMusicvideo',
-    songtheme: ['heartbreak', 'breakup'],
-    other: ['fromTheV', 'collaboration']
+    songtheme: ['heartbreak', 'lifelessons'],
+    other: []
   },
   {
     name: 'All too well',
@@ -117,8 +117,8 @@ const CHARACTERS = [
     versions: 'taylorsV',
     erastour: 'setlist',
     cinematic: 'musicvid',
-    songtheme: ['lifelessons', 'relationship'],
-    other: ['fromTheV', 'collaboration']
+    songtheme: ['breakups', 'relationship', 'heartbreak'],
+    other: 'fromTheV',
   },
   {
     name: 'Midnight rain',
@@ -126,8 +126,8 @@ const CHARACTERS = [
     versions: 'owned',
     erastour: 'setlist',
     cinematic: 'noMusicvideo',
-    songtheme: ['lifelessons', 'relationship'],
-    other: ['fromTheV', 'collaboration']
+    songtheme: ['breakups', 'relationship', 'heartbreak'],
+    other: []
   },
   {
     name: 'I bet you think about me ',
@@ -135,7 +135,7 @@ const CHARACTERS = [
     versions: 'taylorsV',
     erastour: 'surprise',
     cinematic: 'musicvid',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: ['breakups', 'heartbreak'],
     other: ['fromTheV', 'collaboration']
   },
   {
@@ -148,12 +148,12 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Should’ve said no',
+    name: 'Should´ve said no',
     img: 'images/shouldvesaidno.png',
     versions: 'stolen',
     erastour: 'surprise',
     cinematic: 'noMusicvideo',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: ['relationship', 'breakup'],
     other: []
   },
   {
@@ -162,7 +162,7 @@ const CHARACTERS = [
     versions: 'owned',
     erastour: 'surprise',
     cinematic: 'noMusicvideo',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: ['heartbreak', 'relationship', 'breakup'],
     other: []
   },
   {
@@ -175,12 +175,12 @@ const CHARACTERS = [
     other: []
   },
   {
-    name: 'Tolerate it',//!!
+    name: 'Tolerate it',
     img: 'images/tolerateit.jpg',
     versions: 'owned',
     erastour: 'setlist',
     cinematic: 'noMusicvideo',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: ['heartbreak', 'relationship'],
     other: []
   },
   {
@@ -189,7 +189,7 @@ const CHARACTERS = [
     versions: 'stolen',
     erastour: 'setlist',
     cinematic: 'musicvid',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: ['lifelessons', 'relationship', 'breakup'],
     other: []
   },
   {
@@ -199,7 +199,7 @@ const CHARACTERS = [
     erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['lifelessons', 'relationship'],
-    other: []
+    other: 'collaboration'
   },
   {
     name: 'Mirrorball',
@@ -225,7 +225,7 @@ const CHARACTERS = [
     versions: 'taylorsV',
     erastour: 'setlist',
     cinematic: 'musicvid',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: 'relationship',
     other: []
   },
   {
@@ -234,7 +234,7 @@ const CHARACTERS = [
     versions: 'taylorsV',
     erastour: [],
     cinematic: 'noMusicvideo',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: 'relationship',
     other: ['fromTheV', 'collaboration']
   },
   {
@@ -243,7 +243,7 @@ const CHARACTERS = [
     versions: 'owned',
     erastour: 'surprise',
     cinematic: 'noMusicvideo',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: ['lifelessons', 'relationship', 'breakup'],
     other: []
   },
   {
@@ -252,7 +252,7 @@ const CHARACTERS = [
     versions: 'owned',
     erastour: 'setlist',
     cinematic: 'noMusicvideo',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: ['lifelessons', 'relationship', 'heartbreak'],
     other: []
   },
   {
@@ -261,7 +261,7 @@ const CHARACTERS = [
     versions: 'owned',
     erastour: 'surpTwice',
     cinematic: 'noMusicvideo',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: ['breakup', 'relationship', 'heartbreak'],
     other: []
   },
   {
@@ -279,7 +279,7 @@ const CHARACTERS = [
     versions: 'owned',
     erastour: 'setlist',
     cinematic: 'noMusicvideo',
-    songtheme: ['lifelessons', 'relationship'],
+    songtheme: ['heartbreak', 'relationship', 'breakup'],
     other: []
   },
 ]

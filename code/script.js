@@ -98,7 +98,7 @@ const CHARACTERS = [
   {
     name: 'WANEGBT',
     img: 'images/WANEGBT.jpg',
-    versions: 'taylorsV',
+    versions: ['taylorsV', 'owned'],
     erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['heartbreak', 'breakup'],
@@ -116,7 +116,7 @@ const CHARACTERS = [
   {
     name: 'All too well',
     img: 'images/alltoowell.jpg',
-    versions: 'taylorsV',
+    versions: ['taylorsV', 'owned'],
     erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['lifelessons', 'relationship'],
@@ -134,7 +134,7 @@ const CHARACTERS = [
   {
     name: 'I bet you think about me ',
     img: 'images/IBYTAM.jpg',
-    versions: 'taylorsV',
+    versions: ['taylorsV', 'owned'],
     erastour: 'surprise',
     cinematic: 'musicvid',
     songtheme: ['lifelessons', 'relationship'],
@@ -143,7 +143,7 @@ const CHARACTERS = [
   {
     name: 'Fearless',
     img: 'images/fearless.png',
-    versions: 'taylorsV',
+    versions: ['taylorsV', 'owned'],
     erastour: 'setlist',
     cinematic: 'noMusicvideo',
     songtheme: 'relationship',
@@ -224,7 +224,7 @@ const CHARACTERS = [
   {
     name: 'Love story',
     img: 'images/lovestory.png',
-    versions: 'taylorsV',
+    versions: ['taylorsV', 'owned'],
     erastour: 'setlist',
     cinematic: 'musicvid',
     songtheme: ['lifelessons', 'relationship'],
@@ -233,7 +233,7 @@ const CHARACTERS = [
   {
     name: 'Electric touch',
     img: 'images/eletrictouch.jpg',
-    versions: 'taylorsV',
+    versions: ['taylorsV', 'owned'],
     erastour: [],
     cinematic: 'noMusicvideo',
     songtheme: ['lifelessons', 'relationship'],
@@ -269,7 +269,7 @@ const CHARACTERS = [
   {
     name: 'Long live',
     img: 'images/longlive.jpg',
-    versions: 'taylorsV',
+    versions: ['taylorsV', 'owned'],
     erastour: ['surprise', 'setlist'],
     cinematic: 'noMusicvideo',
     songtheme: ['lifelessons', 'relationship'],
@@ -419,90 +419,101 @@ const checkQuestion = () => {
 
 
 // this should filter the characters and redraw the game board?
+
+
 const filterCharacters = (keep) => {
   const { category, value, textForAlert } = currentQuestion;//S
-  //const { category, value } = currentQuestion;
-  let message;
-
-
-
-  // alert message for different categories.  
-  //I originally wanted different messages for each category (its the same now) that is why the code isn't more comact. Not sure if I'll keep it like this.
+  //const { category, value } = currentQuestion
   if (category === 'cinematic') {
-    message = keep
-      ? `Correct, the song ${textForAlert}! All songs that fit categoy "${textForAlert}" will be kept.`
-      : `Wrong, the song ${textForAlert}. All songs that fit categoy "${textForAlert}" will be removed.`;
+    if (keep) {
+      alert(`Correct, the song ${textForAlert}! All songs that fit categoy "${textForAlert}" will be kept.`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    } else {
+      alert(
+        `Wrong, the song ${textForAlert}. All songs that fit categoy "${textForAlert}" will be removed.`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+    }
   } else if (category === 'songtheme') {
-    message = keep
-      ? `That's right, the song is about ${textForAlert}! All songs that are about ${textForAlert} will be kept.`
-      : `That's wrong, the song is not about ${textForAlert}! All songs that are not about ${textForAlert} will be removed.`;
+    if (keep) {
+      alert(
+        `That's right, the song is about ${textForAlert}! All songs that are about ${textForAlert} will be kept.`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    } else {
+      alert(
+        `That's wrong, the song is not about ${textForAlert}! All songs that are not about ${textForAlert} will be removed.`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+    }
   } else if (category === 'other') {
-    message = keep
-      ? `That's right, the song is ${textForAlert}! All songs that fit this category will be kept.`
-      : `That's wrong, the song is not ${textForAlert}. All songs that fit this category will be removed.`;
-  } else if (category === 'versions') {
-    message = keep
-      ? `Yes! The song ${textForAlert}! All songs that fit category ${textForAlert} will be kept.`
-      : `No! The song is not ${textForAlert}. All songs that are ${textForAlert} will be removed.`;
+    if (keep) {
+      alert(
+        `That's right, the song is ${textForAlert}! All songs that fit this category will be kept.`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] === value)
+    } else {
+      alert(
+        `That's wrong, the song is not ${textForAlert}. All songs that fit this category will be removed.`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[attribute] !== value)
+    }
+  }
+
+  if (category === 'versions') {
+    if (keep) {
+      alert(
+        `Yes! The song ${textForAlert}! All songs that fit category ${textForAlert} will be kept.`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    } else {
+      alert(
+        `No! The song is not ${textForAlert}. All songs that are ${textForAlert} will be removed.`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    }
   } else if (category === 'erastour') {
-    message = keep
-      ? `Yes! "${textForAlert}" is a correct guess! All songs that fit this category will be kept.`
-      : `No! "${textForAlert}" is a wrong guess. All songs that fit this category will be removed.`;
-  } else {
-    message = keep
-      ? `Yes, ${textForAlert} is correct! All ${textForAlert} will be kept.`
-      : `No, ${textForAlert} is wrong. All ${textForAlert} will be removed`;
+    if (keep) {
+      alert(
+        `Yes! "${textForAlert}" is a correct guess! All songs that fit this category will be kept.`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+    } else {
+      alert(
+        `No! "${textForAlert}" is a wrong guess. All songs that fit this category will be removed.`
+      )
+      charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+    }
   }
 
-  alert(message);
-
-  // Filtering the characters based on the category and value. 
-  //I struggeled with the logic of this part, and where to put it. I think there should be a way to write it to make to code more comact?
-  if (category === 'cinematic') {
-    charactersInPlay = charactersInPlay.filter((person) => {
-      if (person[category]) {
-        return person[category].includes(value) === keep;
-      }
-      return !keep; // Remove characters without the 'cinematic' property if keep is false
-    });
-  } else if (category === 'songtheme' || category === 'erastour') {
-    charactersInPlay = charactersInPlay.filter((person) => (person[category].includes(value) === keep));
-  } else if (category === 'versions') {
-    charactersInPlay = charactersInPlay.filter((person) => {
-      if (person[category]) {
-        return person[category] === value === keep;
-      }
-      return !keep; // Remove characters without the 'versions' property if keep is false
-    });
-  } else if (category === 'other') {
-    charactersInPlay = charactersInPlay.filter((person) => {
-      if (person[category]) {
-        return person[category].includes(value) === keep;
-      }
-      return !keep; // Remove characters without the 'other' property if keep is false
-    });
-  } else {
-    // Handle other categories here
-  }
-
-
-  /*CODE TRIED
-  if (category === 'cinematic') {
-    charactersInPlay = charactersInPlay.filter((person) => (person[category].includes(value) === keep));
-  } else if (category === 'songtheme' || category === 'erastour') {
-    charactersInPlay = charactersInPlay.filter((person) => (person[category].includes(value) === keep));
-  } else if (category === 'versions' || category === 'other') {
-    charactersInPlay = charactersInPlay.filter((person) => (person[category] === value) === keep);
-  } else {
-    // Handle other categories here
-
-  }*/
   console.log("Debugging: 'other' category");
   console.log("Value:", value);
   console.log("Keep:", keep);
 
-  generateBoard();  //Updates the game-board with filtered characters. I couln't make it work without this. 
+  // Invokes a function to redraw the board with the remaining dogs
+  generateBoard(charactersInPlay)
 }
+
+
+
+
+
+// alert message for different categories.  
+//I originally wanted different messages for each category (its the same now) that is why the code isn't more comact. Not sure if I'll keep it like this.
+
+
+/*CODE TRIED
+if (category === 'cinematic') {
+  charactersInPlay = charactersInPlay.filter((person) => (person[category].includes(value) === keep));
+} else if (category === 'songtheme' || category === 'erastour') {
+  charactersInPlay = charactersInPlay.filter((person) => (person[category].includes(value) === keep));
+} else if (category === 'versions' || category === 'other') {
+  charactersInPlay = charactersInPlay.filter((person) => (person[category] === value) === keep);
+} else {
+  // Handle other categories here
+ 
+}*/
 
 
 // when clicking guess, the player first have to confirm that they want to make a guess.

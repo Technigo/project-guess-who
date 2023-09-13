@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #703e7a;
-  --secondary: #f6ebf9;
+  --primary: #722F37;
+  --secondary: #722F37;
 }
 
 body {
@@ -12,22 +12,30 @@ body {
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 30px;
   font-weight: 500;
-  line-height: 48px;
+  line-height: 38px;
   margin: 10px 0;
-  color: #703e7a;
+  color: #ffffff;
+
 }
 
 .question-section {
-  width: 30%;
+  width: 40%;
   min-height: 100vh;
-  background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  justify-content: end;
   align-items: flex-start;
   box-sizing: border-box;
+  background: url(./images/midright.jpg) no-repeat;
+  display: flex;
+  background-size: cover;
+  background-color: var(--secondary);
+  padding-top: 2vw;
+  padding-right: 2vw;
+  padding-bottom: 15vw;
+  padding-left: 2vw;
 }
 
 select {
@@ -49,10 +57,11 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #722F37;
 }
 
 .game-board {
-  width: 90%;
+  width: 100%;
   max-width: 882px;
   display: flex;
   flex-wrap: wrap;
@@ -64,8 +73,10 @@ select {
   width: 135px;
   height: 165px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
+  border: 2px solid;
+  border-color: #722F37;
+  background-color: #f8f2f321;
+  border-radius: 0px;
   margin: 3px;
   display: flex;
   flex-direction: column;
@@ -73,11 +84,13 @@ select {
   justify-content: space-between;
 }
 
+
 .card p {
   text-align: center;
   margin-bottom: 0;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
+  color: #ffffff;
 }
 
 .card .guess {
@@ -85,7 +98,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #ffffff;
   text-align: center;
   height: inherit;
 }
@@ -107,14 +120,15 @@ select {
 .guess span {
   font-size: 16px;
   line-height: 18px;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 8px;
   width: 90%;
 }
 
 /****** BUTTONS ******/
 button {
-  border: 2px solid var(--primary);
+  border: 2px solid;
+  color: #722F37;
   border-radius: 50px;
   font-size: 16px;
   font-family: 'Montserrat';
@@ -127,18 +141,19 @@ button {
   padding: 8px 16px;
 }
 
-.outlined-button {
-  background-color: transparent;
-  color: var(--primary);
-  align-self: flex-end;
-}
-
-.filled-button,
-.outlined-button:hover {
+.filled-button {
   background-color: var(--primary);
   color: white;
 }
 
+
+.outlined-button {
+  align-self: flex-end;
+  background-color: var(--primary);
+  color: white;
+}
+
+.outlined-button:hover,
 .filled-button:hover {
   background-color: white;
   border-color: white;
@@ -185,6 +200,8 @@ button {
   .question-section {
     width: 100%;
     min-height: 0;
+    background-size: cover;
+    padding-top: 20vw;
   }
 
   button {
@@ -207,6 +224,8 @@ button {
   .game-board {
     width: 100%;
     max-width: 750px;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .card {
@@ -220,6 +239,7 @@ button {
     position: absolute;
     justify-content: flex-end;
   }
+
 
   .card .guess span {
     display: none;

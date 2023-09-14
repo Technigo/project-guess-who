@@ -2,9 +2,11 @@
 :root {
   --primary: #722F37;
   --secondary: #722F37;
+
 }
 
 body {
+  font-family: 'Tenor Sans', sans-serif;
   display: flex;
   margin: 0;
   padding: 0;
@@ -12,7 +14,10 @@ body {
 }
 
 h1 {
-  font-size: 30px;
+  font: 'Tenor Sans', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 25px;
   font-weight: 500;
   line-height: 38px;
   margin: 10px 0;
@@ -80,20 +85,27 @@ select {
   margin: 3px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  /*HOW CAN I TARGET PICS IN JS?*/
+  align-items: center;
+  text-align: center;
+  position: relative;
+  flex-direction: column-reverse;
+  /*
+  HOW CAN I TARGET PICS IN JS? I can't get texy over pics AND the pics to fill the whole box. (align-items: center;?) */
 }
 
-
 .card p {
-  text-align: center;
+  font-family: 'Tenor Sans', sans-serif;
   margin-bottom: 0;
   font-size: 16px;
-  font-weight: 400;
-  color: #ffffff;
-  bottom: 5px;
-  /*position: absolute;*/
+  font-weight: 600;
+  color: #722F37;
+  background: rgba(255, 255, 255, 0.666);
+  background-position: ;
+  padding: 5px;
+  position: absolute;
+  text-align: center;
+  border-radius: 30px;
 }
 
 .card .guess {
@@ -253,11 +265,20 @@ button {
 
   .card .guess .filled-button {
     padding: 6px 11px;
-    margin-bottom: 1px;
+    margin-bottom: 130px;
     background: white;
     color: var(--primary);
     border: none;
+
   }
+
+  .card p {
+    color: #ffffff;
+    background: #722f377b;
+    font-size: 18px;
+
+  }
+
 
 
 }

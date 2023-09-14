@@ -382,7 +382,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        `Wrong, the song ${textForAlert}. All songs that fit categoy "${textForAlert}" will be removed.`
+        `Wrong, "${textForAlert}" does not apply for the secret song! All songs that fit categoy "${textForAlert}" will be removed.`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }
@@ -394,7 +394,7 @@ const filterCharacters = (keep) => {
       charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
     } else {
       alert(
-        `That's wrong, the song is not about ${textForAlert}! All songs that are not about ${textForAlert} will be removed.`
+        `That's wrong, the song is not about ${textForAlert}! All songs that are about ${textForAlert} will be removed.`
       )
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
     }/////UNDER

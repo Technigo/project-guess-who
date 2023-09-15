@@ -296,15 +296,15 @@ const filterCharacters = (keep) => {
   // Show the correct alert message for different categories
   if (category === 'hair') {
     if (keep) {
-      alert(`Yes, the person has ${value}! Keep all people with ${value}`)
+      alert(`Yes, the person has ${value}! Keep everyone that has ${value}`)
     } else {
-      alert(`No, the person doesn't have ${value}! Remove all people that doesn't have ${value}`)
+      alert(`No, the person doesn't have ${value}! Remove everyone that doesn't have ${value}`)
     }
     charactersInPlay = charactersInPlay.filter((person) => person[category] === value === keep)
   }
   else if (category === 'eyes') {
     if (keep) {
-      alert(`Yes, the person has ${value} color! Keep all people that has ${value} color`)
+      alert(`Yes, the person has ${value} ${category}! Keep all people that has ${value} ${category}`)
       charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
     } else {
       alert(`No, the person doesn't have ${value} color! Remove all people that has ${value} color`)
@@ -387,7 +387,7 @@ const guess = (personToConfirm) => {
 const checkMyGuess = (personToCheck) => {
   if (personToCheck === secret.name) {
     winOrLose.style.display = "flex";
-    winOrLoseText.innerHTML += `
+    winOrLoseText.innerHTML = `
     <h1>YAY! Congrats
     – you won! 🙌</h1>`
   } else {

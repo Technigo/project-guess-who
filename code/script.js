@@ -237,6 +237,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard();
   setSecret();
+  board.style.display = 'block'
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -267,6 +268,7 @@ const checkQuestion = () => {
     keep = secret[category].includes(value)
   }
   filterCharacters(keep)
+
 }
 
 // It'll filter the characters array and redraw the game board.
@@ -338,6 +340,9 @@ const checkMyGuess = (personToCheck) => {
   board.style.display = 'none'
 
 }
+
+
+
 
 
 // Invokes the start function when website is loaded

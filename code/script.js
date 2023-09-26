@@ -238,7 +238,6 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard()
   setSecret()
-  start()
 }
 
 // setting the currentQuestion object when you select something in the dropdown

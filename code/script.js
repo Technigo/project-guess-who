@@ -237,7 +237,7 @@ const start = () => {
   charactersInPlay = CHARACTERS
   generateBoard();
   setSecret();
-  board.style.display = 'block'
+  board.style.display = 'flex'
 }
 
 // setting the currentQuestion object when you select something in the dropdown

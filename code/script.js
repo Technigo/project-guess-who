@@ -342,13 +342,22 @@ const checkMyGuess = (personToCheck) => {
 
   // 4. Hides board
   board.style.display = 'none'
+
+  console.log('Start function called');
+
+}
+
+const playAgain = () => {
+  generateBoard(CHARACTERS);
+  start();
 }
 
 // Invokes the start function when website is loaded
 start()
 
+
 // All the event listeners
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
-playAgainButton.addEventListener('click', start)
+playAgainButton.addEventListener('click', playAgain)

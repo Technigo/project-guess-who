@@ -204,12 +204,12 @@ const CHARACTERS = [
   },
 ]
 
-// Global variables
+
 let secret
 let currentQuestion
 let charactersInPlay
 
-// Draw the game board
+// Game board 
 const generateBoard = () => {
   board.innerHTML = ''
   charactersInPlay.forEach((person) => {
@@ -226,26 +226,24 @@ const generateBoard = () => {
   })
 }
 
-// Randomly select a person from the characters array and set as the value of the variable called secret
+// setting the secret-person by random 
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
 }
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
+  winOrLose.style.display = 'none' //added this mf to get the playAgain-button to finally work 
   charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
-  generateBoard()
-  setSecret()
+  generateBoard();
+  setSecret();
 }
 
 // setting the currentQuestion object when you select something in the dropdown
 const selectQuestion = () => {
   const category = questions.options[questions.selectedIndex].parentNode.label
 
-  // This variable stores what option group (category) the question belongs to.
-  // We also need a variable that stores the actual value of the question we've selected.
+
   const value = questions.value
 
   currentQuestion = {
@@ -327,29 +325,24 @@ const guess = (personToConfirm) => {
 
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
-  // 1. Checks if the personToCheck is the same as the secret person's name
+
   if (personToCheck === secret.name) {
-    // 2. Message to show in the win or lose section accordingly
     winOrLoseText.innerHTML = "Yes, well done! You guessed right!"
+
   } else {
     winOrLoseText.innerHTML = "Oh no! Wrong guess"
   }
-  // 3. Shows the win or lose section
+
   winOrLose.style.display = 'block'
 
-  // 4. Hides board
   board.style.display = 'none'
 
 }
 
-/* const playAgain = () => {
-  start(); 
-  console.log(start);
-}
-*/
 
 // Invokes the start function when website is loaded
-start()
+start();
+
 
 
 // All the event listeners

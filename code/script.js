@@ -238,7 +238,7 @@ const start = () => {
   // What else should happen when we start the game?
   generateBoard()
   setSecret()
-
+  start()
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -341,14 +341,13 @@ const checkMyGuess = (personToCheck) => {
   // 4. Hides board
   board.style.display = 'none'
 
-  console.log('Start function called');
-
 }
 
-const playAgain = () => {
-  generateBoard(CHARACTERS);
-  start();
+/* const playAgain = () => {
+  start(); 
+  console.log(start);
 }
+*/
 
 // Invokes the start function when website is loaded
 start()
@@ -358,4 +357,4 @@ start()
 restartButton.addEventListener('click', start)
 questions.addEventListener('change', selectQuestion)
 findOutButton.addEventListener('click', checkQuestion)
-playAgainButton.addEventListener('click', playAgain)
+playAgainButton.addEventListener('click', start)

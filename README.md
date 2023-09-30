@@ -12,10 +12,4 @@ The biggest problem I had was when I wanted to change the style of a card. I wan
 Here is a link of the deployed version: https://guess-who2222.netlify.app
 
 
------------------------------------------------
-Things I want to fix/improve/add
-1. Change how to display the previous data
-2. improve code organization
-3. create another js file to do all the improvements to keep what I have done at the first place
-4. CSS organization. (Is that possible to i SCSS)
-5. create more interesting CSS animation
+

@@ -279,7 +279,7 @@ filterCharacters(keep);
         ); 
       } else {
         alert(
-          `No, the person doesn't have ${value} hair! Remove all people that don't have ${value} hair`
+          `No, the person doesn't have ${value} hair! Remove all people that have ${value} hair`
         );
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
         );

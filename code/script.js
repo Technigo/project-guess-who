@@ -243,7 +243,6 @@ const selectQuestion = () => {
   };
 };
 
-
 const checkQuestion = () => {
   const { category, value } = currentQuestion;
   let keep = false; 
@@ -271,16 +270,16 @@ filterCharacters(keep);
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
         );
       }
-    } else if (category === 'other') {
+    } else if (category === 'hair') {
       if (keep) {
         alert(
-          `Yes, the person has ${value}! Keep all people that have ${value}`
+          `Yes, the person has ${value} hair! Keep all people that have ${value} hair`
         );
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)
         ); 
       } else {
         alert(
-          `No, the person doesn't have ${value}! Remove all people that don't have ${value}`
+          `No, the person doesn't have ${value} hair! Remove all people that don't have ${value} hair`
         );
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
         );
@@ -290,16 +289,30 @@ filterCharacters(keep);
         alert(
           `Yes, the person has ${value} eyes! Keep all people that have ${value} eyes`
         );
-        charactersInPlay = charactersInPlay.filter((person) => person[category] === value
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)
         );       
       } else {
         alert(
           `No, the person doesn't have ${value} eyes! Remove all people that have ${value} eyes`
         );
-        charactersInPlay = charactersInPlay.filter((person) => person[category] !== value
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
         );
       }  
-    }
+    } else if (category === 'other') {
+      if (keep) {
+        alert(
+          `Yes, the person is a ${value}! Keep all people that are a ${value}`
+        );
+        charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value)
+        );       
+      } else {
+        alert(
+          `No, the person is not a ${value}! Remove everyone that is a ${value}`
+        );
+        charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value)
+        );
+      }
+    } 
   
     generateBoard();   
   }

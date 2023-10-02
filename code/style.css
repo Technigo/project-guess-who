@@ -63,7 +63,7 @@ select {
 }
 
 .guess-who-icon {
-  width: 20vw;
+  width: 150px;
   padding: 15px 0px;
 }
 
@@ -187,7 +187,7 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  height: 100%;
 }
 
 .win-or-lose {
@@ -199,26 +199,14 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
-}
-
 .winner-loser-img {
   height: 300px;
-  padding: 10px;
+  padding: 5px;
   border: solid var(--primary);
   border-radius: 20px;
-
-}
-
-.win-or-lose h1 {
-  margin-bottom: 32px;
-  padding: 10px;
 }
 
 p {
-  font-family: 'Montserrat';
   font-size: 16px;
   font-weight: 700;
   padding: 10px;
@@ -227,9 +215,9 @@ p {
 .winner-loser-p {
   font-family: 'Montserrat';
   font-size: 16px;
-  font-weight: 700;
-  width: 100px;
+  font-weight: 300;  
   color: rgb(255, 235, 220);
+  width: 70%;
 }
 
 @media (max-width: 768px) {

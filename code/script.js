@@ -6,19 +6,21 @@ const filterButton = document.getElementById('filter')
 const winOrLose = document.getElementById('winOrLose')
 const winOrLoseText = document.getElementById('winOrLoseText')
 const playAgainButton = document.getElementById('playAgain')
-const winnerLoserImg = document.createElement('img');
-const winnerLoserP = document.createElement('p');
+//CHANGES: from createElement to getElementById, because created them in HTML instead.
+const winnerLoserImg = document.getElementById('winner-loser-img');
+const winnerLoserP = document.getElementById('winner-loser-p');
 const startBox = document.getElementById('startBox');
 const startButton = document.getElementById('startButton');
 const timerElement = document.getElementById('timer')
 const winOrLoseTimer = document.getElementById('winOrLoseTimer')
 
-//Adding classes to the DOM variables
-winnerLoserImg.className = 'winner-loser-img';
-winnerLoserP.className = 'winner-loser-p';
-//Setting children to the winOrLose element
-winOrLose.appendChild(winnerLoserImg);
-winOrLose.appendChild(winnerLoserP);
+//TOOK THESE OUT TO CREATE THEM DIRECTYLY IN HTML INSTEAD
+// //Adding classes to the DOM variables
+// winnerLoserImg.className = 'winner-loser-img';
+// winnerLoserP.className = 'winner-loser-p';
+// //Setting children to the winOrLose element
+// winOrLose.appendChild(winnerLoserImg);
+// winOrLose.appendChild(winnerLoserP);
 
 
 // Array with all the characters, as objects
@@ -413,17 +415,17 @@ const checkMyGuess = (personToCheck, elapsedTime) => {
     <img class="win-or-lose-card" src=${secret.img} alt=${secret.name}</img>
     <p class="win-or-lose-p"> ${secret.name} was the person we were looking for!</p>`;
     */
-    winnerLoserP.innerHTML = `${secret.name} was the person we were looking for!`
     winnerLoserImg.src = secret.img
     winnerLoserImg.alt = secret.name
+    winnerLoserP.innerHTML = `${secret.name} was the person we were looking for!`
     winOrLoseTimer.innerHTML = `It took you ${elapsedTime} seconds!`;
   }
   else {
     console.log(`LOSER BABY!`)
     winOrLoseText.innerHTML = `YOU'RE A LOSER BABY!`;
-    winnerLoserP.innerHTML = `Your guess was ${personToCheck}... <strong> ${secret.name} </strong> was the person we were looking for!`
     winnerLoserImg.src = secret.img
     winnerLoserImg.alt = secret.name
+    winnerLoserP.innerHTML = `Your guess was ${personToCheck}... <strong> ${secret.name} </strong> was the person we were looking for!`
     winOrLoseTimer.innerHTML = `It took you ${elapsedTime} seconds!`;
   }
 }

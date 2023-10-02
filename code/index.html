@@ -104,13 +104,15 @@
           alt="Guess Who"
         />
         <h1 id="winOrLoseText"></h1>
+        <img id="winner-loser-img" class="winner-loser-img" src="" alt=""></img>
+        <p id="winner-loser-p" class="winner-loser-p"></p>
         <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
-        <section class="count-section">
+        <div class="count-and-timer-wrapper">
           <h2>Your number of guesses was:
             <span class="guess-container" id="win-or-lose-guess-container">0</span>
           </h2>
-        </section>
-        <h2 id ="winOrLoseTimer"></h2>
+          <h2 id ="winOrLoseTimer"></h2>
+        </div>
       </div>
     </section>
     <script src="script.js"></script>

@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #f59c0d;
+  --secondary: #a6c8ff;
 }
 
 body {
@@ -12,11 +12,32 @@ body {
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 40px;
   font-weight: 500;
-  line-height: 48px;
+  line-height: 40px;
   margin: 10px 0;
-  color: white;
+  color: rgb(255, 235, 220);
+}
+
+h2 {
+  color: rgb(255, 235, 220);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 5px;
+}
+
+.start-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%; 
+  transform: translate(-50%, -50%);
+  background-color: rgba(18, 68, 168, 0.9);
+  color: rgb(255, 235, 220);
+  padding: 20px;
+  text-align: center;
+  z-index: 999;
 }
 
 .question-section {
@@ -25,14 +46,15 @@ h1 {
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
-  padding: 5vw;
+  padding: 4vw;
   align-items: flex-start;
   box-sizing: border-box;
 }
 
 select {
   display: block;
-  border: none;
+  border-radius: 15px;
+  border: solid var(--primary);
   font-size: 22px;
   font-family: 'Montserrat';
   color: var(--secondary);
@@ -41,7 +63,8 @@ select {
 }
 
 .guess-who-icon {
-  width: 126px;
+  width: 150px;
+  padding: 15px 0px;
 }
 
 .board-wrapper {
@@ -52,8 +75,8 @@ select {
 }
 
 .game-board {
-  width: 90%;
-  max-width: 882px;
+  width: 95%;
+  max-width: 950px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -65,19 +88,25 @@ select {
   height: 165px;
   overflow: hidden;
   border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+  border-radius: 8px;
+  margin: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+  background-image: '';
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  
 }
 
 .card p {
   text-align: center;
-  margin-bottom: 0;
-  font-size: 16px;
+  margin: 0;
+  font-size: 12px;
   font-weight: 700;
+  color: var(--primary);
 }
 
 .card .guess {
@@ -85,7 +114,7 @@ select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: rgb(255, 235, 220);
   text-align: center;
   height: inherit;
 }
@@ -115,12 +144,14 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
+  border-radius: 15px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
-  padding: 17px 27px;
+  padding: 10px 27px;
   cursor: pointer;
+  box-shadow:rgba(123, 123, 123, 0.4) 5px 3px 3px inset;
+  margin-bottom: 10px;
 }
 
 .small {
@@ -136,12 +167,12 @@ button {
 .filled-button,
 .outlined-button:hover {
   background-color: var(--primary);
-  color: white;
+  color: rgb(255, 235, 220);
 }
 
 .filled-button:hover {
-  background-color: white;
-  border-color: white;
+  background-color: rgb(255, 235, 220);
+  border-color: rgb(255, 235, 220);
   color: var(--primary);
 }
 
@@ -152,11 +183,11 @@ button {
   justify-content: center;
   background: var(--secondary);
   position: absolute;
-  top: 0;
+  top: 0px;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  height: 100%;
 }
 
 .win-or-lose {
@@ -168,13 +199,25 @@ button {
   text-align: center;
 }
 
-.win-or-lose img {
-  align-self: flex-start;
-  margin-left: 15%;
+.winner-loser-img {
+  height: 300px;
+  padding: 5px;
+  border: solid var(--primary);
+  border-radius: 20px;
 }
 
-.win-or-lose h1 {
-  margin-bottom: 32px;
+p {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px;
+}
+
+.winner-loser-p {
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-weight: 300;  
+  color: rgb(255, 235, 220);
+  width: 70%;
 }
 
 @media (max-width: 768px) {
@@ -195,7 +238,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 150px;
   }
 
   .board-wrapper {
@@ -226,7 +269,7 @@ button {
   .card .guess .filled-button {
     padding: 6px 11px;
     margin-bottom: 1px;
-    background: white;
+    background: rgb(255, 235, 220);
     color: var(--primary);
     border: none;
   }

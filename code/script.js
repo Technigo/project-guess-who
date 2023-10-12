@@ -256,7 +256,7 @@ const selectQuestion = () => {
 };
 
 // This function should be invoked when you click on 'Find Out' button.
-const checkQuestion = (filterCharacters) => {
+const checkQuestion = () => {
   const { category, value } = currentQuestion;
   let keep = "";
 
@@ -271,7 +271,7 @@ const checkQuestion = (filterCharacters) => {
     keep = secret[category].includes(value);
   }
   // This invoke filterCharacters
-  filterCharacters();
+  filterCharacters(keep);
 };
 
 // It'll filter the characters array and redraw the game board.
@@ -378,10 +378,7 @@ const playAgain = () => {
 start();
 
 // All the event listeners
-findOutButton.addEventListener("click", function () {
-  findOutButton.click(filterCharacters);
-  console.log(`category chosen`);
-});
+findOutButton.addEventListener("click", selectQuestion);
 
 // findOutButton.addEventListener("click", function () {
 //   findOutButton.click(filterCharacters);

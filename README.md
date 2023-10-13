@@ -14,4 +14,4 @@ I read through the material, watched the videos and started the project. I follo
 
 ## View it live
 
-https://guileless-kringle-a49f7d.netlify.app
+https://caro-luna-guess-who.netlify.app

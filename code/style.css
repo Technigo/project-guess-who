@@ -1,43 +1,98 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  /* CSS variables */
+  --primary: #f87171;
+  --secondary: #fecaca;
+  --color-rose: #f89393;
+  --color-green: #e5ff9c;
+  --color-darker-green: #71f8c6;
+  --box-shadow-md: 0 4px 6px -1px rgb(0, 0, 0, 0.1), 0 2px 4px -2px rgb(0, 0, 0, 0.1);
+  --box-shadow-sm: 0 1px 2px 0 rgb(0, 0, 0, 0.05);
+  /* Changing box-sizing */
+  box-sizing: border-box;
 }
 
+html,
 body {
+  scroll-behavior: smooth;
+}
+
+/* Styling for the first page */
+
+.initial-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--secondary);
+  background: radial-gradient(circle, var(--secondary) 47%, var(--color-green) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: "Montserrat";
+  z-index: 10000;
+}
+
+.initial-page button {
+  background-color: var(--primary);
+  color: #fff;
+  font-size: 30px;
+  padding: 20px 40px;
+}
+
+.initial-page button:hover {
+  transform: scale(1.1);
+}
+
+.initial-page h2 {
+  font-weight: 700;
+  font-size: 60px;
+}
+
+.initial-page p {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+#hello-text {
+  font-size: 30px;
+}
+
+.icon-thinking {
+  width: 70px;
+  height: 70px;
+  transform: translate(20px, 6px);
+}
+
+/* This is MAIN */
+.body {
   display: flex;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
+  background: var(--secondary);
+  background: linear-gradient(0deg, var(--secondary) 17%, var(--color-green) 100%);
+  position: relative;
 }
 
 h1 {
-  font-size: 42px;
+  font-size: 50px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
   color: white;
 }
 
-.question-section {
-  width: 30%;
-  min-height: 100vh;
-  background-color: var(--secondary);
-  display: flex;
-  flex-direction: column;
-  padding: 5vw;
-  align-items: flex-start;
-  box-sizing: border-box;
-}
-
-select {
-  display: block;
-  border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
-  width: 100%;
-  margin: 24px 0;
+/* This is ASIDE */
+.primary-heading {
+  font-size: 60px;
+  font-weight: 800;
+  -webkit-text-stroke: 2px var(--primary);
+  letter-spacing: 15px;
+  -webkit-filter: drop-shadow(2px 6px 0 var(--color-darker-green));
 }
 
 .guess-who-icon {
@@ -51,6 +106,10 @@ select {
   justify-content: center;
 }
 
+main {
+  padding: 30px 0 50px;
+}
+
 .game-board {
   width: 90%;
   max-width: 882px;
@@ -59,49 +118,140 @@ select {
   align-content: center;
 }
 
-/****** CARD ******/
-.card {
-  width: 135px;
-  height: 165px;
-  overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+.question-section {
+  width: 30%;
+  min-height: 100vh;
+  background-image: url("./images/cute-background.png");
+  background-size: 80%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  padding: 5vw;
+  align-items: flex-start;
+  box-sizing: border-box;
 }
 
-.card p {
+select {
+  display: block;
+  border: none;
+  border-radius: 3px;
+  font-size: 22px;
+  font-family: "Montserrat";
+  color: var(--primary);
+  width: 100%;
+  margin: 24px 0;
+  padding: 3px 8px;
+}
+
+select:focus {
+  outline: 3px solid var(--primary);
+}
+
+/* Aside Count Box  */
+
+.counter-box {
+  width: 100%;
+  border: 2px solid var(--color-darker-green);
+  margin-top: 3vh;
+  padding-bottom: 15px;
+  border-radius: 3px;
+  backdrop-filter: blur(8px);
+}
+
+#display-name {
+  font-size: 22px;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.counter-box h2 {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+}
+
+#counter-display {
+  color: #444;
+  text-align: center;
+  font-size: 32px;
+}
+
+#timer {
+  font-size: 26px;
+  color: #444;
+  text-align: center;
+}
+
+.game-data-btn {
+  padding: 6px 10px;
+  color: var(--primary);
+  margin: 15px auto 0;
+}
+
+/****** CARD ******/
+
+.card {
+  background-color: #fff;
+  width: 135px;
+  height: 165px;
+  border: 3px solid var(--secondary);
+  margin: 3px;
+  overflow: hidden;
+  box-shadow: var(--box-shadow-sm);
+  perspective: 1000px; /* 3D effect */
+}
+
+.inner-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: all 0.8s;
+  transform-style: preserve-3d;
+}
+
+.inner-card p {
   text-align: center;
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
 }
 
-.card .guess {
-  display: none;
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.card:hover .inner-card {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.card-front,
+.guess {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style the back side */
+.guess {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: white;
   text-align: center;
   height: inherit;
-}
-
-.card:hover {
   background-color: var(--secondary);
-}
-
-.card:hover img,
-.card:hover p {
-  display: none;
-}
-
-/* The div with the guess class is only shown on hover */
-.card:hover .guess {
-  display: flex;
+  transform: rotateY(180deg);
 }
 
 .guess span {
@@ -110,6 +260,8 @@ select {
   font-weight: 600;
   margin-bottom: 8px;
   width: 90%;
+  color: #fff;
+  z-index: 1000;
 }
 
 /****** BUTTONS ******/
@@ -117,10 +269,17 @@ button {
   border: 2px solid var(--primary);
   border-radius: 50px;
   font-size: 16px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: bold;
   padding: 17px 27px;
   cursor: pointer;
+  box-shadow: var(--box-shadow-md);
+  transition: all 0.3s ease;
+}
+
+aside .filled-button {
+  border: 1px solid #fff;
+  margin: 0 auto;
 }
 
 .small {
@@ -128,7 +287,7 @@ button {
 }
 
 .outlined-button {
-  background-color: transparent;
+  background-color: #fff;
   color: var(--primary);
   align-self: flex-end;
 }
@@ -141,7 +300,6 @@ button {
 
 .filled-button:hover {
   background-color: white;
-  border-color: white;
   color: var(--primary);
 }
 
@@ -156,7 +314,7 @@ button {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  height: 110vh;
 }
 
 .win-or-lose {
@@ -177,25 +335,294 @@ button {
   margin-bottom: 32px;
 }
 
+/******************************************************************** */
+/* Modal Window */
+
+.modal-window {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100vw;
+  max-height: 100vh;
+  min-height: 100vh;
+  background: var(--primary);
+  background: linear-gradient(0deg, var(--color-rose) 17%, var(--color-green) 100%);
+  color: #fff;
+  display: none;
+}
+
+.game-clear-btn {
+  font-size: 20px;
+  padding: 3px 10px;
+  border: #fff solid 0.5px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: var(--color-rose);
+  margin-top: 10px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: var(--box-shadow-md);
+}
+
+.game-clear-btn:hover {
+  background-color: var(--secondary);
+  transform: translateY(3px);
+}
+
+.game-score-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-table {
+  border: 1px solid #fff;
+  padding: 5px 20px 10px;
+  background-color: var(--color-rose);
+  box-shadow: var(--box-shadow-md);
+  border-radius: 5px;
+}
+
+thead tr th {
+  font-size: 20px;
+  border: none;
+  padding: 0;
+}
+
+td {
+  border: 0.5px solid #fff;
+}
+
+th,
+td {
+  text-align: center;
+  border-collapse: collapse;
+  border: 0.5px solid #fff;
+  padding: 2px 8px;
+}
+
+.table-alert-text {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 10px auto;
+  text-align: center;
+  color: #666;
+}
+
+.close-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 120px;
+  right: 260px;
+  transition: all 0.3s ease;
+  box-shadow: var(--box-shadow-md);
+}
+
+.close-icon:hover {
+  transform: translateY(3px);
+}
+
+.modal-heading {
+  font-size: 50px;
+}
+
+.best-score-container {
+  background-color: var(--color-rose);
+  border: solid 1px #fff;
+  width: fit-content;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  box-shadow: var(--box-shadow-md);
+  border-radius: 5px;
+}
+
+.best-players-box p {
+  font-weight: 500;
+  font-size: 14px;
+  padding: 2px 0;
+  margin: 0;
+}
+
+.best-players-box {
+  display: flex;
+  gap: 10px;
+}
+
+.best-score-container h3 {
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
+  padding: 4px 0;
+}
+
+.modal-window-inner {
+  max-width: 1000px;
+  padding: 50px 200px 0;
+  margin: 0 auto;
+  display: flex;
+}
+
+.modal-svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+/* ANIMATIONS */
+.animation-wrapper {
+  content: "";
+  width: 500px;
+  height: 20px;
+}
+
+.animation-box {
+  content: "";
+  border-radius: 5px;
+  height: 20px;
+  background-color: var(--color-darker-green);
+}
+
+.left {
+  width: 0%;
+  animation: rotationFromLeft 5s ease infinite;
+}
+
+.right {
+  margin-top: 50px;
+  width: 100%;
+  animation: rotationFromRight 5s ease infinite;
+}
+/******************************************************************** */
+
+@media (max-width: 1260px) {
+  .question-section {
+    padding: 3vw;
+  }
+
+  button {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 14px 24px;
+  }
+
+  .guess-who-icon {
+    width: 96px;
+  }
+
+  h1 {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .primary-heading {
+    font-size: 38px;
+    font-weight: 600;
+    -webkit-text-stroke: 1.5px var(--primary);
+    letter-spacing: 7px;
+    -webkit-filter: drop-shadow(3px 6px 0 var(--color-darker-green));
+  }
+
+  .counter-box h2 {
+    font-size: 14px;
+  }
+
+  #counter-display {
+    font-size: 26px;
+  }
+  /* Modal window */
+
+  th,
+  td {
+    font-size: 16px;
+  }
+
+  thead tr th {
+    font-size: 18px;
+  }
+
+  .modal-heading {
+    font-size: 40px;
+  }
+
+  .best-score-container {
+    padding: 0 16px;
+    margin-bottom: 10px;
+  }
+
+  .best-score-container p {
+    font-weight: 500;
+  }
+
+  .best-score-container h3 {
+    font-size: 16px;
+    text-decoration: underline;
+  }
+
+  .modal-window-inner {
+    padding: 30px 100px 0;
+  }
+  .close-icon {
+    top: 80px;
+    right: 80px;
+  }
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
+  }
+
+  .initial-page button {
+    font-size: 20px;
+    padding: 14px 32px;
+    margin-top: 20px;
+  }
+
+  .initial-page h2 {
+    font-weight: 500;
+    font-size: 40px;
+  }
+
+  .initial-page p {
+    font-size: 18px;
   }
 
   .question-section {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
+    margin-bottom: 5px;
   }
+
   h1 {
-    font-size: 24px;
+    font-size: 26px;
     line-height: 30px;
   }
 
+  .primary-heading {
+    text-align: center;
+    font-size: 40px;
+    -webkit-text-stroke: 1px var(--primary);
+    letter-spacing: 3px;
+    -webkit-filter: drop-shadow(3px 6px 0 var(--color-darker-green));
+  }
+
+  h3 {
+    text-align: center;
+  }
+
   .guess-who-icon {
-    width: 51px;
+    width: 80px;
+  }
+
+  select {
+    width: 70%;
+    margin: 20px auto;
   }
 
   .board-wrapper {
@@ -203,31 +630,214 @@ button {
   }
 
   .game-board {
-    width: 100%;
+    margin: 20px 35px;
+    width: fit-content;
     max-width: 750px;
   }
 
-  .card {
-    width: 113px;
-    position: relative;
+  .counter-box {
+    width: fit-content;
+    margin: 10px auto 0;
+    padding: 5px 30px;
   }
 
-  .card .guess {
+  #display-name {
+    margin-top: 0;
+    font-size: 18px;
+  }
+
+  #counter-display {
+    font-size: 18px;
+  }
+
+  #timer {
+    font-size: 20px;
+  }
+
+  .inner-card-sm {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease-in;
+  }
+
+  .card-sm p {
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .card-sm .guess-sm {
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-align: center;
+    height: inherit;
     display: flex;
     top: 0;
     position: absolute;
     justify-content: flex-end;
   }
 
-  .card .guess span {
-    display: none;
+  .card-sm {
+    width: 113px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    margin: 3px;
+    background-color: #fff;
   }
 
-  .card .guess .filled-button {
+  .card-sm .guess-sm .filled-button {
     padding: 6px 11px;
-    margin-bottom: 1px;
+    margin-bottom: 5px;
     background: white;
     color: var(--primary);
     border: none;
+  }
+
+  /* Modal Window */
+
+  .game-clear-btn {
+    font-size: 18px;
+    padding: 3px 8px;
+
+    border-radius: 3px;
+    margin-top: 10px;
+  }
+
+  .modal-table {
+    padding: 6px 12px;
+  }
+
+  thead tr th {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  th,
+  td {
+    text-align: center;
+    border-collapse: collapse;
+    border: 0.5px solid #fff;
+    padding: 1px 4px;
+    font-weight: 400;
+    font-size: 12px;
+  }
+  .modal-heading {
+    font-size: 28px;
+  }
+
+  .best-score-container {
+    padding: 0 16px;
+    margin-bottom: 10px;
+  }
+
+  .best-score-container p {
+    font-weight: 300;
+  }
+
+  .best-score-container h3 {
+    font-size: 14px;
+  }
+
+  .close-icon {
+    top: 40px;
+    right: 40px;
+  }
+
+  .icon-thinking {
+    width: 50px;
+    height: 50px;
+    transform: translate(10px, 5px);
+  }
+}
+
+@media (max-width: 530px) {
+  .animation-wrapper {
+    width: 100%;
+    height: 10px;
+  }
+  thead tr th {
+    font-size: 16px;
+    border: none;
+  }
+
+  .modal-heading {
+    font-size: 26px;
+  }
+
+  .best-score-container {
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding-bottom: 2px;
+  }
+
+  .best-score-container p {
+    font-weight: 300;
+    font-size: 12px;
+    margin: 0;
+  }
+
+  h3 {
+    margin-bottom: 0;
+    margin-top: 3px;
+  }
+
+  .best-score-container h3 {
+    font-size: 14px;
+    text-decoration: underline;
+  }
+
+  .modal-window-inner {
+    padding: 30px 20px 0;
+    margin: 0 auto;
+  }
+  .close-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/*************************************/
+/* animations */
+
+@keyframes rotationFromLeft {
+  0% {
+    width: 0%;
+    background-color: var(--color-green);
+  }
+
+  50% {
+    width: 100%;
+    background-color: var(--color-darker-green);
+  }
+
+  100% {
+    width: 1%;
+    background-color: var(--color-green);
+  }
+}
+
+@keyframes rotationFromRight {
+  0% {
+    width: 100%;
+    background-color: var(--color-green);
+  }
+
+  50% {
+    width: 0%;
+    background-color: var(--color-darker-green);
+  }
+
+  100% {
+    width: 99%;
+    background-color: var(--color-green);
   }
 }

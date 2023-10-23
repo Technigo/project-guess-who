@@ -1,13 +1,15 @@
 # Project Name
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This is a project from the 3rd week of the Technigo Bootcamp. It is a game called " Guess Who ". There are 24 cards of different people and you can guess if a secret person, who is picked up randomly, has something or is something.
+Then you have to remove the other cards that do not have the same characteristic as the secret person. Finally, your guess is as to who the secret person is, by clicking on a card. The answer will then appear.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The biggest problem I had was when I wanted to change the style of a card. I wanted to create a card flipping effect and it was a bit tricky because one card had already been created by a school and I had to modify it to make it work. I found an example of how to do a card effect and tried to implement it. I had to change the structure of one of the original cards and do some adjustments to it. I also had to change the style of the card, as there was a need for a style for the touch sizes of the screen. It was a challenge to work out where to place functions to make the screen bigger, change styles, and so on. I googled and used console.log a lot to find out how my code worked and found an answer.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Here is a link of the deployed version: https://guess-who2222.netlify.app
+
+
+

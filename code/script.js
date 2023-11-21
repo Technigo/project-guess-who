@@ -16,247 +16,258 @@ losingSound.pause();
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'assets/images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    clothing: [],
-    accessories: ['glasses', 'a hat'],
-    expressions: ['smile'],
+    name: 'Pete the Parrot',
+    img: 'assets/images/pete.jpg',
+    legs: 'two',
+    ability: 'fly',
+    feathers: ['blue', 'grey'],
+    fur: [],
+    scales: [],
+    other: ['a beak']
+  },
+  {
+    name: 'Terry the Terrier',
+    img: 'assets/images/terry.jpg',
+    legs: 'four',
+    ability: 'run',
+    feathers: [],
+    fur: ['orange', 'white'],
+    scales: [],
+    other: ['a collar', 'a smile']
+  },
+  {
+    name: 'Shawn the Shepherd',
+    img: 'assets/images/shawn.jpg',
+    legs: 'four',
+    ability: 'run',
+    feathers: [],
+    fur: ['brown', 'black'],
+    scales: [],
     other: []
   },
   {
-    name: 'Jack',
-    img: 'assets/images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    clothing: ['striped shirt'],
-    accessories: ['a hat'],
-    expressions: ['frown'],
+    name: 'Gary the Goldfish',
+    img: 'assets/images/gary.jpg',
+    legs: 'zero',
+    ability: 'breathe underwater',
+    feathers: [],
+    fur: [],
+    scales: ['orange', 'white'],
+    other: ['a tendency to forget things']
+  },
+  {
+    name: 'Greg the Greyhound',
+    img: 'assets/images/greg.jpg',
+    legs: 'four',
+    ability: 'run',
+    feathers: [],
+    fur: ['brown', 'black'],
+    scales: [],
+    other: ['a wish to run faster than the speed of light']
+  },
+  {
+    name: 'Gavin the Guinea Pig',
+    img: 'assets/images/gavin.jpg',
+    legs: 'four',
+    ability: 'run',
+    feathers: [],
+    fur: ['black', 'white', 'orange'],
+    scales: [],
+    other: ['a great sense of smell and hearing']
+  },
+  {
+    name: 'Milo the Mouse',
+    img: 'assets/images/milo.jpg',
+    legs: 'four',
+    ability: 'run',
+    feathers: [],
+    fur: ['black', 'grey', 'white'],
+    scales: [],
+    other: ['a snack', 'a big appetite']
+  },
+  {
+    name: 'Walker the Wolf',
+    img: 'assets/images/walker.jpg',
+    legs: 'four',
+    ability: 'run',
+    feathers: [],
+    fur: ['white', 'grey'],
+    scales: [],
+    other: ['an urge to howl at the moon']
+  },
+  {
+    name: 'Chris the Cat',
+    img: 'assets/images/chris.jpg',
+    legs: 'four',
+    ability: 'purr',
+    feathers: [],
+    fur: ['orange', 'brown', 'white'],
+    scales: [],
+    other: []
+  },
+ 
+  {
+    name: 'Owen the Owl',
+    img: 'assets/images/owen.jpg',
+    legs: 'two',
+    ability: 'fly',
+    feathers: ['brown', 'white'],
+    fur: [],
+    scales: [],
+    other: ['a beak', 'an ability to see at night']
+  },
+  {
+    name: 'Clem the Cat',
+    img: 'assets/images/clem.jpg',
+    legs: 'four',
+    ability: 'purr',
+    feathers: [],
+    fur: ['white', 'grey'],
+    scales: [],
+    other: ['a tongue that sticks out']
+  },
+  {
+    name: 'Phoenix the Pigeon',
+    img: 'assets/images/phoenix.jpg',
+    legs: 'two',
+    ability: 'fly',
+    feathers: ['brown', 'grey'],
+    fur: [],
+    scales: [],
+    other: ['a beak']
+  },
+  {
+    name: 'Paul the Poodle',
+    img: 'assets/images/paul.jpg',
+    legs: 'four',
+    ability: 'run',
+    feathers: [],
+    fur: ['white'],
+    scales: [],
+    other: ['a smile']
+  },
+  {
+    name: 'Preston the Pug',
+    img: 'assets/images/preston.jpg',
+    legs: 'four',
+    ability: 'run',
+    feathers: [],
+    fur: ['brown'],
+    scales: [],
     other: []
   },
   {
-    name: 'Jacques',
-    img: 'assets/images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    clothing: [],
-    accessories: ['a hat'],
-    expressions: ['frown'],
-    other: ['smoker']
+    name: 'Rob the Rabbit',
+    img: 'assets/images/rob.jpg',
+    legs: 'two',
+    ability: 'run',
+    feathers: [],
+    fur: ['white'],
+    scales: [],
+    other: ['a smile']
   },
   {
-    name: 'Jai',
-    img: 'assets/images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    clothing: ['collar'],
-    accessories: [],
-    expressions: ['smile'],
+    name: 'Leonard the Lab',
+    img: 'assets/images/leonard.jpg',
+    legs: 'four',
+    ability: 'run',
+    feathers: [],
+    fur: ['brown', 'black'],
+    scales: [],
     other: []
   },
   {
-    name: 'Jake',
-    img: 'assets/images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    clothing: ['collar'],
-    accessories: ['glasses'],
-    expressions: ['smile'],
+    name: 'Roan the Robin',
+    img: 'assets/images/roan.jpg',
+    legs: 'two',
+    ability: 'fly',
+    feathers: ['white', 'brown', 'orange'],
+    fur: [],
+    scales: [],
+    other: ['a beak']
+  },
+  {
+    name: 'Carlos the Cat',
+    img: 'assets/images/carlos.jpg',
+    legs: 'four',
+    ability: 'purr',
+    feathers: [],
+    fur: ['grey'],
+    scales: [],
     other: []
   },
   {
-    name: 'James',
-    img: 'assets/images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    clothing: [],
-    accessories: ['glasses'],
-    expressions: [],
+    name: 'Dick the Dachshund',
+    img: 'assets/images/dick.jpg',
+    legs: 'four',
+    ability: 'run',
+    feathers: [],
+    fur: ['brown', 'black'],
+    scales: [],
+    other: ['a collar', 'a smile']
+  },
+  {
+    name: 'Fred the Fox',
+    img: 'assets/images/fred.jpg',
+    legs: 'four',
+    ability: 'run',
+    feathers: [],
+    fur: ['orange', 'white'],
+    scales: [],
+    other: ['a smile']
+  },
+  {
+    name: 'Jazz the Cat',
+    img: 'assets/images/jazz.jpg',
+    legs: 'four',
+    ability: 'purr',
+    feathers: [],
+    fur: ['beige', 'brown'],
+    scales: [],
     other: []
   },
   {
-    name: 'Jana',
-    img: 'assets/images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    clothing: ['collar'],
-    accessories: ['glasses', 'a necklace'],
-    expressions: ['smile'],
+    name: 'Stella the Snake',
+    img: 'assets/images/stella.jpg',
+    legs: 'zero',
+    ability: 'hiss',
+    feathers: [],
+    fur: [],
+    scales: ['white', 'black'],
+    other: ['a tongue that sticks out']
+  },
+  {
+    name: 'Cameron the Cat',
+    img: 'assets/images/cameron.jpg',
+    legs: 'four',
+    ability: 'purr',
+    feathers: [],
+    fur: ['red', 'orange', 'white'],
+    scales: [],
+    other: [' a smile']
+  },
+  {
+    name: 'Camille the Cat',
+    img: 'assets/images/camille.jpg',
+    legs: 'four',
+    ability: 'purr',
+    feathers: [],
+    fur: ['beige'],
+    scales: [],
     other: []
   },
   {
-    name: 'Jane',
-    img: 'assets/images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    clothing: ['striped shirt'],
-    accessories: ['glasses'],
-    expressions: ['frown'],
-    other: []
-  },
-  {
-    name: 'Jaqueline',
-    img: 'assets/images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    clothing: [],
-    accessories: ['glasses', 'a necklace'],
-    expressions: ['smile'],
-    other: []
-  },
-
-  {
-    name: 'Jazebelle',
-    img: 'assets/images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    clothing: ['crewneck'],
-    accessories: ['glasses'],
-    expressions: ['frown'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jean',
-    img: 'assets/images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
-    clothing: ['collar'],
-    accessories: ['glasses', 'a hat'],
-    expressions: ['frown'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'assets/images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    clothing: ['crewneck'],
-    accessories: ['glasses'],
-    expressions: ['smile'],
-    other: []
-  },
-  {
-    name: 'Jed',
-    img: 'assets/images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    clothing: [],
-    accessories: ['glasses', 'a hat'],
-    expressions: ['frown'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'assets/images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    clothing: [],
-    accessories: ['a hat'],
-    expressions: [],
-    other: []
-  },
-  {
-    name: 'Jeri',
-    img: 'assets/images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    clothing: ['striped shirt'],
-    accessories: ['glasses'],
-    expressions: ['frown'],
-    other: []
-  },
-  {
-    name: 'Jerry',
-    img: 'assets/images/jerry.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    clothing: [],
-    accessories: ['a hat'],
-    expressions: ['smile'],
-    other: []
-  },
-  {
-    name: 'Jess',
-    img: 'assets/images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    clothing: ['crewneck'],
-    accessories: ['glasses'],
-    expressions: ['smile'],
-    other: []
-  },
-  {
-    name: 'Jocelyn',
-    img: 'assets/images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    clothing: ['crewneck'],
-    accessories: ['glasses'],
-    expressions: ['frown'],
-    other: []
-  },
-  {
-    name: 'Jon',
-    img: 'assets/images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    clothing: ['collar'],
-    accessories: ['glasses'],
-    expressions: ['smile'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'assets/images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    clothing: ['collar'],
-    accessories: ['glasses', 'a hat'],
-    expressions: ['smile'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'assets/images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    clothing: [],
-    accessories: [],
-    expressions: ['smile'],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'assets/images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    clothing: ['collar'],
-    accessories: [],
-    expressions: ['smile'],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'assets/images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    clothing: ['collar'],
-    accessories: [],
-    expressions: ['smile'],
-    other: []
-  },
-  {
-    name: 'Julie',
-    img: 'assets/images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    clothing: [],
-    accessories: ['glasses', 'a hat'],
-    expressions: ['frown'],
-    other: []
-  },
-]
+    name: 'Teo the Turtle',
+    img: 'assets/images/teo.jpg',
+    legs: 'four',
+    ability: 'run',
+    feathers: [],
+    fur: [],
+    scales: ['green'],
+    other: ['a smile']
+  }
+ ]
+ 
 
 // Global variables
 let secret
@@ -269,7 +280,6 @@ const generateBoard = () => {
   charactersInPlay.forEach((person) => { 
     board.innerHTML += ` 
       <div class="card">
-        <p>${person.name}</p>
         <img src=${person.img} alt=${person.name}>
         <div class="guess">
           <span>Guess on ${person.name}?</span>
@@ -323,23 +333,23 @@ const checkQuestion = () => {
   updateCounter();
   const { category, value } = currentQuestion 
 // Invoking filterCharacters
-  if (category === 'accessories' || category === 'other') {
+  if (category === 'fur' || category === 'other') {
     if (secret[category].includes(value)) {
-      filterCharacters(true); // Keep everyone with that accessories/other value
+      filterCharacters(true); 
     } else {
-      filterCharacters(); // Remove everyone with that accessories/other value
+      filterCharacters(); 
     }
-  } else if (category === 'hair' || category === 'eyes') {
+  } else if (category === 'legs' || category === 'ability') {
     if (secret[category] === value) {
-      filterCharacters(true); //Keep everyone with hair/eyes that match secret
+      filterCharacters(true); 
     } else {
-      filterCharacters() //Remove all with hair/eyes that does not match secret
+      filterCharacters() 
     }
-  } else if (category === 'expressions' || category === 'clothing') {
+  } else if (category === 'scales' || category === 'feathers') {
     if (secret[category].includes(value)) {
-      filterCharacters(true); //Keep everyone with expression/clothing that matches secret
+      filterCharacters(true); 
     } else {
-      filterCharacters(); //Remove all with expression/clothing that does not match secret
+      filterCharacters(); 
     }
   } 
 }
@@ -357,51 +367,57 @@ const updateCounter = () => {
 // This function will filter the characters array and regenerate the board.
 const filterCharacters = (keep) => {
   const {category, value} = currentQuestion
-  // Show the correct alert message for different categories
-  // Accessories
-  if (category === 'accessories') {
+  if (category === 'fur') {
     if (keep) {
       alert(
-        `Yes, the person wears ${value}! Keep everyone with ${value}.`)
+        `Yes, the animal has ${value} fur! Keep everyone with ${value} fur.`)
       charactersInPlay = charactersInPlay.filter((person) =>
       person[category].includes(value))
     } else {
       alert(
-        `No, the person does not wear ${value}! Remove everyone with ${value}.`)
+        `No, the animal does not have ${value} fur! Remove everyone with ${value} fur.`)
       charactersInPlay = charactersInPlay.filter(
         (person) => !person[category].includes(value))
     }
-  // Other
   } else if (category === 'other') {
       if (keep) {
         alert(
-          `Yes! The person is a ${value}! Keep everyone who is a ${value}.`)
+          `Yes! The animal has ${value}! Keep everyone who has ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       }
       else {
         alert(
-        `No! The person is not a ${value}! Remove everyone who is a ${value}.`)
+        `No! The animal does not have ${value}! Remove everyone who has ${value}.`)
       charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       }
-  // Hair and eyes
-  } else if (category === "hair" || category === "eyes") {
+  } else if (category === "legs") {
       if (keep) {
         alert(
-          `Yes the person has ${value} ${category}! Keep everyone with ${value} ${category}.`)
+          `Yes the animal has ${value} ${category}! Keep everyone with ${value} ${category}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] === value)
       } else {
         alert(
-          `No, the person does not have ${value} ${category}. Remove everyone with ${value} ${category}.`)
+          `No, the animal does not have ${value} ${category}. Remove everyone with ${value} ${category}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[category] !== value)
       } 
-    } else if (category === "expressions" || category === "clothing") {
+    } else if (category === "feathers" || category === "scales") {
       if (keep) {
         alert(
-          `Yes the person wears a ${value}! Keep everyone with a ${value}.`)
+          `Yes the animal has ${value} ${category}! Keep everyone with ${value} ${category}.`)
+          charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
+      } else {
+        alert(
+          `No, the animal does not have ${value} ${category}. Remove everyone with ${value} ${category}.`)
+          charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
+      } 
+    } else if (category === "ability") {
+      if (keep) {
+        alert(
+          `Yes the animal has ${value}! Keep everyone with ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => person[category].includes(value))
       } else {
         alert(
-          `No, the person does not wear a ${value}. Remove everyone with a ${value}.`)
+          `No, the animal does not have ${value}. Remove everyone with ${value}.`)
         charactersInPlay = charactersInPlay.filter((person) => !person[category].includes(value))
       } 
   // Invoke a function to redraw the board with the remaining people.
@@ -426,7 +442,7 @@ const checkMyGuess = (personToConfirm) => {
     winOrLoseText.innerHTML = `Congratulations! 👑 It was ${secret.name}. It only took you ${questionCounter} question(s) and ${elapsedTime}s to find out.`
   } else {
     losingSound.play();
-    winOrLoseText.innerHTML = `Wrong guess 🥴 The secret person was ${secret.name}. It only took you ${questionCounter} question(s) and ${elapsedTime}s to find out.`
+    winOrLoseText.innerHTML = `Wrong guess 🥴 The secret animal was ${secret.name}. It only took you ${questionCounter} question(s) and ${elapsedTime}s to find out.`
   }
   winOrLose.style.display = "flex"
   // 1. Check if the personToCheck is the same as the secret person's name
@@ -438,7 +454,7 @@ const checkMyGuess = (personToConfirm) => {
 // Prompt user for name
 const namePrompt = () => {
   let userName;
-  let user = prompt("Hi! Enter a username to start the game.", "Player 1");
+  let user = prompt("Welcome! Please enter a username to start the game.", "Player 1");
   if (user == null || user == "") {
     userName = "Player 1";
   } else {

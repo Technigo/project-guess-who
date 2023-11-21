@@ -134,6 +134,11 @@ select {
   width: 90%;
 }
 
+.card img {
+  width: 170%;
+  height: auto;
+}
+
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);

@@ -235,10 +235,11 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  //Making sure the board is "re-set" before starting the game:
+  //Making sure the board + variables are "re-set" before starting the game:
   winOrLoseBoard.style.display = "none"
   winOrLoseText.innerHTML = ""
   board.style.display = "flex"
+  numberOfGuesses = 0
   
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS

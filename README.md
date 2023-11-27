@@ -19,6 +19,3 @@ https://wk3-guesswho-c638bb.netlify.app/
 ## Screenshots
 
 ![Screenshot of front page](/code/images/screenshot1.png?raw=true "Screenshot of front page")
-
-
-code/images/screenshot1.png

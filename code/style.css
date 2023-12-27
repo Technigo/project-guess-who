@@ -19,6 +19,14 @@ h1 {
   color: white;
 }
 
+h2 {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 36px;
+  margin: 10px 0;
+  color: var(--primary);
+}
+
 .question-section {
   width: 30%;
   min-height: 100vh;

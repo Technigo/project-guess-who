@@ -1,13 +1,15 @@
-# Project Name
+# Guess who
 
-Replace this readme with your own information about your project.
+This is a project where we were creating the javascript-part of the game Guess who.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The game "cards" were creating by an array of objects, one was randomly selected as "secret". With the help of a dropdown menu the user asks about the secret characters attributes. The characters with this attribute were filtered out or kept. Until the user guesses on a person.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We were given a step by step approach to the problem. I followed the instructions and used console.log a lot to make sure the right values were compared and the right parameters were sent to the right functions.
+I read some material on W3-school to find certain array-functions.
+If I had more time I would personalise the game to include friends & family. I would also play around with the styling. Also I would add a tick to the attributes that had already been asked, so you didn't ask the same question multiple times.
 
 ## View it live
 
-Have you deployed your project somewhere? Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://guess-who-frida.netlify.app/

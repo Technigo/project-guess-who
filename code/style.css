@@ -1,7 +1,7 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #2ef68b;
+  --primary: red;
+  --secondary: rgb(255, 119, 0);
 }
 
 body {

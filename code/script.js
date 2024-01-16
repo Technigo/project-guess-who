@@ -330,3 +330,5 @@ start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
+document.getElementById('questions').addEventListener('change', selectQuestion);
+document.getElementById('filter').addEventListener('click', checkQuestion);

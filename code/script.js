@@ -3,6 +3,11 @@ const board = document.getElementById('board')
 const questions = document.getElementById('questions')
 const restartButton = document.getElementById('restart')
 
+//Store the players name
+let player;
+
+
+
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -71,7 +76,7 @@ const CHARACTERS = [
   },
   {
     name: 'Busta Rhymes',
-    img: 'images/busta-rhymes.jpeg',
+    img: 'images/busta-rhymes.jpg',
     hair: ['locs'],
     accessories: ['necklace', 'watch', 'ring'],
     clothes: ['jump suit'],
@@ -136,7 +141,7 @@ const CHARACTERS = [
   },
   {
     name: 'Queen Latifah',
-    img: 'images/quuen-latifah.jpeg',
+    img: 'images/queen-latifah.jpeg',
     hair: ['straight'],
     accessories: ['bracelet', 'hat'],
     clothes: ['t-shirt'],
@@ -168,7 +173,7 @@ const CHARACTERS = [
   },
   {
     name: 'Missy Elliot',
-    img: 'images/missy-elliot.jpeg',
+    img: 'images/missy-elliot.png',
     hair: ['big'],
     accessories: ['hat', 'earrings', 'necklace'],
     clothes: ['t-shirt'],
@@ -230,8 +235,9 @@ const setSecret = () => {
 // This function to start (and restart) the game
 const start = () => {
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS
-  // What else should happen when we start the game?
+  charactersInPlay = CHARACTERS;
+  generateBoard(); // This line generates the board when the website loads
+  setSecret(); // Sets a random character as the secret
 }
 
 // setting the currentQuestion object when you select something in the dropdown
@@ -240,7 +246,8 @@ const selectQuestion = () => {
 
   // This variable stores what option group (category) the question belongs to.
   // We also need a variable that stores the actual value of the question we've selected.
-  // const value =
+  const value = questions.options[questions.selectedIndex].value;
+  currentQuestion = { category, value };
 
   currentQuestion = {
     category: category,

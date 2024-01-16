@@ -6,197 +6,197 @@ const restartButton = document.getElementById('restart')
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
-    name: 'Jabala',
-    img: 'images/jabala.svg',
-    hair: 'hidden',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
+    name: 'Snoop Dogg',
+    img: 'images/snoop-dogg.jpeg',
+    hair: ['locs'],
+    accessories: ['necklace', 'ring'],
+    clothes: ['shirt'],
+    other: ['mustache', 'smoker']
+  },
+  {
+    name: 'Dr. Dre',
+    img: 'images/dr-dre.jpeg',
+    hair: ['hidden'],
+    accessories: ['hat', 'watch', 'earrings'],
+    clothes: [],
     other: []
   },
   {
-    name: 'Jack',
-    img: 'images/jack.svg',
-    hair: 'hidden',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: []
+    name: 'Eminem',
+    img: 'images/eminem.jpeg',
+    hair: ['short'],
+    accessories: ['earrings'],
+    clothes: [],
+    other: ['tattoo']
   },
   {
-    name: 'Jacques',
-    img: 'images/jacques.svg',
-    hair: 'grey',
-    eyes: 'blue',
-    accessories: ['hat'],
-    other: ['smoker']
+    name: 'Sir Mix A Lot',
+    img: 'images/sir-mix-alot.jpeg',
+    hair: ['hidden'],
+    accessories: ['hat', 'ring', 'glasses'],
+    clothes: [],
+    other: ['mouth open']
   },
   {
-    name: 'Jai',
-    img: 'images/jai.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jake',
-    img: 'images/jake.svg',
-    hair: 'yellow',
-    eyes: 'green',
+    name: 'Shock G',
+    img: 'images/shock-g.jpeg',
+    hair: ['big'],
     accessories: ['glasses'],
-    other: []
+    clothes: [],
+    other: ['mustache']
   },
   {
-    name: 'James',
-    img: 'images/james.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Tupac',
+    img: 'images/tupac.jpeg',
+    hair: ['bold'],
+    accessories: ['earrings', 'necklace', 'bandana'],
+    clothes: ['jeans shirt'],
+    other: ['mustache', 'plays in a band']
   },
   {
-    name: 'Jana',
-    img: 'images/jana.svg',
-    hair: 'black',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Andre 3000',
+    img: 'images/andre-3000.jpeg',
+    hair: ['long'],
+    accessories: ['necklace', 'bandana', 'ring'],
+    clothes: ['leather pants'],
+    other: ['tattoo', 'band member']
   },
   {
-    name: 'Jane',
-    img: 'images/jane.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: []
+    name: 'Notorious B.I.G.',
+    img: 'images/notorious-big.jpeg',
+    hair: ['short'],
+    accessories: ['ring', 'watch', 'necklace'],
+    clothes: ['colorful'],
+    other: ['fat']
   },
   {
-    name: 'Jaqueline',
-    img: 'images/jaqueline.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
+    name: 'Busta Rhymes',
+    img: 'images/busta-rhymes.jpeg',
+    hair: ['locs'],
+    accessories: ['necklace', 'watch', 'ring'],
+    clothes: ['jump suit'],
+    other: ['mustache']
   },
 
   {
-    name: 'Jazebelle',
-    img: 'images/jazebelle.svg',
-    hair: 'purple',
-    eyes: 'hidden',
-    accessories: ['glasses'],
-    other: ['smoker']
+    name: 'Jay Z',
+    img: 'images/jay-z.jpeg',
+    hair: ['short'],
+    accessories: ['earrings', 'necklace'],
+    clothes: ['Popeye'],
+    other: ['married', 'kids']
   },
   {
-    name: 'Jean',
-    img: 'images/jean.svg',
-    hair: 'brown',
-    eyes: 'blue',
+    name: 'Lauryn Hill',
+    img: 'images/lauryn-hill.jpeg',
+    hair: ['locs'],
     accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jeane',
-    img: 'images/jeane.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
+    clothes: ['duffle'],
     other: []
   },
   {
-    name: 'Jed',
-    img: 'images/jed.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses', 'hat'],
-    other: ['smoker']
-  },
-  {
-    name: 'Jenni',
-    img: 'images/jenni.svg',
-    hair: 'white',
-    eyes: 'hidden',
-    accessories: ['hat'],
+    name: 'Lil Kim',
+    img: 'images/lil-kim.jpeg',
+    hair: ['purple'],
+    accessories: ['lashes'],
+    clothes: ['purple'],
     other: []
   },
   {
-    name: 'Jeri',
-    img: 'images/jeri.svg',
-    hair: 'orange',
-    eyes: 'green',
-    accessories: ['glasses'],
+    name: 'Eve',
+    img: 'images/eve.jpeg',
+    hair: ['red'],
+    accessories: ['earrings', 'necklace', 'bracelet'],
+    clothes: ['fur'],
     other: []
   },
   {
-    name: 'Jerry',
-    img: 'images/jerry.svg',
+    name: 'Erykah Badu',
+    img: 'images/erykah-badu.jpeg',
+    hair: ['hidden'],
+    accessories: ['hat', 'necklace', 'ring', 'bracelet'],
+    clothes: ['colorful'],
+    other: []
+  },
+  {
+    name: 'Chili',
+    img: 'images/chili.jpeg',
+    hair: ['long'],
+    accessories: ['shells', 'necklace'],
+    clothes: ['black'],
+    other: ['band member']
+  },
+  {
+    name: 'Wu Tang Clan',
+    img: 'images/wu-tang-clan.jpeg',
+    hair: ['hidden', 'locs'],
+    accessories: ['hat', 'ring', 'glasses', 'tooth pick', 'necklace', 'bandanda'],
+    clothes: ['colorful', 'sweater', 't-shirt', 'shirt'],
+    other: ['is a band']
+  },
+  {
+    name: 'Queen Latifah',
+    img: 'images/quuen-latifah.jpeg',
+    hair: ['straight'],
+    accessories: ['bracelet', 'hat'],
+    clothes: ['t-shirt'],
+    other: ['band member']
+  },
+  {
+    name: 'Salt-N-Pepa',
+    img: 'images/salt-n-pepa.jpeg',
+    hair: ['hidden'],
+    accessories: ['earrings', 'hat', 'necklace', 'ring'],
+    clothes: ['colorful'],
+    other: ['is a band']
+  },
+  {
+    name: 'LL Cool J',
+    img: 'images/ll-cool-j.jpeg',
     hair: 'hidden',
-    eyes: 'blue',
+    accessories: ['hat', 'watch', 'necklace', 'ring'],
+    clothes: ['jacket'],
+    other: []
+  },
+  {
+    name: 'A Tribe Called Quest',
+    img: 'images/a-tribe-called-quest.jpeg',
+    hair: ['hidden'],
     accessories: ['hat'],
+    clothes: ['shirt', 'sweater'],
+    other: ['is a band']
+  },
+  {
+    name: 'Missy Elliot',
+    img: 'images/missy-elliot.jpeg',
+    hair: ['big'],
+    accessories: ['hat', 'earrings', 'necklace'],
+    clothes: ['t-shirt'],
     other: []
   },
   {
-    name: 'Jess',
-    img: 'images/jess.svg',
-    hair: 'black',
-    eyes: 'blue',
-    accessories: ['glasses'],
-    other: []
+    name: 'DMX',
+    img: 'images/dmx.jpeg',
+    hair: ['bold'],
+    accessories: ['necklace', 'bracelet', 'watch'],
+    clothes: [],
+    other: ['tattoo', 'mustache']
   },
   {
-    name: 'Jocelyn',
-    img: 'images/jocelyn.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses'],
-    other: []
+    name: 'Redman',
+    img: 'images/redman.jpeg',
+    hair: ['hidden'],
+    accessories: ['hat'],
+    clothes: ['shirt'],
+    other: ['mustache']
   },
   {
-    name: 'Jon',
-    img: 'images/jon.svg',
-    hair: 'brown',
-    eyes: 'green',
-    accessories: ['glasses'],
-    other: []
-  },
-  {
-    name: 'Jordan',
-    img: 'images/jordan.svg',
-    hair: 'yellow',
-    eyes: 'hidden',
-    accessories: ['glasses', 'hat'],
-    other: []
-  },
-  {
-    name: 'Josephine',
-    img: 'images/josephine.svg',
-    hair: 'grey',
-    eyes: 'brown',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Josh',
-    img: 'images/josh.svg',
-    hair: 'yellow',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Jude',
-    img: 'images/jude.svg',
-    hair: 'black',
-    eyes: 'green',
-    accessories: [],
-    other: []
-  },
-  {
-    name: 'Julie',
-    img: 'images/julie.svg',
-    hair: 'black',
-    eyes: 'brown',
-    accessories: ['glasses', 'hat'],
-    other: []
+    name: 'Big Punisher',
+    img: 'images/big-punisher.jpeg',
+    hair: ['hidden'],
+    accessories: ['necklace', 'hat'],
+    clothes: ['striped'],
+    other: ['fat']
   },
 ]
 

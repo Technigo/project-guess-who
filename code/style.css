@@ -1,7 +1,9 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #3a3a3a;
+  --secondary: #000;
+  --white: #fff;
+  background-color: #333;
 }
 
 body {
@@ -9,6 +11,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  color: var(--white);
 }
 
 h1 {
@@ -78,6 +81,11 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+  color: var(--white);
+}
+
+.card img {
+  width: 95%;
 }
 
 .card .guess {
@@ -186,9 +194,11 @@ button {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
   h1 {
     font-size: 24px;
     line-height: 30px;

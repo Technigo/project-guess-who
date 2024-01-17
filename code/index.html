@@ -20,28 +20,68 @@
         alt="Guess Who"
       />
 
-      <h1>Does the person have</h1>
+      <h1>Does the artist have</h1>
 
       <select title="questions" id="questions">
         <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
-        </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+          <option value="locs">locs</option>
+          <option value="hidden">hidden</option>
+          <option value="short">short</option>
+          <option value="big">big</option>
+          <option value="bold">bold</option>
+          <option value="long">long</option>
+          <option value="purple">purple</option>
+          <option value="red">red</option>
+          <option value="straight">straight</option>
         </optgroup>
         <optgroup label="accessories">
+          <option value="hat">hat</option>
+          <option value="necklace">necklace</option>
+          <option value="bracelet">bracelet</option>
+          <option value="watch">watch</option>
+          <option value="earrings">earrings</option>
+          <option value="ring">ring</option>
+          <option value="bandana">bandana</option>
+          <option value="tooth-pick">tooth-pick</option>
           <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
+          <option value="shells">shells</option>
+          <option value="lashes">fake lashes</option>
+        </optgroup>
+        <optgroup label="clothes">
+          <option value="shirt">shirt</option>
+          <option value="jeans-shirt">jeans shirt</option>
+          <option value="leather-pants">leather pants</option>
+          <option value="colorful">colorful</option>
+          <option value="jump-suit">jump suit</option>
+          <option value="popeye">Popeyet</option>
+          <option value="fur">fur</option>
+          <option value="black">black</option>
+          <option value="sweater">sweater</option>
+          <option value="t-shirt">t-shirt</option>
+          <option value="jacket">jacket</option>
+          <option value="striped">striped</option>
         </optgroup>
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
+          <option value="fat">fat</option>
+          <option value="mustache">mustache</option>
+          <option value="tattoo">tattoo</option>
+          <option value="band">is a band</option>
+          <option value="member">band member</option>
+          <option value="married">married</option>
+          <option value="kids">has kids</option>
+          <option value="mouth">mouth open</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div class="counter-box">
+        <h3 id="display-name"></h3>
+        <h2>Timer</h2>
+        <div id="timer">00:00</div>
+        <h2>How many guesses you made</h2>
+        <div id="counter-display"></div>
+      </div>
     </aside>
 
     <section class="board-wrapper">

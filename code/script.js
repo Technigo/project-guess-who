@@ -273,6 +273,17 @@ const setSecret = () => {
   console.log("Secret set to:", secret.name); // This line will log the name of the secret person
 }
 
+// MP3 files
+const songs = [
+  './assets/aurora-jeff-kaale-main-version-27251-02-30.mp3',
+  './assets/jazz-and-hop-kidcut-main-version-02-09-12098.mp3',
+  './assets/street-knowledge-bosnow-main-version-02-23-3183.mp3'
+];
+
+// Audio element
+let audio = new Audio();
+audio.loop = true; // Enable looping
+
 // This function to start (and restart) the game
 const start = () => {
   // Only prompt for the player's name if it hasn't been set
@@ -295,8 +306,24 @@ const start = () => {
   guessCounter = 0; // Reset counter on game start
   updateGuessCounter();
   startTimer();
+  playRandomSong();
 }
 
+// Function to play a random song
+const playRandomSong = () => {
+  const randomIndex = Math.floor(Math.random() * songs.length);
+  audio.src = songs[randomIndex];
+  audio.play();
+}
+
+// Toggle sound on or off
+const toggleSound = () => {
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+}
 
 // TIMER Start and Stop 
 const startTimer = () => {
@@ -462,4 +489,4 @@ restartButton.addEventListener('click', start)
 document.getElementById('questions').addEventListener('change', selectQuestion);
 document.getElementById('filter').addEventListener('click', checkQuestion);
 document.getElementById('restart').addEventListener('click', start);
-
+document.getElementById('soundButton').addEventListener('click', toggleSound);

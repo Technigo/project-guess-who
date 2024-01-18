@@ -1,106 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Guess the 90's Hip Hop artist</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
 
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:,">
+  <title>Guess the 90's Hip Hop artist</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+</head>
 
-      <h1>Does the artist have</h1>
+<body>
+  <aside class="question-section">
+    <button type="button" id="restart" class="outlined-button">RESTART</button>
+    <button type="button" id="soundButton" class="outlined-button">TOGGLE SOUND</button>
 
-      <select title="questions" id="questions">
-        <optgroup label="hair">
-          <option value="locs">locs</option>
-          <option value="hidden">hidden</option>
-          <option value="short">short</option>
-          <option value="big">big</option>
-          <option value="bold">bold</option>
-          <option value="long">long</option>
-          <option value="purple">purple</option>
-          <option value="red">red</option>
-          <option value="straight">straight</option>
-        </optgroup>
-        <optgroup label="accessories">
-          <option value="hat">hat</option>
-          <option value="necklace">necklace</option>
-          <option value="bracelet">bracelet</option>
-          <option value="watch">watch</option>
-          <option value="earrings">earrings</option>
-          <option value="ring">ring</option>
-          <option value="bandana">bandana</option>
-          <option value="tooth-pick">tooth-pick</option>
-          <option value="glasses">glasses</option>
-          <option value="shells">shells</option>
-          <option value="lashes">fake lashes</option>
-        </optgroup>
-        <optgroup label="clothes">
-          <option value="shirt">shirt</option>
-          <option value="jeans-shirt">jeans shirt</option>
-          <option value="colorful">colorful</option>
-          <option value="jump-suit">jump suit</option>
-          <option value="popeye">Popeye</option>
-          <option value="fur">fur</option>
-          <option value="black">black</option>
-          <option value="sweater">sweater</option>
-          <option value="t-shirt">t-shirt</option>
-          <option value="jacket">jacket</option>
-          <option value="striped">striped</option>
-        </optgroup>
-        <optgroup label="other">
-          <option value="smoker">a smoking habit</option>
-          <option value="fat">fat</option>
-          <option value="mustache">mustache</option>
-          <option value="tattoo">tattoo</option>
-          <option value="band">is a group</option>
-          <option value="member">group member</option>
-          <option value="married">married</option>
-          <option value="kids">has kids</option>
-          <option value="mouth">mouth open</option>
-        </optgroup>
-      </select>
+    <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
 
-      <button id="filter" class="filled-button">FIND OUT</button>
-      <div class="counter-box">
-        <h3 id="display-name"></h3>
-        <h3>Timer</h2>
+    <h1>Does the artist have</h1>
+
+    <select title="questions" id="questions">
+      <optgroup label="hair">
+        <option value="locs">locs</option>
+        <option value="hidden">hidden</option>
+        <option value="short">short</option>
+        <option value="big">big</option>
+        <option value="bold">bold</option>
+        <option value="long">long</option>
+        <option value="purple">purple</option>
+        <option value="red">red</option>
+        <option value="straight">straight</option>
+      </optgroup>
+      <optgroup label="accessories">
+        <option value="hat">hat</option>
+        <option value="necklace">necklace</option>
+        <option value="bracelet">bracelet</option>
+        <option value="watch">watch</option>
+        <option value="earrings">earrings</option>
+        <option value="ring">ring</option>
+        <option value="bandana">bandana</option>
+        <option value="tooth-pick">tooth-pick</option>
+        <option value="glasses">glasses</option>
+        <option value="shells">shells</option>
+        <option value="lashes">fake lashes</option>
+      </optgroup>
+      <optgroup label="clothes">
+        <option value="shirt">shirt</option>
+        <option value="jeans-shirt">jeans shirt</option>
+        <option value="colorful">colorful</option>
+        <option value="jump-suit">jump suit</option>
+        <option value="popeye">Popeye</option>
+        <option value="fur">fur</option>
+        <option value="black">black</option>
+        <option value="sweater">sweater</option>
+        <option value="t-shirt">t-shirt</option>
+        <option value="jacket">jacket</option>
+        <option value="striped">striped</option>
+      </optgroup>
+      <optgroup label="other">
+        <option value="smoker">a smoking habit</option>
+        <option value="fat">fat</option>
+        <option value="mustache">mustache</option>
+        <option value="tattoo">tattoo</option>
+        <option value="band">is a group</option>
+        <option value="member">group member</option>
+        <option value="married">married</option>
+        <option value="kids">has kids</option>
+        <option value="mouth">mouth open</option>
+      </optgroup>
+    </select>
+
+    <button id="filter" class="filled-button">FIND OUT</button>
+    <div class="counter-box">
+      <h3 id="display-name"></h3>
+      <h3>Timer</h2>
         <div id="timer">00:00</div>
         <h3>How many guesses you made</h2>
-        <div id="counter-display">Guesses: 0</div>
-        <h3>Time you have played this game in a row</h2>
-        <div id="play-count-display">0</div>
-      </div>
-    </aside>
+          <div id="counter-display">Guesses: 0</div>
+          <h3>Time you have played this game in a row</h2>
+            <div id="play-count-display">0</div>
+    </div>
+  </aside>
 
-    <section class="board-wrapper">
-      <main class="game-board" id="board"></main>
-    </section>
+  <section class="board-wrapper">
+    <main class="game-board" id="board"></main>
+  </section>
 
-    <section id="winOrLose" class="win-or-lose-wrapper">
-      <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
-        <h1 id="winOrLoseText"></h1>
-        <div id="videoContainer"></div>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
-      </div>
-    </section>
-    <script src="script.js"></script>
-  </body>
+  <section id="winOrLose" class="win-or-lose-wrapper">
+    <div class="win-or-lose">
+      <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
+      <h1 id="winOrLoseText"></h1>
+      <div id="videoContainer"></div>
+      <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+    </div>
+  </section>
+  <footer>
+    <p>Music from Uppbeat:</p>
+    <a href="https://uppbeat.io/t/bosnow/street-knowledge"
+      target="_blank">https://uppbeat.io/t/bosnow/street-knowledge</a>
+    <p>License code: MMPY8LAXPDFEVMXD</p>
+    <a href="https://uppbeat.io/t/kidcut/jazz-and-hop" target="_blank">https://uppbeat.io/t/kidcut/jazz-and-hop</a>
+    <p>License code: GUECZCKTSK7AKOP6</p>
+    <a href="https://uppbeat.io/t/jeff-kaale/aurora" target="_blank">https://uppbeat.io/t/jeff-kaale/aurora</a>
+    <p>License code: COYD8CN97EVKQPOS</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
 </html>

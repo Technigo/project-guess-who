@@ -29,7 +29,7 @@ const CHARACTERS = [
     accessories: ['necklace', 'ring'],
     clothes: ['shirt'],
     other: ['mustache', 'smoker'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Queen Latifah',
@@ -38,7 +38,7 @@ const CHARACTERS = [
     accessories: ['bracelet', 'hat'],
     clothes: ['t-shirt'],
     other: ['band member'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Dr. Dre',
@@ -47,7 +47,7 @@ const CHARACTERS = [
     accessories: ['hat', 'watch', 'earrings'],
     clothes: [],
     other: [],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Eminem',
@@ -56,7 +56,7 @@ const CHARACTERS = [
     accessories: ['earrings'],
     clothes: [],
     other: ['tattoo'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Sir Mix A Lot',
@@ -65,7 +65,7 @@ const CHARACTERS = [
     accessories: ['hat', 'ring', 'glasses'],
     clothes: [],
     other: ['mouth open', 'fat'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Shock G',
@@ -74,7 +74,7 @@ const CHARACTERS = [
     accessories: ['glasses'],
     clothes: [],
     other: ['mustache'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Tupac',
@@ -83,7 +83,7 @@ const CHARACTERS = [
     accessories: ['earrings', 'necklace', 'bandana'],
     clothes: ['jeans shirt'],
     other: ['mustache', 'band member'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Andre 3000',
@@ -92,7 +92,7 @@ const CHARACTERS = [
     accessories: ['necklace', 'bandana', 'ring'],
     clothes: [],
     other: ['tattoo', 'band member'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Lauryn Hill',
@@ -101,7 +101,7 @@ const CHARACTERS = [
     accessories: ['glasses', 'hat'],
     clothes: ['jacket'],
     other: [],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Notorious B.I.G.',
@@ -110,7 +110,7 @@ const CHARACTERS = [
     accessories: ['ring', 'watch', 'necklace'],
     clothes: ['colorful'],
     other: ['fat'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Busta Rhymes',
@@ -119,7 +119,7 @@ const CHARACTERS = [
     accessories: ['necklace', 'watch', 'ring'],
     clothes: ['jump suit'],
     other: ['mustache'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Jay Z',
@@ -128,7 +128,7 @@ const CHARACTERS = [
     accessories: ['earrings', 'necklace'],
     clothes: ['Popeye'],
     other: ['married', 'kids'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Lil Kim',
@@ -137,7 +137,7 @@ const CHARACTERS = [
     accessories: ['lashes'],
     clothes: ['colorful'],
     other: [],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Eve',
@@ -146,7 +146,7 @@ const CHARACTERS = [
     accessories: ['earrings', 'necklace', 'bracelet'],
     clothes: ['fur'],
     other: [],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Erykah Badu',
@@ -155,7 +155,7 @@ const CHARACTERS = [
     accessories: ['hat', 'necklace', 'ring', 'bracelet'],
     clothes: ['colorful'],
     other: [],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Chili',
@@ -164,7 +164,7 @@ const CHARACTERS = [
     accessories: ['shells', 'necklace'],
     clothes: ['black'],
     other: ['band member'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Wu Tang Clan',
@@ -173,7 +173,7 @@ const CHARACTERS = [
     accessories: ['hat', 'ring', 'glasses', 'tooth pick', 'necklace', 'bandanda'],
     clothes: ['colorful', 'sweater', 't-shirt', 'shirt'],
     other: ['is a band'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Salt-N-Pepa',
@@ -182,7 +182,7 @@ const CHARACTERS = [
     accessories: ['earrings', 'hat', 'necklace', 'ring'],
     clothes: ['colorful'],
     other: ['is a band'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'LL Cool J',
@@ -191,7 +191,7 @@ const CHARACTERS = [
     accessories: ['hat', 'watch', 'necklace', 'ring'],
     clothes: ['jacket'],
     other: [],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'A Tribe Called Quest',
@@ -200,7 +200,7 @@ const CHARACTERS = [
     accessories: ['hat'],
     clothes: ['shirt', 'sweater'],
     other: ['is a band'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Missy Elliot',
@@ -209,7 +209,7 @@ const CHARACTERS = [
     accessories: ['hat', 'earrings', 'necklace'],
     clothes: ['t-shirt'],
     other: [],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'DMX',
@@ -218,7 +218,7 @@ const CHARACTERS = [
     accessories: ['necklace', 'bracelet', 'watch'],
     clothes: [],
     other: ['tattoo', 'mustache'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Redman',
@@ -227,7 +227,7 @@ const CHARACTERS = [
     accessories: ['hat'],
     clothes: ['shirt'],
     other: ['mustache'],
-    videoUrl:''
+    videoUrl: ''
   },
   {
     name: 'Big Punisher',
@@ -236,9 +236,11 @@ const CHARACTERS = [
     accessories: ['necklace', 'hat'],
     clothes: ['striped'],
     other: ['fat'],
-    videoUrl:''
+    videoUrl: ''
   },
 ]
+
+// ********** DECLARE FUNCTIONS ********** //
 
 // Draw the game board
 const generateBoard = () => {
@@ -266,7 +268,6 @@ const shuffleArray = (array) => {
   return array;
 }
 
-
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -280,48 +281,71 @@ const songs = [
   './assets/street-knowledge-bosnow-main-version-02-23-3183.mp3'
 ];
 
+let currentSongIndex = 0;
+
 // Audio element
 let audio = new Audio();
 audio.loop = true; // Enable looping
 
+let victorySound = new Audio('./assets/crowdhomerunapplause.mp3');
+
+// ********** START THE GAME ********* //
+
 // This function to start (and restart) the game
 const start = () => {
-  // Only prompt for the player's name if it hasn't been set
-  if (!playerName) {
-    playerName = prompt("Please enter your name");
-    while (!playerName || playerName.trim() === "") {
-      playerName = prompt("Please enter your name");
-    }
-    NameContainer.innerText = `Player: ${playerName}`;
-  }
+  // Hide the landing page
+  document.getElementById('landing-page').classList.add('hidden');
+
+  // Show the game board and question section
+  document.querySelector('.question-section').classList.remove('hidden');
+  document.querySelector('.board-wrapper').classList.remove('hidden');
+  document.getElementById('winOrLose').classList.remove('hidden');
+  document.querySelector('.credits').classList.remove('hidden');
+  document.querySelector('.board-content').classList.remove('hidden');
+
+
 
   playCount++;
   document.getElementById("play-count-display").innerText = `Play Count: ${playCount}`;
 
-
-  // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = shuffleArray(CHARACTERS);
-  generateBoard(); // This line generates the board when the website loads
-  setSecret(); // Sets a random character as the secret
-  guessCounter = 0; // Reset counter on game start
+  generateBoard();
+  setSecret();
+  guessCounter = 0;
   updateGuessCounter();
   startTimer();
-  playRandomSong();
+
+  // Play a random song if music choice was 'yes'
+  if (document.getElementById('musicChoice').value === 'yes') {
+    playRandomSong();
+  }
 }
 
 // Function to play a random song
-const playRandomSong = () => {
-  const randomIndex = Math.floor(Math.random() * songs.length);
-  audio.src = songs[randomIndex];
-  audio.play();
+const playRandomSong = (next = false) => {
+  if (!audio.paused) {
+    audio.pause(); // Pause current song if playing
+  }
+  if (next) {
+    currentSongIndex = (currentSongIndex + 1) % songs.length; // Move to next song, loop back if at the end
+  } else {
+    currentSongIndex = Math.floor(Math.random() * songs.length); // Select a random song
+  }
+  audio.src = songs[currentSongIndex];
+  audio.play().catch(e => console.log("Failed to play audio:", e)); // Handle any play errors
 }
 
 // Toggle sound on or off
 const toggleSound = () => {
-  if (audio.paused) {
-    audio.play();
+  if (audio.src) { // Check if audio source is set
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
   } else {
-    audio.pause();
+    // If audio source is not set, start playing a random song
+    playRandomSong();
   }
 }
 
@@ -452,17 +476,18 @@ const checkMyGuess = (personToCheck) => {
 
   const winOrLoseText = document.getElementById("winOrLoseText");
   const winOrLoseSection = document.getElementById("winOrLose");
-  const videoContainer = document.getElementById("videoContainer"); // Create a container for the video in your HTML
 
   // 1. Check if the personToCheck is the same as the secret person's name
   if (personToCheck === secret.name) {
+    // Play victory sound
+    victorySound.play();
     // 2. Set a Message to show in the win or lose section accordingly
     winOrLoseText.innerText = `✨🎉Congratulations!✨🎉 ${secret.name} is the secret artist!`;
   } else {
     // 3. Show the win or lose section
     winOrLoseText.innerText = `Ooops! ${personToCheck} is not the secret artist!😱 Try again!`;
   }
-  
+
 
   // 4. Display the win/lose section and hide the game board
   winOrLoseSection.style.display = 'block';
@@ -482,7 +507,7 @@ document.getElementById('playAgain').addEventListener('click', () => {
 });
 
 // Invokes the start function when website is loaded
-start()
+//start()
 
 // All the event listeners
 restartButton.addEventListener('click', start)
@@ -490,3 +515,21 @@ document.getElementById('questions').addEventListener('change', selectQuestion);
 document.getElementById('filter').addEventListener('click', checkQuestion);
 document.getElementById('restart').addEventListener('click', start);
 document.getElementById('soundButton').addEventListener('click', toggleSound);
+document.getElementById('nextSongButton').addEventListener('click', () => {
+  playRandomSong(true); // Call with 'true' to play the next song
+});
+document.getElementById('startGame').addEventListener('click', function () {
+  playerName = document.getElementById('playerNameInput').value;
+  if (!playerName || playerName.trim() === "") {
+    alert("Please enter your name");
+    return;
+  }
+  NameContainer.innerText = `Player: ${playerName}`;
+
+  const musicChoice = document.getElementById('musicChoice').value;
+  if (musicChoice === 'yes') {
+    playRandomSong();
+  }
+
+  start(); // Start the game
+});

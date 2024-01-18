@@ -13,9 +13,25 @@
 </head>
 
 <body>
-  <aside class="question-section">
+  <section id="landing-page" class="landing-page">
+    <div class="landing-page-wrapper">
+    <h1>Welcome to<br> "Guess" the 90's Hip Hop Artist!</h1>
+    <input type="text" id="playerNameInput" placeholder="Enter your name" />
+    <div>
+      <label for="musicChoice">Allow some beats to your game?</label>
+      <select id="musicChoice">
+        <option value="yes">Yes</option>
+        <option value="no" selected>No</option>
+      </select>
+    </div>
+    <button id="startGame" class="filled-button">Play</button>
+  </div>
+  <img src="./assets/golden-era.jpeg" />
+  </section>
+  <aside class="question-section hidden">
     <button type="button" id="restart" class="outlined-button">RESTART</button>
-    <button type="button" id="soundButton" class="outlined-button">TOGGLE SOUND</button>
+    <button type="button" id="soundButton" class="outlined-button">MUSIC</button>
+    <button type="button" id="nextSongButton" class="outlined-button">NEXT BEAT</button>
 
     <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
 
@@ -83,12 +99,30 @@
             <div id="play-count-display">0</div>
     </div>
   </aside>
+  <div class="board-content hidden">
+    <section class="board-wrapper hidden">
+      <main class="game-board" id="board"></main>
+    </section>
 
-  <section class="board-wrapper">
-    <main class="game-board" id="board"></main>
-  </section>
-
-  <section id="winOrLose" class="win-or-lose-wrapper">
+    <footer id="credits" class="credits hidden">
+      <p>Music from Uppbeat:</p>
+      <div class="links">
+        <div>
+          <a href="https://uppbeat.io/t/bosnow/street-knowledge" target="_blank">bosnow</a>
+          <p>License code: MMPY8LAXPDFEVMXD</p>
+        </div>
+        <div>
+          <a href="https://uppbeat.io/t/kidcut/jazz-and-hop" target="_blank">kidcut</a>
+          <p>License code: GUECZCKTSK7AKOP6</p>
+        </div>
+        <div>
+          <a href="https://uppbeat.io/t/jeff-kaale/aurora" target="_blank">jeff-kaale</a>
+          <p>License code: COYD8CN97EVKQPOS</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <section id="winOrLose" class="win-or-lose-wrapper hidden">
     <div class="win-or-lose">
       <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
       <h1 id="winOrLoseText"></h1>
@@ -96,16 +130,6 @@
       <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
     </div>
   </section>
-  <footer>
-    <p>Music from Uppbeat:</p>
-    <a href="https://uppbeat.io/t/bosnow/street-knowledge"
-      target="_blank">https://uppbeat.io/t/bosnow/street-knowledge</a>
-    <p>License code: MMPY8LAXPDFEVMXD</p>
-    <a href="https://uppbeat.io/t/kidcut/jazz-and-hop" target="_blank">https://uppbeat.io/t/kidcut/jazz-and-hop</a>
-    <p>License code: GUECZCKTSK7AKOP6</p>
-    <a href="https://uppbeat.io/t/jeff-kaale/aurora" target="_blank">https://uppbeat.io/t/jeff-kaale/aurora</a>
-    <p>License code: COYD8CN97EVKQPOS</p>
-  </footer>
   <script src="script.js"></script>
 </body>
 

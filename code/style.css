@@ -1,9 +1,19 @@
 /* Global css variables used for colors */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 :root {
-  --primary: #3a3a3a;
-  --secondary: #000;
+  --primary: #000;
+  --secondary: #3a3a3a;
   --white: #fff;
-  background-color: #333;
+  --hover: #862D2E;
+  background-color: #434450;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -14,12 +24,56 @@ body {
   color: var(--white);
 }
 
+.hidden {
+  display: none !important;
+}
+
 h1 {
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
   margin: 10px 0;
   color: white;
+}
+
+#landing-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  width: auto;
+}
+
+.landing-page-wrapper {
+  width: 50%;
+  display: block;
+  padding: 50px;
+}
+
+#landing-page img {
+  width: 50%; 
+  height: 100vh; 
+  object-fit: cover; 
+  object-position: center; 
+  flex: 1; /* This will allow the image to fill the space */
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0 30px 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  color: #000;
+}
+
+#musicChoice {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 30px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 18px;
 }
 
 .question-section {
@@ -34,17 +88,23 @@ h1 {
 }
 
 select {
-  display: block;
-  border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
-  width: 100%;
-  margin: 24px 0;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 30px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 18px;
 }
 
 .guess-who-icon {
   width: 126px;
+}
+
+.board-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 50px;
 }
 
 .board-wrapper {
@@ -55,20 +115,51 @@ select {
 }
 
 .game-board {
-  width: 90%;
+  width: 100%;
   max-width: 882px;
+  display: grid; 
   display: flex;
   flex-wrap: wrap;
   align-content: center;
 }
 
+.credits {
+  display: block;
+  justify-content: center; 
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #3a3a3a;
+}
+
+.credits p {
+  font-size: 12px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  font-size: 10px;
+  color: var(--primary);
+}
+
+.links a {
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
 /****** CARD ******/
 .card {
-  width: 270px; /* Double the original width */
-  height: 330px; /* Double the original height */
+  width: 200px;
+  height: 250px;
   overflow: hidden;
-  border-radius: 4px;
-  margin: 6px; /* Adjust margin if needed */
+  border-radius: 8px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,7 +217,7 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
+  border-radius: 20px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
@@ -188,9 +279,24 @@ button {
   margin-bottom: 32px;
 }
 
+/* ------------ MEDIA QUERIES ------------ */
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
+  }
+
+  #landing-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .landing-page-wrapper {
+    width: 90%;
+  }
+
+  #landing-page img {
+    width: 100%;
   }
 
   .question-section {
@@ -208,7 +314,7 @@ button {
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 100px;
   }
 
   .board-wrapper {
@@ -242,5 +348,13 @@ button {
     background: white;
     color: var(--primary);
     border: none;
+  }
+
+.credits {
+  margin: 100px 0 50px 0;
+}
+
+  .links {
+    display: block;
   }
 }

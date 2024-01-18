@@ -257,6 +257,16 @@ const generateBoard = () => {
   })
 }
 
+// Function to shuffle an array
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+  }
+  return array;
+}
+
+
 // Randomly select a person from the characters array and set as the value of the variable called secret
 const setSecret = () => {
   secret = charactersInPlay[Math.floor(Math.random() * charactersInPlay.length)]
@@ -279,7 +289,7 @@ const start = () => {
 
 
   // Here we're setting charactersInPlay array to be all the characters to start with
-  charactersInPlay = CHARACTERS;
+  charactersInPlay = shuffleArray(CHARACTERS);
   generateBoard(); // This line generates the board when the website loads
   setSecret(); // Sets a random character as the secret
   guessCounter = 0; // Reset counter on game start

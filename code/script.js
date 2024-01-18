@@ -13,10 +13,11 @@ const counterDisplay = document.getElementById("counter-display");
 let secret;
 let currentQuestion;
 let charactersInPlay;
-let playerName; //Store the players name
+let playerName = null; //Store the players name
 let timer;
 let startTime;
 let guessCounter = 0;
+let playCount = 0;
 
 
 // Array with all the characters, as objects
@@ -27,128 +28,8 @@ const CHARACTERS = [
     hair: ['locs'],
     accessories: ['necklace', 'ring'],
     clothes: ['shirt'],
-    other: ['mustache', 'smoker']
-  },
-  {
-    name: 'Dr. Dre',
-    img: 'images/dr-dre.jpeg',
-    hair: ['hidden'],
-    accessories: ['hat', 'watch', 'earrings'],
-    clothes: [],
-    other: []
-  },
-  {
-    name: 'Eminem',
-    img: 'images/eminem.jpeg',
-    hair: ['short'],
-    accessories: ['earrings'],
-    clothes: [],
-    other: ['tattoo']
-  },
-  {
-    name: 'Sir Mix A Lot',
-    img: 'images/sir-mix-alot.jpeg',
-    hair: ['hidden'],
-    accessories: ['hat', 'ring', 'glasses'],
-    clothes: [],
-    other: ['mouth open', 'fat']
-  },
-  {
-    name: 'Shock G',
-    img: 'images/shock-g.jpeg',
-    hair: ['big'],
-    accessories: ['glasses'],
-    clothes: [],
-    other: ['mustache']
-  },
-  {
-    name: 'Tupac',
-    img: 'images/tupac.jpeg',
-    hair: ['bold'],
-    accessories: ['earrings', 'necklace', 'bandana'],
-    clothes: ['jeans shirt'],
-    other: ['mustache', 'band member']
-  },
-  {
-    name: 'Andre 3000',
-    img: 'images/andre-3000.jpeg',
-    hair: ['long'],
-    accessories: ['necklace', 'bandana', 'ring'],
-    clothes: ['leather pants'],
-    other: ['tattoo', 'band member']
-  },
-  {
-    name: 'Notorious B.I.G.',
-    img: 'images/notorious-big.jpeg',
-    hair: ['short'],
-    accessories: ['ring', 'watch', 'necklace'],
-    clothes: ['colorful'],
-    other: ['fat']
-  },
-  {
-    name: 'Busta Rhymes',
-    img: 'images/busta-rhymes.jpg',
-    hair: ['locs'],
-    accessories: ['necklace', 'watch', 'ring'],
-    clothes: ['jump suit'],
-    other: ['mustache']
-  },
-
-  {
-    name: 'Jay Z',
-    img: 'images/jay-z.jpeg',
-    hair: ['short'],
-    accessories: ['earrings', 'necklace'],
-    clothes: ['Popeye'],
-    other: ['married', 'kids']
-  },
-  {
-    name: 'Lauryn Hill',
-    img: 'images/lauryn-hill.jpeg',
-    hair: ['locs'],
-    accessories: ['glasses', 'hat'],
-    clothes: ['jacket'],
-    other: []
-  },
-  {
-    name: 'Lil Kim',
-    img: 'images/lil-kim.jpeg',
-    hair: ['purple'],
-    accessories: ['lashes'],
-    clothes: ['colorful'],
-    other: []
-  },
-  {
-    name: 'Eve',
-    img: 'images/eve.jpeg',
-    hair: ['red'],
-    accessories: ['earrings', 'necklace', 'bracelet'],
-    clothes: ['fur'],
-    other: []
-  },
-  {
-    name: 'Erykah Badu',
-    img: 'images/erykah-badu.jpeg',
-    hair: ['hidden'],
-    accessories: ['hat', 'necklace', 'ring', 'bracelet'],
-    clothes: ['colorful'],
-    other: []
-  },
-  {
-    name: 'Chili',
-    img: 'images/chili.jpeg',
-    hair: ['long'],
-    accessories: ['shells', 'necklace'],
-    clothes: ['black'],
-    other: ['band member']
-  },
-  {
-    name: 'Wu Tang Clan',
-    img: 'images/wu-tang-clan.jpeg',
-    hair: ['hidden', 'locs'],
-    accessories: ['hat', 'ring', 'glasses', 'tooth pick', 'necklace', 'bandanda'],
-    clothes: ['colorful', 'sweater', 't-shirt', 'shirt'],
-    other: ['is a band']
+    other: ['mustache', 'smoker'],
+    videoUrl:''
   },
   {
     name: 'Queen Latifah',
@@ -156,7 +37,143 @@ const CHARACTERS = [
     hair: ['straight'],
     accessories: ['bracelet', 'hat'],
     clothes: ['t-shirt'],
-    other: ['band member']
+    other: ['band member'],
+    videoUrl:''
+  },
+  {
+    name: 'Dr. Dre',
+    img: 'images/dr-dre.jpeg',
+    hair: ['hidden'],
+    accessories: ['hat', 'watch', 'earrings'],
+    clothes: [],
+    other: [],
+    videoUrl:''
+  },
+  {
+    name: 'Eminem',
+    img: 'images/eminem.jpeg',
+    hair: ['short'],
+    accessories: ['earrings'],
+    clothes: [],
+    other: ['tattoo'],
+    videoUrl:''
+  },
+  {
+    name: 'Sir Mix A Lot',
+    img: 'images/sir-mix-alot.jpeg',
+    hair: ['hidden'],
+    accessories: ['hat', 'ring', 'glasses'],
+    clothes: [],
+    other: ['mouth open', 'fat'],
+    videoUrl:''
+  },
+  {
+    name: 'Shock G',
+    img: 'images/shock-g.jpeg',
+    hair: ['big'],
+    accessories: ['glasses'],
+    clothes: [],
+    other: ['mustache'],
+    videoUrl:''
+  },
+  {
+    name: 'Tupac',
+    img: 'images/tupac.jpeg',
+    hair: ['bold'],
+    accessories: ['earrings', 'necklace', 'bandana'],
+    clothes: ['jeans shirt'],
+    other: ['mustache', 'band member'],
+    videoUrl:''
+  },
+  {
+    name: 'Andre 3000',
+    img: 'images/andre-3000.jpeg',
+    hair: ['long'],
+    accessories: ['necklace', 'bandana', 'ring'],
+    clothes: [],
+    other: ['tattoo', 'band member'],
+    videoUrl:''
+  },
+  {
+    name: 'Lauryn Hill',
+    img: 'images/lauryn-hill.jpeg',
+    hair: ['locs'],
+    accessories: ['glasses', 'hat'],
+    clothes: ['jacket'],
+    other: [],
+    videoUrl:''
+  },
+  {
+    name: 'Notorious B.I.G.',
+    img: 'images/notorious-big.jpeg',
+    hair: ['short'],
+    accessories: ['ring', 'watch', 'necklace'],
+    clothes: ['colorful'],
+    other: ['fat'],
+    videoUrl:''
+  },
+  {
+    name: 'Busta Rhymes',
+    img: 'images/busta-rhymes.jpg',
+    hair: ['locs'],
+    accessories: ['necklace', 'watch', 'ring'],
+    clothes: ['jump suit'],
+    other: ['mustache'],
+    videoUrl:''
+  },
+  {
+    name: 'Jay Z',
+    img: 'images/jay-z.jpeg',
+    hair: ['short'],
+    accessories: ['earrings', 'necklace'],
+    clothes: ['Popeye'],
+    other: ['married', 'kids'],
+    videoUrl:''
+  },
+  {
+    name: 'Lil Kim',
+    img: 'images/lil-kim.jpeg',
+    hair: ['purple'],
+    accessories: ['lashes'],
+    clothes: ['colorful'],
+    other: [],
+    videoUrl:''
+  },
+  {
+    name: 'Eve',
+    img: 'images/eve.jpeg',
+    hair: ['red'],
+    accessories: ['earrings', 'necklace', 'bracelet'],
+    clothes: ['fur'],
+    other: [],
+    videoUrl:''
+  },
+  {
+    name: 'Erykah Badu',
+    img: 'images/erykah-badu.jpeg',
+    hair: ['hidden'],
+    accessories: ['hat', 'necklace', 'ring', 'bracelet'],
+    clothes: ['colorful'],
+    other: [],
+    videoUrl:''
+  },
+  {
+    name: 'Chili',
+    img: 'images/chili.jpeg',
+    hair: ['long'],
+    accessories: ['shells', 'necklace'],
+    clothes: ['black'],
+    other: ['band member'],
+    videoUrl:''
+  },
+  {
+    name: 'Wu Tang Clan',
+    img: 'images/wu-tang-clan.jpeg',
+    hair: ['hidden', 'locs'],
+    accessories: ['hat', 'ring', 'glasses', 'tooth pick', 'necklace', 'bandanda'],
+    clothes: ['colorful', 'sweater', 't-shirt', 'shirt'],
+    other: ['is a band'],
+    videoUrl:''
   },
   {
     name: 'Salt-N-Pepa',
@@ -164,7 +181,8 @@ const CHARACTERS = [
     hair: ['hidden'],
     accessories: ['earrings', 'hat', 'necklace', 'ring'],
     clothes: ['colorful'],
-    other: ['is a band']
+    other: ['is a band'],
+    videoUrl:''
   },
   {
     name: 'LL Cool J',
@@ -172,7 +190,8 @@ const CHARACTERS = [
     hair: 'hidden',
     accessories: ['hat', 'watch', 'necklace', 'ring'],
     clothes: ['jacket'],
-    other: []
+    other: [],
+    videoUrl:''
   },
   {
     name: 'A Tribe Called Quest',
@@ -180,7 +199,8 @@ const CHARACTERS = [
     hair: ['hidden'],
     accessories: ['hat'],
     clothes: ['shirt', 'sweater'],
-    other: ['is a band']
+    other: ['is a band'],
+    videoUrl:''
   },
   {
     name: 'Missy Elliot',
@@ -188,7 +208,8 @@ const CHARACTERS = [
     hair: ['big'],
     accessories: ['hat', 'earrings', 'necklace'],
     clothes: ['t-shirt'],
-    other: []
+    other: [],
+    videoUrl:''
   },
   {
     name: 'DMX',
@@ -196,7 +217,8 @@ const CHARACTERS = [
     hair: ['bold'],
     accessories: ['necklace', 'bracelet', 'watch'],
     clothes: [],
-    other: ['tattoo', 'mustache']
+    other: ['tattoo', 'mustache'],
+    videoUrl:''
   },
   {
     name: 'Redman',
@@ -204,7 +226,8 @@ const CHARACTERS = [
     hair: ['hidden'],
     accessories: ['hat'],
     clothes: ['shirt'],
-    other: ['mustache']
+    other: ['mustache'],
+    videoUrl:''
   },
   {
     name: 'Big Punisher',
@@ -212,7 +235,8 @@ const CHARACTERS = [
     hair: ['hidden'],
     accessories: ['necklace', 'hat'],
     clothes: ['striped'],
-    other: ['fat']
+    other: ['fat'],
+    videoUrl:''
   },
 ]
 
@@ -241,12 +265,25 @@ const setSecret = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  playerName = prompt("Please enter your name", "Player");
+  // Only prompt for the player's name if it hasn't been set
+  if (!playerName) {
+    playerName = prompt("Please enter your name");
+    while (!playerName || playerName.trim() === "") {
+      playerName = prompt("Please enter your name");
+    }
+    NameContainer.innerText = `Player: ${playerName}`;
+  }
+
+  playCount++;
+  document.getElementById("play-count-display").innerText = `Play Count: ${playCount}`;
+
+
   // Here we're setting charactersInPlay array to be all the characters to start with
   charactersInPlay = CHARACTERS;
   generateBoard(); // This line generates the board when the website loads
   setSecret(); // Sets a random character as the secret
   guessCounter = 0; // Reset counter on game start
+  updateGuessCounter();
   startTimer();
 }
 
@@ -256,10 +293,18 @@ const startTimer = () => {
   startTime = new Date();
   timer = setInterval(() => {
     const currentTime = new Date();
-    const elapsedTime = currentTime - startTime; // Time elapsed in milliseconds
-    // Update your timer display here
+    const elapsedTime = currentTime - startTime;
+    // Format and update timer display
+    document.getElementById("timer").innerText = formatTime(elapsedTime);
   }, 1000);
-}
+};
+
+const formatTime = (ms) => {
+  let seconds = Math.floor(ms / 1000);
+  let minutes = Math.floor(seconds / 60);
+  seconds = seconds % 60;
+  return minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+};
 
 const stopTimer = () => {
   clearInterval(timer);
@@ -301,6 +346,7 @@ const checkQuestion = () => {
   filterCharacters(keep);
 
   guessCounter++; // Increment counter on each question
+  updateGuessCounter(); // Update the display
 };
 
 // Function to filter the characters array and redraw the game board.
@@ -356,6 +402,11 @@ const guess = (personToConfirm) => {
     checkMyGuess(personToConfirm);
   }
   guessCounter++; // Increment counter on each guess
+  updateGuessCounter(); // Update the display
+};
+
+const updateGuessCounter = () => {
+  counterDisplay.innerText = `Guesses: ${guessCounter}`;
 };
 
 // If you confirm, this function is invoked
@@ -364,6 +415,7 @@ const checkMyGuess = (personToCheck) => {
 
   const winOrLoseText = document.getElementById("winOrLoseText");
   const winOrLoseSection = document.getElementById("winOrLose");
+  const videoContainer = document.getElementById("videoContainer"); // Create a container for the video in your HTML
 
   // 1. Check if the personToCheck is the same as the secret person's name
   if (personToCheck === secret.name) {
@@ -373,6 +425,7 @@ const checkMyGuess = (personToCheck) => {
     // 3. Show the win or lose section
     winOrLoseText.innerText = `Ooops! ${personToCheck} is not the secret artist!😱 Try again!`;
   }
+  
 
   // 4. Display the win/lose section and hide the game board
   winOrLoseSection.style.display = 'block';

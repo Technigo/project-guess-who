@@ -64,12 +64,11 @@ select {
 
 /****** CARD ******/
 .card {
-  width: 135px;
-  height: 165px;
+  width: 270px; /* Double the original width */
+  height: 330px; /* Double the original height */
   overflow: hidden;
-  border: 3px solid var(--secondary);
   border-radius: 4px;
-  margin: 3px;
+  margin: 6px; /* Adjust margin if needed */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,7 +84,11 @@ select {
 }
 
 .card img {
-  width: 95%;
+  width: 100%; /* Make image take full width of the card */
+  height: 100%; /* Make image take full height of the card */
+  object-fit: cover; /* Cover the area of the card */
+  object-position: center; /* Center the image */
+  border-radius: 8px;
 }
 
 .card .guess {

@@ -14,10 +14,10 @@
 body, html {
   margin: 0;
   padding: 0;
+  height: 100vh;
 }
 
 body {
-  display: flex;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
@@ -41,7 +41,7 @@ h1 {
   align-items: center;
   justify-content: space-between;
   height: 100vh;
-  width: auto;
+  width: 100%;
 }
 
 .landing-page-wrapper {
@@ -76,9 +76,12 @@ input[type="text"], select {
   font-size: 18px;
 }
 
+.content-wrapper {
+  display: flex;
+}
+
 .question-section {
   width: 30%;
-  min-height: 100vh;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
@@ -103,12 +106,12 @@ select {
 .board-content {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  justify-content: center;
   padding-bottom: 50px;
 }
 
 .board-wrapper {
-  width: 70%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,7 +119,6 @@ select {
 
 .game-board {
   width: 100%;
-  max-width: 882px;
   display: grid; 
   display: flex;
   flex-wrap: wrap;
@@ -249,7 +251,7 @@ button {
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
-  display: none;
+  display: flex;  
   align-items: center;
   justify-content: center;
   background: var(--secondary);
@@ -266,7 +268,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  max-width: 90%;
   text-align: center;
 }
 

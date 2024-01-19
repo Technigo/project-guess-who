@@ -19,7 +19,6 @@ let startTime;
 let guessCounter = 0;
 let playCount = 0;
 
-
 // Array with all the characters, as objects
 const CHARACTERS = [
   {
@@ -299,11 +298,8 @@ const start = () => {
   // Show the game board and question section
   document.querySelector('.question-section').classList.remove('hidden');
   document.querySelector('.board-wrapper').classList.remove('hidden');
-  document.getElementById('winOrLose').classList.remove('hidden');
   document.querySelector('.credits').classList.remove('hidden');
   document.querySelector('.board-content').classList.remove('hidden');
-
-
 
   playCount++;
   document.getElementById("play-count-display").innerText = `Play Count: ${playCount}`;
@@ -488,8 +484,8 @@ const checkMyGuess = (personToCheck) => {
     winOrLoseText.innerText = `Ooops! ${personToCheck} is not the secret artist!😱 Try again!`;
   }
 
-
   // 4. Display the win/lose section and hide the game board
+  winOrLoseSection.classList.remove('hidden');
   winOrLoseSection.style.display = 'block';
   board.style.display = 'none';
 };
@@ -499,6 +495,7 @@ document.getElementById('playAgain').addEventListener('click', () => {
   const winOrLoseSection = document.getElementById("winOrLose");
 
   // Hide the win/lose section and show the game board
+  winOrLoseSection.classList.add('hidden');
   winOrLoseSection.style.display = 'none';
   board.style.display = 'flex';
 

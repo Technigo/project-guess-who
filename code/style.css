@@ -14,10 +14,12 @@
 body, html {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
@@ -99,15 +101,14 @@ select {
     font-size: 18px;
 }
 
-.guess-who-icon {
-  width: 126px;
+#counter-display, #play-count-display {
+ font-size: 16px;
+ font-weight: 700;
+ margin-top: 10px;
 }
 
-.board-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-bottom: 50px;
+.guess-who-icon {
+  width: 126px;
 }
 
 .board-wrapper {
@@ -119,7 +120,6 @@ select {
 
 .game-board {
   width: 100%;
-  display: grid; 
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -130,12 +130,12 @@ select {
   justify-content: center; 
   text-align: center;
   padding: 100px 20px;
-  background-color: #3a3a3a;
+  background-color: var(--primary);
 }
 
 .credits p {
-  font-size: 12px;
-  color: var(--primary);
+  font-size: 8px;
+  color: var(--white);
   font-weight: 700;
 }
 
@@ -144,14 +144,12 @@ select {
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
-  font-size: 10px;
-  color: var(--primary);
 }
 
 .links a {
   text-decoration: none;
-  color: var(--primary);
-  font-size: 12px;
+  color: var(--white);
+  font-size: 8px;
   font-weight: 700;
 }
 
@@ -227,23 +225,52 @@ button {
   cursor: pointer;
 }
 
+.music-buttons {
+  display: flex;
+  margin: 20px 0;
+}
+
+#soundIcon, #nextIcon {
+  height: 24px;
+  width: 24px;
+  filter: invert(1);
+}
+
+.sound-button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  margin: 5px;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  border: none; 
+  padding: 0; 
+}
+
+#nextSongButton:hover, #soundButton:hover {
+  background-color: var(--secondary);
+  border: #fff 3px solid;
+}
+
+
 .small {
   padding: 8px 16px;
 }
 
 .outlined-button {
-  background-color: transparent;
-  color: var(--primary);
+  background-color: var(--primary);
+  color: white;
   align-self: flex-end;
 }
 
-.filled-button,
-.outlined-button:hover {
+.filled-button {
   background-color: var(--primary);
   color: white;
 }
 
-.filled-button:hover {
+.filled-button:hover, .outlined-button:hover  {
   background-color: white;
   border-color: white;
   color: var(--primary);
@@ -284,10 +311,6 @@ button {
 /* ------------ MEDIA QUERIES ------------ */
 
 @media (max-width: 768px) {
-  body {
-    flex-direction: column;
-  }
-
   #landing-page {
     flex-direction: column;
     align-items: center;
@@ -301,6 +324,29 @@ button {
     width: 100%;
   }
 
+  body .content-wrapper {
+    flex-direction: column;
+  }
+
+  body .content-wrapper .question-section,
+  body .content-wrapper .board-wrapper {
+    width: 100%;
+    order: 1;
+  }
+
+  body .content-wrapper .board-wrapper {
+    order: 2;
+  }
+
+  body footer#credits {
+    order: 3;
+    width: 100%;
+  }
+
+  .question-section {
+    width: 100%; 
+  }
+
   .question-section {
     width: 100%;
     min-height: 0;
@@ -308,6 +354,16 @@ button {
 
   button {
     padding: 8px 16px;
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #restart {
+    margin: 20px 0;
   }
 
   h1 {
@@ -319,6 +375,11 @@ button {
     width: 100px;
   }
 
+  .board-wrapper {
+    width: 100%;
+  }
+
+  .question-section,
   .board-wrapper {
     width: 100%;
   }
@@ -353,7 +414,8 @@ button {
   }
 
 .credits {
-  margin: 100px 0 50px 0;
+  margin: 0;
+  padding: 50px 20px;
 }
 
   .links {

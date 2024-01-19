@@ -299,10 +299,10 @@ const start = () => {
   document.querySelector('.question-section').classList.remove('hidden');
   document.querySelector('.board-wrapper').classList.remove('hidden');
   document.querySelector('.credits').classList.remove('hidden');
-  document.querySelector('.board-content').classList.remove('hidden');
+  document.querySelector('.board-wrapper').classList.remove('hidden');
 
   playCount++;
-  document.getElementById("play-count-display").innerText = `Play Count: ${playCount}`;
+  document.getElementById("play-count-display").innerText = `You played this game ${playCount} times in a row`;
 
   charactersInPlay = shuffleArray(CHARACTERS);
   generateBoard();
@@ -333,15 +333,19 @@ const playRandomSong = (next = false) => {
 
 // Toggle sound on or off
 const toggleSound = () => {
-  if (audio.src) { // Check if audio source is set
+  const soundIcon = document.getElementById('soundIcon');
+  if (audio.src) { 
     if (audio.paused) {
       audio.play();
+      soundIcon.src = './assets/pause.svg'; // Switch to pause icon
     } else {
       audio.pause();
+      soundIcon.src = './assets/play.svg'; // Switch to play icon
     }
   } else {
     // If audio source is not set, start playing a random song
     playRandomSong();
+    soundIcon.src = './assets/pause.svg'; // Switch to pause icon
   }
 }
 
@@ -463,7 +467,7 @@ const guess = (personToConfirm) => {
 };
 
 const updateGuessCounter = () => {
-  counterDisplay.innerText = `Guesses: ${guessCounter}`;
+  counterDisplay.innerText = `You've made ${guessCounter} guesses`;
 };
 
 // If you confirm, this function is invoked
@@ -486,7 +490,7 @@ const checkMyGuess = (personToCheck) => {
 
   // 4. Display the win/lose section and hide the game board
   winOrLoseSection.classList.remove('hidden');
-  winOrLoseSection.style.display = 'block';
+  winOrLoseSection.style.display = 'flex';
   board.style.display = 'none';
 };
 

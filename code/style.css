@@ -1,14 +1,33 @@
 /* Global css variables used for colors */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 :root {
-  --primary: #a259ff;
-  --secondary: #b0a6ff;
+  --primary: #161616;
+  --secondary: #2b2b2b;
+  --white: #fff;
+  --hover: #862D2E;
+  background-color: #434450;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 body {
   display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+  color: var(--white);
+}
+
+.hidden {
+  display: none !important;
 }
 
 h1 {
@@ -19,9 +38,53 @@ h1 {
   color: white;
 }
 
+#landing-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  width: 100%;
+  background-color: #3a3a3a;
+}
+
+.landing-page-wrapper {
+  width: 50%;
+  display: block;
+  padding: 50px;
+}
+
+#landing-page img {
+  width: 50%; 
+  height: 100vh; 
+  object-fit: cover; 
+  object-position: center; 
+  flex: 1; /* This will allow the image to fill the space */
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0 30px 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  color: #000;
+}
+
+#musicChoice {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 30px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+.content-wrapper {
+  display: flex;
+}
+
 .question-section {
   width: 30%;
-  min-height: 100vh;
   background-color: var(--secondary);
   display: flex;
   flex-direction: column;
@@ -31,13 +94,18 @@ h1 {
 }
 
 select {
-  display: block;
-  border: none;
-  font-size: 22px;
-  font-family: 'Montserrat';
-  color: var(--secondary);
-  width: 100%;
-  margin: 24px 0;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 30px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+#counter-display, #play-count-display {
+ font-size: 16px;
+ font-weight: 700;
+ margin-top: 10px;
 }
 
 .guess-who-icon {
@@ -45,28 +113,57 @@ select {
 }
 
 .board-wrapper {
-  width: 70%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .game-board {
-  width: 90%;
-  max-width: 882px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center; 
+}
+
+.credits {
+  display: block;
+  justify-content: center; 
+  text-align: center;
+  padding: 100px 20px;
+  background-color: var(--primary);
+}
+
+.credits p {
+  font-size: 8px;
+  color: var(--white);
+  font-weight: 700;
+}
+
+.links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.links a {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 8px;
+  font-weight: 700;
 }
 
 /****** CARD ******/
 .card {
-  width: 135px;
-  height: 165px;
+  width: calc(100% / 6 - 20px); /* 6 cards per row, adjust the 20px if needed for margins */
+  margin: 10px; 
+  width: 200px;
+  height: 250px;
   overflow: hidden;
-  border: 3px solid var(--secondary);
-  border-radius: 4px;
-  margin: 3px;
+  border-radius: 8px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,6 +175,15 @@ select {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 700;
+  color: var(--white);
+}
+
+.card img {
+  width: 100%; /* Make image take full width of the card */
+  height: 100%; /* Make image take full height of the card */
+  object-fit: cover; /* Cover the area of the card */
+  object-position: center; /* Center the image */
+  border-radius: 8px;
 }
 
 .card .guess {
@@ -115,7 +221,7 @@ select {
 /****** BUTTONS ******/
 button {
   border: 2px solid var(--primary);
-  border-radius: 50px;
+  border-radius: 20px;
   font-size: 16px;
   font-family: 'Montserrat';
   font-weight: bold;
@@ -123,23 +229,52 @@ button {
   cursor: pointer;
 }
 
+.music-buttons {
+  display: flex;
+  margin: 20px 0;
+}
+
+#soundIcon, #nextIcon {
+  height: 24px;
+  width: 24px;
+  filter: invert(1);
+}
+
+.sound-button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary);
+  margin: 5px;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  border: none; 
+  padding: 0; 
+}
+
+#nextSongButton:hover, #soundButton:hover {
+  background-color: var(--secondary);
+  border: #fff 3px solid;
+}
+
+
 .small {
   padding: 8px 16px;
 }
 
 .outlined-button {
-  background-color: transparent;
-  color: var(--primary);
+  background-color: var(--primary);
+  color: white;
   align-self: flex-end;
 }
 
-.filled-button,
-.outlined-button:hover {
+.filled-button {
   background-color: var(--primary);
   color: white;
 }
 
-.filled-button:hover {
+.filled-button:hover, .outlined-button:hover  {
   background-color: white;
   border-color: white;
   color: var(--primary);
@@ -147,7 +282,7 @@ button {
 
 /****** WIN OR LOSE SECTION ******/
 .win-or-lose-wrapper {
-  display: none;
+  display: flex;  
   align-items: center;
   justify-content: center;
   background: var(--secondary);
@@ -164,7 +299,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px;
+  max-width: 90%;
   text-align: center;
 }
 
@@ -177,27 +312,78 @@ button {
   margin-bottom: 32px;
 }
 
+/* ------------ MEDIA QUERIES ------------ */
+
 @media (max-width: 768px) {
-  body {
+  #landing-page {
     flex-direction: column;
+    align-items: center;
+  }
+
+  .landing-page-wrapper {
+    width: 90%;
+  }
+
+  #landing-page img {
+    width: 100%;
+  }
+
+  body .content-wrapper {
+    flex-direction: column;
+  }
+
+  body .content-wrapper .question-section,
+  body .content-wrapper .board-wrapper {
+    width: 100%;
+    order: 1;
+  }
+
+  body .content-wrapper .board-wrapper {
+    order: 2;
+  }
+
+  body footer#credits {
+    order: 3;
+    width: 100%;
+  }
+
+  .question-section {
+    width: 100%; 
   }
 
   .question-section {
     width: 100%;
     min-height: 0;
   }
+
   button {
     padding: 8px 16px;
   }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #restart {
+    margin: 20px 0;
+  }
+
   h1 {
     font-size: 24px;
     line-height: 30px;
   }
 
   .guess-who-icon {
-    width: 51px;
+    width: 100px;
   }
 
+  .board-wrapper {
+    width: 100%;
+  }
+
+  .question-section,
   .board-wrapper {
     width: 100%;
   }
@@ -208,7 +394,8 @@ button {
   }
 
   .card {
-    width: 113px;
+    width: calc(100% / 4 - 20px); /* 4 cards per row */
+    width: 200px;
     position: relative;
   }
 
@@ -225,9 +412,24 @@ button {
 
   .card .guess .filled-button {
     padding: 6px 11px;
-    margin-bottom: 1px;
+    margin-bottom: 10px;
     background: white;
     color: var(--primary);
     border: none;
+  }
+
+.credits {
+  margin: 0;
+  padding: 50px 20px;
+}
+
+  .links {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) { /* Mobile */
+  .card {
+    width: calc(100% / 2 - 20px); /* 2 cards per row */
   }
 }

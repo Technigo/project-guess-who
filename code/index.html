@@ -1,64 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Name</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <aside class="question-section">
-      <button type="button" id="restart" class="outlined-button">RESTART</button>
 
-      <img
-        class="guess-who-icon"
-        src="images/guess-who-bubble.png"
-        alt="Guess Who"
-      />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:,">
+  <title>Guess the 90's Hip Hop artist</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+</head>
 
-      <h1>Does the person have</h1>
+<body>
+  <section id="landing-page" class="landing-page">
+    <div class="landing-page-wrapper">
+      <h1>Welcome to<br> "Guess" the 90's Hip Hop Artist!</h1>
+      <input type="text" id="playerNameInput" placeholder="Enter your name" />
+      <div>
+        <label for="musicChoice">Allow some beats to your game?</label>
+        <select id="musicChoice">
+          <option value="yes">Yes</option>
+          <option value="no" selected>No</option>
+        </select>
+      </div>
+      <button id="startGame" class="filled-button">Play</button>
+    </div>
+    <img src="./assets/golden-era.jpeg" />
+  </section>
+  <div class="content-wrapper">
+    <aside class="question-section hidden">
+      <div class="button-wrapper">
+        <button type="button" id="restart" class="outlined-button">RESTART</button>
+        <div class="music-buttons">
+          <button type="button" id="soundButton" class="sound-button">
+            <img id="soundIcon" src="./assets/play.svg" alt="Play">
+          </button>
+          <button type="button" id="nextSongButton" class="sound-button">
+            <img id="nextIcon" src="./assets/next.svg" alt="Next">
+          </button>
+        </div>
+      </div>
+      <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
+
+      <h1>Does the artist have</h1>
 
       <select title="questions" id="questions">
         <optgroup label="hair">
-          <option value="brown">brown hair</option>
-          <option value="yellow">yellow hair</option>
-          <!-- Add the rest of hair colors as options  -->
-        </optgroup>
-        <optgroup label="eyes">
-          <option value="hidden">hidden eyes</option>
-          <!-- Add the rest of eye colors as options  -->
+          <option value="locs">locs</option>
+          <option value="hidden">hidden</option>
+          <option value="short">short</option>
+          <option value="big">big</option>
+          <option value="bold">bold</option>
+          <option value="long">long</option>
+          <option value="purple">purple</option>
+          <option value="red">red</option>
+          <option value="straight">straight</option>
         </optgroup>
         <optgroup label="accessories">
+          <option value="hat">hat</option>
+          <option value="necklace">necklace</option>
+          <option value="bracelet">bracelet</option>
+          <option value="watch">watch</option>
+          <option value="earrings">earrings</option>
+          <option value="ring">ring</option>
+          <option value="bandana">bandana</option>
+          <option value="tooth-pick">tooth-pick</option>
           <option value="glasses">glasses</option>
-          <!-- Add the other accessory option here. (hat)  -->
+          <option value="shells">shells</option>
+          <option value="lashes">fake lashes</option>
+        </optgroup>
+        <optgroup label="clothes">
+          <option value="shirt">shirt</option>
+          <option value="jeans-shirt">jeans shirt</option>
+          <option value="colorful">colorful</option>
+          <option value="jump-suit">jump suit</option>
+          <option value="popeye">Popeye</option>
+          <option value="fur">fur</option>
+          <option value="black">black</option>
+          <option value="sweater">sweater</option>
+          <option value="t-shirt">t-shirt</option>
+          <option value="jacket">jacket</option>
+          <option value="striped">striped</option>
         </optgroup>
         <optgroup label="other">
           <option value="smoker">a smoking habit</option>
+          <option value="fat">fat</option>
+          <option value="mustache">mustache</option>
+          <option value="tattoo">tattoo</option>
+          <option value="band">is a group</option>
+          <option value="member">group member</option>
+          <option value="married">married</option>
+          <option value="kids">has kids</option>
+          <option value="mouth">mouth open</option>
         </optgroup>
       </select>
 
       <button id="filter" class="filled-button">FIND OUT</button>
+      <div class="counter-box">
+        <h3 id="display-name"></h3>
+        <h3>Timer</h2>
+          <div id="timer">00:00</div>
+          <div id="counter-display">Guesses: 0</div>
+          <div id="play-count-display">0</div>
+      </div>
     </aside>
-
-    <section class="board-wrapper">
+    <section class="board-wrapper hidden">
       <main class="game-board" id="board"></main>
     </section>
-
-    <section id="winOrLose" class="win-or-lose-wrapper">
-      <div class="win-or-lose">
-        <img
-          class="guess-who-icon"
-          src="images/guess-who-bubble.png"
-          alt="Guess Who"
-        />
-        <h1 id="winOrLoseText"></h1>
-        <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+  </div>
+  <footer id="credits" class="credits hidden">
+    <p>Music from Uppbeat:</p>
+    <div class="links">
+      <div>
+        <a href="https://uppbeat.io/t/bosnow/street-knowledge" target="_blank">bosnow</a>
+        <p>License code: MMPY8LAXPDFEVMXD</p>
       </div>
-    </section>
-    <script src="script.js"></script>
-  </body>
+      <div>
+        <a href="https://uppbeat.io/t/kidcut/jazz-and-hop" target="_blank">kidcut</a>
+        <p>License code: GUECZCKTSK7AKOP6</p>
+      </div>
+      <div>
+        <a href="https://uppbeat.io/t/jeff-kaale/aurora" target="_blank">jeff-kaale</a>
+        <p>License code: COYD8CN97EVKQPOS</p>
+      </div>
+    </div>
+  </footer>
+
+  <section id="winOrLose" class="win-or-lose-wrapper hidden">
+    <div class="win-or-lose">
+      <img class="guess-who-icon" src="images/guess-who-bubble.png" alt="Guess Who" />
+      <h1 id="winOrLoseText"></h1>
+      <div id="videoContainer"></div>
+      <button type="button" id="playAgain" class="filled-button">PLAY AGAIN</button>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</body>
+
 </html>

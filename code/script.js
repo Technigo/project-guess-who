@@ -208,9 +208,12 @@ const CHARACTERS = [
 ]
 
 // Global variables
-let secret
-let currentQuestion
-let charactersInPlay
+let secret;
+let currentQuestion;
+let charactersInPlay;
+let guessCounter = 0; // Guess counter
+let startTime; // Start time for the timer
+let playerName = ''; // Player n
 
 
 // Draw the game board
@@ -239,7 +242,9 @@ const setSecretPerson = () => {
 
 // This function to start (and restart) the game
 const start = () => {
-  // Here we're setting charactersInPlay array to be all the characters to start with
+  guessCounter = 0; // Reset guess counter
+  startTime = Date.now(); // Start timer
+  playerName = prompt("Please enter your name:", "Enter name here"); // Get player name
   charactersInPlay = CHARACTERS;
   board.innerHTML -= winOrLose[0] || winOrLose[1];
   questions.selectedIndex = 0;
@@ -330,12 +335,13 @@ const filterCharacters = (keep) => {
   // store the interaction from the player in a variable.
   // remember the confirm() ?
   // If the player wants to guess, invoke the checkMyGuess function.
-const Guess = (personToConfirm) => {
-  const isCorrectGuess = personToConfirm === secret.name;
-  if (confirm(`Do you want to guess on ${personToConfirm}?`)) {
-    checkMyGuess(personToConfirm);
-  }
-};
+  const Guess = (personToConfirm) => {
+    guessCounter++; // Increment guess counter
+    const isCorrectGuess = personToConfirm === secret.name;
+    if (confirm(`Do you want to guess on ${personToConfirm}?`)) {
+      checkMyGuess(personToConfirm);
+    }
+  };
 
 // If you confirm, this function is invoked
 const winOrLose = ['You got it! Congratulations!', 'Close, but still so far. Try again.'];
@@ -345,6 +351,10 @@ const winOrLose = ['You got it! Congratulations!', 'Close, but still so far. Try
 // If you confirm, this function is invoked
 const checkMyGuess = (personToCheck) => {
   // 1. Check if the personToCheck is the same as the secret person's name
+  const endTime = Date.now(); // End time for the timer
+  const gameTime = (endTime - startTime) / 1000; // Calculate game time in seconds
+  alert(`${playerName}, your game time: ${gameTime} seconds, guesses: ${guessCounter}`);
+
   if (personToCheck === secret.name) {
     wOLtext.textContent = winOrLose[0];
   } else {

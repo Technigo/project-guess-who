@@ -30,6 +30,14 @@ h1 {
   box-sizing: border-box;
 }
 
+.player-name-display {
+  font-size: 20px;
+  color: #ff3399;
+  margin: 10px;
+  text-align: center;
+}
+
+
 select {
   display: block;
   border: none;
@@ -230,4 +238,5 @@ button {
     color: var(--primary);
     border: none;
   }
+
 }

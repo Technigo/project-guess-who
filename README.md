@@ -4,7 +4,7 @@ A digital version of the board game Guess who using JavaScript, HTML and CSS.
 
 ## The problem
 
-Most time consuming was to understand the starter code and the different parts of the assignments. I broke it down into smaller steps in order to not be overwhelmed. 
+Most time consuming was to understand the starter code and the different parts of the assignments. I broke it down into smaller steps in order to not be overwhelmed (as this was early on in my education).
 
 Great sessions with my team where we all helped each other out, course material and chatGPT was used to understand objects and arrays.
 
